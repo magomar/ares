@@ -21,8 +21,8 @@ public class TacticalMissionFollowAndSupport extends AbstractTacticalMission {
 
         Tile position, allyPosition = null;
         LinkedList<Tile> possiblePositions = new LinkedList<>();
-        Action[] mainMission = new Action[taskNode.getUnitForSupport().getPendingActions().size()];
-        taskNode.getUnitForSupport().getPendingActions().toArray(mainMission);
+  //      Action[] mainMission = new Action[taskNode.getUnitForSupport().getPendingActions().size()];
+   //     taskNode.getUnitForSupport().getPendingActions().toArray(mainMission);
 
 
         return 0;

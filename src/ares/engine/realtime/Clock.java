@@ -23,7 +23,7 @@ public class Clock {
 //    public final int MILLISEC_PER_TURN;
 //    private ScheduledExecutorService scheduledExecutorService;
     /**
-     * Minutes transcurred since the beginning of the scenario
+     * Elapsed minutes since the beginning of the scenario
      */
     private int currentTime;
     /**

@@ -28,15 +28,15 @@ public class TacticalMissionSupportByFire extends AbstractTacticalMission {
         //TODO Revise all
         Tile position, allyPosition = null;
         LinkedList<Tile> possiblePositions = new LinkedList<>();
-        Action[] mainMission = new Action[taskNode.getUnitForSupport().getPendingActions().size()];
-        taskNode.getUnitForSupport().getPendingActions().toArray(mainMission);
+        //Action[] mainMission = new Action[taskNode.getUnitForSupport().getPendingActions().size()];
+        //taskNode.getUnitForSupport().getPendingActions().toArray(mainMission);
 
-        for (int i = 0; i < mainMission.length; i++) {
-            if (mainMission[i].getType() == ActionType.ASSAULT || mainMission[i].getType() == ActionType.ATTACK_BY_FIRE) {
-                allyPosition = mainMission[i].getOrigin();
-                taskNode.getTask().setGoal(mainMission[i].getDestination());
-            }
-        }
+//        for (int i = 0; i < mainMission.length; i++) {
+//            if (mainMission[i].getType() == ActionType.ASSAULT || mainMission[i].getType() == ActionType.ATTACK_BY_FIRE) {
+//                allyPosition = mainMission[i].getOrigin();
+//                taskNode.getTask().setGoal(mainMission[i].getDestination());
+//            }
+//        }
 
         for (Tile tile : taskNode.getTask().getGoal().getNeighbors().values()) {
             if (tile.getNeighbors().containsValue(allyPosition) && tile.getNeighbors().containsValue(taskNode.getTask().getGoal())) {
@@ -63,8 +63,8 @@ public class TacticalMissionSupportByFire extends AbstractTacticalMission {
                     break;
                 }
             }
-            SurfaceMoveAction surfaceMoveAction = new SurfaceMoveAction((SurfaceUnit) taskNode.getUnit(), ActionType.TACTICAL_MARCH, path[i - 1], path[i], direction.getOpposite(), scenario);
-            taskNode.addAction(surfaceMoveAction);
+ //           SurfaceMoveAction surfaceMoveAction = new SurfaceMoveAction((SurfaceUnit) taskNode.getUnit(), ActionType.TACTICAL_MARCH, path[i - 1], path[i], direction.getOpposite(), scenario);
+//            taskNode.addAction(surfaceMoveAction);
         }
 
         for (Direction dir : Direction.values()) {
@@ -73,9 +73,9 @@ public class TacticalMissionSupportByFire extends AbstractTacticalMission {
                 break;
             }
         }
-        CombatAction support = new CombatAction(taskNode.getUnit(), ActionType.SUPPORT_BY_FIRE, position, taskNode.getTask().getGoal(), direction.getOpposite(), scenario);
-        taskNode.addAction(support);
+//        CombatAction support = new CombatAction(taskNode.getUnit(), ActionType.SUPPORT_BY_FIRE, position, taskNode.getTask().getGoal(), direction.getOpposite(), scenario);
+//        taskNode.addAction(support);
 
-        return support.getFinish();
+        return 0;//support.getFinish();
     }
 }

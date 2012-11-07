@@ -14,7 +14,7 @@ import ares.scenario.forces.Unit;
  * assigns a collection of actions to the units belonging to
  * the formation.
  * 
- * @author SaÃºl Esteban
+ * @author Saúl Esteban
  */
 public class TaskPlanner {
     
@@ -91,7 +91,7 @@ public class TaskPlanner {
         
         for(UnitTaskNode node : tn.getSubtasks()) {
             for(AbstractAction action : node.getActions()) {
-                node.getUnit().getPendingActions().add(action);
+               // node.getUnit().getPendingActions().add(action);
             }
         }
     }

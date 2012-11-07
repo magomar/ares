@@ -37,8 +37,8 @@ public class TacticalMissionAssault extends AbstractTacticalMission{
                     break;
                 }
             }
-            SurfaceMoveAction surfaceMoveAction = new SurfaceMoveAction((SurfaceUnit)taskNode.getUnit(), ActionType.TACTICAL_MARCH, path[i-1], path[i], direction.getOpposite());
-            taskNode.addAction(surfaceMoveAction);
+//            SurfaceMoveAction surfaceMoveAction = new SurfaceMoveAction((SurfaceUnit)taskNode.getUnit(), ActionType.TACTICAL_MARCH, path[i-1], path[i], direction.getOpposite());
+//            taskNode.addAction(surfaceMoveAction);
         }
         
         for(Direction dir : Direction.values()) {
@@ -47,9 +47,9 @@ public class TacticalMissionAssault extends AbstractTacticalMission{
                 break;
             }
         }
-        CombatAction assault = new CombatAction(taskNode.getUnit(),ActionType.ASSAULT,taskNode.getTask().getPosition(),taskNode.getTask().getGoal(),direction.getOpposite(),scenario);
-        taskNode.addAction(assault);
+//        CombatAction assault = new CombatAction(taskNode.getUnit(),ActionType.ASSAULT,taskNode.getTask().getPosition(),taskNode.getTask().getGoal(),direction.getOpposite(),scenario);
+//        taskNode.addAction(assault);
         
-        return assault.getFinish();
+        return 0;//assault.getFinish();
     }
 }
