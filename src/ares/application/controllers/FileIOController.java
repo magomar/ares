@@ -10,9 +10,9 @@ import ares.engine.realtime.RealTimeEngine;
 import ares.io.AresFileType;
 import ares.io.AresIO;
 import ares.io.AresPaths;
-import ares.scenario.Scenario;
 import ares.platform.controller.AbstractController;
 import ares.platform.view.InternalFrameView;
+import ares.scenario.Scenario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -31,9 +31,9 @@ public class FileIOController extends AbstractController {
     @Override
     protected void registerAllActionListeners() {
         MenuBarView menuBarView = getView(MenuBarView.class);
-        menuBarView.addActionListener(FileCommands.OPEN_SCENARIO.name(), new OpenScenarioActionListener());
-        menuBarView.addActionListener(FileCommands.CLOSE_SCENARIO.name(), new CloseScenarioActionListener());
-        menuBarView.addActionListener(FileCommands.EXIT.name(), new ExitActionListener());
+        menuBarView.addActionListener(FileCommands.OPEN_SCENARIO.getName(), new OpenScenarioActionListener());
+        menuBarView.addActionListener(FileCommands.CLOSE_SCENARIO.getName(), new CloseScenarioActionListener());
+        menuBarView.addActionListener(FileCommands.EXIT.getName(), new ExitActionListener());
     }
 
     @Override
@@ -76,10 +76,10 @@ public class FileIOController extends AbstractController {
                 boardFrame.show();
                 
                 MenuBarView menuBarView = getView(MenuBarView.class);
-//                JMenuItem openScenarioMenuItem = (JMenuItem) menuBarView.getComponent(FileCommands.OPEN_SCENARIO.name());
-                menuBarView.getMenuElement(FileCommands.OPEN_SCENARIO.name()).getComponent().setEnabled(false);
-//                JMenuItem closeScenarioMenuItem = (JMenuItem) menuBarView.getComponent(FileCommands.CLOSE_SCENARIO.name());
-                menuBarView.getMenuElement(FileCommands.CLOSE_SCENARIO.name()).getComponent().setEnabled(true);
+//                JMenuItem openScenarioMenuItem = (JMenuItem) menuBarView.getComponent(FileCommands.OPEN_SCENARIO.getName());
+                menuBarView.getMenuElement(FileCommands.OPEN_SCENARIO.getName()).getComponent().setEnabled(false);
+//                JMenuItem closeScenarioMenuItem = (JMenuItem) menuBarView.getComponent(FileCommands.CLOSE_SCENARIO.getName());
+                menuBarView.getMenuElement(FileCommands.CLOSE_SCENARIO.getName()).getComponent().setEnabled(true);
             }
         }
     }
@@ -90,8 +90,8 @@ public class FileIOController extends AbstractController {
         public void actionPerformed(ActionEvent e) {
             LOG.log(Level.INFO, e.toString());
             getModel(RealTimeEngine.class).setScenario(null);        MenuBarView menuBarView = getView(MenuBarView.class);
-                menuBarView.getMenuElement(FileCommands.CLOSE_SCENARIO.name()).getComponent().setEnabled(false);
-                menuBarView.getMenuElement(FileCommands.OPEN_SCENARIO.name()).getComponent().setEnabled(true);
+                menuBarView.getMenuElement(FileCommands.CLOSE_SCENARIO.getName()).getComponent().setEnabled(false);
+                menuBarView.getMenuElement(FileCommands.OPEN_SCENARIO.getName()).getComponent().setEnabled(true);
 
         }
     }

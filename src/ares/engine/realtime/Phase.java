@@ -6,12 +6,6 @@ package ares.engine.realtime;
  */
 public enum Phase {
 
-    ACTIVATE {
-        @Override
-        public void run(RealTimeEngine engine) {
-            engine.activate();
-        }
-    },
     ACT {
         @Override
         public void run(RealTimeEngine engine) {

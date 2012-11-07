@@ -1,5 +1,6 @@
 package ares.engine.realtime;
 
+import ares.application.controllers.RealTimeEngineController;
 import ares.engine.Engine;
 import ares.engine.actors.FormationActor;
 import ares.engine.actors.UnitActor;
@@ -9,6 +10,8 @@ import ares.scenario.forces.Unit;
 import ares.scenario.Scenario;
 import ares.platform.model.AbstractModel;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -22,10 +25,11 @@ public class RealTimeEngine extends AbstractModel<Engine> implements Engine {
     private List<UnitActor> unitActors;
 //    private List<FormationActor> formationActors;
     private Clock clock;
+    private static final Logger LOG = Logger.getLogger(RealTimeEngine.class.getName());
 
     public RealTimeEngine() {
         unitActors = new ArrayList<>();
-        phase = Phase.ACTIVATE;
+        phase = Phase.ACT;
     }
 
     public void initDefault() {
@@ -36,9 +40,15 @@ public class RealTimeEngine extends AbstractModel<Engine> implements Engine {
         this.scenario = scenario;
         if (scenario != null) {
             clock = new Clock(scenario.getCalendar(), this);
-            activate();
+            for (Force force : scenario.getForces()) {
+                for (Formation formation : force.getFormations()) {
+                    for (Unit unit : formation.getActiveUnits()) {
+                        unit.activate();
+                        unitActors.add(new UnitActor(unit));
+                    }
+                }
+            }
         }
-        
         firePropertyChange(SCENARIO_PROPERTY, oldValue, scenario);
     }
 
@@ -65,24 +75,16 @@ public class RealTimeEngine extends AbstractModel<Engine> implements Engine {
             clock.tick();
         }
     }
-// TODO activate units (its actors)
 
-    protected void activate() {
-        for (Force force : scenario.getForces()) {
-            for (Formation formation : force.getFormations()) {
-                for (Unit unit : formation.getActiveUnits()) {
-                    unit.activate();
-                    unitActors.add(new UnitActor(unit));
-                }
-            }
-        }
+    void activate() {
+        LOG.log(Level.INFO, "Activate");
     }
 
     protected void act() {
-        // TODO act
+        LOG.log(Level.INFO, "Act");
     }
 
     protected void schedule() {
-        //TODO schedule
+        LOG.log(Level.INFO, "Schedule");
     }
 }

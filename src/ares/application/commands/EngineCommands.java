@@ -2,6 +2,7 @@ package ares.application.commands;
 
 import ares.platform.application.Command;
 import java.awt.event.KeyEvent;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -36,5 +37,15 @@ public enum EngineCommands implements Command {
     @Override
     public Integer getMnemonic() {
         return mnemonic;
+    }
+
+    @Override
+    public String getName() {
+        return name();
+    }
+
+    @Override
+    public ImageIcon getImageIcon() {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

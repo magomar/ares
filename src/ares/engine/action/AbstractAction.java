@@ -1,7 +1,7 @@
 package ares.engine.action;
 
-import ares.engine.action.actions.WaitAction;
 import ares.engine.action.actions.RestAction;
+import ares.engine.action.actions.WaitAction;
 import ares.engine.actors.Actor;
 import ares.engine.actors.UnitActor;
 import ares.engine.realtime.Clock;

@@ -1,6 +1,7 @@
 package ares.platform.view;
 
 import ares.platform.application.Command;
+import ares.platform.application.MenuEntry;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -158,9 +159,10 @@ public abstract class ComponentFactory {
         return popupMenu;
     }
 
-    public static JMenu menu(String text, char mnemonic, boolean enabled, JMenuItem... items) {
-        JMenu menu = new JMenu(text);
-        menu.setMnemonic(mnemonic);
+    public static JMenu menu(MenuEntry menuEntry, boolean enabled, JMenuItem... items) {
+        JMenu menu = new JMenu(menuEntry.getText());
+        menu.setName(menuEntry.getName());
+        menu.setMnemonic(menuEntry.getMnemonic());
         for (JMenuItem item : items) {
             menu.add(item);
         }
@@ -168,8 +170,8 @@ public abstract class ComponentFactory {
         return menu;
     }
 
-    public static JMenu menu(String text, char mnemonic, JMenuItem... items) {
-        return menu(text, mnemonic, true, items);
+    public static JMenu menu(MenuEntry menuEntry, JMenuItem... items) {
+        return menu(menuEntry, true, items);
     }
 
     public static JMenuBar menuBar(JMenu... menus) {
@@ -183,8 +185,8 @@ public abstract class ComponentFactory {
     public static JMenuItem menuItem(Command command, ActionListener listener, boolean enabled) {
         JMenuItem menuItem = new JMenuItem(command.getText(), command.getMnemonic());
 //        menuItem.getAction().putValue(AbstractAction.SHORT_DESCRIPTION,command.getDesc());
-        menuItem.setName(command.name());
-        menuItem.setActionCommand(command.name());
+        menuItem.setName(command.getName());
+        menuItem.setActionCommand(command.getName());
         menuItem.addActionListener(listener);
         menuItem.setEnabled(enabled);
         return menuItem;

@@ -6,7 +6,6 @@ import ares.engine.action.ActionSpace;
 import ares.engine.action.ActionState;
 import ares.engine.action.actions.RestAction;
 import ares.engine.action.actions.WaitAction;
-import ares.engine.command.TacticalMission;
 import ares.engine.realtime.Clock;
 import ares.scenario.board.Tile;
 import ares.scenario.forces.Unit;
@@ -14,7 +13,7 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 
 /**
- * This class encapsulate the behavior of a unit. It uses an Adaptor Pattern to provide a single access point to a unit.
+ * This class encapsulates the behavior of a unit. It provides a single access point to a unit.
  * Different adaptors could provide alternative unit behaviors.
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
@@ -35,6 +34,7 @@ public class UnitActor implements Actor {
 
     public UnitActor(Unit unit) {
         this.unit = unit;
+        // Probably we do not need to use a priority queue, a linkedlist will suffice...
         this.pendingActions = new PriorityQueue<>(2, AbstractAction.ACTION_START_COMPARATOR);
     }
 
