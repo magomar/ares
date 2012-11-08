@@ -1,8 +1,8 @@
 package ares.platform.application;
 
 import ares.platform.view.AbstractView;
-import ares.platform.view.ComponentFactory;
 import ares.platform.view.InternalFrameView;
+import ares.platform.view.WindowUtil;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 
@@ -38,7 +38,7 @@ public abstract class AbstractAresApplication {
     }
 
     protected void show() {
-        ComponentFactory.showFrame(mainFrame);
+        WindowUtil.showFrame(mainFrame);
     }
 
     protected final void addView(Class<? extends AbstractView<? extends JComponent>> viewClass, AbstractView<? extends JComponent> view) {

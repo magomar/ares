@@ -12,6 +12,7 @@ import ares.platform.controller.AbstractController;
 import ares.platform.model.AbstractModel;
 import ares.platform.view.ComponentFactory;
 import ares.platform.view.InternalFrameView;
+import ares.platform.view.WindowUtil;
 import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
 import java.awt.Rectangle;
@@ -82,9 +83,9 @@ public final class AresPlayerFrame extends AbstractAresApplication {
         mainFrame.setMaximumSize(maxSize);
         mainFrame.setMaximizedBounds(new Rectangle(preferredSize));
 
-        // We have to show the main frame before setting the preferred size & bound of its internal frames
+        // We have to show the main frame before setting the preferred size & bounds of its internal frames
         // because these depend on the desktopPane, whose size is set when the main frame is shown
-        ComponentFactory.showFrame(mainFrame); 
+        WindowUtil.showFrame(mainFrame); 
 
         // information frame
         InternalFrameView<UnitInfoView> infoFrameView = getInternalFrameView(UnitInfoView.class);

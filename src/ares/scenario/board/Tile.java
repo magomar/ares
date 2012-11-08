@@ -5,14 +5,13 @@ import ares.data.jaxb.TerrainFeature;
 import ares.data.jaxb.TerrainType;
 import ares.engine.combat.CombatModifier;
 import ares.engine.movement.MovementCost;
+import ares.scenario.Scale;
+import ares.scenario.Scenario;
 import ares.scenario.forces.AirUnit;
 import ares.scenario.forces.Capability;
 import ares.scenario.forces.Force;
 import ares.scenario.forces.SurfaceUnit;
 import ares.scenario.forces.Unit;
-import ares.engine.movement.MovementCost;
-import ares.scenario.Scale;
-import ares.scenario.Scenario;
 import java.util.*;
 
 /**

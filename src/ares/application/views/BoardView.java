@@ -31,7 +31,7 @@ public class BoardView extends AbstractView<JScrollPane> {
         JScrollPane contentPane = new JScrollPane();
         contentPane.add(layers);
         contentPane.setViewportView(layers);
-        contentPane.setVisible(false);
+        contentPane.setVisible(true);
         return contentPane;
     }
 
@@ -42,22 +42,26 @@ public class BoardView extends AbstractView<JScrollPane> {
     @Override
     public void modelPropertyChange(PropertyChangeEvent evt) {
 //       Logger.getLogger(BoardView.class.getName()).log(Level.INFO, evt.toString());
-        if (evt.getPropertyName().equals(RealTimeEngine.SCENARIO_PROPERTY)) {
-            if (evt.getNewValue() != null) {
-                Scenario scenario = (Scenario) evt.getNewValue();
-                terrainPanel.initialize(scenario);
-                unitsPanel.initialize(scenario);
-                Dimension imageSize = new Dimension(scenario.getBoardInfo().getImageWidth(), scenario.getBoardInfo().getImageHeight());
-                layers.setPreferredSize(imageSize);
-                layers.setSize(imageSize);
-                terrainPanel.setPreferredSize(imageSize);
-                terrainPanel.setSize(imageSize);
-                unitsPanel.setPreferredSize(imageSize);
-                unitsPanel.setSize(imageSize);
-                getContentPane().setVisible(true);
-            } else {
-                getContentPane().setVisible(false);
-            }
+        switch (evt.getPropertyName()) {
+            case RealTimeEngine.SCENARIO_PROPERTY:
+                if (evt.getNewValue() != null) {
+                    Scenario scenario = (Scenario) evt.getNewValue();
+                    terrainPanel.initialize(scenario);
+                    unitsPanel.initialize(scenario);
+                    Dimension imageSize = new Dimension(scenario.getBoardInfo().getImageWidth(), scenario.getBoardInfo().getImageHeight());
+                    layers.setPreferredSize(imageSize);
+                    layers.setSize(imageSize);
+                    terrainPanel.setPreferredSize(imageSize);
+                    terrainPanel.setSize(imageSize);
+                    unitsPanel.setPreferredSize(imageSize);
+                    unitsPanel.setSize(imageSize);
+                }
+                break;
+
+            case RealTimeEngine.CLOCK_EVENT_PROPERTY:
+                unitsPanel.updateUnits();
+                break;
         }
+        
     }
 }

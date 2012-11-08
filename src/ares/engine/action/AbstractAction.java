@@ -18,10 +18,9 @@ public abstract class AbstractAction implements Action {
     public static final Comparator<Action> ACTION_START_COMPARATOR = new ActionStartComparator();
     public static final Comparator<Action> ACTION_FINISH_COMPARATOR = new ActionFinishComparator();
     protected UnitActor actor;
-    protected Tile origin;
+    protected Tile location;
     protected Tile destination;
     protected ActionType type;
-    protected int id;
 
     /**
      * Before starting the action, this attribute holds the estimated time to start performing the action, specified in
@@ -43,11 +42,10 @@ public abstract class AbstractAction implements Action {
         this.actor = actor;
         this.type = type;
         this.start = start;
-        this.origin = origin;
+        this.location = origin;
         this.destination = destination;
         finish = Integer.MAX_VALUE;
         timeToComplete = finish - start;
-//        id = clock.getCurrentTime();
         state = ActionState.CREATED;
     }
 
@@ -84,7 +82,7 @@ public abstract class AbstractAction implements Action {
             newAction.execute(clock);
             return false;
         }
-        if (unit.getLocation() != origin) {
+        if (unit.getLocation() != location) {
             Action newAction;
             if (unit.getEndurance() >= ActionType.WAIT.getWearRate()) {
                 newAction = new WaitAction(actor, destination, time);
@@ -116,7 +114,7 @@ public abstract class AbstractAction implements Action {
 
     @Override
     public Tile getOrigin() {
-        return origin;
+        return location;
     }
 
     @Override

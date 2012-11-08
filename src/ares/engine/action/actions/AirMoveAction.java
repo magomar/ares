@@ -40,7 +40,7 @@ public class AirMoveAction extends MoveAction {
                     timeToComplete = 0;
                     state = ActionState.COMPLETED;
                     finish = clock.getCurrentTime() - clock.MINUTES_PER_TICK + duration;
-                    origin.remove(unit);
+                    location.remove(unit);
                     destination.add(unit);
                     unit.setLocation(destination);
                     System.out.println("[" + clock + "] -> " + "COMPLETED " + this.toString());
@@ -53,6 +53,6 @@ public class AirMoveAction extends MoveAction {
 
     @Override
     public String toString() {
-        return actor.toString() + " from " + origin + " to " + destination + " at " + (speed * 60.0 / 1000) + " km/h";
+        return actor.toString() + " from " + location + " to " + destination + " at " + (speed * 60.0 / 1000) + " km/h";
     }
 }

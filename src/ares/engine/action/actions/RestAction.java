@@ -30,7 +30,7 @@ public class RestAction extends AbstractAction {
 
     @Override
     public String toString() {
-        return actor.toString() + "RESTED #" + id + " @ " + origin.getX() + "," + origin.getY()
+        return actor.toString() + "RESTED " + " @ " + location.getX() + "," + location.getY()
                 + " (" + start + "->" + finish + ")";
     }
 }

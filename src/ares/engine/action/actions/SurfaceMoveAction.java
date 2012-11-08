@@ -34,7 +34,7 @@ public class SurfaceMoveAction extends MoveAction {
                 finish = clock.getCurrentTime();
                 unit.setOpState(type.getPrecondition());
                 
-//                System.out.println("[" + clock + "] -> " + "ABORTED " + this.toString());
+                System.out.println("[" + clock + "] -> " + "ABORTED " + this.toString());
             } else {
                 if (timeToComplete > clock.MINUTES_PER_TICK) {
                     duration = clock.MINUTES_PER_TICK;
@@ -45,11 +45,11 @@ public class SurfaceMoveAction extends MoveAction {
                     timeToComplete = 0;
                     state = ActionState.COMPLETED;
                     finish = clock.getCurrentTime() - clock.MINUTES_PER_TICK + duration;
-                    origin.remove(unit);
+                    location.remove(unit);
                     destination.add(unit);
                     unit.setLocation(destination);
                     unit.setOpState(type.getEffectAfter());
-//                    System.out.println("[" + clock + "] -> " + "COMPLETED " + this.toString());
+                    System.out.println("[" + clock + "] -> " + "COMPLETED " + this.toString());
 //                    EngineMessageLogger.info(this.toString());
                 }
             }
@@ -62,7 +62,7 @@ public class SurfaceMoveAction extends MoveAction {
 
     @Override
     public String toString() {
-        return actor.toString() + " from " + origin + " to " + destination + " at " + (speed * 60.0 / 1000) + " km/h";
+        return actor.toString() + " from " + location + " to " + destination + " at " + (speed * 60.0 / 1000) + " km/h";
     }
 //    public String toString() {
 //        return actor.toString() + "SurfaceMove #" + id + " at " + (speed * 60.0 / 1000) + " km/h (" + start + "->" + finish + ")";

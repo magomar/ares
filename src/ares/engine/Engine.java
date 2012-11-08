@@ -1,6 +1,7 @@
 package ares.engine;
 
 import ares.engine.realtime.ClockEvent;
+import ares.scenario.Scenario;
 
 /**
  *
@@ -13,4 +14,6 @@ public interface Engine {
     public void stop();
     
     public void update(ClockEvent clockEvents);
+    
+    public Scenario getScenario();
 }

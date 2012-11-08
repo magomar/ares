@@ -3,6 +3,8 @@ package ares.platform.view;
 import ares.platform.application.Command;
 import ares.platform.application.MenuEntry;
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -12,6 +14,7 @@ import java.awt.LayoutManager;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.TableModel;
 import javax.swing.tree.TreeModel;
@@ -22,6 +25,16 @@ import javax.swing.tree.TreeSelectionModel;
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public abstract class ComponentFactory {
+
+    /**
+     * An "inter-component" horizontal space, also used as the standard inset from a frame to its content. This is the
+     * nominal "Em" space.
+     */
+    public final static int STANDARD_SPACE = 12;
+    /**
+     * The highlight color for invalid fields.
+     */
+    public final static Color HIGHLIGHT_COLOR = new Color(255, 240, 240);
 
     public static JFrame frame(String title, JComponent contentPane, JMenuBar menuBar, JToolBar toolBar) {
         JFrame frame = new JFrame();
@@ -39,27 +52,6 @@ public abstract class ComponentFactory {
             frame.getContentPane().add(contentPane, BorderLayout.CENTER);
         }
         frame.setPreferredSize(new Dimension(800, 600));
-        return frame;
-    }
-
-    public static JFrame showFrame(JFrame frame) {
-        frame.pack();
-        centerFrame(frame);
-        frame.setVisible(true);
-        return frame;
-    }
-
-    public static JFrame centerFrame(JFrame frame) {
-//        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        Dimension screenSize = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().getSize();
-        Dimension frameSize = frame.getSize();
-        if (frameSize.height > screenSize.height) {
-            frameSize.height = screenSize.height;
-        }
-        if (frameSize.width > screenSize.width) {
-            frameSize.width = screenSize.width;
-        }
-        frame.setLocation((screenSize.width - frameSize.width) / 2, (screenSize.height - frameSize.height) / 2);
         return frame;
     }
 
@@ -194,5 +186,82 @@ public abstract class ComponentFactory {
 
     public static JMenuItem menuItem(Command command, ActionListener listener) {
         return menuItem(command, listener, true);
+    }
+
+    //----------------------------------------------------------------------------
+//  Factories for standard spacing objects
+//----------------------------------------------------------------------------
+    /**
+     * The border to be used around a dialog's content.
+     */
+    public static Border dialogBorder() {
+        return BorderFactory.createEmptyBorder(
+                STANDARD_SPACE, STANDARD_SPACE,
+                STANDARD_SPACE, STANDARD_SPACE);
+    }
+
+    /**
+     * The border to be used around a group of components in a dialog. Assumes that there will be a label above the
+     * group, and that there won't be decoration between groups.
+     */
+    public static Border dialogGroupBorder() {
+        return BorderFactory.createEmptyBorder(
+                STANDARD_SPACE / 2,
+                STANDARD_SPACE,
+                STANDARD_SPACE * 3 / 2,
+                0);
+    }
+
+    /**
+     * A horizontal strut between buttons on the same line.
+     */
+    public static Component interButtonSpace() {
+        return Box.createHorizontalStrut(STANDARD_SPACE);
+    }
+
+//----------------------------------------------------------------------------
+//  Factories for consistent GUI objects
+//----------------------------------------------------------------------------
+    /**
+     * Builds a standard modal input dialog, with content and buttons to accept or cancel that content.
+     */
+    public static JDialog newModalDialog(
+            JFrame owner, String title,
+            JPanel content, JButton... buttons) {
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.X_AXIS));
+        buttonPanel.setAlignmentX(0.0f);
+        buttonPanel.add(Box.createHorizontalGlue());
+        for (int ii = 0; ii < buttons.length; ii++) {
+            if (ii > 0) {
+                buttonPanel.add(interButtonSpace());
+            }
+            buttonPanel.add(buttons[ii]);
+        }
+
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        panel.setBorder(dialogBorder());
+        panel.add(content);
+        panel.add(Box.createVerticalStrut(18));
+        panel.add(buttonPanel);
+
+        JDialog theDialog = new JDialog(owner, title, true);
+        theDialog.setContentPane(panel);
+        theDialog.pack();
+        return theDialog;
+    }
+
+    /**
+     * Builds a standard modal input dialog, with content and buttons to accept or cancel that content.
+     */
+    public static JDialog newModalDialog(
+            JFrame owner, String title,
+            JPanel content, Action... actions) {
+        JButton[] buttons = new JButton[actions.length];
+        for (int ii = 0; ii < actions.length; ii++) {
+            buttons[ii] = new JButton(actions[ii]);
+        }
+        return newModalDialog(owner, title, content, buttons);
     }
 }
