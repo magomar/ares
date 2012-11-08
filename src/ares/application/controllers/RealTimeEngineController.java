@@ -25,6 +25,7 @@ public class RealTimeEngineController extends AbstractController {
         menuBarView.addActionListener(EngineCommands.START.name(), new StartActionListener());
         menuBarView.addActionListener(EngineCommands.STOP.name(), new StopActionListener());
         menuBarView.addActionListener(FileCommands.OPEN_SCENARIO.name(), new OpenScenarioActionListener());
+        menuBarView.addActionListener(FileCommands.CLOSE_SCENARIO.name(), new CloseScenarioActionListener());
     }
 
     @Override
@@ -59,6 +60,15 @@ public class RealTimeEngineController extends AbstractController {
             menuBarView.getMenuElement(EngineCommands.START.getName()).getComponent().setEnabled(true);
             menuBarView.getMenuElement(EngineCommands.STOP.getName()).getComponent().setEnabled(false);
             menuBarView.getMenuElement(EngineCommands.NEXT.getName()).getComponent().setEnabled(false);
+        }
+    }
+    private class CloseScenarioActionListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            LOG.log(Level.INFO, e.toString());
+            MenuBarView menuBarView = getView(MenuBarView.class);
+            menuBarView.getMenuElement(AresMenus.ENGINE_MENU.getName()).getComponent().setEnabled(false);
         }
     }
 }

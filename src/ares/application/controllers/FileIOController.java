@@ -63,15 +63,15 @@ public class FileIOController extends AbstractController {
                 getModel(RealTimeEngine.class).setScenario(scenario);
 
                 // show info frame
-                InternalFrameView<UnitInfoView> infoFrame = (InternalFrameView<UnitInfoView>) getInternalFrameView(UnitInfoView.class);
+                InternalFrameView<UnitInfoView> infoFrame = getInternalFrameView(UnitInfoView.class);
                 infoFrame.show();
 
                 // show messagesView
-                InternalFrameView<MessagesView> messagesFrame = (InternalFrameView<MessagesView>) getInternalFrameView(MessagesView.class);
+                InternalFrameView<MessagesView> messagesFrame = getInternalFrameView(MessagesView.class);
                 messagesFrame.show();
 
                 // show board frame
-                InternalFrameView<BoardView> boardFrame = (InternalFrameView<BoardView>) getInternalFrameView(BoardView.class);
+                InternalFrameView<BoardView> boardFrame = getInternalFrameView(BoardView.class);
                 boardFrame.setTitle(scenario.getName() + "   " + scenario.getCalendar().toString());
                 boardFrame.show();
 
@@ -92,6 +92,9 @@ public class FileIOController extends AbstractController {
             menuBarView.getMenuElement(FileCommands.CLOSE_SCENARIO.getName()).getComponent().setEnabled(false);
 //            menuBarView.getMenuElement(FileCommands.OPEN_SCENARIO.getName()).getComponent().setEnabled(true);
 
+            getInternalFrameView(BoardView.class).getInternalFrame().setVisible(false);
+            getInternalFrameView(MessagesView.class).getInternalFrame().setVisible(false);
+            getInternalFrameView(UnitInfoView.class).getInternalFrame().setVisible(false);
         }
     }
 
