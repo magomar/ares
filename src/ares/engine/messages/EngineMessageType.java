@@ -1,4 +1,4 @@
-package ares.engine;
+package ares.engine.messages;
 
 /**
  *

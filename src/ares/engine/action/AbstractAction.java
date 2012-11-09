@@ -148,7 +148,7 @@ public abstract class AbstractAction implements Action {
 
     @Override
     public String toString() {
-        return "Action{" + "unit=" + actor + ", type=" + type + ", start=" + start + '}';
+        return "Action{" + "actor=" + actor + ", type=" + type + ", start=" + start + '}';
     }
 
     private static class ActionStartComparator implements Comparator<Action> {

@@ -1,9 +1,7 @@
 package ares.engine.actors;
 
-import ares.ai.UnitTacAI;
 import ares.engine.action.AbstractAction;
 import ares.engine.action.Action;
-import ares.engine.action.ActionSpace;
 import ares.engine.action.ActionState;
 import ares.engine.action.actions.RestAction;
 import ares.engine.action.actions.WaitAction;
@@ -119,6 +117,11 @@ public class UnitActor implements Actor {
 
     public Queue<Action> getPendingActions() {
         return pendingActions;
+    }
+
+    @Override
+    public String toString() {
+        return unit.toString();
     }
     
     

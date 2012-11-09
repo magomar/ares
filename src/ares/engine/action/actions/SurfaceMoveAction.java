@@ -4,7 +4,7 @@ import ares.engine.realtime.Clock;
 import ares.scenario.board.Direction;
 import ares.scenario.board.Tile;
 import ares.scenario.forces.Force;
-import ares.engine.EngineMessageLogger;
+import ares.engine.messages.EngineMessageLogger;
 import ares.engine.action.ActionState;
 import ares.engine.action.ActionType;
 import ares.engine.actors.UnitActor;
@@ -60,11 +60,5 @@ public class SurfaceMoveAction extends MoveAction {
         }
     }
 
-    @Override
-    public String toString() {
-        return actor.toString() + " from " + location + " to " + destination + " at " + (speed * 60.0 / 1000) + " km/h";
-    }
-//    public String toString() {
-//        return actor.toString() + "SurfaceMove #" + id + " at " + (speed * 60.0 / 1000) + " km/h (" + start + "->" + finish + ")";
-//    }
+
 }

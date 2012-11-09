@@ -1,4 +1,4 @@
-package ares.engine;
+package ares.engine.messages;
 
 import ares.platform.model.AbstractModel;
 import java.util.ArrayList;

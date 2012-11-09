@@ -4,6 +4,7 @@ import ares.engine.Engine;
 import ares.engine.actors.FormationActor;
 import ares.engine.actors.UnitActor;
 import ares.platform.model.AbstractModel;
+import ares.scenario.AresCalendar;
 import ares.scenario.Scenario;
 import ares.scenario.forces.Force;
 import ares.scenario.forces.Formation;
@@ -26,15 +27,14 @@ public class RealTimeEngine extends AbstractModel<Engine> implements Engine, Run
     private List<FormationActor> formationActors;
     private Clock clock;
     private ClockEvent clockEvent;
+    private boolean running;
     private static final Logger LOG = Logger.getLogger(RealTimeEngine.class.getName());
 
     public RealTimeEngine() {
         unitActors = new ArrayList<>();
         formationActors = new ArrayList<>();
         phase = Phase.SCHEDULE;
-    }
-
-    public void initDefault() {
+        running = false;
     }
 
     public void setScenario(Scenario scenario) {
@@ -60,14 +60,22 @@ public class RealTimeEngine extends AbstractModel<Engine> implements Engine, Run
         return scenario;
     }
 
-    @Override
     public void start() {
-        clock.start();
+        LOG.log(Level.INFO, "*** Clock Started: {0} (time in minutes = {1})",
+                new Object[]{AresCalendar.FULL_DATE_FORMAT.format(clock.getNow().getTime()), clock.getCurrentTime()});
+        running = true;
+        clock.tick();
     }
 
-    @Override
     public void stop() {
-        clock.stop();
+        LOG.log(Level.INFO, "*** Clock Stopped: {0} (time in minutes = {1})",
+                new Object[]{AresCalendar.FULL_DATE_FORMAT.format(clock.getNow().getTime()), clock.getCurrentTime()});
+        running = false;
+    }
+
+    public void next() {
+        running = true;
+        clock.tick();
     }
 
     @Override
@@ -77,7 +85,6 @@ public class RealTimeEngine extends AbstractModel<Engine> implements Engine, Run
             phase = phase.getNext();
         } while (phase != Phase.ACT);
         ClockEvent oldValue = this.clockEvent;
-        clockEvent = clockEvent;
         firePropertyChange(CLOCK_EVENT_PROPERTY, oldValue, clockEvent);
         Set<ClockEventType> clockEventTypes = clockEvent.getEventTypes();
         if (clockEventTypes.contains(ClockEventType.TURN)) {
@@ -88,7 +95,9 @@ public class RealTimeEngine extends AbstractModel<Engine> implements Engine, Run
         }
         if (clockEvent.getEventTypes().contains(ClockEventType.FINISHED)) {
             LOG.log(Level.INFO, "Scenario ended !!");
-        } else {
+            return;
+        }
+        if (running) {
             clock.tick();
         }
     }
@@ -102,7 +111,7 @@ public class RealTimeEngine extends AbstractModel<Engine> implements Engine, Run
         for (UnitActor unitActor : unitActors) {
             unitActor.act(clock);
         }
-        
+
     }
 
     protected void schedule() {

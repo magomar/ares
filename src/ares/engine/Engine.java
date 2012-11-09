@@ -9,11 +9,7 @@ import ares.scenario.Scenario;
  */
 public interface Engine {
 
-    public void start();
-
-    public void stop();
-    
-    public void update(ClockEvent clockEvents);
-    
     public Scenario getScenario();
+
+    public void update(ClockEvent clockEvent);
 }

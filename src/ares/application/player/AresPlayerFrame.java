@@ -85,7 +85,8 @@ public final class AresPlayerFrame extends AbstractAresApplication {
 
         // We have to show the main frame before setting the preferred size & bounds of its internal frames
         // because these depend on the desktopPane, whose size is set when the main frame is shown
-        WindowUtil.showFrame(mainFrame); 
+//        WindowUtil.showFrame(mainFrame); 
+        WindowUtil.centerAndShow(mainFrame);
 
         // information frame
         InternalFrameView<UnitInfoView> infoFrameView = getInternalFrameView(UnitInfoView.class);
