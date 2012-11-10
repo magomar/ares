@@ -57,7 +57,6 @@ public class BoardView extends AbstractView<JScrollPane> {
                     unitsPanel.setSize(imageSize);
                 }
                 break;
-
             case RealTimeEngine.CLOCK_EVENT_PROPERTY:
                 unitsPanel.updateUnits();
                 break;

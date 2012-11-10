@@ -37,6 +37,10 @@ public abstract class AbstractAresApplication {
         return mainFrame;
     }
 
+    public void setTitle(String title) {
+        mainFrame.setTitle(title);
+    }
+
     protected void show() {
         WindowUtil.showFrame(mainFrame);
     }
@@ -52,4 +56,5 @@ public abstract class AbstractAresApplication {
     protected final <T extends AbstractView<? extends JComponent>> InternalFrameView<T> getInternalFrameView(Class<T> viewClass) {
         return (InternalFrameView<T>) views.get(viewClass);
     }
+
 }

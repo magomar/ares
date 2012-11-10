@@ -10,6 +10,7 @@ import ares.engine.realtime.RealTimeEngine;
 import ares.io.AresFileType;
 import ares.io.AresIO;
 import ares.io.AresPaths;
+import ares.platform.application.AbstractAresApplication;
 import ares.platform.controller.AbstractController;
 import ares.platform.view.InternalFrameView;
 import ares.scenario.Scenario;
@@ -26,6 +27,12 @@ import javax.swing.JFileChooser;
  */
 public class FileIOController extends AbstractController {
 
+    private final AbstractAresApplication mainApplication;
+
+    public FileIOController(AbstractAresApplication mainApplication) {
+        this.mainApplication = mainApplication;
+    }
+    
     private static final Logger LOG = Logger.getLogger(RealTimeEngineController.class.getName());
 
     @Override
@@ -62,6 +69,8 @@ public class FileIOController extends AbstractController {
                 // change the RealTimeEngine model, set the Scenario property
                 getModel(RealTimeEngine.class).setScenario(scenario);
 
+                 mainApplication.setTitle(scenario.getName() + "   " + scenario.getCalendar().toString());
+                
                 // show info frame
                 InternalFrameView<UnitInfoView> infoFrame = getInternalFrameView(UnitInfoView.class);
                 infoFrame.show();
@@ -72,7 +81,6 @@ public class FileIOController extends AbstractController {
 
                 // show board frame
                 InternalFrameView<BoardView> boardFrame = getInternalFrameView(BoardView.class);
-                boardFrame.setTitle(scenario.getName() + "   " + scenario.getCalendar().toString());
                 boardFrame.show();
 
                 MenuBarView menuBarView = getView(MenuBarView.class);
@@ -91,10 +99,9 @@ public class FileIOController extends AbstractController {
             MenuBarView menuBarView = getView(MenuBarView.class);
             menuBarView.getMenuElement(FileCommands.CLOSE_SCENARIO.getName()).getComponent().setEnabled(false);
 //            menuBarView.getMenuElement(FileCommands.OPEN_SCENARIO.getName()).getComponent().setEnabled(true);
-
-            getInternalFrameView(BoardView.class).getInternalFrame().setVisible(false);
-            getInternalFrameView(MessagesView.class).getInternalFrame().setVisible(false);
-            getInternalFrameView(UnitInfoView.class).getInternalFrame().setVisible(false);
+            getInternalFrameView(BoardView.class).getContentPane().setVisible(false);
+            getInternalFrameView(MessagesView.class).getContentPane().setVisible(false);
+            getInternalFrameView(UnitInfoView.class).getContentPane().setVisible(false);
         }
     }
 

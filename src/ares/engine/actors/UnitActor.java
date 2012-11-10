@@ -120,6 +120,12 @@ public class UnitActor implements Actor {
     public Queue<Action> getPendingActions() {
         return pendingActions;
     }
+
+    @Override
+    public String toString() {
+//        return "UnitActor{" + "unit=" + unit + ", currentAction=" + currentAction + ", pendingActions=" + pendingActions + '}';
+        return unit.toString();
+    }
     
     
 }
