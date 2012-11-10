@@ -1,9 +1,9 @@
 package ares.engine.combat;
 
-import ares.scenario.board.Direction;
-import ares.scenario.board.Directionality;
-import ares.scenario.board.Terrain;
-import ares.scenario.board.Tile;
+import ares.model.board.Direction;
+import ares.model.board.Directionality;
+import ares.model.board.Terrain;
+import ares.model.board.Tile;
 import java.util.Set;
 
 /**

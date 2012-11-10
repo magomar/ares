@@ -1,7 +1,7 @@
 package ares.engine;
 
 import ares.engine.realtime.ClockEvent;
-import ares.scenario.Scenario;
+import ares.model.scenario.Scenario;
 
 /**
  *

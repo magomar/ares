@@ -8,8 +8,8 @@ import ares.engine.action.ActionState;
 import ares.engine.action.actions.RestAction;
 import ares.engine.action.actions.WaitAction;
 import ares.engine.realtime.Clock;
-import ares.scenario.board.Tile;
-import ares.scenario.forces.Unit;
+import ares.model.board.Tile;
+import ares.model.forces.Unit;
 import java.util.PriorityQueue;
 import java.util.Queue;
 

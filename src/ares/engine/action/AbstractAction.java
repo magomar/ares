@@ -5,8 +5,8 @@ import ares.engine.action.actions.WaitAction;
 import ares.engine.actors.Actor;
 import ares.engine.actors.UnitActor;
 import ares.engine.realtime.Clock;
-import ares.scenario.board.Tile;
-import ares.scenario.forces.Unit;
+import ares.model.board.Tile;
+import ares.model.forces.Unit;
 import java.util.Comparator;
 
 /**

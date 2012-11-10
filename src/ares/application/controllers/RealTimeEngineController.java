@@ -12,7 +12,7 @@ import ares.engine.realtime.RealTimeEngine;
 import ares.platform.application.AbstractAresApplication;
 import ares.platform.controller.AbstractController;
 import ares.platform.view.InternalFrameView;
-import ares.scenario.Scenario;
+import ares.model.scenario.Scenario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;

@@ -5,7 +5,7 @@ import ares.engine.action.ActionState;
 import ares.engine.action.ActionType;
 import ares.engine.actors.UnitActor;
 import ares.engine.realtime.Clock;
-import ares.scenario.board.Tile;
+import ares.model.board.Tile;
 
 /**
  *

@@ -1,14 +1,14 @@
 package ares.engine.action.actions;
 
 import ares.engine.realtime.Clock;
-import ares.scenario.board.Direction;
-import ares.scenario.board.Tile;
-import ares.scenario.forces.Force;
+import ares.model.board.Direction;
+import ares.model.board.Tile;
+import ares.model.forces.Force;
 import ares.engine.EngineMessageLogger;
 import ares.engine.action.ActionState;
 import ares.engine.action.ActionType;
 import ares.engine.actors.UnitActor;
-import ares.scenario.forces.Unit;
+import ares.model.forces.Unit;
 
 /**
  *

@@ -3,8 +3,8 @@ package ares.engine.action.actions;
 import ares.engine.action.AbstractAction;
 import ares.engine.action.ActionType;
 import ares.engine.actors.UnitActor;
-import ares.scenario.board.Direction;
-import ares.scenario.board.Tile;
+import ares.model.board.Direction;
+import ares.model.board.Tile;
 
 /**
  *

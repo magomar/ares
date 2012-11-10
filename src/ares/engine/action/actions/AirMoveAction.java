@@ -4,10 +4,10 @@ import ares.engine.action.ActionState;
 import ares.engine.action.ActionType;
 import ares.engine.actors.UnitActor;
 import ares.engine.realtime.Clock;
-import ares.scenario.board.Direction;
-import ares.scenario.board.Tile;
-import ares.scenario.forces.AirUnit;
-import ares.scenario.forces.Unit;
+import ares.model.board.Direction;
+import ares.model.board.Tile;
+import ares.model.forces.AirUnit;
+import ares.model.forces.Unit;
 import java.util.List;
 
 /**

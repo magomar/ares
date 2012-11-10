@@ -2,7 +2,7 @@ package ares.engine.action;
 
 import ares.engine.actors.Actor;
 import ares.engine.realtime.Clock;
-import ares.scenario.board.Tile;
+import ares.model.board.Tile;
 
 /**
  *
