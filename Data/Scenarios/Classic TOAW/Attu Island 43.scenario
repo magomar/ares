@@ -321,15 +321,18 @@ w/ thanks to Lin Parkh
         <Cell x="2" y="6">
             <Terrain Type="SAND" Dir="NE"/>
             <Terrain Type="ROCKY" Dir="NE SE"/>
+            <Terrain Type="DEEP_WATER" Dir="S NE SE"/>
             <Feature>ANCHORAGE</Feature>
             <Owner>0</Owner>
         </Cell>
         <Cell x="2" y="7">
             <Terrain Type="FLOODED_MARS" Dir="SE"/>
+            <Terrain Type="DEEP_WATER" Dir="N NE SE S"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="2" y="8">
             <Terrain Type="ROCKY" Dir="SE"/>
+            <Terrain Type="DEEP_WATER" Dir="N NE SE"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="2" y="9">
@@ -360,6 +363,7 @@ w/ thanks to Lin Parkh
             <Terrain Type="HILLS" Dir="NE"/>
             <Terrain Type="MOUNTAINS" Dir="C"/>
             <Terrain Type="ROAD" Dir="NE"/>
+            <Terrain Type="DEEP_WATER" Dir="NE"/>
             <Feature>PEAK</Feature>
             <Owner>0</Owner>
             <VP>5</VP>
@@ -423,12 +427,14 @@ w/ thanks to Lin Parkh
         <Cell x="3" y="5">
             <Terrain Type="SAND" Dir="S"/>
             <Terrain Type="ROCKY" Dir="S"/>
+            <Terrain Type="DEEP_WATER" Dir="NE SE S"/>
             <Feature>ANCHORAGE</Feature>
             <Owner>0</Owner>
         </Cell>
         <Cell x="3" y="6">
             <Terrain Type="SAND" Dir="N SW"/>
             <Terrain Type="ROCKY" Dir="N S SW"/>
+            <Terrain Type="DEEP_WATER" Dir="N NE SE S SW"/>
             <Feature>ANCHORAGE</Feature>
             <Owner>0</Owner>
             <VP>30</VP>
@@ -445,6 +451,7 @@ w/ thanks to Lin Parkh
         <Cell x="3" y="9">
             <Terrain Type="HILLS" Dir="NE"/>
             <Terrain Type="MARSH" Dir="SE"/>
+            <Terrain Type="DEEP_WATER" Dir="N NE SE NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="3" y="10">
@@ -461,10 +468,12 @@ w/ thanks to Lin Parkh
         </Cell>
         <Cell x="3" y="13">
             <Terrain Type="ROCKY" Dir="NE S"/>
+            <Terrain Type="DEEP_WATER" Dir="NE SE S"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="3" y="14">
             <Terrain Type="ROCKY" Dir="N SE S"/>
+            <Terrain Type="DEEP_WATER" Dir="N NE SE S"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="3" y="15">
@@ -472,6 +481,7 @@ w/ thanks to Lin Parkh
             <Terrain Type="ROCKY" Dir="N NE SE"/>
             <Terrain Type="ESCARPMENT" Dir="N SE S NW"/>
             <Terrain Type="ROAD" Dir="NE SW"/>
+            <Terrain Type="DEEP_WATER" Dir="N NE SE SW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="3" y="16">
@@ -528,6 +538,7 @@ w/ thanks to Lin Parkh
         </Cell>
         <Cell x="4" y="4">
             <Terrain Type="MARSH" Dir="S"/>
+            <Terrain Type="DEEP_WATER" Dir="NE SE S SW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="4" y="5">
@@ -549,18 +560,22 @@ w/ thanks to Lin Parkh
         </Cell>
         <Cell x="4" y="9">
             <Terrain Type="MARSH" Dir="NW"/>
+            <Terrain Type="DEEP_WATER" Dir="N NE SE S NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="4" y="10">
             <Terrain Type="ROCKY" Dir="NE SE S"/>
+            <Terrain Type="DEEP_WATER" Dir="N NE SE S"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="4" y="11">
             <Terrain Type="ROCKY" Dir="N NE S"/>
+            <Terrain Type="DEEP_WATER" Dir="N NE SE S"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="4" y="12">
             <Terrain Type="ROCKY" Dir="N SW"/>
+            <Terrain Type="DEEP_WATER" Dir="N NE SE S SW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="4" y="13">
@@ -575,6 +590,7 @@ w/ thanks to Lin Parkh
         <Cell x="4" y="15">
             <Terrain Type="SAND" Dir="NE"/>
             <Terrain Type="ROCKY" Dir="N NE NW"/>
+            <Terrain Type="DEEP_WATER" Dir="N NE NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="4" y="16">
@@ -632,6 +648,7 @@ w/ thanks to Lin Parkh
         <Cell x="5" y="4">
             <Terrain Type="HILLS" Dir="NE SE S"/>
             <Terrain Type="ROCKY" Dir="S"/>
+            <Terrain Type="DEEP_WATER" Dir="NE SE S SW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="5" y="5">
@@ -687,6 +704,7 @@ w/ thanks to Lin Parkh
         <Cell x="5" y="15">
             <Terrain Type="SAND" Dir="SE SW"/>
             <Terrain Type="ROCKY" Dir="N NE SE SW NW"/>
+            <Terrain Type="DEEP_WATER" Dir="N NE SE SW NW"/>
             <Feature>ANCHORAGE</Feature>
             <Owner>0</Owner>
         </Cell>
@@ -740,6 +758,7 @@ w/ thanks to Lin Parkh
         </Cell>
         <Cell x="6" y="3">
             <Terrain Type="HILLS" Dir="SE S SW"/>
+            <Terrain Type="DEEP_WATER" Dir="SE S SW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="6" y="4">
@@ -799,40 +818,50 @@ w/ thanks to Lin Parkh
         <Cell x="6" y="15">
             <Terrain Type="SAND" Dir="S NW"/>
             <Terrain Type="ROCKY" Dir="N NE SE S NW"/>
+            <Terrain Type="DEEP_WATER" Dir="N NE SE S NW"/>
             <Feature>ANCHORAGE</Feature>
             <Owner>0</Owner>
         </Cell>
         <Cell x="6" y="16">
             <Terrain Type="SAND" Dir="N SE"/>
             <Terrain Type="ROCKY" Dir="N NE SE"/>
+            <Terrain Type="SHALLOW_WATER" Dir="N NE SE SW NW"/>
+            <Terrain Type="DEEP_WATER" Dir="N NE SE S"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="6" y="17">
             <Terrain Type="SHALLOW_WATER" Dir="N NE SE S SW NW"/>
+            <Terrain Type="DEEP_WATER" Dir="N NE SE S"/>
             <Owner>1</Owner>
         </Cell>
         <Cell x="6" y="18">
             <Terrain Type="SAND" Dir="C"/>
             <Terrain Type="FLOODED_MARS" Dir="C"/>
             <Terrain Type="RIVER" Dir="N SW"/>
+            <Terrain Type="SHALLOW_WATER" Dir="SW NW"/>
+            <Terrain Type="DEEP_WATER" Dir="N NE SE S"/>
             <Owner>1</Owner>
         </Cell>
         <Cell x="6" y="19">
             <Terrain Type="SHALLOW_WATER" Dir="N NE SE S SW NW"/>
+            <Terrain Type="DEEP_WATER" Dir="N NE SE S"/>
             <Owner>1</Owner>
         </Cell>
         <Cell x="6" y="20">
             <Terrain Type="SHALLOW_WATER" Dir="N NE SE S SW NW"/>
+            <Terrain Type="DEEP_WATER" Dir="N NE SE S"/>
             <Owner>1</Owner>
         </Cell>
         <Cell x="6" y="21">
             <Terrain Type="SHALLOW_WATER" Dir="N NE SE S SW NW"/>
+            <Terrain Type="DEEP_WATER" Dir="N NE SE S"/>
             <Owner>1</Owner>
         </Cell>
         <Cell x="6" y="22">
             <Terrain Type="SAND" Dir="C"/>
             <Terrain Type="FLOODED_MARS" Dir="C"/>
             <Terrain Type="RIVER" Dir="N NE"/>
+            <Terrain Type="DEEP_WATER" Dir="N NE"/>
             <Owner>1</Owner>
         </Cell>
         <Cell x="6" y="23">

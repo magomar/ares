@@ -69,10 +69,10 @@ public final class UnitsPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-        int hexRadius = boardInfo.getHexRadius();
+        int hexRadius = boardInfo.getHexDiameter()/2;
         int hexHeight = boardInfo.getHexHeight();
-        int ci = (int) Math.floor((double) evt.getX() / (double) boardInfo.getHexSide());
-        int cx = evt.getX() - boardInfo.getHexSide() * ci;
+        int ci = (int) Math.floor((double) evt.getX() / (double) boardInfo.gexHexOffset());
+        int cx = evt.getX() - boardInfo.gexHexOffset() * ci;
         int ty = evt.getY() - ((ci + 1) % 2) * hexHeight / 2;
         int cj = (int) Math.floor((double) ty / (double) hexHeight);
         int cy = ty - hexHeight * cj;

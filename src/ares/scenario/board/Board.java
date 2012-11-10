@@ -12,6 +12,9 @@ import java.util.Map;
  */
 public final class Board  {
 
+    /*
+     * Width and height in tile units
+     */
     private final int width;
     private final int height;
     private Tile[][] map;

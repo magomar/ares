@@ -1,6 +1,6 @@
 package ares.application.views;
 
-import ares.application.gui_components.TerrainPanel;
+import ares.application.gui_components.TerrainPane;
 import ares.application.gui_components.UnitsPanel;
 import ares.engine.realtime.RealTimeEngine;
 import ares.platform.view.AbstractView;
@@ -17,16 +17,16 @@ import javax.swing.JScrollPane;
 public class BoardView extends AbstractView<JScrollPane> {
 
     private JLayeredPane layers;
-    private TerrainPanel terrainPanel;
+    private TerrainPane terrainPane;
     private UnitsPanel unitsPanel;
-
+   
     @Override
     protected JScrollPane layout() {
         layers = new JLayeredPane();
-        terrainPanel = new TerrainPanel();
+        terrainPane = new TerrainPane();
         unitsPanel = new UnitsPanel();
         unitsPanel.setOpaque(false);
-        layers.add(terrainPanel, JLayeredPane.DEFAULT_LAYER);
+        layers.add(terrainPane, JLayeredPane.DEFAULT_LAYER);
         layers.add(unitsPanel, JLayeredPane.DRAG_LAYER);
         JScrollPane contentPane = new JScrollPane();
         contentPane.add(layers);
@@ -45,13 +45,13 @@ public class BoardView extends AbstractView<JScrollPane> {
         if (evt.getPropertyName().equals(RealTimeEngine.SCENARIO_PROPERTY)) {
             if (evt.getNewValue() != null) {
                 Scenario scenario = (Scenario) evt.getNewValue();
-                terrainPanel.initialize(scenario);
+                terrainPane.initialize(scenario);
                 unitsPanel.initialize(scenario);
                 Dimension imageSize = new Dimension(scenario.getBoardInfo().getImageWidth(), scenario.getBoardInfo().getImageHeight());
                 layers.setPreferredSize(imageSize);
                 layers.setSize(imageSize);
-                terrainPanel.setPreferredSize(imageSize);
-                terrainPanel.setSize(imageSize);
+                terrainPane.setPreferredSize(imageSize);
+                terrainPane.setSize(imageSize);
                 unitsPanel.setPreferredSize(imageSize);
                 unitsPanel.setSize(imageSize);
                 getContentPane().setVisible(true);
