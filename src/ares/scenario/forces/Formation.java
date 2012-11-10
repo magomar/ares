@@ -5,8 +5,8 @@ import ares.data.jaxb.Formation.Track;
 import ares.data.jaxb.Formation.Track.Objective;
 import ares.data.jaxb.SupportScope;
 import ares.engine.command.OperationType;
-import ares.scenario.board.Tile;
 import ares.scenario.Scenario;
+import ares.scenario.board.Tile;
 import java.util.*;
 
 /**
