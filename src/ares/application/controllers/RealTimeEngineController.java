@@ -58,7 +58,7 @@ public class RealTimeEngineController extends AbstractController {
                 if (clockEvent.getEventTypes().contains(ClockEventType.TURN)) {
                     MenuBarView menuBarView = getView(MenuBarView.class);
 //                    menuBarView.getMenuElement(EngineCommands.START.getName()).getComponent().setEnabled(false);
-//                    menuBarView.getMenuElement(EngineCommands.PAUSE.getName()).getComponent().setEnabled(true);
+                    menuBarView.getMenuElement(EngineCommands.PAUSE.getName()).getComponent().setEnabled(false);
                     menuBarView.getMenuElement(EngineCommands.NEXT.getName()).getComponent().setEnabled(true);
                 }
                 break;
@@ -98,7 +98,7 @@ public class RealTimeEngineController extends AbstractController {
             LOG.log(Level.INFO, e.toString());
             MenuBarView menuBarView = getView(MenuBarView.class);
 //            menuBarView.getMenuElement(EngineCommands.START.getName()).getComponent().setEnabled(true);
-//            menuBarView.getMenuElement(EngineCommands.PAUSE.getName()).getComponent().setEnabled(false);
+            menuBarView.getMenuElement(EngineCommands.PAUSE.getName()).getComponent().setEnabled(true);
             menuBarView.getMenuElement(EngineCommands.NEXT.getName()).getComponent().setEnabled(false);
             getModel(RealTimeEngine.class).start();
         }
