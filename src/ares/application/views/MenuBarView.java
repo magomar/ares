@@ -16,7 +16,7 @@ import javax.swing.MenuElement;
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public class MenuBarView extends AbstractView<JMenuBar> implements ares.application.boundaries.MenuBarView {
+public class MenuBarView extends AbstractView<JMenuBar>  {
 
     @Override
     protected JMenuBar layout() {
