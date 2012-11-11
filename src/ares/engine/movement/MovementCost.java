@@ -1,14 +1,14 @@
 package ares.engine.movement;
 
 import ares.data.jaxb.TerrainFeature;
-import ares.model.board.Direction;
-import ares.model.board.Directionality;
-import ares.model.board.Terrain;
-import ares.model.board.Tile;
-import ares.model.forces.LandUnit;
-import ares.model.forces.SurfaceUnit;
-import ares.model.forces.Unit;
-import ares.model.scenario.Scenario;
+import ares.scenario.board.Direction;
+import ares.scenario.board.Directionality;
+import ares.scenario.board.Terrain;
+import ares.scenario.board.Tile;
+import ares.scenario.forces.LandUnit;
+import ares.scenario.forces.SurfaceUnit;
+import ares.scenario.forces.Unit;
+import ares.scenario.Scenario;
 import java.util.EnumMap;
 import java.util.EnumSet;
 import java.util.Map;

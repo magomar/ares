@@ -1,7 +1,7 @@
 package ares.engine.realtime;
 
 import ares.engine.Engine;
-import ares.model.scenario.AresCalendar;
+import ares.scenario.AresCalendar;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;

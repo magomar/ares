@@ -13,7 +13,7 @@ import ares.io.AresPaths;
 import ares.platform.application.AbstractAresApplication;
 import ares.platform.controller.AbstractController;
 import ares.platform.view.InternalFrameView;
-import ares.model.scenario.Scenario;
+import ares.scenario.Scenario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;

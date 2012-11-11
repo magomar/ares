@@ -1,5 +1,5 @@
 package ares.engine.algorithms;
-import ares.model.board.Tile;
+import ares.scenario.board.Tile;
 
 /**
  *

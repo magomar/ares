@@ -3,7 +3,7 @@ package ares.application.views;
 import ares.application.gui_components.TerrainPanel;
 import ares.application.gui_components.UnitsPanel;
 import ares.engine.realtime.RealTimeEngine;
-import ares.model.scenario.Scenario;
+import ares.scenario.Scenario;
 import ares.platform.view.AbstractView;
 import java.awt.Dimension;
 import java.beans.PropertyChangeEvent;

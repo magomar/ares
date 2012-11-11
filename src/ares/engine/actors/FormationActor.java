@@ -9,10 +9,10 @@ import ares.engine.action.actions.SurfaceMoveAction;
 import ares.engine.movement.MovementType;
 import ares.engine.realtime.Clock;
 import ares.platform.util.RandomGenerator;
-import ares.model.board.Direction;
-import ares.model.board.Tile;
-import ares.model.forces.Formation;
-import ares.model.forces.Unit;
+import ares.scenario.board.Direction;
+import ares.scenario.board.Tile;
+import ares.scenario.forces.Formation;
+import ares.scenario.forces.Unit;
 import java.util.List;
 import java.util.Queue;
 

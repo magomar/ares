@@ -1,6 +1,6 @@
 package ares.engine.action;
 
-import ares.model.forces.OpState;
+import ares.scenario.forces.OpState;
 
 /**
  *

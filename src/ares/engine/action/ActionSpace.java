@@ -1,6 +1,6 @@
 package ares.engine.action;
 
-import ares.model.board.Tile;
+import ares.scenario.board.Tile;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;

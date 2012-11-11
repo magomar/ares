@@ -1,9 +1,9 @@
 package ares.engine.algorithms;
 
-import ares.model.board.Board;
-import ares.model.board.Direction;
-import ares.model.board.Tile;
-import ares.model.forces.Unit;
+import ares.scenario.board.Board;
+import ares.scenario.board.Direction;
+import ares.scenario.board.Tile;
+import ares.scenario.forces.Unit;
 import java.util.LinkedList;
 import java.util.List;
 

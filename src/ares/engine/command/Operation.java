@@ -1,6 +1,6 @@
 package ares.engine.command;
 
-import ares.model.board.Tile;
+import ares.scenario.board.Tile;
 
 /**
  *

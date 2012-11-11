@@ -5,7 +5,7 @@
 package ares.test;
 
 import ares.data.jaxb.EquipmentDB;
-import ares.model.scenario.Scenario;
+import ares.scenario.Scenario;
 import ares.io.AresFileType;
 import ares.io.AresIO;
 import java.io.File;
