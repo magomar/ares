@@ -43,7 +43,7 @@ public final class AresPlayerFrame extends AbstractAresApplication {
 
         // Create controllers
         AbstractController engineController = new RealTimeEngineController();
-        AbstractController fileController = new FileIOController();
+        AbstractController fileController = new FileIOController(this);
 
         //  add views to controllers
         engineController.addView(MenuBarView.class, getView(MenuBarView.class));

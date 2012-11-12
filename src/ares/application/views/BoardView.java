@@ -3,8 +3,8 @@ package ares.application.views;
 import ares.application.gui_components.TerrainPanel;
 import ares.application.gui_components.UnitsPanel;
 import ares.engine.realtime.RealTimeEngine;
-import ares.platform.view.AbstractView;
 import ares.scenario.Scenario;
+import ares.platform.view.AbstractView;
 import java.awt.Dimension;
 import java.beans.PropertyChangeEvent;
 import javax.swing.JLayeredPane;
@@ -57,7 +57,6 @@ public class BoardView extends AbstractView<JScrollPane> {
                     unitsPanel.setSize(imageSize);
                 }
                 break;
-
             case RealTimeEngine.CLOCK_EVENT_PROPERTY:
                 unitsPanel.updateUnits();
                 break;

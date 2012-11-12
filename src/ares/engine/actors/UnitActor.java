@@ -121,6 +121,7 @@ public class UnitActor implements Actor {
 
     @Override
     public String toString() {
+//        return "UnitActor{" + "unit=" + unit + ", currentAction=" + currentAction + ", pendingActions=" + pendingActions + '}';
         return unit.toString();
     }
     

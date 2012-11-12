@@ -7,7 +7,6 @@ import ares.application.player.AresMenus;
 import ares.platform.view.AbstractView;
 import ares.platform.view.ComponentFactory;
 import java.awt.Component;
-import java.awt.Container;
 import java.beans.PropertyChangeEvent;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -30,8 +29,8 @@ public class MenuBarView extends AbstractView<JMenuBar> {
                 ComponentFactory.menuItem(ViewCommands.HIDE_UNITS, this));
         JMenu engineMenu = ComponentFactory.menu(AresMenus.ENGINE_MENU, false,
                 ComponentFactory.menuItem(EngineCommands.START, this),
-                ComponentFactory.menuItem(EngineCommands.NEXT, this),
-                ComponentFactory.menuItem(EngineCommands.STOP, this));
+                ComponentFactory.menuItem(EngineCommands.NEXT, this, false),
+                ComponentFactory.menuItem(EngineCommands.PAUSE, this, false));
         JMenuBar jmenuBar = ComponentFactory.menuBar(fileMenu, viewMenu, engineMenu);
         return jmenuBar;
     }

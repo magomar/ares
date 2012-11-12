@@ -10,9 +10,9 @@ import javax.swing.ImageIcon;
  */
 public enum EngineCommands implements Command {
 
-    START("Start", "Start the game", new Integer(KeyEvent.VK_S)),
-    STOP("Stop", "Pause the game", new Integer(KeyEvent.VK_S)),
-    NEXT("Next", "Next turn", new Integer(KeyEvent.VK_N));
+    START("Start", "Start the engine", new Integer(KeyEvent.VK_S)),
+    PAUSE("Pause", "Pause the engine", new Integer(KeyEvent.VK_S)),
+    NEXT("Next", "Execute this turn", new Integer(KeyEvent.VK_N));
     private final String text;
 //    private final ImageIcon icon;
     private final String desc;

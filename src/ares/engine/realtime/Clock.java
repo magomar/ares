@@ -26,7 +26,6 @@ public class Clock {
     private int currentTime;
     private int tick;
     private int turn;
-    private boolean isRunning;
     private Engine engine;
     private static final Logger LOG = Logger.getLogger(Clock.class.getName());
 
@@ -42,8 +41,6 @@ public class Clock {
         now = calendar.getNow();
         currentTime = turn * MINUTES_PER_TURN - MINUTES_PER_TICK;
         finalTurn = calendar.getFinalTurn();
-//        scheduledExecutorService = Executors.newScheduledThreadPool(5);
-        isRunning = false;
     }
 
     public void tick() {
@@ -85,21 +82,17 @@ public class Clock {
             if (tick == TICKS_PER_TURN) {
                 tick = 0;
                 turn++;
-
                 eventTypes.add(ClockEventType.TURN);
                 // Check end of scenario
                 if (turn > finalTurn) {
                     eventTypes.add(ClockEventType.FINISHED);
-                    Logger.getLogger(Clock.class.getName()).log(Level.INFO, "*** End of scenario ***", toString());
                 }
-
             }
             // Check new day condition
             if (now.get(GregorianCalendar.HOUR_OF_DAY) == 6 && now.get(GregorianCalendar.MINUTE) == 0) {
                 eventTypes.add(ClockEventType.DAY);
                 Logger.getLogger(Clock.class.getName()).log(Level.INFO, "New day ! Turn = {0}, Time = {1}", new Object[]{turn, toString()});
             }
-
             engine.update(new ClockEvent(clock, eventTypes));
         }
     }

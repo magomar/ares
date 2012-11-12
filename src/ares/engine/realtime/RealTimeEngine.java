@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public class RealTimeEngine extends AbstractModel<Engine> implements Engine, Runnable {
+public class RealTimeEngine extends AbstractModel<Engine> implements Engine {
 
     public static final String SCENARIO_PROPERTY = "Scenario";
     public static final String CLOCK_EVENT_PROPERTY = "ClockEvent";
@@ -61,53 +61,50 @@ public class RealTimeEngine extends AbstractModel<Engine> implements Engine, Run
     }
 
     public void start() {
-        LOG.log(Level.INFO, "*** Clock Started: {0} (time in minutes = {1})",
-                new Object[]{AresCalendar.FULL_DATE_FORMAT.format(clock.getNow().getTime()), clock.getCurrentTime()});
+        LOG.log(Level.INFO, "*** Clock Started", clock);
         running = true;
         clock.tick();
     }
 
     public void stop() {
-        LOG.log(Level.INFO, "*** Clock Stopped: {0} (time in minutes = {1})",
-                new Object[]{AresCalendar.FULL_DATE_FORMAT.format(clock.getNow().getTime()), clock.getCurrentTime()});
+        LOG.log(Level.INFO, "********** Clock Stopped", clock);
         running = false;
-    }
-
-    public void next() {
-        running = true;
-        clock.tick();
     }
 
     @Override
     public void update(ClockEvent clockEvent) {
+//        LOG.log(Level.INFO, "+++++ New Time: ", clock);
         do {
             phase.run(this);
             phase = phase.getNext();
         } while (phase != Phase.ACT);
+        
         ClockEvent oldValue = this.clockEvent;
         firePropertyChange(CLOCK_EVENT_PROPERTY, oldValue, clockEvent);
         Set<ClockEventType> clockEventTypes = clockEvent.getEventTypes();
+        
         if (clockEventTypes.contains(ClockEventType.TURN)) {
-            LOG.log(Level.INFO, "Turn: {0} - Time: {1}", new Object[]{clock.getTurn(), toString()});
+            LOG.log(Level.INFO, "++++++++++ New Turn: ", clock.getTurn());
+            running = false;
             for (FormationActor formationActor : formationActors) {
                 formationActor.plan(clock);
             }
         }
         if (clockEvent.getEventTypes().contains(ClockEventType.FINISHED)) {
-            LOG.log(Level.INFO, "Scenario ended !!");
+            LOG.log(Level.INFO, "********** Scenario Ended ! ", clock);
             return;
-        }
+        } 
         if (running) {
             clock.tick();
         }
     }
 
-    void activate() {
-        LOG.log(Level.INFO, "Activate");
-    }
+//    void activate() {
+//        LOG.log(Level.INFO, "Activate");
+//    }
 
     protected void act() {
-        LOG.log(Level.INFO, "Act");
+//        LOG.log(Level.INFO, "Act");
         for (UnitActor unitActor : unitActors) {
             unitActor.act(clock);
         }
@@ -115,14 +112,10 @@ public class RealTimeEngine extends AbstractModel<Engine> implements Engine, Run
     }
 
     protected void schedule() {
-        LOG.log(Level.INFO, "Schedule");
+//        LOG.log(Level.INFO, "Schedule");
         for (UnitActor unitActor : unitActors) {
             unitActor.schedule(clock);
         }
     }
 
-    @Override
-    public void run() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
 }
