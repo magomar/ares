@@ -1,6 +1,8 @@
 package ares.application.controllers;
 
+import ares.application.commands.EngineCommands;
 import ares.application.commands.FileCommands;
+import ares.application.player.AresMenus;
 import ares.application.views.BoardView;
 import ares.application.views.MenuBarView;
 import ares.application.views.MessagesView;
@@ -26,21 +28,26 @@ import javax.swing.JFileChooser;
  * @author Mario
  */
 public class PlayWeGoController extends AbstractController {
+
     private final AbstractAresApplication mainApplication;
 
     public PlayWeGoController(AbstractAresApplication mainApplication) {
         this.mainApplication = mainApplication;
     }
     private static final Logger LOG = Logger.getLogger(PlayWeGoController.class.getName());
-    
+
     @Override
     protected void registerAllActionListeners() {
         MenuBarView menuBarView = getView(MenuBarView.class);
         menuBarView.addActionListener(FileCommands.OPEN_SCENARIO.getName(), new OpenScenarioActionListener());
         menuBarView.addActionListener(FileCommands.CLOSE_SCENARIO.getName(), new CloseScenarioActionListener());
         menuBarView.addActionListener(FileCommands.EXIT.getName(), new ExitActionListener());
+        menuBarView.addActionListener(EngineCommands.START.name(), new StartActionListener());
+        menuBarView.addActionListener(EngineCommands.PAUSE.name(), new PauseActionListener());
+        menuBarView.addActionListener(EngineCommands.NEXT.name(), new NextActionListener());
     }
-@Override
+
+    @Override
     protected void registerAllModels() {
         getModel(RealTimeEngine.class).addPropertyChangeListener(this);
     }
@@ -66,8 +73,8 @@ public class PlayWeGoController extends AbstractController {
                 // change the RealTimeEngine model, set the Scenario property
                 getModel(RealTimeEngine.class).setScenario(scenario);
 
-                 mainApplication.setTitle(scenario.getName() + "   " + scenario.getCalendar().toString());
-                
+                mainApplication.setTitle(scenario.getName() + "   " + scenario.getCalendar().toString());
+
                 // show info frame
                 InternalFrameView<UnitInfoView> infoFrame = getInternalFrameView(UnitInfoView.class);
                 infoFrame.show();
@@ -81,8 +88,12 @@ public class PlayWeGoController extends AbstractController {
                 boardFrame.show();
 
                 MenuBarView menuBarView = getView(MenuBarView.class);
-//                menuBarView.getMenuElement(FileCommands.OPEN_SCENARIO.getName()).getComponent().setEnabled(false);
                 menuBarView.getMenuElement(FileCommands.CLOSE_SCENARIO.getName()).getComponent().setEnabled(true);
+                menuBarView.getMenuElement(AresMenus.ENGINE_MENU.getName()).getComponent().setEnabled(true);
+                menuBarView.getMenuElement(EngineCommands.START.getName()).getComponent().setEnabled(true);
+                menuBarView.getMenuElement(EngineCommands.PAUSE.getName()).getComponent().setEnabled(false);
+                menuBarView.getMenuElement(EngineCommands.NEXT.getName()).getComponent().setEnabled(false);
+
             }
         }
     }
@@ -95,7 +106,7 @@ public class PlayWeGoController extends AbstractController {
             getModel(RealTimeEngine.class).setScenario(null);
             MenuBarView menuBarView = getView(MenuBarView.class);
             menuBarView.getMenuElement(FileCommands.CLOSE_SCENARIO.getName()).getComponent().setEnabled(false);
-//            menuBarView.getMenuElement(FileCommands.OPEN_SCENARIO.getName()).getComponent().setEnabled(true);
+            menuBarView.getMenuElement(AresMenus.ENGINE_MENU.getName()).getComponent().setEnabled(false);
             getInternalFrameView(BoardView.class).getContentPane().setVisible(false);
             getInternalFrameView(MessagesView.class).getContentPane().setVisible(false);
             getInternalFrameView(UnitInfoView.class).getContentPane().setVisible(false);
@@ -108,6 +119,45 @@ public class PlayWeGoController extends AbstractController {
         public void actionPerformed(ActionEvent e) {
             LOG.log(Level.INFO, e.toString());
             System.exit(0);
+        }
+    }
+
+    private class StartActionListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            LOG.log(Level.INFO, e.toString());
+            getModel(RealTimeEngine.class).start();
+            MenuBarView menuBarView = getView(MenuBarView.class);
+            menuBarView.getMenuElement(EngineCommands.START.getName()).getComponent().setEnabled(false);
+            menuBarView.getMenuElement(EngineCommands.PAUSE.getName()).getComponent().setEnabled(true);
+//            menuBarView.getMenuElement(EngineCommands.NEXT.getName()).getComponent().setEnabled(false);
+        }
+    }
+
+    private class PauseActionListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            LOG.log(Level.INFO, e.toString());
+            getModel(RealTimeEngine.class).stop();
+            MenuBarView menuBarView = getView(MenuBarView.class);
+            menuBarView.getMenuElement(EngineCommands.START.getName()).getComponent().setEnabled(true);
+            menuBarView.getMenuElement(EngineCommands.PAUSE.getName()).getComponent().setEnabled(false);
+//            menuBarView.getMenuElement(EngineCommands.NEXT.getName()).getComponent().setEnabled(false);
+        }
+    }
+
+    private class NextActionListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            LOG.log(Level.INFO, e.toString());
+            MenuBarView menuBarView = getView(MenuBarView.class);
+//            menuBarView.getMenuElement(EngineCommands.START.getName()).getComponent().setEnabled(true);
+            menuBarView.getMenuElement(EngineCommands.PAUSE.getName()).getComponent().setEnabled(true);
+            menuBarView.getMenuElement(EngineCommands.NEXT.getName()).getComponent().setEnabled(false);
+            getModel(RealTimeEngine.class).start();
         }
     }
 }

@@ -57,7 +57,6 @@ public class RealTimeEngineController extends AbstractController {
                 boardFrame.setTitle("Turn: " + clock.getTurn() + "   Time: " + clock.toString());
                 if (clockEvent.getEventTypes().contains(ClockEventType.TURN)) {
                     MenuBarView menuBarView = getView(MenuBarView.class);
-//                    menuBarView.getMenuElement(EngineCommands.START.getName()).getComponent().setEnabled(false);
                     menuBarView.getMenuElement(EngineCommands.PAUSE.getName()).getComponent().setEnabled(false);
                     menuBarView.getMenuElement(EngineCommands.NEXT.getName()).getComponent().setEnabled(true);
                 }
@@ -74,7 +73,6 @@ public class RealTimeEngineController extends AbstractController {
             MenuBarView menuBarView = getView(MenuBarView.class);
             menuBarView.getMenuElement(EngineCommands.START.getName()).getComponent().setEnabled(false);
             menuBarView.getMenuElement(EngineCommands.PAUSE.getName()).getComponent().setEnabled(true);
-//            menuBarView.getMenuElement(EngineCommands.NEXT.getName()).getComponent().setEnabled(false);
         }
     }
 
@@ -87,7 +85,6 @@ public class RealTimeEngineController extends AbstractController {
             MenuBarView menuBarView = getView(MenuBarView.class);
             menuBarView.getMenuElement(EngineCommands.START.getName()).getComponent().setEnabled(true);
             menuBarView.getMenuElement(EngineCommands.PAUSE.getName()).getComponent().setEnabled(false);
-//            menuBarView.getMenuElement(EngineCommands.NEXT.getName()).getComponent().setEnabled(false);
         }
     }
 
@@ -97,7 +94,6 @@ public class RealTimeEngineController extends AbstractController {
         public void actionPerformed(ActionEvent e) {
             LOG.log(Level.INFO, e.toString());
             MenuBarView menuBarView = getView(MenuBarView.class);
-//            menuBarView.getMenuElement(EngineCommands.START.getName()).getComponent().setEnabled(true);
             menuBarView.getMenuElement(EngineCommands.PAUSE.getName()).getComponent().setEnabled(true);
             menuBarView.getMenuElement(EngineCommands.NEXT.getName()).getComponent().setEnabled(false);
             getModel(RealTimeEngine.class).start();
