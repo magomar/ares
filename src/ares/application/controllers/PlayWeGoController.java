@@ -19,6 +19,8 @@ import ares.scenario.Scenario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
@@ -29,10 +31,12 @@ import javax.swing.JFileChooser;
  */
 public class PlayWeGoController extends AbstractController {
 
+    private final ExecutorService executor;
     private final AbstractAresApplication mainApplication;
 
     public PlayWeGoController(AbstractAresApplication mainApplication) {
         this.mainApplication = mainApplication;
+        executor = Executors.newCachedThreadPool();
     }
     private static final Logger LOG = Logger.getLogger(PlayWeGoController.class.getName());
 
@@ -52,12 +56,10 @@ public class PlayWeGoController extends AbstractController {
         getModel(RealTimeEngine.class).addPropertyChangeListener(this);
     }
 
-    private class OpenScenarioActionListener implements ActionListener {
+    private class OpenScenarioInteractor extends AsynchronousOperation<Scenario> {
 
         @Override
-        public void actionPerformed(ActionEvent e) {
-            LOG.log(Level.INFO, e.toString());
-
+        protected Scenario performOperation() throws Exception {
             JFileChooser fc = new JFileChooser();
             fc.setCurrentDirectory(AresIO.ARES_IO.getAbsolutePath(AresPaths.SCENARIOS.getPath()).toFile());
             fc.setFileFilter(AresFileType.SCENARIO.getFileTypeFilter());
@@ -68,8 +70,15 @@ public class PlayWeGoController extends AbstractController {
                 ares.data.jaxb.Scenario scen = (ares.data.jaxb.Scenario) AresIO.ARES_IO.unmarshall(file);
                 File equipmentFile = AresIO.ARES_IO.getAbsolutePath(AresPaths.EQUIPMENT.getPath(), "ToawEquipment" + AresFileType.EQUIPMENT.getFileExtension()).toFile();
                 EquipmentDB eqp = (EquipmentDB) AresIO.ARES_IO.unmarshall(equipmentFile);
-                Scenario scenario = new Scenario(scen, eqp);
+                return new Scenario(scen, eqp);
+            } else {
+                return null;
+            }
+        }
 
+        @Override
+        protected void onSuccess(Scenario scenario) {
+            if (scenario != null) {
                 // change the RealTimeEngine model, set the Scenario property
                 getModel(RealTimeEngine.class).setScenario(scenario);
 
@@ -93,71 +102,80 @@ public class PlayWeGoController extends AbstractController {
                 menuBarView.getMenuElement(EngineCommands.START.getName()).getComponent().setEnabled(true);
                 menuBarView.getMenuElement(EngineCommands.PAUSE.getName()).getComponent().setEnabled(false);
                 menuBarView.getMenuElement(EngineCommands.NEXT.getName()).getComponent().setEnabled(false);
-
             }
         }
     }
 
-    private class CloseScenarioActionListener implements ActionListener {
+    private class OpenScenarioActionListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
             LOG.log(Level.INFO, e.toString());
-            getModel(RealTimeEngine.class).setScenario(null);
-            MenuBarView menuBarView = getView(MenuBarView.class);
-            menuBarView.getMenuElement(FileCommands.CLOSE_SCENARIO.getName()).getComponent().setEnabled(false);
-            menuBarView.getMenuElement(AresMenus.ENGINE_MENU.getName()).getComponent().setEnabled(false);
-            getInternalFrameView(BoardView.class).getContentPane().setVisible(false);
-            getInternalFrameView(MessagesView.class).getContentPane().setVisible(false);
-            getInternalFrameView(UnitInfoView.class).getContentPane().setVisible(false);
+            executor.execute(new OpenScenarioInteractor());
+
         }
     }
 
-    private class ExitActionListener implements ActionListener {
+private class CloseScenarioActionListener implements ActionListener {
 
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            LOG.log(Level.INFO, e.toString());
-            System.exit(0);
-        }
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        LOG.log(Level.INFO, e.toString());
+        getModel(RealTimeEngine.class).setScenario(null);
+        MenuBarView menuBarView = getView(MenuBarView.class);
+        menuBarView.getMenuElement(FileCommands.CLOSE_SCENARIO.getName()).getComponent().setEnabled(false);
+        menuBarView.getMenuElement(AresMenus.ENGINE_MENU.getName()).getComponent().setEnabled(false);
+        getInternalFrameView(BoardView.class).getContentPane().setVisible(false);
+        getInternalFrameView(MessagesView.class).getContentPane().setVisible(false);
+        getInternalFrameView(UnitInfoView.class).getContentPane().setVisible(false);
     }
+}
 
-    private class StartActionListener implements ActionListener {
+private class ExitActionListener implements ActionListener {
 
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            LOG.log(Level.INFO, e.toString());
-            getModel(RealTimeEngine.class).start();
-            MenuBarView menuBarView = getView(MenuBarView.class);
-            menuBarView.getMenuElement(EngineCommands.START.getName()).getComponent().setEnabled(false);
-            menuBarView.getMenuElement(EngineCommands.PAUSE.getName()).getComponent().setEnabled(true);
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        LOG.log(Level.INFO, e.toString());
+        System.exit(0);
+    }
+}
+
+private class StartActionListener implements ActionListener {
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        LOG.log(Level.INFO, e.toString());
+        getModel(RealTimeEngine.class).start();
+        MenuBarView menuBarView = getView(MenuBarView.class);
+        menuBarView.getMenuElement(EngineCommands.START.getName()).getComponent().setEnabled(false);
+        menuBarView.getMenuElement(EngineCommands.PAUSE.getName()).getComponent().setEnabled(true);
 //            menuBarView.getMenuElement(EngineCommands.NEXT.getName()).getComponent().setEnabled(false);
-        }
     }
+}
 
-    private class PauseActionListener implements ActionListener {
+private class PauseActionListener implements ActionListener {
 
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            LOG.log(Level.INFO, e.toString());
-            getModel(RealTimeEngine.class).stop();
-            MenuBarView menuBarView = getView(MenuBarView.class);
-            menuBarView.getMenuElement(EngineCommands.START.getName()).getComponent().setEnabled(true);
-            menuBarView.getMenuElement(EngineCommands.PAUSE.getName()).getComponent().setEnabled(false);
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        LOG.log(Level.INFO, e.toString());
+        getModel(RealTimeEngine.class).stop();
+        MenuBarView menuBarView = getView(MenuBarView.class);
+        menuBarView.getMenuElement(EngineCommands.START.getName()).getComponent().setEnabled(true);
+        menuBarView.getMenuElement(EngineCommands.PAUSE.getName()).getComponent().setEnabled(false);
 //            menuBarView.getMenuElement(EngineCommands.NEXT.getName()).getComponent().setEnabled(false);
-        }
     }
+}
 
-    private class NextActionListener implements ActionListener {
+private class NextActionListener implements ActionListener {
 
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            LOG.log(Level.INFO, e.toString());
-            MenuBarView menuBarView = getView(MenuBarView.class);
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        LOG.log(Level.INFO, e.toString());
+        MenuBarView menuBarView = getView(MenuBarView.class);
 //            menuBarView.getMenuElement(EngineCommands.START.getName()).getComponent().setEnabled(true);
-            menuBarView.getMenuElement(EngineCommands.PAUSE.getName()).getComponent().setEnabled(true);
-            menuBarView.getMenuElement(EngineCommands.NEXT.getName()).getComponent().setEnabled(false);
-            getModel(RealTimeEngine.class).start();
-        }
+        menuBarView.getMenuElement(EngineCommands.PAUSE.getName()).getComponent().setEnabled(true);
+        menuBarView.getMenuElement(EngineCommands.NEXT.getName()).getComponent().setEnabled(false);
+        getModel(RealTimeEngine.class).start();
     }
+}
 }
