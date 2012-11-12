@@ -68,7 +68,7 @@ public class BoardInfo {
      * Tile offset position to draw in a new column
      * @see ImageProfile method getHexOffset
      */
-    public int gexHexOffset(){
+    public int getHexOffset(){
         return hexOffset;
     }
 

@@ -18,10 +18,10 @@ public enum ImageProfile {
     HIGH( 992,446,8,16, 1020,704,8,10, 102,51,78,88, AresPaths.GRAPHICS_HIGH.getPath()),
     ;
 
-    final private int unitImageWidth;
-    final private int unitImageHeight;
-    final private int unitImageRows;
-    final private int unitImageCols;
+    final private int unitsImageWidth;
+    final private int unitsImageHeight;
+    final private int unitsImageRows;
+    final private int unitsImageCols;
     final private int terrainImageWidth;
     final private int terrainImageHeight;
     final private int terrainImageRows;
@@ -39,10 +39,10 @@ public enum ImageProfile {
      * i.e: units and terrain image files and hexagon measures based
      * on the desired profile (SMALL, MEDIUM or HIGH)
      * 
-     * @param unitImageWidth
-     * @param unitImageHeight
-     * @param unitImageRows
-     * @param unitImageCols
+     * @param unitsImageWidth
+     * @param unitsImageHeight
+     * @param unitsImageRows
+     * @param unitsImageCols
      * @param terrainImageWidth
      * @param terrainImageHeight
      * @param terrainImageRows
@@ -53,11 +53,11 @@ public enum ImageProfile {
      * @param hexHeight
      * @param path 
      */
-    private ImageProfile(int unitImageWidth, int unitImageHeight, int unitImageRows, int unitImageCols, int terrainImageWidth, int terrainImageHeight, int terrainImageRows, int terrainImageCols, int hexDiameter, int hexSide, int hexOffset, int hexHeight, String path) {
-        this.unitImageWidth = unitImageWidth;
-        this.unitImageHeight = unitImageHeight;
-        this.unitImageRows = unitImageRows;
-        this.unitImageCols = unitImageCols;
+    private ImageProfile(int unitsImageWidth, int unitsImageHeight, int unitsImageRows, int unitsImageCols, int terrainImageWidth, int terrainImageHeight, int terrainImageRows, int terrainImageCols, int hexDiameter, int hexSide, int hexOffset, int hexHeight, String path) {
+        this.unitsImageWidth = unitsImageWidth;
+        this.unitsImageHeight = unitsImageHeight;
+        this.unitsImageRows = unitsImageRows;
+        this.unitsImageCols = unitsImageCols;
         this.terrainImageWidth = terrainImageWidth;
         this.terrainImageHeight = terrainImageHeight;
         this.terrainImageRows = terrainImageRows;
@@ -74,8 +74,8 @@ public enum ImageProfile {
      * 
      * @return the unitImageWidth
      */
-    public int getUnitImageWidth() {
-        return unitImageWidth;
+    public int getUnitsImageWidth() {
+        return unitsImageWidth;
     }
 
     /**
@@ -83,8 +83,8 @@ public enum ImageProfile {
      * 
      * @return the unitImageHeight
      */
-    public int getUnitImageHeight() {
-        return unitImageHeight;
+    public int getUnitsImageHeight() {
+        return unitsImageHeight;
     }
 
     /**
@@ -92,8 +92,8 @@ public enum ImageProfile {
      * 
      * @return the unitImageRows
      */
-    public int getUnitImageRows() {
-        return unitImageRows;
+    public int getUnitsImageRows() {
+        return unitsImageRows;
     }
 
     /**
@@ -101,8 +101,8 @@ public enum ImageProfile {
      * 
      * @return the unitImageCols
      */
-    public int getUnitImageCols() {
-        return unitImageCols;
+    public int getUnitsImageCols() {
+        return unitsImageCols;
     }
 
     /**
