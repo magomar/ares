@@ -3,7 +3,6 @@ package ares.platform.application;
 import ares.platform.view.AbstractView;
 import ares.platform.view.InternalFrameView;
 import ares.platform.view.WindowUtil;
-import java.awt.Window;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 
@@ -58,5 +57,4 @@ public abstract class AbstractAresApplication {
     protected final <T extends AbstractView<? extends JComponent>> InternalFrameView<T> getInternalFrameView(Class<T> viewClass) {
         return (InternalFrameView<T>) views.get(viewClass);
     }
-
 }

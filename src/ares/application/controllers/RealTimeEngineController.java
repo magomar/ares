@@ -9,10 +9,8 @@ import ares.engine.realtime.Clock;
 import ares.engine.realtime.ClockEvent;
 import ares.engine.realtime.ClockEventType;
 import ares.engine.realtime.RealTimeEngine;
-import ares.platform.application.AbstractAresApplication;
 import ares.platform.controller.AbstractController;
 import ares.platform.view.InternalFrameView;
-import ares.scenario.Scenario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
@@ -72,13 +70,9 @@ public class RealTimeEngineController extends AbstractController {
             LOG.log(Level.INFO, e.toString());
             MenuBarView menuBarView = getView(MenuBarView.class);
             menuBarView.getMenuElement(EngineCommands.START.getName()).getComponent().setEnabled(false);
-            menuBarView.getMenuElement(EngineCommands.STOP.getName()).getComponent().setEnabled(true);
-//            menuBarView.getMenuElement(EngineCommands.NEXT.getName()).getComponent().setEnabled(false);
-            getModel(RealTimeEngine.class).start();
-            MenuBarView menuBarView = getView(MenuBarView.class);
             menuBarView.getMenuElement(EngineCommands.START.getName()).getComponent().setEnabled(false);
             menuBarView.getMenuElement(EngineCommands.PAUSE.getName()).getComponent().setEnabled(true);
-//            menuBarView.getMenuElement(EngineCommands.NEXT.getName()).getComponent().setEnabled(false);
+            getModel(RealTimeEngine.class).start();
         }
     }
 
