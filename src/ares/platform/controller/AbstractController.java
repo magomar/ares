@@ -1,5 +1,6 @@
 package ares.platform.controller;
 
+import ares.platform.application.AbstractAresApplication;
 import ares.platform.application.LookupService;
 import ares.platform.model.AbstractModel;
 import ares.platform.view.AbstractView;
@@ -17,7 +18,6 @@ import javax.swing.JComponent;
 public abstract class AbstractController implements PropertyChangeListener {
     //TODO Consider using ChangeListener as an alternative to PropertyChangeListener
 
-//    private final AbstractAresApplication mainApplication;
 //    protected final Map<Class<? extends AbstractView<? extends JComponent>>, AbstractView<? extends JComponent>> views = new HashMap<>();
 //    protected final Map<Class<? extends AbstractModel>, AbstractModel> models = new HashMap<>();
     private final LookupService<AbstractView<? extends JComponent>> views = new LookupService<>();
@@ -35,22 +35,22 @@ public abstract class AbstractController implements PropertyChangeListener {
     //  Use this to observe property changes from registered models
     //  and propagate them on to all the views.
     @Override
-    public final void propertyChange(PropertyChangeEvent evt) {
+//    public final void propertyChange(PropertyChangeEvent evt) {
+    //Unfortunately I have to remove the final modifier because the engine controller needs to know when clock events occur
+    //to change the title of the BoardView's Internal Frame
+    public void propertyChange(PropertyChangeEvent evt) {
         for (AbstractView view : views.values()) {
             view.modelPropertyChange(evt);
         }
     }
 
     /**
-     * This is a convenience method that subclasses can call upon to fire
-     * property changes back to the models. This method uses reflection to
-     * inspect each of the model classes to determine whether it is the owner of
-     * the property in question. If it isn't, a NoSuchMethodException is thrown,
-     * which the method ignores.
+     * This is a convenience method that subclasses can call upon to fire property changes back to the models. This
+     * method uses reflection to inspect each of the model classes to determine whether it is the owner of the property
+     * in question. If it isn't, a NoSuchMethodException is thrown, which the method ignores.
      *
      * @param propertyName = The name of the property.
-     * @param newValue = An object that represents the new value of the
-     * property.
+     * @param newValue = An object that represents the new value of the property.
      */
     protected final void setModelProperty(String propertyName, Object newValue) {
 

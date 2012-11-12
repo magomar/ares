@@ -1,5 +1,6 @@
 package ares.platform.view;
 
+import ares.engine.realtime.RealTimeEngine;
 import java.beans.PropertyChangeEvent;
 import javax.swing.JComponent;
 import javax.swing.JDesktopPane;
@@ -31,7 +32,7 @@ public class InternalFrameView<V extends AbstractView<? extends JComponent>> ext
     public JInternalFrame getInternalFrame() {
         return internalFrame;
     }
-
+    
     public void setTitle(String title) {
         internalFrame.setTitle(title);
     }
@@ -46,7 +47,7 @@ public class InternalFrameView<V extends AbstractView<? extends JComponent>> ext
         try {
             internalFrame.setSelected(true);
         } catch (java.beans.PropertyVetoException e) {
-        }    
+        }
     }
 
     public void close() {

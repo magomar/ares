@@ -4,10 +4,8 @@ import ares.engine.action.AbstractAction;
 import ares.engine.action.ActionState;
 import ares.engine.action.ActionType;
 import ares.engine.actors.UnitActor;
-import ares.scenario.Scenario;
 import ares.engine.realtime.Clock;
 import ares.scenario.board.Tile;
-import ares.scenario.forces.Unit;
 
 /**
  * Actions that change between static (deployed) and mobile status. There are two types of actions in this category:
@@ -49,7 +47,7 @@ public class ChangeDeploymentAction extends AbstractAction {
 
     @Override
     public String toString() {
-        return actor.toString() + "ChangeDeployment #" + id + " @ " + origin.getX() + "," + origin.getY()
+        return actor.toString() + "ChangeDeployment " + " @ " + location.getX() + "," + location.getY()
                 + " from " + type.getPrecondition() + " to" + type.getEffectAfter() + " (" + start + "->" + finish + ")";
     }
 }

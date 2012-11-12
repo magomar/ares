@@ -10,9 +10,10 @@ import ares.engine.realtime.RealTimeEngine;
 import ares.io.AresFileType;
 import ares.io.AresIO;
 import ares.io.AresPaths;
-import ares.scenario.Scenario;
+import ares.platform.application.AbstractAresApplication;
 import ares.platform.controller.AbstractController;
 import ares.platform.view.InternalFrameView;
+import ares.scenario.Scenario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -26,14 +27,20 @@ import javax.swing.JFileChooser;
  */
 public class FileIOController extends AbstractController {
 
+    private final AbstractAresApplication mainApplication;
+
+    public FileIOController(AbstractAresApplication mainApplication) {
+        this.mainApplication = mainApplication;
+    }
+    
     private static final Logger LOG = Logger.getLogger(RealTimeEngineController.class.getName());
 
     @Override
     protected void registerAllActionListeners() {
         MenuBarView menuBarView = getView(MenuBarView.class);
-        menuBarView.addActionListener(FileCommands.OPEN_SCENARIO.name(), new OpenScenarioActionListener());
-        menuBarView.addActionListener(FileCommands.CLOSE_SCENARIO.name(), new CloseScenarioActionListener());
-        menuBarView.addActionListener(FileCommands.EXIT.name(), new ExitActionListener());
+        menuBarView.addActionListener(FileCommands.OPEN_SCENARIO.getName(), new OpenScenarioActionListener());
+        menuBarView.addActionListener(FileCommands.CLOSE_SCENARIO.getName(), new CloseScenarioActionListener());
+        menuBarView.addActionListener(FileCommands.EXIT.getName(), new ExitActionListener());
     }
 
     @Override
@@ -46,7 +53,7 @@ public class FileIOController extends AbstractController {
         @Override
         public void actionPerformed(ActionEvent e) {
             LOG.log(Level.INFO, e.toString());
-            
+
             JFileChooser fc = new JFileChooser();
             fc.setCurrentDirectory(AresIO.ARES_IO.getAbsolutePath(AresPaths.SCENARIOS.getPath()).toFile());
             fc.setFileFilter(AresFileType.SCENARIO.getFileTypeFilter());
@@ -62,24 +69,23 @@ public class FileIOController extends AbstractController {
                 // change the RealTimeEngine model, set the Scenario property
                 getModel(RealTimeEngine.class).setScenario(scenario);
 
+                 mainApplication.setTitle(scenario.getName() + "   " + scenario.getCalendar().toString());
+                
                 // show info frame
-                InternalFrameView<UnitInfoView> infoFrame = (InternalFrameView<UnitInfoView>) getInternalFrameView(UnitInfoView.class);
+                InternalFrameView<UnitInfoView> infoFrame = getInternalFrameView(UnitInfoView.class);
                 infoFrame.show();
 
                 // show messagesView
-                InternalFrameView<MessagesView> messagesFrame = (InternalFrameView<MessagesView>) getInternalFrameView(MessagesView.class);
+                InternalFrameView<MessagesView> messagesFrame = getInternalFrameView(MessagesView.class);
                 messagesFrame.show();
 
                 // show board frame
-                InternalFrameView<BoardView> boardFrame = (InternalFrameView<BoardView>) getInternalFrameView(BoardView.class);
-                boardFrame.setTitle(scenario.getName() + "   " + scenario.getCalendar().toString());
+                InternalFrameView<BoardView> boardFrame = getInternalFrameView(BoardView.class);
                 boardFrame.show();
-                
+
                 MenuBarView menuBarView = getView(MenuBarView.class);
-//                JMenuItem openScenarioMenuItem = (JMenuItem) menuBarView.getComponent(FileCommands.OPEN_SCENARIO.name());
-                menuBarView.getMenuElement(FileCommands.OPEN_SCENARIO.name()).getComponent().setEnabled(false);
-//                JMenuItem closeScenarioMenuItem = (JMenuItem) menuBarView.getComponent(FileCommands.CLOSE_SCENARIO.name());
-                menuBarView.getMenuElement(FileCommands.CLOSE_SCENARIO.name()).getComponent().setEnabled(true);
+//                menuBarView.getMenuElement(FileCommands.OPEN_SCENARIO.getName()).getComponent().setEnabled(false);
+                menuBarView.getMenuElement(FileCommands.CLOSE_SCENARIO.getName()).getComponent().setEnabled(true);
             }
         }
     }
@@ -89,10 +95,13 @@ public class FileIOController extends AbstractController {
         @Override
         public void actionPerformed(ActionEvent e) {
             LOG.log(Level.INFO, e.toString());
-            getModel(RealTimeEngine.class).setScenario(null);        MenuBarView menuBarView = getView(MenuBarView.class);
-                menuBarView.getMenuElement(FileCommands.CLOSE_SCENARIO.name()).getComponent().setEnabled(false);
-                menuBarView.getMenuElement(FileCommands.OPEN_SCENARIO.name()).getComponent().setEnabled(true);
-
+            getModel(RealTimeEngine.class).setScenario(null);
+            MenuBarView menuBarView = getView(MenuBarView.class);
+            menuBarView.getMenuElement(FileCommands.CLOSE_SCENARIO.getName()).getComponent().setEnabled(false);
+//            menuBarView.getMenuElement(FileCommands.OPEN_SCENARIO.getName()).getComponent().setEnabled(true);
+            getInternalFrameView(BoardView.class).getContentPane().setVisible(false);
+            getInternalFrameView(MessagesView.class).getContentPane().setVisible(false);
+            getInternalFrameView(UnitInfoView.class).getContentPane().setVisible(false);
         }
     }
 
@@ -104,5 +113,4 @@ public class FileIOController extends AbstractController {
             System.exit(0);
         }
     }
-
 }

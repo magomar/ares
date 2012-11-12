@@ -1,5 +1,6 @@
 package ares.application.views;
 
+
 import ares.application.gui_components.*;
 import ares.engine.realtime.RealTimeEngine;
 import ares.platform.view.AbstractView;
@@ -38,7 +39,7 @@ public class BoardView extends AbstractView<JScrollPane> {
         JScrollPane contentPane = new JScrollPane();
         contentPane.add(layers);
         contentPane.setViewportView(layers);
-        contentPane.setVisible(false);
+        contentPane.setVisible(true);
         return contentPane;
     }
 
@@ -49,33 +50,29 @@ public class BoardView extends AbstractView<JScrollPane> {
     @Override
     public void modelPropertyChange(PropertyChangeEvent evt) {
 //       Logger.getLogger(BoardView.class.getName()).log(Level.INFO, evt.toString());
-        if (evt.getPropertyName().equals(RealTimeEngine.SCENARIO_PROPERTY)) {
-            if (evt.getNewValue() != null) {
-                Scenario scenario = (Scenario) evt.getNewValue();                
-                
-                terrainLayer.initialize(scenario);
-                /*
-                 * TODO Control gridPane visibility
-                 */                
-                gridLayer.initialize(scenario);
-                unitsLayer.initialize(scenario);                
-                
-                Dimension imageSize = new Dimension(scenario.getBoardInfo().getImageWidth(), scenario.getBoardInfo().getImageHeight());
-                layers.setPreferredSize(imageSize);
-                layers.setSize(imageSize);
-                terrainLayer.setPreferredSize(imageSize);
-                terrainLayer.setSize(imageSize);
-                gridLayer.setPreferredSize(imageSize);
-                gridLayer.setSize(imageSize);
-                unitsLayer.setPreferredSize(imageSize);
-                unitsLayer.setSize(imageSize);
-                getContentPane().setVisible(true);
-            } else {
-                terrainLayer.flushLayer();
-                gridLayer.flushLayer();
-                unitsLayer.flushLayer();
-                getContentPane().setVisible(false);
+        switch (evt.getPropertyName()) {
+            case RealTimeEngine.SCENARIO_PROPERTY:
+                if (evt.getNewValue() != null) {
+                    Scenario scenario = (Scenario) evt.getNewValue();
+                    terrainPanel.initialize(scenario);
+                    unitsPanel.initialize(scenario);
+                    Dimension imageSize = new Dimension(scenario.getBoardInfo().getImageWidth(), scenario.getBoardInfo().getImageHeight());
+                    layers.setPreferredSize(imageSize);
+                    layers.setSize(imageSize);
+                    terrainPanel.setPreferredSize(imageSize);
+                    terrainPanel.setSize(imageSize);
+                    unitsPanel.setPreferredSize(imageSize);
+                    unitsPanel.setSize(imageSize);
+                } else {
+                    terrainLayer.flushLayer();
+                    gridLayer.flushLayer();
+                    unitsLayer.flushLayer();
+                    getContentPane().setVisible(false);
             }
-        }
+                break;
+            case RealTimeEngine.CLOCK_EVENT_PROPERTY:
+                unitsPanel.updateUnits();
+                break;
+        }        
     }
 }

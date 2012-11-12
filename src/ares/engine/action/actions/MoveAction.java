@@ -5,8 +5,6 @@ import ares.engine.action.ActionType;
 import ares.engine.actors.UnitActor;
 import ares.scenario.board.Direction;
 import ares.scenario.board.Tile;
-import ares.scenario.forces.Unit;
-import ares.scenario.Scenario;
 
 /**
  *

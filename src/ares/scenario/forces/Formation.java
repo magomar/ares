@@ -30,34 +30,18 @@ public class Formation {
      * List of objectives (used by the programmed opponent to generate plans)
      */
     private List<Tile> objectives;
+
     /**
-     * List of available (on-board) line units. This collection excludes
-     * reinforcements, destroyed/withdrawed units and divided units. Line units
-     * are able to perform assaults by themselves
+     * List of available (on-board) units. This collection excludes reinforcements, destroyed/withdrawed units and
+     * divided units.
      */
-    private List<Unit> lineUnits;
-    /**
-     * List of active line-support and support units. This units are not
-     * able to perform assaults
-     */
-    private List<Unit> supportUnits;
-    private Unit headquarters;
-    /**
-     * List of active service-support units
-     */
-    private List<Unit> serviceUnits;
+    private List<Unit> activeUnits;
     /**
      * List of scheduled reinforcement units, stored in a queue
      */
-    /**
-     * List of available (on-board) units. This collection excludes
-     * reinforcements, destroyed/withdrawed units and divided units.
-     */
-    private List<Unit> activeUnits;
     private Queue<Unit> scheduledReinforcements;
     /**
-     * List of units that could be received as reinforcements, conditioned
-     * to certain events
+     * List of units that could be received as reinforcements, conditioned to certain events
      */
     private List<Unit> conditionalReinforcements;
     private Formation superior;
@@ -86,9 +70,7 @@ public class Formation {
             }
         }
         activeUnits = new ArrayList<>();
-        lineUnits = new ArrayList<>();
-        supportUnits = new ArrayList<>();
-        serviceUnits = new ArrayList<>();
+
         scheduledReinforcements = new PriorityQueue<>(2, Unit.UNIT_ENTRY_COMPARATOR);
         conditionalReinforcements = new ArrayList<>();
         subordinates = new ArrayList<>();
@@ -107,18 +89,6 @@ public class Formation {
                     break;
                 default:
                     activeUnits.add(u);
-                    switch (u.getType().getCombatClass()) {
-                        case LINE:
-                            lineUnits.add(u);
-                            break;
-                        case LINE_SUPPORT:
-                        case SUPPORT:
-                            supportUnits.add(u);
-                            break;
-                        case HQ:
-                            headquarters = u;
-                    }
-
             }
         }
         // Set parents for units resulting of division
@@ -136,8 +106,6 @@ public class Formation {
     public void setSubordinates(List<Formation> subordinates) {
         this.subordinates = subordinates;
     }
-
- 
 
     public Formation getSuperior() {
         return superior;
@@ -205,22 +173,6 @@ public class Formation {
 
     public List<Unit> getActiveUnits() {
         return activeUnits;
-    }
-
-    public List<Unit> getLineUnits() {
-        return lineUnits;
-    }
-
-    public List<Unit> getSupportUnits() {
-        return supportUnits;
-    }
-
-    public Unit getHeadquarters() {
-        return headquarters;
-    }
-
-    public List<Unit> getServiceUnits() {
-        return serviceUnits;
     }
 
     @Override

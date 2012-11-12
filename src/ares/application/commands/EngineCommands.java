@@ -2,6 +2,7 @@ package ares.application.commands;
 
 import ares.platform.application.Command;
 import java.awt.event.KeyEvent;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -9,9 +10,9 @@ import java.awt.event.KeyEvent;
  */
 public enum EngineCommands implements Command {
 
-    START("Start", "Start the game", new Integer(KeyEvent.VK_S)),
-    STOP("Stop", "Pause the game", new Integer(KeyEvent.VK_S)),
-    NEXT("Next", "Next turn", new Integer(KeyEvent.VK_N));
+    START("Start", "Start the engine", new Integer(KeyEvent.VK_S)),
+    PAUSE("Pause", "Pause the engine", new Integer(KeyEvent.VK_S)),
+    NEXT("Next", "Execute this turn", new Integer(KeyEvent.VK_N));
     private final String text;
 //    private final ImageIcon icon;
     private final String desc;
@@ -36,5 +37,15 @@ public enum EngineCommands implements Command {
     @Override
     public Integer getMnemonic() {
         return mnemonic;
+    }
+
+    @Override
+    public String getName() {
+        return name();
+    }
+
+    @Override
+    public ImageIcon getImageIcon() {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

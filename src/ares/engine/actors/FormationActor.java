@@ -1,7 +1,20 @@
 package ares.engine.actors;
 
+import ares.engine.Engine;
+import ares.engine.action.Action;
+import ares.engine.action.ActionState;
+import ares.engine.action.ActionType;
+import ares.engine.action.actions.ChangeDeploymentAction;
+import ares.engine.action.actions.SurfaceMoveAction;
+import ares.engine.movement.MovementType;
 import ares.engine.realtime.Clock;
+import ares.platform.util.RandomGenerator;
+import ares.scenario.board.Direction;
+import ares.scenario.board.Tile;
 import ares.scenario.forces.Formation;
+import ares.scenario.forces.Unit;
+import java.util.List;
+import java.util.Queue;
 
 /**
  *
@@ -10,13 +23,13 @@ import ares.scenario.forces.Formation;
 public class FormationActor {
 
     private Formation formation;
+    private List<UnitActor> unitActors;
+    private Engine engine;
 
-    public FormationActor(Formation formation) {
+    public FormationActor(Formation formation, List<UnitActor> unitActors, Engine engine) {
         this.formation = formation;
-    }
-    
-    public void activate() {
-        
+        this.unitActors= unitActors;
+        this.engine = engine;
     }
 
     public void plan(Clock clock) {
@@ -25,26 +38,27 @@ public class FormationActor {
 //            planner.obtainPlan();
 //            hasPlan = true;
 //        }
-        
-//        for (Unit unit : formation.getLineUnits()) {
-//            if (unit.getMovement() != MovementType.AIRCRAFT) {
-//                Tile location = unit.getLocation();
-//                Queue<Action> pendingActions = unit.getPendingActions();
-//                if (unit.getSpeed() > 0 && unit.getPendingActions().isEmpty() && unit.getEndurance() >= ActionType.APPROACH_MARCH.getWearRate() * clock.MINUTES_PER_TICK) {
-//                    Action anAction;
-//                    if (unit.getAction() != null && unit.getAction().getState() == ActionState.DELAYED) {
-//                        anAction = new ChangeDeploymentAction(unit, ActionType.ASSEMBLE, location, scenario);
-//                    } else {
-//                        Direction[] directions = unit.getLocation().getNeighbors().keySet().toArray(new Direction[0]);
-//                        int randomDirIndex = RandomGenerator.getInstance().nextInt(directions.length);
-//                        Direction fromDir = directions[randomDirIndex];
-//                        anAction = new SurfaceMoveAction((SurfaceUnit) unit, ActionType.TACTICAL_MARCH, location, location.getNeighbors().get(fromDir), clock.getCurrentTime() + 10, fromDir, scenario);
-//
-//                    }
-//                    pendingActions.add(anAction);
-////                    System.out.println("New Action: " + anAction.toString());
-//                }
-//            }
-//        }
+
+        for (UnitActor unitActor : unitActors) {
+            Unit unit = unitActor.getUnit();
+            if (unitActor.getUnit().getMovement() != MovementType.AIRCRAFT) {
+                Tile location = unit.getLocation();
+                Queue<Action> pendingActions = unitActor.getPendingActions();
+                if (unit.getSpeed() > 0 && unitActor.getPendingActions().isEmpty() && unit.getEndurance() >= ActionType.APPROACH_MARCH.getWearRate() * clock.MINUTES_PER_TICK) {
+                    Action anAction;
+                    if (unitActor.getCurrentAction() != null && unitActor.getCurrentAction().getState() == ActionState.DELAYED) {
+                        anAction = new ChangeDeploymentAction(unitActor, ActionType.ASSEMBLE, location, clock.getCurrentTime()+clock.MINUTES_PER_TICK);
+                    } else {
+                        Direction[] directions = unit.getLocation().getNeighbors().keySet().toArray(new Direction[0]);
+                        int randomDirIndex = RandomGenerator.getInstance().nextInt(directions.length);
+                        Direction fromDir = directions[randomDirIndex];
+                        anAction = new SurfaceMoveAction(unitActor, ActionType.TACTICAL_MARCH, location, location.getNeighbors().get(fromDir), clock.getCurrentTime()+clock.MINUTES_PER_TICK, fromDir, engine.getScenario().getScale().getDistance());
+
+                    }
+                    pendingActions.add(anAction);
+//                    System.out.println("New Action: " + anAction.toString());
+                }
+            }
+        }
     }
 }

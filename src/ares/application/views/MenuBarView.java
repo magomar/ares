@@ -3,10 +3,10 @@ package ares.application.views;
 import ares.application.commands.EngineCommands;
 import ares.application.commands.FileCommands;
 import ares.application.commands.ViewCommands;
+import ares.application.player.AresMenus;
 import ares.platform.view.AbstractView;
 import ares.platform.view.ComponentFactory;
 import java.awt.Component;
-import java.awt.Container;
 import java.beans.PropertyChangeEvent;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -20,20 +20,21 @@ public class MenuBarView extends AbstractView<JMenuBar> {
 
     @Override
     protected JMenuBar layout() {
-        JMenu fileMenu;
-        fileMenu = ComponentFactory.menu("File", 'f',
+        JMenu fileMenu = ComponentFactory.menu(AresMenus.FILE_MENU,
                 ComponentFactory.menuItem(FileCommands.OPEN_SCENARIO, this),
                 ComponentFactory.menuItem(FileCommands.CLOSE_SCENARIO, this, false),
                 ComponentFactory.menuItem(FileCommands.EXIT, this));
-        JMenu viewMenu = ComponentFactory.menu("View", 'v', false,
+        JMenu viewMenu = ComponentFactory.menu(AresMenus.VIEW_MENU, false,
                 ComponentFactory.menuItem(ViewCommands.SHOW_GRID, this),
                 ComponentFactory.menuItem(ViewCommands.HIDE_UNITS, this));
-        JMenu engineMenu = ComponentFactory.menu("Engine", 'E', false,
-                ComponentFactory.menuItem(EngineCommands.START, this));
+        JMenu engineMenu = ComponentFactory.menu(AresMenus.ENGINE_MENU, false,
+                ComponentFactory.menuItem(EngineCommands.START, this),
+                ComponentFactory.menuItem(EngineCommands.NEXT, this, false),
+                ComponentFactory.menuItem(EngineCommands.PAUSE, this, false));
         JMenuBar jmenuBar = ComponentFactory.menuBar(fileMenu, viewMenu, engineMenu);
         return jmenuBar;
     }
-
+    
     public MenuElement getMenuElement(String elementName) {
         return getMenuElement(elementName, getContentPane());
     }
