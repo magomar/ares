@@ -16,24 +16,24 @@ import javax.swing.JScrollPane;
 public class BoardView extends AbstractView<JScrollPane> {
 
     private JLayeredPane layers;
-    private TerrainPane terrainPane;
-    private UnitsPanel unitsPanel;
-    private GridPane gridPane;
+    private TerrainLayer terrainLayer;
+    private UnitsLayer unitsLayer;
+    private GridLayer gridLayer;
    
     @Override
     protected JScrollPane layout() {
         
         // TODO set black background
         layers = new JLayeredPane();
-        terrainPane = new TerrainPane();
-        unitsPanel = new UnitsPanel();
-        gridPane = new GridPane();
-        gridPane.setOpaque(false);
-        unitsPanel.setOpaque(false);
+        terrainLayer = new TerrainLayer();
+        unitsLayer = new UnitsLayer();
+        gridLayer = new GridLayer();
+        gridLayer.setOpaque(false);
+        unitsLayer.setOpaque(false);
         
-        layers.add(terrainPane, JLayeredPane.DEFAULT_LAYER);
-        layers.add(gridPane, JLayeredPane.PALETTE_LAYER);
-        layers.add(unitsPanel, JLayeredPane.DRAG_LAYER);
+        layers.add(terrainLayer, JLayeredPane.DEFAULT_LAYER);
+        layers.add(gridLayer, JLayeredPane.PALETTE_LAYER);
+        layers.add(unitsLayer, JLayeredPane.DRAG_LAYER);
         
         JScrollPane contentPane = new JScrollPane();
         contentPane.add(layers);
@@ -51,26 +51,29 @@ public class BoardView extends AbstractView<JScrollPane> {
 //       Logger.getLogger(BoardView.class.getName()).log(Level.INFO, evt.toString());
         if (evt.getPropertyName().equals(RealTimeEngine.SCENARIO_PROPERTY)) {
             if (evt.getNewValue() != null) {
-                Scenario scenario = (Scenario) evt.getNewValue();
+                Scenario scenario = (Scenario) evt.getNewValue();                
                 
-                terrainPane.initialize(scenario);
+                terrainLayer.initialize(scenario);
                 /*
                  * TODO Control gridPane visibility
                  */                
-                gridPane.initialize(scenario);
-                unitsPanel.initialize(scenario);
+                gridLayer.initialize(scenario);
+                unitsLayer.initialize(scenario);                
                 
                 Dimension imageSize = new Dimension(scenario.getBoardInfo().getImageWidth(), scenario.getBoardInfo().getImageHeight());
                 layers.setPreferredSize(imageSize);
                 layers.setSize(imageSize);
-                terrainPane.setPreferredSize(imageSize);
-                terrainPane.setSize(imageSize);
-                gridPane.setPreferredSize(imageSize);
-                gridPane.setSize(imageSize);
-                unitsPanel.setPreferredSize(imageSize);
-                unitsPanel.setSize(imageSize);
+                terrainLayer.setPreferredSize(imageSize);
+                terrainLayer.setSize(imageSize);
+                gridLayer.setPreferredSize(imageSize);
+                gridLayer.setSize(imageSize);
+                unitsLayer.setPreferredSize(imageSize);
+                unitsLayer.setSize(imageSize);
                 getContentPane().setVisible(true);
             } else {
+                terrainLayer.flushLayer();
+                gridLayer.flushLayer();
+                unitsLayer.flushLayer();
                 getContentPane().setVisible(false);
             }
         }
