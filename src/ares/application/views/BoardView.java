@@ -20,6 +20,7 @@ public class BoardView extends AbstractView<JScrollPane> {
     private TerrainLayer terrainLayer;
     private UnitsLayer unitsLayer;
     private GridLayer gridLayer;
+    private Scenario scen;
    
     @Override
     protected JScrollPane layout() {
@@ -54,15 +55,20 @@ public class BoardView extends AbstractView<JScrollPane> {
             case RealTimeEngine.SCENARIO_PROPERTY:
                 if (evt.getNewValue() != null) {
                     Scenario scenario = (Scenario) evt.getNewValue();
-                    terrainPanel.initialize(scenario);
-                    unitsPanel.initialize(scenario);
+                    terrainLayer.initialize(scenario);
+                    unitsLayer.initialize(scenario);
                     Dimension imageSize = new Dimension(scenario.getBoardInfo().getImageWidth(), scenario.getBoardInfo().getImageHeight());
                     layers.setPreferredSize(imageSize);
                     layers.setSize(imageSize);
-                    terrainPanel.setPreferredSize(imageSize);
-                    terrainPanel.setSize(imageSize);
-                    unitsPanel.setPreferredSize(imageSize);
-                    unitsPanel.setSize(imageSize);
+                    terrainLayer.setPreferredSize(imageSize);
+                    terrainLayer.setSize(imageSize);
+                    gridLayer.setPreferredSize(imageSize);
+                    gridLayer.setSize(imageSize);
+                    unitsLayer.setPreferredSize(imageSize);
+                    unitsLayer.setSize(imageSize);
+                    
+                    scen = scenario;
+                    
                 } else {
                     terrainLayer.flushLayer();
                     gridLayer.flushLayer();
@@ -71,7 +77,8 @@ public class BoardView extends AbstractView<JScrollPane> {
             }
                 break;
             case RealTimeEngine.CLOCK_EVENT_PROPERTY:
-                unitsPanel.updateUnits();
+                //TODO refresh only selected units
+                unitsLayer.initialize(scen);
                 break;
         }        
     }

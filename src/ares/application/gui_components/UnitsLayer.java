@@ -57,8 +57,11 @@ public class UnitsLayer extends javax.swing.JPanel {
     public void initialize(Scenario scenario) {
 
         boardInfo = scenario.getBoardInfo();
+        
         // If the image has not been created
-        if (unitsImage == null) {
+        // // True boolean is a temporary fix to repaint
+        // // the unit layer. Units should be refreshed tile by tile
+        if (true || unitsImage == null) {
 
             // If the buffer doesn't exist
             if (unitBufferMap == null) {
