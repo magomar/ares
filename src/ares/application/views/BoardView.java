@@ -3,8 +3,8 @@ package ares.application.views;
 
 import ares.application.gui_components.*;
 import ares.engine.realtime.RealTimeEngine;
-import ares.platform.view.AbstractView;
 import ares.scenario.Scenario;
+import ares.platform.view.AbstractView;
 import java.awt.Dimension;
 import java.beans.PropertyChangeEvent;
 import javax.swing.JLayeredPane;
