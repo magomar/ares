@@ -9,7 +9,7 @@ import ares.application.views.UnitInfoView;
 import ares.engine.realtime.RealTimeEngine;
 import ares.platform.application.AbstractAresApplication;
 import ares.platform.controller.AbstractController;
-import ares.platform.model.AbstractModel;
+import ares.platform.model.AbstractModelProvider;
 import ares.platform.view.ComponentFactory;
 import ares.platform.view.InternalFrameView;
 import ares.platform.view.WindowUtil;
@@ -56,7 +56,7 @@ public final class AresPlayerFrame extends AbstractAresApplication {
         fileController.addView(BoardView.class, getView(BoardView.class));
 
         // create and add models to controllers
-        AbstractModel engineModel = new RealTimeEngine();
+        AbstractModelProvider engineModel = new RealTimeEngine();
         engineController.addModel(RealTimeEngine.class, engineModel);
         fileController.addModel(RealTimeEngine.class, engineModel);
 

@@ -85,6 +85,7 @@ public final class Tile {
      * the board), then there would be no entry for that direction.
      */
     private Map<Direction, Tile> neighbors;
+    private Map<Force, InformationLevel> informationLevel;
 
     public Tile(Cell c) {
         // numeric attributes
@@ -147,6 +148,14 @@ public final class Tile {
             combatModifiers.put(fromDir, combatModifier);
         }
         this.owner = owner;
+        informationLevel = new HashMap<>();
+        for (Force force : scenario.getForces()) {
+            if (force == owner) {
+                informationLevel.put(force, InformationLevel.EXPLORED);
+            } else {
+                informationLevel.put(force, InformationLevel.UNKNOWN);
+            }
+        }
     }
 
     public Map<Direction, Tile> getNeighbors() {
@@ -232,7 +241,7 @@ public final class Tile {
     public int getStackingPenalty(Scale scale) {
         return units.getStackingPenalty(scale);
     }
-    
+
     public int getNumStackedUnits() {
         return units.size();
     }
@@ -278,7 +287,6 @@ public final class Tile {
 //            }
 //            cost = Math.max(ONE, Math.min(MAX_ROAD_COST, numHorsesAndVehicles / density));
 //    }
-    
     @Override
     public String toString() {
         return "<" + x + "," + y + ">";

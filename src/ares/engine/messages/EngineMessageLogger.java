@@ -1,6 +1,6 @@
 package ares.engine.messages;
 
-import ares.platform.model.AbstractModel;
+import ares.platform.model.AbstractModelProvider;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +8,7 @@ import java.util.List;
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public class EngineMessageLogger extends AbstractModel {
+public class EngineMessageLogger extends AbstractModelProvider {
 
     public static final String MESSAGES_PROPERTY = "Messages";
     public List<EngineMessage> messages = new ArrayList<>();

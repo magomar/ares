@@ -3,7 +3,7 @@ package ares.engine.realtime;
 import ares.engine.Engine;
 import ares.engine.actors.FormationActor;
 import ares.engine.actors.UnitActor;
-import ares.platform.model.AbstractModel;
+import ares.platform.model.AbstractModelProvider;
 import ares.scenario.AresCalendar;
 import ares.scenario.Scenario;
 import ares.scenario.forces.Force;
@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public class RealTimeEngine extends AbstractModel<Engine> implements Engine {
+public class RealTimeEngine extends AbstractModelProvider<Engine> implements Engine {
 
     public static final String SCENARIO_PROPERTY = "Scenario";
     public static final String CLOCK_EVENT_PROPERTY = "ClockEvent";

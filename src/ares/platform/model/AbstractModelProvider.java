@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package ares.platform.model;
 
 import java.beans.PropertyChangeListener;
@@ -11,12 +7,12 @@ import java.beans.PropertyChangeSupport;
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public abstract class AbstractModel<M> {
+public abstract class AbstractModelProvider<M> implements ModelProvider <M> {
     private M model;
 
     private PropertyChangeSupport propertyChangeSupport;
 
-    public AbstractModel() {
+    public AbstractModelProvider() {
         propertyChangeSupport = new PropertyChangeSupport(this);
     }
     
