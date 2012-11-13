@@ -29,16 +29,16 @@ import javax.swing.JFileChooser;
  *
  * @author Mario
  */
-public class PlayWeGoController extends AbstractController {
+public class WeGoPlayerController extends AbstractController {
 
     private final ExecutorService executor;
     private final AbstractAresApplication mainApplication;
 
-    public PlayWeGoController(AbstractAresApplication mainApplication) {
+    public WeGoPlayerController(AbstractAresApplication mainApplication) {
         this.mainApplication = mainApplication;
         executor = Executors.newCachedThreadPool();
     }
-    private static final Logger LOG = Logger.getLogger(PlayWeGoController.class.getName());
+    private static final Logger LOG = Logger.getLogger(WeGoPlayerController.class.getName());
 
     @Override
     protected void registerAllActionListeners() {
