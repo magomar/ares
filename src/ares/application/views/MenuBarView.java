@@ -16,7 +16,7 @@ import javax.swing.MenuElement;
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public class MenuBarView extends AbstractView<JMenuBar> {
+public class MenuBarView extends AbstractView<JMenuBar>  {
 
     @Override
     protected JMenuBar layout() {
@@ -59,4 +59,5 @@ public class MenuBarView extends AbstractView<JMenuBar> {
     public void modelPropertyChange(PropertyChangeEvent evt) {
 //        Logger.getLogger(MenuBarView.class.getName()).log(Level.INFO, evt.toString());
     }
+
 }

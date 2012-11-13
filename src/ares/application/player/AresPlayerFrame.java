@@ -106,6 +106,7 @@ public final class AresPlayerFrame extends AbstractAresApplication {
         JInternalFrame boardFrame = boardFrameView.getInternalFrame();
         boardFrame.setPreferredSize(getDefaultBoardFrameBounds().getSize());
         boardFrame.setBounds(getDefaultBoardFrameBounds());
+        boardFrame.setTitle("Board");
 
         return mainFrame;
     }
