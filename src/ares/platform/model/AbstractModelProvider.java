@@ -7,8 +7,8 @@ import java.beans.PropertyChangeSupport;
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public abstract class AbstractModelProvider<M> implements ModelProvider <M> {
-    private M model;
+public abstract class AbstractModelProvider<T> implements ModelProvider<T> {
+    private T model;
 
     private PropertyChangeSupport propertyChangeSupport;
 
@@ -16,7 +16,8 @@ public abstract class AbstractModelProvider<M> implements ModelProvider <M> {
         propertyChangeSupport = new PropertyChangeSupport(this);
     }
     
-    public M getModel() {
+    @Override
+    public T getModel() {
         return model;
     }
 

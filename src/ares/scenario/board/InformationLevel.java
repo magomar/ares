@@ -8,5 +8,5 @@ public enum InformationLevel {
     UNKNOWN,
     SPOTTED,
     OBSERVED,
-    EXPLORED,
+    KNOWN,
 }

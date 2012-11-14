@@ -88,6 +88,10 @@ public final class Tile implements ModelProvider<TileModel> {
      * the board), then there would be no entry for that direction.
      */
     private Map<Direction, Tile> neighbors;
+    
+    private Map<Force, InformationLevel> informationLevels;
+ 
+    private Map<
 
     public Tile(Cell c) {
         // numeric attributes
@@ -150,6 +154,15 @@ public final class Tile implements ModelProvider<TileModel> {
             combatModifiers.put(fromDir, combatModifier);
         }
         this.owner = owner;
+        informationLevels = new HashMap<>();
+        Force[] forces = scenario.getForces();
+        for (Force force : forces) {
+            if (force == owner) {
+                informationLevels.put(force, InformationLevel.KNOWN);
+            } else {
+                informationLevels.put(force, InformationLevel.SPOTTED);
+            }
+        }
     }
 
     public Map<Direction, Tile> getNeighbors() {

@@ -1,5 +1,6 @@
 package ares.application.models;
 
+import ares.platform.model.AbstractModel;
 import ares.scenario.board.Direction;
 import ares.scenario.board.Terrain;
 import ares.scenario.board.Tile;
@@ -11,12 +12,10 @@ import java.util.Set;
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public class TileModel  {
-
-    private final Tile tile;
+public class TileModel extends AbstractModel<TileModel> {
 
     public TileModel(Tile tile) {
-        this.tile = tile;
+        super(tile);
     }
     
     public Map<Direction, Set<Terrain>> getSideTerrain() {
