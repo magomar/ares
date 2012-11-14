@@ -42,7 +42,8 @@ public abstract class AbstractAresApplication {
     }
 
     protected void show() {
-        WindowUtil.showFrame(mainFrame);
+//        WindowUtil.showFrame(mainFrame);
+        WindowUtil.centerAndShow(mainFrame);
     }
 
     protected final void addView(Class<? extends AbstractView<? extends JComponent>> viewClass, AbstractView<? extends JComponent> view) {
@@ -56,5 +57,4 @@ public abstract class AbstractAresApplication {
     protected final <T extends AbstractView<? extends JComponent>> InternalFrameView<T> getInternalFrameView(Class<T> viewClass) {
         return (InternalFrameView<T>) views.get(viewClass);
     }
-
 }

@@ -32,7 +32,6 @@ public abstract class MoveAction extends AbstractAction {
         timeToComplete = (speed > 0 ? (int) (distance / speed) : Integer.MAX_VALUE);
     }
 
-
     /**
      *
      * @return the actual speed of the actor when performing this movement (m/m)
@@ -40,4 +39,10 @@ public abstract class MoveAction extends AbstractAction {
     public int getSpeed() {
         return speed;
     }
+
+    @Override
+    public String toString() {
+        return actor.toString() + " from " + location + " to " + destination + " at " + (speed * 60.0 / 1000) + " km/h";
+    }
+
 }
