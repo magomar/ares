@@ -71,11 +71,11 @@ public class TerrainLayer extends javax.swing.JPanel {
     public void createTerrainImage(Tile[][] tileMap) {
 
 
-        Graphics terrainGraphics = terrainImage.getGraphics();
+        Graphics2D g2 = (Graphics2D) terrainImage.getGraphics();
         // Set terrain image background color                                                   
-        terrainGraphics.setColor(Color.BLACK);
+        g2.setColor(Color.BLACK);
         // Paint it black!
-        terrainGraphics.fillRect(0, 0, boardInfo.getImageWidth(), boardInfo.getImageHeight());
+        g2.fillRect(0, 0, boardInfo.getImageWidth(), boardInfo.getImageHeight());
 
         Image tileTerrainImage;
         Image tileFeaturesImage = null;
@@ -96,15 +96,13 @@ public class TerrainLayer extends javax.swing.JPanel {
 
                     tileTerrainImage = createTileImage(tileMap[i][j]);
 
-                    terrainGraphics.drawImage(tileTerrainImage, x, y, null);
-                    terrainGraphics.drawImage(tileFeaturesImage, x, y, this);
+                    g2.drawImage(tileTerrainImage, x, y, null);
+                    g2.drawImage(tileFeaturesImage, x, y, this);
                 }
             }
             x += dx;
-        }
-
-
-
+        }     
+        g2.dispose();
     }
 
     /**
@@ -119,14 +117,13 @@ public class TerrainLayer extends javax.swing.JPanel {
         int h = boardInfo.getHexHeight();
         // Prepare the buffer with the tile size
         BufferedImage tileImage = new BufferedImage(w, h, BufferedImage.TYPE_4BYTE_ABGR);
-        Graphics2D tileGraphics = (Graphics2D) tileImage.createGraphics();
-
-        // First layer is the open terrain
-        tileGraphics.drawImage(terrainBufferMap.get().get(Terrain.OPEN).getSubimage(0, 0, w, h), 0, 0, null);
-
+        Graphics2D g2 = tileImage.createGraphics();
+        
         // Get the index of the terrain image
         Map<Terrain, Integer> m = getTerrainToImageIndex(tile);
 
+        // First layer is the open terrain
+        g2.drawImage(terrainBufferMap.get().get(Terrain.OPEN).getSubimage(0, 0, w, h), 0, 0, null);
         int index = 0, cols, x, y;
         for (Map.Entry<Terrain, Integer> e : m.entrySet()) {
 
@@ -159,12 +156,10 @@ public class TerrainLayer extends javax.swing.JPanel {
                 y = index % cols;
                 bi = terrainBufferMap.get().get(e.getKey()).getSubimage(y * w, x * h, w, h);
             }
-            tileGraphics.drawImage(bi, 0, 0, null);
+            g2.drawImage(bi, 0, 0, null);
         }
-
-
-
-        return tileImage;
+        g2.dispose();
+      return tileImage;
     }
 
     /**
@@ -221,7 +216,7 @@ public class TerrainLayer extends javax.swing.JPanel {
         //     instead of ares.data.jaxb.TerrainFeature
 
         BufferedImage i = new BufferedImage(boardInfo.getHexDiameter(), boardInfo.getHexHeight(), BufferedImage.TYPE_4BYTE_ABGR);
-        Graphics g = i.getGraphics();
+        Graphics2D g2 = (Graphics2D) i.getGraphics();
         int w = boardInfo.getHexDiameter();
         int h = boardInfo.getHexHeight();
 
@@ -236,7 +231,7 @@ public class TerrainLayer extends javax.swing.JPanel {
                     return null;
 
                 case AIRFIELD:
-                    g.drawImage(
+                    g2.drawImage(
                             terrainBufferMap.get().get(Terrain.OPEN).getSubimage(
                             w * TerrainFeatures.AIRFIELD.getCol(),
                             h * TerrainFeatures.AIRFIELD.getRow(),
@@ -244,7 +239,7 @@ public class TerrainLayer extends javax.swing.JPanel {
                             0, 0, this);
                     break;
                 case ANCHORAGE:
-                    g.drawImage(
+                    g2.drawImage(
                             terrainBufferMap.get().get(Terrain.OPEN).getSubimage(
                             w * TerrainFeatures.ANCHORAGE.getCol(),
                             h * TerrainFeatures.ANCHORAGE.getRow(),
@@ -252,7 +247,7 @@ public class TerrainLayer extends javax.swing.JPanel {
                             0, 0, this);
                     break;
                 case PEAK:
-                    g.drawImage(
+                    g2.drawImage(
                             terrainBufferMap.get().get(Terrain.OPEN).getSubimage(
                             w * TerrainFeatures.PEAK.getCol(),
                             h * TerrainFeatures.PEAK.getRow(),
@@ -261,7 +256,7 @@ public class TerrainLayer extends javax.swing.JPanel {
                     break;
 
                 case CONTAMINATED:
-                    g.drawImage(
+                    g2.drawImage(
                             terrainBufferMap.get().get(Terrain.OPEN).getSubimage(
                             w * TerrainFeatures.CONTAMINATED.getCol(),
                             h * TerrainFeatures.CONTAMINATED.getRow(),
@@ -269,7 +264,7 @@ public class TerrainLayer extends javax.swing.JPanel {
                             0, 0, this);
                     break;
                 case MUDDY:
-                    g.drawImage(
+                    g2.drawImage(
                             terrainBufferMap.get().get(Terrain.OPEN).getSubimage(
                             w * TerrainFeatures.MUDDY.getCol(),
                             h * TerrainFeatures.MUDDY.getRow(),
@@ -282,9 +277,9 @@ public class TerrainLayer extends javax.swing.JPanel {
                 default:
                     break;
             }
-
         }
-
+        
+        g2.dispose();
         return i;
     }
 
@@ -301,19 +296,20 @@ public class TerrainLayer extends javax.swing.JPanel {
         int w = boardInfo.getHexDiameter();
         int h = boardInfo.getHexHeight();
         BufferedImage bi = new BufferedImage(w, h, BufferedImage.TYPE_4BYTE_ABGR);
-        Graphics2D g = bi.createGraphics();
+        Graphics2D g2 = bi.createGraphics();
 
         for (Direction d : Direction.values()) {
 
             // Shift bites and draw when direction flag is 1
             if ((mask & value) == mask) {
-                g.drawImage(terrainBufferMap.get().get(Terrain.BORDER).getSubimage(2 * w, h * d.ordinal(), w, h), null, this);
+                g2.drawImage(terrainBufferMap.get().get(Terrain.BORDER).getSubimage(2 * w, h * d.ordinal(), w, h), null, this);
                 value = value << 1;
             } else {
                 value = value << 1;
             }
 
         }
+        g2.dispose();
         return bi;
     }
 
@@ -348,6 +344,7 @@ public class TerrainLayer extends javax.swing.JPanel {
 
     @Override
     public void paintComponent(Graphics g) {
-        g.drawImage(terrainImage, 0, 0, this);
+        Graphics2D g2 = (Graphics2D) g;
+        g2.drawImage(terrainImage, 0, 0, this);
     }
 }
