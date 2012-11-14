@@ -1,5 +1,6 @@
 package ares.application.gui_components;
 
+import ares.application.models.ScenarioModel;
 import ares.data.jaxb.TerrainFeature;
 import ares.io.*;
 import ares.scenario.Scenario;
@@ -32,7 +33,7 @@ public class TerrainLayer extends javax.swing.JPanel {
      * @param scenario current scenario information
      *
      */
-    public void initialize(Scenario scenario) {
+    public void initialize(ScenarioModel scenario) {
 
         boardInfo = scenario.getBoardInfo();
         // If there is no terrain image

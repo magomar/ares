@@ -1,10 +1,13 @@
 package ares.scenario.board;
 
+import ares.application.models.TileModel;
 import ares.data.jaxb.Map.Cell;
 import ares.data.jaxb.TerrainFeature;
 import ares.data.jaxb.TerrainType;
 import ares.engine.combat.CombatModifier;
 import ares.engine.movement.MovementCost;
+import ares.platform.model.ModelProvider;
+import ares.platform.model.UserRole;
 import ares.scenario.Scale;
 import ares.scenario.Scenario;
 import ares.scenario.forces.AirUnit;
@@ -19,7 +22,7 @@ import java.util.*;
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public final class Tile {
+public final class Tile implements ModelProvider<TileModel> {
 
     /**
      * Set of terrain types found in this location whose effect does not depend on direction
@@ -282,5 +285,10 @@ public final class Tile {
     @Override
     public String toString() {
         return "<" + x + "," + y + ">";
+    }
+
+    @Override
+    public TileModel getModel(UserRole userRole) {
+        return new TileModel(this);
     }
 }

@@ -1,8 +1,11 @@
 package ares.scenario.board;
 
+import ares.application.models.BoardModel;
 import ares.data.jaxb.Map.Cell;
-import ares.scenario.forces.Force;
+import ares.platform.model.ModelProvider;
+import ares.platform.model.UserRole;
 import ares.scenario.Scenario;
+import ares.scenario.forces.Force;
 import java.util.EnumMap;
 import java.util.Map;
 
@@ -10,7 +13,7 @@ import java.util.Map;
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public final class Board  {
+public final class Board  implements ModelProvider<BoardModel> {
 
     /*
      * Width and height in tile units
@@ -133,4 +136,11 @@ public final class Board  {
     private static int Ceil2(int val) {
         return ((val + 1) >> 1);
     }
+
+    @Override
+    public BoardModel getModel(UserRole userRole) {
+        return new BoardModel(this);
+    }
+    
+    
 }

@@ -1,23 +1,26 @@
 package ares.scenario.forces;
 
+import ares.application.models.UnitModel;
 import ares.data.jaxb.Availability;
 import ares.data.jaxb.Emphasis;
-import ares.scenario.Scale;
 import ares.engine.movement.MovementType;
+import ares.platform.model.ModelProvider;
+import ares.platform.model.UserRole;
+import ares.scenario.Scale;
+import ares.scenario.Scenario;
 import ares.scenario.assets.Asset;
 import ares.scenario.assets.AssetTrait;
 import ares.scenario.assets.AssetType;
 import ares.scenario.assets.AssetTypes;
 import ares.scenario.board.Board;
 import ares.scenario.board.Tile;
-import ares.scenario.Scenario;
 import java.util.*;
 
 /**
  *
  * @author Mario Gomez <margomez antiTank dsic.upv.es>
  */
-public abstract class Unit {
+public abstract class Unit implements ModelProvider<UnitModel> {
 
 //    public static final Comparator<Unit> UNIT_ACTION_FINISH_COMPARATOR = new UnitActionFinishComparator();
     public static final Comparator<Unit> UNIT_ENTRY_COMPARATOR = new UnitEntryComparator();
@@ -58,25 +61,21 @@ public abstract class Unit {
     protected Force force;
 //    protected Experience experience;
     /**
-     * Represents the quality of the unit, its ability to perform its duties. It
-     * captures both the training and the experience of a unit. In general
-     * proficiency tend to increase as the unit executes actions. It is
-     * specified as a percentage, where 100% is the best possible proficiency.
+     * Represents the quality of the unit, its ability to perform its duties. It captures both the training and the
+     * experience of a unit. In general proficiency tend to increase as the unit executes actions. It is specified as a
+     * percentage, where 100% is the best possible proficiency.
      */
     protected int proficiency;
     /**
-     * Represents the pshysical condition of a unit due to the changeEndurance and tear of
-     * its personnel and equipment, as well as its organization and cohesion
-     * state. It is specified as a percentage, where 100% is the ideal
-     * condition, with the equipment in perfect conditions, all the personnel
-     * fit and rested
+     * Represents the pshysical condition of a unit due to the changeEndurance and tear of its personnel and equipment,
+     * as well as its organization and cohesion state. It is specified as a percentage, where 100% is the ideal
+     * condition, with the equipment in perfect conditions, all the personnel fit and rested
      */
     protected int readiness;
     /**
-     * Represents the amount of supplies available. It is specified as a
-     * percentage, where 100% indicates that the unit is able to fully feed its
-     * personnel, and has standard fuel and ammunition for sustained operations
-     * during a single day
+     * Represents the amount of supplies available. It is specified as a percentage, where 100% indicates that the unit
+     * is able to fully feed its personnel, and has standard fuel and ammunition for sustained operations during a
+     * single day
      */
     protected int supply;
     /**
@@ -84,21 +83,18 @@ public abstract class Unit {
      */
     protected Tile location;
     /**
-     * Represents the level of losses acceptable before disengaging from combat
-     * It is represented by an Ordinal scale (minimize losses, limit losses,
-     * ignore losses)
+     * Represents the level of losses acceptable before disengaging from combat It is represented by an Ordinal scale
+     * (minimize losses, limit losses, ignore losses)
      */
     protected Emphasis emphasis;
     /**
-     * Indicates whether a unit is available or not, and the reason for not
-     * being available Ir is represented by a Nominal scale (available,
-     * disbanded, eliminated, expected as reinforcement, etc.)
+     * Indicates whether a unit is available or not, and the reason for not being available Ir is represented by a
+     * Nominal scale (available, disbanded, eliminated, expected as reinforcement, etc.)
      */
     protected Availability availability;
     /**
-     * Represents the operational state of a unit, how it is deployed and what
-     * it is doing (deployed, embarked, mobile, deploying, assembling, moving,
-     * attacking, routing, reorganizing, etc. )
+     * Represents the operational state of a unit, how it is deployed and what it is doing (deployed, embarked, mobile,
+     * deploying, assembling, moving, attacking, routing, reorganizing, etc. )
      */
     protected OpState opState;
     /**
@@ -106,38 +102,32 @@ public abstract class Unit {
      */
     protected int replacementPriority;
     /**
-     * It can represent two things. If a unit is expected to enter as a
-     * reinforcement, it represents the turn it is received. However, if a unit
-     * is a conditional reinforcement, it represents the identifier of the event
-     * that fires the reception of the unit.
+     * It can represent two things. If a unit is expected to enter as a reinforcement, it represents the turn it is
+     * received. However, if a unit is a conditional reinforcement, it represents the identifier of the event that fires
+     * the reception of the unit.
      */
     protected int entry;
     /**
-     * This attribute is used in units resulting of division to reference the
-     * unit that was divided.
+     * This attribute is used in units resulting of division to reference the unit that was divided.
      */
     protected Unit parent;
     /**
-     * Collection of assets available in the unit. An asset informs of the type
-     * of equipment, the current amount of that equipment, and the maximum
-     * amount (the ideal condition),
+     * Collection of assets available in the unit. An asset informs of the type of equipment, the current amount of that
+     * equipment, and the maximum amount (the ideal condition),
      */
     protected Map<AssetType, Asset> assets;
     // ************ Derived (computed) attributes ****************
     /**
-     * Represents the special capabilities of a unit. It is specified as a map
-     * that links asset types to the number of assets possesing each asset
-     * trait.
+     * Represents the special capabilities of a unit. It is specified as a map that links asset types to the number of
+     * assets possesing each asset trait.
      */
     protected Map<AssetTrait, Integer> traits;
     /**
-     * Fighting strenght against armored vehicles such as tanks, armored
-     * personnel carriers, etc. (hard targets)
+     * Fighting strenght against armored vehicles such as tanks, armored personnel carriers, etc. (hard targets)
      */
     protected int antiTank;
     /**
-     * Fighting strenght against personnel, animals and non-armored equipment
-     * (soft targets)
+     * Fighting strenght against personnel, animals and non-armored equipment (soft targets)
      */
     protected int antiPersonnel;
     /**
@@ -149,13 +139,13 @@ public abstract class Unit {
      */
     protected int lowAntiAir;
     /**
-     * Strenght that represents the capacity to sustain loses. In general
-     * defense is computed as the sum of personnel and vehicles
+     * Strenght that represents the capacity to sustain loses. In general defense is computed as the sum of personnel
+     * and vehicles
      */
     protected int defense;
     /**
-     * Fighting strenght against soft targets (people, animals, non-armored
-     * equipment) using long-range indirect-fires (Bombardment) (soft targets)
+     * Fighting strenght against soft targets (people, animals, non-armored equipment) using long-range indirect-fires
+     * (Bombardment) (soft targets)
      */
     protected int artillery;
     /**
@@ -167,24 +157,21 @@ public abstract class Unit {
      */
     protected int weight;
     /**
-     * Movement type depends on the type of assets in the unit (air, naval,
-     * foot, motorized, etc.)
+     * Movement type depends on the type of assets in the unit (air, naval, foot, motorized, etc.)
      */
     protected MovementType movement;
     /**
-     * Standard average moving speed in ideal conditions, specified in meters
-     * per minute. Depends on type of assets in the unit
+     * Standard average moving speed in ideal conditions, specified in meters per minute. Depends on type of assets in
+     * the unit
      */
     protected int speed;
     /**
-     * The actual ability to perform actions, taking into account readiness and
-     * proficiency.
+     * The actual ability to perform actions, taking into account readiness and proficiency.
      *
      */
     protected int quality;
     /**
-     * The actual efficacy when performing actions, considering quality and
-     * supplies
+     * The actual efficacy when performing actions, considering quality and supplies
      */
     protected int efficacy;
     /**
@@ -192,10 +179,9 @@ public abstract class Unit {
      */
     protected int reconnaissance;
     /**
-     * Represents the remaining physical resistence of a unit before becoming
-     * exhausted, expressed in action points (seconds of low-intensity
-     * activity). The execution of actions consumes endurance, but it can be
-     * replenished by resting.
+     * Represents the remaining physical resistence of a unit before becoming exhausted, expressed in action points
+     * (seconds of low-intensity activity). The execution of actions consumes endurance, but it can be replenished by
+     * resting.
      */
     protected int endurance;
     /**
@@ -203,13 +189,12 @@ public abstract class Unit {
      */
     protected int stamina;
     /**
-     * Distance in meters a unit is currently able to move antiTank standard
-     * average speed, before becoming exhausted.
+     * Distance in meters a unit is currently able to move antiTank standard average speed, before becoming exhausted.
      */
     protected int range;
     /**
-     * Distance in meters a rested unit would be able to move in ideal
-     * conditions at standard average speed before becoming exhausted.
+     * Distance in meters a rested unit would be able to move in ideal conditions at standard average speed before
+     * becoming exhausted.
      */
     protected int maxRange;
 // TODO move the following attributes to the view, they are used only by the view
@@ -282,8 +267,7 @@ public abstract class Unit {
     }
 
     /**
-     * This method makes the unit active, which implies initializing state
-     * attributes & placing the unit in the board
+     * This method makes the unit active, which implies initializing state attributes & placing the unit in the board
      *
      */
     public void activate() {
@@ -295,8 +279,6 @@ public abstract class Unit {
         efficacy = (2 * proficiency + readiness + supply) / 4;
         location.add(this);
     }
-
-
 
     public void changeReadiness(int amount) {
         readiness += amount;
@@ -559,5 +541,10 @@ public abstract class Unit {
 
     public String toStringLong() {
         return toString() + '{' + echelon + ", " + formation + ", " + force + ", location=" + location + ", speed=" + speed + ", assets=" + assets + '}';
+    }
+
+    @Override
+    public UnitModel getModel(UserRole userRole) {
+        return new UnitModel(this);
     }
 }

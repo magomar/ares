@@ -7,14 +7,12 @@ import java.beans.PropertyChangeSupport;
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public abstract class AbstractModel<M> {
+public abstract class AbstractModelProvider<M> implements ModelProvider <M> {
     private M model;
-    private UserRole role;
 
     private PropertyChangeSupport propertyChangeSupport;
 
-    public AbstractModel(UserRole userRole) {
-        this.role = userRole;
+    public AbstractModelProvider() {
         propertyChangeSupport = new PropertyChangeSupport(this);
     }
     
@@ -22,10 +20,6 @@ public abstract class AbstractModel<M> {
         return model;
     }
 
-    protected UserRole getRole() {
-        return role;
-    }
-    
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         propertyChangeSupport.addPropertyChangeListener(listener);
     }
