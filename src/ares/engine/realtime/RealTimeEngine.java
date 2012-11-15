@@ -62,13 +62,13 @@ public class RealTimeEngine extends AbstractModelProvider<Engine> implements Eng
     }
 
     public void start() {
-        LOG.log(Level.INFO, "*** Clock Started", clock);
+        LOG.log(Level.INFO, "*** Clock Started {0}", clock);
         running = true;
         clock.tick();
     }
 
     public void stop() {
-        LOG.log(Level.INFO, "********** Clock Stopped", clock);
+        LOG.log(Level.INFO, "********** Clock Stopped {0}", clock);
         running = false;
     }
 

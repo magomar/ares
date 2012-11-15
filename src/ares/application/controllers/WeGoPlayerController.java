@@ -97,11 +97,11 @@ public class WeGoPlayerController extends AbstractController {
                 boardFrame.show();
 
                 MenuBarView menuBarView = getView(MenuBarView.class);
-                menuBarView.getMenuElement(FileCommands.CLOSE_SCENARIO.getName()).getComponent().setEnabled(true);
-                menuBarView.getMenuElement(AresMenus.ENGINE_MENU.getName()).getComponent().setEnabled(true);
-                menuBarView.getMenuElement(EngineCommands.START.getName()).getComponent().setEnabled(true);
-                menuBarView.getMenuElement(EngineCommands.PAUSE.getName()).getComponent().setEnabled(false);
-                menuBarView.getMenuElement(EngineCommands.NEXT.getName()).getComponent().setEnabled(false);
+                menuBarView.setMenuElementEnabled(FileCommands.CLOSE_SCENARIO.getName(), true);
+                menuBarView.setMenuElementEnabled(AresMenus.ENGINE_MENU.getName(), true);
+                menuBarView.setMenuElementEnabled(EngineCommands.START.getName(), true);
+                menuBarView.setMenuElementEnabled(EngineCommands.PAUSE.getName(), false);
+                menuBarView.setMenuElementEnabled(EngineCommands.NEXT.getName(), false);
             }
         }
     }
@@ -123,11 +123,12 @@ private class CloseScenarioActionListener implements ActionListener {
         LOG.log(Level.INFO, e.toString());
         getModel(RealTimeEngine.class).setScenario(null);
         MenuBarView menuBarView = getView(MenuBarView.class);
-        menuBarView.getMenuElement(FileCommands.CLOSE_SCENARIO.getName()).getComponent().setEnabled(false);
-        menuBarView.getMenuElement(AresMenus.ENGINE_MENU.getName()).getComponent().setEnabled(false);
-        getInternalFrameView(BoardView.class).getContentPane().setVisible(false);
-        getInternalFrameView(MessagesView.class).getContentPane().setVisible(false);
-        getInternalFrameView(UnitInfoView.class).getContentPane().setVisible(false);
+        menuBarView.setMenuElementEnabled(FileCommands.CLOSE_SCENARIO.getName(),false);
+        menuBarView.setMenuElementEnabled(AresMenus.ENGINE_MENU.getName(), false);
+        getInternalFrameView(BoardView.class).hide();
+        getInternalFrameView(BoardView.class).hide();
+        getInternalFrameView(MessagesView.class).hide();
+        getInternalFrameView(UnitInfoView.class).hide();
     }
 }
 
@@ -147,9 +148,8 @@ private class StartActionListener implements ActionListener {
         LOG.log(Level.INFO, e.toString());
         getModel(RealTimeEngine.class).start();
         MenuBarView menuBarView = getView(MenuBarView.class);
-        menuBarView.getMenuElement(EngineCommands.START.getName()).getComponent().setEnabled(false);
-        menuBarView.getMenuElement(EngineCommands.PAUSE.getName()).getComponent().setEnabled(true);
-//            menuBarView.getMenuElement(EngineCommands.NEXT.getName()).getComponent().setEnabled(false);
+        menuBarView.setMenuElementEnabled(EngineCommands.START.getName(), false);
+        menuBarView.setMenuElementEnabled(EngineCommands.PAUSE.getName(), true);
     }
 }
 
@@ -160,9 +160,8 @@ private class PauseActionListener implements ActionListener {
         LOG.log(Level.INFO, e.toString());
         getModel(RealTimeEngine.class).stop();
         MenuBarView menuBarView = getView(MenuBarView.class);
-        menuBarView.getMenuElement(EngineCommands.START.getName()).getComponent().setEnabled(true);
-        menuBarView.getMenuElement(EngineCommands.PAUSE.getName()).getComponent().setEnabled(false);
-//            menuBarView.getMenuElement(EngineCommands.NEXT.getName()).getComponent().setEnabled(false);
+        menuBarView.setMenuElementEnabled(EngineCommands.START.getName(), true);
+        menuBarView.setMenuElementEnabled(EngineCommands.PAUSE.getName(), false);
     }
 }
 
@@ -172,9 +171,8 @@ private class NextActionListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         LOG.log(Level.INFO, e.toString());
         MenuBarView menuBarView = getView(MenuBarView.class);
-//            menuBarView.getMenuElement(EngineCommands.START.getName()).getComponent().setEnabled(true);
-        menuBarView.getMenuElement(EngineCommands.PAUSE.getName()).getComponent().setEnabled(true);
-        menuBarView.getMenuElement(EngineCommands.NEXT.getName()).getComponent().setEnabled(false);
+        menuBarView.setMenuElementEnabled(EngineCommands.PAUSE.getName(),true);
+        menuBarView.setMenuElementEnabled(EngineCommands.NEXT.getName(),false);
         getModel(RealTimeEngine.class).start();
     }
 }

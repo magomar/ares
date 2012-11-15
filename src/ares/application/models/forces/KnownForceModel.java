@@ -12,20 +12,18 @@ import java.util.Collection;
  */
 public final class KnownForceModel extends ForceModel {
 
-    private final Collection<UnitModel> unitModels;
-
     public KnownForceModel(Force force) {
         super(force, InformationLevel.COMPLETE);
-        unitModels = new ArrayList<>();
+    }
+
+    public Collection<UnitModel> getUnitModels() {
+        Collection<UnitModel> unitModels = new ArrayList<>();
         for (Unit unit : force.getActiveUnits()) {
             UnitModel unitModel = unit.getCompleteModel();
             if (unitModel != null) {
                 unitModels.add(unitModel);
             }
         }
-    }
-
-    public Collection<UnitModel> getUnitModels() {
         return unitModels;
     }
 }

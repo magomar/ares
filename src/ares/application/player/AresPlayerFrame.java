@@ -1,7 +1,6 @@
 package ares.application.player;
 
-import ares.application.controllers.FileIOController;
-import ares.application.controllers.RealTimeEngineController;
+import ares.application.controllers.WeGoPlayerController;
 import ares.application.views.BoardView;
 import ares.application.views.MenuBarView;
 import ares.application.views.MessagesView;
@@ -29,7 +28,7 @@ public final class AresPlayerFrame extends AbstractAresApplication {
     private static JDesktopPane desktopPane;
     public static final int INFO_WINDOW_WIDTH = 250;
     public static final int MESSAGES_WINDOW_HEIGHT = 150;
-
+    
 
     @Override
     protected void configureMVC() {
@@ -39,31 +38,23 @@ public final class AresPlayerFrame extends AbstractAresApplication {
         addView(MenuBarView.class, new MenuBarView());
         addView(MessagesView.class, new InternalFrameView(new MessagesView(), desktopPane));
         addView(UnitInfoView.class, new InternalFrameView(new UnitInfoView(), desktopPane));
-        addView(BoardView.class, new InternalFrameView( new BoardView(), desktopPane));
+        addView(BoardView.class, new InternalFrameView(new BoardView(), desktopPane));
 
         // Create controllers
-        AbstractController engineController = new RealTimeEngineController();
-        AbstractController fileController = new FileIOController(this);
+        AbstractController engineController = new WeGoPlayerController(this);
 
         //  add views to controllers
         engineController.addView(MenuBarView.class, getView(MenuBarView.class));
         engineController.addView(MessagesView.class, getView(MessagesView.class));
         engineController.addView(UnitInfoView.class, getView(UnitInfoView.class));
         engineController.addView(BoardView.class, getView(BoardView.class));
-        fileController.addView(MenuBarView.class, getView(MenuBarView.class));
-        fileController.addView(MessagesView.class, getView(MessagesView.class));
-        fileController.addView(UnitInfoView.class, getView(UnitInfoView.class));
-        fileController.addView(BoardView.class, getView(BoardView.class));
 
         // create and add models to controllers
         AbstractModelProvider engineModel = new RealTimeEngine();
         engineController.addModel(RealTimeEngine.class, engineModel);
-        fileController.addModel(RealTimeEngine.class, engineModel);
 
         // Initialize controllers [controllers register listeners to be notified about views and model events]
         engineController.initialize();
-        fileController.initialize();
-
 
     }
 

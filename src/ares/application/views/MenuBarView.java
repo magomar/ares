@@ -1,5 +1,6 @@
 package ares.application.views;
 
+import ares.application.boundaries.view.MenuBarViewer;
 import ares.application.commands.EngineCommands;
 import ares.application.commands.FileCommands;
 import ares.application.commands.ViewCommands;
@@ -16,7 +17,7 @@ import javax.swing.MenuElement;
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public class MenuBarView extends AbstractView<JMenuBar>  {
+public class MenuBarView extends AbstractView<JMenuBar> implements MenuBarViewer {
 
     @Override
     protected JMenuBar layout() {
@@ -35,7 +36,7 @@ public class MenuBarView extends AbstractView<JMenuBar>  {
         return jmenuBar;
     }
     
-    public MenuElement getMenuElement(String elementName) {
+    protected MenuElement getMenuElement(String elementName) {
         return getMenuElement(elementName, getContentPane());
     }
 
@@ -59,5 +60,12 @@ public class MenuBarView extends AbstractView<JMenuBar>  {
     public void modelPropertyChange(PropertyChangeEvent evt) {
 //        Logger.getLogger(MenuBarView.class.getName()).log(Level.INFO, evt.toString());
     }
+
+    @Override
+    public void setMenuElementEnabled(String name, boolean enabled) {
+        getMenuElement(name).getComponent().setEnabled(enabled);
+                
+    }
+
 
 }

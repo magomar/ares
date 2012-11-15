@@ -263,7 +263,7 @@ public abstract class Unit extends AbstractModelProvider<UnitModel> {
         int x = unit.getX();
         int y = unit.getY();
         location = board.getMap()[x][y];
-        models = new EnumMap<>(InformationLevel.class);
+
         models.put(InformationLevel.POOR, new DetectedUnitModel(this, scenario.getScale()));
         models.put(InformationLevel.GOOD, new IdentifiedUnitModel(this, scenario.getScale()));
         models.put(InformationLevel.COMPLETE, new KnownUnitModel(this, scenario.getScale()));

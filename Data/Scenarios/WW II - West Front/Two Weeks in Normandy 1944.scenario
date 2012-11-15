@@ -2,6 +2,177 @@
 <Scenario xmlns="ares">
     <Header>
         <Name>Two Weeks in Normandy 1944</Name>
+        <Description>
+			TWO WEEKS IN NORMANDY
+The Normandy Campaign, June 6 - June 18, 1944
+
+Scenario ver. 2.31
+
+Designer:  Brett Turner
+
+TOAW-3 ver. 3.0.0.0
+
+:: PBEM ::
+:: Allied PO, German PO ::
+
+Situation: Utah, Omaha, Gold, Juno and Sword beaches, June, 1944.
+
+
+Date:  June 6, 1944
+Location:  France; Normandy
+Map Scale:  Each hex is actually about 1.5 km.  The scenario uses the minimum scale setting of 2.5 km.
+Time Scale: One day turns
+Unit Scale:  Battalions
+Length:  13 turns  
+
+UNIT COLORS
+
+Green on Light Green: U.S. VII Corps
+Grey on Light Green: U.S. V Corps
+White on Light Green: U.S. XIX Corps
+Black on Light Green: U.S. VIII Corps
+White on Green: U.S. 101st Airborne
+Blue on Green: U.S. 82d Airborne
+
+Green on Tan: British XXX Corps
+Red on Tan: British I Corps
+Blue on Tan: British VIII Corps
+Light Blue on Light Tan: Canadian
+Red on Tan: British Commando
+
+Blue on Light Blue: U.S. Navy
+Black on Light Blue: Commonwealth Navy
+
+White on Grey: German
+Black on Grey: German SS
+Blue on Grey: German Osttruppen
+(low quality &quot;volunteers&quot; from Eastern Europe)
+
+
+PARAMETERS
+
+The supply radius for both sides is 10 hexes.
+
+German force intolerance is set at 50; the static units deployed on the beaches were viewed as essentially expendable.  Allied force intolerance is normal (100).
+
+The global attrition divider is set at 12.
+
+
+HOUSE RULE
+
+The Allied player is not allowed to place the two Allied heavy bomber units on interdiction.  Historically, when the heavy bombers were used tactically at all, they were used for direct carpet-bombing attacks on German units.
+
+
+SPECIAL EVENTS
+
+The Allied player gets +30 VPs for controlling each of the following locations:
+
+Cherbourg (hex 18, 4) 
+St. Lo (hex 45, 44)
+Torigni (hex 49, 49)
+Bourguebus Ridge (within two hexes of 81, 46)
+
+The German player gets +30 VPs for controlling each of the following locations:
+
+Carentan (hex 36, 30)
+Foret de Cerisy (hex 55, 38)
+Pegasus Bridge (hex 83, 35)
+
+Locations which give a 30 VP award to one side are marked with asterisks on the map.  Locations yielding Allied VPs are in capital letters; locations yielding German VPs are in small letters.  
+
+Effective with version 2.2, six of the seven special VP awards score during play, e.g., the 30 points will be added and taken away as possession is gained or lost.  The exception is Bourguebus Ridge, control of which is determined once at the end of the game.  (The difference is required by the fact that that the Ridge is an area, not a single hex.)
+
+The Allied supply level goes up by +3% when the Allied player takes Port-en-Bessein (hex 60,25).  This represents the linking of the Commonwealth and American beaches.
+
+The Allied supply level goes up by +2% when the Allied player takes Carentan (hex 36, 30).  This represents the linking of Utah and Omaha beaches.
+
+The Allied supply level goes up by +1% when the Allied player takes each of following locations:
+
+Crisbecq (hex 34, 17)
+Azeville (hex 32, 18)
+Formigny (hex 53, 27)
+Bayeux (hex 63, 23)
+Douvres (hex 78, 30)
+Houlgate (hex 93, 30)
+
+Possession of these places prevents the Germans from keeping the invasion beaches under artillery fire.  Note that the Allies did not capture Houlgate until August, with the result that artillery fire from that area significantly limited unloading of supplies on Sword beach.
+
+The Ranger units attached to the U.S. 29th Infantry Division are withdrawn on turn 8.
+
+The first U.S. medium bomber unit is withdrawn when Allied forces first come within 10 hexes of St. Lo.  The second U.S. medium bomber unit is withdrawn when Allied forces first come within 8 hexes of Portbail or within 3 hexes of Valognes.
+
+VERSION 2.31 NOTES
+
+Version 2.31, for use in the 2003 Warfare HQ tournament, removed reserve status from units near Carentan and Bayeux.  No other changes were made.
+
+
+VERSION 2.3 NOTES
+
+The major OB change in version 2.3 is a materially improved order of battle for both the Allies and Germans on Gold, Juno and Sword beaches.  It's been three years since I started designing these scenarios, and I've done research at a major university library (the University of Virginia), and it's still amazing how often new order of battle information comes to light.  The divisional OBs have been right all along, but it's really hit or miss getting information on the corps level attachments.  Also, the OB for the German static divisions deployed on the beaches is a nightmare; they basically took over whatever guns the Germans could manage to produce or shanghai from somewhere else (usually the latter), so standard OB references essentially not useful.
+
+In any event, Allied deployment is slightly more accurate on the British beaches.  I have given up organizing the 79 Arm Div according to its actual organization, because its units were attached to other formations at the squadron (company) level, and I don't think my information on unit designations is very reliable.  Consistently, however, each beach seems to have started with two squadrons of flail tanks and two squadrons of Churchhill AVREs.  I've gone with that organization, without bothering to figure out exactly which squadrons went to which beach.  Even if I figured that out, it wouldn't fit in the field for the unit name anyway.
+
+Regular players will also note that, ahem, the western part of Gold Beach has moved by two hexes.  I based the location on what I thought was a reliable map, but in hindsight it really wasn't.  Except for that one source, there is general agreement that the Allies landed just west of Arromanches, not on and east of it as prior versions of this scenario suggested.
+
+The big improvement is in the German OB on the British beaches.  The company level deployment has been essentially correct all along, but I really underestimated the degree to which various fortified units were given extra MGs, 75 mm AT guns and especially 50 mm AT guns.  716 Inf Div in particular had a ton of guns, all way outside the formal organization for a static infantry division.
+
+Balancewise, the extra German units make it a bit harder for the Allies to get off the beaches, but the extra units from the 79 Arm Div give the Allies a bit of extra strength, so in testing so far the balance is about a wash.
+
+As a result of continued human vs. human testing by the good folks at WarfareHQ.com, deployment has been modified west of Utah Beach.  The 508th Para regiment of the 82d Airborne, which drops on the far side of the Merderet, has been frozen on turn 1.  This regiment had a particularly bad drop, and spent most of the first day simply assembling in sufficient numbers to begin to influence the battle.  The 507th and the 508th Para Regiments have both been weakened to better reflect their scattered drops, and German units in the area between St. Saveur and the Merderet have been partly deployed forward.  The overall goal here is to discourage human allied players from using the 507th and 508th very aggressively to take bridges and come close to St. Saveur on turn 1.  German units have also been deployed more forward, to limit the movement of the 507th.  Historically, aggressive attacks west of the Merderet on July 6 were not possible; the paratroops were too scattered, and the German reaction was too quick.
+
+The allied heavy bombers have been placed into a new formation, and their supply value has been reduced.  This is another attempt to prevent interdiction from unreasonably restricting German movement in the last half of the game.  To similar effect is the new house rule against using the heavy bombers on interdiction.
+
+
+VERSION 2.2 NOTES
+
+Fixing the Scoring Bug
+
+All versions of the present scenario before this one suffered from a scoring bug.  The +30 VP awards for the special location were awarded based on a &quot;Side X Occupies&quot; event which was triggered only after the last turn.  The designer naively assumed that this event fires if the location specified is occupied by the side specified.  The event actually fires only if control of the location changed during the last game turn.  As a result, the automatic +30 VP awards scored only if the location at issue changed hands on the last turn (turn 12).  This was a surprisingly hard bug to find, as the scenario is balanced enough that the AI rarely takes a special location before turn 12.  The bug surfaced regularly, however, in human vs. human games.
+
+With help from the event experts in the WarfareHQ.com TOAW forum, the bug has now been fixed.  Special thanks to MattyBurn7 for sending me a crucial game save, to Brian &quot;Siberian Heat&quot; King for nagging me into fixing the problem, and to Chris Horn for putting me on the right track to the method which finally worked.
+
+Six of the seven VP hexes should now consistently score correctly.  The one potential exception is Bourguebus Ridge, which is based on a two hex radius rather than single location.  If I use the &quot;new method&quot; on Bourguebus Ridge, the allies lose the extra VPs if the Germans take any hex within two of the central location-- not what we want.  The easiest way to code Bourguebus Ridge is actually to use the old logic.  This means that the +30 VPs will not score unless the Allies take some hex within 2 of Bourguebus Ridge on turn 12.  But I have no reported failures on Bourguebus Ridge under the old logic; it is extremely rare than no hex in the entire 2-hex-radius area changes hands in Allied favor on turn 12.  It is still technically possible that a scoring error could occur, but the chance is small to negligible, and the error would only in a complete Allied romp.
+
+The scoring should now work correctly.  If the scoring in any given game does not function correctly, please feel free to send a game 13 *.sav file to BrettT2466@aol.com.  I'm committed to making the automatic scoring work right.
+
+
+Terrain Changes
+
+I should have finally succeeded in changing all of the flooded marsh/bridge hexes into marsh/bridge.  A blown bridge in flooded marsh cannot presently be repaired (the engineer unit can't get into the hex).  This is ahistorical; all of the bridges here could be (and many were) repaired within the time frame of the game.  To the extent that this terrain change hurts the Germans, it should be balanced by the withdrawal of U.S. medium bombers.
+
+A few minor road network changes were also made; the primary effect should be to slightly improve Allied supply onto the far side of the Orne river.
+
+
+Airpower
+
+The designer's intent is that airpower be one important source of Allied strength, but that it not be the all-powerful entity portrayed in some accounts of the fighting.  One of the best Normandy books in recent years is Niklas Zetterling's Normandy 1944 (J.J. Fedorowicz Publishing 2000).  Zetterling has spent hours poring through the German records on the campaign.  The results of his research are many and varied (including a good part of this scenario's German OOB), but one of his major conclusions is that the effectiveness of Allied airpower has been exaggerated.  Zetterling was unable to find any indication in German records that substantial numbers of German men and tanks were regularly killed by airpower.  For instance, Allied pilots would regularly claim to have killed a certain number of tanks on a particular day; Zetterling could find no indication in German records that tanks were lost at that time.  &quot;[N]ot a single example supporting the image of extensive losses being inflicted from Allied air forces in German combat units in Normandy has been found.  In every case where reliable data has been found, losses from enemy air are not great.&quot;  Zetterling at 45.  At the operational level portrayed in this scenario, &quot;the destruction caused by air power was modest.&quot;  Zetterling at 50.
+
+Another point, not made by Zetterling but evident in any Allied account of the battle, is that the German were able to move tactically in daylight.  Numerous Allied accounts report that unit X took position Y, but then lost it to a German daylight counterattack.  Counterattacks, of course, require movement.  If the German army was completely unable to move, or to move without heavy casualties, it would not have been able to find such a successful mobile defense.
+
+This is not to say that Allied airpower was ineffective.  Zetterling concludes that it was a major force in slowing down German movement into the theater.  Long distance strategic moves, with everyone strung out on a road for hours on end, were extremely dangerous.  Even road movement across wide areas of the front (e.g., German generals in staff cars) was risky in daylight.  But short-distance tactical movement, often from one prepared position to another, was still possible in daylight.  Another consideration is that the air forces had to be careful about target identification close to the battle lines, a concern which did not apply on interdiction raids deep into the French interior.
+
+This scenario's version of Allied airpower was constructed with Zetterling's findings in mind.  Prolonged German movement is likely to incur casualties, and airpower is of course effective in support of specific combats.  But the scenario is deliberately constructed to permit reasonable tactical movement of German troops without substantial losses to air attack.
+
+Revisions to COW since the first release of this scenario have increased the effectiveness of air interdiction.   The problem is most acute late in the game, as the diminishing number of German-controlled hexes greatly increases the effectiveness of Allied air interdiction.  To reduce the effectiveness of interdiction late in the game, the games now withdraws two U.S. medium bomber units as the Allied advance moves south and west.  These units are not actually withdrawn from the theater, but rather are being used to interdict movement in areas off the south edge of the map.
+
+
+VERSION 2.0 PLAYER'S NOTES
+
+The big change in version 2.0 is the addition of the two supply units for the Allies.  The effect of these units is to give the Allies a supply advantage in areas which the units are present, but a supply disadvantage in other places.  The deployment of the supply units is therefore critical.  The American supply unit is normally deployed in the Cotentin, to help capture the valuable objectives on the way to Cherbourg.  The British unit historically gave supply priority to the Villiers-Bocage operation, with the result that there were not enough supplies available to make a sustained push on Caen.  Giving supply priority to the Caen area or even the airhead across the Orne might yield a greater short term gain, but the Germans would have an increased ability to counterattack in the Villiers-Bocage/Caumont area.
+
+
+ADVERTISEMENT
+
+Operations on the US and UK beaches alone are the subject of two additional scenarios by the same author, US Normandy and UK Normandy.  These scenarios last for 25 one-day turns, as opposed to the 12 turns of the present scenario, and thus cover the subject in more depth.
+
+Those who are interested should look for Four Weeks In Normandy, the 25 turn version of the combined game.
+
+
+HISTORICAL NOTES
+
+A full set of historical notes and various related ramblings by the designer can be found in the documentation file for this scenario, 2norm231.doc.
+
+		</Description>
     </Header>
     <Calendar>
         <TurnLength>FULL_DAY</TurnLength>
@@ -234,6 +405,7 @@
         </Cell>
         <Cell x="1" y="2">
             <Terrain Type="DEEP_WATER" Dir="N NE SE S SW NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="C"/>
             <Owner>1</Owner>
         </Cell>
         <Cell x="1" y="3">
@@ -646,12 +818,15 @@
         </Cell>
         <Cell x="3" y="1">
             <Terrain Type="ROAD" Dir="SE"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="NE SE S"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="3" y="2">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE S"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="3" y="3">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="3" y="4">
@@ -847,6 +1022,7 @@
             <Owner>1</Owner>
         </Cell>
         <Cell x="4" y="0">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N SE S SW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="4" y="1">
@@ -858,6 +1034,7 @@
             <Owner>0</Owner>
         </Cell>
         <Cell x="4" y="3">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="4" y="4">
@@ -1057,6 +1234,7 @@
             <Owner>1</Owner>
         </Cell>
         <Cell x="5" y="1">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="5" y="2">
@@ -1068,6 +1246,7 @@
             <Owner>0</Owner>
         </Cell>
         <Cell x="5" y="4">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="5" y="5">
@@ -1107,6 +1286,7 @@
             <Owner>1</Owner>
         </Cell>
         <Cell x="5" y="14">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="NE SE"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="5" y="15">
@@ -1262,6 +1442,7 @@
             <Owner>1</Owner>
         </Cell>
         <Cell x="6" y="1">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="NE SE S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="6" y="2">
@@ -1274,10 +1455,12 @@
             <Owner>0</Owner>
         </Cell>
         <Cell x="6" y="4">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="6" y="5">
             <Terrain Type="DEEP_WATER" Dir="N NE SE S SW NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE"/>
             <Owner>1</Owner>
         </Cell>
         <Cell x="6" y="6">
@@ -1290,6 +1473,7 @@
         </Cell>
         <Cell x="6" y="8">
             <Terrain Type="DEEP_WATER" Dir="N NE SE S SW NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="NE SE"/>
             <Owner>1</Owner>
         </Cell>
         <Cell x="6" y="9">
@@ -1305,12 +1489,15 @@
             <Owner>1</Owner>
         </Cell>
         <Cell x="6" y="12">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="NE SE S"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="6" y="13">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE S SW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="6" y="14">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="6" y="15">
@@ -1466,6 +1653,7 @@
             <Owner>1</Owner>
         </Cell>
         <Cell x="7" y="1">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S SW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="7" y="2">
@@ -1481,27 +1669,35 @@
             <Owner>0</Owner>
         </Cell>
         <Cell x="7" y="5">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE S NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="7" y="6">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE S"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="7" y="7">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE S"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="7" y="8">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE S"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="7" y="9">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE S"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="7" y="10">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE S"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="7" y="11">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE S"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="7" y="12">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE S SW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="7" y="13">
@@ -1511,15 +1707,19 @@
             <Owner>0</Owner>
         </Cell>
         <Cell x="7" y="15">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE S NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="7" y="16">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE S"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="7" y="17">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE S"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="7" y="18">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="7" y="19">
@@ -1659,6 +1859,7 @@
             <Owner>1</Owner>
         </Cell>
         <Cell x="8" y="1">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="NE SE S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="8" y="2">
@@ -1726,15 +1927,19 @@
             <Owner>0</Owner>
         </Cell>
         <Cell x="8" y="18">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE S NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="8" y="19">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE S"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="8" y="20">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE S"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="8" y="21">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="8" y="22">
@@ -1747,6 +1952,7 @@
         </Cell>
         <Cell x="8" y="24">
             <Terrain Type="DEEP_WATER" Dir="N NE SE S SW NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="NE SE"/>
             <Owner>1</Owner>
         </Cell>
         <Cell x="8" y="25">
@@ -1859,9 +2065,11 @@
         </Cell>
         <Cell x="9" y="0">
             <Terrain Type="DEEP_WATER" Dir="N NE SE S SW NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE S NW"/>
             <Owner>1</Owner>
         </Cell>
         <Cell x="9" y="1">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S SW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="9" y="2">
@@ -1945,12 +2153,15 @@
             <Owner>0</Owner>
         </Cell>
         <Cell x="9" y="22">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE S NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="9" y="23">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE S"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="9" y="24">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE S"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="9" y="25">
@@ -1958,6 +2169,7 @@
             <Terrain Type="FORTIFICATION" Dir="N NE SE S SW NW"/>
             <Terrain Type="IMPROVED_ROAD" Dir="NE"/>
             <Terrain Type="RAIL" Dir="NE"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="9" y="26">
@@ -2069,6 +2281,7 @@
             <Owner>1</Owner>
         </Cell>
         <Cell x="10" y="1">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="10" y="2">
@@ -2158,10 +2371,12 @@
         <Cell x="10" y="24">
             <Terrain Type="IMPROVED_ROAD" Dir="NE SE SW"/>
             <Terrain Type="RAIL" Dir="SE SW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="10" y="25">
             <Terrain Type="DEEP_WATER" Dir="N NE SE S SW NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE NW"/>
             <Owner>1</Owner>
         </Cell>
         <Cell x="10" y="26">
@@ -2270,6 +2485,7 @@
         </Cell>
         <Cell x="11" y="0">
             <Terrain Type="DEEP_WATER" Dir="N NE SE S SW NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE NW"/>
             <Owner>1</Owner>
         </Cell>
         <Cell x="11" y="1">
@@ -2277,6 +2493,7 @@
             <Owner>1</Owner>
         </Cell>
         <Cell x="11" y="2">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="11" y="3">
@@ -2369,9 +2586,11 @@
         <Cell x="11" y="25">
             <Terrain Type="IMPROVED_ROAD" Dir="N SE NW"/>
             <Terrain Type="RAIL" Dir="SE NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE S NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="11" y="26">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="11" y="27">
@@ -2483,6 +2702,7 @@
             <Owner>1</Owner>
         </Cell>
         <Cell x="12" y="2">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="12" y="3">
@@ -2575,14 +2795,17 @@
         <Cell x="12" y="26">
             <Terrain Type="IMPROVED_ROAD" Dir="N S"/>
             <Terrain Type="RAIL" Dir="N S"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE S NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="12" y="27">
             <Terrain Type="IMPROVED_ROAD" Dir="N SE"/>
             <Terrain Type="RAIL" Dir="N SE"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE S"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="12" y="28">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="12" y="29">
@@ -2690,6 +2913,7 @@
             <Owner>1</Owner>
         </Cell>
         <Cell x="13" y="3">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="NE SE S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="13" y="4">
@@ -2785,13 +3009,17 @@
         <Cell x="13" y="28">
             <Terrain Type="IMPROVED_ROAD" Dir="SE NW"/>
             <Terrain Type="RAIL" Dir="SE NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="13" y="29">
             <Terrain Type="DEEP_WATER" Dir="N NE SE S SW NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE S NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="13" y="30">
+            <Terrain Type="SHALLOW_WATER_DECORATOR" Dir="NE SE S SW NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="NE SE"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="13" y="31">
@@ -2887,6 +3115,7 @@
             <Owner>1</Owner>
         </Cell>
         <Cell x="14" y="2">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S SW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="14" y="3">
@@ -2988,16 +3217,20 @@
             <Terrain Type="FORTIFICATION" Dir="N NE SE S SW NW"/>
             <Terrain Type="IMPROVED_ROAD" Dir="NE NW"/>
             <Terrain Type="RAIL" Dir="NE NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE S NW"/>
             <Owner>0</Owner>
             <VP>3</VP>
         </Cell>
         <Cell x="14" y="29">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE S SW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="14" y="30">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE S NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="14" y="31">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="14" y="32">
@@ -3093,6 +3326,7 @@
             <Owner>1</Owner>
         </Cell>
         <Cell x="15" y="3">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="15" y="4">
@@ -3202,9 +3436,11 @@
             <Owner>0</Owner>
         </Cell>
         <Cell x="15" y="32">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE S NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="15" y="33">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="15" y="34">
@@ -3294,6 +3530,7 @@
         <Cell x="16" y="3">
             <Terrain Type="DENSE_URBAN" Dir="SE S"/>
             <Terrain Type="FORTIFICATION" Dir="N NE SE SW NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="NE SE S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="16" y="4">
@@ -3421,6 +3658,7 @@
             <Owner>0</Owner>
         </Cell>
         <Cell x="16" y="33">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="16" y="34">
@@ -3497,6 +3735,7 @@
         </Cell>
         <Cell x="17" y="0">
             <Terrain Type="DEEP_WATER" Dir="N NE SE S SW NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE NW"/>
             <Owner>1</Owner>
         </Cell>
         <Cell x="17" y="1">
@@ -3508,10 +3747,12 @@
             <Owner>1</Owner>
         </Cell>
         <Cell x="17" y="3">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="S SW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="17" y="4">
             <Terrain Type="DENSE_URBAN" Dir="SE S SW NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N SE S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="17" y="5">
@@ -3636,9 +3877,11 @@
             <Owner>0</Owner>
         </Cell>
         <Cell x="17" y="34">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE S NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="17" y="35">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="17" y="36">
@@ -3719,6 +3962,7 @@
         </Cell>
         <Cell x="18" y="3">
             <Terrain Type="DEEP_WATER" Dir="N NE SE S SW NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="NE SE S SW NW"/>
             <Owner>1</Owner>
         </Cell>
         <Cell x="18" y="4">
@@ -3726,6 +3970,7 @@
             <Terrain Type="RIVER" Dir="S"/>
             <Terrain Type="IMPROVED_ROAD" Dir="S"/>
             <Terrain Type="RAIL" Dir="S"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="NE SE S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="18" y="5">
@@ -3859,6 +4104,7 @@
             <Owner>0</Owner>
         </Cell>
         <Cell x="18" y="35">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="18" y="36">
@@ -3866,6 +4112,7 @@
             <Owner>1</Owner>
         </Cell>
         <Cell x="18" y="37">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="NE SE"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="18" y="38">
@@ -3901,12 +4148,15 @@
             <Owner>1</Owner>
         </Cell>
         <Cell x="18" y="46">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="NE SE S"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="18" y="47">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE S"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="18" y="48">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="18" y="49">
@@ -3934,10 +4184,12 @@
             <Owner>1</Owner>
         </Cell>
         <Cell x="19" y="3">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="19" y="4">
             <Terrain Type="DENSE_URBAN" Dir="NE SE S SW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE S SW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="19" y="5">
@@ -4065,6 +4317,7 @@
         </Cell>
         <Cell x="19" y="35">
             <Terrain Type="RIVER" Dir="NE S"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="19" y="36">
@@ -4073,39 +4326,49 @@
             <Owner>1</Owner>
         </Cell>
         <Cell x="19" y="37">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S SW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="19" y="38">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE S NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="19" y="39">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE S"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="19" y="40">
             <Terrain Type="ROAD" Dir="NE S"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE S"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="19" y="41">
             <Terrain Type="ROAD" Dir="N S"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE S"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="19" y="42">
             <Terrain Type="ROAD" Dir="N S"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE S"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="19" y="43">
             <Terrain Type="ROAD" Dir="N S"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE S"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="19" y="44">
             <Terrain Type="ROAD" Dir="N S"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE S"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="19" y="45">
             <Terrain Type="ROAD" Dir="N SE"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE S"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="19" y="46">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE S SW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="19" y="47">
@@ -4115,9 +4378,11 @@
             <Owner>0</Owner>
         </Cell>
         <Cell x="19" y="49">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE S NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="19" y="50">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="19" y="51">
@@ -4126,6 +4391,7 @@
         </Cell>
         <Cell x="20" y="0">
             <Terrain Type="DEEP_WATER" Dir="N NE SE S SW NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N"/>
             <Owner>1</Owner>
         </Cell>
         <Cell x="20" y="1">
@@ -4139,6 +4405,7 @@
         <Cell x="20" y="3">
             <Terrain Type="DENSE_URBAN" Dir="S SW"/>
             <Terrain Type="FORTIFICATION" Dir="N NE SE SW NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="NE SE S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="20" y="4">
@@ -4272,14 +4539,17 @@
             <Owner>0</Owner>
         </Cell>
         <Cell x="20" y="35">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="20" y="36">
             <Terrain Type="DEEP_WATER" Dir="N NE SE S SW NW"/>
             <Terrain Type="RIVER" Dir="SE NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE S SW"/>
             <Owner>1</Owner>
         </Cell>
         <Cell x="20" y="37">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="NE SE S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="20" y="38">
@@ -4328,9 +4598,11 @@
             <Owner>0</Owner>
         </Cell>
         <Cell x="20" y="50">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE S NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="20" y="51">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="21" y="0">
@@ -4346,6 +4618,7 @@
             <Owner>1</Owner>
         </Cell>
         <Cell x="21" y="3">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S SW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="21" y="4">
@@ -4483,10 +4756,12 @@
             <Owner>0</Owner>
         </Cell>
         <Cell x="21" y="36">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE S NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="21" y="37">
             <Terrain Type="RIVER" Dir="NE NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE S SW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="21" y="38">
@@ -4538,6 +4813,7 @@
         </Cell>
         <Cell x="21" y="50">
             <Terrain Type="RIVER" Dir="N SE"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="21" y="51">
@@ -4557,6 +4833,7 @@
             <Owner>1</Owner>
         </Cell>
         <Cell x="22" y="3">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="NE SE S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="22" y="4">
@@ -4770,18 +5047,22 @@
         </Cell>
         <Cell x="22" y="49">
             <Terrain Type="ROAD" Dir="N SE"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="22" y="50">
             <Terrain Type="DEEP_WATER" Dir="N NE SE S SW NW"/>
             <Terrain Type="RIVER" Dir="NE SE NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE S NW"/>
             <Owner>1</Owner>
         </Cell>
         <Cell x="22" y="51">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="NE SE S SW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="23" y="0">
             <Terrain Type="DEEP_WATER" Dir="N NE SE S SW NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE NW"/>
             <Owner>1</Owner>
         </Cell>
         <Cell x="23" y="1">
@@ -4793,6 +5074,7 @@
             <Owner>1</Owner>
         </Cell>
         <Cell x="23" y="3">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S SW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="23" y="4">
@@ -4991,10 +5273,12 @@
         <Cell x="23" y="50">
             <Terrain Type="RIVER" Dir="NE SW"/>
             <Terrain Type="ROAD" Dir="SE NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE S NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="23" y="51">
             <Terrain Type="RIVER" Dir="SE NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE S SW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="24" y="0">
@@ -5010,6 +5294,7 @@
             <Owner>1</Owner>
         </Cell>
         <Cell x="24" y="3">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="NE SE S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="24" y="4">
@@ -5225,9 +5510,11 @@
             <Owner>1</Owner>
         </Cell>
         <Cell x="25" y="2">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="25" y="3">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE S SW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="25" y="4">
@@ -5449,6 +5736,7 @@
             <Owner>1</Owner>
         </Cell>
         <Cell x="26" y="2">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="NE SE S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="26" y="3">
@@ -5678,6 +5966,7 @@
             <Owner>1</Owner>
         </Cell>
         <Cell x="27" y="2">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="NE SE S SW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="27" y="3">
@@ -5898,6 +6187,7 @@
             <Owner>1</Owner>
         </Cell>
         <Cell x="28" y="1">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="NE SE S SW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="28" y="2">
@@ -6126,6 +6416,7 @@
             <Owner>1</Owner>
         </Cell>
         <Cell x="29" y="1">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S SW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="29" y="2">
@@ -6338,9 +6629,11 @@
         </Cell>
         <Cell x="30" y="0">
             <Terrain Type="DEEP_WATER" Dir="N NE SE S SW NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N SE S SW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="30" y="1">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="NE SE S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="30" y="2">
@@ -6571,6 +6864,7 @@
             <Owner>1</Owner>
         </Cell>
         <Cell x="31" y="1">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S SW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="31" y="2">
@@ -6785,6 +7079,7 @@
             <Owner>1</Owner>
         </Cell>
         <Cell x="32" y="1">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="NE SE S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="32" y="2">
@@ -7010,6 +7305,7 @@
             <Owner>1</Owner>
         </Cell>
         <Cell x="33" y="1">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S SW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="33" y="2">
@@ -7042,30 +7338,38 @@
         </Cell>
         <Cell x="33" y="8">
             <Terrain Type="IMPROVED_ROAD" Dir="N S"/>
+            <Terrain Type="SHALLOW_WATER_DECORATOR" Dir="N NE S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="33" y="9">
             <Terrain Type="IMPROVED_ROAD" Dir="N S SW"/>
+            <Terrain Type="SHALLOW_WATER_DECORATOR" Dir="N SE S SW NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="33" y="10">
             <Terrain Type="IMPROVED_ROAD" Dir="N S"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="33" y="11">
             <Terrain Type="IMPROVED_ROAD" Dir="N SW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N S SW NW"/>
             <Entrenchment>6</Entrenchment>
             <Owner>0</Owner>
         </Cell>
         <Cell x="33" y="12">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="33" y="13">
             <Terrain Type="SUPER_RIVER" Dir="NE NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="33" y="14">
             <Terrain Type="HILLS" Dir="SW NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N SE S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="33" y="15">
@@ -7236,10 +7540,12 @@
         </Cell>
         <Cell x="34" y="0">
             <Terrain Type="DEEP_WATER" Dir="N NE SE S SW NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N S SW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="34" y="1">
             <Terrain Type="IMPROVED_ROAD" Dir="SE SW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S SW NW"/>
             <Entrenchment>25</Entrenchment>
             <Owner>0</Owner>
         </Cell>
@@ -7263,10 +7569,12 @@
         </Cell>
         <Cell x="34" y="7">
             <Terrain Type="ROAD" Dir="NE NW"/>
+            <Terrain Type="SHALLOW_WATER_DECORATOR" Dir="N NE SE SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="34" y="8">
             <Terrain Type="SHALLOW_WATER" Dir="N NE SE S SW NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE SW NW"/>
             <Owner>1</Owner>
         </Cell>
         <Cell x="34" y="9">
@@ -7289,12 +7597,14 @@
         <Cell x="34" y="13">
             <Terrain Type="DEEP_WATER" Dir="N NE SE S SW NW"/>
             <Terrain Type="FORTIFICATION" Dir="N NE SE SW NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="34" y="14">
             <Terrain Type="URBAN" Dir="C"/>
             <Terrain Type="FORTIFICATION" Dir="NE SE S SW NW"/>
             <Terrain Type="ROAD" Dir="SW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="34" y="15">
@@ -7473,11 +7783,13 @@
             <Terrain Type="URBAN" Dir="C"/>
             <Terrain Type="FORTIFICATION" Dir="N NE SE S SW NW"/>
             <Terrain Type="IMPROVED_ROAD" Dir="S NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="S SW NW"/>
             <Entrenchment>35</Entrenchment>
             <Owner>0</Owner>
         </Cell>
         <Cell x="35" y="3">
             <Terrain Type="IMPROVED_ROAD" Dir="N SW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N SE S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="35" y="4">
@@ -7495,13 +7807,18 @@
             <Terrain Type="RIVER" Dir="N SE"/>
             <Terrain Type="FORTIFICATION" Dir="N NE SE S SW NW"/>
             <Terrain Type="ROAD" Dir="SW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE S SW NW"/>
             <Entrenchment>40</Entrenchment>
             <Owner>0</Owner>
         </Cell>
         <Cell x="35" y="8">
+            <Terrain Type="SHALLOW_WATER_DECORATOR" Dir="N NE SE S NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="35" y="9">
+            <Terrain Type="SHALLOW_WATER_DECORATOR" Dir="N NE SE S SW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="35" y="10">
@@ -7525,13 +7842,16 @@
             <Owner>1</Owner>
         </Cell>
         <Cell x="35" y="15">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="35" y="16">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="35" y="17">
             <Terrain Type="ROAD" Dir="SW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N SE S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="35" y="18">
@@ -7700,6 +8020,7 @@
             <Owner>1</Owner>
         </Cell>
         <Cell x="36" y="3">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="36" y="4">
@@ -7709,11 +8030,13 @@
             <Owner>0</Owner>
         </Cell>
         <Cell x="36" y="6">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="36" y="7">
             <Terrain Type="DEEP_WATER" Dir="N NE SE S SW NW"/>
             <Terrain Type="SUPER_RIVER" Dir="SE NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SW NW"/>
             <Owner>1</Owner>
         </Cell>
         <Cell x="36" y="8">
@@ -7753,9 +8076,11 @@
             <Owner>1</Owner>
         </Cell>
         <Cell x="36" y="17">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="36" y="18">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N SE S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="36" y="19">
@@ -7922,18 +8247,23 @@
         </Cell>
         <Cell x="37" y="3">
             <Terrain Type="DEEP_WATER" Dir="N NE SE S SW NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="S SW"/>
             <Owner>1</Owner>
         </Cell>
         <Cell x="37" y="4">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="37" y="5">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="37" y="6">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="37" y="7">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="37" y="8">
@@ -7983,6 +8313,7 @@
         </Cell>
         <Cell x="37" y="19">
             <Terrain Type="IMPROVED_ROAD" Dir="SE SW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="37" y="20">
@@ -8208,10 +8539,12 @@
         </Cell>
         <Cell x="38" y="19">
             <Terrain Type="IMPROVED_ROAD" Dir="S NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="38" y="20">
             <Terrain Type="IMPROVED_ROAD" Dir="N SE SW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N SE S SW NW"/>
             <Feature>ANCHORAGE</Feature>
             <Owner>1</Owner>
         </Cell>
@@ -8226,14 +8559,17 @@
         </Cell>
         <Cell x="38" y="23">
             <Terrain Type="ROAD" Dir="NE SW"/>
+            <Terrain Type="SHALLOW_WATER_DECORATOR" Dir="N NE S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="38" y="24">
             <Terrain Type="MARSH" Dir="S SW NW"/>
+            <Terrain Type="SHALLOW_WATER_DECORATOR" Dir="N S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="38" y="25">
             <Terrain Type="MARSH" Dir="N SE S SW NW"/>
+            <Terrain Type="SHALLOW_WATER_DECORATOR" Dir="N SE S SW NW"/>
             <Owner>1</Owner>
         </Cell>
         <Cell x="38" y="26">
@@ -8434,15 +8770,19 @@
         </Cell>
         <Cell x="39" y="21">
             <Terrain Type="IMPROVED_ROAD" Dir="S NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="S SW NW"/>
             <Feature>ANCHORAGE</Feature>
             <Owner>1</Owner>
         </Cell>
         <Cell x="39" y="22">
             <Terrain Type="IMPROVED_ROAD" Dir="N S SW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="39" y="23">
             <Terrain Type="ROAD" Dir="N SW"/>
+            <Terrain Type="SHALLOW_WATER_DECORATOR" Dir="N NE SW NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N SE S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="39" y="24">
@@ -8452,11 +8792,13 @@
         <Cell x="39" y="25">
             <Terrain Type="SHALLOW_WATER" Dir="N NE SE S SW NW"/>
             <Terrain Type="SUPER_RIVER" Dir="S"/>
+            <Terrain Type="SHALLOW_WATER_DECORATOR" Dir="S SW NW"/>
             <Owner>1</Owner>
         </Cell>
         <Cell x="39" y="26">
             <Terrain Type="FLOODED_MARS" Dir="NE SE S SW NW"/>
             <Terrain Type="SUPER_RIVER" Dir="N S"/>
+            <Terrain Type="SHALLOW_WATER_DECORATOR" Dir="NE SE S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="39" y="27">
@@ -8670,10 +9012,12 @@
         </Cell>
         <Cell x="40" y="24">
             <Terrain Type="FLOODED_MARS" Dir="NE SE S"/>
+            <Terrain Type="SHALLOW_WATER_DECORATOR" Dir="NE SE S"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="40" y="25">
             <Terrain Type="FLOODED_MARS" Dir="N NE SE S SW"/>
+            <Terrain Type="SHALLOW_WATER_DECORATOR" Dir="N NE SE S SW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="40" y="26">
@@ -8786,12 +9130,14 @@
         </Cell>
         <Cell x="41" y="0">
             <Terrain Type="IMPROVED_ROAD" Dir="N NE SE S NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE S NW"/>
             <Feature>AIRFIELD</Feature>
             <Distance>60</Distance>
             <Owner>1</Owner>
         </Cell>
         <Cell x="41" y="1">
             <Terrain Type="IMPROVED_ROAD" Dir="N NE SE"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE"/>
             <Feature>AIRFIELD</Feature>
             <Distance>60</Distance>
             <Owner>1</Owner>
@@ -8886,10 +9232,12 @@
         </Cell>
         <Cell x="41" y="24">
             <Terrain Type="FLOODED_MARS" Dir="S SW"/>
+            <Terrain Type="SHALLOW_WATER_DECORATOR" Dir="S SW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="41" y="25">
             <Terrain Type="FLOODED_MARS" Dir="N SE S SW NW"/>
+            <Terrain Type="SHALLOW_WATER_DECORATOR" Dir="N SE S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="41" y="26">
@@ -9014,6 +9362,7 @@
         </Cell>
         <Cell x="42" y="1">
             <Terrain Type="IMPROVED_ROAD" Dir="N NE NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE NW"/>
             <Feature>AIRFIELD</Feature>
             <Distance>60</Distance>
             <Owner>1</Owner>
@@ -9114,6 +9463,7 @@
         <Cell x="42" y="25">
             <Terrain Type="FLOODED_MARS" Dir="NE SE S SW NW"/>
             <Terrain Type="SUPER_RIVER" Dir="N S"/>
+            <Terrain Type="SHALLOW_WATER_DECORATOR" Dir="NE SE S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="42" y="26">
@@ -9238,6 +9588,7 @@
         </Cell>
         <Cell x="43" y="1">
             <Terrain Type="IMPROVED_ROAD" Dir="N NE SE SW NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE SW NW"/>
             <Feature>AIRFIELD</Feature>
             <Distance>60</Distance>
             <Owner>1</Owner>
@@ -9332,10 +9683,13 @@
         </Cell>
         <Cell x="43" y="24">
             <Terrain Type="FLOODED_MARS" Dir="NE S"/>
+            <Terrain Type="SHALLOW_WATER_DECORATOR" Dir="N NE SE S"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="NE SE S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="43" y="25">
             <Terrain Type="MARSH" Dir="N S SW"/>
+            <Terrain Type="SHALLOW_WATER_DECORATOR" Dir="N NE SE S SW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="43" y="26">
@@ -9457,12 +9811,14 @@
         </Cell>
         <Cell x="44" y="0">
             <Terrain Type="IMPROVED_ROAD" Dir="N S SW NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N S SW NW"/>
             <Feature>AIRFIELD</Feature>
             <Distance>60</Distance>
             <Owner>1</Owner>
         </Cell>
         <Cell x="44" y="1">
             <Terrain Type="IMPROVED_ROAD" Dir="N NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NW"/>
             <Feature>AIRFIELD</Feature>
             <Distance>60</Distance>
             <Owner>1</Owner>
@@ -9553,6 +9909,7 @@
         </Cell>
         <Cell x="44" y="23">
             <Terrain Type="FLOODED_MARS" Dir="NE SW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="NE SE S SW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="44" y="24">
@@ -9779,6 +10136,7 @@
         </Cell>
         <Cell x="45" y="23">
             <Terrain Type="MARSH" Dir="SW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S SW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="45" y="24">
@@ -10005,6 +10363,7 @@
             <Terrain Type="URBAN" Dir="C"/>
             <Terrain Type="FORTIFICATION" Dir="N NE SE S SW NW"/>
             <Terrain Type="IMPROVED_ROAD" Dir="NE SW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="NE SE S SW NW"/>
             <Entrenchment>43</Entrenchment>
             <Owner>0</Owner>
         </Cell>
@@ -10226,6 +10585,7 @@
         </Cell>
         <Cell x="47" y="23">
             <Terrain Type="IMPROVED_ROAD" Dir="SE SW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="NE SE S SW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="47" y="24">
@@ -10442,6 +10802,7 @@
         </Cell>
         <Cell x="48" y="22">
             <Terrain Type="HILLS" Dir="C"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S SW"/>
             <Owner>1</Owner>
         </Cell>
         <Cell x="48" y="23">
@@ -10663,6 +11024,7 @@
             <Owner>1</Owner>
         </Cell>
         <Cell x="49" y="23">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="NE SE S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="49" y="24">
@@ -10876,6 +11238,7 @@
             <Owner>1</Owner>
         </Cell>
         <Cell x="50" y="22">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S SW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="50" y="23">
@@ -11097,6 +11460,7 @@
             <Owner>1</Owner>
         </Cell>
         <Cell x="51" y="23">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="51" y="24">
@@ -11317,6 +11681,7 @@
         </Cell>
         <Cell x="52" y="23">
             <Terrain Type="IMPROVED_ROAD" Dir="SE SW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S SW NW"/>
             <Feature>ANCHORAGE</Feature>
             <Owner>1</Owner>
         </Cell>
@@ -11548,6 +11913,7 @@
         </Cell>
         <Cell x="53" y="24">
             <Terrain Type="IMPROVED_ROAD" Dir="SE NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S SW NW"/>
             <Feature>ANCHORAGE</Feature>
             <Owner>1</Owner>
         </Cell>
@@ -11772,6 +12138,7 @@
         </Cell>
         <Cell x="54" y="24">
             <Terrain Type="IMPROVED_ROAD" Dir="S NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S SW NW"/>
             <Feature>ANCHORAGE</Feature>
             <Owner>1</Owner>
         </Cell>
@@ -12001,6 +12368,7 @@
             <Owner>1</Owner>
         </Cell>
         <Cell x="55" y="25">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S SW NW"/>
             <Feature>ANCHORAGE</Feature>
             <Owner>1</Owner>
         </Cell>
@@ -12223,6 +12591,7 @@
             <Owner>1</Owner>
         </Cell>
         <Cell x="56" y="25">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="NE SE S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="56" y="26">
@@ -12441,6 +12810,7 @@
             <Owner>1</Owner>
         </Cell>
         <Cell x="57" y="25">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S SW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="57" y="26">
@@ -12660,6 +13030,7 @@
             <Owner>1</Owner>
         </Cell>
         <Cell x="58" y="25">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="NE SE S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="58" y="26">
@@ -12885,6 +13256,7 @@
             <Owner>1</Owner>
         </Cell>
         <Cell x="59" y="25">
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S SW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="59" y="26">
@@ -13103,6 +13475,7 @@
         <Cell x="60" y="25">
             <Terrain Type="URBAN" Dir="C"/>
             <Terrain Type="IMPROVED_ROAD" Dir="SE SW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="60" y="26">
@@ -13327,6 +13700,7 @@
         </Cell>
         <Cell x="61" y="26">
             <Terrain Type="IMPROVED_ROAD" Dir="SE NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="61" y="27">
@@ -13550,6 +13924,7 @@
         </Cell>
         <Cell x="62" y="26">
             <Terrain Type="IMPROVED_ROAD" Dir="NE NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="NE SE S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="62" y="27">
@@ -13662,12 +14037,14 @@
         </Cell>
         <Cell x="63" y="0">
             <Terrain Type="IMPROVED_ROAD" Dir="N NE SE S NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE S NW"/>
             <Feature>AIRFIELD</Feature>
             <Distance>60</Distance>
             <Owner>1</Owner>
         </Cell>
         <Cell x="63" y="1">
             <Terrain Type="IMPROVED_ROAD" Dir="N NE SE"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE"/>
             <Feature>AIRFIELD</Feature>
             <Distance>60</Distance>
             <Owner>1</Owner>
@@ -13770,6 +14147,7 @@
         </Cell>
         <Cell x="63" y="26">
             <Terrain Type="IMPROVED_ROAD" Dir="SE SW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S SW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="63" y="27">
@@ -13892,6 +14270,7 @@
         </Cell>
         <Cell x="64" y="1">
             <Terrain Type="IMPROVED_ROAD" Dir="N NE NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE NW"/>
             <Feature>AIRFIELD</Feature>
             <Distance>60</Distance>
             <Owner>1</Owner>
@@ -13994,6 +14373,7 @@
         </Cell>
         <Cell x="64" y="26">
             <Terrain Type="IMPROVED_ROAD" Dir="SE NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="64" y="27">
@@ -14112,6 +14492,7 @@
         </Cell>
         <Cell x="65" y="1">
             <Terrain Type="IMPROVED_ROAD" Dir="N NE SE SW NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE SW NW"/>
             <Feature>AIRFIELD</Feature>
             <Distance>60</Distance>
             <Owner>1</Owner>
@@ -14218,6 +14599,7 @@
         </Cell>
         <Cell x="65" y="27">
             <Terrain Type="IMPROVED_ROAD" Dir="SE NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="65" y="28">
@@ -14332,12 +14714,14 @@
         </Cell>
         <Cell x="66" y="0">
             <Terrain Type="IMPROVED_ROAD" Dir="N S SW NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N S SW NW"/>
             <Feature>AIRFIELD</Feature>
             <Distance>60</Distance>
             <Owner>1</Owner>
         </Cell>
         <Cell x="66" y="1">
             <Terrain Type="IMPROVED_ROAD" Dir="N NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NW"/>
             <Feature>AIRFIELD</Feature>
             <Distance>60</Distance>
             <Owner>1</Owner>
@@ -14440,12 +14824,14 @@
         </Cell>
         <Cell x="66" y="26">
             <Terrain Type="DEEP_WATER" Dir="N NE SE S SW NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S SW"/>
             <Owner>1</Owner>
         </Cell>
         <Cell x="66" y="27">
             <Terrain Type="URBAN" Dir="C"/>
             <Terrain Type="FORTIFICATION" Dir="N NE SE S SW NW"/>
             <Terrain Type="IMPROVED_ROAD" Dir="NE SE SW NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="NE SE S SW NW"/>
             <Entrenchment>12</Entrenchment>
             <Owner>0</Owner>
         </Cell>
@@ -14668,6 +15054,7 @@
         </Cell>
         <Cell x="67" y="27">
             <Terrain Type="IMPROVED_ROAD" Dir="NE SW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="NE SE S SW"/>
             <Feature>ANCHORAGE</Feature>
             <Owner>1</Owner>
         </Cell>
@@ -14876,6 +15263,7 @@
         </Cell>
         <Cell x="68" y="26">
             <Terrain Type="IMPROVED_ROAD" Dir="SE SW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S SW"/>
             <Feature>ANCHORAGE</Feature>
             <Owner>1</Owner>
         </Cell>
@@ -15093,10 +15481,12 @@
         </Cell>
         <Cell x="69" y="26">
             <Terrain Type="DEEP_WATER" Dir="N NE SE S SW NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S SW"/>
             <Owner>1</Owner>
         </Cell>
         <Cell x="69" y="27">
             <Terrain Type="IMPROVED_ROAD" Dir="NE NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="NE SE S SW NW"/>
             <Feature>ANCHORAGE</Feature>
             <Owner>1</Owner>
         </Cell>
@@ -15306,6 +15696,7 @@
         </Cell>
         <Cell x="70" y="26">
             <Terrain Type="IMPROVED_ROAD" Dir="SE SW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S SW"/>
             <Feature>ANCHORAGE</Feature>
             <Owner>1</Owner>
         </Cell>
@@ -15519,11 +15910,13 @@
         </Cell>
         <Cell x="71" y="26">
             <Terrain Type="DEEP_WATER" Dir="N NE SE S SW NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S SW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="71" y="27">
             <Terrain Type="FORTIFICATION" Dir="N NE SE SW NW"/>
             <Terrain Type="IMPROVED_ROAD" Dir="NE NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="NE SE S SW NW"/>
             <Entrenchment>14</Entrenchment>
             <Owner>0</Owner>
         </Cell>
@@ -15738,6 +16131,7 @@
         </Cell>
         <Cell x="72" y="26">
             <Terrain Type="IMPROVED_ROAD" Dir="SE SW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S SW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="72" y="27">
@@ -15954,10 +16348,12 @@
         </Cell>
         <Cell x="73" y="26">
             <Terrain Type="DEEP_WATER" Dir="N NE SE S SW NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="S SW"/>
             <Owner>1</Owner>
         </Cell>
         <Cell x="73" y="27">
             <Terrain Type="IMPROVED_ROAD" Dir="SE SW NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S SW NW"/>
             <Feature>ANCHORAGE</Feature>
             <Owner>1</Owner>
         </Cell>
@@ -16175,6 +16571,7 @@
         <Cell x="74" y="27">
             <Terrain Type="RIVER" Dir="N S"/>
             <Terrain Type="IMPROVED_ROAD" Dir="NE NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="NE SE S SW NW"/>
             <Feature>ANCHORAGE</Feature>
             <Owner>1</Owner>
         </Cell>
@@ -16400,6 +16797,7 @@
             <Terrain Type="FORTIFICATION" Dir="N NE SE SW NW"/>
             <Terrain Type="IMPROVED_ROAD" Dir="SE S SW"/>
             <Terrain Type="RAIL" Dir="SE"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S SW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="75" y="28">
@@ -16620,6 +17018,7 @@
         <Cell x="76" y="27">
             <Terrain Type="IMPROVED_ROAD" Dir="SE NW"/>
             <Terrain Type="RAIL" Dir="SE NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S SW NW"/>
             <Feature>ANCHORAGE</Feature>
             <Owner>1</Owner>
         </Cell>
@@ -16844,6 +17243,7 @@
         <Cell x="77" y="28">
             <Terrain Type="IMPROVED_ROAD" Dir="SE NW"/>
             <Terrain Type="RAIL" Dir="SE NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S SW NW"/>
             <Feature>ANCHORAGE</Feature>
             <Owner>1</Owner>
         </Cell>
@@ -17064,6 +17464,7 @@
         <Cell x="78" y="28">
             <Terrain Type="IMPROVED_ROAD" Dir="SE NW"/>
             <Terrain Type="RAIL" Dir="S NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S SW NW"/>
             <Owner>1</Owner>
         </Cell>
         <Cell x="78" y="29">
@@ -17297,6 +17698,7 @@
         </Cell>
         <Cell x="79" y="29">
             <Terrain Type="IMPROVED_ROAD" Dir="SE NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="79" y="30">
@@ -17532,6 +17934,7 @@
         </Cell>
         <Cell x="80" y="29">
             <Terrain Type="IMPROVED_ROAD" Dir="SE SW NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="80" y="30">
@@ -17753,6 +18156,7 @@
             <Terrain Type="URBAN" Dir="C"/>
             <Terrain Type="FORTIFICATION" Dir="N NE SE S SW NW"/>
             <Terrain Type="IMPROVED_ROAD" Dir="SE S NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S SW NW"/>
             <Entrenchment>48</Entrenchment>
             <Owner>0</Owner>
         </Cell>
@@ -17975,6 +18379,7 @@
         </Cell>
         <Cell x="82" y="30">
             <Terrain Type="IMPROVED_ROAD" Dir="SE NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S SW NW"/>
             <Feature>ANCHORAGE</Feature>
             <Owner>1</Owner>
         </Cell>
@@ -18201,6 +18606,7 @@
         </Cell>
         <Cell x="83" y="31">
             <Terrain Type="IMPROVED_ROAD" Dir="SE NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S SW NW"/>
             <Feature>ANCHORAGE</Feature>
             <Owner>1</Owner>
         </Cell>
@@ -18415,12 +18821,15 @@
         <Cell x="84" y="31">
             <Terrain Type="URBAN" Dir="C"/>
             <Terrain Type="IMPROVED_ROAD" Dir="S NW"/>
+            <Terrain Type="SHALLOW_WATER_DECORATOR" Dir="N NE S SW NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S SW NW"/>
             <Feature>ANCHORAGE</Feature>
             <Owner>1</Owner>
         </Cell>
         <Cell x="84" y="32">
             <Terrain Type="FORTIFICATION" Dir="N NE SE S NW"/>
             <Terrain Type="IMPROVED_ROAD" Dir="N SW"/>
+            <Terrain Type="SHALLOW_WATER_DECORATOR" Dir="N SE S SW NW"/>
             <Entrenchment>14</Entrenchment>
             <Owner>0</Owner>
         </Cell>
@@ -18632,10 +19041,12 @@
         <Cell x="85" y="32">
             <Terrain Type="SHALLOW_WATER" Dir="N NE SE S SW NW"/>
             <Terrain Type="RIVER" Dir="S"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="NE SE S SW NW"/>
             <Owner>1</Owner>
         </Cell>
         <Cell x="85" y="33">
             <Terrain Type="SUPER_RIVER" Dir="N SW"/>
+            <Terrain Type="SHALLOW_WATER_DECORATOR" Dir="NE SE S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="85" y="34">
@@ -18839,11 +19250,14 @@
         <Cell x="86" y="31">
             <Terrain Type="FORTIFICATION" Dir="N SE S SW NW"/>
             <Terrain Type="ROAD" Dir="NE S"/>
+            <Terrain Type="SHALLOW_WATER_DECORATOR" Dir="N NE SE S NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="NE SE S SW"/>
             <Entrenchment>14</Entrenchment>
             <Owner>0</Owner>
         </Cell>
         <Cell x="86" y="32">
             <Terrain Type="ROAD" Dir="N S"/>
+            <Terrain Type="SHALLOW_WATER_DECORATOR" Dir="N NE SE S SW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="86" y="33">
@@ -19053,6 +19467,7 @@
             <Terrain Type="URBAN" Dir="C"/>
             <Terrain Type="FORTIFICATION" Dir="N NE SE S NW"/>
             <Terrain Type="ROAD" Dir="SE SW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S SW"/>
             <Entrenchment>6</Entrenchment>
             <Owner>0</Owner>
         </Cell>
@@ -19267,6 +19682,7 @@
         </Cell>
         <Cell x="88" y="31">
             <Terrain Type="ROAD" Dir="NE NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="NE SE S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="88" y="32">
@@ -19476,6 +19892,7 @@
         <Cell x="89" y="31">
             <Terrain Type="FORTIFICATION" Dir="N NE SE S SW NW"/>
             <Terrain Type="ROAD" Dir="SE SW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S SW"/>
             <Entrenchment>14</Entrenchment>
             <Owner>0</Owner>
         </Cell>
@@ -19680,6 +20097,7 @@
         </Cell>
         <Cell x="90" y="31">
             <Terrain Type="ROAD" Dir="NE NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="NE SE S SW NW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="90" y="32">
@@ -19889,6 +20307,7 @@
             <Terrain Type="URBAN" Dir="C"/>
             <Terrain Type="FORTIFICATION" Dir="N NE SE S SW NW"/>
             <Terrain Type="IMPROVED_ROAD" Dir="NE S SW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="NE SE S SW"/>
             <Entrenchment>12</Entrenchment>
             <Owner>0</Owner>
         </Cell>
@@ -20096,6 +20515,7 @@
             <Terrain Type="MARSH" Dir="S"/>
             <Terrain Type="SUPER_RIVER" Dir="N S"/>
             <Terrain Type="IMPROVED_ROAD" Dir="NE SW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="NE SE S SW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="92" y="31">
@@ -20312,6 +20732,7 @@
             <Terrain Type="URBAN" Dir="C"/>
             <Terrain Type="FORTIFICATION" Dir="N NE SE SW NW"/>
             <Terrain Type="IMPROVED_ROAD" Dir="NE S SW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="NE SE S SW"/>
             <Entrenchment>6</Entrenchment>
             <Owner>0</Owner>
         </Cell>
@@ -20525,6 +20946,7 @@
         </Cell>
         <Cell x="94" y="29">
             <Terrain Type="IMPROVED_ROAD" Dir="NE SW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="NE SE S SW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="94" y="30">
@@ -20736,10 +21158,12 @@
         </Cell>
         <Cell x="95" y="28">
             <Terrain Type="DEEP_WATER" Dir="N NE SE S SW NW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="SE S"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="95" y="29">
             <Terrain Type="IMPROVED_ROAD" Dir="NE SW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="NE SE S SW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="95" y="30">
@@ -20944,6 +21368,7 @@
         </Cell>
         <Cell x="96" y="28">
             <Terrain Type="IMPROVED_ROAD" Dir="NE SW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="NE SE S SW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="96" y="29">
@@ -21140,11 +21565,13 @@
         <Cell x="97" y="27">
             <Terrain Type="FORTIFICATION" Dir="N NE SE S SW NW"/>
             <Terrain Type="IMPROVED_ROAD" Dir="NE S"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="NE SE S"/>
             <Entrenchment>6</Entrenchment>
             <Owner>0</Owner>
         </Cell>
         <Cell x="97" y="28">
             <Terrain Type="IMPROVED_ROAD" Dir="N SW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="N NE SE S SW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="97" y="29">
@@ -21331,6 +21758,7 @@
             <Terrain Type="URBAN" Dir="NE SE"/>
             <Terrain Type="FORTIFICATION" Dir="N S NW"/>
             <Terrain Type="IMPROVED_ROAD" Dir="NE SW"/>
+            <Terrain Type="DEEP_WATER_DECORATOR" Dir="NE SE S SW"/>
             <Owner>0</Owner>
         </Cell>
         <Cell x="98" y="27">

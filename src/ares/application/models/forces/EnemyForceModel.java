@@ -12,20 +12,18 @@ import java.util.Collection;
  */
 public final class EnemyForceModel extends ForceModel {
 
-    private final Collection<UnitModel> unitModels;
-
     public EnemyForceModel(Force force) {
         super(force, InformationLevel.POOR);
-        unitModels = new ArrayList<>();
+    }
+
+    public Collection<UnitModel> getUnitModels() {
+        Collection<UnitModel>  unitModels = new ArrayList<>();
         for (Unit unit : force.getActiveUnits()) {
             UnitModel unitModel = unit.getModel(force);
             if (unitModel != null) {
                 unitModels.add(unitModel);
             }
         }
-    }
-
-    public Collection<UnitModel> getUnitModels() {
         return unitModels;
     }
 }

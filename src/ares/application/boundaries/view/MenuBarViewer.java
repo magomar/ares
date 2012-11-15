@@ -6,7 +6,6 @@ package ares.application.boundaries.view;
  */
 public interface MenuBarViewer {
 
-    public void enableMenuElement(String name);
+    public void setMenuElementEnabled(String name, boolean enabled);
 
-    public void disableMenuElement(String name);
 }
