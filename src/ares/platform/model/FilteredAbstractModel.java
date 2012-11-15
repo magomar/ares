@@ -6,11 +6,11 @@ import ares.scenario.board.InformationLevel;
  *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
-public class AbstractModel implements Model {
+public class FilteredAbstractModel implements FilteredModel {
 
     protected final InformationLevel informationLevel;
 
-    public AbstractModel(InformationLevel informationLevel) {
+    public FilteredAbstractModel(InformationLevel informationLevel) {
         this.informationLevel = informationLevel;
     }
     

@@ -89,7 +89,7 @@ public final class Tile extends AbstractModelProvider<TileModel> {
      * the board), then there would be no entry for that direction.
      */
     private Map<Direction, Tile> neighbors;
-    private Map<Force, InformationLevel> informationLevels;
+    private TileModel tileModel;
 
     public Tile(Cell c) {
         // numeric attributes
@@ -130,9 +130,7 @@ public final class Tile extends AbstractModelProvider<TileModel> {
         for (TerrainFeature feature : c.getFeature()) {
             features.add(feature);
         }
-        for (InformationLevel infoLevel : InformationLevel.values()) {
-            models.put(infoLevel, new TileModel(this, infoLevel));
-        }
+        tileModel = new TileModel(this);
     }
 
     /**
@@ -155,15 +153,6 @@ public final class Tile extends AbstractModelProvider<TileModel> {
             combatModifiers.put(fromDir, combatModifier);
         }
         this.owner = owner;
-        informationLevels = new HashMap<>();
-        Force[] forces = scenario.getForces();
-        for (Force force : forces) {
-            if (force == owner) {
-                informationLevels.put(force, InformationLevel.COMPLETE);
-            } else {
-                informationLevels.put(force, InformationLevel.POOR);
-            }
-        }
     }
 
     public void add(Unit unit) {
@@ -304,5 +293,4 @@ public final class Tile extends AbstractModelProvider<TileModel> {
         InformationLevel infoLevel = informationLevels.get(userRole.getForce());
         return getModel(infoLevel);
     }
-
 }

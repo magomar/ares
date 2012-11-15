@@ -1,6 +1,7 @@
 package ares.scenario;
 
 import ares.application.models.ScenarioModel;
+import ares.application.models.board.TileModel;
 import ares.data.jaxb.EquipmentDB;
 import ares.data.jaxb.OOB;
 import ares.platform.model.AbstractModelProvider;
@@ -8,6 +9,7 @@ import ares.platform.model.UserRole;
 import ares.scenario.assets.AssetTypes;
 import ares.scenario.board.Board;
 import ares.scenario.board.BoardInfo;
+import ares.scenario.board.InformationLevel;
 import ares.scenario.forces.Force;
 import ares.scenario.forces.Unit;
 import java.util.ArrayList;
@@ -45,13 +47,16 @@ public final class Scenario extends AbstractModelProvider<ScenarioModel> {
             //TODO modify ToawToAres to make force indexes in [0.. n-1] instead of substracting 1 here
         }
 
-        board.initialize(scenario,
-                this, forces);
+        board.initialize(scenario, this, forces);
 
         System.out.println(
                 "Scenario loaded: " + toString());
 
         boardInfo = new BoardInfo(board);
+        for (InformationLevel infoLevel : InformationLevel.values()) {
+            models.put(infoLevel, new ScenarioModel(this, infoLevel));
+        }
+        models.put(InformationLevel.NONE, null);
     }
 
     public Board getBoard() {
