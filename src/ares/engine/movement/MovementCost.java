@@ -1,14 +1,14 @@
 package ares.engine.movement;
 
-import ares.data.jaxb.TerrainFeature;
+import ares.scenario.Scenario;
 import ares.scenario.board.Direction;
 import ares.scenario.board.Directionality;
 import ares.scenario.board.Terrain;
+import ares.scenario.board.TerrainFeatures;
 import ares.scenario.board.Tile;
 import ares.scenario.forces.LandUnit;
 import ares.scenario.forces.SurfaceUnit;
 import ares.scenario.forces.Unit;
-import ares.scenario.Scenario;
 import java.util.EnumMap;
 import java.util.EnumSet;
 import java.util.Map;
@@ -39,9 +39,9 @@ public class MovementCost {
         movementCost = new EnumMap<>(MovementType.class);
         //Set AIRCRAFT movement: can move across all tiles, even the non_playable ones (to move between playable areas)
         movementCost.put(MovementType.AIRCRAFT, ONE);
-        Set<TerrainFeature> features = destination.getFeatures();
+        Set<TerrainFeatures> features = destination.getTerrainFeatures();
         // NON PLAYABLE tile, impassable for non AIRCRAFT units
-        if (features.contains(TerrainFeature.NON_PLAYABLE)) {
+        if (features.contains(TerrainFeatures.NON_PLAYABLE)) {
             for (MovementType moveType : EnumSet.range(MovementType.FIXED, MovementType.FOOT)) {
                 movementCost.put(moveType, IMPASSABLE);
             }
@@ -79,7 +79,7 @@ public class MovementCost {
         // Set remaining movement types
         //Distinguishes between movement along roads and off-road movement
         if ((sideTerrain.contains(Terrain.ROAD) || sideTerrain.contains(Terrain.IMPROVED_ROAD))
-                && !features.contains(TerrainFeature.BRIDGE_DESTROYED)) {
+                && !features.contains(TerrainFeatures.BRIDGE_DESTROYED)) {
             // Road-based movement
             for (MovementType moveType : EnumSet.range(MovementType.MOTORIZED, MovementType.FOOT)) {
                 movementCost.put(moveType, ONE);

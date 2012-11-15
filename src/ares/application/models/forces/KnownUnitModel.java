@@ -2,7 +2,7 @@ package ares.application.models.forces;
 
 import ares.scenario.Scale;
 import ares.scenario.board.InformationLevel;
-import ares.scenario.forces.Unit;
+import ares.scenario.forces.*;
 
 /**
  *

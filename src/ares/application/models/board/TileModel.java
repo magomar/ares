@@ -2,6 +2,7 @@ package ares.application.models.board;
 
 import ares.scenario.board.Direction;
 import ares.scenario.board.Terrain;
+import ares.scenario.board.TerrainFeatures;
 import ares.scenario.board.Tile;
 import java.util.Collections;
 import java.util.Map;
@@ -20,5 +21,9 @@ public class TileModel  {
     
     public Map<Direction, Set<Terrain>> getSideTerrain() {
         return Collections.unmodifiableMap(tile.getSideTerrain());
+    }
+    
+    public Set<TerrainFeatures> getTerrainFeatures(){
+        return Collections.unmodifiableSet(tile.getTerrainFeatures());
     }
 }

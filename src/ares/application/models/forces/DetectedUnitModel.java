@@ -2,8 +2,8 @@ package ares.application.models.forces;
 
 import ares.scenario.Scale;
 import ares.scenario.board.InformationLevel;
-import ares.scenario.forces.Unit;
-import ares.scenario.forces.UnitType;
+import ares.scenario.forces.*;
+import java.awt.Point;
 
 /**
  *
@@ -23,11 +23,18 @@ public class DetectedUnitModel extends UnitModel {
         return unit.getType();
     }
 
+    @Override
+    public int getColor() {
+        return unit.getColor(); 
+    }
+
+    @Override
     public int getIconId() {
         return unit.getIconId();
     }
-
-    public int getColor() {
-        return unit.getColor();
+    
+    @Override
+    public Point getLocation() {
+        return new Point(unit.getLocation().getX()-1, unit.getLocation().getY()+1);
     }
 }

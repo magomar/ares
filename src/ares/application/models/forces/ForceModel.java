@@ -3,6 +3,7 @@ package ares.application.models.forces;
 import ares.platform.model.FilteredAbstractModel;
 import ares.scenario.board.InformationLevel;
 import ares.scenario.forces.Force;
+import java.util.Collection;
 
 /**
  *
@@ -10,14 +11,19 @@ import ares.scenario.forces.Force;
  */
 public abstract class ForceModel extends FilteredAbstractModel {
     protected final Force force;
-
-    protected ForceModel(Force force, InformationLevel informationLevel) {
+    protected Collection<UnitModel> unitModels;
+    
+    protected ForceModel(Force force, InformationLevel informationLevel, Collection<UnitModel> unitModels) {
         super(informationLevel);
         this.force = force;
+        this.unitModels = unitModels;
     }
 
     public String getName() {
         return force.getName();
     }
+    
+    public abstract Collection<UnitModel> getUnitModels();
+
 
 }

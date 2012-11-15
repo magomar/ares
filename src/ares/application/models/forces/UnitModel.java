@@ -4,6 +4,7 @@ import ares.platform.model.FilteredAbstractModel;
 import ares.scenario.Scale;
 import ares.scenario.board.InformationLevel;
 import ares.scenario.forces.Unit;
+import java.awt.Point;
 
 /**
  *
@@ -21,4 +22,11 @@ public abstract class UnitModel extends FilteredAbstractModel {
         this.scale = scale;
     }
     
+    public abstract int getColor();
+    
+    public abstract int getIconId();
+    
+    //Unit's position varies depending on the information level
+    public abstract Point getLocation();
+
 }

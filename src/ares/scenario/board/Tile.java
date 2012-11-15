@@ -41,7 +41,7 @@ public final class Tile extends AbstractModelProvider<TileModel> {
      * and harbours,
      *
      */
-    private Set<TerrainFeature> features;
+    private Set<TerrainFeatures> features;
     /**
      * Entrenchment (fortification) level, expressed as a percentage
      */
@@ -127,10 +127,12 @@ public final class Tile extends AbstractModelProvider<TileModel> {
             }
 
         }
-        features = EnumSet.noneOf(TerrainFeature.class);
+        features = EnumSet.noneOf(TerrainFeatures.class);
+        
         for (TerrainFeature feature : c.getFeature()) {
-            features.add(feature);
+            features.add(Enum.valueOf(TerrainFeatures.class, feature.name()));
         }
+        
         tileModel = new TileModel(this);
     }
 
@@ -211,7 +213,7 @@ public final class Tile extends AbstractModelProvider<TileModel> {
         return neighbors;
     }
 
-    public Set<TerrainFeature> getFeatures() {
+    public Set<TerrainFeatures> getTerrainFeatures() {
         return features;
     }
 

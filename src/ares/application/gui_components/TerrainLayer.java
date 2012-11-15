@@ -1,9 +1,9 @@
 package ares.application.gui_components;
 
 import ares.application.models.ScenarioModel;
+import ares.application.models.board.TileModel;
 import ares.data.jaxb.TerrainFeature;
 import ares.io.*;
-import ares.scenario.Scenario;
 import ares.scenario.board.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -70,7 +70,7 @@ public class TerrainLayer extends javax.swing.JPanel {
      * @see Tile
      * @see TerrainFeature
      */
-    public void createTerrainImage(Tile[][] tileMap) {
+    public void createTerrainImage(TileModel[][] tileMap) {
 
 
 
@@ -101,7 +101,7 @@ public class TerrainLayer extends javax.swing.JPanel {
 
                     tileTerrainImage = createTileImage(tileMap[i][j]);
 
-                    terrainGraphics.drawImage(tileFeaturesImage, x, y, this);
+                    g2.drawImage(tileFeaturesImage, x, y, this);
                     g2.drawImage(tileTerrainImage, x, y, null);
                     g2.drawImage(tileFeaturesImage, x, y, this);
                 }
@@ -118,7 +118,7 @@ public class TerrainLayer extends javax.swing.JPanel {
      * @param tile tile to be represented
      * @return the tile image
      */
-    public Image createTileImage(Tile tile) {
+    public Image createTileImage(TileModel tile) {
 
         int w = boardInfo.getHexDiameter();
         int h = boardInfo.getHexHeight();
@@ -171,22 +171,23 @@ public class TerrainLayer extends javax.swing.JPanel {
 
     /**
      * Terrain class has a map with the index to the subimage based on
-     * directions The map associates the subimage position with the subimage
+     * directions
+     * The map associates the subimage position with the subimage
      * index
      *
-     * For example, a road from north to south would have the index 72 "N NE SE
-     * S SW NW C" -> "1 0 0 1 0 0 0", binary to int -> 72
+     * For example, a road from north to south would have the index 72
+     * "N NE SE S SW NW C" -> "1 0 0 1 0 0 0", binary to int -> 72
      *
      * This function returns a map with the terrain as key and its related index
      * as value
      *
      * @param tile tile to get directions
      * @return <code>Map<Terrain,Integer></code> map which associates a terrain
-     * with its image position
+     *          with its image position
      * @see Terrain
      *
      */
-    public Map<Terrain, Integer> getTerrainToImageIndex(Tile tile) {
+    public Map<Terrain, Integer> getTerrainToImageIndex(TileModel tile) {
 
         Map<Direction, Set<Terrain>> sideTerrain = tile.getSideTerrain();
 
@@ -217,7 +218,7 @@ public class TerrainLayer extends javax.swing.JPanel {
      * @return <code>Image</code> if tile is playable; otherwise null
      * @see TerrainFeatures
      */
-    private Image createFeaturesImage(Tile tile) {
+    private Image createFeaturesImage(TileModel tile) {
 
         //TODO Tile features should be objects of TerrainFeatures class
         //     instead of ares.data.jaxb.TerrainFeature
@@ -228,7 +229,7 @@ public class TerrainLayer extends javax.swing.JPanel {
         int h = boardInfo.getHexHeight();
 
 
-        Set<TerrainFeature> tf = tile.getFeatures();
+        Set<TerrainFeatures> tf = tile.getTerrainFeatures();
         Iterator it = tf.iterator();
         while (it.hasNext()) {
             TerrainFeature f = (TerrainFeature) it.next();

@@ -13,11 +13,11 @@ import java.util.Collection;
 public final class EnemyForceModel extends ForceModel {
 
     public EnemyForceModel(Force force) {
-        super(force, InformationLevel.POOR);
+        super(force, InformationLevel.POOR, new ArrayList<UnitModel>());
     }
 
+    @Override
     public Collection<UnitModel> getUnitModels() {
-        Collection<UnitModel>  unitModels = new ArrayList<>();
         for (Unit unit : force.getActiveUnits()) {
             UnitModel unitModel = unit.getModel(force);
             if (unitModel != null) {

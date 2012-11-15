@@ -69,7 +69,7 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
                 break;
             case RealTimeEngine.CLOCK_EVENT_PROPERTY:
                 //TODO refresh only selected units
-                unitsLayer.initialize(scenario);
+                //unitsLayer.initialize(scenario);
                 break;
         }        
     }
@@ -87,11 +87,11 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
                     gridLayer.setSize(imageSize);
                     unitsLayer.setPreferredSize(imageSize);
                     unitsLayer.setSize(imageSize);
-                    scenario = scenario;
+                    
     }
 
     @Override
     public void updateUnits(Collection<UnitModel> units) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        unitsLayer.initialize(scenario);
     }
 }

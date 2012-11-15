@@ -1,8 +1,12 @@
 package ares.application.gui_components;
 
 import ares.application.models.ScenarioModel;
+import ares.application.models.forces.DetectedUnitModel;
+import ares.application.models.forces.ForceModel;
+import ares.application.models.forces.IdentifiedUnitModel;
+import ares.application.models.forces.KnownUnitModel;
+import ares.application.models.forces.UnitModel;
 import ares.io.AresIO;
-import ares.scenario.Scenario;
 import ares.scenario.board.*;
 import ares.scenario.forces.Unit;
 import java.awt.*;
@@ -12,7 +16,8 @@ import java.lang.ref.SoftReference;
 import java.util.*;
 import javax.imageio.ImageIO;
 
-/**
+
+    /**
  * Units image layer based on Sergio Musoles TerrainPanel
  *
  * @author Heine <heisncfr@inf.upv.es>
@@ -55,41 +60,38 @@ public class UnitsLayer extends javax.swing.JPanel {
      *
      * @param scenario
      */
-
+    public void initialize(ScenarioModel scenario) {
         boardInfo = scenario.getBoardInfo();
-        
-        // If the image has not been created
-        // // True boolean is a temporary fix to repaint
-        // // the unit layer. Units should be refreshed tile by tile
-        if (true || unitsImage == null) {
 
-            // If the buffer doesn't exist
+        // If the image has not been created
+        if (unitsImage == null) {
+
+            // If the buffer map doesn't exist
             if (unitBufferMap == null) {
                 unitBufferMap = new SoftReference<>(new HashMap<Integer, BufferedImage>());
             }
 
             unitsImage = new BufferedImage(boardInfo.getImageWidth(), boardInfo.getImageHeight(), BufferedImage.TYPE_4BYTE_ABGR);
-            Map<Collection<Unit>, Integer> unitC = fillmap(scenario);
-            createAllUnitsImage(unitC);
+            Collection<UnitModel> spottedUnits = new ArrayList<>();
+            for (ForceModel forceModel : scenario.getForceModel()) {
+                spottedUnits.addAll(forceModel.getUnitModels());
+            }
+            createAllUnitsImage(spottedUnits);
         }
         repaint();
 
     }
 
     /**
-     * Iterates over a map to paint all entries
+     * Iterates over a unit collection to paint all its elements
      *
-     * @param m Map with a collection as key and the index as value
+     * @param spottedUnits Units with known location
      */
-    private void createAllUnitsImage(Map<Collection<Unit>, Integer> m) {
+    private void createAllUnitsImage(Collection<UnitModel> spottedUnits) {
 
-        for (Map.Entry<Collection<Unit>, Integer> e : m.entrySet()) {
-
-            // Get the row and column from the index
-            int index = e.getValue();
-            // Paint the collection
-            refreshUnitsbyPosition(e.getKey(), row, col);
-
+        for (Iterator<UnitModel> it = spottedUnits.iterator(); it.hasNext();) {
+            UnitModel unit = it.next();
+            refreshUnitsbyPosition(unit, unit.getLocation().x, unit.getLocation().y, 1);
         }
     }
 
@@ -100,11 +102,11 @@ public class UnitsLayer extends javax.swing.JPanel {
      * @param uCol collection of units to be painted
      * @param x tile row
      * @param y tile column
-     * @see refreshUnitsByPosition(Collection<Unit>, int, int, int)
+     * @see refreshUnitsByPosition(UnitModel, int, int, int)
      */
-    public void refreshUnitsbyPosition(Collection<Unit> uCol, int x, int y) {
+    public void refreshUnitsbyPosition(UnitModel unit, int x, int y) {
 
-        refreshUnitsbyPosition(uCol, x, y, maxStack);
+        refreshUnitsbyPosition(unit, x, y, maxStack);
     }
 
     /**
@@ -115,37 +117,152 @@ public class UnitsLayer extends javax.swing.JPanel {
      * @param col Tile column
      * @param maxStack Maximum numbers of units to be painted in a single tile
      */
-    public void refreshUnitsbyPosition(Collection<Unit> uCol, int row, int col, int maxStack) {
+    public void refreshUnitsbyPosition(UnitModel unit, int row, int col, int maxStack) {
 
-        Graphics2D g = (Graphics2D) unitsImage.getGraphics();
+        Graphics2D g2 = (Graphics2D) unitsImage.getGraphics();
+        int x = boardInfo.getHexOffset() * row;
+        int h = boardInfo.getHexHeight();
+        int y = (row % 2 == 0 ? h * (col) + h / 2 : h * col);// * (2 * col + ((row + 1) % 2)) / 2;
+        x += unitImageOffset;
+        y += unitImageOffset;
+        int d = 0;
 
-        Unit topUnit = uCol.iterator().next();
+        //if(unit.isTopUnit());
+        //for int i=0, i<unitModel.getStackedUnits() && i<maxStack; ++i
+        //
+        for (int numStack = 0; numStack < maxStack; numStack++) {
+
+            g2.drawImage(getUnitImage(unit), x + d, y + d, this);
             d += unitStackOffset;
         }
+        g2.dispose();
     }
 
     /**
-     * Loads the unit image based on its color and IconId
+     * Loads the unit image based on its color, IconId and InformationLevel
+     *    ______________
+     *    | E        H |
+     *    |   ______   |
+     *    |  |      | B|
+     *  TD|  |      | B|
+     *    |  |______| B|
+     *    |            |
+     *    | AT       DF|
+     *    |____________|
+     * 
+     * 
+     * Where 'E' stands for "Echelon", 'H' for "Health", 'TD' for "Tile density"
+     * 'AT' "Attack", 'DF' Defense and 'BBB' "Stamina Bar" (a line)
      *
      * @param unit
      * @return
+     * @see InformationLevel
      */
-    private Image getUnitImage(Unit unit) {
-        BufferedImage imageUnit;
+    private Image getUnitImage(UnitModel unit) {
+
+        BufferedImage unitImage;
         if (unitBufferMap.get().get(unit.getColor()) == null) {
             loadUnitGraphics(unit.getColor());
         }
 
+        //TODO paint tile density
+        //Retrieve color palette image and crop the unit we need from it
         int unitImgWidth = boardInfo.getImageProfile().getUnitsImageWidth() / boardInfo.getImageProfile().getUnitsImageCols();
         int unitImgHeight = boardInfo.getImageProfile().getUnitsImageHeight() / boardInfo.getImageProfile().getUnitsImageRows();
         int row = unit.getIconId() / boardInfo.getImageProfile().getUnitsImageCols();
         int col = unit.getIconId() % boardInfo.getImageProfile().getUnitsImageRows();
-        imageUnit = unitBufferMap.get().get(unit.getColor()).getSubimage(col * unitImgWidth, row * unitImgHeight, unitImgWidth, unitImgHeight);
-        return imageUnit;
+        unitImage = unitBufferMap.get().get(unit.getColor()).getSubimage(col * unitImgWidth, row * unitImgHeight, unitImgWidth, unitImgHeight);
+        
+        addUnitAttributes(unitImage,unit);
+        return unitImage;
+    }
+   
+    /**
+     * Adds unitattributes to the image based on its information level
+     * 
+     * 
+     * @param unitImage <code>BufferedImage</code> 
+     * @param unit 
+     */
+    private void addUnitAttributes(BufferedImage unitImage, UnitModel unit) {
+         
+        int unitImgWidth = unitImage.getWidth();
+        int unitImgHeight = unitImage.getHeight();
+    
+        Graphics2D g2 = unitImage.createGraphics();
+        
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        Font font = new Font("Serif", Font.PLAIN, 10);
+        g2.setFont(font);
+
+        //TODO paint name
+        switch (unit.getInformationLevel()) {
+            case COMPLETE:
+                KnownUnitModel ku = (KnownUnitModel) unit;
+                //Echelon
+                g2.drawString("-", 3, 6);
+                // Health           
+                g2.setColor(Color.BLACK);
+                g2.drawRect(unitImgWidth - 9, 3, 5, 3);
+                g2.setColor(Color.GREEN);
+                g2.fillRect(unitImgWidth - 8, 4, 3, 2);
+                // Stamina bar
+                g2.setColor(Color.RED);
+                g2.fillRect(27, 9, 2, 11);
+                // Attack
+                g2.setColor(Color.ORANGE);
+                g2.drawString("00", 3, unitImgHeight - 2);
+                // Defense
+                g2.drawString("99", unitImgWidth - 13, unitImgHeight - 2);
+                break;
+            case GOOD:
+                IdentifiedUnitModel id = (IdentifiedUnitModel) unit;
+                
+                //Echelon
+                g2.drawString("-", 3, 6);
+                // Health           
+                g2.setColor(Color.BLACK);
+                g2.drawRect(unitImgWidth - 9, 3, 5, 3);
+                g2.setColor(Color.GREEN);
+                g2.fillRect(unitImgWidth - 8, 4, 3, 2);
+                // Stamina bar
+                g2.setColor(Color.RED);
+                g2.fillRect(27, 9, 2, 11);
+                // Attack
+                g2.setColor(Color.ORANGE);
+                g2.drawString("00", 3, unitImgHeight - 2);
+                // Defense
+                g2.drawString("99", unitImgWidth - 13, unitImgHeight - 2);
+                
+                
+                break;
+            case POOR:
+                DetectedUnitModel du = (DetectedUnitModel) unit;
+                
+                                //Echelon
+                g2.drawString("-", 3, 6);
+                // Health           
+                g2.setColor(Color.BLACK);
+                g2.drawRect(unitImgWidth - 9, 3, 5, 3);
+                g2.setColor(Color.GREEN);
+                g2.fillRect(unitImgWidth - 8, 4, 3, 2);
+                // Stamina bar
+                g2.setColor(Color.RED);
+                g2.fillRect(27, 9, 2, 11);
+                // Attack
+                g2.setColor(Color.ORANGE);
+                g2.drawString("XX", 3, unitImgHeight - 2);
+                // Defense
+                g2.drawString("XX", unitImgWidth - 13, unitImgHeight - 2);
+                
+                break;
+        }
+        
+        g2.dispose();
 
     }
-
-    /**
+   
+/**
      * Loads all the unit icons from disk and saves them in the buffer map
      *
      * @param colorIndex
@@ -163,38 +280,9 @@ public class UnitsLayer extends javax.swing.JPanel {
         }
     }
 
+
     /**
-     * This method goes through all the tiles and puts
      *
-     * @param scenario
-     * @return
-     */
-    private Map<Collection<Unit>, Integer> fillmap(ScenarioModel scenario) {
-
-        Map<Collection<Unit>, Integer> m = new HashMap<>();
-        Tile[][] tmap = scenario.getBoardModel().getMapModel();
-        for (Tile[] tv : tmap) {
-
-            for (Tile t : tv) {
-                Collection c = new ArrayList();
-                for (int i = 0; i < t.getNumStackedUnits(); i++) {
-                    c.add(t.getTopUnit());
-                    t.nextTopUnit();
-                }
-                if (t.getNumStackedUnits() != 0) {
-                    m.put(c, t.getX() * scenario.getBoardInfo().getWidth() + t.getY());
-                }
-            }
-
-        }
-
-
-
-        return m;
-    }
-
-    /**
-     * 
      */
     public void flushLayer() {
         unitsImage = null;
@@ -203,6 +291,9 @@ public class UnitsLayer extends javax.swing.JPanel {
 
     @Override
     public void paintComponent(Graphics g) {
-        g.drawImage(unitsImage, 0, 0, this);
+        Graphics2D g2 = (Graphics2D) g;
+        //Zoom cutre
+        //g2.scale(2, 2);
+        g2.drawImage(unitsImage, 0, 0, this);
     }
 }

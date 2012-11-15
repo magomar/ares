@@ -2,9 +2,8 @@ package ares.application.models.forces;
 
 import ares.scenario.Scale;
 import ares.scenario.board.InformationLevel;
-import ares.scenario.forces.Echelon;
-import ares.scenario.forces.Unit;
-import ares.scenario.forces.UnitType;
+import ares.scenario.forces.*;
+import java.awt.Point;
 
 /**
  *
@@ -38,5 +37,10 @@ public class IdentifiedUnitModel extends DetectedUnitModel {
 
     public Echelon getEchelon() {
         return unit.getEchelon();
+    }
+    
+    @Override
+    public Point getLocation(){
+        return new Point(unit.getLocation().getX(),unit.getLocation().getY());
     }
 }
