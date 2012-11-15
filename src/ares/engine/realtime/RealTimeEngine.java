@@ -4,6 +4,7 @@ import ares.engine.Engine;
 import ares.engine.actors.FormationActor;
 import ares.engine.actors.UnitActor;
 import ares.platform.model.AbstractModelProvider;
+import ares.platform.model.UserRole;
 import ares.scenario.AresCalendar;
 import ares.scenario.Scenario;
 import ares.scenario.forces.Force;
@@ -116,6 +117,11 @@ public class RealTimeEngine extends AbstractModelProvider<Engine> implements Eng
         for (UnitActor unitActor : unitActors) {
             unitActor.schedule(clock);
         }
+    }
+
+    @Override
+    public Engine getModel(UserRole force) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
 }

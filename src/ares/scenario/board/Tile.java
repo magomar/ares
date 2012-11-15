@@ -132,8 +132,6 @@ public final class Tile extends AbstractModelProvider<TileModel> {
             features.add(feature);
         }
         tileModel = new TileModel(this);
-        informationLevels = new HashMap<>();
-        
     }
 
     /**
@@ -156,6 +154,15 @@ public final class Tile extends AbstractModelProvider<TileModel> {
             combatModifiers.put(fromDir, combatModifier);
         }
         this.owner = owner;
+        informationLevels = new HashMap<>();
+        Force[] forces = scenario.getForces();
+        for (Force force : forces) {
+            if (force == owner) {
+                informationLevels.put(force, InformationLevel.COMPLETE);
+            } else {
+                informationLevels.put(force, InformationLevel.POOR);
+            }
+        }
     }
 
     public void add(Unit unit) {

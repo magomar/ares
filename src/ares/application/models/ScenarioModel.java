@@ -23,7 +23,7 @@ public class ScenarioModel  {
         Force[] forces =scenario.getForces();
         forceModel = new ForceModel[forces.length];
         for (int i = 0; i < forces.length; i++) {
-            forceModel[i] = forces[i].getModel();
+            forceModel[i] = forces[i].getCompleteModel();
         }
         
     }
@@ -38,9 +38,6 @@ public class ScenarioModel  {
     }
 
     public ForceModel[] getForceModel() {
-        for (Force force : scenario.getForces()) {
-            forceModel
-        }
         return forceModel;
     }
     

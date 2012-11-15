@@ -54,7 +54,7 @@ public final class Scenario extends AbstractModelProvider<ScenarioModel> {
 
         boardInfo = new BoardInfo(board);
         for (InformationLevel infoLevel : InformationLevel.values()) {
-            models.put(infoLevel, new ScenarioModel(this, infoLevel));
+            models.put(infoLevel, new ScenarioModel(this));
         }
         models.put(InformationLevel.NONE, null);
     }

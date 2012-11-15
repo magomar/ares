@@ -1,6 +1,7 @@
 package ares.engine.messages;
 
 import ares.platform.model.AbstractModelProvider;
+import ares.platform.model.UserRole;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,5 +18,10 @@ public class EngineMessageLogger extends AbstractModelProvider {
         EngineMessage oldValue = messages.get(messages.size() - 1);
         messages.add(msg);
         firePropertyChange(MESSAGES_PROPERTY, oldValue, msg);
+    }
+
+    @Override
+    public Object getModel(UserRole force) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }
