@@ -27,6 +27,7 @@ public class Clock {
     private int tick;
     private int turn;
     private Engine engine;
+    private static final Logger LOG = Logger.getLogger(Clock.class.getName());
 
     public Clock(AresCalendar calendar, Engine engine) {
         this.engine = engine;
@@ -64,13 +65,13 @@ public class Clock {
     }
 
     private class Tick implements Runnable {
+
         private Clock clock;
 
         public Tick(Clock clock) {
             this.clock = clock;
         }
-        
-        
+
         @Override
         public void run() {
             now.add(GregorianCalendar.MINUTE, MINUTES_PER_TICK);

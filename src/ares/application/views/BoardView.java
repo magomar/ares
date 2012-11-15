@@ -1,12 +1,16 @@
 package ares.application.views;
 
 
+import ares.application.boundaries.view.BoardViewer;
 import ares.application.gui_components.*;
+import ares.application.models.ScenarioModel;
+import ares.application.models.forces.UnitModel;
 import ares.engine.realtime.RealTimeEngine;
 import ares.platform.view.AbstractView;
 import ares.scenario.Scenario;
 import java.awt.Dimension;
 import java.beans.PropertyChangeEvent;
+import java.util.Collection;
 import javax.swing.JLayeredPane;
 import javax.swing.JScrollPane;
 
@@ -14,13 +18,13 @@ import javax.swing.JScrollPane;
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public class BoardView extends AbstractView<JScrollPane> {
+public class BoardView extends AbstractView<JScrollPane> implements BoardViewer {
 
     private JLayeredPane layers;
     private TerrainLayer terrainLayer;
     private UnitsLayer unitsLayer;
     private GridLayer gridLayer;
-    private Scenario scen;
+    private ScenarioModel scenario;
    
     @Override
     protected JScrollPane layout() {
@@ -54,21 +58,7 @@ public class BoardView extends AbstractView<JScrollPane> {
         switch (evt.getPropertyName()) {
             case RealTimeEngine.SCENARIO_PROPERTY:
                 if (evt.getNewValue() != null) {
-                    Scenario scenario = (Scenario) evt.getNewValue();
-                    terrainLayer.initialize(scenario);
-                    gridLayer.initialize(scenario);
-                    unitsLayer.initialize(scenario);
-                    Dimension imageSize = new Dimension(scenario.getBoardInfo().getImageWidth(), scenario.getBoardInfo().getImageHeight());
-                    layers.setPreferredSize(imageSize);
-                    layers.setSize(imageSize);
-                    terrainLayer.setPreferredSize(imageSize);
-                    terrainLayer.setSize(imageSize);
-                    gridLayer.setPreferredSize(imageSize);
-                    gridLayer.setSize(imageSize);
-                    unitsLayer.setPreferredSize(imageSize);
-                    unitsLayer.setSize(imageSize);
                     
-                    scen = scenario;
                     
                 } else {
                     terrainLayer.flushLayer();
@@ -79,8 +69,29 @@ public class BoardView extends AbstractView<JScrollPane> {
                 break;
             case RealTimeEngine.CLOCK_EVENT_PROPERTY:
                 //TODO refresh only selected units
-                //unitsLayer.initialize(scen);
+                unitsLayer.initialize(scenario);
                 break;
         }        
+    }
+
+    @Override
+    public void initializeBoard(ScenarioModel scenario) {
+                    terrainLayer.initialize(scenario);
+                    unitsLayer.initialize(scenario);
+                    Dimension imageSize = new Dimension(scenario.getBoardInfo().getImageWidth(), scenario.getBoardInfo().getImageHeight());
+                    layers.setPreferredSize(imageSize);
+                    layers.setSize(imageSize);
+                    terrainLayer.setPreferredSize(imageSize);
+                    terrainLayer.setSize(imageSize);
+                    gridLayer.setPreferredSize(imageSize);
+                    gridLayer.setSize(imageSize);
+                    unitsLayer.setPreferredSize(imageSize);
+                    unitsLayer.setSize(imageSize);
+                    scenario = scenario;
+    }
+
+    @Override
+    public void updateUnits(Collection<UnitModel> units) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

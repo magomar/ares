@@ -1,29 +1,31 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package ares.platform.model;
 
+import ares.scenario.board.InformationLevel;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.util.Map;
 
 /**
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public abstract class AbstractModel<M> {
-    private M model;
+public abstract class AbstractModelProvider<T> implements ModelProvider<T> {
 
+    protected Map<InformationLevel, T> models;
     private PropertyChangeSupport propertyChangeSupport;
 
-    public AbstractModel() {
+    public AbstractModelProvider() {
         propertyChangeSupport = new PropertyChangeSupport(this);
     }
     
-    public M getModel() {
-        return model;
+    public T getCompleteModel() {
+        return getModel(InformationLevel.COMPLETE);
     }
-
+    
+    protected T getModel(InformationLevel infoLevel) {
+        return models.get(infoLevel);
+    }
+        
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         propertyChangeSupport.addPropertyChangeListener(listener);
     }

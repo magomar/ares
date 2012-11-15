@@ -2,7 +2,7 @@ package ares.platform.controller;
 
 import ares.platform.application.AbstractAresApplication;
 import ares.platform.application.LookupService;
-import ares.platform.model.AbstractModel;
+import ares.platform.model.AbstractModelProvider;
 import ares.platform.view.AbstractView;
 import ares.platform.view.InternalFrameView;
 import java.beans.PropertyChangeEvent;
@@ -21,7 +21,7 @@ public abstract class AbstractController implements PropertyChangeListener {
 //    protected final Map<Class<? extends AbstractView<? extends JComponent>>, AbstractView<? extends JComponent>> views = new HashMap<>();
 //    protected final Map<Class<? extends AbstractModel>, AbstractModel> models = new HashMap<>();
     private final LookupService<AbstractView<? extends JComponent>> views = new LookupService<>();
-    private final LookupService<AbstractModel> models = new LookupService<>();
+    private final LookupService<AbstractModelProvider> models = new LookupService<>();
 
     public final void initialize() {
         registerAllModels();
@@ -54,7 +54,7 @@ public abstract class AbstractController implements PropertyChangeListener {
      */
     protected final void setModelProperty(String propertyName, Object newValue) {
 
-        for (AbstractModel model : models.values()) {
+        for (AbstractModelProvider model : models.values()) {
             try {
                 Method method = model.getClass().
                         getMethod("set" + propertyName, new Class[]{
@@ -76,12 +76,12 @@ public abstract class AbstractController implements PropertyChangeListener {
         views.remove(viewClass);
     }
 
-    public final void addModel(Class<? extends AbstractModel> modelClass, AbstractModel model) {
+    public final void addModel(Class<? extends AbstractModelProvider> modelClass, AbstractModelProvider model) {
         models.put(modelClass, model);
         model.addPropertyChangeListener(this);
     }
 
-    public final void removeModel(Class<? extends AbstractModel> modelClass, AbstractModel model) {
+    public final void removeModel(Class<? extends AbstractModelProvider> modelClass, AbstractModelProvider model) {
         models.remove(modelClass);
         model.removePropertyChangeListener(this);
     }
@@ -94,7 +94,7 @@ public abstract class AbstractController implements PropertyChangeListener {
         return (InternalFrameView<T>) views.get(viewClass);
     }
 
-    public final <T extends AbstractModel> T getModel(Class<T> modelClass) {
+    public final <T extends AbstractModelProvider> T getModel(Class<T> modelClass) {
         return (T) models.get(modelClass);
     }
 }

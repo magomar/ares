@@ -1,10 +1,14 @@
 package ares.scenario.board;
 
+import ares.application.models.board.TileModel;
 import ares.data.jaxb.Map.Cell;
 import ares.data.jaxb.TerrainFeature;
 import ares.data.jaxb.TerrainType;
 import ares.engine.combat.CombatModifier;
 import ares.engine.movement.MovementCost;
+import ares.platform.model.AbstractModelProvider;
+import ares.platform.model.UserRole;
+import ares.platform.model.UserRoleType;
 import ares.scenario.Scale;
 import ares.scenario.Scenario;
 import ares.scenario.forces.AirUnit;
@@ -19,7 +23,7 @@ import java.util.*;
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public final class Tile {
+public final class Tile extends AbstractModelProvider<TileModel> {
 
     /**
      * Set of terrain types found in this location whose effect does not depend on direction
@@ -85,6 +89,8 @@ public final class Tile {
      * the board), then there would be no entry for that direction.
      */
     private Map<Direction, Tile> neighbors;
+    private Map<Force, InformationLevel> informationLevels;
+    private TileModel tileModel;
 
     public Tile(Cell c) {
         // numeric attributes
@@ -125,6 +131,7 @@ public final class Tile {
         for (TerrainFeature feature : c.getFeature()) {
             features.add(feature);
         }
+        tileModel = new TileModel(this);
     }
 
     /**
@@ -147,56 +154,15 @@ public final class Tile {
             combatModifiers.put(fromDir, combatModifier);
         }
         this.owner = owner;
-    }
-
-    public Map<Direction, Tile> getNeighbors() {
-        return neighbors;
-    }
-
-    public Set<TerrainFeature> getFeatures() {
-        return features;
-    }
-
-    public Vision getVisibility() {
-        return visibility;
-    }
-
-    public int getDistance() {
-        return distance;
-    }
-
-    public int getEntrechment() {
-        return entrechment;
-    }
-
-    public void setEntrechment(int entrechment) {
-        this.entrechment = entrechment;
-    }
-
-    public Force getOwner() {
-        return owner;
-    }
-
-//    public void setOwner(Force owner) {
-//        this.owner = owner;
-//    }
-    public Map<Direction, Set<Terrain>> getSideTerrain() {
-        return sideTerrain;
-    }
-
-    public Set<Terrain> getTileTerrain() {
-        return tileTerrain;
-    }
-
-//    public StackOfUnits getUnits() {
-//        return units;
-//    }
-    public Collection<SurfaceUnit> getSurfaceUnits() {
-        return units.getSurfaceUnits();
-    }
-
-    public Collection<AirUnit> getAirUnits() {
-        return units.getAirUnits();
+        informationLevels = new HashMap<>();
+        Force[] forces = scenario.getForces();
+        for (Force force : forces) {
+            if (force == owner) {
+                informationLevels.put(force, InformationLevel.COMPLETE);
+            } else {
+                informationLevels.put(force, InformationLevel.POOR);
+            }
+        }
     }
 
     public void add(Unit unit) {
@@ -221,6 +187,15 @@ public final class Tile {
         }
     }
 
+    public void setEntrechment(int entrechment) {
+        this.entrechment = entrechment;
+    }
+
+    public void setInformationLevel(Force force, InformationLevel informationLevel) {
+        informationLevels.put(force, informationLevel);
+    }
+
+// *** GETTERS ***
     public Unit getTopUnit() {
         return units.getPointOfInterest();
     }
@@ -229,10 +204,53 @@ public final class Tile {
         units.next();
     }
 
+//    public StackOfUnits getUnits() {
+//        return units;
+//    }
+    public Map<Direction, Tile> getNeighbors() {
+        return neighbors;
+    }
+
+    public Set<TerrainFeature> getFeatures() {
+        return features;
+    }
+
+    public Vision getVisibility() {
+        return visibility;
+    }
+
+    public int getDistance() {
+        return distance;
+    }
+
+    public int getEntrechment() {
+        return entrechment;
+    }
+
+    public Force getOwner() {
+        return owner;
+    }
+
+    public Map<Direction, Set<Terrain>> getSideTerrain() {
+        return sideTerrain;
+    }
+
+    public Set<Terrain> getTileTerrain() {
+        return tileTerrain;
+    }
+
+    public Collection<SurfaceUnit> getSurfaceUnits() {
+        return units.getSurfaceUnits();
+    }
+
+    public Collection<AirUnit> getAirUnits() {
+        return units.getAirUnits();
+    }
+
     public int getStackingPenalty(Scale scale) {
         return units.getStackingPenalty(scale);
     }
-    
+
     public int getNumStackedUnits() {
         return units.size();
     }
@@ -268,19 +286,21 @@ public final class Tile {
         return combatModifiers.get(dir);
     }
 
-//    public void getDensity() {
-//        int density = scenario.getScale().getCriticalDensity();
-//            int numHorsesAndVehicles = 0;
-//            for (Unit aUnit : destination.getSurfaceUnits()) {
-//                if (MovementType.MOBILE_LAND_UNIT.contains(aUnit.getMovement())) {
-//                    numHorsesAndVehicles += ((LandUnit) aUnit).getNumVehiclesAndHorses();
-//                }
-//            }
-//            cost = Math.max(ONE, Math.min(MAX_ROAD_COST, numHorsesAndVehicles / density));
-//    }
-    
+    public InformationLevel getInformationLevel(Force force) {
+        return informationLevels.get(force);
+    }
+
     @Override
     public String toString() {
         return "<" + x + "," + y + ">";
+    }
+
+    @Override
+    public TileModel getModel(UserRole userRole) {
+        if (userRole.getRoleType() == UserRoleType.GOD) {
+            return getModel(InformationLevel.COMPLETE);
+        }
+        InformationLevel infoLevel = informationLevels.get(userRole.getForce());
+        return getModel(infoLevel);
     }
 }

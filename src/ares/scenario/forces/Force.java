@@ -1,5 +1,8 @@
 package ares.scenario.forces;
 
+import ares.application.models.forces.ForceModel;
+import ares.platform.model.AbstractModelProvider;
+import ares.platform.model.UserRole;
 import ares.scenario.Scenario;
 import java.util.*;
 
@@ -7,7 +10,7 @@ import java.util.*;
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public class Force {
+public class Force extends AbstractModelProvider<ForceModel> {
 
     private int id;
     private String name;
@@ -99,5 +102,10 @@ public class Force {
     @Override
     public String toString() {
         return "{" + name + '}';
+    }
+
+    @Override
+    public ForceModel getModel(UserRole role) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

@@ -1,5 +1,6 @@
 package ares.application.gui_components;
 
+import ares.application.models.ScenarioModel;
 import ares.data.jaxb.TerrainFeature;
 import ares.io.*;
 import ares.scenario.Scenario;
@@ -32,7 +33,8 @@ public class TerrainLayer extends javax.swing.JPanel {
      * @param scenario current scenario information
      *
      */
-    public void initialize(Scenario scenario) {
+
+    public void initialize(ScenarioModel scenario) {
 
         boardInfo = scenario.getBoardInfo();
         // If there is no terrain image
@@ -71,10 +73,13 @@ public class TerrainLayer extends javax.swing.JPanel {
     public void createTerrainImage(Tile[][] tileMap) {
 
 
+
         Graphics2D g2 = (Graphics2D) terrainImage.getGraphics();
         // Set terrain image background color                                                   
+
         g2.setColor(Color.BLACK);
         // Paint it black!
+
         g2.fillRect(0, 0, boardInfo.getImageWidth(), boardInfo.getImageHeight());
 
         Image tileTerrainImage;
@@ -96,11 +101,13 @@ public class TerrainLayer extends javax.swing.JPanel {
 
                     tileTerrainImage = createTileImage(tileMap[i][j]);
 
+                    terrainGraphics.drawImage(tileFeaturesImage, x, y, this);
                     g2.drawImage(tileTerrainImage, x, y, null);
                     g2.drawImage(tileFeaturesImage, x, y, this);
                 }
             }
             x += dx;
+
         }     
         g2.dispose();
     }

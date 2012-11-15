@@ -3,7 +3,9 @@ package ares.engine.realtime;
 import ares.engine.Engine;
 import ares.engine.actors.FormationActor;
 import ares.engine.actors.UnitActor;
-import ares.platform.model.AbstractModel;
+import ares.platform.model.AbstractModelProvider;
+import ares.platform.model.UserRole;
+import ares.scenario.AresCalendar;
 import ares.scenario.Scenario;
 import ares.scenario.forces.Force;
 import ares.scenario.forces.Formation;
@@ -16,7 +18,7 @@ import java.util.logging.Logger;
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public class RealTimeEngine extends AbstractModel<Engine> implements Engine {
+public class RealTimeEngine extends AbstractModelProvider<Engine> implements Engine {
 
     public static final String SCENARIO_PROPERTY = "Scenario";
     public static final String CLOCK_EVENT_PROPERTY = "ClockEvent";
@@ -59,14 +61,12 @@ public class RealTimeEngine extends AbstractModel<Engine> implements Engine {
         return scenario;
     }
 
-    @Override
     public void start() {
         LOG.log(Level.INFO, "*** Clock Started", clock);
         running = true;
         clock.tick();
     }
 
-    @Override
     public void stop() {
         LOG.log(Level.INFO, "********** Clock Stopped", clock);
         running = false;
@@ -117,6 +117,11 @@ public class RealTimeEngine extends AbstractModel<Engine> implements Engine {
         for (UnitActor unitActor : unitActors) {
             unitActor.schedule(clock);
         }
+    }
+
+    @Override
+    public Engine getModel(UserRole force) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
 }
