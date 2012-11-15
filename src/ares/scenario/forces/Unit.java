@@ -7,16 +7,15 @@ import ares.application.models.forces.UnitModel;
 import ares.data.jaxb.Availability;
 import ares.data.jaxb.Emphasis;
 import ares.engine.movement.MovementType;
-import ares.platform.model.AbstractModelProvider;
+import ares.platform.model.ModelProvider;
 import ares.platform.model.UserRole;
-import ares.platform.model.UserRoleType;
 import ares.scenario.Scenario;
 import ares.scenario.assets.Asset;
 import ares.scenario.assets.AssetTrait;
 import ares.scenario.assets.AssetType;
 import ares.scenario.assets.AssetTypes;
 import ares.scenario.board.Board;
-import ares.scenario.board.InformationLevel;
+import ares.scenario.board.KnowledgeLevel;
 import ares.scenario.board.Tile;
 import java.util.*;
 
@@ -24,7 +23,7 @@ import java.util.*;
  *
  * @author Mario Gomez <margomez antiTank dsic.upv.es>
  */
-public abstract class Unit extends AbstractModelProvider<UnitModel> {
+public abstract class Unit implements ModelProvider<UnitModel> {
 
 //    public static final Comparator<Unit> UNIT_ACTION_FINISH_COMPARATOR = new UnitActionFinishComparator();
     public static final Comparator<Unit> UNIT_ENTRY_COMPARATOR = new UnitEntryComparator();
@@ -122,7 +121,6 @@ public abstract class Unit extends AbstractModelProvider<UnitModel> {
      * current amount of that equipment, and the maximum amount (the ideal condition)
      */
     protected Map<AssetType, Asset> assets;
-    
     // ************ COMPUTED ATTRIBUTES ****************
     /**
      * Represents the special capabilities of a unit. It is specified as a map that links asset types to the number of
@@ -204,6 +202,7 @@ public abstract class Unit extends AbstractModelProvider<UnitModel> {
      * becoming exhausted.
      */
     protected int maxRange;
+    private final Map<KnowledgeLevel, UnitModel> models;
 
     protected Unit(ares.data.jaxb.Unit unit, Formation formation, Force force, Scenario scenario) {
         id = unit.getId();
@@ -263,10 +262,10 @@ public abstract class Unit extends AbstractModelProvider<UnitModel> {
         int x = unit.getX();
         int y = unit.getY();
         location = board.getMap()[x][y];
-
-        models.put(InformationLevel.POOR, new DetectedUnitModel(this, scenario.getScale()));
-        models.put(InformationLevel.GOOD, new IdentifiedUnitModel(this, scenario.getScale()));
-        models.put(InformationLevel.COMPLETE, new KnownUnitModel(this, scenario.getScale()));
+        models = new HashMap<>();
+        models.put(KnowledgeLevel.POOR, new DetectedUnitModel(this));
+        models.put(KnowledgeLevel.GOOD, new IdentifiedUnitModel(this));
+        models.put(KnowledgeLevel.COMPLETE, new KnownUnitModel(this));
     }
 
     /**
@@ -513,13 +512,7 @@ public abstract class Unit extends AbstractModelProvider<UnitModel> {
             return false;
         }
         final Unit other = (Unit) obj;
-        if (this.id != other.id) {
-            return false;
-        }
-//        if (!this.formation.equals(other.formation)) {
-//            return false;
-//        }
-        if (!this.force.equals(other.force)) {
+        if (this.id != other.id || !this.force.equals(other.force)) {
             return false;
         }
         return true;
@@ -535,16 +528,12 @@ public abstract class Unit extends AbstractModelProvider<UnitModel> {
     }
 
     @Override
-    public UnitModel getModel(UserRole userRole) {
-        if (userRole.getRoleType() == UserRoleType.GOD) {
-            return getModel(InformationLevel.COMPLETE);
-        }
-        InformationLevel infoLevel = location.getInformationLevel(userRole.getForce());
-        return getModel(infoLevel);
+    public final UnitModel getModel(UserRole role) {
+        KnowledgeLevel kLevel = location.getKnowledgeLevel(role);
+        return models.get(kLevel);
     }
-    
-    public UnitModel getModel(Force force) {
-        InformationLevel infoLevel = location.getInformationLevel(force);
-        return getModel(infoLevel);
+
+    public final UnitModel getModel(KnowledgeLevel kLevel) {
+        return models.get(kLevel);
     }
 }

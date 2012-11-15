@@ -1,7 +1,7 @@
 package ares.application.models.forces;
 
 import ares.scenario.Scale;
-import ares.scenario.board.InformationLevel;
+import ares.scenario.board.KnowledgeLevel;
 import ares.scenario.forces.*;
 import java.awt.Point;
 
@@ -11,12 +11,12 @@ import java.awt.Point;
  */
 public class DetectedUnitModel extends UnitModel {
 
-    public DetectedUnitModel(Unit unit, Scale scale) {
-        super(unit, scale, InformationLevel.POOR);
+    public DetectedUnitModel(Unit unit) {
+        super(unit, KnowledgeLevel.POOR);
     }
 
-    protected DetectedUnitModel(Unit unit, Scale scale, InformationLevel informationLevel) {
-        super(unit, scale, informationLevel);
+    protected DetectedUnitModel(Unit unit, KnowledgeLevel kLevel) {
+        super(unit, kLevel);
     }
 
     public UnitType getUnitType() {
@@ -25,16 +25,16 @@ public class DetectedUnitModel extends UnitModel {
 
     @Override
     public int getColor() {
-        return unit.getColor(); 
+        return unit.getColor();
     }
 
     @Override
     public int getIconId() {
         return unit.getIconId();
     }
-    
+
     @Override
     public Point getLocation() {
-        return new Point(unit.getLocation().getX()-1, unit.getLocation().getY()+1);
+        return new Point(unit.getLocation().getX() - 1, unit.getLocation().getY() + 1);
     }
 }

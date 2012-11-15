@@ -2,7 +2,7 @@ package ares.application.gui_components;
 
 import ares.io.AresIO;
 import ares.scenario.Scenario;
-import ares.scenario.board.BoardInfo;
+import ares.application.models.board.BoardGraphicsModel;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -26,7 +26,7 @@ public class GridLayer extends javax.swing.JPanel {
          * Create the grid when opening new scenario
          */
         if (gridImage == null) {
-            BoardInfo boardInfo = scenario.getBoardInfo();            
+            BoardGraphicsModel boardInfo = scenario.getBoardInfo();            
             createGridImage(boardInfo, loadHexagonFile(boardInfo));
         } else {
             /*
@@ -46,7 +46,7 @@ public class GridLayer extends javax.swing.JPanel {
      * @param hexagonGrid the image to be drawn
      * 
      */
-    private void createGridImage(BoardInfo boardInfo, Image hexagonGrid) {
+    private void createGridImage(BoardGraphicsModel boardInfo, Image hexagonGrid) {
 
         gridImage = new BufferedImage(boardInfo.getImageWidth(), boardInfo.getImageHeight(), BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2 = (Graphics2D) gridImage.getGraphics();
@@ -80,7 +80,7 @@ public class GridLayer extends javax.swing.JPanel {
      * @param boardInfo
      * @return 
      */
-    private Image loadHexagonFile(BoardInfo boardInfo) {
+    private Image loadHexagonFile(BoardGraphicsModel boardInfo) {
         Image i;
         
         try {

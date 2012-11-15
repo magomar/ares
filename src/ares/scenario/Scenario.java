@@ -1,15 +1,13 @@
 package ares.scenario;
 
 import ares.application.models.ScenarioModel;
-import ares.application.models.board.TileModel;
 import ares.data.jaxb.EquipmentDB;
 import ares.data.jaxb.OOB;
-import ares.platform.model.AbstractModelProvider;
 import ares.platform.model.UserRole;
 import ares.scenario.assets.AssetTypes;
 import ares.scenario.board.Board;
-import ares.scenario.board.BoardInfo;
-import ares.scenario.board.InformationLevel;
+import ares.application.models.board.BoardGraphicsModel;
+import ares.platform.model.ModelProvider;
 import ares.scenario.forces.Force;
 import ares.scenario.forces.Unit;
 import java.util.ArrayList;
@@ -22,18 +20,17 @@ import java.util.List;
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public final class Scenario extends AbstractModelProvider<ScenarioModel> {
+public final class Scenario implements ModelProvider<ScenarioModel> {
 
+    public final AssetTypes assetTypes;
     private final String name;
     private Board board;
     private Scale scale;
     private Force[] forces;
     private AresCalendar calendar;
-    private BoardInfo boardInfo;
-    public final AssetTypes assetTypes;
+    private BoardGraphicsModel boardInfo;
 
-    public Scenario(ares.data.jaxb.Scenario scenario, EquipmentDB eqpDB)  {
-
+    public Scenario(ares.data.jaxb.Scenario scenario, EquipmentDB eqpDB) {
         name = scenario.getHeader().getName();
         scale = new Scale((int) (scenario.getEnvironment().getScale() * 1000));
         calendar = new AresCalendar(scenario.getCalendar());
@@ -52,18 +49,14 @@ public final class Scenario extends AbstractModelProvider<ScenarioModel> {
         System.out.println(
                 "Scenario loaded: " + toString());
 
-        boardInfo = new BoardInfo(board);
-        for (InformationLevel infoLevel : InformationLevel.values()) {
-            models.put(infoLevel, new ScenarioModel(this));
-        }
-        models.put(InformationLevel.NONE, null);
+        boardInfo = new BoardGraphicsModel(board);
     }
-
+    
     public Board getBoard() {
         return board;
     }
 
-    public BoardInfo getBoardInfo() {
+    public BoardGraphicsModel getBoardInfo() {
         return boardInfo;
     }
 
@@ -101,7 +94,7 @@ public final class Scenario extends AbstractModelProvider<ScenarioModel> {
     }
 
     @Override
-    public ScenarioModel getModel(UserRole force) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public ScenarioModel getModel(UserRole role) {
+        return new ScenarioModel(this, role);
     }
 }

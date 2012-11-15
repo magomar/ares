@@ -1,11 +1,10 @@
 package ares.engine.realtime;
 
-import ares.engine.Engine;
+import ares.application.models.ScenarioModel;
 import ares.engine.actors.FormationActor;
 import ares.engine.actors.UnitActor;
-import ares.platform.model.AbstractModelProvider;
+import ares.platform.model.AbstractBean;
 import ares.platform.model.UserRole;
-import ares.scenario.AresCalendar;
 import ares.scenario.Scenario;
 import ares.scenario.forces.Force;
 import ares.scenario.forces.Formation;
@@ -18,7 +17,7 @@ import java.util.logging.Logger;
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public class RealTimeEngine extends AbstractModelProvider<Engine> implements Engine {
+public class RealTimeEngine  extends AbstractBean {
 
     public static final String SCENARIO_PROPERTY = "Scenario";
     public static final String CLOCK_EVENT_PROPERTY = "ClockEvent";
@@ -56,11 +55,14 @@ public class RealTimeEngine extends AbstractModelProvider<Engine> implements Eng
         firePropertyChange(SCENARIO_PROPERTY, oldValue, scenario);
     }
 
-    @Override
     public Scenario getScenario() {
         return scenario;
     }
 
+    public ScenarioModel getScenarioModel(UserRole role) {
+        return scenario.getModel(role);
+    }
+    
     public void start() {
         LOG.log(Level.INFO, "*** Clock Started {0}", clock);
         running = true;
@@ -72,7 +74,6 @@ public class RealTimeEngine extends AbstractModelProvider<Engine> implements Eng
         running = false;
     }
 
-    @Override
     public void update(ClockEvent clockEvent) {
 //        LOG.log(Level.INFO, "+++++ New Time: ", clock);
         do {
@@ -81,7 +82,7 @@ public class RealTimeEngine extends AbstractModelProvider<Engine> implements Eng
         } while (phase != Phase.ACT);
         
         ClockEvent oldValue = this.clockEvent;
-        firePropertyChange(CLOCK_EVENT_PROPERTY, oldValue, clockEvent);
+//        firePropertyChange(CLOCK_EVENT_PROPERTY, oldValue, clockEvent);
         Set<ClockEventType> clockEventTypes = clockEvent.getEventTypes();
         
         if (clockEventTypes.contains(ClockEventType.TURN)) {
@@ -117,11 +118,6 @@ public class RealTimeEngine extends AbstractModelProvider<Engine> implements Eng
         for (UnitActor unitActor : unitActors) {
             unitActor.schedule(clock);
         }
-    }
-
-    @Override
-    public Engine getModel(UserRole force) {
-        throw new UnsupportedOperationException("Not supported yet.");
     }
 
 }

@@ -1,29 +1,29 @@
 package ares.application.models.board;
 
-import ares.platform.model.FilteredModel;
+import ares.platform.model.RoleMediatedModel;
+import ares.platform.model.UserRole;
 import ares.scenario.board.Board;
-import ares.scenario.board.InformationLevel;
 import ares.scenario.board.Tile;
 
 /**
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public class BoardModel {
+public class BoardModel extends RoleMediatedModel {
 
     private final Board board;
     private final TileModel[][] mapModel;
 
-    public BoardModel(Board board) {
-        super();
+    public BoardModel(Board board, UserRole role) {
+        super(role);
+        this.board = board;
         Tile[][] tiles = board.getMap();
         mapModel = new TileModel[tiles.length][tiles[0].length];
         for (int i = 0; i < tiles.length; i++) {
             for (int j = 0; j < tiles[0].length; j++) {
-                mapModel[i][j] = tiles[i][j].getCompleteModel();
+                mapModel[i][j] = tiles[i][j].getModel(role);
             }
         }
-        this.board = board;
     }
 
     public TileModel[][] getMapModel() {

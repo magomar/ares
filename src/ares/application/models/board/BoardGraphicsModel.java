@@ -1,12 +1,13 @@
-package ares.scenario.board;
+package ares.application.models.board;
 
 import ares.io.ImageProfile;
+import ares.scenario.board.Board;
 
 /**
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public class BoardInfo {
+public class BoardGraphicsModel {
 
     final private int hexSide;
     final private int hexDiameter;
@@ -18,7 +19,7 @@ public class BoardInfo {
     final private int imageHeight;
     final private ImageProfile imgProfile;
 
-    public BoardInfo(Board board) {
+    public BoardGraphicsModel(Board board) {
         width = board.getWidth();
         height = board.getHeight();
         

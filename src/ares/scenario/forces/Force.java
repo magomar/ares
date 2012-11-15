@@ -1,20 +1,16 @@
 package ares.scenario.forces;
 
-import ares.application.models.forces.EnemyForceModel;
 import ares.application.models.forces.ForceModel;
-import ares.application.models.forces.KnownForceModel;
-import ares.platform.model.AbstractModelProvider;
+import ares.platform.model.ModelProvider;
 import ares.platform.model.UserRole;
-import ares.platform.model.UserRoleType;
 import ares.scenario.Scenario;
-import ares.scenario.board.InformationLevel;
 import java.util.*;
 
 /**
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public class Force extends AbstractModelProvider<ForceModel> {
+public class Force implements ModelProvider<ForceModel> {
 
     private int id;
     private String name;
@@ -45,9 +41,6 @@ public class Force extends AbstractModelProvider<ForceModel> {
         }
         formations.addAll(formMap.values());
 
-        models.put(InformationLevel.POOR, new EnemyForceModel(this));
-        models.put(InformationLevel.GOOD, new EnemyForceModel(this));
-        models.put(InformationLevel.COMPLETE, new KnownForceModel(this));
     }
 
     public List<Unit> getActiveUnits() {
@@ -113,18 +106,7 @@ public class Force extends AbstractModelProvider<ForceModel> {
     }
 
     @Override
-    public ForceModel getModel(UserRole userRole) {
-        if (userRole.getRoleType() == UserRoleType.GOD || this.equals(userRole.getForce())) {
-            return getModel(InformationLevel.COMPLETE);
-        }
-        return getModel(InformationLevel.POOR);
-    }
-
-    public ForceModel getModel(Force force) {
-        if (this.equals(force)) {
-            return getModel(InformationLevel.COMPLETE);
-        } else {
-            return getModel(InformationLevel.POOR);
-        }
+    public ForceModel getModel(UserRole role) {
+        return new ForceModel(this, role);
     }
 }

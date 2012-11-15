@@ -1,7 +1,6 @@
 package ares.engine.messages;
 
-import ares.platform.model.AbstractModelProvider;
-import ares.platform.model.UserRole;
+import ares.platform.model.AbstractBean;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +8,7 @@ import java.util.List;
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public class EngineMessageLogger extends AbstractModelProvider {
+public class EngineMessageLogger extends AbstractBean {
 
     public static final String MESSAGES_PROPERTY = "Messages";
     public List<EngineMessage> messages = new ArrayList<>();
@@ -20,8 +19,4 @@ public class EngineMessageLogger extends AbstractModelProvider {
         firePropertyChange(MESSAGES_PROPERTY, oldValue, msg);
     }
 
-    @Override
-    public Object getModel(UserRole force) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
 }

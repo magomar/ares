@@ -1,5 +1,6 @@
 package ares.application.gui_components;
 
+import ares.application.models.board.BoardGraphicsModel;
 import ares.application.models.ScenarioModel;
 import ares.application.models.forces.DetectedUnitModel;
 import ares.application.models.forces.ForceModel;
@@ -28,8 +29,8 @@ public class UnitsLayer extends javax.swing.JPanel {
     private Image unitsImage = null;
     // Map to save loaded images
     private SoftReference<HashMap<Integer, BufferedImage>> unitBufferMap;
-    // BoardInfo provides hexagonal and image sizes
-    private BoardInfo boardInfo;
+    // BoardGraphicsModel provides hexagonal and image sizes
+    private BoardGraphicsModel boardInfo;
     /**
      * Offset distance from the upper left corner of the tile. The image will be
      * painted at Point(X+offset, Y+offset)
@@ -139,7 +140,7 @@ public class UnitsLayer extends javax.swing.JPanel {
     }
 
     /**
-     * Loads the unit image based on its color, IconId and InformationLevel
+     * Loads the unit image based on its color, IconId and KnowledgeLevel
      *    ______________
      *    | E        H |
      *    |   ______   |
@@ -156,7 +157,7 @@ public class UnitsLayer extends javax.swing.JPanel {
      *
      * @param unit
      * @return
-     * @see InformationLevel
+     * @see KnowledgeLevel
      */
     private Image getUnitImage(UnitModel unit) {
 
@@ -196,7 +197,7 @@ public class UnitsLayer extends javax.swing.JPanel {
         g2.setFont(font);
 
         //TODO paint name
-        switch (unit.getInformationLevel()) {
+        switch (unit.getKnowledgeLevel()) {
             case COMPLETE:
                 KnownUnitModel ku = (KnownUnitModel) unit;
                 //Echelon

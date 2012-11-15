@@ -1,5 +1,6 @@
 package ares.application.gui_components;
 
+import ares.application.models.board.BoardGraphicsModel;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.TileModel;
 import ares.data.jaxb.TerrainFeature;
@@ -23,8 +24,8 @@ public class TerrainLayer extends javax.swing.JPanel {
     private Image terrainImage = null;
     //Map to store loaded images
     private SoftReference<EnumMap<Terrain, BufferedImage>> terrainBufferMap;
-    // BoardInfo provides hexagonal and image sizes
-    private BoardInfo boardInfo;
+    // BoardGraphicsModel provides hexagonal and image sizes
+    private BoardGraphicsModel boardInfo;
 
     /**
      * Initializes the pane with the terrain image.
@@ -232,7 +233,7 @@ public class TerrainLayer extends javax.swing.JPanel {
         Set<TerrainFeatures> tf = tile.getTerrainFeatures();
         Iterator it = tf.iterator();
         while (it.hasNext()) {
-            TerrainFeature f = (TerrainFeature) it.next();
+            TerrainFeatures f = (TerrainFeatures) it.next();
 
             switch (f) {
                 case NON_PLAYABLE:

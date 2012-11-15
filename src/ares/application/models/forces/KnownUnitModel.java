@@ -1,8 +1,7 @@
 package ares.application.models.forces;
 
-import ares.scenario.Scale;
-import ares.scenario.board.InformationLevel;
-import ares.scenario.forces.*;
+import ares.scenario.board.KnowledgeLevel;
+import ares.scenario.forces.Unit;
 
 /**
  *
@@ -10,8 +9,8 @@ import ares.scenario.forces.*;
  */
 public class KnownUnitModel extends IdentifiedUnitModel {
 
-    public KnownUnitModel(Unit unit, Scale scale) {
-        super(unit, scale, InformationLevel.COMPLETE);
+    public KnownUnitModel(Unit unit) {
+        super(unit, KnowledgeLevel.COMPLETE);
     }
     
     // TODO add getter methods as needed ...
