@@ -3,8 +3,8 @@ package ares.application.views;
 
 import ares.application.gui_components.*;
 import ares.engine.realtime.RealTimeEngine;
-import ares.scenario.Scenario;
 import ares.platform.view.AbstractView;
+import ares.scenario.Scenario;
 import java.awt.Dimension;
 import java.beans.PropertyChangeEvent;
 import javax.swing.JLayeredPane;
@@ -56,6 +56,7 @@ public class BoardView extends AbstractView<JScrollPane> {
                 if (evt.getNewValue() != null) {
                     Scenario scenario = (Scenario) evt.getNewValue();
                     terrainLayer.initialize(scenario);
+                    gridLayer.initialize(scenario);
                     unitsLayer.initialize(scenario);
                     Dimension imageSize = new Dimension(scenario.getBoardInfo().getImageWidth(), scenario.getBoardInfo().getImageHeight());
                     layers.setPreferredSize(imageSize);
@@ -78,7 +79,7 @@ public class BoardView extends AbstractView<JScrollPane> {
                 break;
             case RealTimeEngine.CLOCK_EVENT_PROPERTY:
                 //TODO refresh only selected units
-                unitsLayer.initialize(scen);
+                //unitsLayer.initialize(scen);
                 break;
         }        
     }

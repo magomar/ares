@@ -49,7 +49,7 @@ public class GridLayer extends javax.swing.JPanel {
     private void createGridImage(BoardInfo boardInfo, Image hexagonGrid) {
 
         gridImage = new BufferedImage(boardInfo.getImageWidth(), boardInfo.getImageHeight(), BufferedImage.TYPE_INT_ARGB);
-        Graphics gridGraphics = gridImage.getGraphics();
+        Graphics2D g2 = (Graphics2D) gridImage.getGraphics();
 
         int x = 0, y;
         int dx = boardInfo.getHexOffset();
@@ -63,11 +63,12 @@ public class GridLayer extends javax.swing.JPanel {
                 
                 y = boardInfo.getHexHeight() * (2 * j + ((i + 1) % 2)) / 2;
 
-                gridGraphics.drawImage(hexagonGrid, x, y, null);
+                g2.drawImage(hexagonGrid, x, y, null);
             }
             
             x += dx;
         }
+        g2.dispose();
 
 
 
@@ -101,6 +102,7 @@ public class GridLayer extends javax.swing.JPanel {
     
     @Override
     public void paintComponent(Graphics g) {
-        g.drawImage(gridImage, 0, 0, this);
+        Graphics2D g2 = (Graphics2D) g;
+        g2.drawImage(gridImage, 0, 0, this);
     }
 }

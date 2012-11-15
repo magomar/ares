@@ -57,7 +57,7 @@ public class UnitsLayer extends javax.swing.JPanel {
     public void initialize(Scenario scenario) {
 
         boardInfo = scenario.getBoardInfo();
-        
+
         // If the image has not been created
         // // True boolean is a temporary fix to repaint
         // // the unit layer. Units should be refreshed tile by tile
@@ -69,7 +69,9 @@ public class UnitsLayer extends javax.swing.JPanel {
             }
 
             unitsImage = new BufferedImage(boardInfo.getImageWidth(), boardInfo.getImageHeight(), BufferedImage.TYPE_4BYTE_ABGR);
-            Map<Collection<Unit>, Integer> unitC = fillmap(scenario);
+            //This map will be replaced with Collection<unitModel>
+            //where unitModel will have attributes int color, iconid;Point position; int stackedunits(tile density), stamina, health attack, defense; Echelon ech;
+            Map<Collection<Unit>, Point> unitC = fillmap(scenario);
             createAllUnitsImage(unitC);
         }
         repaint();
@@ -81,15 +83,14 @@ public class UnitsLayer extends javax.swing.JPanel {
      *
      * @param m Map with a collection as key and the index as value
      */
-    private void createAllUnitsImage(Map<Collection<Unit>, Integer> m) {
+    private void createAllUnitsImage(Map<Collection<Unit>, Point> m) {
 
-        for (Map.Entry<Collection<Unit>, Integer> e : m.entrySet()) {
+        for (Map.Entry<Collection<Unit>, Point> e : m.entrySet()) {
 
             // Get the row and column from the index
-            int index = e.getValue();
-            int row = index / boardInfo.getWidth(), col = index % boardInfo.getHeight();
+            
             // Paint the collection
-            refreshUnitsbyPosition(e.getKey(), row, col);
+            if(e.getKey().size()!=0)refreshUnitsbyPosition(e.getKey(), e.getValue().x, e.getValue().y);
 
         }
     }
@@ -101,11 +102,11 @@ public class UnitsLayer extends javax.swing.JPanel {
      * @param uCol collection of units to be painted
      * @param x tile row
      * @param y tile column
-     * @see refreshUnitsByPosition(Collection<Unit>, int, int, int)
+     * @see refreshUnitsByPosition(Unit, int, int, int)
      */
-    public void refreshUnitsbyPosition(Collection<Unit> uCol, int x, int y) {
+    public void refreshUnitsbyPosition(Collection<Unit> unit, int x, int y) {
 
-        refreshUnitsbyPosition(uCol, x, y, maxStack);
+        refreshUnitsbyPosition(unit, x, y, maxStack);
     }
 
     /**
@@ -116,24 +117,39 @@ public class UnitsLayer extends javax.swing.JPanel {
      * @param col Tile column
      * @param maxStack Maximum numbers of units to be painted in a single tile
      */
-    public void refreshUnitsbyPosition(Collection<Unit> uCol, int row, int col, int maxStack) {
+    public void refreshUnitsbyPosition(Collection<Unit> unit, int row, int col, int maxStack) {
 
-        Graphics2D g = (Graphics2D) unitsImage.getGraphics();
-        int x = boardInfo.getHexOffset();
-        int y = boardInfo.getHexHeight() * (2 * col + ((row + 1) % 2)) / 2;
-        this.maxStack = maxStack;
+        Graphics2D g2 = (Graphics2D) unitsImage.getGraphics();
+        int x = boardInfo.getHexOffset()*row;
+        int h = boardInfo.getHexHeight(); int y = (row%2 == 0 ? h*(col)+h/2 : h*col);// * (2 * col + ((row + 1) % 2)) / 2;
+        x+=unitImageOffset; y+=unitImageOffset;
+        int d = 0;
 
-        Unit topUnit = uCol.iterator().next();
-        for (int stack = uCol.size(), d = unitImageOffset; stack < maxStack; ++stack) {
-
-            g.drawImage(getUnitImage(topUnit), row * x + d, y + d, this);
+        //for int i=0, i<unitModel.stackedUnits || i<maxStack; ++i
+        Unit u = unit.iterator().next();
+        for(Unit varNotUsed : unit){
+            g2.drawImage(getUnitImage(u), x+d , y+d , this);
             d += unitStackOffset;
         }
+        g2.dispose();
     }
 
     /**
      * Loads the unit image based on its color and IconId
-     *
+     * and writes its attributes.
+     * 
+     * The result will look like this:
+     *    |--------------|
+     *    | E          H |
+     *    |              |
+     * TD |   ........ B |
+     *    |   |      | B |
+     *    |   |......| B |
+     *    |              |
+     *    |__AT_____DF___|
+     * 
+     * Where 'E' stands for "Echelon", 'H' for "Health", 'TD' for "Tile density"
+     * 'AT' "Attack", 'DF' Defense and 'BBB' "Stamina Bar" (a line)
      * @param unit
      * @return
      */
@@ -142,12 +158,38 @@ public class UnitsLayer extends javax.swing.JPanel {
         if (unitBufferMap.get().get(unit.getColor()) == null) {
             loadUnitGraphics(unit.getColor());
         }
-
+        
+        //TODO paint tile density
+        
+        //Retrieve image and crop the unit we need
         int unitImgWidth = boardInfo.getImageProfile().getUnitsImageWidth() / boardInfo.getImageProfile().getUnitsImageCols();
         int unitImgHeight = boardInfo.getImageProfile().getUnitsImageHeight() / boardInfo.getImageProfile().getUnitsImageRows();
         int row = unit.getIconId() / boardInfo.getImageProfile().getUnitsImageCols();
         int col = unit.getIconId() % boardInfo.getImageProfile().getUnitsImageRows();
         imageUnit = unitBufferMap.get().get(unit.getColor()).getSubimage(col * unitImgWidth, row * unitImgHeight, unitImgWidth, unitImgHeight);
+        
+        //TODO Set text dinamycally
+        //Write text
+        Graphics2D g2 = imageUnit.createGraphics();
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
+        Font font = new Font("Serif", Font.PLAIN,10);
+        g2.setFont(font);
+        //Echelon
+        g2.drawString("-",3,6);
+        // Health            //g2.drawString("99", unitImgWidth-13, 9);
+        g2.setColor(Color.BLACK);
+        g2.drawRect(unitImgWidth-9, 3, 5, 3);
+        g2.setColor(Color.GREEN);
+        g2.fillRect(unitImgWidth-8, 4, 3, 2);
+        // Stamina bar
+        g2.setColor(Color.RED);
+        g2.fillRect(27,9, 2,11);
+        // Attack
+        g2.setColor(Color.ORANGE);
+        g2.drawString("00",3,unitImgHeight-2);
+        // Defense
+        g2.drawString("99",unitImgWidth-13,unitImgHeight-2);
+        
         return imageUnit;
 
     }
@@ -171,38 +213,33 @@ public class UnitsLayer extends javax.swing.JPanel {
     }
 
     /**
-     * This method goes through all the tiles and puts
-     * in a map the collection of units in each tile with its position
+     * This method goes through all the tiles and puts in a map the collection
+     * of units in each tile with its position
      *
      * @param scenario
      * @return
      */
-    private Map<Collection<Unit>, Integer> fillmap(Scenario scenario) {
+    private Map<Collection<Unit>, Point> fillmap(Scenario scenario) {
 
-        Map<Collection<Unit>, Integer> m = new HashMap<>();
+        Map<Collection<Unit>, Point> m = new HashMap<>();
         Tile[][] tmap = scenario.getBoard().getMap();
         for (Tile[] tv : tmap) {
-
             for (Tile t : tv) {
-                Collection c = new ArrayList();
-                for (int i = 0; i < t.getNumStackedUnits(); i++) {
-                    c.add(t.getTopUnit());
-                    t.nextTopUnit();
-                }
+                Collection<Unit> uc = new ArrayList();
                 if (t.getNumStackedUnits() != 0) {
-                    m.put(c, t.getX() * scenario.getBoardInfo().getWidth() + t.getY());
+                    for(int i = 0; i < t.getNumStackedUnits(); i++){
+                        uc.add(t.getTopUnit());t.nextTopUnit();
+                    }
                 }
+                m.put(uc, new Point(t.getX(),t.getY()));
             }
 
         }
-
-
-
         return m;
     }
 
     /**
-     * 
+     *
      */
     public void flushLayer() {
         unitsImage = null;
@@ -211,6 +248,9 @@ public class UnitsLayer extends javax.swing.JPanel {
 
     @Override
     public void paintComponent(Graphics g) {
-        g.drawImage(unitsImage, 0, 0, this);
+        Graphics2D g2 = (Graphics2D) g;
+        //Zoom cutre
+        //g2.scale(2, 2);
+        g2.drawImage(unitsImage, 0, 0, this);
     }
 }
