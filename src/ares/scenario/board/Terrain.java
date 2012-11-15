@@ -45,7 +45,9 @@ public enum Terrain {
     RIVER(2, 0, 2, 2, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, Directionality.GRAPHICAL, "h_tiles_river.png", "tiles_river.png", "s_tiles_river.png"),
     SHALLOW_WATER(9999, 9999, 9999, 9999, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, Directionality.NONE, "h_tiles_s_water.png", "tiles_s_water.png", "s_tiles_s_water.png"),
     DEEP_WATER(9999, 9999, 9999, 9999, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, Directionality.NONE, "h_tiles_d_water.png", "tiles_d_water.png", "s_tiles_d_water.png"),
-    BORDER(0, 0, 0, 0, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, Directionality.GRAPHICAL, "h_Borders.png", "Borders.png", "s_Borders.png"),;
+    BORDER(0, 0, 0, 0, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, Directionality.GRAPHICAL, "h_Borders.png", "Borders.png", "s_Borders.png"),
+    SHALLOW_WATER_DECORATOR(0, 0, 0, 0, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, Directionality.GRAPHICAL, "h_tiles_s_water.png", "tiles_s_water.png", "s_tiles_s_water.png"),
+    DEEP_WATER_DECORATOR(0, 0, 0, 0, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, Directionality.GRAPHICAL, "h_tiles_d_water.png", "tiles_d_water.png", "s_tiles_d_water.png"),;
     private final int motorized;
     private final int amphibious;
     private final int mixed;
