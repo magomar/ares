@@ -1,5 +1,6 @@
 package ares.application.controllers;
 
+import ares.application.boundaries.view.BoardViewer;
 import ares.application.commands.EngineCommands;
 import ares.application.commands.FileCommands;
 import ares.application.player.AresMenus;
@@ -80,8 +81,9 @@ public class WeGoPlayerController extends AbstractController {
         protected void onSuccess(Scenario scenario) {
             if (scenario != null) {
                 // change the RealTimeEngine model, set the Scenario property
+                
                 getModel(RealTimeEngine.class).setScenario(scenario);
-
+                
                 mainApplication.setTitle(scenario.getName() + "   " + scenario.getCalendar().toString());
 
                 // show info frame
@@ -95,6 +97,7 @@ public class WeGoPlayerController extends AbstractController {
                 // show board frame
                 InternalFrameView<BoardView> boardFrame = getInternalFrameView(BoardView.class);
                 boardFrame.show();
+                boardFrame.getView().initializeBoard(scenario.getCompleteModel());
 
                 MenuBarView menuBarView = getView(MenuBarView.class);
                 menuBarView.setMenuElementEnabled(FileCommands.CLOSE_SCENARIO.getName(), true);

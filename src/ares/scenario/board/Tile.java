@@ -90,7 +90,7 @@ public final class Tile extends AbstractModelProvider<TileModel> {
      */
     private Map<Direction, Tile> neighbors;
     private Map<Force, InformationLevel> informationLevels;
-    private TileModel tileModel;
+    
 
     public Tile(Cell c) {
         // numeric attributes
@@ -132,8 +132,10 @@ public final class Tile extends AbstractModelProvider<TileModel> {
         for (TerrainFeature feature : c.getFeature()) {
             features.add(Enum.valueOf(TerrainFeatures.class, feature.name()));
         }
+        for (InformationLevel il : InformationLevel.values()) {
+            models.put(il, new TileModel(this));
+        }
         
-        tileModel = new TileModel(this);
     }
 
     /**

@@ -232,7 +232,7 @@ public class TerrainLayer extends javax.swing.JPanel {
         Set<TerrainFeatures> tf = tile.getTerrainFeatures();
         Iterator it = tf.iterator();
         while (it.hasNext()) {
-            TerrainFeature f = (TerrainFeature) it.next();
+            TerrainFeatures f = (TerrainFeatures) it.next();
 
             switch (f) {
                 case NON_PLAYABLE:

@@ -151,6 +151,9 @@ public final class Board extends AbstractModelProvider<BoardModel> {
     public BoardModel getModel(UserRole userRole) {
         return boardModel;
     }
-    
+    @Override
+    public BoardModel getCompleteModel(){
+        return boardModel;
+    }
     
 }
