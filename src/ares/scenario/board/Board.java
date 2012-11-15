@@ -39,7 +39,7 @@ public final class Board extends AbstractModelProvider<BoardModel> {
         for (Cell cell : sourceMap.getCell()) {
             map[cell.getX()][cell.getY()] = new Tile(cell);
         }
-        boardModel = new BoardModel(this, InformationLevel.COMPLETE);
+        boardModel = new BoardModel(this);
     }
 
     public void initialize(ares.data.jaxb.Scenario scenarioXML, Scenario scenario, Force[] forces) {

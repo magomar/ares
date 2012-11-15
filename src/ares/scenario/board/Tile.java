@@ -89,6 +89,7 @@ public final class Tile extends AbstractModelProvider<TileModel> {
      * the board), then there would be no entry for that direction.
      */
     private Map<Direction, Tile> neighbors;
+    private Map<Force, InformationLevel> informationLevels;
     private TileModel tileModel;
 
     public Tile(Cell c) {
@@ -131,6 +132,8 @@ public final class Tile extends AbstractModelProvider<TileModel> {
             features.add(feature);
         }
         tileModel = new TileModel(this);
+        informationLevels = new HashMap<>();
+        
     }
 
     /**
