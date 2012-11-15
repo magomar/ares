@@ -1,26 +1,31 @@
 package ares.platform.model;
 
+import ares.scenario.board.InformationLevel;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.util.Map;
 
 /**
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public abstract class AbstractModelProvider<T> implements ModelProvider<T> {
-    private T model;
 
+    protected Map<InformationLevel, T> models;
     private PropertyChangeSupport propertyChangeSupport;
 
     public AbstractModelProvider() {
         propertyChangeSupport = new PropertyChangeSupport(this);
     }
     
-    @Override
-    public T getModel() {
-        return model;
+    public T getCompleteModel() {
+        return getModel(InformationLevel.COMPLETE);
     }
-
+    
+    protected T getModel(InformationLevel infoLevel) {
+        return models.get(infoLevel);
+    }
+        
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         propertyChangeSupport.addPropertyChangeListener(listener);
     }

@@ -5,8 +5,8 @@ package ares.scenario.board;
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public enum InformationLevel {
-    UNKNOWN,
-    SPOTTED,
-    OBSERVED,
-    KNOWN,
+    NONE,
+    POOR,
+    GOOD,
+    COMPLETE,
 }

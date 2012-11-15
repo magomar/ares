@@ -1,18 +1,22 @@
 package ares.scenario.forces;
 
-import ares.application.models.UnitModel;
+import ares.application.models.forces.DetectedUnitModel;
+import ares.application.models.forces.IdentifiedUnitModel;
+import ares.application.models.forces.KnownUnitModel;
+import ares.application.models.forces.UnitModel;
 import ares.data.jaxb.Availability;
 import ares.data.jaxb.Emphasis;
 import ares.engine.movement.MovementType;
-import ares.platform.model.ModelProvider;
+import ares.platform.model.AbstractModelProvider;
 import ares.platform.model.UserRole;
-import ares.scenario.Scale;
+import ares.platform.model.UserRoleType;
 import ares.scenario.Scenario;
 import ares.scenario.assets.Asset;
 import ares.scenario.assets.AssetTrait;
 import ares.scenario.assets.AssetType;
 import ares.scenario.assets.AssetTypes;
 import ares.scenario.board.Board;
+import ares.scenario.board.InformationLevel;
 import ares.scenario.board.Tile;
 import java.util.*;
 
@@ -20,12 +24,14 @@ import java.util.*;
  *
  * @author Mario Gomez <margomez antiTank dsic.upv.es>
  */
-public abstract class Unit implements ModelProvider<UnitModel> {
+public abstract class Unit extends AbstractModelProvider<UnitModel> {
 
 //    public static final Comparator<Unit> UNIT_ACTION_FINISH_COMPARATOR = new UnitActionFinishComparator();
     public static final Comparator<Unit> UNIT_ENTRY_COMPARATOR = new UnitEntryComparator();
     public static final int MAX_ENDURANCE = 18 * 60 * 60;
-    // ************ Main attributes ****************
+    /**
+     * IMPORTANT: Currently the id of the unit is just a reference from Toaw, but it is not a unique identifier
+     */
     protected int id;
     /**
      * The name which identifies the unit within a force's OOB
@@ -112,11 +118,12 @@ public abstract class Unit implements ModelProvider<UnitModel> {
      */
     protected Unit parent;
     /**
-     * Collection of assets available in the unit. An asset informs of the type of equipment, the current amount of that
-     * equipment, and the maximum amount (the ideal condition),
+     * Collection of assets available in the unit. An asset includes information concerning the type of equipment, the
+     * current amount of that equipment, and the maximum amount (the ideal condition)
      */
     protected Map<AssetType, Asset> assets;
-    // ************ Derived (computed) attributes ****************
+    
+    // ************ COMPUTED ATTRIBUTES ****************
     /**
      * Represents the special capabilities of a unit. It is specified as a map that links asset types to the number of
      * assets possesing each asset trait.
@@ -197,10 +204,6 @@ public abstract class Unit implements ModelProvider<UnitModel> {
      * becoming exhausted.
      */
     protected int maxRange;
-// TODO move the following attributes to the view, they are used only by the view
-    protected int attackStrength;
-    protected int defenseStrength;
-    protected int health;
 
     protected Unit(ares.data.jaxb.Unit unit, Formation formation, Force force, Scenario scenario) {
         id = unit.getId();
@@ -257,13 +260,13 @@ public abstract class Unit implements ModelProvider<UnitModel> {
             }
         }
         Board board = scenario.getBoard();
-        Scale scale = scenario.getScale();
         int x = unit.getX();
         int y = unit.getY();
         location = board.getMap()[x][y];
-        attackStrength = (int) (efficacy * (antiTank + antiPersonnel) / scale.getArea());
-        defenseStrength = (int) (efficacy * defense / scale.getArea());
-        health = (int) (efficacy - 1 / 20);
+        models = new EnumMap<>(InformationLevel.class);
+        models.put(InformationLevel.POOR, new DetectedUnitModel(this, scenario.getScale()));
+        models.put(InformationLevel.GOOD, new IdentifiedUnitModel(this, scenario.getScale()));
+        models.put(InformationLevel.COMPLETE, new KnownUnitModel(this, scenario.getScale()));
     }
 
     /**
@@ -460,18 +463,6 @@ public abstract class Unit implements ModelProvider<UnitModel> {
         return opState;
     }
 
-    public int getAttackStrength() {
-        return attackStrength;
-    }
-
-    public int getDefenseStrength() {
-        return defenseStrength;
-    }
-
-    public int getHealth() {
-        return health;
-    }
-
     protected static class UnitEntryComparator implements Comparator<Unit> {
 
         @Override
@@ -545,6 +536,15 @@ public abstract class Unit implements ModelProvider<UnitModel> {
 
     @Override
     public UnitModel getModel(UserRole userRole) {
-        return new UnitModel(this);
+        if (userRole.getRoleType() == UserRoleType.GOD) {
+            return getModel(InformationLevel.COMPLETE);
+        }
+        InformationLevel infoLevel = location.getInformationLevel(userRole.getForce());
+        return getModel(infoLevel);
+    }
+    
+    public UnitModel getModel(Force force) {
+        InformationLevel infoLevel = location.getInformationLevel(force);
+        return getModel(infoLevel);
     }
 }

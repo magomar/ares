@@ -1,7 +1,10 @@
 package ares.scenario;
 
+import ares.application.models.ScenarioModel;
 import ares.data.jaxb.EquipmentDB;
 import ares.data.jaxb.OOB;
+import ares.platform.model.AbstractModelProvider;
+import ares.platform.model.UserRole;
 import ares.scenario.assets.AssetTypes;
 import ares.scenario.board.Board;
 import ares.scenario.board.BoardInfo;
@@ -17,7 +20,7 @@ import java.util.List;
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public final class Scenario {
+public final class Scenario extends AbstractModelProvider<ScenarioModel> {
 
     private final String name;
     private Board board;
@@ -27,7 +30,7 @@ public final class Scenario {
     private BoardInfo boardInfo;
     public final AssetTypes assetTypes;
 
-    public Scenario(ares.data.jaxb.Scenario scenario, EquipmentDB eqpDB) {
+    public Scenario(ares.data.jaxb.Scenario scenario, EquipmentDB eqpDB)  {
 
         name = scenario.getHeader().getName();
         scale = new Scale((int) (scenario.getEnvironment().getScale() * 1000));
@@ -90,5 +93,10 @@ public final class Scenario {
     @Override
     public String toString() {
         return "Scenario{" + "Scale=" + scale + ", calendar=" + calendar + '}';
+    }
+
+    @Override
+    public ScenarioModel getModel(UserRole force) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

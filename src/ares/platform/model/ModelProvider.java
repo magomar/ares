@@ -2,8 +2,8 @@ package ares.platform.model;
 
 /**
  *
- * @author Mario Gomez <margomez at dsic.upv.es>
+ * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
 public interface ModelProvider<T> {
-    public T getModel();
+    public T getModel(UserRole force);
 }

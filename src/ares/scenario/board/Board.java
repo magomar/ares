@@ -1,8 +1,8 @@
 package ares.scenario.board;
 
-import ares.application.models.BoardModel;
+import ares.application.models.board.BoardModel;
 import ares.data.jaxb.Map.Cell;
-import ares.platform.model.ModelProvider;
+import ares.platform.model.AbstractModelProvider;
 import ares.platform.model.UserRole;
 import ares.scenario.Scenario;
 import ares.scenario.forces.Force;
@@ -13,14 +13,22 @@ import java.util.Map;
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public final class Board  implements ModelProvider<BoardModel> {
+public final class Board extends AbstractModelProvider<BoardModel> {
 
     /*
-     * Width and height in tile units
+     * Width of the board, ie number of tiles per row
      */
     private final int width;
+    /*
+     * Height of the board, ie number of tiles per column
+     */
     private final int height;
+    /**
+     * All the tiles of map, represented as a bidimensional array of size width * height
+     */
     private Tile[][] map;
+    
+    private BoardModel boardModel;
 
     public Board(ares.data.jaxb.Scenario scenario) {
         ares.data.jaxb.Map sourceMap = scenario.getMap();
@@ -31,6 +39,7 @@ public final class Board  implements ModelProvider<BoardModel> {
         for (Cell cell : sourceMap.getCell()) {
             map[cell.getX()][cell.getY()] = new Tile(cell);
         }
+        boardModel = new BoardModel(this, InformationLevel.COMPLETE);
     }
 
     public void initialize(ares.data.jaxb.Scenario scenarioXML, Scenario scenario, Force[] forces) {
@@ -111,6 +120,7 @@ public final class Board  implements ModelProvider<BoardModel> {
     }
 
     private static void getDistanceInMetersBetween(Tile from, Tile to) {
+        //TODO implement getDistanceInMetersBetween(Tile from, Tile to)
         throw new UnsupportedOperationException("Not yet implemented");
     }
 
@@ -139,7 +149,7 @@ public final class Board  implements ModelProvider<BoardModel> {
 
     @Override
     public BoardModel getModel(UserRole userRole) {
-        return new BoardModel(this);
+        return boardModel;
     }
     
     

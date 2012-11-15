@@ -1,7 +1,7 @@
 package ares.application.boundaries.view;
 
 import ares.application.models.ScenarioModel;
-import ares.application.models.UnitModel;
+import ares.application.models.forces.UnitModel;
 import java.util.Collection;
 
 

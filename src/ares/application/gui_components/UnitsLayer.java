@@ -1,5 +1,6 @@
 package ares.application.gui_components;
 
+import ares.application.models.ScenarioModel;
 import ares.io.AresIO;
 import ares.scenario.Scenario;
 import ares.scenario.board.*;
@@ -54,7 +55,7 @@ public class UnitsLayer extends javax.swing.JPanel {
      *
      * @param scenario
      */
-    public void initialize(Scenario scenario) {
+    public void initialize(ScenarioModel scenario) {
 
         boardInfo = scenario.getBoardInfo();
         
@@ -177,10 +178,10 @@ public class UnitsLayer extends javax.swing.JPanel {
      * @param scenario
      * @return
      */
-    private Map<Collection<Unit>, Integer> fillmap(Scenario scenario) {
+    private Map<Collection<Unit>, Integer> fillmap(ScenarioModel scenario) {
 
         Map<Collection<Unit>, Integer> m = new HashMap<>();
-        Tile[][] tmap = scenario.getBoard().getMap();
+        Tile[][] tmap = scenario.getBoardModel().getMapModel();
         for (Tile[] tv : tmap) {
 
             for (Tile t : tv) {
