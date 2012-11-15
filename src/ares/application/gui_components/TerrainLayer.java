@@ -51,7 +51,7 @@ public class TerrainLayer extends javax.swing.JPanel {
                     // RGB + Alpha
                     BufferedImage.TYPE_4BYTE_ABGR);
 
-            createTerrainImage(scenario.getBoard().getMap());
+            createTerrainImage(scenario.getBoardModel().getMapModel());
             //
         } else {
             /*
