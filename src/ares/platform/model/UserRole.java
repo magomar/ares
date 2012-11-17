@@ -56,4 +56,10 @@ public class UserRole {
     public boolean isGod() {
         return UserRoleType.GOD.equals(roleType);
     }
+
+    @Override
+    public String toString() {
+        return "UserRole{" + "roleType=" + roleType + ", force=" + force + '}';
+    }
+    
 }

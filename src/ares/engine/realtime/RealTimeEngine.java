@@ -75,25 +75,25 @@ public class RealTimeEngine  extends AbstractBean {
     }
 
     public void update(ClockEvent clockEvent) {
-//        LOG.log(Level.INFO, "+++++ New Time: ", clock);
+//        LOG.log(Level.INFO, "+++++ New Time:  {0}", clock);
         do {
             phase.run(this);
             phase = phase.getNext();
         } while (phase != Phase.ACT);
         
         ClockEvent oldValue = this.clockEvent;
-//        firePropertyChange(CLOCK_EVENT_PROPERTY, oldValue, clockEvent);
+        firePropertyChange(CLOCK_EVENT_PROPERTY, oldValue, clockEvent);
         Set<ClockEventType> clockEventTypes = clockEvent.getEventTypes();
         
         if (clockEventTypes.contains(ClockEventType.TURN)) {
-            LOG.log(Level.INFO, "++++++++++ New Turn: ", clock.getTurn());
+            LOG.log(Level.INFO, "++++++++++ New Turn: {0}", clock.getTurn());
             running = false;
             for (FormationActor formationActor : formationActors) {
                 formationActor.plan(clock);
             }
         }
         if (clockEvent.getEventTypes().contains(ClockEventType.FINISHED)) {
-            LOG.log(Level.INFO, "********** Scenario Ended ! ", clock);
+            LOG.log(Level.INFO, "********** Scenario Ended at  {0}", clock);
             return;
         } 
         if (running) {

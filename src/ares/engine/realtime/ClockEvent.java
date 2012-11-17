@@ -23,4 +23,11 @@ public class ClockEvent {
     public Set<ClockEventType> getEventTypes() {
         return eventTypes;
     }
+
+    @Override
+    public String toString() {
+        return "ClockEvent{" + "clock=" + clock + ", eventTypes=" + eventTypes + '}';
+    }
+    
+
 }

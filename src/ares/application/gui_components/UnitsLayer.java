@@ -9,7 +9,6 @@ import ares.application.models.forces.KnownUnitModel;
 import ares.application.models.forces.UnitModel;
 import ares.io.AresIO;
 import ares.scenario.board.*;
-import ares.scenario.forces.Unit;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -17,8 +16,7 @@ import java.lang.ref.SoftReference;
 import java.util.*;
 import javax.imageio.ImageIO;
 
-
-    /**
+/**
  * Units image layer based on Sergio Musoles TerrainPanel
  *
  * @author Heine <heisncfr@inf.upv.es>
@@ -32,8 +30,7 @@ public class UnitsLayer extends javax.swing.JPanel {
     // BoardGraphicsModel provides hexagonal and image sizes
     private BoardGraphicsModel boardInfo;
     /**
-     * Offset distance from the upper left corner of the tile. The image will be
-     * painted at Point(X+offset, Y+offset)
+     * Offset distance from the upper left corner of the tile. The image will be painted at Point(X+offset, Y+offset)
      *
      * @see refreshUnitsByPosition
      */
@@ -45,12 +42,9 @@ public class UnitsLayer extends javax.swing.JPanel {
      */
     private int maxStack = 6;
     /**
-     * The unit image can be composed of different layered images. Each layer is
-     * shifted
-     * <code>unitStackOffset</code> pixels For example, say the first layer was
-     * painted at Point(X,Y), the next layer will start at
-     * Point(X+offset,Y+offset), and the third one at Point(X+2*offset,
-     * Y+2*offset) and so on.
+     * The unit image can be composed of different layered images. Each layer is shifted
+     * <code>unitStackOffset</code> pixels For example, say the first layer was painted at Point(X,Y), the next layer
+     * will start at Point(X+offset,Y+offset), and the third one at Point(X+2*offset, Y+2*offset) and so on.
      *
      * @see refreshUnitsByPosition
      */
@@ -83,6 +77,12 @@ public class UnitsLayer extends javax.swing.JPanel {
 
     }
 
+    public void updateUnits(Collection<UnitModel> units) {
+        unitsImage = new BufferedImage(boardInfo.getImageWidth(), boardInfo.getImageHeight(), BufferedImage.TYPE_4BYTE_ABGR);
+        createAllUnitsImage(units);
+        repaint();
+    }
+
     /**
      * Iterates over a unit collection to paint all its elements
      *
@@ -97,8 +97,7 @@ public class UnitsLayer extends javax.swing.JPanel {
     }
 
     /**
-     * Paints all the given units at the specified position Uses the default
-     * maxStack
+     * Paints all the given units at the specified position Uses the default maxStack
      *
      * @param uCol collection of units to be painted
      * @param x tile row
@@ -140,20 +139,12 @@ public class UnitsLayer extends javax.swing.JPanel {
     }
 
     /**
-     * Loads the unit image based on its color, IconId and KnowledgeLevel
-     *    ______________
-     *    | E        H |
-     *    |   ______   |
-     *    |  |      | B|
-     *  TD|  |      | B|
-     *    |  |______| B|
-     *    |            |
-     *    | AT       DF|
-     *    |____________|
-     * 
-     * 
-     * Where 'E' stands for "Echelon", 'H' for "Health", 'TD' for "Tile density"
-     * 'AT' "Attack", 'DF' Defense and 'BBB' "Stamina Bar" (a line)
+     * Loads the unit image based on its color, IconId and KnowledgeLevel ______________ | E H | | ______ | | | | B| TD|
+     * | | B| | |______| B| | | | AT DF| |____________|
+     *
+     *
+     * Where 'E' stands for "Echelon", 'H' for "Health", 'TD' for "Tile density" 'AT' "Attack", 'DF' Defense and 'BBB'
+     * "Stamina Bar" (a line)
      *
      * @param unit
      * @return
@@ -173,25 +164,25 @@ public class UnitsLayer extends javax.swing.JPanel {
         int row = unit.getIconId() / boardInfo.getImageProfile().getUnitsImageCols();
         int col = unit.getIconId() % boardInfo.getImageProfile().getUnitsImageRows();
         unitImage = unitBufferMap.get().get(unit.getColor()).getSubimage(col * unitImgWidth, row * unitImgHeight, unitImgWidth, unitImgHeight);
-        
-        addUnitAttributes(unitImage,unit);
+
+        addUnitAttributes(unitImage, unit);
         return unitImage;
     }
-   
+
     /**
      * Adds unitattributes to the image based on its information level
-     * 
-     * 
-     * @param unitImage <code>BufferedImage</code> 
-     * @param unit 
+     *
+     *
+     * @param unitImage <code>BufferedImage</code>
+     * @param unit
      */
     private void addUnitAttributes(BufferedImage unitImage, UnitModel unit) {
-         
+
         int unitImgWidth = unitImage.getWidth();
         int unitImgHeight = unitImage.getHeight();
-    
+
         Graphics2D g2 = unitImage.createGraphics();
-        
+
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         Font font = new Font("Serif", Font.PLAIN, 10);
         g2.setFont(font);
@@ -218,7 +209,7 @@ public class UnitsLayer extends javax.swing.JPanel {
                 break;
             case GOOD:
                 IdentifiedUnitModel id = (IdentifiedUnitModel) unit;
-                
+
                 //Echelon
                 g2.drawString("-", 3, 6);
                 // Health           
@@ -234,13 +225,13 @@ public class UnitsLayer extends javax.swing.JPanel {
                 g2.drawString("00", 3, unitImgHeight - 2);
                 // Defense
                 g2.drawString("99", unitImgWidth - 13, unitImgHeight - 2);
-                
-                
+
+
                 break;
             case POOR:
                 DetectedUnitModel du = (DetectedUnitModel) unit;
-                
-                                //Echelon
+
+                //Echelon
                 g2.drawString("-", 3, 6);
                 // Health           
                 g2.setColor(Color.BLACK);
@@ -255,15 +246,15 @@ public class UnitsLayer extends javax.swing.JPanel {
                 g2.drawString("XX", 3, unitImgHeight - 2);
                 // Defense
                 g2.drawString("XX", unitImgWidth - 13, unitImgHeight - 2);
-                
+
                 break;
         }
-        
+
         g2.dispose();
 
     }
-   
-/**
+
+    /**
      * Loads all the unit icons from disk and saves them in the buffer map
      *
      * @param colorIndex
@@ -280,7 +271,6 @@ public class UnitsLayer extends javax.swing.JPanel {
             System.out.println(e.getMessage() + "File not found: " + filename);
         }
     }
-
 
     /**
      *

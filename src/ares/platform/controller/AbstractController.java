@@ -20,8 +20,8 @@ public abstract class AbstractController implements PropertyChangeListener {
 
 //    protected final Map<Class<? extends AbstractView<? extends JComponent>>, AbstractView<? extends JComponent>> views = new HashMap<>();
 //    protected final Map<Class<? extends AbstractModel>, AbstractModel> models = new HashMap<>();
-    private final LookupService<AbstractView<? extends JComponent>> views = new LookupService<>();
-    private final LookupService<AbstractBean> models = new LookupService<>();
+    protected final LookupService<AbstractView<? extends JComponent>> views = new LookupService<>();
+    protected final LookupService<AbstractBean> models = new LookupService<>();
 
     public final void initialize() {
         registerAllModels();

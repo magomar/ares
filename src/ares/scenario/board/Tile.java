@@ -301,7 +301,7 @@ public final class Tile implements ModelProvider<TileModel> {
 
     @Override
     public final TileModel getModel(UserRole role) {
-        KnowledgeLevel kLevel = knowledgeLevels.get(role);;
+        KnowledgeLevel kLevel = knowledgeLevels.get(role);
         return models.get(kLevel);
     }
 }

@@ -263,6 +263,7 @@ public abstract class Unit implements ModelProvider<UnitModel> {
         int y = unit.getY();
         location = board.getMap()[x][y];
         models = new HashMap<>();
+        models.put(KnowledgeLevel.NONE, null);
         models.put(KnowledgeLevel.POOR, new DetectedUnitModel(this));
         models.put(KnowledgeLevel.GOOD, new IdentifiedUnitModel(this));
         models.put(KnowledgeLevel.COMPLETE, new KnownUnitModel(this));
