@@ -25,7 +25,7 @@ public class IdentifiedUnitModel extends DetectedUnitModel {
 
     public int getAttackStrength() {
 //        return (int) (unit.getEfficacy() * (unit.getAntiTank() + unit.getAntiPersonnel() / scale.getArea()));
-        return unit.getEfficacy() * (unit.getAntiTank() + unit.getAntiPersonnel() );
+        return unit.getEfficacy() * (unit.getAntiTank() + unit.getAntiPersonnel());
     }
 
     public int getDefenseStrength() {
@@ -40,9 +40,10 @@ public class IdentifiedUnitModel extends DetectedUnitModel {
     public Echelon getEchelon() {
         return unit.getEchelon();
     }
-    
+
     @Override
-    public Point getLocation(){
-        return new Point(unit.getLocation().getX(),unit.getLocation().getY());
+    public Point getPosition() {
+        return new Point(unit.getLocation().getX(), unit.getLocation().getY());
     }
+
 }

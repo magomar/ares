@@ -76,7 +76,7 @@ public final class Tile implements ModelProvider<TileModel> {
     /*
      * Data structure containing all units in the location.
      */
-    private StackOfUnits units;
+    private UnitsStack units;
     /**
      * Precomputed movement costs for all directions
      */
@@ -103,7 +103,7 @@ public final class Tile implements ModelProvider<TileModel> {
         distance = (dist != null ? dist : 0);
         Integer victPoints = c.getVP();
         vp = (victPoints != null ? victPoints : 0);
-        units = new StackOfUnits(this);
+        units = new UnitsStack(this);
 
         // Initialize terrain information
         tileTerrain = EnumSet.noneOf(Terrain.class);
@@ -199,18 +199,32 @@ public final class Tile implements ModelProvider<TileModel> {
         this.entrechment = entrechment;
     }
 
-    public void nextTopUnit() {
-        units.next();
-    }
-
-// *** GETTERS ***
-    public Unit getTopUnit() {
-        return units.getPointOfInterest();
-    }
-
-//    public StackOfUnits getUnits() {
-//        return units;
+//    public void nextTopUnit() {
+//        units.next();
 //    }
+// *** GETTERS ***
+//    public Unit getTopUnit() {
+//        return units.getPointOfInterest();
+//    }
+    public UnitsStack getUnitsStack() {
+        return units;
+    }
+    public Collection<SurfaceUnit> getSurfaceUnits() {
+        return units.getSurfaceUnits();
+    }
+
+    public Collection<AirUnit> getAirUnits() {
+        return units.getAirUnits();
+    }
+//
+//    public int getStackingPenalty(Scale scale) {
+//        return units.getStackingPenalty(scale);
+//    }
+//
+//    public int getNumStackedUnits() {
+//        return units.size();
+//    }
+
     public Map<Direction, Tile> getNeighbors() {
         return neighbors;
     }
@@ -241,22 +255,6 @@ public final class Tile implements ModelProvider<TileModel> {
 
     public Set<Terrain> getTileTerrain() {
         return tileTerrain;
-    }
-
-    public Collection<SurfaceUnit> getSurfaceUnits() {
-        return units.getSurfaceUnits();
-    }
-
-    public Collection<AirUnit> getAirUnits() {
-        return units.getAirUnits();
-    }
-
-    public int getStackingPenalty(Scale scale) {
-        return units.getStackingPenalty(scale);
-    }
-
-    public int getNumStackedUnits() {
-        return units.size();
     }
 
     public Vision getVision() {
@@ -295,13 +293,17 @@ public final class Tile implements ModelProvider<TileModel> {
         return "<" + x + "," + y + ">";
     }
 
+    @Override
+    public final TileModel getModel(UserRole role) {
+        KnowledgeLevel kLevel = knowledgeLevels.get(role);
+        return models.get(kLevel);
+    }
+
     public KnowledgeLevel getKnowledgeLevel(UserRole role) {
         return knowledgeLevels.get(role);
     }
 
-    @Override
-    public final TileModel getModel(UserRole role) {
-        KnowledgeLevel kLevel = knowledgeLevels.get(role);
+    public TileModel getModel(KnowledgeLevel kLevel) {
         return models.get(kLevel);
     }
 }

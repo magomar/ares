@@ -2,18 +2,20 @@ package ares.application.gui_components;
 
 import ares.application.models.board.BoardGraphicsModel;
 import ares.application.models.ScenarioModel;
+import ares.application.models.board.ObservedTileModel;
 import ares.application.models.forces.DetectedUnitModel;
 import ares.application.models.forces.ForceModel;
 import ares.application.models.forces.IdentifiedUnitModel;
 import ares.application.models.forces.KnownUnitModel;
 import ares.application.models.forces.UnitModel;
 import ares.io.AresIO;
-import ares.scenario.board.*;
+import ares.scenario.board.KnowledgeLevel;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.lang.ref.SoftReference;
 import java.util.*;
+import java.util.Map.Entry;
 import javax.imageio.ImageIO;
 
 /**
@@ -48,7 +50,7 @@ public class UnitsLayer extends javax.swing.JPanel {
      *
      * @see refreshUnitsByPosition
      */
-    private int unitStackOffset = 1;
+    private static int unitStackOffset = 1;
 
     /**
      * Initializes the buffer map and creates the units image
@@ -56,7 +58,7 @@ public class UnitsLayer extends javax.swing.JPanel {
      * @param scenario
      */
     public void initialize(ScenarioModel scenario) {
-        boardInfo = scenario.getBoardInfo();
+        boardInfo = scenario.getBoardGraphicsModel();
 
         // If the image has not been created
         if (unitsImage == null) {
@@ -66,35 +68,52 @@ public class UnitsLayer extends javax.swing.JPanel {
                 unitBufferMap = new SoftReference<>(new HashMap<Integer, BufferedImage>());
             }
 
-            unitsImage = new BufferedImage(boardInfo.getImageWidth(), boardInfo.getImageHeight(), BufferedImage.TYPE_4BYTE_ABGR);
-            Collection<UnitModel> spottedUnits = new ArrayList<>();
-            for (ForceModel forceModel : scenario.getForceModel()) {
-                spottedUnits.addAll(forceModel.getUnitModels());
+//            unitsImage = new BufferedImage(boardInfo.getImageWidth(), boardInfo.getImageHeight(), BufferedImage.TYPE_4BYTE_ABGR);
+//            Collection<UnitModel> spottedUnits = new ArrayList<>();
+//            for (ForceModel forceModel : scenario.getForceModel()) {
+//                spottedUnits.addAll(forceModel.getUnitModels());
+//            }
+//            createAllUnitsImage(spottedUnits);
+            updateScenario(scenario);
+        }
+//        repaint();
+
+    }
+
+    public void updateScenario(ScenarioModel scenario) {
+        Map<Point, ObservedTileModel> tileModels = new HashMap<>();
+        for (ForceModel forceModel : scenario.getForceModel()) {
+            for (UnitModel unitModel : forceModel.getUnitModels()) {
+                Point position = unitModel.getPosition();
+                if (!tileModels.containsKey(position)) {
+                    tileModels.put(position, (ObservedTileModel) unitModel.getLocation());
+                }
             }
-            createAllUnitsImage(spottedUnits);
         }
-        repaint();
-
-    }
-
-    public void updateUnits(Collection<UnitModel> units) {
         unitsImage = new BufferedImage(boardInfo.getImageWidth(), boardInfo.getImageHeight(), BufferedImage.TYPE_4BYTE_ABGR);
-        createAllUnitsImage(units);
+        createAllUnitsImage(tileModels);
         repaint();
     }
 
-    /**
-     * Iterates over a unit collection to paint all its elements
-     *
-     * @param spottedUnits Units with known location
-     */
-    private void createAllUnitsImage(Collection<UnitModel> spottedUnits) {
-
-        for (Iterator<UnitModel> it = spottedUnits.iterator(); it.hasNext();) {
-            UnitModel unit = it.next();
-            refreshUnitsbyPosition(unit, unit.getLocation().x, unit.getLocation().y, 1);
+    private void createAllUnitsImage(Map<Point, ObservedTileModel> tileModels) {
+        for (Entry<Point, ObservedTileModel> entry : tileModels.entrySet()) {
+            Point point = entry.getKey();
+            UnitModel unit = entry.getValue().getTopUnit();
+            int numStackedUnits = entry.getValue().getNumStackedUnits();
+            refreshUnitsbyPosition(unit, point.x, point.y, numStackedUnits);
         }
     }
+
+//    /**
+//     * Iterates over a unit collection to paint all its elements
+//     *
+//     * @param spottedUnits Units with known location
+//     */
+//    private void createAllUnitsImage(Collection<UnitModel> spottedUnits) {
+//        for (UnitModel unit : spottedUnits) {
+//            refreshUnitsbyPosition(unit, unit.getPosition().x, unit.getPosition().y, 1);
+//        }
+//    }
 
     /**
      * Paints all the given units at the specified position Uses the default maxStack
@@ -104,20 +123,21 @@ public class UnitsLayer extends javax.swing.JPanel {
      * @param y tile column
      * @see refreshUnitsByPosition(UnitModel, int, int, int)
      */
-    public void refreshUnitsbyPosition(UnitModel unit, int x, int y) {
+    public void refreshUnitsbyPosition(UnitModel unit, int x, int y, int numStack) {
 
-        refreshUnitsbyPosition(unit, x, y, maxStack);
+        refreshUnitsbyPosition(unit, x, y, numStack, maxStack);
     }
 
     /**
-     * Paints all the given units at the specified position
+     * Paints all the given units at the specified position, the unit model to pass as a parameter has to be the top
+     * unit in the stack of units at the uni's location
      *
      * @param uCol Collection of units to be painted
      * @param row Tile row
      * @param col Tile column
      * @param maxStack Maximum numbers of units to be painted in a single tile
      */
-    public void refreshUnitsbyPosition(UnitModel unit, int row, int col, int maxStack) {
+    public void refreshUnitsbyPosition(UnitModel unit, int row, int col, int numStack, int maxStack) {
 
         Graphics2D g2 = (Graphics2D) unitsImage.getGraphics();
         int x = boardInfo.getHexOffset() * row;
@@ -130,8 +150,8 @@ public class UnitsLayer extends javax.swing.JPanel {
         //if(unit.isTopUnit());
         //for int i=0, i<unitModel.getStackedUnits() && i<maxStack; ++i
         //
-        for (int numStack = 0; numStack < maxStack; numStack++) {
-
+//        for (int numStack = 0; numStack < maxStack; numStack++) {
+        for (int i = 0; i < numStack; i++) {
             g2.drawImage(getUnitImage(unit), x + d, y + d, this);
             d += unitStackOffset;
         }

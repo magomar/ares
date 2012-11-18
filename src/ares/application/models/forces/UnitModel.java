@@ -1,7 +1,8 @@
 package ares.application.models.forces;
 
+import ares.application.models.board.TileModel;
 import ares.platform.model.KnowledgeMediatedModel;
-import ares.scenario.Scale;
+import ares.platform.model.UserRole;
 import ares.scenario.board.KnowledgeLevel;
 import ares.scenario.forces.Unit;
 import java.awt.Point;
@@ -24,7 +25,9 @@ public abstract class UnitModel extends KnowledgeMediatedModel {
     public abstract int getIconId();
 
     //Unit's position varies depending on the information level
-    public abstract Point getLocation();
+    public abstract Point getPosition();
+    
+    public abstract TileModel getLocation();
 
 //    public static UnitModel getUnitModel(Unit unit, KnowledgeLevel kLevel) {
 //        switch (kLevel) {

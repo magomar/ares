@@ -23,7 +23,7 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
     private TerrainLayer terrainLayer;
     private UnitsLayer unitsLayer;
     private GridLayer gridLayer;
-    private ScenarioModel scenario;
+//    private ScenarioModel scenario;
 
     @Override
     protected JScrollPane layout() {
@@ -52,26 +52,10 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
     }
 
     @Override
-    public void modelPropertyChange(PropertyChangeEvent evt) {
-//       Logger.getLogger(BoardView.class.getName()).log(Level.INFO, evt.toString());
-        switch (evt.getPropertyName()) {
-            case RealTimeEngine.SCENARIO_PROPERTY:
-                if (evt.getNewValue() != null) {
-                } else {
-                }
-                break;
-            case RealTimeEngine.CLOCK_EVENT_PROPERTY:
-                //TODO refresh only selected units
-                //unitsLayer.initialize(scenario);
-                break;
-        }
-    }
-
-    @Override
     public void loadScenario(ScenarioModel scenario) {
         terrainLayer.initialize(scenario);
         unitsLayer.initialize(scenario);
-        Dimension imageSize = new Dimension(scenario.getBoardInfo().getImageWidth(), scenario.getBoardInfo().getImageHeight());
+        Dimension imageSize = new Dimension(scenario.getBoardGraphicsModel().getImageWidth(), scenario.getBoardGraphicsModel().getImageHeight());
         layers.setPreferredSize(imageSize);
         layers.setSize(imageSize);
         terrainLayer.setPreferredSize(imageSize);
@@ -82,10 +66,10 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
         unitsLayer.setSize(imageSize);
 
     }
-
+    
     @Override
-    public void updateUnits(Collection<UnitModel> units) {
-        unitsLayer.updateUnits(units);
+    public void updateScenario(ScenarioModel scenario) {
+        unitsLayer.updateScenario(scenario);
     }
 
     @Override
@@ -94,5 +78,10 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
         gridLayer.flushLayer();
         unitsLayer.flushLayer();
         getContentPane().setVisible(false);
+    }
+
+    @Override
+    public void modelPropertyChange(PropertyChangeEvent evt) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

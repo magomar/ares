@@ -77,14 +77,12 @@ public class WeGoPlayerController extends AbstractController {
             InternalFrameView<BoardView> boardFrame = getInternalFrameView(BoardView.class);
             boardFrame.setTitle("Time: " +clockEvent.getClock().toString());
             BoardView boardView = boardFrame.getView();
+            boardView.updateScenario(engine.getScenarioModel(userRole)); 
+//            Collection<UnitModel> units = new ArrayList<>();
 //            for (ForceModel force : engine.getScenarioModel(userRole).getForceModel()) {
-//                boardView.updateUnits(force.getUnitModels());
+//                units.addAll(force.getUnitModels());
 //            }
-            Collection<UnitModel> units = new ArrayList<>();
-            for (ForceModel force : engine.getScenarioModel(userRole).getForceModel()) {
-                units.addAll(force.getUnitModels());
-            }
-            boardView.updateUnits(units);
+//            boardView.updateUnits(units);
             if (clockEvent.getEventTypes().contains(ClockEventType.TURN)) {
                 MenuBarView menuBarView = getView(MenuBarView.class);
 //                menuBarView.setMenuElementEnabled(EngineCommands.START.getName(), false);

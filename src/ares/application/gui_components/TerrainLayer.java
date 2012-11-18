@@ -37,7 +37,7 @@ public class TerrainLayer extends javax.swing.JPanel {
 
     public void initialize(ScenarioModel scenario) {
 
-        boardInfo = scenario.getBoardInfo();
+        boardInfo = scenario.getBoardGraphicsModel();
         // If there is no terrain image
         if (terrainImage == null) {
             // If the buffer doesn't exist

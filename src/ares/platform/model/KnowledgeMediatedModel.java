@@ -6,7 +6,7 @@ import ares.scenario.board.KnowledgeLevel;
  *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
-public abstract class KnowledgeMediatedModel  {
+public abstract class KnowledgeMediatedModel<T>  {
 
     protected final KnowledgeLevel kLevel;
 

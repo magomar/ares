@@ -11,6 +11,7 @@ import java.util.Collection;
  */
 public interface BoardViewer {
     public void loadScenario(ScenarioModel scenario);
-    public void updateUnits(Collection<UnitModel> units);
+    public void updateScenario(ScenarioModel scenario);
+//    public void updateUnits(Collection<UnitModel> units);
     public void closeScenario();
 }
