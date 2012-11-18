@@ -41,9 +41,9 @@ public class IdentifiedUnitModel extends DetectedUnitModel {
         return unit.getEchelon();
     }
 
-    @Override
-    public Point getPosition() {
-        return new Point(unit.getLocation().getX(), unit.getLocation().getY());
-    }
+//    @Override
+//    public Point getCoordinates() {
+//        return new Point(unit.getLocation().getX(), unit.getLocation().getY());
+//    }
 
 }

@@ -6,6 +6,7 @@ import ares.platform.model.ModelProvider;
 import ares.platform.model.UserRole;
 import ares.scenario.Scenario;
 import ares.scenario.forces.Force;
+import java.awt.Point;
 import java.util.EnumMap;
 import java.util.Map;
 
@@ -56,8 +57,9 @@ public final class Board implements ModelProvider<BoardModel> {
      * @return neighbor tile in a given dir
      */
     public Tile getNeighbor(Tile from, Direction dir) {
-        int x = from.getX() + dir.getIncI();
-        int y = from.getY() + (from.getX() % 2 == 0 ? dir.getIncJEven() : dir.getIncJOdd());
+        Point coord = from.getCoordinates();
+        int x = coord.x + dir.getIncI();
+        int y = coord.y + (coord.x % 2 == 0 ? dir.getIncJEven() : dir.getIncJOdd());
         if (x >= 0 && x < width && y >= 0 && y < height) {
             return map[x][y];
         } else {
@@ -72,9 +74,10 @@ public final class Board implements ModelProvider<BoardModel> {
      */
     public Map<Direction, Tile> getNeighbors(Tile from) {
         Map<Direction, Tile> neighbors = new EnumMap<>(Direction.class);
+        Point coord = from.getCoordinates();
         for (Direction dir : Direction.DIRECTIONS) {
-            int x = from.getX() + dir.getIncI();
-            int y = from.getY() + (from.getX() % 2 == 0 ? dir.getIncJEven() : dir.getIncJOdd());
+            int x = coord.x + dir.getIncI();
+            int y = coord.y + (coord.x % 2 == 0 ? dir.getIncJEven() : dir.getIncJOdd());
             if (x >= 0 && x < width && y >= 0 && y < height) {
                 neighbors.put(dir, map[x][y]);
             }
@@ -83,9 +86,10 @@ public final class Board implements ModelProvider<BoardModel> {
     }
 
     public static Direction getDirBetween(Tile from, Tile to) {
-        int incX = to.getX() - from.getX();
-        int incY = to.getY() - from.getY();
-        if (from.getX() % 2 == 0) {
+        Point coord = to.getCoordinates();
+        int incX = coord.x - coord.x;
+        int incY = coord.y - coord.y;
+        if (coord.x % 2 == 0) {
             for (Direction dir : Direction.values()) {
                 if (dir.getIncI() == incX && dir.getIncJEven() == incY) {
                     return dir;
@@ -124,10 +128,12 @@ public final class Board implements ModelProvider<BoardModel> {
 
     public static int getDistanceInTilesBetween(Tile from, Tile to) {
         // adapted from http://www-cs-students.stanford.edu/~amitp/Articles/HexLOS.html
-        int x1 = from.getX();
-        int y1 = from.getY();
-        int x2 = to.getX();
-        int y2 = to.getY();
+        Point coordFrom = from.getCoordinates();
+        Point coordTo = to.getCoordinates();
+        int x1 = coordFrom.x;
+        int y1 = coordFrom.y;
+        int x2 = coordTo.x;
+        int y2 = coordTo.y;
         int ax = y1 - Ceil2(x1);
         int ay = y1 + Floor2(x1);
         int bx = y2 - Ceil2(x2);

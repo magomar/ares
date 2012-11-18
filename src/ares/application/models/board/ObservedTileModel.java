@@ -23,4 +23,5 @@ public class ObservedTileModel extends TileModel {
     public int getNumStackedUnits() {
         return stack.size();
     }
+    
 }

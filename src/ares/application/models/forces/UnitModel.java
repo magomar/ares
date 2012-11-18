@@ -25,7 +25,7 @@ public abstract class UnitModel extends KnowledgeMediatedModel {
     public abstract int getIconId();
 
     //Unit's position varies depending on the information level
-    public abstract Point getPosition();
+//    public abstract Point getCoordinates();
     
     public abstract TileModel getLocation();
 

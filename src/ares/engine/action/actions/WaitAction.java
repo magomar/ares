@@ -17,7 +17,6 @@ public class WaitAction extends AbstractAction {
         super(actor, ActionType.WAIT, destination, destination, start);
     }
 
-
     @Override
     public void execute(Clock clock) {
         start = Math.max(start, clock.getCurrentTime() - clock.MINUTES_PER_TICK);
@@ -31,7 +30,6 @@ public class WaitAction extends AbstractAction {
 
     @Override
     public String toString() {
-        return actor.toString() + "WAITED" + " @ " + location.getX() + "," + location.getY()
-                + " (" + start + "->" + finish + ")";
+        return actor.toString() + "WAITED" + " @ " + location + " (" + start + "->" + finish + ")";
     }
 }

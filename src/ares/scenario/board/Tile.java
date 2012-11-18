@@ -10,13 +10,13 @@ import ares.engine.combat.CombatModifier;
 import ares.engine.movement.MovementCost;
 import ares.platform.model.ModelProvider;
 import ares.platform.model.UserRole;
-import ares.scenario.Scale;
 import ares.scenario.Scenario;
 import ares.scenario.forces.AirUnit;
 import ares.scenario.forces.Capability;
 import ares.scenario.forces.Force;
 import ares.scenario.forces.SurfaceUnit;
 import ares.scenario.forces.Unit;
+import java.awt.Point;
 import java.util.*;
 
 /**
@@ -61,14 +61,15 @@ public final class Tile implements ModelProvider<TileModel> {
      * Force in possesion of this tile
      */
     private Force owner;
-    /**
-     * Column (horizontal coordinate)
-     */
-    private int x;
-    /**
-     * Row (vertical coordinate)
-     */
-    private int y;
+//    /**
+//     * Column (horizontal coordinate)
+//     */
+//    private int x;
+//    /**
+//     * Row (vertical coordinate)
+//     */
+//    private int y;
+    private Point coord;
     /**
      * Level of visibility in this tile depending on the terrain (withouth considering the weather)
      */
@@ -95,8 +96,9 @@ public final class Tile implements ModelProvider<TileModel> {
 
     public Tile(Cell c) {
         // numeric attributes
-        x = c.getX();
-        y = c.getY();
+//        x = c.getX();
+//        y = c.getY();
+        coord = new Point(c.getX(), c.getY());
         Integer ent = c.getEntrenchment();
         entrechment = (ent != null ? ent : 0);
         Integer dist = c.getDistance();
@@ -199,16 +201,10 @@ public final class Tile implements ModelProvider<TileModel> {
         this.entrechment = entrechment;
     }
 
-//    public void nextTopUnit() {
-//        units.next();
-//    }
-// *** GETTERS ***
-//    public Unit getTopUnit() {
-//        return units.getPointOfInterest();
-//    }
     public UnitsStack getUnitsStack() {
         return units;
     }
+
     public Collection<SurfaceUnit> getSurfaceUnits() {
         return units.getSurfaceUnits();
     }
@@ -216,14 +212,6 @@ public final class Tile implements ModelProvider<TileModel> {
     public Collection<AirUnit> getAirUnits() {
         return units.getAirUnits();
     }
-//
-//    public int getStackingPenalty(Scale scale) {
-//        return units.getStackingPenalty(scale);
-//    }
-//
-//    public int getNumStackedUnits() {
-//        return units.size();
-//    }
 
     public Map<Direction, Tile> getNeighbors() {
         return neighbors;
@@ -265,14 +253,17 @@ public final class Tile implements ModelProvider<TileModel> {
         return vp;
     }
 
-    public int getX() {
-        return x;
+    public Point getCoordinates() {
+        return coord;
     }
 
-    public int getY() {
-        return y;
-    }
-
+//    public int getX() {
+//        return x;
+//    }
+//
+//    public int getY() {
+//        return y;
+//    }
 //    public Map<Direction, MovementCost> getMoveCosts() {
 //        return moveCosts;
 //    }
@@ -289,8 +280,35 @@ public final class Tile implements ModelProvider<TileModel> {
     }
 
     @Override
+    public int hashCode() {
+        int hash = 17;
+        hash = 31 * hash + coord.x;
+//        hash = 31 * hash + formation.getId();
+        hash = 31 * hash + coord.y;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (obj == this) {
+            return true;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Tile other = (Tile) obj;
+        if (!this.coord.equals(other)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
     public String toString() {
-        return "<" + x + "," + y + ">";
+        return "<" + coord.x + "," + coord.y + ">";
     }
 
     @Override

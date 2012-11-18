@@ -34,11 +34,11 @@ public class DetectedUnitModel extends UnitModel {
         return unit.getIconId();
     }
 
-    @Override
-    public Point getPosition() {
-        //TODO why x and y are modified ?
-        return new Point(unit.getLocation().getX() - 1, unit.getLocation().getY() + 1);
-    }
+//    @Override
+//    public Point getCoordinates() {
+//        //TODO why x and y are modified ?
+//        return new Point(unit.getLocation().getX() - 1, unit.getLocation().getY() + 1);
+//    }
 
     @Override
     public TileModel getLocation() {

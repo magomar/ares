@@ -21,7 +21,6 @@ public class ChangeDeploymentAction extends AbstractAction {
         timeToComplete = finish - start;
     }
 
-
     @Override
     public void execute(Clock clock) {
         if (checkPreconditions(clock)) {
@@ -47,7 +46,7 @@ public class ChangeDeploymentAction extends AbstractAction {
 
     @Override
     public String toString() {
-        return actor.toString() + "ChangeDeployment " + " @ " + location.getX() + "," + location.getY()
-                + " from " + type.getPrecondition() + " to" + type.getEffectAfter() + " (" + start + "->" + finish + ")";
+        return actor.toString() + "ChangeDeployment " + " @ " + location + " from " + type.getPrecondition() + " to"
+                + type.getEffectAfter() + " (" + start + "->" + finish + ")";
     }
 }

@@ -1,12 +1,8 @@
 package ares.application.controllers;
 
-import ares.application.boundaries.view.BoardViewer;
 import ares.application.commands.EngineCommands;
 import ares.application.commands.FileCommands;
 import ares.application.models.ScenarioModel;
-import ares.application.models.forces.DetectedUnitModel;
-import ares.application.models.forces.ForceModel;
-import ares.application.models.forces.UnitModel;
 import ares.application.player.AresMenus;
 import ares.application.views.BoardView;
 import ares.application.views.MenuBarView;
@@ -28,8 +24,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.logging.Level;
