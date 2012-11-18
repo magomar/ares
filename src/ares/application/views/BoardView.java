@@ -1,6 +1,5 @@
 package ares.application.views;
 
-
 import ares.application.boundaries.view.BoardViewer;
 import ares.application.gui_components.*;
 import ares.application.models.ScenarioModel;
@@ -24,11 +23,11 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
     private TerrainLayer terrainLayer;
     private UnitsLayer unitsLayer;
     private GridLayer gridLayer;
-    private ScenarioModel scenario;
-   
+//    private ScenarioModel scenario;
+
     @Override
     protected JScrollPane layout() {
-        
+
         // TODO set black background
         layers = new JLayeredPane();
         terrainLayer = new TerrainLayer();
@@ -36,11 +35,11 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
         gridLayer = new GridLayer();
         gridLayer.setOpaque(false);
         unitsLayer.setOpaque(false);
-        
+
         layers.add(terrainLayer, JLayeredPane.DEFAULT_LAYER);
         layers.add(gridLayer, JLayeredPane.PALETTE_LAYER);
         layers.add(unitsLayer, JLayeredPane.DRAG_LAYER);
-        
+
         JScrollPane contentPane = new JScrollPane();
         contentPane.add(layers);
         contentPane.setViewportView(layers);
@@ -53,45 +52,36 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
     }
 
     @Override
-    public void modelPropertyChange(PropertyChangeEvent evt) {
-//       Logger.getLogger(BoardView.class.getName()).log(Level.INFO, evt.toString());
-        switch (evt.getPropertyName()) {
-            case RealTimeEngine.SCENARIO_PROPERTY:
-                if (evt.getNewValue() != null) {
-                    
-                    
-                } else {
-                    terrainLayer.flushLayer();
-                    gridLayer.flushLayer();
-                    unitsLayer.flushLayer();
-                    getContentPane().setVisible(false);
-            }
-                break;
-            case RealTimeEngine.CLOCK_EVENT_PROPERTY:
-                //TODO refresh only selected units
-                //unitsLayer.initialize(scenario);
-                break;
-        }        
-    }
-
-    @Override
-    public void initializeBoard(ScenarioModel scenario) {
-                    terrainLayer.initialize(scenario);
-                    unitsLayer.initialize(scenario);
-                    Dimension imageSize = new Dimension(scenario.getBoardInfo().getImageWidth(), scenario.getBoardInfo().getImageHeight());
-                    layers.setPreferredSize(imageSize);
-                    layers.setSize(imageSize);
-                    terrainLayer.setPreferredSize(imageSize);
-                    terrainLayer.setSize(imageSize);
-                    gridLayer.setPreferredSize(imageSize);
-                    gridLayer.setSize(imageSize);
-                    unitsLayer.setPreferredSize(imageSize);
-                    unitsLayer.setSize(imageSize);
-                    
-    }
-
-    @Override
-    public void updateUnits(Collection<UnitModel> units) {
+    public void loadScenario(ScenarioModel scenario) {
+        terrainLayer.initialize(scenario);
         unitsLayer.initialize(scenario);
+        Dimension imageSize = new Dimension(scenario.getBoardGraphicsModel().getImageWidth(), scenario.getBoardGraphicsModel().getImageHeight());
+        layers.setPreferredSize(imageSize);
+        layers.setSize(imageSize);
+        terrainLayer.setPreferredSize(imageSize);
+        terrainLayer.setSize(imageSize);
+        gridLayer.setPreferredSize(imageSize);
+        gridLayer.setSize(imageSize);
+        unitsLayer.setPreferredSize(imageSize);
+        unitsLayer.setSize(imageSize);
+
+    }
+    
+    @Override
+    public void updateScenario(ScenarioModel scenario) {
+        unitsLayer.updateScenario(scenario);
+    }
+
+    @Override
+    public void closeScenario() {
+        terrainLayer.flushLayer();
+        gridLayer.flushLayer();
+        unitsLayer.flushLayer();
+        getContentPane().setVisible(false);
+    }
+
+    @Override
+    public void modelPropertyChange(PropertyChangeEvent evt) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

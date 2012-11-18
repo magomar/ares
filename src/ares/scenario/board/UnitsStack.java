@@ -13,7 +13,7 @@ import java.util.Collection;
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public class StackOfUnits {
+public class UnitsStack {
 
     /**
      * Surface (Land and Naval) Units found in this location.
@@ -30,17 +30,17 @@ public class StackOfUnits {
     private Ring<Unit> allUnits;
     
 
-    public StackOfUnits(Tile location) {
+    public UnitsStack(Tile location) {
         surfaceUnits = new ArrayList<>();
         airUnits = new ArrayList<>();
         allUnits = new Ring<>();
     }
 
-    protected boolean isEmpty() {
+    public boolean isEmpty() {
         return allUnits.isEmpty();
     }
 
-    protected int getStackingPenalty(Scale scale) {
+    public int getStackingPenalty(Scale scale) {
         int criticalDensity = scale.getCriticalDensity();
         int numHorsesAndVehicles = 0;
             for (SurfaceUnit surfaceUnit : surfaceUnits) {
@@ -51,44 +51,44 @@ public class StackOfUnits {
         return Math.min(4, numHorsesAndVehicles / criticalDensity);
     }
     
-    protected Collection<SurfaceUnit> getSurfaceUnits() {
+    public Collection<SurfaceUnit> getSurfaceUnits() {
         return surfaceUnits;
     }
 
-    protected Collection<AirUnit> getAirUnits() {
+    public Collection<AirUnit> getAirUnits() {
         return airUnits;
     }
 
 //    public Ring<Unit> getAllUnits() {
 //        return allUnits;
 //    }
-    protected void addSurfaceUnit(SurfaceUnit surfaceUnit) {
+    public void addSurfaceUnit(SurfaceUnit surfaceUnit) {
         surfaceUnits.add(surfaceUnit);
         allUnits.add(surfaceUnit);
     }
 
-    protected void addAirUnit(AirUnit airUnit) {
+    public void addAirUnit(AirUnit airUnit) {
         airUnits.add(airUnit);
         allUnits.add(airUnit);
     }
 
-    protected boolean removeSurfaceUnit(SurfaceUnit surfaceUnit) {
+    public boolean removeSurfaceUnit(SurfaceUnit surfaceUnit) {
         return (surfaceUnits.remove(surfaceUnit) && allUnits.remove(surfaceUnit));
     }
 
-    protected boolean removeAirUnit(AirUnit airUnit) {
+    public boolean removeAirUnit(AirUnit airUnit) {
         return (airUnits.remove(airUnit) && allUnits.remove(airUnit));
     }
 
-    protected void next() {
+    public void next() {
         allUnits.next();
     }
 
-    protected Unit getPointOfInterest() {
+    public Unit getPointOfInterest() {
         return allUnits.getPointOfInterest();
     }
 
-    protected int size() {
+    public int size() {
         return allUnits.size();
     }
 }

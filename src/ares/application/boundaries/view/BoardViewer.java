@@ -10,6 +10,8 @@ import java.util.Collection;
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public interface BoardViewer {
-    public void initializeBoard(ScenarioModel scenario);
-    public void updateUnits(Collection<UnitModel> units);
+    public void loadScenario(ScenarioModel scenario);
+    public void updateScenario(ScenarioModel scenario);
+//    public void updateUnits(Collection<UnitModel> units);
+    public void closeScenario();
 }

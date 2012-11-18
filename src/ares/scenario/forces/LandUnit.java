@@ -1,10 +1,10 @@
 package ares.scenario.forces;
 
 import ares.engine.movement.MovementType;
+import ares.scenario.Scenario;
 import ares.scenario.assets.Asset;
 import ares.scenario.assets.AssetTrait;
 import ares.scenario.assets.AssetType;
-import ares.scenario.Scenario;
 import java.util.Set;
 
 /**

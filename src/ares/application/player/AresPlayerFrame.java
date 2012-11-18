@@ -8,7 +8,7 @@ import ares.application.views.UnitInfoView;
 import ares.engine.realtime.RealTimeEngine;
 import ares.platform.application.AbstractAresApplication;
 import ares.platform.controller.AbstractController;
-import ares.platform.model.AbstractModelProvider;
+import ares.platform.model.AbstractBean;
 import ares.platform.view.ComponentFactory;
 import ares.platform.view.InternalFrameView;
 import ares.platform.view.WindowUtil;
@@ -41,20 +41,16 @@ public final class AresPlayerFrame extends AbstractAresApplication {
         addView(BoardView.class, new InternalFrameView(new BoardView(), desktopPane));
 
         // Create controllers
-        AbstractController engineController = new WeGoPlayerController(this);
+        AbstractController mainController = new WeGoPlayerController(this);
 
         //  add views to controllers
-        engineController.addView(MenuBarView.class, getView(MenuBarView.class));
-        engineController.addView(MessagesView.class, getView(MessagesView.class));
-        engineController.addView(UnitInfoView.class, getView(UnitInfoView.class));
-        engineController.addView(BoardView.class, getView(BoardView.class));
-
-        // create and add models to controllers
-        AbstractModelProvider engineModel = new RealTimeEngine();
-        engineController.addModel(RealTimeEngine.class, engineModel);
+        mainController.addView(MenuBarView.class, getView(MenuBarView.class));
+        mainController.addView(MessagesView.class, getView(MessagesView.class));
+        mainController.addView(UnitInfoView.class, getView(UnitInfoView.class));
+        mainController.addView(BoardView.class, getView(BoardView.class));
 
         // Initialize controllers [controllers register listeners to be notified about views and model events]
-        engineController.initialize();
+        mainController.initialize();
 
     }
 

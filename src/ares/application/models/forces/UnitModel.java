@@ -1,8 +1,9 @@
 package ares.application.models.forces;
 
-import ares.platform.model.FilteredAbstractModel;
-import ares.scenario.Scale;
-import ares.scenario.board.InformationLevel;
+import ares.application.models.board.TileModel;
+import ares.platform.model.KnowledgeMediatedModel;
+import ares.platform.model.UserRole;
+import ares.scenario.board.KnowledgeLevel;
 import ares.scenario.forces.Unit;
 import java.awt.Point;
 
@@ -10,23 +11,34 @@ import java.awt.Point;
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public abstract class UnitModel extends FilteredAbstractModel {
+public abstract class UnitModel extends KnowledgeMediatedModel {
 
     protected final Unit unit;
-    protected final Scale scale;
-   
 
-    public UnitModel(Unit unit, Scale scale, InformationLevel informationLevel) {
-        super(informationLevel);
+    public UnitModel(Unit unit, KnowledgeLevel kLevel) {
+        super(kLevel);
         this.unit = unit;
-        this.scale = scale;
     }
-    
-    public abstract int getColor();
-    
-    public abstract int getIconId();
-    
-    //Unit's position varies depending on the information level
-    public abstract Point getLocation();
 
+    public abstract int getColor();
+
+    public abstract int getIconId();
+
+    //Unit's position varies depending on the information level
+    public abstract Point getPosition();
+    
+    public abstract TileModel getLocation();
+
+//    public static UnitModel getUnitModel(Unit unit, KnowledgeLevel kLevel) {
+//        switch (kLevel) {
+//            case POOR:
+//                return new DetectedUnitModel(unit);
+//            case GOOD:
+//                return new IdentifiedUnitModel(unit);
+//            case COMPLETE:
+//                return new KnownUnitModel(unit);
+//            default:
+//                return null;
+//        }
+//    }
 }

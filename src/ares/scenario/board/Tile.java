@@ -1,14 +1,15 @@
 package ares.scenario.board;
 
+import ares.application.models.board.NonObservedTileModel;
+import ares.application.models.board.ObservedTileModel;
 import ares.application.models.board.TileModel;
 import ares.data.jaxb.Map.Cell;
 import ares.data.jaxb.TerrainFeature;
 import ares.data.jaxb.TerrainType;
 import ares.engine.combat.CombatModifier;
 import ares.engine.movement.MovementCost;
-import ares.platform.model.AbstractModelProvider;
+import ares.platform.model.ModelProvider;
 import ares.platform.model.UserRole;
-import ares.platform.model.UserRoleType;
 import ares.scenario.Scale;
 import ares.scenario.Scenario;
 import ares.scenario.forces.AirUnit;
@@ -23,7 +24,7 @@ import java.util.*;
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public final class Tile extends AbstractModelProvider<TileModel> {
+public final class Tile implements ModelProvider<TileModel> {
 
     /**
      * Set of terrain types found in this location whose effect does not depend on direction
@@ -75,7 +76,7 @@ public final class Tile extends AbstractModelProvider<TileModel> {
     /*
      * Data structure containing all units in the location.
      */
-    private StackOfUnits units;
+    private UnitsStack units;
     /**
      * Precomputed movement costs for all directions
      */
@@ -89,8 +90,8 @@ public final class Tile extends AbstractModelProvider<TileModel> {
      * the board), then there would be no entry for that direction.
      */
     private Map<Direction, Tile> neighbors;
-    private Map<Force, InformationLevel> informationLevels;
-    
+    private final Map<UserRole, KnowledgeLevel> knowledgeLevels;
+    private final Map<KnowledgeLevel, TileModel> models;
 
     public Tile(Cell c) {
         // numeric attributes
@@ -102,7 +103,7 @@ public final class Tile extends AbstractModelProvider<TileModel> {
         distance = (dist != null ? dist : 0);
         Integer victPoints = c.getVP();
         vp = (victPoints != null ? victPoints : 0);
-        units = new StackOfUnits(this);
+        units = new UnitsStack(this);
 
         // Initialize terrain information
         tileTerrain = EnumSet.noneOf(Terrain.class);
@@ -128,14 +129,13 @@ public final class Tile extends AbstractModelProvider<TileModel> {
 
         }
         features = EnumSet.noneOf(TerrainFeatures.class);
-        
+
         for (TerrainFeature feature : c.getFeature()) {
             features.add(Enum.valueOf(TerrainFeatures.class, feature.name()));
         }
-        for (InformationLevel il : InformationLevel.values()) {
-            models.put(il, new TileModel(this));
-        }
-        
+        models = new HashMap<>();
+
+        this.knowledgeLevels = new HashMap<>();
     }
 
     /**
@@ -158,15 +158,19 @@ public final class Tile extends AbstractModelProvider<TileModel> {
             combatModifiers.put(fromDir, combatModifier);
         }
         this.owner = owner;
-        informationLevels = new HashMap<>();
-        Force[] forces = scenario.getForces();
-        for (Force force : forces) {
-            if (force == owner) {
-                informationLevels.put(force, InformationLevel.COMPLETE);
+
+        knowledgeLevels.put(UserRole.GOD, KnowledgeLevel.COMPLETE);
+        for (Force force : scenario.getForces()) {
+            if (owner.equals(force)) {
+                knowledgeLevels.put(UserRole.getForceRole(force), KnowledgeLevel.COMPLETE);
             } else {
-                informationLevels.put(force, InformationLevel.POOR);
+                knowledgeLevels.put(UserRole.getForceRole(force), KnowledgeLevel.POOR);
             }
         }
+        models.put(KnowledgeLevel.NONE, new NonObservedTileModel(this, KnowledgeLevel.NONE));
+        models.put(KnowledgeLevel.POOR, new ObservedTileModel(this, KnowledgeLevel.POOR));
+        models.put(KnowledgeLevel.GOOD, new ObservedTileModel(this, KnowledgeLevel.GOOD));
+        models.put(KnowledgeLevel.COMPLETE, new ObservedTileModel(this, KnowledgeLevel.COMPLETE));
     }
 
     public void add(Unit unit) {
@@ -195,22 +199,32 @@ public final class Tile extends AbstractModelProvider<TileModel> {
         this.entrechment = entrechment;
     }
 
-    public void setInformationLevel(Force force, InformationLevel informationLevel) {
-        informationLevels.put(force, informationLevel);
-    }
-
-// *** GETTERS ***
-    public Unit getTopUnit() {
-        return units.getPointOfInterest();
-    }
-
-    public void nextTopUnit() {
-        units.next();
-    }
-
-//    public StackOfUnits getUnits() {
-//        return units;
+//    public void nextTopUnit() {
+//        units.next();
 //    }
+// *** GETTERS ***
+//    public Unit getTopUnit() {
+//        return units.getPointOfInterest();
+//    }
+    public UnitsStack getUnitsStack() {
+        return units;
+    }
+    public Collection<SurfaceUnit> getSurfaceUnits() {
+        return units.getSurfaceUnits();
+    }
+
+    public Collection<AirUnit> getAirUnits() {
+        return units.getAirUnits();
+    }
+//
+//    public int getStackingPenalty(Scale scale) {
+//        return units.getStackingPenalty(scale);
+//    }
+//
+//    public int getNumStackedUnits() {
+//        return units.size();
+//    }
+
     public Map<Direction, Tile> getNeighbors() {
         return neighbors;
     }
@@ -241,22 +255,6 @@ public final class Tile extends AbstractModelProvider<TileModel> {
 
     public Set<Terrain> getTileTerrain() {
         return tileTerrain;
-    }
-
-    public Collection<SurfaceUnit> getSurfaceUnits() {
-        return units.getSurfaceUnits();
-    }
-
-    public Collection<AirUnit> getAirUnits() {
-        return units.getAirUnits();
-    }
-
-    public int getStackingPenalty(Scale scale) {
-        return units.getStackingPenalty(scale);
-    }
-
-    public int getNumStackedUnits() {
-        return units.size();
     }
 
     public Vision getVision() {
@@ -290,21 +288,22 @@ public final class Tile extends AbstractModelProvider<TileModel> {
         return combatModifiers.get(dir);
     }
 
-    public InformationLevel getInformationLevel(Force force) {
-        return informationLevels.get(force);
-    }
-
     @Override
     public String toString() {
         return "<" + x + "," + y + ">";
     }
 
     @Override
-    public TileModel getModel(UserRole userRole) {
-        if (userRole.getRoleType() == UserRoleType.GOD) {
-            return getModel(InformationLevel.COMPLETE);
-        }
-        InformationLevel infoLevel = informationLevels.get(userRole.getForce());
-        return getModel(infoLevel);
+    public final TileModel getModel(UserRole role) {
+        KnowledgeLevel kLevel = knowledgeLevels.get(role);
+        return models.get(kLevel);
+    }
+
+    public KnowledgeLevel getKnowledgeLevel(UserRole role) {
+        return knowledgeLevels.get(role);
+    }
+
+    public TileModel getModel(KnowledgeLevel kLevel) {
+        return models.get(kLevel);
     }
 }

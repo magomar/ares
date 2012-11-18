@@ -1,8 +1,9 @@
 package ares.engine.realtime;
 
-import ares.engine.Engine;
 import ares.scenario.AresCalendar;
-import java.util.*;
+import java.util.EnumSet;
+import java.util.GregorianCalendar;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.SwingUtilities;
@@ -26,10 +27,10 @@ public class Clock {
     private int currentTime;
     private int tick;
     private int turn;
-    private Engine engine;
+    private RealTimeEngine engine;
     private static final Logger LOG = Logger.getLogger(Clock.class.getName());
 
-    public Clock(AresCalendar calendar, Engine engine) {
+    public Clock(AresCalendar calendar, RealTimeEngine engine) {
         this.engine = engine;
         MINUTES_PER_TICK = calendar.getTurnLength().getMinutesPerTick();
         MINUTES_PER_TURN = calendar.getTurnLength().getMinutesPerTurn();

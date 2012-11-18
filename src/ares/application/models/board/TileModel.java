@@ -1,6 +1,8 @@
 package ares.application.models.board;
 
+import ares.platform.model.KnowledgeMediatedModel;
 import ares.scenario.board.Direction;
+import ares.scenario.board.KnowledgeLevel;
 import ares.scenario.board.Terrain;
 import ares.scenario.board.TerrainFeatures;
 import ares.scenario.board.Tile;
@@ -12,10 +14,11 @@ import java.util.Set;
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public class TileModel  {
-    private Tile tile;
+public abstract class TileModel extends KnowledgeMediatedModel {
+    protected final Tile tile;
 
-    public TileModel(Tile tile) {
+    public TileModel(Tile tile, KnowledgeLevel kLevel) {
+        super(kLevel);
         this.tile = tile;
     }
     

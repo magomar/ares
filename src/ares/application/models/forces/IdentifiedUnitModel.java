@@ -1,7 +1,7 @@
 package ares.application.models.forces;
 
 import ares.scenario.Scale;
-import ares.scenario.board.InformationLevel;
+import ares.scenario.board.KnowledgeLevel;
 import ares.scenario.forces.*;
 import java.awt.Point;
 
@@ -11,12 +11,12 @@ import java.awt.Point;
  */
 public class IdentifiedUnitModel extends DetectedUnitModel {
 
-    public IdentifiedUnitModel(Unit unit, Scale scale) {
-        super(unit, scale, InformationLevel.GOOD);
+    public IdentifiedUnitModel(Unit unit) {
+        super(unit, KnowledgeLevel.GOOD);
     }
 
-    protected IdentifiedUnitModel(Unit unit, Scale scale, InformationLevel informationLevel) {
-        super(unit, scale, informationLevel);
+    protected IdentifiedUnitModel(Unit unit, KnowledgeLevel kLevel) {
+        super(unit, kLevel);
     }
 
     public String getName() {
@@ -24,11 +24,13 @@ public class IdentifiedUnitModel extends DetectedUnitModel {
     }
 
     public int getAttackStrength() {
-        return (int) (unit.getEfficacy() * (unit.getAntiTank() + unit.getAntiPersonnel() / scale.getArea()));
+//        return (int) (unit.getEfficacy() * (unit.getAntiTank() + unit.getAntiPersonnel() / scale.getArea()));
+        return unit.getEfficacy() * (unit.getAntiTank() + unit.getAntiPersonnel());
     }
 
     public int getDefenseStrength() {
-        return (int) ((unit.getEfficacy() * unit.getDefense() / scale.getArea()));
+//        return (int) ((unit.getEfficacy() * unit.getDefense() / scale.getArea()));
+        return unit.getEfficacy() * unit.getDefense();
     }
 
     public int getHealth() {
@@ -38,9 +40,10 @@ public class IdentifiedUnitModel extends DetectedUnitModel {
     public Echelon getEchelon() {
         return unit.getEchelon();
     }
-    
+
     @Override
-    public Point getLocation(){
-        return new Point(unit.getLocation().getX(),unit.getLocation().getY());
+    public Point getPosition() {
+        return new Point(unit.getLocation().getX(), unit.getLocation().getY());
     }
+
 }

@@ -1,6 +1,5 @@
 package ares.engine.actors;
 
-import ares.engine.Engine;
 import ares.engine.action.Action;
 import ares.engine.action.ActionState;
 import ares.engine.action.ActionType;
@@ -8,6 +7,7 @@ import ares.engine.action.actions.ChangeDeploymentAction;
 import ares.engine.action.actions.SurfaceMoveAction;
 import ares.engine.movement.MovementType;
 import ares.engine.realtime.Clock;
+import ares.engine.realtime.RealTimeEngine;
 import ares.platform.util.RandomGenerator;
 import ares.scenario.board.Direction;
 import ares.scenario.board.Tile;
@@ -24,9 +24,9 @@ public class FormationActor {
 
     private Formation formation;
     private List<UnitActor> unitActors;
-    private Engine engine;
+    private RealTimeEngine engine;
 
-    public FormationActor(Formation formation, List<UnitActor> unitActors, Engine engine) {
+    public FormationActor(Formation formation, List<UnitActor> unitActors, RealTimeEngine engine) {
         this.formation = formation;
         this.unitActors= unitActors;
         this.engine = engine;
