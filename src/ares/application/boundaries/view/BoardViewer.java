@@ -1,8 +1,7 @@
 package ares.application.boundaries.view;
 
 import ares.application.models.ScenarioModel;
-import ares.application.models.forces.UnitModel;
-import java.util.Collection;
+import ares.application.models.board.TileModel;
 
 
 /**
@@ -14,4 +13,5 @@ public interface BoardViewer {
     public void updateScenario(ScenarioModel scenario);
 //    public void updateUnits(Collection<UnitModel> units);
     public void closeScenario();
+    public void updateTile(TileModel tile);
 }

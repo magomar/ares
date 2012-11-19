@@ -3,6 +3,7 @@ package ares.application.controllers;
 import ares.application.commands.EngineCommands;
 import ares.application.commands.FileCommands;
 import ares.application.models.ScenarioModel;
+import ares.application.models.board.BoardGraphicsModel;
 import ares.application.player.AresMenus;
 import ares.application.views.BoardView;
 import ares.application.views.MenuBarView;
@@ -18,10 +19,15 @@ import ares.io.AresPaths;
 import ares.platform.application.AbstractAresApplication;
 import ares.platform.controller.AbstractController;
 import ares.platform.model.UserRole;
+import ares.platform.util.MathUtils;
 import ares.platform.view.InternalFrameView;
 import ares.scenario.Scenario;
+import ares.scenario.board.Tile;
+import ares.scenario.board.UnitsStack;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.beans.PropertyChangeEvent;
 import java.io.File;
 import java.util.concurrent.ExecutorService;
@@ -40,16 +46,18 @@ public class WeGoPlayerController extends AbstractController {
     private final AbstractAresApplication mainApplication;
     private final RealTimeEngine engine;
     private UserRole userRole;
+//    private Tile selectedTile;
+    private static final Logger LOG = Logger.getLogger(WeGoPlayerController.class.getName());
 
     public WeGoPlayerController(AbstractAresApplication mainApplication) {
         this.mainApplication = mainApplication;
         executor = Executors.newCachedThreadPool();
         engine = new RealTimeEngine();
     }
-    private static final Logger LOG = Logger.getLogger(WeGoPlayerController.class.getName());
 
     @Override
     protected void registerAllActionListeners() {
+        // MenuBarView
         MenuBarView menuBarView = getView(MenuBarView.class);
         menuBarView.addActionListener(FileCommands.OPEN_SCENARIO.getName(), new OpenScenarioActionListener());
         menuBarView.addActionListener(FileCommands.CLOSE_SCENARIO.getName(), new CloseScenarioActionListener());
@@ -57,6 +65,9 @@ public class WeGoPlayerController extends AbstractController {
         menuBarView.addActionListener(EngineCommands.START.name(), new StartActionListener());
         menuBarView.addActionListener(EngineCommands.PAUSE.name(), new PauseActionListener());
         menuBarView.addActionListener(EngineCommands.NEXT.name(), new NextActionListener());
+        // UnitInfoView
+        getInternalFrameView(BoardView.class).getView().getContentPane().addMouseListener(new BoardMouseListener());
+
     }
 
     @Override
@@ -70,17 +81,11 @@ public class WeGoPlayerController extends AbstractController {
         if (RealTimeEngine.CLOCK_EVENT_PROPERTY.equals(evt.getPropertyName())) {
             ClockEvent clockEvent = (ClockEvent) evt.getNewValue();
             InternalFrameView<BoardView> boardFrame = getInternalFrameView(BoardView.class);
-            boardFrame.setTitle("Time: " +clockEvent.getClock().toString());
+            boardFrame.setTitle("Time: " + clockEvent.getClock().toString());
             BoardView boardView = boardFrame.getView();
-            boardView.updateScenario(engine.getScenarioModel(userRole)); 
-//            Collection<UnitModel> units = new ArrayList<>();
-//            for (ForceModel force : engine.getScenarioModel(userRole).getForceModel()) {
-//                units.addAll(force.getUnitModels());
-//            }
-//            boardView.updateUnits(units);
+            boardView.updateScenario(engine.getScenarioModel(userRole));
             if (clockEvent.getEventTypes().contains(ClockEventType.TURN)) {
                 MenuBarView menuBarView = getView(MenuBarView.class);
-//                menuBarView.setMenuElementEnabled(EngineCommands.START.getName(), false);
                 menuBarView.setMenuElementEnabled(EngineCommands.PAUSE.getName(), false);
                 menuBarView.setMenuElementEnabled(EngineCommands.NEXT.getName(), true);
             }
@@ -157,7 +162,7 @@ public class WeGoPlayerController extends AbstractController {
             getInternalFrameView(BoardView.class).getView().closeScenario();
             getInternalFrameView(MessagesView.class).hide();
             getInternalFrameView(UnitInfoView.class).hide();
-            
+
         }
     }
 
@@ -203,6 +208,49 @@ public class WeGoPlayerController extends AbstractController {
             menuBarView.setMenuElementEnabled(EngineCommands.PAUSE.getName(), true);
             menuBarView.setMenuElementEnabled(EngineCommands.NEXT.getName(), false);
             engine.start();
+        }
+    }
+
+    private class BoardMouseListener extends MouseAdapter {
+
+        @Override
+        public void mouseClicked(MouseEvent me) {
+            LOG.log(Level.INFO, me.toString());
+            Scenario scenario = engine.getScenario();
+            BoardGraphicsModel boardInfo = scenario.getBoardGraphicsModel();
+
+            int i;
+            int j;
+            int ci = (int) Math.floor((double) me.getX() / (double) boardInfo.getHexSide());
+            int cx = me.getX() - boardInfo.getHexSide() * ci;
+            int ty = me.getY() - ((ci + 1) % 2) * boardInfo.getHexHeight() / 2;
+            int cj = (int) Math.floor((double) ty / (double) boardInfo.getHexHeight());
+            int cy = ty - boardInfo.getHexHeight() * cj;
+
+            if (cx > Math.abs(boardInfo.getHexRadius() / 2 - boardInfo.getHexRadius() * cy / boardInfo.getHexHeight())) {
+                i = ci;
+                j = cj;
+            } else {
+                i = ci - 1;
+                j = cj + ((ci + 1) % 2) - ((cy < boardInfo.getHexHeight() / 2) ? 1 : 0);
+            }
+            i = MathUtils.setBounds(i, 0, boardInfo.getWidth());
+            j= MathUtils.setBounds(j, 0, boardInfo.getHeight());
+            Tile tile = scenario.getBoard().getTile(i, j);
+            UnitsStack stack = tile.getUnitsStack();
+            System.out.println("Click on tile "+ tile + " # " + stack.size());
+            if (!stack.isEmpty()) {
+                // Unselects last selected unit
+                stack.next();
+                System.out.println("Nex unit = "+ stack.getPointOfInterest());
+                // Left click selects, right click unselects
+                if (me.getButton() == MouseEvent.BUTTON1) {
+                    stack.next();
+                } else if (me.getButton() == MouseEvent.BUTTON2) {
+                }
+                // Update the units in the specified tiles
+                getInternalFrameView(UnitInfoView.class).getView().updateTopUnit(tile.getModel(userRole));
+            }
         }
     }
 }

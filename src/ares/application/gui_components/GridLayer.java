@@ -26,7 +26,7 @@ public class GridLayer extends javax.swing.JPanel {
          * Create the grid when opening new scenario
          */
         if (gridImage == null) {
-            BoardGraphicsModel boardInfo = scenario.getBoardInfo();            
+            BoardGraphicsModel boardInfo = scenario.getBoardGraphicsModel();            
             createGridImage(boardInfo, loadHexagonFile(boardInfo));
         } else {
             /*

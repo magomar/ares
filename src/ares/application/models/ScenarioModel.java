@@ -30,7 +30,7 @@ public class ScenarioModel extends RoleMediatedModel {
     }
 
     public BoardGraphicsModel getBoardGraphicsModel() {
-        return scenario.getBoardInfo();
+        return scenario.getBoardGraphicsModel();
     }
 
     public BoardModel getBoardModel() {

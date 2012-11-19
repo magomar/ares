@@ -3,13 +3,10 @@ package ares.application.views;
 import ares.application.boundaries.view.BoardViewer;
 import ares.application.gui_components.*;
 import ares.application.models.ScenarioModel;
-import ares.application.models.forces.UnitModel;
-import ares.engine.realtime.RealTimeEngine;
+import ares.application.models.board.TileModel;
 import ares.platform.view.AbstractView;
-import ares.scenario.Scenario;
 import java.awt.Dimension;
 import java.beans.PropertyChangeEvent;
-import java.util.Collection;
 import javax.swing.JLayeredPane;
 import javax.swing.JScrollPane;
 
@@ -23,7 +20,6 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
     private TerrainLayer terrainLayer;
     private UnitsLayer unitsLayer;
     private GridLayer gridLayer;
-//    private ScenarioModel scenario;
 
     @Override
     protected JScrollPane layout() {
@@ -66,7 +62,7 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
         unitsLayer.setSize(imageSize);
 
     }
-    
+
     @Override
     public void updateScenario(ScenarioModel scenario) {
         unitsLayer.updateScenario(scenario);
@@ -83,5 +79,10 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
     @Override
     public void modelPropertyChange(PropertyChangeEvent evt) {
         throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void updateTile(TileModel tile) {
+        unitsLayer.updateSingleTile(tile);
     }
 }

@@ -1,7 +1,7 @@
 package ares.application.gui_components;
 
-import ares.application.models.board.BoardGraphicsModel;
 import ares.application.models.ScenarioModel;
+import ares.application.models.board.BoardGraphicsModel;
 import ares.application.models.board.TileModel;
 import ares.data.jaxb.TerrainFeature;
 import ares.io.*;

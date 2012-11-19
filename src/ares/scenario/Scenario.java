@@ -56,7 +56,7 @@ public final class Scenario implements ModelProvider<ScenarioModel> {
         return board;
     }
 
-    public BoardGraphicsModel getBoardInfo() {
+    public BoardGraphicsModel getBoardGraphicsModel() {
         return boardInfo;
     }
 

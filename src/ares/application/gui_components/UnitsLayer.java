@@ -10,12 +10,12 @@ import ares.application.models.forces.IdentifiedUnitModel;
 import ares.application.models.forces.KnownUnitModel;
 import ares.application.models.forces.UnitModel;
 import ares.io.AresIO;
+import ares.scenario.board.KnowledgeLevel;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.lang.ref.SoftReference;
 import java.util.*;
-import java.util.Map.Entry;
 import javax.imageio.ImageIO;
 
 /**
@@ -67,7 +67,6 @@ public class UnitsLayer extends javax.swing.JPanel {
             if (unitBufferMap == null) {
                 unitBufferMap = new SoftReference<>(new HashMap<Integer, BufferedImage>());
             }
-
 //            unitsImage = new BufferedImage(boardInfo.getImageWidth(), boardInfo.getImageHeight(), BufferedImage.TYPE_4BYTE_ABGR);
 //            Collection<UnitModel> spottedUnits = new ArrayList<>();
 //            for (ForceModel forceModel : scenario.getForceModel()) {
@@ -84,7 +83,7 @@ public class UnitsLayer extends javax.swing.JPanel {
         Collection<TileModel> tileModels = new ArrayList<>();
         for (ForceModel forceModel : scenario.getForceModel()) {
             for (UnitModel unitModel : forceModel.getUnitModels()) {
-                TileModel tileModel =unitModel.getLocation();
+                TileModel tileModel = unitModel.getLocation();
                 if (!tileModels.contains(tileModel)) {
                     tileModels.add(tileModel);
                 }
@@ -92,7 +91,13 @@ public class UnitsLayer extends javax.swing.JPanel {
         }
         unitsImage = new BufferedImage(boardInfo.getImageWidth(), boardInfo.getImageHeight(), BufferedImage.TYPE_4BYTE_ABGR);
         createAllUnitsImage(tileModels);
-        repaint();
+//        repaint();
+    }
+
+    public void updateSingleTile(TileModel tile) {
+        UnitModel unit = ((ObservedTileModel) tile).getTopUnit();
+        int numStackedUnits = ((ObservedTileModel) tile).getNumStackedUnits();
+        refreshUnitsbyPosition(unit, tile.getCoordinates(), numStackedUnits);
     }
 
     private void createAllUnitsImage(Collection<TileModel> tileModels) {
@@ -113,7 +118,6 @@ public class UnitsLayer extends javax.swing.JPanel {
 //            refreshUnitsbyPosition(unit, unit.getCoordinates().x, unit.getCoordinates().y, 1);
 //        }
 //    }
-
     /**
      * Paints all the given units at the specified position Uses the default maxStack
      *
@@ -137,7 +141,6 @@ public class UnitsLayer extends javax.swing.JPanel {
      * @param maxStack Maximum numbers of units to be painted in a single tile
      */
     public void refreshUnitsbyPosition(UnitModel unit, int row, int col, int numStack, int maxStack) {
-
         Graphics2D g2 = (Graphics2D) unitsImage.getGraphics();
         int x = boardInfo.getHexOffset() * row;
         int h = boardInfo.getHexHeight();
@@ -150,11 +153,13 @@ public class UnitsLayer extends javax.swing.JPanel {
         //for int i=0, i<unitModel.getStackedUnits() && i<maxStack; ++i
         //
 //        for (int numStack = 0; numStack < maxStack; numStack++) {
+        Image unitImage = getUnitImage(unit);
         for (int i = 0; i < numStack; i++) {
-            g2.drawImage(getUnitImage(unit), x + d, y + d, this);
+            g2.drawImage(unitImage, x + d, y + d, this);
             d += unitStackOffset;
         }
         g2.dispose();
+        repaint(x, y, unitImage.getWidth(this)+d, unitImage.getHeight(this) + d);
     }
 
     /**
