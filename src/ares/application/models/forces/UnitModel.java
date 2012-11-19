@@ -20,15 +20,15 @@ public abstract class UnitModel extends KnowledgeMediatedModel {
         this.unit = unit;
     }
 
+    public abstract String getName();
+
     public abstract int getColor();
 
     public abstract int getIconId();
 
     //Unit's position varies depending on the information level
 //    public abstract Point getCoordinates();
-    
     public abstract TileModel getLocation();
-
 //    public static UnitModel getUnitModel(Unit unit, KnowledgeLevel kLevel) {
 //        switch (kLevel) {
 //            case POOR:

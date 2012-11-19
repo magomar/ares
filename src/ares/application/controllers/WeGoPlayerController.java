@@ -4,6 +4,8 @@ import ares.application.commands.EngineCommands;
 import ares.application.commands.FileCommands;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.BoardGraphicsModel;
+import ares.application.models.board.TileModel;
+import ares.application.models.forces.UnitModel;
 import ares.application.player.AresMenus;
 import ares.application.views.BoardView;
 import ares.application.views.MenuBarView;
@@ -19,9 +21,9 @@ import ares.io.AresPaths;
 import ares.platform.application.AbstractAresApplication;
 import ares.platform.controller.AbstractController;
 import ares.platform.model.UserRole;
-import ares.platform.util.MathUtils;
 import ares.platform.view.InternalFrameView;
 import ares.scenario.Scenario;
+import ares.scenario.board.KnowledgeLevel;
 import ares.scenario.board.Tile;
 import ares.scenario.board.UnitsStack;
 import java.awt.event.ActionEvent;
@@ -221,7 +223,7 @@ public class WeGoPlayerController extends AbstractController {
 
             int i;
             int j;
-            int ci = (int) Math.floor((double) me.getX() / (double) boardInfo.getHexSide());
+            int ci = (int) Math.floor((double) me.getX() / (double) boardInfo.getHexOffset());
             int cx = me.getX() - boardInfo.getHexSide() * ci;
             int ty = me.getY() - ((ci + 1) % 2) * boardInfo.getHexHeight() / 2;
             int cj = (int) Math.floor((double) ty / (double) boardInfo.getHexHeight());
@@ -234,22 +236,23 @@ public class WeGoPlayerController extends AbstractController {
                 i = ci - 1;
                 j = cj + ((ci + 1) % 2) - ((cy < boardInfo.getHexHeight() / 2) ? 1 : 0);
             }
-            i = MathUtils.setBounds(i, 0, boardInfo.getWidth());
-            j= MathUtils.setBounds(j, 0, boardInfo.getHeight());
-            Tile tile = scenario.getBoard().getTile(i, j);
-            UnitsStack stack = tile.getUnitsStack();
-            System.out.println("Click on tile "+ tile + " # " + stack.size());
-            if (!stack.isEmpty()) {
-                // Unselects last selected unit
-                stack.next();
-                System.out.println("Nex unit = "+ stack.getPointOfInterest());
-                // Left click selects, right click unselects
-                if (me.getButton() == MouseEvent.BUTTON1) {
-                    stack.next();
-                } else if (me.getButton() == MouseEvent.BUTTON2) {
+//            i = MathUtils.setBounds(i, 0, boardInfo.getWidth());
+//            j = MathUtils.setBounds(j, 0, boardInfo.getHeight());
+            if (boardInfo.validCoordinates(i, j)) {
+                Tile tile = scenario.getBoard().getTile(i, j);
+                TileModel tileModel = tile.getModel(userRole);
+                if (tileModel.getKnowledgeLevel() != KnowledgeLevel.NONE) {
+                    UnitsStack stack = tile.getUnitsStack();
+                    if (!stack.isEmpty()) {
+                        if (me.getButton() == MouseEvent.BUTTON1) {
+                            stack.next();
+                            UnitModel unit = stack.getPointOfInterest().getModel(userRole);
+                            System.out.println("Selected unit:\n" + stack.getPointOfInterest().getName());
+                            getInternalFrameView(UnitInfoView.class).getView().selectUnit(unit);
+                            getInternalFrameView(BoardView.class).getView().updateTile(tileModel);
+                        }
+                    }
                 }
-                // Update the units in the specified tiles
-                getInternalFrameView(UnitInfoView.class).getView().updateTopUnit(tile.getModel(userRole));
             }
         }
     }

@@ -1,10 +1,8 @@
 package ares.application.models.forces;
 
 import ares.application.models.board.TileModel;
-import ares.platform.model.UserRole;
 import ares.scenario.board.KnowledgeLevel;
 import ares.scenario.forces.*;
-import java.awt.Point;
 
 /**
  *
@@ -23,7 +21,12 @@ public class DetectedUnitModel extends UnitModel {
     public UnitType getUnitType() {
         return unit.getType();
     }
-
+    
+    @Override
+    public String getName() {
+        return unit.getName();
+    }
+    
     @Override
     public int getColor() {
         return unit.getColor();

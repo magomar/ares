@@ -35,4 +35,5 @@ public abstract class TileModel extends KnowledgeMediatedModel {
     public Point getCoordinates() {
         return tile.getCoordinates();
     }
+    
 }
