@@ -28,7 +28,12 @@ public abstract class AbstractImageLayer extends javax.swing.JPanel{
             bgm = s.getBoardGraphicsModel();
             globalImage = new BufferedImage(bgm.getImageWidth(), bgm.getImageHeight(), BufferedImage.TYPE_4BYTE_ABGR);
             createGlobalImage(s);
-        }
+        } 
+    }
+    
+    public void updateGlobalImage(ScenarioModel s) {
+        globalImage = new BufferedImage(bgm.getImageWidth(), bgm.getImageHeight(), BufferedImage.TYPE_4BYTE_ABGR);
+        createGlobalImage(s);
     }
     
     protected abstract void createGlobalImage(ScenarioModel s);
