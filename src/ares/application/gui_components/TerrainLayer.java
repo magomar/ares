@@ -21,6 +21,7 @@ import javax.imageio.ImageIO;
 public class TerrainLayer extends javax.swing.JPanel {
 
     // Final image to be painted on the JComponent
+    //TODO maybe it doesn't need to be transparent (consume less memory)
     private Image terrainImage = null;
     //Map to store loaded images
     private SoftReference<EnumMap<Terrain, BufferedImage>> terrainBufferMap;

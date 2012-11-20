@@ -26,7 +26,8 @@ public class UnitAttributes {
         unitImgWidth = i.getWidth();
         unitImgHeight = i.getHeight();
         g2 = (Graphics2D) i.getGraphics();
-                g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        //Unicode font for the infinity symbol
         Font font = new Font("Serif", Font.PLAIN, 10);
         g2.setFont(font);
     }

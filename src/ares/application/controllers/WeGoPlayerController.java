@@ -1,39 +1,25 @@
 package ares.application.controllers;
 
-import ares.application.commands.EngineCommands;
-import ares.application.commands.FileCommands;
+import ares.application.commands.*;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.BoardGraphicsModel;
 import ares.application.player.AresMenus;
-import ares.application.views.BoardView;
-import ares.application.views.MenuBarView;
-import ares.application.views.MessagesView;
-import ares.application.views.UnitInfoView;
+import ares.application.views.*;
 import ares.data.jaxb.EquipmentDB;
-import ares.engine.realtime.ClockEvent;
-import ares.engine.realtime.ClockEventType;
-import ares.engine.realtime.RealTimeEngine;
-import ares.io.AresFileType;
-import ares.io.AresIO;
-import ares.io.AresPaths;
+import ares.engine.realtime.*;
+import ares.io.*;
 import ares.platform.application.AbstractAresApplication;
 import ares.platform.controller.AbstractController;
 import ares.platform.model.UserRole;
-import ares.platform.util.MathUtils;
 import ares.platform.view.InternalFrameView;
 import ares.scenario.Scenario;
-import ares.scenario.board.Tile;
-import ares.scenario.board.UnitsStack;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import ares.scenario.board.*;
+import java.awt.Point;
+import java.awt.event.*;
 import java.beans.PropertyChangeEvent;
 import java.io.File;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.concurrent.*;
+import java.util.logging.*;
 import javax.swing.JFileChooser;
 
 /**
@@ -215,41 +201,32 @@ public class WeGoPlayerController extends AbstractController {
 
         @Override
         public void mouseClicked(MouseEvent me) {
+            
             LOG.log(Level.INFO, me.toString());
             Scenario scenario = engine.getScenario();
-            BoardGraphicsModel boardInfo = scenario.getBoardGraphicsModel();
+            BoardGraphicsModel bgm = scenario.getBoardGraphicsModel();
+            Point pixel = new Point(me.getX(), me.getY());
+            
+            if (bgm.isWithinImageRange(pixel)) {
+                
+                Point tilePoint = bgm.pixelToTile(pixel);
+                Tile tile = scenario.getBoard().getTile(tilePoint.x, tilePoint.y);
+                UnitsStack stack = tile.getUnitsStack();
 
-            int i;
-            int j;
-            int ci = (int) Math.floor((double) me.getX() / (double) boardInfo.getHexSide());
-            int cx = me.getX() - boardInfo.getHexSide() * ci;
-            int ty = me.getY() - ((ci + 1) % 2) * boardInfo.getHexHeight() / 2;
-            int cj = (int) Math.floor((double) ty / (double) boardInfo.getHexHeight());
-            int cy = ty - boardInfo.getHexHeight() * cj;
-
-            if (cx > Math.abs(boardInfo.getHexRadius() / 2 - boardInfo.getHexRadius() * cy / boardInfo.getHexHeight())) {
-                i = ci;
-                j = cj;
-            } else {
-                i = ci - 1;
-                j = cj + ((ci + 1) % 2) - ((cy < boardInfo.getHexHeight() / 2) ? 1 : 0);
-            }
-            i = MathUtils.setBounds(i, 0, boardInfo.getWidth());
-            j= MathUtils.setBounds(j, 0, boardInfo.getHeight());
-            Tile tile = scenario.getBoard().getTile(i, j);
-            UnitsStack stack = tile.getUnitsStack();
-            System.out.println("Click on tile "+ tile + " # " + stack.size());
-            if (!stack.isEmpty()) {
-                // Unselects last selected unit
-                stack.next();
-                System.out.println("Nex unit = "+ stack.getPointOfInterest());
-                // Left click selects, right click unselects
-                if (me.getButton() == MouseEvent.BUTTON1) {
+                System.out.println("Click on tile " + tile + " # " + stack.size());
+                if (!stack.isEmpty()) {
+                    // Unselects last selected unit
                     stack.next();
-                } else if (me.getButton() == MouseEvent.BUTTON2) {
+                    System.out.println("Nex unit = " + stack.getPointOfInterest());
+                    // Left click selects, right click unselects
+                    if (me.getButton() == MouseEvent.BUTTON1) {
+                        stack.next();
+                    } else if (me.getButton() == MouseEvent.BUTTON2) {
+                    }
+                    // Update the units in the specified tiles
+                    getInternalFrameView(UnitInfoView.class).getView().updateTopUnit(tile.getModel(userRole));
+                    getInternalFrameView(BoardView.class).getView().updateTile(tile.getModel(userRole));
                 }
-                // Update the units in the specified tiles
-                getInternalFrameView(UnitInfoView.class).getView().updateTopUnit(tile.getModel(userRole));
             }
         }
     }

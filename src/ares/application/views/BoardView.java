@@ -5,10 +5,9 @@ import ares.application.gui_components.*;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.TileModel;
 import ares.platform.view.AbstractView;
-import java.awt.Dimension;
+import java.awt.*;
 import java.beans.PropertyChangeEvent;
-import javax.swing.JLayeredPane;
-import javax.swing.JScrollPane;
+import javax.swing.*;
 
 /**
  *
@@ -26,11 +25,14 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
 
         // TODO set black background
         layers = new JLayeredPane();
+        layers.setOpaque(true);
+        layers.setBackground(Color.BLACK);
         terrainLayer = new TerrainLayer();
         unitsLayer = new UnitsLayer();
+        unitsLayer.setOpaque(false);
         gridLayer = new GridLayer();
         gridLayer.setOpaque(false);
-        unitsLayer.setOpaque(false);
+        
 
         layers.add(terrainLayer, JLayeredPane.DEFAULT_LAYER);
         layers.add(gridLayer, JLayeredPane.PALETTE_LAYER);
@@ -39,7 +41,9 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
         JScrollPane contentPane = new JScrollPane();
         contentPane.add(layers);
         contentPane.setViewportView(layers);
+        contentPane.setBackground(Color.BLACK);
         contentPane.setVisible(true);
+        contentPane.setOpaque(true);
         return contentPane;
     }
 
@@ -50,6 +54,7 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
     @Override
     public void loadScenario(ScenarioModel scenario) {
         terrainLayer.initialize(scenario);
+        gridLayer.initialize(scenario);
         unitsLayer.initialize(scenario);
         Dimension imageSize = new Dimension(scenario.getBoardGraphicsModel().getImageWidth(), scenario.getBoardGraphicsModel().getImageHeight());
         layers.setPreferredSize(imageSize);
@@ -60,7 +65,6 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
         gridLayer.setSize(imageSize);
         unitsLayer.setPreferredSize(imageSize);
         unitsLayer.setSize(imageSize);
-
     }
 
     @Override

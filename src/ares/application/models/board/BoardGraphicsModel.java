@@ -2,6 +2,7 @@ package ares.application.models.board;
 
 import ares.io.ImageProfile;
 import ares.scenario.board.Board;
+import java.awt.Point;
 
 /**
  *
@@ -130,4 +131,49 @@ public class BoardGraphicsModel {
     public ImageProfile getImageProfile() {
         return imgProfile;
     }
+    
+    /**
+     * Converts a tile location to its corresponding pixel on the global image
+     * 
+     * @param tile  position to be converted
+     * @return the pixel at the upper left corner of the square circumscribed
+     *         about the hexagon
+     * @see BoardGraphicsModel
+     * @see AbstractImageLayer
+     */
+    public Point tileToPixel(Point tile){
+        Point pixel = new Point();
+        
+        //X component is "row" times the "offset"
+        pixel.x = hexOffset * tile.x;
+        //Y component depends on the row.
+        //If it's even number, then "column" times the "height" plus half the height, if it's odd then just "column" times the "height"
+        pixel.y = (tile.x % 2 == 0 ? (hexHeight * tile.y) + (hexHeight / 2) : (hexHeight * tile.y));
+        return pixel;
+    }
+
+    /**
+     * Converts a pixel position to its corresponding tile index
+     * 
+     * @param pixel  position to be converted
+     * @return the row (x) and column(y) where the tile is located at the tile map
+     * @see BoardGraphicsModel
+     * @see Board getTile
+     */
+    public Point pixelToTile(Point pixel) {
+        Point tile = new Point();
+        
+        tile.x = pixel.x / hexOffset;
+        //If tile is on even row, first we substract half the hexagon height to the Y component, then we divide it by the height
+        //if it's on odd row, divide Y component by hexagon height
+        tile.y = (tile.x % 2 == 0 ? (pixel.y - (hexHeight/2))/hexHeight : (pixel.y / hexHeight) );
+        
+        return tile;
+
+    }
+    
+    public boolean isWithinImageRange(Point pixel){
+        return ((pixel.x < imageWidth && pixel.x > 0) && (pixel.y>0 && pixel.y < imageHeight));
+    }
+    
 }

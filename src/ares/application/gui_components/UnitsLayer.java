@@ -69,45 +69,51 @@ public class UnitsLayer extends AbstractImageLayer {
      * @param t TileModel where the units are
      * @param maxStack maximum units in the stack to be painted
      */
-    public void paintByTile(TileModel t, int maxStack){
-        
+    public void paintByTile(TileModel t, int maxStack) {
         //Graphics from the global image
         Graphics2D g2 = (Graphics2D) globalImage.getGraphics();
-        //Where the single unit image will be painted
-        Image unitImage = getUnitImage(((ObservedTileModel) t).getTopUnit());
         
-        //Max units to be painted
-        int numStackedUnits = ((ObservedTileModel) t).getNumStackedUnits();
+        //Where the single unit image will be painted
+        Image unitImage;
         
         //Calculate unit position
-        int row = t.getCoordinates().x, column = t.getCoordinates().y,
-            x = bgm.getHexOffset() * row, h = bgm.getHexHeight();
-        int y = (row % 2 == 0 ? h * (column) + h / 2 : h * column);
+        Point pos = bgm.tileToPixel(t.getCoordinates());
         
-        // Offset from the upper left corner of the tile
-        x += unitImageOffset;
-        y += unitImageOffset;
-        
-        // Offset from the upper left corner of the last painted unit
-        // incremented by unitStackOffset
-        int d = 0;
+        //If no units on the tile
+        if (((ObservedTileModel) t).getTopUnit() == null) {
+            //Empty image
+            unitImage = new BufferedImage(bgm.getHexDiameter(), bgm.getHeight(), BufferedImage.TYPE_INT_ARGB);
+            g2.drawImage(unitImage, pos.x, pos.y,this);
+            repaint(pos.x, pos.y, unitImage.getWidth(this), unitImage.getHeight(this));
+            
+        } else {
 
-        
-        //Paint the same top unit
-        for (int i = 0; i < numStackedUnits && i<maxStack; i++) {
-            g2.drawImage(unitImage, x + d, y + d, this);
-            d += unitStackOffset;
+            //Retrieve the single unit image
+            unitImage = getUnitImage(((ObservedTileModel) t).getTopUnit());
+
+            //Max units to be painted
+            int numStackedUnits = ((ObservedTileModel) t).getNumStackedUnits();
+            
+            // Offset from the upper left corner of the tile
+            pos.x += unitImageOffset;
+            pos.y += unitImageOffset;
+
+            // Offset from the upper left corner of the last painted unit
+            // incremented by unitStackOffset
+            int d = 0;
+            
+            //Paint the same top unit
+            for (int i = 0; i < numStackedUnits && i < maxStack; i++) {
+                g2.drawImage(unitImage, pos.x + d, pos.y + d, this);
+                d += unitStackOffset;
+            }
+            repaint(pos.x, pos.y, unitImage.getWidth(this) + d, unitImage.getHeight(this) + d);
         }
         g2.dispose();
-        repaint(x, y, unitImage.getWidth(this) + d, unitImage.getHeight(this) + d);
     }
- 
+
     /**
      * Returns a unit image based on the unit color, IconId and KnowledgeLevel
-     * 
-     * Displays the Echelon on the upper left corner, Health on the upper right,
-     * Tile Density on the middle left side, Attack and Defense at the bottom and
-     * a Stamina Bar (a line) at the right side of the icon
      * 
      * @param unit
      * @return
@@ -165,7 +171,7 @@ public class UnitsLayer extends AbstractImageLayer {
                 ua.paintUnitAttributes((DetectedUnitModel) unit);
                 break;
             default:
-                //UnknownUnitException
+                //UnknownUnit or something Exception
                 break;
         }
     }
@@ -177,7 +183,6 @@ public class UnitsLayer extends AbstractImageLayer {
      * @see UnitColors
      */
     private void loadUnitGraphics(UnitColors uc) {
-        BufferedImage imageAllUnits = null;
         String filename = uc.getFileName();
         Image i = loadImage(AresIO.ARES_IO.getFile(bgm.getImageProfile().getPath(), filename));
         unitBufferMap.put(uc, new SoftReference(i));

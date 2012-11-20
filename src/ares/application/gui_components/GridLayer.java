@@ -1,5 +1,6 @@
 package ares.application.gui_components;
 
+import ares.application.models.ScenarioModel;
 import ares.io.AresIO;
 import ares.scenario.Scenario;
 import ares.application.models.board.BoardGraphicsModel;
@@ -20,7 +21,7 @@ public class GridLayer extends javax.swing.JPanel {
     //and set hexagonGridFileName according to the needed size
     private String hexagonGridFileName = "Hexoutline.png";
 
-    public void initialize(Scenario scenario) {
+    public void initialize(ScenarioModel scenario) {
 
         /*
          * Create the grid when opening new scenario

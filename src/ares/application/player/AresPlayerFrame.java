@@ -1,23 +1,12 @@
 package ares.application.player;
 
 import ares.application.controllers.WeGoPlayerController;
-import ares.application.views.BoardView;
-import ares.application.views.MenuBarView;
-import ares.application.views.MessagesView;
-import ares.application.views.UnitInfoView;
-import ares.engine.realtime.RealTimeEngine;
+import ares.application.views.*;
 import ares.platform.application.AbstractAresApplication;
 import ares.platform.controller.AbstractController;
-import ares.platform.model.AbstractBean;
-import ares.platform.view.ComponentFactory;
-import ares.platform.view.InternalFrameView;
-import ares.platform.view.WindowUtil;
-import java.awt.Dimension;
-import java.awt.GraphicsEnvironment;
-import java.awt.Rectangle;
-import javax.swing.JDesktopPane;
-import javax.swing.JFrame;
-import javax.swing.JInternalFrame;
+import ares.platform.view.*;
+import java.awt.*;
+import javax.swing.*;
 
 /**
  *
