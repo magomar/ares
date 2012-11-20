@@ -1,11 +1,10 @@
 package ares.application.models.forces;
 
+import ares.application.gui_components.UnitColors;
 import ares.application.models.board.TileModel;
 import ares.platform.model.KnowledgeMediatedModel;
-import ares.platform.model.UserRole;
 import ares.scenario.board.KnowledgeLevel;
 import ares.scenario.forces.Unit;
-import java.awt.Point;
 
 /**
  *
@@ -19,10 +18,8 @@ public abstract class UnitModel extends KnowledgeMediatedModel {
         super(kLevel);
         this.unit = unit;
     }
-
-    public abstract String getName();
-
-    public abstract int getColor();
+    
+    public abstract UnitColors getColor();
 
     public abstract int getIconId();
 
