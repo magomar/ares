@@ -69,7 +69,7 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
 
     @Override
     public void updateScenario(ScenarioModel scenario) {
-        unitsLayer.createGlobalImage(scenario);
+        unitsLayer.updateGlobalImage(scenario);
     }
 
     @Override

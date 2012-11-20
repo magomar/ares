@@ -3,6 +3,8 @@ package ares.application.controllers;
 import ares.application.commands.*;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.BoardGraphicsModel;
+import ares.application.models.board.TileModel;
+import ares.application.models.forces.UnitModel;
 import ares.application.player.AresMenus;
 import ares.application.views.*;
 import ares.data.jaxb.EquipmentDB;

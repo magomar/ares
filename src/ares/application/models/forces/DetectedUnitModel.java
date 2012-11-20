@@ -22,7 +22,12 @@ public class DetectedUnitModel extends UnitModel {
     public UnitType getUnitType() {
         return unit.getType();
     }
-
+    
+    @Override
+    public String getName() {
+        return unit.getName();
+    }
+    
     @Override
     public UnitColors getColor() {
         return UnitColors.values()[unit.getColor()];

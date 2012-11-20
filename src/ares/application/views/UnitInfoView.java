@@ -1,9 +1,10 @@
 package ares.application.views;
 
 import ares.application.boundaries.view.UnitInfoViewer;
-import ares.application.gui_components.UnitInfoPanel;
-import ares.application.models.board.TileModel;
+import ares.application.models.board.ObservedTileModel;
+import ares.application.models.forces.UnitModel;
 import ares.platform.view.AbstractView;
+import java.awt.BorderLayout;
 import java.beans.PropertyChangeEvent;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -18,8 +19,9 @@ public class UnitInfoView extends AbstractView<JPanel> implements UnitInfoViewer
     @Override
     protected JPanel layout() {
         JPanel panel = new JPanel();
+        panel.setLayout(new BorderLayout());
         textArea = new JTextArea();
-        panel.add(textArea);
+        panel.add(textArea, BorderLayout.CENTER);
         return panel;
     }
 
@@ -29,10 +31,8 @@ public class UnitInfoView extends AbstractView<JPanel> implements UnitInfoViewer
     }
 
     @Override
-    public void updateTopUnit(TileModel tile) {
-//        UnitInfoPanel panel = (UnitInfoPanel) getContentPane();
-        textArea.setText(tile.getCoordinates().toString());
-        
+    public void selectUnit(UnitModel unit) {
+        textArea.setText(unit.getName());
     }
     
 }
