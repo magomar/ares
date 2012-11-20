@@ -1,10 +1,9 @@
 package ares.application.models.forces;
 
+import ares.application.gui_components.UnitColors;
 import ares.application.models.board.TileModel;
-import ares.platform.model.UserRole;
 import ares.scenario.board.KnowledgeLevel;
 import ares.scenario.forces.*;
-import java.awt.Point;
 
 /**
  *
@@ -25,8 +24,8 @@ public class DetectedUnitModel extends UnitModel {
     }
 
     @Override
-    public int getColor() {
-        return unit.getColor();
+    public UnitColors getColor() {
+        return UnitColors.values()[unit.getColor()];
     }
 
     @Override
@@ -37,6 +36,9 @@ public class DetectedUnitModel extends UnitModel {
 //    @Override
 //    public Point getCoordinates() {
 //        //TODO why x and y are modified ?
+          //Heine: It's a cheap way to move them from their actual location
+          //I was trying to add confusion :P DetectedUnits might not be in the exact position, right?
+          //This was faster than waiting for the engine to be finished
 //        return new Point(unit.getLocation().getX() - 1, unit.getLocation().getY() + 1);
 //    }
 

@@ -13,5 +13,8 @@ public class KnownUnitModel extends IdentifiedUnitModel {
         super(unit, KnowledgeLevel.COMPLETE);
     }
     
+    public int getStamina(){
+        return unit.getStamina();
+    }
     // TODO add getter methods as needed ...
 }

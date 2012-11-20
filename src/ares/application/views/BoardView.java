@@ -65,14 +65,14 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
 
     @Override
     public void updateScenario(ScenarioModel scenario) {
-        unitsLayer.updateScenario(scenario);
+        unitsLayer.createGlobalImage(scenario);
     }
 
     @Override
     public void closeScenario() {
         terrainLayer.flushLayer();
         gridLayer.flushLayer();
-        unitsLayer.flushLayer();
+        unitsLayer.flush();
         getContentPane().setVisible(false);
     }
 
@@ -83,6 +83,6 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
 
     @Override
     public void updateTile(TileModel tile) {
-        unitsLayer.updateSingleTile(tile);
+        unitsLayer.paintByTile(tile);
     }
 }
