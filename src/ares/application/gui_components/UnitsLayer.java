@@ -137,7 +137,7 @@ public class UnitsLayer extends AbstractImageLayer {
         int unitImgWidth = bgm.getImageProfile().getUnitsImageWidth() / bgm.getImageProfile().getUnitsImageCols();
         int unitImgHeight = bgm.getImageProfile().getUnitsImageHeight() / bgm.getImageProfile().getUnitsImageRows();
         int row = unit.getIconId() / bgm.getImageProfile().getUnitsImageCols();
-        int col = unit.getIconId() % bgm.getImageProfile().getUnitsImageRows();
+        int col = unit.getIconId() % bgm.getImageProfile().getUnitsImageCols();
         
         //Get the unit image
         unitImage = unitBufferMap.get(uc).get().getSubimage(col * unitImgWidth, row * unitImgHeight, unitImgWidth, unitImgHeight);

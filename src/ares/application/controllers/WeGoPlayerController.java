@@ -3,8 +3,6 @@ package ares.application.controllers;
 import ares.application.commands.*;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.BoardGraphicsModel;
-import ares.application.models.board.TileModel;
-import ares.application.models.forces.UnitModel;
 import ares.application.player.AresMenus;
 import ares.application.views.*;
 import ares.data.jaxb.EquipmentDB;
@@ -226,7 +224,7 @@ public class WeGoPlayerController extends AbstractController {
                     } else if (me.getButton() == MouseEvent.BUTTON2) {
                     }
                     // Update the units in the specified tiles
-                    getInternalFrameView(UnitInfoView.class).getView().updateTopUnit(tile.getModel(userRole));
+                    getInternalFrameView(UnitInfoView.class).getView().selectUnit(stack.getPointOfInterest().getModel(userRole));
                     getInternalFrameView(BoardView.class).getView().updateTile(tile.getModel(userRole));
                 }
             }
