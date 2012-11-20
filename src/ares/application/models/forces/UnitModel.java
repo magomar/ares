@@ -19,6 +19,8 @@ public abstract class UnitModel extends KnowledgeMediatedModel {
         this.unit = unit;
     }
     
+    public abstract String getName();
+    
     public abstract UnitColors getColor();
 
     public abstract int getIconId();
