@@ -1,7 +1,6 @@
 package ares.application.views;
 
 import ares.application.boundaries.view.UnitInfoViewer;
-import ares.application.models.board.ObservedTileModel;
 import ares.application.models.forces.UnitModel;
 import ares.platform.view.AbstractView;
 import java.awt.BorderLayout;
