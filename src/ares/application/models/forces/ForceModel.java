@@ -2,8 +2,8 @@ package ares.application.models.forces;
 
 import ares.platform.model.RoleMediatedModel;
 import ares.platform.model.UserRole;
-import ares.scenario.board.KnowledgeLevel;
 import ares.scenario.forces.Force;
+import ares.scenario.forces.Formation;
 import ares.scenario.forces.Unit;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -34,5 +34,16 @@ public class ForceModel extends RoleMediatedModel {
             }
         }
         return unitModels;
+    }
+    
+    public Collection<FormationModel> getFormationModels() {
+        Collection<FormationModel> formationModels = new ArrayList<>();
+        for (Formation formation: force.getFormations()) {
+            FormationModel formationModel = formation.getModel(getUserRole());
+            if (formationModel != null) {
+                formationModels.add(formationModel);
+            }
+        }
+        return formationModels;
     }
 }

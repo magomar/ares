@@ -3,6 +3,7 @@ package ares.application.models.forces;
 import ares.application.gui_components.UnitColors;
 import ares.application.models.board.TileModel;
 import ares.platform.model.KnowledgeMediatedModel;
+import ares.platform.model.UserRole;
 import ares.scenario.board.KnowledgeLevel;
 import ares.scenario.forces.Unit;
 
@@ -25,19 +26,11 @@ public abstract class UnitModel extends KnowledgeMediatedModel {
 
     public abstract int getIconId();
 
-    //Unit's position varies depending on the information level
 //    public abstract Point getCoordinates();
     public abstract TileModel getLocation();
-//    public static UnitModel getUnitModel(Unit unit, KnowledgeLevel kLevel) {
-//        switch (kLevel) {
-//            case POOR:
-//                return new DetectedUnitModel(unit);
-//            case GOOD:
-//                return new IdentifiedUnitModel(unit);
-//            case COMPLETE:
-//                return new KnownUnitModel(unit);
-//            default:
-//                return null;
-//        }
-//    }
+    
+    public abstract FormationModel getFormationModel() {
+        return unit.getFormation().getModel(getUserRole());
+    }
+
 }
