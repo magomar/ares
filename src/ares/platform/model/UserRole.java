@@ -59,7 +59,10 @@ public class UserRole {
 
     @Override
     public String toString() {
-        return "UserRole{" + "roleType=" + roleType + ", force=" + force + '}';
+        if (isGod()) {
+            return "GOD";
+        } else {
+            return force.getName();
+        }
     }
-    
 }

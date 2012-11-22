@@ -18,6 +18,7 @@ public class Force implements ModelProvider<ForceModel> {
     private int supply;
     private int flag;
     private List<Formation> formations;
+    private final Map<UserRole, ForceModel> models;
 
     public Force(ares.data.jaxb.Force force, Scenario scenario) {
         id = force.getId();
@@ -40,7 +41,16 @@ public class Force implements ModelProvider<ForceModel> {
             }
         }
         formations.addAll(formMap.values());
+        models = new HashMap<>();
 
+
+    }
+
+    public void initialize(Force[] forces) {
+        models.put(UserRole.GOD, new ForceModel(this, UserRole.GOD));
+        for (Force f : forces) {
+            models.put(UserRole.getForceRole(f), new ForceModel(this, UserRole.getForceRole(f)));
+        }
     }
 
     public List<Unit> getActiveUnits() {
@@ -107,6 +117,6 @@ public class Force implements ModelProvider<ForceModel> {
 
     @Override
     public ForceModel getModel(UserRole role) {
-        return new ForceModel(this, role);
+        return models.get(role);
     }
 }

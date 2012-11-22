@@ -91,5 +91,12 @@ public class UnitsStack {
     public int size() {
         return allUnits.size();
     }
+
+    @Override
+    public String toString() {
+        return allUnits.toString();
+    }
+    
+    
 }
 

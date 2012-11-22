@@ -1,9 +1,9 @@
 package ares.application.models.board;
 
 import ares.application.models.forces.UnitModel;
+import ares.engine.knowledge.KnowledgeCategory;
 import ares.platform.model.KnowledgeMediatedModel;
 import ares.scenario.board.Direction;
-import ares.scenario.board.KnowledgeLevel;
 import ares.scenario.board.Terrain;
 import ares.scenario.board.TerrainFeatures;
 import ares.scenario.board.Tile;
@@ -20,7 +20,7 @@ public abstract class TileModel extends KnowledgeMediatedModel {
 
     protected final Tile tile;
 
-    public TileModel(Tile tile, KnowledgeLevel kLevel) {
+    public TileModel(Tile tile, KnowledgeCategory kLevel) {
         super(kLevel);
         this.tile = tile;
     }
@@ -42,4 +42,6 @@ public abstract class TileModel extends KnowledgeMediatedModel {
     public abstract int getNumStackedUnits();
 
     public abstract boolean isEmpty();
+    
+    public abstract String getDescription();
 }

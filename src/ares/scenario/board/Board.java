@@ -8,6 +8,7 @@ import ares.scenario.Scenario;
 import ares.scenario.forces.Force;
 import java.awt.Point;
 import java.util.EnumMap;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -28,6 +29,7 @@ public final class Board implements ModelProvider<BoardModel> {
      * All the tiles of map, represented as a bidimensional array of size width * height
      */
     private Tile[][] map;
+    private Map<UserRole, BoardModel> models;
 
     public Board(ares.data.jaxb.Scenario scenario) {
         ares.data.jaxb.Map sourceMap = scenario.getMap();
@@ -38,8 +40,8 @@ public final class Board implements ModelProvider<BoardModel> {
         for (Cell cell : sourceMap.getCell()) {
             map[cell.getX()][cell.getY()] = new Tile(cell);
         }
-    }
 
+    }
 
     public void initialize(ares.data.jaxb.Scenario scenarioXML, Scenario scenario, Force[] forces) {
 
@@ -48,6 +50,12 @@ public final class Board implements ModelProvider<BoardModel> {
             int x = cell.getX();
             int y = cell.getY();
             map[x][y].initialize(getNeighbors(map[x][y]), forces[cell.getOwner()], scenario);
+        }
+
+        models = new HashMap<>();
+        models.put(UserRole.GOD, new BoardModel(this, UserRole.GOD));
+        for (Force f : scenario.getForces()) {
+            models.put(UserRole.getForceRole(f), new BoardModel(this, UserRole.getForceRole(f)));
         }
     }
 
@@ -153,6 +161,6 @@ public final class Board implements ModelProvider<BoardModel> {
 
     @Override
     public BoardModel getModel(UserRole role) {
-        return new BoardModel(this, role);
+        return models.get(role);
     }
 }

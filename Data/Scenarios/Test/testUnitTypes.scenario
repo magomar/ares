@@ -86,1319 +86,1319 @@ Scenario design by: Eric Larsen &amp; Jim Rose
         <MaxX>19</MaxX>
         <MaxY>19</MaxY>
         <Cell x="0" y="0">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="0" y="1">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="0" y="2">
             <Terrain Type="RIVER" Dir="SE SW NW"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="0" y="3">
             <Terrain Type="HILLS" Dir="SE S SW NW"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="0" y="4">
             <Terrain Type="HILLS" Dir="N NE SE S SW NW"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="0" y="5">
             <Terrain Type="HILLS" Dir="N NE SW NW"/>
             <Terrain Type="WADY" Dir="NE SW NW"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="0" y="6">
             <Terrain Type="IMPROVED_ROAD" Dir="NE SW NW"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="0" y="7">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="0" y="8">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="0" y="9">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="0" y="10">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="0" y="11">
             <Terrain Type="RIVER" Dir="SE SW NW"/>
             <Terrain Type="IMPROVED_ROAD" Dir="SE SW NW"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="0" y="12">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="0" y="13">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="0" y="14">
             <Terrain Type="RIVER" Dir="NE SW NW"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="0" y="15">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="0" y="16">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="0" y="17">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="0" y="18">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="0" y="19">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="1" y="0">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="1" y="1">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="1" y="2">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="1" y="3">
             <Terrain Type="RIVER" Dir="SE NW"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="1" y="4">
             <Terrain Type="HILLS" Dir="SE S SW NW"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="1" y="5">
             <Terrain Type="HILLS" Dir="N NE SW NW"/>
             <Terrain Type="WADY" Dir="SE SW"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="1" y="6">
             <Terrain Type="IMPROVED_ROAD" Dir="SE SW"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="1" y="7">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="1" y="8">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="1" y="9">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="1" y="10">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="1" y="11">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="1" y="12">
             <Terrain Type="RIVER" Dir="SE NW"/>
             <Terrain Type="IMPROVED_ROAD" Dir="NE NW"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="1" y="13">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="1" y="14">
             <Terrain Type="RIVER" Dir="NE SW"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="1" y="15">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="1" y="16">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="1" y="17">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="1" y="18">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="1" y="19">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="2" y="0">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="2" y="1">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="2" y="2">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="2" y="3">
             <Terrain Type="RIVER" Dir="SE NW"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="2" y="4">
             <Terrain Type="HILLS" Dir="SW NW"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="2" y="5">
             <Terrain Type="WADY" Dir="NE NW"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="2" y="6">
             <Terrain Type="FORTIFICATION" Dir="N SW NW"/>
             <Terrain Type="IMPROVED_ROAD" Dir="SE NW"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="2" y="7">
             <Terrain Type="FORTIFICATION" Dir="SW NW"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="2" y="8">
             <Terrain Type="MAJOR_ESCARPMENT" Dir="SW NW"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="2" y="9">
             <Terrain Type="MAJOR_ESCARPMENT" Dir="SW NW"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="2" y="10">
             <Terrain Type="MAJOR_ESCARPMENT" Dir="SW NW"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="2" y="11">
             <Terrain Type="MAJOR_ESCARPMENT" Dir="SW NW"/>
             <Terrain Type="IMPROVED_ROAD" Dir="NE SW"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="2" y="12">
             <Terrain Type="RIVER" Dir="S NW"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="2" y="13">
             <Terrain Type="RIVER" Dir="N SE SW"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="2" y="14">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="2" y="15">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="2" y="16">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="2" y="17">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="2" y="18">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="2" y="19">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="3" y="0">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="3" y="1">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="3" y="2">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="3" y="3">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="3" y="4">
             <Terrain Type="RIVER" Dir="SE S NW"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="3" y="5">
             <Terrain Type="WADY" Dir="N NE SW"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="3" y="6">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="3" y="7">
             <Terrain Type="EVERGREEN_FOREST" Dir="S"/>
             <Terrain Type="IMPROVED_ROAD" Dir="S NW"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="3" y="8">
             <Terrain Type="EVERGREEN_FOREST" Dir="N SE S"/>
             <Terrain Type="IMPROVED_ROAD" Dir="N S"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="3" y="9">
             <Terrain Type="EVERGREEN_FOREST" Dir="N NE"/>
             <Terrain Type="IMPROVED_ROAD" Dir="N NE S"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="3" y="10">
             <Terrain Type="IMPROVED_ROAD" Dir="N S"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="3" y="11">
             <Terrain Type="IMPROVED_ROAD" Dir="N SE SW"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="3" y="12">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="3" y="13">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="3" y="14">
             <Terrain Type="RIVER" Dir="NE NW"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="3" y="15">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="3" y="16">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="3" y="17">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="3" y="18">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="3" y="19">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="4" y="0">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="4" y="1">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="4" y="2">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="4" y="3">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="4" y="4">
             <Terrain Type="RIVER" Dir="SE SW NW"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="4" y="5">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="4" y="6">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="4" y="7">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="4" y="8">
             <Terrain Type="EVERGREEN_FOREST" Dir="SW NW"/>
             <Terrain Type="IMPROVED_ROAD" Dir="NE SW"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="4" y="9">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="4" y="10">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="4" y="11">
             <Terrain Type="ARID" Dir="NE SE S"/>
             <Terrain Type="IMPROVED_ROAD" Dir="SE NW"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="4" y="12">
             <Terrain Type="ARID" Dir="N NE SE"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="4" y="13">
             <Terrain Type="RIVER" Dir="NE SW"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="4" y="14">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="4" y="15">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="4" y="16">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="4" y="17">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="4" y="18">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="4" y="19">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="5" y="0">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="5" y="1">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="5" y="2">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="5" y="3">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="5" y="4">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="5" y="5">
             <Terrain Type="RIVER" Dir="S NW"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="5" y="6">
             <Terrain Type="RIVER" Dir="N S"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="5" y="7">
             <Terrain Type="RIVER" Dir="N S"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="5" y="8">
             <Terrain Type="RIVER" Dir="N S"/>
             <Terrain Type="IMPROVED_ROAD" Dir="NE SW"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="5" y="9">
             <Terrain Type="RIVER" Dir="N S"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="5" y="10">
             <Terrain Type="RIVER" Dir="N S"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="5" y="11">
             <Terrain Type="ARID" Dir="SE S SW"/>
             <Terrain Type="RIVER" Dir="N S"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="5" y="12">
             <Terrain Type="ARID" Dir="N NE SE S SW NW"/>
             <Terrain Type="RIVER" Dir="N S"/>
             <Terrain Type="IMPROVED_ROAD" Dir="SE NW"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="5" y="13">
             <Terrain Type="ARID" Dir="N NE NW"/>
             <Terrain Type="RIVER" Dir="N SW"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="5" y="14">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="5" y="15">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="5" y="16">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="5" y="17">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="5" y="18">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="5" y="19">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="6" y="0">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="6" y="1">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="6" y="2">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="6" y="3">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="6" y="4">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="6" y="5">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="6" y="6">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="6" y="7">
             <Terrain Type="IMPROVED_ROAD" Dir="NE SW"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="6" y="8">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="6" y="9">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="6" y="10">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="6" y="11">
             <Terrain Type="ARID" Dir="NE SE S SW NW"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="6" y="12">
             <Terrain Type="ARID" Dir="N NE SW NW"/>
             <Terrain Type="IMPROVED_ROAD" Dir="NE NW"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="6" y="13">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="6" y="14">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="6" y="15">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="6" y="16">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="6" y="17">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="6" y="18">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="6" y="19">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="7" y="0">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="7" y="1">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="7" y="2">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="7" y="3">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="7" y="4">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="7" y="5">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="7" y="6">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="7" y="7">
             <Terrain Type="IMPROVED_ROAD" Dir="NE SW"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="7" y="8">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="7" y="9">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="7" y="10">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="7" y="11">
             <Terrain Type="ARID" Dir="SE S SW"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="7" y="12">
             <Terrain Type="ARID" Dir="N NE SW NW"/>
             <Terrain Type="IMPROVED_ROAD" Dir="NE SW"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="7" y="13">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="7" y="14">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="7" y="15">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="7" y="16">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="7" y="17">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="7" y="18">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="7" y="19">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="8" y="0">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="8" y="1">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="8" y="2">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="8" y="3">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="8" y="4">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="8" y="5">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="8" y="6">
             <Terrain Type="IMPROVED_ROAD" Dir="NE SW"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="8" y="7">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="8" y="8">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="8" y="9">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="8" y="10">
             <Terrain Type="SAND" Dir="NE SE S"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="8" y="11">
             <Terrain Type="ARID" Dir="SW NW"/>
             <Terrain Type="SAND" Dir="N NE SE"/>
             <Terrain Type="IMPROVED_ROAD" Dir="NE SW"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="8" y="12">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="8" y="13">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="8" y="14">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="8" y="15">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="8" y="16">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="8" y="17">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="8" y="18">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="8" y="19">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="9" y="0">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="9" y="1">
             <Terrain Type="IMPROVED_ROAD" Dir="S"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="9" y="2">
             <Terrain Type="IMPROVED_ROAD" Dir="N S"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="9" y="3">
             <Terrain Type="IMPROVED_ROAD" Dir="N S"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="9" y="4">
             <Terrain Type="IMPROVED_ROAD" Dir="N S"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="9" y="5">
             <Terrain Type="IMPROVED_ROAD" Dir="N S"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="9" y="6">
             <Terrain Type="IMPROVED_ROAD" Dir="N SW"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="9" y="7">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="9" y="8">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="9" y="9">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
             <VP>39</VP>
         </Cell>
         <Cell x="9" y="10">
             <Terrain Type="SAND" Dir="NE SE S SW"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="9" y="11">
             <Terrain Type="SAND" Dir="N NE SE S SW NW"/>
             <Terrain Type="IMPROVED_ROAD" Dir="NE SW"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="9" y="12">
             <Terrain Type="SAND" Dir="N NE NW"/>
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="9" y="13">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="9" y="14">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="9" y="15">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="9" y="16">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="9" y="17">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="9" y="18">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="9" y="19">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="10" y="0">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="10" y="1">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="10" y="2">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="10" y="3">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="10" y="4">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="10" y="5">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="10" y="6">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="10" y="7">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="10" y="8">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="10" y="9">
             <Terrain Type="SAND" Dir="NE SE S SW"/>
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="10" y="10">
             <Terrain Type="SAND" Dir="N NE SE S SW NW"/>
             <Terrain Type="IMPROVED_ROAD" Dir="NE SE SW"/>
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="10" y="11">
             <Terrain Type="SAND" Dir="N NE SE SW NW"/>
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="10" y="12">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="10" y="13">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="10" y="14">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="10" y="15">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="10" y="16">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="10" y="17">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="10" y="18">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="10" y="19">
-            <Owner>1</Owner>
+            <Owner>0</Owner>
         </Cell>
         <Cell x="11" y="0">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="11" y="1">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="11" y="2">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="11" y="3">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="11" y="4">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="11" y="5">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="11" y="6">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="11" y="7">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="11" y="8">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="11" y="9">
             <Terrain Type="SAND" Dir="SE S SW"/>
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="11" y="10">
             <Terrain Type="SAND" Dir="N NE SE S SW NW"/>
             <Terrain Type="IMPROVED_ROAD" Dir="NE S SW"/>
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="11" y="11">
             <Terrain Type="SAND" Dir="N NE SE S SW NW"/>
             <Terrain Type="IMPROVED_ROAD" Dir="N S NW"/>
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="11" y="12">
             <Terrain Type="SAND" Dir="N NE NW"/>
             <Terrain Type="IMPROVED_ROAD" Dir="N S"/>
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="11" y="13">
             <Terrain Type="IMPROVED_ROAD" Dir="N S"/>
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="11" y="14">
             <Terrain Type="IMPROVED_ROAD" Dir="N S"/>
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="11" y="15">
             <Terrain Type="IMPROVED_ROAD" Dir="N"/>
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="11" y="16">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="11" y="17">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="11" y="18">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="11" y="19">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="12" y="0">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="12" y="1">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="12" y="2">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="12" y="3">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="12" y="4">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="12" y="5">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="12" y="6">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="12" y="7">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="12" y="8">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="12" y="9">
             <Terrain Type="SAND" Dir="S SW NW"/>
             <Terrain Type="IMPROVED_ROAD" Dir="NE SW"/>
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="12" y="10">
             <Terrain Type="SAND" Dir="N S SW NW"/>
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="12" y="11">
             <Terrain Type="SAND" Dir="N SW NW"/>
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="12" y="12">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="12" y="13">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="12" y="14">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="12" y="15">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="12" y="16">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="12" y="17">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="12" y="18">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="12" y="19">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="13" y="0">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="13" y="1">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="13" y="2">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="13" y="3">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="13" y="4">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="13" y="5">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="13" y="6">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="13" y="7">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="13" y="8">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="13" y="9">
             <Terrain Type="IMPROVED_ROAD" Dir="NE SW"/>
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="13" y="10">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="13" y="11">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="13" y="12">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="13" y="13">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="13" y="14">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="13" y="15">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="13" y="16">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="13" y="17">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="13" y="18">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="13" y="19">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="14" y="0">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="14" y="1">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="14" y="2">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="14" y="3">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="14" y="4">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="14" y="5">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="14" y="6">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="14" y="7">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="14" y="8">
             <Terrain Type="IMPROVED_ROAD" Dir="NE SW"/>
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="14" y="9">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="14" y="10">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="14" y="11">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="14" y="12">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="14" y="13">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="14" y="14">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="14" y="15">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="14" y="16">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="14" y="17">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="14" y="18">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="14" y="19">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="15" y="0">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="15" y="1">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="15" y="2">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="15" y="3">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="15" y="4">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="15" y="5">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="15" y="6">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="15" y="7">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="15" y="8">
             <Terrain Type="IMPROVED_ROAD" Dir="NE SW"/>
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="15" y="9">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="15" y="10">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="15" y="11">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="15" y="12">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="15" y="13">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="15" y="14">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="15" y="15">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="15" y="16">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="15" y="17">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="15" y="18">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="15" y="19">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="16" y="0">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="16" y="1">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="16" y="2">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="16" y="3">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="16" y="4">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="16" y="5">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="16" y="6">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="16" y="7">
             <Terrain Type="IMPROVED_ROAD" Dir="NE SW"/>
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="16" y="8">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="16" y="9">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="16" y="10">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="16" y="11">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="16" y="12">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="16" y="13">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="16" y="14">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="16" y="15">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="16" y="16">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="16" y="17">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="16" y="18">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="16" y="19">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="17" y="0">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="17" y="1">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="17" y="2">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="17" y="3">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="17" y="4">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="17" y="5">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="17" y="6">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="17" y="7">
             <Terrain Type="IMPROVED_ROAD" Dir="NE SW"/>
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="17" y="8">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="17" y="9">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="17" y="10">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="17" y="11">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="17" y="12">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="17" y="13">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="17" y="14">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="17" y="15">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="17" y="16">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="17" y="17">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="17" y="18">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="17" y="19">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="18" y="0">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="18" y="1">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="18" y="2">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="18" y="3">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="18" y="4">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="18" y="5">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="18" y="6">
             <Terrain Type="IMPROVED_ROAD" Dir="NE SW"/>
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="18" y="7">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="18" y="8">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="18" y="9">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="18" y="10">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="18" y="11">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="18" y="12">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="18" y="13">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="18" y="14">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="18" y="15">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="18" y="16">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="18" y="17">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="18" y="18">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="18" y="19">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="19" y="0">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="19" y="1">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="19" y="2">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="19" y="3">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="19" y="4">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="19" y="5">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="19" y="6">
             <Terrain Type="IMPROVED_ROAD" Dir="NE SE SW"/>
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="19" y="7">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="19" y="8">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="19" y="9">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="19" y="10">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="19" y="11">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="19" y="12">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="19" y="13">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="19" y="14">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="19" y="15">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="19" y="16">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="19" y="17">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="19" y="18">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
         <Cell x="19" y="19">
-            <Owner>0</Owner>
+            <Owner>1</Owner>
         </Cell>
     </Map>
     <OOB>
-        <Force id="1">
+        <Force id="0">
             <Name>1st Force</Name>
             <Proficiency>100</Proficiency>
             <Supply>100</Supply>
@@ -4298,7 +4298,7 @@ Scenario design by: Eric Larsen &amp; Jim Rose
                 </Unit>
             </Formation>
         </Force>
-        <Force id="2">
+        <Force id="1">
             <Name>2nd Force</Name>
             <Proficiency>100</Proficiency>
             <Supply>100</Supply>

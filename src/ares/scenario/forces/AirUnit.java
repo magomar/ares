@@ -5,7 +5,7 @@ import ares.engine.movement.MovementType;
 import ares.scenario.assets.Asset;
 import ares.scenario.assets.AssetType;
 import ares.scenario.Scenario;
-import ares.scenario.board.KnowledgeLevel;
+import ares.engine.knowledge.KnowledgeCategory;
 
 /**
  *

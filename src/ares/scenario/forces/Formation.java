@@ -1,7 +1,6 @@
 package ares.scenario.forces;
 
 import ares.application.models.forces.FormationModel;
-import ares.application.models.forces.UnitModel;
 import ares.data.jaxb.Emphasis;
 import ares.data.jaxb.Formation.Track;
 import ares.data.jaxb.Formation.Track.Objective;
@@ -10,7 +9,6 @@ import ares.engine.command.OperationType;
 import ares.platform.model.ModelProvider;
 import ares.platform.model.UserRole;
 import ares.scenario.Scenario;
-import ares.scenario.board.KnowledgeLevel;
 import ares.scenario.board.Tile;
 import java.util.*;
 

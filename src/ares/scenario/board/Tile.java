@@ -7,10 +7,14 @@ import ares.data.jaxb.Map.Cell;
 import ares.data.jaxb.TerrainFeature;
 import ares.data.jaxb.TerrainType;
 import ares.engine.combat.CombatModifier;
+import ares.engine.knowledge.KnowledgeCategory;
+import ares.engine.knowledge.KnowledgeLevel;
 import ares.engine.movement.MovementCost;
+import ares.engine.realtime.ClockEvent;
 import ares.platform.model.ModelProvider;
 import ares.platform.model.UserRole;
 import ares.scenario.Scenario;
+import ares.scenario.assets.AssetTrait;
 import ares.scenario.forces.AirUnit;
 import ares.scenario.forces.Capability;
 import ares.scenario.forces.Force;
@@ -18,6 +22,7 @@ import ares.scenario.forces.SurfaceUnit;
 import ares.scenario.forces.Unit;
 import java.awt.Point;
 import java.util.*;
+import java.util.Map.Entry;
 
 /**
  * This class holds the state of a single tile in the board, and it is uniquely identified by coordinates X and Y.
@@ -92,7 +97,7 @@ public final class Tile implements ModelProvider<TileModel> {
      */
     private Map<Direction, Tile> neighbors;
     private final Map<UserRole, KnowledgeLevel> knowledgeLevels;
-    private final Map<KnowledgeLevel, TileModel> models;
+    private final Map<KnowledgeCategory, TileModel> models;
 
     public Tile(Cell c) {
         // numeric attributes
@@ -136,8 +141,7 @@ public final class Tile implements ModelProvider<TileModel> {
             features.add(Enum.valueOf(TerrainFeatures.class, feature.name()));
         }
         models = new HashMap<>();
-
-        this.knowledgeLevels = new HashMap<>();
+        knowledgeLevels = new HashMap<>();
     }
 
     /**
@@ -161,18 +165,18 @@ public final class Tile implements ModelProvider<TileModel> {
         }
         this.owner = owner;
 
-        knowledgeLevels.put(UserRole.GOD, KnowledgeLevel.COMPLETE);
+        knowledgeLevels.put(UserRole.GOD, new KnowledgeLevel(KnowledgeCategory.COMPLETE));
         for (Force force : scenario.getForces()) {
             if (owner.equals(force)) {
-                knowledgeLevels.put(UserRole.getForceRole(force), KnowledgeLevel.COMPLETE);
+                knowledgeLevels.put(UserRole.getForceRole(force), new KnowledgeLevel(KnowledgeCategory.COMPLETE));
             } else {
-                knowledgeLevels.put(UserRole.getForceRole(force), KnowledgeLevel.POOR);
+                knowledgeLevels.put(UserRole.getForceRole(force), new KnowledgeLevel(KnowledgeCategory.POOR));
             }
         }
-        models.put(KnowledgeLevel.NONE, new NonObservedTileModel(this, KnowledgeLevel.NONE));
-        models.put(KnowledgeLevel.POOR, new ObservedTileModel(this, KnowledgeLevel.POOR));
-        models.put(KnowledgeLevel.GOOD, new ObservedTileModel(this, KnowledgeLevel.GOOD));
-        models.put(KnowledgeLevel.COMPLETE, new ObservedTileModel(this, KnowledgeLevel.COMPLETE));
+        models.put(KnowledgeCategory.NONE, new NonObservedTileModel(this, KnowledgeCategory.NONE));
+        models.put(KnowledgeCategory.POOR, new ObservedTileModel(this, KnowledgeCategory.POOR));
+        models.put(KnowledgeCategory.GOOD, new ObservedTileModel(this, KnowledgeCategory.GOOD));
+        models.put(KnowledgeCategory.COMPLETE, new ObservedTileModel(this, KnowledgeCategory.COMPLETE));
     }
 
     public void add(Unit unit) {
@@ -183,7 +187,10 @@ public final class Tile implements ModelProvider<TileModel> {
             units.addSurfaceUnit((SurfaceUnit) unit);
             Force force = unit.getForce();
             if (!force.equals(owner)) {
-                owner = unit.getForce();
+                owner = force;
+            }
+            if (units.getSurfaceUnits().size() == 1) {
+                knowledgeLevels.get(UserRole.getForceRole(force)).modify(KnowledgeCategory.COMPLETE.getLowerBound());
             }
         }
     }
@@ -197,8 +204,31 @@ public final class Tile implements ModelProvider<TileModel> {
         }
     }
 
+    public void reconnoissance(Unit unit, int minutes) {
+        double recon = unit.getTraitValue(AssetTrait.RECON) * AssetTrait.RECON.getFactor();
+        if (recon == 0) {
+            recon = AssetTrait.RECON.getFactor();
+        }
+        Force force = unit.getForce();
+        knowledgeLevels.get(UserRole.getForceRole(force)).modify(minutes * recon / (24 * 60));
+    }
+
     public void setEntrechment(int entrechment) {
         this.entrechment = entrechment;
+    }
+
+    public void updateKnowledge(ClockEvent ce) {
+        int minutes = ce.getClock().MINUTES_PER_TICK;
+        for (Entry<UserRole, KnowledgeLevel> entry : knowledgeLevels.entrySet()) {
+            if (!entry.getKey().isGod()) {
+                Force force = entry.getKey().getForce();
+                if (owner.equals(force)) {
+                    entry.getValue().modify(-minutes * 1.0 / (24 * 60));
+                } else {
+                    entry.getValue().modify(-minutes * 10.0 / (24 * 60));
+                }
+            }
+        }
     }
 
     public UnitsStack getUnitsStack() {
@@ -283,7 +313,6 @@ public final class Tile implements ModelProvider<TileModel> {
     public int hashCode() {
         int hash = 17;
         hash = 31 * hash + coord.x;
-//        hash = 31 * hash + formation.getId();
         hash = 31 * hash + coord.y;
         return hash;
     }
@@ -306,22 +335,38 @@ public final class Tile implements ModelProvider<TileModel> {
         return true;
     }
 
+    public KnowledgeLevel getKnowledgeLevel(UserRole role) {
+        return knowledgeLevels.get(role);
+    }
+
+    public TileModel getModel(KnowledgeCategory kLevel) {
+        return models.get(kLevel);
+    }
+
+    @Override
+    public TileModel getModel(UserRole role) {
+        KnowledgeCategory category = knowledgeLevels.get(role).getCategory();
+        return models.get(category);
+    }
+
     @Override
     public String toString() {
         return "<" + coord.x + "," + coord.y + ">";
     }
 
-    @Override
-    public final TileModel getModel(UserRole role) {
-        KnowledgeLevel kLevel = knowledgeLevels.get(role);
-        return models.get(kLevel);
-    }
+    public String toStringMultiline() {
+        StringBuilder sb = new StringBuilder("Location: " + toString() + '\n');
+        if (!tileTerrain.isEmpty()) {
+            sb.append("Terrain: ").append(tileTerrain).append('\n');
+        }
+        if (!features.isEmpty()) {
+            sb.append("Features: ").append(features).append('\n');
+        }
+        sb.append("Owner: ").append(owner).append('\n');
+        for (Entry<UserRole, KnowledgeLevel> entry : knowledgeLevels.entrySet()) {
+            sb.append(entry.getKey()).append(" -> ").append(entry.getValue()).append('\n');
+        }
 
-    public KnowledgeLevel getKnowledgeLevel(UserRole role) {
-        return knowledgeLevels.get(role);
-    }
-
-    public TileModel getModel(KnowledgeLevel kLevel) {
-        return models.get(kLevel);
+        return sb.toString();
     }
 }

@@ -1,6 +1,6 @@
 package ares.platform.model;
 
-import ares.scenario.board.KnowledgeLevel;
+import ares.engine.knowledge.KnowledgeCategory;
 
 /**
  *
@@ -8,13 +8,13 @@ import ares.scenario.board.KnowledgeLevel;
  */
 public abstract class KnowledgeMediatedModel<T>  {
 
-    protected final KnowledgeLevel kLevel;
+    protected final KnowledgeCategory kLevel;
 
-    public KnowledgeMediatedModel(KnowledgeLevel informationLevel) {
+    public KnowledgeMediatedModel(KnowledgeCategory informationLevel) {
         this.kLevel = informationLevel;
     }
     
-    public KnowledgeLevel getKnowledgeLevel() {
+    public KnowledgeCategory getKnowledgeCategory() {
         return kLevel;
     }
 }

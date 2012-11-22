@@ -5,7 +5,12 @@ package ares.engine.realtime;
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public enum Phase {
-
+    PERCEIVE {
+        @Override
+        public void run(RealTimeEngine engine) {
+            engine.perceive();
+        }
+    },
     ACT {
         @Override
         public void run(RealTimeEngine engine) {
@@ -22,8 +27,9 @@ public enum Phase {
     private Phase next;
 
     static {
+        PERCEIVE.next = ACT;
         ACT.next = SCHEDULE;
-        SCHEDULE.next = ACT;
+        SCHEDULE.next = PERCEIVE;
     }
 
     abstract void run(final RealTimeEngine engine);

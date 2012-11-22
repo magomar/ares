@@ -1,7 +1,7 @@
 package ares.application.models.board;
 
 import ares.application.models.forces.UnitModel;
-import ares.scenario.board.KnowledgeLevel;
+import ares.engine.knowledge.KnowledgeCategory;
 import ares.scenario.board.Tile;
 import ares.scenario.board.UnitsStack;
 
@@ -13,7 +13,7 @@ public final class ObservedTileModel extends NonObservedTileModel {
 
     private UnitsStack stack;
 
-    public ObservedTileModel(Tile tile, KnowledgeLevel kLevel) {
+    public ObservedTileModel(Tile tile, KnowledgeCategory kLevel) {
         super(tile, kLevel);
         stack = tile.getUnitsStack();
     }
@@ -31,5 +31,10 @@ public final class ObservedTileModel extends NonObservedTileModel {
     @Override
     public boolean isEmpty() {
         return stack.isEmpty();
+    }
+
+    @Override
+    public String getDescription() {
+        return tile.toStringMultiline();
     }
 }

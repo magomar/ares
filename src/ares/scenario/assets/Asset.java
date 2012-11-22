@@ -33,7 +33,7 @@ public final class Asset {
 
     @Override
     public String toString() {
-        return type.getName() + "(" + number + '/' + max + ')';
+        return type.getName() + " (" + number + '/' + max + ')';
     }
 
 
