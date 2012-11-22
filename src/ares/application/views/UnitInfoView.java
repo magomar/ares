@@ -13,6 +13,7 @@ import javax.swing.JTextArea;
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class UnitInfoView extends AbstractView<JPanel> implements UnitInfoViewer {
+
     private JTextArea textArea;
 
     @Override
@@ -26,12 +27,15 @@ public class UnitInfoView extends AbstractView<JPanel> implements UnitInfoViewer
 
     @Override
     public void modelPropertyChange(PropertyChangeEvent evt) {
-//        Logger.getLogger(UnitInfoView.class.getName()).log(Level.INFO, evt.toString());
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public void selectUnit(UnitModel unit) {
         textArea.setText(unit.getName());
     }
-    
+
+    public void unSelectUnit() {
+        textArea.setText("");
+    }
 }

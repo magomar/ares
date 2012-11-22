@@ -1,5 +1,6 @@
 package ares.application.models.board;
 
+import ares.application.models.forces.UnitModel;
 import ares.platform.model.KnowledgeMediatedModel;
 import ares.scenario.board.Direction;
 import ares.scenario.board.KnowledgeLevel;
@@ -35,5 +36,10 @@ public abstract class TileModel extends KnowledgeMediatedModel {
     public Point getCoordinates() {
         return tile.getCoordinates();
     }
-    
+
+    public abstract UnitModel getTopUnit();
+
+    public abstract int getNumStackedUnits();
+
+    public abstract boolean isEmpty();
 }

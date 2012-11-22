@@ -14,6 +14,7 @@ import ares.platform.model.UserRole;
 import ares.platform.view.InternalFrameView;
 import ares.scenario.Scenario;
 import ares.scenario.board.*;
+import ares.scenario.forces.Unit;
 import java.awt.Point;
 import java.awt.event.*;
 import java.beans.PropertyChangeEvent;
@@ -32,7 +33,8 @@ public class WeGoPlayerController extends AbstractController {
     private final AbstractAresApplication mainApplication;
     private final RealTimeEngine engine;
     private UserRole userRole;
-//    private Tile selectedTile;
+    private Tile selectedTile;
+    private Unit selectedUnit;
     private static final Logger LOG = Logger.getLogger(WeGoPlayerController.class.getName());
 
     public WeGoPlayerController(AbstractAresApplication mainApplication) {
@@ -201,33 +203,31 @@ public class WeGoPlayerController extends AbstractController {
 
         @Override
         public void mouseClicked(MouseEvent me) {
-            
+
             LOG.log(Level.INFO, me.toString());
             Scenario scenario = engine.getScenario();
             BoardGraphicsModel bgm = scenario.getBoardGraphicsModel();
             Point pixel = new Point(me.getX(), me.getY());
-            
-            if (bgm.isWithinImageRange(pixel)) {
-                
-                Point tilePoint = bgm.pixelToTile(pixel);
-                Tile tile = scenario.getBoard().getTile(tilePoint.x, tilePoint.y);
-                UnitsStack stack = tile.getUnitsStack();
-
-                System.out.println("Click on tile " + tile + " # " + stack.size());
-                if (!stack.isEmpty()) {
-                    // Unselects last selected unit
-                    stack.next();
-                    System.out.println("Nex unit = " + stack.getPointOfInterest());
-                    // Left click selects, right click unselects
-                    if (me.getButton() == MouseEvent.BUTTON1) {
-                        stack.next();
-                    } else if (me.getButton() == MouseEvent.BUTTON2) {
-                    }
-                    // Update the units in the specified tiles
-                    getInternalFrameView(UnitInfoView.class).getView().selectUnit(stack.getPointOfInterest().getModel(userRole));
-                    getInternalFrameView(BoardView.class).getView().updateTile(tile.getModel(userRole));
-                }
+            if (!bgm.isWithinImageRange(pixel) || me.getButton() != MouseEvent.BUTTON1) {
+                return;
             }
+
+            Point tilePoint = bgm.pixelToTile(pixel);
+            Tile tile = scenario.getBoard().getTile(tilePoint.x, tilePoint.y);
+            boolean changeTile = !tile.equals(selectedTile);
+            selectedTile = tile;
+            UnitsStack stack = tile.getUnitsStack();
+
+            if (!changeTile && !stack.isEmpty()) {
+                stack.next();
+            }
+            if (!stack.isEmpty()) {
+                getInternalFrameView(UnitInfoView.class).getView().selectUnit(stack.getPointOfInterest().getModel(userRole));
+                getInternalFrameView(BoardView.class).getView().updateTile(tile.getModel(userRole));
+            } else {
+                getInternalFrameView(UnitInfoView.class).getView().unSelectUnit();
+            }
+
         }
     }
 }

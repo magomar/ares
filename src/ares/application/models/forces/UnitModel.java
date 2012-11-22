@@ -28,9 +28,9 @@ public abstract class UnitModel extends KnowledgeMediatedModel {
 
 //    public abstract Point getCoordinates();
     public abstract TileModel getLocation();
-    
-    public abstract FormationModel getFormationModel() {
-        return unit.getFormation().getModel(getUserRole());
-    }
+//    
+//    public abstract FormationModel getFormationModel() {
+//        return unit.getFormation().getModel(getUserRole());
+//    }
 
 }

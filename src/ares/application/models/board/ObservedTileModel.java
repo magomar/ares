@@ -18,14 +18,17 @@ public class ObservedTileModel extends TileModel {
         stack = tile.getUnitsStack();
     }
 
+    @Override
     public UnitModel getTopUnit() {
         return stack.getPointOfInterest().getModel(kLevel);
     }
 
+    @Override
     public int getNumStackedUnits() {
         return stack.size();
     }
 
+    @Override
     public boolean isEmpty() {
         return stack.isEmpty();
     }
