@@ -106,7 +106,7 @@ public class WeGoPlayerController extends AbstractController {
                 // set the engine with the new scenario
                 engine.setScenario(scenario);
                 // set the user role
-                userRole = UserRole.getForceRole(scenario.getForces()[1]);
+                userRole = UserRole.getForceRole(scenario.getForces()[0]);
                 // obtain the scenario model with the active userRole
                 ScenarioModel scenarioModel = engine.getScenarioModel(userRole);
                 getInternalFrameView(BoardView.class).getView().loadScenario(scenarioModel);
