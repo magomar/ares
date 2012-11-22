@@ -47,7 +47,7 @@ public final class AresPlayerFrame extends AbstractAresApplication {
     protected JFrame layout() {
         JFrame mainFrame = ComponentFactory.frame("Ares Player", desktopPane, getView(MenuBarView.class).getContentPane(), null);
         Dimension maxSize = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().getSize();
-        Dimension defaultSize = new Dimension(1280, 800);
+        Dimension defaultSize = new Dimension(1440, 900);
         Dimension minSize = new Dimension(
                 (maxSize.width > defaultSize.width ? defaultSize.width : maxSize.width),
                 (maxSize.height > defaultSize.height ? defaultSize.height : maxSize.height));

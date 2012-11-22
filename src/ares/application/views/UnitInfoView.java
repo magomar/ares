@@ -32,7 +32,7 @@ public class UnitInfoView extends AbstractView<JPanel> implements UnitInfoViewer
 
     @Override
     public void selectUnit(UnitModel unit) {
-        textArea.setText(unit.getName());
+        textArea.setText(unit.getDescription());
     }
 
     public void unSelectUnit() {

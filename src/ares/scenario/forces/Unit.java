@@ -524,8 +524,23 @@ public abstract class Unit implements ModelProvider<UnitModel> {
         return name + "(" + type.name() + ")." + movement + "." + opState + "[" + stamina + "]" + " @ " + location;
     }
 
-    public String toStringLong() {
-        return toString() + '{' + echelon + ", " + formation + ", " + force + ", location=" + location + ", speed=" + speed + ", assets=" + assets + '}';
+    public String toStringMultiline() {
+        StringBuilder sb = new StringBuilder(name).append(" (").append(echelon).append(')').append('\n');
+        sb.append("Belongs to ").append(formation).append(" (").append(force).append(")\n");
+        sb.append("Unit type: ").append(type).append('\n');
+        sb.append("Movement Type: ").append(movement).append('\n');
+        sb.append("Location: ").append(location).append('\n');
+        sb.append("OpState: ").append(opState).append('\n');
+        sb.append("Stamina: ").append(stamina).append('\n');
+        sb.append("Speed: ").append(speed).append('\n');
+        sb.append("Proficiency: ").append(proficiency).append('\n');
+        sb.append("Readiness: ").append(readiness).append('\n');
+        sb.append("Supply: ").append(supply).append("\n\n");
+        sb.append("___Assets___\n");
+        for (Asset asset : assets.values()) {
+            sb.append(asset).append('\n');
+        }
+        return sb.toString();
     }
 
     @Override

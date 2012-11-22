@@ -12,7 +12,7 @@ import java.util.Collection;
  *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
-public class ForceModel extends RoleMediatedModel {
+public final class ForceModel extends RoleMediatedModel {
 
     protected final Force force;
 

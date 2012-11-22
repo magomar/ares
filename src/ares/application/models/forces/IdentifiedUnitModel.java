@@ -19,6 +19,7 @@ public class IdentifiedUnitModel extends DetectedUnitModel {
         super(unit, kLevel);
     }
 
+    @Override
     public String getName() {
         return unit.getName();
     }
@@ -41,9 +42,13 @@ public class IdentifiedUnitModel extends DetectedUnitModel {
         return unit.getEchelon();
     }
 
-//    @Override
-//    public Point getCoordinates() {
-//        return new Point(unit.getLocation().getX(), unit.getLocation().getY());
-//    }
+    @Override
+    public String getFormation() {
+        return unit.getFormation().getName();
+    }
 
+    @Override
+    public String getDescription() {
+        return unit.toStringMultiline();
+    }
 }

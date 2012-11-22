@@ -9,7 +9,7 @@ import ares.scenario.board.UnitsStack;
  *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
-public class ObservedTileModel extends TileModel {
+public final class ObservedTileModel extends NonObservedTileModel {
 
     private UnitsStack stack;
 

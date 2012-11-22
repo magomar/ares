@@ -102,7 +102,7 @@ public class Force implements ModelProvider<ForceModel> {
 
     @Override
     public String toString() {
-        return "{" + name + '}';
+        return name;
     }
 
     @Override
