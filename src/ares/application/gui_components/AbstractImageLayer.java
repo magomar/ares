@@ -34,7 +34,7 @@ public abstract class AbstractImageLayer extends javax.swing.JPanel{
     
     protected abstract void createGlobalImage(ScenarioModel s);
     
-    public abstract void paintByTile(TileModel t);
+    public abstract void paintTile(TileModel t);
     
     protected BufferedImage loadImage(File f){
         BufferedImage i=null;

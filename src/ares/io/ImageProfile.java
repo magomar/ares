@@ -253,5 +253,4 @@ public enum ImageProfile {
                 return null;
         }
     }
-
 }
