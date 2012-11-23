@@ -1,11 +1,16 @@
 package ares.scenario.forces;
 
+import ares.application.models.forces.FormationModel;
+import ares.application.models.forces.UnitModel;
 import ares.data.jaxb.Emphasis;
 import ares.data.jaxb.Formation.Track;
 import ares.data.jaxb.Formation.Track.Objective;
 import ares.data.jaxb.SupportScope;
 import ares.engine.command.OperationType;
+import ares.platform.model.ModelProvider;
+import ares.platform.model.UserRole;
 import ares.scenario.Scenario;
+import ares.scenario.board.KnowledgeLevel;
 import ares.scenario.board.Tile;
 import java.util.*;
 
@@ -13,7 +18,7 @@ import java.util.*;
  *
  * @author Mario Gomez <margomez antiTank dsic.upv.es>
  */
-public class Formation {
+public class Formation implements ModelProvider<FormationModel> {
 
     private int id;
     private String name;
@@ -30,7 +35,6 @@ public class Formation {
      * List of objectives (used by the programmed opponent to generate plans)
      */
     private List<Tile> objectives;
-
     /**
      * List of available (on-board) units. This collection excludes reinforcements, destroyed/withdrawed units and
      * divided units.
@@ -206,6 +210,12 @@ public class Formation {
 
     @Override
     public String toString() {
-        return "{" + name + '}';
+        return name;
     }
+
+    @Override
+    public FormationModel getModel(UserRole role) {
+        return new FormationModel(this, role);
+    }
+
 }

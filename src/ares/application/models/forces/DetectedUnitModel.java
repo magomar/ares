@@ -25,7 +25,7 @@ public class DetectedUnitModel extends UnitModel {
     
     @Override
     public String getName() {
-        return unit.getName();
+        return "";
     }
     
     @Override
@@ -38,17 +38,18 @@ public class DetectedUnitModel extends UnitModel {
         return unit.getIconId();
     }
 
-//    @Override
-//    public Point getCoordinates() {
-//        //TODO why x and y are modified ?
-          //Heine: It's a cheap way to move them from their actual location
-          //I was trying to add confusion :P DetectedUnits might not be in the exact position, right?
-          //This was faster than waiting for the engine to be finished
-//        return new Point(unit.getLocation().getX() - 1, unit.getLocation().getY() + 1);
-//    }
-
     @Override
     public TileModel getLocation() {
         return unit.getLocation().getModel(kLevel);
+    }
+
+    @Override
+    public String getFormation() {
+        return "";
+    }
+
+    @Override
+    public String getDescription() {
+        return unit.getType().name();
     }
 }

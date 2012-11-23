@@ -80,7 +80,7 @@ public class UnitsLayer extends AbstractImageLayer {
         Point pos = bgm.tileToPixel(t.getCoordinates());
         
         //If no units on the tile
-        if (((ObservedTileModel) t).getTopUnit() == null) {
+        if (t.isEmpty()) {
             //Empty image
             unitImage = new BufferedImage(bgm.getHexDiameter(), bgm.getHeight(), BufferedImage.TYPE_INT_ARGB);
             g2.drawImage(unitImage, pos.x, pos.y,this);
@@ -89,10 +89,10 @@ public class UnitsLayer extends AbstractImageLayer {
         } else {
 
             //Retrieve the single unit image
-            unitImage = getUnitImage(((ObservedTileModel) t).getTopUnit());
+            unitImage = getUnitImage(t.getTopUnit());
 
-            //Max units to be painted
-            int numStackedUnits = ((ObservedTileModel) t).getNumStackedUnits();
+            //Num units to be painted
+            int numStackedUnits = t.getNumStackedUnits();
             
             // Offset from the upper left corner of the tile
             pos.x += unitImageOffset;

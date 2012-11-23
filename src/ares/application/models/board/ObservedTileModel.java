@@ -9,7 +9,7 @@ import ares.scenario.board.UnitsStack;
  *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
-public class ObservedTileModel extends TileModel {
+public final class ObservedTileModel extends NonObservedTileModel {
 
     private UnitsStack stack;
 
@@ -18,14 +18,17 @@ public class ObservedTileModel extends TileModel {
         stack = tile.getUnitsStack();
     }
 
+    @Override
     public UnitModel getTopUnit() {
         return stack.getPointOfInterest().getModel(kLevel);
     }
 
+    @Override
     public int getNumStackedUnits() {
         return stack.size();
     }
 
+    @Override
     public boolean isEmpty() {
         return stack.isEmpty();
     }

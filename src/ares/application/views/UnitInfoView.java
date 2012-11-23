@@ -1,7 +1,6 @@
 package ares.application.views;
 
 import ares.application.boundaries.view.UnitInfoViewer;
-import ares.application.models.board.ObservedTileModel;
 import ares.application.models.forces.UnitModel;
 import ares.platform.view.AbstractView;
 import java.awt.BorderLayout;
@@ -14,6 +13,7 @@ import javax.swing.JTextArea;
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class UnitInfoView extends AbstractView<JPanel> implements UnitInfoViewer {
+
     private JTextArea textArea;
 
     @Override
@@ -27,12 +27,15 @@ public class UnitInfoView extends AbstractView<JPanel> implements UnitInfoViewer
 
     @Override
     public void modelPropertyChange(PropertyChangeEvent evt) {
-//        Logger.getLogger(UnitInfoView.class.getName()).log(Level.INFO, evt.toString());
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public void selectUnit(UnitModel unit) {
-        textArea.setText(unit.getName());
+        textArea.setText(unit.getDescription());
     }
-    
+
+    public void unSelectUnit() {
+        textArea.setText("");
+    }
 }

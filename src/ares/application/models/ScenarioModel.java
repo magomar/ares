@@ -1,18 +1,18 @@
 package ares.application.models;
 
+import ares.application.models.board.BoardGraphicsModel;
 import ares.application.models.board.BoardModel;
 import ares.application.models.forces.ForceModel;
 import ares.platform.model.RoleMediatedModel;
 import ares.platform.model.UserRole;
 import ares.scenario.Scenario;
-import ares.application.models.board.BoardGraphicsModel;
 import ares.scenario.forces.Force;
 
 /**
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public class ScenarioModel extends RoleMediatedModel {
+public final class ScenarioModel extends RoleMediatedModel {
 
     private final Scenario scenario;
     private final BoardModel boardModel;
