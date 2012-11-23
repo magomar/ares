@@ -1,139 +1,76 @@
 package ares.application.gui_components;
 
 import ares.application.models.ScenarioModel;
-import ares.application.models.board.BoardGraphicsModel;
 import ares.application.models.board.TileModel;
 import ares.data.jaxb.TerrainFeature;
 import ares.io.*;
 import ares.scenario.board.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.lang.ref.SoftReference;
 import java.util.*;
-import javax.imageio.ImageIO;
 
 /**
  * Terrain image layer based on Sergio Musoles TerrainPanel
  *
  * @author Heine <heisncfr@inf.upv.es>
  */
-public class TerrainLayer extends javax.swing.JPanel {
+public class TerrainLayer extends AbstractImageLayer {
 
-    // Final image to be painted on the JComponent
-    //TODO maybe it doesn't need to be transparent (consume less memory)
-    private Image terrainImage = null;
-    //Map to store loaded images
-    private SoftReference<EnumMap<Terrain, BufferedImage>> terrainBufferMap;
-    // BoardGraphicsModel provides hexagonal and image sizes
-    private BoardGraphicsModel boardInfo;
-
-    /**
-     * Initializes the pane with the terrain image.
-     * It will create the image only when a new scenario is opened.
-     *
-     * @param scenario current scenario information
-     *
-     */
-
-    public void initialize(ScenarioModel scenario) {
-
-        boardInfo = scenario.getBoardGraphicsModel();
-        // If there is no terrain image
-        if (terrainImage == null) {
-            // If the buffer doesn't exist
-            if (terrainBufferMap == null) {
-                terrainBufferMap = new SoftReference<>(new EnumMap<Terrain, BufferedImage>(Terrain.class));
-                loadGraphics(Terrain.OPEN);
-                loadGraphics(Terrain.BORDER);
-            }
-            terrainImage = new BufferedImage(
-                    // Image size
-                    boardInfo.getImageWidth(), boardInfo.getImageHeight(),
-                    // RGB + Alpha
-                    BufferedImage.TYPE_4BYTE_ABGR);
-
-            createTerrainImage(scenario.getBoardModel().getMapModel());
-            //
-        } else {
-            /*
-             * Terrain image already created
-             */
-        }
-        repaint();
-
-    }
-
-    /**
+    //Map to store loaded images    
+    private EnumMap<Terrain, SoftReference<BufferedImage>> terrainBufferMap = new EnumMap<>(Terrain.class);
+    
+     /**
      * Creates the whole terrain image.
      * Paints all the playable tiles stored in <code>tileMap</code>
      *
-     * @param tileMap array of tiles
+     * @param s
      * @see Tile
      * @see TerrainFeature
      */
-    public void createTerrainImage(TileModel[][] tileMap) {
-
-
-
-        Graphics2D g2 = (Graphics2D) terrainImage.getGraphics();
-        // Set terrain image background color                                                   
-
-        g2.setColor(Color.BLACK);
+    @Override
+    public void createGlobalImage(ScenarioModel s){
+        
+        Graphics2D g2 = (Graphics2D) globalImage.getGraphics();
         // Paint it black!
-
-        g2.fillRect(0, 0, boardInfo.getImageWidth(), boardInfo.getImageHeight());
-
-        Image tileTerrainImage;
-        Image tileFeaturesImage = null;
-
-
-        int x = 0, y;
-        int dx = boardInfo.getHexOffset();
-        for (int i = 0; i < boardInfo.getWidth(); ++i) {
-            for (int j = 0; j < boardInfo.getHeight(); ++j) {
-
-                // The height depends on the column index 'j'.
-                // It paints higher if 'j' is odd, lower if it's even
-                y = boardInfo.getHexHeight() * (2 * j + ((i + 1) % 2)) / 2;
-
-                // createFeaturesImage returns null if tile is non playable
-                tileFeaturesImage = createFeaturesImage(tileMap[i][j]);
-                if (tileFeaturesImage != null) {
-
-                    tileTerrainImage = createTileImage(tileMap[i][j]);
-
-                    g2.drawImage(tileFeaturesImage, x, y, this);
-                    g2.drawImage(tileTerrainImage, x, y, null);
-                    g2.drawImage(tileFeaturesImage, x, y, this);
-                }
-            }
-            x += dx;
-
-        }     
+        g2.setColor(Color.BLACK);
+        g2.fillRect(0, 0, bgm.getImageWidth(), bgm.getImageHeight());
         g2.dispose();
+        for (TileModel[] tt : s.getBoardModel().getMapModel()) {
+            for(TileModel t : tt){
+                paintByTile(t);
+            }
+        }
     }
-
+    
     /**
-     * Returns an <code>Image</code> with all the features and terrains of a single tile
      *
-     * @param tile tile to be represented
-     * @return the tile image
+     * @param t
      */
-    public Image createTileImage(TileModel tile) {
+    @Override
+    public void paintByTile(TileModel t){
 
-        int w = boardInfo.getHexDiameter();
-        int h = boardInfo.getHexHeight();
-        // Prepare the buffer with the tile size
-        BufferedImage tileImage = new BufferedImage(w, h, BufferedImage.TYPE_4BYTE_ABGR);
-        Graphics2D g2 = tileImage.createGraphics();
+        //If I don't know anything about it
+        if(t.getKnowledgeLevel() == KnowledgeLevel.NONE) return;
+        
+        //Calculate tile position
+        Point pos = bgm.tileToPixel(t.getCoordinates());
+
+        //Final image graphics
+        Graphics2D tileG2 = (Graphics2D) globalImage.getGraphics();
+        
+        BufferedImage features = getTerrainFeaturesImage(t);
+        //If non playable, don't paint
+        if(features == null) return;
+        
+        //Where the terrain will be painted
+        // First layer is the open terrain
+        Image terrainImage = getTerrainImage(Terrain.OPEN,0);
+        tileG2.drawImage(terrainImage,pos.x,pos.y,this);
         
         // Get the index of the terrain image
-        Map<Terrain, Integer> m = getTerrainToImageIndex(tile);
-
-        // First layer is the open terrain
-        g2.drawImage(terrainBufferMap.get().get(Terrain.OPEN).getSubimage(0, 0, w, h), 0, 0, null);
-        int index = 0, cols, x, y;
+        Map<Terrain, Integer> m = getTerrainToImageIndex(t);
+        
         for (Map.Entry<Terrain, Integer> e : m.entrySet()) {
 
             /*
@@ -150,26 +87,39 @@ public class TerrainLayer extends javax.swing.JPanel {
              * I would do it myself, but sadly I lack at Photoshop skills :)
              */
 
-            BufferedImage bi;
+            Image bi;
             if (e.getKey() == Terrain.BORDER) {
                 bi = drawTileBorders(e.getValue());
             } else {
-                if (terrainBufferMap.get().get(e.getKey()) == null) {
-                    loadGraphics(e.getKey());
-                }
-                index = e.getKey().getIndexByDirections(e.getValue());
-                cols = boardInfo.getImageProfile().getTerrainImageCols();
-
-                //TODO create index converter. 64 bits reg that stores X in first 32 bit and Y in last 32 bits
-                x = index / cols;
-                y = index % cols;
-                bi = terrainBufferMap.get().get(e.getKey()).getSubimage(y * w, x * h, w, h);
+                int index = e.getKey().getIndexByDirections(e.getValue());
+                
+                bi = getTerrainImage(e.getKey(), index);
             }
-            g2.drawImage(bi, 0, 0, null);
+            
+            tileG2.drawImage(bi, pos.x, pos.y, null);
         }
-        g2.dispose();
-      return tileImage;
+        tileG2.drawImage(features, pos.x, pos.y,null);
+        
+        repaint(pos.x, pos.y, terrainImage.getWidth(null), terrainImage.getHeight(null));
+        tileG2.dispose();        
     }
+    
+     private Image getTerrainImage(Terrain t, int index){
+        
+        // Where the terrain will be painted
+        BufferedImage terrainImage;
+
+        //Make graphics are loaded
+        loadTerrainGraphics(t);
+        
+        //Get the coordinates
+        int cols = bgm.getImageProfile().getTerrainImageCols();
+        int w = bgm.getImageProfile().getHexDiameter(), h = bgm.getImageProfile().getHexHeight();
+        
+        terrainImage = terrainBufferMap.get(t).get().getSubimage(w * (index%cols), h * (index/cols), w, h);
+        return createImage(terrainImage.getSource());
+    }
+
 
     /**
      * Terrain class has a map with the index to the subimage based on
@@ -189,7 +139,7 @@ public class TerrainLayer extends javax.swing.JPanel {
      * @see Terrain
      *
      */
-    public Map<Terrain, Integer> getTerrainToImageIndex(TileModel tile) {
+    private Map<Terrain, Integer> getTerrainToImageIndex(TileModel tile) {
 
         Map<Direction, Set<Terrain>> sideTerrain = tile.getSideTerrain();
 
@@ -220,16 +170,13 @@ public class TerrainLayer extends javax.swing.JPanel {
      * @return <code>Image</code> if tile is playable; otherwise null
      * @see TerrainFeatures
      */
-    private Image createFeaturesImage(TileModel tile) {
+    private BufferedImage getTerrainFeaturesImage(TileModel tile) {
 
         //TODO Tile features should be objects of TerrainFeatures class
         //     instead of ares.data.jaxb.TerrainFeature
 
-        BufferedImage i = new BufferedImage(boardInfo.getHexDiameter(), boardInfo.getHexHeight(), BufferedImage.TYPE_4BYTE_ABGR);
+        BufferedImage i = new BufferedImage(bgm.getHexDiameter(), bgm.getHexHeight(), BufferedImage.TYPE_4BYTE_ABGR);
         Graphics2D g2 = (Graphics2D) i.getGraphics();
-        int w = boardInfo.getHexDiameter();
-        int h = boardInfo.getHexHeight();
-
 
         Set<TerrainFeatures> tf = tile.getTerrainFeatures();
         Iterator it = tf.iterator();
@@ -242,43 +189,35 @@ public class TerrainLayer extends javax.swing.JPanel {
 
                 case AIRFIELD:
                     g2.drawImage(
-                            terrainBufferMap.get().get(Terrain.OPEN).getSubimage(
-                            w * TerrainFeatures.AIRFIELD.getCol(),
-                            h * TerrainFeatures.AIRFIELD.getRow(),
-                            w, h),
+                            getTerrainImage(Terrain.OPEN,
+                            //TODO I'm actually wasting cpu here
+                            TerrainFeatures.AIRFIELD.getCol()+bgm.getImageProfile().getTerrainImageCols()*TerrainFeatures.AIRFIELD.getRow()),
                             0, 0, this);
                     break;
                 case ANCHORAGE:
                     g2.drawImage(
-                            terrainBufferMap.get().get(Terrain.OPEN).getSubimage(
-                            w * TerrainFeatures.ANCHORAGE.getCol(),
-                            h * TerrainFeatures.ANCHORAGE.getRow(),
-                            w, h),
+                            getTerrainImage(Terrain.OPEN,
+                            TerrainFeatures.ANCHORAGE.getCol()+bgm.getImageProfile().getTerrainImageCols()*TerrainFeatures.ANCHORAGE.getRow()),
                             0, 0, this);
                     break;
                 case PEAK:
                     g2.drawImage(
-                            terrainBufferMap.get().get(Terrain.OPEN).getSubimage(
-                            w * TerrainFeatures.PEAK.getCol(),
-                            h * TerrainFeatures.PEAK.getRow(),
-                            w, h),
+                            getTerrainImage(Terrain.OPEN,
+                            TerrainFeatures.PEAK.getCol()+bgm.getImageProfile().getTerrainImageCols()*TerrainFeatures.PEAK.getRow()),
                             0, 0, this);
                     break;
 
                 case CONTAMINATED:
                     g2.drawImage(
-                            terrainBufferMap.get().get(Terrain.OPEN).getSubimage(
-                            w * TerrainFeatures.CONTAMINATED.getCol(),
-                            h * TerrainFeatures.CONTAMINATED.getRow(),
-                            w, h),
+                            getTerrainImage(Terrain.OPEN,
+                            TerrainFeatures.CONTAMINATED.getCol()+bgm.getImageProfile().getTerrainImageCols()*TerrainFeatures.CONTAMINATED.getRow()),
                             0, 0, this);
                     break;
                 case MUDDY:
                     g2.drawImage(
-                            terrainBufferMap.get().get(Terrain.OPEN).getSubimage(
-                            w * TerrainFeatures.MUDDY.getCol(),
-                            h * TerrainFeatures.MUDDY.getRow(),
-                            w, h), 0, 0, this);
+                            getTerrainImage(Terrain.OPEN,
+                            TerrainFeatures.MUDDY.getCol()+bgm.getImageProfile().getTerrainImageCols()*TerrainFeatures.MUDDY.getRow()),
+                            0, 0, this);
 
                     break;
 
@@ -303,16 +242,18 @@ public class TerrainLayer extends javax.swing.JPanel {
      */
     private BufferedImage drawTileBorders(Integer value) {
         int mask = 64;
-        int w = boardInfo.getHexDiameter();
-        int h = boardInfo.getHexHeight();
+        int w = bgm.getHexDiameter();
+        int h = bgm.getHexHeight();
         BufferedImage bi = new BufferedImage(w, h, BufferedImage.TYPE_4BYTE_ABGR);
         Graphics2D g2 = bi.createGraphics();
-
+            
+        loadTerrainGraphics(Terrain.BORDER);
+        
         for (Direction d : Direction.values()) {
 
             // Shift bites and draw when direction flag is 1
             if ((mask & value) == mask) {
-                g2.drawImage(terrainBufferMap.get().get(Terrain.BORDER).getSubimage(2 * w, h * d.ordinal(), w, h), null, this);
+                g2.drawImage(terrainBufferMap.get(Terrain.BORDER).get().getSubimage(2 * w, h * d.ordinal(), w, h), null, this);
                 value = value << 1;
             } else {
                 value = value << 1;
@@ -328,33 +269,14 @@ public class TerrainLayer extends javax.swing.JPanel {
      *
      * @param t terrain to to load
      */
-    private void loadGraphics(Terrain t) {
+    private void loadTerrainGraphics(Terrain t) {
 
-        ImageProfile iP = boardInfo.getImageProfile();
-        //for (Terrain terrain : Terrain.ALL_TERRAINS) {
-        try {
-            terrainBufferMap.get().put(t, ImageIO.read(
-                    // File image
-                    AresIO.ARES_IO.getFile(iP.getPath(), iP.getFileName(t))));
-        } catch (IOException e) {
-
-            System.out.println(e.getMessage() + "\nFile not found: " + iP.getFileName(t));
-
+        SoftReference<BufferedImage> softImage = terrainBufferMap.get(t);
+        //If image doesn't exist or has been GC'ed
+        if (softImage == null || softImage.get() == null) {
+            String filename = bgm.getImageProfile().getFileName(t);
+            BufferedImage i = loadImage(AresIO.ARES_IO.getFile(bgm.getImageProfile().getPath(), filename));
+            terrainBufferMap.put(t, new SoftReference(i));
         }
-        //}
-    }
-
-    /**
-     * 
-     */
-    public void flushLayer() {
-        terrainImage = null;
-        terrainBufferMap = null;
-    }
-
-    @Override
-    public void paintComponent(Graphics g) {
-        Graphics2D g2 = (Graphics2D) g;
-        g2.drawImage(terrainImage, 0, 0, this);
     }
 }

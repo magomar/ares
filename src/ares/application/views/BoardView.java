@@ -16,8 +16,8 @@ import javax.swing.*;
 public class BoardView extends AbstractView<JScrollPane> implements BoardViewer {
 
     private JLayeredPane layers;
-    private TerrainLayer terrainLayer;
-    private UnitsLayer unitsLayer;
+    private AbstractImageLayer terrainLayer;
+    private AbstractImageLayer unitsLayer;
     private GridLayer gridLayer;
 
     @Override
@@ -74,7 +74,7 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
 
     @Override
     public void closeScenario() {
-        terrainLayer.flushLayer();
+        terrainLayer.flush();
         gridLayer.flushLayer();
         unitsLayer.flush();
         getContentPane().setVisible(false);
