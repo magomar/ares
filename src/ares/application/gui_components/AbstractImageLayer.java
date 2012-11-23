@@ -59,7 +59,7 @@ public abstract class AbstractImageLayer extends JPanel{
         //Viewport
         Rectangle r = contentPane.getVisibleRect();
         
-        if(pos.x < r.getMaxX() && pos.x > r.getMinX() && pos.y < r.getMaxY() && pos.y > r.getMinY()){
+        if(pos.x <= r.getMaxX() && pos.x >= r.getMinX() && pos.y <= r.getMaxY() && pos.y >= r.getMinY()){
             paintTile(t);
         }
     }

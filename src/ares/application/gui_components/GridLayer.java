@@ -26,7 +26,7 @@ public class GridLayer extends AbstractImageLayer {
         int w = tMap.length, y = tMap[0].length;
         for (int i = 0; i < w; ++i) {
             for (int j = 0; j < y; ++j) {
-                paintTile(tMap[i][j]);
+                paintTileInViewport(tMap[i][j]);
             }
         }
 

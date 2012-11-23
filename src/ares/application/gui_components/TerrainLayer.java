@@ -43,7 +43,7 @@ public class TerrainLayer extends AbstractImageLayer {
         g2.dispose();
         for (TileModel[] tt : s.getBoardModel().getMapModel()) {
             for(TileModel t : tt){
-                paintTile(t);
+                paintTileInViewport(t);
             }
         }
     }

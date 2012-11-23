@@ -58,7 +58,7 @@ public class UnitsLayer extends AbstractImageLayer {
                 TileModel tileModel = unitModel.getLocation();
                 if (!tileModels.contains(tileModel)) {
                     tileModels.add(tileModel);
-                    paintTile(tileModel);
+                    paintTileInViewport(tileModel);
                 }
             }
         }
