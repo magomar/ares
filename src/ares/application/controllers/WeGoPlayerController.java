@@ -55,6 +55,10 @@ public class WeGoPlayerController extends AbstractController {
         menuBarView.addActionListener(EngineCommands.NEXT.name(), new NextActionListener());
         // UnitInfoView
         getInternalFrameView(BoardView.class).getView().getContentPane().addMouseListener(new BoardMouseListener());
+        
+        //BoardVIew
+        getInternalFrameView(BoardView.class).getView().getContentPane().getVerticalScrollBar().addAdjustmentListener(new BoardAjustableListener());
+        getInternalFrameView(BoardView.class).getView().getContentPane().getHorizontalScrollBar().addAdjustmentListener(new BoardAjustableListener());
 
     }
 
@@ -203,7 +207,6 @@ public class WeGoPlayerController extends AbstractController {
 
         @Override
         public void mouseClicked(MouseEvent me) {
-
             LOG.log(Level.INFO, me.toString());
             Scenario scenario = engine.getScenario();
             BoardGraphicsModel bgm = scenario.getBoardGraphicsModel();
@@ -229,5 +232,14 @@ public class WeGoPlayerController extends AbstractController {
             }
 
         }
+    }
+    
+    private class BoardAjustableListener implements AdjustmentListener {
+        
+        @Override
+        public void adjustmentValueChanged(AdjustmentEvent ae){
+            System.out.println("Adjusted: " + ae.getValue());
+        }
+        
     }
 }

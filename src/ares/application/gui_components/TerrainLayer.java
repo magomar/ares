@@ -9,6 +9,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.lang.ref.SoftReference;
 import java.util.*;
+import javax.swing.JScrollPane;
 
 /**
  * Terrain image layer based on Sergio Musoles TerrainPanel
@@ -19,6 +20,11 @@ public class TerrainLayer extends AbstractImageLayer {
 
     //Map to store loaded images    
     private EnumMap<Terrain, SoftReference<BufferedImage>> terrainBufferMap = new EnumMap<>(Terrain.class);
+    private JScrollPane parentPane;
+
+    public TerrainLayer(JScrollPane contentPane) {
+        parentPane = contentPane;
+    }
     
      /**
      * Creates the whole terrain image.
@@ -55,6 +61,13 @@ public class TerrainLayer extends AbstractImageLayer {
         
         //Calculate tile position
         Point pos = bgm.tileToPixel(t.getCoordinates());
+        
+        //Viewport
+        Rectangle r = parentPane.getVisibleRect();
+        
+        if(pos.x > r.getMaxX() || pos.x < r.getMinX() || pos.y > r.getMaxY() || pos.y < r.getMinY()){
+            return;
+        }
 
         //Final image graphics
         Graphics2D tileG2 = (Graphics2D) globalImage.getGraphics();

@@ -23,11 +23,12 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
     @Override
     protected JScrollPane layout() {
 
-        // TODO set black background
+        JScrollPane contentPane = new JScrollPane();
+        
         layers = new JLayeredPane();
         layers.setOpaque(true);
         layers.setBackground(Color.BLACK);
-        terrainLayer = new TerrainLayer();
+        terrainLayer = new TerrainLayer(contentPane);
         unitsLayer = new UnitsLayer();
         unitsLayer.setOpaque(false);
         gridLayer = new GridLayer();
@@ -38,7 +39,7 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
         layers.add(gridLayer, JLayeredPane.PALETTE_LAYER);
         layers.add(unitsLayer, JLayeredPane.DRAG_LAYER);
 
-        JScrollPane contentPane = new JScrollPane();
+        
         contentPane.add(layers);
         contentPane.setViewportView(layers);
         contentPane.setBackground(Color.BLACK);
@@ -88,5 +89,6 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
     @Override
     public void updateTile(TileModel tile) {
         unitsLayer.paintByTile(tile);
+        terrainLayer.paintByTile(tile);
     }
 }
