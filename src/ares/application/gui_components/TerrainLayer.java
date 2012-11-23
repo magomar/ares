@@ -31,14 +31,14 @@ public class TerrainLayer extends AbstractImageLayer {
     @Override
     public void createGlobalImage(ScenarioModel s){
         
-        Graphics2D g2 = (Graphics2D) globalImage.getGraphics();
+        Graphics2D g2 = globalImage.createGraphics();
         // Paint it black!
         g2.setColor(Color.BLACK);
         g2.fillRect(0, 0, bgm.getImageWidth(), bgm.getImageHeight());
         g2.dispose();
         for (TileModel[] tt : s.getBoardModel().getMapModel()) {
             for(TileModel t : tt){
-                paintByTile(t);
+                paintTile(t);
             }
         }
     }
@@ -48,7 +48,7 @@ public class TerrainLayer extends AbstractImageLayer {
      * @param t
      */
     @Override
-    public void paintByTile(TileModel t){
+    public void paintTile(TileModel t){
 
         //If I don't know anything about it
         if(t.getKnowledgeLevel() == KnowledgeLevel.NONE) return;
@@ -57,7 +57,7 @@ public class TerrainLayer extends AbstractImageLayer {
         Point pos = bgm.tileToPixel(t.getCoordinates());
 
         //Final image graphics
-        Graphics2D tileG2 = (Graphics2D) globalImage.getGraphics();
+        Graphics2D g2 = globalImage.createGraphics();
         
         BufferedImage features = getTerrainFeaturesImage(t);
         //If non playable, don't paint
@@ -66,7 +66,7 @@ public class TerrainLayer extends AbstractImageLayer {
         //Where the terrain will be painted
         // First layer is the open terrain
         Image terrainImage = getTerrainImage(Terrain.OPEN,0);
-        tileG2.drawImage(terrainImage,pos.x,pos.y,this);
+        g2.drawImage(terrainImage,pos.x,pos.y,this);
         
         // Get the index of the terrain image
         Map<Terrain, Integer> m = getTerrainToImageIndex(t);
@@ -96,12 +96,12 @@ public class TerrainLayer extends AbstractImageLayer {
                 bi = getTerrainImage(e.getKey(), index);
             }
             
-            tileG2.drawImage(bi, pos.x, pos.y, null);
+            g2.drawImage(bi, pos.x, pos.y, null);
         }
-        tileG2.drawImage(features, pos.x, pos.y,null);
+        g2.drawImage(features, pos.x, pos.y,null);
         
         repaint(pos.x, pos.y, terrainImage.getWidth(null), terrainImage.getHeight(null));
-        tileG2.dispose();        
+        g2.dispose();        
     }
     
      private Image getTerrainImage(Terrain t, int index){
@@ -176,7 +176,7 @@ public class TerrainLayer extends AbstractImageLayer {
         //     instead of ares.data.jaxb.TerrainFeature
 
         BufferedImage i = new BufferedImage(bgm.getHexDiameter(), bgm.getHexHeight(), BufferedImage.TYPE_4BYTE_ABGR);
-        Graphics2D g2 = (Graphics2D) i.getGraphics();
+        Graphics2D g2 = i.createGraphics();
 
         Set<TerrainFeatures> tf = tile.getTerrainFeatures();
         Iterator it = tf.iterator();
@@ -276,7 +276,7 @@ public class TerrainLayer extends AbstractImageLayer {
         if (softImage == null || softImage.get() == null) {
             String filename = bgm.getImageProfile().getFileName(t);
             BufferedImage i = loadImage(AresIO.ARES_IO.getFile(bgm.getImageProfile().getPath(), filename));
-            terrainBufferMap.put(t, new SoftReference(i));
+            terrainBufferMap.put(t, new SoftReference<>(i));
         }
     }
 }

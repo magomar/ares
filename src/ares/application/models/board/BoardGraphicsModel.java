@@ -3,6 +3,7 @@ package ares.application.models.board;
 import ares.io.ImageProfile;
 import ares.scenario.board.Board;
 import java.awt.Point;
+import java.io.File;
 
 /**
  *
@@ -123,6 +124,14 @@ public class BoardGraphicsModel {
      */
     public int getImageWidth() {
         return imageWidth;
+    }
+    
+    /**
+     * 
+     * @return grid hexagon file
+     */
+    public File getGridHex() {
+        return new File(imgProfile.getPath(), "Hexoutline.png");
     }
 
     /**
