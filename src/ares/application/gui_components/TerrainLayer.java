@@ -20,12 +20,11 @@ public class TerrainLayer extends AbstractImageLayer {
 
     //Map to store loaded images    
     private EnumMap<Terrain, SoftReference<BufferedImage>> terrainBufferMap = new EnumMap<>(Terrain.class);
-    private JScrollPane parentPane;
 
-    public TerrainLayer(JScrollPane contentPane) {
-        parentPane = contentPane;
+    public TerrainLayer(JScrollPane contentPane){
+        super(contentPane);
     }
-    
+
      /**
      * Creates the whole terrain image.
      * Paints all the playable tiles stored in <code>tileMap</code>
@@ -44,7 +43,7 @@ public class TerrainLayer extends AbstractImageLayer {
         g2.dispose();
         for (TileModel[] tt : s.getBoardModel().getMapModel()) {
             for(TileModel t : tt){
-                paintByTile(t);
+                paintTile(t);
             }
         }
     }
@@ -54,7 +53,7 @@ public class TerrainLayer extends AbstractImageLayer {
      * @param t
      */
     @Override
-    public void paintByTile(TileModel t){
+    public void paintTile(TileModel t){
 
         //If I don't know anything about it
         if(t.getKnowledgeLevel() == KnowledgeLevel.NONE) return;
@@ -62,13 +61,6 @@ public class TerrainLayer extends AbstractImageLayer {
         //Calculate tile position
         Point pos = bgm.tileToPixel(t.getCoordinates());
         
-        //Viewport
-        Rectangle r = parentPane.getVisibleRect();
-        
-        if(pos.x > r.getMaxX() || pos.x < r.getMinX() || pos.y > r.getMaxY() || pos.y < r.getMinY()){
-            return;
-        }
-
         //Final image graphics
         Graphics2D tileG2 = (Graphics2D) globalImage.getGraphics();
         

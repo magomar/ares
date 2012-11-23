@@ -1,9 +1,8 @@
 package ares.application.gui_components;
 
 import ares.application.models.ScenarioModel;
-import ares.io.AresIO;
-import ares.scenario.Scenario;
 import ares.application.models.board.BoardGraphicsModel;
+import ares.io.AresIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;

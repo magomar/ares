@@ -24,13 +24,13 @@ public class UnitsLayer extends AbstractImageLayer {
      * Offset distance from the upper left corner of the tile.
      * The image will be painted at Point(X+offset, Y+offset)
      *
-     * @see paintByTile(TileModel, int)
+     * @see paintTile(TileModel, int)
      */
     private int unitImageOffset = 7;
     /**
      * Maximum numbers of units to be painted in a single tile
      *
-     * @see paintByTile(TileModel, int)
+     * @see paintTile(TileModel, int)
      */
     private int defaultMaxStack = 6;
     /**
@@ -40,7 +40,7 @@ public class UnitsLayer extends AbstractImageLayer {
      * then the next layer will start at Point(X+offset,Y+offset),
      * and the third one at Point(X+2*offset, Y+2*offset) and so on.
      *
-     * @see paintByTile(TileModel, int)
+     * @see paintTile(TileModel, int)
      */
     private static int unitStackOffset = 1;
 
@@ -52,14 +52,14 @@ public class UnitsLayer extends AbstractImageLayer {
                 TileModel tileModel = unitModel.getLocation();
                 if (!tileModels.contains(tileModel)) {
                     tileModels.add(tileModel);
-                    paintByTile(tileModel);
+                    paintTile(tileModel);
                 }
             }
         }
     }
 
     @Override
-    public void paintByTile(TileModel t){
+    public void paintTile(TileModel t){
         paintByTile(t,defaultMaxStack);
     }
     

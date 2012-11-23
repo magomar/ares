@@ -15,19 +15,20 @@ import javax.swing.*;
  */
 public class BoardView extends AbstractView<JScrollPane> implements BoardViewer {
 
-    private JLayeredPane layers;
+    private JLayeredPane layerPane;
     private AbstractImageLayer terrainLayer;
     private AbstractImageLayer unitsLayer;
     private GridLayer gridLayer;
+    private AbstractImageLayer[] imageLayers = {terrainLayer, unitsLayer};
 
     @Override
     protected JScrollPane layout() {
 
         JScrollPane contentPane = new JScrollPane();
         
-        layers = new JLayeredPane();
-        layers.setOpaque(true);
-        layers.setBackground(Color.BLACK);
+        layerPane = new JLayeredPane();
+        layerPane.setOpaque(true);
+        layerPane.setBackground(Color.BLACK);
         terrainLayer = new TerrainLayer(contentPane);
         unitsLayer = new UnitsLayer();
         unitsLayer.setOpaque(false);
@@ -35,13 +36,13 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
         gridLayer.setOpaque(false);
         
 
-        layers.add(terrainLayer, JLayeredPane.DEFAULT_LAYER);
-        layers.add(gridLayer, JLayeredPane.PALETTE_LAYER);
-        layers.add(unitsLayer, JLayeredPane.DRAG_LAYER);
+        layerPane.add(terrainLayer, JLayeredPane.DEFAULT_LAYER);
+        layerPane.add(gridLayer, JLayeredPane.PALETTE_LAYER);
+        layerPane.add(unitsLayer, JLayeredPane.DRAG_LAYER);
 
         
-        contentPane.add(layers);
-        contentPane.setViewportView(layers);
+        contentPane.add(layerPane);
+        contentPane.setViewportView(layerPane);
         contentPane.setBackground(Color.BLACK);
         contentPane.setVisible(true);
         contentPane.setOpaque(true);
@@ -49,23 +50,26 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
     }
 
     public JLayeredPane getLayers() {
-        return layers;
+        return layerPane;
     }
 
     @Override
     public void loadScenario(ScenarioModel scenario) {
-        terrainLayer.initialize(scenario);
-        gridLayer.initialize(scenario);
-        unitsLayer.initialize(scenario);
+        
         Dimension imageSize = new Dimension(scenario.getBoardGraphicsModel().getImageWidth(), scenario.getBoardGraphicsModel().getImageHeight());
-        layers.setPreferredSize(imageSize);
-        layers.setSize(imageSize);
-        terrainLayer.setPreferredSize(imageSize);
-        terrainLayer.setSize(imageSize);
+        layerPane.setPreferredSize(imageSize);
+        layerPane.setSize(imageSize);
+        
+        for(AbstractImageLayer img : imageLayers){
+            img.setPreferredSize(imageSize);
+            img.setSize(imageSize);
+            img.initialize(scenario);
+        }
         gridLayer.setPreferredSize(imageSize);
         gridLayer.setSize(imageSize);
-        unitsLayer.setPreferredSize(imageSize);
-        unitsLayer.setSize(imageSize);
+        gridLayer.initialize(scenario);
+        
+
     }
 
     @Override
@@ -88,7 +92,8 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
 
     @Override
     public void updateTile(TileModel tile) {
-        unitsLayer.paintByTile(tile);
-        terrainLayer.paintByTile(tile);
+        for(AbstractImageLayer img : imageLayers){
+            img.paintTileInViewport(tile);
+        }
     }
 }

@@ -8,12 +8,13 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import javax.swing.*;
 
 /**
  *
  * @author Heine <heisncfr@inf.upv.es>
  */
-public abstract class AbstractImageLayer extends javax.swing.JPanel{
+public abstract class AbstractImageLayer extends JPanel{
 
     // Final image to be painted on the JComponent
     protected BufferedImage globalImage;
@@ -21,21 +22,41 @@ public abstract class AbstractImageLayer extends javax.swing.JPanel{
     // BoardGraphicsModel provides hexagonal and image sizes
     protected BoardGraphicsModel bgm;
     
+    // Parent container
+    private final JScrollPane contentPane;
+    
+    public AbstractImageLayer(JScrollPane contentPane){
+        this.contentPane = contentPane;
+    }
+    
     public void initialize(ScenarioModel s){
         bgm = s.getBoardGraphicsModel();
         globalImage = new BufferedImage(bgm.getImageWidth(), bgm.getImageHeight(), BufferedImage.TYPE_INT_ARGB);
         createGlobalImage(s);
-        repaint();
     }
     
     public void updateGlobalImage(ScenarioModel s) {
         globalImage = new BufferedImage(bgm.getImageWidth(), bgm.getImageHeight(), BufferedImage.TYPE_4BYTE_ABGR);
         createGlobalImage(s);
+        repaint();
     }
     
     protected abstract void createGlobalImage(ScenarioModel s);
     
-    public abstract void paintByTile(TileModel t);
+    public abstract void paintTile(TileModel t);
+    
+    public void paintTileInViewport(TileModel t){
+
+        //Calculate tile position
+        Point pos = bgm.tileToPixel(t.getCoordinates());
+        
+        //Viewport
+        Rectangle r = contentPane.getVisibleRect();
+        
+        if(pos.x < r.getMaxX() && pos.x > r.getMinX() && pos.y < r.getMaxY() && pos.y > r.getMinY()){
+            paintTile(t);
+        }
+    }
     
     protected BufferedImage loadImage(File f){
         BufferedImage i=null;
