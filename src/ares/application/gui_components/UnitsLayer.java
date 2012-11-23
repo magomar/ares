@@ -71,7 +71,7 @@ public class UnitsLayer extends AbstractImageLayer {
      */
     public void paintByTile(TileModel t, int maxStack) {
         //Graphics from the global image
-        Graphics2D g2 = (Graphics2D) globalImage.getGraphics();
+        Graphics2D g2 = globalImage.createGraphics();
         
         //Where the single unit image will be painted
         Image unitImage;
@@ -185,8 +185,8 @@ public class UnitsLayer extends AbstractImageLayer {
         //If image doesn't exist or has been GC'ed
         if (softImage == null || softImage.get() == null) {
             String filename = bgm.getImageProfile().getFileName(uc);
-            Image i = loadImage(AresIO.ARES_IO.getFile(bgm.getImageProfile().getPath(), filename));
-            unitBufferMap.put(uc, new SoftReference(i));
+            BufferedImage i = loadImage(AresIO.ARES_IO.getFile(bgm.getImageProfile().getPath(), filename));
+            unitBufferMap.put(uc, new SoftReference<>(i));
         }
     }
 }

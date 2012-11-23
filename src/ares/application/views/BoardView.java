@@ -18,8 +18,9 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
     private JLayeredPane layerPane;
     private AbstractImageLayer terrainLayer;
     private AbstractImageLayer unitsLayer;
-    private GridLayer gridLayer;
-    private AbstractImageLayer[] imageLayers = {terrainLayer, unitsLayer};
+    private AbstractImageLayer gridLayer;
+    private AbstractImageLayer[] imageLayers = {terrainLayer, unitsLayer, gridLayer};
+    private AbstractImageLayer[] dynamicLayers = {terrainLayer, unitsLayer};
 
     @Override
     protected JScrollPane layout() {
@@ -65,9 +66,6 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
             img.setSize(imageSize);
             img.initialize(scenario);
         }
-        gridLayer.setPreferredSize(imageSize);
-        gridLayer.setSize(imageSize);
-        gridLayer.initialize(scenario);
         
 
     }
@@ -80,7 +78,7 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
     @Override
     public void closeScenario() {
         terrainLayer.flush();
-        gridLayer.flushLayer();
+        gridLayer.flush();
         unitsLayer.flush();
         getContentPane().setVisible(false);
     }
