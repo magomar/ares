@@ -16,19 +16,15 @@ import javax.imageio.ImageIO;
 public abstract class AbstractImageLayer extends javax.swing.JPanel{
 
     // Final image to be painted on the JComponent
-    protected Image globalImage;
-
+    protected BufferedImage globalImage;
+    
     // BoardGraphicsModel provides hexagonal and image sizes
     protected BoardGraphicsModel bgm;
     
     public void initialize(ScenarioModel s){
-
-        // If the image doesn't exists
-        if (globalImage == null) {
-            bgm = s.getBoardGraphicsModel();
-            globalImage = new BufferedImage(bgm.getImageWidth(), bgm.getImageHeight(), BufferedImage.TYPE_4BYTE_ABGR);
-            createGlobalImage(s);
-        } 
+        bgm = s.getBoardGraphicsModel();
+        globalImage = new BufferedImage(bgm.getImageWidth(), bgm.getImageHeight(), BufferedImage.TYPE_INT_ARGB);
+        createGlobalImage(s);
     }
     
     public void updateGlobalImage(ScenarioModel s) {
@@ -40,7 +36,7 @@ public abstract class AbstractImageLayer extends javax.swing.JPanel{
     
     public abstract void paintByTile(TileModel t);
     
-    protected Image loadImage(File f){
+    protected BufferedImage loadImage(File f){
         BufferedImage i=null;
         try {
             i = ImageIO.read(f);

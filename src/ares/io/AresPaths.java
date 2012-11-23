@@ -11,7 +11,7 @@ public enum AresPaths {
     GRAPHICS("Graphics"),
     GRAPHICS_SMALL("Graphics/Medium"),
     GRAPHICS_MEDIUM("Graphics/Medium"),
-    GRAPHICS_HIGH("Graphics/Large");
+    GRAPHICS_HIGH("Graphics/High");
     private final String path;
 
     private AresPaths(final String path) {

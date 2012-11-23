@@ -125,22 +125,19 @@ public class UnitsLayer extends AbstractImageLayer {
         BufferedImage unitImage;
         // Color template
         UnitColors uc = unit.getColor();
-        // If it doesn't exists
-        if (unitBufferMap.get(uc) == null) {
-            loadUnitGraphics(uc);
-        }
+        //Make sure graphics are loaded
+        loadUnitGraphics(uc);
 
         //TODO paint tile density
         //Retrieve color template image and crop the unit we need from it
         
         //Get the coordinates
-        int unitImgWidth = bgm.getImageProfile().getUnitsImageWidth() / bgm.getImageProfile().getUnitsImageCols();
-        int unitImgHeight = bgm.getImageProfile().getUnitsImageHeight() / bgm.getImageProfile().getUnitsImageRows();
+        int size = bgm.getImageProfile().getUnitSquareSide();
         int row = unit.getIconId() / bgm.getImageProfile().getUnitsImageCols();
         int col = unit.getIconId() % bgm.getImageProfile().getUnitsImageCols();
         
         //Get the unit image
-        unitImage = unitBufferMap.get(uc).get().getSubimage(col * unitImgWidth, row * unitImgHeight, unitImgWidth, unitImgHeight);
+        unitImage = unitBufferMap.get(uc).get().getSubimage(col * size, row * size, size, size);
 
         //Adds attributes to the image such as Health, Attack, Defense, etc.
         addUnitAttributes(unitImage, unit);
@@ -183,8 +180,13 @@ public class UnitsLayer extends AbstractImageLayer {
      * @see UnitColors
      */
     private void loadUnitGraphics(UnitColors uc) {
-        String filename = uc.getFileName();
-        Image i = loadImage(AresIO.ARES_IO.getFile(bgm.getImageProfile().getPath(), filename));
-        unitBufferMap.put(uc, new SoftReference(i));
+
+        SoftReference<BufferedImage> softImage = unitBufferMap.get(uc);
+        //If image doesn't exist or has been GC'ed
+        if (softImage == null || softImage.get() == null) {
+            String filename = bgm.getImageProfile().getFileName(uc);
+            Image i = loadImage(AresIO.ARES_IO.getFile(bgm.getImageProfile().getPath(), filename));
+            unitBufferMap.put(uc, new SoftReference(i));
+        }
     }
 }

@@ -10,16 +10,17 @@ import java.awt.Point;
  */
 public class BoardGraphicsModel {
 
-    final private int hexSide;
-    final private int hexDiameter;
-    final private int hexRadius;
-    final private int hexHeight;
-    final private int hexOffset;
-    final private int width;
-    final private int height;
-    final private int imageWidth;
-    final private int imageHeight;
-    final private ImageProfile imgProfile;
+    private final int hexSide;
+    private final int hexDiameter;
+    private final int hexRadius;
+    private final int hexHeight;
+    private final int hexOffset;
+    private final int width;
+    private final int height;
+    private final int imageWidth;
+    private final int imageHeight;
+    private final ImageProfile imgProfile;
+    
 
     public BoardGraphicsModel(Board board) {
         width = board.getWidth();
@@ -126,7 +127,7 @@ public class BoardGraphicsModel {
 
     /**
      * @return current image profile (SMALL, MEDIUM or HIGH)
-     * @see ImageProfi;e
+     * @see ImageProfile
      */
     public ImageProfile getImageProfile() {
         return imgProfile;
@@ -171,9 +172,8 @@ public class BoardGraphicsModel {
         return tile;
 
     }
-    
+
     public boolean isWithinImageRange(Point pixel){
-        return ((pixel.x < imageWidth && pixel.x > 0) && (pixel.y>0 && pixel.y < imageHeight));
+        return ((pixel.x < imageWidth && pixel.x > 0) && (pixel.y > 0 && pixel.y < imageHeight));
     }
-    
 }

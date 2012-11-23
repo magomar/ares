@@ -4,6 +4,7 @@
  */
 package ares.io;
 
+import ares.application.gui_components.UnitColors;
 import ares.scenario.board.Terrain;
 
 /**
@@ -12,24 +13,25 @@ import ares.scenario.board.Terrain;
  */
 public enum ImageProfile {
 
-    // Units (Width,Height,Rows,Cols), Terran(W,H,R,C), Hex(Diam,Side,Offset,Height), Path
-    SMALL( 272,128,8,16,  270,192,8,10,  27,13,21,22, AresPaths.GRAPHICS_SMALL.getPath()),
-    MEDIUM(496,248,8,16,  510,352,8,10,  51,28,39,44, AresPaths.GRAPHICS_MEDIUM.getPath()),
-    HIGH( 992,446,8,16, 1020,704,8,10, 102,51,78,88, AresPaths.GRAPHICS_HIGH.getPath()),
+    // Units (Width,Height,Rows,Cols,Square side), Terran(W,H,R,C), Hex(Diam,Side,Offset,Height), Path
+    SMALL( 272,128,8,16,/*17x16*/0,  270,192,8,10,  27,13,21,22, AresPaths.GRAPHICS_SMALL.getPath()),
+    MEDIUM(496,248,8,16,31,  510,352,8,10,  51,28,39,44, AresPaths.GRAPHICS_MEDIUM.getPath()),
+    HIGH( 992,446,8,16,62, 1020,704,8,10, 102,51,78,88, AresPaths.GRAPHICS_HIGH.getPath()),
     ;
 
-    final private int unitsImageWidth;
-    final private int unitsImageHeight;
-    final private int unitsImageRows;
-    final private int unitsImageCols;
-    final private int terrainImageWidth;
-    final private int terrainImageHeight;
-    final private int terrainImageRows;
-    final private int terrainImageCols;
-    final private int hexDiameter;
-    final private int hexSide;
-    final private int hexOffset;
-    final private int hexHeight;
+    private final int unitsImageWidth;
+    private final int unitsImageHeight;
+    private final int unitsImageRows;
+    private final int unitsImageCols;
+    private final int unitSquareSide;
+    private final int terrainImageWidth;
+    private final int terrainImageHeight;
+    private final int terrainImageRows;
+    private final int terrainImageCols;
+    private final int hexDiameter;
+    private final int hexSide;
+    private final int hexOffset;
+    private final int hexHeight;
     
 
     private String path;
@@ -43,6 +45,7 @@ public enum ImageProfile {
      * @param unitsImageHeight
      * @param unitsImageRows
      * @param unitsImageCols
+     * @param unitSquareSide
      * @param terrainImageWidth
      * @param terrainImageHeight
      * @param terrainImageRows
@@ -53,11 +56,12 @@ public enum ImageProfile {
      * @param hexHeight
      * @param path 
      */
-    private ImageProfile(int unitsImageWidth, int unitsImageHeight, int unitsImageRows, int unitsImageCols, int terrainImageWidth, int terrainImageHeight, int terrainImageRows, int terrainImageCols, int hexDiameter, int hexSide, int hexOffset, int hexHeight, String path) {
+    private ImageProfile(int unitsImageWidth, int unitsImageHeight, int unitsImageRows, int unitsImageCols, int unitSquareSide, int terrainImageWidth, int terrainImageHeight, int terrainImageRows, int terrainImageCols, int hexDiameter, int hexSide, int hexOffset, int hexHeight, String path) {
         this.unitsImageWidth = unitsImageWidth;
         this.unitsImageHeight = unitsImageHeight;
         this.unitsImageRows = unitsImageRows;
         this.unitsImageCols = unitsImageCols;
+        this.unitSquareSide = unitSquareSide;
         this.terrainImageWidth = terrainImageWidth;
         this.terrainImageHeight = terrainImageHeight;
         this.terrainImageRows = terrainImageRows;
@@ -103,6 +107,16 @@ public enum ImageProfile {
      */
     public int getUnitsImageCols() {
         return unitsImageCols;
+    }
+    
+    /**
+     * Unit single image square size
+     * (width and height are equal)
+     * 
+     * @return the unitSquareSide
+     */
+    public int getUnitSquareSide(){
+        return unitSquareSide;
     }
 
     /**
@@ -218,6 +232,22 @@ public enum ImageProfile {
                 return terrain.getGraphicFileMedium();
             case HIGH:
                 return terrain.getGraphicFileHigh();
+            default:
+                //TODO Exception
+                return null;
+        }
+    }
+    
+    public String getFileName(UnitColors uc) {
+        
+        switch(this){
+         
+            case SMALL:
+                return uc.getGraphicFileSmall();
+            case MEDIUM:
+                return uc.getGraphicFileMedium();
+            case HIGH:
+                return uc.getGraphicFileHigh();
             default:
                 //TODO Exception
                 return null;
