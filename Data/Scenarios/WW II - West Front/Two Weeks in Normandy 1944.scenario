@@ -22329,7 +22329,7 @@ A full set of historical notes and various related ramblings by the designer can
         </Place>
     </Map>
     <OOB>
-        <Force id="1">
+        <Force id="0">
             <Name>Allied Army</Name>
             <Proficiency>60</Proficiency>
             <Supply>13</Supply>
@@ -51524,7 +51524,7 @@ A full set of historical notes and various related ramblings by the designer can
                 </Unit>
             </Formation>
         </Force>
-        <Force id="2">
+        <Force id="1">
             <Name>German Army</Name>
             <Proficiency>88</Proficiency>
             <Supply>22</Supply>
