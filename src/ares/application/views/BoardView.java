@@ -19,8 +19,9 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
     private AbstractImageLayer terrainLayer;
     private AbstractImageLayer unitsLayer;
     private AbstractImageLayer gridLayer;
-    private AbstractImageLayer[] imageLayers = {terrainLayer, unitsLayer, gridLayer};
-    private AbstractImageLayer[] dynamicLayers = {terrainLayer, unitsLayer};
+    private AbstractImageLayer arrowLayer;
+    private AbstractImageLayer[] imageLayers = {terrainLayer, unitsLayer, gridLayer, arrowLayer};
+    private AbstractImageLayer[] dynamicLayers = {unitsLayer, arrowLayer};
 
     @Override
     protected JScrollPane layout() {
@@ -31,11 +32,11 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
         layerPane.setOpaque(true);
         layerPane.setBackground(Color.BLACK);
         terrainLayer = new TerrainLayer(contentPane);
-        unitsLayer = new UnitsLayer();
+        unitsLayer = new UnitsLayer(contentPane);
         unitsLayer.setOpaque(false);
-        gridLayer = new GridLayer();
+        gridLayer = new GridLayer(contentPane);
         gridLayer.setOpaque(false);
-        
+        arrowLayer = new ArrowLayer(gridLayer);
 
         layerPane.add(terrainLayer, JLayeredPane.DEFAULT_LAYER);
         layerPane.add(gridLayer, JLayeredPane.PALETTE_LAYER);
@@ -77,9 +78,7 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
 
     @Override
     public void closeScenario() {
-        terrainLayer.flush();
-        gridLayer.flush();
-        unitsLayer.flush();
+        for(AbstractImageLayer img : imageLayers) img.flush();
         getContentPane().setVisible(false);
     }
 
@@ -90,8 +89,6 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
 
     @Override
     public void updateTile(TileModel tile) {
-        for(AbstractImageLayer img : imageLayers){
-            img.paintTileInViewport(tile);
-        }
+        for(AbstractImageLayer img : dynamicLayers) img.paintTileInViewport(tile);
     }
 }

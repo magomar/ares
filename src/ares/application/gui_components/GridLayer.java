@@ -5,6 +5,7 @@ import ares.application.models.board.TileModel;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.lang.ref.SoftReference;
+import javax.swing.JScrollPane;
 
 /**
  * Grid image layer
@@ -15,6 +16,10 @@ public class GridLayer extends AbstractImageLayer {
     
     private SoftReference<BufferedImage> hexImage =  new SoftReference<>(null);
 
+    public GridLayer(JScrollPane contentPane){
+        super(contentPane);
+    }
+    
     @Override
     protected void createGlobalImage(ScenarioModel s) {
         TileModel[][] tMap = s.getBoardModel().getMapModel();

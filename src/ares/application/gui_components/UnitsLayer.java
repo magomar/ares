@@ -9,6 +9,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.lang.ref.SoftReference;
 import java.util.*;
+import javax.swing.JScrollPane;
 
 /**
  * Units image layer based on Sergio Musoles TerrainPanel
@@ -44,6 +45,11 @@ public class UnitsLayer extends AbstractImageLayer {
      */
     private static int unitStackOffset = 1;
 
+    
+    public UnitsLayer(JScrollPane contentPane){
+        super(contentPane);
+    }
+    
     @Override
     public void createGlobalImage(ScenarioModel s) {
         Collection<TileModel> tileModels = new ArrayDeque<> ();

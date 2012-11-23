@@ -29,6 +29,12 @@ public abstract class AbstractImageLayer extends JPanel{
         this.contentPane = contentPane;
     }
     
+    public AbstractImageLayer(AbstractImageLayer ail){
+        this.contentPane = ail.contentPane;
+        this.globalImage = ail.globalImage;
+        this.bgm = ail.bgm;
+    }
+    
     public void initialize(ScenarioModel s){
         bgm = s.getBoardGraphicsModel();
         globalImage = new BufferedImage(bgm.getImageWidth(), bgm.getImageHeight(), BufferedImage.TYPE_INT_ARGB);
@@ -69,7 +75,7 @@ public abstract class AbstractImageLayer extends JPanel{
     }
     
     public void flush(){
-        globalImage = null;
+        globalImage=null;
         bgm=null;
     }
     
