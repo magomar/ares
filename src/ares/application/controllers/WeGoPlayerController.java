@@ -21,7 +21,11 @@ import java.beans.PropertyChangeEvent;
 import java.io.File;
 import java.util.concurrent.*;
 import java.util.logging.*;
+import javax.swing.BoundedRangeModel;
 import javax.swing.JFileChooser;
+import javax.swing.JScrollBar;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 /**
  *
@@ -57,8 +61,8 @@ public class WeGoPlayerController extends AbstractController {
         getInternalFrameView(BoardView.class).getView().getContentPane().addMouseListener(new BoardMouseListener());
         
         //BoardVIew
-        getInternalFrameView(BoardView.class).getView().getContentPane().getVerticalScrollBar().addAdjustmentListener(new BoardAjustableListener());
-        getInternalFrameView(BoardView.class).getView().getContentPane().getHorizontalScrollBar().addAdjustmentListener(new BoardAjustableListener());
+        getInternalFrameView(BoardView.class).getView().getContentPane().getVerticalScrollBar().getModel().addChangeListener(new BoardScrollListener());
+        getInternalFrameView(BoardView.class).getView().getContentPane().getHorizontalScrollBar().getModel().addChangeListener(new BoardScrollListener());
 
     }
 
@@ -234,12 +238,20 @@ public class WeGoPlayerController extends AbstractController {
         }
     }
     
-    private class BoardAjustableListener implements AdjustmentListener {
-        
+    private class BoardScrollListener implements ChangeListener {
+
         @Override
-        public void adjustmentValueChanged(AdjustmentEvent ae){
-            System.out.println("Adjusted: " + ae.getValue());
+        public void stateChanged(ChangeEvent e) {
+            Object source = e.getSource();
+            if (source instanceof BoundedRangeModel) {
+                BoundedRangeModel aModel = (BoundedRangeModel) source;
+                if (!aModel.getValueIsAdjusting()) {
+                    System.out.println("Changed: " + aModel.getValue());
+                }
+
+            } else {
+                System.out.println("Something changed: " + source);
+            }
         }
-        
     }
 }
