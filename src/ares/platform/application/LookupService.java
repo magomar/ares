@@ -23,7 +23,7 @@ public class LookupService<T> {
     public void remove(Class<? extends T> key) {
         classMap.remove(key);
     }
-
+    @SuppressWarnings("unchecked")
     public <C extends T> C get(Class<C> key) {
         return (C) classMap.get(key);
     }

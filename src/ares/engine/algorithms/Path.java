@@ -30,7 +30,7 @@ public class Path {
         this();
 //        g = p.g;
 //        f = p.f;
-        tiles = new LinkedList<>((Collection)p);
+        tiles = new LinkedList<>((Collection<? extends Tile>)p);
     }
 
     /**

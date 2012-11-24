@@ -797,7 +797,7 @@ public class Ring<E> extends AbstractSequentialList<E>
      */
     @Override
     public boolean removeFirstOccurrence(Object o) {
-        return remove(o);
+        return remove((E)o);
     }
 
     /**
@@ -844,6 +844,7 @@ public class Ring<E> extends AbstractSequentialList<E>
      * @throws IndexOutOfBoundsException {@inheritDoc}
      * @see List#listIterator(int)
      */
+    @SuppressWarnings("unchecked")
     @Override
     public ListIterator<E> listIterator(int index) {
         checkPositionIndex(index);
@@ -958,6 +959,7 @@ public class Ring<E> extends AbstractSequentialList<E>
     /**
      * @since 1.6
      */
+    @SuppressWarnings("unchecked")
     @Override
     public Iterator<E> descendingIterator() {
         return new Ring.DescendingIterator();
@@ -975,6 +977,7 @@ public class Ring<E> extends AbstractSequentialList<E>
             return itr.hasPrevious();
         }
 
+        @SuppressWarnings("unchecked")
         @Override
         public E next() {
             return (E) itr.previous();

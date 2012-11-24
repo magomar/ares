@@ -64,7 +64,7 @@ public abstract class AStar<T> {
          */
         @Override
         public int compareTo(Object o) {
-            Path p = (Path) o;
+            Path p = (AStar<T>.Path) o;
             return (int) (f - p.f);
         }
 

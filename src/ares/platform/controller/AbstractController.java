@@ -90,6 +90,7 @@ public abstract class AbstractController implements PropertyChangeListener {
         return views.get(viewClass);
     }
 
+    @SuppressWarnings("unchecked")
     public final <T extends AbstractView<? extends JComponent>> InternalFrameView<T> getInternalFrameView(Class<T> viewClass) {
         return (InternalFrameView<T>) views.get(viewClass);
     }
