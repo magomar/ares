@@ -9,7 +9,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.lang.ref.SoftReference;
 import java.util.*;
-import javax.swing.JScrollPane;
+import javax.swing.JComponent;
 
 /**
  * Terrain image layer based on Sergio Musoles TerrainPanel
@@ -21,7 +21,7 @@ public class TerrainLayer extends AbstractImageLayer {
     //Map to store loaded images    
     private EnumMap<Terrain, SoftReference<BufferedImage>> terrainBufferMap = new EnumMap<>(Terrain.class);
 
-    public TerrainLayer(JScrollPane contentPane){
+    public TerrainLayer(JComponent contentPane){
         super(contentPane);
     }
 

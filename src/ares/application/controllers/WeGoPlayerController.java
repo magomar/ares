@@ -24,6 +24,7 @@ import java.util.logging.*;
 import javax.swing.BoundedRangeModel;
 import javax.swing.JFileChooser;
 import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
@@ -60,9 +61,10 @@ public class WeGoPlayerController extends AbstractController {
         // UnitInfoView
         getInternalFrameView(BoardView.class).getView().getContentPane().addMouseListener(new BoardMouseListener());
         
-        //BoardVIew
-        getInternalFrameView(BoardView.class).getView().getContentPane().getVerticalScrollBar().getModel().addChangeListener(new BoardScrollListener());
-        getInternalFrameView(BoardView.class).getView().getContentPane().getHorizontalScrollBar().getModel().addChangeListener(new BoardScrollListener());
+        //BoardView
+        JScrollPane jsp = (JScrollPane) getInternalFrameView(BoardView.class).getInternalFrame().getContentPane();
+        jsp.getVerticalScrollBar().getModel().addChangeListener(new BoardScrollListener());
+        jsp.getHorizontalScrollBar().getModel().addChangeListener(new BoardScrollListener());
 
     }
 

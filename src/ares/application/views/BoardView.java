@@ -13,7 +13,7 @@ import javax.swing.*;
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public class BoardView extends AbstractView<JScrollPane> implements BoardViewer {
+public class BoardView extends AbstractView<JPanel> implements BoardViewer {
 
     private JLayeredPane layerPane;
     private AbstractImageLayer terrainLayer;
@@ -24,10 +24,9 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
     private AbstractImageLayer[] dynamicLayers = {unitsLayer, arrowLayer};
 
     @Override
-    protected JScrollPane layout() {
+    protected JPanel layout() {
 
-        JScrollPane contentPane = new JScrollPane();
-        
+        JPanel contentPane = new JPanel();
         layerPane = new JLayeredPane();
         layerPane.setOpaque(true);
         layerPane.setBackground(Color.BLACK);
@@ -44,7 +43,6 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
 
         
         contentPane.add(layerPane);
-        contentPane.setViewportView(layerPane);
         contentPane.setBackground(Color.BLACK);
         contentPane.setVisible(true);
         contentPane.setOpaque(true);

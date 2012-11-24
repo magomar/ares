@@ -14,7 +14,7 @@ import javax.swing.*;
  *
  * @author Heine <heisncfr@inf.upv.es>
  */
-public abstract class AbstractImageLayer extends JPanel{
+public abstract class AbstractImageLayer extends JComponent {
 
     // Final image to be painted on the JComponent
     protected BufferedImage globalImage;
@@ -23,9 +23,9 @@ public abstract class AbstractImageLayer extends JPanel{
     protected BoardGraphicsModel bgm;
     
     // Parent container
-    private final JScrollPane contentPane;
+    private final JComponent contentPane;
     
-    public AbstractImageLayer(JScrollPane contentPane){
+    public AbstractImageLayer(JComponent contentPane){
         this.contentPane = contentPane;
     }
     
@@ -44,7 +44,7 @@ public abstract class AbstractImageLayer extends JPanel{
     public void updateGlobalImage(ScenarioModel s) {
         globalImage = new BufferedImage(bgm.getImageWidth(), bgm.getImageHeight(), BufferedImage.TYPE_4BYTE_ABGR);
         createGlobalImage(s);
-        repaint();
+        contentPane.repaint();
     }
     
     protected abstract void createGlobalImage(ScenarioModel s);
@@ -82,7 +82,7 @@ public abstract class AbstractImageLayer extends JPanel{
     @Override
     public void paintComponent(Graphics g){
         Graphics2D g2 = (Graphics2D) g;
-        g2.drawImage(globalImage,0,0,this);
+        g2.drawImage(globalImage,0,0,null);
     }
 
 

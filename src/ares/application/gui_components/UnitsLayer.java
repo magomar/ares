@@ -9,7 +9,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.lang.ref.SoftReference;
 import java.util.*;
-import javax.swing.JScrollPane;
+import javax.swing.JComponent;
 
 /**
  * Units image layer based on Sergio Musoles TerrainPanel
@@ -46,7 +46,7 @@ public class UnitsLayer extends AbstractImageLayer {
     private static int unitStackOffset = 1;
 
     
-    public UnitsLayer(JScrollPane contentPane){
+    public UnitsLayer(JComponent contentPane){
         super(contentPane);
     }
     
