@@ -54,6 +54,7 @@ public abstract class AbstractAresApplication {
         return views.get(viewClass);
     }
 
+    @SuppressWarnings("unchecked")
     protected final <T extends AbstractView<? extends JComponent>> InternalFrameView<T> getInternalFrameView(Class<T> viewClass) {
         return (InternalFrameView<T>) views.get(viewClass);
     }
