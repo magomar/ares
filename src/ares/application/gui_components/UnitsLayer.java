@@ -9,7 +9,6 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.lang.ref.SoftReference;
 import java.util.*;
-import javax.swing.JComponent;
 
 /**
  * Units image layer based on Sergio Musoles TerrainPanel
@@ -44,12 +43,17 @@ public class UnitsLayer extends AbstractImageLayer {
      * @see paintTile(TileModel, int)
      */
     private static int unitStackOffset = 1;
-
     
-    public UnitsLayer(JComponent contentPane){
-        super(contentPane);
+    public UnitsLayer() {
+        super();
     }
     
+    
+    public UnitsLayer(AbstractImageLayer ail){
+        super(ail);
+    }
+
+
     @Override
     public void createGlobalImage(ScenarioModel s) {
         Collection<TileModel> tileModels = new ArrayDeque<> ();
@@ -88,7 +92,7 @@ public class UnitsLayer extends AbstractImageLayer {
         //If no units on the tile
         if (t.isEmpty()) {
             //Empty image
-            unitImage = new BufferedImage(bgm.getHexDiameter(), bgm.getHeight(), BufferedImage.TYPE_INT_ARGB);
+            unitImage = new BufferedImage(bgm.getHexDiameter(), bgm.getTileRows(), BufferedImage.TYPE_INT_ARGB);
             g2.drawImage(unitImage, pos.x, pos.y,this);
             repaint(pos.x, pos.y, unitImage.getWidth(this), unitImage.getHeight(this));
             

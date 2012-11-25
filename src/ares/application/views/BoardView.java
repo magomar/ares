@@ -26,14 +26,15 @@ public class BoardView extends AbstractView<JPanel> implements BoardViewer {
     @Override
     protected JPanel layout() {
 
-        JPanel contentPane = new JPanel();
+        BorderLayout bLayout = new BorderLayout();
+        JPanel contentPane = new JPanel(bLayout);
         layerPane = new JLayeredPane();
         layerPane.setOpaque(true);
         layerPane.setBackground(Color.BLACK);
-        terrainLayer = new TerrainLayer(contentPane);
-        unitsLayer = new UnitsLayer(contentPane);
+        terrainLayer = new TerrainLayer();
+        unitsLayer = new UnitsLayer();
         unitsLayer.setOpaque(false);
-        gridLayer = new GridLayer(contentPane);
+        gridLayer = new GridLayer();
         gridLayer.setOpaque(false);
         arrowLayer = new ArrowLayer(gridLayer);
 
@@ -42,7 +43,7 @@ public class BoardView extends AbstractView<JPanel> implements BoardViewer {
         layerPane.add(unitsLayer, JLayeredPane.DRAG_LAYER);
 
         
-        contentPane.add(layerPane);
+        contentPane.add(layerPane, BorderLayout.NORTH);
         contentPane.setBackground(Color.BLACK);
         contentPane.setVisible(true);
         contentPane.setOpaque(true);
@@ -82,7 +83,11 @@ public class BoardView extends AbstractView<JPanel> implements BoardViewer {
 
     @Override
     public void modelPropertyChange(PropertyChangeEvent evt) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if(evt.getPropertyName().equals("ViewportChanged")){
+            for(AbstractImageLayer img : imageLayers){
+                img.paintViewportChanges((Integer)evt.getOldValue(),(String)evt.getNewValue());
+            }
+        }
     }
 
     @Override

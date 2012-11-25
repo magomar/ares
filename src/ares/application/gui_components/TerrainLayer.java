@@ -9,7 +9,6 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.lang.ref.SoftReference;
 import java.util.*;
-import javax.swing.JComponent;
 
 /**
  * Terrain image layer based on Sergio Musoles TerrainPanel
@@ -20,12 +19,16 @@ public class TerrainLayer extends AbstractImageLayer {
 
     //Map to store loaded images    
     private EnumMap<Terrain, SoftReference<BufferedImage>> terrainBufferMap = new EnumMap<>(Terrain.class);
-
-    public TerrainLayer(JComponent contentPane){
-        super(contentPane);
+    
+    
+    public TerrainLayer() {
+        super();
     }
-
-     /**
+    
+    public TerrainLayer(AbstractImageLayer ail){
+        super(ail);
+    }
+    /**
      * Creates the whole terrain image.
      * Paints all the playable tiles stored in <code>tileMap</code>
      *
@@ -33,21 +36,10 @@ public class TerrainLayer extends AbstractImageLayer {
      * @see Tile
      * @see TerrainFeature
      */
-    @Override
-    public void createGlobalImage(ScenarioModel s){
+
+    public void paintViewport(ScenarioModel s){
         
-        Graphics2D g2 = globalImage.createGraphics();
-        // Paint it black!
-        g2.setColor(Color.BLACK);
-        g2.fillRect(0, 0, bgm.getImageWidth(), bgm.getImageHeight());
-        g2.dispose();
-        for (TileModel[] tt : s.getBoardModel().getMapModel()) {
-            for(TileModel t : tt){
-                paintTileInViewport(t);
-            }
-        }
     }
-    
     /**
      *
      * @param t

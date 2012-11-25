@@ -21,12 +21,8 @@ import java.beans.PropertyChangeEvent;
 import java.io.File;
 import java.util.concurrent.*;
 import java.util.logging.*;
-import javax.swing.BoundedRangeModel;
-import javax.swing.JFileChooser;
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
+import javax.swing.*;
+import javax.swing.event.*;
 
 /**
  *
@@ -63,9 +59,7 @@ public class WeGoPlayerController extends AbstractController {
         
         //BoardView
         JScrollPane jsp = (JScrollPane) getInternalFrameView(BoardView.class).getInternalFrame().getContentPane();
-        jsp.getVerticalScrollBar().getModel().addChangeListener(new BoardScrollListener());
-        jsp.getHorizontalScrollBar().getModel().addChangeListener(new BoardScrollListener());
-
+        jsp.getViewport().addChangeListener(new BoardViewportListener());
     }
 
     @Override
@@ -119,6 +113,7 @@ public class WeGoPlayerController extends AbstractController {
                 userRole = UserRole.getForceRole(scenario.getForces()[0]);
                 // obtain the scenario model with the active userRole
                 ScenarioModel scenarioModel = engine.getScenarioModel(userRole);
+                scenario.getBoardGraphicsModel().setViewport(((JScrollPane)(getInternalFrameView(BoardView.class).getInternalFrame().getContentPane())).getVisibleRect());
                 getInternalFrameView(BoardView.class).getView().loadScenario(scenarioModel);
 
                 // set main window title & show appropriate views
@@ -239,20 +234,45 @@ public class WeGoPlayerController extends AbstractController {
 
         }
     }
-    
-    private class BoardScrollListener implements ChangeListener {
+
+    private class BoardViewportListener implements ChangeListener {   
+        
+        private class ThreadPainter extends AsynchronousOperation<Boolean>{
+            BoardGraphicsModel bgm=null;
+            JScrollPane jc=null;
+            public ThreadPainter(){
+                    bgm = engine.getScenario().getBoardGraphicsModel();
+                    jc = (JScrollPane) getInternalFrameView(BoardView.class).getInternalFrame().getContentPane();
+            }
+            
+            
+            @Override
+            protected Boolean performOperation() throws Exception {
+                    Object[] change = bgm.changeViewport( jc.getViewport().getViewRect() );
+                    if(change!=null) {
+                        getInternalFrameView(BoardView.class).getView().modelPropertyChange(
+                            new PropertyChangeEvent(change[0], (String)change[1], change[2], change[3]));
+                        return true;
+                    }
+                return false;
+            }
+        }
 
         @Override
         public void stateChanged(ChangeEvent e) {
             Object source = e.getSource();
-            if (source instanceof BoundedRangeModel) {
-                BoundedRangeModel aModel = (BoundedRangeModel) source;
-                if (!aModel.getValueIsAdjusting()) {
-                    System.out.println("Changed: " + aModel.getValue());
+            if (getInternalFrameView(BoardView.class).getInternalFrame().isVisible()) {
+                if (!engine.getScenario().getBoardGraphicsModel().mapIsCompletelyPainted()) {
+                    if (source instanceof JViewport) {
+                        try {
+                            new ThreadPainter().performOperation();
+                        } catch (Exception ex) {
+                            Logger.getLogger(WeGoPlayerController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                } else {
+                    System.out.println("Map is completley painted");
                 }
-
-            } else {
-                System.out.println("Something changed: " + source);
             }
         }
     }
