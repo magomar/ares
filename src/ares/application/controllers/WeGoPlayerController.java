@@ -56,7 +56,6 @@ public class WeGoPlayerController extends AbstractController {
         menuBarView.addActionListener(EngineCommands.NEXT.name(), new NextActionListener());
         // UnitInfoView
         getInternalFrameView(BoardView.class).getView().getContentPane().addMouseListener(new BoardMouseListener());
-
     }
 
     @Override

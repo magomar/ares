@@ -1,4 +1,4 @@
-package ares.application.gui_components;
+package ares.application.gui_components.layers;
 
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.TileModel;

@@ -1,12 +1,13 @@
 package ares.application.views;
 
 import ares.application.boundaries.view.BoardViewer;
-import ares.application.gui_components.*;
+import ares.application.gui_components.layers.*;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.TileModel;
 import ares.platform.view.AbstractView;
 import java.awt.*;
 import java.beans.PropertyChangeEvent;
+import java.util.ArrayList;
 import javax.swing.*;
 
 /**
@@ -15,18 +16,21 @@ import javax.swing.*;
  */
 public class BoardView extends AbstractView<JScrollPane> implements BoardViewer {
 
-    private JLayeredPane layers;
+    private JLayeredPane layeredPane;
     private AbstractImageLayer terrainLayer;
     private AbstractImageLayer unitsLayer;
-    private GridLayer gridLayer;
+    private AbstractImageLayer gridLayer;
+    private AbstractImageLayer[] imageLayers = {terrainLayer, gridLayer, unitsLayer};
+    private AbstractImageLayer[] dynamicLayers ={unitsLayer};
+    private Thread[] layerThreads = new Thread[imageLayers.length];
 
     @Override
     protected JScrollPane layout() {
 
         // TODO set black background
-        layers = new JLayeredPane();
-        layers.setOpaque(true);
-        layers.setBackground(Color.BLACK);
+        layeredPane = new JLayeredPane();
+        layeredPane.setOpaque(true);
+        layeredPane.setBackground(Color.BLACK);
         terrainLayer = new TerrainLayer();
         unitsLayer = new UnitsLayer();
         unitsLayer.setOpaque(false);
@@ -34,42 +38,50 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
         gridLayer.setOpaque(false);
         
 
-        layers.add(terrainLayer, JLayeredPane.DEFAULT_LAYER);
-        layers.add(gridLayer, JLayeredPane.PALETTE_LAYER);
-        layers.add(unitsLayer, JLayeredPane.DRAG_LAYER);
+        layeredPane.add(terrainLayer, JLayeredPane.DEFAULT_LAYER);
+        layeredPane.add(gridLayer, JLayeredPane.PALETTE_LAYER);
+        layeredPane.add(unitsLayer, JLayeredPane.DRAG_LAYER);
 
         JScrollPane contentPane = new JScrollPane();
-        contentPane.add(layers);
-        contentPane.setViewportView(layers);
+        contentPane.add(layeredPane);
+        contentPane.setViewportView(layeredPane);
         contentPane.setBackground(Color.BLACK);
         contentPane.setVisible(true);
         contentPane.setOpaque(true);
         return contentPane;
     }
 
-    public JLayeredPane getLayers() {
-        return layers;
+    public JLayeredPane getLayeredPane() {
+        return layeredPane;
     }
 
     @Override
-    public void loadScenario(ScenarioModel scenario) {
-        terrainLayer.initialize(scenario);
-        gridLayer.initialize(scenario);
-        unitsLayer.initialize(scenario);
+    public void loadScenario(final ScenarioModel scenario) {
         Dimension imageSize = new Dimension(scenario.getBoardGraphicsModel().getImageWidth(), scenario.getBoardGraphicsModel().getImageHeight());
-        layers.setPreferredSize(imageSize);
-        layers.setSize(imageSize);
-        terrainLayer.setPreferredSize(imageSize);
-        terrainLayer.setSize(imageSize);
-        gridLayer.setPreferredSize(imageSize);
-        gridLayer.setSize(imageSize);
-        unitsLayer.setPreferredSize(imageSize);
-        unitsLayer.setSize(imageSize);
+        layeredPane.setPreferredSize(imageSize);
+        layeredPane.setSize(imageSize);        
+        for(int i=0; i<imageLayers.length; i++){
+            final int f = i;
+            layerThreads[f] = new Thread(new Runnable() {
+                
+                @Override
+                public void run() {
+                    imageLayers[f].initialize(scenario);
+                }
+            });
+        }
+        for(int i=0; i<imageLayers.length; i++){
+            layerThreads[i].start();
+            imageLayers[i].setPreferredSize(imageSize);
+            imageLayers[i].setSize(imageSize);
+        }
     }
 
     @Override
     public void updateScenario(ScenarioModel scenario) {
-        unitsLayer.updateGlobalImage(scenario);
+        for(AbstractImageLayer layer : dynamicLayers){
+            layer.updateGlobalImage(scenario);
+        }
     }
 
     @Override

@@ -1,4 +1,4 @@
-package ares.application.gui_components;
+package ares.application.gui_components.layers;
 
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.TileModel;
@@ -66,7 +66,7 @@ public class TerrainLayer extends AbstractImageLayer {
         
         //Where the terrain will be painted
         // First layer is the open terrain
-        Image terrainImage = getTerrainImage(Terrain.OPEN,0);
+        BufferedImage terrainImage = getTerrainImage(Terrain.OPEN,0);
         g2.drawImage(terrainImage,pos.x,pos.y,this);
         
         // Get the index of the terrain image
@@ -88,7 +88,7 @@ public class TerrainLayer extends AbstractImageLayer {
              * I would do it myself, but sadly I lack at Photoshop skills :)
              */
 
-            Image bi;
+            BufferedImage bi;
             if (e.getKey() == Terrain.BORDER) {
                 bi = drawTileBorders(e.getValue());
             } else {
@@ -105,11 +105,8 @@ public class TerrainLayer extends AbstractImageLayer {
         g2.dispose();        
     }
     
-     private Image getTerrainImage(Terrain t, int index){
+     private BufferedImage getTerrainImage(Terrain t, int index){
         
-        // Where the terrain will be painted
-        BufferedImage terrainImage;
-
         //Make graphics are loaded
         loadTerrainGraphics(t);
         
@@ -117,9 +114,8 @@ public class TerrainLayer extends AbstractImageLayer {
         int cols = bgm.getImageProfile().getTerrainImageCols();
         int w = bgm.getImageProfile().getHexDiameter(), h = bgm.getImageProfile().getHexHeight();
         
-        terrainImage = terrainBufferMap.get(t).get().getSubimage(w * (index%cols), h * (index/cols), w, h);
-        return createImage(terrainImage.getSource());
-    }
+        return terrainBufferMap.get(t).get().getSubimage(w * (index%cols), h * (index/cols), w, h);
+     }
 
 
     /**
@@ -222,10 +218,15 @@ public class TerrainLayer extends AbstractImageLayer {
 
                     break;
 
-                //TODO Add all feature cases
-
+                case SNOWY:
+                case BRIDGE_DESTROYED:
+                case FROZEN:
+                case EXCLUDED_1:
+                case EXCLUDED_2:
+                 break;
                 default:
-                    break;
+                    // We shouldng't get here
+                    throw new AssertionError("Assertion failed: unkown terrain feature " + f.toString());
             }
         }
         

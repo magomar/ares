@@ -1,10 +1,11 @@
-package ares.application.gui_components;
+package ares.application.gui_components.layers;
 
+import ares.application.gui_components.UnitColors;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.*;
 import ares.application.models.forces.*;
-import ares.io.AresIO;
 import ares.engine.knowledge.KnowledgeCategory;
+import ares.io.AresIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.lang.ref.SoftReference;
@@ -46,12 +47,11 @@ public class UnitsLayer extends AbstractImageLayer {
 
     @Override
     public void createGlobalImage(ScenarioModel s) {
-        Collection<TileModel> tileModels = new ArrayDeque<> ();
+        Collection<TileModel> tileModels = new HashSet<> ();
         for (ForceModel forceModel : s.getForceModel()) {
             for (UnitModel unitModel : forceModel.getUnitModels()) {
                 TileModel tileModel = unitModel.getLocation();
-                if (!tileModels.contains(tileModel)) {
-                    tileModels.add(tileModel);
+                if (tileModels.add(tileModel)) {
                     paintTile(tileModel);
                 }
             }
@@ -74,7 +74,7 @@ public class UnitsLayer extends AbstractImageLayer {
         Graphics2D g2 = globalImage.createGraphics();
         
         //Where the single unit image will be painted
-        Image unitImage;
+        BufferedImage unitImage;
         
         //Calculate unit position
         Point pos = bgm.tileToPixel(t.getCoordinates());
@@ -84,7 +84,7 @@ public class UnitsLayer extends AbstractImageLayer {
             //Empty image
             unitImage = new BufferedImage(bgm.getHexDiameter(), bgm.getHeight(), BufferedImage.TYPE_INT_ARGB);
             g2.drawImage(unitImage, pos.x, pos.y,this);
-            repaint(pos.x, pos.y, unitImage.getWidth(this), unitImage.getHeight(this));
+            repaint(pos.x, pos.y, unitImage.getWidth(null), unitImage.getHeight(null));
             
         } else {
 
@@ -119,7 +119,7 @@ public class UnitsLayer extends AbstractImageLayer {
      * @return
      * @see KnowledgeCategory
      */
-    private Image getUnitImage(UnitModel unit) {
+    private BufferedImage getUnitImage(UnitModel unit) {
 
         // Where the units will be painted
         BufferedImage unitImage;
@@ -156,8 +156,9 @@ public class UnitsLayer extends AbstractImageLayer {
      */
     private void addUnitAttributes(BufferedImage unitImage, UnitModel unit) {
 
-        UnitAttributes ua = new UnitAttributes(unitImage);        
-        switch (unit.getKnowledgeCategory()) {
+        UnitAttributes ua = new UnitAttributes(unitImage);
+        KnowledgeCategory kc = unit.getKnowledgeCategory();
+        switch (kc) {
             case COMPLETE:
                 ua.paintUnitAttributes((KnownUnitModel) unit);
                 break;
@@ -167,9 +168,11 @@ public class UnitsLayer extends AbstractImageLayer {
             case POOR:
                 ua.paintUnitAttributes((DetectedUnitModel) unit);
                 break;
-            default:
-                //UnknownUnit or something Exception
+            case NONE:
                 break;
+            default:
+                //We shouldn't get here
+                throw new AssertionError("Assertion failed: unknown knowledge category " + unit.getKnowledgeCategory().toString());
         }
     }
     

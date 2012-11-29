@@ -1,4 +1,4 @@
-package ares.application.gui_components;
+package ares.application.gui_components.layers;
 
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.BoardGraphicsModel;
@@ -13,7 +13,7 @@ import javax.imageio.ImageIO;
  *
  * @author Heine <heisncfr@inf.upv.es>
  */
-public abstract class AbstractImageLayer extends javax.swing.JPanel{
+public abstract class AbstractImageLayer extends javax.swing.JPanel {
 
     // Final image to be painted on the JComponent
     protected BufferedImage globalImage;
