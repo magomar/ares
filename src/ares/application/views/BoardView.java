@@ -77,7 +77,6 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
         terrainLayer.flush();
         gridLayer.flush();
         unitsLayer.flush();
-        getContentPane().setVisible(false);
     }
 
     @Override

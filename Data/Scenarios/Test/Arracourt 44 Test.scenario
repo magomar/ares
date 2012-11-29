@@ -2049,7 +2049,7 @@
         </Place>
     </Map>
     <OOB>
-        <Force id="1">
+        <Force id="0">
             <Name>GERMAN</Name>
             <Proficiency>75</Proficiency>
             <Supply>15</Supply>
@@ -2558,7 +2558,7 @@
                 </Unit>
             </Formation>
         </Force>
-        <Force id="2">
+        <Force id="1">
             <Name>US ARMY</Name>
             <Proficiency>100</Proficiency>
             <Supply>30</Supply>
