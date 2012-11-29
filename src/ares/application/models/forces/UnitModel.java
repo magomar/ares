@@ -2,8 +2,8 @@ package ares.application.models.forces;
 
 import ares.application.gui_components.UnitColors;
 import ares.application.models.board.TileModel;
+import ares.engine.knowledge.KnowledgeCategory;
 import ares.platform.model.KnowledgeMediatedModel;
-import ares.scenario.board.KnowledgeLevel;
 import ares.scenario.forces.Unit;
 
 /**
@@ -14,7 +14,7 @@ public abstract class UnitModel extends KnowledgeMediatedModel {
 
     protected final Unit unit;
 
-    public UnitModel(Unit unit, KnowledgeLevel kLevel) {
+    public UnitModel(Unit unit, KnowledgeCategory kLevel) {
         super(kLevel);
         this.unit = unit;
     }

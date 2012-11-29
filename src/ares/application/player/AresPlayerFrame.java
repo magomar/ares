@@ -48,16 +48,18 @@ public final class AresPlayerFrame extends AbstractAresApplication {
         JFrame mainFrame = ComponentFactory.frame("Ares Player", desktopPane, getView(MenuBarView.class).getContentPane(), null);
         Dimension maxSize = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().getSize();
         Dimension defaultSize = new Dimension(1440, 900);
-        Dimension minSize = new Dimension(
-                (maxSize.width > defaultSize.width ? defaultSize.width : maxSize.width),
-                (maxSize.height > defaultSize.height ? defaultSize.height : maxSize.height));
+        Dimension minSize = new Dimension(1024,768);
+        Dimension minimunSize = new Dimension(
+                (maxSize.width < minSize.width ? maxSize.width : minSize.width),
+                (maxSize.height < minSize.height ? maxSize.height : minSize.height));
         Dimension preferredSize = new Dimension(
-                (maxSize.width < defaultSize.width ? defaultSize.width : maxSize.width),
-                (maxSize.height < defaultSize.height ? defaultSize.height : maxSize.height));
+                (maxSize.width < defaultSize.width ? maxSize.width : defaultSize.width),
+                (maxSize.height < defaultSize.height ? maxSize.height : defaultSize.height));
         mainFrame.setMinimumSize(minSize);
-        mainFrame.setPreferredSize(minSize);
+        mainFrame.setPreferredSize(preferredSize);
         mainFrame.setMaximumSize(maxSize);
-        mainFrame.setMaximizedBounds(new Rectangle(preferredSize));
+        mainFrame.setBounds(new Rectangle(preferredSize));
+
 
         // We have to show the main frame before setting the preferred size & bounds of its internal frames
         // because these depend on the desktopPane, whose size is set when the main frame is shown

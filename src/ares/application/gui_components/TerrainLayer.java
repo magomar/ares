@@ -3,6 +3,7 @@ package ares.application.gui_components;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.TileModel;
 import ares.data.jaxb.TerrainFeature;
+import ares.engine.knowledge.KnowledgeCategory;
 import ares.io.*;
 import ares.scenario.board.*;
 import java.awt.*;
@@ -51,7 +52,7 @@ public class TerrainLayer extends AbstractImageLayer {
     public void paintTile(TileModel t){
 
         //If I don't know anything about it
-        if(t.getKnowledgeLevel() == KnowledgeLevel.NONE) return;
+        if(t.getKnowledgeCategory() == KnowledgeCategory.NONE) return;
         
         //Calculate tile position
         Point pos = bgm.tileToPixel(t.getCoordinates());

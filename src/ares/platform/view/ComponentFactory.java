@@ -123,7 +123,7 @@ public abstract class ComponentFactory {
         internalFrame.setIconifiable(true);
         internalFrame.setPreferredSize(new Dimension(600, 400));
         if (contentPane != null) {
-            internalFrame.setContentPane(new JScrollPane(contentPane));
+            internalFrame.setContentPane(contentPane);
         }
         if (title != null) {
             internalFrame.setTitle(title);

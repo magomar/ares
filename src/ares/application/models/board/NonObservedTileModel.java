@@ -1,7 +1,7 @@
 package ares.application.models.board;
 
 import ares.application.models.forces.UnitModel;
-import ares.scenario.board.KnowledgeLevel;
+import ares.engine.knowledge.KnowledgeCategory;
 import ares.scenario.board.Tile;
 
 /**
@@ -10,7 +10,7 @@ import ares.scenario.board.Tile;
  */
 public class NonObservedTileModel extends TileModel {
 
-    public NonObservedTileModel(Tile tile, KnowledgeLevel kLevel) {
+    public NonObservedTileModel(Tile tile, KnowledgeCategory kLevel) {
         super(tile, kLevel);
     }
 
@@ -28,4 +28,10 @@ public class NonObservedTileModel extends TileModel {
     public boolean isEmpty() {
         return true;
     }
+
+    @Override
+    public String getDescription() {
+        return tile.toStringMultiline();
+    }
+    
 }

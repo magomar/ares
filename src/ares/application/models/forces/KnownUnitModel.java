@@ -1,6 +1,6 @@
 package ares.application.models.forces;
 
-import ares.scenario.board.KnowledgeLevel;
+import ares.engine.knowledge.KnowledgeCategory;
 import ares.scenario.forces.Unit;
 
 /**
@@ -10,7 +10,7 @@ import ares.scenario.forces.Unit;
 public final class KnownUnitModel extends IdentifiedUnitModel {
 
     public KnownUnitModel(Unit unit) {
-        super(unit, KnowledgeLevel.COMPLETE);
+        super(unit, KnowledgeCategory.COMPLETE);
     }
 
     public int getStamina() {

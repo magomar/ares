@@ -6,6 +6,7 @@ import ares.application.models.forces.KnownUnitModel;
 import ares.application.models.forces.UnitModel;
 import ares.data.jaxb.Availability;
 import ares.data.jaxb.Emphasis;
+import ares.engine.knowledge.KnowledgeCategory;
 import ares.engine.movement.MovementType;
 import ares.platform.model.ModelProvider;
 import ares.platform.model.UserRole;
@@ -15,9 +16,9 @@ import ares.scenario.assets.AssetTrait;
 import ares.scenario.assets.AssetType;
 import ares.scenario.assets.AssetTypes;
 import ares.scenario.board.Board;
-import ares.scenario.board.KnowledgeLevel;
 import ares.scenario.board.Tile;
 import java.util.*;
+import java.util.Map.Entry;
 
 /**
  *
@@ -202,7 +203,7 @@ public abstract class Unit implements ModelProvider<UnitModel> {
      * becoming exhausted.
      */
     protected int maxRange;
-    private final Map<KnowledgeLevel, UnitModel> models;
+    private final Map<KnowledgeCategory, UnitModel> models;
 
     protected Unit(ares.data.jaxb.Unit unit, Formation formation, Force force, Scenario scenario) {
         id = unit.getId();
@@ -263,10 +264,10 @@ public abstract class Unit implements ModelProvider<UnitModel> {
         int y = unit.getY();
         location = board.getMap()[x][y];
         models = new HashMap<>();
-        models.put(KnowledgeLevel.NONE, null);
-        models.put(KnowledgeLevel.POOR, new DetectedUnitModel(this));
-        models.put(KnowledgeLevel.GOOD, new IdentifiedUnitModel(this));
-        models.put(KnowledgeLevel.COMPLETE, new KnownUnitModel(this));
+//        models.put(KnowledgeCategory.NONE, null);
+        models.put(KnowledgeCategory.POOR, new DetectedUnitModel(this));
+        models.put(KnowledgeCategory.GOOD, new IdentifiedUnitModel(this));
+        models.put(KnowledgeCategory.COMPLETE, new KnownUnitModel(this));
     }
 
     /**
@@ -317,6 +318,14 @@ public abstract class Unit implements ModelProvider<UnitModel> {
 
     public Map<AssetTrait, Integer> getTraits() {
         return traits;
+    }
+
+    public int getTraitValue(AssetTrait trait) {
+        if (traits.containsKey(trait)) {
+            return traits.get(trait);
+        } else {
+            return 0;
+        }
     }
 
     public Tile getLocation() {
@@ -463,6 +472,20 @@ public abstract class Unit implements ModelProvider<UnitModel> {
         return opState;
     }
 
+    public void recover() {
+        quality = (2 * proficiency + readiness) / 3;
+        efficacy = (2 * proficiency + readiness + supply) / 4;
+        int enduranceRestored = (MAX_ENDURANCE * 200 + MAX_ENDURANCE * readiness + MAX_ENDURANCE * supply) / 400;
+        endurance = Math.min(endurance + enduranceRestored, enduranceRestored);
+        stamina = endurance * 100 / MAX_ENDURANCE;
+        maxRange = speed * MAX_ENDURANCE / 90 / 1000;
+        range = speed * endurance / 90 / 1000;
+//            Scale scale = scenario.getScale();
+//            attackStrength = (int) (efficacy * (antiTank + antiPersonnel) / scale.getArea());
+//            defenseStrength = (int) (efficacy * defense / scale.getArea());
+//            health = (int) (efficacy - 1 / 20);
+    }
+
     protected static class UnitEntryComparator implements Comparator<Unit> {
 
         @Override
@@ -528,28 +551,47 @@ public abstract class Unit implements ModelProvider<UnitModel> {
         StringBuilder sb = new StringBuilder(name).append(" (").append(echelon).append(')').append('\n');
         sb.append("Belongs to ").append(formation).append(" (").append(force).append(")\n");
         sb.append("Unit type: ").append(type).append('\n');
+        //        sb.append("Location: ").append(location).append('\n');
         sb.append("Movement Type: ").append(movement).append('\n');
-        sb.append("Location: ").append(location).append('\n');
+        sb.append("Speed: ").append(speed * 60.0 / 1000).append('\n');
         sb.append("OpState: ").append(opState).append('\n');
         sb.append("Stamina: ").append(stamina).append('\n');
-        sb.append("Speed: ").append(speed).append('\n');
         sb.append("Proficiency: ").append(proficiency).append('\n');
         sb.append("Readiness: ").append(readiness).append('\n');
-        sb.append("Supply: ").append(supply).append("\n\n");
-        sb.append("___Assets___\n");
+        sb.append("Supply: ").append(supply).append('\n');
+        sb.append("\n___Strenghts___\n");
+        sb.append("Attack ").append(efficacy * (antiTank + antiPersonnel)).append('\n');
+        sb.append("Defense: ").append(efficacy * defense).append("\n");
+        sb.append("AT: ").append(efficacy * antiTank).append("\n");
+        sb.append("AP: ").append(efficacy * antiPersonnel).append("\n");
+        sb.append("HAA: ").append(efficacy * highAntiAir).append("\n");
+        sb.append("LAA: ").append(efficacy * lowAntiAir).append("\n");
+        sb.append("Art: ").append(efficacy * artillery).append("\n");
+        sb.append("Art. Range: ").append(range).append("\n");
+        if (!type.getCapabilities().isEmpty()) {
+            sb.append("\n___Capabilities___\n");
+            for (Capability capability : type.getCapabilities()) {
+                sb.append(capability).append('\n');
+            }
+        }
+        sb.append("\n___Assets___\n");
         for (Asset asset : assets.values()) {
             sb.append(asset).append('\n');
+        }
+        sb.append("\n___Traits___\n");
+        for (Entry<AssetTrait, Integer> traitEntry : traits.entrySet()) {
+            sb.append(traitEntry.getKey()).append(": ").append(traitEntry.getValue()).append('\n');
         }
         return sb.toString();
     }
 
     @Override
     public final UnitModel getModel(UserRole role) {
-        KnowledgeLevel kLevel = location.getKnowledgeLevel(role);
+        KnowledgeCategory kLevel = location.getKnowledgeLevel(role).getCategory();
         return models.get(kLevel);
     }
 
-    public final UnitModel getModel(KnowledgeLevel kLevel) {
+    public final UnitModel getModel(KnowledgeCategory kLevel) {
         return models.get(kLevel);
     }
 }

@@ -4,7 +4,7 @@ import ares.application.models.ScenarioModel;
 import ares.application.models.board.*;
 import ares.application.models.forces.*;
 import ares.io.AresIO;
-import ares.scenario.board.KnowledgeLevel;
+import ares.engine.knowledge.KnowledgeCategory;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.lang.ref.SoftReference;
@@ -113,11 +113,11 @@ public class UnitsLayer extends AbstractImageLayer {
     }
 
     /**
-     * Returns a unit image based on the unit color, IconId and KnowledgeLevel
+     * Returns a unit image based on the unit color, IconId and KnowledgeCategory
      * 
      * @param unit
      * @return
-     * @see KnowledgeLevel
+     * @see KnowledgeCategory
      */
     private Image getUnitImage(UnitModel unit) {
 
@@ -157,7 +157,7 @@ public class UnitsLayer extends AbstractImageLayer {
     private void addUnitAttributes(BufferedImage unitImage, UnitModel unit) {
 
         UnitAttributes ua = new UnitAttributes(unitImage);        
-        switch (unit.getKnowledgeLevel()) {
+        switch (unit.getKnowledgeCategory()) {
             case COMPLETE:
                 ua.paintUnitAttributes((KnownUnitModel) unit);
                 break;

@@ -14,7 +14,7 @@ import ares.platform.model.UserRole;
 import ares.platform.view.InternalFrameView;
 import ares.scenario.Scenario;
 import ares.scenario.board.*;
-import ares.scenario.forces.Unit;
+import ares.scenario.forces.Force;
 import java.awt.Point;
 import java.awt.event.*;
 import java.beans.PropertyChangeEvent;
@@ -22,6 +22,7 @@ import java.io.File;
 import java.util.concurrent.*;
 import java.util.logging.*;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -34,7 +35,7 @@ public class WeGoPlayerController extends AbstractController {
     private final RealTimeEngine engine;
     private UserRole userRole;
     private Tile selectedTile;
-    private Unit selectedUnit;
+//    private Unit selectedUnit;
     private static final Logger LOG = Logger.getLogger(WeGoPlayerController.class.getName());
 
     public WeGoPlayerController(AbstractAresApplication mainApplication) {
@@ -72,6 +73,9 @@ public class WeGoPlayerController extends AbstractController {
             boardFrame.setTitle("Time: " + clockEvent.getClock().toString());
             BoardView boardView = boardFrame.getView();
             boardView.updateScenario(engine.getScenarioModel(userRole));
+            if (selectedTile != null) {
+                getInternalFrameView(UnitInfoView.class).getView().updateInfo(selectedTile.getModel(userRole));
+            }
             if (clockEvent.getEventTypes().contains(ClockEventType.TURN)) {
                 MenuBarView menuBarView = getView(MenuBarView.class);
                 menuBarView.setMenuElementEnabled(EngineCommands.PAUSE.getName(), false);
@@ -94,7 +98,26 @@ public class WeGoPlayerController extends AbstractController {
                 ares.data.jaxb.Scenario scen = (ares.data.jaxb.Scenario) AresIO.ARES_IO.unmarshall(file);
                 File equipmentFile = AresIO.ARES_IO.getAbsolutePath(AresPaths.EQUIPMENT.getPath(), "ToawEquipment" + AresFileType.EQUIPMENT.getFileExtension()).toFile();
                 EquipmentDB eqp = (EquipmentDB) AresIO.ARES_IO.unmarshall(equipmentFile);
-                return new Scenario(scen, eqp);
+                Scenario scenario = new Scenario(scen, eqp);
+                // set the user role by asking (using a dialog window)
+                Force[] forces = scenario.getForces();
+                UserRole[] options = new UserRole[forces.length + 1];
+                for (int i = 0; i < forces.length; i++) {
+                    Force force = forces[i];
+                    options[i] = UserRole.getForceRole(force);
+                }
+                options[forces.length] = UserRole.GOD;
+
+                int n = JOptionPane.showOptionDialog(mainApplication.getMainFrame(),
+                        "Please select a user role",
+                        "Select your role",
+                        JOptionPane.YES_NO_CANCEL_OPTION,
+                        JOptionPane.QUESTION_MESSAGE,
+                        null,
+                        options,
+                        options[2]);
+                userRole = options[n];
+                return scenario;
             } else {
                 return null;
             }
@@ -105,14 +128,13 @@ public class WeGoPlayerController extends AbstractController {
             if (scenario != null) {
                 // set the engine with the new scenario
                 engine.setScenario(scenario);
-                // set the user role
-                userRole = UserRole.getForceRole(scenario.getForces()[0]);
+
                 // obtain the scenario model with the active userRole
                 ScenarioModel scenarioModel = engine.getScenarioModel(userRole);
                 getInternalFrameView(BoardView.class).getView().loadScenario(scenarioModel);
 
                 // set main window title & show appropriate views
-                mainApplication.setTitle(scenario.getName() + "   " + scenario.getCalendar().toString());
+                mainApplication.setTitle("ARES   " + scenario.getName() + "   " + scenario.getCalendar().toString() + "   Role: " + userRole);
                 getInternalFrameView(BoardView.class).show();
                 getInternalFrameView(UnitInfoView.class).show();
                 getInternalFrameView(MessagesView.class).show();
@@ -208,26 +230,25 @@ public class WeGoPlayerController extends AbstractController {
             Scenario scenario = engine.getScenario();
             BoardGraphicsModel bgm = scenario.getBoardGraphicsModel();
             Point pixel = new Point(me.getX(), me.getY());
-            if (!bgm.isWithinImageRange(pixel) || me.getButton() != MouseEvent.BUTTON1) {
-                return;
+            if (bgm.isWithinImageRange(pixel) && me.getButton() == MouseEvent.BUTTON1) {
+                Point tilePoint = bgm.pixelToTile(pixel);
+                Tile tile = scenario.getBoard().getTile(tilePoint.x, tilePoint.y);
+                boolean changeTile = !tile.equals(selectedTile);
+                selectedTile = tile;
+                UnitsStack stack = tile.getUnitsStack();
+                boolean changeUnit = false;
+                if (!changeTile && !stack.isEmpty()) {
+                    stack.next();
+                    changeUnit = true;
+                }
+                if (changeTile || changeUnit) {
+                    getInternalFrameView(UnitInfoView.class).getView().updateInfo(selectedTile.getModel(userRole));
+                    getInternalFrameView(BoardView.class).getView().updateTile(selectedTile.getModel(userRole));
+                }
+            } else if (me.getButton() == MouseEvent.BUTTON3) {
+                selectedTile = null;
+                getInternalFrameView(UnitInfoView.class).getView().clear();
             }
-
-            Point tilePoint = bgm.pixelToTile(pixel);
-            Tile tile = scenario.getBoard().getTile(tilePoint.x, tilePoint.y);
-            boolean changeTile = !tile.equals(selectedTile);
-            selectedTile = tile;
-            UnitsStack stack = tile.getUnitsStack();
-
-            if (!changeTile && !stack.isEmpty()) {
-                stack.next();
-            }
-            if (!stack.isEmpty()) {
-                getInternalFrameView(UnitInfoView.class).getView().selectUnit(stack.getPointOfInterest().getModel(userRole));
-                getInternalFrameView(BoardView.class).getView().updateTile(tile.getModel(userRole));
-            } else {
-                getInternalFrameView(UnitInfoView.class).getView().unSelectUnit();
-            }
-
         }
     }
 }

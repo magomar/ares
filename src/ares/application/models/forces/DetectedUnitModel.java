@@ -2,7 +2,7 @@ package ares.application.models.forces;
 
 import ares.application.gui_components.UnitColors;
 import ares.application.models.board.TileModel;
-import ares.scenario.board.KnowledgeLevel;
+import ares.engine.knowledge.KnowledgeCategory;
 import ares.scenario.forces.*;
 
 /**
@@ -12,10 +12,10 @@ import ares.scenario.forces.*;
 public class DetectedUnitModel extends UnitModel {
 
     public DetectedUnitModel(Unit unit) {
-        super(unit, KnowledgeLevel.POOR);
+        super(unit, KnowledgeCategory.POOR);
     }
 
-    protected DetectedUnitModel(Unit unit, KnowledgeLevel kLevel) {
+    protected DetectedUnitModel(Unit unit, KnowledgeCategory kLevel) {
         super(unit, kLevel);
     }
 

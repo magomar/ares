@@ -6,6 +6,8 @@ import ares.engine.action.ActionState;
 import ares.engine.action.actions.RestAction;
 import ares.engine.action.actions.WaitAction;
 import ares.engine.realtime.Clock;
+import ares.engine.realtime.ClockEvent;
+import ares.engine.realtime.ClockEventType;
 import ares.scenario.board.Tile;
 import ares.scenario.forces.Unit;
 import java.util.PriorityQueue;
@@ -83,24 +85,21 @@ public class UnitActor implements Actor {
 //        return action.getState();
 //    }
 
-    public void act(Clock clock) {
+    public void perceive(Clock clock) {
+        // TODO PERCEPTION 
+        for (Tile tile : unit.getLocation().getNeighbors().values()) {
+            tile.reconnoissance(unit, clock.MINUTES_PER_TICK);
+        }
+    }
+    
+    public void act(ClockEvent ce) {
+        Clock clock = ce.getClock();
         if (currentAction != null) {
             currentAction.execute(clock);
-
         }
-//        if (clock.isNewDay()) {
-//            quality = (2 * proficiency + readiness) / 3;
-//            efficacy = (2 * proficiency + readiness + supply) / 4;
-//            int enduranceRestored = (MAX_ENDURANCE * 200 + MAX_ENDURANCE * readiness + MAX_ENDURANCE * supply) / 400;
-//            endurance = Math.min(endurance + enduranceRestored, enduranceRestored);
-//            stamina = endurance * 100 / MAX_ENDURANCE;
-//            maxRange = speed * MAX_ENDURANCE / 90 / 1000;
-//            range = speed * endurance / 90 / 1000;
-//            Scale scale = scenario.getScale();
-//            attackStrength = (int) (efficacy * (antiTank + antiPersonnel) / scale.getArea());
-//            defenseStrength = (int) (efficacy * defense / scale.getArea());
-//            health = (int) (efficacy - 1 / 20);
-//        }
+        if (ce.getEventTypes().contains(ClockEventType.DAY)) {
+            unit.recover();
+        }
     }
 
 //    public TacticalMission getTacticalMission() {

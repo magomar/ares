@@ -1,9 +1,7 @@
 package ares.application.models.forces;
 
-import ares.scenario.Scale;
-import ares.scenario.board.KnowledgeLevel;
+import ares.engine.knowledge.KnowledgeCategory;
 import ares.scenario.forces.*;
-import java.awt.Point;
 
 /**
  *
@@ -12,10 +10,10 @@ import java.awt.Point;
 public class IdentifiedUnitModel extends DetectedUnitModel {
 
     public IdentifiedUnitModel(Unit unit) {
-        super(unit, KnowledgeLevel.GOOD);
+        super(unit, KnowledgeCategory.GOOD);
     }
 
-    protected IdentifiedUnitModel(Unit unit, KnowledgeLevel kLevel) {
+    protected IdentifiedUnitModel(Unit unit, KnowledgeCategory kLevel) {
         super(unit, kLevel);
     }
 

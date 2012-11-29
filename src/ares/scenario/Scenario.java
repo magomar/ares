@@ -12,7 +12,9 @@ import ares.scenario.forces.Force;
 import ares.scenario.forces.Unit;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -29,6 +31,7 @@ public final class Scenario implements ModelProvider<ScenarioModel> {
     private Force[] forces;
     private AresCalendar calendar;
     private BoardGraphicsModel boardInfo;
+    private Map<UserRole, ScenarioModel> models;
 
     public Scenario(ares.data.jaxb.Scenario scenario, EquipmentDB eqpDB) {
         name = scenario.getHeader().getName();
@@ -40,18 +43,25 @@ public final class Scenario implements ModelProvider<ScenarioModel> {
         Collection<ares.data.jaxb.Force> scenForces = oob.getForce();
         forces = new Force[scenForces.size()];
         for (ares.data.jaxb.Force force : oob.getForce()) {
-            forces[force.getId() - 1] = new Force(force, this);
-            //TODO modify ToawToAres to make force indexes in [0.. n-1] instead of substracting 1 here
+            forces[force.getId()] = new Force(force, this);
         }
-
+        for (Force force : forces) {
+            force.initialize(forces);
+        }
         board.initialize(scenario, this, forces);
 
         System.out.println(
                 "Scenario loaded: " + toString());
 
         boardInfo = new BoardGraphicsModel(board);
+        models = new HashMap<>();
+        models.put(UserRole.GOD, new ScenarioModel(this, UserRole.GOD));
+        for (Force force : forces) {
+            models.put(UserRole.getForceRole(force), new ScenarioModel(this, UserRole.getForceRole(force)));
+        }
+
     }
-    
+
     public Board getBoard() {
         return board;
     }
@@ -95,6 +105,6 @@ public final class Scenario implements ModelProvider<ScenarioModel> {
 
     @Override
     public ScenarioModel getModel(UserRole role) {
-        return new ScenarioModel(this, role);
+        return models.get(role);
     }
 }

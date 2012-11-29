@@ -6,6 +6,7 @@ import ares.engine.actors.UnitActor;
 import ares.platform.model.AbstractBean;
 import ares.platform.model.UserRole;
 import ares.scenario.Scenario;
+import ares.scenario.board.Tile;
 import ares.scenario.forces.Force;
 import ares.scenario.forces.Formation;
 import ares.scenario.forces.Unit;
@@ -17,7 +18,7 @@ import java.util.logging.Logger;
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public class RealTimeEngine  extends AbstractBean {
+public class RealTimeEngine extends AbstractBean {
 
     public static final String SCENARIO_PROPERTY = "Scenario";
     public static final String CLOCK_EVENT_PROPERTY = "ClockEvent";
@@ -62,7 +63,7 @@ public class RealTimeEngine  extends AbstractBean {
     public ScenarioModel getScenarioModel(UserRole role) {
         return scenario.getModel(role);
     }
-    
+
     public void start() {
         LOG.log(Level.INFO, "*** Clock Started {0}", clock);
         running = true;
@@ -76,15 +77,15 @@ public class RealTimeEngine  extends AbstractBean {
 
     public void update(ClockEvent clockEvent) {
 //        LOG.log(Level.INFO, "+++++ New Time:  {0}", clock);
+        ClockEvent oldValue = this.clockEvent;
+        this.clockEvent = clockEvent;
         do {
             phase.run(this);
             phase = phase.getNext();
         } while (phase != Phase.ACT);
-        
-        ClockEvent oldValue = this.clockEvent;
         firePropertyChange(CLOCK_EVENT_PROPERTY, oldValue, clockEvent);
         Set<ClockEventType> clockEventTypes = clockEvent.getEventTypes();
-        
+
         if (clockEventTypes.contains(ClockEventType.TURN)) {
             LOG.log(Level.INFO, "++++++++++ New Turn: {0}", clock.getTurn());
             running = false;
@@ -95,7 +96,7 @@ public class RealTimeEngine  extends AbstractBean {
         if (clockEvent.getEventTypes().contains(ClockEventType.FINISHED)) {
             LOG.log(Level.INFO, "********** Scenario Ended at  {0}", clock);
             return;
-        } 
+        }
         if (running) {
             clock.tick();
         }
@@ -104,11 +105,10 @@ public class RealTimeEngine  extends AbstractBean {
 //    void activate() {
 //        LOG.log(Level.INFO, "Activate");
 //    }
-
     protected void act() {
 //        LOG.log(Level.INFO, "Act");
         for (UnitActor unitActor : unitActors) {
-            unitActor.act(clock);
+            unitActor.act(clockEvent);
         }
 
     }
@@ -120,4 +120,20 @@ public class RealTimeEngine  extends AbstractBean {
         }
     }
 
+    protected void perceive() {
+//               LOG.log(Level.INFO, "Perceive");
+        Tile[][] map = scenario.getBoard().getMap();
+        for (int i = 0; i < map.length; i++) {
+            Tile[] tiles = map[i];
+            for (int j = 0; j < tiles.length; j++) {
+                Tile tile = tiles[j];
+                tile.updateKnowledge(clockEvent);
+            }
+        }
+
+        for (UnitActor unitActor : unitActors) {
+            unitActor.perceive(clock);
+        }
+
+    }
 }
