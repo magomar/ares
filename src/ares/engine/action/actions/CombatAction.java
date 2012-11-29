@@ -3,7 +3,6 @@ package ares.engine.action.actions;
 import ares.engine.action.ActionType;
 import ares.engine.actors.UnitActor;
 import ares.engine.realtime.Clock;
-import ares.scenario.board.Direction;
 import ares.scenario.board.Tile;
 
 /**
@@ -12,8 +11,8 @@ import ares.scenario.board.Tile;
  */
 public class CombatAction extends MoveAction {
 
-    public CombatAction(UnitActor actor, ActionType type, Tile origin, Tile destination, int start, Direction fromDir, int distance) {
-        super(actor, type, origin, destination, start, fromDir, distance);
+    public CombatAction(UnitActor actor, ActionType type, Tile origin, Tile destination, int start, int distance) {
+        super(actor, type, origin, destination, start, distance);
     }
 
     @Override

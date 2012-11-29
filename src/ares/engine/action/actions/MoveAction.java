@@ -3,6 +3,8 @@ package ares.engine.action.actions;
 import ares.engine.action.AbstractAction;
 import ares.engine.action.ActionType;
 import ares.engine.actors.UnitActor;
+import ares.engine.realtime.Clock;
+import ares.scenario.board.Board;
 import ares.scenario.board.Direction;
 import ares.scenario.board.Tile;
 
@@ -23,13 +25,22 @@ public abstract class MoveAction extends AbstractAction {
      * presence of enemy units in the vicinity
      */
     protected int speed;
+    /**
+     * The distance to move (this is the distance between two tiles)
+     */
+    protected int distance;
 
-    public MoveAction(UnitActor actor, ActionType type, Tile origin, Tile destination, int start, Direction fromDir, int distance) {
+    public MoveAction(UnitActor actor, ActionType type, Tile origin, Tile destination, Clock clock, int distance) {
+        this(actor, type, origin, destination, clock.getCurrentTime(), distance);
+    }
+
+    public MoveAction(UnitActor actor, ActionType type, Tile origin, Tile destination, int start, int distance) {
         super(actor, type, origin, destination, start);
-        this.fromDir = fromDir;
+        this.fromDir = Board.getDirBetween(origin, destination);
         int cost = origin.getMoveCost(fromDir).getActualCost(actor.getUnit(), destination, fromDir);
         speed = actor.getUnit().getSpeed() / cost;
         timeToComplete = (speed > 0 ? (int) (distance / speed) : Integer.MAX_VALUE);
+        this.distance = distance;
     }
 
     /**
@@ -42,7 +53,6 @@ public abstract class MoveAction extends AbstractAction {
 
     @Override
     public String toString() {
-        return actor.toString() + " from " + location + " to " + destination + " at " + (speed * 60.0 / 1000) + " km/h";
+        return super.toString() + " from " + origin + " to " + destination + " at " + (speed * 60.0 / 1000) + " km/h";
     }
-
 }

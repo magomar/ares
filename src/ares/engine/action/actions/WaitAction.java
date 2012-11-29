@@ -30,6 +30,6 @@ public class WaitAction extends AbstractAction {
 
     @Override
     public String toString() {
-        return actor.toString() + "WAITED" + " @ " + location + " (" + start + "->" + finish + ")";
+        return actor.toString() + "WAITED" + " @ " + origin + " (" + start + "->" + finish + ")";
     }
 }

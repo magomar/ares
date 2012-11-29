@@ -46,7 +46,7 @@ public class ChangeDeploymentAction extends AbstractAction {
 
     @Override
     public String toString() {
-        return actor.toString() + "ChangeDeployment " + " @ " + location + " from " + type.getPrecondition() + " to"
+        return actor.toString() + "ChangeDeployment " + " @ " + origin + " from " + type.getPrecondition() + " to"
                 + type.getEffectAfter() + " (" + start + "->" + finish + ")";
     }
 }

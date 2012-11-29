@@ -1,6 +1,5 @@
 package ares.engine.actors;
 
-import ares.engine.action.AbstractAction;
 import ares.engine.action.Action;
 import ares.engine.action.ActionState;
 import ares.engine.action.actions.RestAction;
@@ -10,7 +9,8 @@ import ares.engine.realtime.ClockEvent;
 import ares.engine.realtime.ClockEventType;
 import ares.scenario.board.Tile;
 import ares.scenario.forces.Unit;
-import java.util.PriorityQueue;
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.Queue;
 
 /**
@@ -42,20 +42,22 @@ public class UnitActor implements Actor {
 
     public UnitActor(Unit unit) {
         this.unit = unit;
-        // Probably we do not need to use a priority queue, a linkedlist will suffice... 
-        this.pendingActions = new PriorityQueue<>(2, AbstractAction.ACTION_START_COMPARATOR);
+        // Probably we do not need to use a priority queue, a linkedlist or a queue will suffice... 
+//        this.pendingActions = new PriorityQueue<>(2, AbstractAction.ACTION_START_COMPARATOR);
+        pendingActions = new LinkedList<>();
     }
 
     public void addAction(Action action) {
         pendingActions.add(action);
     }
 
-    public void schedule(Clock clock
-//            , ActionSpace space
+    public void schedule(ClockEvent ce //, ActionSpace space
             ) {
+        Clock clock = ce.getClock();
         if (currentAction != null
                 && (currentAction.getState() == ActionState.COMPLETED
                 || currentAction.getState() == ActionState.ABORTED)) {
+            System.out.println(currentAction.toString(clock));
             currentAction = null;
         }
         if (currentAction == null) {
@@ -66,6 +68,7 @@ public class UnitActor implements Actor {
                 if (actionStart < clock.getCurrentTime() + clock.MINUTES_PER_TICK) {
                     currentAction = pendingActions.poll();
 //                    space.putAction(destination, currentAction);
+                    System.out.println(currentAction.toString(clock));
                 }
             } else {
                 int time = clock.getCurrentTime();
@@ -74,8 +77,10 @@ public class UnitActor implements Actor {
                 } else {
                     currentAction = new RestAction(this, destination, time);
                 }
+                System.out.println(currentAction.toString(clock));
             }
         }
+        
     }
 //    public ActionState executeAction(Action action, Clock clock) {
 //        if (action != null && action.getState() != ActionState.COMPLETED && action.getState() != ActionState.ABORTED) {
@@ -86,12 +91,11 @@ public class UnitActor implements Actor {
 //    }
 
     public void perceive(Clock clock) {
-        // TODO PERCEPTION 
         for (Tile tile : unit.getLocation().getNeighbors().values()) {
             tile.reconnoissance(unit, clock.MINUTES_PER_TICK);
         }
     }
-    
+
     public void act(ClockEvent ce) {
         Clock clock = ce.getClock();
         if (currentAction != null) {
@@ -123,6 +127,4 @@ public class UnitActor implements Actor {
 //        return "UnitActor{" + "unit=" + unit + ", currentAction=" + currentAction + ", pendingActions=" + pendingActions + '}';
         return unit.toString();
     }
-    
-    
 }

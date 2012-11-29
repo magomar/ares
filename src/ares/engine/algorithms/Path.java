@@ -68,4 +68,11 @@ public class Path {
     public LinkedList<Tile> getTiles() {
         return tiles;
     }
+
+    @Override
+    public String toString() {
+        return "Path{" + tiles + '}';
+    }
+    
+    
 }

@@ -208,7 +208,7 @@ public class Formation implements ModelProvider<FormationModel> {
 
     @Override
     public String toString() {
-        return name;
+        return name + "(" + id + ")";
     }
 
     @Override

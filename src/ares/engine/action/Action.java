@@ -27,4 +27,6 @@ public interface Action {
     public Tile getDestination();
 
     public ActionState getState();
+    
+    public String toString(Clock clock);
 }

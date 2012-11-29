@@ -94,10 +94,9 @@ public final class Board implements ModelProvider<BoardModel> {
     }
 
     public static Direction getDirBetween(Tile from, Tile to) {
-        Point coord = to.getCoordinates();
-        int incX = coord.x - coord.x;
-        int incY = coord.y - coord.y;
-        if (coord.x % 2 == 0) {
+        int incX = to.getCoordinates().x - from.getCoordinates().x;
+        int incY = to.getCoordinates().y - from.getCoordinates().y;
+        if (from.getCoordinates().x % 2 == 0) {
             for (Direction dir : Direction.values()) {
                 if (dir.getIncI() == incX && dir.getIncJEven() == incY) {
                     return dir;

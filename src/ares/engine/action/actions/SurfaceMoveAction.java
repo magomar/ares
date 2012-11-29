@@ -1,13 +1,11 @@
 package ares.engine.action.actions;
 
-import ares.engine.realtime.Clock;
-import ares.scenario.board.Direction;
-import ares.scenario.board.Tile;
-import ares.scenario.forces.Force;
-import ares.engine.messages.EngineMessageLogger;
 import ares.engine.action.ActionState;
 import ares.engine.action.ActionType;
 import ares.engine.actors.UnitActor;
+import ares.engine.realtime.Clock;
+import ares.scenario.board.Tile;
+import ares.scenario.forces.Force;
 import ares.scenario.forces.Unit;
 
 /**
@@ -15,9 +13,13 @@ import ares.scenario.forces.Unit;
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class SurfaceMoveAction extends MoveAction {
+    
+    public SurfaceMoveAction(UnitActor actor, ActionType type, Tile origin, Tile destination, Clock clock, int distance) {
+        super(actor, type, origin, destination, clock.getCurrentTime(), distance);
+    }
 
-    public SurfaceMoveAction(UnitActor actor, ActionType type, Tile origin, Tile destination, int start, Direction fromDir, int distance) {
-        super(actor, type, origin, destination, start, fromDir, distance);
+    public SurfaceMoveAction(UnitActor actor, ActionType type, Tile origin, Tile destination, int start, int distance) {
+        super(actor, type, origin, destination, start, distance);
     }
 
 
@@ -34,7 +36,7 @@ public class SurfaceMoveAction extends MoveAction {
                 finish = clock.getCurrentTime();
                 unit.setOpState(type.getPrecondition());
                 
-                System.out.println("[" + clock + "] -> " + "ABORTED " + this.toString());
+//                System.out.println("[" + clock + "] -> " + "ABORTED " + this.toString());
             } else {
                 if (timeToComplete > clock.MINUTES_PER_TICK) {
                     duration = clock.MINUTES_PER_TICK;
@@ -45,11 +47,11 @@ public class SurfaceMoveAction extends MoveAction {
                     timeToComplete = 0;
                     state = ActionState.COMPLETED;
                     finish = clock.getCurrentTime() - clock.MINUTES_PER_TICK + duration;
-                    location.remove(unit);
+                    origin.remove(unit);
                     destination.add(unit);
                     unit.setLocation(destination);
                     unit.setOpState(type.getEffectAfter());
-                    System.out.println("[" + clock + "] -> " + "COMPLETED " + this.toString());
+//                    System.out.println("[" + clock + "] -> " + "COMPLETED " + this.toString());
 //                    EngineMessageLogger.info(this.toString());
                 }
             }
@@ -58,6 +60,7 @@ public class SurfaceMoveAction extends MoveAction {
         } else {
 //            System.out.println("[" + clock + "] -> " + "DELAYED " + this.toString());
         }
+//        System.out.println(toString(clock));
     }
 
 

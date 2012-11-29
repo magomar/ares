@@ -44,4 +44,11 @@ public abstract class TileModel extends KnowledgeMediatedModel {
     public abstract boolean isEmpty();
     
     public abstract String getDescription();
+
+    @Override
+    public String toString() {
+        return tile.toString();
+    }
+    
+    
 }

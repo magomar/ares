@@ -17,11 +17,19 @@ public abstract class AbstractAction implements Action {
 
     public static final Comparator<Action> ACTION_START_COMPARATOR = new ActionStartComparator();
     public static final Comparator<Action> ACTION_FINISH_COMPARATOR = new ActionFinishComparator();
+    /**
+     * The agent (an instance of {@link UnitActor}) in charge of this action (actions are assigned to specific actors
+     * that have to execute them)
+     */
     protected UnitActor actor;
-    protected Tile location;
+    protected Tile origin;
     protected Tile destination;
+    /**
+     * The type of the action
+     *
+     * @See ActionType
+     */
     protected ActionType type;
-
     /**
      * Before starting the action, this attribute holds the estimated time to start performing the action, specified in
      * minutes since the beginning of the scenario. Thereafter it holds the actual starting time
@@ -36,22 +44,29 @@ public abstract class AbstractAction implements Action {
      * Estimated remaining time to complete the action in minutes
      */
     protected int timeToComplete;
+    /**
+     * The current state of the action
+     *
+     * @See ActionState
+     */
     protected ActionState state;
+    protected int id;
 
     public AbstractAction(UnitActor actor, ActionType type, Tile origin, Tile destination, int start) {
         this.actor = actor;
         this.type = type;
         this.start = start;
-        this.location = origin;
+        this.origin = origin;
         this.destination = destination;
         finish = Integer.MAX_VALUE;
         timeToComplete = finish - start;
         state = ActionState.CREATED;
+        id = ActionCounter.count();
     }
 
-//    public AbstractAction(Unit actor, ActionType type, Tile origin, Tile destination, Clock clock) {
-//        this(actor, type, origin, destination, clock.getCurrentTime(), clock);
-//    }
+    public AbstractAction(UnitActor actor, ActionType type, Tile origin, Tile destination, Clock clock) {
+        this(actor, type, origin, destination, clock.getCurrentTime());
+    }
 //
 //    public AbstractAction(Unit actor, ActionType type, Tile destination, int start, Clock clock) {
 //        this(actor, type, destination, destination, start, clock);
@@ -60,10 +75,12 @@ public abstract class AbstractAction implements Action {
 //    public AbstractAction(Unit actor, ActionType type, Tile destination, Clock clock) {
 //        this(actor, type, destination, destination, clock.getCurrentTime(), clock);
 //    }
+
     protected boolean checkPreconditions(Clock clock) {
         Unit unit = actor.getUnit();
         int time = clock.getCurrentTime();
-        if (unit.getEndurance() <= 0) {
+        int minEndurance = (int) (type.getWearRate() * Math.min(timeToComplete, clock.MINUTES_PER_TICK));
+        if (unit.getEndurance() <= minEndurance) {
             state = ActionState.DELAYED;
             actor.addAction(this);
             Action newAction = new RestAction(actor, destination, time);
@@ -82,7 +99,8 @@ public abstract class AbstractAction implements Action {
             newAction.execute(clock);
             return false;
         }
-        if (unit.getLocation() != location) {
+        //TODO ensure units move coherently
+        if (unit.getLocation() != origin) {
             Action newAction;
             if (unit.getEndurance() >= ActionType.WAIT.getWearRate()) {
                 newAction = new WaitAction(actor, destination, time);
@@ -114,7 +132,7 @@ public abstract class AbstractAction implements Action {
 
     @Override
     public Tile getOrigin() {
-        return location;
+        return origin;
     }
 
     @Override
@@ -148,7 +166,7 @@ public abstract class AbstractAction implements Action {
 
     @Override
     public String toString() {
-        return "Action{" + "actor=" + actor + ", type=" + type + ", start=" + start + '}';
+        return state + "A#" + id + '{' + type + " > " + actor + '}';
     }
 
     private static class ActionStartComparator implements Comparator<Action> {
@@ -171,5 +189,10 @@ public abstract class AbstractAction implements Action {
             int diff = finish1 - finish2;
             return (diff == 0 ? o1.getStart() - o2.getStart() : diff);
         }
+    }
+    
+    @Override
+    public final String toString(Clock clock) {
+        return "[" + clock.toString() + "] #" + id + " > " + state +  '{' + type + ": " + actor + '}' + this.toString();
     }
 }
