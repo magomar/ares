@@ -18,7 +18,7 @@ public final class AresPlayerFrame extends AbstractAresApplication {
     public static final int INFO_WINDOW_WIDTH = 250;
     public static final int MESSAGES_WINDOW_HEIGHT = 150;
     
-
+    @SuppressWarnings("unchecked")
     @Override
     protected void configureMVC() {
         desktopPane = new JDesktopPane();

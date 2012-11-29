@@ -26,6 +26,7 @@ public class Path {
      *
      * @param p The path object to clone.
      */
+    @SuppressWarnings("unchecked")
     public Path(Path p) {
         this();
 //        g = p.g;

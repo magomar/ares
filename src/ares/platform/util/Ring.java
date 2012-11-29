@@ -795,6 +795,7 @@ public class Ring<E> extends AbstractSequentialList<E>
      * @return {@code true} if the list contained the specified element
      * @since 1.6
      */
+    @SuppressWarnings("unchecked")
     @Override
     public boolean removeFirstOccurrence(Object o) {
         return remove((E)o);
