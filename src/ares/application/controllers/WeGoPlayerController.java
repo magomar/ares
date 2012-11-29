@@ -227,10 +227,9 @@ public class WeGoPlayerController extends AbstractController {
 
             LOG.log(Level.INFO, me.toString());
             Scenario scenario = engine.getScenario();
-            BoardGraphicsModel bgm = scenario.getBoardGraphicsModel();
             Point pixel = new Point(me.getX(), me.getY());
-            if (bgm.isWithinImageRange(pixel) && me.getButton() == MouseEvent.BUTTON1) {
-                Point tilePoint = bgm.pixelToTile(pixel);
+            if (BoardGraphicsModel.isWithinImageRange(pixel) && me.getButton() == MouseEvent.BUTTON1) {
+                Point tilePoint = BoardGraphicsModel.pixelToTile(pixel);
                 Tile tile = scenario.getBoard().getTile(tilePoint.x, tilePoint.y);
                 boolean changeTile = !tile.equals(selectedTile);
                 selectedTile = tile;

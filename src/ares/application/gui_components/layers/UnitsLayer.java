@@ -77,13 +77,13 @@ public class UnitsLayer extends AbstractImageLayer {
         BufferedImage unitImage;
         
         //Calculate unit position
-        Point pos = bgm.tileToPixel(t.getCoordinates());
+        Point pos = BoardGraphicsModel.tileToPixel(t.getCoordinates());
         
         //If no units on the tile
         if (t.isEmpty()) {
             //Empty image
-            unitImage = new BufferedImage(bgm.getHexDiameter(), bgm.getHeight(), BufferedImage.TYPE_INT_ARGB);
-            g2.drawImage(unitImage, pos.x, pos.y,this);
+            unitImage = new BufferedImage(BoardGraphicsModel.hexDiameter, BoardGraphicsModel.hexHeight, BufferedImage.TYPE_INT_ARGB);
+            g2.drawImage(unitImage, pos.x, pos.y, null);
             repaint(pos.x, pos.y, unitImage.getWidth(null), unitImage.getHeight(null));
             
         } else {
@@ -92,7 +92,9 @@ public class UnitsLayer extends AbstractImageLayer {
             unitImage = getUnitImage(t.getTopUnit());
 
             //Num units to be painted
-            int numStackedUnits = t.getNumStackedUnits();
+            int max = (t.getNumStackedUnits() > maxStack) ? maxStack : t.getNumStackedUnits();
+            // Attributes are painted only on the last image
+            max--;
             
             // Offset from the upper left corner of the tile
             pos.x += unitImageOffset;
@@ -103,11 +105,16 @@ public class UnitsLayer extends AbstractImageLayer {
             int d = 0;
             
             //Paint the same top unit
-            for (int i = 0; i < numStackedUnits && i < maxStack; i++) {
-                g2.drawImage(unitImage, pos.x + d, pos.y + d, this);
+            for (int i = 0; i < max; i++) {
+                g2.drawImage(unitImage, pos.x + d, pos.y + d, null);
                 d += unitStackOffset;
             }
-            repaint(pos.x, pos.y, unitImage.getWidth(this) + d, unitImage.getHeight(this) + d);
+            
+            //Adds attributes to the image such as Health, Attack, Defense, etc.
+            addUnitAttributes(unitImage, t.getTopUnit());
+            g2.drawImage(unitImage, pos.x + d, pos.y + d, null);
+            
+            repaint(pos.x, pos.y, unitImage.getWidth(null) + d, unitImage.getHeight(null) + d);
         }
         g2.dispose();
     }
@@ -121,8 +128,6 @@ public class UnitsLayer extends AbstractImageLayer {
      */
     private BufferedImage getUnitImage(UnitModel unit) {
 
-        // Where the units will be painted
-        BufferedImage unitImage;
         // Color template
         UnitColors uc = unit.getColor();
         //Make sure graphics are loaded
@@ -136,13 +141,7 @@ public class UnitsLayer extends AbstractImageLayer {
         int row = unit.getIconId() / bgm.getImageProfile().getUnitsImageCols();
         int col = unit.getIconId() % bgm.getImageProfile().getUnitsImageCols();
         
-        //Get the unit image
-        unitImage = unitBufferMap.get(uc).get().getSubimage(col * size, row * size, size, size);
-
-        //Adds attributes to the image such as Health, Attack, Defense, etc.
-        addUnitAttributes(unitImage, unit);
-        
-        return unitImage;
+        return unitBufferMap.get(uc).get().getSubimage(col * size, row * size, size, size);
     }
 
     /**

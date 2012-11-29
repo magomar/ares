@@ -3,11 +3,11 @@ package ares.application.views;
 import ares.application.boundaries.view.BoardViewer;
 import ares.application.gui_components.layers.*;
 import ares.application.models.ScenarioModel;
+import ares.application.models.board.BoardGraphicsModel;
 import ares.application.models.board.TileModel;
 import ares.platform.view.AbstractView;
 import java.awt.*;
 import java.beans.PropertyChangeEvent;
-import java.util.ArrayList;
 import javax.swing.*;
 
 /**
@@ -26,8 +26,7 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
 
     @Override
     protected JScrollPane layout() {
-
-        // TODO set black background
+        
         layeredPane = new JLayeredPane();
         layeredPane.setOpaque(true);
         layeredPane.setBackground(Color.BLACK);
@@ -57,7 +56,7 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
 
     @Override
     public void loadScenario(final ScenarioModel scenario) {
-        Dimension imageSize = new Dimension(scenario.getBoardGraphicsModel().getImageWidth(), scenario.getBoardGraphicsModel().getImageHeight());
+        Dimension imageSize = new Dimension(BoardGraphicsModel.imageWidth, BoardGraphicsModel.imageHeight);
         layeredPane.setPreferredSize(imageSize);
         layeredPane.setSize(imageSize);        
         for(int i=0; i<imageLayers.length; i++){

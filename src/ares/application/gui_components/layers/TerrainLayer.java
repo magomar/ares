@@ -1,6 +1,7 @@
 package ares.application.gui_components.layers;
 
 import ares.application.models.ScenarioModel;
+import ares.application.models.board.BoardGraphicsModel;
 import ares.application.models.board.TileModel;
 import ares.data.jaxb.TerrainFeature;
 import ares.engine.knowledge.KnowledgeCategory;
@@ -35,7 +36,7 @@ public class TerrainLayer extends AbstractImageLayer {
         Graphics2D g2 = globalImage.createGraphics();
         // Paint it black!
         g2.setColor(Color.BLACK);
-        g2.fillRect(0, 0, bgm.getImageWidth(), bgm.getImageHeight());
+        g2.fillRect(0, 0, BoardGraphicsModel.imageWidth, BoardGraphicsModel.imageHeight);
         g2.dispose();
         for (TileModel[] tt : s.getBoardModel().getMapModel()) {
             for(TileModel t : tt){
@@ -55,7 +56,7 @@ public class TerrainLayer extends AbstractImageLayer {
         if(t.getKnowledgeCategory() == KnowledgeCategory.NONE) return;
         
         //Calculate tile position
-        Point pos = bgm.tileToPixel(t.getCoordinates());
+        Point pos = BoardGraphicsModel.tileToPixel(t.getCoordinates());
 
         //Final image graphics
         Graphics2D g2 = globalImage.createGraphics();
@@ -112,7 +113,7 @@ public class TerrainLayer extends AbstractImageLayer {
         
         //Get the coordinates
         int cols = bgm.getImageProfile().getTerrainImageCols();
-        int w = bgm.getImageProfile().getHexDiameter(), h = bgm.getImageProfile().getHexHeight();
+        int w = BoardGraphicsModel.hexDiameter, h = BoardGraphicsModel.hexHeight;
         
         return terrainBufferMap.get(t).get().getSubimage(w * (index%cols), h * (index/cols), w, h);
      }
@@ -168,11 +169,8 @@ public class TerrainLayer extends AbstractImageLayer {
      * @see TerrainFeatures
      */
     private BufferedImage getTerrainFeaturesImage(TileModel tile) {
-
-        //TODO Tile features should be objects of TerrainFeatures class
-        //     instead of ares.data.jaxb.TerrainFeature
-
-        BufferedImage i = new BufferedImage(bgm.getHexDiameter(), bgm.getHexHeight(), BufferedImage.TYPE_4BYTE_ABGR);
+        
+        BufferedImage i = new BufferedImage(BoardGraphicsModel.hexDiameter, BoardGraphicsModel.hexHeight, BufferedImage.TYPE_4BYTE_ABGR);
         Graphics2D g2 = i.createGraphics();
 
         Set<TerrainFeatures> tf = tile.getTerrainFeatures();
@@ -187,7 +185,7 @@ public class TerrainLayer extends AbstractImageLayer {
                 case AIRFIELD:
                     g2.drawImage(
                             getTerrainImage(Terrain.OPEN,
-                            //TODO I'm actually wasting cpu here
+                            //I'm actually wasting cpu here
                             TerrainFeatures.AIRFIELD.getCol()+bgm.getImageProfile().getTerrainImageCols()*TerrainFeatures.AIRFIELD.getRow()),
                             0, 0, this);
                     break;
@@ -244,8 +242,7 @@ public class TerrainLayer extends AbstractImageLayer {
      */
     private BufferedImage drawTileBorders(Integer value) {
         int mask = 64;
-        int w = bgm.getHexDiameter();
-        int h = bgm.getHexHeight();
+        int w = BoardGraphicsModel.hexDiameter, h = BoardGraphicsModel.hexHeight;
         BufferedImage bi = new BufferedImage(w, h, BufferedImage.TYPE_4BYTE_ABGR);
         Graphics2D g2 = bi.createGraphics();
             

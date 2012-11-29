@@ -233,15 +233,13 @@ public enum ImageProfile {
             case HIGH:
                 return terrain.getGraphicFileHigh();
             default:
-                //TODO Exception
-                return null;
+                throw new AssertionError("Assertion failed: unkown image profile " + this);
         }
     }
     
     public String getFileName(UnitColors uc) {
         
         switch(this){
-         
             case SMALL:
                 return uc.getGraphicFileSmall();
             case MEDIUM:
@@ -249,8 +247,7 @@ public enum ImageProfile {
             case HIGH:
                 return uc.getGraphicFileHigh();
             default:
-                //TODO Exception
-                return null;
+                throw new AssertionError("Assertion failed: unkown image profile " + this);
         }
     }
 }

@@ -1,6 +1,7 @@
 package ares.application.gui_components.layers;
 
 import ares.application.models.ScenarioModel;
+import ares.application.models.board.BoardGraphicsModel;
 import ares.application.models.board.TileModel;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -33,7 +34,7 @@ public class GridLayer extends AbstractImageLayer {
         if (hexImage.get() == null) {
             hexImage = new SoftReference<>(loadImage(bgm.getGridHex()));
         }
-        Point pos = bgm.tileToPixel(t.getCoordinates());
+        Point pos = BoardGraphicsModel.tileToPixel(t.getCoordinates());
         g2.drawImage(hexImage.get(), pos.x, pos.y, null);
         repaint(pos.x, pos.y, hexImage.get().getWidth(), hexImage.get().getHeight());
     }

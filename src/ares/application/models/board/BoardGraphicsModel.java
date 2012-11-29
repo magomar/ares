@@ -11,36 +11,80 @@ import java.io.File;
  */
 public class BoardGraphicsModel {
 
-    private final int hexSide;
-    private final int hexDiameter;
-    private final int hexRadius;
-    private final int hexHeight;
-    private final int hexOffset;
-    private final int width;
-    private final int height;
-    private final int imageWidth;
-    private final int imageHeight;
-    private final ImageProfile imgProfile;
+    /**
+     * Tile side
+     *
+     * @see ImageProfile method getHexSide()
+     */
+    public static int hexSide;
+    /**
+     * Tile diameter (vertex to opposite vertex)
+     *
+     * @see ImageProfile method getHexDiameter()
+     */
+    public static int hexDiameter;
+    /**
+     * Tile radius (vertex to hex center), computes as
+     * <code>hexDiameter/2</code>
+     *
+     */
+    public static int hexRadius;
+    /**
+     * Tile height (flat side to flat side)
+     *
+     * @see ImageProfile method getHexHeight
+     */
+    public static int hexHeight;
+    /**
+     * Tile offset position to draw in a new column
+     *
+     * @see ImageProfile method getHexOffset
+     */
+    public static int hexOffset;
+    /**
+     * board width in tile units
+     */
+    public static int tileColumns;
+
+    /**
+     * board height in tile units
+     */    
+    public static int tileRows;
+    /**
+     * Image width in pixels
+     */    
+    public static int imageWidth;
+    /**
+     * Image height in pixels
+     */
+    public static int imageHeight;
+    
+    private static ImageProfile imgProfile;
     
 
     public BoardGraphicsModel(Board board) {
-        width = board.getWidth();
-        height = board.getHeight();
 
+        // Constant during the same scenario
+        tileColumns = board.getWidth();
+        tileRows = board.getHeight();
+        
+        // Variable information
         imgProfile = ImageProfile.MEDIUM;
+        initGraphicVariables();
+    }
+    
+    private void initGraphicVariables(){
         hexSide = imgProfile.getHexSide();
         hexDiameter = imgProfile.getHexDiameter();
         hexRadius = hexDiameter / 2;
         hexOffset = imgProfile.getHexOffset();
         hexHeight = imgProfile.getHexHeight();
-
         /*
          * Width =  first column + (columns-1) * (around 3/4 Diameter)
          * Hexagons aren't regular
          */
-        imageWidth = hexDiameter + (width - 1) * hexOffset;
-
-        imageHeight = height * hexHeight + hexHeight / 2;
+        imageWidth = hexDiameter + (tileColumns - 1) * hexOffset;
+        imageHeight = tileRows * hexHeight + hexHeight / 2;
     }
 
     /**
@@ -50,82 +94,10 @@ public class BoardGraphicsModel {
      * @param j as column
      * @return true if (i,j) is within the board range
      */
-    public boolean validCoordinates(int i, int j) {
-        return i >= 0 && i < width && j >= 0 && j < height;
+    public static boolean validCoordinates(int i, int j) {
+        return i >= 0 && i < tileColumns && j >= 0 && j < tileRows;
     }
 
-    /**
-     * Tile diameter (vertex to opposite vertex)
-     *
-     * @see ImageProfile method getHexDiameter()
-     */
-    public int getHexDiameter() {
-        return hexDiameter;
-    }
-
-    /**
-     * Tile radius (vertex to hex center), computes as <code>hexDiameter/2</code>
-     *
-     */
-    public int getHexRadius() {
-        return hexRadius;
-    }
-
-    /**
-     * Tile side
-     *
-     * @see ImageProfile method getHexSide()
-     */
-    public int getHexSide() {
-        return hexSide;
-    }
-
-    /**
-     * Tile offset position to draw in a new column
-     *
-     * @see ImageProfile method getHexOffset
-     */
-    public int getHexOffset() {
-        return hexOffset;
-    }
-
-    /**
-     * Tile height (flat side to flat side)
-     *
-     * @see ImageProfile method getHexHeight
-     */
-    public int getHexHeight() {
-        return hexHeight;
-    }
-
-    /**
-     * @return board width in tile units
-     */
-    public int getWidth() {
-        return width;
-    }
-
-    /**
-     * @return board height in tile units
-     */
-    public int getHeight() {
-        return height;
-    }
-
-    /**
-     * Image height in pixels
-     */
-    public int getImageHeight() {
-        return imageHeight;
-    }
-
-    /**
-     * Image width in pixels
-     */
-    public int getImageWidth() {
-        return imageWidth;
-    }
-    
     /**
      * 
      * @return grid hexagon file
@@ -142,6 +114,13 @@ public class BoardGraphicsModel {
         return imgProfile;
     }
     
+    public void setImageProfile(ImageProfile ip){
+        imgProfile = ip;
+        initGraphicVariables();
+        //TODO Fire property change and let know the controller the model has changed.
+        
+    }
+    
     /**
      * Converts a tile location to its corresponding pixel on the global image
      * 
@@ -151,14 +130,16 @@ public class BoardGraphicsModel {
      * @see BoardGraphicsModel
      * @see AbstractImageLayer
      */
-    public Point tileToPixel(Point tile){
+    public static Point tileToPixel(Point tile){
+        return tileToPixel(tile.x, tile.y);
+    }
+    public static Point tileToPixel(int x, int y) {
         Point pixel = new Point();
-        
         //X component is "row" times the "offset"
-        pixel.x = hexOffset * tile.x;
+        pixel.x = hexOffset * x;
         //Y component depends on the row.
         //If it's even number, then "column" times the "height" plus half the height, if it's odd then just "column" times the "height"
-        pixel.y = (tile.x % 2 == 0 ? (hexHeight * tile.y) + (hexHeight / 2) : (hexHeight * tile.y));
+        pixel.y = (x % 2 == 0 ? (hexHeight * y) + (hexHeight / 2) : (hexHeight * y));
         return pixel;
     }
 
@@ -170,19 +151,19 @@ public class BoardGraphicsModel {
      * @see BoardGraphicsModel
      * @see Board getTile
      */
-    public Point pixelToTile(Point pixel) {
+    public static Point pixelToTile(Point pixel) {
+        return pixelToTile(pixel.x,pixel.y);
+    }
+    public static Point pixelToTile(int x, int y) {
         Point tile = new Point();
-        
-        tile.x = pixel.x / hexOffset;
+        tile.x = x / hexOffset;
         //If tile is on even row, first we substract half the hexagon height to the Y component, then we divide it by the height
         //if it's on odd row, divide Y component by hexagon height
-        tile.y = (tile.x % 2 == 0 ? (pixel.y - (hexHeight/2))/hexHeight : (pixel.y / hexHeight) );
-        
+        tile.y = (tile.x % 2 == 0 ? (y - (hexHeight / 2)) / hexHeight : (y / hexHeight));
         return tile;
-
     }
 
-    public boolean isWithinImageRange(Point pixel){
+    public static boolean isWithinImageRange(Point pixel){
         return ((pixel.x < imageWidth && pixel.x > 0) && (pixel.y > 0 && pixel.y < imageHeight));
     }
 }

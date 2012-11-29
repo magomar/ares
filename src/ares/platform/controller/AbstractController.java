@@ -1,6 +1,5 @@
 package ares.platform.controller;
 
-import ares.platform.application.AbstractAresApplication;
 import ares.platform.application.LookupService;
 import ares.platform.model.AbstractBean;
 import ares.platform.view.AbstractView;
