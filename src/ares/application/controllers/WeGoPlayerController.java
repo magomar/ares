@@ -3,9 +3,11 @@ package ares.application.controllers;
 import ares.application.commands.*;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.BoardGraphicsModel;
+import ares.application.models.forces.UnitModel;
 import ares.application.player.AresMenus;
 import ares.application.views.*;
 import ares.data.jaxb.EquipmentDB;
+import ares.engine.algorithms.PathFinder;
 import ares.engine.realtime.*;
 import ares.io.*;
 import ares.platform.application.AbstractAresApplication;
@@ -35,7 +37,7 @@ public class WeGoPlayerController extends AbstractController {
     private final RealTimeEngine engine;
     private UserRole userRole;
     private Tile selectedTile;
-//    private Unit selectedUnit;
+    private UnitModel selectedUnit;
     private static final Logger LOG = Logger.getLogger(WeGoPlayerController.class.getName());
 
     public WeGoPlayerController(AbstractAresApplication mainApplication) {
@@ -56,6 +58,9 @@ public class WeGoPlayerController extends AbstractController {
         menuBarView.addActionListener(EngineCommands.NEXT.name(), new NextActionListener());
         // UnitInfoView
         getInternalFrameView(BoardView.class).getView().getContentPane().addMouseListener(new BoardMouseListener());
+        
+        //Messages panel log
+        LOG.addHandler(new MessagesHandler(getInternalFrameView(MessagesView.class).getView()));
     }
 
     @Override
@@ -115,8 +120,11 @@ public class WeGoPlayerController extends AbstractController {
                         null,
                         options,
                         options[2]);
-                userRole = options[n];
-                return scenario;
+                if(n>=0){
+                    userRole = options[n];
+                    return scenario;
+                }
+                return null;
             } else {
                 return null;
             }
@@ -224,27 +232,35 @@ public class WeGoPlayerController extends AbstractController {
 
         @Override
         public void mouseClicked(MouseEvent me) {
-
-            LOG.log(Level.INFO, me.toString());
+            
             Scenario scenario = engine.getScenario();
             Point pixel = new Point(me.getX(), me.getY());
             if (BoardGraphicsModel.isWithinImageRange(pixel) && me.getButton() == MouseEvent.BUTTON1) {
                 Point tilePoint = BoardGraphicsModel.pixelToTile(pixel);
                 Tile tile = scenario.getBoard().getTile(tilePoint.x, tilePoint.y);
                 boolean changeTile = !tile.equals(selectedTile);
-                selectedTile = tile;
-                UnitsStack stack = tile.getUnitsStack();
-                boolean changeUnit = false;
-                if (!changeTile && !stack.isEmpty()) {
-                    stack.next();
-                    changeUnit = true;
-                }
-                if (changeTile || changeUnit) {
-                    getInternalFrameView(UnitInfoView.class).getView().updateInfo(selectedTile.getModel(userRole));
-                    getInternalFrameView(BoardView.class).getView().updateTile(selectedTile.getModel(userRole));
+                if (me.isShiftDown() && selectedUnit != null) {
+                    LOG.log(Level.INFO, "Destination Tile: {0} | selectedUnit: {1}", new Object[]{tile.getCoordinates(), selectedUnit.getName()});
+                    PathFinder pf = new PathFinder();
+                    getInternalFrameView(BoardView.class).getView().updateArrowPath(pf.findArrowPath(selectedUnit.getLocation(),tile.getModel(userRole)));
+                } else {
+                    selectedTile = tile;
+                    selectedUnit = tile.getModel(userRole).getTopUnit();
+                    UnitsStack stack = tile.getUnitsStack();
+                    boolean changeUnit = false;
+                    if (!changeTile && !stack.isEmpty()) {
+                        stack.next();
+                        changeUnit = true;
+                        selectedUnit = tile.getModel(userRole).getTopUnit();
+                    }
+                    if (changeTile || changeUnit) {
+                        getInternalFrameView(UnitInfoView.class).getView().updateInfo(selectedTile.getModel(userRole));
+                        getInternalFrameView(BoardView.class).getView().updateTile(selectedTile.getModel(userRole));
+                    }
                 }
             } else if (me.getButton() == MouseEvent.BUTTON3) {
                 selectedTile = null;
+                selectedUnit = null;
                 getInternalFrameView(UnitInfoView.class).getView().clear();
             }
         }

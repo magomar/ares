@@ -99,4 +99,9 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
     public void updateTile(TileModel tile) {
         unitsLayer.paintTile(tile);
     }
+
+    public void updateArrowPath(Object[] findArrowPath) {
+        //Object[0] origin coordinates
+        //Object[1] direction array
+    }
 }

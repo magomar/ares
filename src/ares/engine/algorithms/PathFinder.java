@@ -1,5 +1,6 @@
 package ares.engine.algorithms;
 
+import ares.application.models.board.TileModel;
 import ares.scenario.board.Board;
 import ares.scenario.board.Direction;
 import ares.scenario.board.Tile;
@@ -208,5 +209,11 @@ public class PathFinder {
             result.setFirst(start.getTile());
         }
         return result;
+    }
+    
+    
+    public Object[] findArrowPath(TileModel o, TileModel d){
+        
+        return null;
     }
 }

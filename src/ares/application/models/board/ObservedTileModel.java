@@ -4,6 +4,7 @@ import ares.application.models.forces.UnitModel;
 import ares.engine.knowledge.KnowledgeCategory;
 import ares.scenario.board.Tile;
 import ares.scenario.board.UnitsStack;
+import java.util.NoSuchElementException;
 
 /**
  *
@@ -20,7 +21,11 @@ public final class ObservedTileModel extends NonObservedTileModel {
 
     @Override
     public UnitModel getTopUnit() {
-        return stack.getPointOfInterest().getModel(kLevel);
+        try {
+            return stack.getPointOfInterest().getModel(kLevel);
+        } catch (NoSuchElementException e) {
+            return null;
+        }
     }
 
     @Override
