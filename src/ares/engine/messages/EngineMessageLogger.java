@@ -1,8 +1,10 @@
 package ares.engine.messages;
 
 import ares.platform.model.AbstractBean;
-import java.util.ArrayList;
+import java.util.EnumMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -11,12 +13,16 @@ import java.util.List;
 public class EngineMessageLogger extends AbstractBean {
 
     public static final String MESSAGES_PROPERTY = "Messages";
-    public List<EngineMessage> messages = new ArrayList<>();
+    private final Map<EngineMessageType, List<EngineMessage>> messages;
 
-    public void add(EngineMessage msg) {
-        EngineMessage oldValue = messages.get(messages.size() - 1);
-        messages.add(msg);
-        firePropertyChange(MESSAGES_PROPERTY, oldValue, msg);
+    public EngineMessageLogger() {
+        messages = new EnumMap(EngineMessageType.class);
     }
 
+    public void add(EngineMessage msg) {
+        List<EngineMessage> oldValue = messages.get(msg.getType());
+        List<EngineMessage> msgList = new LinkedList<>(oldValue);;
+        msgList.add(msg);
+        firePropertyChange(MESSAGES_PROPERTY, oldValue, msgList);
+    }
 }

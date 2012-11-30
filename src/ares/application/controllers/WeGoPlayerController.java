@@ -1,5 +1,9 @@
 package ares.application.controllers;
 
+import ares.application.boundaries.view.BoardViewer;
+import ares.application.boundaries.view.MenuBarViewer;
+import ares.application.boundaries.view.MessagesViewer;
+import ares.application.boundaries.view.UnitInfoViewer;
 import ares.application.commands.*;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.BoardGraphicsModel;
@@ -9,15 +13,14 @@ import ares.data.jaxb.EquipmentDB;
 import ares.engine.realtime.*;
 import ares.io.*;
 import ares.platform.application.AbstractAresApplication;
-import ares.platform.controller.AbstractController;
 import ares.platform.model.UserRole;
-import ares.platform.view.InternalFrameView;
 import ares.scenario.Scenario;
 import ares.scenario.board.*;
 import ares.scenario.forces.Force;
 import java.awt.Point;
 import java.awt.event.*;
 import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.util.concurrent.*;
 import java.util.logging.*;
@@ -28,57 +31,59 @@ import javax.swing.JOptionPane;
  *
  * @author Mario
  */
-public class WeGoPlayerController extends AbstractController {
+public class WeGoPlayerController implements PropertyChangeListener {
+    // Views
 
-    private final ExecutorService executor;
     private final AbstractAresApplication mainApplication;
+    private final BoardViewer boardV;
+    private final UnitInfoViewer unitV;
+    private final MenuBarViewer menuV;
+    private final MessagesViewer messagesV;
+    // Entities (bussines logic), they interact with the model providers and provide models to the views
     private final RealTimeEngine engine;
+    // Other fields
+    private final ExecutorService executor;
     private UserRole userRole;
     private Tile selectedTile;
 //    private Unit selectedUnit;
     private static final Logger LOG = Logger.getLogger(WeGoPlayerController.class.getName());
 
-    public WeGoPlayerController(AbstractAresApplication mainApplication) {
-        this.mainApplication = mainApplication;
+    public WeGoPlayerController(AbstractAresApplication mainApplication, BoardViewer boardV, UnitInfoViewer unitV, MenuBarViewer menuV, MessagesViewer messagesV) {
         executor = Executors.newCachedThreadPool();
-        engine = new RealTimeEngine();
-    }
-
-    @Override
-    protected void registerAllActionListeners() {
-        // MenuBarView
-        MenuBarView menuBarView = getView(MenuBarView.class);
-        menuBarView.addActionListener(FileCommands.OPEN_SCENARIO.getName(), new OpenScenarioActionListener());
-        menuBarView.addActionListener(FileCommands.CLOSE_SCENARIO.getName(), new CloseScenarioActionListener());
-        menuBarView.addActionListener(FileCommands.EXIT.getName(), new ExitActionListener());
-        menuBarView.addActionListener(EngineCommands.START.name(), new StartActionListener());
-        menuBarView.addActionListener(EngineCommands.PAUSE.name(), new PauseActionListener());
-        menuBarView.addActionListener(EngineCommands.NEXT.name(), new NextActionListener());
-        // UnitInfoView
-        getInternalFrameView(BoardView.class).getView().getContentPane().addMouseListener(new BoardMouseListener());
-    }
-
-    @Override
-    protected void registerAllModels() {
-//        throw new UnsupportedOperationException("Not supported yet.");
+        this.mainApplication = mainApplication;
+        this.engine = new RealTimeEngine();
+        this.boardV = boardV;
+        this.unitV = unitV;
+        this.menuV = menuV;
+        this.messagesV = messagesV;
+        //Add listeners to the views
+        menuV.addActionListener(FileCommands.OPEN_SCENARIO.getName(), new OpenScenarioActionListener());
+        menuV.addActionListener(FileCommands.CLOSE_SCENARIO.getName(), new CloseScenarioActionListener());
+        menuV.addActionListener(FileCommands.EXIT.getName(), new ExitActionListener());
+        menuV.addActionListener(EngineCommands.START.name(), new StartActionListener());
+        menuV.addActionListener(EngineCommands.PAUSE.name(), new PauseActionListener());
+        menuV.addActionListener(EngineCommands.NEXT.name(), new NextActionListener());
+        boardV.addMouseListener(new BoardMouseListener());
+        //Add change listeners to entities
         engine.addPropertyChangeListener(this);
+        LOG.addHandler(new MessagesHandler(messagesV));
     }
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         if (RealTimeEngine.CLOCK_EVENT_PROPERTY.equals(evt.getPropertyName())) {
             ClockEvent clockEvent = (ClockEvent) evt.getNewValue();
-            InternalFrameView<BoardView> boardFrame = getInternalFrameView(BoardView.class);
-            boardFrame.setTitle("Time: " + clockEvent.getClock().toString());
-            BoardView boardView = boardFrame.getView();
-            boardView.updateScenario(engine.getScenarioModel(userRole));
+            Scenario scenario = engine.getScenario();
+            mainApplication.setTitle("ARES   " + scenario.getName() + "   " + scenario.getCalendar().toString()
+                    + "   Role: " + userRole + "           Time: " + clockEvent.getClock().toString());
+
+            boardV.updateScenario(engine.getScenarioModel(userRole));
             if (selectedTile != null) {
-                getInternalFrameView(UnitInfoView.class).getView().updateInfo(selectedTile.getModel(userRole));
+                unitV.updateInfo(selectedTile.getModel(userRole));
             }
             if (clockEvent.getEventTypes().contains(ClockEventType.TURN)) {
-                MenuBarView menuBarView = getView(MenuBarView.class);
-                menuBarView.setMenuElementEnabled(EngineCommands.PAUSE.getName(), false);
-                menuBarView.setMenuElementEnabled(EngineCommands.NEXT.getName(), true);
+                menuV.setMenuElementEnabled(EngineCommands.PAUSE.getName(), false);
+                menuV.setMenuElementEnabled(EngineCommands.NEXT.getName(), true);
             }
         }
     }
@@ -90,7 +95,7 @@ public class WeGoPlayerController extends AbstractController {
             JFileChooser fc = new JFileChooser();
             fc.setCurrentDirectory(AresIO.ARES_IO.getAbsolutePath(AresPaths.SCENARIOS.getPath()).toFile());
             fc.setFileFilter(AresFileType.SCENARIO.getFileTypeFilter());
-            int returnVal = fc.showOpenDialog(getView(MenuBarView.class).getContentPane());
+            int returnVal = fc.showOpenDialog(mainApplication.getMainFrame());
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 File file = fc.getSelectedFile();
                 // Load scenario and equipment files
@@ -133,20 +138,19 @@ public class WeGoPlayerController extends AbstractController {
 
                 // obtain the scenario model with the active userRole
                 ScenarioModel scenarioModel = engine.getScenarioModel(userRole);
-                getInternalFrameView(BoardView.class).getView().loadScenario(scenarioModel);
+                boardV.loadScenario(scenarioModel);
 
                 // set main window title & show appropriate views
                 mainApplication.setTitle("ARES   " + scenario.getName() + "   " + scenario.getCalendar().toString() + "   Role: " + userRole);
-                getInternalFrameView(BoardView.class).show();
-                getInternalFrameView(UnitInfoView.class).show();
-                getInternalFrameView(MessagesView.class).show();
+                boardV.setVisible(true);
+                unitV.setVisible(true);
+                messagesV.setVisible(true);
                 // Update menu bar
-                MenuBarView menuBarView = getView(MenuBarView.class);
-                menuBarView.setMenuElementEnabled(FileCommands.CLOSE_SCENARIO.getName(), true);
-                menuBarView.setMenuElementEnabled(AresMenus.ENGINE_MENU.getName(), true);
-                menuBarView.setMenuElementEnabled(EngineCommands.START.getName(), true);
-                menuBarView.setMenuElementEnabled(EngineCommands.PAUSE.getName(), false);
-                menuBarView.setMenuElementEnabled(EngineCommands.NEXT.getName(), false);
+                menuV.setMenuElementEnabled(FileCommands.CLOSE_SCENARIO.getName(), true);
+                menuV.setMenuElementEnabled(AresMenus.ENGINE_MENU.getName(), true);
+                menuV.setMenuElementEnabled(EngineCommands.START.getName(), true);
+                menuV.setMenuElementEnabled(EngineCommands.PAUSE.getName(), false);
+                menuV.setMenuElementEnabled(EngineCommands.NEXT.getName(), false);
             }
         }
     }
@@ -167,13 +171,12 @@ public class WeGoPlayerController extends AbstractController {
         public void actionPerformed(ActionEvent e) {
             LOG.log(Level.INFO, e.toString());
             engine.setScenario(null);
-            MenuBarView menuBarView = getView(MenuBarView.class);
-            menuBarView.setMenuElementEnabled(FileCommands.CLOSE_SCENARIO.getName(), false);
-            menuBarView.setMenuElementEnabled(AresMenus.ENGINE_MENU.getName(), false);
-            getInternalFrameView(BoardView.class).hide();
-            getInternalFrameView(BoardView.class).getView().closeScenario();
-            getInternalFrameView(MessagesView.class).hide();
-            getInternalFrameView(UnitInfoView.class).hide();
+            menuV.setMenuElementEnabled(FileCommands.CLOSE_SCENARIO.getName(), false);
+            menuV.setMenuElementEnabled(AresMenus.ENGINE_MENU.getName(), false);
+            boardV.setVisible(false);
+            boardV.closeScenario();
+            messagesV.setVisible(false);
+            unitV.setVisible(false);
 
         }
     }
@@ -193,9 +196,8 @@ public class WeGoPlayerController extends AbstractController {
         public void actionPerformed(ActionEvent e) {
             LOG.log(Level.INFO, e.toString());
             engine.start();
-            MenuBarView menuBarView = getView(MenuBarView.class);
-            menuBarView.setMenuElementEnabled(EngineCommands.START.getName(), false);
-            menuBarView.setMenuElementEnabled(EngineCommands.PAUSE.getName(), true);
+            menuV.setMenuElementEnabled(EngineCommands.START.getName(), false);
+            menuV.setMenuElementEnabled(EngineCommands.PAUSE.getName(), true);
         }
     }
 
@@ -205,9 +207,8 @@ public class WeGoPlayerController extends AbstractController {
         public void actionPerformed(ActionEvent e) {
             LOG.log(Level.INFO, e.toString());
             engine.stop();
-            MenuBarView menuBarView = getView(MenuBarView.class);
-            menuBarView.setMenuElementEnabled(EngineCommands.START.getName(), true);
-            menuBarView.setMenuElementEnabled(EngineCommands.PAUSE.getName(), false);
+            menuV.setMenuElementEnabled(EngineCommands.START.getName(), true);
+            menuV.setMenuElementEnabled(EngineCommands.PAUSE.getName(), false);
         }
     }
 
@@ -216,9 +217,8 @@ public class WeGoPlayerController extends AbstractController {
         @Override
         public void actionPerformed(ActionEvent e) {
             LOG.log(Level.INFO, e.toString());
-            MenuBarView menuBarView = getView(MenuBarView.class);
-            menuBarView.setMenuElementEnabled(EngineCommands.PAUSE.getName(), true);
-            menuBarView.setMenuElementEnabled(EngineCommands.NEXT.getName(), false);
+            menuV.setMenuElementEnabled(EngineCommands.PAUSE.getName(), true);
+            menuV.setMenuElementEnabled(EngineCommands.NEXT.getName(), false);
             engine.start();
         }
     }
@@ -243,12 +243,12 @@ public class WeGoPlayerController extends AbstractController {
                     changeUnit = true;
                 }
                 if (changeTile || changeUnit) {
-                    getInternalFrameView(UnitInfoView.class).getView().updateInfo(selectedTile.getModel(userRole));
-                    getInternalFrameView(BoardView.class).getView().updateTile(selectedTile.getModel(userRole));
+                    unitV.updateInfo(selectedTile.getModel(userRole));
+                    boardV.updateTile(selectedTile.getModel(userRole));
                 }
             } else if (me.getButton() == MouseEvent.BUTTON3) {
                 selectedTile = null;
-                getInternalFrameView(UnitInfoView.class).getView().clear();
+                unitV.clear();
             }
         }
     }

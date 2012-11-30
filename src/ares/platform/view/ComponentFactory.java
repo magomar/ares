@@ -37,6 +37,15 @@ public abstract class ComponentFactory {
     public final static Color HIGHLIGHT_COLOR = new Color(255, 240, 240);
 
     public static JFrame frame(String title, JComponent contentPane, JMenuBar menuBar, JToolBar toolBar) {
+        JFrame frame = frame(title, menuBar, toolBar);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        if (contentPane != null) {
+            frame.getContentPane().add(contentPane, BorderLayout.CENTER);
+        }
+        return frame;
+    }
+
+    public static JFrame frame(String title, JMenuBar menuBar, JToolBar toolBar) {
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         if (title != null) {
@@ -48,9 +57,7 @@ public abstract class ComponentFactory {
         if (toolBar != null) {
             frame.getContentPane().add(toolBar, BorderLayout.NORTH);
         }
-        if (contentPane != null) {
-            frame.getContentPane().add(contentPane, BorderLayout.CENTER);
-        }
+
         frame.setPreferredSize(new Dimension(800, 600));
         return frame;
     }
