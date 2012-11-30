@@ -115,8 +115,11 @@ public class WeGoPlayerController extends AbstractController {
                         null,
                         options,
                         options[2]);
-                userRole = options[n];
-                return scenario;
+                if(n>=0){
+                    userRole = options[n];
+                    return scenario;
+                }
+                return null;
             } else {
                 return null;
             }
