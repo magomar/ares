@@ -1,4 +1,4 @@
-package ares.engine.algorithms;
+package ares.engine.algorithms.routing;
 
 import ares.scenario.board.Tile;
 import java.util.*;
@@ -9,8 +9,6 @@ import java.util.*;
  */
 public class Path {
 
-//    protected Double g;
-//    protected Double f;
     protected LinkedList<Tile> tiles;
 
     /**
@@ -18,7 +16,6 @@ public class Path {
      */
     public Path() {
         tiles = new LinkedList<>();
-//        g = f = 0.0;
     }
 
     /**
@@ -26,28 +23,11 @@ public class Path {
      *
      * @param p The path object to clone.
      */
-    @SuppressWarnings("unchecked")
+    
     public Path(Path p) {
         this();
-//        g = p.g;
-//        f = p.f;
-        tiles = new LinkedList<>((Collection<? extends Tile>)p);
+        tiles = new LinkedList<>(p.getTiles());
     }
-
-    /**
-     * Compare to another object using the total cost f.
-     *
-     * @param o The object to compare to.
-     * @see Comparable#compareTo()
-     * @return
-     * <code>less than 0</code> This object is smaller than
-     * <code>0</code>;
-     * <code>0</code> Object are the same.
-     * <code>bigger than 0</code> This object is bigger than o.
-     */
-//    public int compareTo(Path o) {
-//        return (int) (f - o.f);
-//    }
 
     /**
      * Get the first point on the path.

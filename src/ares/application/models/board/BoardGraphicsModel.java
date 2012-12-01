@@ -60,6 +60,17 @@ public class BoardGraphicsModel {
     public static int imageHeight;
     
     private static ImageProfile imgProfile;
+
+    /**
+     * Converts tile coordinates [x,y] to full index form
+     * 
+     * 
+     * @param coordinates
+     * @return X * Columns + Y
+     */
+    public static int tileMapIndex(Point coordinates) {
+        return coordinates.x*tileColumns+coordinates.y;
+    }
     
 
     public BoardGraphicsModel(Board board) {

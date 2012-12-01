@@ -1,10 +1,13 @@
 package ares.engine.algorithms;
 
+import ares.engine.algorithms.routing.Node;
+import ares.engine.algorithms.routing.Path;
 import ares.application.models.board.TileModel;
 import ares.scenario.board.Board;
 import ares.scenario.board.Direction;
 import ares.scenario.board.Tile;
 import ares.scenario.forces.Unit;
+import java.util.EnumSet;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -13,14 +16,14 @@ import java.util.List;
  *
  * @author SaÃºl Esteban
  */
-public class PathFinder {
+public class PathFinderAstar {
 
     private Node start;
     private Node goal;
     private Unit unit;
     private Path result;
 
-    public PathFinder() {
+    public PathFinderAstar() {
         result = new Path();
     }
 
@@ -29,7 +32,7 @@ public class PathFinder {
      *
      * @return A built path of tiles from the initial point the goal, or null if a path doesn't exist.
      */
-    public Path findPath(Tile s, Tile go, Unit u) {
+    public Path findPath(TileModel s, TileModel go, Unit u) {
         if (s.equals(go)) {
             return null;
         }
@@ -73,7 +76,7 @@ public class PathFinder {
                     continue;
                 }
 
-                double tentative_g = current.getG() + current.getTile().getMoveCost(dir).getActualCost(unit, neighbour.getTile(), dir.getOpposite());
+                double tentative_g = 0;//current.getG() + current.getTile().getMoveCost(dir).getActualCost(unit, neighbour.getTile(), dir.getOpposite());
 
                 for (Node node : open) {
                     if (node.getTile().equals(neighbour.getTile())) {
@@ -105,8 +108,8 @@ public class PathFinder {
         if (s.equals(go)) {
             return null;
         }
-        start = new Node(s);
-        goal = new Node(go);
+        start = null;//new Node(s);
+        goal = null;//new Node(go);
         unit = u;
         result = new Path();
         LinkedList<Node> open = new LinkedList<>();
@@ -150,7 +153,7 @@ public class PathFinder {
                     continue;
                 }
 
-                double tentative_g = current.getG() + neighbour.getTile().getMoveCost(dir).getPrecomputedCost(unit.getMovement());//+ cost between current & neghbour 
+                double tentative_g = 0;//current.getG() + neighbour.getTile().getMoveCost(dir).getPrecomputedCost(unit.getMovement());//+ cost between current & neghbour 
 
                 for (Node node : open) {
                     if (node.getTile().equals(neighbour.getTile())) {
@@ -193,7 +196,7 @@ public class PathFinder {
      * @return the distance between the tile and the goal.
      */
     protected int estimateCost(Node c) {
-        return Board.getDistanceInTilesBetween(c.getTile(), goal.getTile());
+        return 0;//Board.getDistanceInTilesBetween(c.getTile(), goal.getTile());
     }
 
     /**
@@ -203,17 +206,21 @@ public class PathFinder {
      */
     protected Path buildPath(Node current) {
         if (!current.equals(start)) {
-            result.setFirst(current.getTile());
+            result.setFirst(
+                    null//current.getTile()
+                    );
             buildPath(current.getParent());
         } else {
-            result.setFirst(start.getTile());
+            result.setFirst(null//start.getTile()
+                    );
         }
         return result;
     }
     
     
-    public Object[] findArrowPath(TileModel o, TileModel d){
-        
-        return null;
+    public EnumSet<Direction> findArrowPath(TileModel o, TileModel d){
+        EnumSet<Direction> directionSet = EnumSet.noneOf(Direction.class);
+        directionSet.add(Direction.N);
+        return directionSet;
     }
 }

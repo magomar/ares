@@ -7,7 +7,8 @@ import ares.application.models.forces.UnitModel;
 import ares.application.player.AresMenus;
 import ares.application.views.*;
 import ares.data.jaxb.EquipmentDB;
-import ares.engine.algorithms.PathFinder;
+import ares.engine.algorithms.PathFinderAstar;
+import ares.engine.algorithms.routing.*;
 import ares.engine.realtime.*;
 import ares.io.*;
 import ares.platform.application.AbstractAresApplication;
@@ -23,8 +24,7 @@ import java.beans.PropertyChangeEvent;
 import java.io.File;
 import java.util.concurrent.*;
 import java.util.logging.*;
-import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 
 /**
  *
@@ -39,6 +39,7 @@ public class WeGoPlayerController extends AbstractController {
     private Tile selectedTile;
     private UnitModel selectedUnit;
     private static final Logger LOG = Logger.getLogger(WeGoPlayerController.class.getName());
+    private PathFinder pathFinder;
 
     public WeGoPlayerController(AbstractAresApplication mainApplication) {
         this.mainApplication = mainApplication;
@@ -122,6 +123,7 @@ public class WeGoPlayerController extends AbstractController {
                         options[2]);
                 if(n>=0){
                     userRole = options[n];
+                    pathFinder = new AStar(scenario.getBoard().getMap().length);
                     return scenario;
                 }
                 return null;
@@ -229,7 +231,6 @@ public class WeGoPlayerController extends AbstractController {
     }
 
     private class BoardMouseListener extends MouseAdapter {
-
         @Override
         public void mouseClicked(MouseEvent me) {
             
@@ -240,9 +241,9 @@ public class WeGoPlayerController extends AbstractController {
                 Tile tile = scenario.getBoard().getTile(tilePoint.x, tilePoint.y);
                 boolean changeTile = !tile.equals(selectedTile);
                 if (me.isShiftDown() && selectedUnit != null) {
-                    LOG.log(Level.INFO, "Destination Tile: {0} | selectedUnit: {1}", new Object[]{tile.getCoordinates(), selectedUnit.getName()});
-                    PathFinder pf = new PathFinder();
-                    getInternalFrameView(BoardView.class).getView().updateArrowPath(pf.findArrowPath(selectedUnit.getLocation(),tile.getModel(userRole)));
+                    Path p = pathFinder.getPath(selectedUnit.getLocation(), tile.getModel(userRole));
+                    LOG.log(Level.INFO, (p==null) ? "null path" : p.toString());
+                    //getInternalFrameView(BoardView.class).getView().updateArrowPath(tile.getCoordinates(),pf.findArrowPath(selectedUnit.getLocation(),tile.getModel(userRole)));
                 } else {
                     selectedTile = tile;
                     selectedUnit = tile.getModel(userRole).getTopUnit();

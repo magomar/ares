@@ -64,6 +64,10 @@ public final class ObservedTileModel extends NonObservedTileModel {
     @Override
     public boolean hasEnemies(String force) {
         // If there are units, check if the first of the collection is an ally
-        return getSurfaceUnits().isEmpty() && getSurfaceUnits().iterator().next().getForce().getName().equals(force);            
+        if(getSurfaceUnits().isEmpty()){
+            return false;
+        } else{
+            return getSurfaceUnits().iterator().next().getForce().getName().equals(force);
+        }   
     }
 }
