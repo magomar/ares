@@ -14,11 +14,11 @@ import javax.swing.JTextArea;
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class MessagesView extends AbstractView<JScrollPane> implements MessagesViewer {
-    private EngineMessageLogger msgLogger;
 
+    private EngineMessageLogger msgLogger;
     private JTextArea textArea;
     private final static String newline = "\n";
-    
+
     @Override
     protected JScrollPane layout() {
         JPanel p = new JPanel();
@@ -38,7 +38,7 @@ public class MessagesView extends AbstractView<JScrollPane> implements MessagesV
 
     @Override
     public void append(String str) {
-        textArea.setText(str+newline);
+        textArea.setText(str + newline);
     }
 
     @Override

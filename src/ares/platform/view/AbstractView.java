@@ -2,23 +2,16 @@ package ares.platform.view;
 
 import java.awt.Component;
 import java.awt.Container;
-import java.awt.event.ActionListener;
-import java.util.HashMap;
-import java.util.Map;
-import javax.swing.JComponent;
-import javax.swing.event.EventListenerList;
 
 /**
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public abstract class AbstractView<C extends JComponent> implements View {
+public abstract class AbstractView<C extends Container> implements View {
 
     protected final C contentPane;
-    protected Map<String, EventListenerList> actionListeners;
 
     public AbstractView() {
-        actionListeners = new HashMap<>();
         this.contentPane = layout();
     }
 
@@ -26,10 +19,6 @@ public abstract class AbstractView<C extends JComponent> implements View {
 
     public C getContentPane() {
         return contentPane;
-    }
-
-    protected void repaint() {
-        contentPane.repaint();
     }
 
     @Override
@@ -41,7 +30,10 @@ public abstract class AbstractView<C extends JComponent> implements View {
         return contentPane.isFocusable() && contentPane.isDisplayable() && contentPane.isVisible() && contentPane.isEnabled();
     }
 
-//    public abstract void modelPropertyChange(PropertyChangeEvent evt);
+    protected void repaint() {
+        contentPane.repaint();
+    }
+
     public Component getComponent(String componentName) {
         return getComponent(componentName, contentPane);
     }
@@ -60,44 +52,4 @@ public abstract class AbstractView<C extends JComponent> implements View {
         }
         return found;
     }
-    //    /**
-//     * Generic method to add a component listener to a component
-//     *
-//     * @param componentName
-//     * @param listener
-//     * @throws ComponentNotFoundException
-//     */
-//    public void addComponentListener(String componentName, ComponentListener listener) throws ComponentNotFoundException {
-//        Container container = getContentPane();
-//        Component[] components = container.getComponents();
-//        for (Component component : components) {
-//            if (componentName.equals(component.getName())) {
-//                component.addComponentListener(listener);
-//                return;
-//            }
-//        }
-//        throw new ComponentNotFoundException(componentName);
-//    }
-//
-//    /**
-//     * Generic method to add an action listener to a component (AbstractButton) Only components subclassing the
-//     * {@link  AbstractButton} class can hold an action listener. Swing provides three direct subclasses:
-//     * {@link JMenuItem},  {@link JButton} and {@link JToggleButton}
-//     * {@link JMenu} is also a subclass (it extends JMenuItem)
-//     *
-//     * @param componentName
-//     * @param listener
-//     * @throws ComponentNotFoundException
-//     */
-//    public void addActionListener(String componentName, ActionListener listener) throws ComponentNotFoundException {
-//        Container container = getContentPane();
-//        Component[] components = container.getComponents();
-//        for (Component component : components) {
-//            if (component instanceof AbstractButton && componentName.equals(component.getName())) {
-//                ((AbstractButton) component).addActionListener(listener);
-//                return;
-//            }
-//        }
-//        throw new ComponentNotFoundException(componentName);
-//    }
 }

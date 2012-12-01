@@ -1,4 +1,4 @@
-package ares.platform.application;
+package ares.platform.util;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -14,7 +14,7 @@ public final class AresLookupService<T> {
 
     private final Map<Class<? extends T>, Set<T>> lookup = new HashMap<>();
 
-    public <C extends T> void put(Class<C> key, C value) {
+    public void put(Class<? extends T> key, T value) {
         Set<T> instances;
         if (lookup.containsKey(key)) {
             instances = lookup.get(key);
@@ -25,15 +25,12 @@ public final class AresLookupService<T> {
         lookup.put(key, instances);
     }
 
-//    public <C extends T> void put(Class<C> key, C value) {
-//        classMap.put(key, value);
-//    }
     public void remove(Class<? extends T> key) {
         lookup.remove(key);
     }
 
-    public <C extends T> C get(Class<C> key) {
-        return (C) lookup.get(key);
+    public Set<T> get(Class<? extends T> key) {
+        return lookup.get(key);
     }
 
     public Set<Class<? extends T>> keySet() {

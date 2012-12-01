@@ -6,8 +6,9 @@ import java.awt.Point;
 import java.io.File;
 
 /**
- *
+ * This class provides information on the graphics being used for a particular scenario
  * @author Mario Gomez <margomez at dsic.upv.es>
+ * @author Heine <heisncfr@inf.upv.es>
  */
 public class BoardGraphicsModel {
 
@@ -45,35 +46,32 @@ public class BoardGraphicsModel {
      * board width in tile units
      */
     public static int tileColumns;
-
     /**
      * board height in tile units
-     */    
+     */
     public static int tileRows;
     /**
      * Image width in pixels
-     */    
+     */
     public static int imageWidth;
     /**
      * Image height in pixels
      */
     public static int imageHeight;
-    
     private static ImageProfile imgProfile;
-    
 
     public BoardGraphicsModel(Board board) {
 
         // Constant during the same scenario
         tileColumns = board.getWidth();
         tileRows = board.getHeight();
-        
+
         // Variable information
         imgProfile = ImageProfile.MEDIUM;
         initGraphicVariables();
     }
-    
-    private void initGraphicVariables(){
+
+    private void initGraphicVariables() {
         hexSide = imgProfile.getHexSide();
         hexDiameter = imgProfile.getHexDiameter();
         hexRadius = hexDiameter / 2;
@@ -99,7 +97,7 @@ public class BoardGraphicsModel {
     }
 
     /**
-     * 
+     *
      * @return grid hexagon file
      */
     public File getGridHex() {
@@ -113,26 +111,24 @@ public class BoardGraphicsModel {
     public ImageProfile getImageProfile() {
         return imgProfile;
     }
-    
-    public void setImageProfile(ImageProfile ip){
+
+    public void setImageProfile(ImageProfile ip) {
         imgProfile = ip;
         initGraphicVariables();
-        //TODO Fire property change and let know the controller the model has changed.
-        
     }
-    
+
     /**
      * Converts a tile location to its corresponding pixel on the global image
-     * 
-     * @param tile  position to be converted
-     * @return the pixel at the upper left corner of the square circumscribed
-     *         about the hexagon
+     *
+     * @param tile position to be converted
+     * @return the pixel at the upper left corner of the square circumscribed about the hexagon
      * @see BoardGraphicsModel
      * @see AbstractImageLayer
      */
-    public static Point tileToPixel(Point tile){
+    public static Point tileToPixel(Point tile) {
         return tileToPixel(tile.x, tile.y);
     }
+
     public static Point tileToPixel(int x, int y) {
         Point pixel = new Point();
         //X component is "row" times the "offset"
@@ -145,15 +141,16 @@ public class BoardGraphicsModel {
 
     /**
      * Converts a pixel position to its corresponding tile index
-     * 
-     * @param pixel  position to be converted
+     *
+     * @param pixel position to be converted
      * @return the row (x) and column(y) where the tile is located at the tile map
      * @see BoardGraphicsModel
      * @see Board getTile
      */
     public static Point pixelToTile(Point pixel) {
-        return pixelToTile(pixel.x,pixel.y);
+        return pixelToTile(pixel.x, pixel.y);
     }
+
     public static Point pixelToTile(int x, int y) {
         Point tile = new Point();
         tile.x = x / hexOffset;
@@ -163,7 +160,7 @@ public class BoardGraphicsModel {
         return tile;
     }
 
-    public static boolean isWithinImageRange(Point pixel){
+    public static boolean isWithinImageRange(Point pixel) {
         return ((pixel.x < imageWidth && pixel.x > 0) && (pixel.y > 0 && pixel.y < imageHeight));
     }
 }

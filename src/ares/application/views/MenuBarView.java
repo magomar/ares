@@ -10,6 +10,8 @@ import ares.platform.view.ComponentFactory;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.MenuElement;
@@ -20,6 +22,8 @@ import javax.swing.event.EventListenerList;
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class MenuBarView extends AbstractView<JMenuBar> implements MenuBarViewer {
+
+    protected Map<String, EventListenerList> actionListeners = new HashMap<>();
 
     @Override
     protected JMenuBar layout() {
@@ -37,7 +41,7 @@ public class MenuBarView extends AbstractView<JMenuBar> implements MenuBarViewer
         JMenuBar jmenuBar = ComponentFactory.menuBar(fileMenu, viewMenu, engineMenu);
         return jmenuBar;
     }
-    
+
     protected MenuElement getMenuElement(String elementName) {
         return getMenuElement(elementName, getContentPane());
     }
@@ -61,7 +65,7 @@ public class MenuBarView extends AbstractView<JMenuBar> implements MenuBarViewer
     @Override
     public void setMenuElementEnabled(String name, boolean enabled) {
         getMenuElement(name).getComponent().setEnabled(enabled);
-                
+
     }
 
     @Override
@@ -71,8 +75,8 @@ public class MenuBarView extends AbstractView<JMenuBar> implements MenuBarViewer
             actionListener.actionPerformed(ae);
         }
     }
-    
-        /**
+
+    /**
      * Method to add a listener for a specific action command. This method is used by a controller to be notified of
      * user actions. Each controller has to register a single action listener for each command it wants to listen to.
      * However, many controllers can be listening to the very same command.
@@ -95,5 +99,4 @@ public class MenuBarView extends AbstractView<JMenuBar> implements MenuBarViewer
             actionListeners.get(actionCommand).remove(ActionListener.class, actionListener);
         }
     }
-
 }

@@ -7,7 +7,6 @@ import ares.application.views.MessagesView;
 import ares.application.views.UnitInfoView;
 import ares.platform.application.AbstractAresApplication;
 import ares.platform.view.ComponentFactory;
-import ares.platform.view.WindowUtil;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
@@ -30,19 +29,18 @@ public class AresPlayerGUI extends AbstractAresApplication {
     private JSplitPane splitHoriz;
     private JSplitPane splitVert;
 
-    @Override
-    protected void configureMVC() {
-        menuV = new MenuBarView();
-        unitV = new UnitInfoView();
-        boardV = new BoardView();
-        messagesV = new MessagesView();
+    public AresPlayerGUI() {
+        super(); // creates layout
         // Create controllers
         WeGoPlayerController mainController = new WeGoPlayerController(this, boardV, unitV, menuV, messagesV);
     }
 
     @Override
     protected JFrame layout() {
-        // Main frame
+        menuV = new MenuBarView();
+        unitV = new UnitInfoView();
+        boardV = new BoardView();
+        messagesV = new MessagesView();
         JFrame mainFrame = ComponentFactory.frame("Ares Player", menuV.getContentPane(), null);
         Dimension maxSize = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().getSize();
         Dimension defaultSize = new Dimension(1440, 900);
@@ -57,39 +55,32 @@ public class AresPlayerGUI extends AbstractAresApplication {
         mainFrame.setPreferredSize(preferredSize);
         mainFrame.setMaximumSize(maxSize);
         mainFrame.setSize(preferredSize);
-//        mainFrame.setBounds(new Rectangle(preferredSize));
-        mainFrame.pack();
-        WindowUtil.centerAndShow(mainFrame);
-        // Main frame content 
-//        boardV.getContentPane().setPreferredSize(getBoardPaneDimension(mainFrame.getContentPane()));
-//        boardV.getContentPane().setMinimumSize(getBoardPaneDimension(mainFrame.getContentPane()));
-        unitV.getContentPane().setMinimumSize(getInfoPaneDimension(mainFrame.getContentPane()));
-//        unitV.getContentPane().setMaximumSize(getInfoPaneDimension(mainFrame.getContentPane()));
-        messagesV.getContentPane().setMinimumSize(getMessagesPaneDimension(mainFrame.getContentPane()));
-//        messagesV.getContentPane().setMaximumSize(getMessagesPaneDimension(mainFrame.getContentPane()));
+
+        boardV.getContentPane().setPreferredSize(getBoardPaneDimension(mainFrame.getContentPane()));
+        unitV.getContentPane().setPreferredSize(getInfoPaneDimension(mainFrame.getContentPane()));
+        unitV.getContentPane().setMaximumSize(unitV.getContentPane().getPreferredSize());
+        messagesV.getContentPane().setPreferredSize(getMessagesPaneDimension(mainFrame.getContentPane()));
 
         splitVert = new JSplitPane(JSplitPane.VERTICAL_SPLIT, true, boardV.getContentPane(), messagesV.getContentPane());
         splitVert.setResizeWeight(1);
         splitHoriz = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, true, unitV.getContentPane(), splitVert);
-        splitHoriz.setResizeWeight(0.2);
+        splitHoriz.setResizeWeight(0);
         splitVert.setDividerSize(SPLIT_DIVIDER_SIZE);
         splitHoriz.setDividerSize(SPLIT_DIVIDER_SIZE);
         mainFrame.add(splitHoriz);
 
-//        horizontalSplit.setDividerLocation(boardV.getContentPane().getPreferredSize().width);
-//        splitHoriz.setDividerLocation(-1);
-//        splitVert.setDividerLocation(-1);
-        splitHoriz.resetToPreferredSizes();
-        splitVert.resetToPreferredSizes();
-//        splitHoriz.setVisible(false);
-
-        WindowUtil.centerAndShow(mainFrame);
-
         return mainFrame;
     }
 
-    public void setViewsVisible(boolean visible) {
+    @Override
+    public void setMainPaneVisible(boolean visible) {
         splitHoriz.setVisible(visible);
+//        if (visible) {
+//            splitHoriz.resetToPreferredSizes();
+//            splitVert.resetToPreferredSizes();
+//        }
+        show();
+//        SwingUtilities.updateComponentTreeUI(contentPane);
     }
 
     private Dimension getInfoPaneDimension(Container container) {

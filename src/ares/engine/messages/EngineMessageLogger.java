@@ -16,12 +16,12 @@ public class EngineMessageLogger extends AbstractBean {
     private final Map<EngineMessageType, List<EngineMessage>> messages;
 
     public EngineMessageLogger() {
-        messages = new EnumMap(EngineMessageType.class);
+        messages = new EnumMap<>(EngineMessageType.class);
     }
 
     public void add(EngineMessage msg) {
         List<EngineMessage> oldValue = messages.get(msg.getType());
-        List<EngineMessage> msgList = new LinkedList<>(oldValue);;
+        List<EngineMessage> msgList = new LinkedList<>(oldValue);
         msgList.add(msg);
         firePropertyChange(MESSAGES_PROPERTY, oldValue, msgList);
     }

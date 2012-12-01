@@ -1,15 +1,10 @@
-package ares.platform.controller;
+package temp;
 
-import ares.platform.application.LookupService;
 import ares.platform.model.AbstractBean;
-import ares.platform.view.AbstractView;
-import ares.platform.view.InternalFrameView;
-import ares.platform.view.View;
-import java.beans.PropertyChangeEvent;
+import ares.platform.util.LookupService;
 import java.beans.PropertyChangeListener;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import javax.swing.JComponent;
 
 /**
  *
@@ -54,24 +49,4 @@ public abstract class AbstractController implements PropertyChangeListener {
         model.removePropertyChangeListener(this);
     }
 
-    //    public final void addView(Class<? extends AbstractView<? extends JComponent>> viewClass, AbstractView<? extends JComponent> view) {
-//        views.put(viewClass, view);
-//    }
-//
-//    public final void removeView(Class<AbstractView<? extends JComponent>> viewClass) {
-//        views.remove(viewClass);
-//    }
-    
-//    public final <T extends AbstractView<? extends JComponent>> T getView(Class<T> viewClass) {
-//        return views.get(viewClass);
-//    }
-//
-//    @SuppressWarnings("unchecked")
-//    public final <T extends AbstractView<? extends JComponent>> InternalFrameView<T> getInternalFrameView(Class<T> viewClass) {
-//        return (InternalFrameView<T>) views.get(viewClass);
-//    }
-//
-//    public final <T extends AbstractBean> T getModel(Class<T> modelClass) {
-//        return (T) models.get(modelClass);
-//    }
 }

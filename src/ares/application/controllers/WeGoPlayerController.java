@@ -34,11 +34,11 @@ import javax.swing.JOptionPane;
 public class WeGoPlayerController implements PropertyChangeListener {
     // Views
 
-    private final AbstractAresApplication mainApplication;
-    private final BoardViewer boardV;
-    private final UnitInfoViewer unitV;
-    private final MenuBarViewer menuV;
-    private final MessagesViewer messagesV;
+    private final AbstractAresApplication mainView;
+    private final BoardViewer boardView;
+    private final UnitInfoViewer unitView;
+    private final MenuBarViewer menuView;
+    private final MessagesViewer messagesView;
     // Entities (bussines logic), they interact with the model providers and provide models to the views
     private final RealTimeEngine engine;
     // Other fields
@@ -48,42 +48,46 @@ public class WeGoPlayerController implements PropertyChangeListener {
 //    private Unit selectedUnit;
     private static final Logger LOG = Logger.getLogger(WeGoPlayerController.class.getName());
 
-    public WeGoPlayerController(AbstractAresApplication mainApplication, BoardViewer boardV, UnitInfoViewer unitV, MenuBarViewer menuV, MessagesViewer messagesV) {
+    public WeGoPlayerController(AbstractAresApplication mainView, BoardViewer boardView, UnitInfoViewer unitView, MenuBarViewer menuView, MessagesViewer messagesView) {
         executor = Executors.newCachedThreadPool();
-        this.mainApplication = mainApplication;
+        this.mainView = mainView;
         this.engine = new RealTimeEngine();
-        this.boardV = boardV;
-        this.unitV = unitV;
-        this.menuV = menuV;
-        this.messagesV = messagesV;
+        this.boardView = boardView;
+        this.unitView = unitView;
+        this.menuView = menuView;
+        this.messagesView = messagesView;
+
         //Add listeners to the views
-        menuV.addActionListener(FileCommands.OPEN_SCENARIO.getName(), new OpenScenarioActionListener());
-        menuV.addActionListener(FileCommands.CLOSE_SCENARIO.getName(), new CloseScenarioActionListener());
-        menuV.addActionListener(FileCommands.EXIT.getName(), new ExitActionListener());
-        menuV.addActionListener(EngineCommands.START.name(), new StartActionListener());
-        menuV.addActionListener(EngineCommands.PAUSE.name(), new PauseActionListener());
-        menuV.addActionListener(EngineCommands.NEXT.name(), new NextActionListener());
-        boardV.addMouseListener(new BoardMouseListener());
+        menuView.addActionListener(FileCommands.OPEN_SCENARIO.getName(), new OpenScenarioActionListener());
+        menuView.addActionListener(FileCommands.CLOSE_SCENARIO.getName(), new CloseScenarioActionListener());
+        menuView.addActionListener(FileCommands.EXIT.getName(), new ExitActionListener());
+        menuView.addActionListener(EngineCommands.START.name(), new StartActionListener());
+        menuView.addActionListener(EngineCommands.PAUSE.name(), new PauseActionListener());
+        menuView.addActionListener(EngineCommands.NEXT.name(), new NextActionListener());
+        boardView.addMouseListener(new BoardMouseListener());
         //Add change listeners to entities
         engine.addPropertyChangeListener(this);
-        LOG.addHandler(new MessagesHandler(messagesV));
+        LOG.addHandler(new MessagesHandler(messagesView));
+        
+        //Initialize views
+        mainView.setMainPaneVisible(false);
     }
-
+    
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         if (RealTimeEngine.CLOCK_EVENT_PROPERTY.equals(evt.getPropertyName())) {
             ClockEvent clockEvent = (ClockEvent) evt.getNewValue();
             Scenario scenario = engine.getScenario();
-            mainApplication.setTitle("ARES   " + scenario.getName() + "   " + scenario.getCalendar().toString()
+            mainView.setTitle("ARES   " + scenario.getName() + "   " + scenario.getCalendar().toString()
                     + "   Role: " + userRole + "           Time: " + clockEvent.getClock().toString());
 
-            boardV.updateScenario(engine.getScenarioModel(userRole));
+            boardView.updateScenario(engine.getScenarioModel(userRole));
             if (selectedTile != null) {
-                unitV.updateInfo(selectedTile.getModel(userRole));
+                unitView.updateInfo(selectedTile.getModel(userRole));
             }
             if (clockEvent.getEventTypes().contains(ClockEventType.TURN)) {
-                menuV.setMenuElementEnabled(EngineCommands.PAUSE.getName(), false);
-                menuV.setMenuElementEnabled(EngineCommands.NEXT.getName(), true);
+                menuView.setMenuElementEnabled(EngineCommands.PAUSE.getName(), false);
+                menuView.setMenuElementEnabled(EngineCommands.NEXT.getName(), true);
             }
         }
     }
@@ -95,7 +99,7 @@ public class WeGoPlayerController implements PropertyChangeListener {
             JFileChooser fc = new JFileChooser();
             fc.setCurrentDirectory(AresIO.ARES_IO.getAbsolutePath(AresPaths.SCENARIOS.getPath()).toFile());
             fc.setFileFilter(AresFileType.SCENARIO.getFileTypeFilter());
-            int returnVal = fc.showOpenDialog(mainApplication.getMainFrame());
+            int returnVal = fc.showOpenDialog(mainView.getContentPane());
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 File file = fc.getSelectedFile();
                 // Load scenario and equipment files
@@ -112,7 +116,7 @@ public class WeGoPlayerController implements PropertyChangeListener {
                 }
                 options[forces.length] = UserRole.GOD;
 
-                int n = JOptionPane.showOptionDialog(mainApplication.getMainFrame(),
+                int n = JOptionPane.showOptionDialog(mainView.getContentPane(),
                         "Please select a user role",
                         "Select your role",
                         JOptionPane.YES_NO_CANCEL_OPTION,
@@ -120,7 +124,7 @@ public class WeGoPlayerController implements PropertyChangeListener {
                         null,
                         options,
                         options[2]);
-                if(n>=0){
+                if (n >= 0) {
                     userRole = options[n];
                     return scenario;
                 }
@@ -138,19 +142,20 @@ public class WeGoPlayerController implements PropertyChangeListener {
 
                 // obtain the scenario model with the active userRole
                 ScenarioModel scenarioModel = engine.getScenarioModel(userRole);
-                boardV.loadScenario(scenarioModel);
+                boardView.loadScenario(scenarioModel);
 
                 // set main window title & show appropriate views
-                mainApplication.setTitle("ARES   " + scenario.getName() + "   " + scenario.getCalendar().toString() + "   Role: " + userRole);
-                boardV.setVisible(true);
-                unitV.setVisible(true);
-                messagesV.setVisible(true);
+                mainView.setTitle("ARES   " + scenario.getName() + "   " + scenario.getCalendar().toString() + "   Role: " + userRole);
+//                boardView.setVisible(true);
+//                unitView.setVisible(true);
+//                messagesView.setVisible(true);
+                mainView.setMainPaneVisible(true);
                 // Update menu bar
-                menuV.setMenuElementEnabled(FileCommands.CLOSE_SCENARIO.getName(), true);
-                menuV.setMenuElementEnabled(AresMenus.ENGINE_MENU.getName(), true);
-                menuV.setMenuElementEnabled(EngineCommands.START.getName(), true);
-                menuV.setMenuElementEnabled(EngineCommands.PAUSE.getName(), false);
-                menuV.setMenuElementEnabled(EngineCommands.NEXT.getName(), false);
+                menuView.setMenuElementEnabled(FileCommands.CLOSE_SCENARIO.getName(), true);
+                menuView.setMenuElementEnabled(AresMenus.ENGINE_MENU.getName(), true);
+                menuView.setMenuElementEnabled(EngineCommands.START.getName(), true);
+                menuView.setMenuElementEnabled(EngineCommands.PAUSE.getName(), false);
+                menuView.setMenuElementEnabled(EngineCommands.NEXT.getName(), false);
             }
         }
     }
@@ -171,12 +176,12 @@ public class WeGoPlayerController implements PropertyChangeListener {
         public void actionPerformed(ActionEvent e) {
             LOG.log(Level.INFO, e.toString());
             engine.setScenario(null);
-            menuV.setMenuElementEnabled(FileCommands.CLOSE_SCENARIO.getName(), false);
-            menuV.setMenuElementEnabled(AresMenus.ENGINE_MENU.getName(), false);
-            boardV.setVisible(false);
-            boardV.closeScenario();
-            messagesV.setVisible(false);
-            unitV.setVisible(false);
+            menuView.setMenuElementEnabled(FileCommands.CLOSE_SCENARIO.getName(), false);
+            menuView.setMenuElementEnabled(AresMenus.ENGINE_MENU.getName(), false);
+            boardView.setVisible(false);
+            boardView.closeScenario();
+            messagesView.setVisible(false);
+            unitView.setVisible(false);
 
         }
     }
@@ -196,8 +201,8 @@ public class WeGoPlayerController implements PropertyChangeListener {
         public void actionPerformed(ActionEvent e) {
             LOG.log(Level.INFO, e.toString());
             engine.start();
-            menuV.setMenuElementEnabled(EngineCommands.START.getName(), false);
-            menuV.setMenuElementEnabled(EngineCommands.PAUSE.getName(), true);
+            menuView.setMenuElementEnabled(EngineCommands.START.getName(), false);
+            menuView.setMenuElementEnabled(EngineCommands.PAUSE.getName(), true);
         }
     }
 
@@ -207,8 +212,8 @@ public class WeGoPlayerController implements PropertyChangeListener {
         public void actionPerformed(ActionEvent e) {
             LOG.log(Level.INFO, e.toString());
             engine.stop();
-            menuV.setMenuElementEnabled(EngineCommands.START.getName(), true);
-            menuV.setMenuElementEnabled(EngineCommands.PAUSE.getName(), false);
+            menuView.setMenuElementEnabled(EngineCommands.START.getName(), true);
+            menuView.setMenuElementEnabled(EngineCommands.PAUSE.getName(), false);
         }
     }
 
@@ -217,8 +222,8 @@ public class WeGoPlayerController implements PropertyChangeListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             LOG.log(Level.INFO, e.toString());
-            menuV.setMenuElementEnabled(EngineCommands.PAUSE.getName(), true);
-            menuV.setMenuElementEnabled(EngineCommands.NEXT.getName(), false);
+            menuView.setMenuElementEnabled(EngineCommands.PAUSE.getName(), true);
+            menuView.setMenuElementEnabled(EngineCommands.NEXT.getName(), false);
             engine.start();
         }
     }
@@ -243,12 +248,12 @@ public class WeGoPlayerController implements PropertyChangeListener {
                     changeUnit = true;
                 }
                 if (changeTile || changeUnit) {
-                    unitV.updateInfo(selectedTile.getModel(userRole));
-                    boardV.updateTile(selectedTile.getModel(userRole));
+                    unitView.updateInfo(selectedTile.getModel(userRole));
+                    boardView.updateTile(selectedTile.getModel(userRole));
                 }
             } else if (me.getButton() == MouseEvent.BUTTON3) {
                 selectedTile = null;
-                unitV.clear();
+                unitView.clear();
             }
         }
     }
