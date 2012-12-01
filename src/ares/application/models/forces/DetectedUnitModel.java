@@ -47,6 +47,11 @@ public class DetectedUnitModel extends UnitModel {
     public String getFormation() {
         return "";
     }
+    
+    @Override
+    public String getForce(){
+        return unit.getForce().getName();
+    }
 
     @Override
     public String getDescription() {

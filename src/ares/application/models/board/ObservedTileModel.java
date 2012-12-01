@@ -4,6 +4,8 @@ import ares.application.models.forces.UnitModel;
 import ares.engine.knowledge.KnowledgeCategory;
 import ares.scenario.board.Tile;
 import ares.scenario.board.UnitsStack;
+import ares.scenario.forces.SurfaceUnit;
+import java.util.Collection;
 import java.util.NoSuchElementException;
 
 /**
@@ -41,5 +43,27 @@ public final class ObservedTileModel extends NonObservedTileModel {
     @Override
     public String getDescription() {
         return tile.toStringMultiline();
+    }
+    
+    @Override
+    public String getOwner(){
+        return tile.getOwner().getName();
+    }
+    
+    @Override
+    public Collection<SurfaceUnit> getSurfaceUnits() {
+        return stack.getSurfaceUnits();
+    }
+    
+    @Override
+    public boolean isAlliedTerritory(String force) {
+        return getOwner().equals(force);
+        
+    }
+    
+    @Override
+    public boolean hasEnemies(String force) {
+        // If there are units, check if the first of the collection is an ally
+        return getSurfaceUnits().isEmpty() && getSurfaceUnits().iterator().next().getForce().getName().equals(force);            
     }
 }

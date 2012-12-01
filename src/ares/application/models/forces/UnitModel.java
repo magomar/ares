@@ -3,6 +3,7 @@ package ares.application.models.forces;
 import ares.application.gui_components.UnitColors;
 import ares.application.models.board.TileModel;
 import ares.engine.knowledge.KnowledgeCategory;
+import ares.engine.movement.MovementType;
 import ares.platform.model.KnowledgeMediatedModel;
 import ares.scenario.forces.Unit;
 
@@ -29,5 +30,11 @@ public abstract class UnitModel extends KnowledgeMediatedModel {
    
     public abstract String getFormation();
     
+    public abstract String getForce();
+    
     public abstract String getDescription();
+
+    public MovementType getMovement() {
+        return unit.getMovement();
+    }
 }
