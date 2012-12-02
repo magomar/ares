@@ -7,7 +7,6 @@ import ares.application.models.forces.UnitModel;
 import ares.application.player.AresMenus;
 import ares.application.views.*;
 import ares.data.jaxb.EquipmentDB;
-import ares.engine.algorithms.PathFinderAstar;
 import ares.engine.algorithms.routing.*;
 import ares.engine.realtime.*;
 import ares.io.*;

@@ -93,6 +93,13 @@ public final class Board implements ModelProvider<BoardModel> {
         return neighbors;
     }
 
+    /**
+     * Direction between to neighbour tiles
+     * 
+     * @param from
+     * @param to
+     * @return 
+     */
     public static Direction getDirBetween(Tile from, Tile to) {
         int incX = to.getCoordinates().x - from.getCoordinates().x;
         int incY = to.getCoordinates().y - from.getCoordinates().y;

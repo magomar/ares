@@ -40,8 +40,8 @@ public class MovementCost {
         boolean offRoadMovement = true;
 
         for (TerrainFeatures tf : features) {
-            // NON PLAYABLE tile, impassable for non AIRCRAFT units
-            if (tf.equals(TerrainFeatures.NON_PLAYABLE)) {
+            // Tile only usable by aircrafts
+            if (tf.equals(TerrainFeatures.NON_PLAYABLE) || tf.equals(TerrainFeatures.PEAK)) {
                 for (MovementType moveType : EnumSet.range(MovementType.FIXED, MovementType.FOOT)) {
                     movementCost.put(moveType, IMPASSABLE);
                 }
@@ -185,13 +185,13 @@ public class MovementCost {
 
     public int getActualCost(UnitModel unit, TileModel destination, Direction fromDir, boolean avoidEnemies) {
 
-        int penalty = 0, cost = 0;
+        int penalty = 0, cost;
 
         if (!destination.isAlliedTerritory(unit.getForce()) && destination.hasEnemies(unit.getForce())) {
             if (avoidEnemies) {
                 return IMPASSABLE;
             }
-            // Enemies on the way,
+            // Enemies on the way
             penalty++;
         }
 

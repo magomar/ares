@@ -81,7 +81,7 @@ public class DistanceCalculator implements Heuristic {
             return Math.abs(dest.x - orig.x);
         }
 
-        boolean oddRow = ((orig.x & 1) == 1);
+        boolean oddColumn = ((orig.x & 1) == 1);
 
         // Get the direction
         Direction dir;
@@ -111,8 +111,8 @@ public class DistanceCalculator implements Heuristic {
         while (true) {
             cost++;
             current.x += dir.getIncI();
-            current.y += (oddRow) ? dir.getIncJOdd() : dir.getIncJEven();
-            oddRow = !oddRow;
+            current.y += (oddColumn) ? dir.getIncJOdd() : dir.getIncJEven();
+            oddColumn = !oddColumn;
             if (current.x == dest.x) {
                 return cost+Math.abs(dest.y - current.y);
             }

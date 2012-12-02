@@ -1,8 +1,6 @@
 package ares.engine.algorithms.routing;
 
 import ares.application.models.board.TileModel;
-import ares.scenario.board.Direction;
-import java.util.EnumSet;
 
 /**
  *
@@ -56,6 +54,4 @@ public abstract class AbstractPathFinder implements PathFinder{
     
     @Override
     abstract public Path getPath(TileModel o, TileModel d);
-    @Override
-    abstract public EnumSet<Direction> getDirections(TileModel o, TileModel d);
 }
