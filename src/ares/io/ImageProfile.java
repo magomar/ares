@@ -13,10 +13,10 @@ import ares.scenario.board.Terrain;
  */
 public enum ImageProfile {
 
-    // Units (Width,Height,Rows,Cols,Square side), Terran(W,H,R,C), Hex(Diam,Side,Offset,Height), Path
-    SMALL( 272,128,8,16,/*17x16*/0,  270,192,8,10,  27,13,21,22, AresPaths.GRAPHICS_SMALL.getPath()),
-    MEDIUM(496,248,8,16,31,  510,352,8,10,  51,28,39,44, AresPaths.GRAPHICS_MEDIUM.getPath()),
-    HIGH( 992,446,8,16,62, 1020,704,8,10, 102,51,78,88, AresPaths.GRAPHICS_HIGH.getPath()),
+    // Units (Width,Height,Rows,Cols,Square side), Terran(W,H,R,C), Hex(Diam,Side,Offset,Height,rise), Path
+    SMALL( 272,128,8,16,/*17x16*/0,  270,192,8,10,  27,13,21,22,0.0, AresPaths.GRAPHICS_SMALL.getPath()),
+    MEDIUM(496,248,8,16,31,  510,352,8,10,  51,28,39,44,1.833, AresPaths.GRAPHICS_MEDIUM.getPath()),
+    HIGH( 992,446,8,16,62, 1020,704,8,10, 102,51,78,88,1.833, AresPaths.GRAPHICS_HIGH.getPath()),
     ;
 
     private final int unitsImageWidth;
@@ -32,6 +32,7 @@ public enum ImageProfile {
     private final int hexSide;
     private final int hexOffset;
     private final int hexHeight;
+    private final double hexRise;
     
 
     private String path;
@@ -56,7 +57,7 @@ public enum ImageProfile {
      * @param hexHeight
      * @param path 
      */
-    private ImageProfile(int unitsImageWidth, int unitsImageHeight, int unitsImageRows, int unitsImageCols, int unitSquareSide, int terrainImageWidth, int terrainImageHeight, int terrainImageRows, int terrainImageCols, int hexDiameter, int hexSide, int hexOffset, int hexHeight, String path) {
+    private ImageProfile(int unitsImageWidth, int unitsImageHeight, int unitsImageRows, int unitsImageCols, int unitSquareSide, int terrainImageWidth, int terrainImageHeight, int terrainImageRows, int terrainImageCols, int hexDiameter, int hexSide, int hexOffset, int hexHeight, double hexRise, String path) {
         this.unitsImageWidth = unitsImageWidth;
         this.unitsImageHeight = unitsImageHeight;
         this.unitsImageRows = unitsImageRows;
@@ -70,6 +71,7 @@ public enum ImageProfile {
         this.hexSide = hexSide;
         this.hexOffset = hexOffset;
         this.hexHeight = hexHeight;
+        this.hexRise = hexRise;
         this.path = path;
     }
     
@@ -211,6 +213,21 @@ public enum ImageProfile {
      */
     public int getHexHeight() {
         return hexHeight;
+    }
+    
+    /**
+     *  A ____ B
+     * F /    \ C
+     *   \____/
+     *  E     D
+     * 
+     * The rise (gradient or slope) of CD
+     * To get the BC rise just change this value sign
+     * 
+     * @return 
+     */
+    public double getHexRise(){
+        return hexRise;
     }
 
     /**
