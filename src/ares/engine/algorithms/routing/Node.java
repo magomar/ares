@@ -10,7 +10,8 @@ import java.util.Objects;
 public class Node {
     
     private TileModel tile;
-    private Node parent;
+    private Node prev;
+    private Node next;
     // Where this node comes from
     private Direction from;
     // Cost from the start to this node
@@ -24,7 +25,7 @@ public class Node {
     
     public Node(TileModel t, Node p) {
         tile = t;
-        parent = p;
+        prev = p;
     } 
 
     public TileModel getTile() {
@@ -35,14 +36,21 @@ public class Node {
         this.tile = tile;
     }
 
-    public Node getParent() {
-        return parent;
+    public Node getPrev() {
+        return prev;
     }
 
-    public void setParent(Node parent) {
-        this.parent = parent;
+    public void setPrev(Node prev) {
+        this.prev = prev;
+    }
+    
+    public Node getNext(){
+        return next;
     }
 
+    public void setNext(Node next){
+        this.next = next;
+    }
     public Direction getFrom() {
         return from;
     }
@@ -90,7 +98,7 @@ public class Node {
     @Override
     public int hashCode() {
         int hash = 17;
-        hash = 53 * hash + Objects.hashCode(this.parent);
+        hash = 53 * hash + Objects.hashCode(this.prev);
         return hash;
     }
 }

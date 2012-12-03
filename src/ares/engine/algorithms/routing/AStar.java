@@ -40,12 +40,16 @@ public class AStar extends AbstractPathFinder {
             }
         });
 
+        Node start;
         Node goal = new Node(dest);
         Node current = new Node(orig);
+        current.setPrev(null);
         current.setG(0);
         current.setF(heuristic.getCost(orig.getCoordinates(), dest.getCoordinates()));
         map.put(current.getTile().getIndex(), current);
         openSet.add(current);
+        
+        start = current; // save it for the double linked Path
 
         while (!openSet.isEmpty()) {
 
@@ -53,7 +57,7 @@ public class AStar extends AbstractPathFinder {
             current = openSet.poll();
 
             if (current.equals(goal)) {
-                return new Path(current);
+                return new Path(start,current);
             }
 
             closedSet.set(current.getTile().getIndex());
@@ -62,7 +66,7 @@ public class AStar extends AbstractPathFinder {
                 if (closedSet.get(index)) {
                     continue;
                 }
-                double tentativeG = current.getG() + current.getTile().getMoveCost(iter.getKey()).getActualCost(orig.getTopUnit(), iter.getValue(), iter.getKey().getOpposite(), avoidingEnemies());
+                double tentativeG = current.getG() + current.getTile().getMoveCost(iter.getKey()).getActualCost(orig.getTopUnit(), iter.getValue(), iter.getKey().getOpposite(), avoidingEnemies(), getPathType()==SHORTEST);
 
                 Node neighbour = map.get(index);
                 if (neighbour == null) {
@@ -75,7 +79,7 @@ public class AStar extends AbstractPathFinder {
                         openSet.add(neighbour);
                     }
                 } else if (neighbour.getG() > tentativeG) {
-                    neighbour.setParent(current);
+                    neighbour.setPrev(current);
                     neighbour.setG(tentativeG);
                     neighbour.setF(tentativeG + heuristic.getCost(neighbour.getTile().getCoordinates(), dest.getCoordinates()));
                 }

@@ -183,11 +183,15 @@ public class MovementCost {
         return cost;
     }
 
-    public int getActualCost(UnitModel unit, TileModel destination, Direction fromDir, boolean avoidEnemies) {
+    public int getActualCost(UnitModel unit, TileModel destination, Direction fromDir, boolean avoidEnemies, boolean shortest) {
 
         int penalty = 0, cost;
-
-        if (!destination.isAlliedTerritory(unit.getForce()) && destination.hasEnemies(unit.getForce())) {
+        if(shortest){
+            // If it's possible, then go for it
+            int d = movementCost.get(unit.getMovement());
+            return (d<IMPASSABLE) ? 1 : IMPASSABLE;
+        }
+        if (destination.hasEnemies(unit.getForce())) {
             if (avoidEnemies) {
                 return IMPASSABLE;
             }

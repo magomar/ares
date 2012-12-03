@@ -67,7 +67,7 @@ public final class ObservedTileModel extends NonObservedTileModel {
         if(getSurfaceUnits().isEmpty()){
             return false;
         } else{
-            return getSurfaceUnits().iterator().next().getForce().getName().equals(force);
+            return !getSurfaceUnits().iterator().next().getForce().getName().equals(force);
         }   
     }
 }

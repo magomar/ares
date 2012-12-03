@@ -38,6 +38,7 @@ public abstract class AbstractPathFinder implements PathFinder{
      * 
      * @return
      */
+    @Override
     public boolean avoidingEnemies(){
         return AVOID_ENEMIES;
     }
@@ -45,6 +46,11 @@ public abstract class AbstractPathFinder implements PathFinder{
     @Override
     public void setPathType(int type) {
         this.pathType = type;
+    }
+    
+    @Override
+    public int getPathType(){
+        return pathType;
     }
     
     @Override
