@@ -329,7 +329,7 @@ public final class Tile implements ModelProvider<TileModel> {
             return false;
         }
         final Tile other = (Tile) obj;
-        if (!this.coord.equals(other)) {
+        if (!this.coord.equals(other.getCoordinates())) {
             return false;
         }
         return true;

@@ -67,11 +67,6 @@ public class Node {
         this.f = f;
     }
     
-    // Tile map index
-    public int getIndex(){
-        return BoardGraphicsModel.tileMapIndex(tile.getCoordinates());
-    }
-    
     @Override
     public String toString(){
         StringBuilder sb = new StringBuilder();

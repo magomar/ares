@@ -5,7 +5,7 @@ import ares.scenario.board.Direction;
 import java.util.*;
 
 /**
- *
+ * 
  * @author Heine <heisncfr@inf.upv.es>
  */
 public class AStar extends AbstractPathFinder {
@@ -44,7 +44,7 @@ public class AStar extends AbstractPathFinder {
         Node current = new Node(orig);
         current.setG(0);
         current.setF(heuristic.getCost(orig.getCoordinates(), dest.getCoordinates()));
-        map.put(current.getIndex(), current);
+        map.put(current.getTile().getIndex(), current);
         openSet.add(current);
 
         while (!openSet.isEmpty()) {
@@ -56,7 +56,7 @@ public class AStar extends AbstractPathFinder {
                 return new Path(current);
             }
 
-            closedSet.set(current.getIndex());
+            closedSet.set(current.getTile().getIndex());
             for (Map.Entry<Direction, TileModel> iter : current.getTile().getNeighbors().entrySet()) {
                 int index = BoardGraphicsModel.tileMapIndex(iter.getValue().getCoordinates());
                 if (closedSet.get(index)) {

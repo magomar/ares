@@ -10,8 +10,10 @@ import java.awt.Point;
 public class DistanceCalculator implements Heuristic {
 
     public final static int DELTA = 0;
-    public final static int EUCLIDEAN = 1;
-    public final static int HEINIAN = 2;
+    public final static int DELTABITWISE = 1;
+    public final static int EUCLIDEAN = 2;
+    public final static int HEINIAN = 3;
+    
     private static int algo;
 
     public DistanceCalculator() {
@@ -33,6 +35,8 @@ public class DistanceCalculator implements Heuristic {
                 return heinian(orig, dest);
             case DELTA:
                 return deltaDistance(orig, dest);
+            case DELTABITWISE:
+                return deltaBitwiseDistance(orig, dest);                
             case EUCLIDEAN:
                 return euclidean(orig, dest);
             default:
@@ -40,12 +44,14 @@ public class DistanceCalculator implements Heuristic {
         }
     }
 
-    public int getCost(Point orig, Point dest, int algorithm) {
+    public static int getCost(Point orig, Point dest, int algorithm) {
         switch (algorithm) {
             case HEINIAN:
                 return heinian(orig, dest);
             case DELTA:
                 return deltaDistance(orig, dest);
+            case DELTABITWISE:
+                return deltaBitwiseDistance(orig, dest);
             case EUCLIDEAN:
                 return euclidean(orig, dest);
             default:
@@ -53,13 +59,13 @@ public class DistanceCalculator implements Heuristic {
         }
     }
 
-    private int euclidean(Point orig, Point dest) {
+    private static int euclidean(Point orig, Point dest) {
         int dx = dest.x - orig.x;
         int dy = dest.y - orig.y;
         return (int) Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
     }
 
-    private int deltaDistance(Point orig, Point dest) {
+    private static int deltaDistance(Point orig, Point dest) {
         int cost;
         int dy = dest.y - orig.y, dx = dest.x - orig.x;
         if (Math.signum(dx) == Math.signum(dy)) {
@@ -69,8 +75,32 @@ public class DistanceCalculator implements Heuristic {
         }
         return cost;
     }
+    
+    private static int deltaBitwiseDistance(Point from, Point to) {
+        // adapted from http://www-cs-students.stanford.edu/~amitp/Articles/HexLOS.html
+        int x1 = from.x;
+        int y1 = from.y;
+        int x2 = to.x;
+        int y2 = to.y;
+        int ax = y1 - Ceil2(x1);
+        int ay = y1 + Floor2(x1);
+        int bx = y2 - Ceil2(x2);
+        int by = y2 + Floor2(x2);
+        int dx = bx - ax;
+        int dy = by - ay;
+        return Math.abs(dx) + Math.abs(dy);
+    }
+    
+    
+    private static int Floor2(int val) {
+        return (val >> 1);
+    }
 
-    private int heinian(Point orig, Point dest) {
+    private static int Ceil2(int val) {
+        return ((val + 1) >> 1);
+    }
+
+    private static int heinian(Point orig, Point dest) {
         int cost = 0;
         // If points are on the same column
         if (orig.x == dest.x) {

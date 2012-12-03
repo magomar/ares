@@ -16,7 +16,7 @@ public abstract class AbstractPathFinder implements PathFinder{
     
     protected int pathType;
     protected int algorithm;
-    protected Heuristic heuristic = new DistanceCalculator();
+    protected Heuristic heuristic = new DistanceCalculator(DistanceCalculator.DELTA);
 
     public AbstractPathFinder(){
         this(FASTEST);

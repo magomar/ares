@@ -78,4 +78,8 @@ public class Path {
     public String toString() {
         return "Path{" + nodes + '}';
     }
+
+    public boolean isEmpty() {
+        return nodes.isEmpty();
+    }
 }
