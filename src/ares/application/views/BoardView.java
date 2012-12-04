@@ -129,7 +129,7 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
 
     @Override
     public void addMouseListener(MouseListener listener) {
-        contentPane.addMouseListener(listener);
+        contentPane.getViewport().getView().addMouseListener(listener);
     }
 
     @Override
