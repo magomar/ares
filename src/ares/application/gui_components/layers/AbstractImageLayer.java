@@ -18,17 +18,23 @@ public abstract class AbstractImageLayer extends javax.swing.JPanel {
     // Final image to be painted on the JComponent
     protected BufferedImage globalImage;
     
-    // BoardGraphicsModel provides hexagonal and image sizes
-    protected BoardGraphicsModel bgm;
+    // Nested layers
+    protected AbstractImageLayer parentLayer;
+
+    public AbstractImageLayer() {
+    }
+
+    public AbstractImageLayer(AbstractImageLayer parentLayer) {
+        this.parentLayer = parentLayer;
+    }
     
     public void initialize(ScenarioModel s){
-        bgm = s.getBoardGraphicsModel();
-        globalImage = new BufferedImage(BoardGraphicsModel.imageWidth, BoardGraphicsModel.imageHeight, BufferedImage.TYPE_INT_ARGB);
+        globalImage = new BufferedImage(BoardGraphicsModel.getImageWidth(), BoardGraphicsModel.getImageHeight(), BufferedImage.TYPE_INT_ARGB);
         createGlobalImage(s);
     }
     
     public void updateGlobalImage(ScenarioModel s) {
-        globalImage = new BufferedImage(BoardGraphicsModel.imageWidth, BoardGraphicsModel.imageHeight, BufferedImage.TYPE_INT_ARGB);
+        globalImage = new BufferedImage(BoardGraphicsModel.getImageWidth(), BoardGraphicsModel.getImageHeight(), BufferedImage.TYPE_INT_ARGB);
         createGlobalImage(s);
         repaint();
     }
@@ -49,7 +55,6 @@ public abstract class AbstractImageLayer extends javax.swing.JPanel {
     
     public void flush(){
         globalImage = null;
-        bgm=null;
     }
     
     @Override

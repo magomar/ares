@@ -1,8 +1,7 @@
 package ares.application.gui_components.layers;
 
 import ares.application.models.ScenarioModel;
-import ares.application.models.board.BoardGraphicsModel;
-import ares.application.models.board.TileModel;
+import ares.application.models.board.*;
 import ares.data.jaxb.TerrainFeature;
 import ares.engine.knowledge.KnowledgeCategory;
 import ares.io.*;
@@ -36,7 +35,7 @@ public class TerrainLayer extends AbstractImageLayer {
         Graphics2D g2 = globalImage.createGraphics();
         // Paint it black!
         g2.setColor(Color.BLACK);
-        g2.fillRect(0, 0, BoardGraphicsModel.imageWidth, BoardGraphicsModel.imageHeight);
+        g2.fillRect(0, 0, BoardGraphicsModel.getImageWidth(), BoardGraphicsModel.getImageHeight());
         g2.dispose();
         for (TileModel[] tt : s.getBoardModel().getMapModel()) {
             for(TileModel t : tt){
@@ -112,8 +111,8 @@ public class TerrainLayer extends AbstractImageLayer {
         loadTerrainGraphics(t);
         
         //Get the coordinates
-        int cols = bgm.getImageProfile().getTerrainImageCols();
-        int w = BoardGraphicsModel.hexDiameter, h = BoardGraphicsModel.hexHeight;
+        int cols = BoardGraphicsModel.getImageProfile().getTerrainImageCols();
+        int w = BoardGraphicsModel.getHexDiameter(), h = BoardGraphicsModel.getHexHeight();
         
         return terrainBufferMap.get(t).get().getSubimage(w * (index%cols), h * (index/cols), w, h);
      }
@@ -121,7 +120,7 @@ public class TerrainLayer extends AbstractImageLayer {
 
     /**
      * Terrain class has a map with the index to the subimage based on
-     * directions
+     * directions.
      * The map associates the subimage position with the subimage
      * index
      *
@@ -147,13 +146,15 @@ public class TerrainLayer extends AbstractImageLayer {
             it = e.getValue().iterator();
             while (it.hasNext()) {
                 Terrain t = (Terrain) it.next();
-                int mask = 64 >> e.getKey().ordinal();
+                //Right shift until the 1 is in the position representing the direction
+                int dirbit = 64 >>> e.getKey().ordinal();
                 if (m.get(t) == null) {
                     //Terrain wasn't in the map yet
-                    m.put(t, mask);
+                    m.put(t, dirbit);
 
                 } else {
-                    m.put(t, m.get(t) | mask);
+                    //Update the value we had with bitwise OR
+                    m.put(t, m.get(t) | dirbit);
                 }
             }
         }
@@ -170,7 +171,7 @@ public class TerrainLayer extends AbstractImageLayer {
      */
     private BufferedImage getTerrainFeaturesImage(TileModel tile) {
         
-        BufferedImage i = new BufferedImage(BoardGraphicsModel.hexDiameter, BoardGraphicsModel.hexHeight, BufferedImage.TYPE_4BYTE_ABGR);
+        BufferedImage i = new BufferedImage(BoardGraphicsModel.getHexDiameter(), BoardGraphicsModel.getHexHeight(), BufferedImage.TYPE_4BYTE_ABGR);
         Graphics2D g2 = i.createGraphics();
 
         Set<TerrainFeatures> tf = tile.getTerrainFeatures();
@@ -186,32 +187,32 @@ public class TerrainLayer extends AbstractImageLayer {
                     g2.drawImage(
                             getTerrainImage(Terrain.OPEN,
                             //I'm actually wasting cpu here
-                            TerrainFeatures.AIRFIELD.getCol()+bgm.getImageProfile().getTerrainImageCols()*TerrainFeatures.AIRFIELD.getRow()),
+                            TerrainFeatures.AIRFIELD.getCol()+BoardGraphicsModel.getImageProfile().getTerrainImageCols()*TerrainFeatures.AIRFIELD.getRow()),
                             0, 0, this);
                     break;
                 case ANCHORAGE:
                     g2.drawImage(
                             getTerrainImage(Terrain.OPEN,
-                            TerrainFeatures.ANCHORAGE.getCol()+bgm.getImageProfile().getTerrainImageCols()*TerrainFeatures.ANCHORAGE.getRow()),
+                            TerrainFeatures.ANCHORAGE.getCol()+BoardGraphicsModel.getImageProfile().getTerrainImageCols()*TerrainFeatures.ANCHORAGE.getRow()),
                             0, 0, this);
                     break;
                 case PEAK:
                     g2.drawImage(
                             getTerrainImage(Terrain.OPEN,
-                            TerrainFeatures.PEAK.getCol()+bgm.getImageProfile().getTerrainImageCols()*TerrainFeatures.PEAK.getRow()),
+                            TerrainFeatures.PEAK.getCol()+BoardGraphicsModel.getImageProfile().getTerrainImageCols()*TerrainFeatures.PEAK.getRow()),
                             0, 0, this);
                     break;
 
                 case CONTAMINATED:
                     g2.drawImage(
                             getTerrainImage(Terrain.OPEN,
-                            TerrainFeatures.CONTAMINATED.getCol()+bgm.getImageProfile().getTerrainImageCols()*TerrainFeatures.CONTAMINATED.getRow()),
+                            TerrainFeatures.CONTAMINATED.getCol()+BoardGraphicsModel.getImageProfile().getTerrainImageCols()*TerrainFeatures.CONTAMINATED.getRow()),
                             0, 0, this);
                     break;
                 case MUDDY:
                     g2.drawImage(
                             getTerrainImage(Terrain.OPEN,
-                            TerrainFeatures.MUDDY.getCol()+bgm.getImageProfile().getTerrainImageCols()*TerrainFeatures.MUDDY.getRow()),
+                            TerrainFeatures.MUDDY.getCol()+BoardGraphicsModel.getImageProfile().getTerrainImageCols()*TerrainFeatures.MUDDY.getRow()),
                             0, 0, this);
 
                     break;
@@ -238,11 +239,11 @@ public class TerrainLayer extends AbstractImageLayer {
      *
      * @param value Integer with its bits as directions
      * @return Image with all borders painted
-     * @see getTerrainToImageIndex()
+     * @see TerrainLayer#getTerrainToImageIndex()
      */
     private BufferedImage drawTileBorders(Integer value) {
         int mask = 64;
-        int w = BoardGraphicsModel.hexDiameter, h = BoardGraphicsModel.hexHeight;
+        int w = BoardGraphicsModel.getHexDiameter(), h = BoardGraphicsModel.getHexHeight();
         BufferedImage bi = new BufferedImage(w, h, BufferedImage.TYPE_4BYTE_ABGR);
         Graphics2D g2 = bi.createGraphics();
             
@@ -273,8 +274,8 @@ public class TerrainLayer extends AbstractImageLayer {
         SoftReference<BufferedImage> softImage = terrainBufferMap.get(t);
         //If image doesn't exist or has been GC'ed
         if (softImage == null || softImage.get() == null) {
-            String filename = bgm.getImageProfile().getFileName(t);
-            BufferedImage i = loadImage(AresIO.ARES_IO.getFile(bgm.getImageProfile().getPath(), filename));
+            String filename = BoardGraphicsModel.getImageProfile().getFileName(t);
+            BufferedImage i = loadImage(AresIO.ARES_IO.getFile(BoardGraphicsModel.getImageProfile().getPath(), filename));
             terrainBufferMap.put(t, new SoftReference<>(i));
         }
     }
