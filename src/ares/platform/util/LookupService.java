@@ -1,4 +1,4 @@
-package ares.platform.application;
+package ares.platform.util;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -23,9 +23,9 @@ public class LookupService<T> {
     public void remove(Class<? extends T> key) {
         classMap.remove(key);
     }
-    @SuppressWarnings("unchecked")
-    public <C extends T> C get(Class<C> key) {
-        return (C) classMap.get(key);
+    
+    public T get(Class<? extends T> key) {
+        return classMap.get(key);
     }
 
     public Set<Class<? extends T>> keySet() {

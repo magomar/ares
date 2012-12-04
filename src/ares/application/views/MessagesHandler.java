@@ -1,5 +1,6 @@
 package ares.application.views;
 
+import ares.application.boundaries.view.MessagesViewer;
 import java.util.logging.*;
 
 /**
@@ -8,9 +9,9 @@ import java.util.logging.*;
  */
 public class MessagesHandler extends Handler {
 
-    MessagesView mv;
+    private MessagesViewer mv;
     
-    public MessagesHandler(MessagesView mv) {
+    public MessagesHandler(MessagesViewer mv) {
         super();
         this.mv = mv;
         setFormatter(new SimpleFormatter());

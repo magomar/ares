@@ -1,7 +1,5 @@
 package ares.platform.view;
 
-import ares.engine.realtime.RealTimeEngine;
-import java.beans.PropertyChangeEvent;
 import javax.swing.JComponent;
 import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
@@ -59,8 +57,4 @@ public class InternalFrameView<V extends AbstractView<? extends JComponent>> ext
         desktopPane.remove(internalFrame);
     }
 
-    @Override
-    public void modelPropertyChange(PropertyChangeEvent evt) {
-        view.modelPropertyChange(evt);
-    }
 }

@@ -7,7 +7,7 @@ import ares.application.models.board.BoardGraphicsModel;
 import ares.application.models.board.TileModel;
 import ares.platform.view.AbstractView;
 import java.awt.*;
-import java.beans.PropertyChangeEvent;
+import java.awt.event.MouseListener;
 import javax.swing.*;
 
 /**
@@ -35,7 +35,7 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
         unitsLayer.setOpaque(false);
         gridLayer = new GridLayer();
         gridLayer.setOpaque(false);
-        
+
 
         layeredPane.add(terrainLayer, JLayeredPane.DEFAULT_LAYER);
         layeredPane.add(gridLayer, JLayeredPane.PALETTE_LAYER);
@@ -91,12 +91,13 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
     }
 
     @Override
-    public void modelPropertyChange(PropertyChangeEvent evt) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
     public void updateTile(TileModel tile) {
         unitsLayer.paintTile(tile);
     }
+
+    @Override
+    public void addMouseListener(MouseListener listener) {
+        contentPane.addMouseListener(listener);
+    }
+
 }

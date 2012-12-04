@@ -4,7 +4,6 @@ import ares.application.boundaries.view.UnitInfoViewer;
 import ares.application.models.board.TileModel;
 import ares.platform.view.AbstractView;
 import java.awt.BorderLayout;
-import java.beans.PropertyChangeEvent;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -22,13 +21,9 @@ public class UnitInfoView extends AbstractView<JScrollPane> implements UnitInfoV
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
         textArea = new JTextArea();
+        textArea.setEditable(false);
         panel.add(textArea, BorderLayout.CENTER);
         return new JScrollPane(panel);
-    }
-
-    @Override
-    public void modelPropertyChange(PropertyChangeEvent evt) {
-        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
@@ -40,7 +35,9 @@ public class UnitInfoView extends AbstractView<JScrollPane> implements UnitInfoV
         }
     }
 
+    @Override
     public void clear() {
         textArea.setText("");
     }
+
 }
