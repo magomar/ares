@@ -6,7 +6,7 @@ import ares.engine.action.ActionType;
 import ares.engine.action.actions.ChangeDeploymentAction;
 import ares.engine.action.actions.SurfaceMoveAction;
 import ares.engine.algorithms.routing.Path;
-import ares.engine.algorithms.PathFinderAstar;
+
 import ares.engine.movement.MovementType;
 import ares.engine.realtime.Clock;
 import ares.engine.realtime.RealTimeEngine;

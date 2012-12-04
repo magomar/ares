@@ -6,6 +6,7 @@ package ares.io;
 
 import ares.application.gui_components.UnitColors;
 import ares.scenario.board.Terrain;
+import java.io.File;
 
 /**
  *
@@ -239,6 +240,27 @@ public enum ImageProfile {
         return path;
     }
 
+    /**
+     *
+     * @return grid hexagon file
+     */
+    public File getGridHexFilename() {
+        return new File(path, "Hexoutline.png");
+    }
+    
+    /**
+     * 
+     * @return movement arrows image filename
+     */
+    public File getArrowFilename(){
+        return new File(path, "Movement_arrows.png");
+    }
+    
+    /**
+     * 
+     * @param terrain
+     * @return the terrain filename based on the Image Profile
+     */
     public String getFileName(Terrain terrain) {
         
         switch(this){
@@ -253,16 +275,20 @@ public enum ImageProfile {
                 throw new AssertionError("Assertion failed: unkown image profile " + this);
         }
     }
-    
-    public String getFileName(UnitColors uc) {
+    /**
+     * 
+     * @param unitColor
+     * @return unit template image filename based on the Image Profile
+     */
+    public String getFileName(UnitColors unitColor) {
         
         switch(this){
             case SMALL:
-                return uc.getGraphicFileSmall();
+                return unitColor.getGraphicFileSmall();
             case MEDIUM:
-                return uc.getGraphicFileMedium();
+                return unitColor.getGraphicFileMedium();
             case HIGH:
-                return uc.getGraphicFileHigh();
+                return unitColor.getGraphicFileHigh();
             default:
                 throw new AssertionError("Assertion failed: unkown image profile " + this);
         }

@@ -146,7 +146,7 @@ public class Path {
                 Node rightOfFirst = last;
                 //Move backwards until currentFirst has no prev
                 while (currentFirst.getPrev() != null) {
-                    nodes.addLast(currentFirst);
+                    nodes.addFirst(currentFirst);
                     currentFirst.setNext(rightOfFirst);
                     rightOfFirst = currentFirst;
                     currentFirst = currentFirst.getPrev();
@@ -156,21 +156,22 @@ public class Path {
                 currentFirst.setNext(rightOfFirst);
 
 
+                int index = 0;
                 Node currentLast = first;
                 Node leftOfLast = first;
                 //Same as before but moving forward
-                while (currentLast.getNext() != null) {
-                    nodes.addFirst(currentLast);
+                while (currentLast.getNext() != null && currentLast!=nodes.getFirst().getNext()) {
+                    nodes.add(index,currentLast);
                     currentLast.setPrev(leftOfLast);
                     leftOfLast = currentLast;
                     currentLast = currentLast.getNext();
+                    index++;
                 }
                 first.setPrev(null);
                 currentLast.setPrev(leftOfLast);
 
                 // Finally linking the two loose ends
-                currentLast.setNext(currentFirst);
-                currentFirst.setPrev(currentLast);
+                currentFirst.setNext(currentLast);
             }
             return 2;
         

@@ -46,6 +46,7 @@ public class AStar extends AbstractPathFinder {
         current.setPrev(null);
         current.setG(0);
         current.setF(heuristic.getCost(orig.getCoordinates(), dest.getCoordinates()));
+        current.setFrom(Direction.C);
         map.put(current.getTile().getIndex(), current);
         openSet.add(current);
         

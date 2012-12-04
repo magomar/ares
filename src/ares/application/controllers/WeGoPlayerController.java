@@ -243,9 +243,7 @@ public class WeGoPlayerController extends AbstractController {
                 boolean changeTile = !tile.equals(selectedTile);
                 if (me.isShiftDown() && selectedUnit != null) {
                     //LOG.log(Level.INFO, (p==null) ? "null path" : p.toString());
-                    pathFinder.avoidEnemies(true);
-                    pathFinder.setPathType(AStar.SHORTEST);
-                    getInternalFrameView(BoardView.class).getView().updateArrowPath(pathFinder.getPath(selectedUnit.getLocation(), tile.getModel(userRole)));
+                    getInternalFrameView(BoardView.class).getView().updateArrowPath(scenario.getModel(userRole),pathFinder.getPath(selectedUnit.getLocation(), tile.getModel(userRole)));
                 } else {
                     selectedTile = tile;
                     selectedUnit = tile.getModel(userRole).getTopUnit();

@@ -59,6 +59,7 @@ public abstract class AbstractImageLayer extends javax.swing.JPanel {
     
     @Override
     public void paintComponent(Graphics g){
+        super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         g2.drawImage(globalImage,0,0,this);
     }
