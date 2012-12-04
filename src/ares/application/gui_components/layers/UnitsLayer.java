@@ -82,7 +82,7 @@ public class UnitsLayer extends AbstractImageLayer {
         //If no units on the tile
         if (t.isEmpty()) {
             //Empty image
-            unitImage = new BufferedImage(BoardGraphicsModel.hexDiameter, BoardGraphicsModel.hexHeight, BufferedImage.TYPE_INT_ARGB);
+            unitImage = new BufferedImage(BoardGraphicsModel.getHexDiameter(), BoardGraphicsModel.getHexHeight(), BufferedImage.TYPE_INT_ARGB);
             g2.drawImage(unitImage, pos.x, pos.y, null);
             repaint(pos.x, pos.y, unitImage.getWidth(null), unitImage.getHeight(null));
             
@@ -137,9 +137,9 @@ public class UnitsLayer extends AbstractImageLayer {
         //Retrieve color template image and crop the unit we need from it
         
         //Get the coordinates
-        int size = bgm.getImageProfile().getUnitSquareSide();
-        int row = unit.getIconId() / bgm.getImageProfile().getUnitsImageCols();
-        int col = unit.getIconId() % bgm.getImageProfile().getUnitsImageCols();
+        int size = BoardGraphicsModel.getImageProfile().getUnitSquareSide();
+        int row = unit.getIconId() / BoardGraphicsModel.getImageProfile().getUnitsImageCols();
+        int col = unit.getIconId() % BoardGraphicsModel.getImageProfile().getUnitsImageCols();
         
         return unitBufferMap.get(uc).get().getSubimage(col * size, row * size, size, size);
     }
@@ -186,8 +186,8 @@ public class UnitsLayer extends AbstractImageLayer {
         SoftReference<BufferedImage> softImage = unitBufferMap.get(uc);
         //If image doesn't exist or has been GC'ed
         if (softImage == null || softImage.get() == null) {
-            String filename = bgm.getImageProfile().getFileName(uc);
-            BufferedImage i = loadImage(AresIO.ARES_IO.getFile(bgm.getImageProfile().getPath(), filename));
+            String filename = BoardGraphicsModel.getImageProfile().getFileName(uc);
+            BufferedImage i = loadImage(AresIO.ARES_IO.getFile(BoardGraphicsModel.getImageProfile().getPath(), filename));
             unitBufferMap.put(uc, new SoftReference<>(i));
         }
     }

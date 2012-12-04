@@ -3,7 +3,6 @@ package ares.application.models.board;
 import ares.io.ImageProfile;
 import ares.scenario.board.Board;
 import java.awt.Point;
-import java.io.File;
 
 /**
  * This class provides information on the graphics being used for a particular scenario
@@ -13,51 +12,21 @@ import java.io.File;
 public class BoardGraphicsModel {
 
     /**
-     * Tile side
-     *
-     * @see ImageProfile method getHexSide()
-     */
-    public static int hexSide;
-    /**
-     * Tile diameter (vertex to opposite vertex)
-     *
-     * @see ImageProfile method getHexDiameter()
-     */
-    public static int hexDiameter;
-    /**
-     * Tile radius (vertex to hex center), computes as
-     * <code>hexDiameter/2</code>
-     *
-     */
-    public static int hexRadius;
-    /**
-     * Tile height (flat side to flat side)
-     *
-     * @see ImageProfile method getHexHeight
-     */
-    public static int hexHeight;
-    /**
-     * Tile offset position to draw in a new column
-     *
-     * @see ImageProfile method getHexOffset
-     */
-    public static int hexOffset;
-    /**
      * board width in tile units
      */
-    public static int tileColumns;
+    private static int tileColumns;
     /**
      * board height in tile units
      */
-    public static int tileRows;
+    private static int tileRows;
     /**
      * Image width in pixels
      */
-    public static int imageWidth;
+    private static int imageWidth;
     /**
      * Image height in pixels
      */
-    public static int imageHeight;
+    private static int imageHeight;
     private static ImageProfile imgProfile;
 
     public BoardGraphicsModel(Board board) {
@@ -71,20 +40,76 @@ public class BoardGraphicsModel {
         initGraphicVariables();
     }
 
-    private void initGraphicVariables() {
-        hexSide = imgProfile.getHexSide();
-        hexDiameter = imgProfile.getHexDiameter();
-        hexRadius = hexDiameter / 2;
-        hexOffset = imgProfile.getHexOffset();
-        hexHeight = imgProfile.getHexHeight();
+    private static void initGraphicVariables() {
         /*
          * Width =  first column + (columns-1) * (around 3/4 Diameter)
          * Hexagons aren't regular
          */
-        imageWidth = hexDiameter + (tileColumns - 1) * hexOffset;
-        imageHeight = tileRows * hexHeight + hexHeight / 2;
+        imageWidth = getHexDiameter() + (tileColumns - 1) * getHexOffset();
+        imageHeight = tileRows * getHexHeight() + getHexHeight() / 2;
     }
+    
+    /**
+     * Tile diameter (vertex to opposite vertex)
+     *
+     * @see ImageProfile#getHexDiameter()
+     */    
+    public static int getHexDiameter() {
+        return imgProfile.getHexDiameter();
+    }
+    
+    /**
+     * Tile radius (vertex to hex center), computes as
+     * <code>hexDiameter/2</code>
+     *
+     */
+    public static int getHexRadius(){
+        return getHexDiameter()/2;
+    }
+    /**
+     * Tile side
+     *
+     * @see ImageProfile#getHexSide()
+     */
+    public static int getHexSide() {
+        return imgProfile.getHexSide();
+    }
+    
+    /**
+     * Tile offset position to draw in a new column
+     *
+     * @see ImageProfile method getHexOffset
+     */
+    public static int getHexOffset() {
+        return imgProfile.getHexOffset();
+    }
+    
+    /**
+     * Tile height (flat side to flat side)
+     *
+     * @see ImageProfile#getHexHeight
+     */
+    public static int getHexHeight() {
+        return imgProfile.getHexHeight();
+    }
+    
+    /**
+     * Tile side gradient
+     *
+     * @see ImageProfile#getHexRise()
+     */
+    public static double getHexRise() {
+        return imgProfile.getHexRise();
+    }    
 
+    public static int getImageWidth(){
+        return imageWidth;
+    }
+    
+    public static int getImageHeight(){
+        return imageHeight;
+    }
+    
     /**
      * Check valid coordinates
      *
@@ -97,31 +122,37 @@ public class BoardGraphicsModel {
     }
 
     /**
+     * Converts tile coordinates [x,y] to full index form
      *
-     * @return grid hexagon file
+     *
+     * @param coordinates
+     * @return X * Columns + Y
      */
-    public File getGridHex() {
-        return new File(imgProfile.getPath(), "Hexoutline.png");
+    public static int tileMapIndex(Point coordinates) {
+        return coordinates.x * tileColumns + coordinates.y;
     }
 
     /**
      * @return current image profile (SMALL, MEDIUM or HIGH)
      * @see ImageProfile
      */
-    public ImageProfile getImageProfile() {
+    public static ImageProfile getImageProfile() {
         return imgProfile;
     }
 
-    public void setImageProfile(ImageProfile ip) {
+    public static void setImageProfile(ImageProfile ip) {
         imgProfile = ip;
         initGraphicVariables();
+        //TODO Fire property change to let know the controller the model has changed.
+
     }
 
     /**
      * Converts a tile location to its corresponding pixel on the global image
      *
      * @param tile position to be converted
-     * @return the pixel at the upper left corner of the square circumscribed about the hexagon
+     * @return the pixel at the upper left corner of the square circumscribed
+     * about the hexagon
      * @see BoardGraphicsModel
      * @see AbstractImageLayer
      */
@@ -132,10 +163,10 @@ public class BoardGraphicsModel {
     public static Point tileToPixel(int x, int y) {
         Point pixel = new Point();
         //X component is "row" times the "offset"
-        pixel.x = hexOffset * x;
+        pixel.x = getHexOffset() * x;
         //Y component depends on the row.
         //If it's even number, then "column" times the "height" plus half the height, if it's odd then just "column" times the "height"
-        pixel.y = (x % 2 == 0 ? (hexHeight * y) + (hexHeight / 2) : (hexHeight * y));
+        pixel.y = (x % 2 == 0 ? (getHexHeight() * y) + (getHexHeight() / 2) : (getHexHeight() * y));
         return pixel;
     }
 
@@ -143,7 +174,8 @@ public class BoardGraphicsModel {
      * Converts a pixel position to its corresponding tile index
      *
      * @param pixel position to be converted
-     * @return the row (x) and column(y) where the tile is located at the tile map
+     * @return the row (x) and column(y) where the tile is located at the tile
+     * map
      * @see BoardGraphicsModel
      * @see Board getTile
      */
@@ -153,11 +185,114 @@ public class BoardGraphicsModel {
 
     public static Point pixelToTile(int x, int y) {
         Point tile = new Point();
-        tile.x = x / hexOffset;
+        tile.x = x / getHexOffset();
         //If tile is on even row, first we substract half the hexagon height to the Y component, then we divide it by the height
         //if it's on odd row, divide Y component by hexagon height
-        tile.y = (tile.x % 2 == 0 ? (y - (hexHeight / 2)) / hexHeight : (y / hexHeight));
+        tile.y = (tile.x % 2 == 0 ? (y - (getHexHeight() / 2)) / getHexHeight() : (y / getHexHeight()));
         return tile;
+    }
+
+    /**
+     *
+     * @param pixel
+     * @return
+     */
+    // Modified version of gamedev.net
+    // http://www.gamedev.net/page/resources/_/technical/game-programming/coordinates-in-hexagon-based-tile-maps-r1800
+    public static Point pixelToTileAccurate(Point pixel) {
+        return pixelToTileAccurate(pixel.x, pixel.y);
+    }
+
+    private static Point pixelToTileAccurate(int x, int y) {
+
+        /**
+         * The map is composed of sections which can be of two types: A or B,
+         * each one with 3 areas. A sections are in odd columns. They have NW
+         * and SW neighbours, and the rest is the tile we want
+         *
+         * B sections are in even columns. areas: puff... easier done than
+         * explained.
+         */
+        int dy = getHexHeight() / 2;
+        // gradient = dy/dx
+        Point section = new Point(x / getHexOffset(), y / getHexHeight());
+        // Pixel within the section
+        Point pixelInSection = new Point(x % getHexOffset(), y % getHexHeight());
+
+
+        if ((section.x % 2) == 1) {
+            //odd column
+            if ((-getHexRise()) * pixelInSection.x + dy > pixelInSection.y) {
+                //Pixel is in the NW neighbour tile
+                /*  ________
+                 *  |x /    |
+                 *  |<      |
+                 *  |__\____| 
+                 */
+                section.x--;
+                section.y--;
+
+            } else if (pixelInSection.x * getHexRise() + dy < pixelInSection.y) {
+                //Pixel is in the SE neighbout tile     
+                /*  ________
+                 *  |  /    |
+                 *  |<      |
+                 *  |x_\____| 
+                 */
+                section.x--;
+            } else {
+                //pixel is in our tile
+                /*  ________
+                 *  |  /    |
+                 *  |<   x  |
+                 *  |__\____| 
+                 */
+            }
+        } else {
+            //even column
+            if (pixelInSection.y < dy) {
+                //upper side
+                if ((getHexRise() * pixelInSection.x) > pixelInSection.y) {
+                    //right side
+                    /* Pixel is in the N neighbour tile
+                     * ________
+                     * | \  x  |
+                     * |  >----|
+                     * |_/_____|
+                     */
+
+                    section.y--;
+                } else {
+                    /* Left side
+                     * ________
+                     * |x\     |
+                     * |  >----|
+                     * |_/_____|
+                     */
+                    section.x--;
+
+                }
+            } else {
+                //lower side
+                if (((-getHexRise()) * pixelInSection.x + getHexHeight()) > pixelInSection.y) {
+                    /* Left side
+                     * ________
+                     * | \     |
+                     * |  >----|
+                     * |x/_____|
+                     */
+                    section.x--;
+                } else {
+                    /* Pixel is in our tile 
+                     * ________
+                     * | \     |
+                     * |  >----|
+                     * |_/__x__|
+                     */
+                }
+            }
+        }
+        return section;
     }
 
     public static boolean isWithinImageRange(Point pixel) {

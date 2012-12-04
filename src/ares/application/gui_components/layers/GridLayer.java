@@ -32,7 +32,7 @@ public class GridLayer extends AbstractImageLayer {
     public void paintTile(TileModel t) {
         Graphics2D g2 = globalImage.createGraphics();
         if (hexImage.get() == null) {
-            hexImage = new SoftReference<>(loadImage(bgm.getGridHex()));
+            hexImage = new SoftReference<>(loadImage(BoardGraphicsModel.getImageProfile().getGridHexFilename()));
         }
         Point pos = BoardGraphicsModel.tileToPixel(t.getCoordinates());
         g2.drawImage(hexImage.get(), pos.x, pos.y, null);

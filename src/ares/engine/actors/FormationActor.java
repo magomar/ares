@@ -5,8 +5,8 @@ import ares.engine.action.ActionState;
 import ares.engine.action.ActionType;
 import ares.engine.action.actions.ChangeDeploymentAction;
 import ares.engine.action.actions.SurfaceMoveAction;
-import ares.engine.algorithms.Path;
-import ares.engine.algorithms.PathFinder;
+import ares.engine.algorithms.routing.Path;
+
 import ares.engine.movement.MovementType;
 import ares.engine.realtime.Clock;
 import ares.engine.realtime.RealTimeEngine;
@@ -77,18 +77,17 @@ public class FormationActor {
     }
 
     private void singlePlan(UnitActor unitActor) {
-        Tile objective = formation.getObjectives().get(0);
-        PathFinder pathFinder = new PathFinder();
-        Path path = pathFinder.findPath(unitActor.getUnit().getLocation(), objective, unitActor.getUnit());
-        if (path != null) {
-            Tile from = unitActor.getUnit().getLocation();
-            for (Tile to : path.getTiles().subList(1, path.getTiles().size())) {
-                Action moveAction = new SurfaceMoveAction(unitActor, ActionType.TACTICAL_MARCH, from, to, engine.getClock(), engine.getScenario().getScale().getDistance());
-                unitActor.getPendingActions().add(moveAction);
-                from = to;
-            }
-            LOG.log(Level.INFO, "New plan for {0}: {1}", new Object[]{unitActor.toString(), path.toString()});
-        }
+//        Tile objective = formation.getObjectives().get(0);
+//        Path path = null;//pathFinder.findPath(unitActor.getUnit().getLocation(), objective, unitActor.getUnit());
+//        if (path != null) {
+//            Tile from = unitActor.getUnit().getLocation();
+//            for (Tile to : path.getTiles().subList(1, path.getTiles().size())) {
+//                Action moveAction = new SurfaceMoveAction(unitActor, ActionType.TACTICAL_MARCH, from, to, engine.getClock(), engine.getScenario().getScale().getDistance());
+//                unitActor.getPendingActions().add(moveAction);
+//                from = to;
+//            }
+//            LOG.log(Level.INFO, "New plan for {0}: {1}", new Object[]{unitActor.toString(), path.toString()});
+//        }
     }
 
     public List<UnitActor> getUnitActors() {

@@ -1,19 +1,19 @@
 package ares.application.controllers;
 
-import ares.application.boundaries.view.BoardViewer;
-import ares.application.boundaries.view.MenuBarViewer;
-import ares.application.boundaries.view.MessagesViewer;
-import ares.application.boundaries.view.UnitInfoViewer;
+import ares.application.boundaries.view.*;
 import ares.application.commands.*;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.BoardGraphicsModel;
+import ares.application.models.forces.UnitModel;
 import ares.application.player.AresMenus;
 import ares.application.views.*;
 import ares.data.jaxb.EquipmentDB;
+import ares.engine.algorithms.routing.*;
 import ares.engine.realtime.*;
 import ares.io.*;
 import ares.platform.application.AbstractAresApplication;
 import ares.platform.model.UserRole;
+import ares.platform.view.InternalFrameView;
 import ares.scenario.Scenario;
 import ares.scenario.board.*;
 import ares.scenario.forces.Force;
@@ -24,8 +24,7 @@ import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.util.concurrent.*;
 import java.util.logging.*;
-import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 
 /**
  *
@@ -45,8 +44,9 @@ public class WeGoPlayerController implements PropertyChangeListener {
     private final ExecutorService executor;
     private UserRole userRole;
     private Tile selectedTile;
-//    private Unit selectedUnit;
+    private UnitModel selectedUnit;
     private static final Logger LOG = Logger.getLogger(WeGoPlayerController.class.getName());
+    private PathFinder pathFinder;
 
     public WeGoPlayerController(AbstractAresApplication mainView, BoardViewer boardView, UnitInfoViewer unitView, MenuBarViewer menuView, MessagesViewer messagesView) {
         executor = Executors.newCachedThreadPool();
@@ -65,14 +65,16 @@ public class WeGoPlayerController implements PropertyChangeListener {
         menuView.addActionListener(EngineCommands.PAUSE.name(), new PauseActionListener());
         menuView.addActionListener(EngineCommands.NEXT.name(), new NextActionListener());
         boardView.addMouseListener(new BoardMouseListener());
+        
         //Add change listeners to entities
+        //TODO param this?
         engine.addPropertyChangeListener(this);
         LOG.addHandler(new MessagesHandler(messagesView));
-        
+
         //Initialize views
         mainView.setMainPaneVisible(false);
     }
-    
+
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         if (RealTimeEngine.CLOCK_EVENT_PROPERTY.equals(evt.getPropertyName())) {
@@ -126,6 +128,7 @@ public class WeGoPlayerController implements PropertyChangeListener {
                         options[2]);
                 if (n >= 0) {
                     userRole = options[n];
+                    pathFinder = new AStar(scenario.getBoard().getMap().length);
                     return scenario;
                 }
                 return null;
@@ -233,23 +236,32 @@ public class WeGoPlayerController implements PropertyChangeListener {
         @Override
         public void mouseClicked(MouseEvent me) {
 
-            LOG.log(Level.INFO, me.toString());
             Scenario scenario = engine.getScenario();
             Point pixel = new Point(me.getX(), me.getY());
             if (BoardGraphicsModel.isWithinImageRange(pixel) && me.getButton() == MouseEvent.BUTTON1) {
-                Point tilePoint = BoardGraphicsModel.pixelToTile(pixel);
+                Point tilePoint = BoardGraphicsModel.pixelToTileAccurate(pixel);
+                // pixel to tile conversion is more expensive than two coordinates checks
+                if (!BoardGraphicsModel.validCoordinates(tilePoint.x, tilePoint.y))
+                    return;
                 Tile tile = scenario.getBoard().getTile(tilePoint.x, tilePoint.y);
                 boolean changeTile = !tile.equals(selectedTile);
-                selectedTile = tile;
-                UnitsStack stack = tile.getUnitsStack();
-                boolean changeUnit = false;
-                if (!changeTile && !stack.isEmpty()) {
-                    stack.next();
-                    changeUnit = true;
-                }
-                if (changeTile || changeUnit) {
-                    unitView.updateInfo(selectedTile.getModel(userRole));
-                    boardView.updateTile(selectedTile.getModel(userRole));
+                if (me.isShiftDown() && selectedUnit != null) {
+                    //LOG.log(Level.INFO, (p==null) ? "null path" : p.toString());
+                    boardView.updateArrowPath(scenario.getModel(userRole), pathFinder.getPath(selectedUnit.getLocation(), tile.getModel(userRole)));
+                } else {
+                    selectedTile = tile;
+                    selectedUnit = tile.getModel(userRole).getTopUnit();
+                    UnitsStack stack = tile.getUnitsStack();
+                    boolean changeUnit = false;
+                    if (!changeTile && !stack.isEmpty()) {
+                        stack.next();
+                        changeUnit = true;
+                        selectedUnit = tile.getModel(userRole).getTopUnit();
+                    }
+                    if (changeTile || changeUnit) {
+                        unitView.updateInfo(selectedTile.getModel(userRole));
+                        boardView.updateTile(selectedTile.getModel(userRole));
+                    }
                 }
             } else if (me.getButton() == MouseEvent.BUTTON3) {
                 selectedTile = null;

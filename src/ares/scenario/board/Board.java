@@ -93,6 +93,13 @@ public final class Board implements ModelProvider<BoardModel> {
         return neighbors;
     }
 
+    /**
+     * Direction between to neighbour tiles
+     * 
+     * @param from
+     * @param to
+     * @return 
+     */
     public static Direction getDirBetween(Tile from, Tile to) {
         int incX = to.getCoordinates().x - from.getCoordinates().x;
         int incY = to.getCoordinates().y - from.getCoordinates().y;
@@ -132,32 +139,7 @@ public final class Board implements ModelProvider<BoardModel> {
         //TODO implement getDistanceInMetersBetween(Tile from, Tile to)
         throw new UnsupportedOperationException("Not yet implemented");
     }
-
-    public static int getDistanceInTilesBetween(Tile from, Tile to) {
-        // adapted from http://www-cs-students.stanford.edu/~amitp/Articles/HexLOS.html
-        Point coordFrom = from.getCoordinates();
-        Point coordTo = to.getCoordinates();
-        int x1 = coordFrom.x;
-        int y1 = coordFrom.y;
-        int x2 = coordTo.x;
-        int y2 = coordTo.y;
-        int ax = y1 - Ceil2(x1);
-        int ay = y1 + Floor2(x1);
-        int bx = y2 - Ceil2(x2);
-        int by = y2 + Floor2(x2);
-        int dx = bx - ax;
-        int dy = by - ay;
-        return Math.abs(dx) + Math.abs(dy);
-    }
-
-    private static int Floor2(int val) {
-        return (val >> 1);
-    }
-
-    private static int Ceil2(int val) {
-        return ((val + 1) >> 1);
-    }
-
+    
     @Override
     public BoardModel getModel(UserRole role) {
         return models.get(role);
