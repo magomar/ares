@@ -5,8 +5,7 @@ import ares.application.models.board.BoardGraphicsModel;
 import ares.application.models.board.TileModel;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import javax.imageio.ImageIO;
 
 /**
@@ -63,6 +62,4 @@ public abstract class AbstractImageLayer extends javax.swing.JPanel {
         Graphics2D g2 = (Graphics2D) g;
         g2.drawImage(globalImage,0,0,this);
     }
-
-
 }

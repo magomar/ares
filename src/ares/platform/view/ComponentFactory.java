@@ -1,5 +1,6 @@
 package ares.platform.view;
 
+import ares.application.gui_components.layers.WelcomeBackground;
 import ares.platform.application.Command;
 import ares.platform.application.MenuEntry;
 import java.awt.BorderLayout;
@@ -48,6 +49,8 @@ public abstract class ComponentFactory {
     public static JFrame frame(String title, JMenuBar menuBar, JToolBar toolBar) {
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setContentPane(new WelcomeBackground());
+        frame.setPreferredSize(new Dimension(800, 600));
         if (title != null) {
             frame.setTitle(title);
         }
@@ -57,8 +60,6 @@ public abstract class ComponentFactory {
         if (toolBar != null) {
             frame.getContentPane().add(toolBar, BorderLayout.NORTH);
         }
-
-        frame.setPreferredSize(new Dimension(800, 600));
         return frame;
     }
 

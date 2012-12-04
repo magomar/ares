@@ -1,12 +1,17 @@
 package ares.application.player;
 
 import ares.application.controllers.WeGoPlayerController;
+import ares.application.gui_components.layers.AbstractImageLayer;
+import ares.application.gui_components.layers.WelcomeBackground;
 import ares.application.views.BoardView;
 import ares.application.views.MenuBarView;
 import ares.application.views.MessagesView;
 import ares.application.views.UnitInfoView;
 import ares.platform.application.AbstractAresApplication;
 import ares.platform.view.ComponentFactory;
+import ares.scenario.Scenario;
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
@@ -55,7 +60,9 @@ public class AresPlayerGUI extends AbstractAresApplication {
         mainFrame.setPreferredSize(preferredSize);
         mainFrame.setMaximumSize(maxSize);
         mainFrame.setSize(preferredSize);
-
+        menuV.getContentPane().setPreferredSize(new Dimension(preferredSize.width,30));
+        menuV.getContentPane().setSize(new Dimension(preferredSize.width,30));
+        menuV.getContentPane().setLocation(0, -15);
         boardV.getContentPane().setPreferredSize(getBoardPaneDimension(mainFrame.getContentPane()));
         unitV.getContentPane().setPreferredSize(getInfoPaneDimension(mainFrame.getContentPane()));
         unitV.getContentPane().setMaximumSize(unitV.getContentPane().getPreferredSize());
@@ -68,7 +75,6 @@ public class AresPlayerGUI extends AbstractAresApplication {
         splitVert.setDividerSize(SPLIT_DIVIDER_SIZE);
         splitHoriz.setDividerSize(SPLIT_DIVIDER_SIZE);
         mainFrame.add(splitHoriz);
-
         return mainFrame;
     }
 
