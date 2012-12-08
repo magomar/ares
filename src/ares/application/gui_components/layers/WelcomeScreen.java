@@ -1,7 +1,5 @@
 package ares.application.gui_components.layers;
 
-import ares.application.commands.*;
-import ares.application.controllers.WeGoPlayerController;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.TileModel;
 import ares.io.*;
