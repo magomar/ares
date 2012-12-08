@@ -70,11 +70,6 @@ public class WeGoPlayerController implements PropertyChangeListener {
         menuView.addActionListener(EngineCommands.NEXT.name(), new NextActionListener());
         boardView.addMouseListener(new BoardMouseListener());
         
-        //Add change listeners to entities
-        //TODO param this?
-        engine.addPropertyChangeListener(this);
-        LOG.addHandler(new MessagesHandler(messagesView));
-        
         // Listeners to WelcomeScreen buttons
         ArrayList<Pair<Command, ActionListener>> buttonListeners = new ArrayList<>();
         buttonListeners.add(new Pair<Command, ActionListener>(FileCommands.NEW_SCENARIO, new OpenScenarioActionListener()));
@@ -82,13 +77,18 @@ public class WeGoPlayerController implements PropertyChangeListener {
         buttonListeners.add(new Pair<Command, ActionListener>(FileCommands.SETTINGS, new SettingsActionListener()));
         buttonListeners.add(new Pair<Command, ActionListener>(FileCommands.EXIT, new ExitActionListener()));
         welcomeScreen.setMenuButtons(buttonListeners);
-
+        
+        //Add change listeners to entities
+        //TODO param this?
+        engine.addPropertyChangeListener(this);
+        LOG.addHandler(new MessagesHandler(messagesView));
+        
         //Initialize views
-        mainView.setMainPaneVisible(false);
+        mainView.setMainPaneVisible(false);        
     }
 
     @Override
-    public void propertyChange(PropertyChangeEvent evt) {
+    public void propertyChange(PropertyChangeEvent evt) {        
         if (RealTimeEngine.CLOCK_EVENT_PROPERTY.equals(evt.getPropertyName())) {
             ClockEvent clockEvent = (ClockEvent) evt.getNewValue();
             Scenario scenario = engine.getScenario();
@@ -110,6 +110,10 @@ public class WeGoPlayerController implements PropertyChangeListener {
 
         @Override
         protected Scenario performOperation() throws Exception {
+
+            //Hide welcomeScreen buttons
+            welcomeScreen.hideButtons();
+
             JFileChooser fc = new JFileChooser();
             fc.setCurrentDirectory(AresIO.ARES_IO.getAbsolutePath(AresPaths.SCENARIOS.getPath()).toFile());
             fc.setFileFilter(AresFileType.SCENARIO.getFileTypeFilter());
@@ -139,16 +143,23 @@ public class WeGoPlayerController implements PropertyChangeListener {
                         options,
                         options[2]);
                 if (n >= 0) {
+                    // Loading scenario...
                     userRole = options[n];
                     pathFinder = new AStar(scenario.getBoard().getMap().length);
-                    
-                    // Hide WelcomeScreen buttons if they were visible
-                    // + and show the menu bar
-                    welcomeScreen.openingScenario();
+                    // Show the menu bar
                     menuView.setVisible(true);
+                    welcomeScreen.hideButtons();
+                    welcomeScreen.setActivated(false);
                     return scenario;
+                } else{
+                    // Canceled while selecting role
+                    if(welcomeScreen.isActivated())
+                        welcomeScreen.showButtons();
                 }
             }
+            // Exited file chooser without selection scenario
+            if(welcomeScreen.isActivated())
+                welcomeScreen.showButtons();
             return null;
         }
 
@@ -196,11 +207,10 @@ public class WeGoPlayerController implements PropertyChangeListener {
             engine.setScenario(null);
             menuView.setMenuElementEnabled(FileCommands.CLOSE_SCENARIO.getName(), false);
             menuView.setMenuElementEnabled(AresMenus.ENGINE_MENU.getName(), false);
-            boardView.setVisible(false);
             boardView.closeScenario();
-            messagesView.setVisible(false);
-            unitView.setVisible(false);
-
+            // Hides menu bars and panels,
+            // + and shows the main menu
+            welcomeScreen.closeScenario();
         }
     }
 

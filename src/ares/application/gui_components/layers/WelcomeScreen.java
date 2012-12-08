@@ -15,11 +15,14 @@ import java.util.logging.*;
 import javax.swing.*;
 
 /**
- *
+ * Main menu and welcome screen.
+ * Sets a background picture and handles the main menu buttons.
+ * 
  * @author Heine <heisncfr@inf.upv.es>
  */
 public final class WelcomeScreen extends AbstractImageLayer {
 
+    // Background image to be loaded 
     private SoftReference<BufferedImage> backgroundImage = new SoftReference<>(null);
     
     // Folder with wallpapers
@@ -28,12 +31,18 @@ public final class WelcomeScreen extends AbstractImageLayer {
     // Buttons in the main menu
     private LinkedList<JButton> buttons = new LinkedList<>();
     
+    // True if the welcome screen should be visible
+    private static Boolean activated = true;
+    
+    
     public WelcomeScreen() {
-        setBorderLayout();
-        setWelcomeBackground();
+        setBackgroundImage();
     }
 
-    public void setWelcomeBackground() {
+    /**
+     * Loads a random image and sets it as the background image
+     */
+    public void setBackgroundImage() {
         if (backgroundImage.get() == null) {
             try {
                 backgroundImage = new SoftReference<>(loadImage(randomImageFile()));
@@ -52,18 +61,6 @@ public final class WelcomeScreen extends AbstractImageLayer {
         return backgrounds[index];
     }
 
-    public void setBorderLayout() {
-        setLayout(new BorderLayout() {
-            @Override
-            public void addLayoutComponent(Component comp, Object constraints) {
-                if (constraints == null) {
-                    constraints = BorderLayout.CENTER;
-                }
-                super.addLayoutComponent(comp, constraints);
-            }
-        });
-    }
-
     @Override
     protected void createGlobalImage(ScenarioModel s) {
     }
@@ -74,10 +71,8 @@ public final class WelcomeScreen extends AbstractImageLayer {
 
     public void setMenuButtons(ArrayList<Pair<Command, ActionListener>> buttonListener) {
         
-        int buttonWidth = 250;
-        int buttonHeight = 50;
-        Dimension dim = new Dimension(buttonWidth, buttonHeight);
-
+        // Button dimension
+        Dimension dim = new Dimension(250, 50);
         // WelcomeScreen panel is inside a LayeredPane, which is inside a JRootPane
         JFrame frame = (JFrame) this.getParent().getParent().getParent();
         // Where the first button will be placed
@@ -95,19 +90,31 @@ public final class WelcomeScreen extends AbstractImageLayer {
             b.setSize(dim);
             b.setLocation(buttonPos.x, buttonPos.y + vGap * i);
             i++;
-            this.add(b, BorderLayout.CENTER);
+            this.add(b, BorderLayout.SOUTH);
             buttons.add(b);
         }
         // FIXME BorderLayout problems....
+        // + last button is out of place unless we add an empty button
         JButton empty = new JButton();
         empty.setVisible(false);
-        this.add(empty);
+        this.add(empty, BorderLayout.SOUTH);
     }
 
     /**
      * This function executes when opening a new scenario
      */
-    public void openingScenario() {
+    
+    public void removeButtons(){
+        
+        for(Component c : this.getComponents()){
+            if(c instanceof JButton){
+                this.remove(c);
+            }
+        }
+        this.revalidate();
+    }
+    
+    public void hideButtons() {
         
         if(!buttons.isEmpty() && buttons.getFirst().isVisible()){
             for(JButton b : buttons){
@@ -117,4 +124,30 @@ public final class WelcomeScreen extends AbstractImageLayer {
         
     }
 
+    public void showButtons() {
+        if(!buttons.isEmpty() && !buttons.getFirst().isVisible()){
+            for(JButton b : buttons){
+                b.setVisible(true);
+            }
+        }
+    }
+    
+    public Boolean isActivated(){
+        return activated;
+    }
+    public void setActivated(boolean a){
+        WelcomeScreen.activated = a;
+    }
+
+    public void closeScenario() {
+        for(Component c : this.getComponents()){
+            if(c instanceof JButton){
+                if (((JButton)c).getText()!="")
+                    c.setVisible(true);
+            } else{
+                c.setVisible(false);
+            }
+        }
+    }
+    
 }

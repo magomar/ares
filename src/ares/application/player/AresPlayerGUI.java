@@ -36,6 +36,7 @@ public class AresPlayerGUI extends AbstractAresApplication {
         boardV = new BoardView();
         messagesV = new MessagesView();
         JFrame mainFrame = ComponentFactory.frame("Ares Player", menuV.getContentPane(), null);
+        // These dimensions are necessary when the frame is not fullscreen
         Dimension maxSize = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().getSize();
         Dimension defaultSize = new Dimension(1440, 900);
         Dimension minSize = new Dimension(800, 600);
@@ -49,10 +50,11 @@ public class AresPlayerGUI extends AbstractAresApplication {
         mainFrame.setPreferredSize(preferredSize);
         mainFrame.setMaximumSize(maxSize);
         mainFrame.setSize(preferredSize);
-        menuV.getContentPane().setPreferredSize(new Dimension(preferredSize.width,30));
-        menuV.getContentPane().setSize(new Dimension(preferredSize.width,30));
-        menuV.getContentPane().setLocation(0, -15);
+        mainFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        mainFrame.setUndecorated(true);
         menuV.getContentPane().setVisible(false);
+        menuV.getContentPane().setPreferredSize(new Dimension(preferredSize.width, 30));
+        menuV.getContentPane().setSize(new Dimension(preferredSize.width, 30));
         boardV.getContentPane().setPreferredSize(getBoardPaneDimension(mainFrame.getContentPane()));
         unitV.getContentPane().setPreferredSize(getInfoPaneDimension(mainFrame.getContentPane()));
         unitV.getContentPane().setMaximumSize(unitV.getContentPane().getPreferredSize());
@@ -64,7 +66,7 @@ public class AresPlayerGUI extends AbstractAresApplication {
         splitHoriz.setResizeWeight(0);
         splitVert.setDividerSize(SPLIT_DIVIDER_SIZE);
         splitHoriz.setDividerSize(SPLIT_DIVIDER_SIZE);
-        mainFrame.add(splitHoriz);
+        mainFrame.getContentPane().add(splitHoriz, BorderLayout.CENTER);
         return mainFrame;
     }
 
