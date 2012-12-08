@@ -1,6 +1,6 @@
 package ares.platform.view;
 
-import ares.application.gui_components.layers.WelcomeBackground;
+import ares.application.gui_components.layers.WelcomeScreen;
 import ares.platform.application.Command;
 import ares.platform.application.MenuEntry;
 import java.awt.BorderLayout;
@@ -49,8 +49,9 @@ public abstract class ComponentFactory {
     public static JFrame frame(String title, JMenuBar menuBar, JToolBar toolBar) {
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setContentPane(new WelcomeBackground());
-        frame.setPreferredSize(new Dimension(800, 600));
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        frame.setUndecorated(true);  
+        frame.setContentPane(new WelcomeScreen());
         if (title != null) {
             frame.setTitle(title);
         }

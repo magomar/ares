@@ -10,7 +10,9 @@ import javax.swing.ImageIcon;
  */
 public enum FileCommands implements Command {
 
-    OPEN_SCENARIO("Open Scenario", "Open a new scenario", new Integer(KeyEvent.VK_O)),
+    NEW_SCENARIO("New Scenario", "Open a new scenario", new Integer(KeyEvent.VK_O)),
+    LOAD_SCENARIO("Load Scenario", "Load a saved scenario", new Integer(KeyEvent.VK_L)),
+    SETTINGS("Settings", "Game settings", new Integer(KeyEvent.VK_S)),
     OPEN_EQUIPMENT("Open Equipment", "Open an equipment database", new Integer(KeyEvent.VK_E)),
     CLOSE_SCENARIO("Close Scenario", "Close the current scenario", new Integer(KeyEvent.VK_U)),
     EXIT("Exit", "Exit the application", new Integer(KeyEvent.VK_X));

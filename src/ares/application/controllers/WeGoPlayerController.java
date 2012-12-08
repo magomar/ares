@@ -2,6 +2,7 @@ package ares.application.controllers;
 
 import ares.application.boundaries.view.*;
 import ares.application.commands.*;
+import ares.application.gui_components.layers.WelcomeScreen;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.BoardGraphicsModel;
 import ares.application.models.forces.UnitModel;
@@ -11,17 +12,18 @@ import ares.data.jaxb.EquipmentDB;
 import ares.engine.algorithms.routing.*;
 import ares.engine.realtime.*;
 import ares.io.*;
-import ares.platform.application.AbstractAresApplication;
+import ares.platform.application.*;
 import ares.platform.model.UserRole;
-import ares.platform.view.InternalFrameView;
+import ares.platform.util.Pair;
 import ares.scenario.Scenario;
 import ares.scenario.board.*;
 import ares.scenario.forces.Force;
-import java.awt.Point;
+import java.awt.*;
 import java.awt.event.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.concurrent.*;
 import java.util.logging.*;
 import javax.swing.*;
@@ -38,6 +40,7 @@ public class WeGoPlayerController implements PropertyChangeListener {
     private final UnitInfoViewer unitView;
     private final MenuBarViewer menuView;
     private final MessagesViewer messagesView;
+    private final WelcomeScreen welcomeScreen;
     // Entities (bussines logic), they interact with the model providers and provide models to the views
     private final RealTimeEngine engine;
     // Other fields
@@ -56,9 +59,10 @@ public class WeGoPlayerController implements PropertyChangeListener {
         this.unitView = unitView;
         this.menuView = menuView;
         this.messagesView = messagesView;
-
+        this.welcomeScreen = ((WelcomeScreen)((JRootPane)mainView.getContentPane().getComponent(0)).getContentPane());
+        
         //Add listeners to the views
-        menuView.addActionListener(FileCommands.OPEN_SCENARIO.getName(), new OpenScenarioActionListener());
+        menuView.addActionListener(FileCommands.NEW_SCENARIO.getName(), new OpenScenarioActionListener());
         menuView.addActionListener(FileCommands.CLOSE_SCENARIO.getName(), new CloseScenarioActionListener());
         menuView.addActionListener(FileCommands.EXIT.getName(), new ExitActionListener());
         menuView.addActionListener(EngineCommands.START.name(), new StartActionListener());
@@ -70,6 +74,14 @@ public class WeGoPlayerController implements PropertyChangeListener {
         //TODO param this?
         engine.addPropertyChangeListener(this);
         LOG.addHandler(new MessagesHandler(messagesView));
+        
+        // Listeners to WelcomeScreen buttons
+        ArrayList<Pair<Command, ActionListener>> buttonListeners = new ArrayList<>();
+        buttonListeners.add(new Pair<Command, ActionListener>(FileCommands.NEW_SCENARIO, new OpenScenarioActionListener()));
+        buttonListeners.add(new Pair<Command, ActionListener>(FileCommands.LOAD_SCENARIO, new LoadScenarioActionListener()));
+        buttonListeners.add(new Pair<Command, ActionListener>(FileCommands.SETTINGS, new SettingsActionListener()));
+        buttonListeners.add(new Pair<Command, ActionListener>(FileCommands.EXIT, new ExitActionListener()));
+        welcomeScreen.setMenuButtons(buttonListeners);
 
         //Initialize views
         mainView.setMainPaneVisible(false);
@@ -129,12 +141,15 @@ public class WeGoPlayerController implements PropertyChangeListener {
                 if (n >= 0) {
                     userRole = options[n];
                     pathFinder = new AStar(scenario.getBoard().getMap().length);
+                    
+                    // Hide WelcomeScreen buttons if they were visible
+                    // + and show the menu bar
+                    welcomeScreen.openingScenario();
+                    menuView.setVisible(true);
                     return scenario;
                 }
-                return null;
-            } else {
-                return null;
             }
+            return null;
         }
 
         @Override
@@ -189,7 +204,7 @@ public class WeGoPlayerController implements PropertyChangeListener {
         }
     }
 
-    private class ExitActionListener implements ActionListener {
+    private static class ExitActionListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -197,6 +212,26 @@ public class WeGoPlayerController implements PropertyChangeListener {
             System.exit(0);
         }
     }
+    private static class LoadScenarioActionListener implements ActionListener {
+
+        public LoadScenarioActionListener() {
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+        }
+    }
+
+    private static class SettingsActionListener implements ActionListener {
+
+        public SettingsActionListener() {
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+        }
+    }
+
 
     private class StartActionListener implements ActionListener {
 
