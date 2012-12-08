@@ -28,7 +28,7 @@ public class MenuBarView extends AbstractView<JMenuBar> implements MenuBarViewer
     @Override
     protected JMenuBar layout() {
         JMenu fileMenu = ComponentFactory.menu(AresMenus.FILE_MENU,
-                ComponentFactory.menuItem(FileCommands.OPEN_SCENARIO, this),
+                ComponentFactory.menuItem(FileCommands.NEW_SCENARIO, this),
                 ComponentFactory.menuItem(FileCommands.CLOSE_SCENARIO, this, false),
                 ComponentFactory.menuItem(FileCommands.EXIT, this));
         JMenu viewMenu = ComponentFactory.menu(AresMenus.VIEW_MENU, false,

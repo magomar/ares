@@ -1,24 +1,13 @@
 package ares.platform.view;
 
-import ares.platform.application.Command;
-import ares.platform.application.MenuEntry;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Font;
-import java.awt.GraphicsEnvironment;
-import java.awt.LayoutManager;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseListener;
+import ares.application.gui_components.layers.WelcomeScreen;
+import ares.platform.application.*;
+import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.border.TitledBorder;
+import javax.swing.border.*;
 import javax.swing.table.TableModel;
-import javax.swing.tree.TreeModel;
-import javax.swing.tree.TreeSelectionModel;
+import javax.swing.tree.*;
 
 /**
  *
@@ -47,7 +36,13 @@ public abstract class ComponentFactory {
 
     public static JFrame frame(String title, JMenuBar menuBar, JToolBar toolBar) {
         JFrame frame = new JFrame();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // Save JRootPane layoutManager
+        LayoutManager lmgr = frame.getContentPane().getLayout();
+        // Exit is only possible through menu items (untill I discover how to add
+        // + add a listener to the window cross
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);        
+        frame.setContentPane(new WelcomeScreen());
+        frame.getContentPane().setLayout(lmgr);
         if (title != null) {
             frame.setTitle(title);
         }
@@ -57,8 +52,6 @@ public abstract class ComponentFactory {
         if (toolBar != null) {
             frame.getContentPane().add(toolBar, BorderLayout.NORTH);
         }
-
-        frame.setPreferredSize(new Dimension(800, 600));
         return frame;
     }
 

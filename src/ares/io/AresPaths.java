@@ -9,6 +9,7 @@ public enum AresPaths {
     EQUIPMENT("Data/Equipment"),
     SCENARIOS("Data/Scenarios"),
     GRAPHICS("Graphics"),
+    GRAPHICS_BACKGROUND("Graphics/Background"),
     GRAPHICS_SMALL("Graphics/Medium"),
     GRAPHICS_MEDIUM("Graphics/Medium"),
     GRAPHICS_HIGH("Graphics/High");
