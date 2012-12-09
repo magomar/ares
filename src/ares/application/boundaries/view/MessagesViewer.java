@@ -2,6 +2,8 @@ package ares.application.boundaries.view;
 
 import ares.engine.messages.EngineMessage;
 import ares.platform.view.View;
+import java.awt.event.ActionListener;
+import java.util.logging.Handler;
 
 /**
  *
@@ -14,4 +16,10 @@ public interface MessagesViewer extends View {
     public void append(String str);
 
     public void clear();
+
+    public void setLogCheckBoxes(ActionListener logCheckBoxListener);
+
+    public Handler getHandler();
+    
+    public void setHandler(Handler h);
 }
