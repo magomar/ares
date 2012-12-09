@@ -5,6 +5,7 @@ package ares.io;
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public enum AresPaths {
+    TEMP("Temp"),
     DATA("Data"),
     EQUIPMENT("Data/Equipment"),
     SCENARIOS("Data/Scenarios"),

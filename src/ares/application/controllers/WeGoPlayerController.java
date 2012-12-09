@@ -82,6 +82,7 @@ public class WeGoPlayerController implements PropertyChangeListener {
         //TODO param this?
         engine.addPropertyChangeListener(this);
         LOG.addHandler(new MessagesHandler(messagesView));
+        LOG.log(Level.ALL,"");
         
         //Initialize views
         mainView.setMainPaneVisible(false);        
