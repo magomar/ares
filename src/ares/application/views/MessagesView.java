@@ -4,6 +4,9 @@ import ares.application.boundaries.view.MessagesViewer;
 import ares.engine.messages.*;
 import ares.platform.view.AbstractView;
 import java.awt.*;
+import java.awt.event.ActionListener;
+import java.util.*;
+import java.util.logging.Handler;
 import java.util.logging.Level;
 import javax.swing.*;
 
@@ -15,13 +18,15 @@ import javax.swing.*;
 public class MessagesView extends AbstractView<JPanel> implements MessagesViewer {
 
     private EngineMessageLogger msgLogger;
+    private ArrayList<JCheckBox> cbLevels;
     private JTextArea textArea;
     private final static String newline = "\n";
+    private Handler handler;
 
     @Override
     protected JPanel layout() {
         JPanel messagesContainer = new JPanel(new BorderLayout());
-        
+        handler = new MessagesHandler(this);
         // Message levels
         messagesContainer.add(setMessageLevelCheckBoxes(), BorderLayout.WEST);
         // Messages area
@@ -37,13 +42,15 @@ public class MessagesView extends AbstractView<JPanel> implements MessagesViewer
     }
     
     public JComponent setMessageLevelCheckBoxes(){
+        cbLevels = new ArrayList<>();
         JPanel buttonPane = new JPanel();
         buttonPane.setLayout(new BoxLayout(buttonPane,BoxLayout.Y_AXIS));
         
-        for(Level level : MessagesHandler.LEVELS){
+        for(Level level : MessagesHandler.MessageLevel.LEVELS){
             JCheckBox jcb = new JCheckBox(level.getName());
             jcb.setSelected(true);
             buttonPane.add(jcb);
+            cbLevels.add(jcb);
         }
         
         return buttonPane;
@@ -62,5 +69,22 @@ public class MessagesView extends AbstractView<JPanel> implements MessagesViewer
     @Override
     public void clear() {
         textArea.setText("");
+    }
+
+    @Override
+    public void setLogCheckBoxes(ActionListener logCheckBoxListener) {
+        for(JCheckBox jcb : cbLevels){
+            jcb.addActionListener(logCheckBoxListener);
+        }
+    }
+
+    @Override
+    public Handler getHandler() {
+        return handler;
+    }
+
+    @Override
+    public void setHandler(Handler handler) {
+        this.handler = handler;
     }
 }

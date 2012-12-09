@@ -33,23 +33,25 @@ import javax.swing.*;
  * @author Mario
  */
 public class WeGoPlayerController implements PropertyChangeListener {
+    
     // Views
-
     private final AbstractAresApplication mainView;
     private final BoardViewer boardView;
     private final UnitInfoViewer unitView;
     private final MenuBarViewer menuView;
     private final MessagesViewer messagesView;
     private final WelcomeScreen welcomeScreen;
+    
     // Entities (bussines logic), they interact with the model providers and provide models to the views
     private final RealTimeEngine engine;
+    
     // Other fields
     private final ExecutorService executor;
     private UserRole userRole;
     private Tile selectedTile;
     private UnitModel selectedUnit;
-    private static final Logger LOG = Logger.getLogger(WeGoPlayerController.class.getName());
     private PathFinder pathFinder;
+    private static final Logger LOG = Logger.getLogger(WeGoPlayerController.class.getName());
 
     public WeGoPlayerController(AbstractAresApplication mainView, BoardViewer boardView, UnitInfoViewer unitView, MenuBarViewer menuView, MessagesViewer messagesView) {
         executor = Executors.newCachedThreadPool();
@@ -59,8 +61,8 @@ public class WeGoPlayerController implements PropertyChangeListener {
         this.unitView = unitView;
         this.menuView = menuView;
         this.messagesView = messagesView;
-        this.welcomeScreen = ((WelcomeScreen)((JRootPane)mainView.getContentPane().getComponent(0)).getContentPane());
-        
+        this.welcomeScreen = ((WelcomeScreen) ((JRootPane) mainView.getContentPane().getComponent(0)).getContentPane());
+
         //Add listeners to the views
         menuView.addActionListener(FileCommands.NEW_SCENARIO.getName(), new OpenScenarioActionListener());
         menuView.addActionListener(FileCommands.CLOSE_SCENARIO.getName(), new CloseScenarioActionListener());
@@ -69,27 +71,30 @@ public class WeGoPlayerController implements PropertyChangeListener {
         menuView.addActionListener(EngineCommands.PAUSE.name(), new PauseActionListener());
         menuView.addActionListener(EngineCommands.NEXT.name(), new NextActionListener());
         boardView.addMouseListener(new BoardMouseListener());
-        
-        // Listeners to WelcomeScreen buttons
+
+        // Add listeners to WelcomeScreen buttons
         ArrayList<Pair<Command, ActionListener>> buttonListeners = new ArrayList<>();
         buttonListeners.add(new Pair<Command, ActionListener>(FileCommands.NEW_SCENARIO, new OpenScenarioActionListener()));
         buttonListeners.add(new Pair<Command, ActionListener>(FileCommands.LOAD_SCENARIO, new LoadScenarioActionListener()));
         buttonListeners.add(new Pair<Command, ActionListener>(FileCommands.SETTINGS, new SettingsActionListener()));
         buttonListeners.add(new Pair<Command, ActionListener>(FileCommands.EXIT, new ExitActionListener()));
         welcomeScreen.setMenuButtons(buttonListeners);
-        
+
+
+        // Add listeners to MessagesView check boxes
+        messagesView.setLogCheckBoxes(new LogCheckBoxListener());
+
         //Add change listeners to entities
         //TODO param this?
         engine.addPropertyChangeListener(this);
-        LOG.addHandler(new MessagesHandler(messagesView));
-        LOG.log(Level.ALL,"");
-        
+        LOG.addHandler(messagesView.getHandler());
+
         //Initialize views
-        mainView.setMainPaneVisible(false);        
+        mainView.setMainPaneVisible(false);
     }
 
     @Override
-    public void propertyChange(PropertyChangeEvent evt) {        
+    public void propertyChange(PropertyChangeEvent evt) {
         if (RealTimeEngine.CLOCK_EVENT_PROPERTY.equals(evt.getPropertyName())) {
             ClockEvent clockEvent = (ClockEvent) evt.getNewValue();
             Scenario scenario = engine.getScenario();
@@ -146,39 +151,34 @@ public class WeGoPlayerController implements PropertyChangeListener {
                 if (n >= 0) {
                     // Loading scenario...
                     userRole = options[n];
-                    pathFinder = new AStar(scenario.getBoard().getMap().length);
-                    // Show the menu bar
-                    menuView.setVisible(true);
-                    welcomeScreen.hideButtons();
-                    welcomeScreen.setActivated(false);
                     return scenario;
-                } else{
-                    // Canceled while selecting role
-                    if(welcomeScreen.isActivated())
-                        welcomeScreen.showButtons();
                 }
             }
             // Exited file chooser without selection scenario
-            if(welcomeScreen.isActivated())
+            if (welcomeScreen.isActivated())
                 welcomeScreen.showButtons();
             return null;
         }
 
         @Override
         protected void onSuccess(Scenario scenario) {
+            
             if (scenario != null) {
-                // set the engine with the new scenario
+                // Show the menu bar
+                menuView.setVisible(true);
+                // Tell welcome screen we are playing
+                welcomeScreen.hideButtons();
+                welcomeScreen.setActivated(false);
+                pathFinder = new AStar(scenario.getBoard().getMap().length);                
+                
+                // Set the engine with the new scenario
                 engine.setScenario(scenario);
 
                 // obtain the scenario model with the active userRole
                 ScenarioModel scenarioModel = engine.getScenarioModel(userRole);
                 boardView.loadScenario(scenarioModel);
-
                 // set main window title & show appropriate views
                 mainView.setTitle("ARES   " + scenario.getName() + "   " + scenario.getCalendar().toString() + "   Role: " + userRole);
-//                boardView.setVisible(true);
-//                unitView.setVisible(true);
-//                messagesView.setVisible(true);
                 mainView.setMainPaneVisible(true);
                 // Update menu bar
                 menuView.setMenuElementEnabled(FileCommands.CLOSE_SCENARIO.getName(), true);
@@ -194,7 +194,7 @@ public class WeGoPlayerController implements PropertyChangeListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            LOG.log(Level.INFO, e.toString());
+            LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, e.toString());
             executor.execute(new OpenScenarioInteractor());
 
         }
@@ -204,7 +204,7 @@ public class WeGoPlayerController implements PropertyChangeListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            LOG.log(Level.INFO, e.toString());
+            LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, e.toString());
             engine.setScenario(null);
             menuView.setMenuElementEnabled(FileCommands.CLOSE_SCENARIO.getName(), false);
             menuView.setMenuElementEnabled(AresMenus.ENGINE_MENU.getName(), false);
@@ -219,10 +219,12 @@ public class WeGoPlayerController implements PropertyChangeListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            LOG.log(Level.INFO, e.toString());
+            LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, e.toString());
             System.exit(0);
         }
     }
+
+    // TODO load saved games
     private static class LoadScenarioActionListener implements ActionListener {
 
         public LoadScenarioActionListener() {
@@ -233,6 +235,7 @@ public class WeGoPlayerController implements PropertyChangeListener {
         }
     }
 
+    // TODO create settings window
     private static class SettingsActionListener implements ActionListener {
 
         public SettingsActionListener() {
@@ -243,12 +246,11 @@ public class WeGoPlayerController implements PropertyChangeListener {
         }
     }
 
-
     private class StartActionListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            LOG.log(Level.INFO, e.toString());
+            LOG.log(MessagesHandler.MessageLevel.ENGINE, e.toString());
             engine.start();
             menuView.setMenuElementEnabled(EngineCommands.START.getName(), false);
             menuView.setMenuElementEnabled(EngineCommands.PAUSE.getName(), true);
@@ -259,7 +261,7 @@ public class WeGoPlayerController implements PropertyChangeListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            LOG.log(Level.INFO, e.toString());
+            LOG.log(MessagesHandler.MessageLevel.ENGINE, e.toString());
             engine.stop();
             menuView.setMenuElementEnabled(EngineCommands.START.getName(), true);
             menuView.setMenuElementEnabled(EngineCommands.PAUSE.getName(), false);
@@ -270,7 +272,8 @@ public class WeGoPlayerController implements PropertyChangeListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            LOG.log(Level.INFO, e.toString());
+            messagesView.clear();
+            LOG.log(MessagesHandler.MessageLevel.ENGINE, e.toString());
             menuView.setMenuElementEnabled(EngineCommands.PAUSE.getName(), true);
             menuView.setMenuElementEnabled(EngineCommands.NEXT.getName(), false);
             engine.start();
@@ -281,7 +284,6 @@ public class WeGoPlayerController implements PropertyChangeListener {
 
         @Override
         public void mouseClicked(MouseEvent me) {
-
             Scenario scenario = engine.getScenario();
             Point pixel = new Point(me.getX(), me.getY());
             if (BoardGraphicsModel.isWithinImageRange(pixel) && me.getButton() == MouseEvent.BUTTON1) {
@@ -292,7 +294,6 @@ public class WeGoPlayerController implements PropertyChangeListener {
                 Tile tile = scenario.getBoard().getTile(tilePoint.x, tilePoint.y);
                 boolean changeTile = !tile.equals(selectedTile);
                 if (me.isShiftDown() && selectedUnit != null) {
-                    //LOG.log(Level.INFO, (p==null) ? "null path" : p.toString());
                     boardView.updateArrowPath(scenario.getModel(userRole), pathFinder.getPath(selectedUnit.getLocation(), tile.getModel(userRole)));
                 } else {
                     selectedTile = tile;
@@ -313,6 +314,28 @@ public class WeGoPlayerController implements PropertyChangeListener {
                 selectedTile = null;
                 unitView.clear();
             }
+        }
+    }
+
+    private class LogCheckBoxListener implements ActionListener {
+
+        public LogCheckBoxListener() {
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            Object o = e.getSource();
+            if (e.getSource() instanceof JCheckBox) {
+                JCheckBox jcb = (JCheckBox) o;
+                if (jcb.isSelected()) {
+                    // Show logs with this level
+                    ((MessagesHandler) messagesView.getHandler()).enableLogLevel(jcb.getText());
+                } else {
+                    // hide logs with this level
+                    ((MessagesHandler) messagesView.getHandler()).disableLogLevel(jcb.getText());
+                }
+            }
+
         }
     }
 }
