@@ -142,7 +142,7 @@ public final class WelcomeScreen extends AbstractImageLayer {
     public void closeScenario() {
         for(Component c : this.getComponents()){
             if(c instanceof JButton){
-                if (((JButton)c).getText()!="")
+                if (!"".equals(((JButton)c).getText()))
                     c.setVisible(true);
             } else{
                 c.setVisible(false);
