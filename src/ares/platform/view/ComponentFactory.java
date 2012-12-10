@@ -47,10 +47,11 @@ public abstract class ComponentFactory {
             frame.setTitle(title);
         }
         if (menuBar != null) {
-            frame.getContentPane().add(menuBar, BorderLayout.NORTH);
+            frame.setJMenuBar(menuBar);
+//            frame.getContentPane().add(menuBar, BorderLayout.NORTH);
         }
         if (toolBar != null) {
-            frame.getContentPane().add(toolBar, BorderLayout.NORTH);
+            frame.getContentPane().add(toolBar, BorderLayout.PAGE_START );
         }
         return frame;
     }

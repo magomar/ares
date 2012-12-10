@@ -1,5 +1,6 @@
 package ares.application.gui_components.layers;
 
+import ares.application.gui_components.TranslucidButton;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.TileModel;
 import ares.io.*;
@@ -29,7 +30,7 @@ public final class WelcomeScreen extends AbstractImageLayer {
     private final static File wallpapers = new File(AresPaths.GRAPHICS.getPath(), "Background");
 
     // Buttons in the main menu
-    private LinkedList<JButton> buttons = new LinkedList<>();
+    private LinkedList<TranslucidButton> buttons = new LinkedList<>();
     
     // True if the welcome screen should be visible
     private static Boolean activated = true;
@@ -82,7 +83,7 @@ public final class WelcomeScreen extends AbstractImageLayer {
         
         int i = 0;
         for(Pair<Command, ActionListener> pair : buttonListener){
-            JButton b = new JButton(pair.getLeft().getText());
+            TranslucidButton b = new TranslucidButton(pair.getLeft().getText());
             b.addActionListener(pair.getRight());
             b.setPreferredSize(dim);
             b.setMaximumSize(dim);
