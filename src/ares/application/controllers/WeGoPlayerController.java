@@ -7,6 +7,7 @@ import ares.application.models.ScenarioModel;
 import ares.application.models.board.BoardGraphicsModel;
 import ares.application.models.forces.UnitModel;
 import ares.application.player.AresMenus;
+import ares.application.player.AresPlayerGUI;
 import ares.application.views.*;
 import ares.data.jaxb.EquipmentDB;
 import ares.engine.algorithms.routing.*;
@@ -33,18 +34,16 @@ import javax.swing.*;
  * @author Mario
  */
 public class WeGoPlayerController implements PropertyChangeListener {
-    
+
     // Views
     private final AbstractAresApplication mainView;
     private final BoardViewer boardView;
     private final UnitInfoViewer unitView;
-    private final MenuBarViewer menuView;
+    private final CommandBarViewer menuView;
     private final MessagesViewer messagesView;
-    private final WelcomeScreen welcomeScreen;
-    
+    private final WelcomeScreenView welcomeScreenV;
     // Entities (bussines logic), they interact with the model providers and provide models to the views
     private final RealTimeEngine engine;
-    
     // Other fields
     private final ExecutorService executor;
     private UserRole userRole;
@@ -53,7 +52,7 @@ public class WeGoPlayerController implements PropertyChangeListener {
     private PathFinder pathFinder;
     private static final Logger LOG = Logger.getLogger(WeGoPlayerController.class.getName());
 
-    public WeGoPlayerController(AbstractAresApplication mainView, BoardViewer boardView, UnitInfoViewer unitView, MenuBarViewer menuView, MessagesViewer messagesView) {
+    public WeGoPlayerController(AbstractAresApplication mainView, BoardViewer boardView, UnitInfoViewer unitView, CommandBarViewer menuView, MessagesViewer messagesView, WelcomeScreenView welcomeScreenV) {
         executor = Executors.newCachedThreadPool();
         this.mainView = mainView;
         this.engine = new RealTimeEngine();
@@ -61,7 +60,7 @@ public class WeGoPlayerController implements PropertyChangeListener {
         this.unitView = unitView;
         this.menuView = menuView;
         this.messagesView = messagesView;
-        this.welcomeScreen = ((WelcomeScreen) ((JRootPane) mainView.getContentPane().getComponent(0)).getContentPane());
+        this.welcomeScreenV = welcomeScreenV;
 
         //Add listeners to the views
         menuView.addActionListener(FileCommands.NEW_SCENARIO.getName(), new OpenScenarioActionListener());
@@ -73,13 +72,17 @@ public class WeGoPlayerController implements PropertyChangeListener {
         boardView.addMouseListener(new BoardMouseListener());
 
         // Add listeners to WelcomeScreen buttons
-        ArrayList<Pair<Command, ActionListener>> buttonListeners = new ArrayList<>();
-        buttonListeners.add(new Pair<Command, ActionListener>(FileCommands.NEW_SCENARIO, new OpenScenarioActionListener()));
-        buttonListeners.add(new Pair<Command, ActionListener>(FileCommands.LOAD_SCENARIO, new LoadScenarioActionListener()));
-        buttonListeners.add(new Pair<Command, ActionListener>(FileCommands.SETTINGS, new SettingsActionListener()));
-        buttonListeners.add(new Pair<Command, ActionListener>(FileCommands.EXIT, new ExitActionListener()));
-        welcomeScreen.setMenuButtons(buttonListeners);
+//        ArrayList<Pair<Command, ActionListener>> buttonListeners = new ArrayList<>();
+//        buttonListeners.add(new Pair<Command, ActionListener>(FileCommands.NEW_SCENARIO, new OpenScenarioActionListener()));
+//        buttonListeners.add(new Pair<Command, ActionListener>(FileCommands.LOAD_SCENARIO, new LoadScenarioActionListener()));
+//        buttonListeners.add(new Pair<Command, ActionListener>(FileCommands.SETTINGS, new SettingsActionListener()));
+//        buttonListeners.add(new Pair<Command, ActionListener>(FileCommands.EXIT, new ExitActionListener()));
+//        welcomeScreenV.setMenuButtons(buttonListeners);
 
+        welcomeScreenV.addActionListener(FileCommands.NEW_SCENARIO.getName(), new OpenScenarioActionListener());
+        welcomeScreenV.addActionListener(FileCommands.LOAD_SCENARIO.getName(), new LoadScenarioActionListener());
+        welcomeScreenV.addActionListener(FileCommands.SETTINGS.getName(), new SettingsActionListener());
+        welcomeScreenV.addActionListener(FileCommands.EXIT.getName(), new ExitActionListener());
 
         // Add listeners to MessagesView check boxes
         messagesView.setLogCheckBoxes(new LogCheckBoxListener());
@@ -90,7 +93,7 @@ public class WeGoPlayerController implements PropertyChangeListener {
         LOG.addHandler(messagesView.getHandler());
 
         //Initialize views
-        mainView.setMainPaneVisible(false);
+        mainView.switchCard(AresPlayerGUI.MAIN_MENU_CARD);
     }
 
     @Override
@@ -106,8 +109,8 @@ public class WeGoPlayerController implements PropertyChangeListener {
                 unitView.updateInfo(selectedTile.getModel(userRole));
             }
             if (clockEvent.getEventTypes().contains(ClockEventType.TURN)) {
-                menuView.setMenuElementEnabled(EngineCommands.PAUSE.getName(), false);
-                menuView.setMenuElementEnabled(EngineCommands.NEXT.getName(), true);
+                menuView.setCommandEnabled(EngineCommands.PAUSE.getName(), false);
+                menuView.setCommandEnabled(EngineCommands.NEXT.getName(), true);
             }
         }
     }
@@ -116,9 +119,6 @@ public class WeGoPlayerController implements PropertyChangeListener {
 
         @Override
         protected Scenario performOperation() throws Exception {
-
-            //Hide welcomeScreen buttons
-            welcomeScreen.hideButtons();
 
             JFileChooser fc = new JFileChooser();
             fc.setCurrentDirectory(AresIO.ARES_IO.getAbsolutePath(AresPaths.SCENARIOS.getPath()).toFile());
@@ -154,23 +154,18 @@ public class WeGoPlayerController implements PropertyChangeListener {
                     return scenario;
                 }
             }
-            // Exited file chooser without selection scenario
-            if (welcomeScreen.isActivated())
-                welcomeScreen.showButtons();
             return null;
         }
 
         @Override
         protected void onSuccess(Scenario scenario) {
-            
+
             if (scenario != null) {
                 // Show the menu bar
                 menuView.setVisible(true);
-                // Tell welcome screen we are playing
-                welcomeScreen.hideButtons();
-                welcomeScreen.setActivated(false);
-                pathFinder = new AStar(scenario.getBoard().getMap().length);                
-                
+                mainView.switchCard(AresPlayerGUI.PLAY_CARD);
+                pathFinder = new AStar(scenario.getBoard().getMap().length);
+
                 // Set the engine with the new scenario
                 engine.setScenario(scenario);
 
@@ -179,13 +174,11 @@ public class WeGoPlayerController implements PropertyChangeListener {
                 boardView.loadScenario(scenarioModel);
                 // set main window title & show appropriate views
                 mainView.setTitle("ARES   " + scenario.getName() + "   " + scenario.getCalendar().toString() + "   Role: " + userRole);
-                mainView.setMainPaneVisible(true);
-                // Update menu bar
-                menuView.setMenuElementEnabled(FileCommands.CLOSE_SCENARIO.getName(), true);
-                menuView.setMenuElementEnabled(AresMenus.ENGINE_MENU.getName(), true);
-                menuView.setMenuElementEnabled(EngineCommands.START.getName(), true);
-                menuView.setMenuElementEnabled(EngineCommands.PAUSE.getName(), false);
-                menuView.setMenuElementEnabled(EngineCommands.NEXT.getName(), false);
+                menuView.setCommandEnabled(FileCommands.CLOSE_SCENARIO.getName(), true);
+                menuView.setCommandEnabled(AresMenus.ENGINE_MENU.getName(), true);
+                menuView.setCommandEnabled(EngineCommands.START.getName(), true);
+                menuView.setCommandEnabled(EngineCommands.PAUSE.getName(), false);
+                menuView.setCommandEnabled(EngineCommands.NEXT.getName(), false);
             }
         }
     }
@@ -206,12 +199,11 @@ public class WeGoPlayerController implements PropertyChangeListener {
         public void actionPerformed(ActionEvent e) {
             LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, e.toString());
             engine.setScenario(null);
-            menuView.setMenuElementEnabled(FileCommands.CLOSE_SCENARIO.getName(), false);
-            menuView.setMenuElementEnabled(AresMenus.ENGINE_MENU.getName(), false);
+            menuView.setCommandEnabled(FileCommands.CLOSE_SCENARIO.getName(), false);
+            menuView.setCommandEnabled(AresMenus.ENGINE_MENU.getName(), false);
             boardView.closeScenario();
-            // Hides menu bars and panels,
-            // + and shows the main menu
-            welcomeScreen.closeScenario();
+            mainView.switchCard(AresPlayerGUI.MAIN_MENU_CARD);
+
         }
     }
 
@@ -252,8 +244,8 @@ public class WeGoPlayerController implements PropertyChangeListener {
         public void actionPerformed(ActionEvent e) {
             LOG.log(MessagesHandler.MessageLevel.ENGINE, e.toString());
             engine.start();
-            menuView.setMenuElementEnabled(EngineCommands.START.getName(), false);
-            menuView.setMenuElementEnabled(EngineCommands.PAUSE.getName(), true);
+            menuView.setCommandEnabled(EngineCommands.START.getName(), false);
+            menuView.setCommandEnabled(EngineCommands.PAUSE.getName(), true);
         }
     }
 
@@ -263,8 +255,8 @@ public class WeGoPlayerController implements PropertyChangeListener {
         public void actionPerformed(ActionEvent e) {
             LOG.log(MessagesHandler.MessageLevel.ENGINE, e.toString());
             engine.stop();
-            menuView.setMenuElementEnabled(EngineCommands.START.getName(), true);
-            menuView.setMenuElementEnabled(EngineCommands.PAUSE.getName(), false);
+            menuView.setCommandEnabled(EngineCommands.START.getName(), true);
+            menuView.setCommandEnabled(EngineCommands.PAUSE.getName(), false);
         }
     }
 
@@ -274,8 +266,8 @@ public class WeGoPlayerController implements PropertyChangeListener {
         public void actionPerformed(ActionEvent e) {
             messagesView.clear();
             LOG.log(MessagesHandler.MessageLevel.ENGINE, e.toString());
-            menuView.setMenuElementEnabled(EngineCommands.PAUSE.getName(), true);
-            menuView.setMenuElementEnabled(EngineCommands.NEXT.getName(), false);
+            menuView.setCommandEnabled(EngineCommands.PAUSE.getName(), true);
+            menuView.setCommandEnabled(EngineCommands.NEXT.getName(), false);
             engine.start();
         }
     }
@@ -289,8 +281,9 @@ public class WeGoPlayerController implements PropertyChangeListener {
             if (BoardGraphicsModel.isWithinImageRange(pixel) && me.getButton() == MouseEvent.BUTTON1) {
                 Point tilePoint = BoardGraphicsModel.pixelToTileAccurate(pixel);
                 // pixel to tile conversion is more expensive than two coordinates checks
-                if (!BoardGraphicsModel.validCoordinates(tilePoint.x, tilePoint.y))
+                if (!BoardGraphicsModel.validCoordinates(tilePoint.x, tilePoint.y)) {
                     return;
+                }
                 Tile tile = scenario.getBoard().getTile(tilePoint.x, tilePoint.y);
                 boolean changeTile = !tile.equals(selectedTile);
                 if (me.isShiftDown() && selectedUnit != null) {

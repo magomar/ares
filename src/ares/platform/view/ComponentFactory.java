@@ -1,5 +1,6 @@
 package ares.platform.view;
 
+import ares.application.gui_components.TranslucidButton;
 import ares.application.gui_components.layers.WelcomeScreen;
 import ares.platform.application.*;
 import java.awt.*;
@@ -26,32 +27,25 @@ public abstract class ComponentFactory {
     public final static Color HIGHLIGHT_COLOR = new Color(255, 240, 240);
 
     public static JFrame frame(String title, JComponent contentPane, JMenuBar menuBar, JToolBar toolBar) {
-        JFrame frame = frame(title, menuBar, toolBar);
+        JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         if (contentPane != null) {
-            frame.getContentPane().add(contentPane, BorderLayout.CENTER);
+            frame.setContentPane(contentPane);
         }
         return frame;
     }
 
     public static JFrame frame(String title, JMenuBar menuBar, JToolBar toolBar) {
         JFrame frame = new JFrame();
-        // Save JRootPane layoutManager
-        LayoutManager lmgr = frame.getContentPane().getLayout();
-        // Exit is only possible through menu items (untill I discover how to add
-        // + add a listener to the window cross
-        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);        
-        frame.setContentPane(new WelcomeScreen());
-        frame.getContentPane().setLayout(lmgr);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         if (title != null) {
             frame.setTitle(title);
         }
         if (menuBar != null) {
             frame.setJMenuBar(menuBar);
-//            frame.getContentPane().add(menuBar, BorderLayout.NORTH);
         }
         if (toolBar != null) {
-            frame.getContentPane().add(toolBar, BorderLayout.PAGE_START );
+            frame.getContentPane().add(toolBar, BorderLayout.PAGE_START);
         }
         return frame;
     }
@@ -85,6 +79,14 @@ public abstract class ComponentFactory {
         }
         textField.setEditable(editable);
         return textField;
+    }
+
+    public static JButton translucidButton(Command command, ActionListener listener) {
+        JButton button = new TranslucidButton(command.getText());
+        button.setName(command.getName());
+        button.setActionCommand(command.getName());
+        button.addActionListener(listener);
+        return button;
     }
 
     public static JButton button(String label, Action action) {

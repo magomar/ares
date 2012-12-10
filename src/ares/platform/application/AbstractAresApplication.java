@@ -17,6 +17,6 @@ public abstract class AbstractAresApplication extends AbstractView<JFrame> {
     public void show() {
         WindowUtil.centerAndShow(contentPane);
     }
-
-    public abstract void setMainPaneVisible(boolean visible);
+    
+    public abstract void switchCard(String cardName);
 }

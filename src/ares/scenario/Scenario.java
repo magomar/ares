@@ -1,13 +1,13 @@
 package ares.scenario;
 
 import ares.application.models.ScenarioModel;
+import ares.application.models.board.BoardGraphicsModel;
 import ares.data.jaxb.EquipmentDB;
 import ares.data.jaxb.OOB;
+import ares.platform.model.ModelProvider;
 import ares.platform.model.UserRole;
 import ares.scenario.assets.AssetTypes;
 import ares.scenario.board.Board;
-import ares.application.models.board.BoardGraphicsModel;
-import ares.platform.model.ModelProvider;
 import ares.scenario.forces.Force;
 import ares.scenario.forces.Unit;
 import java.util.ArrayList;

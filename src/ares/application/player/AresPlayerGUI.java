@@ -1,6 +1,7 @@
 package ares.application.player;
 
 import ares.application.controllers.WeGoPlayerController;
+import ares.application.gui_components.layers.WelcomeScreen;
 import ares.application.views.*;
 import ares.platform.application.AbstractAresApplication;
 import ares.platform.view.ComponentFactory;
@@ -13,20 +14,24 @@ import javax.swing.*;
  */
 public class AresPlayerGUI extends AbstractAresApplication {
 
-    public static final int INFO_WINDOW_WIDTH = 250;
-    public static final int MESSAGES_WINDOW_HEIGHT = 150;
-    public static final int SPLIT_DIVIDER_SIZE = 5;
+    private static final int INFO_WINDOW_WIDTH = 250;
+    private static final int MESSAGES_WINDOW_HEIGHT = 150;
+    private static final int SPLIT_DIVIDER_SIZE = 5;
+    public static final String MAIN_MENU_CARD = "Main";
+    public static final String PLAY_CARD = "Play";
     private BoardView boardV;
     private UnitInfoView unitV;
     private MenuBarView menuV;
     private MessagesView messagesV;
+    private WelcomeScreenView welcomeScreenV;
     private JSplitPane splitHoriz;
     private JSplitPane splitVert;
+    private JPanel cards;
 
     public AresPlayerGUI() {
         super(); // creates layout
         // Create controllers
-        WeGoPlayerController mainController = new WeGoPlayerController(this, boardV, unitV, menuV, messagesV);
+        WeGoPlayerController mainController = new WeGoPlayerController(this, boardV, unitV, menuV, messagesV, welcomeScreenV);
     }
 
     @Override
@@ -35,6 +40,7 @@ public class AresPlayerGUI extends AbstractAresApplication {
         unitV = new UnitInfoView();
         boardV = new BoardView();
         messagesV = new MessagesView();
+        welcomeScreenV = new WelcomeScreenView();
         JFrame mainFrame = ComponentFactory.frame("Ares Player", menuV.getContentPane(), null);
         // These dimensions are necessary when the frame is not fullscreen
         Dimension maxSize = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().getSize();
@@ -66,19 +72,18 @@ public class AresPlayerGUI extends AbstractAresApplication {
         splitHoriz.setResizeWeight(0);
         splitVert.setDividerSize(SPLIT_DIVIDER_SIZE);
         splitHoriz.setDividerSize(SPLIT_DIVIDER_SIZE);
-        mainFrame.getContentPane().add(splitHoriz, BorderLayout.CENTER);
+
+        cards = new JPanel(new CardLayout());
+        cards.add(welcomeScreenV.getContentPane(), MAIN_MENU_CARD);
+        cards.add(splitHoriz, PLAY_CARD);
+        mainFrame.setContentPane(cards);
         return mainFrame;
     }
 
     @Override
-    public void setMainPaneVisible(boolean visible) {
-        splitHoriz.setVisible(visible);
-//        if (visible) {
-//            splitHoriz.resetToPreferredSizes();
-//            splitVert.resetToPreferredSizes();
-//        }
-        show();
-//        SwingUtilities.updateComponentTreeUI(contentPane);
+    public void switchCard(String cardName) {
+        CardLayout cl = (CardLayout) cards.getLayout();
+        cl.show(cards, cardName);
     }
 
     private Dimension getInfoPaneDimension(Container container) {

@@ -1,6 +1,6 @@
 package ares.application.views;
 
-import ares.application.boundaries.view.MenuBarViewer;
+import ares.application.boundaries.view.CommandBarViewer;
 import ares.application.commands.EngineCommands;
 import ares.application.commands.FileCommands;
 import ares.application.commands.ViewCommands;
@@ -21,7 +21,7 @@ import javax.swing.event.EventListenerList;
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public class MenuBarView extends AbstractView<JMenuBar> implements MenuBarViewer {
+public class MenuBarView extends AbstractView<JMenuBar> implements CommandBarViewer {
 
     protected Map<String, EventListenerList> actionListeners = new HashMap<>();
 
@@ -43,7 +43,7 @@ public class MenuBarView extends AbstractView<JMenuBar> implements MenuBarViewer
     }
 
     protected MenuElement getMenuElement(String elementName) {
-        return getMenuElement(elementName, getContentPane());
+        return getMenuElement(elementName, contentPane);
     }
 
     private MenuElement getMenuElement(String elementName, MenuElement menuElement) {
@@ -63,7 +63,7 @@ public class MenuBarView extends AbstractView<JMenuBar> implements MenuBarViewer
     }
 
     @Override
-    public void setMenuElementEnabled(String name, boolean enabled) {
+    public void setCommandEnabled(String name, boolean enabled) {
         getMenuElement(name).getComponent().setEnabled(enabled);
 
     }
@@ -76,14 +76,7 @@ public class MenuBarView extends AbstractView<JMenuBar> implements MenuBarViewer
         }
     }
 
-    /**
-     * Method to add a listener for a specific action command. This method is used by a controller to be notified of
-     * user actions. Each controller has to register a single action listener for each command it wants to listen to.
-     * However, many controllers can be listening to the very same command.
-     *
-     * @param actionCommand
-     * @param actionListener
-     */
+    @Override
     public void addActionListener(String actionCommand, ActionListener actionListener) {
         if (actionListeners.containsKey(actionCommand)) {
             actionListeners.get(actionCommand).add(ActionListener.class, actionListener);
@@ -94,6 +87,7 @@ public class MenuBarView extends AbstractView<JMenuBar> implements MenuBarViewer
         }
     }
 
+    @Override
     public void removeActionListener(String actionCommand, ActionListener actionListener) {
         if (actionListeners.containsKey(actionCommand)) {
             actionListeners.get(actionCommand).remove(ActionListener.class, actionListener);

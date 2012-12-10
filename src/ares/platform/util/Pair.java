@@ -4,18 +4,17 @@ import java.util.Objects;
 
 /**
  * Pair class.
- * 
- * Someone explain me why Java doesn't have this basic class
- * in the STL.
- * 
+ *
+ * Someone explain me why Java doesn't have this basic class in the STL.
+ *
  * @author Heine <heisncfr@inf.upv.es>
  */
 public class Pair<L, R> {
-    
+
     private L left;
     private R right;
-    
-    public Pair(L left, R right){
+
+    public Pair(L left, R right) {
         this.left = left;
         this.right = right;
     }
@@ -46,15 +45,16 @@ public class Pair<L, R> {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj == null)
+        if (obj == null) {
             return false;
-        if (getClass() != obj.getClass())
+        }
+        if (getClass() != obj.getClass()) {
             return false;
+        }
         final Pair<L, R> other = (Pair<L, R>) obj;
-        if(other.getLeft() != this.left || other.getRight()!= this.right)
+        if (other.getLeft() != this.left || other.getRight() != this.right) {
             return false;
+        }
         return true;
     }
-    
-    
 }
