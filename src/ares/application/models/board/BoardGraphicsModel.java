@@ -49,6 +49,14 @@ public class BoardGraphicsModel {
         imageHeight = tileRows * getHexHeight() + getHexHeight() / 2;
     }
     
+    public static int getTileRows(){
+        return tileRows;
+    }
+    
+    public static int getTileColumns(){
+        return tileColumns;
+    }
+    
     /**
      * Tile diameter (vertex to opposite vertex)
      *

@@ -2,36 +2,22 @@ package ares.application.controllers;
 
 import ares.application.boundaries.view.*;
 import ares.application.commands.*;
-import ares.application.gui_components.layers.WelcomeScreen;
-import ares.application.models.ScenarioModel;
-import ares.application.models.board.BoardGraphicsModel;
-import ares.application.models.forces.UnitModel;
-import ares.application.player.AresMenus;
 import ares.application.player.AresPlayerGUI;
 import ares.application.views.*;
-import ares.data.jaxb.EquipmentDB;
-import ares.engine.algorithms.routing.*;
 import ares.engine.realtime.*;
-import ares.io.*;
 import ares.platform.application.*;
 import ares.platform.model.UserRole;
-import ares.platform.util.Pair;
 import ares.scenario.Scenario;
 import ares.scenario.board.*;
-import ares.scenario.forces.Force;
-import java.awt.*;
-import java.awt.event.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.io.File;
-import java.util.ArrayList;
 import java.util.concurrent.*;
 import java.util.logging.*;
-import javax.swing.*;
 
 /**
  *
- * @author Mario
+ * @author Mario Gomez <margomez at dsic.upv.es>
+ * @author Heine <heisncfr@inf.upv.es>
  */
 public class WeGoPlayerController implements PropertyChangeListener {
 
@@ -42,14 +28,16 @@ public class WeGoPlayerController implements PropertyChangeListener {
     private final CommandBarViewer menuView;
     private final MessagesViewer messagesView;
     private final WelcomeScreenView welcomeScreenV;
+    //Secondary controllers
+    private final BoardController boardController;
+    private final EngineController engineController;
+    private final MessagesController messagesController;
+    private final ScenarioIOController scenarioController;
     // Entities (bussines logic), they interact with the model providers and provide models to the views
     private final RealTimeEngine engine;
     // Other fields
     private final ExecutorService executor;
     private UserRole userRole;
-    private Tile selectedTile;
-    private UnitModel selectedUnit;
-    private PathFinder pathFinder;
     private static final Logger LOG = Logger.getLogger(WeGoPlayerController.class.getName());
 
     public WeGoPlayerController(AbstractAresApplication mainView, BoardViewer boardView, UnitInfoViewer unitView, CommandBarViewer menuView, MessagesViewer messagesView, WelcomeScreenView welcomeScreenV) {
@@ -62,38 +50,10 @@ public class WeGoPlayerController implements PropertyChangeListener {
         this.messagesView = messagesView;
         this.welcomeScreenV = welcomeScreenV;
 
-        //Add listeners to the views
-        menuView.addActionListener(FileCommands.NEW_SCENARIO.getName(), new OpenScenarioActionListener());
-        menuView.addActionListener(FileCommands.CLOSE_SCENARIO.getName(), new CloseScenarioActionListener());
-        menuView.addActionListener(FileCommands.EXIT.getName(), new ExitActionListener());
-        menuView.addActionListener(EngineCommands.START.name(), new StartActionListener());
-        menuView.addActionListener(EngineCommands.PAUSE.name(), new PauseActionListener());
-        menuView.addActionListener(EngineCommands.NEXT.name(), new NextActionListener());
-        boardView.addMouseListener(new BoardMouseListener());
-
-        // Add listeners to WelcomeScreen buttons
-//        ArrayList<Pair<Command, ActionListener>> buttonListeners = new ArrayList<>();
-//        buttonListeners.add(new Pair<Command, ActionListener>(FileCommands.NEW_SCENARIO, new OpenScenarioActionListener()));
-//        buttonListeners.add(new Pair<Command, ActionListener>(FileCommands.LOAD_SCENARIO, new LoadScenarioActionListener()));
-//        buttonListeners.add(new Pair<Command, ActionListener>(FileCommands.SETTINGS, new SettingsActionListener()));
-//        buttonListeners.add(new Pair<Command, ActionListener>(FileCommands.EXIT, new ExitActionListener()));
-//        welcomeScreenV.setMenuButtons(buttonListeners);
-
-        welcomeScreenV.addActionListener(FileCommands.NEW_SCENARIO.getName(), new OpenScenarioActionListener());
-        welcomeScreenV.addActionListener(FileCommands.LOAD_SCENARIO.getName(), new LoadScenarioActionListener());
-        welcomeScreenV.addActionListener(FileCommands.SETTINGS.getName(), new SettingsActionListener());
-        welcomeScreenV.addActionListener(FileCommands.EXIT.getName(), new ExitActionListener());
-
-        // Add listeners to MessagesView check boxes
-        messagesView.setLogCheckBoxes(new LogCheckBoxListener());
-
-        //Add change listeners to entities
-        //TODO param this?
-        engine.addPropertyChangeListener(this);
-        LOG.addHandler(messagesView.getHandler());
-
-        //Initialize views
-        mainView.switchCard(AresPlayerGUI.MAIN_MENU_CARD);
+        this.boardController = new BoardController(this);
+        this.engineController = new EngineController(this);
+        this.messagesController = new MessagesController(this);
+        this.scenarioController = new ScenarioIOController(this);
     }
 
     @Override
@@ -105,8 +65,9 @@ public class WeGoPlayerController implements PropertyChangeListener {
                     + "   Role: " + userRole + "           Time: " + clockEvent.getClock().toString());
 
             boardView.updateScenario(engine.getScenarioModel(userRole));
-            if (selectedTile != null) {
-                unitView.updateInfo(selectedTile.getModel(userRole));
+
+            if (boardController.getSelectedTile() != null) {
+                unitView.updateInfo(boardController.getSelectedTile().getModel(userRole));
             }
             if (clockEvent.getEventTypes().contains(ClockEventType.TURN)) {
                 menuView.setCommandEnabled(EngineCommands.PAUSE.getName(), false);
@@ -115,220 +76,75 @@ public class WeGoPlayerController implements PropertyChangeListener {
         }
     }
 
-    private class OpenScenarioInteractor extends AsynchronousOperation<Scenario> {
+    public void initialize() {
 
-        @Override
-        protected Scenario performOperation() throws Exception {
+        //Add listeners to the views
+        menuView.addActionListener(FileCommands.NEW_SCENARIO.getName(), scenarioController.OpenScenarioActionListener());
+        menuView.addActionListener(FileCommands.CLOSE_SCENARIO.getName(), scenarioController.CloseScenarioActionListener());
+        menuView.addActionListener(FileCommands.EXIT.getName(), scenarioController.ExitActionListener());
+        menuView.addActionListener(EngineCommands.START.name(), engineController.StartActionListener());
+        menuView.addActionListener(EngineCommands.PAUSE.name(), engineController.PauseActionListener());
+        menuView.addActionListener(EngineCommands.NEXT.name(), engineController.NextActionListener());
+        boardView.addMouseListener(boardController.BoardMouseListener());
 
-            JFileChooser fc = new JFileChooser();
-            fc.setCurrentDirectory(AresIO.ARES_IO.getAbsolutePath(AresPaths.SCENARIOS.getPath()).toFile());
-            fc.setFileFilter(AresFileType.SCENARIO.getFileTypeFilter());
-            int returnVal = fc.showOpenDialog(mainView.getContentPane());
-            if (returnVal == JFileChooser.APPROVE_OPTION) {
-                File file = fc.getSelectedFile();
-                // Load scenario and equipment files
-                ares.data.jaxb.Scenario scen = (ares.data.jaxb.Scenario) AresIO.ARES_IO.unmarshall(file);
-                File equipmentFile = AresIO.ARES_IO.getAbsolutePath(AresPaths.EQUIPMENT.getPath(), "ToawEquipment" + AresFileType.EQUIPMENT.getFileExtension()).toFile();
-                EquipmentDB eqp = (EquipmentDB) AresIO.ARES_IO.unmarshall(equipmentFile);
-                Scenario scenario = new Scenario(scen, eqp);
-                // set the user role by asking (using a dialog window)
-                Force[] forces = scenario.getForces();
-                UserRole[] options = new UserRole[forces.length + 1];
-                for (int i = 0; i < forces.length; i++) {
-                    Force force = forces[i];
-                    options[i] = UserRole.getForceRole(force);
-                }
-                options[forces.length] = UserRole.GOD;
+        // Add listeners to WelcomeScreen buttons
+        welcomeScreenV.addActionListener(FileCommands.NEW_SCENARIO.getName(), scenarioController.OpenScenarioActionListener());
+        welcomeScreenV.addActionListener(FileCommands.LOAD_SCENARIO.getName(), scenarioController.LoadScenarioActionListener());
+        welcomeScreenV.addActionListener(FileCommands.SETTINGS.getName(), scenarioController.SettingsActionListener());
+        welcomeScreenV.addActionListener(FileCommands.EXIT.getName(), scenarioController.ExitActionListener());
 
-                int n = JOptionPane.showOptionDialog(mainView.getContentPane(),
-                        "Please select a user role",
-                        "Select your role",
-                        JOptionPane.YES_NO_CANCEL_OPTION,
-                        JOptionPane.QUESTION_MESSAGE,
-                        null,
-                        options,
-                        options[2]);
-                if (n >= 0) {
-                    // Loading scenario...
-                    userRole = options[n];
-                    return scenario;
-                }
-            }
-            return null;
-        }
+        // Add listeners to MessagesView check boxes
+        messagesView.setLogCheckBoxes(messagesController.LogCheckBoxListener());
 
-        @Override
-        protected void onSuccess(Scenario scenario) {
+        //Add change listeners to entities
+        engine.addPropertyChangeListener(this);
+        LOG.addHandler(messagesView.getHandler());
 
-            if (scenario != null) {
-                // Show the menu bar
-                menuView.setVisible(true);
-                mainView.switchCard(AresPlayerGUI.PLAY_CARD);
-                pathFinder = new AStar(scenario.getBoard().getMap().length);
-
-                // Set the engine with the new scenario
-                engine.setScenario(scenario);
-
-                // obtain the scenario model with the active userRole
-                ScenarioModel scenarioModel = engine.getScenarioModel(userRole);
-                boardView.loadScenario(scenarioModel);
-                // set main window title & show appropriate views
-                mainView.setTitle("ARES   " + scenario.getName() + "   " + scenario.getCalendar().toString() + "   Role: " + userRole);
-                menuView.setCommandEnabled(FileCommands.CLOSE_SCENARIO.getName(), true);
-                menuView.setCommandEnabled(AresMenus.ENGINE_MENU.getName(), true);
-                menuView.setCommandEnabled(EngineCommands.START.getName(), true);
-                menuView.setCommandEnabled(EngineCommands.PAUSE.getName(), false);
-                menuView.setCommandEnabled(EngineCommands.NEXT.getName(), false);
-            }
-        }
+        //Initialize views
+        mainView.switchCard(AresPlayerGUI.MAIN_MENU_CARD);
     }
 
-    private class OpenScenarioActionListener implements ActionListener {
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, e.toString());
-            executor.execute(new OpenScenarioInteractor());
-
-        }
+    Logger getLog() {
+        return LOG;
     }
 
-    private class CloseScenarioActionListener implements ActionListener {
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, e.toString());
-            engine.setScenario(null);
-            menuView.setCommandEnabled(FileCommands.CLOSE_SCENARIO.getName(), false);
-            menuView.setCommandEnabled(AresMenus.ENGINE_MENU.getName(), false);
-            boardView.closeScenario();
-            mainView.switchCard(AresPlayerGUI.MAIN_MENU_CARD);
-
-        }
+    RealTimeEngine getEngine() {
+        return engine;
     }
 
-    private static class ExitActionListener implements ActionListener {
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, e.toString());
-            System.exit(0);
-        }
+    AbstractAresApplication getMainView() {
+        return mainView;
     }
 
-    // TODO load saved games
-    private static class LoadScenarioActionListener implements ActionListener {
-
-        public LoadScenarioActionListener() {
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-        }
+    BoardViewer getBoardView() {
+        return boardView;
     }
 
-    // TODO create settings window
-    private static class SettingsActionListener implements ActionListener {
-
-        public SettingsActionListener() {
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-        }
+    UnitInfoViewer getUnitView() {
+        return unitView;
     }
 
-    private class StartActionListener implements ActionListener {
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            LOG.log(MessagesHandler.MessageLevel.ENGINE, e.toString());
-            engine.start();
-            menuView.setCommandEnabled(EngineCommands.START.getName(), false);
-            menuView.setCommandEnabled(EngineCommands.PAUSE.getName(), true);
-        }
+    CommandBarViewer getMenuView() {
+        return menuView;
     }
 
-    private class PauseActionListener implements ActionListener {
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            LOG.log(MessagesHandler.MessageLevel.ENGINE, e.toString());
-            engine.stop();
-            menuView.setCommandEnabled(EngineCommands.START.getName(), true);
-            menuView.setCommandEnabled(EngineCommands.PAUSE.getName(), false);
-        }
+    MessagesViewer getMessagesView() {
+        return messagesView;
     }
 
-    private class NextActionListener implements ActionListener {
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            messagesView.clear();
-            LOG.log(MessagesHandler.MessageLevel.ENGINE, e.toString());
-            menuView.setCommandEnabled(EngineCommands.PAUSE.getName(), true);
-            menuView.setCommandEnabled(EngineCommands.NEXT.getName(), false);
-            engine.start();
-        }
+    WelcomeScreenView getWelcomeScreenV() {
+        return welcomeScreenV;
     }
 
-    private class BoardMouseListener extends MouseAdapter {
-
-        @Override
-        public void mouseClicked(MouseEvent me) {
-            Scenario scenario = engine.getScenario();
-            Point pixel = new Point(me.getX(), me.getY());
-            if (BoardGraphicsModel.isWithinImageRange(pixel) && me.getButton() == MouseEvent.BUTTON1) {
-                Point tilePoint = BoardGraphicsModel.pixelToTileAccurate(pixel);
-                // pixel to tile conversion is more expensive than two coordinates checks
-                if (!BoardGraphicsModel.validCoordinates(tilePoint.x, tilePoint.y)) {
-                    return;
-                }
-                Tile tile = scenario.getBoard().getTile(tilePoint.x, tilePoint.y);
-                boolean changeTile = !tile.equals(selectedTile);
-                if (me.isShiftDown() && selectedUnit != null) {
-                    boardView.updateArrowPath(scenario.getModel(userRole), pathFinder.getPath(selectedUnit.getLocation(), tile.getModel(userRole)));
-                } else {
-                    selectedTile = tile;
-                    selectedUnit = tile.getModel(userRole).getTopUnit();
-                    UnitsStack stack = tile.getUnitsStack();
-                    boolean changeUnit = false;
-                    if (!changeTile && !stack.isEmpty()) {
-                        stack.next();
-                        changeUnit = true;
-                        selectedUnit = tile.getModel(userRole).getTopUnit();
-                    }
-                    if (changeTile || changeUnit) {
-                        unitView.updateInfo(selectedTile.getModel(userRole));
-                        boardView.updateTile(selectedTile.getModel(userRole));
-                    }
-                }
-            } else if (me.getButton() == MouseEvent.BUTTON3) {
-                selectedTile = null;
-                unitView.clear();
-            }
-        }
+    ExecutorService getExecutor() {
+        return executor;
     }
 
-    private class LogCheckBoxListener implements ActionListener {
+    void setUserRole(UserRole userRole) {
+        this.userRole = userRole;
+    }
 
-        public LogCheckBoxListener() {
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            Object o = e.getSource();
-            if (e.getSource() instanceof JCheckBox) {
-                JCheckBox jcb = (JCheckBox) o;
-                if (jcb.isSelected()) {
-                    // Show logs with this level
-                    ((MessagesHandler) messagesView.getHandler()).enableLogLevel(jcb.getText());
-                } else {
-                    // hide logs with this level
-                    ((MessagesHandler) messagesView.getHandler()).disableLogLevel(jcb.getText());
-                }
-            }
-
-        }
+    UserRole getUserRole() {
+        return userRole;
     }
 }
