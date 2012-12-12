@@ -10,6 +10,7 @@ import ares.engine.combat.CombatModifier;
 import ares.engine.knowledge.KnowledgeCategory;
 import ares.engine.knowledge.KnowledgeLevel;
 import ares.engine.movement.MovementCost;
+import ares.engine.movement.MovementType;
 import ares.engine.realtime.ClockEvent;
 import ares.platform.model.ModelProvider;
 import ares.platform.model.UserRole;
@@ -76,6 +77,10 @@ public final class Tile implements ModelProvider<TileModel> {
 //    private int y;
     private Point coord;
     /**
+     * Unique identifier obtained from coordinates:  index(x,y) = x * board.width + y 
+     */
+    private int index;
+    /**
      * Level of visibility in this tile depending on the terrain (withouth considering the weather)
      */
     private Vision visibility;
@@ -88,6 +93,10 @@ public final class Tile implements ModelProvider<TileModel> {
      */
     private Map<Direction, MovementCost> moveCosts;
     /**
+     * Minimun movement cost per each movement type
+     */
+    private Map<MovementType, Integer> minMoveCost;
+    /**
      * Modifiers to combat due to terrain
      */
     private Map<Direction, CombatModifier> combatModifiers;
@@ -96,6 +105,10 @@ public final class Tile implements ModelProvider<TileModel> {
      * the board), then there would be no entry for that direction.
      */
     private Map<Direction, Tile> neighbors;
+//    /**
+//     * Size of the tile in meters
+//     */
+    private int size;
     private final Map<UserRole, KnowledgeLevel> knowledgeLevels;
     private final Map<KnowledgeCategory, TileModel> models;
 
@@ -152,6 +165,8 @@ public final class Tile implements ModelProvider<TileModel> {
      * @param board
      */
     public void initialize(Map<Direction, Tile> neighbors, Force owner, Scenario scenario) {
+        size = scenario.getScale().getDistance();
+        index = coord.x * scenario.getBoard().getWidth() + coord.y;
         moveCosts = new EnumMap<>(Direction.class);
         combatModifiers = new EnumMap<>(Direction.class);
         this.neighbors = neighbors;
@@ -231,6 +246,10 @@ public final class Tile implements ModelProvider<TileModel> {
         }
     }
 
+    public Unit getTopUnit() {
+        return units.getPointOfInterest();
+    }
+
     public UnitsStack getUnitsStack() {
         return units;
     }
@@ -245,6 +264,10 @@ public final class Tile implements ModelProvider<TileModel> {
 
     public Map<Direction, Tile> getNeighbors() {
         return neighbors;
+    }
+
+    public Tile getNeighbor(Direction direction) {
+        return neighbors.get(direction);
     }
 
     public Set<TerrainFeatures> getTerrainFeatures() {
@@ -267,6 +290,14 @@ public final class Tile implements ModelProvider<TileModel> {
         return owner;
     }
 
+    public int getSize() {
+        return size;
+    }
+
+    public int getIndex() {
+        return index;
+    }
+
     public Map<Direction, Set<Terrain>> getSideTerrain() {
         return sideTerrain;
     }
@@ -287,6 +318,10 @@ public final class Tile implements ModelProvider<TileModel> {
         return coord;
     }
 
+//    public int getSize() {
+//        return size;
+//    }
+//    
 //    public int getX() {
 //        return x;
 //    }
@@ -307,6 +342,18 @@ public final class Tile implements ModelProvider<TileModel> {
 
     public CombatModifier getCombatModifiers(Direction dir) {
         return combatModifiers.get(dir);
+    }
+
+    public boolean isAlliedTerritory(Force force) {
+        return owner.equals(force);
+    }
+
+    public boolean hasEnemies(Force force) {
+        if (getSurfaceUnits().isEmpty()) {
+            return false;
+        } else {
+            return owner.equals(force);
+        }
     }
 
     @Override

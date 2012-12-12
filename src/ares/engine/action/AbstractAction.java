@@ -1,12 +1,8 @@
 package ares.engine.action;
 
-import ares.engine.action.actions.RestAction;
-import ares.engine.action.actions.WaitAction;
 import ares.engine.actors.Actor;
 import ares.engine.actors.UnitActor;
 import ares.engine.realtime.Clock;
-import ares.scenario.board.Tile;
-import ares.scenario.forces.Unit;
 import java.util.Comparator;
 
 /**
@@ -15,15 +11,27 @@ import java.util.Comparator;
  */
 public abstract class AbstractAction implements Action {
 
+    /**
+     * Start time value indicating that an action shall be started as soon as possible
+     */
+    public static final int AS_SOON_AS_POSSIBLE = 0;
+    /**
+     * Value indicating that the duration or time to complete an action is unknown
+     */
+    public static final int TIME_UNKNOWN = Integer.MAX_VALUE;
+    /**
+     * Action comparator used to sort actions by start time
+     */
     public static final Comparator<Action> ACTION_START_COMPARATOR = new ActionStartComparator();
+    /**
+     * Action comparator used to sort actions by finish time
+     */
     public static final Comparator<Action> ACTION_FINISH_COMPARATOR = new ActionFinishComparator();
     /**
      * The agent (an instance of {@link UnitActor}) in charge of this action (actions are assigned to specific actors
      * that have to execute them)
      */
     protected UnitActor actor;
-    protected Tile origin;
-    protected Tile destination;
     /**
      * The type of the action
      *
@@ -32,16 +40,19 @@ public abstract class AbstractAction implements Action {
     protected ActionType type;
     /**
      * Before starting the action, this attribute holds the estimated time to start performing the action, specified in
-     * minutes since the beginning of the scenario. Thereafter it holds the actual starting time
+     * minutes since the beginning of the scenario. Thereafter it holds the actual starting time. If (start ==
+     * AS_SOON_AS_POSSIBLE) then the action will be executed as soon as possible
+     *
      */
     protected int start;
     /**
-     * Before finishing the action, this attribute holds the estimated time to complete the action, specified in minutes
-     * since the scenario begun. Thereafter it holds the actual finishing time
+     * Before finishing the action, this attribute holds the estimated finishing time, specified in minutes since the
+     * beginning of the scenario. Thereafter it holds the actual finishing time
      */
     protected int finish;
     /**
-     * Estimated remaining time to complete the action in minutes
+     * Estimated remaining time to complete the action in minutes. If (timeToComplete == TIME_UNKNOWN) then the action
+     * will be executed indefinitely, until a completion condition holds
      */
     protected int timeToComplete;
     /**
@@ -52,92 +63,126 @@ public abstract class AbstractAction implements Action {
     protected ActionState state;
     protected int id;
 
-    public AbstractAction(UnitActor actor, ActionType type, Tile origin, Tile destination, int start) {
+    public AbstractAction(UnitActor actor, ActionType type) {
+        this(actor, type, AS_SOON_AS_POSSIBLE, TIME_UNKNOWN);
+    }
+
+    public AbstractAction(UnitActor actor, ActionType type, int start, int timeToComplete) {
         this.actor = actor;
         this.type = type;
         this.start = start;
-        this.origin = origin;
-        this.destination = destination;
-        finish = Integer.MAX_VALUE;
-        timeToComplete = finish - start;
+        this.timeToComplete = timeToComplete;
+        finish = TIME_UNKNOWN;
         state = ActionState.CREATED;
-        id = ActionCounter.count();
-    }
-
-    public AbstractAction(UnitActor actor, ActionType type, Tile origin, Tile destination, Clock clock) {
-        this(actor, type, origin, destination, clock.getCurrentTime());
-    }
-//
-//    public AbstractAction(Unit actor, ActionType type, Tile destination, int start, Clock clock) {
-//        this(actor, type, destination, destination, start, clock);
-//    }
-//
-//    public AbstractAction(Unit actor, ActionType type, Tile destination, Clock clock) {
-//        this(actor, type, destination, destination, clock.getCurrentTime(), clock);
-//    }
-
-    protected boolean checkPreconditions(Clock clock) {
-        Unit unit = actor.getUnit();
-        int time = clock.getCurrentTime();
-        int minEndurance = (int) (type.getWearRate() * Math.min(timeToComplete, clock.MINUTES_PER_TICK));
-        if (unit.getEndurance() <= minEndurance) {
-            state = ActionState.DELAYED;
-            actor.addAction(this);
-            Action newAction = new RestAction(actor, destination, time);
-            newAction.execute(clock);
-            return false;
-        }
-        if (state == ActionState.CREATED && unit.getOpState() != type.getPrecondition()) {
-            state = ActionState.DELAYED;
-            actor.addAction(this);
-            Action newAction;
-            if (unit.getEndurance() >= ActionType.WAIT.getWearRate()) {
-                newAction = new WaitAction(actor, destination, time);
-            } else {
-                newAction = new RestAction(actor, destination, time);
-            }
-            newAction.execute(clock);
-            return false;
-        }
-        //TODO ensure units move coherently
-        if (unit.getLocation() != origin) {
-            Action newAction;
-            if (unit.getEndurance() >= ActionType.WAIT.getWearRate()) {
-                newAction = new WaitAction(actor, destination, time);
-            } else {
-                newAction = new RestAction(actor, destination, time);
-            }
-            newAction.execute(clock);
-            return false;
-        }
-
-        if (state == ActionState.CREATED || state == ActionState.DELAYED) {
-            state = ActionState.INITIATED;
-            start = Math.max(start, clock.getCurrentTime() - clock.MINUTES_PER_TICK);
-            unit.setOpState(type.getEffectWhile());
-        }
-        return true;
+        id = Counter.ACTION_COUNTER.count();
     }
 
     @Override
-    public void setStart(int s) {
-        start = s;
-        timeToComplete = finish - start;
+    public final boolean checkTimetoStart(Clock clock) {
+        return (start < clock.getCurrentTime() + clock.MINUTES_PER_TICK);
+    }
+
+    @Override
+    public final boolean checkTimeToComplete(Clock clock) {
+        return (timeToComplete <= clock.MINUTES_PER_TICK);
+    }
+
+    @Override
+    public final boolean checkEndurance(Clock clock) {
+        int duration = Math.min(timeToComplete, clock.MINUTES_PER_TICK);
+        int requiredEndurance = type.getRequiredEndurace(duration);
+        return (actor.getUnit().getEndurance() <= requiredEndurance);
+    }
+
+    @Override
+    public void start(Clock clock) {
+        state = ActionState.STARTED;
+        start = Math.max(start, clock.getCurrentTime() - clock.MINUTES_PER_TICK);
+        actor.getUnit().setOpState(type.getEffectWhile());
+    }
+
+    @Override
+    public void execute(Clock clock) {
+        if (checkFeasibility()) {
+            if (checkEndurance(clock)) {
+                if (checkTimeToComplete(clock)) {
+                    complete(clock);
+                } else {
+                    resume(clock);
+                }
+            } else {
+                delay(clock);
+            }
+        } else {
+            abort(clock);
+        }
+    }
+
+    protected void delay(Clock clock) {
+        state = ActionState.DELAYED;
+        int duration = clock.MINUTES_PER_TICK;
+        int wear = (int) (type.getWearRate() * duration);
+        actor.getUnit().changeEndurance(wear);
+    }
+
+    protected void abort(Clock clock) {
+        state = ActionState.ABORTED;
+        int duration = clock.MINUTES_PER_TICK;
+        int wear = (int) (type.getWearRate() * duration);
+        actor.getUnit().changeEndurance(wear);
+        actor.getUnit().setOpState(type.getPrecondition());
+        finish = clock.getCurrentTime();
+    }
+
+    protected void resume(Clock clock) {
+        int duration = clock.MINUTES_PER_TICK;
+        timeToComplete -= duration;
+        int wear = (int) (type.getWearRate() * duration);
+        actor.getUnit().changeEndurance(wear);
+        applyOngoingEffects();
+    }
+
+    @Override
+    public void complete(Clock clock) {
+        int duration = timeToComplete;
+        timeToComplete = 0;
+        state = ActionState.COMPLETED;
+        finish = clock.getCurrentTime() - clock.MINUTES_PER_TICK + duration;
+        actor.getUnit().setOpState(type.getEffectAfter());
+        int wear = (int) (type.getWearRate() * duration);
+        actor.getUnit().changeEndurance(wear);
+        applyEffects();
+        // TODO if the action is completed before the end of the time tick, do something, eg wait... or ask the TacAI
+    }
+
+    /**
+     * Apply the effects of an action after completion
+     */
+    public void applyEffects() {
+        actor.getUnit().setOpState(type.getEffectAfter());
+    }
+
+    /**
+     * Apply the effects of an action while it is being executed
+     */
+    protected void applyOngoingEffects() {
+        // do nothing, to be overriden by subclasses
+    }
+
+    @Override
+    public boolean checkPrecondition() {
+        return actor.getUnit().getOpState() == type.getPrecondition();
+    }
+
+    @Override
+    public boolean checkFeasibility() {
+        // do nothing, can be overriden by subclasses
+        return true;
     }
 
     @Override
     public ActionState getState() {
         return state;
-    }
-
-    @Override
-    public Tile getOrigin() {
-        return origin;
-    }
-
-    @Override
-    public Tile getDestination() {
-        return destination;
     }
 
     @Override
@@ -151,6 +196,11 @@ public abstract class AbstractAction implements Action {
     }
 
     @Override
+    public int getTimeToComplete() {
+        return timeToComplete;
+    }
+
+    @Override
     public ActionType getType() {
         return type;
     }
@@ -158,10 +208,6 @@ public abstract class AbstractAction implements Action {
     @Override
     public Actor getActor() {
         return actor;
-    }
-
-    public int getTimeToComplete() {
-        return timeToComplete;
     }
 
     @Override
@@ -190,9 +236,9 @@ public abstract class AbstractAction implements Action {
             return (diff == 0 ? o1.getStart() - o2.getStart() : diff);
         }
     }
-    
+
     @Override
     public final String toString(Clock clock) {
-        return "[" + clock.toString() + "] #" + id + " > " + state +  '{' + type + ": " + actor + '}' + this.toString();
+        return "[" + clock.toString() + "] #" + id + " > " + state + '{' + type + ": " + actor + '}';
     }
 }

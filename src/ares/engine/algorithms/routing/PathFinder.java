@@ -1,6 +1,6 @@
 package ares.engine.algorithms.routing;
 
-import ares.application.models.board.TileModel;
+import ares.scenario.board.Tile;
 
 /**
  *
@@ -13,5 +13,5 @@ public interface PathFinder {
     void setHeuristic(Heuristic h);
     void avoidEnemies(boolean b);
     boolean avoidingEnemies();
-    Path getPath(TileModel o, TileModel d);
+    Path getPath(Tile o, Tile d);
 }

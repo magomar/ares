@@ -2,6 +2,7 @@ package ares.engine.algorithms.routing;
 
 import ares.application.models.board.*;
 import ares.scenario.board.Direction;
+import ares.scenario.board.Tile;
 import java.util.*;
 
 /**
@@ -17,7 +18,7 @@ public class AStar extends AbstractPathFinder {
     }
 
     @Override
-    public Path getPath(TileModel orig, TileModel dest) {
+    public Path getPath(Tile orig, Tile dest) {
 
         if (orig.equals(dest)) {
             return null;
@@ -51,7 +52,7 @@ public class AStar extends AbstractPathFinder {
         openSet.add(current);
         
         start = current; // save it for the double linked Path
-
+        
         while (!openSet.isEmpty()) {
 
             //Update current node
@@ -62,8 +63,8 @@ public class AStar extends AbstractPathFinder {
             }
 
             closedSet.set(current.getTile().getIndex());
-            for (Map.Entry<Direction, TileModel> iter : current.getTile().getNeighbors().entrySet()) {
-                int index = BoardGraphicsModel.tileMapIndex(iter.getValue().getCoordinates());
+            for (Map.Entry<Direction, Tile> iter : current.getTile().getNeighbors().entrySet()) {
+                int index = iter.getValue().getIndex();
                 if (closedSet.get(index)) {
                     continue;
                 }

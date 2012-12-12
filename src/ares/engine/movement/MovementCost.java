@@ -15,13 +15,12 @@ public class MovementCost {
 
     public static final int IMPASSABLE = Integer.MAX_VALUE;
     public static final int MAX_ROAD_COST = 3;
+    public static final int MIN_ROAD_COST = 1;
     /**
-     * Pre-computed movement costs. This map links the different movement types
-     * to their costs for a given destination (tile and direction). Movement
-     * cost is specified in terms of how many times the cost is reduced. That
-     * is, a cost of 1 means moving at standard speed, 2 means moving at half
-     * the standard speed, 3 means moving at a third of the standard speed and
-     * so on.
+     * Pre-computed movement costs. This map links the different movement types to their costs for a given destination
+     * (tile and direction). Movement cost is specified in terms of how many times the cost is reduced. That is, a cost
+     * of 1 means moving at standard speed, 2 means moving at half the standard speed, 3 means moving at a third of the
+     * standard speed and so on.
      */
     // TODO check if it's better to initialize all costs to IMPASSABLE
     private Map<MovementType, Integer> movementCost;
@@ -108,7 +107,7 @@ public class MovementCost {
         if (!offRoadMovement) {
             // Road-based movement
             for (MovementType moveType : EnumSet.range(MovementType.MOTORIZED, MovementType.FOOT)) {
-                movementCost.put(moveType, ONE);
+                movementCost.put(moveType, MIN_ROAD_COST);
             }
         } else {
             //Off-road movement
@@ -142,10 +141,9 @@ public class MovementCost {
     }
 
     /**
-     * Return the actual movement cost, having into account both the precomputed
-     * cost and dinamic conditions such as the traffic density in case of using
-     * roads, the presence of near enemy units, or the presence of dynamic
-     * terrain features such as mud and snow
+     * Return the actual movement cost, having into account both the precomputed cost and dinamic conditions such as the
+     * traffic density in case of using roads, the presence of near enemy units, or the presence of dynamic terrain
+     * features such as mud and snow
      *
      * @param unit
      * @param destination
@@ -159,6 +157,9 @@ public class MovementCost {
         MovementType movementType = unit.getMovement();
         // TODO check for enemies
         if (!unit.getForce().equals(destination.getOwner()) && destination.getSurfaceUnits().size() > 0) {
+            return IMPASSABLE;
+        }
+        if (destination.hasEnemies(unit.getForce())) {
             return IMPASSABLE;
         }
 
@@ -183,13 +184,13 @@ public class MovementCost {
         return cost;
     }
 
-    public int getActualCost(UnitModel unit, TileModel destination, Direction fromDir, boolean avoidEnemies, boolean shortest) {
+    public int getActualCost(Unit unit, Tile destination, Direction fromDir, boolean avoidEnemies, boolean shortest) {
 
         int penalty = 0, cost;
-        if(shortest){
+        if (shortest) {
             // If it's possible, then go for it
             int d = movementCost.get(unit.getMovement());
-            return (d<IMPASSABLE) ? 1 : IMPASSABLE;
+            return (d < IMPASSABLE) ? 1 : IMPASSABLE;
         }
         if (destination.hasEnemies(unit.getForce())) {
             if (avoidEnemies) {
@@ -222,8 +223,8 @@ public class MovementCost {
     }
 
     /**
-     * Return the precomputed movement cost (cost depending on inmutable terrain
-     * characteristics such as the terrain type)
+     * Return the precomputed movement cost (cost depending on inmutable terrain characteristics such as the terrain
+     * type)
      *
      * @param movement
      * @return

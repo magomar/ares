@@ -1,7 +1,6 @@
 package ares.application.player;
 
 import ares.application.controllers.WeGoPlayerController;
-import ares.application.gui_components.layers.WelcomeScreen;
 import ares.application.views.*;
 import ares.platform.application.AbstractAresApplication;
 import ares.platform.view.ComponentFactory;

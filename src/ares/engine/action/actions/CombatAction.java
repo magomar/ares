@@ -2,8 +2,7 @@ package ares.engine.action.actions;
 
 import ares.engine.action.ActionType;
 import ares.engine.actors.UnitActor;
-import ares.engine.realtime.Clock;
-import ares.scenario.board.Tile;
+import ares.engine.algorithms.routing.Path;
 
 /**
  *
@@ -11,12 +10,8 @@ import ares.scenario.board.Tile;
  */
 public class CombatAction extends MoveAction {
 
-    public CombatAction(UnitActor actor, ActionType type, Tile origin, Tile destination, int start, int distance) {
-        super(actor, type, origin, destination, start, distance);
+    public CombatAction(UnitActor actor, ActionType type, Path path, int tileSize) {
+        super(actor, type, path, tileSize);
     }
 
-    @Override
-    public void execute(Clock clock) {
-        System.out.println(actor + "Attacking");
-    }
 }

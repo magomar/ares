@@ -10,6 +10,7 @@ import ares.scenario.assets.AssetTypes;
 import ares.scenario.board.Board;
 import ares.scenario.forces.Force;
 import ares.scenario.forces.Unit;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -24,8 +25,8 @@ import java.util.Map;
  */
 public final class Scenario implements ModelProvider<ScenarioModel> {
 
-    public final AssetTypes assetTypes;
-    private final String name;
+    public WeakReference<AssetTypes> assetTypes;
+    private String name;
     private Board board;
     private Scale scale;
     private Force[] forces;
@@ -37,7 +38,7 @@ public final class Scenario implements ModelProvider<ScenarioModel> {
         name = scenario.getHeader().getName();
         scale = new Scale((int) (scenario.getEnvironment().getScale() * 1000));
         calendar = new AresCalendar(scenario.getCalendar());
-        assetTypes = new AssetTypes(eqpDB);
+        assetTypes = new WeakReference<>(new AssetTypes(eqpDB));
         board = new Board(scenario);
         OOB oob = scenario.getOOB();
         Collection<ares.data.jaxb.Force> scenForces = oob.getForce();
@@ -59,7 +60,7 @@ public final class Scenario implements ModelProvider<ScenarioModel> {
         for (Force force : forces) {
             models.put(UserRole.getForceRole(force), new ScenarioModel(this, UserRole.getForceRole(force)));
         }
-
+        assetTypes = null;
     }
 
     public Board getBoard() {
@@ -95,7 +96,7 @@ public final class Scenario implements ModelProvider<ScenarioModel> {
     }
 
     public AssetTypes getAssetTypes() {
-        return assetTypes;
+        return assetTypes.get();
     }
 
     @Override

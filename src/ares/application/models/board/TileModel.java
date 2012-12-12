@@ -44,7 +44,7 @@ public abstract class TileModel extends KnowledgeMediatedModel {
     
     // Tile map index
     public int getIndex(){
-        return BoardGraphicsModel.tileMapIndex(tile.getCoordinates());
+        return tile.getIndex();
     }
     
     public abstract UnitModel getTopUnit();

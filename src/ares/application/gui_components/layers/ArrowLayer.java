@@ -4,6 +4,7 @@ import ares.application.models.ScenarioModel;
 import ares.application.models.board.*;
 import ares.engine.algorithms.routing.*;
 import ares.scenario.board.Direction;
+import ares.scenario.board.Tile;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.lang.ref.SoftReference;
@@ -29,10 +30,10 @@ public class ArrowLayer extends AbstractImageLayer {
     }
 
     public void paintArrow(Path path) {
-        if(path==null){
+        if (path == null) {
             //TODO set mouse icon to X or something
             return;
-        }        
+        }
         Node last = path.getLast();
         // Paint the arrow
         path.toString();
@@ -48,16 +49,16 @@ public class ArrowLayer extends AbstractImageLayer {
 
     }
 
-    public void paintTile(TileModel tile, Integer index) {
+    public void paintTile(Tile tile, Integer index) {
         Point subImagePos = imageIndexes.get(index);
         if (subImagePos != null) {
-            Graphics2D g2 = parentLayer.globalImage.createGraphics();            
-            
+            Graphics2D g2 = parentLayer.globalImage.createGraphics();
+
             if (arrowImage.get() == null) {
                 arrowImage = new SoftReference<>(loadImage(BoardGraphicsModel.getImageProfile().getArrowFilename()));
             }
             // Y attribute contains number of columns, X contains rows
-            Point subImagePixel = new Point(subImagePos.y * BoardGraphicsModel.getHexDiameter(),subImagePos.x * BoardGraphicsModel.getHexHeight());
+            Point subImagePixel = new Point(subImagePos.y * BoardGraphicsModel.getHexDiameter(), subImagePos.x * BoardGraphicsModel.getHexHeight());
             BufferedImage image = arrowImage.get().getSubimage(subImagePixel.x, subImagePixel.y, BoardGraphicsModel.getHexDiameter(), BoardGraphicsModel.getHexHeight());
             Point pos = BoardGraphicsModel.tileToPixel(tile.getCoordinates());
             g2.drawImage(image, pos.x, pos.y, null);
@@ -68,8 +69,7 @@ public class ArrowLayer extends AbstractImageLayer {
 
     /**
      *
-     * @see
-     * TerrainLayer#getTerrainToImageIndex(ares.application.models.board.TileModel)
+     * @see TerrainLayer#getTerrainToImageIndex(ares.application.models.board.TileModel)
      */
     public int getDirectionToImageIndex(Boolean directed, Direction from, Direction to) {
         int index = 64 >>> from.ordinal();
@@ -93,7 +93,7 @@ public class ArrowLayer extends AbstractImageLayer {
     }
 
     @Override
-    public void paintComponent(Graphics g) {        
+    public void paintComponent(Graphics g) {
         parentLayer.paintComponent(g);
     }
 
@@ -115,8 +115,9 @@ public class ArrowLayer extends AbstractImageLayer {
             map.put(i, new Point(row, col));
             if (++col == colMod) {
                 col = 0;
-                if (++row == rowMod)
+                if (++row == rowMod) {
                     row = 0;
+                }
             }
         }
 

@@ -129,16 +129,16 @@ public class BoardGraphicsModel {
         return i >= 0 && i < tileColumns && j >= 0 && j < tileRows;
     }
 
-    /**
-     * Converts tile coordinates [x,y] to full index form
-     *
-     *
-     * @param coordinates
-     * @return X * Columns + Y
-     */
-    public static int tileMapIndex(Point coordinates) {
-        return coordinates.x * tileColumns + coordinates.y;
-    }
+//    /**
+//     * Converts tile coordinates [x,y] to full index form
+//     *
+//     *
+//     * @param coordinates
+//     * @return X * Columns + Y
+//     */
+//    public static int tileMapIndex(Point coordinates) {
+//        return coordinates.x * tileColumns + coordinates.y;
+//    }
 
     /**
      * @return current image profile (SMALL, MEDIUM or HIGH)
@@ -151,8 +151,6 @@ public class BoardGraphicsModel {
     public static void setImageProfile(ImageProfile ip) {
         imgProfile = ip;
         initGraphicVariables();
-        //TODO Fire property change to let know the controller the model has changed.
-
     }
 
     /**

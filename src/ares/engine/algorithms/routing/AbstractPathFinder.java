@@ -1,6 +1,6 @@
 package ares.engine.algorithms.routing;
 
-import ares.application.models.board.TileModel;
+import ares.scenario.board.Tile;
 
 /**
  *
@@ -59,5 +59,5 @@ public abstract class AbstractPathFinder implements PathFinder{
     }
     
     @Override
-    abstract public Path getPath(TileModel o, TileModel d);
+    abstract public Path getPath(Tile o, Tile d);
 }

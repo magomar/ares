@@ -3,7 +3,6 @@ package ares.engine.action.actions;
 import ares.engine.action.AbstractAction;
 import ares.engine.action.ActionType;
 import ares.engine.actors.UnitActor;
-import ares.engine.realtime.Clock;
 import ares.scenario.board.Tile;
 
 /**
@@ -11,13 +10,15 @@ import ares.scenario.board.Tile;
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class ArtilleryAction extends AbstractAction {
+    private Tile target;
 
-    public ArtilleryAction(UnitActor actor, ActionType type, Tile origin, Tile destination, int start) {
-        super(actor, type, origin, destination, start);
+    public ArtilleryAction(UnitActor actor, ActionType type, Tile target, int start, int duration) {
+        super(actor, type, start, duration);
+        this.target = target;
     }
 
-    @Override
-    public void execute(Clock clock) {
-        System.out.println(actor + "Bombarding");
+    public Tile getTarget() {
+        return target;
     }
+
 }

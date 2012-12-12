@@ -10,9 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Map;
-import javax.swing.JComponent;
 import javax.swing.JPanel;
-import javax.swing.MenuElement;
 import javax.swing.event.EventListenerList;
 
 /**

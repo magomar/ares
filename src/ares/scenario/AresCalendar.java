@@ -11,8 +11,8 @@ public class AresCalendar {
 
     public static final SimpleDateFormat FULL_DATE_FORMAT = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
     public static final SimpleDateFormat SINGLE_DATE_FORMAT = new SimpleDateFormat("dd.MM.yyyy");
-    public final int MINUTES_PER_TICK;
-    public final int MINUTES_PER_TURN;
+    private static int MINUTES_PER_TICK;
+    private static int MINUTES_PER_TURN;
     private final GregorianCalendar begins;
     private final GregorianCalendar ends;
     private GregorianCalendar now;
@@ -36,12 +36,12 @@ public class AresCalendar {
         ends.add(GregorianCalendar.MINUTE, finalTurn * turnLength.getMinutesPerTurn());
     }
 
-    public void setNow(GregorianCalendar now) {
-        this.now = now;
+    public static int getMINUTES_PER_TURN() {
+        return MINUTES_PER_TURN;
     }
 
-    public void setTurn(int turn) {
-        this.turn = turn;
+    public static int getMINUTES_PER_TICK() {
+        return MINUTES_PER_TICK;
     }
 
     public GregorianCalendar getBegins() {

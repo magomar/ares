@@ -26,7 +26,7 @@ public class WeGoPlayerController implements PropertyChangeListener {
     private final UnitInfoViewer unitView;
     private final CommandBarViewer menuView;
     private final MessagesViewer messagesView;
-    private final WelcomeScreenView welcomeScreenV;
+    private final CommandBarViewer welcomeScreenV;
     //Secondary controllers
     private final BoardController boardController;
     private final EngineController engineController;
@@ -39,8 +39,9 @@ public class WeGoPlayerController implements PropertyChangeListener {
     private UserRole userRole;
     private static final Logger LOG = Logger.getLogger(WeGoPlayerController.class.getName());
 
-    public WeGoPlayerController(AbstractAresApplication mainView, BoardViewer boardView, UnitInfoViewer unitView, CommandBarViewer menuView, MessagesViewer messagesView, WelcomeScreenView welcomeScreenV) {
-        executor = Executors.newCachedThreadPool();
+    public WeGoPlayerController(AbstractAresApplication mainView, BoardViewer boardView, UnitInfoViewer unitView, CommandBarViewer menuView, MessagesViewer messagesView, CommandBarViewer welcomeScreenV) {
+//        executor = Executors.newCachedThreadPool();
+        executor = Executors.newSingleThreadExecutor();
         this.mainView = mainView;
         this.engine = new RealTimeEngine();
         this.boardView = boardView;
@@ -88,7 +89,7 @@ public class WeGoPlayerController implements PropertyChangeListener {
         if (RealTimeEngine.CLOCK_EVENT_PROPERTY.equals(evt.getPropertyName())) {
             ClockEvent clockEvent = (ClockEvent) evt.getNewValue();
             Scenario scenario = engine.getScenario();
-            mainView.setTitle("ARES   " + scenario.getName() + "   " + scenario.getCalendar().toString()
+            mainView.setTitle("ARES     * * * " + scenario.getName() + " * * *     " + scenario.getCalendar().toString()
                     + "   Role: " + userRole );
 
             boardView.updateScenario(engine.getScenarioModel(userRole));
