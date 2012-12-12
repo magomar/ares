@@ -6,7 +6,7 @@ import java.util.logging.*;
 
 /**
  * Manages messages to be displayed on the message viewer.
- * 
+ *
  * @author Heine <heisncfr@inf.upv.es>
  */
 public class MessagesHandler extends Handler {
@@ -14,7 +14,6 @@ public class MessagesHandler extends Handler {
     private MessagesViewer mv;
     // This turn's records by level
     private LinkedList<LogRecord> turnRecords;
-    
 
     public MessagesHandler(MessagesViewer mv) {
         super();
@@ -25,25 +24,26 @@ public class MessagesHandler extends Handler {
 
     @Override
     public void publish(LogRecord record) {
-        if (!isLoggable(record))
+        if (!isLoggable(record)) {
             return;
+        }
         Level level = record.getLevel();
-        
+
         // Only record our custom levels
-        if (level instanceof MessageLevel){
+        if (level instanceof MessageLevel) {
             MessageLevel mlevel = (MessageLevel) level;
             // Add to the record list
             turnRecords.add(record);
             // and if level is enabled make it visible
-            if (mlevel.isEnabled())
+            if (mlevel.isEnabled()) {
                 mv.append(getFormatter().format(record));
+            }
         }
 
     }
 
     /**
-     * Clears the message viewer text and
-     * resets the records list.
+     * Clears the message viewer text and resets the records list.
      */
     @Override
     public void flush() {
@@ -56,31 +56,32 @@ public class MessagesHandler extends Handler {
     }
 
     public void enableLogLevel(String levelName) {
-        for(Level l : MessageLevel.LEVELS){
-            if(l.getName().equals(levelName)){
-                ((MessageLevel)l).setEnabled(true);
+        for (Level l : MessageLevel.LEVELS) {
+            if (l.getName().equals(levelName)) {
+                ((MessageLevel) l).setEnabled(true);
             }
         }
         mv.clear();
-        for(LogRecord record : turnRecords){
-            if (record.getLevel() instanceof MessageLevel && ((MessageLevel)record.getLevel()).isEnabled())
+        for (LogRecord record : turnRecords) {
+            if (record.getLevel() instanceof MessageLevel && ((MessageLevel) record.getLevel()).isEnabled()) {
                 mv.append(getFormatter().format(record));
+            }
         }
     }
-    
+
     public void disableLogLevel(String levelName) {
-        for(Level l : MessageLevel.LEVELS){
-            if(l.getName().equals(levelName)){
-                ((MessageLevel)l).setEnabled(false);
+        for (Level l : MessageLevel.LEVELS) {
+            if (l.getName().equals(levelName)) {
+                ((MessageLevel) l).setEnabled(false);
             }
         }
         mv.clear();
-        for(LogRecord record : turnRecords){
-            if (record.getLevel() instanceof MessageLevel && ((MessageLevel)record.getLevel()).isEnabled())
+        for (LogRecord record : turnRecords) {
+            if (record.getLevel() instanceof MessageLevel && ((MessageLevel) record.getLevel()).isEnabled()) {
                 mv.append(getFormatter().format(record));
-        }        
+            }
+        }
     }
-    
 
     public static class MessageLevel extends Level {
 
@@ -96,17 +97,17 @@ public class MessagesHandler extends Handler {
         public static final Level[] LEVELS = {GAME_SYSTEM, MOVEMENT, COMBAT, ENGINE};
         // True if log level is selected
         public boolean enabled;
-        
+
         protected MessageLevel(String name, Integer value, Boolean enabled) {
             super(name, value);
             this.enabled = enabled;
         }
-        
+
         protected boolean isEnabled() {
             return enabled;
         }
-        
-        protected void setEnabled(Boolean enabled){
+
+        protected void setEnabled(Boolean enabled) {
             this.enabled = enabled;
         }
     }

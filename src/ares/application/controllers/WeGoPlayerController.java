@@ -8,7 +8,6 @@ import ares.engine.realtime.*;
 import ares.platform.application.*;
 import ares.platform.model.UserRole;
 import ares.scenario.Scenario;
-import ares.scenario.board.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.concurrent.*;
@@ -50,30 +49,10 @@ public class WeGoPlayerController implements PropertyChangeListener {
         this.messagesView = messagesView;
         this.welcomeScreenV = welcomeScreenV;
 
-        this.boardController = new BoardController(this);
-        this.engineController = new EngineController(this);
-        this.messagesController = new MessagesController(this);
-        this.scenarioController = new ScenarioIOController(this);
-    }
-
-    @Override
-    public void propertyChange(PropertyChangeEvent evt) {
-        if (RealTimeEngine.CLOCK_EVENT_PROPERTY.equals(evt.getPropertyName())) {
-            ClockEvent clockEvent = (ClockEvent) evt.getNewValue();
-            Scenario scenario = engine.getScenario();
-            mainView.setTitle("ARES   " + scenario.getName() + "   " + scenario.getCalendar().toString()
-                    + "   Role: " + userRole + "           Time: " + clockEvent.getClock().toString());
-
-            boardView.updateScenario(engine.getScenarioModel(userRole));
-
-            if (boardController.getSelectedTile() != null) {
-                unitView.updateInfo(boardController.getSelectedTile().getModel(userRole));
-            }
-            if (clockEvent.getEventTypes().contains(ClockEventType.TURN)) {
-                menuView.setCommandEnabled(EngineCommands.PAUSE.getName(), false);
-                menuView.setCommandEnabled(EngineCommands.NEXT.getName(), true);
-            }
-        }
+        this.boardController = new BoardController(boardView, unitView, this);
+        this.engineController = new EngineController(menuView, messagesView, this);
+        this.messagesController = new MessagesController(messagesView, this);
+        this.scenarioController = new ScenarioIOController(mainView, menuView, boardView, this);
     }
 
     public void initialize() {
@@ -104,36 +83,28 @@ public class WeGoPlayerController implements PropertyChangeListener {
         mainView.switchCard(AresPlayerGUI.MAIN_MENU_CARD);
     }
 
-    Logger getLog() {
-        return LOG;
-    }
+     @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        if (RealTimeEngine.CLOCK_EVENT_PROPERTY.equals(evt.getPropertyName())) {
+            ClockEvent clockEvent = (ClockEvent) evt.getNewValue();
+            Scenario scenario = engine.getScenario();
+            mainView.setTitle("ARES   " + scenario.getName() + "   " + scenario.getCalendar().toString()
+                    + "   Role: " + userRole );
 
+            boardView.updateScenario(engine.getScenarioModel(userRole));
+
+            if (boardController.getSelectedTile() != null) {
+                unitView.updateInfo(boardController.getSelectedTile().getModel(userRole));
+            }
+            if (clockEvent.getEventTypes().contains(ClockEventType.TURN)) {
+                menuView.setCommandEnabled(EngineCommands.PAUSE.getName(), false);
+                menuView.setCommandEnabled(EngineCommands.NEXT.getName(), true);
+            }
+        }
+    }
+    
     RealTimeEngine getEngine() {
         return engine;
-    }
-
-    AbstractAresApplication getMainView() {
-        return mainView;
-    }
-
-    BoardViewer getBoardView() {
-        return boardView;
-    }
-
-    UnitInfoViewer getUnitView() {
-        return unitView;
-    }
-
-    CommandBarViewer getMenuView() {
-        return menuView;
-    }
-
-    MessagesViewer getMessagesView() {
-        return messagesView;
-    }
-
-    WelcomeScreenView getWelcomeScreenV() {
-        return welcomeScreenV;
     }
 
     ExecutorService getExecutor() {

@@ -1,5 +1,7 @@
 package ares.application.controllers;
 
+import ares.application.boundaries.view.BoardViewer;
+import ares.application.boundaries.view.CommandBarViewer;
 import ares.application.commands.EngineCommands;
 import ares.application.commands.FileCommands;
 import ares.application.models.ScenarioModel;
@@ -10,12 +12,16 @@ import ares.data.jaxb.EquipmentDB;
 import ares.io.AresFileType;
 import ares.io.AresIO;
 import ares.io.AresPaths;
+import ares.platform.application.AbstractAresApplication;
+import ares.platform.controllers.AbstractSecondaryController;
 import ares.platform.model.UserRole;
+import ares.platform.util.AsynchronousOperation;
 import ares.scenario.Scenario;
 import ares.scenario.forces.Force;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
@@ -25,9 +31,16 @@ import javax.swing.JOptionPane;
  * @author Heine <heisncfr@inf.upv.es>
  */
 public final class ScenarioIOController extends AbstractSecondaryController{
+    private static final Logger LOG = Logger.getLogger(ScenarioIOController.class.getName());
+    private final AbstractAresApplication aaa;
+    private final CommandBarViewer menuView;
+    private final BoardViewer boardView;
 
-    public ScenarioIOController(WeGoPlayerController wgpc) {
-        super(wgpc);
+    public ScenarioIOController(AbstractAresApplication mainView, CommandBarViewer menuView, BoardViewer boardView, WeGoPlayerController mainController) {
+        super(mainController);
+        this.aaa = mainView;
+        this.menuView = menuView;
+        this.boardView = boardView;
     }
     
     private class OpenScenarioInteractor extends AsynchronousOperation<Scenario> {
@@ -38,7 +51,8 @@ public final class ScenarioIOController extends AbstractSecondaryController{
             JFileChooser fc = new JFileChooser();
             fc.setCurrentDirectory(AresIO.ARES_IO.getAbsolutePath(AresPaths.SCENARIOS.getPath()).toFile());
             fc.setFileFilter(AresFileType.SCENARIO.getFileTypeFilter());
-            int returnVal = fc.showOpenDialog(mainController.getMainView().getContentPane());
+//            int returnVal = fc.showOpenDialog(aaa.getContentPane());
+            int returnVal = fc.showOpenDialog(null);
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 File file = fc.getSelectedFile();
                 // Load scenario and equipment files
@@ -55,7 +69,8 @@ public final class ScenarioIOController extends AbstractSecondaryController{
                 }
                 options[forces.length] = UserRole.GOD;
 
-                int n = JOptionPane.showOptionDialog(mainController.getMainView().getContentPane(),
+//                int n = JOptionPane.showOptionDialog(aaa.getContentPane(),
+                int n = JOptionPane.showOptionDialog(null,
                         "Please select a user role",
                         "Select your role",
                         JOptionPane.YES_NO_CANCEL_OPTION,
@@ -77,22 +92,22 @@ public final class ScenarioIOController extends AbstractSecondaryController{
 
             if (scenario != null) {
                 // Show the menu bar
-                mainController.getMenuView().setVisible(true);
-                mainController.getMainView().switchCard(AresPlayerGUI.PLAY_CARD);
+                menuView.setVisible(true);
+                aaa.switchCard(AresPlayerGUI.PLAY_CARD);
 
                 // Set the engine with the new scenario
                 mainController.getEngine().setScenario(scenario);
 
                 // obtain the scenario model with the active userRole
                 ScenarioModel scenarioModel = mainController.getEngine().getScenarioModel(mainController.getUserRole());
-                mainController.getBoardView().loadScenario(scenarioModel);
+                boardView.loadScenario(scenarioModel);
                 // set main window title & show appropriate views
-                mainController.getMainView().setTitle("ARES   " + scenario.getName() + "   " + scenario.getCalendar().toString() + "   Role: " + mainController.getUserRole());
-                mainController.getMenuView().setCommandEnabled(FileCommands.CLOSE_SCENARIO.getName(), true);
-                mainController.getMenuView().setCommandEnabled(AresMenus.ENGINE_MENU.getName(), true);
-                mainController.getMenuView().setCommandEnabled(EngineCommands.START.getName(), true);
-                mainController.getMenuView().setCommandEnabled(EngineCommands.PAUSE.getName(), false);
-                mainController.getMenuView().setCommandEnabled(EngineCommands.NEXT.getName(), false);
+                aaa.setTitle("ARES   " + scenario.getName() + "   " + scenario.getCalendar().toString() + "   Role: " + mainController.getUserRole());
+                menuView.setCommandEnabled(FileCommands.CLOSE_SCENARIO.getName(), true);
+                menuView.setCommandEnabled(AresMenus.ENGINE_MENU.getName(), true);
+                menuView.setCommandEnabled(EngineCommands.START.getName(), true);
+                menuView.setCommandEnabled(EngineCommands.PAUSE.getName(), false);
+                menuView.setCommandEnabled(EngineCommands.NEXT.getName(), false);
             }
         }
     }
@@ -101,7 +116,7 @@ public final class ScenarioIOController extends AbstractSecondaryController{
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            mainController.getLog().log(MessagesHandler.MessageLevel.GAME_SYSTEM, e.toString());
+            LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, e.toString());
             mainController.getExecutor().execute(new OpenScenarioInteractor());
 
         }
@@ -111,12 +126,12 @@ public final class ScenarioIOController extends AbstractSecondaryController{
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            mainController.getLog().log(MessagesHandler.MessageLevel.GAME_SYSTEM, e.toString());
+            LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, e.toString());
             mainController.getEngine().setScenario(null);
-            mainController.getMenuView().setCommandEnabled(FileCommands.CLOSE_SCENARIO.getName(), false);
-            mainController.getMenuView().setCommandEnabled(AresMenus.ENGINE_MENU.getName(), false);
-            mainController.getBoardView().closeScenario();
-            mainController.getMainView().switchCard(AresPlayerGUI.MAIN_MENU_CARD);
+            menuView.setCommandEnabled(FileCommands.CLOSE_SCENARIO.getName(), false);
+            menuView.setCommandEnabled(AresMenus.ENGINE_MENU.getName(), false);
+            boardView.closeScenario();
+            aaa.switchCard(AresPlayerGUI.MAIN_MENU_CARD);
 
         }
     }
@@ -125,7 +140,7 @@ public final class ScenarioIOController extends AbstractSecondaryController{
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            mainController.getLog().log(MessagesHandler.MessageLevel.GAME_SYSTEM, e.toString());
+            LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, e.toString());
             System.exit(0);
         }
     }

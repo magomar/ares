@@ -1,8 +1,11 @@
 package ares.application.controllers;
 
+import ares.application.boundaries.view.BoardViewer;
+import ares.application.boundaries.view.UnitInfoViewer;
 import ares.application.models.board.BoardGraphicsModel;
 import ares.application.models.forces.UnitModel;
 import ares.engine.algorithms.routing.*;
+import ares.platform.controllers.AbstractSecondaryController;
 import ares.scenario.Scenario;
 import ares.scenario.board.*;
 import java.awt.Point;
@@ -17,9 +20,13 @@ public final class BoardController extends AbstractSecondaryController {
     private PathFinder pathFinder = new AStar(BoardGraphicsModel.getTileRows() * BoardGraphicsModel.getTileColumns());
     private Tile selectedTile;
     private UnitModel selectedUnit;
+    private final BoardViewer boardView;
+    private final UnitInfoViewer unitView;
 
-    public BoardController(WeGoPlayerController wgpc) {
+    public BoardController(BoardViewer boardView, UnitInfoViewer unitView, WeGoPlayerController wgpc) {
         super(wgpc);
+        this.boardView = boardView;
+        this.unitView = unitView;
     }
 
     Tile getSelectedTile() {
@@ -45,7 +52,7 @@ public final class BoardController extends AbstractSecondaryController {
                 Tile tile = scenario.getBoard().getTile(tilePoint.x, tilePoint.y);
                 boolean changeTile = !tile.equals(selectedTile);
                 if (me.isShiftDown() && selectedUnit != null) {
-                    mainController.getBoardView().updateArrowPath(scenario.getModel(mainController.getUserRole()), pathFinder.getPath(selectedUnit.getLocation(), tile.getModel(mainController.getUserRole())));
+                    boardView.updateArrowPath(scenario.getModel(mainController.getUserRole()), pathFinder.getPath(selectedUnit.getLocation(), tile.getModel(mainController.getUserRole())));
                 } else {
                     selectedTile = tile;
                     selectedUnit = tile.getModel(mainController.getUserRole()).getTopUnit();
@@ -57,13 +64,13 @@ public final class BoardController extends AbstractSecondaryController {
                         selectedUnit = tile.getModel(mainController.getUserRole()).getTopUnit();
                     }
                     if (changeTile || changeUnit) {
-                        mainController.getUnitView().updateInfo(selectedTile.getModel(mainController.getUserRole()));
-                        mainController.getBoardView().updateTile(selectedTile.getModel(mainController.getUserRole()));
+                        unitView.updateInfo(selectedTile.getModel(mainController.getUserRole()));
+                        boardView.updateTile(selectedTile.getModel(mainController.getUserRole()));
                     }
                 }
             } else if (me.getButton() == MouseEvent.BUTTON3) {
                 selectedTile = null;
-                mainController.getUnitView().clear();
+                unitView.clear();
             }
         }
     }

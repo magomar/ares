@@ -1,9 +1,13 @@
 package ares.application.controllers;
 
+import ares.application.boundaries.view.CommandBarViewer;
+import ares.application.boundaries.view.MessagesViewer;
 import ares.application.commands.EngineCommands;
 import ares.application.views.MessagesHandler;
+import ares.platform.controllers.AbstractSecondaryController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Logger;
 
 /**
  *
@@ -11,19 +15,24 @@ import java.awt.event.ActionListener;
  * @author Heine <heisncfr@inf.upv.es>
  */
 public final class EngineController extends AbstractSecondaryController {
+    private static final Logger LOG = Logger.getLogger(EngineController.class.getName());
+    private final CommandBarViewer menuView;
+    private final MessagesViewer messagesView;
 
-    public EngineController(WeGoPlayerController wgpc) {
-        super(wgpc);
+    public EngineController(CommandBarViewer menuView, MessagesViewer messagesView, WeGoPlayerController mainController) {
+        super(mainController);
+        this.menuView = menuView;
+        this.messagesView = messagesView;
     }
-
+  
     private class StartActionListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            mainController.getLog().log(MessagesHandler.MessageLevel.ENGINE, e.toString());
+            LOG.log(MessagesHandler.MessageLevel.ENGINE, e.toString());
             mainController.getEngine().start();
-            mainController.getMenuView().setCommandEnabled(EngineCommands.START.getName(), false);
-            mainController.getMenuView().setCommandEnabled(EngineCommands.PAUSE.getName(), true);
+            menuView.setCommandEnabled(EngineCommands.START.getName(), false);
+            menuView.setCommandEnabled(EngineCommands.PAUSE.getName(), true);
         }
     }
 
@@ -31,10 +40,10 @@ public final class EngineController extends AbstractSecondaryController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            mainController.getLog().log(MessagesHandler.MessageLevel.ENGINE, e.toString());
+            LOG.log(MessagesHandler.MessageLevel.ENGINE, e.toString());
             mainController.getEngine().stop();
-            mainController.getMenuView().setCommandEnabled(EngineCommands.START.getName(), true);
-            mainController.getMenuView().setCommandEnabled(EngineCommands.PAUSE.getName(), false);
+            menuView.setCommandEnabled(EngineCommands.START.getName(), true);
+            menuView.setCommandEnabled(EngineCommands.PAUSE.getName(), false);
         }
     }
 
@@ -42,10 +51,10 @@ public final class EngineController extends AbstractSecondaryController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            mainController.getMessagesView().clear();
-            mainController.getLog().log(MessagesHandler.MessageLevel.ENGINE, e.toString());
-            mainController.getMenuView().setCommandEnabled(EngineCommands.PAUSE.getName(), true);
-            mainController.getMenuView().setCommandEnabled(EngineCommands.NEXT.getName(), false);
+            messagesView.clear();
+            LOG.log(MessagesHandler.MessageLevel.ENGINE, e.toString());
+            menuView.setCommandEnabled(EngineCommands.PAUSE.getName(), true);
+            menuView.setCommandEnabled(EngineCommands.NEXT.getName(), false);
             mainController.getEngine().start();
         }
     }

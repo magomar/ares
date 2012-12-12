@@ -1,4 +1,6 @@
-package ares.application.controllers;
+package ares.platform.controllers;
+
+import ares.application.controllers.WeGoPlayerController;
 
 /**
  *

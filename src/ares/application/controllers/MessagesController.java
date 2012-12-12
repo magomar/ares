@@ -1,5 +1,7 @@
 package ares.application.controllers;
 
+import ares.application.boundaries.view.MessagesViewer;
+import ares.platform.controllers.AbstractSecondaryController;
 import ares.application.views.MessagesHandler;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,8 +13,11 @@ import javax.swing.JCheckBox;
  */
 public final class MessagesController extends AbstractSecondaryController {
 
-    public MessagesController(WeGoPlayerController wgpc) {
-        super(wgpc);
+    private final MessagesViewer messagesView;
+
+    public MessagesController(MessagesViewer messagesView, WeGoPlayerController mainController) {
+        super(mainController);
+        this.messagesView = messagesView;
     }
 
     private class LogCheckBoxListener implements ActionListener {
@@ -27,17 +32,17 @@ public final class MessagesController extends AbstractSecondaryController {
                 JCheckBox jcb = (JCheckBox) o;
                 if (jcb.isSelected()) {
                     // Show logs with this level
-                    ((MessagesHandler) mainController.getMessagesView().getHandler()).enableLogLevel(jcb.getText());
+                    messagesView.getHandler().enableLogLevel(jcb.getText());
                 } else {
                     // hide logs with this level
-                    ((MessagesHandler) mainController.getMessagesView().getHandler()).disableLogLevel(jcb.getText());
+                    messagesView.getHandler().disableLogLevel(jcb.getText());
                 }
             }
 
         }
     }
-    
-    ActionListener LogCheckBoxListener(){
+
+    ActionListener LogCheckBoxListener() {
         return new LogCheckBoxListener();
     }
 }

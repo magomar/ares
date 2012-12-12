@@ -21,7 +21,7 @@ public class MessagesView extends AbstractView<JPanel> implements MessagesViewer
     private ArrayList<JCheckBox> cbLevels;
     private JTextArea textArea;
     private final static String newline = "\n";
-    private Handler handler;
+    private MessagesHandler handler;
 
     @Override
     protected JPanel layout() {
@@ -79,12 +79,8 @@ public class MessagesView extends AbstractView<JPanel> implements MessagesViewer
     }
 
     @Override
-    public Handler getHandler() {
+    public MessagesHandler getHandler() {
         return handler;
     }
 
-    @Override
-    public void setHandler(Handler handler) {
-        this.handler = handler;
-    }
 }
