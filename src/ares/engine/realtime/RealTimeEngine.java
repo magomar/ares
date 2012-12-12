@@ -3,6 +3,8 @@ package ares.engine.realtime;
 import ares.application.models.ScenarioModel;
 import ares.engine.actors.FormationActor;
 import ares.engine.actors.UnitActor;
+import ares.engine.algorithms.routing.AStar;
+import ares.engine.algorithms.routing.PathFinder;
 import ares.platform.model.AbstractBean;
 import ares.platform.model.UserRole;
 import ares.scenario.Scenario;
@@ -10,6 +12,8 @@ import ares.scenario.board.Tile;
 import ares.scenario.forces.Force;
 import ares.scenario.forces.Formation;
 import java.util.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -28,6 +32,8 @@ public class RealTimeEngine extends AbstractBean {
     private Clock clock;
     private ClockEvent clockEvent;
     private boolean running;
+    private PathFinder pathFinder;
+    private ExecutorService executor;
     private static final Logger LOG = Logger.getLogger(RealTimeEngine.class.getName());
 
     public RealTimeEngine() {
@@ -35,11 +41,13 @@ public class RealTimeEngine extends AbstractBean {
         formationActors = new ArrayList<>();
         phase = Phase.SCHEDULE;
         running = false;
+        executor = Executors.newCachedThreadPool();
     }
 
     public void setScenario(Scenario scenario) {
         Scenario oldValue = this.scenario;
         this.scenario = scenario;
+        pathFinder = new AStar(scenario.getBoard().getWidth() * scenario.getBoard().getHeight());
         if (scenario != null) {
             clock = new Clock(scenario.getCalendar(), this);
             for (Force force : scenario.getForces()) {
@@ -138,5 +146,9 @@ public class RealTimeEngine extends AbstractBean {
 
     public Clock getClock() {
         return clock;
+    }
+    
+    public PathFinder getPathFinder() {
+        return pathFinder;
     }
 }

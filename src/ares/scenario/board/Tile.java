@@ -10,6 +10,7 @@ import ares.engine.combat.CombatModifier;
 import ares.engine.knowledge.KnowledgeCategory;
 import ares.engine.knowledge.KnowledgeLevel;
 import ares.engine.movement.MovementCost;
+import ares.engine.movement.MovementType;
 import ares.engine.realtime.ClockEvent;
 import ares.platform.model.ModelProvider;
 import ares.platform.model.UserRole;
@@ -88,6 +89,10 @@ public final class Tile implements ModelProvider<TileModel> {
      */
     private Map<Direction, MovementCost> moveCosts;
     /**
+     * Minimun movement cost per each movement type
+     */
+    private Map<MovementType, Integer> minMoveCost;
+    /**
      * Modifiers to combat due to terrain
      */
     private Map<Direction, CombatModifier> combatModifiers;
@@ -96,6 +101,10 @@ public final class Tile implements ModelProvider<TileModel> {
      * the board), then there would be no entry for that direction.
      */
     private Map<Direction, Tile> neighbors;
+//    /**
+//     * Size of the tile in meters
+//     */
+//    private int size;
     private final Map<UserRole, KnowledgeLevel> knowledgeLevels;
     private final Map<KnowledgeCategory, TileModel> models;
 
@@ -152,6 +161,7 @@ public final class Tile implements ModelProvider<TileModel> {
      * @param board
      */
     public void initialize(Map<Direction, Tile> neighbors, Force owner, Scenario scenario) {
+//        size = scenario.getScale().getDistance();
         moveCosts = new EnumMap<>(Direction.class);
         combatModifiers = new EnumMap<>(Direction.class);
         this.neighbors = neighbors;
@@ -247,6 +257,10 @@ public final class Tile implements ModelProvider<TileModel> {
         return neighbors;
     }
 
+    public Tile getNeighbor(Direction direction) {
+        return neighbors.get(direction);
+    }
+    
     public Set<TerrainFeatures> getTerrainFeatures() {
         return features;
     }
@@ -287,6 +301,10 @@ public final class Tile implements ModelProvider<TileModel> {
         return coord;
     }
 
+//    public int getSize() {
+//        return size;
+//    }
+//    
 //    public int getX() {
 //        return x;
 //    }

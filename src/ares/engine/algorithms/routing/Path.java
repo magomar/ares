@@ -5,12 +5,10 @@ import java.util.*;
 /**
  * Path for routing algorithms, sort of a poor man's linked list.
  *
- * Use it at your own risk, this is not meant to be bug free.
- * {@code first} can be null and 
- * {@code nodes} might be an empty array even with a correct {@code last} node.
+ * Use it at your own risk, this is not meant to be bug free. {@code first} can be null and {@code nodes} might be an
+ * empty array even with a correct {@code last} node.
  *
- * If you still have faith run {@link Path#relink()} to correct some issues
- * with your path
+ * If you still have faith run {@link Path#relink()} to correct some issues with your path
  *
  * @author Heine <heisncfr@inf.upv.es>
  */
@@ -85,22 +83,23 @@ public class Path {
      * Set the first point on the path.
      */
     public void setFirst(Node t) {
-        if (first != null)
+        if (first != null) {
             t.setNext(first);
+        }
         first = t;
         first.setPrev(null);
         nodes.addFirst(first);
     }
 
-    public void setLast(Node l){
+    public void setLast(Node l) {
         l.setPrev(last);
         last = l;
         last.setNext(null);
         nodes.addLast(last);
     }
+
     /**
-     * Get the nodes in the path.
-     * WARNING: can be empty even with nodes in the path.
+     * Get the nodes in the path. WARNING: can be empty even with nodes in the path.
      *
      * @return node list
      * @see Path#relink()
@@ -113,17 +112,16 @@ public class Path {
      * Corrects path inconsistencies.
      *
      * Word of advice: stick to java.util.LinkedList
-     * 
-     * @return 2 if path is corrected.
-     *         1 if there's no need to run this method (because path is ok).
-     *         0 something went wrong.
+     *
+     * @return 1 if path is corrected. 0 if there's no need to run this method (because path is ok). -1 something went
+     * wrong.
      */
     public int relink() {
 
 
         // No nodes in here!
         if (last == null) {
-            return 1;
+            return 0;
         }
 
         if (nodes.isEmpty()) {
@@ -160,8 +158,8 @@ public class Path {
                 Node currentLast = first;
                 Node leftOfLast = first;
                 //Same as before but moving forward
-                while (currentLast.getNext() != null && currentLast!=nodes.getFirst().getNext()) {
-                    nodes.add(index,currentLast);
+                while (currentLast.getNext() != null && currentLast != nodes.getFirst().getNext()) {
+                    nodes.add(index, currentLast);
                     currentLast.setPrev(leftOfLast);
                     leftOfLast = currentLast;
                     currentLast = currentLast.getNext();
@@ -173,10 +171,10 @@ public class Path {
                 // Finally linking the two loose ends
                 currentFirst.setNext(currentLast);
             }
-            return 2;
-        
+            return 1;
+
         } else {
-            return 0;
+            return -1;
         }
     }
 
@@ -184,11 +182,11 @@ public class Path {
     public String toString() {
         return "Path{" + nodes + '}';
     }
-    
-    public String toStringIterator(){
+
+    public String toStringIterator() {
         StringBuilder sb = new StringBuilder("Path {");
         Node l;
-        for(l = last; l.getPrev()!=null; l = l.getPrev()){
+        for (l = last; l.getPrev() != null; l = l.getPrev()) {
             sb.append(l.getTile().toString());
         }
         sb.append(l.getTile().toString());

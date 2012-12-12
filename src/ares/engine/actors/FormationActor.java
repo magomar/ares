@@ -1,18 +1,13 @@
 package ares.engine.actors;
 
 import ares.engine.action.Action;
-import ares.engine.action.ActionState;
 import ares.engine.action.ActionType;
-import ares.engine.action.actions.ChangeDeploymentAction;
 import ares.engine.action.actions.SurfaceMoveAction;
 import ares.engine.algorithms.routing.Path;
-
 import ares.engine.movement.MovementType;
 import ares.engine.realtime.Clock;
 import ares.engine.realtime.RealTimeEngine;
-import ares.platform.util.RandomGenerator;
-import ares.scenario.board.Board;
-import ares.scenario.board.Direction;
+import ares.platform.model.UserRole;
 import ares.scenario.board.Tile;
 import ares.scenario.forces.Formation;
 import ares.scenario.forces.Unit;
@@ -77,17 +72,15 @@ public class FormationActor {
     }
 
     private void singlePlan(UnitActor unitActor) {
-//        Tile objective = formation.getObjectives().get(0);
-//        Path path = null;//pathFinder.findPath(unitActor.getUnit().getLocation(), objective, unitActor.getUnit());
-//        if (path != null) {
-//            Tile from = unitActor.getUnit().getLocation();
-//            for (Tile to : path.getTiles().subList(1, path.getTiles().size())) {
-//                Action moveAction = new SurfaceMoveAction(unitActor, ActionType.TACTICAL_MARCH, from, to, engine.getClock(), engine.getScenario().getScale().getDistance());
-//                unitActor.getPendingActions().add(moveAction);
-//                from = to;
-//            }
-//            LOG.log(Level.INFO, "New plan for {0}: {1}", new Object[]{unitActor.toString(), path.toString()});
-//        }
+        Tile objective = formation.getObjectives().get(0);
+        Path path = engine.getPathFinder().getPath(unitActor.getUnit().getLocation().getModel(UserRole.GOD), objective.getModel(UserRole.GOD));
+        if (path != null && path.relink() != -1) {
+            LOG.log(Level.INFO, "New path for {0}: {1}", new Object[]{unitActor.toString(), path.toString()});
+            Action moveAction = new SurfaceMoveAction(unitActor, ActionType.TACTICAL_MARCH, path, engine.getScenario().getScale().getDistance());
+            unitActor.getPendingActions().add(moveAction);
+        } else {
+            LOG.log(Level.WARNING, "No path found for {0}", unitActor.toString());
+        }
     }
 
     public List<UnitActor> getUnitActors() {

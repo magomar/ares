@@ -55,7 +55,7 @@ public enum ActionType {
         this.effectAfter = effectAfter;
     }
 
-    public double getWearRate() {
+    public int getWearRate() {
         return wearRate;
     }
 
@@ -73,5 +73,9 @@ public enum ActionType {
 
     public OpState getPrecondition() {
         return precondition;
+    }
+    
+    public int getRequiredEndurace(int duration) {
+        return wearRate * duration;
     }
 }

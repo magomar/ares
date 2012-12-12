@@ -61,21 +61,20 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
         arrowLayer.setOpaque(false);
         
 
-        // TODO why is imageLayers null here?
-        
+        // TODO why is imageLayers  here? can I remove this TODO?
         // Add the last layer from each level to the layered pane
         layeredPane.add(terrainLayer, JLayeredPane.DEFAULT_LAYER);
         layeredPane.add(arrowLayer, JLayeredPane.PALETTE_LAYER);
         layeredPane.add(unitsLayer, JLayeredPane.DRAG_LAYER);
 
-        JScrollPane contentPane = new JScrollPane();
-        contentPane.add(layeredPane);
-        contentPane.setViewportView(layeredPane);
-        contentPane.setBackground(Color.BLACK);
-        contentPane.setVisible(true);
-        contentPane.setOpaque(true);
-        contentPane.getVerticalScrollBar().setUnitIncrement(20);
-        return contentPane;
+        JScrollPane scrollPane = new JScrollPane();
+        scrollPane.add(layeredPane);
+        scrollPane.setViewportView(layeredPane);
+        scrollPane.setBackground(Color.BLACK);
+        scrollPane.setVisible(true);
+        scrollPane.setOpaque(true);
+        scrollPane.getVerticalScrollBar().setUnitIncrement(20);
+        return scrollPane;
     }
 
     public JLayeredPane getLayeredPane() {

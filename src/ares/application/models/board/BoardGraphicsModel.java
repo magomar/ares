@@ -151,8 +151,6 @@ public class BoardGraphicsModel {
     public static void setImageProfile(ImageProfile ip) {
         imgProfile = ip;
         initGraphicVariables();
-        //TODO Fire property change to let know the controller the model has changed.
-
     }
 
     /**

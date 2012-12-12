@@ -2,6 +2,7 @@ package ares.engine.actors;
 
 import ares.engine.action.Action;
 import ares.engine.action.ActionState;
+import ares.engine.action.ActionType;
 import ares.engine.action.actions.RestAction;
 import ares.engine.action.actions.WaitAction;
 import ares.engine.realtime.Clock;
@@ -34,21 +35,23 @@ public class UnitActor implements Actor {
      */
     private Action currentAction;
     /**
-     * A list of actions to be executed sequentially (a queue)
+     * A collection of actions to be executed sequentially
      *
      * @see Action
      */
-    private Queue<Action> pendingActions;
+    private Deque<Action> pendingActions;
 
     public UnitActor(Unit unit) {
         this.unit = unit;
-        // Probably we do not need to use a priority queue, a linkedlist or a queue will suffice... 
-//        this.pendingActions = new PriorityQueue<>(2, AbstractAction.ACTION_START_COMPARATOR);
         pendingActions = new LinkedList<>();
     }
 
-    public void addAction(Action action) {
-        pendingActions.add(action);
+    public void addFirstAction(Action action) {
+        pendingActions.addFirst(action);
+    }
+
+    public void addLastAction(Action action) {
+        pendingActions.addLast(action);
     }
 
     public void schedule(ClockEvent ce //, ActionSpace space
@@ -57,31 +60,28 @@ public class UnitActor implements Actor {
         if (currentAction != null
                 && (currentAction.getState() == ActionState.COMPLETED
                 || currentAction.getState() == ActionState.ABORTED)) {
-            System.out.println(currentAction.toString(clock));
             currentAction = null;
         }
         if (currentAction == null) {
-            Tile destination = unit.getLocation();
             if (!pendingActions.isEmpty()) {
                 Action nextAction = pendingActions.peek();
-                int actionStart = nextAction.getStart();
-                if (actionStart < clock.getCurrentTime() + clock.MINUTES_PER_TICK) {
+                if (nextAction.checkTimetoStart(clock) && nextAction.checkPrecondition()) {
                     currentAction = pendingActions.poll();
+                    currentAction.start(clock);
+//                    Tile destination = unit.getLocation();
 //                    space.putAction(destination, currentAction);
-                    System.out.println(currentAction.toString(clock));
                 }
             } else {
-                int time = clock.getCurrentTime();
-                if (unit.getEndurance() > 0) {
-                    currentAction = new WaitAction(this, destination, time);
+                if (unit.getEndurance() > ActionType.WAIT.getRequiredEndurace(clock.MINUTES_PER_TICK)) {
+                    currentAction = new WaitAction(this, clock.MINUTES_PER_TICK);
                 } else {
-                    currentAction = new RestAction(this, destination, time);
+                    currentAction = new RestAction(this);
                 }
-                System.out.println(currentAction.toString(clock));
             }
         }
-        
     }
+
+
 //    public ActionState executeAction(Action action, Clock clock) {
 //        if (action != null && action.getState() != ActionState.COMPLETED && action.getState() != ActionState.ABORTED) {
 //            action.execute(clock);
@@ -89,7 +89,6 @@ public class UnitActor implements Actor {
 //        }
 //        return action.getState();
 //    }
-
     public void perceive(Clock clock) {
         for (Tile tile : unit.getLocation().getNeighbors().values()) {
             tile.reconnoissance(unit, clock.MINUTES_PER_TICK);

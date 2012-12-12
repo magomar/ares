@@ -12,7 +12,7 @@ public final class Asset {
    
 
     public Asset(ares.data.jaxb.Unit.Equipment e, AssetTypes assetTypes) {
-        type = assetTypes.getAssetTypes().get(e.getName());
+        type = assetTypes.getAssetType(e.getName());
         number = e.getNumber();
         max = e.getMax(); 
     }

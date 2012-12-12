@@ -12,9 +12,9 @@ import java.util.*;
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class MovementCost {
-
     public static final int IMPASSABLE = Integer.MAX_VALUE;
     public static final int MAX_ROAD_COST = 3;
+    public static final int MIN_ROAD_COST = 1;
     /**
      * Pre-computed movement costs. This map links the different movement types
      * to their costs for a given destination (tile and direction). Movement
@@ -25,6 +25,7 @@ public class MovementCost {
      */
     // TODO check if it's better to initialize all costs to IMPASSABLE
     private Map<MovementType, Integer> movementCost;
+
     private static final int ONE = 1;
     private Scenario scenario;
 
@@ -108,7 +109,7 @@ public class MovementCost {
         if (!offRoadMovement) {
             // Road-based movement
             for (MovementType moveType : EnumSet.range(MovementType.MOTORIZED, MovementType.FOOT)) {
-                movementCost.put(moveType, ONE);
+                movementCost.put(moveType, MIN_ROAD_COST);
             }
         } else {
             //Off-road movement
@@ -152,7 +153,7 @@ public class MovementCost {
      * @param from
      * @return
      */
-    public int getActualCost(Unit unit, Tile destination, Direction from) {
+    public int getActualCost(UnitModel unit, TileModel destination, Direction from) {
         int cost;
         Direction toDir = from.getOpposite();
         Set<Terrain> sideTerrain = destination.getSideTerrain().get(toDir);

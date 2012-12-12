@@ -21,8 +21,8 @@ public class AssetTypes {
         }
     }
 
-    public Map<String, AssetType> getAssetTypes() {
-        return assetTypes;
+    public AssetType getAssetType(String name) {
+        return assetTypes.get(name);
     }
 
    

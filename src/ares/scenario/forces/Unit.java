@@ -16,6 +16,7 @@ import ares.scenario.assets.AssetTrait;
 import ares.scenario.assets.AssetType;
 import ares.scenario.assets.AssetTypes;
 import ares.scenario.board.Board;
+import ares.scenario.board.Direction;
 import ares.scenario.board.Tile;
 import java.util.*;
 import java.util.Map.Entry;
@@ -167,8 +168,8 @@ public abstract class Unit implements ModelProvider<UnitModel> {
      */
     protected MovementType movement;
     /**
-     * Standard average moving speed in ideal conditions, specified in meters per minute. Depends on type of assets in
-     * the unit
+     * Standard average moving speed in ideal conditions, specified in meters per minute. Depends on the type of assets
+     * in the unit
      */
     protected int speed;
     /**
@@ -304,8 +305,12 @@ public abstract class Unit implements ModelProvider<UnitModel> {
         this.parent = parent;
     }
 
-    public void setLocation(Tile location) {
-        this.location = location;
+//    public void setLocation(Tile location) {
+//        this.location = location;
+//    }
+
+    public void move(Direction direction) {
+        this.location = location.getNeighbor(direction);
     }
 
     public void setOpState(OpState opState) {
@@ -551,7 +556,7 @@ public abstract class Unit implements ModelProvider<UnitModel> {
         StringBuilder sb = new StringBuilder(name).append(" (").append(echelon).append(')').append('\n');
         sb.append("Belongs to ").append(formation).append(" (").append(force).append(")\n");
         sb.append("Unit type: ").append(type).append('\n');
-        //        sb.append("Location: ").append(location).append('\n');
+        sb.append("Location: ").append(location).append('\n');
         sb.append("Movement Type: ").append(movement).append('\n');
         sb.append("Speed: ").append(speed * 60.0 / 1000).append('\n');
         sb.append("OpState: ").append(opState).append('\n');
