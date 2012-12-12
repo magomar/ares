@@ -5,19 +5,19 @@ package ares.scenario;
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class Scale {
+
     /**
      * Distance between (the centers of) two tiles measured in meters
      */
-    private int distance;
+    private static int distance;
     /**
      * Area of an hexagon, in square meters
      */
-    private int area;
+    private static int area;
     /**
-     * Minimun number of horses and vehicles in a tile at which units start
-     * having movement and combat enalties
+     * Minimun number of horses and vehicles in a tile at which units start having movement and combat penalties
      */
-    private int criticalDensity;
+    private static int criticalDensity;
     /**
      * Constant used to compute #criticalDensity
      */
@@ -25,21 +25,21 @@ public class Scale {
     private static final int BASE_DENSITY = 50;
 
     public Scale(int distance) {
-        this.distance = distance;
+        Scale.distance = distance;
         double apotema = distance / 2;
-        area = (int) (2*apotema*apotema * Math.sqrt(3.0) / 1000);
-        criticalDensity = (int) (BASE_DENSITY + DENSITY_FACTOR * area/1000);
+        area = (int) (2 * apotema * apotema * Math.sqrt(3.0) / 1000);
+        criticalDensity = (int) (BASE_DENSITY + DENSITY_FACTOR * area / 1000);
     }
-   
-    public double getArea() {
+
+    public static double getArea() {
         return area;
     }
 
-    public int getCriticalDensity() {
+    public static int getCriticalDensity() {
         return criticalDensity;
     }
 
-    public int getDistance() {
+    public static int getDistance() {
         return distance;
     }
 
@@ -47,6 +47,4 @@ public class Scale {
     public String toString() {
         return "Scale{" + "distance=" + distance + ", area=" + area + ", criticalDensity=" + criticalDensity + '}';
     }
-
-    
 }
