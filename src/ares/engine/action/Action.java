@@ -1,7 +1,6 @@
 package ares.engine.action;
 
 import ares.engine.actors.Actor;
-import ares.engine.realtime.Clock;
 
 /**
  *
@@ -9,7 +8,7 @@ import ares.engine.realtime.Clock;
  */
 public interface Action {
 
-    public void execute(Clock clock);
+    public void execute();
 
     public Actor getActor();
 
@@ -23,49 +22,42 @@ public interface Action {
 
     public int getTimeToComplete();
 
-    public String toString(Clock clock);
-
     /**
      * Checks if the planned start time is reached during the current time tick
      *
-     * @param clock
      * @return
      */
-    public boolean checkTimetoStart(Clock clock);
+    public boolean checkTimetoStart();
 
     /**
      * Checks if the estimated completion time is reached during the current time tick
      *
-     * @param clock
      * @return
      */
-    public boolean checkTimeToComplete(Clock clock);
+    public boolean checkTimeToComplete();
 
     /**
      * Checks if the remaining endurance is enough to execute the action during the next time tick
      *
-     * @param clock
      * @return
      */
-    public boolean checkEndurance(Clock clock);
+    public boolean checkEndurance();
 
     /**
      * Changes the status of the action to {@link AresState.STARTED} and determines the actual start time, which may
      * differ from the planned start time. This method should be invoked only after checking the start time with
      * {@link checkTimeToStart})
      *
-     * @param clock
      */
-    public void start(Clock clock);
+    public void start();
 
     /**
      * Changes the status of the action to {@link AresState.COMPLETED} and determines the actual finish time, which may
      * differ from the planned finish time. This method should be invoked only after checking the time to complete with
      * {@link checkTimeToComplete})
      *
-     * @param clock
      */
-    public void complete(Clock clock);
+    public void complete();
 
     /**
      * Checks if the acting unit has the right operational state to start this action ({@link OpState})

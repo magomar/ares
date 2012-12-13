@@ -11,9 +11,9 @@ import ares.engine.knowledge.KnowledgeCategory;
 import ares.engine.knowledge.KnowledgeLevel;
 import ares.engine.movement.MovementCost;
 import ares.engine.movement.MovementType;
-import ares.engine.realtime.ClockEvent;
 import ares.platform.model.ModelProvider;
 import ares.platform.model.UserRole;
+import ares.scenario.Clock;
 import ares.scenario.Scenario;
 import ares.scenario.assets.AssetTrait;
 import ares.scenario.forces.AirUnit;
@@ -227,8 +227,8 @@ public final class Tile implements ModelProvider<TileModel> {
         this.entrechment = entrechment;
     }
 
-    public void updateKnowledge(ClockEvent ce) {
-        int minutes = ce.getClock().MINUTES_PER_TICK;
+    public void updateKnowledge() {
+        int minutes = Clock.INSTANCE.getMINUTES_PER_TICK();
         for (Entry<UserRole, KnowledgeLevel> entry : knowledgeLevels.entrySet()) {
             if (!entry.getKey().isGod()) {
                 Force force = entry.getKey().getForce();

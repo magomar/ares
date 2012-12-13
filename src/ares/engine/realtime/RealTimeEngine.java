@@ -7,6 +7,7 @@ import ares.engine.algorithms.routing.AStar;
 import ares.engine.algorithms.routing.PathFinder;
 import ares.platform.model.AbstractBean;
 import ares.platform.model.UserRole;
+import ares.scenario.Clock;
 import ares.scenario.Scenario;
 import ares.scenario.board.Tile;
 import ares.scenario.forces.Force;
@@ -29,7 +30,6 @@ public class RealTimeEngine extends AbstractBean {
     private Phase phase;
     private List<UnitActor> unitActors;
     private List<FormationActor> formationActors;
-    private Clock clock;
     private ClockEvent clockEvent;
     private boolean running;
     private PathFinder pathFinder;
@@ -49,7 +49,7 @@ public class RealTimeEngine extends AbstractBean {
         this.scenario = scenario;
         pathFinder = new AStar(scenario.getBoard().getWidth() * scenario.getBoard().getHeight());
         if (scenario != null) {
-            clock = new Clock(scenario.getCalendar(), this);
+            Clock.INSTANCE.setEngine(this);
             for (Force force : scenario.getForces()) {
                 for (Formation formation : force.getFormations()) {
                     FormationActor formationActor = new FormationActor(formation, this);
@@ -70,13 +70,13 @@ public class RealTimeEngine extends AbstractBean {
     }
 
     public void start() {
-        LOG.log(Level.INFO, "*** Clock Started {0}", clock);
+        LOG.log(Level.INFO, "*** Clock Started {0}",  Clock.INSTANCE);
         running = true;
-        clock.tick();
+         Clock.INSTANCE.tick();
     }
 
     public void stop() {
-        LOG.log(Level.INFO, "********** Clock Stopped {0}", clock);
+        LOG.log(Level.INFO, "********** Clock Stopped {0}",  Clock.INSTANCE);
         running = false;
     }
 
@@ -92,21 +92,21 @@ public class RealTimeEngine extends AbstractBean {
         } while (phase != Phase.ACT);
 
         if (clockEventTypes.contains(ClockEventType.TURN)) {
-            LOG.log(Level.INFO, "++++++++++ New Turn: {0}", clock.getTurn());
+            LOG.log(Level.INFO, "++++++++++ New Turn: {0}",  Clock.INSTANCE.getTurn());
             running = false;
             for (FormationActor formationActor : formationActors) {
-                formationActor.plan(clock);
+                formationActor.plan();
             }
         }
 
         if (clockEvent.getEventTypes().contains(ClockEventType.FINISHED)) {
-            LOG.log(Level.INFO, "********** Scenario Ended at  {0}", clock);
+            LOG.log(Level.INFO, "********** Scenario Ended at  {0}",  Clock.INSTANCE);
             return;
         }
 
         firePropertyChange(CLOCK_EVENT_PROPERTY, oldValue, clockEvent);
         if (running) {
-            clock.tick();
+             Clock.INSTANCE.tick();
         }
     }
 
@@ -135,19 +135,15 @@ public class RealTimeEngine extends AbstractBean {
             Tile[] tiles = map[i];
             for (int j = 0; j < tiles.length; j++) {
                 Tile tile = tiles[j];
-                tile.updateKnowledge(clockEvent);
+                tile.updateKnowledge();
             }
         }
 
         for (UnitActor unitActor : unitActors) {
-            unitActor.perceive(clock);
+            unitActor.perceive();
         }
     }
 
-    public Clock getClock() {
-        return clock;
-    }
-    
     public PathFinder getPathFinder() {
         return pathFinder;
     }

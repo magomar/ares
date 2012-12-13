@@ -2,6 +2,7 @@ package ares.engine.movement;
 
 import ares.application.models.board.TileModel;
 import ares.application.models.forces.UnitModel;
+import ares.scenario.Scale;
 import ares.scenario.Scenario;
 import ares.scenario.board.*;
 import ares.scenario.forces.*;
@@ -165,7 +166,7 @@ public class MovementCost {
 
         if (MovementType.MOBILE_LAND_UNIT.contains(movementType)
                 && (sideTerrain.contains(Terrain.ROAD) || sideTerrain.contains(Terrain.IMPROVED_ROAD))) {
-            int density = scenario.getScale().getCriticalDensity();
+            int density = Scale.INSTANCE.getCriticalDensity();
             int numHorsesAndVehicles = 0;
             for (SurfaceUnit surfaceUnit : destination.getSurfaceUnits()) {
                 if (MovementType.MOBILE_LAND_UNIT.contains(surfaceUnit.getMovement())) {
@@ -204,7 +205,7 @@ public class MovementCost {
 
         if (MovementType.MOBILE_LAND_UNIT.contains(unit.getMovement())
                 && (sideTerrain.contains(Terrain.ROAD) || sideTerrain.contains(Terrain.IMPROVED_ROAD))) {
-            int density = scenario.getScale().getCriticalDensity(), numHorsesAndVehicles = 0;
+            int density = Scale.INSTANCE.getCriticalDensity(), numHorsesAndVehicles = 0;
             // If destination isn't oberved SurfaceUnits will be empty
             for (SurfaceUnit su : destination.getSurfaceUnits()) {
                 if (MovementType.MOBILE_LAND_UNIT.contains(su.getMovement())) {

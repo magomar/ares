@@ -5,9 +5,9 @@ import ares.engine.action.ActionState;
 import ares.engine.action.ActionType;
 import ares.engine.action.actions.RestAction;
 import ares.engine.action.actions.WaitAction;
-import ares.engine.realtime.Clock;
 import ares.engine.realtime.ClockEvent;
 import ares.engine.realtime.ClockEventType;
+import ares.scenario.Clock;
 import ares.scenario.board.Tile;
 import ares.scenario.forces.Unit;
 import java.util.Deque;
@@ -56,7 +56,6 @@ public class UnitActor implements Actor {
 
     public void schedule(ClockEvent ce //, ActionSpace space
             ) {
-        Clock clock = ce.getClock();
         if (currentAction != null
                 && (currentAction.getState() == ActionState.COMPLETED
                 || currentAction.getState() == ActionState.ABORTED)) {
@@ -65,15 +64,15 @@ public class UnitActor implements Actor {
         if (currentAction == null) {
             if (!pendingActions.isEmpty()) {
                 Action nextAction = pendingActions.peek();
-                if (nextAction.checkTimetoStart(clock) && nextAction.checkPrecondition()) {
+                if (nextAction.checkTimetoStart() && nextAction.checkPrecondition()) {
                     currentAction = pendingActions.poll();
-                    currentAction.start(clock);
+                    currentAction.start();
 //                    Tile destination = unit.getLocation();
 //                    space.putAction(destination, currentAction);
                 }
             } else {
-                if (unit.getEndurance() > ActionType.WAIT.getRequiredEndurace(clock.MINUTES_PER_TICK)) {
-                    currentAction = new WaitAction(this, clock.MINUTES_PER_TICK);
+                if (unit.getEndurance() > ActionType.WAIT.getRequiredEndurace( Clock.INSTANCE.getMINUTES_PER_TICK())) {
+                    currentAction = new WaitAction(this, Clock.INSTANCE.getMINUTES_PER_TICK());
                 } else {
                     currentAction = new RestAction(this);
                 }
@@ -82,23 +81,16 @@ public class UnitActor implements Actor {
     }
 
 
-//    public ActionState executeAction(Action action, Clock clock) {
-//        if (action != null && action.getState() != ActionState.COMPLETED && action.getState() != ActionState.ABORTED) {
-//            action.execute(clock);
-//
-//        }
-//        return action.getState();
-//    }
-    public void perceive(Clock clock) {
+
+    public void perceive() {
         for (Tile tile : unit.getLocation().getNeighbors().values()) {
-            tile.reconnoissance(unit, clock.MINUTES_PER_TICK);
+            tile.reconnoissance(unit, Clock.INSTANCE.getMINUTES_PER_TICK());
         }
     }
 
     public void act(ClockEvent ce) {
-        Clock clock = ce.getClock();
         if (currentAction != null) {
-            currentAction.execute(clock);
+            currentAction.execute();
         }
         if (ce.getEventTypes().contains(ClockEventType.DAY)) {
             unit.recover();

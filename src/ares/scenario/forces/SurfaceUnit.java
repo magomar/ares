@@ -1,7 +1,6 @@
 package ares.scenario.forces;
 
 import ares.scenario.Scenario;
-import ares.engine.realtime.Clock;
 
 /**
  *

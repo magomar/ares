@@ -1,7 +1,6 @@
 package ares.ai;
 
 import ares.engine.actors.UnitActor;
-import ares.engine.realtime.Clock;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,7 +31,7 @@ public class FormationAI {
         serviceUnits = new ArrayList<>();
     }
     
-      public void plan(Clock clock) {
+      public void plan() {
 //        if (!hasPlan) {
 //            TaskPlanner planner = new TaskPlanner(this, clock);
 //            planner.obtainPlan();

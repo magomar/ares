@@ -1,5 +1,6 @@
 package ares.engine.realtime;
 
+import ares.scenario.Clock;
 import java.util.Set;
 
 /**
@@ -8,17 +9,12 @@ import java.util.Set;
  */
 public class ClockEvent {
 
-    private Clock clock;
     private Set<ClockEventType> eventTypes;
 
-    public ClockEvent(Clock clock, Set<ClockEventType> eventTypes) {
-        this.clock = clock;
+    public ClockEvent(Set<ClockEventType> eventTypes) {
         this.eventTypes = eventTypes;
     }
 
-    public Clock getClock() {
-        return clock;
-    }
 
     public Set<ClockEventType> getEventTypes() {
         return eventTypes;
@@ -26,7 +22,7 @@ public class ClockEvent {
 
     @Override
     public String toString() {
-        return "ClockEvent{" + "clock=" + clock + ", eventTypes=" + eventTypes + '}';
+        return "ClockEvent{" + "clock=" +  Clock.INSTANCE + ", eventTypes=" + eventTypes + '}';
     }
     
 
