@@ -2,6 +2,7 @@ package ares.engine.actors;
 
 import ares.engine.action.Action;
 import ares.engine.action.ActionType;
+import ares.engine.action.actions.ChangeDeploymentAction;
 import ares.engine.action.actions.SurfaceMoveAction;
 import ares.engine.algorithms.routing.Path;
 import ares.engine.movement.MovementType;
@@ -57,15 +58,18 @@ public class FormationActor {
 
     }
 
-    private void singlePlan(UnitActor unitActor) {
+    private void singlePlan(UnitActor actor) {
         Tile objective = formation.getObjectives().get(0);
-        Path path = engine.getPathFinder().getPath(unitActor.getUnit().getLocation(), objective);
+        Path path = engine.getPathFinder().getPath(actor.getUnit().getLocation(), objective);
         if (path != null && path.relink() != -1) {
-            LOG.log(Level.INFO, "New path for {0}: {1}", new Object[]{unitActor.toString(), path.toString()});
-            Action moveAction = new SurfaceMoveAction(unitActor, ActionType.TACTICAL_MARCH, path, Scale.INSTANCE.getTileSize());
-            unitActor.getPendingActions().add(moveAction);
+            LOG.log(Level.INFO, "New path for {0}: {1}", new Object[]{actor.toString(), path.toString()});
+            Action moveAction = new SurfaceMoveAction(actor, ActionType.TACTICAL_MARCH, path);
+            actor.addFirstAction(moveAction);
+            if (!moveAction.checkPrecondition()) {
+                actor.addFirstAction(new ChangeDeploymentAction(actor, ActionType.ASSEMBLE));
+            }
         } else {
-            LOG.log(Level.WARNING, "No path found for {0}", unitActor.toString());
+            LOG.log(Level.WARNING, "No path found for {0}", actor.toString());
         }
     }
 

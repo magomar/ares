@@ -91,7 +91,7 @@ public abstract class AbstractAction implements Action {
     public final boolean checkEndurance() {
         int duration = Math.min(timeToComplete,  Clock.INSTANCE.getMINUTES_PER_TICK());
         int requiredEndurance = type.getRequiredEndurace(duration);
-        return (actor.getUnit().getEndurance() <= requiredEndurance);
+        return (actor.getUnit().getEndurance() >= requiredEndurance);
     }
 
     @Override

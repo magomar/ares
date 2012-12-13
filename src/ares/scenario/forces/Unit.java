@@ -308,13 +308,14 @@ public abstract class Unit implements ModelProvider<UnitModel> {
 //    public void setLocation(Tile location) {
 //        this.location = location;
 //    }
-
     public void move(Direction direction) {
         this.location = location.getNeighbor(direction);
     }
 
     public void setOpState(OpState opState) {
-        this.opState = opState;
+        if (opState != null) {
+            this.opState = opState;
+        }
     }
 
     public Map<AssetType, Asset> getAssets() {

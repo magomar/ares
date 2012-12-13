@@ -6,13 +6,14 @@ import ares.engine.action.ActionType;
 import ares.engine.action.actions.RestAction;
 import ares.engine.action.actions.WaitAction;
 import ares.engine.realtime.ClockEvent;
-import ares.engine.realtime.ClockEventType;
 import ares.scenario.Clock;
 import ares.scenario.board.Tile;
 import ares.scenario.forces.Unit;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * This class encapsulates the behavior of a unit. It provides a single access point to a unit. Different actors could
@@ -22,6 +23,7 @@ import java.util.Queue;
  */
 public class UnitActor implements Actor {
 
+    private static final Logger LOG = Logger.getLogger(UnitActor.class.getName());
     /**
      * The unit handled by this actor
      */
@@ -71,7 +73,7 @@ public class UnitActor implements Actor {
 //                    space.putAction(destination, currentAction);
                 }
             } else {
-                if (unit.getEndurance() > ActionType.WAIT.getRequiredEndurace( Clock.INSTANCE.getMINUTES_PER_TICK())) {
+                if (unit.getEndurance() > ActionType.WAIT.getRequiredEndurace(Clock.INSTANCE.getMINUTES_PER_TICK())) {
                     currentAction = new WaitAction(this, Clock.INSTANCE.getMINUTES_PER_TICK());
                 } else {
                     currentAction = new RestAction(this);
@@ -79,8 +81,6 @@ public class UnitActor implements Actor {
             }
         }
     }
-
-
 
     public void perceive() {
         for (Tile tile : unit.getLocation().getNeighbors().values()) {
@@ -91,10 +91,12 @@ public class UnitActor implements Actor {
     public void act(ClockEvent ce) {
         if (currentAction != null) {
             currentAction.execute();
+        } else {
+            LOG.log(Level.WARNING, "Action = null for {0} at {1}", new Object[]{this, Clock.INSTANCE.toString()});
         }
-        if (ce.getEventTypes().contains(ClockEventType.DAY)) {
-            unit.recover();
-        }
+//        if (ce.getEventTypes().contains(ClockEventType.DAY)) {
+//            unit.recover();
+//        }
     }
 
 //    public TacticalMission getTacticalMission() {

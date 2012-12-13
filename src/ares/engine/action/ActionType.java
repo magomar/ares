@@ -8,8 +8,8 @@ import ares.scenario.forces.OpState;
  */
 public enum ActionType {
 
-    REST(3, 0, null, null, null),
-    WAIT(-1, 0, null, null, null),
+    REST(-3, 0, null, null, null),
+    WAIT(1, 0, null, null, null),
     DEPLOY(-1.5, 0, OpState.MOBILE, OpState.DEPLOYING, OpState.DEPLOYED),
     DIG_IN(-1.5, 0, OpState.DEPLOYED, OpState.DEPLOYED, OpState.DEPLOYED),
     EMBARK(-1.5, 0, OpState.MOBILE, OpState.EMBARKING, OpState.EMBARKED),
