@@ -12,8 +12,8 @@ import ares.scenario.board.Tile;
 public class SurfaceMoveAction extends MoveAction {
 
 
-    public SurfaceMoveAction(UnitActor actor, ActionType type, Path path, int tileSize) {
-        super(actor, type, path, tileSize);
+    public SurfaceMoveAction(UnitActor actor, ActionType type, Path path) {
+        super(actor, type, path);
     }
 
     @Override

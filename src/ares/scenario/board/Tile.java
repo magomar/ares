@@ -11,9 +11,9 @@ import ares.engine.knowledge.KnowledgeCategory;
 import ares.engine.knowledge.KnowledgeLevel;
 import ares.engine.movement.MovementCost;
 import ares.engine.movement.MovementType;
-import ares.engine.realtime.ClockEvent;
 import ares.platform.model.ModelProvider;
 import ares.platform.model.UserRole;
+import ares.scenario.Clock;
 import ares.scenario.Scenario;
 import ares.scenario.assets.AssetTrait;
 import ares.scenario.forces.AirUnit;
@@ -105,10 +105,7 @@ public final class Tile implements ModelProvider<TileModel> {
      * the board), then there would be no entry for that direction.
      */
     private Map<Direction, Tile> neighbors;
-//    /**
-//     * Size of the tile in meters
-//     */
-    private int size;
+
     private final Map<UserRole, KnowledgeLevel> knowledgeLevels;
     private final Map<KnowledgeCategory, TileModel> models;
 
@@ -165,7 +162,6 @@ public final class Tile implements ModelProvider<TileModel> {
      * @param board
      */
     public void initialize(Map<Direction, Tile> neighbors, Force owner, Scenario scenario) {
-        size = scenario.getScale().getDistance();
         index = coord.x * scenario.getBoard().getWidth() + coord.y;
         moveCosts = new EnumMap<>(Direction.class);
         combatModifiers = new EnumMap<>(Direction.class);
@@ -232,8 +228,8 @@ public final class Tile implements ModelProvider<TileModel> {
         this.entrechment = entrechment;
     }
 
-    public void updateKnowledge(ClockEvent ce) {
-        int minutes = ce.getClock().MINUTES_PER_TICK;
+    public void updateKnowledge() {
+        int minutes = Clock.INSTANCE.getMINUTES_PER_TICK();
         for (Entry<UserRole, KnowledgeLevel> entry : knowledgeLevels.entrySet()) {
             if (!entry.getKey().isGod()) {
                 Force force = entry.getKey().getForce();
@@ -269,7 +265,7 @@ public final class Tile implements ModelProvider<TileModel> {
     public Tile getNeighbor(Direction direction) {
         return neighbors.get(direction);
     }
-
+    
     public Set<TerrainFeatures> getTerrainFeatures() {
         return features;
     }
@@ -288,10 +284,6 @@ public final class Tile implements ModelProvider<TileModel> {
 
     public Force getOwner() {
         return owner;
-    }
-
-    public int getSize() {
-        return size;
     }
 
     public int getIndex() {

@@ -3,10 +3,10 @@ package ares.application.controllers;
 import ares.application.boundaries.view.*;
 import ares.application.commands.*;
 import ares.application.player.AresPlayerGUI;
-import ares.application.views.*;
 import ares.engine.realtime.*;
 import ares.platform.application.*;
 import ares.platform.model.UserRole;
+import ares.scenario.Clock;
 import ares.scenario.Scenario;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -84,14 +84,13 @@ public class WeGoPlayerController implements PropertyChangeListener {
         mainView.switchCard(AresPlayerGUI.MAIN_MENU_CARD);
     }
 
-     @Override
+    @Override
     public void propertyChange(PropertyChangeEvent evt) {
         if (RealTimeEngine.CLOCK_EVENT_PROPERTY.equals(evt.getPropertyName())) {
             ClockEvent clockEvent = (ClockEvent) evt.getNewValue();
             Scenario scenario = engine.getScenario();
-            mainView.setTitle("ARES     * * * " + scenario.getName() + " * * *     " + scenario.getCalendar().toString()
-                    + "   Role: " + userRole );
-
+            mainView.setTitle("ARES   " + scenario.getName() + "   " + Clock.INSTANCE.toStringVerbose()
+                    + "   Role: " + userRole);
             boardView.updateScenario(engine.getScenarioModel(userRole));
 
             if (boardController.getSelectedTile() != null) {
@@ -103,7 +102,7 @@ public class WeGoPlayerController implements PropertyChangeListener {
             }
         }
     }
-    
+
     RealTimeEngine getEngine() {
         return engine;
     }

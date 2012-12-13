@@ -2,6 +2,7 @@ package ares.engine.movement;
 
 import ares.application.models.board.TileModel;
 import ares.application.models.forces.UnitModel;
+import ares.scenario.Scale;
 import ares.scenario.Scenario;
 import ares.scenario.board.*;
 import ares.scenario.forces.*;
@@ -12,7 +13,6 @@ import java.util.*;
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class MovementCost {
-
     public static final int IMPASSABLE = Integer.MAX_VALUE;
     public static final int MAX_ROAD_COST = 3;
     public static final int MIN_ROAD_COST = 1;
@@ -24,6 +24,7 @@ public class MovementCost {
      */
     // TODO check if it's better to initialize all costs to IMPASSABLE
     private Map<MovementType, Integer> movementCost;
+
     private static final int ONE = 1;
     private Scenario scenario;
 
@@ -165,7 +166,7 @@ public class MovementCost {
 
         if (MovementType.MOBILE_LAND_UNIT.contains(movementType)
                 && (sideTerrain.contains(Terrain.ROAD) || sideTerrain.contains(Terrain.IMPROVED_ROAD))) {
-            int density = scenario.getScale().getCriticalDensity();
+            int density = Scale.INSTANCE.getCriticalDensity();
             int numHorsesAndVehicles = 0;
             for (SurfaceUnit surfaceUnit : destination.getSurfaceUnits()) {
                 if (MovementType.MOBILE_LAND_UNIT.contains(surfaceUnit.getMovement())) {
@@ -204,7 +205,7 @@ public class MovementCost {
 
         if (MovementType.MOBILE_LAND_UNIT.contains(unit.getMovement())
                 && (sideTerrain.contains(Terrain.ROAD) || sideTerrain.contains(Terrain.IMPROVED_ROAD))) {
-            int density = scenario.getScale().getCriticalDensity(), numHorsesAndVehicles = 0;
+            int density = Scale.INSTANCE.getCriticalDensity(), numHorsesAndVehicles = 0;
             // If destination isn't oberved SurfaceUnits will be empty
             for (SurfaceUnit su : destination.getSurfaceUnits()) {
                 if (MovementType.MOBILE_LAND_UNIT.contains(su.getMovement())) {

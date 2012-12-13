@@ -10,8 +10,8 @@ import ares.engine.algorithms.routing.Path;
  */
 public class CombatAction extends MoveAction {
 
-    public CombatAction(UnitActor actor, ActionType type, Path path, int tileSize) {
-        super(actor, type, path, tileSize);
+    public CombatAction(UnitActor actor, ActionType type, Path path) {
+        super(actor, type, path);
     }
 
 }

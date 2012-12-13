@@ -6,7 +6,7 @@ import ares.engine.actors.UnitActor;
 import ares.engine.algorithms.routing.Node;
 import ares.engine.algorithms.routing.Path;
 import ares.engine.movement.MovementCost;
-import ares.platform.model.UserRole;
+import ares.scenario.Scale;
 import ares.scenario.board.Direction;
 import ares.scenario.board.Tile;
 
@@ -26,19 +26,17 @@ public abstract class MoveAction extends AbstractAction {
      * presence of enemy units in the vicinity
      */
     protected int speed;
-    protected int tileSize;
 
-    public MoveAction(UnitActor actor, ActionType type, Path path, int tileSize) {
+    public MoveAction(UnitActor actor, ActionType type, Path path) {
         super(actor, type);
         this.path = path;
         currentNode = path.getFirst().getNext();
-        this.tileSize = tileSize;
         Tile destination = currentNode.getTile();
         Direction fromDir = currentNode.getFrom().getOpposite();
         MovementCost moveCost = actor.getUnit().getLocation().getMoveCost(fromDir);
         int cost = moveCost.getActualCost(actor.getUnit(), destination, fromDir);
         speed = actor.getUnit().getSpeed() / cost;
-        timeToMove = (speed > 0 ? (int) (tileSize / speed) : Integer.MAX_VALUE);
+        timeToMove = (speed > 0 ? (int) (Scale.INSTANCE.getTileSize() / speed) : Integer.MAX_VALUE);
         //FIXME Problems derived from the use of tile models and unit models instead of tiles and units. Discuss with Heine
     }
 
@@ -50,7 +48,7 @@ public abstract class MoveAction extends AbstractAction {
         MovementCost moveCost = actor.getUnit().getLocation().getMoveCost(fromDir);
         int cost = moveCost.getActualCost(actor.getUnit(), destination, fromDir);
         speed = actor.getUnit().getSpeed() / cost;
-        timeToMove = (speed > 0 ? (int) (tileSize / speed) : Integer.MAX_VALUE);
+        timeToMove = (speed > 0 ? (int) (Scale.INSTANCE.getTileSize() / speed) : Integer.MAX_VALUE);
     }
 
     @Override

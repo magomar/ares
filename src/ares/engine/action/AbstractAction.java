@@ -2,7 +2,7 @@ package ares.engine.action;
 
 import ares.engine.actors.Actor;
 import ares.engine.actors.UnitActor;
-import ares.engine.realtime.Clock;
+import ares.scenario.Clock;
 import java.util.Comparator;
 
 /**
@@ -74,68 +74,68 @@ public abstract class AbstractAction implements Action {
         this.timeToComplete = timeToComplete;
         finish = TIME_UNKNOWN;
         state = ActionState.CREATED;
-        id = Counter.ACTION_COUNTER.count();
+        id = ActionCounter.count();
     }
 
     @Override
-    public final boolean checkTimetoStart(Clock clock) {
-        return (start < clock.getCurrentTime() + clock.MINUTES_PER_TICK);
+    public final boolean checkTimetoStart() {
+        return (start <  Clock.INSTANCE.getCurrentTime() +  ares.scenario.Clock.INSTANCE.getMINUTES_PER_TICK());
     }
 
     @Override
-    public final boolean checkTimeToComplete(Clock clock) {
-        return (timeToComplete <= clock.MINUTES_PER_TICK);
+    public final boolean checkTimeToComplete() {
+        return (timeToComplete <=  Clock.INSTANCE.getMINUTES_PER_TICK());
     }
 
     @Override
-    public final boolean checkEndurance(Clock clock) {
-        int duration = Math.min(timeToComplete, clock.MINUTES_PER_TICK);
+    public final boolean checkEndurance() {
+        int duration = Math.min(timeToComplete,  Clock.INSTANCE.getMINUTES_PER_TICK());
         int requiredEndurance = type.getRequiredEndurace(duration);
         return (actor.getUnit().getEndurance() <= requiredEndurance);
     }
 
     @Override
-    public void start(Clock clock) {
+    public void start() {
         state = ActionState.STARTED;
-        start = Math.max(start, clock.getCurrentTime() - clock.MINUTES_PER_TICK);
+        start = Math.max(start,  Clock.INSTANCE.getCurrentTime() -  Clock.INSTANCE.getMINUTES_PER_TICK());
         actor.getUnit().setOpState(type.getEffectWhile());
     }
 
     @Override
-    public void execute(Clock clock) {
+    public void execute() {
         if (checkFeasibility()) {
-            if (checkEndurance(clock)) {
-                if (checkTimeToComplete(clock)) {
-                    complete(clock);
+            if (checkEndurance()) {
+                if (checkTimeToComplete()) {
+                    complete();
                 } else {
-                    resume(clock);
+                    resume();
                 }
             } else {
-                delay(clock);
+                delay();
             }
         } else {
-            abort(clock);
+            abort();
         }
     }
 
-    protected void delay(Clock clock) {
+    protected void delay() {
         state = ActionState.DELAYED;
-        int duration = clock.MINUTES_PER_TICK;
+        int duration =  Clock.INSTANCE.getMINUTES_PER_TICK();
         int wear = (int) (type.getWearRate() * duration);
         actor.getUnit().changeEndurance(wear);
     }
 
-    protected void abort(Clock clock) {
+    protected void abort() {
         state = ActionState.ABORTED;
-        int duration = clock.MINUTES_PER_TICK;
+        int duration =  Clock.INSTANCE.getMINUTES_PER_TICK();
         int wear = (int) (type.getWearRate() * duration);
         actor.getUnit().changeEndurance(wear);
         actor.getUnit().setOpState(type.getPrecondition());
-        finish = clock.getCurrentTime();
+        finish =  Clock.INSTANCE.getCurrentTime();
     }
 
-    protected void resume(Clock clock) {
-        int duration = clock.MINUTES_PER_TICK;
+    protected void resume() {
+        int duration =  Clock.INSTANCE.getMINUTES_PER_TICK();
         timeToComplete -= duration;
         int wear = (int) (type.getWearRate() * duration);
         actor.getUnit().changeEndurance(wear);
@@ -143,11 +143,11 @@ public abstract class AbstractAction implements Action {
     }
 
     @Override
-    public void complete(Clock clock) {
+    public void complete() {
         int duration = timeToComplete;
         timeToComplete = 0;
         state = ActionState.COMPLETED;
-        finish = clock.getCurrentTime() - clock.MINUTES_PER_TICK + duration;
+        finish =  Clock.INSTANCE.getCurrentTime() -  Clock.INSTANCE.getMINUTES_PER_TICK() + duration;
         actor.getUnit().setOpState(type.getEffectAfter());
         int wear = (int) (type.getWearRate() * duration);
         actor.getUnit().changeEndurance(wear);
@@ -210,11 +210,6 @@ public abstract class AbstractAction implements Action {
         return actor;
     }
 
-    @Override
-    public String toString() {
-        return state + "A#" + id + '{' + type + " > " + actor + '}';
-    }
-
     private static class ActionStartComparator implements Comparator<Action> {
 
         @Override
@@ -238,7 +233,7 @@ public abstract class AbstractAction implements Action {
     }
 
     @Override
-    public final String toString(Clock clock) {
-        return "[" + clock.toString() + "] #" + id + " > " + state + '{' + type + ": " + actor + '}';
+    public String toString() {
+        return "[" +  Clock.INSTANCE + "] #" + id + " > " + state + '{' + type + ": " + actor + '}';
     }
 }

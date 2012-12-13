@@ -5,9 +5,8 @@ import ares.engine.action.ActionType;
 import ares.engine.action.actions.SurfaceMoveAction;
 import ares.engine.algorithms.routing.Path;
 import ares.engine.movement.MovementType;
-import ares.engine.realtime.Clock;
 import ares.engine.realtime.RealTimeEngine;
-import ares.platform.model.UserRole;
+import ares.scenario.Scale;
 import ares.scenario.board.Tile;
 import ares.scenario.forces.Formation;
 import ares.scenario.forces.Unit;
@@ -63,7 +62,7 @@ public class FormationActor {
         Path path = engine.getPathFinder().getPath(unitActor.getUnit().getLocation(), objective);
         if (path != null && path.relink() != -1) {
             LOG.log(Level.INFO, "New path for {0}: {1}", new Object[]{unitActor.toString(), path.toString()});
-            Action moveAction = new SurfaceMoveAction(unitActor, ActionType.TACTICAL_MARCH, path, engine.getScenario().getScale().getDistance());
+            Action moveAction = new SurfaceMoveAction(unitActor, ActionType.TACTICAL_MARCH, path, Scale.INSTANCE.getTileSize());
             unitActor.getPendingActions().add(moveAction);
         } else {
             LOG.log(Level.WARNING, "No path found for {0}", unitActor.toString());
