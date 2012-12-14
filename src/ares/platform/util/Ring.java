@@ -1142,20 +1142,6 @@ public class Ring<E> extends AbstractSequentialList<E>
             this.next = next;
             this.prev = prev;
         }
-//    @Override
-//    @SuppressWarnings("unchecked")
-//    public boolean equals(Object obj) {
-//        if (obj == null) {
-//            return false;
-//        }
-//        if (getClass() != obj.getClass()) {
-//            return false;
-//        }
-//        LinkedNode<E> other = (LinkedNode<E>) obj;
-//        if (!Objects.equals(this.item, other.item)) {
-//            return false;
-//        }
-//        return true;
-//    }
+
     }
 }

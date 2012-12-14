@@ -75,7 +75,7 @@ public final class Tile implements ModelProvider<TileModel> {
 //     * Row (vertical coordinate)
 //     */
 //    private int y;
-    private Point coord;
+    private Point coordinates;
     /**
      * Unique identifier obtained from coordinates:  index(x,y) = x * board.width + y 
      */
@@ -113,7 +113,7 @@ public final class Tile implements ModelProvider<TileModel> {
         // numeric attributes
 //        x = c.getX();
 //        y = c.getY();
-        coord = new Point(c.getX(), c.getY());
+        coordinates = new Point(c.getX(), c.getY());
         Integer ent = c.getEntrenchment();
         entrechment = (ent != null ? ent : 0);
         Integer dist = c.getDistance();
@@ -162,7 +162,7 @@ public final class Tile implements ModelProvider<TileModel> {
      * @param board
      */
     public void initialize(Map<Direction, Tile> neighbors, Force owner, Scenario scenario) {
-        index = coord.x * scenario.getBoard().getWidth() + coord.y;
+        index = coordinates.x * scenario.getBoard().getWidth() + coordinates.y;
         moveCosts = new EnumMap<>(Direction.class);
         combatModifiers = new EnumMap<>(Direction.class);
         this.neighbors = neighbors;
@@ -307,7 +307,7 @@ public final class Tile implements ModelProvider<TileModel> {
     }
 
     public Point getCoordinates() {
-        return coord;
+        return coordinates;
     }
 
 //    public int getSize() {
@@ -350,9 +350,8 @@ public final class Tile implements ModelProvider<TileModel> {
 
     @Override
     public int hashCode() {
-        int hash = 17;
-        hash = 31 * hash + coord.x;
-        hash = 31 * hash + coord.y;
+        int hash = 7;
+        hash = 53 * hash + Objects.hashCode(this.coordinates);
         return hash;
     }
 
@@ -361,18 +360,43 @@ public final class Tile implements ModelProvider<TileModel> {
         if (obj == null) {
             return false;
         }
-        if (obj == this) {
-            return true;
-        }
         if (getClass() != obj.getClass()) {
             return false;
         }
         final Tile other = (Tile) obj;
-        if (!this.coord.equals(other.getCoordinates())) {
+        if (!Objects.equals(this.coordinates, other.coordinates)) {
             return false;
         }
         return true;
     }
+    
+    
+
+//    @Override
+//    public int hashCode() {
+//        int hash = 17;
+//        hash = 31 * hash + coord.x;
+//        hash = 31 * hash + coord.y;
+//        return hash;
+//    }
+//
+//    @Override
+//    public boolean equals(Object obj) {
+//        if (obj == null) {
+//            return false;
+//        }
+//        if (obj == this) {
+//            return true;
+//        }
+//        if (getClass() != obj.getClass()) {
+//            return false;
+//        }
+//        final Tile other = (Tile) obj;
+//        if (!this.coord.equals(other.getCoordinates())) {
+//            return false;
+//        }
+//        return true;
+//    }
 
     public KnowledgeLevel getKnowledgeLevel(UserRole role) {
         return knowledgeLevels.get(role);
@@ -390,7 +414,7 @@ public final class Tile implements ModelProvider<TileModel> {
 
     @Override
     public String toString() {
-        return "<" + coord.x + "," + coord.y + ">";
+        return "<" + coordinates.x + "," + coordinates.y + ">";
     }
 
     public String toStringMultiline() {

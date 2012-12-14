@@ -38,8 +38,8 @@ public class Pair<L, R> {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 59 * hash + Objects.hashCode(this.left);
-        hash = 59 * hash + Objects.hashCode(this.right);
+        hash = 37 * hash + Objects.hashCode(this.left);
+        hash = 37 * hash + Objects.hashCode(this.right);
         return hash;
     }
 
@@ -51,8 +51,8 @@ public class Pair<L, R> {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Pair<L, R> other = (Pair<L, R>) obj;
-        if (other.getLeft() != this.left || other.getRight() != this.right) {
+        final Pair<?, ?> other = (Pair<?, ?>) obj; // wildcard avoids unchecked cast
+        if (!other.left.equals(this.left) || !right.equals(this.right)) {
             return false;
         }
         return true;

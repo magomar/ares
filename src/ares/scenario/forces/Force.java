@@ -87,8 +87,8 @@ public class Force implements ModelProvider<ForceModel> {
 
     @Override
     public int hashCode() {
-        int hash = 17;
-        hash = 31 * hash + id;
+        int hash = 7;
+        hash = 23 * hash + this.id;
         return hash;
     }
 
@@ -96,9 +96,6 @@ public class Force implements ModelProvider<ForceModel> {
     public boolean equals(Object obj) {
         if (obj == null) {
             return false;
-        }
-        if (obj == this) {
-            return true;
         }
         if (getClass() != obj.getClass()) {
             return false;

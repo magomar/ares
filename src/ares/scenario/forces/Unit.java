@@ -521,12 +521,12 @@ public abstract class Unit implements ModelProvider<UnitModel> {
 //            }
 //        }
 //    }
+
     @Override
     public int hashCode() {
-        int hash = 17;
-        hash = 31 * hash + id;
-//        hash = 31 * hash + formation.getIndex();
-        hash = 31 * hash + force.getId();
+        int hash = 5;
+        hash = 29 * hash + this.id;
+        hash = 29 * hash + Objects.hashCode(this.force);
         return hash;
     }
 
@@ -535,18 +535,19 @@ public abstract class Unit implements ModelProvider<UnitModel> {
         if (obj == null) {
             return false;
         }
-        if (obj == this) {
-            return true;
-        }
         if (getClass() != obj.getClass()) {
             return false;
         }
         final Unit other = (Unit) obj;
-        if (this.id != other.id || !this.force.equals(other.force)) {
+        if (this.id != other.id) {
+            return false;
+        }
+        if (!Objects.equals(this.force, other.force)) {
             return false;
         }
         return true;
     }
+ 
 
     @Override
     public String toString() {

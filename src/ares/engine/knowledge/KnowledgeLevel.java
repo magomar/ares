@@ -60,7 +60,9 @@ public class KnowledgeLevel implements Comparable {
 
     @Override
     public int hashCode() {
-        return Double.valueOf(value).hashCode();
+        int hash = 5;
+        hash = 41 * hash + (int) (Double.doubleToLongBits(this.value) ^ (Double.doubleToLongBits(this.value) >>> 32));
+        return hash;
     }
 
     @Override
@@ -72,10 +74,9 @@ public class KnowledgeLevel implements Comparable {
             return false;
         }
         final KnowledgeLevel other = (KnowledgeLevel) obj;
-        if (this.value != other.value) {
+        if (Double.doubleToLongBits(this.value) != Double.doubleToLongBits(other.value)) {
             return false;
         }
-
         return true;
     }
 

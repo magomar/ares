@@ -73,7 +73,7 @@ public abstract class AbstractImageLayer extends javax.swing.JPanel {
             g2.drawImage(globalImage, 0, 0, this);
         } else{
             g2.setBackground(Color.BLACK);
-            g2.fillRect(0, 0, this.size().width, this.size().height);
+            g2.fillRect(0, 0, this.getWidth(), this.getHeight());
         }
     }
 }

@@ -48,13 +48,14 @@ public class FormationActor {
                     Queue<Action> pendingActions = unitActor.getPendingActions();
                     if (pendingActions.isEmpty()) {
                         singlePlan(unitActor);
+                        hasPlan = true;
                     }
                 }
             }
 //            TaskPlanner planner = new TaskPlanner(this, clock);
 //            planner.obtainPlan();
 //            hasPlan = true;
-        }
+        } 
 
     }
 

@@ -45,7 +45,7 @@ public final class BoardController extends AbstractSecondaryController {
             Point pixel = new Point(me.getX(), me.getY());
             if (BoardGraphicsModel.isWithinImageRange(pixel) && me.getButton() == MouseEvent.BUTTON1) {
                 Point tilePoint = BoardGraphicsModel.pixelToTileAccurate(pixel);
-                // pixel to tile conversion is more expensive than two coordinates checks
+                // XXX pixel to tile conversion is more expensive than two coordinates checks
                 if (!BoardGraphicsModel.validCoordinates(tilePoint.x, tilePoint.y)) {
                     return;
                 }
@@ -55,8 +55,12 @@ public final class BoardController extends AbstractSecondaryController {
                     boardView.updateArrowPath(scenario.getModel(mainController.getUserRole()), pathFinder.getPath(selectedUnit.getLocation(), tile));
                 } else {
                     selectedTile = tile;
-                    selectedUnit = tile.getTopUnit();
                     UnitsStack stack = tile.getUnitsStack();
+                    if (stack.isEmpty()) {
+                        selectedUnit = null;
+                    } else {
+                        selectedUnit = tile.getTopUnit();
+                    }
                     boolean changeUnit = false;
                     if (!changeTile && !stack.isEmpty()) {
                         stack.next();

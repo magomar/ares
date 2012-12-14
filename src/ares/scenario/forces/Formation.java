@@ -179,9 +179,9 @@ public class Formation implements ModelProvider<FormationModel> {
 
     @Override
     public int hashCode() {
-        int hash = 17;
-        hash = 31 * hash + id;
-        hash = 31 * hash + force.getId();
+        int hash = 7;
+        hash = 61 * hash + this.id;
+        hash = 61 * hash + Objects.hashCode(this.force);
         return hash;
     }
 
@@ -190,9 +190,6 @@ public class Formation implements ModelProvider<FormationModel> {
         if (obj == null) {
             return false;
         }
-        if (obj == this) {
-            return true;
-        }
         if (getClass() != obj.getClass()) {
             return false;
         }
@@ -200,11 +197,13 @@ public class Formation implements ModelProvider<FormationModel> {
         if (this.id != other.id) {
             return false;
         }
-        if (!this.force.equals(other.force)) {
+        if (!Objects.equals(this.force, other.force)) {
             return false;
         }
         return true;
     }
+
+  
 
     @Override
     public String toString() {

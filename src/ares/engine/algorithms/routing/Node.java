@@ -107,19 +107,27 @@ public class Node {
         sb.append(" ]\n");
         return sb.toString();
     }
-
-    @Override
-    public boolean equals(Object n) {
-        if (n instanceof Node) {
-            return this.tile.getCoordinates() == ((Node) n).getTile().getCoordinates();
-        }
-        return false;
-    }
-
+    
     @Override
     public int hashCode() {
-        int hash = 17;
-        hash = 53 * hash + Objects.hashCode(this.prev);
+        int hash = 7;
+        hash = 61 * hash + Objects.hashCode(this.tile);
         return hash;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Node other = (Node) obj;
+        if (!Objects.equals(this.tile, other.tile)) {
+            return false;
+        }
+        return true;
+    }
+
 }
