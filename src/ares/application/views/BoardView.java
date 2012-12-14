@@ -1,7 +1,11 @@
 package ares.application.views;
 
+import ares.application.gui.board.TerrainLayer;
+import ares.application.gui.board.ArrowLayer;
+import ares.application.gui.board.GridLayer;
+import ares.application.gui.board.UnitsLayer;
+import ares.application.gui.AbstractImageLayer;
 import ares.application.boundaries.view.BoardViewer;
-import ares.application.gui_components.layers.*;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.*;
 import ares.engine.algorithms.routing.Path;
@@ -60,8 +64,6 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
         arrowLayer = new ArrowLayer(gridLayer);
         arrowLayer.setOpaque(false);
         
-
-        // TODO why is imageLayers  here? can I remove this TODO?
         // Add the last layer from each level to the layered pane
         layeredPane.add(terrainLayer, JLayeredPane.DEFAULT_LAYER);
         layeredPane.add(arrowLayer, JLayeredPane.PALETTE_LAYER);
@@ -116,8 +118,9 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
     
     @Override
     public void closeScenario() {
-        for(AbstractImageLayer ail : imageLayers[ALL])
+        for(AbstractImageLayer ail : imageLayers[ALL]) {
             ail.flush();
+        }
     }
 
     @Override

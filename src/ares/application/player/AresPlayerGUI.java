@@ -26,12 +26,12 @@ public class AresPlayerGUI extends AbstractAresApplication {
     private JSplitPane splitHoriz;
     private JSplitPane splitVert;
     private JPanel cards;
+    private WeGoPlayerController mainController;
 
     public AresPlayerGUI() {
         super(); // creates layout
-        // Create controllers
-        WeGoPlayerController mainController = new WeGoPlayerController(this, boardV, unitV, menuV, messagesV, welcomeScreenV);
-        mainController.initialize();
+        // Create controllers and passes the views
+         mainController = new WeGoPlayerController(this, boardV, unitV, menuV, messagesV, welcomeScreenV);
     }
 
     @Override

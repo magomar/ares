@@ -144,7 +144,7 @@ public abstract class AbstractAction implements Action {
 
     @Override
     public void complete() {
-        int duration = timeToComplete;
+        int duration = Math.min(timeToComplete, Clock.INSTANCE.getMINUTES_PER_TICK());
         timeToComplete = 0;
         state = ActionState.COMPLETED;
         finish =  Clock.INSTANCE.getCurrentTime() -  Clock.INSTANCE.getMINUTES_PER_TICK() + duration;
@@ -155,6 +155,10 @@ public abstract class AbstractAction implements Action {
         // TODO if the action is completed before the end of the time tick, do something, eg wait... or ask the TacAI
     }
 
+    public void wear(int duration) {
+        
+    }
+    
     /**
      * Apply the effects of an action after completion
      */

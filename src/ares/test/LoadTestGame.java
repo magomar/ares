@@ -1,14 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package ares.test;
 
 import ares.data.jaxb.EquipmentDB;
 import ares.engine.RealTimeEngine;
-import ares.scenario.Scenario;
-import ares.io.AresPaths;
 import ares.io.AresIO;
+import ares.io.AresPaths;
+import ares.scenario.Scenario;
 import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;

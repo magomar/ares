@@ -65,10 +65,6 @@ public class RealTimeEngine extends AbstractBean {
         return scenario;
     }
 
-    public ScenarioModel getScenarioModel(UserRole role) {
-        return scenario.getModel(role);
-    }
-
     public void start() {
         LOG.log(Level.INFO, "*** Clock Started {0}", Clock.INSTANCE);
         running = true;

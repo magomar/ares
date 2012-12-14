@@ -36,13 +36,31 @@ public final class ScenarioIOController extends AbstractSecondaryController {
     private static final Logger LOG = Logger.getLogger(ScenarioIOController.class.getName());
     private final AbstractAresApplication mainView;
     private final CommandBarViewer menuView;
+    private final CommandBarViewer welcomeView;
     private final BoardViewer boardView;
 
-    public ScenarioIOController(AbstractAresApplication mainView, CommandBarViewer menuView, BoardViewer boardView, WeGoPlayerController mainController) {
+    public ScenarioIOController(WeGoPlayerController mainController) {
         super(mainController);
-        this.mainView = mainView;
-        this.menuView = menuView;
-        this.boardView = boardView;
+        this.mainView = mainController.getMainView();
+        this.menuView = mainController.getMenuView();
+        this.boardView = mainController.getBoardView();
+        this.welcomeView = mainController.getWelcomeScreenView();
+        LOG.addHandler(mainController.getMessagesView().getHandler());
+
+        //Create & add listeners to the views
+        OpenScenarioActionListener open = new OpenScenarioActionListener();
+        LoadScenarioActionListener load = new LoadScenarioActionListener();
+        ExitActionListener exit = new ExitActionListener();
+
+        menuView.addActionListener(FileCommands.OPEN_SCENARIO.getName(), open);
+        menuView.addActionListener(FileCommands.CLOSE_SCENARIO.getName(), new CloseScenarioActionListener());
+        menuView.addActionListener(FileCommands.LOAD_SCENARIO.getName(), load);
+        menuView.addActionListener(FileCommands.EXIT.getName(), exit);
+
+        welcomeView.addActionListener(FileCommands.OPEN_SCENARIO.getName(), open);
+        welcomeView.addActionListener(FileCommands.LOAD_SCENARIO.getName(), load);
+        welcomeView.addActionListener(FileCommands.SETTINGS.getName(), new SettingsActionListener());
+        welcomeView.addActionListener(FileCommands.EXIT.getName(), exit);
     }
 
     private class OpenScenarioInteractor extends AsynchronousOperation<Scenario> {
@@ -98,10 +116,10 @@ public final class ScenarioIOController extends AbstractSecondaryController {
                 mainView.switchCard(AresPlayerGUI.PLAY_CARD);
 
                 // Set the engine with the new scenario
-                mainController.getEngine().setScenario(scenario);
+                mainController.setScenario(scenario);
 
                 // obtain the scenario model with the active userRole
-                ScenarioModel scenarioModel = mainController.getEngine().getScenarioModel(mainController.getUserRole());
+                ScenarioModel scenarioModel = scenario.getModel(mainController.getUserRole());
                 boardView.loadScenario(scenarioModel);
                 // set main window title & show appropriate views
                 mainView.setTitle("ARES   " + scenario.getName() + "   " + Clock.INSTANCE.toStringVerbose()
@@ -130,7 +148,7 @@ public final class ScenarioIOController extends AbstractSecondaryController {
         @Override
         public void actionPerformed(ActionEvent e) {
             LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, e.toString());
-            mainController.getEngine().setScenario(null);
+            mainController.setScenario(null);
             menuView.setCommandEnabled(FileCommands.CLOSE_SCENARIO.getName(), false);
             menuView.setCommandEnabled(AresMenus.ENGINE_MENU.getName(), false);
             boardView.closeScenario();
@@ -160,7 +178,7 @@ public final class ScenarioIOController extends AbstractSecondaryController {
     }
 
     // TODO create settings window
-    private static class SettingsActionListener implements ActionListener {
+    class SettingsActionListener implements ActionListener {
 
         public SettingsActionListener() {
         }
@@ -170,23 +188,4 @@ public final class ScenarioIOController extends AbstractSecondaryController {
         }
     }
 
-    ActionListener OpenScenarioActionListener() {
-        return new OpenScenarioActionListener();
-    }
-
-    ActionListener CloseScenarioActionListener() {
-        return new CloseScenarioActionListener();
-    }
-
-    ActionListener ExitActionListener() {
-        return new ExitActionListener();
-    }
-
-    ActionListener LoadScenarioActionListener() {
-        return new LoadScenarioActionListener();
-    }
-
-    ActionListener SettingsActionListener() {
-        return new SettingsActionListener();
-    }
 }

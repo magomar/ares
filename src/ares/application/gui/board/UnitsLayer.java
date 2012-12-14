@@ -1,6 +1,7 @@
-package ares.application.gui_components.layers;
+package ares.application.gui.board;
 
-import ares.application.gui_components.UnitColors;
+import ares.application.gui.AbstractImageLayer;
+import ares.application.gui.UnitColors;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.*;
 import ares.application.models.forces.*;

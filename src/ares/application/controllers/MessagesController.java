@@ -2,7 +2,6 @@ package ares.application.controllers;
 
 import ares.application.boundaries.view.MessagesViewer;
 import ares.platform.controllers.AbstractSecondaryController;
-import ares.application.views.MessagesHandler;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JCheckBox;
@@ -15,15 +14,15 @@ public final class MessagesController extends AbstractSecondaryController {
 
     private final MessagesViewer messagesView;
 
-    public MessagesController(MessagesViewer messagesView, WeGoPlayerController mainController) {
+    public MessagesController(WeGoPlayerController mainController) {
         super(mainController);
-        this.messagesView = messagesView;
+        this.messagesView = mainController.getMessagesView();
+
+        // Add listeners to MessagesView check boxes
+        messagesView.setLogCheckBoxes(new LogCheckBoxListener());
     }
 
     private class LogCheckBoxListener implements ActionListener {
-
-        public LogCheckBoxListener() {
-        }
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -40,9 +39,5 @@ public final class MessagesController extends AbstractSecondaryController {
             }
 
         }
-    }
-
-    ActionListener LogCheckBoxListener() {
-        return new LogCheckBoxListener();
     }
 }

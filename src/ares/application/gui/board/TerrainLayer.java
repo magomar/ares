@@ -1,5 +1,6 @@
-package ares.application.gui_components.layers;
+package ares.application.gui.board;
 
+import ares.application.gui.AbstractImageLayer;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.*;
 import ares.data.jaxb.TerrainFeature;

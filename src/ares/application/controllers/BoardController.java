@@ -3,6 +3,7 @@ package ares.application.controllers;
 import ares.application.boundaries.view.BoardViewer;
 import ares.application.boundaries.view.UnitInfoViewer;
 import ares.application.models.board.BoardGraphicsModel;
+import ares.engine.RealTimeEngine;
 import ares.engine.algorithms.routing.*;
 import ares.platform.controllers.AbstractSecondaryController;
 import ares.scenario.Scenario;
@@ -10,38 +11,39 @@ import ares.scenario.board.*;
 import ares.scenario.forces.Unit;
 import java.awt.Point;
 import java.awt.event.*;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
 /**
  * @author Mario Gomez <margomez at dsic.upv.es>
  * @author Heine <heisncfr@inf.upv.es>
  */
-public final class BoardController extends AbstractSecondaryController {
+public final class BoardController extends AbstractSecondaryController implements PropertyChangeListener {
 
-    private PathFinder pathFinder = new AStar(BoardGraphicsModel.getTileRows() * BoardGraphicsModel.getTileColumns());
     private Tile selectedTile;
     private Unit selectedUnit;
     private final BoardViewer boardView;
     private final UnitInfoViewer unitView;
+    private final PathFinder pathFinder;
 
-    public BoardController(BoardViewer boardView, UnitInfoViewer unitView, WeGoPlayerController wgpc) {
-        super(wgpc);
-        this.boardView = boardView;
-        this.unitView = unitView;
+    public BoardController(WeGoPlayerController mainController) {
+        super(mainController);
+        this.boardView = mainController.getBoardView();
+        this.unitView = mainController.getUnitView();
+        pathFinder = new AStar(BoardGraphicsModel.getTileRows() * BoardGraphicsModel.getTileColumns());
+
+        boardView.addMouseListener(new BoardMouseListener());
     }
 
     Tile getSelectedTile() {
         return selectedTile;
     }
 
-    MouseListener BoardMouseListener() {
-        return new BoardMouseListener();
-    }
-
     private class BoardMouseListener extends MouseAdapter {
 
         @Override
         public void mouseClicked(MouseEvent me) {
-            Scenario scenario = mainController.getEngine().getScenario();
+            Scenario scenario = mainController.getScenario();
             Point pixel = new Point(me.getX(), me.getY());
             if (BoardGraphicsModel.isWithinImageRange(pixel) && me.getButton() == MouseEvent.BUTTON1) {
                 Point tilePoint = BoardGraphicsModel.pixelToTileAccurate(pixel);
@@ -75,6 +77,15 @@ public final class BoardController extends AbstractSecondaryController {
             } else if (me.getButton() == MouseEvent.BUTTON3) {
                 selectedTile = null;
                 unitView.clear();
+            }
+        }
+    }
+    
+        @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        if (RealTimeEngine.CLOCK_EVENT_PROPERTY.equals(evt.getPropertyName())) {
+            if (selectedTile != null) {
+                unitView.updateInfo(selectedTile.getModel(mainController.getUserRole()));
             }
         }
     }

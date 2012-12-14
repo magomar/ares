@@ -1,6 +1,6 @@
 package ares.application.models.forces;
 
-import ares.application.gui_components.UnitColors;
+import ares.application.gui.UnitColors;
 import ares.application.models.board.TileModel;
 import ares.engine.knowledge.KnowledgeCategory;
 import ares.engine.movement.MovementType;

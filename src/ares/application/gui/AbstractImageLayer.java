@@ -1,4 +1,4 @@
-package ares.application.gui_components.layers;
+package ares.application.gui;
 
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.BoardGraphicsModel;
@@ -76,4 +76,13 @@ public abstract class AbstractImageLayer extends javax.swing.JPanel {
             g2.fillRect(0, 0, this.getWidth(), this.getHeight());
         }
     }
+
+    public AbstractImageLayer getParentLayer() {
+        return parentLayer;
+    }
+
+    public BufferedImage getGlobalImage() {
+        return globalImage;
+    }
+    
 }

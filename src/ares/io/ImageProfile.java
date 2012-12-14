@@ -4,7 +4,7 @@
  */
 package ares.io;
 
-import ares.application.gui_components.UnitColors;
+import ares.application.gui.UnitColors;
 import ares.scenario.board.Terrain;
 import java.io.File;
 

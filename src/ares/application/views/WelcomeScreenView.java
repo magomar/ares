@@ -2,7 +2,7 @@ package ares.application.views;
 
 import ares.application.boundaries.view.CommandBarViewer;
 import ares.application.commands.FileCommands;
-import ares.application.gui_components.layers.WelcomeScreen;
+import ares.application.gui.WelcomeScreen;
 import ares.platform.view.AbstractView;
 import ares.platform.view.ComponentFactory;
 import java.awt.Component;
@@ -26,7 +26,7 @@ public class WelcomeScreenView extends AbstractView<JPanel> implements CommandBa
     @Override
     protected JPanel layout() {
         JPanel buttonsPanel = new WelcomeScreen();
-        buttonsPanel.add(ComponentFactory.translucidButton(FileCommands.NEW_SCENARIO, this));
+        buttonsPanel.add(ComponentFactory.translucidButton(FileCommands.OPEN_SCENARIO, this));
         buttonsPanel.add(ComponentFactory.translucidButton(FileCommands.LOAD_SCENARIO, this));
         buttonsPanel.add(ComponentFactory.translucidButton(FileCommands.SETTINGS, this));
         buttonsPanel.add(ComponentFactory.translucidButton(FileCommands.EXIT, this));

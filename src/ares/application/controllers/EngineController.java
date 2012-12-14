@@ -1,12 +1,19 @@
 package ares.application.controllers;
 
+import ares.application.boundaries.view.BoardViewer;
 import ares.application.boundaries.view.CommandBarViewer;
 import ares.application.boundaries.view.MessagesViewer;
 import ares.application.commands.EngineCommands;
 import ares.application.views.MessagesHandler;
+import ares.engine.ClockEvent;
+import ares.engine.ClockEventType;
+import ares.engine.RealTimeEngine;
 import ares.platform.controllers.AbstractSecondaryController;
+import ares.scenario.Scenario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.logging.Logger;
 
 /**
@@ -14,40 +21,75 @@ import java.util.logging.Logger;
  * @author Mario Gomez <margomez at dsic.upv.es>
  * @author Heine <heisncfr@inf.upv.es>
  */
-public final class EngineController extends AbstractSecondaryController {
+public final class EngineController extends AbstractSecondaryController implements PropertyChangeListener {
+
     private static final Logger LOG = Logger.getLogger(EngineController.class.getName());
     private final CommandBarViewer menuView;
     private final MessagesViewer messagesView;
+    private final BoardViewer boardView;
+    // Entities (bussines logic), they interact with the model providers and provide models to the views
+    private final RealTimeEngine engine;
 
-    public EngineController(CommandBarViewer menuView, MessagesViewer messagesView, WeGoPlayerController mainController) {
+    public EngineController(WeGoPlayerController mainController) {
         super(mainController);
-        this.menuView = menuView;
-        this.messagesView = messagesView;
+
+        this.menuView = mainController.getMenuView();
+        this.messagesView = mainController.getMessagesView();
+        this.boardView = mainController.getBoardView();
+        LOG.addHandler(messagesView.getHandler());
+
+        menuView.addActionListener(EngineCommands.START.name(), new StartActionListener());
+        menuView.addActionListener(EngineCommands.PAUSE.name(), new PauseActionListener());
+        menuView.addActionListener(EngineCommands.NEXT.name(), new NextActionListener());
+
+        //Add change listeners to entities
+        engine = mainController.getEngine();
+        engine.addPropertyChangeListener(this);
     }
-  
-    private class StartActionListener implements ActionListener {
+
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        if (RealTimeEngine.CLOCK_EVENT_PROPERTY.equals(evt.getPropertyName())) {
+            ClockEvent clockEvent = (ClockEvent) evt.getNewValue();
+            Scenario scenario =engine.getScenario();
+//            mainView.setTitle("ARES   " + scenario.getName() + "   " + Clock.INSTANCE.toStringVerbose()
+//                    + "   Role: " + userRole);
+            boardView.updateScenario(scenario.getModel(mainController.getUserRole()));
+
+            if (clockEvent.getEventTypes().contains(ClockEventType.TURN)) {
+                menuView.setCommandEnabled(EngineCommands.PAUSE.getName(), false);
+                menuView.setCommandEnabled(EngineCommands.NEXT.getName(), true);
+            }
+        }
+    }
+
+    RealTimeEngine getEngine() {
+        return engine;
+    }
+
+    class StartActionListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
             LOG.log(MessagesHandler.MessageLevel.ENGINE, e.toString());
-            mainController.getEngine().start();
+            engine.start();
             menuView.setCommandEnabled(EngineCommands.START.getName(), false);
             menuView.setCommandEnabled(EngineCommands.PAUSE.getName(), true);
         }
     }
 
-    private class PauseActionListener implements ActionListener {
+    class PauseActionListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
             LOG.log(MessagesHandler.MessageLevel.ENGINE, e.toString());
-            mainController.getEngine().stop();
+            engine.stop();
             menuView.setCommandEnabled(EngineCommands.START.getName(), true);
             menuView.setCommandEnabled(EngineCommands.PAUSE.getName(), false);
         }
     }
 
-    private class NextActionListener implements ActionListener {
+    class NextActionListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -55,19 +97,7 @@ public final class EngineController extends AbstractSecondaryController {
             LOG.log(MessagesHandler.MessageLevel.ENGINE, e.toString());
             menuView.setCommandEnabled(EngineCommands.PAUSE.getName(), true);
             menuView.setCommandEnabled(EngineCommands.NEXT.getName(), false);
-            mainController.getEngine().start();
+            engine.start();
         }
-    }
-
-    ActionListener StartActionListener() {
-        return new StartActionListener();
-    }
-
-    ActionListener PauseActionListener() {
-        return new PauseActionListener();
-    }
-
-    ActionListener NextActionListener() {
-        return new NextActionListener();
     }
 }

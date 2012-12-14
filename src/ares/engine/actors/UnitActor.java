@@ -1,11 +1,11 @@
 package ares.engine.actors;
 
+import ares.engine.ClockEvent;
 import ares.engine.action.Action;
 import ares.engine.action.ActionState;
 import ares.engine.action.ActionType;
 import ares.engine.action.actions.RestAction;
 import ares.engine.action.actions.WaitAction;
-import ares.engine.ClockEvent;
 import ares.scenario.Clock;
 import ares.scenario.board.Tile;
 import ares.scenario.forces.Unit;

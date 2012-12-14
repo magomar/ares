@@ -1,5 +1,6 @@
-package ares.application.gui_components.layers;
+package ares.application.gui.board;
 
+import ares.application.gui.AbstractImageLayer;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.*;
 import ares.engine.algorithms.routing.*;
@@ -52,7 +53,7 @@ public class ArrowLayer extends AbstractImageLayer {
     public void paintTile(Tile tile, Integer index) {
         Point subImagePos = imageIndexes.get(index);
         if (subImagePos != null) {
-            Graphics2D g2 = parentLayer.globalImage.createGraphics();
+            Graphics2D g2 = parentLayer.getGlobalImage().createGraphics();
 
             if (arrowImage.get() == null) {
                 arrowImage = new SoftReference<>(loadImage(BoardGraphicsModel.getImageProfile().getArrowFilename()));
