@@ -5,7 +5,7 @@ import ares.engine.action.ActionState;
 import ares.engine.action.ActionType;
 import ares.engine.action.actions.RestAction;
 import ares.engine.action.actions.WaitAction;
-import ares.engine.realtime.ClockEvent;
+import ares.engine.ClockEvent;
 import ares.scenario.Clock;
 import ares.scenario.board.Tile;
 import ares.scenario.forces.Unit;

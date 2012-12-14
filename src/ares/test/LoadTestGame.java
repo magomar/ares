@@ -5,6 +5,7 @@
 package ares.test;
 
 import ares.data.jaxb.EquipmentDB;
+import ares.engine.RealTimeEngine;
 import ares.scenario.Scenario;
 import ares.io.AresPaths;
 import ares.io.AresIO;
@@ -26,7 +27,9 @@ public class LoadTestGame {
 //        String fileName = "Classic TOAW\\African Campaign 42.scenario";
 
         Scenario scenario = getTestScenario(fileName);
-//        scenario.start();
+        RealTimeEngine engine = new RealTimeEngine();
+        engine.setScenario(scenario);
+        engine.start();
     }
 
     public static Scenario getTestScenario(String fileName) {

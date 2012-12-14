@@ -133,7 +133,7 @@ public abstract class AbstractAction implements Action {
         actor.getUnit().setOpState(type.getPrecondition());
         finish =  Clock.INSTANCE.getCurrentTime();
     }
-
+    
     protected void resume() {
         int duration =  Clock.INSTANCE.getMINUTES_PER_TICK();
         timeToComplete -= duration;

@@ -14,9 +14,9 @@ public class Node {
     private Node prev;
     private Node next;
     /**
-     * Direction from the previous node to reach this node
+     * Direction from the previous node to reach this node, relative to this node
      */
-    private Direction from;
+    private Direction direction;
     /**
      * Cost from the start to this node
      */
@@ -59,12 +59,12 @@ public class Node {
         this.next = next;
     }
 
-    public Direction getFrom() {
-        return from;
+    public Direction getDirection() {
+        return direction;
     }
 
     public void setFrom(Direction from) {
-        this.from = from;
+        this.direction = from;
     }
 
     public double getG() {
@@ -85,14 +85,14 @@ public class Node {
 
     @Override
     public String toString() {
-        return from.name() + tile;
+        return direction.name() + tile;
     }
 
     public String toStringVerbose() {
         StringBuilder sb = new StringBuilder();
         sb.append("[ ");
         sb.append(" From: ");
-        sb.append(from.name());
+        sb.append(direction.name());
         sb.append(" to (");
         sb.append(tile.getCoordinates().x);
         sb.append(",");

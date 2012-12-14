@@ -6,7 +6,7 @@ import ares.engine.action.actions.ChangeDeploymentAction;
 import ares.engine.action.actions.SurfaceMoveAction;
 import ares.engine.algorithms.routing.Path;
 import ares.engine.movement.MovementType;
-import ares.engine.realtime.RealTimeEngine;
+import ares.engine.RealTimeEngine;
 import ares.scenario.Scale;
 import ares.scenario.board.Tile;
 import ares.scenario.forces.Formation;

@@ -37,13 +37,13 @@ public class ArrowLayer extends AbstractImageLayer {
         Node last = path.getLast();
         // Paint the arrow
         path.toString();
-        Direction from = last.getFrom();
+        Direction from = last.getDirection();
         Direction to = from.getOpposite();
         paintTile(last.getTile(), getDirectionToImageIndex(true, from, to));
         // paint the body
         for (Node current = last.getPrev(); current != null; last = current, current = last.getPrev()) {
-            from = current.getFrom();
-            to = last.getFrom().getOpposite();
+            from = current.getDirection();
+            to = last.getDirection().getOpposite();
             paintTile(current.getTile(), getDirectionToImageIndex(false, from, to));
         }
 

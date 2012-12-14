@@ -1,8 +1,8 @@
 package ares.scenario;
 
-import ares.engine.realtime.ClockEvent;
-import ares.engine.realtime.ClockEventType;
-import ares.engine.realtime.RealTimeEngine;
+import ares.engine.ClockEvent;
+import ares.engine.ClockEventType;
+import ares.engine.RealTimeEngine;
 import java.text.SimpleDateFormat;
 import java.util.EnumSet;
 import java.util.GregorianCalendar;
