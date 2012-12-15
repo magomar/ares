@@ -78,18 +78,49 @@ public abstract class AbstractAction implements Action {
     }
 
     @Override
+    public boolean canBeStarted() {
+        return checkTimetoStart() && checkPrecondition();
+    }
+
+    /**
+     * Checks if the planned start time is reached during the current time tick
+     *
+     * @return
+     */
     public final boolean checkTimetoStart() {
-        return (start <  Clock.INSTANCE.getCurrentTime() +  ares.scenario.Clock.INSTANCE.getMINUTES_PER_TICK());
+        return (start < Clock.INSTANCE.getCurrentTime() + ares.scenario.Clock.INSTANCE.getMINUTES_PER_TICK());
+    }
+
+    /**
+     * Checks if the acting unit has the right operational state to start this action ({@link OpState})
+     *
+     * @return
+     */
+    public boolean checkPrecondition() {
+        return actor.getUnit().getOpState() == type.getPrecondition();
     }
 
     @Override
+    public boolean canBeCompleted() {
+        return true;
+    }
+
+    /**
+     * Checks if the estimated completion time is reached during the current time tick
+     *
+     * @return
+     */
     public final boolean checkTimeToComplete() {
-        return (timeToComplete <=  Clock.INSTANCE.getMINUTES_PER_TICK());
+        return (timeToComplete <= Clock.INSTANCE.getMINUTES_PER_TICK());
     }
 
-    @Override
+    /**
+     * Checks if the remaining endurance is enough to execute the action during the next time tick
+     *
+     * @return
+     */
     public final boolean checkEndurance() {
-        int duration = Math.min(timeToComplete,  Clock.INSTANCE.getMINUTES_PER_TICK());
+        int duration = Math.min(timeToComplete, Clock.INSTANCE.getMINUTES_PER_TICK());
         int requiredEndurance = type.getRequiredEndurace(duration);
         return (actor.getUnit().getEndurance() >= requiredEndurance);
     }
@@ -97,7 +128,7 @@ public abstract class AbstractAction implements Action {
     @Override
     public void start() {
         state = ActionState.STARTED;
-        start = Math.max(start,  Clock.INSTANCE.getCurrentTime() -  Clock.INSTANCE.getMINUTES_PER_TICK());
+        start = Math.max(start, Clock.INSTANCE.getCurrentTime() - Clock.INSTANCE.getMINUTES_PER_TICK());
         actor.getUnit().setOpState(type.getEffectWhile());
     }
 
@@ -120,25 +151,24 @@ public abstract class AbstractAction implements Action {
 
     protected void delay() {
         state = ActionState.DELAYED;
-        int duration =  Clock.INSTANCE.getMINUTES_PER_TICK();
+        int duration = Clock.INSTANCE.getMINUTES_PER_TICK();
         int wear = (int) (type.getWearRate() * duration);
         actor.getUnit().changeEndurance(wear);
     }
 
     protected void abort() {
         state = ActionState.ABORTED;
-        int duration =  Clock.INSTANCE.getMINUTES_PER_TICK();
+        int duration = Clock.INSTANCE.getMINUTES_PER_TICK();
         int wear = (int) (type.getWearRate() * duration);
         actor.getUnit().changeEndurance(wear);
         actor.getUnit().setOpState(type.getPrecondition());
-        finish =  Clock.INSTANCE.getCurrentTime();
+        finish = Clock.INSTANCE.getCurrentTime();
     }
-    
+
     protected void resume() {
-        int duration =  Clock.INSTANCE.getMINUTES_PER_TICK();
+        int duration = Clock.INSTANCE.getMINUTES_PER_TICK();
         timeToComplete -= duration;
-        int wear = (int) (type.getWearRate() * duration);
-        actor.getUnit().changeEndurance(wear);
+        wear(duration);
         applyOngoingEffects();
     }
 
@@ -147,18 +177,18 @@ public abstract class AbstractAction implements Action {
         int duration = Math.min(timeToComplete, Clock.INSTANCE.getMINUTES_PER_TICK());
         timeToComplete = 0;
         state = ActionState.COMPLETED;
-        finish =  Clock.INSTANCE.getCurrentTime() -  Clock.INSTANCE.getMINUTES_PER_TICK() + duration;
+        finish = Clock.INSTANCE.getCurrentTime() - Clock.INSTANCE.getMINUTES_PER_TICK() + duration;
         actor.getUnit().setOpState(type.getEffectAfter());
-        int wear = (int) (type.getWearRate() * duration);
-        actor.getUnit().changeEndurance(wear);
+        wear(duration);
         applyEffects();
         // TODO if the action is completed before the end of the time tick, do something, eg wait... or ask the TacAI
     }
 
     public void wear(int duration) {
-        
+        int wear = (int) (type.getWearRate() * duration);
+        actor.getUnit().changeEndurance(wear);
     }
-    
+
     /**
      * Apply the effects of an action after completion
      */
@@ -171,11 +201,6 @@ public abstract class AbstractAction implements Action {
      */
     protected void applyOngoingEffects() {
         // do nothing, to be overriden by subclasses
-    }
-
-    @Override
-    public boolean checkPrecondition() {
-        return actor.getUnit().getOpState() == type.getPrecondition();
     }
 
     @Override
@@ -238,6 +263,6 @@ public abstract class AbstractAction implements Action {
 
     @Override
     public String toString() {
-        return "[" +  Clock.INSTANCE + "] #" + id + " > " + state + '{' + type + ": " + actor + '}';
+        return "[" + Clock.INSTANCE + "] #" + id + " > " + state + '{' + type + ": " + actor + '}';
     }
 }

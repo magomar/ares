@@ -66,14 +66,14 @@ public class UnitActor implements Actor {
         if (currentAction == null) {
             if (!pendingActions.isEmpty()) {
                 Action nextAction = pendingActions.peek();
-                if (nextAction.checkTimetoStart() && nextAction.checkPrecondition()) {
+                if (nextAction.canBeStarted()) {
                     currentAction = pendingActions.poll();
                     currentAction.start();
 //                    Tile destination = unit.getLocation();
 //                    space.putAction(destination, currentAction);
                 }
             } else {
-                if (unit.getEndurance() > ActionType.WAIT.getRequiredEndurace(Clock.INSTANCE.getMINUTES_PER_TICK())) {
+                if (unit.canExecute(ActionType.WAIT)) {
                     currentAction = new WaitAction(this, Clock.INSTANCE.getMINUTES_PER_TICK());
                 } else {
                     currentAction = new RestAction(this);

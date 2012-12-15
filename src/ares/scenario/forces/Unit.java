@@ -6,10 +6,13 @@ import ares.application.models.forces.KnownUnitModel;
 import ares.application.models.forces.UnitModel;
 import ares.data.jaxb.Availability;
 import ares.data.jaxb.Emphasis;
+import ares.engine.action.ActionType;
 import ares.engine.knowledge.KnowledgeCategory;
 import ares.engine.movement.MovementType;
 import ares.platform.model.ModelProvider;
 import ares.platform.model.UserRole;
+import ares.scenario.Clock;
+import ares.scenario.Scale;
 import ares.scenario.Scenario;
 import ares.scenario.assets.Asset;
 import ares.scenario.assets.AssetTrait;
@@ -192,10 +195,6 @@ public abstract class Unit implements ModelProvider<UnitModel> {
      */
     protected int endurance;
     /**
-     * Percentual representation of endurance (endurance * 100 / MAX_ENDURANCE)
-     */
-    protected int stamina;
-    /**
      * Distance in meters a unit is currently able to move antiTank standard average speed, before becoming exhausted.
      */
     protected int range;
@@ -277,7 +276,6 @@ public abstract class Unit implements ModelProvider<UnitModel> {
      */
     public void activate() {
         endurance = (MAX_ENDURANCE * 200 + MAX_ENDURANCE * readiness + MAX_ENDURANCE * supply) / 400;
-        stamina = endurance * 100 / MAX_ENDURANCE;
         maxRange = speed * MAX_ENDURANCE / 90 / 1000;
         range = speed * endurance / 90 / 1000;
         quality = (2 * proficiency + readiness) / 3;
@@ -293,12 +291,16 @@ public abstract class Unit implements ModelProvider<UnitModel> {
 
     public void changeEndurance(int amount) {
         endurance += amount;
+        maxRange = speed * MAX_ENDURANCE / 90 / 1000;
+        range = speed * endurance / 90 / 1000;
     }
 
     public void addAssets() {
+        throw new UnsupportedOperationException();
     }
 
     public void removeAssets() {
+        throw new UnsupportedOperationException();
     }
 
     public void setParent(Unit parent) {
@@ -345,10 +347,6 @@ public abstract class Unit implements ModelProvider<UnitModel> {
         return range;
     }
 
-    public int getStamina() {
-        return stamina;
-    }
-
     public int getId() {
         return id;
     }
@@ -387,6 +385,14 @@ public abstract class Unit implements ModelProvider<UnitModel> {
 
     public int getEndurance() {
         return endurance;
+    }
+
+    public double getAttackStrength() {
+        return efficacy * (double) (antiTank + antiPersonnel) / Scale.INSTANCE.getArea();
+    }
+
+    public double getDefenseStrength() {
+        return efficacy  * (double) defense / Scale.INSTANCE.getArea();
     }
 
     public int getEfficacy() {
@@ -477,18 +483,17 @@ public abstract class Unit implements ModelProvider<UnitModel> {
         return opState;
     }
 
+    public boolean canExecute(ActionType actionT) {
+        return endurance > actionT.getRequiredEndurace(Clock.INSTANCE.getMINUTES_PER_TICK());
+    }
+
     public void recover() {
         quality = (2 * proficiency + readiness) / 3;
         efficacy = (2 * proficiency + readiness + supply) / 4;
         int enduranceRestored = (MAX_ENDURANCE * 200 + MAX_ENDURANCE * readiness + MAX_ENDURANCE * supply) / 400;
         endurance = Math.min(endurance + enduranceRestored, enduranceRestored);
-        stamina = endurance * 100 / MAX_ENDURANCE;
         maxRange = speed * MAX_ENDURANCE / 90 / 1000;
         range = speed * endurance / 90 / 1000;
-//            Scale scale = scenario.getScale();
-//            attackStrength = (int) (efficacy * (antiTank + antiPersonnel) / scale.getArea());
-//            defenseStrength = (int) (efficacy * defense / scale.getArea());
-//            health = (int) (efficacy - 1 / 20);
     }
 
     protected static class UnitEntryComparator implements Comparator<Unit> {
@@ -520,7 +525,6 @@ public abstract class Unit implements ModelProvider<UnitModel> {
 //            }
 //        }
 //    }
-
     @Override
     public int hashCode() {
         int hash = 5;
@@ -546,11 +550,10 @@ public abstract class Unit implements ModelProvider<UnitModel> {
         }
         return true;
     }
- 
 
     @Override
     public String toString() {
-        return name + "(" + type.name() + ")." + movement + "." + opState + "[" + stamina + "]" + " @ " + location;
+        return name + "(" + type.name() + ")." + movement + "." + opState + " @ " + location;
     }
 
     public String toStringMultiline() {
@@ -561,7 +564,7 @@ public abstract class Unit implements ModelProvider<UnitModel> {
         sb.append("Movement Type: ").append(movement).append('\n');
         sb.append("Speed: ").append(speed * 60.0 / 1000).append('\n');
         sb.append("OpState: ").append(opState).append('\n');
-        sb.append("Stamina: ").append(stamina).append('\n');
+        sb.append("Stamina: ").append(endurance * 100 / MAX_ENDURANCE).append('\n');
         sb.append("Proficiency: ").append(proficiency).append('\n');
         sb.append("Readiness: ").append(readiness).append('\n');
         sb.append("Supply: ").append(supply).append('\n');

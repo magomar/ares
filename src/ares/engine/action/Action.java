@@ -23,26 +23,20 @@ public interface Action {
     public int getTimeToComplete();
 
     /**
-     * Checks if the planned start time is reached during the current time tick
-     *
-     * @return
+     * Checks the conditions required to start executing the action
+     * 
+     * @return true if the appropriate conditions are met
      */
-    public boolean checkTimetoStart();
+    public boolean canBeStarted();
 
     /**
-     * Checks if the estimated completion time is reached during the current time tick
-     *
-     * @return
+     * Checks the conditions required to complete the executon of an action
+     * 
+     * @return true if the appropriate conditions are met
      */
-    public boolean checkTimeToComplete();
-
-    /**
-     * Checks if the remaining endurance is enough to execute the action during the next time tick
-     *
-     * @return
-     */
-    public boolean checkEndurance();
-
+    public boolean canBeCompleted();
+    
+    
     /**
      * Changes the status of the action to {@link AresState.STARTED} and determines the actual start time, which may
      * differ from the planned start time. This method should be invoked only after checking the start time with
@@ -58,13 +52,6 @@ public interface Action {
      *
      */
     public void complete();
-
-    /**
-     * Checks if the acting unit has the right operational state to start this action ({@link OpState})
-     *
-     * @return
-     */
-    public boolean checkPrecondition();
 
     /**
      * Checks if the acting unit can be executed

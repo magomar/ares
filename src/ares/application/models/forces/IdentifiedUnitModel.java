@@ -1,6 +1,7 @@
 package ares.application.models.forces;
 
 import ares.engine.knowledge.KnowledgeCategory;
+import ares.scenario.Scale;
 import ares.scenario.forces.*;
 
 /**
@@ -23,13 +24,11 @@ public class IdentifiedUnitModel extends DetectedUnitModel {
     }
 
     public int getAttackStrength() {
-//        return (int) (unit.getEfficacy() * (unit.getAntiTank() + unit.getAntiPersonnel() / scale.getArea()));
-        return unit.getEfficacy() * (unit.getAntiTank() + unit.getAntiPersonnel());
+        return (int) unit.getAttackStrength();
     }
 
     public int getDefenseStrength() {
-//        return (int) ((unit.getEfficacy() * unit.getDefense() / scale.getArea()));
-        return unit.getEfficacy() * unit.getDefense();
+        return (int) unit.getDefenseStrength();
     }
 
     public int getHealth() {

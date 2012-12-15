@@ -14,6 +14,6 @@ public final class KnownUnitModel extends IdentifiedUnitModel {
     }
 
     public int getStamina() {
-        return unit.getStamina();
+        return unit.getEndurance() * 100 / Unit.MAX_ENDURANCE;
     }
 }

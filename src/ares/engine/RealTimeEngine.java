@@ -1,12 +1,10 @@
 package ares.engine;
 
-import ares.application.models.ScenarioModel;
 import ares.engine.actors.FormationActor;
 import ares.engine.actors.UnitActor;
 import ares.engine.algorithms.routing.AStar;
 import ares.engine.algorithms.routing.PathFinder;
 import ares.platform.model.AbstractBean;
-import ares.platform.model.UserRole;
 import ares.scenario.Clock;
 import ares.scenario.Scenario;
 import ares.scenario.board.Tile;
