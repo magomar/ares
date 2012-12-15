@@ -305,11 +305,10 @@ public abstract class Unit implements ModelProvider<UnitModel> {
         this.parent = parent;
     }
 
-//    public void setLocation(Tile location) {
-//        this.location = location;
-//    }
     public void move(Direction direction) {
+        location.remove(this);
         this.location = location.getNeighbor(direction);
+        location.add(this);
     }
 
     public void setOpState(OpState opState) {
