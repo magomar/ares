@@ -45,20 +45,6 @@ public interface Action {
      */
     public void start();
 
-    /**
-     * Changes the status of the action to {@link AresState.COMPLETED} and determines the actual finish time, which may
-     * differ from the planned finish time. This method should be invoked only after checking the time to complete with
-     * {@link checkTimeToComplete})
-     *
-     */
-    public void complete();
-
-    /**
-     * Checks if the acting unit can be executed
-     *
-     * @return
-     */
-    public boolean checkFeasibility();
 
 
 }

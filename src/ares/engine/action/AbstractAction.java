@@ -102,7 +102,7 @@ public abstract class AbstractAction implements Action {
 
     @Override
     public boolean canBeCompleted() {
-        return true;
+        return checkTimeToComplete();
     }
 
     /**
@@ -132,7 +132,23 @@ public abstract class AbstractAction implements Action {
         actor.getUnit().setOpState(type.getEffectWhile());
     }
 
-    @Override
+//    @Override
+//    public void execute() {
+//        if (checkFeasibility()) {
+//            if (checkEndurance()) {
+//                resume();
+//                if (canBeCompleted()) {
+//                    complete();
+//                }
+//            } else {
+//                delay();
+//            }
+//        } else {
+//            abort();
+//        }
+//    }
+
+        @Override
     public void execute() {
         if (checkFeasibility()) {
             if (checkEndurance()) {
@@ -148,7 +164,7 @@ public abstract class AbstractAction implements Action {
             abort();
         }
     }
-
+    
     protected void delay() {
         state = ActionState.DELAYED;
         int duration = Clock.INSTANCE.getMINUTES_PER_TICK();
@@ -172,7 +188,12 @@ public abstract class AbstractAction implements Action {
         applyOngoingEffects();
     }
 
-    @Override
+    /**
+     * Changes the status of the action to {@link AresState.COMPLETED} and determines the actual finish time, which may
+     * differ from the planned finish time. This method should be invoked only after checking the time to complete with
+     * {@link checkTimeToComplete})
+     *
+     */
     public void complete() {
         int duration = Math.min(timeToComplete, Clock.INSTANCE.getMINUTES_PER_TICK());
         timeToComplete = 0;
@@ -203,7 +224,11 @@ public abstract class AbstractAction implements Action {
         // do nothing, to be overriden by subclasses
     }
 
-    @Override
+    /**
+     * Checks if the acting unit can be executed
+     *
+     * @return
+     */
     public boolean checkFeasibility() {
         // do nothing, can be overriden by subclasses
         return true;
