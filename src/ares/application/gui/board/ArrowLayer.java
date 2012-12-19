@@ -20,7 +20,7 @@ public class ArrowLayer extends AbstractImageLayer {
 
     private SoftReference<BufferedImage> arrowImage = new SoftReference<>(null);
     private final static Map<Integer, Point> imageIndexes = fillIndexMap();
-    private Path lastPath;
+//    private Path lastPath;
 
     public ArrowLayer(AbstractImageLayer ail) {
         super(ail);
@@ -35,17 +35,14 @@ public class ArrowLayer extends AbstractImageLayer {
             //TODO set mouse icon to X or something
             return;
         }
+        // Paint the last segment of the arrow
         Node last = path.getLast();
-        // Paint the arrow
-        path.toString();
-        Direction from = last.getDirection();
-        Direction to = from.getOpposite();
-        paintTile(last.getTile(), getDirectionToImageIndex(true, from, to));
-        // paint the body
+        paintTile(last.getTile(), getDirectionToImageIndex(last.getDirection()));
+        // Paint the other segments
         for (Node current = last.getPrev(); current != null; last = current, current = last.getPrev()) {
-            from = current.getDirection();
-            to = last.getDirection().getOpposite();
-            paintTile(current.getTile(), getDirectionToImageIndex(false, from, to));
+            Direction from = current.getDirection();
+            Direction to = last.getDirection().getOpposite();
+            paintTile(current.getTile(), getDirectionToImageIndex(from, to));
         }
 
     }
@@ -72,16 +69,28 @@ public class ArrowLayer extends AbstractImageLayer {
      *
      * @see TerrainLayer#getTerrainToImageIndex(ares.application.models.board.TileModel)
      */
-    public int getDirectionToImageIndex(Boolean directed, Direction from, Direction to) {
+//    public int getDirectionToImageIndex(Boolean directed, Direction from, Direction to) {
+//        int index = 64 >>> from.ordinal();
+//        index |= 64 >>> to.ordinal();
+//        if (directed) {
+//            index = ~index;
+//            // from N/NE/SE to S/SW/NW
+//            if (from.ordinal() < to.ordinal()) {
+//                index &= 0x000000FF;
+//            }
+//        }
+//        return index;
+//    }
+    
+    private static final int[] arrowIndex = {76, 44, 108, 28, 92, 60};
+    
+    public int getDirectionToImageIndex(Direction to) {
+        return arrowIndex[to.ordinal()];
+    }
+
+    public int getDirectionToImageIndex(Direction from, Direction to) {
         int index = 64 >>> from.ordinal();
         index |= 64 >>> to.ordinal();
-        if (directed) {
-            index = ~index;
-            // from N/NE/SE to S/SW/NW
-            if (from.ordinal() < to.ordinal()) {
-                index &= 0x000000FF;
-            }
-        }
         return index;
     }
 
@@ -100,14 +109,26 @@ public class ArrowLayer extends AbstractImageLayer {
 
     private static Map<Integer, Point> fillIndexMap() {
         Map<Integer, Point> map = new HashMap<>();
-        Integer[] indexArrray = {65, 72, 68, 183, 66, 127,
-            33, 40, 36, 219, 34, 127,
-            96, 127, 127, 237, 127, 127,
-            17, 24, 20, -73, 18, 127,
-            80, 127, 127, -37, 127, 127,
-            48, 127, 127, -19, 127, 127,
-            127, 127, 127, 1, 127, 127,
-            9, 5, 12, 3, 10, 6,};
+//        Integer[] indexArrray = {
+//            65, 72, 68, 183, 66, 127,
+//            33, 40, 36, 219, 34, 127,
+//            96, 127, 127, 237, 127, 127,
+//            17, 24, 20, -73, 18, 127,
+//            80, 127, 127, -37, 127, 127,
+//            48, 127, 127, -19, 127, 127,
+//            127, 127, 127, 1, 127, 127,
+//            9, 5, 12, 3, 10, 6
+//        };
+        Integer[] indexArrray = {
+         64,  72,  68,  76,  66,  74, 
+         32,  40,  36,  44,  34,  42,
+         96, 104, 100, 108,  98, 106,
+         16,  24,  20,  28,  18,  26, 
+         80,  88,  84,  92,  82,  90,
+         48,  56,  52,  60,  50,  58,
+        112, 120, 116, 124, 114, 122,
+          8,   4,  12,   2,  10,   6
+        };
         int col = 0;
         int colMod = 6;
         int row = 0;

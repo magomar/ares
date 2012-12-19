@@ -3,6 +3,7 @@ package ares.application.controllers;
 import ares.application.boundaries.view.BoardViewer;
 import ares.application.boundaries.view.UnitInfoViewer;
 import ares.application.models.board.BoardGraphicsModel;
+import ares.application.views.MessagesHandler;
 import ares.engine.RealTimeEngine;
 import ares.engine.algorithms.routing.*;
 import ares.platform.controllers.AbstractSecondaryController;
@@ -13,6 +14,7 @@ import java.awt.Point;
 import java.awt.event.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.logging.Logger;
 
 /**
  * @author Mario Gomez <margomez at dsic.upv.es>
@@ -20,6 +22,7 @@ import java.beans.PropertyChangeListener;
  */
 public final class BoardController extends AbstractSecondaryController implements PropertyChangeListener {
 
+    private static final Logger LOG = Logger.getLogger(BoardController.class.getName());
     private Tile selectedTile;
     private Unit selectedUnit;
     private final BoardViewer boardView;
@@ -30,8 +33,10 @@ public final class BoardController extends AbstractSecondaryController implement
         super(mainController);
         this.boardView = mainController.getBoardView();
         this.unitView = mainController.getUnitView();
+        LOG.addHandler(mainController.getMessagesView().getHandler());
+        
         pathFinder = new AStar(BoardGraphicsModel.getTileRows() * BoardGraphicsModel.getTileColumns());
-
+        
         boardView.addMouseListener(new BoardMouseListener());
     }
 
@@ -54,7 +59,10 @@ public final class BoardController extends AbstractSecondaryController implement
                 Tile tile = scenario.getBoard().getTile(tilePoint.x, tilePoint.y);
                 boolean changeTile = !tile.equals(selectedTile);
                 if (me.isShiftDown() && selectedUnit != null) {
-                    boardView.updateArrowPath(scenario.getModel(mainController.getUserRole()), pathFinder.getPath(selectedUnit.getLocation(), tile));
+                    Path path = pathFinder.getPath(selectedUnit.getLocation(), tile);
+//                    path.relink();
+                    LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, path.toString());
+                    boardView.updateArrowPath(scenario.getModel(mainController.getUserRole()), path);
                 } else {
                     selectedTile = tile;
                     UnitsStack stack = tile.getUnitsStack();
@@ -80,8 +88,28 @@ public final class BoardController extends AbstractSecondaryController implement
             }
         }
     }
-    
+
+    private class BoardMouseMotionListener extends MouseMotionAdapter {
+
         @Override
+        public void mouseMoved(MouseEvent me) {
+            Scenario scenario = mainController.getScenario();
+            Point pixel = new Point(me.getX(), me.getY());
+            if (BoardGraphicsModel.isWithinImageRange(pixel)) {
+                Point tilePoint = BoardGraphicsModel.pixelToTileAccurate(pixel);
+                // XXX pixel to tile conversion is more expensive than two coordinates checks
+                if (!BoardGraphicsModel.validCoordinates(tilePoint.x, tilePoint.y)) {
+                    return;
+                }
+                Tile tile = scenario.getBoard().getTile(tilePoint.x, tilePoint.y);
+                Path path = pathFinder.getPath(selectedUnit.getLocation(), tile);
+                path.relink();
+                boardView.updateArrowPath(scenario.getModel(mainController.getUserRole()), path);
+            }
+        }
+    }
+
+    @Override
     public void propertyChange(PropertyChangeEvent evt) {
         if (RealTimeEngine.CLOCK_EVENT_PROPERTY.equals(evt.getPropertyName())) {
             if (selectedTile != null) {

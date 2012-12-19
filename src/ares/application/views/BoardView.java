@@ -135,7 +135,7 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
 
     @Override
     public void updateArrowPath(ScenarioModel s,Path path) {
-        gridLayer.updateGlobalImage(s);
+        arrowLayer.updateGlobalImage(s);
         ((ArrowLayer)arrowLayer).paintArrow(path);
     }
 }
