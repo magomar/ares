@@ -80,8 +80,28 @@ public final class BoardController extends AbstractSecondaryController implement
             }
         }
     }
-    
+
+    private class BoardMouseMotionListener extends MouseMotionAdapter {
+
         @Override
+        public void mouseMoved(MouseEvent me) {
+            Scenario scenario = mainController.getScenario();
+            Point pixel = new Point(me.getX(), me.getY());
+            if (BoardGraphicsModel.isWithinImageRange(pixel)) {
+                Point tilePoint = BoardGraphicsModel.pixelToTileAccurate(pixel);
+                // XXX pixel to tile conversion is more expensive than two coordinates checks
+                if (!BoardGraphicsModel.validCoordinates(tilePoint.x, tilePoint.y)) {
+                    return;
+                }
+                Tile tile = scenario.getBoard().getTile(tilePoint.x, tilePoint.y);
+                Path path = pathFinder.getPath(selectedUnit.getLocation(), tile);
+                path.relink();
+                boardView.updateArrowPath(scenario.getModel(mainController.getUserRole()), path);
+            }
+        }
+    }
+
+    @Override
     public void propertyChange(PropertyChangeEvent evt) {
         if (RealTimeEngine.CLOCK_EVENT_PROPERTY.equals(evt.getPropertyName())) {
             if (selectedTile != null) {
