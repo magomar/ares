@@ -26,6 +26,7 @@ public abstract class AbstractImageLayer extends javax.swing.JPanel {
 
     public AbstractImageLayer(AbstractImageLayer parentLayer) {
         this.parentLayer = parentLayer;
+        globalImage = parentLayer.getGlobalImage();
     }
 
     public void initialize(ScenarioModel s) {
@@ -57,21 +58,22 @@ public abstract class AbstractImageLayer extends javax.swing.JPanel {
     }
 
     /**
-     * Paints the globalImage if it's not null,
-     * if it is then paints a black rectangle.
-     * 
-     * globalImages shouldn't be null unless you know what you're doing,
-     * check your code!
-     * 
-     * @param g 
+     * Paints the globalImage if it's not null, if it is then paints a black rectangle.
+     *
+     * globalImages shouldn't be null unless you know what you're doing, check your code!
+     *
+     * @param g
      */
     @Override
     public void paintComponent(Graphics g) {
+        if (parentLayer != null) {
+            parentLayer.paintComponent(g);
+        }
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         if (globalImage != null) {
             g2.drawImage(globalImage, 0, 0, this);
-        } else{
+        } else {
             g2.setBackground(Color.BLACK);
             g2.fillRect(0, 0, this.getWidth(), this.getHeight());
         }
@@ -84,5 +86,4 @@ public abstract class AbstractImageLayer extends javax.swing.JPanel {
     public BufferedImage getGlobalImage() {
         return globalImage;
     }
-    
 }

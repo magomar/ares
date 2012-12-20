@@ -22,13 +22,14 @@ public class ArrowLayer extends AbstractImageLayer {
     private final static Map<Integer, Point> imageIndexes = fillIndexMap();
 //    private Path lastPath;
 
-    public ArrowLayer(AbstractImageLayer ail) {
-        super(ail);
+    public ArrowLayer(AbstractImageLayer parentLayer) {
+        super(parentLayer);
     }
 
-    @Override
-    public void initialize(ScenarioModel s) {
-    }
+//    @Override
+//    public void initialize(ScenarioModel s) {
+//        
+//    }
 
     public void paintArrow(Path path) {
         if (path == null) {
@@ -50,7 +51,7 @@ public class ArrowLayer extends AbstractImageLayer {
     public void paintTile(Tile tile, Integer index) {
         Point subImagePos = imageIndexes.get(index);
         if (subImagePos != null) {
-            Graphics2D g2 = parentLayer.getGlobalImage().createGraphics();
+            Graphics2D g2 = globalImage.createGraphics();
 
             if (arrowImage.get() == null) {
                 arrowImage = new SoftReference<>(loadImage(BoardGraphicsModel.getImageProfile().getArrowFilename()));
@@ -64,7 +65,6 @@ public class ArrowLayer extends AbstractImageLayer {
         }
 
     }
-
     /**
      *
      * @see TerrainLayer#getTerrainToImageIndex(ares.application.models.board.TileModel)
@@ -81,9 +81,8 @@ public class ArrowLayer extends AbstractImageLayer {
 //        }
 //        return index;
 //    }
-    
     private static final int[] arrowIndex = {76, 44, 108, 28, 92, 60};
-    
+
     public int getDirectionToImageIndex(Direction to) {
         return arrowIndex[to.ordinal()];
     }
@@ -102,10 +101,10 @@ public class ArrowLayer extends AbstractImageLayer {
     public void paintTile(TileModel t) {
     }
 
-    @Override
-    public void paintComponent(Graphics g) {
-        parentLayer.paintComponent(g);
-    }
+//    @Override
+//    public void paintComponent(Graphics g) {
+//        parentLayer.paintComponent(g);
+//    }
 
     private static Map<Integer, Point> fillIndexMap() {
         Map<Integer, Point> map = new HashMap<>();
@@ -120,14 +119,14 @@ public class ArrowLayer extends AbstractImageLayer {
 //            9, 5, 12, 3, 10, 6
 //        };
         Integer[] indexArrray = {
-         64,  72,  68,  76,  66,  74, 
-         32,  40,  36,  44,  34,  42,
-         96, 104, 100, 108,  98, 106,
-         16,  24,  20,  28,  18,  26, 
-         80,  88,  84,  92,  82,  90,
-         48,  56,  52,  60,  50,  58,
-        112, 120, 116, 124, 114, 122,
-          8,   4,  12,   2,  10,   6
+            64, 72, 68, 76, 66, 74,
+            32, 40, 36, 44, 34, 42,
+            96, 104, 100, 108, 98, 106,
+            16, 24, 20, 28, 18, 26,
+            80, 88, 84, 92, 82, 90,
+            48, 56, 52, 60, 50, 58,
+            112, 120, 116, 124, 114, 122,
+            8, 4, 12, 2, 10, 6
         };
         int col = 0;
         int colMod = 6;
@@ -145,4 +144,5 @@ public class ArrowLayer extends AbstractImageLayer {
 
         return map;
     }
+
 }
