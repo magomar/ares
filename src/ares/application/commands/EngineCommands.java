@@ -18,7 +18,7 @@ public enum EngineCommands implements Command {
     private final String desc;
     private final Integer mnemonic;
 
-    private EngineCommands(String text, String desc, Integer mnemonic) {
+    private EngineCommands(final String text, final String desc, final Integer mnemonic) {
         this.text = text;
         this.desc = desc;
         this.mnemonic = mnemonic;

@@ -18,27 +18,46 @@ public enum MovementType {
     MOTORIZED(2, 6),
     MIXED(1, 3),
     FOOT(1, 3);
-    private final int minCost;
-    private final int maxCost;
+    // Minimum cost to expend when moving offroad
+    private final int minOffRoadCost;
+    // Maximuum cost to expend when moving offroad
+    private final int maxOffRoadCost;
+    private final int minOnRoadCost;
+    private final int maxOnRoadCost;
     public static final Set<MovementType> MOBILE_LAND_UNIT = EnumSet.of(AMPHIBIOUS, MOTORIZED, MIXED, FOOT);
 
     private MovementType(final int minCost, final int maxCost) {
-        this.minCost = minCost;
-        this.maxCost = maxCost;
+        this.minOffRoadCost = minCost;
+        this.maxOffRoadCost = maxCost;
+        if (minCost > 1) {
+            minOnRoadCost = minCost / 2;
+            maxOnRoadCost = maxCost / 2;
+        } else {
+            minOnRoadCost = minCost;
+            maxOnRoadCost = maxCost;
+        }
     }
 
     private MovementType() {
-        minCost = maxCost = 1;
+        minOffRoadCost = maxOffRoadCost = minOnRoadCost = maxOnRoadCost = 1;
     }
 
-    public int getMaxCost() {
-        return maxCost;
+    public int getMaxOffRoadCost() {
+        return maxOffRoadCost;
     }
 
-    public int getMinCost() {
-        return minCost;
+    public int getMinOffRoadCost() {
+        return minOffRoadCost;
     }
-    
+
+    public int getMaxOnRoadCost() {
+        return maxOnRoadCost;
+    }
+
+    public int getMinOnRoadCost() {
+        return minOnRoadCost;
+    }
+
     public boolean isMobileLandUnit() {
         return MovementType.MOBILE_LAND_UNIT.contains(this);
     }
