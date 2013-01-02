@@ -3,6 +3,7 @@ package ares.application.controllers;
 import ares.application.boundaries.view.BoardViewer;
 import ares.application.boundaries.view.UnitInfoViewer;
 import ares.application.models.board.BoardGraphicsModel;
+import ares.application.views.MessagesHandler;
 import ares.engine.RealTimeEngine;
 import ares.engine.algorithms.routing.*;
 import ares.platform.controllers.AbstractSecondaryController;
@@ -13,6 +14,7 @@ import java.awt.Point;
 import java.awt.event.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.logging.Logger;
 
 /**
  * @author Mario Gomez <margomez at dsic.upv.es>
@@ -20,6 +22,7 @@ import java.beans.PropertyChangeListener;
  */
 public final class BoardController extends AbstractSecondaryController implements PropertyChangeListener {
 
+    private static final Logger LOG = Logger.getLogger(BoardController.class.getName());
     private Tile selectedTile;
     private Unit selectedUnit;
     private final BoardViewer boardView;
@@ -30,8 +33,10 @@ public final class BoardController extends AbstractSecondaryController implement
         super(mainController);
         this.boardView = mainController.getBoardView();
         this.unitView = mainController.getUnitView();
+        LOG.addHandler(mainController.getMessagesView().getHandler());
+        
         pathFinder = new AStar(BoardGraphicsModel.getTileRows() * BoardGraphicsModel.getTileColumns());
-
+        
         boardView.addMouseListener(new BoardMouseListener());
     }
 
@@ -54,7 +59,10 @@ public final class BoardController extends AbstractSecondaryController implement
                 Tile tile = scenario.getBoard().getTile(tilePoint.x, tilePoint.y);
                 boolean changeTile = !tile.equals(selectedTile);
                 if (me.isShiftDown() && selectedUnit != null) {
-                    boardView.updateArrowPath(scenario.getModel(mainController.getUserRole()), pathFinder.getPath(selectedUnit.getLocation(), tile));
+                    Path path = pathFinder.getPath(selectedUnit.getLocation(), tile);
+//                    path.relink();
+                    LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, path.toString());
+                    boardView.updateArrowPath(scenario.getModel(mainController.getUserRole()), path);
                 } else {
                     selectedTile = tile;
                     UnitsStack stack = tile.getUnitsStack();

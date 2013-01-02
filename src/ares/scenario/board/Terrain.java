@@ -63,8 +63,6 @@ public enum Terrain {
     public final static Terrain[] ALL_TERRAINS = Terrain.values();
 
     private static final int[] subImageIndex = new int[]{
-        
-       
          64,  72,  68,  76,  66,  74,  70,  78, 127, 127,
          32,  40,  36,  44,  34,  42,  38,  46, 127, 127,
          96, 104, 100, 108,  98, 106, 102, 110, 127, 127,

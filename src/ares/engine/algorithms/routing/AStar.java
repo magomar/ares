@@ -1,12 +1,13 @@
 package ares.engine.algorithms.routing;
 
 import ares.application.models.board.*;
+import ares.scenario.board.Board;
 import ares.scenario.board.Direction;
 import ares.scenario.board.Tile;
 import java.util.*;
 
 /**
- * 
+ *
  * @author Heine <heisncfr@inf.upv.es>
  */
 public class AStar extends AbstractPathFinder {
@@ -50,16 +51,16 @@ public class AStar extends AbstractPathFinder {
         current.setFrom(Direction.C);
         map.put(current.getTile().getIndex(), current);
         openSet.add(current);
-        
+
         start = current; // save it for the double linked Path
-        
+
         while (!openSet.isEmpty()) {
 
             //Update current node
             current = openSet.poll();
 
             if (current.equals(goal)) {
-                return new Path(start,current);
+                return new Path(start, current);
             }
 
             closedSet.set(current.getTile().getIndex());
@@ -68,7 +69,7 @@ public class AStar extends AbstractPathFinder {
                 if (closedSet.get(index)) {
                     continue;
                 }
-                double tentativeG = current.getG() + current.getTile().getMoveCost(iter.getKey()).getActualCost(orig.getTopUnit(), iter.getValue(), iter.getKey().getOpposite(), avoidingEnemies(), getPathType()==SHORTEST);
+                double tentativeG = current.getG() + current.getTile().getMoveCost(iter.getKey()).getActualCost(orig.getTopUnit(), iter.getValue(), iter.getKey().getOpposite(), avoidingEnemies(), getPathType() == SHORTEST);
 
                 Node neighbour = map.get(index);
                 if (neighbour == null) {
@@ -81,6 +82,10 @@ public class AStar extends AbstractPathFinder {
                         openSet.add(neighbour);
                     }
                 } else if (neighbour.getG() > tentativeG) {
+                    Tile fromTile = current.getTile();
+                    Tile toTile = neighbour.getTile();
+                    Direction dir = Board.getDirBetween(fromTile, toTile);
+                    neighbour.setFrom(dir.getOpposite());
                     neighbour.setPrev(current);
                     neighbour.setG(tentativeG);
                     neighbour.setF(tentativeG + heuristic.getCost(neighbour.getTile().getCoordinates(), dest.getCoordinates()));

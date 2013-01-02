@@ -14,8 +14,8 @@ import java.util.*;
  */
 public class MovementCost {
     public static final int IMPASSABLE = Integer.MAX_VALUE;
-    public static final int MAX_ROAD_COST = 3;
-    public static final int MIN_ROAD_COST = 1;
+//    public static final int MAX_ROAD_COST = 3;
+//    public static final int MIN_ROAD_COST = 1;
     /**
      * Pre-computed movement costs. This map links the different movement types to their costs for a given destination
      * (tile and direction). Movement cost is specified in terms of how many times the cost is reduced. That is, a cost
@@ -108,14 +108,14 @@ public class MovementCost {
         if (!offRoadMovement) {
             // Road-based movement
             for (MovementType moveType : EnumSet.range(MovementType.MOTORIZED, MovementType.FOOT)) {
-                movementCost.put(moveType, MIN_ROAD_COST);
+                movementCost.put(moveType, moveType.getMinOnRoadCost());
             }
         } else {
             //Off-road movement
-            int amphibiousCost = MovementType.AMPHIBIOUS.getMinCost();
-            int motorizedCost = MovementType.MOTORIZED.getMinCost();
-            int mixedCost = MovementType.MIXED.getMinCost();
-            int footCost = MovementType.FOOT.getMinCost();
+            int amphibiousCost = MovementType.AMPHIBIOUS.getMinOffRoadCost();
+            int motorizedCost = MovementType.MOTORIZED.getMinOffRoadCost();
+            int mixedCost = MovementType.MIXED.getMinOffRoadCost();
+            int footCost = MovementType.FOOT.getMinOffRoadCost();
             for (Terrain tileTerrain : tileTerrainSet) {
                 motorizedCost += tileTerrain.getMotorized();
                 mixedCost += tileTerrain.getMixed();
@@ -130,10 +130,10 @@ public class MovementCost {
                     amphibiousCost += sideTerrain.getAmphibious();
                 }
             }
-            motorizedCost = Math.min(motorizedCost, Math.min(MovementType.MOTORIZED.getMaxCost(), IMPASSABLE));
-            mixedCost = Math.min(motorizedCost, Math.min(MovementType.MIXED.getMaxCost(), IMPASSABLE));
-            footCost = Math.min(motorizedCost, Math.min(MovementType.FOOT.getMaxCost(), IMPASSABLE));
-            amphibiousCost = Math.min(motorizedCost, Math.min(MovementType.AMPHIBIOUS.getMaxCost(), IMPASSABLE));
+            motorizedCost = Math.min(motorizedCost, Math.min(MovementType.MOTORIZED.getMaxOffRoadCost(), IMPASSABLE));
+            mixedCost = Math.min(motorizedCost, Math.min(MovementType.MIXED.getMaxOffRoadCost(), IMPASSABLE));
+            footCost = Math.min(motorizedCost, Math.min(MovementType.FOOT.getMaxOffRoadCost(), IMPASSABLE));
+            amphibiousCost = Math.min(motorizedCost, Math.min(MovementType.AMPHIBIOUS.getMaxOffRoadCost(), IMPASSABLE));
             movementCost.put(MovementType.MOTORIZED, motorizedCost);
             movementCost.put(MovementType.MIXED, mixedCost);
             movementCost.put(MovementType.FOOT, footCost);
@@ -155,7 +155,7 @@ public class MovementCost {
         int cost;
         Direction toDir = from.getOpposite();
         Set<Terrain> sideTerrain = destination.getSideTerrain().get(toDir);
-        MovementType movementType = unit.getMovement();
+        MovementType moveType = unit.getMovement();
         // TODO check for enemies
         if (!unit.getForce().equals(destination.getOwner()) && destination.getSurfaceUnits().size() > 0) {
             return IMPASSABLE;
@@ -164,7 +164,7 @@ public class MovementCost {
             return IMPASSABLE;
         }
 
-        if (MovementType.MOBILE_LAND_UNIT.contains(movementType)
+        if (MovementType.MOBILE_LAND_UNIT.contains(moveType)
                 && (sideTerrain.contains(Terrain.ROAD) || sideTerrain.contains(Terrain.IMPROVED_ROAD))) {
             int density = Scale.INSTANCE.getCriticalDensity();
             int numHorsesAndVehicles = 0;
@@ -173,9 +173,9 @@ public class MovementCost {
                     numHorsesAndVehicles += ((LandUnit) surfaceUnit).getNumVehiclesAndHorses();
                 }
             }
-            cost = Math.max(ONE, Math.min(MAX_ROAD_COST, numHorsesAndVehicles / density));
+            cost = Math.max(ONE, Math.min(moveType.getMaxOnRoadCost(), numHorsesAndVehicles / density));
         } else {
-            cost = movementCost.get(movementType);
+            cost = movementCost.get(moveType);
         }
         // TODO check for mud and snow
 
@@ -186,11 +186,11 @@ public class MovementCost {
     }
 
     public int getActualCost(Unit unit, Tile destination, Direction fromDir, boolean avoidEnemies, boolean shortest) {
-
+        MovementType moveType = unit.getMovement();
         int penalty = 0, cost;
         if (shortest) {
             // If it's possible, then go for it
-            int d = movementCost.get(unit.getMovement());
+            int d = movementCost.get(moveType);
             return (d < IMPASSABLE) ? 1 : IMPASSABLE;
         }
         if (destination.hasEnemies(unit.getForce())) {
@@ -203,7 +203,7 @@ public class MovementCost {
 
         Set<Terrain> sideTerrain = destination.getSideTerrain().get(fromDir);
 
-        if (MovementType.MOBILE_LAND_UNIT.contains(unit.getMovement())
+        if (MovementType.MOBILE_LAND_UNIT.contains(moveType)
                 && (sideTerrain.contains(Terrain.ROAD) || sideTerrain.contains(Terrain.IMPROVED_ROAD))) {
             int density = Scale.INSTANCE.getCriticalDensity(), numHorsesAndVehicles = 0;
             // If destination isn't oberved SurfaceUnits will be empty
@@ -212,7 +212,7 @@ public class MovementCost {
                     numHorsesAndVehicles += ((LandUnit) su).getNumVehiclesAndHorses();
                 }
             }
-            cost = Math.max(ONE, Math.min(MAX_ROAD_COST, numHorsesAndVehicles / density));
+            cost = Math.max(ONE, Math.min(moveType.getMaxOnRoadCost(), numHorsesAndVehicles / density));
         } else {
             cost = movementCost.get(unit.getMovement());
         }
