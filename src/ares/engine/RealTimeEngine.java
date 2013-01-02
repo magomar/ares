@@ -85,6 +85,12 @@ public class RealTimeEngine extends AbstractBean {
             phase = phase.getNext();
         } while (phase != Phase.ACT);
 
+        if (clockEventTypes.contains(ClockEventType.DAY)) {
+            LOG.log(Level.INFO, "++++++++++ New Day: {0}", Clock.INSTANCE.getTurn());
+            for (UnitActor actor : unitActors) {
+                actor.getUnit().updateMaxValues();
+            }
+        }
         if (clockEventTypes.contains(ClockEventType.TURN)) {
             LOG.log(Level.INFO, "++++++++++ New Turn: {0}", Clock.INSTANCE.getTurn());
             running = false;
