@@ -133,7 +133,7 @@ public class Clock {
     }
 
     public String toStringVerbose() {
-        return FULL_DATE_FORMAT.format(now.getTime()) + " (Turn " + turn + ")   Ends: "
+        return FULL_DATE_FORMAT.format(now.getTime()) + " (Turn " + turn + ")\nEnds: "
                 + FULL_DATE_FORMAT.format(ends.getTime()) + "(Turn " + finalTurn + ")";
     }
 

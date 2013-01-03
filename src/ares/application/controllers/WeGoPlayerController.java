@@ -20,7 +20,7 @@ public class WeGoPlayerController {
     // Views
     private final AbstractAresApplication mainView;
     private final BoardViewer boardView;
-    private final UnitInfoViewer unitView;
+    private final UnitInfoViewer infoView;
     private final CommandBarViewer menuView;
     private final MessagesViewer messagesView;
     private final CommandBarViewer welcomeScreenView;
@@ -45,7 +45,7 @@ public class WeGoPlayerController {
         this.mainView = mainView;
 
         this.boardView = boardView;
-        this.unitView = unitView;
+        this.infoView = unitView;
         this.menuView = menuView;
         this.messagesView = messagesView;
         this.welcomeScreenView = welcomeScreenV;
@@ -91,8 +91,8 @@ public class WeGoPlayerController {
         return boardView;
     }
 
-    public UnitInfoViewer getUnitView() {
-        return unitView;
+    public UnitInfoViewer getInfoView() {
+        return infoView;
     }
 
     public CommandBarViewer getMenuView() {
