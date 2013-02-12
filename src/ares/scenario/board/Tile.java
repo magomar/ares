@@ -77,7 +77,7 @@ public final class Tile implements ModelProvider<TileModel> {
 //    private int y;
     private Point coordinates;
     /**
-     * Unique identifier obtained from coordinates:  index(x,y) = x * board.width + y 
+     * Unique identifier obtained from coordinates: index(x,y) = x * board.width + y
      */
     private int index;
     /**
@@ -95,7 +95,7 @@ public final class Tile implements ModelProvider<TileModel> {
     /**
      * Minimun movement cost per each movement type
      */
-    private Map<MovementType, Integer> minMoveCost;
+    private MovementCost minMoveCost;
     /**
      * Modifiers to combat due to terrain
      */
@@ -105,7 +105,6 @@ public final class Tile implements ModelProvider<TileModel> {
      * the board), then there would be no entry for that direction.
      */
     private Map<Direction, Tile> neighbors;
-
     private final Map<UserRole, KnowledgeLevel> knowledgeLevels;
     private final Map<KnowledgeCategory, TileModel> models;
 
@@ -265,7 +264,7 @@ public final class Tile implements ModelProvider<TileModel> {
     public Tile getNeighbor(Direction direction) {
         return neighbors.get(direction);
     }
-    
+
     public Set<TerrainFeatures> getTerrainFeatures() {
         return features;
     }
@@ -321,12 +320,12 @@ public final class Tile implements ModelProvider<TileModel> {
 //    public int getY() {
 //        return y;
 //    }
-//    public Map<Direction, MovementCost> getMoveCosts() {
-//        return moveCosts;
-//    }
 //
 //    public Map<Direction, CombatModifier> getCombatModifiers() {
 //        return combatModifiers;
+//    }
+//    public Map<Direction, MovementCost> getMoveCosts() {
+//        return moveCosts;
 //    }
     public MovementCost getMoveCost(Direction fromDir) {
         return moveCosts.get(fromDir);
@@ -369,8 +368,6 @@ public final class Tile implements ModelProvider<TileModel> {
         }
         return true;
     }
-    
-    
 
 //    @Override
 //    public int hashCode() {
@@ -397,7 +394,6 @@ public final class Tile implements ModelProvider<TileModel> {
 //        }
 //        return true;
 //    }
-
     public KnowledgeLevel getKnowledgeLevel(UserRole role) {
         return knowledgeLevels.get(role);
     }
@@ -431,5 +427,22 @@ public final class Tile implements ModelProvider<TileModel> {
         }
 
         return sb.toString();
+    }
+
+    private void computeMinCosts() {
+        Map<MovementType, Integer> movementCost = new HashMap<>();
+        for (MovementType mt : MovementType.values()) {
+            movementCost.put(mt, MovementCost.IMPASSABLE);
+        }
+
+        for (MovementCost mc : moveCosts.values()) {
+            for (Map.Entry<MovementType, Integer> entry : mc.getPrecomputedCosts().entrySet()) {
+                MovementType mt = entry.getKey();
+                int cost = entry.getValue();
+                if (cost < movementCost.get(mt)) {
+                    movementCost.put(mt, cost);
+                }
+            }
+        }
     }
 }
