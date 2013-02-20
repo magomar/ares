@@ -32,7 +32,7 @@ public final class BoardController extends AbstractSecondaryController implement
     public BoardController(WeGoPlayerController mainController) {
         super(mainController);
         this.boardView = mainController.getBoardView();
-        this.unitView = mainController.getUnitView();
+        this.unitView = mainController.getInfoView();
         LOG.addHandler(mainController.getMessagesView().getHandler());
         
         pathFinder = new AStar(BoardGraphicsModel.getTileRows() * BoardGraphicsModel.getTileColumns());

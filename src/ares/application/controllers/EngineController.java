@@ -3,12 +3,14 @@ package ares.application.controllers;
 import ares.application.boundaries.view.BoardViewer;
 import ares.application.boundaries.view.CommandBarViewer;
 import ares.application.boundaries.view.MessagesViewer;
+import ares.application.boundaries.view.UnitInfoViewer;
 import ares.application.commands.EngineCommands;
 import ares.application.views.MessagesHandler;
 import ares.engine.ClockEvent;
 import ares.engine.ClockEventType;
 import ares.engine.RealTimeEngine;
 import ares.platform.controllers.AbstractSecondaryController;
+import ares.scenario.Clock;
 import ares.scenario.Scenario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -27,6 +29,7 @@ public final class EngineController extends AbstractSecondaryController implemen
     private final CommandBarViewer menuView;
     private final MessagesViewer messagesView;
     private final BoardViewer boardView;
+    private final UnitInfoViewer infoView;
     // Entities (bussines logic), they interact with the model providers and provide models to the views
     private final RealTimeEngine engine;
 
@@ -36,6 +39,7 @@ public final class EngineController extends AbstractSecondaryController implemen
         this.menuView = mainController.getMenuView();
         this.messagesView = mainController.getMessagesView();
         this.boardView = mainController.getBoardView();
+        this.infoView = mainController.getInfoView();
         LOG.addHandler(messagesView.getHandler());
 
         menuView.addActionListener(EngineCommands.START.name(), new StartActionListener());
@@ -52,10 +56,9 @@ public final class EngineController extends AbstractSecondaryController implemen
         if (RealTimeEngine.CLOCK_EVENT_PROPERTY.equals(evt.getPropertyName())) {
             ClockEvent clockEvent = (ClockEvent) evt.getNewValue();
             Scenario scenario =engine.getScenario();
-//            mainView.setTitle("ARES   " + scenario.getName() + "   " + Clock.INSTANCE.toStringVerbose()
-//                    + "   Role: " + userRole);
             boardView.updateScenario(scenario.getModel(mainController.getUserRole()));
-
+            String scenInfo = scenario.getName() + "\n" + Clock.INSTANCE.toStringVerbose()+ "\nRole: " + mainController.getUserRole();
+            infoView.updateScenInfo(scenInfo);
             if (clockEvent.getEventTypes().contains(ClockEventType.TURN)) {
                 menuView.setCommandEnabled(EngineCommands.PAUSE.getName(), false);
                 menuView.setCommandEnabled(EngineCommands.NEXT.getName(), true);

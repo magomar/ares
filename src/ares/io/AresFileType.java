@@ -1,8 +1,5 @@
 package ares.io;
 
-import java.io.File;
-import java.io.FileFilter;
-
 /**
  *
  * @author Mario Gomez <margomez at dsic.upv.es>

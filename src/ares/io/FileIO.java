@@ -1,5 +1,8 @@
 package ares.io;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -30,10 +33,12 @@ import org.xml.sax.helpers.XMLReaderFactory;
  */
 public class FileIO<E extends Enum<E> & FileType> {
 
+    private static final Logger LOG = Logger.getLogger(FileIO.class.getName());
     private String namespace;
     private Unmarshaller unmarshaller;
     private Marshaller marshaller;
     private Path basePath;
+    ObjectMapper mapper;
 
     public FileIO(Class<E> fileTypeEnumClass, String jaxbContextPath, String namespace) {
         this(System.getProperty("user.dir"), fileTypeEnumClass, jaxbContextPath, namespace);
@@ -56,8 +61,10 @@ public class FileIO<E extends Enum<E> & FileType> {
             marshaller = jaxbContext.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
         } catch (JAXBException ex) {
-            Logger.getLogger(FileIO.class.getName()).log(Level.SEVERE, null, ex);
+            LOG.log(Level.SEVERE, null, ex);
         }
+        mapper = new ObjectMapper();
+        mapper.setSerializationInclusion(JsonInclude.Include.NON_EMPTY);
     }
 
     public Path getBasePath() {
@@ -80,10 +87,24 @@ public class FileIO<E extends Enum<E> & FileType> {
         return getAbsolutePath(relativePath, fileName).toFile();
     }
 
-    
 //    public File getFile(Path relativePath, String fileName) {
 //        return getAbsolutePath(relativePath.toString(), fileName).toFile();
 //    }
+    /**
+     * Unmarshalls XML element from file into java object
+     *
+     * @param xmlFile the XML file to be unmarshalled
+     * @return
+     */
+    public <T> T unmarshallJson(File file, Class<T> c) {
+        T object = null;
+        try {
+            object = mapper.readValue(file, c);
+        } catch (IOException ex) {
+            LOG.log(Level.SEVERE, null, ex);
+        }
+        return object;
+    }
 
     /**
      * Unmarshalls XML element from file into java object
@@ -97,7 +118,7 @@ public class FileIO<E extends Enum<E> & FileType> {
 //            StreamSource source = new StreamSource(xmlFile);
 //            object = unmarshaller.unmarshal(source);
 //        } catch (JAXBException ex) {
-//            Logger.getLogger(FileIO.class.getName()).log(Level.SEVERE, null, ex);
+//            LOG.log(Level.SEVERE, null, ex);
 //            object = unmarshallAddingNamespace(xmlFile);
 //        }
         object = unmarshallAddingNamespace(xmlFile);
@@ -124,15 +145,33 @@ public class FileIO<E extends Enum<E> & FileType> {
                     SAXSource source = new SAXSource(inFilter, is);
                     object = unmarshaller.unmarshal(source);
                 } catch (FileNotFoundException ex) {
-                    Logger.getLogger(FileIO.class.getName()).log(Level.SEVERE, null, ex);
+                    LOG.log(Level.SEVERE, null, ex);
                 }
             } catch (SAXException ex) {
-                Logger.getLogger(FileIO.class.getName()).log(Level.SEVERE, null, ex);
+                LOG.log(Level.SEVERE, null, ex);
             }
         } catch (JAXBException ex) {
-            Logger.getLogger(FileIO.class.getName()).log(Level.SEVERE, null, ex);
+            LOG.log(Level.SEVERE, null, ex);
         }
         return object;
+    }
+
+    /**
+     * Marshalls Java object into JSON file
+     *
+     * @param object object to be marshalled
+     * @param file file to save the marshalled object
+     * @return
+     */
+    public File marshallJson(Object object, File file) {
+        ObjectWriter writer = mapper.writer().withDefaultPrettyPrinter();
+        try {
+            writer.writeValue(file, object);
+            return file;
+        } catch (IOException ex) {
+            LOG.log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 
     /**
@@ -149,10 +188,10 @@ public class FileIO<E extends Enum<E> & FileType> {
                 marshaller.marshal(object, fos);
                 return xmlFile;
             } catch (IOException ex) {
-                Logger.getLogger(FileIO.class.getName()).log(Level.SEVERE, null, ex);
+                LOG.log(Level.SEVERE, null, ex);
             }
         } catch (JAXBException ex) {
-            Logger.getLogger(FileIO.class.getName()).log(Level.SEVERE, null, ex);
+            LOG.log(Level.SEVERE, null, ex);
         }
         return null;
     }
@@ -176,14 +215,14 @@ public class FileIO<E extends Enum<E> & FileType> {
                     marshaller.marshal(object, zos);
                     return zipFile;
                 } catch (IOException ex) {
-                    Logger.getLogger(FileIO.class.getName()).log(Level.SEVERE, null, ex);
+                    LOG.log(Level.SEVERE, null, ex);
                 }
             } catch (FileNotFoundException ex) {
-                Logger.getLogger(FileIO.class.getName()).log(Level.SEVERE, null, ex);
+                LOG.log(Level.SEVERE, null, ex);
             }
 
         } catch (JAXBException ex) {
-            Logger.getLogger(FileIO.class.getName()).log(Level.SEVERE, null, ex);
+            LOG.log(Level.SEVERE, null, ex);
         }
         return null;
     }
@@ -206,14 +245,14 @@ public class FileIO<E extends Enum<E> & FileType> {
                     marshaller.marshal(object, gz);
                     return gzFile;
                 } catch (IOException ex) {
-                    Logger.getLogger(FileIO.class.getName()).log(Level.SEVERE, null, ex);
+                    LOG.log(Level.SEVERE, null, ex);
                 }
             } catch (FileNotFoundException ex) {
-                Logger.getLogger(FileIO.class.getName()).log(Level.SEVERE, null, ex);
+                LOG.log(Level.SEVERE, null, ex);
             }
 
         } catch (JAXBException ex) {
-            Logger.getLogger(FileIO.class.getName()).log(Level.SEVERE, null, ex);
+            LOG.log(Level.SEVERE, null, ex);
         }
         return null;
     }

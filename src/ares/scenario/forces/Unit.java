@@ -11,6 +11,7 @@ import ares.engine.knowledge.KnowledgeCategory;
 import ares.engine.movement.MovementType;
 import ares.platform.model.ModelProvider;
 import ares.platform.model.UserRole;
+import ares.platform.util.MathUtils;
 import ares.scenario.Clock;
 import ares.scenario.Scale;
 import ares.scenario.Scenario;
@@ -195,6 +196,12 @@ public abstract class Unit implements ModelProvider<UnitModel> {
      */
     protected int endurance;
     /**
+     * Represents the maximun physical resistence of a unit when fully rested, given the actual readiness and supplies.
+     *
+     * @see #endurance
+     */
+    protected int maxEndurance;
+    /**
      * Distance in meters a unit is currently able to move antiTank standard average speed, before becoming exhausted.
      */
     protected int range;
@@ -275,23 +282,42 @@ public abstract class Unit implements ModelProvider<UnitModel> {
      *
      */
     public void activate() {
-        endurance = (MAX_ENDURANCE * 200 + MAX_ENDURANCE * readiness + MAX_ENDURANCE * supply) / 400;
-        maxRange = speed * MAX_ENDURANCE / 90 / 1000;
-        range = speed * endurance / 90 / 1000;
-        quality = (2 * proficiency + readiness) / 3;
-        efficacy = (2 * proficiency + readiness + supply) / 4;
+        updateMaxValues();
+        endurance = maxEndurance;
+        range = maxRange;
+        updateDerivedValues();
         location.add(this);
     }
 
     public void changeReadiness(int amount) {
         readiness += amount;
+        readiness = MathUtils.setBounds(readiness, 0, 100);
+        updateDerivedValues();
+    }
+
+    public void changeSupply(int amount) {
+        supply += amount;
+        supply = MathUtils.setBounds(supply, 0, 200);
+        updateDerivedValues();
+    }
+
+    protected void updateDerivedValues() {
         quality = (2 * proficiency + readiness) / 3;
-        efficacy = (2 * proficiency + readiness + supply) / 4;
+        efficacy = (2 * proficiency + readiness + Math.min(100, supply)) / 4;
+    }
+
+    /**
+     * The maximum values permitted for several variables are updated. This update should be called by the engine when
+     * appropriate, for example every new day
+     */
+    public void updateMaxValues() {
+        maxEndurance = MAX_ENDURANCE * (200 + readiness + Math.min(100, supply)) / 400;
+        maxRange = speed * maxEndurance / 90 / 1000;
     }
 
     public void changeEndurance(int amount) {
         endurance += amount;
-        maxRange = speed * MAX_ENDURANCE / 90 / 1000;
+        endurance = MathUtils.setUpperBound(endurance, maxEndurance);
         range = speed * endurance / 90 / 1000;
     }
 
@@ -392,7 +418,7 @@ public abstract class Unit implements ModelProvider<UnitModel> {
     }
 
     public double getDefenseStrength() {
-        return efficacy  * (double) defense / Scale.INSTANCE.getArea();
+        return efficacy * (double) defense / Scale.INSTANCE.getArea();
     }
 
     public int getEfficacy() {
@@ -561,22 +587,25 @@ public abstract class Unit implements ModelProvider<UnitModel> {
         sb.append("Belongs to ").append(formation).append(" (").append(force).append(")\n");
         sb.append("Unit type: ").append(type).append('\n');
         sb.append("Location: ").append(location).append('\n');
-        sb.append("Movement Type: ").append(movement).append('\n');
-        sb.append("Speed: ").append(speed * 60.0 / 1000).append('\n');
+        sb.append("Movement: ").append(movement).append(" (").append(speed * 60.0 / 1000).append(" Km/h)\n");
         sb.append("OpState: ").append(opState).append('\n');
         sb.append("Stamina: ").append(endurance * 100 / MAX_ENDURANCE).append('\n');
         sb.append("Proficiency: ").append(proficiency).append('\n');
         sb.append("Readiness: ").append(readiness).append('\n');
         sb.append("Supply: ").append(supply).append('\n');
+        sb.append("Range: ").append(range).append('/').append(maxRange).append('\n');
+        sb.append("Quality: ").append(quality).append('\n');
+        sb.append("Efficacy: ").append(efficacy).append('\n');
         sb.append("\n___Strenghts___\n");
         sb.append("Attack ").append(efficacy * (antiTank + antiPersonnel)).append('\n');
         sb.append("Defense: ").append(efficacy * defense).append("\n");
-        sb.append("AT: ").append(efficacy * antiTank).append("\n");
+        sb.append("AT: ").append(efficacy * antiTank).append("  ");
         sb.append("AP: ").append(efficacy * antiPersonnel).append("\n");
-        sb.append("HAA: ").append(efficacy * highAntiAir).append("\n");
+        sb.append("HAA: ").append(efficacy * highAntiAir).append("   ");
         sb.append("LAA: ").append(efficacy * lowAntiAir).append("\n");
-        sb.append("Art: ").append(efficacy * artillery).append("\n");
-        sb.append("Art. Range: ").append(range).append("\n");
+        if (artillery != 0) {
+            sb.append("Art: ").append(efficacy * artillery).append(" (Range ").append(range).append(" Km.)\n");
+        }
         if (!type.getCapabilities().isEmpty()) {
             sb.append("\n___Capabilities___\n");
             for (Capability capability : type.getCapabilities()) {

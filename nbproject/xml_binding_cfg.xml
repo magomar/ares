@@ -1,3 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <schemas xmlns='http://xml.netbeans.org/schema/JAXBWizConfig' destdir='build/generated-sources/jaxb' projectName='AresPFC' version='1.0'>
+	<schema type='-xmlschema' package='ares.data.jaxb' name='Ares'>
+		<xjc-options>
+                    <xjc-option name='-no-header' value='true'/>
+		</xjc-options>
+		<schema-sources>
+			<schema-source location='xml-resources/jaxb/Ares/Ares.xsd' origLocation='src/ares/data/schemas/Ares.xsd'/>
+		</schema-sources>
+		<bindings>
+			<binding origLocation='src/ares/data/schemas/xjcSerializableBinding.xml' location='xml-resources/jaxb/Ares/xjcSerializableBinding.xml'/>
+		</bindings>
+		<catalog/>
+	</schema>
 </schemas>

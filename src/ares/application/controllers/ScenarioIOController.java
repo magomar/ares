@@ -2,6 +2,7 @@ package ares.application.controllers;
 
 import ares.application.boundaries.view.BoardViewer;
 import ares.application.boundaries.view.CommandBarViewer;
+import ares.application.boundaries.view.UnitInfoViewer;
 import ares.application.commands.EngineCommands;
 import ares.application.commands.FileCommands;
 import ares.application.models.ScenarioModel;
@@ -38,12 +39,14 @@ public final class ScenarioIOController extends AbstractSecondaryController {
     private final CommandBarViewer menuView;
     private final CommandBarViewer welcomeView;
     private final BoardViewer boardView;
+    private final UnitInfoViewer infoView;
 
     public ScenarioIOController(WeGoPlayerController mainController) {
         super(mainController);
         this.mainView = mainController.getMainView();
         this.menuView = mainController.getMenuView();
         this.boardView = mainController.getBoardView();
+        this.infoView = mainController.getInfoView();
         this.welcomeView = mainController.getWelcomeScreenView();
         LOG.addHandler(mainController.getMessagesView().getHandler());
 
@@ -76,9 +79,9 @@ public final class ScenarioIOController extends AbstractSecondaryController {
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 File file = fc.getSelectedFile();
                 // Load scenario and equipment files
-                ares.data.jaxb.Scenario scen = (ares.data.jaxb.Scenario) AresIO.ARES_IO.unmarshall(file);
+                ares.data.jaxb.Scenario scen = AresIO.ARES_IO.unmarshallJson(file, ares.data.jaxb.Scenario.class);
                 File equipmentFile = AresIO.ARES_IO.getAbsolutePath(AresPaths.EQUIPMENT.getPath(), "ToawEquipment" + AresFileType.EQUIPMENT.getFileExtension()).toFile();
-                EquipmentDB eqp = (EquipmentDB) AresIO.ARES_IO.unmarshall(equipmentFile);
+                EquipmentDB eqp = AresIO.ARES_IO.unmarshallJson(equipmentFile, EquipmentDB.class);
                 Scenario scenario = new Scenario(scen, eqp);
                 // set the user role by asking (using a dialog window)
                 Force[] forces = scenario.getForces();
@@ -129,6 +132,8 @@ public final class ScenarioIOController extends AbstractSecondaryController {
                 menuView.setCommandEnabled(EngineCommands.START.getName(), true);
                 menuView.setCommandEnabled(EngineCommands.PAUSE.getName(), false);
                 menuView.setCommandEnabled(EngineCommands.NEXT.getName(), false);
+                String scenInfo = scenario.getName() + "\n" + Clock.INSTANCE.toStringVerbose()+ "\nRole: " + mainController.getUserRole();
+                infoView.updateScenInfo(scenInfo);
             }
         }
     }

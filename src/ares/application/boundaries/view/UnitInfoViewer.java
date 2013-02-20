@@ -10,6 +10,8 @@ import ares.platform.view.View;
 public interface UnitInfoViewer extends View {
 
     public void updateInfo(TileModel tile);
+    
+    public void updateScenInfo(String text);
 
     public void clear();
 }
