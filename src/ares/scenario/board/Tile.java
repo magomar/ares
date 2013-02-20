@@ -3,7 +3,7 @@ package ares.scenario.board;
 import ares.application.models.board.NonObservedTileModel;
 import ares.application.models.board.ObservedTileModel;
 import ares.application.models.board.TileModel;
-import ares.data.jaxb.Map.Cell;
+import ares.data.jaxb.Cell;
 import ares.data.jaxb.TerrainFeature;
 import ares.data.jaxb.TerrainType;
 import ares.engine.combat.CombatModifier;
@@ -22,8 +22,14 @@ import ares.scenario.forces.Force;
 import ares.scenario.forces.SurfaceUnit;
 import ares.scenario.forces.Unit;
 import java.awt.Point;
-import java.util.*;
+import java.util.Collection;
+import java.util.EnumMap;
+import java.util.EnumSet;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Objects;
+import java.util.Set;
 
 /**
  * This class holds the state of a single tile in the board, and it is uniquely identified by coordinates X and Y.
@@ -129,7 +135,7 @@ public final class Tile implements ModelProvider<TileModel> {
             sideTerrain.put(d, EnumSet.noneOf(Terrain.class));
         }
         visibility = Vision.OPEN;
-        for (Cell.Terrain ct : c.getTerrain()) {
+        for (ares.data.jaxb.Terrain ct : c.getTerrain()) {
             TerrainType type = ct.getType();
             Terrain terr = Terrain.valueOf(type.name());
             String[] dirStrArray = ct.getDir().split(" ");
