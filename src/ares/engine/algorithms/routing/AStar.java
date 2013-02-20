@@ -1,6 +1,5 @@
 package ares.engine.algorithms.routing;
 
-import ares.application.models.board.*;
 import ares.scenario.board.Board;
 import ares.scenario.board.Direction;
 import ares.scenario.board.Tile;
