@@ -22,9 +22,9 @@ public class ArrowLayer extends AbstractImageLayer {
     private final static Map<Integer, Point> imageIndexes = fillIndexMap();
 //    private Path lastPath;
 
-    public ArrowLayer(AbstractImageLayer parentLayer) {
-        super(parentLayer);
-    }
+//    public ArrowLayer(AbstractImageLayer parentLayer) {
+//        super(parentLayer);
+//    }
 
 //    @Override
 //    public void initialize(ScenarioModel s) {

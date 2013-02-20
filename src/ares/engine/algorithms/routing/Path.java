@@ -13,11 +13,12 @@ import java.util.*;
  * @author Heine <heisncfr@inf.upv.es>
  */
 public class Path {
-
+    public final static Path NULL_PATH = new Path();
     private Node last;
     private Node first;
     // Like a back up collection, not really necessary
     private LinkedList<Node> nodes;
+    
 
     /**
      * Default constructor.

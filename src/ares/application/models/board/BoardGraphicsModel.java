@@ -1,11 +1,13 @@
 package ares.application.models.board;
 
+import ares.application.gui.AbstractImageLayer;
 import ares.io.ImageProfile;
 import ares.scenario.board.Board;
 import java.awt.Point;
 
 /**
  * This class provides information on the graphics being used for a particular scenario
+ *
  * @author Mario Gomez <margomez at dsic.upv.es>
  * @author Heine <heisncfr@inf.upv.es>
  */
@@ -48,32 +50,33 @@ public class BoardGraphicsModel {
         imageWidth = getHexDiameter() + (tileColumns - 1) * getHexOffset();
         imageHeight = tileRows * getHexHeight() + getHexHeight() / 2;
     }
-    
-    public static int getTileRows(){
+
+    public static int getTileRows() {
         return tileRows;
     }
-    
-    public static int getTileColumns(){
+
+    public static int getTileColumns() {
         return tileColumns;
     }
-    
+
     /**
      * Tile diameter (vertex to opposite vertex)
      *
      * @see ImageProfile#getHexDiameter()
-     */    
+     */
     public static int getHexDiameter() {
         return imgProfile.getHexDiameter();
     }
-    
+
     /**
      * Tile radius (vertex to hex center), computes as
      * <code>hexDiameter/2</code>
      *
      */
-    public static int getHexRadius(){
-        return getHexDiameter()/2;
+    public static int getHexRadius() {
+        return getHexDiameter() / 2;
     }
+
     /**
      * Tile side
      *
@@ -82,7 +85,7 @@ public class BoardGraphicsModel {
     public static int getHexSide() {
         return imgProfile.getHexSide();
     }
-    
+
     /**
      * Tile offset position to draw in a new column
      *
@@ -91,7 +94,7 @@ public class BoardGraphicsModel {
     public static int getHexOffset() {
         return imgProfile.getHexOffset();
     }
-    
+
     /**
      * Tile height (flat side to flat side)
      *
@@ -100,7 +103,7 @@ public class BoardGraphicsModel {
     public static int getHexHeight() {
         return imgProfile.getHexHeight();
     }
-    
+
     /**
      * Tile side gradient
      *
@@ -108,16 +111,16 @@ public class BoardGraphicsModel {
      */
     public static double getHexRise() {
         return imgProfile.getHexRise();
-    }    
+    }
 
-    public static int getImageWidth(){
+    public static int getImageWidth() {
         return imageWidth;
     }
-    
-    public static int getImageHeight(){
+
+    public static int getImageHeight() {
         return imageHeight;
     }
-    
+
     /**
      * Check valid coordinates
      *
@@ -139,7 +142,6 @@ public class BoardGraphicsModel {
 //    public static int tileMapIndex(Point coordinates) {
 //        return coordinates.x * tileColumns + coordinates.y;
 //    }
-
     /**
      * @return current image profile (SMALL, MEDIUM or HIGH)
      * @see ImageProfile
@@ -157,8 +159,7 @@ public class BoardGraphicsModel {
      * Converts a tile location to its corresponding pixel on the global image
      *
      * @param tile position to be converted
-     * @return the pixel at the upper left corner of the square circumscribed
-     * about the hexagon
+     * @return the pixel at the upper left corner of the square circumscribed about the hexagon
      * @see BoardGraphicsModel
      * @see AbstractImageLayer
      */
@@ -180,8 +181,7 @@ public class BoardGraphicsModel {
      * Converts a pixel position to its corresponding tile index
      *
      * @param pixel position to be converted
-     * @return the row (x) and column(y) where the tile is located at the tile
-     * map
+     * @return the row (x) and column(y) where the tile is located at the tile map
      * @see BoardGraphicsModel
      * @see Board getTile
      */
@@ -199,26 +199,33 @@ public class BoardGraphicsModel {
     }
 
     /**
+     * Converts pixel coordinates into tile coordinates using an accurate method
      *
      * @param pixel
      * @return
      */
-    // Modified version of gamedev.net
-    // http://www.gamedev.net/page/resources/_/technical/game-programming/coordinates-in-hexagon-based-tile-maps-r1800
     public static Point pixelToTileAccurate(Point pixel) {
         return pixelToTileAccurate(pixel.x, pixel.y);
     }
 
-    private static Point pixelToTileAccurate(int x, int y) {
+    /**
+     * Accurately converts pixel coordinates into tile coordinates
+     *
+     * Adapted from article in <a
+     * href="http://www.gamedev.net/page/resources/_/technical/game-programming/coordinates-in-hexagon-based-tile-maps-r1800">gamedev.net</a>
+     *
+     * The map is composed of sections which can be of two types: A or B, each one with 3 areas.
+     *
+     * A sections are in odd columns. They have NW and SW neighbours, and the rest is the tile we want
+     *
+     * B sections are in even columns. areas: puff... easier done than explained.
+     *
+     * @param x
+     * @param y
+     * @return
+     */
+    public static Point pixelToTileAccurate(int x, int y) {
 
-        /**
-         * The map is composed of sections which can be of two types: A or B,
-         * each one with 3 areas. A sections are in odd columns. They have NW
-         * and SW neighbours, and the rest is the tile we want
-         *
-         * B sections are in even columns. areas: puff... easier done than
-         * explained.
-         */
         int dy = getHexHeight() / 2;
         // gradient = dy/dx
         Point section = new Point(x / getHexOffset(), y / getHexHeight());
@@ -303,5 +310,9 @@ public class BoardGraphicsModel {
 
     public static boolean isWithinImageRange(Point pixel) {
         return ((pixel.x < imageWidth && pixel.x > 0) && (pixel.y > 0 && pixel.y < imageHeight));
+    }
+
+    public static boolean isWithinImageRange(int x, int y) {
+        return ((x < imageWidth && x > 0) && (y > 0 && y < imageHeight));
     }
 }

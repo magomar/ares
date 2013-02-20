@@ -32,7 +32,7 @@ import java.util.Map.Entry;
 public abstract class Unit implements ModelProvider<UnitModel> {
 
 //    public static final Comparator<Unit> UNIT_ACTION_FINISH_COMPARATOR = new UnitActionFinishComparator();
-    public static final Comparator<Unit> UNIT_ENTRY_COMPARATOR = new UnitEntryComparator();
+    public static final Comparator<Unit> UNIT_ENTRY_COMPARATOR = new Unit.UnitEntryComparator();
     public static final int MAX_ENDURANCE = 18 * 60 * 60;
     /**
      * IMPORTANT: Currently the id of the unit is just a reference from Toaw, but it is not a unique identifier
@@ -625,11 +625,15 @@ public abstract class Unit implements ModelProvider<UnitModel> {
 
     @Override
     public final UnitModel getModel(UserRole role) {
-        KnowledgeCategory kLevel = location.getKnowledgeLevel(role).getCategory();
-        return models.get(kLevel);
+        KnowledgeCategory knowledgeCategory = location.getKnowledgeLevel(role).getCategory();
+        return models.get(knowledgeCategory);
     }
-
-    public final UnitModel getModel(KnowledgeCategory kLevel) {
-        return models.get(kLevel);
+    /**
+     * Return 
+     * @param knowledgeCategory
+     * @return 
+     */
+    public final UnitModel getModel(KnowledgeCategory knowledgeCategory) {
+        return models.get(knowledgeCategory);
     }
 }

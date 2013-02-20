@@ -83,7 +83,7 @@ public final class Tile implements ModelProvider<TileModel> {
 //    private int y;
     private Point coordinates;
     /**
-     * Unique identifier obtained from coordinates:  index(x,y) = x * board.width + y 
+     * Unique identifier obtained from coordinates: index(x,y) = x * board.width + y
      */
     private int index;
     /**
@@ -111,7 +111,6 @@ public final class Tile implements ModelProvider<TileModel> {
      * the board), then there would be no entry for that direction.
      */
     private Map<Direction, Tile> neighbors;
-
     private final Map<UserRole, KnowledgeLevel> knowledgeLevels;
     private final Map<KnowledgeCategory, TileModel> models;
 
@@ -271,7 +270,7 @@ public final class Tile implements ModelProvider<TileModel> {
     public Tile getNeighbor(Direction direction) {
         return neighbors.get(direction);
     }
-    
+
     public Set<TerrainFeatures> getTerrainFeatures() {
         return features;
     }
@@ -375,46 +374,18 @@ public final class Tile implements ModelProvider<TileModel> {
         }
         return true;
     }
-    
-    
 
-//    @Override
-//    public int hashCode() {
-//        int hash = 17;
-//        hash = 31 * hash + coord.x;
-//        hash = 31 * hash + coord.y;
-//        return hash;
-//    }
-//
-//    @Override
-//    public boolean equals(Object obj) {
-//        if (obj == null) {
-//            return false;
-//        }
-//        if (obj == this) {
-//            return true;
-//        }
-//        if (getClass() != obj.getClass()) {
-//            return false;
-//        }
-//        final Tile other = (Tile) obj;
-//        if (!this.coord.equals(other.getCoordinates())) {
-//            return false;
-//        }
-//        return true;
-//    }
-
-    public KnowledgeLevel getKnowledgeLevel(UserRole role) {
-        return knowledgeLevels.get(role);
+    public KnowledgeLevel getKnowledgeLevel(UserRole userRole) {
+        return knowledgeLevels.get(userRole);
     }
 
-    public TileModel getModel(KnowledgeCategory kLevel) {
-        return models.get(kLevel);
+    public TileModel getModel(KnowledgeCategory knowledgeCategory) {
+        return models.get(knowledgeCategory);
     }
 
     @Override
-    public TileModel getModel(UserRole role) {
-        KnowledgeCategory category = knowledgeLevels.get(role).getCategory();
+    public TileModel getModel(UserRole userRole) {
+        KnowledgeCategory category = knowledgeLevels.get(userRole).getCategory();
         return models.get(category);
     }
 
