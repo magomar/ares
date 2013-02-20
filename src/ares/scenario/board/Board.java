@@ -1,7 +1,7 @@
 package ares.scenario.board;
 
 import ares.application.models.board.BoardModel;
-import ares.data.jaxb.Map.Cell;
+import ares.data.jaxb.Cell;
 import ares.platform.model.ModelProvider;
 import ares.platform.model.UserRole;
 import ares.scenario.Scenario;

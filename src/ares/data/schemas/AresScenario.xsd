@@ -20,7 +20,7 @@
         </complexType>
     </element>
     
-<!-- Header -->
+    <!-- Header -->
     
     <complexType name = "Header">
         <sequence>
@@ -36,7 +36,7 @@
         <attribute name="firstPlayer" type="int" />
     </complexType>
 
-<!-- Calendar -->
+    <!-- Calendar -->
 
     
     <complexType name="Calendar">
@@ -49,7 +49,7 @@
         </sequence>
     </complexType>
     
-<!-- Environment -->
+    <!-- Environment -->
 
     <complexType name="Environment">
         <sequence>
@@ -73,7 +73,7 @@
         </sequence>
     </complexType>
 
- <!-- Force variables -->
+    <!-- Force variables -->
 
     <complexType name="ForceVariables">
         <sequence>
@@ -129,7 +129,7 @@
         </sequence>
     </complexType>
 
-<!-- Variables -->
+    <!-- Variables -->
 
     <complexType name="Variables">
         <sequence>
@@ -149,47 +149,48 @@
         </sequence>
     </complexType>
 
- <!-- Map -->
+    <!-- Map -->
     
     <complexType name="Map">
         <sequence>
             <element name="MaxX" type="int"  />
             <element name="MaxY" type="int"  />
-            <element name="Cell" maxOccurs="unbounded" >
-                <complexType>
-                    <sequence>
-                        <element name="Terrain" minOccurs= "0" maxOccurs="unbounded">
-                            <complexType>
-                                <attribute name="Type" type="ar:TerrainType" />
-                                <attribute name="Dir" type="string" use="optional"/>
-                             <!--<attribute name="graphic" type="int" use="required" />-->
-                            </complexType>
-                        </element>
-                        <element name="Feature" type="ar:TerrainFeature" minOccurs= "0" maxOccurs="unbounded"/>
-                        <element name="Entrenchment" type="int" minOccurs= "0"/>
-                        <element name="Distance" type= "int" minOccurs= "0"/>
-                        <element name="Owner" type = "int" />
-                        <element name="VP" type="int" minOccurs= "0"/>
-                    </sequence>
-                    <attribute name="x" type="int" />
-                    <attribute name="y" type="int" />
-                </complexType>
-            </element>
-            <element name="Place" minOccurs= "0" maxOccurs="unbounded" >
-                <complexType>
-                    <sequence>
-                        <element name="X" type="int" />
-                        <element name="Y" type="int" />
-                        <element name="Name" type="string" />   
-                    </sequence>
-                    <attribute name="id" type="int" use="required"/>
-                </complexType>
-            </element>
+            <element name="Cell" type="ar:Cell" maxOccurs="unbounded" />
+            <element name="Place" type="ar:Place" minOccurs= "0" maxOccurs="unbounded" />
         </sequence>
         <attribute name="version" type="string" />
     </complexType>
     
-<!-- Events -->
+    <complexType name="Cell">
+        <sequence>
+            <element name="Terrain" type="ar:Terrain" minOccurs= "0" maxOccurs="unbounded"/>
+            <element name="Feature" type="ar:TerrainFeature" minOccurs= "0" maxOccurs="unbounded"/>
+            <element name="Entrenchment" type="int" minOccurs= "0"/>
+            <element name="Distance" type= "int" minOccurs= "0"/>
+            <element name="Owner" type = "int" />
+            <element name="VP" type="int" minOccurs= "0"/>
+        </sequence>
+        <attribute name="x" type="int" />
+        <attribute name="y" type="int" />
+    </complexType>
+    
+    <complexType name="Terrain">
+        <attribute name="Type" type="ar:TerrainType" />
+        <attribute name="Dir" type="string" use="optional"/>
+        <!--<attribute name="graphic" type="int" use="required" />-->
+    </complexType>
+    
+    <complexType name="Place">
+        <sequence>
+            <element name="X" type="int" />
+            <element name="Y" type="int" />
+            <element name="Name" type="string" />   
+        </sequence>
+        <attribute name="id" type="int" use="required"/>
+    </complexType>
+
+    
+    <!-- Events -->
     
     <complexType name="Events">
         <sequence>
@@ -214,7 +215,7 @@
         </sequence>
     </complexType>
     
- <!-- Supplies -->
+    <!-- Supplies -->
      
     <complexType name="Supplies">
         <sequence>
@@ -238,7 +239,7 @@
         </sequence>
     </complexType>
     
- <!-- Replacements -->
+    <!-- Replacements -->
       
     <complexType name="Replacements">
         <sequence>
@@ -264,7 +265,7 @@
         </sequence>
     </complexType>
 
-<!-- OOB -->
+    <!-- OOB -->
     
     <complexType name="OOB">
         <sequence>
@@ -339,7 +340,7 @@
             <element name="Entry" type="int" minOccurs="0"/>
             <!--<element name="Next" type="int" minOccurs="0" />-->
             <element name="Parent" type="int" minOccurs="0" />
-           <!--<element name="Characteristics" type="string" minOccurs="0" />-->
+            <!--<element name="Characteristics" type="string" minOccurs="0" />-->
             <element name="Equipment" maxOccurs="unbounded">
                 <complexType>
                     <sequence>
@@ -354,21 +355,21 @@
         <attribute name="id" type="int" use="required"/>
     </complexType>
 
-<!-- Simple Types -->
+    <!-- Simple Types -->
 
-<!--
-    <simpleType name="Scale">
-        <restriction base="string">
-            <enumeration value="SCALE_2_5_KM"/>
-            <enumeration value="SCALE_5_KM"/>
-            <enumeration value="SCALE_10_KM"/>
-            <enumeration value="SCALE_15_KM"/> 
-            <enumeration value="SCALE_20"/>
-            <enumeration value="SCALE_25_KM"/> 
-            <enumeration value="SCALE_50_KM"/> 
-        </restriction>
-    </simpleType>
--->  
+    <!--
+        <simpleType name="Scale">
+            <restriction base="string">
+                <enumeration value="SCALE_2_5_KM"/>
+                <enumeration value="SCALE_5_KM"/>
+                <enumeration value="SCALE_10_KM"/>
+                <enumeration value="SCALE_15_KM"/> 
+                <enumeration value="SCALE_20"/>
+                <enumeration value="SCALE_25_KM"/> 
+                <enumeration value="SCALE_50_KM"/> 
+            </restriction>
+        </simpleType>
+    -->  
     <simpleType name="ClimateArea">
         <restriction base="string">
             <enumeration value="NORTHERN"/>
