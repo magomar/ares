@@ -34,9 +34,9 @@ public final class BoardController extends AbstractSecondaryController implement
         this.boardView = mainController.getBoardView();
         this.unitView = mainController.getInfoView();
         LOG.addHandler(mainController.getMessagesView().getHandler());
-        
+
         pathFinder = new AStar(BoardGraphicsModel.getTileRows() * BoardGraphicsModel.getTileColumns());
-        
+
         boardView.addMouseListener(new BoardMouseListener());
     }
 

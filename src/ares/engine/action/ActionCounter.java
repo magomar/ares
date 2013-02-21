@@ -12,9 +12,7 @@ public class ActionCounter {
     private ActionCounter() {
     }
 
-    
     public static int count() {
         return ++counter;
     }
-    
 }

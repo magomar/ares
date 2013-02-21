@@ -37,8 +37,8 @@ public class NonObservedTileModel extends TileModel {
     }
 
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     @Override
     public String getOwner() {
@@ -46,7 +46,7 @@ public class NonObservedTileModel extends TileModel {
     }
 
     /**
-     * 
+     *
      * @return empty arraylist
      */
     @Override
@@ -55,9 +55,10 @@ public class NonObservedTileModel extends TileModel {
     }
 
     /**
-     * Checks if tile owner is an ally of {@param force}
-     * It is assumed that if the tile is non observed the it mustn't be ally territory
-     * 
+     * Checks if tile owner is an ally of {
+     *
+     * @param force} It is assumed that if the tile is non observed the it mustn't be ally territory
+     *
      * @param force force name to check
      * @return true if owner is ally
      */
@@ -65,15 +66,15 @@ public class NonObservedTileModel extends TileModel {
     public boolean isAlliedTerritory(String force) {
         return false;
     }
+
     /**
      * Checks if tile has enemies
-     * 
+     *
      * @param force
-     * @return 
+     * @return
      */
     @Override
     public boolean hasEnemies(String force) {
         return false;
     }
-    
 }

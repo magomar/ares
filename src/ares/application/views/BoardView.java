@@ -19,20 +19,17 @@ import javax.swing.*;
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class BoardView extends AbstractView<JScrollPane> implements BoardViewer {
-    
+
     private JLayeredPane layeredPane;
     private AbstractImageLayer terrainLayer;
     private AbstractImageLayer unitsLayer;
     private AbstractImageLayer gridLayer;
     private AbstractImageLayer arrowLayer;
-    
     /**
      * This matrix has all the layers sorted by depth and priority.
      *
-     * First level (index 0) is the array with all the existing layers Next
-     * indexes are set in such way that the bigger it is the "closer" is to the
-     * user.
-     * Layers are processed in index order (from left to right)
+     * First level (index 0) is the array with all the existing layers Next indexes are set in such way that the bigger
+     * it is the "closer" is to the user. Layers are processed in index order (from left to right)
      */
     private final static int ALL = 0;
     private final static int LOW = 1;
@@ -63,7 +60,7 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
         //Shares image with grid layer
         arrowLayer = new ArrowLayer(gridLayer);
         arrowLayer.setOpaque(false);
-        
+
         // Add the last layer from each level to the layered pane
         layeredPane.add(terrainLayer, JLayeredPane.DEFAULT_LAYER);
         layeredPane.add(arrowLayer, JLayeredPane.PALETTE_LAYER);
@@ -115,10 +112,10 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
             }
         }
     }
-    
+
     @Override
     public void closeScenario() {
-        for(AbstractImageLayer ail : imageLayers[ALL]) {
+        for (AbstractImageLayer ail : imageLayers[ALL]) {
             ail.flush();
         }
     }
@@ -134,8 +131,8 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
     }
 
     @Override
-    public void updateArrowPath(ScenarioModel s,Path path) {
+    public void updateArrowPath(ScenarioModel s, Path path) {
         arrowLayer.updateGlobalImage(s);
-        ((ArrowLayer)arrowLayer).paintArrow(path);
+        ((ArrowLayer) arrowLayer).paintArrow(path);
     }
 }

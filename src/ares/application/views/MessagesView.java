@@ -37,22 +37,22 @@ public class MessagesView extends AbstractView<JPanel> implements MessagesViewer
         textArea.setWrapStyleWord(true);
         messagesPanel.add(textArea, BorderLayout.CENTER);
         messagesContainer.add(new JScrollPane(messagesPanel), BorderLayout.CENTER);
-        
+
         return messagesContainer;
     }
-    
-    public JComponent setMessageLevelCheckBoxes(){
+
+    public JComponent setMessageLevelCheckBoxes() {
         cbLevels = new ArrayList<>();
         JPanel buttonPane = new JPanel();
-        buttonPane.setLayout(new BoxLayout(buttonPane,BoxLayout.Y_AXIS));
-        
-        for(Level level : MessagesHandler.MessageLevel.LEVELS){
+        buttonPane.setLayout(new BoxLayout(buttonPane, BoxLayout.Y_AXIS));
+
+        for (Level level : MessagesHandler.MessageLevel.LEVELS) {
             JCheckBox jcb = new JCheckBox(level.getName());
             jcb.setSelected(true);
             buttonPane.add(jcb);
             cbLevels.add(jcb);
         }
-        
+
         return buttonPane;
     }
 
@@ -73,7 +73,7 @@ public class MessagesView extends AbstractView<JPanel> implements MessagesViewer
 
     @Override
     public void setLogCheckBoxes(ActionListener logCheckBoxListener) {
-        for(JCheckBox jcb : cbLevels){
+        for (JCheckBox jcb : cbLevels) {
             jcb.addActionListener(logCheckBoxListener);
         }
     }
@@ -82,5 +82,4 @@ public class MessagesView extends AbstractView<JPanel> implements MessagesViewer
     public MessagesHandler getHandler() {
         return handler;
     }
-
 }

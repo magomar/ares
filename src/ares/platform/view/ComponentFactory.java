@@ -25,7 +25,7 @@ public abstract class ComponentFactory {
      * The highlight color for invalid fields.
      */
     public final static Color HIGHLIGHT_COLOR = new Color(255, 240, 240);
-    
+
     public static JFrame frame(String title, JComponent contentPane, JMenuBar menuBar, JToolBar toolBar) {
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

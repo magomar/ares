@@ -25,5 +25,4 @@ public class AirUnit extends Unit {
             }
         }
     }
-
 }

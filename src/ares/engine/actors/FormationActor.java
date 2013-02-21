@@ -55,7 +55,7 @@ public class FormationActor {
 //            TaskPlanner planner = new TaskPlanner(this, clock);
 //            planner.obtainPlan();
 //            hasPlan = true;
-        } 
+        }
 
     }
 

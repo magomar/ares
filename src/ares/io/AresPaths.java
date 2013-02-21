@@ -5,6 +5,7 @@ package ares.io;
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public enum AresPaths {
+
     TEMP("Temp"),
     DATA("Data"),
     EQUIPMENT("Data/Equipment"),
@@ -24,5 +25,4 @@ public enum AresPaths {
     public String getPath() {
         return path;
     }
-    
 }

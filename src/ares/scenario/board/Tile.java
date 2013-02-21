@@ -83,7 +83,7 @@ public final class Tile implements ModelProvider<TileModel> {
 //    private int y;
     private Point coordinates;
     /**
-     * Unique identifier obtained from coordinates:  index(x,y) = x * board.width + y 
+     * Unique identifier obtained from coordinates: index(x,y) = x * board.width + y
      */
     private int index;
     /**
@@ -111,7 +111,6 @@ public final class Tile implements ModelProvider<TileModel> {
      * the board), then there would be no entry for that direction.
      */
     private Map<Direction, Tile> neighbors;
-
     private final Map<UserRole, KnowledgeLevel> knowledgeLevels;
     private final Map<KnowledgeCategory, TileModel> models;
 
@@ -271,7 +270,7 @@ public final class Tile implements ModelProvider<TileModel> {
     public Tile getNeighbor(Direction direction) {
         return neighbors.get(direction);
     }
-    
+
     public Set<TerrainFeatures> getTerrainFeatures() {
         return features;
     }
@@ -375,8 +374,6 @@ public final class Tile implements ModelProvider<TileModel> {
         }
         return true;
     }
-    
-    
 
 //    @Override
 //    public int hashCode() {
@@ -403,7 +400,6 @@ public final class Tile implements ModelProvider<TileModel> {
 //        }
 //        return true;
 //    }
-
     public KnowledgeLevel getKnowledgeLevel(UserRole role) {
         return knowledgeLevels.get(role);
     }

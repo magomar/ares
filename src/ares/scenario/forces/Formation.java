@@ -203,8 +203,6 @@ public class Formation implements ModelProvider<FormationModel> {
         return true;
     }
 
-  
-
     @Override
     public String toString() {
         return name + "(" + id + ")";
@@ -214,5 +212,4 @@ public class Formation implements ModelProvider<FormationModel> {
     public FormationModel getModel(UserRole role) {
         return new FormationModel(this, role);
     }
-
 }

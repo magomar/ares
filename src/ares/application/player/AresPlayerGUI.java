@@ -31,7 +31,7 @@ public class AresPlayerGUI extends AbstractAresApplication {
     public AresPlayerGUI() {
         super(); // creates layout
         // Create controllers and passes the views
-         mainController = new WeGoPlayerController(this, boardV, unitV, menuV, messagesV, welcomeScreenV);
+        mainController = new WeGoPlayerController(this, boardV, unitV, menuV, messagesV, welcomeScreenV);
     }
 
     @Override

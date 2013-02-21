@@ -38,6 +38,6 @@ public final class ScenarioModel extends RoleMediatedModel {
 
     public ForceModel[] getForceModel() {
         return forceModel;
-        
+
     }
 }

@@ -10,7 +10,7 @@ package ares.scenario.board;
  */
 public enum Directionality {
 
-    LOGICAL, 
-    GRAPHICAL, 
+    LOGICAL,
+    GRAPHICAL,
     NONE
 }

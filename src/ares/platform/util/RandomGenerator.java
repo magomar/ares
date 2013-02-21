@@ -17,7 +17,4 @@ public class RandomGenerator extends Random {
     public static RandomGenerator getInstance() {
         return INSTANCE;
     }
-
-
-
 }

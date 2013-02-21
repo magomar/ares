@@ -7,7 +7,7 @@ package ares.platform.model;
 public abstract class RoleMediatedModel<T> {
 
     private final UserRole userRole;
-    
+
     public RoleMediatedModel(UserRole userRole) {
         this.userRole = userRole;
     }
@@ -15,5 +15,4 @@ public abstract class RoleMediatedModel<T> {
     public UserRole getUserRole() {
         return userRole;
     }
-
 }

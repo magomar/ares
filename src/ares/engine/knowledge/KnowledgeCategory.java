@@ -47,14 +47,12 @@ public enum KnowledgeCategory {
     public double getUpperBound() {
         return upperBound;
     }
-
 //    public static KnowledgeCategory getCategory(double value) {
 //        int numCategories = values().length;
 //        double categorySize = KnowledgeLevel.RANGE / numCategories;
 //        int catIndex = (int) ((value+1) / categorySize) - 1;
 //        return values()[catIndex];
 //    }
-    
 //    public static KnowledgeCategory max(KnowledgeCategory kl1, KnowledgeCategory kl2) {
 //        return (kl1.compareTo(kl2) > 0 ? kl1 : kl2);
 //    }

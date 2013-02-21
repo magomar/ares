@@ -13,5 +13,4 @@ public class WaitAction extends AbstractAction {
     public WaitAction(UnitActor actor, int duration) {
         super(actor, ActionType.WAIT, AbstractAction.AS_SOON_AS_POSSIBLE, duration);
     }
-
 }

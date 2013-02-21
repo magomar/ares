@@ -23,5 +23,4 @@ public class NavalUnit extends SurfaceUnit {
             }
         }
     }
-    
 }

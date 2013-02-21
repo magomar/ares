@@ -55,9 +55,9 @@ public final class EngineController extends AbstractSecondaryController implemen
     public void propertyChange(PropertyChangeEvent evt) {
         if (RealTimeEngine.CLOCK_EVENT_PROPERTY.equals(evt.getPropertyName())) {
             ClockEvent clockEvent = (ClockEvent) evt.getNewValue();
-            Scenario scenario =engine.getScenario();
+            Scenario scenario = engine.getScenario();
             boardView.updateScenario(scenario.getModel(mainController.getUserRole()));
-            String scenInfo = scenario.getName() + "\n" + Clock.INSTANCE.toStringVerbose()+ "\nRole: " + mainController.getUserRole();
+            String scenInfo = scenario.getName() + "\n" + Clock.INSTANCE.toStringVerbose() + "\nRole: " + mainController.getUserRole();
             infoView.updateScenInfo(scenInfo);
             if (clockEvent.getEventTypes().contains(ClockEventType.TURN)) {
                 menuView.setCommandEnabled(EngineCommands.PAUSE.getName(), false);

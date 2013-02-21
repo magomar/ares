@@ -61,17 +61,15 @@ public enum Terrain {
     private final Directionality directionality;
     private final String graphicFileHigh, graphicFileMedium, graphicFileSmall;
     public final static Terrain[] ALL_TERRAINS = Terrain.values();
-
     private static final int[] subImageIndex = new int[]{
-         64,  72,  68,  76,  66,  74,  70,  78, 127, 127,
-         32,  40,  36,  44,  34,  42,  38,  46, 127, 127,
-         96, 104, 100, 108,  98, 106, 102, 110, 127, 127,
-         16,  24,  20,  28,  18,  26,  22,  30, 127, 127,
-         80,  88,  84,  92,  82,  90,  86,  94, 127, 127,
-         48,  56,  52,  60,  50,  58,  54,  62, 127, 127,
+        64, 72, 68, 76, 66, 74, 70, 78, 127, 127,
+        32, 40, 36, 44, 34, 42, 38, 46, 127, 127,
+        96, 104, 100, 108, 98, 106, 102, 110, 127, 127,
+        16, 24, 20, 28, 18, 26, 22, 30, 127, 127,
+        80, 88, 84, 92, 82, 90, 86, 94, 127, 127,
+        48, 56, 52, 60, 50, 58, 54, 62, 127, 127,
         112, 120, 116, 124, 114, 122, 118, 126, 127, 127,
-          8,   4,  12,   2,  10,   6,  14,   1, 127, 127};
-    
+        8, 4, 12, 2, 10, 6, 14, 1, 127, 127};
     private static final Map<Integer, Integer> indexDirectionMap = fillIndexMap();
 
     private Terrain(final int motor, final int amph, final int mixed, final int foot,
@@ -150,13 +148,13 @@ public enum Terrain {
     public String getGraphicFileSmall() {
         return graphicFileSmall;
     }
+
     /**
-     * Get the index of subimage in terrain image files
-     * Integer bits are used as flags for directions "N, NE, SE, S, SW, NW, C"
-     * 
-     * For example, a tile with "N NE SE" = bin("1110000") = 112
-     * would be in the first column, seventh row 
-     * 
+     * Get the index of subimage in terrain image files Integer bits are used as flags for directions "N, NE, SE, S, SW,
+     * NW, C"
+     *
+     * For example, a tile with "N NE SE" = bin("1110000") = 112 would be in the first column, seventh row
+     *
      * @param directions Integer with the bits as directions
      * @return the associated value of the terrain subimage position
      */
@@ -166,6 +164,7 @@ public enum Terrain {
 
     /**
      * Fills the map with the static array
+     *
      * @return an unmodifiable map<subimageposition,indexinstaticarray>
      */
     private static Map<Integer, Integer> fillIndexMap() {

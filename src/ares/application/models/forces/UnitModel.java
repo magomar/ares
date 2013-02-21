@@ -19,19 +19,19 @@ public abstract class UnitModel extends KnowledgeMediatedModel {
         super(kLevel);
         this.unit = unit;
     }
-    
+
     public abstract String getName();
-    
+
     public abstract UnitColors getColor();
 
     public abstract int getIconId();
 
     public abstract TileModel getLocation();
-   
+
     public abstract String getFormation();
-    
+
     public abstract String getForce();
-    
+
     public abstract String getDescription();
 
     public MovementType getMovement() {

@@ -35,10 +35,10 @@ public final class ForceModel extends RoleMediatedModel {
         }
         return unitModels;
     }
-    
+
     public Collection<FormationModel> getFormationModels() {
         Collection<FormationModel> formationModels = new ArrayList<>();
-        for (Formation formation: force.getFormations()) {
+        for (Formation formation : force.getFormations()) {
             FormationModel formationModel = formation.getModel(getUserRole());
             if (formationModel != null) {
                 formationModels.add(formationModel);

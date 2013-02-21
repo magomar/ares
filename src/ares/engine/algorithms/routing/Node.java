@@ -107,7 +107,7 @@ public class Node {
         sb.append(" ]\n");
         return sb.toString();
     }
-    
+
     @Override
     public int hashCode() {
         int hash = 7;
@@ -129,5 +129,4 @@ public class Node {
         }
         return true;
     }
-
 }

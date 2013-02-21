@@ -61,6 +61,4 @@ public final class WelcomeScreen extends AbstractImageLayer {
     @Override
     public void paintTile(TileModel t) {
     }
-
-  
 }

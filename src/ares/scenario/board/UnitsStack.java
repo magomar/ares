@@ -28,7 +28,6 @@ public class UnitsStack {
      * is used by the GUI. We need this structure to remember the currently visible unit across turns.
      */
     private Ring<Unit> allUnits;
-    
 
     public UnitsStack(Tile location) {
         surfaceUnits = new ArrayList<>();
@@ -43,14 +42,14 @@ public class UnitsStack {
     public int getStackingPenalty(Scale scale) {
         int criticalDensity = scale.getCriticalDensity();
         int numHorsesAndVehicles = 0;
-            for (SurfaceUnit surfaceUnit : surfaceUnits) {
-                if (surfaceUnit.getMovement().isMobileLandUnit()) {
-                    numHorsesAndVehicles += ((LandUnit)surfaceUnit).getNumVehiclesAndHorses();
-                }
+        for (SurfaceUnit surfaceUnit : surfaceUnits) {
+            if (surfaceUnit.getMovement().isMobileLandUnit()) {
+                numHorsesAndVehicles += ((LandUnit) surfaceUnit).getNumVehiclesAndHorses();
             }
+        }
         return Math.min(4, numHorsesAndVehicles / criticalDensity);
     }
-    
+
     public Collection<SurfaceUnit> getSurfaceUnits() {
         return surfaceUnits;
     }
@@ -96,7 +95,4 @@ public class UnitsStack {
     public String toString() {
         return allUnits.toString();
     }
-    
-    
 }
-

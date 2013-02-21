@@ -82,6 +82,6 @@ public class KnowledgeLevel implements Comparable {
 
     @Override
     public String toString() {
-        return String.format("K = %.2f (%s)" ,value, category);
+        return String.format("K = %.2f (%s)", value, category);
     }
 }

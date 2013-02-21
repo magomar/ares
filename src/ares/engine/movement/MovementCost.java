@@ -13,6 +13,7 @@ import java.util.*;
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class MovementCost {
+
     public static final int IMPASSABLE = Integer.MAX_VALUE;
 //    public static final int MAX_ROAD_COST = 3;
 //    public static final int MIN_ROAD_COST = 1;
@@ -24,7 +25,6 @@ public class MovementCost {
      */
     // TODO check if it's better to initialize all costs to IMPASSABLE
     private Map<MovementType, Integer> movementCost;
-
     private static final int ONE = 1;
     private Scenario scenario;
 

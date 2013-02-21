@@ -10,6 +10,7 @@ import ares.scenario.board.Tile;
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class ArtilleryAction extends AbstractAction {
+
     private Tile target;
 
     public ArtilleryAction(UnitActor actor, ActionType type, Tile target, int start, int duration) {
@@ -20,5 +21,4 @@ public class ArtilleryAction extends AbstractAction {
     public Tile getTarget() {
         return target;
     }
-
 }

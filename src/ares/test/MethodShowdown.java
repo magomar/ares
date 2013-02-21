@@ -9,7 +9,7 @@ import java.util.logging.*;
 /**
  *
  * Simple class made for method testing purposes
- * 
+ *
  * @author Heine <heisncfr@inf.upv.es>
  */
 public class MethodShowdown {
@@ -22,10 +22,10 @@ public class MethodShowdown {
 
         // Final message to be printed
         String message;
-        
+
         // Time variables
         double startTime, averageTime, totalTime = 0, instanceTime, maxInstanceTime, minInstanceTime;
-        
+
         // Methods to be tested
         LinkedList<Method> methods = new LinkedList<>();
 
@@ -47,13 +47,13 @@ public class MethodShowdown {
         // Header
         System.out.print("NREP: " + Integer.toString(nrep));
         System.out.println(" - TALLA: " + Integer.toString(talla));
-        
+
         // Total number of instances to calculate
         double size = args.size() * args.size(); // * nrep;
-        
+
         // Large distance
         //Point close = new Point(0, 0); Point far = new Point(1000, 1000);
-        
+
         //invoke method needs an object from the invoked class
         DistanceCalculator dc = new DistanceCalculator();
         for (Method test : methods) {
@@ -61,9 +61,11 @@ public class MethodShowdown {
             Point[] maxPoints = {new Point(), new Point()};
             // Same with min instace time
             Point[] minPoints = {new Point(), new Point()};
-            
-            totalTime = 0; maxInstanceTime = 0; minInstanceTime = Long.MAX_VALUE;
-            
+
+            totalTime = 0;
+            maxInstanceTime = 0;
+            minInstanceTime = Long.MAX_VALUE;
+
             //for (int n = 0; n < nrep; n++) {
             // Nested loops without restrictions, same distance will be processed twice
             // + from p1 to p2 and p2 to p1
@@ -71,16 +73,16 @@ public class MethodShowdown {
                 for (Point p2 : args) {
                     startTime = System.nanoTime();
                     try {
-                        
+
                         // Method call
                         test.invoke(dc, p1, p2);
-                        
-                        
+
+
                     } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
                         // If we got here, either our arguments classes are wrong or we forgot to use a valid object
                         Logger.getLogger(MethodShowdown.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    
+
                     instanceTime = System.nanoTime() - startTime;
                     if (maxInstanceTime - instanceTime < 0) {
                         maxInstanceTime = instanceTime;
@@ -107,9 +109,9 @@ public class MethodShowdown {
 
     /**
      * Fills the collection with params to be tested
-     * 
+     *
      * @param talla
-     * @return 
+     * @return
      */
     private static Collection<Point> fillCollection(int talla) {
 
@@ -125,9 +127,9 @@ public class MethodShowdown {
 
     /**
      * Converts nanoseconds into seconds
-     * 
+     *
      * @param nano
-     * @return 
+     * @return
      */
     private static double nanoToSecond(double nano) {
         return nano * NANOSECOND;
@@ -135,8 +137,8 @@ public class MethodShowdown {
 
     /**
      * This is showdown!
-     * 
-     * @param args 
+     *
+     * @param args
      */
     public static void main(String[] args) {
         new MethodShowdown().init(NREP, TALLA);

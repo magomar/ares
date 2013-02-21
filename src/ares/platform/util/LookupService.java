@@ -10,6 +10,7 @@ import java.util.Set;
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class LookupService<T> {
+
     Map<Class<? extends T>, T> classMap = new HashMap<>();
 
     public <C extends T, D extends T> void put(Class<C> key, D value) {
@@ -19,11 +20,10 @@ public class LookupService<T> {
 //    public <C extends T> void put(Class<C> key, C value) {
 //        classMap.put(key, value);
 //    }
-
     public void remove(Class<? extends T> key) {
         classMap.remove(key);
     }
-    
+
     public T get(Class<? extends T> key) {
         return classMap.get(key);
     }

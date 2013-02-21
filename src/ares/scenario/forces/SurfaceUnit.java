@@ -11,5 +11,4 @@ public abstract class SurfaceUnit extends Unit {
     public SurfaceUnit(ares.data.jaxb.Unit unit, Formation formation, Force force, Scenario scenario) {
         super(unit, formation, force, scenario);
     }
-
 }

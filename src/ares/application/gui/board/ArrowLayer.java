@@ -30,7 +30,6 @@ public class ArrowLayer extends AbstractImageLayer {
 //    public void initialize(ScenarioModel s) {
 //        
 //    }
-
     public void paintArrow(Path path) {
         if (path == null) {
             //TODO set mouse icon to X or something
@@ -105,7 +104,6 @@ public class ArrowLayer extends AbstractImageLayer {
 //    public void paintComponent(Graphics g) {
 //        parentLayer.paintComponent(g);
 //    }
-
     private static Map<Integer, Point> fillIndexMap() {
         Map<Integer, Point> map = new HashMap<>();
 //        Integer[] indexArrray = {
@@ -144,5 +142,4 @@ public class ArrowLayer extends AbstractImageLayer {
 
         return map;
     }
-
 }
