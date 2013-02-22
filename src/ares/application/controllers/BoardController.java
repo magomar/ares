@@ -6,6 +6,11 @@ import ares.application.interaction.InteractionMode;
 import ares.application.models.board.BoardGraphicsModel;
 import ares.application.views.MessagesHandler;
 import ares.engine.RealTimeEngine;
+import ares.engine.action.ActionType;
+import ares.engine.action.actions.ChangeDeploymentAction;
+import ares.engine.action.actions.MoveAction;
+import ares.engine.action.actions.SurfaceMoveAction;
+import ares.engine.actors.UnitActor;
 import ares.engine.algorithms.routing.*;
 import ares.platform.controllers.AbstractSecondaryController;
 import ares.scenario.Scenario;
@@ -15,6 +20,7 @@ import java.awt.Point;
 import java.awt.event.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -60,7 +66,7 @@ public final class BoardController extends AbstractSecondaryController implement
                     clickMouseButton2();
                     break;
                 case MouseEvent.BUTTON3:
-                    clickMouseButton2();
+                    clickMouseButton3(me.getX(), me.getY());
                     break;
             }
 
@@ -69,7 +75,6 @@ public final class BoardController extends AbstractSecondaryController implement
 
     private void clickMouseButton1(int x, int y) {
         if (BoardGraphicsModel.isWithinImageRange(x, y)) {
-            LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, "Clicked Button 1");
             Point tilePoint = BoardGraphicsModel.pixelToTileAccurate(x, y);
             // XXX pixel to tile conversion is more expensive than two coordinates checks
             if (!BoardGraphicsModel.validCoordinates(tilePoint.x, tilePoint.y)) {
@@ -88,6 +93,7 @@ public final class BoardController extends AbstractSecondaryController implement
                 } else {
                     selectedUnit = tile.getTopUnit();
                     LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, "New unit selected");
+                    interactionMode = InteractionMode.FORMATION_ORDERS;
                 }
             } else {
                 if (stack.size() > 1) {
@@ -108,12 +114,37 @@ public final class BoardController extends AbstractSecondaryController implement
         if (selectedTile != null) {
             LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, "Deselecting");
             selectedTile = null;
+            selectedUnit = null;
             unitView.clear();
             boardView.updateArrowPath(mainController.getScenario().getModel(mainController.getUserRole()), Path.NULL_PATH);
+            boardView.updateArrowPath(mainController.getScenario().getModel(mainController.getUserRole()), null);
         }
     }
 
-    private void clickMouseButton3() {
+    private void clickMouseButton3(int x, int y) {
+        if (selectedUnit != null && BoardGraphicsModel.isWithinImageRange(x, y)) {
+            Point tilePoint = BoardGraphicsModel.pixelToTileAccurate(x, y);
+            if (!BoardGraphicsModel.validCoordinates(tilePoint.x, tilePoint.y)) {
+                return;
+            }
+            Scenario scenario = mainController.getScenario();
+            Tile objective = scenario.getBoard().getTile(tilePoint.x, tilePoint.y);
+            
+            RealTimeEngine engine = mainController.getEngine();
+            Path path = engine.getPathFinder().getPath(selectedUnit.getLocation(), objective);
+            if (path != null && path.relink() != -1) {
+                LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, "New path for {0}: {1}", new Object[]{selectedUnit.getName(), path.toString()});
+                UnitActor actor = selectedUnit.getActor();
+                MoveAction moveAction = new SurfaceMoveAction(actor, ActionType.TACTICAL_MARCH, path);
+                actor.addFirstAction(moveAction);
+                if (!moveAction.checkPrecondition()) {
+                    actor.addFirstAction(new ChangeDeploymentAction(actor, ActionType.ASSEMBLE));
+                }
+                clickMouseButton2();
+            } else {
+                LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, "No path found for {0}", selectedUnit.getName());
+            }
+        }
     }
 
     private class BoardMouseMotionListener extends MouseMotionAdapter {

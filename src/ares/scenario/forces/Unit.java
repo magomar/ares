@@ -7,6 +7,7 @@ import ares.application.models.forces.UnitModel;
 import ares.data.jaxb.Availability;
 import ares.data.jaxb.Emphasis;
 import ares.engine.action.ActionType;
+import ares.engine.actors.UnitActor;
 import ares.engine.knowledge.KnowledgeCategory;
 import ares.engine.movement.MovementType;
 import ares.platform.model.ModelProvider;
@@ -211,6 +212,10 @@ public abstract class Unit implements ModelProvider<UnitModel> {
      */
     protected int maxRange;
     private final Map<KnowledgeCategory, UnitModel> models;
+    /**
+     * The actor assigned to this unit
+     */
+    protected UnitActor actor;
 
     protected Unit(ares.data.jaxb.Unit unit, Formation formation, Force force, Scenario scenario) {
         id = unit.getId();
@@ -636,4 +641,14 @@ public abstract class Unit implements ModelProvider<UnitModel> {
     public final UnitModel getModel(KnowledgeCategory knowledgeCategory) {
         return models.get(knowledgeCategory);
     }
+
+    public void setActor(UnitActor actor) {
+        this.actor = actor;
+    }
+
+    public UnitActor getActor() {
+        return actor;
+    }
+    
+    
 }

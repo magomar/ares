@@ -9,7 +9,7 @@ import java.util.Queue;
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-// TODO this class overlaps with Saul's TacticalMission in planner
+// TODO Candidate for deletetion, overlaps with UnitActor and Saul's TacticalMission in planner
 // Check with him to integrate new platform with his planner
 public class TacticalMission {
 

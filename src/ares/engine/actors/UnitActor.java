@@ -45,6 +45,7 @@ public class UnitActor implements Actor {
 
     public UnitActor(Unit unit) {
         this.unit = unit;
+        unit.setActor(this);
         pendingActions = new LinkedList<>();
     }
 
@@ -114,7 +115,7 @@ public class UnitActor implements Actor {
     public Queue<Action> getPendingActions() {
         return pendingActions;
     }
-
+    
     @Override
     public String toString() {
 //        return "UnitActor{" + "unit=" + unit + ", currentAction=" + currentAction + ", pendingActions=" + pendingActions + '}';
