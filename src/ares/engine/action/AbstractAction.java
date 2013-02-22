@@ -147,8 +147,7 @@ public abstract class AbstractAction implements Action {
 //            abort();
 //        }
 //    }
-
-        @Override
+    @Override
     public void execute() {
         if (checkFeasibility()) {
             if (checkEndurance()) {
@@ -164,7 +163,7 @@ public abstract class AbstractAction implements Action {
             abort();
         }
     }
-    
+
     protected void delay() {
         state = ActionState.DELAYED;
         int duration = Clock.INSTANCE.getMINUTES_PER_TICK();

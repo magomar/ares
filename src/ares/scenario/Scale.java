@@ -51,5 +51,4 @@ public final class Scale {
     public String toString() {
         return "Scale{" + "distance=" + tileSize + ", area=" + area + ", criticalDensity=" + criticalDensity + '}';
     }
-
 }

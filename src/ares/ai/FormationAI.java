@@ -30,14 +30,13 @@ public class FormationAI {
         supportUnits = new ArrayList<>();
         serviceUnits = new ArrayList<>();
     }
-    
-      public void plan() {
+
+    public void plan() {
 //        if (!hasPlan) {
 //            TaskPlanner planner = new TaskPlanner(this, clock);
 //            planner.obtainPlan();
 //            hasPlan = true;
 //        }
-        
 //        for (Unit unit : formation.getLineUnits()) {
 //            if (unit.getMovement() != MovementType.AIRCRAFT) {
 //                Tile location = unit.getLocation();

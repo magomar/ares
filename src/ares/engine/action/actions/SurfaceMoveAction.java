@@ -11,7 +11,6 @@ import ares.scenario.board.Tile;
  */
 public class SurfaceMoveAction extends MoveAction {
 
-
     public SurfaceMoveAction(UnitActor actor, ActionType type, Path path) {
         super(actor, type, path);
     }
@@ -21,5 +20,4 @@ public class SurfaceMoveAction extends MoveAction {
         Tile nextDestination = currentNode.getTile();
         return !nextDestination.hasEnemies(actor.getUnit().getForce());
     }
-
 }

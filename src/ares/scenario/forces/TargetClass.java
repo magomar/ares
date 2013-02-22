@@ -9,5 +9,6 @@ package ares.scenario.forces;
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public enum TargetClass {
-    SOFT,HARD
+
+    SOFT, HARD
 }

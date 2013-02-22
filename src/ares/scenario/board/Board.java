@@ -95,10 +95,10 @@ public final class Board implements ModelProvider<BoardModel> {
 
     /**
      * Direction between to neighbour tiles
-     * 
+     *
      * @param from
      * @param to
-     * @return 
+     * @return
      */
     public static Direction getDirBetween(Tile from, Tile to) {
         int incX = to.getCoordinates().x - from.getCoordinates().x;
@@ -139,7 +139,7 @@ public final class Board implements ModelProvider<BoardModel> {
         //TODO implement getDistanceInMetersBetween(Tile from, Tile to)
         throw new UnsupportedOperationException("Not yet implemented");
     }
-    
+
     @Override
     public BoardModel getModel(UserRole role) {
         return models.get(role);

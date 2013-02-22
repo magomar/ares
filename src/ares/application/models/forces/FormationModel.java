@@ -12,13 +12,15 @@ import java.util.Collection;
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
 public class FormationModel extends RoleMediatedModel {
+
     private final Formation formation;
 
     public FormationModel(Formation formation, UserRole userRole) {
         super(userRole);
         this.formation = formation;
     }
-     public String getName() {
+
+    public String getName() {
         return formation.getName();
     }
 
@@ -32,5 +34,4 @@ public class FormationModel extends RoleMediatedModel {
         }
         return unitModels;
     }
-    
 }

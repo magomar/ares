@@ -5,7 +5,8 @@ package ares.engine.command;
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public enum TacticalMissionType {
-      NULL(null);
+
+    NULL(null);
 //    ASSAULT(TacticalMissionAssault.class),
 //    ATTACK_BY_FIRE(TacticalMissionAttackByFire.class),
 //    BREACH(TacticalMissionExample.class),

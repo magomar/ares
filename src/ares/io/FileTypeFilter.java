@@ -10,7 +10,7 @@ import javax.swing.filechooser.FileFilter;
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public class FileTypeFilter extends FileFilter implements java.io.FileFilter , FilenameFilter {
+public class FileTypeFilter extends FileFilter implements java.io.FileFilter, FilenameFilter {
 
     private String description;
     private String extensions[];
@@ -38,7 +38,6 @@ public class FileTypeFilter extends FileFilter implements java.io.FileFilter , F
             array[i] = array[i].toLowerCase();
         }
     }
-    
 
     @Override
     public String getDescription() {

@@ -13,5 +13,4 @@ public class CombatAction extends MoveAction {
     public CombatAction(UnitActor actor, ActionType type, Path path) {
         super(actor, type, path);
     }
-
 }

@@ -22,12 +22,12 @@ public class DetectedUnitModel extends UnitModel {
     public UnitType getUnitType() {
         return unit.getType();
     }
-    
+
     @Override
     public String getName() {
         return "";
     }
-    
+
     @Override
     public UnitColors getColor() {
         return UnitColors.values()[unit.getColor()];
@@ -47,9 +47,9 @@ public class DetectedUnitModel extends UnitModel {
     public String getFormation() {
         return "";
     }
-    
+
     @Override
-    public String getForce(){
+    public String getForce() {
         return unit.getForce().getName();
     }
 

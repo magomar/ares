@@ -44,31 +44,31 @@ public final class ObservedTileModel extends NonObservedTileModel {
     public String getDescription() {
         return tile.toStringMultiline();
     }
-    
+
     @Override
-    public String getOwner(){
+    public String getOwner() {
         return tile.getOwner().getName();
     }
-    
+
     @Override
     public Collection<SurfaceUnit> getSurfaceUnits() {
         return stack.getSurfaceUnits();
     }
-    
+
     @Override
     public boolean isAlliedTerritory(String force) {
         return getOwner().equals(force);
-        
+
     }
-    
+
     @Override
     public boolean hasEnemies(String force) {
         // If there are units, check if the first of the collection is an ally
-        if(getSurfaceUnits().isEmpty()){
+        if (getSurfaceUnits().isEmpty()) {
             return false;
-        } else{
+        } else {
 //            return !getSurfaceUnits().iterator().next().getForce().getName().equals(force);
             return getOwner().equals(force);
-        }   
+        }
     }
 }

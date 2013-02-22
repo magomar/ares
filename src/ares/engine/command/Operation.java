@@ -11,5 +11,4 @@ public class Operation {
     private OperationType type;
     private OperationForm form;
     private Tile objective;
-    
 }

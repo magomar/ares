@@ -5,6 +5,7 @@ package ares.io;
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public enum ToawFileType implements FileType {
+
     GAME(".gam", "TOAW Scenario File (XML)", AresFileType.SCENARIO),
     EQUIPMENT(".eqp", "TOAW Equipment File (XML)", AresFileType.EQUIPMENT),
     MAP(".mml", "TOAW Map File (XML)", AresFileType.MAP);
@@ -37,7 +38,7 @@ public enum ToawFileType implements FileType {
     public FileTypeFilter getFileTypeFilter() {
         return fileTypeFilter;
     }
-    
+
     public AresFileType getAresFileType() {
         return aresFileType;
     }

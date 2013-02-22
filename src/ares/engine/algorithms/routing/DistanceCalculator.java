@@ -13,7 +13,6 @@ public class DistanceCalculator implements Heuristic {
     public final static int DELTABITWISE = 1;
     public final static int EUCLIDEAN = 2;
     public final static int HEINIAN = 3;
-    
     private static int algo;
 
     public DistanceCalculator() {
@@ -36,7 +35,7 @@ public class DistanceCalculator implements Heuristic {
             case DELTA:
                 return deltaDistance(orig, dest);
             case DELTABITWISE:
-                return deltaBitwiseDistance(orig, dest);                
+                return deltaBitwiseDistance(orig, dest);
             case EUCLIDEAN:
                 return euclidean(orig, dest);
             default:
@@ -75,7 +74,7 @@ public class DistanceCalculator implements Heuristic {
         }
         return cost;
     }
-    
+
     private static int deltaBitwiseDistance(Point from, Point to) {
         // adapted from http://www-cs-students.stanford.edu/~amitp/Articles/HexLOS.html
         int x1 = from.x;
@@ -90,8 +89,7 @@ public class DistanceCalculator implements Heuristic {
         int dy = by - ay;
         return Math.abs(dx) + Math.abs(dy);
     }
-    
-    
+
     private static int Floor2(int val) {
         return (val >> 1);
     }
@@ -116,23 +114,23 @@ public class DistanceCalculator implements Heuristic {
         // Get the direction
         Direction dir;
         int sy = (int) Math.signum(dest.y - orig.y);
-        
-        
-        if(Math.signum(dest.x - orig.x) > 0){
+
+
+        if (Math.signum(dest.x - orig.x) > 0) {
             //destination is on the right side of origin
-            if(sy>0){
+            if (sy > 0) {
                 //dest is below the orig
                 dir = Direction.SE;
-                
-            } else{
+
+            } else {
                 //dest is above the orig
                 dir = Direction.NE;
             }
-        } else{
+        } else {
             //destination is on the left side of origin
-            if(sy>0){
+            if (sy > 0) {
                 dir = Direction.SW;
-            } else{
+            } else {
                 dir = Direction.NW;
             }
         }
@@ -144,10 +142,10 @@ public class DistanceCalculator implements Heuristic {
             current.y += (oddColumn) ? dir.getIncJOdd() : dir.getIncJEven();
             oddColumn = !oddColumn;
             if (current.x == dest.x) {
-                return cost+Math.abs(dest.y - current.y);
+                return cost + Math.abs(dest.y - current.y);
             }
             if (current.y == dest.y) {
-                return cost+Math.abs(dest.x - current.x);
+                return cost + Math.abs(dest.x - current.x);
             }
         }
     }

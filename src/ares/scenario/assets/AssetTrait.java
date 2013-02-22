@@ -79,7 +79,7 @@ public enum AssetTrait {
     public static final Set<AssetTrait> MOVEMENT = EnumSet.of(FIXED, STATIC, SLOW,
             HORSES, FAST_HORSES, MOTORIZED, SLOW_MOTORIZED,
             FAST_MOTORIZED, HELICOPTER_MOVEMENT, HIGH_ALTITUDE_AIRCRAFT,
-            LOW_ALTITUDE_AIRCRAFT, LIGHT_SHIP, MEDIUM_SHIP, HEAVY_SHIP, 
+            LOW_ALTITUDE_AIRCRAFT, LIGHT_SHIP, MEDIUM_SHIP, HEAVY_SHIP,
             RAIL_ONLY, RIVERINE, AIRCRAFT_CARRIER);
 
     private AssetTrait() {
@@ -93,5 +93,4 @@ public enum AssetTrait {
     public double getFactor() {
         return factor;
     }
-    
 }

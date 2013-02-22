@@ -7,17 +7,21 @@ import ares.platform.view.View;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
-
 /**
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public interface BoardViewer extends View {
+
     public void loadScenario(ScenarioModel scenario);
+
     public void updateScenario(ScenarioModel scenario);
 //    public void updateUnits(Collection<UnitModel> units);
+
     public void closeScenario();
+
     public void updateTile(TileModel tile);
+
     public void addMouseListener(MouseListener listener);
     public void addMouseMotionListener(MouseMotionListener listener);
     public void updateArrowPath(ScenarioModel s,Path path);

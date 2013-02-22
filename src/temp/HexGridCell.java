@@ -1,15 +1,14 @@
 package temp;
 
 /**
- * http://blog.ruslans.com/2011/02/hexagonal-grid-math.html
- * Copiado de una página Web, sólo para tomarlo como referencia, contiene algunos conceptos interesantes que 
- * podemos adoptar/adaptar
+ * http://blog.ruslans.com/2011/02/hexagonal-grid-math.html Copiado de una página Web, sólo para tomarlo como
+ * referencia, contiene algunos conceptos interesantes que podemos adoptar/adaptar
  */
 public class HexGridCell {
 
     private static final int[] NEIGHBORS_DI = {0, 1, 1, 0, -1, -1};
 //    private static final int[][] NEIGHBORS_DJ = { {-1, -1, 0, 1, 0, -1}, {-1, 0, 1, 1, 1, 0}};
-    private static final int[][] NEIGHBORS_DJ = { {-1, 0, 1, 1, 1, 0}, {-1, -1, 0, 1, 0, -1}};
+    private static final int[][] NEIGHBORS_DJ = {{-1, 0, 1, 1, 1, 0}, {-1, -1, 0, 1, 0, -1}};
     private final int[] CORNERS_DX; // array of horizontal offsets of the cell's corners
     private final int[] CORNERS_DY; // array of vertical offsets of the cell's corners
     private final int SIDE;
@@ -32,8 +31,7 @@ public class HexGridCell {
     public static final int NUM_NEIGHBORS = 6;
 
     /**
-     * @param radius Cell radius (distance from the center to one of the
-     * corners)
+     * @param radius Cell radius (distance from the center to one of the corners)
      */
     public HexGridCell(int radius) {
         RADIUS = radius;
@@ -104,8 +102,7 @@ public class HexGridCell {
     }
 
     /**
-     * Computes X and Y coordinates for all of the cell's 6 corners, clockwise,
-     * starting from the top left.
+     * Computes X and Y coordinates for all of the cell's 6 corners, clockwise, starting from the top left.
      *
      * @param cornersX Array to fill in with X coordinates of the cell's corners
      * @param cornersY Array to fill in with Y coordinates of the cell's corners
@@ -129,8 +126,7 @@ public class HexGridCell {
     }
 
     /**
-     * Sets the cell as corresponding to some point inside it (can be used for
-     * e.g. mouse picking).
+     * Sets the cell as corresponding to some point inside it (can be used for e.g. mouse picking).
      */
     public void setCellByPoint(int x, int y) {
         int ci = (int) Math.floor((double) x / (double) SIDE);

@@ -14,8 +14,8 @@ import java.lang.ref.SoftReference;
  * @author Heine <heisncfr@inf.upv.es>
  */
 public class GridLayer extends AbstractImageLayer {
-    
-    private SoftReference<BufferedImage> hexImage =  new SoftReference<>(null);
+
+    private SoftReference<BufferedImage> hexImage = new SoftReference<>(null);
 
     @Override
     protected void createGlobalImage(ScenarioModel s) {

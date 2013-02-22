@@ -15,15 +15,12 @@ public class ClockEvent {
         this.eventTypes = eventTypes;
     }
 
-
     public Set<ClockEventType> getEventTypes() {
         return eventTypes;
     }
 
     @Override
     public String toString() {
-        return "ClockEvent{" + "clock=" +  Clock.INSTANCE + ", eventTypes=" + eventTypes + '}';
+        return "ClockEvent{" + "clock=" + Clock.INSTANCE + ", eventTypes=" + eventTypes + '}';
     }
-    
-
 }

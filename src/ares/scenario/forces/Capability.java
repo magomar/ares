@@ -9,6 +9,7 @@ package ares.scenario.forces;
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public enum Capability {
+
     AIRBORNE,
     BOMBARDMENT,
     COASTAL_DEFENSE,
@@ -21,5 +22,4 @@ public enum Capability {
     RIVERINE,
     SPECIAL_FORCES,
     AIRCRAFT;
- 
 }

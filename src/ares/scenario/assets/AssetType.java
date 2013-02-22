@@ -165,5 +165,4 @@ public final class AssetType {
     public String toString() {
         return "AssetType{" + "id=" + id + ", name=" + name + ", country=" + country + ", icon=" + icon + ", at=" + at + ", ap=" + ap + ", aal=" + aal + ", aah=" + aah + ", df=" + df + ", artyRange=" + artyRange + ", earlyRange=" + earlyRange + ", samRange=" + samRange + ", nuke=" + nuke + ", volume=" + volume + ", weight=" + weight + ", shellWeight=" + shellWeight + ", armor=" + armor + ", traits=" + traits + '}';
     }
-
 }

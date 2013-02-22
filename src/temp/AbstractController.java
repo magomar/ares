@@ -48,5 +48,4 @@ public abstract class AbstractController implements PropertyChangeListener {
         models.remove(modelClass);
         model.removePropertyChangeListener(this);
     }
-
 }

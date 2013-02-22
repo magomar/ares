@@ -73,7 +73,6 @@ public final class Scenario implements ModelProvider<ScenarioModel> {
         return forces;
     }
 
-
     public String getName() {
         return name;
     }

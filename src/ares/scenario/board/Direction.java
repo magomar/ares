@@ -15,8 +15,7 @@ public enum Direction {
     S(0, 1, 1),
     SW(-1, 1, 0),
     NW(-1, 0, -1),
-    C(0, 0, 0)
-    ;
+    C(0, 0, 0);
     private final int incI;
     private final int incJEven;
     private final int incJOdd;
@@ -54,5 +53,4 @@ public enum Direction {
     public Direction getOpposite() {
         return opposite;
     }
-
 }

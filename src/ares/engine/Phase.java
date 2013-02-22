@@ -5,6 +5,7 @@ package ares.engine;
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public enum Phase {
+
     PERCEIVE {
         @Override
         public void run(RealTimeEngine engine) {

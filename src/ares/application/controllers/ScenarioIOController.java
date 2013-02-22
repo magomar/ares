@@ -132,7 +132,7 @@ public final class ScenarioIOController extends AbstractSecondaryController {
                 menuView.setCommandEnabled(EngineCommands.START.getName(), true);
                 menuView.setCommandEnabled(EngineCommands.PAUSE.getName(), false);
                 menuView.setCommandEnabled(EngineCommands.NEXT.getName(), false);
-                String scenInfo = scenario.getName() + "\n" + Clock.INSTANCE.toStringVerbose()+ "\nRole: " + mainController.getUserRole();
+                String scenInfo = scenario.getName() + "\n" + Clock.INSTANCE.toStringVerbose() + "\nRole: " + mainController.getUserRole();
                 infoView.updateScenInfo(scenInfo);
             }
         }
@@ -192,5 +192,4 @@ public final class ScenarioIOController extends AbstractSecondaryController {
         public void actionPerformed(ActionEvent e) {
         }
     }
-
 }

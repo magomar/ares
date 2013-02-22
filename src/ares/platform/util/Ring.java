@@ -322,10 +322,10 @@ public class Ring<E> extends AbstractSequentialList<E>
 
     /**
      * Removes the first occurrence of the specified element from this list, if it is present. If this list does not
-     * contain the element, it is unchanged. More formally, removes the element with the lowest index
-     * {@code i} such that <tt>(o==null&nbsp;?&nbsp;get(i)==null&nbsp;:&nbsp;o.equals(get(i)))</tt> (if such an element
-     * exists). Returns {@code true} if this list contained the specified element (or equivalently, if this list changed
-     * as a result of the call).
+     * contain the element, it is unchanged. More formally, removes the element with the lowest index {@code i} such
+     * that <tt>(o==null&nbsp;?&nbsp;get(i)==null&nbsp;:&nbsp;o.equals(get(i)))</tt> (if such an element exists).
+     * Returns {@code true} if this list contained the specified element (or equivalently, if this list changed as a
+     * result of the call).
      *
      * @param o element to be removed from this list, if present
      * @return {@code true} if this list contained the specified element
@@ -798,7 +798,7 @@ public class Ring<E> extends AbstractSequentialList<E>
     @SuppressWarnings("unchecked")
     @Override
     public boolean removeFirstOccurrence(Object o) {
-        return remove((E)o);
+        return remove((E) o);
     }
 
     /**
@@ -835,9 +835,9 @@ public class Ring<E> extends AbstractSequentialList<E>
      *
      * The list-iterator is <i>fail-fast</i>: if the list is structurally modified at any time after the Iterator is
      * created, in any way except through the list-iterator's own {@code remove} or {@code add} methods, the
-     * list-iterator will throw a
-     * {@code ConcurrentModificationException}. Thus, in the face of concurrent modification, the iterator fails quickly
-     * and cleanly, rather than risking arbitrary, non-deterministic behavior at an undetermined time in the future.
+     * list-iterator will throw a {@code ConcurrentModificationException}. Thus, in the face of concurrent modification,
+     * the iterator fails quickly and cleanly, rather than risking arbitrary, non-deterministic behavior at an
+     * undetermined time in the future.
      *
      * @param index index of the first element to be returned from the list-iterator (by a call to {@code next})
      * @return a ListIterator of the elements in this list (in proper sequence), starting at the specified position in
@@ -970,7 +970,7 @@ public class Ring<E> extends AbstractSequentialList<E>
      * Adapter to provide descending iterators via ListItr.previous
      */
     private class DescendingIterator implements Iterator<E> {
-       
+
         private final Ring.ListItr itr = new Ring.ListItr(size());
 
         @Override
@@ -1062,8 +1062,7 @@ public class Ring<E> extends AbstractSequentialList<E>
      * <pre>
      *     String[] y = x.toArray(new String[0]);</pre>
      *
-     * Note that {@code toArray(new Object[0])} is identical in function to
-     * {@code toArray()}.
+     * Note that {@code toArray(new Object[0])} is identical in function to {@code toArray()}.
      *
      * @param a the array into which the elements of the list are to be stored, if it is big enough; otherwise, a new
      * array of the same runtime type is allocated for this purpose.
@@ -1142,6 +1141,5 @@ public class Ring<E> extends AbstractSequentialList<E>
             this.next = next;
             this.prev = prev;
         }
-
     }
 }

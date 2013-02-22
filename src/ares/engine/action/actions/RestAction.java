@@ -9,6 +9,7 @@ import ares.engine.actors.UnitActor;
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class RestAction extends AbstractAction {
+
     /**
      * Default sleep time in minutes
      */
@@ -17,5 +18,4 @@ public class RestAction extends AbstractAction {
     public RestAction(UnitActor actor) {
         super(actor, ActionType.REST, AbstractAction.AS_SOON_AS_POSSIBLE, SLEEP_TIME);
     }
-
 }

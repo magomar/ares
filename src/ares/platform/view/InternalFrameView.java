@@ -30,7 +30,7 @@ public class InternalFrameView<V extends AbstractView<? extends JComponent>> ext
     public JInternalFrame getInternalFrame() {
         return internalFrame;
     }
-    
+
     public void setTitle(String title) {
         internalFrame.setTitle(title);
     }
@@ -47,14 +47,13 @@ public class InternalFrameView<V extends AbstractView<? extends JComponent>> ext
         } catch (java.beans.PropertyVetoException e) {
         }
     }
-    
+
     public void hide() {
         internalFrame.setVisible(false);
     }
-    
+
     public void close() {
         internalFrame.dispose();
         desktopPane.remove(internalFrame);
     }
-
 }
