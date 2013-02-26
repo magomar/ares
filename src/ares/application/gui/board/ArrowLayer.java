@@ -3,6 +3,7 @@ package ares.application.gui.board;
 import ares.application.gui.AbstractImageLayer;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.*;
+import ares.application.models.forces.UnitModel;
 import ares.engine.algorithms.routing.*;
 import ares.scenario.board.Direction;
 import ares.scenario.board.Tile;
@@ -20,16 +21,11 @@ public class ArrowLayer extends AbstractImageLayer {
 
     private SoftReference<BufferedImage> arrowImage = new SoftReference<>(null);
     private final static Map<Integer, Point> imageIndexes = fillIndexMap();
-//    private Path lastPath;
 
-//    public ArrowLayer(AbstractImageLayer parentLayer) {
-//        super(parentLayer);
-//    }
+    public ArrowLayer(AbstractImageLayer parentLayer) {
+        super(parentLayer);
+    }
 
-//    @Override
-//    public void initialize(ScenarioModel s) {
-//        
-//    }
     public void paintArrow(Path path) {
         if (path == null) {
             //TODO set mouse icon to X or something
@@ -47,6 +43,12 @@ public class ArrowLayer extends AbstractImageLayer {
 
     }
 
+    /**
+     * Paints an arrow segment in the <p>tile<p> passed as parameter
+     *
+     * @param tile the tile where to paint an Arrow
+     * @param index the position of the arrow segment within the array of arrow images
+     */
     public void paintTile(Tile tile, Integer index) {
         Point subImagePos = imageIndexes.get(index);
         if (subImagePos != null) {
@@ -64,6 +66,7 @@ public class ArrowLayer extends AbstractImageLayer {
         }
 
     }
+
     /**
      *
      * @see TerrainLayer#getTerrainToImageIndex(ares.application.models.board.TileModel)

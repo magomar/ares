@@ -4,7 +4,7 @@
  */
 package ares.io;
 
-import ares.application.gui.UnitColors;
+import ares.application.gui.UnitIcons;
 import ares.scenario.board.Terrain;
 import java.io.File;
 
@@ -54,7 +54,11 @@ public enum ImageProfile {
      * @param hexHeight
      * @param path
      */
-    private ImageProfile(int unitsImageWidth, int unitsImageHeight, int unitsImageRows, int unitsImageCols, int unitSquareSide, int terrainImageWidth, int terrainImageHeight, int terrainImageRows, int terrainImageCols, int hexDiameter, int hexSide, int hexOffset, int hexHeight, double hexRise, String path) {
+    private ImageProfile(final int unitsImageWidth, final int unitsImageHeight, final int unitsImageRows,
+            final int unitsImageCols, final int unitSquareSide, final int terrainImageWidth,
+            final int terrainImageHeight, final int terrainImageRows, final int terrainImageCols,
+            final int hexDiameter, final int hexSide, final int hexOffset, final int hexHeight,
+            final double hexRise, final String path) {
         this.unitsImageWidth = unitsImageWidth;
         this.unitsImageHeight = unitsImageHeight;
         this.unitsImageRows = unitsImageRows;
@@ -236,12 +240,40 @@ public enum ImageProfile {
         return new File(path, "Movement_arrows.png");
     }
 
+    public File getBrassCursorFilename() {
+        String baseFilename = "brass_cursor.png";
+        switch (this) {
+            case SMALL:
+                return null;
+            case MEDIUM:
+                return new File(path, baseFilename);
+            case HIGH:
+                return new File(path, "h_" + baseFilename);
+            default:
+                throw new AssertionError("Assertion failed: unkown image profile " + this);
+        }
+    }
+
+    public File getSteelCursorFilename() {
+        String baseFilename = "steel_cursor.png";
+        switch (this) {
+            case SMALL:
+                return null;
+            case MEDIUM:
+                return new File(path, baseFilename);
+            case HIGH:
+                return new File(path, "h_" + baseFilename);
+            default:
+                throw new AssertionError("Assertion failed: unkown image profile " + this);
+        }
+    }
+
     /**
      *
      * @param terrain
      * @return the terrain filename based on the Image Profile
      */
-    public String getFileName(Terrain terrain) {
+    public String getTerrainFilename(Terrain terrain) {
 
         switch (this) {
 
@@ -258,18 +290,18 @@ public enum ImageProfile {
 
     /**
      *
-     * @param unitColor
+     * @param icons
      * @return unit template image filename based on the Image Profile
      */
-    public String getFileName(UnitColors unitColor) {
+    public String getUnitIconsFileName(UnitIcons icons) {
 
         switch (this) {
             case SMALL:
-                return unitColor.getGraphicFileSmall();
+                return icons.getGraphicFileSmall();
             case MEDIUM:
-                return unitColor.getGraphicFileMedium();
+                return icons.getGraphicFileMedium();
             case HIGH:
-                return unitColor.getGraphicFileHigh();
+                return icons.getGraphicFileHigh();
             default:
                 throw new AssertionError("Assertion failed: unkown image profile " + this);
         }

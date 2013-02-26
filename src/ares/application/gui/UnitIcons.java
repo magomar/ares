@@ -6,7 +6,7 @@ import java.awt.Color;
  *
  * @author Sergio Musoles
  */
-public enum UnitColors {
+public enum UnitIcons {
     // (Filename, attributes color)
 
     COLOR0("h_units_1_gray_0.png", "units_1_gray_0.png", "s_units_1_gray_0.png", Color.BLACK),
@@ -124,7 +124,7 @@ public enum UnitColors {
     private final String graphicFileSmall;
     private final Color attributeColor;
 
-    private UnitColors(String graphicFileHigh, String graphicFileMedium, String graphicFileSmall, Color attributeColor) {
+    private UnitIcons(String graphicFileHigh, String graphicFileMedium, String graphicFileSmall, Color attributeColor) {
         this.graphicFileHigh = graphicFileHigh;
         this.graphicFileMedium = graphicFileMedium;
         this.graphicFileSmall = graphicFileSmall;

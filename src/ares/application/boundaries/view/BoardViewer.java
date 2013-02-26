@@ -2,6 +2,8 @@ package ares.application.boundaries.view;
 
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.TileModel;
+import ares.application.models.forces.FormationModel;
+import ares.application.models.forces.UnitModel;
 import ares.engine.algorithms.routing.Path;
 import ares.platform.view.View;
 import java.awt.event.MouseListener;
@@ -23,6 +25,10 @@ public interface BoardViewer extends View {
     public void updateTile(TileModel tile);
 
     public void addMouseListener(MouseListener listener);
+
     public void addMouseMotionListener(MouseMotionListener listener);
-    public void updateArrowPath(ScenarioModel s,Path path);
+
+    public void updateArrowPath(ScenarioModel s, Path path);
+    
+    public void updateSelectedUnit(UnitModel selectedUnit, FormationModel formation, ScenarioModel scenario);
 }

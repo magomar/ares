@@ -22,9 +22,11 @@ public abstract class AbstractImageLayer extends javax.swing.JPanel {
     protected static final Logger LOG = Logger.getLogger(AbstractImageLayer.class.getName());
 
     public AbstractImageLayer() {
+        setOpaque(false);
     }
 
     public AbstractImageLayer(AbstractImageLayer parentLayer) {
+        setOpaque(false);
         this.parentLayer = parentLayer;
         globalImage = parentLayer.getGlobalImage();
     }

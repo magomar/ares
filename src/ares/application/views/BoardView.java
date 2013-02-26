@@ -1,13 +1,16 @@
 package ares.application.views;
 
-import ares.application.gui.board.TerrainLayer;
+import ares.application.boundaries.view.BoardViewer;
+import ares.application.gui.AbstractImageLayer;
 import ares.application.gui.board.ArrowLayer;
 import ares.application.gui.board.GridLayer;
+import ares.application.gui.board.SelectionLayer;
+import ares.application.gui.board.TerrainLayer;
 import ares.application.gui.board.UnitsLayer;
-import ares.application.gui.AbstractImageLayer;
-import ares.application.boundaries.view.BoardViewer;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.*;
+import ares.application.models.forces.FormationModel;
+import ares.application.models.forces.UnitModel;
 import ares.engine.algorithms.routing.Path;
 import ares.platform.view.AbstractView;
 import java.awt.*;
@@ -26,6 +29,7 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
     private AbstractImageLayer unitsLayer;
     private AbstractImageLayer gridLayer;
     private AbstractImageLayer arrowLayer;
+    private AbstractImageLayer selectionLayer;
     /**
      * This matrix has all the layers sorted by depth and priority.
      *
@@ -55,12 +59,14 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
         layeredPane.setBackground(Color.BLACK);
         terrainLayer = new TerrainLayer();
         unitsLayer = new UnitsLayer();
-        unitsLayer.setOpaque(false);
+//        unitsLayer.setOpaque(false);
         gridLayer = new GridLayer();
-        gridLayer.setOpaque(false);
-        //Shares image with grid layer
-        arrowLayer = new ArrowLayer();
-        arrowLayer.setOpaque(false);
+//        gridLayer.setOpaque(false);
+        selectionLayer = new SelectionLayer();
+//        selectionLayer.setOpaque(false);
+        //Shares image with selection layer
+        arrowLayer = new ArrowLayer(selectionLayer);
+//        arrowLayer.setOpaque(false);
 
         // Add the last layer from each level to the layered pane
         layeredPane.add(terrainLayer, JLayeredPane.DEFAULT_LAYER);
@@ -141,5 +147,11 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
     public void updateArrowPath(ScenarioModel s, Path path) {
         arrowLayer.updateGlobalImage(s);
         ((ArrowLayer) arrowLayer).paintArrow(path);
+    }
+
+    @Override
+    public void updateSelectedUnit(UnitModel selectedUnit, FormationModel formation, ScenarioModel scenario) {
+        selectionLayer.updateGlobalImage(scenario);
+        ((SelectionLayer) selectionLayer).paintSelectedUnit(selectedUnit, formation);
     }
 }

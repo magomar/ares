@@ -273,7 +273,7 @@ public class TerrainLayer extends AbstractImageLayer {
         SoftReference<BufferedImage> softImage = terrainBufferMap.get(t);
         //If image doesn't exist or has been GC'ed
         if (softImage == null || softImage.get() == null) {
-            String filename = BoardGraphicsModel.getImageProfile().getFileName(t);
+            String filename = BoardGraphicsModel.getImageProfile().getTerrainFilename(t);
             BufferedImage i = loadImage(AresIO.ARES_IO.getFile(BoardGraphicsModel.getImageProfile().getPath(), filename));
             terrainBufferMap.put(t, new SoftReference<>(i));
         }

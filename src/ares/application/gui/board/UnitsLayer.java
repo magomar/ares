@@ -1,7 +1,7 @@
 package ares.application.gui.board;
 
 import ares.application.gui.AbstractImageLayer;
-import ares.application.gui.UnitColors;
+import ares.application.gui.UnitIcons;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.*;
 import ares.application.models.forces.*;
@@ -20,19 +20,19 @@ import java.util.*;
 public class UnitsLayer extends AbstractImageLayer {
 
     //Map to save loaded images
-    private EnumMap<UnitColors, SoftReference<BufferedImage>> unitBufferMap = new EnumMap<>(UnitColors.class);
+    private EnumMap<UnitIcons, SoftReference<BufferedImage>> unitBufferMap = new EnumMap<>(UnitIcons.class);
     /**
      * Offset distance from the upper left corner of the tile. The image will be painted at Point(X+offset, Y+offset)
      *
      * @see paintTile(TileModel, int)
      */
-    private int unitImageOffset = 7;
+    private final static int UNIT_IMAGE_OFFSET = 7;
     /**
      * Maximum numbers of units to be painted in a single tile
      *
      * @see paintTile(TileModel, int)
      */
-    private int defaultMaxStack = 6;
+    private final static int MAX_STACK = 6;
     /**
      * The unit image can be composed of different layered images. Each layer is shifted
      * <code>unitStackOffset</code> pixels. For example, say the first layer was painted at Point(X,Y), then the next
@@ -40,7 +40,7 @@ public class UnitsLayer extends AbstractImageLayer {
      *
      * @see paintTile(TileModel, int)
      */
-    private static int unitStackOffset = 1;
+    private static int UNIT_STACK_OFFSET = 1;
 
     @Override
     public void createGlobalImage(ScenarioModel s) {
@@ -57,7 +57,7 @@ public class UnitsLayer extends AbstractImageLayer {
 
     @Override
     public void paintTile(TileModel t) {
-        paintByTile(t, defaultMaxStack);
+        paintByTile(t, MAX_STACK);
     }
 
     /**
@@ -66,7 +66,7 @@ public class UnitsLayer extends AbstractImageLayer {
      * @param t TileModel where the units are
      * @param maxStack maximum units in the stack to be painted
      */
-    public void paintByTile(TileModel t, int maxStack) {
+    private void paintByTile(TileModel t, int maxStack) {
         //Graphics from the global image
         Graphics2D g2 = globalImage.createGraphics();
 
@@ -94,8 +94,8 @@ public class UnitsLayer extends AbstractImageLayer {
             max--;
 
             // Offset from the upper left corner of the tile
-            pos.x += unitImageOffset;
-            pos.y += unitImageOffset;
+            pos.x += UNIT_IMAGE_OFFSET;
+            pos.y += UNIT_IMAGE_OFFSET;
 
             // Offset from the upper left corner of the last painted unit
             // incremented by unitStackOffset
@@ -104,7 +104,7 @@ public class UnitsLayer extends AbstractImageLayer {
             //Paint the same top unit
             for (int i = 0; i < max; i++) {
                 g2.drawImage(unitImage, pos.x + d, pos.y + d, null);
-                d += unitStackOffset;
+                d += UNIT_STACK_OFFSET;
             }
 
             //Adds attributes to the image such as Health, Attack, Defense, etc.
@@ -126,7 +126,7 @@ public class UnitsLayer extends AbstractImageLayer {
     private BufferedImage getUnitImage(UnitModel unit) {
 
         // Color template
-        UnitColors uc = unit.getColor();
+        UnitIcons uc = unit.getColor();
         //Make sure graphics are loaded
         loadUnitGraphics(uc);
 
@@ -175,14 +175,14 @@ public class UnitsLayer extends AbstractImageLayer {
      * Loads the unit color template and saves it in the buffer map
      *
      * @param uc represents the UnitColor to be loaded
-     * @see UnitColors
+     * @see UnitIcons
      */
-    private void loadUnitGraphics(UnitColors uc) {
+    private void loadUnitGraphics(UnitIcons uc) {
 
         SoftReference<BufferedImage> softImage = unitBufferMap.get(uc);
         //If image doesn't exist or has been GC'ed
         if (softImage == null || softImage.get() == null) {
-            String filename = BoardGraphicsModel.getImageProfile().getFileName(uc);
+            String filename = BoardGraphicsModel.getImageProfile().getUnitIconsFileName(uc);
             BufferedImage i = loadImage(AresIO.ARES_IO.getFile(BoardGraphicsModel.getImageProfile().getPath(), filename));
             unitBufferMap.put(uc, new SoftReference<>(i));
         }

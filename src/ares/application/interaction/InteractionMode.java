@@ -7,6 +7,6 @@ package ares.application.interaction;
 public enum InteractionMode {
 
     FREE,
-    INDIVIDUAL_ORDERS,
+    UNIT_ORDERS,
     FORMATION_ORDERS
 }
