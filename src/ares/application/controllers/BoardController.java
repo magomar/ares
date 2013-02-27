@@ -89,19 +89,19 @@ public final class BoardController extends AbstractSecondaryController implement
                 selectedTile = tile;
                 if (stack.isEmpty()) {
                     selectedUnit = null;
-                    LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, "New tile selected");
                     interactionMode = InteractionMode.FREE;
+                    LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, "New tile selected");
                 } else {
                     selectedUnit = tile.getTopUnit();
-                    LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, "New unit selected");
                     interactionMode = InteractionMode.UNIT_ORDERS;
+                    LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, "New unit selected");
                 }
             } else {
                 if (stack.size() > 1) {
-                    LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, "Next unit in stack selected");
                     stack.next();
                     changeUnit = true;
                     selectedUnit = tile.getTopUnit();
+                    LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, "Next unit in stack selected");
                 }
             }
 
@@ -109,7 +109,7 @@ public final class BoardController extends AbstractSecondaryController implement
                 UserRole role = mainController.getUserRole();
                 TileModel tileModel = selectedTile.getModel(role);
                 unitView.updateInfo(tileModel);
-                boardView.updateTile(tileModel);
+                boardView.updateUnitStack(tileModel);
                 if (selectedUnit != null) {// interactionMode = InteractionMode.UNIT_ORDERS;
                     UnitModel unitModel = selectedUnit.getModel(role);
                     FormationModel formation = selectedUnit.getFormation().getModel(role);

@@ -1,8 +1,6 @@
 package ares.application.gui;
 
-import ares.application.models.ScenarioModel;
 import ares.application.models.board.BoardGraphicsModel;
-import ares.application.models.board.TileModel;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
@@ -13,7 +11,7 @@ import javax.imageio.ImageIO;
  *
  * @author Heine <heisncfr@inf.upv.es>
  */
-public abstract class AbstractImageLayer extends javax.swing.JPanel {
+public abstract class AbstractImageLayer extends javax.swing.JPanel implements ImageLayer {
 
     // Final image to be painted on the JComponent
     protected BufferedImage globalImage;
@@ -26,27 +24,26 @@ public abstract class AbstractImageLayer extends javax.swing.JPanel {
     }
 
     public AbstractImageLayer(AbstractImageLayer parentLayer) {
-        setOpaque(false);
+        this();
         this.parentLayer = parentLayer;
         globalImage = parentLayer.getGlobalImage();
     }
 
-    public void initialize(ScenarioModel s) {
+    @Override
+    public void initialize() {
         globalImage = new BufferedImage(BoardGraphicsModel.getImageWidth(), BoardGraphicsModel.getImageHeight(), BufferedImage.TYPE_INT_ARGB);
-        createGlobalImage(s);
-    }
-
-    public void updateGlobalImage(ScenarioModel s) {
-        globalImage = new BufferedImage(BoardGraphicsModel.getImageWidth(), BoardGraphicsModel.getImageHeight(), BufferedImage.TYPE_INT_ARGB);
-        createGlobalImage(s);
         repaint();
     }
 
-    protected abstract void createGlobalImage(ScenarioModel s);
+    protected abstract void updateLayer();
 
-    public abstract void paintTile(TileModel t);
-
-    protected BufferedImage loadImage(File f) {
+    /**
+     * Loads an image from file
+     *
+     * @param f
+     * @return
+     */
+    protected static BufferedImage loadImage(File f) {
         BufferedImage i = null;
         try {
             i = ImageIO.read(f);
@@ -55,12 +52,13 @@ public abstract class AbstractImageLayer extends javax.swing.JPanel {
         return i;
     }
 
+    @Override
     public void flush() {
         globalImage = null;
     }
 
     /**
-     * Paints the globalImage if it's not null, if it is then paints a black rectangle.
+     * Paints the globalImage if it's not null, otherwise paints a black rectangle.
      *
      * globalImages shouldn't be null unless you know what you're doing, check your code!
      *
@@ -81,11 +79,14 @@ public abstract class AbstractImageLayer extends javax.swing.JPanel {
         }
     }
 
-    public AbstractImageLayer getParentLayer() {
+    @Override
+    public ImageLayer getParentLayer() {
         return parentLayer;
     }
 
+    @Override
     public BufferedImage getGlobalImage() {
         return globalImage;
     }
+    
 }

@@ -1,9 +1,7 @@
 package ares.application.gui.board;
 
 import ares.application.gui.AbstractImageLayer;
-import ares.application.models.ScenarioModel;
 import ares.application.models.board.*;
-import ares.application.models.forces.UnitModel;
 import ares.engine.algorithms.routing.*;
 import ares.scenario.board.Direction;
 import ares.scenario.board.Tile;
@@ -21,12 +19,15 @@ public class ArrowLayer extends AbstractImageLayer {
 
     private SoftReference<BufferedImage> arrowImage = new SoftReference<>(null);
     private final static Map<Integer, Point> imageIndexes = fillIndexMap();
+    private Path path;
 
     public ArrowLayer(AbstractImageLayer parentLayer) {
         super(parentLayer);
     }
 
-    public void paintArrow(Path path) {
+    @Override
+    protected void updateLayer() {
+        initialize();
         if (path == null) {
             //TODO set mouse icon to X or something
             return;
@@ -40,16 +41,20 @@ public class ArrowLayer extends AbstractImageLayer {
             Direction to = last.getDirection().getOpposite();
             paintTile(current.getTile(), getDirectionToImageIndex(from, to));
         }
+    }
 
+    public void paintArrow(Path path) {
+        this.path = path;
+        updateLayer();
     }
 
     /**
-     * Paints an arrow segment in the <p>tile<p> passed as parameter
+     * Paints an arrow segment in the <code>tile</code> passed as parameter
      *
      * @param tile the tile where to paint an Arrow
      * @param index the position of the arrow segment within the array of arrow images
      */
-    public void paintTile(Tile tile, Integer index) {
+    private void paintTile(Tile tile, Integer index) {
         Point subImagePos = imageIndexes.get(index);
         if (subImagePos != null) {
             Graphics2D g2 = globalImage.createGraphics();
@@ -63,10 +68,9 @@ public class ArrowLayer extends AbstractImageLayer {
             Point pos = BoardGraphicsModel.tileToPixel(tile.getCoordinates());
             g2.drawImage(image, pos.x, pos.y, null);
             repaint(pos.x, pos.y, BoardGraphicsModel.getHexDiameter(), BoardGraphicsModel.getHexHeight());
+            g2.dispose();
         }
-
     }
-
     /**
      *
      * @see TerrainLayer#getTerrainToImageIndex(ares.application.models.board.TileModel)
@@ -85,28 +89,16 @@ public class ArrowLayer extends AbstractImageLayer {
 //    }
     private static final int[] arrowIndex = {76, 44, 108, 28, 92, 60};
 
-    public int getDirectionToImageIndex(Direction to) {
+    private int getDirectionToImageIndex(Direction to) {
         return arrowIndex[to.ordinal()];
     }
 
-    public int getDirectionToImageIndex(Direction from, Direction to) {
+    private int getDirectionToImageIndex(Direction from, Direction to) {
         int index = 64 >>> from.ordinal();
         index |= 64 >>> to.ordinal();
         return index;
     }
 
-    @Override
-    protected void createGlobalImage(ScenarioModel s) {
-    }
-
-    @Override
-    public void paintTile(TileModel t) {
-    }
-
-//    @Override
-//    public void paintComponent(Graphics g) {
-//        parentLayer.paintComponent(g);
-//    }
     private static Map<Integer, Point> fillIndexMap() {
         Map<Integer, Point> map = new HashMap<>();
 //        Integer[] indexArrray = {
@@ -145,4 +137,5 @@ public class ArrowLayer extends AbstractImageLayer {
 
         return map;
     }
+
 }

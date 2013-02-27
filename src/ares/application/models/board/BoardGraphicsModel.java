@@ -14,11 +14,11 @@ import java.awt.Point;
 public class BoardGraphicsModel {
 
     /**
-     * board width in tile units
+     * board width in tiles
      */
     private static int tileColumns;
     /**
-     * board height in tile units
+     * board height in tiles
      */
     private static int tileRows;
     /**

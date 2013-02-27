@@ -21,6 +21,7 @@ public class TerrainLayer extends AbstractImageLayer {
 
     //Map to store loaded images    
     private EnumMap<Terrain, SoftReference<BufferedImage>> terrainBufferMap = new EnumMap<>(Terrain.class);
+    private ScenarioModel scenario;
 
     /**
      * Creates the whole terrain image. Paints all the playable tiles stored in
@@ -30,40 +31,44 @@ public class TerrainLayer extends AbstractImageLayer {
      * @see Tile
      * @see TerrainFeature
      */
-    @Override
-    public void createGlobalImage(ScenarioModel s) {
 
+    @Override
+    protected void updateLayer() {
+        initialize();
         Graphics2D g2 = globalImage.createGraphics();
         // Paint it black!
         g2.setColor(Color.BLACK);
         g2.fillRect(0, 0, BoardGraphicsModel.getImageWidth(), BoardGraphicsModel.getImageHeight());
         g2.dispose();
-        for (TileModel[] tt : s.getBoardModel().getMapModel()) {
+        for (TileModel[] tt : scenario.getBoardModel().getMapModel()) {
             for (TileModel t : tt) {
                 paintTile(t);
             }
         }
     }
 
+    public void paintTerrain(ScenarioModel scenario) {
+        this.scenario = scenario;
+        updateLayer();
+    }
+    
     /**
-     *
-     * @param t
+     * Paints the terrain of single tile, as described by <code>t</code>
+     * @param tile 
      */
-    @Override
-    public void paintTile(TileModel t) {
-
+    private void paintTile(TileModel tile) {
         //If I don't know anything about it
-        if (t.getKnowledgeCategory() == KnowledgeCategory.NONE) {
+        if (tile.getKnowledgeCategory() == KnowledgeCategory.NONE) {
             return;
         }
 
         //Calculate tile position
-        Point pos = BoardGraphicsModel.tileToPixel(t.getCoordinates());
+        Point pos = BoardGraphicsModel.tileToPixel(tile.getCoordinates());
 
         //Final image graphics
         Graphics2D g2 = globalImage.createGraphics();
 
-        BufferedImage features = getTerrainFeaturesImage(t);
+        BufferedImage features = getTerrainFeaturesImage(tile);
         //If non playable, don't paint
         if (features == null) {
             return;
@@ -75,7 +80,7 @@ public class TerrainLayer extends AbstractImageLayer {
         g2.drawImage(terrainImage, pos.x, pos.y, this);
 
         // Get the index of the terrain image
-        Map<Terrain, Integer> m = getTerrainToImageIndex(t);
+        Map<Terrain, Integer> m = getTerrainToImageIndex(tile);
 
         for (Map.Entry<Terrain, Integer> e : m.entrySet()) {
 

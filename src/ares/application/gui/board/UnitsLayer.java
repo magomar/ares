@@ -19,7 +19,10 @@ import java.util.*;
  */
 public class UnitsLayer extends AbstractImageLayer {
 
-    //Map to save loaded images
+    private ScenarioModel scenario;
+    /**
+     * Map to save loaded images
+     */
     private EnumMap<UnitIcons, SoftReference<BufferedImage>> unitBufferMap = new EnumMap<>(UnitIcons.class);
     /**
      * Offset distance from the upper left corner of the tile. The image will be painted at Point(X+offset, Y+offset)
@@ -43,30 +46,36 @@ public class UnitsLayer extends AbstractImageLayer {
     private static int UNIT_STACK_OFFSET = 1;
 
     @Override
-    public void createGlobalImage(ScenarioModel s) {
+    protected void updateLayer() {
+        initialize();
         Collection<TileModel> tileModels = new HashSet<>();
-        for (ForceModel forceModel : s.getForceModel()) {
+        for (ForceModel forceModel : scenario.getForceModel()) {
             for (UnitModel unitModel : forceModel.getUnitModels()) {
                 TileModel tileModel = unitModel.getLocation();
                 if (tileModels.add(tileModel)) {
-                    paintTile(tileModel);
+                    paintUnitStack(tileModel);
                 }
             }
         }
     }
 
-    @Override
-    public void paintTile(TileModel t) {
-        paintByTile(t, MAX_STACK);
+    /**
+     * Paints all the units visible in the  <code> scenario</code>
+     *
+     * @param scenario
+     */
+    public void paintUnits(ScenarioModel scenario) {
+        this.scenario = scenario;
+        updateLayer();
     }
 
     /**
      * Paints the units in a single tile
      *
-     * @param t TileModel where the units are
+     * @param tile TileModel where the units are
      * @param maxStack maximum units in the stack to be painted
      */
-    private void paintByTile(TileModel t, int maxStack) {
+    public void paintUnitStack(TileModel tile) {
         //Graphics from the global image
         Graphics2D g2 = globalImage.createGraphics();
 
@@ -74,22 +83,20 @@ public class UnitsLayer extends AbstractImageLayer {
         BufferedImage unitImage;
 
         //Calculate unit position
-        Point pos = BoardGraphicsModel.tileToPixel(t.getCoordinates());
+        Point pos = BoardGraphicsModel.tileToPixel(tile.getCoordinates());
 
         //If no units on the tile
-        if (t.isEmpty()) {
+        if (tile.isEmpty()) {
             //Empty image
             unitImage = new BufferedImage(BoardGraphicsModel.getHexDiameter(), BoardGraphicsModel.getHexHeight(), BufferedImage.TYPE_INT_ARGB);
             g2.drawImage(unitImage, pos.x, pos.y, null);
             repaint(pos.x, pos.y, unitImage.getWidth(null), unitImage.getHeight(null));
-
         } else {
-
             //Retrieve the single unit image
-            unitImage = getUnitImage(t.getTopUnit());
+            unitImage = getUnitImage(tile.getTopUnit());
 
             //Num units to be painted
-            int max = (t.getNumStackedUnits() > maxStack) ? maxStack : t.getNumStackedUnits();
+            int max = (tile.getNumStackedUnits() > MAX_STACK) ? MAX_STACK : tile.getNumStackedUnits();
             // Attributes are painted only on the last image
             max--;
 
@@ -108,9 +115,8 @@ public class UnitsLayer extends AbstractImageLayer {
             }
 
             //Adds attributes to the image such as Health, Attack, Defense, etc.
-            addUnitAttributes(unitImage, t.getTopUnit());
+            addUnitAttributes(unitImage, tile.getTopUnit());
             g2.drawImage(unitImage, pos.x + d, pos.y + d, null);
-
             repaint(pos.x, pos.y, unitImage.getWidth(null) + d, unitImage.getHeight(null) + d);
         }
         g2.dispose();
@@ -124,7 +130,7 @@ public class UnitsLayer extends AbstractImageLayer {
      * @see KnowledgeCategory
      */
     private BufferedImage getUnitImage(UnitModel unit) {
-
+        
         // Color template
         UnitIcons uc = unit.getColor();
         //Make sure graphics are loaded
@@ -150,7 +156,6 @@ public class UnitsLayer extends AbstractImageLayer {
      * @see UnitAttributes
      */
     private void addUnitAttributes(BufferedImage unitImage, UnitModel unit) {
-
         UnitAttributes ua = new UnitAttributes(unitImage);
         KnowledgeCategory kc = unit.getKnowledgeCategory();
         switch (kc) {
@@ -178,7 +183,6 @@ public class UnitsLayer extends AbstractImageLayer {
      * @see UnitIcons
      */
     private void loadUnitGraphics(UnitIcons uc) {
-
         SoftReference<BufferedImage> softImage = unitBufferMap.get(uc);
         //If image doesn't exist or has been GC'ed
         if (softImage == null || softImage.get() == null) {

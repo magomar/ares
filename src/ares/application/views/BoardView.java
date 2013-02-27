@@ -1,7 +1,7 @@
 package ares.application.views;
 
 import ares.application.boundaries.view.BoardViewer;
-import ares.application.gui.AbstractImageLayer;
+import ares.application.gui.ImageLayer;
 import ares.application.gui.board.ArrowLayer;
 import ares.application.gui.board.GridLayer;
 import ares.application.gui.board.SelectionLayer;
@@ -25,28 +25,28 @@ import javax.swing.*;
 public class BoardView extends AbstractView<JScrollPane> implements BoardViewer {
 
     private JLayeredPane layeredPane;
-    private AbstractImageLayer terrainLayer;
-    private AbstractImageLayer unitsLayer;
-    private AbstractImageLayer gridLayer;
-    private AbstractImageLayer arrowLayer;
-    private AbstractImageLayer selectionLayer;
+    private TerrainLayer terrainLayer;
+    private UnitsLayer unitsLayer;
+    private GridLayer gridLayer;
+    private ArrowLayer arrowLayer;
+    private SelectionLayer selectionLayer;
+    private final static int ALL = 0;
+    private final static int LOW = 1;
+    private final static int MID = 2;
+    private final static int HIGH = 3;
     /**
      * This matrix has all the layers sorted by depth and priority.
      *
      * First level (index 0) is the array with all the existing layers Next indexes are set in such way that the bigger
      * it is the "closer" is to the user. Layers are processed in index order (from left to right)
      */
-    private final static int ALL = 0;
-    private final static int LOW = 1;
-    private final static int MID = 2;
-    private final static int HIGH = 3;
-    private final AbstractImageLayer[][] imageLayers = {
-        // All layer names
-        {terrainLayer, gridLayer, arrowLayer, unitsLayer},
+    private final ImageLayer[][] imageLayers = {
+        // All layers
+        {terrainLayer, gridLayer, selectionLayer, arrowLayer, unitsLayer},
         // Low level
         {terrainLayer},
         // Mid level
-        {gridLayer, arrowLayer},
+        {gridLayer, selectionLayer, arrowLayer},
         // High level
         {unitsLayer}};
     private Thread[] layerThreads = new Thread[imageLayers[ALL].length];
@@ -59,14 +59,10 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
         layeredPane.setBackground(Color.BLACK);
         terrainLayer = new TerrainLayer();
         unitsLayer = new UnitsLayer();
-//        unitsLayer.setOpaque(false);
         gridLayer = new GridLayer();
-//        gridLayer.setOpaque(false);
         selectionLayer = new SelectionLayer();
-//        selectionLayer.setOpaque(false);
         //Shares image with selection layer
         arrowLayer = new ArrowLayer(selectionLayer);
-//        arrowLayer.setOpaque(false);
 
         // Add the last layer from each level to the layered pane
         layeredPane.add(terrainLayer, JLayeredPane.DEFAULT_LAYER);
@@ -99,7 +95,7 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
             layerThreads[finalIndex] = new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    imageLayers[0][finalIndex].initialize(scenario);
+                    imageLayers[0][finalIndex].initialize();
                 }
             });
         }
@@ -109,28 +105,26 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
             imageLayers[ALL][index].setSize(imageSize);
             layerThreads[index].start();
         }
+        terrainLayer.paintTerrain(scenario);
+        unitsLayer.paintUnits(scenario);
     }
 
     @Override
     public void updateScenario(ScenarioModel scenario) {
         //Update all layers from the HIGH level
-        for (int index = HIGH; index < imageLayers.length; index++) {
-            for (AbstractImageLayer layer : imageLayers[index]) {
-                layer.updateGlobalImage(scenario);
-            }
-        }
+//        for (int index = HIGH; index < imageLayers.length; index++) {
+//            for (AbstractImageLayer layer : imageLayers[index]) {
+//                layer.update(scenario);
+//            }
+//        }
+        unitsLayer.paintUnits(scenario);
     }
 
     @Override
     public void closeScenario() {
-        for (AbstractImageLayer ail : imageLayers[ALL]) {
+        for (ImageLayer ail : imageLayers[ALL]) {
             ail.flush();
         }
-    }
-
-    @Override
-    public void updateTile(TileModel tile) {
-        unitsLayer.paintTile(tile);
     }
 
     @Override
@@ -145,13 +139,16 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
 
     @Override
     public void updateArrowPath(ScenarioModel s, Path path) {
-        arrowLayer.updateGlobalImage(s);
-        ((ArrowLayer) arrowLayer).paintArrow(path);
+        arrowLayer.paintArrow(path);
     }
 
     @Override
     public void updateSelectedUnit(UnitModel selectedUnit, FormationModel formation, ScenarioModel scenario) {
-        selectionLayer.updateGlobalImage(scenario);
-        ((SelectionLayer) selectionLayer).paintSelectedUnit(selectedUnit, formation);
+        selectionLayer.paintSelectedUnit(selectedUnit, formation);
+    }
+
+    @Override
+    public void updateUnitStack(TileModel tile) {
+        unitsLayer.paintUnitStack(tile);
     }
 }

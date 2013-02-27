@@ -18,17 +18,16 @@ public interface BoardViewer extends View {
     public void loadScenario(ScenarioModel scenario);
 
     public void updateScenario(ScenarioModel scenario);
-//    public void updateUnits(Collection<UnitModel> units);
 
     public void closeScenario();
 
-    public void updateTile(TileModel tile);
+    public void updateUnitStack(TileModel tile);
 
     public void addMouseListener(MouseListener listener);
 
     public void addMouseMotionListener(MouseMotionListener listener);
 
     public void updateArrowPath(ScenarioModel s, Path path);
-    
+
     public void updateSelectedUnit(UnitModel selectedUnit, FormationModel formation, ScenarioModel scenario);
 }

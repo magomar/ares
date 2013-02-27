@@ -1,8 +1,5 @@
 package ares.application.gui;
 
-import ares.application.gui.AbstractImageLayer;
-import ares.application.models.ScenarioModel;
-import ares.application.models.board.TileModel;
 import ares.io.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -19,22 +16,24 @@ import javax.swing.*;
  */
 public final class WelcomeScreen extends AbstractImageLayer {
 
-    // Background image to be loaded 
+    /**
+     * Background image to be loaded 
+     */
     private SoftReference<BufferedImage> backgroundImage = new SoftReference<>(null);
-    // Folder with wallpapers
+    /**
+     * Folder containing wallpapers
+     */
     private final static File wallpapers = new File(AresPaths.GRAPHICS.getPath(), "Background");
 
     public WelcomeScreen() {
         BoxLayout bl = new BoxLayout(this, BoxLayout.PAGE_AXIS);
         setLayout(bl);
         add(Box.createRigidArea(new Dimension(0, 300)));
-        setBackgroundImage();
+        updateLayer();
     }
 
-    /**
-     * Loads a random image and sets it as the background image
-     */
-    public void setBackgroundImage() {
+    @Override
+    protected void updateLayer() {
         if (backgroundImage.get() == null) {
             try {
                 backgroundImage = new SoftReference<>(loadImage(randomImageFile()));
@@ -45,6 +44,13 @@ public final class WelcomeScreen extends AbstractImageLayer {
         }
     }
 
+    /**
+     * Loads a random image and sets it as the background image
+     */
+    public void setBackgroundImage() {
+        updateLayer();
+    }
+
     private File randomImageFile() {
         File[] backgrounds = wallpapers.listFiles();
         if (backgrounds == null) {
@@ -52,13 +58,5 @@ public final class WelcomeScreen extends AbstractImageLayer {
         }
         Integer index = new Random().nextInt(backgrounds.length);
         return backgrounds[index];
-    }
-
-    @Override
-    protected void createGlobalImage(ScenarioModel s) {
-    }
-
-    @Override
-    public void paintTile(TileModel t) {
     }
 }
