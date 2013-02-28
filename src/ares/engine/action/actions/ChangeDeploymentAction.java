@@ -2,7 +2,7 @@ package ares.engine.action.actions;
 
 import ares.engine.action.AbstractAction;
 import ares.engine.action.ActionType;
-import ares.engine.actors.UnitActor;
+import ares.scenario.forces.Unit;
 
 /**
  * Action to change that change between static (deployed) and mobile status. Actually, there are two types of action in
@@ -18,7 +18,7 @@ public class ChangeDeploymentAction extends AbstractAction {
 
     public static final int CHANGE_DEPLOYMENT_TIME = 15;
 
-    public ChangeDeploymentAction(UnitActor actor, ActionType type) {
-        super(actor, type, AbstractAction.AS_SOON_AS_POSSIBLE, (int) (CHANGE_DEPLOYMENT_TIME * actor.getUnit().getEchelon().getSpeedModifier()));
+    public ChangeDeploymentAction(Unit unit, ActionType type) {
+        super(unit, type, AbstractAction.AS_SOON_AS_POSSIBLE, (int) (CHANGE_DEPLOYMENT_TIME * unit.getEchelon().getSpeedModifier()));
     }
 }

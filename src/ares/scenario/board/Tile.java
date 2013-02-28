@@ -220,7 +220,8 @@ public final class Tile implements ModelProvider<TileModel> {
         }
     }
 
-    public void reconnoissance(Unit unit, int minutes) {
+    public void reconnoissance(Unit unit, double intensity) {
+        int minutes = Clock.INSTANCE.getMINUTES_PER_TICK();
         double recon = unit.getTraitValue(AssetTrait.RECON) * AssetTrait.RECON.getFactor();
         if (recon == 0) {
             recon = AssetTrait.RECON.getFactor();

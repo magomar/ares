@@ -7,7 +7,8 @@ import ares.application.models.forces.UnitModel;
 import ares.data.jaxb.Availability;
 import ares.data.jaxb.Emphasis;
 import ares.engine.action.ActionType;
-import ares.engine.actors.UnitActor;
+import ares.engine.command.TacticalMission;
+import ares.engine.command.TacticalMissionType;
 import ares.engine.knowledge.KnowledgeCategory;
 import ares.engine.movement.MovementType;
 import ares.platform.model.ModelProvider;
@@ -125,13 +126,19 @@ public abstract class Unit implements ModelProvider<UnitModel> {
     protected Unit parent;
     /**
      * Collection of assets available in the unit. An asset includes information concerning the type of equipment, the
-     * current amount of that equipment, and the maximum amount (the ideal condition)
+     * current amount of that equipment, and the maximum amount (the ideal condition). Assets are stored in a
+     * <code>Map</code> having
+     * <code>AssetaType</code> objects as keys, and
+     * <code>Asset</code> objects as values.
      */
     protected Map<AssetType, Asset> assets;
     // ************ COMPUTED ATTRIBUTES ****************
     /**
      * Represents the special capabilities of a unit. It is specified as a map that links asset types to the number of
-     * assets possesing each asset trait.
+     * assets possesing each asset trait. Stored as a map Assets are stored in a
+     * <code>Map</code> having
+     * <code>AssetaTrait</code> objects as keys, and the amount of that trait as values (
+     * <code>Integer</code>)
      */
     protected Map<AssetTrait, Integer> traits;
     /**
@@ -215,7 +222,7 @@ public abstract class Unit implements ModelProvider<UnitModel> {
     /**
      * The actor assigned to this unit
      */
-    protected UnitActor actor;
+    protected TacticalMission mission;
 
     protected Unit(ares.data.jaxb.Unit unit, Formation formation, Force force, Scenario scenario) {
         id = unit.getId();
@@ -280,6 +287,7 @@ public abstract class Unit implements ModelProvider<UnitModel> {
         models.put(KnowledgeCategory.POOR, new DetectedUnitModel(this));
         models.put(KnowledgeCategory.GOOD, new IdentifiedUnitModel(this));
         models.put(KnowledgeCategory.COMPLETE, new KnownUnitModel(this));
+        mission = new TacticalMission(TacticalMissionType.NULL);
     }
 
     /**
@@ -292,34 +300,62 @@ public abstract class Unit implements ModelProvider<UnitModel> {
         range = maxRange;
         updateDerivedValues();
         location.add(this);
+
     }
 
+    /**
+     * Changes the readiness of the unit by the specified
+     * <code>amount</code>
+     *
+     * @param amount
+     */
     public void changeReadiness(int amount) {
         readiness += amount;
         readiness = MathUtils.setBounds(readiness, 0, 100);
         updateDerivedValues();
     }
 
+    /**
+     * Changes the supply levels of the unit by the specified
+     * <code>amount</code>
+     *
+     * @param amount
+     */
     public void changeSupply(int amount) {
         supply += amount;
         supply = MathUtils.setBounds(supply, 0, 200);
         updateDerivedValues();
     }
 
+    /**
+     * Updates derived attributes (
+     * <code>quality</code> and
+     * <code>efficacy</code>)
+     */
     protected void updateDerivedValues() {
         quality = (2 * proficiency + readiness) / 3;
         efficacy = (2 * proficiency + readiness + Math.min(100, supply)) / 4;
     }
 
     /**
-     * The maximum values permitted for several variables are updated. This update should be called by the engine when
-     * appropriate, for example every new day
+     * Updates the maximum values permitted for endurance (
+     * <code>maxEndurance</code> and
+     * <code>maxRange</code>. This feature simmulates a loss of recovery capacity (which occurs for example after
+     * incurring in excesive fatigue). A unit whis these values reduced are not able to recover 100% performance after
+     * resting.
      */
     public void updateMaxValues() {
         maxEndurance = MAX_ENDURANCE * (200 + readiness + Math.min(100, supply)) / 400;
         maxRange = speed * maxEndurance / 90 / 1000;
     }
 
+    /**
+     * Changes the
+     * <code>endurance</code> of the unit by the specified
+     * <code>amount</code>
+     *
+     * @param amount
+     */
     public void changeEndurance(int amount) {
         endurance += amount;
         endurance = MathUtils.setUpperBound(endurance, maxEndurance);
@@ -338,12 +374,26 @@ public abstract class Unit implements ModelProvider<UnitModel> {
         this.parent = parent;
     }
 
+    /**
+     * Moves the unit one tile in the indicated
+     * <code>direction</code>. This method simply changes the location of the unit, and updates the board accordingly
+     * (removes unit from previous location and adds it to the new location)
+     *
+     * @param direction
+     */
     public void move(Direction direction) {
         location.remove(this);
         this.location = location.getNeighbor(direction);
         location.add(this);
     }
 
+    /**
+     * Sets the operational state of the unit. This indicates the way the unit is deployed and/or which kind of activity
+     * is performing
+     *
+     * @see OpState
+     * @param opState
+     */
     public void setOpState(OpState opState) {
         if (opState != null) {
             this.opState = opState;
@@ -514,19 +564,17 @@ public abstract class Unit implements ModelProvider<UnitModel> {
         return opState;
     }
 
-    public boolean canExecute(ActionType actionT) {
-        return endurance > actionT.getRequiredEndurace(Clock.INSTANCE.getMINUTES_PER_TICK());
-    }
-
-    public void recover() {
-        quality = (2 * proficiency + readiness) / 3;
-        efficacy = (2 * proficiency + readiness + supply) / 4;
-        int enduranceRestored = (MAX_ENDURANCE * 200 + MAX_ENDURANCE * readiness + MAX_ENDURANCE * supply) / 400;
-        endurance = Math.min(endurance + enduranceRestored, enduranceRestored);
-        maxRange = speed * MAX_ENDURANCE / 90 / 1000;
-        range = speed * endurance / 90 / 1000;
-    }
-
+//    public void recover() {
+//        quality = (2 * proficiency + readiness) / 3;
+//        efficacy = (2 * proficiency + readiness + supply) / 4;
+//        int enduranceRestored = (MAX_ENDURANCE * 200 + MAX_ENDURANCE * readiness + MAX_ENDURANCE * supply) / 400;
+//        endurance = Math.min(endurance + enduranceRestored, enduranceRestored);
+//        maxRange = speed * MAX_ENDURANCE / 90 / 1000;
+//        range = speed * endurance / 90 / 1000;
+//    }
+    /**
+     * Compares two units in terms of the turn of entry
+     */
     protected static class UnitEntryComparator implements Comparator<Unit> {
 
         @Override
@@ -633,22 +681,40 @@ public abstract class Unit implements ModelProvider<UnitModel> {
         KnowledgeCategory knowledgeCategory = location.getKnowledgeLevel(role).getCategory();
         return models.get(knowledgeCategory);
     }
+
     /**
-     * Return 
+     * Return
+     *
      * @param knowledgeCategory
-     * @return 
+     * @return
      */
     public final UnitModel getModel(KnowledgeCategory knowledgeCategory) {
         return models.get(knowledgeCategory);
     }
 
-    public void setActor(UnitActor actor) {
-        this.actor = actor;
+    /**
+     * Returns true if the
+     * <code>unit</code> has enough endurance to perform the action. The answer depends of the current endurance of the
+     * unit as well as the <type>type<type> of action.
+     *
+     * @param actionType
+     * @return
+     */
+    public boolean canExecute(ActionType type) {
+        return endurance > type.getRequiredEndurace(Clock.INSTANCE.getMINUTES_PER_TICK());
     }
 
-    public UnitActor getActor() {
-        return actor;
+    public TacticalMission getMission() {
+        return mission;
     }
-    
-    
+
+    /**
+     * The unit gathers information on the surrounding environment. At this point only the adjacent tiles are considered
+     */
+    public void perceive() {
+        location.reconnoissance(this, Clock.INSTANCE.getMINUTES_PER_TICK());
+        for (Tile tile : location.getNeighbors().values()) {
+            tile.reconnoissance(this, Clock.INSTANCE.getMINUTES_PER_TICK());
+        }
+    }
 }

@@ -1,8 +1,8 @@
 package ares.engine.action.actions;
 
 import ares.engine.action.ActionType;
-import ares.engine.actors.UnitActor;
 import ares.engine.algorithms.routing.Path;
+import ares.scenario.forces.Unit;
 
 /**
  *
@@ -10,7 +10,7 @@ import ares.engine.algorithms.routing.Path;
  */
 public class CombatAction extends MoveAction {
 
-    public CombatAction(UnitActor actor, ActionType type, Path path) {
-        super(actor, type, path);
+    public CombatAction(Unit unit, ActionType type, Path path) {
+        super(unit, type, path);
     }
 }
