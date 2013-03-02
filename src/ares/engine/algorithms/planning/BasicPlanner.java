@@ -8,11 +8,12 @@ import ares.engine.action.actions.MoveAction;
 import ares.engine.action.actions.SurfaceMoveAction;
 import ares.engine.algorithms.routing.Path;
 import ares.engine.command.Objective;
+import ares.engine.command.OperationalPlan;
 import ares.engine.command.TacticalMission;
 import ares.engine.movement.MovementType;
-import ares.scenario.board.Tile;
 import ares.scenario.forces.Formation;
 import ares.scenario.forces.Unit;
+import java.util.List;
 import java.util.Queue;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,19 +32,26 @@ public class BasicPlanner implements Planner {
     }
 
     @Override
-    public void plan(Formation formation, Objective objective) {
+    public boolean plan(Formation formation) {
+        OperationalPlan plan = formation.getOperationalPlan();
+        List<Objective> objectives = plan.getObjectives();
+        if (objectives.isEmpty()) {
+            return false;
+        }
+        Objective objective = plan.getObjectives().get(0);
         for (Unit unit : formation.getActiveUnits()) {
             if (unit.getMovement() != MovementType.AIRCRAFT) {
                 Queue<Action> pendingActions = unit.getMission().getPendingActions();
                 if (pendingActions.isEmpty()) {
-                    singlePlan(unit, objective);
+                    tacticalPlan(unit, objective);
                 }
             }
         }
+        return true;
     }
 
     @Override
-    public void singlePlan(Unit unit, Objective objective) {
+    public boolean tacticalPlan(Unit unit, Objective objective) {
         Path path = engine.getPathFinder().getPath(unit.getLocation(), objective.getLocation());
         if (path != null && path.relink() != -1) {
             LOG.log(Level.INFO, "New path for {0}: {1}", new Object[]{unit.toString(), path.toString()});
@@ -56,5 +64,6 @@ public class BasicPlanner implements Planner {
         } else {
             LOG.log(Level.WARNING, "No path found for {0}", unit.toString());
         }
+        return true;
     }
 }

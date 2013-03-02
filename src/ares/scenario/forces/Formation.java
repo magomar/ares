@@ -5,9 +5,11 @@ import ares.data.jaxb.Emphasis;
 import ares.data.jaxb.Formation.Track;
 import ares.data.jaxb.SupportScope;
 import ares.engine.RealTimeEngine;
+import ares.engine.algorithms.planning.Planner;
 import ares.engine.command.Objective;
-import ares.engine.command.OperationalPlan;
 import ares.engine.command.OperationType;
+import ares.engine.command.OperationalPlan;
+import ares.engine.command.OperationalPlanFactory;
 import ares.platform.model.ModelProvider;
 import ares.platform.model.UserRole;
 import ares.scenario.Scenario;
@@ -45,11 +47,7 @@ public class Formation implements ModelProvider<FormationModel> {
     private List<Unit> conditionalReinforcements;
     private Formation superior;
     private List<Formation> subordinates;
-    private OperationalPlan operation;
-    /**
-     * List of objectives (used by the programmed opponent to generate plans)
-     */
-    private List<Objective> objectives;
+    private OperationalPlan operationalPlan;
 
     // TODO each turn check for reinforcements and put them into the right unit collection
     public Formation(ares.data.jaxb.Formation formation, Force force, Scenario scenario) {
@@ -94,7 +92,7 @@ public class Formation implements ModelProvider<FormationModel> {
             }
         }
 
-        objectives = new ArrayList<>();
+        List<Objective> objectives = new ArrayList<>();
         List<Track> tracks = formation.getTrack();
         Tile[][] tile = scenario.getBoard().getMap();
         int priority = 0;
@@ -102,22 +100,22 @@ public class Formation implements ModelProvider<FormationModel> {
             for (ares.data.jaxb.Formation.Track.Objective obj : tracks.get(0).getObjective()) {
                 Tile location = tile[obj.getX()][obj.getY()];
                 Objective newObjective = new Objective(location, priority++);
-     
                 objectives.add(newObjective);
             }
         }
-
         OperationType operationType = Enum.valueOf(OperationType.class, formation.getOrders().name());
-        operation = new OperationalPlan(operationType, this);
+        operationalPlan = OperationalPlanFactory.getOperationalPlan(operationType, this, objectives);
     }
 
     /**
      * This method makes the formation active, which implies a planing step
-     * board
      *
      */
-    public void activate() {
-f
+    public void activate(Planner planner) {
+        for (Unit unit:activeUnits) {
+            unit.activate();
+        }
+        planner.plan(this);
     }
 
     public boolean isActive() {
@@ -172,12 +170,8 @@ f
         return name;
     }
 
-    public OperationalPlan getOperation() {
-        return operation;
-    }
-
-    public List<Objective> getObjectives() {
-        return objectives;
+    public OperationalPlan getOperationalPlan() {
+        return operationalPlan;
     }
 
     public int getProficiency() {
@@ -236,7 +230,7 @@ f
         return new FormationModel(this, role);
     }
 
-    public void plan(RealTimeEngine engine) {
-        operation.plan(engine.getPlanner());
+    public void plan(Planner planner) {
+        planner.plan(this);
     }
 }

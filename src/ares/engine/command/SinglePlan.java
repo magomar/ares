@@ -1,6 +1,7 @@
 package ares.engine.command;
 
 import ares.scenario.forces.Formation;
+import java.util.List;
 
 /**
  *
@@ -8,9 +9,8 @@ import ares.scenario.forces.Formation;
  */
 public class SinglePlan extends OperationalPlan {
 
-    private Objective objective;
-
-    public SinglePlan(OperationType type, Formation formation) {
-        super(type, formation);
+    public SinglePlan(OperationType type, Formation formation, List<Objective> objectives) {
+        super(type, formation, objectives);
     }
+
 }

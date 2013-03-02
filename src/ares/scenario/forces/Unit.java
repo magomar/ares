@@ -287,7 +287,7 @@ public abstract class Unit implements ModelProvider<UnitModel> {
         models.put(KnowledgeCategory.POOR, new DetectedUnitModel(this));
         models.put(KnowledgeCategory.GOOD, new IdentifiedUnitModel(this));
         models.put(KnowledgeCategory.COMPLETE, new KnownUnitModel(this));
-        mission = new TacticalMission(TacticalMissionType.NULL);
+
     }
 
     /**
@@ -300,7 +300,7 @@ public abstract class Unit implements ModelProvider<UnitModel> {
         range = maxRange;
         updateDerivedValues();
         location.add(this);
-
+        mission = new TacticalMission(TacticalMissionType.NULL);
     }
 
     /**

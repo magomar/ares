@@ -20,7 +20,7 @@ import java.util.logging.Logger;
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public class TacticalMission extends Task {
+public class TacticalMission {
 
     /**
      * The type of the mission (assault, support by fire, etc.)

@@ -61,6 +61,7 @@ public class RealTimeEngine extends AbstractBean {
                 for (Formation formation : force.getFormations()) {
                     formations.add(formation);
                     units.addAll(formation.getActiveUnits());
+                    formation.activate(planner);
                 }
             }
         }
@@ -103,7 +104,7 @@ public class RealTimeEngine extends AbstractBean {
             LOG.log(Level.INFO, "++++++++++ New Turn: {0}", Clock.INSTANCE.getTurn());
             running = false;
             for (Formation formation : formations) {
-                formation.plan(this);
+                formation.plan(planner);
             }
         }
 

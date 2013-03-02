@@ -9,6 +9,6 @@ import ares.scenario.forces.Unit;
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
 public interface Planner {
-    void plan(Formation formation, Objective objective);
-    void singlePlan(Unit unit, Objective objective);
+    boolean plan(Formation formation);
+    boolean tacticalPlan(Unit unit, Objective objective);
 }
