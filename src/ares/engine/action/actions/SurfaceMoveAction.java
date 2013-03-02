@@ -1,9 +1,9 @@
 package ares.engine.action.actions;
 
 import ares.engine.action.ActionType;
-import ares.engine.actors.UnitActor;
 import ares.engine.algorithms.routing.Path;
 import ares.scenario.board.Tile;
+import ares.scenario.forces.Unit;
 
 /**
  *
@@ -11,13 +11,13 @@ import ares.scenario.board.Tile;
  */
 public class SurfaceMoveAction extends MoveAction {
 
-    public SurfaceMoveAction(UnitActor actor, ActionType type, Path path) {
-        super(actor, type, path);
+    public SurfaceMoveAction(Unit unit, ActionType type, Path path) {
+        super(unit, type, path);
     }
 
     @Override
     public boolean checkFeasibility() {
         Tile nextDestination = currentNode.getTile();
-        return !nextDestination.hasEnemies(actor.getUnit().getForce());
+        return !nextDestination.hasEnemies(unit.getForce());
     }
 }

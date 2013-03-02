@@ -1,7 +1,7 @@
 package ares.engine;
 
-import ares.engine.actors.FormationActor;
-import ares.engine.actors.UnitActor;
+import ares.engine.algorithms.planning.BasicPlanner;
+import ares.engine.algorithms.planning.Planner;
 import ares.engine.algorithms.routing.AStar;
 import ares.engine.algorithms.routing.PathFinder;
 import ares.platform.model.AbstractBean;
@@ -10,6 +10,7 @@ import ares.scenario.Scenario;
 import ares.scenario.board.Tile;
 import ares.scenario.forces.Force;
 import ares.scenario.forces.Formation;
+import ares.scenario.forces.Unit;
 import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -26,20 +27,28 @@ public class RealTimeEngine extends AbstractBean {
     public static final String CLOCK_EVENT_PROPERTY = "ClockEvent";
     private Scenario scenario;
     private Phase phase;
-    private List<UnitActor> unitActors;
-    private List<FormationActor> formationActors;
+    private List<Unit> units;
+    /**
+     * List of active units *
+     */
+    private List<Formation> formations;
+    /**
+     * List of active formations
+     */
     private ClockEvent clockEvent;
     private boolean running;
     private PathFinder pathFinder;
+    private Planner planner;
     private ExecutorService executor;
     private static final Logger LOG = Logger.getLogger(RealTimeEngine.class.getName());
 
     public RealTimeEngine() {
-        unitActors = new ArrayList<>();
-        formationActors = new ArrayList<>();
+        units = new ArrayList<>();
+        formations = new ArrayList<>();
         phase = Phase.SCHEDULE;
         running = false;
         executor = Executors.newCachedThreadPool();
+        planner = new BasicPlanner(this);
     }
 
     public void setScenario(Scenario scenario) {
@@ -50,9 +59,9 @@ public class RealTimeEngine extends AbstractBean {
             Clock.INSTANCE.setEngine(this);
             for (Force force : scenario.getForces()) {
                 for (Formation formation : force.getFormations()) {
-                    FormationActor formationActor = new FormationActor(formation, this);
-                    formationActors.add(formationActor);
-                    unitActors.addAll(formationActor.getUnitActors());
+                    formations.add(formation);
+                    units.addAll(formation.getActiveUnits());
+                    formation.activate(planner);
                 }
             }
         }
@@ -87,15 +96,15 @@ public class RealTimeEngine extends AbstractBean {
 
         if (clockEventTypes.contains(ClockEventType.DAY)) {
             LOG.log(Level.INFO, "++++++++++ New Day: {0}", Clock.INSTANCE.getTurn());
-            for (UnitActor actor : unitActors) {
-                actor.getUnit().updateMaxValues();
+            for (Unit unit : units) {
+                unit.updateMaxValues();
             }
         }
         if (clockEventTypes.contains(ClockEventType.TURN)) {
             LOG.log(Level.INFO, "++++++++++ New Turn: {0}", Clock.INSTANCE.getTurn());
             running = false;
-            for (FormationActor formationActor : formationActors) {
-                formationActor.plan();
+            for (Formation formation : formations) {
+                formation.plan(planner);
             }
         }
 
@@ -115,16 +124,16 @@ public class RealTimeEngine extends AbstractBean {
 //    }
     protected void act() {
 //        LOG.log(Level.INFO, "Act");
-        for (UnitActor unitActor : unitActors) {
-            unitActor.act(clockEvent);
+        for (Unit unit : units) {
+            unit.getMission().act(clockEvent);
         }
 
     }
 
     protected void schedule() {
 //        LOG.log(Level.INFO, "Schedule");
-        for (UnitActor unitActor : unitActors) {
-            unitActor.schedule(clockEvent);
+        for (Unit unit : units) {
+            unit.getMission().schedule(unit, clockEvent);
         }
     }
 
@@ -139,12 +148,17 @@ public class RealTimeEngine extends AbstractBean {
             }
         }
 
-        for (UnitActor unitActor : unitActors) {
-            unitActor.perceive();
+        for (Unit unit : units) {
+            unit.perceive();
         }
     }
 
     public PathFinder getPathFinder() {
         return pathFinder;
     }
+
+    public Planner getPlanner() {
+        return planner;
+    }
+    
 }

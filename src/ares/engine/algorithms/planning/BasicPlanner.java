@@ -1,0 +1,69 @@
+package ares.engine.algorithms.planning;
+
+import ares.engine.RealTimeEngine;
+import ares.engine.action.Action;
+import ares.engine.action.ActionType;
+import ares.engine.action.actions.ChangeDeploymentAction;
+import ares.engine.action.actions.MoveAction;
+import ares.engine.action.actions.SurfaceMoveAction;
+import ares.engine.algorithms.routing.Path;
+import ares.engine.command.Objective;
+import ares.engine.command.OperationalPlan;
+import ares.engine.command.TacticalMission;
+import ares.engine.movement.MovementType;
+import ares.scenario.forces.Formation;
+import ares.scenario.forces.Unit;
+import java.util.List;
+import java.util.Queue;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+/**
+ *
+ * @author Mario Gómez Martínez <margomez at dsic.upv.es>
+ */
+public class BasicPlanner implements Planner {
+
+    private static final Logger LOG = Logger.getLogger(BasicPlanner.class.getName());
+    private final RealTimeEngine engine;
+
+    public BasicPlanner(RealTimeEngine engine) {
+        this.engine = engine;
+    }
+
+    @Override
+    public boolean plan(Formation formation) {
+        OperationalPlan plan = formation.getOperationalPlan();
+        List<Objective> objectives = plan.getObjectives();
+        if (objectives.isEmpty()) {
+            return false;
+        }
+        Objective objective = plan.getObjectives().get(0);
+        for (Unit unit : formation.getActiveUnits()) {
+            if (unit.getMovement() != MovementType.AIRCRAFT) {
+                Queue<Action> pendingActions = unit.getMission().getPendingActions();
+                if (pendingActions.isEmpty()) {
+                    tacticalPlan(unit, objective);
+                }
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public boolean tacticalPlan(Unit unit, Objective objective) {
+        Path path = engine.getPathFinder().getPath(unit.getLocation(), objective.getLocation());
+        if (path != null && path.relink() != -1) {
+            LOG.log(Level.INFO, "New path for {0}: {1}", new Object[]{unit.toString(), path.toString()});
+            MoveAction moveAction = new SurfaceMoveAction(unit, ActionType.TACTICAL_MARCH, path);
+            TacticalMission mission = unit.getMission();
+            mission.addFirstAction(moveAction);
+            if (!moveAction.checkPrecondition()) {
+                mission.addFirstAction(new ChangeDeploymentAction(unit, ActionType.ASSEMBLE));
+            }
+        } else {
+            LOG.log(Level.WARNING, "No path found for {0}", unit.toString());
+        }
+        return true;
+    }
+}

@@ -2,7 +2,7 @@ package ares.engine.action.actions;
 
 import ares.engine.action.AbstractAction;
 import ares.engine.action.ActionType;
-import ares.engine.actors.UnitActor;
+import ares.scenario.forces.Unit;
 
 /**
  *
@@ -10,7 +10,7 @@ import ares.engine.actors.UnitActor;
  */
 public class WaitAction extends AbstractAction {
 
-    public WaitAction(UnitActor actor, int duration) {
-        super(actor, ActionType.WAIT, AbstractAction.AS_SOON_AS_POSSIBLE, duration);
+    public WaitAction(Unit unit, int duration) {
+        super(unit, ActionType.WAIT, AbstractAction.AS_SOON_AS_POSSIBLE, duration);
     }
 }

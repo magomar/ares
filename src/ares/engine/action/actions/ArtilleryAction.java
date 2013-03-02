@@ -2,8 +2,8 @@ package ares.engine.action.actions;
 
 import ares.engine.action.AbstractAction;
 import ares.engine.action.ActionType;
-import ares.engine.actors.UnitActor;
 import ares.scenario.board.Tile;
+import ares.scenario.forces.Unit;
 
 /**
  *
@@ -13,8 +13,8 @@ public class ArtilleryAction extends AbstractAction {
 
     private Tile target;
 
-    public ArtilleryAction(UnitActor actor, ActionType type, Tile target, int start, int duration) {
-        super(actor, type, start, duration);
+    public ArtilleryAction(Unit unit, ActionType type, Tile target, int start, int duration) {
+        super(unit, type, start, duration);
         this.target = target;
     }
 

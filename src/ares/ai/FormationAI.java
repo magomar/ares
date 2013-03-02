@@ -1,6 +1,6 @@
 package ares.ai;
 
-import ares.engine.actors.UnitActor;
+import ares.scenario.forces.Unit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,16 +14,16 @@ public class FormationAI {
      * List of available (on-board) line units. This collection excludes reinforcements, destroyed/withdrawed units and
      * divided units. Line units are able to perform assaults by themselves
      */
-    private List<UnitActor> lineUnits;
+    private List<Unit> lineUnits;
     /**
      * List of active line-support and support units. This units are not able to perform assaults
      */
-    private List<UnitActor> supportUnits;
-    private UnitActor headquarters;
+    private List<Unit> supportUnits;
+    private Unit headquarters;
     /**
      * List of active service-support units
      */
-    private List<UnitActor> serviceUnits;
+    private List<Unit> serviceUnits;
 
     public FormationAI() {
         lineUnits = new ArrayList<>();
