@@ -10,6 +10,10 @@ import ares.scenario.forces.Unit;
  */
 public class WaitAction extends AbstractAction {
 
+    public WaitAction(Unit unit) {
+        super(unit, ActionType.WAIT, AbstractAction.AS_SOON_AS_POSSIBLE, AbstractAction.TIME_UNKNOWN);
+    }
+
     public WaitAction(Unit unit, int duration) {
         super(unit, ActionType.WAIT, AbstractAction.AS_SOON_AS_POSSIBLE, duration);
     }

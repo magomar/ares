@@ -1,7 +1,7 @@
 package ares.engine.command;
 
-import ares.engine.algorithms.planning.Planner;
 import ares.scenario.forces.Formation;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -10,23 +10,20 @@ import java.util.List;
  */
 public class CompositePlan extends OperationalPlan {
 
-    private List<OperationalPlan> plans;
     /**
-     * List of objectives (used by the programmed opponent to generate plans)
+     * List of operational plans for subordinated formations
      */
-
+    private List<OperationalPlan> plans;
 
     public CompositePlan(OperationType type, Formation formation, List<Objective> objectives) {
         super(type, formation, objectives);
+        plans = new ArrayList<>();
+        for (Formation subordinate : formation.getSubordinates()) {
+            plans.add(subordinate.getOperationalPlan());
+        }
     }
-
 
     public List<OperationalPlan> getPlans() {
         return plans;
     }
-
-//    public void setPlans(List<OperationalPlan> plans) {
-//        this.plans = plans;
-//    }
-
 }

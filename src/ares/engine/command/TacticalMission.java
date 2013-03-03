@@ -22,6 +22,7 @@ import java.util.logging.Logger;
  */
 public class TacticalMission {
 
+    private static final Logger LOG = Logger.getLogger(TacticalMission.class.getName());
     /**
      * The type of the mission (assault, support by fire, etc.)
      *
@@ -48,7 +49,7 @@ public class TacticalMission {
         if (currentAction != null) {
             currentAction.execute();
         } else {
-            Logger.getLogger(TacticalMission.class.getName()).log(Level.WARNING, "Action = null for {0} at {1}", new Object[]{this, Clock.INSTANCE.toString()});
+            LOG.log(Level.SEVERE, "Action = null for {0} at {1}", new Object[]{this, Clock.INSTANCE.toString()});
         }
 //        if (ce.getEventTypes().contains(ClockEventType.DAY)) {
 //            unit.recover();
@@ -110,5 +111,10 @@ public class TacticalMission {
 
     public void addLastAction(Action action) {
         pendingActions.addLast(action);
+    }
+
+    @Override
+    public String toString() {
+        return  "type=" + type;
     }
 }
