@@ -300,7 +300,7 @@ public abstract class Unit implements ModelProvider<UnitModel> {
         range = maxRange;
         updateDerivedValues();
         location.add(this);
-        mission = new TacticalMission(TacticalMissionType.NULL);
+        mission = new TacticalMission(TacticalMissionType.NULL, this);
     }
 
     /**

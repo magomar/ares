@@ -24,6 +24,10 @@ public class TacticalMission {
 
     private static final Logger LOG = Logger.getLogger(TacticalMission.class.getName());
     /**
+     * The unit assined to this tactical misssion
+     */
+    private final Unit unit;
+    /**
      * The type of the mission (assault, support by fire, etc.)
      *
      * @see TacticalMissionType
@@ -40,38 +44,25 @@ public class TacticalMission {
      */
     private Deque<Action> pendingActions;
 
-    public TacticalMission(TacticalMissionType type) {
+    public TacticalMission(TacticalMissionType type, Unit unit) {
         this.type = type;
+        this.unit = unit;
         this.pendingActions = pendingActions = new LinkedList<>();
     }
 
     public void act(ClockEvent ce) {
-        if (currentAction != null) {
-            currentAction.execute();
-        } else {
-            LOG.log(Level.SEVERE, "Action = null for {0} at {1}", new Object[]{this, Clock.INSTANCE.toString()});
-        }
-//        if (ce.getEventTypes().contains(ClockEventType.DAY)) {
-//            unit.recover();
-//        }
+        currentAction.execute();
     }
 
-    public void schedule(Unit unit, ClockEvent ce //, ActionSpace space
-            ) {
+    public void schedule(ClockEvent ce) {
         if (currentAction != null
                 && (currentAction.getState() == ActionState.COMPLETED
                 || currentAction.getState() == ActionState.ABORTED)) {
             currentAction = null;
         }
         if (currentAction == null) {
-            if (!pendingActions.isEmpty()) {
-                Action nextAction = pendingActions.peek();
-                if (nextAction.canBeStarted()) {
-                    currentAction = pendingActions.poll();
-                    currentAction.start();
-//                    Tile destination = unit.getLocation();
-//                    space.putAction(destination, currentAction);
-                }
+            if (!pendingActions.isEmpty() && pendingActions.peek().canBeStarted()) {
+                currentAction = pendingActions.poll();
             } else {
                 if (unit.canExecute(ActionType.WAIT)) {
                     currentAction = new WaitAction(unit, Clock.INSTANCE.getMINUTES_PER_TICK());
@@ -79,6 +70,7 @@ public class TacticalMission {
                     currentAction = new RestAction(unit);
                 }
             }
+            currentAction.start();
         }
     }
 
@@ -115,6 +107,6 @@ public class TacticalMission {
 
     @Override
     public String toString() {
-        return  "type=" + type;
+        return "TacticalMission{" + type + " by " + unit.getName() + '}';
     }
 }

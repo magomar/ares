@@ -133,7 +133,7 @@ public class RealTimeEngine extends AbstractBean {
     protected void schedule() {
 //        LOG.log(Level.INFO, "Schedule");
         for (Unit unit : units) {
-            unit.getMission().schedule(unit, clockEvent);
+            unit.getMission().schedule(clockEvent);
         }
     }
 
