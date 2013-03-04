@@ -4,12 +4,12 @@ import ares.application.models.forces.FormationModel;
 import ares.data.jaxb.Emphasis;
 import ares.data.jaxb.Formation.Track;
 import ares.data.jaxb.SupportScope;
-import ares.engine.RealTimeEngine;
 import ares.engine.algorithms.planning.Planner;
 import ares.engine.command.Objective;
 import ares.engine.command.OperationType;
 import ares.engine.command.OperationalPlan;
 import ares.engine.command.OperationalPlanFactory;
+import ares.engine.command.OperationalStance;
 import ares.platform.model.ModelProvider;
 import ares.platform.model.UserRole;
 import ares.scenario.Scenario;
@@ -95,15 +95,26 @@ public class Formation implements ModelProvider<FormationModel> {
         List<Objective> objectives = new ArrayList<>();
         List<Track> tracks = formation.getTrack();
         Tile[][] tile = scenario.getBoard().getMap();
-        int priority = 0;
+        OperationType operationType = Enum.valueOf(OperationType.class, formation.getOrders().name());
+        OperationalStance stance = operationType.getStance();
+        boolean inversePriority = false;
+        if (stance == OperationalStance.DEFENSIVE
+                || stance == OperationalStance.SECURITY
+                || stance == OperationalStance.RESERVE) {
+            inversePriority = true;
+        }
+        int index = 0;
+        int lastObjective = objectives.size() - 1;
         if (tracks.size() > 0) {
             for (ares.data.jaxb.Formation.Track.Objective obj : tracks.get(0).getObjective()) {
                 Tile location = tile[obj.getX()][obj.getY()];
-                Objective newObjective = new Objective(location, priority++);
+                Objective newObjective = (inversePriority
+                        ? new Objective(location, lastObjective - index++)
+                        : new Objective(location, index++));
                 objectives.add(newObjective);
             }
         }
-        OperationType operationType = Enum.valueOf(OperationType.class, formation.getOrders().name());
+
         operationalPlan = OperationalPlanFactory.getOperationalPlan(operationType, this, objectives);
     }
 
@@ -112,7 +123,7 @@ public class Formation implements ModelProvider<FormationModel> {
      *
      */
     public void activate(Planner planner) {
-        for (Unit unit:activeUnits) {
+        for (Unit unit : activeUnits) {
             unit.activate();
         }
         planner.plan(this);

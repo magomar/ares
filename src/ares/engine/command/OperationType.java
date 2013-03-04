@@ -25,7 +25,13 @@ public enum OperationType {
     RECON_IN_FORCE(OperationalStance.RECONNAISSANCE);
     private final OperationalStance stance;
 
-    private OperationType(OperationalStance stance) {
+    private OperationType(final OperationalStance stance) {
         this.stance = stance;
     }
+
+    public OperationalStance getStance() {
+        return stance;
+    }
+    
+    
 }

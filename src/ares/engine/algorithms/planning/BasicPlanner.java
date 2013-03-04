@@ -11,11 +11,11 @@ import ares.engine.algorithms.routing.Path;
 import ares.engine.command.Objective;
 import ares.engine.command.OperationalPlan;
 import ares.engine.command.TacticalMission;
-import ares.engine.movement.MovementType;
 import ares.scenario.forces.Formation;
 import ares.scenario.forces.Unit;
 import java.util.List;
 import java.util.Queue;
+import java.util.TreeSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -38,22 +38,19 @@ public class BasicPlanner implements Planner {
         List<Objective> objectives = plan.getObjectives();
         if (objectives.isEmpty()) {
             for (Unit unit : formation.getActiveUnits()) {
-//                if (unit.getMovement() != MovementType.AIRCRAFT) {
-                    Queue<Action> pendingActions = unit.getMission().getPendingActions();
-                    if (pendingActions.isEmpty()) {
-                        tacticalPlan(unit);
-                    }
-//                }
+                Queue<Action> pendingActions = unit.getMission().getPendingActions();
+                if (pendingActions.isEmpty()) {
+                    tacticalPlan(unit);
+                }
             }
         } else {
-            Objective objective = plan.getObjectives().get(0);
+            plan.updateObjectives();
+            Objective objective = plan.getGoals().first();
             for (Unit unit : formation.getActiveUnits()) {
-//                if (unit.getMovement() != MovementType.AIRCRAFT) {
-                    Queue<Action> pendingActions = unit.getMission().getPendingActions();
-                    if (pendingActions.isEmpty()) {
-                        tacticalPlan(unit, objective);
-                    }
-//                }
+                Queue<Action> pendingActions = unit.getMission().getPendingActions();
+                if (pendingActions.isEmpty()) {
+                    tacticalPlan(unit, objective);
+                }
             }
         }
     }

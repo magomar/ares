@@ -49,9 +49,10 @@ public class KnowledgeLevel implements Comparable {
 
     @Override
     public int compareTo(Object knowledgeLevel) {
-        if (this.value == ((KnowledgeLevel) knowledgeLevel).value) {
+        KnowledgeLevel kLevel =(KnowledgeLevel) knowledgeLevel;
+        if (this.value == kLevel.value) {
             return 0;
-        } else if ((this.value) > ((KnowledgeLevel) knowledgeLevel).value) {
+        } else if ((this.value) > kLevel.value) {
             return 1;
         } else {
             return -1;

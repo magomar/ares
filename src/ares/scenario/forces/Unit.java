@@ -717,4 +717,8 @@ public abstract class Unit implements ModelProvider<UnitModel> {
             tile.reconnoissance(this, Clock.INSTANCE.getMINUTES_PER_TICK());
         }
     }
+    
+    public boolean isAircraft() {
+        return movement == MovementType.AIRCRAFT;
+    }
 }

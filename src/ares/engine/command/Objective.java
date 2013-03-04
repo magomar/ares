@@ -7,7 +7,7 @@ import ares.scenario.forces.Force;
  *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
-public class Objective {
+public class Objective implements Comparable {
     private Tile location;
     private int priority;
     private boolean achieved = false;
@@ -36,5 +36,12 @@ public class Objective {
     public boolean checkAchieved(Force force) {
         return location.isAlliedTerritory(force);
     }
+
+    @Override
+    public int compareTo(Object o) {
+        Objective objective = (Objective) o;
+        return priority - objective.priority;
+    }
+
 
 }

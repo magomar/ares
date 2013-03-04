@@ -4,6 +4,8 @@ import ares.scenario.forces.Formation;
 import ares.scenario.forces.Unit;
 import java.util.List;
 import java.util.Map;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 /**
  *
@@ -13,32 +15,48 @@ public abstract class OperationalPlan {
 
     protected OperationType type;
     protected OperationForm form;
-    protected boolean hasPlan;
     protected Formation formation;
     private List<Objective> objectives;
-
+    private SortedSet<Objective> goals;
     private Map<Unit, TacticalMission> missions;
 
     public OperationalPlan(OperationType type, Formation formation, List<Objective> objectives) {
         this.type = type;
         this.formation = formation;
         this.objectives = objectives;
-        hasPlan = false;
+        goals = new TreeSet<>();
+        goals.addAll(objectives);
+        for (Objective objective : objectives) {
+            goals.add(objective);
+        }
     }
 
     public void updateObjectives() {
         for (Objective objective : objectives) {
             if (objective.checkAchieved(formation.getForce())) {
-                objective.setAchieved(true);
+                if (!objective.isAchieved()) {
+                    objective.setAchieved(true);
+                    goals.remove(objective);
+                }
+            } else {
+                if (objective.isAchieved()) {
+                    objective.setAchieved(false);
+                    goals.add(objective);
+                }
             }
         }
     }
+
     public Formation getFormation() {
         return formation;
     }
 
     public List<Objective> getObjectives() {
         return objectives;
+    }
+
+    public SortedSet<Objective> getGoals() {
+        return goals;
     }
 
     public OperationType getType() {
@@ -52,9 +70,4 @@ public abstract class OperationalPlan {
     public Map<Unit, TacticalMission> getMissions() {
         return missions;
     }
-
-    public boolean hasPlan() {
-        return hasPlan;
-    }
-
 }
