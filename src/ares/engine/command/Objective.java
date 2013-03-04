@@ -33,7 +33,7 @@ public class Objective implements Comparable {
         return priority;
     }
     
-    public boolean checkAchieved(Force force) {
+    public boolean isAchieved(Force force) {
         return location.isAlliedTerritory(force);
     }
 

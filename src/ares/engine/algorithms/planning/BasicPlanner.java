@@ -35,16 +35,14 @@ public class BasicPlanner implements Planner {
     @Override
     public void plan(Formation formation) {
         OperationalPlan plan = formation.getOperationalPlan();
-        List<Objective> objectives = plan.getObjectives();
-        if (objectives.isEmpty()) {
+        if (plan.getGoals().isEmpty()) {
             for (Unit unit : formation.getActiveUnits()) {
                 Queue<Action> pendingActions = unit.getMission().getPendingActions();
                 if (pendingActions.isEmpty()) {
                     tacticalPlan(unit);
                 }
             }
-        } else {
-            plan.updateObjectives();
+        } else {          
             Objective objective = plan.getGoals().first();
             for (Unit unit : formation.getActiveUnits()) {
                 Queue<Action> pendingActions = unit.getMission().getPendingActions();

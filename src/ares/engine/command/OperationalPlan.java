@@ -33,7 +33,7 @@ public abstract class OperationalPlan {
 
     public void updateObjectives() {
         for (Objective objective : objectives) {
-            if (objective.checkAchieved(formation.getForce())) {
+            if (objective.isAchieved(formation.getForce())) {
                 if (!objective.isAchieved()) {
                     objective.setAchieved(true);
                     goals.remove(objective);
@@ -69,5 +69,9 @@ public abstract class OperationalPlan {
 
     public Map<Unit, TacticalMission> getMissions() {
         return missions;
+    }
+    
+    public boolean hasGoals() {
+        return !goals.isEmpty();
     }
 }
