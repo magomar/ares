@@ -1,5 +1,9 @@
 package ares.scenario.board;
 
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
@@ -41,7 +45,9 @@ public enum Terrain {
     RIVER(2, 0, 2, 2, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, Directionality.GRAPHICAL, "h_tiles_river.png", "tiles_river.png", "s_tiles_river.png"),
     SHALLOW_WATER(9999, 9999, 9999, 9999, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, Directionality.NONE, "h_tiles_s_water.png", "tiles_s_water.png", "s_tiles_s_water.png"),
     DEEP_WATER(9999, 9999, 9999, 9999, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, Directionality.NONE, "h_tiles_d_water.png", "tiles_d_water.png", "s_tiles_d_water.png"),
-    BORDER(0, 0, 0, 0, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, Directionality.GRAPHICAL, "h_Borders.png", "Borders.png", "s_Borders.png"),;
+    BORDER(0, 0, 0, 0, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, Directionality.GRAPHICAL, "h_Borders.png", "Borders.png", "s_Borders.png"),
+    SHALLOW_WATER_DECORATOR(0, 0, 0, 0, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, Directionality.GRAPHICAL, "h_tiles_s_water.png", "tiles_s_water.png", "s_tiles_s_water.png"),
+    DEEP_WATER_DECORATOR(0, 0, 0, 0, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, Directionality.GRAPHICAL, "h_tiles_d_water.png", "tiles_d_water.png", "s_tiles_d_water.png"),;
     private final int motorized;
     private final int amphibious;
     private final int mixed;
@@ -55,6 +61,16 @@ public enum Terrain {
     private final Directionality directionality;
     private final String graphicFileHigh, graphicFileMedium, graphicFileSmall;
     public final static Terrain[] ALL_TERRAINS = Terrain.values();
+    private static final int[] subImageIndex = new int[]{
+        64, 72, 68, 76, 66, 74, 70, 78, 127, 127,
+        32, 40, 36, 44, 34, 42, 38, 46, 127, 127,
+        96, 104, 100, 108, 98, 106, 102, 110, 127, 127,
+        16, 24, 20, 28, 18, 26, 22, 30, 127, 127,
+        80, 88, 84, 92, 82, 90, 86, 94, 127, 127,
+        48, 56, 52, 60, 50, 58, 54, 62, 127, 127,
+        112, 120, 116, 124, 114, 122, 118, 126, 127, 127,
+        8, 4, 12, 2, 10, 6, 14, 1, 127, 127};
+    private static final Map<Integer, Integer> indexDirectionMap = fillIndexMap();
 
     private Terrain(final int motor, final int amph, final int mixed, final int foot,
             final double antiTank, final double antiPersonnel,
@@ -131,5 +147,34 @@ public enum Terrain {
 
     public String getGraphicFileSmall() {
         return graphicFileSmall;
+    }
+
+    /**
+     * Get the index of subimage in terrain image files Integer bits are used as flags for directions "N, NE, SE, S, SW,
+     * NW, C"
+     *
+     * For example, a tile with "N NE SE" = bin("1110000") = 112 would be in the first column, seventh row
+     *
+     * @param directions Integer with the bits as directions
+     * @return the associated value of the terrain subimage position
+     */
+    public int getIndexByDirections(int directions) {
+        return indexDirectionMap.get(directions);
+    }
+
+    /**
+     * Fills the map with the static array
+     *
+     * @return an unmodifiable map<subimageposition,indexinstaticarray>
+     */
+    private static Map<Integer, Integer> fillIndexMap() {
+
+        Map<Integer, Integer> m = new HashMap<>();
+        int i = 0;
+        for (int b : subImageIndex) {
+            m.put(b, i++);
+        }
+
+        return Collections.unmodifiableMap(m);
     }
 }

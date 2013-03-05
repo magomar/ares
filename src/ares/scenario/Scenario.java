@@ -1,15 +1,20 @@
 package ares.scenario;
 
+import ares.application.models.ScenarioModel;
+import ares.application.models.board.BoardGraphicsModel;
 import ares.data.jaxb.EquipmentDB;
 import ares.data.jaxb.OOB;
+import ares.platform.model.ModelProvider;
+import ares.platform.model.UserRole;
 import ares.scenario.assets.AssetTypes;
 import ares.scenario.board.Board;
-import ares.scenario.board.BoardInfo;
 import ares.scenario.forces.Force;
 import ares.scenario.forces.Unit;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -17,45 +22,50 @@ import java.util.List;
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public final class Scenario {
+public final class Scenario implements ModelProvider<ScenarioModel> {
 
-    private final String name;
+    public WeakReference<AssetTypes> assetTypes;
+    private String name;
     private Board board;
-    private Scale scale;
     private Force[] forces;
-    private AresCalendar calendar;
-    private BoardInfo boardInfo;
-    public final AssetTypes assetTypes;
+    private BoardGraphicsModel boardInfo;
+    private Map<UserRole, ScenarioModel> models;
 
     public Scenario(ares.data.jaxb.Scenario scenario, EquipmentDB eqpDB) {
-
         name = scenario.getHeader().getName();
-        scale = new Scale((int) (scenario.getEnvironment().getScale() * 1000));
-        calendar = new AresCalendar(scenario.getCalendar());
-        assetTypes = new AssetTypes(eqpDB);
+        Scale.INSTANCE.initialize((int) (scenario.getEnvironment().getScale() * 1000));
+        Clock.INSTANCE.initialize(scenario.getCalendar());
+        assetTypes = new WeakReference<>(new AssetTypes(eqpDB));
         board = new Board(scenario);
         OOB oob = scenario.getOOB();
         Collection<ares.data.jaxb.Force> scenForces = oob.getForce();
         forces = new Force[scenForces.size()];
         for (ares.data.jaxb.Force force : oob.getForce()) {
-            forces[force.getId() - 1] = new Force(force, this);
-            //TODO modify ToawToAres to make force indexes in [0.. n-1] instead of substracting 1 here
+            forces[force.getId()] = new Force(force, this);
         }
-
-        board.initialize(scenario,
-                this, forces);
+        for (Force force : forces) {
+            force.initialize(forces);
+        }
+        board.initialize(scenario, this, forces);
 
         System.out.println(
                 "Scenario loaded: " + toString());
 
-        boardInfo = new BoardInfo(board);
+        boardInfo = new BoardGraphicsModel(board);
+        models = new HashMap<>();
+        models.put(UserRole.GOD, new ScenarioModel(this, UserRole.GOD));
+        for (Force force : forces) {
+            models.put(UserRole.getForceRole(force), new ScenarioModel(this, UserRole.getForceRole(force)));
+        }
+        assetTypes = null;
+
     }
 
     public Board getBoard() {
         return board;
     }
 
-    public BoardInfo getBoardInfo() {
+    public BoardGraphicsModel getBoardGraphicsModel() {
         return boardInfo;
     }
 
@@ -63,32 +73,21 @@ public final class Scenario {
         return forces;
     }
 
-    public List<Unit> getActiveUnits() {
-        List<Unit> activeUnits = new ArrayList<>();
-        for (Force force : forces) {
-            activeUnits.addAll(force.getActiveUnits());
-        }
-        return activeUnits;
-    }
-
-    public Scale getScale() {
-        return scale;
-    }
-
     public String getName() {
         return name;
     }
 
-    public AresCalendar getCalendar() {
-        return calendar;
-    }
-
     public AssetTypes getAssetTypes() {
-        return assetTypes;
+        return assetTypes.get();
     }
 
     @Override
     public String toString() {
-        return "Scenario{" + "Scale=" + scale + ", calendar=" + calendar + '}';
+        return "Scenario{" + "Scale=" + Scale.INSTANCE + ", calendar=" + Clock.INSTANCE + '}';
+    }
+
+    @Override
+    public ScenarioModel getModel(UserRole role) {
+        return models.get(role);
     }
 }

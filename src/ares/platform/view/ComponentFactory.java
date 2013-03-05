@@ -1,20 +1,14 @@
 package ares.platform.view;
 
-import ares.platform.application.Command;
-import java.awt.BorderLayout;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Font;
-import java.awt.GraphicsEnvironment;
-import java.awt.LayoutManager;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseListener;
+import ares.application.gui.TranslucidButton;
+import ares.application.gui.WelcomeScreen;
+import ares.platform.application.*;
+import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.border.TitledBorder;
+import javax.swing.border.*;
 import javax.swing.table.TableModel;
-import javax.swing.tree.TreeModel;
-import javax.swing.tree.TreeSelectionModel;
+import javax.swing.tree.*;
 
 /**
  *
@@ -22,43 +16,37 @@ import javax.swing.tree.TreeSelectionModel;
  */
 public abstract class ComponentFactory {
 
+    /**
+     * An "inter-component" horizontal space, also used as the standard inset from a frame to its content. This is the
+     * nominal "Em" space.
+     */
+    public final static int STANDARD_SPACE = 12;
+    /**
+     * The highlight color for invalid fields.
+     */
+    public final static Color HIGHLIGHT_COLOR = new Color(255, 240, 240);
+
     public static JFrame frame(String title, JComponent contentPane, JMenuBar menuBar, JToolBar toolBar) {
+        JFrame frame = new JFrame();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        if (contentPane != null) {
+            frame.setContentPane(contentPane);
+        }
+        return frame;
+    }
+
+    public static JFrame frame(String title, JMenuBar menuBar, JToolBar toolBar) {
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         if (title != null) {
             frame.setTitle(title);
         }
         if (menuBar != null) {
-            frame.getContentPane().add(menuBar, BorderLayout.NORTH);
+            frame.setJMenuBar(menuBar);
         }
         if (toolBar != null) {
-            frame.getContentPane().add(toolBar, BorderLayout.NORTH);
+            frame.getContentPane().add(toolBar, BorderLayout.PAGE_START);
         }
-        if (contentPane != null) {
-            frame.getContentPane().add(contentPane, BorderLayout.CENTER);
-        }
-        frame.setPreferredSize(new Dimension(800, 600));
-        return frame;
-    }
-
-    public static JFrame showFrame(JFrame frame) {
-        frame.pack();
-        centerFrame(frame);
-        frame.setVisible(true);
-        return frame;
-    }
-
-    public static JFrame centerFrame(JFrame frame) {
-//        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        Dimension screenSize = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().getSize();
-        Dimension frameSize = frame.getSize();
-        if (frameSize.height > screenSize.height) {
-            frameSize.height = screenSize.height;
-        }
-        if (frameSize.width > screenSize.width) {
-            frameSize.width = screenSize.width;
-        }
-        frame.setLocation((screenSize.width - frameSize.width) / 2, (screenSize.height - frameSize.height) / 2);
         return frame;
     }
 
@@ -91,6 +79,14 @@ public abstract class ComponentFactory {
         }
         textField.setEditable(editable);
         return textField;
+    }
+
+    public static JButton translucidButton(Command command, ActionListener listener) {
+        JButton button = new TranslucidButton(command.getText());
+        button.setName(command.getName());
+        button.setActionCommand(command.getName());
+        button.addActionListener(listener);
+        return button;
     }
 
     public static JButton button(String label, Action action) {
@@ -130,7 +126,7 @@ public abstract class ComponentFactory {
         internalFrame.setIconifiable(true);
         internalFrame.setPreferredSize(new Dimension(600, 400));
         if (contentPane != null) {
-            internalFrame.setContentPane(new JScrollPane(contentPane));
+            internalFrame.setContentPane(contentPane);
         }
         if (title != null) {
             internalFrame.setTitle(title);
@@ -158,9 +154,10 @@ public abstract class ComponentFactory {
         return popupMenu;
     }
 
-    public static JMenu menu(String text, char mnemonic, boolean enabled, JMenuItem... items) {
-        JMenu menu = new JMenu(text);
-        menu.setMnemonic(mnemonic);
+    public static JMenu menu(MenuEntry menuEntry, boolean enabled, JMenuItem... items) {
+        JMenu menu = new JMenu(menuEntry.getText());
+        menu.setName(menuEntry.getName());
+        menu.setMnemonic(menuEntry.getMnemonic());
         for (JMenuItem item : items) {
             menu.add(item);
         }
@@ -168,8 +165,8 @@ public abstract class ComponentFactory {
         return menu;
     }
 
-    public static JMenu menu(String text, char mnemonic, JMenuItem... items) {
-        return menu(text, mnemonic, true, items);
+    public static JMenu menu(MenuEntry menuEntry, JMenuItem... items) {
+        return menu(menuEntry, true, items);
     }
 
     public static JMenuBar menuBar(JMenu... menus) {
@@ -183,8 +180,8 @@ public abstract class ComponentFactory {
     public static JMenuItem menuItem(Command command, ActionListener listener, boolean enabled) {
         JMenuItem menuItem = new JMenuItem(command.getText(), command.getMnemonic());
 //        menuItem.getAction().putValue(AbstractAction.SHORT_DESCRIPTION,command.getDesc());
-        menuItem.setName(command.name());
-        menuItem.setActionCommand(command.name());
+        menuItem.setName(command.getName());
+        menuItem.setActionCommand(command.getName());
         menuItem.addActionListener(listener);
         menuItem.setEnabled(enabled);
         return menuItem;
@@ -192,5 +189,82 @@ public abstract class ComponentFactory {
 
     public static JMenuItem menuItem(Command command, ActionListener listener) {
         return menuItem(command, listener, true);
+    }
+
+    //----------------------------------------------------------------------------
+//  Factories for standard spacing objects
+//----------------------------------------------------------------------------
+    /**
+     * The border to be used around a dialog's content.
+     */
+    public static Border dialogBorder() {
+        return BorderFactory.createEmptyBorder(
+                STANDARD_SPACE, STANDARD_SPACE,
+                STANDARD_SPACE, STANDARD_SPACE);
+    }
+
+    /**
+     * The border to be used around a group of components in a dialog. Assumes that there will be a label above the
+     * group, and that there won't be decoration between groups.
+     */
+    public static Border dialogGroupBorder() {
+        return BorderFactory.createEmptyBorder(
+                STANDARD_SPACE / 2,
+                STANDARD_SPACE,
+                STANDARD_SPACE * 3 / 2,
+                0);
+    }
+
+    /**
+     * A horizontal strut between buttons on the same line.
+     */
+    public static Component interButtonSpace() {
+        return Box.createHorizontalStrut(STANDARD_SPACE);
+    }
+
+//----------------------------------------------------------------------------
+//  Factories for consistent GUI objects
+//----------------------------------------------------------------------------
+    /**
+     * Builds a standard modal input dialog, with content and buttons to accept or cancel that content.
+     */
+    public static JDialog newModalDialog(
+            JFrame owner, String title,
+            JPanel content, JButton... buttons) {
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.X_AXIS));
+        buttonPanel.setAlignmentX(0.0f);
+        buttonPanel.add(Box.createHorizontalGlue());
+        for (int ii = 0; ii < buttons.length; ii++) {
+            if (ii > 0) {
+                buttonPanel.add(interButtonSpace());
+            }
+            buttonPanel.add(buttons[ii]);
+        }
+
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        panel.setBorder(dialogBorder());
+        panel.add(content);
+        panel.add(Box.createVerticalStrut(18));
+        panel.add(buttonPanel);
+
+        JDialog theDialog = new JDialog(owner, title, true);
+        theDialog.setContentPane(panel);
+        theDialog.pack();
+        return theDialog;
+    }
+
+    /**
+     * Builds a standard modal input dialog, with content and buttons to accept or cancel that content.
+     */
+    public static JDialog newModalDialog(
+            JFrame owner, String title,
+            JPanel content, Action... actions) {
+        JButton[] buttons = new JButton[actions.length];
+        for (int ii = 0; ii < actions.length; ii++) {
+            buttons[ii] = new JButton(actions[ii]);
+        }
+        return newModalDialog(owner, title, content, buttons);
     }
 }

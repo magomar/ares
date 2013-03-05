@@ -1,28 +1,44 @@
 package ares.scenario.forces;
 
+import ares.application.models.forces.DetectedUnitModel;
+import ares.application.models.forces.IdentifiedUnitModel;
+import ares.application.models.forces.KnownUnitModel;
+import ares.application.models.forces.UnitModel;
 import ares.data.jaxb.Availability;
 import ares.data.jaxb.Emphasis;
-import ares.scenario.Scale;
+import ares.engine.action.ActionType;
+import ares.engine.command.TacticalMission;
+import ares.engine.command.TacticalMissionType;
+import ares.engine.knowledge.KnowledgeCategory;
 import ares.engine.movement.MovementType;
+import ares.platform.model.ModelProvider;
+import ares.platform.model.UserRole;
+import ares.platform.util.MathUtils;
+import ares.scenario.Clock;
+import ares.scenario.Scale;
+import ares.scenario.Scenario;
 import ares.scenario.assets.Asset;
 import ares.scenario.assets.AssetTrait;
 import ares.scenario.assets.AssetType;
 import ares.scenario.assets.AssetTypes;
 import ares.scenario.board.Board;
+import ares.scenario.board.Direction;
 import ares.scenario.board.Tile;
-import ares.scenario.Scenario;
 import java.util.*;
+import java.util.Map.Entry;
 
 /**
  *
  * @author Mario Gomez <margomez antiTank dsic.upv.es>
  */
-public abstract class Unit {
+public abstract class Unit implements ModelProvider<UnitModel> {
 
 //    public static final Comparator<Unit> UNIT_ACTION_FINISH_COMPARATOR = new UnitActionFinishComparator();
-    public static final Comparator<Unit> UNIT_ENTRY_COMPARATOR = new UnitEntryComparator();
+    public static final Comparator<Unit> UNIT_ENTRY_COMPARATOR = new Unit.UnitEntryComparator();
     public static final int MAX_ENDURANCE = 18 * 60 * 60;
-    // ************ Main attributes ****************
+    /**
+     * IMPORTANT: Currently the id of the unit is just a reference from Toaw, but it is not a unique identifier
+     */
     protected int id;
     /**
      * The name which identifies the unit within a force's OOB
@@ -58,25 +74,21 @@ public abstract class Unit {
     protected Force force;
 //    protected Experience experience;
     /**
-     * Represents the quality of the unit, its ability to perform its duties. It
-     * captures both the training and the experience of a unit. In general
-     * proficiency tend to increase as the unit executes actions. It is
-     * specified as a percentage, where 100% is the best possible proficiency.
+     * Represents the quality of the unit, its ability to perform its duties. It captures both the training and the
+     * experience of a unit. In general proficiency tend to increase as the unit executes actions. It is specified as a
+     * percentage, where 100% is the best possible proficiency.
      */
     protected int proficiency;
     /**
-     * Represents the pshysical condition of a unit due to the changeEndurance and tear of
-     * its personnel and equipment, as well as its organization and cohesion
-     * state. It is specified as a percentage, where 100% is the ideal
-     * condition, with the equipment in perfect conditions, all the personnel
-     * fit and rested
+     * Represents the pshysical condition of a unit due to the changeEndurance and tear of its personnel and equipment,
+     * as well as its organization and cohesion state. It is specified as a percentage, where 100% is the ideal
+     * condition, with the equipment in perfect conditions, all the personnel fit and rested
      */
     protected int readiness;
     /**
-     * Represents the amount of supplies available. It is specified as a
-     * percentage, where 100% indicates that the unit is able to fully feed its
-     * personnel, and has standard fuel and ammunition for sustained operations
-     * during a single day
+     * Represents the amount of supplies available. It is specified as a percentage, where 100% indicates that the unit
+     * is able to fully feed its personnel, and has standard fuel and ammunition for sustained operations during a
+     * single day
      */
     protected int supply;
     /**
@@ -84,21 +96,18 @@ public abstract class Unit {
      */
     protected Tile location;
     /**
-     * Represents the level of losses acceptable before disengaging from combat
-     * It is represented by an Ordinal scale (minimize losses, limit losses,
-     * ignore losses)
+     * Represents the level of losses acceptable before disengaging from combat It is represented by an Ordinal scale
+     * (minimize losses, limit losses, ignore losses)
      */
     protected Emphasis emphasis;
     /**
-     * Indicates whether a unit is available or not, and the reason for not
-     * being available Ir is represented by a Nominal scale (available,
-     * disbanded, eliminated, expected as reinforcement, etc.)
+     * Indicates whether a unit is available or not, and the reason for not being available Ir is represented by a
+     * Nominal scale (available, disbanded, eliminated, expected as reinforcement, etc.)
      */
     protected Availability availability;
     /**
-     * Represents the operational state of a unit, how it is deployed and what
-     * it is doing (deployed, embarked, mobile, deploying, assembling, moving,
-     * attacking, routing, reorganizing, etc. )
+     * Represents the operational state of a unit, how it is deployed and what it is doing (deployed, embarked, mobile,
+     * deploying, assembling, moving, attacking, routing, reorganizing, etc. )
      */
     protected OpState opState;
     /**
@@ -106,38 +115,38 @@ public abstract class Unit {
      */
     protected int replacementPriority;
     /**
-     * It can represent two things. If a unit is expected to enter as a
-     * reinforcement, it represents the turn it is received. However, if a unit
-     * is a conditional reinforcement, it represents the identifier of the event
-     * that fires the reception of the unit.
+     * It can represent two things. If a unit is expected to enter as a reinforcement, it represents the turn it is
+     * received. However, if a unit is a conditional reinforcement, it represents the identifier of the event that fires
+     * the reception of the unit.
      */
     protected int entry;
     /**
-     * This attribute is used in units resulting of division to reference the
-     * unit that was divided.
+     * This attribute is used in units resulting of division to reference the unit that was divided.
      */
     protected Unit parent;
     /**
-     * Collection of assets available in the unit. An asset informs of the type
-     * of equipment, the current amount of that equipment, and the maximum
-     * amount (the ideal condition),
+     * Collection of assets available in the unit. An asset includes information concerning the type of equipment, the
+     * current amount of that equipment, and the maximum amount (the ideal condition). Assets are stored in a
+     * <code>Map</code> having
+     * <code>AssetaType</code> objects as keys, and
+     * <code>Asset</code> objects as values.
      */
     protected Map<AssetType, Asset> assets;
-    // ************ Derived (computed) attributes ****************
+    // ************ COMPUTED ATTRIBUTES ****************
     /**
-     * Represents the special capabilities of a unit. It is specified as a map
-     * that links asset types to the number of assets possesing each asset
-     * trait.
+     * Represents the special capabilities of a unit. It is specified as a map that links asset types to the number of
+     * assets possesing each asset trait. Stored as a map Assets are stored in a
+     * <code>Map</code> having
+     * <code>AssetaTrait</code> objects as keys, and the amount of that trait as values (
+     * <code>Integer</code>)
      */
     protected Map<AssetTrait, Integer> traits;
     /**
-     * Fighting strenght against armored vehicles such as tanks, armored
-     * personnel carriers, etc. (hard targets)
+     * Fighting strenght against armored vehicles such as tanks, armored personnel carriers, etc. (hard targets)
      */
     protected int antiTank;
     /**
-     * Fighting strenght against personnel, animals and non-armored equipment
-     * (soft targets)
+     * Fighting strenght against personnel, animals and non-armored equipment (soft targets)
      */
     protected int antiPersonnel;
     /**
@@ -149,13 +158,13 @@ public abstract class Unit {
      */
     protected int lowAntiAir;
     /**
-     * Strenght that represents the capacity to sustain loses. In general
-     * defense is computed as the sum of personnel and vehicles
+     * Strenght that represents the capacity to sustain loses. In general defense is computed as the sum of personnel
+     * and vehicles
      */
     protected int defense;
     /**
-     * Fighting strenght against soft targets (people, animals, non-armored
-     * equipment) using long-range indirect-fires (Bombardment) (soft targets)
+     * Fighting strenght against soft targets (people, animals, non-armored equipment) using long-range indirect-fires
+     * (Bombardment) (soft targets)
      */
     protected int artillery;
     /**
@@ -167,24 +176,21 @@ public abstract class Unit {
      */
     protected int weight;
     /**
-     * Movement type depends on the type of assets in the unit (air, naval,
-     * foot, motorized, etc.)
+     * Movement type depends on the type of assets in the unit (air, naval, foot, motorized, etc.)
      */
     protected MovementType movement;
     /**
-     * Standard average moving speed in ideal conditions, specified in meters
-     * per minute. Depends on type of assets in the unit
+     * Standard average moving speed in ideal conditions, specified in meters per minute. Depends on the type of assets
+     * in the unit
      */
     protected int speed;
     /**
-     * The actual ability to perform actions, taking into account readiness and
-     * proficiency.
+     * The actual ability to perform actions, taking into account readiness and proficiency.
      *
      */
     protected int quality;
     /**
-     * The actual efficacy when performing actions, considering quality and
-     * supplies
+     * The actual efficacy when performing actions, considering quality and supplies
      */
     protected int efficacy;
     /**
@@ -192,30 +198,31 @@ public abstract class Unit {
      */
     protected int reconnaissance;
     /**
-     * Represents the remaining physical resistence of a unit before becoming
-     * exhausted, expressed in action points (seconds of low-intensity
-     * activity). The execution of actions consumes endurance, but it can be
-     * replenished by resting.
+     * Represents the remaining physical resistence of a unit before becoming exhausted, expressed in action points
+     * (seconds of low-intensity activity). The execution of actions consumes endurance, but it can be replenished by
+     * resting.
      */
     protected int endurance;
     /**
-     * Percentual representation of endurance (endurance * 100 / MAX_ENDURANCE)
+     * Represents the maximun physical resistence of a unit when fully rested, given the actual readiness and supplies.
+     *
+     * @see #endurance
      */
-    protected int stamina;
+    protected int maxEndurance;
     /**
-     * Distance in meters a unit is currently able to move antiTank standard
-     * average speed, before becoming exhausted.
+     * Distance in meters a unit is currently able to move antiTank standard average speed, before becoming exhausted.
      */
     protected int range;
     /**
-     * Distance in meters a rested unit would be able to move in ideal
-     * conditions at standard average speed before becoming exhausted.
+     * Distance in meters a rested unit would be able to move in ideal conditions at standard average speed before
+     * becoming exhausted.
      */
     protected int maxRange;
-// TODO move the following attributes to the view, they are used only by the view
-    protected int attackStrength;
-    protected int defenseStrength;
-    protected int health;
+    private final Map<KnowledgeCategory, UnitModel> models;
+    /**
+     * The actor assigned to this unit
+     */
+    protected TacticalMission mission;
 
     protected Unit(ares.data.jaxb.Unit unit, Formation formation, Force force, Scenario scenario) {
         id = unit.getId();
@@ -272,58 +279,125 @@ public abstract class Unit {
             }
         }
         Board board = scenario.getBoard();
-        Scale scale = scenario.getScale();
         int x = unit.getX();
         int y = unit.getY();
         location = board.getMap()[x][y];
-        attackStrength = (int) (efficacy * (antiTank + antiPersonnel) / scale.getArea());
-        defenseStrength = (int) (efficacy * defense / scale.getArea());
-        health = (int) (efficacy - 1 / 20);
+        models = new HashMap<>();
+//        models.put(KnowledgeCategory.NONE, null);
+        models.put(KnowledgeCategory.POOR, new DetectedUnitModel(this));
+        models.put(KnowledgeCategory.GOOD, new IdentifiedUnitModel(this));
+        models.put(KnowledgeCategory.COMPLETE, new KnownUnitModel(this));
+
     }
 
     /**
-     * This method makes the unit active, which implies initializing state
-     * attributes & placing the unit in the board
+     * This method makes the unit active, which implies initializing state attributes & placing the unit in the board
      *
      */
     public void activate() {
-        endurance = (MAX_ENDURANCE * 200 + MAX_ENDURANCE * readiness + MAX_ENDURANCE * supply) / 400;
-        stamina = endurance * 100 / MAX_ENDURANCE;
-        maxRange = speed * MAX_ENDURANCE / 90 / 1000;
-        range = speed * endurance / 90 / 1000;
-        quality = (2 * proficiency + readiness) / 3;
-        efficacy = (2 * proficiency + readiness + supply) / 4;
+        updateMaxValues();
+        endurance = maxEndurance;
+        range = maxRange;
+        updateDerivedValues();
         location.add(this);
+        mission = new TacticalMission(TacticalMissionType.NULL, this);
     }
 
-
-
+    /**
+     * Changes the readiness of the unit by the specified
+     * <code>amount</code>
+     *
+     * @param amount
+     */
     public void changeReadiness(int amount) {
         readiness += amount;
-        quality = (2 * proficiency + readiness) / 3;
-        efficacy = (2 * proficiency + readiness + supply) / 4;
+        readiness = MathUtils.setBounds(readiness, 0, 100);
+        updateDerivedValues();
     }
 
+    /**
+     * Changes the supply levels of the unit by the specified
+     * <code>amount</code>
+     *
+     * @param amount
+     */
+    public void changeSupply(int amount) {
+        supply += amount;
+        supply = MathUtils.setBounds(supply, 0, 200);
+        updateDerivedValues();
+    }
+
+    /**
+     * Updates derived attributes (
+     * <code>quality</code> and
+     * <code>efficacy</code>)
+     */
+    protected void updateDerivedValues() {
+        quality = (2 * proficiency + readiness) / 3;
+        efficacy = (2 * proficiency + readiness + Math.min(100, supply)) / 4;
+    }
+
+    /**
+     * Updates the maximum values permitted for endurance (
+     * <code>maxEndurance</code> and
+     * <code>maxRange</code>. This feature simmulates a loss of recovery capacity (which occurs for example after
+     * incurring in excesive fatigue). A unit whis these values reduced are not able to recover 100% performance after
+     * resting.
+     */
+    public void updateMaxValues() {
+        maxEndurance = MAX_ENDURANCE * (200 + readiness + Math.min(100, supply)) / 400;
+        maxRange = speed * maxEndurance / 90 / 1000;
+    }
+
+    /**
+     * Changes the
+     * <code>endurance</code> of the unit by the specified
+     * <code>amount</code>
+     *
+     * @param amount
+     */
     public void changeEndurance(int amount) {
         endurance += amount;
+        endurance = MathUtils.setUpperBound(endurance, maxEndurance);
+        range = speed * endurance / 90 / 1000;
     }
 
     public void addAssets() {
+        throw new UnsupportedOperationException();
     }
 
     public void removeAssets() {
+        throw new UnsupportedOperationException();
     }
 
     public void setParent(Unit parent) {
         this.parent = parent;
     }
 
-    public void setLocation(Tile location) {
-        this.location = location;
+    /**
+     * Moves the unit one tile in the indicated
+     * <code>direction</code>. This method simply changes the location of the unit, and updates the board accordingly
+     * (removes unit from previous location and adds it to the new location)
+     *
+     * @param direction
+     */
+    public void move(Direction direction) {
+        location.remove(this);
+        this.location = location.getNeighbor(direction);
+        location.add(this);
     }
 
+    /**
+     * Sets the operational state of the unit. This indicates the way the unit is deployed and/or which kind of activity
+     * is performing
+     *
+     * @see OpState
+     * @param opState
+     */
     public void setOpState(OpState opState) {
-        this.opState = opState;
+        if (opState != null) {
+            this.opState = opState;
+        }
     }
 
     public Map<AssetType, Asset> getAssets() {
@@ -332,6 +406,14 @@ public abstract class Unit {
 
     public Map<AssetTrait, Integer> getTraits() {
         return traits;
+    }
+
+    public int getTraitValue(AssetTrait trait) {
+        if (traits.containsKey(trait)) {
+            return traits.get(trait);
+        } else {
+            return 0;
+        }
     }
 
     public Tile getLocation() {
@@ -344,10 +426,6 @@ public abstract class Unit {
 
     public int getRange() {
         return range;
-    }
-
-    public int getStamina() {
-        return stamina;
     }
 
     public int getId() {
@@ -388,6 +466,14 @@ public abstract class Unit {
 
     public int getEndurance() {
         return endurance;
+    }
+
+    public double getAttackStrength() {
+        return efficacy * (double) (antiTank + antiPersonnel) / Scale.INSTANCE.getArea();
+    }
+
+    public double getDefenseStrength() {
+        return efficacy * (double) defense / Scale.INSTANCE.getArea();
     }
 
     public int getEfficacy() {
@@ -478,18 +564,17 @@ public abstract class Unit {
         return opState;
     }
 
-    public int getAttackStrength() {
-        return attackStrength;
-    }
-
-    public int getDefenseStrength() {
-        return defenseStrength;
-    }
-
-    public int getHealth() {
-        return health;
-    }
-
+//    public void recover() {
+//        quality = (2 * proficiency + readiness) / 3;
+//        efficacy = (2 * proficiency + readiness + supply) / 4;
+//        int enduranceRestored = (MAX_ENDURANCE * 200 + MAX_ENDURANCE * readiness + MAX_ENDURANCE * supply) / 400;
+//        endurance = Math.min(endurance + enduranceRestored, enduranceRestored);
+//        maxRange = speed * MAX_ENDURANCE / 90 / 1000;
+//        range = speed * endurance / 90 / 1000;
+//    }
+    /**
+     * Compares two units in terms of the turn of entry
+     */
     protected static class UnitEntryComparator implements Comparator<Unit> {
 
         @Override
@@ -521,10 +606,9 @@ public abstract class Unit {
 //    }
     @Override
     public int hashCode() {
-        int hash = 17;
-        hash = 31 * hash + id;
-//        hash = 31 * hash + formation.getId();
-        hash = 31 * hash + force.getId();
+        int hash = 5;
+        hash = 29 * hash + this.id;
+        hash = 29 * hash + Objects.hashCode(this.force);
         return hash;
     }
 
@@ -533,9 +617,6 @@ public abstract class Unit {
         if (obj == null) {
             return false;
         }
-        if (obj == this) {
-            return true;
-        }
         if (getClass() != obj.getClass()) {
             return false;
         }
@@ -543,10 +624,7 @@ public abstract class Unit {
         if (this.id != other.id) {
             return false;
         }
-//        if (!this.formation.equals(other.formation)) {
-//            return false;
-//        }
-        if (!this.force.equals(other.force)) {
+        if (!Objects.equals(this.force, other.force)) {
             return false;
         }
         return true;
@@ -554,10 +632,93 @@ public abstract class Unit {
 
     @Override
     public String toString() {
-        return name + "(" + type.name() + ")." + movement + "." + opState + "[" + stamina + "]" + " @ " + location;
+        return name + "(" + type.name() + ")." + movement + "." + opState + " @ " + location;
     }
 
-    public String toStringLong() {
-        return toString() + '{' + echelon + ", " + formation + ", " + force + ", location=" + location + ", speed=" + speed + ", assets=" + assets + '}';
+    public String toStringMultiline() {
+        StringBuilder sb = new StringBuilder(name).append(" (").append(echelon).append(')').append('\n');
+        sb.append("Belongs to ").append(formation).append(" (").append(force).append(")\n");
+        sb.append("Unit type: ").append(type).append('\n');
+        sb.append("Location: ").append(location).append('\n');
+        sb.append("Movement: ").append(movement).append(" (").append(speed * 60.0 / 1000).append(" Km/h)\n");
+        sb.append("OpState: ").append(opState).append('\n');
+        sb.append("Stamina: ").append(endurance * 100 / MAX_ENDURANCE).append('\n');
+        sb.append("Proficiency: ").append(proficiency).append('\n');
+        sb.append("Readiness: ").append(readiness).append('\n');
+        sb.append("Supply: ").append(supply).append('\n');
+        sb.append("Range: ").append(range).append('/').append(maxRange).append('\n');
+        sb.append("Quality: ").append(quality).append('\n');
+        sb.append("Efficacy: ").append(efficacy).append('\n');
+        sb.append("\n___Strenghts___\n");
+        sb.append("Attack ").append(efficacy * (antiTank + antiPersonnel)).append('\n');
+        sb.append("Defense: ").append(efficacy * defense).append("\n");
+        sb.append("AT: ").append(efficacy * antiTank).append("  ");
+        sb.append("AP: ").append(efficacy * antiPersonnel).append("\n");
+        sb.append("HAA: ").append(efficacy * highAntiAir).append("   ");
+        sb.append("LAA: ").append(efficacy * lowAntiAir).append("\n");
+        if (artillery != 0) {
+            sb.append("Art: ").append(efficacy * artillery).append(" (Range ").append(range).append(" Km.)\n");
+        }
+        if (!type.getCapabilities().isEmpty()) {
+            sb.append("\n___Capabilities___\n");
+            for (Capability capability : type.getCapabilities()) {
+                sb.append(capability).append('\n');
+            }
+        }
+        sb.append("\n___Assets___\n");
+        for (Asset asset : assets.values()) {
+            sb.append(asset).append('\n');
+        }
+        sb.append("\n___Traits___\n");
+        for (Entry<AssetTrait, Integer> traitEntry : traits.entrySet()) {
+            sb.append(traitEntry.getKey()).append(": ").append(traitEntry.getValue()).append('\n');
+        }
+        return sb.toString();
+    }
+
+    @Override
+    public final UnitModel getModel(UserRole role) {
+        KnowledgeCategory knowledgeCategory = location.getKnowledgeLevel(role).getCategory();
+        return models.get(knowledgeCategory);
+    }
+
+    /**
+     * Return
+     *
+     * @param knowledgeCategory
+     * @return
+     */
+    public final UnitModel getModel(KnowledgeCategory knowledgeCategory) {
+        return models.get(knowledgeCategory);
+    }
+
+    /**
+     * Returns true if the
+     * <code>unit</code> has enough endurance to perform the action. The answer depends of the current endurance of the
+     * unit as well as the <type>type<type> of action.
+     *
+     * @param actionType
+     * @return
+     */
+    public boolean canExecute(ActionType type) {
+        return endurance > type.getRequiredEndurace(Clock.INSTANCE.getMINUTES_PER_TICK());
+    }
+
+    public TacticalMission getMission() {
+        return mission;
+    }
+
+    /**
+     * The unit gathers information on the surrounding environment. At this point only the adjacent tiles are considered
+     */
+    public void perceive() {
+        location.reconnoissance(this, Clock.INSTANCE.getMINUTES_PER_TICK());
+        for (Tile tile : location.getNeighbors().values()) {
+            tile.reconnoissance(this, Clock.INSTANCE.getMINUTES_PER_TICK());
+        }
+    }
+    
+    public boolean isAircraft() {
+        return movement == MovementType.AIRCRAFT;
     }
 }

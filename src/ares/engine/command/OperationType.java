@@ -5,7 +5,8 @@ package ares.engine.command;
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public enum OperationType {
-    MOVE_TO_CONTACT (OperationalStance.OFFENSIVE),
+
+    MOVE_TO_CONTACT(OperationalStance.OFFENSIVE),
     ATTACK(OperationalStance.OFFENSIVE),
     EXPLOITATION(OperationalStance.OFFENSIVE),
     PURSUIT(OperationalStance.OFFENSIVE),
@@ -24,8 +25,13 @@ public enum OperationType {
     RECON_IN_FORCE(OperationalStance.RECONNAISSANCE);
     private final OperationalStance stance;
 
-    private OperationType(OperationalStance stance) {
+    private OperationType(final OperationalStance stance) {
         this.stance = stance;
     }
+
+    public OperationalStance getStance() {
+        return stance;
+    }
+    
     
 }

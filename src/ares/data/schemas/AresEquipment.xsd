@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+        xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:ar="ares">
+    <element name="EquipmentDB">
+        <complexType>
+            <sequence>
+                <element maxOccurs="unbounded" name="EquipmentCategory">
+                    <complexType>
+                        <sequence>
+                            <element name="Name" type="string" />
+                            <element name="Country" type="string" />
+                            <element name="Item" maxOccurs="unbounded">
+                                <complexType>
+                                    <sequence>
+                                        <element name="Name" type="string" />
+                                        <element name="Country" type="string" />
+                                        <element name="Icon" type="int" />
+                                        <element name="AT" type="int" />
+                                        <element name="AP" type="int" />
+                                        <element name="AA" type="int" />
+                                        <element name="DF" type="int" />
+                                        <element name="Personnel" type = "int" />
+                                        <element name="Crew" type = "int" />
+                                        <element name="ArtyRange" type="int" />
+                                        <element name="EarlyRange" type="int" />
+                                        <element name="SAMRange" type="int" />
+                                        <element name="Nuke" type="int" />
+                                        <element name="Volume" type="int" />
+                                        <element name="Weight" type="int" />
+                                        <element name="ShellWeight" type="int" />
+                                        <element name="Armor" type="int" />
+                                        <element name="Trait" type="ar:Trait" maxOccurs="unbounded"/>
+                                    </sequence>
+                                    <attribute name="id" type="int" use="required"/>
+                                </complexType>
+                            </element>
+                        </sequence>
+                        <attribute name="id" type="int" use="required"/>
+                    </complexType>
+                </element>
+            </sequence>
+        </complexType>
+    </element>
+
+    <!-- types -->
+    <simpleType name="Trait">
+        <restriction base="string">
+            <enumeration value="EQUIPMENT_CATEGORY"/>
+            <enumeration value="ARMORED"/>
+            <enumeration value="ACTIVE_DEFENDER"/>
+            <enumeration value="RECON"/>
+            <enumeration value="STATIC"/> <!-- Needs transport to move (typical of guns)-->
+            <enumeration value="ENGINEER"/>
+            <enumeration value="HORSES"/>
+            <enumeration value="FIXED"/>
+            <enumeration value="TRANSPORT"/>
+            <enumeration value="SLOW"/><!-- Moves slowly without transport (typical of infantry)-->
+            <enumeration value="MOTORIZED"/>
+            <enumeration value="HELICOPTER_MOVEMENT"/>
+            <enumeration value="HIGH_AA"/> <!-- High altitude Anti-aircraft -->
+            <enumeration value="LONG_RANGE"/>
+            <enumeration value="LIGHT_SHIP"/>
+            <enumeration value="MEDIUM_SHIP"/>
+            <enumeration value="HEAVY_SHIP"/>
+            <enumeration value="AIRCRAFT_CARRIER"/>
+            <enumeration value="LOW_ALTITUDE_AIRCRAFT"/>
+            <enumeration value="HIGH_ALTITUDE_AIRCRAFT"/>
+            <enumeration value="AMPHIBIOUS"/>
+            <enumeration value="NAVAL_AIRCRAFT"/>
+            <enumeration value="RIVERINE"/>
+            <enumeration value="HIGH_LOW_AA"/><!-- High/Low altitude Anti-aircraft -->
+            <enumeration value="ALL_WEATHER"/> <!-- Night/All weather capability -->
+            <enumeration value="ANTI_SHIP"/>
+            <enumeration value="FAST_HORSES"/><!-- Cavalry -->
+            <enumeration value="MAJOR_FERRY"/>
+            <enumeration value="RAIL_ONLY"/>
+            <enumeration value="ANTI_SHIP_ONLY"/>
+            <enumeration value="SLOW_MOTORIZED"/>
+            <enumeration value="FAST_MOTORIZED"/>
+            <enumeration value="COMPOSITE_ARMOR"/>
+            <enumeration value="LAMINATE_ARMOR"/>
+            <enumeration value="NBC_PROTECTION"/>
+            <enumeration value="NUCLEAR"/>
+            <enumeration value="KINETIC_ANTI_ARMOR"/>
+            <enumeration value="PRECISSION_GUIDED_WEAPONS"/>
+            <enumeration value="IN_FLIGHT_REFUELLING"/>
+            <enumeration value="LIGHTWEIGHT"/>
+            <enumeration value="AIRBORNE_ALLOWED"/>
+            <enumeration value="TARGETTING_1"/>
+            <enumeration value="TARGETTING_2"/>
+            <enumeration value="TARGETTING_3"/>
+            <enumeration value="TARGETTING_4"/>
+            <enumeration value="LOGISTICS"/>
+            <enumeration value="COMMAND"/>
+            <enumeration value="SMOKE"/>
+            <enumeration value="REACTIVE_ARMOR"/>
+            <enumeration value="TRAFFIC_CONTROL"/>
+            <enumeration value="LIGHT_TRANSPORT_HELI"/>
+            <enumeration value="MEDIUM_TRANSPORT_HELI"/>
+            <enumeration value="HEAVY_TRANSPORT_HELI"/>
+            <enumeration value="AGILE"/>
+            <enumeration value="ROADBOUND"/>
+            <enumeration value="EXTENDED_RANGE"/><!-- Eg. rocket-assisted projectiles -->
+            <enumeration value="STANDOFF_WEAPONS"/>
+            <enumeration value="SHOCK_CAVALRY"/>
+            <enumeration value="RAIL_REPAIR"/>
+            <enumeration value="INFANTRY"/>
+            <enumeration value="POOR_GEOMETRY"/>
+            <enumeration value="FAIR_GEOMETRY"/>
+            <enumeration value="DPMX_ANTI_SHIP"/><!-- Dual purpose Missiles (antiship) -->
+            <enumeration value="TORPEDO"/>
+        </restriction>
+    </simpleType>
+</schema>

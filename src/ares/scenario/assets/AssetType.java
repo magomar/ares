@@ -76,18 +76,13 @@ public final class AssetType {
         if (set.isEmpty()) { // this happens with SAM
             traits.add(AssetTrait.STATIC); // I assume SAM can not be moved without transport
             speed = (int) (AssetTrait.STATIC.getFactor() * 1000.0 / 60);
-//            System.out.println("ERROR ! No movement traits: " + name);
+            System.out.println("WARNING ! No movement traits, assuming it is SAM: " + name);
+        } else if (set.size() > 1) {
+            System.out.println("ERROR ! Too many movement traits: " + name);
         } else {
-            if (set.size() == 0) {
-                System.out.println("ERROR ! No movement traits: " + name);
-            } else if (set.size() > 1) {
-                System.out.println("ERROR ! Many movement traits: " + name);
-            } else {
-                AssetTrait ast = (AssetTrait) set.toArray()[0];
-                speed = (int) (ast.getFactor() * 1000.0 / 60);
-            }
+            AssetTrait ast = (AssetTrait) set.toArray()[0];
+            speed = (int) (ast.getFactor() * 1000.0 / 60);
         }
-        //System.out.println(toString());
     }
 
     public int getAah() {
@@ -169,17 +164,5 @@ public final class AssetType {
     @Override
     public String toString() {
         return "AssetType{" + "id=" + id + ", name=" + name + ", country=" + country + ", icon=" + icon + ", at=" + at + ", ap=" + ap + ", aal=" + aal + ", aah=" + aah + ", df=" + df + ", artyRange=" + artyRange + ", earlyRange=" + earlyRange + ", samRange=" + samRange + ", nuke=" + nuke + ", volume=" + volume + ", weight=" + weight + ", shellWeight=" + shellWeight + ", armor=" + armor + ", traits=" + traits + '}';
-    }
-
-    public static boolean isAircraft(Set<AssetTrait> traits) {
-        Set<AssetTrait> a = EnumSet.copyOf(traits);
-        a.retainAll(AssetTrait.AIRCRAFT);
-        return !a.isEmpty();
-    }
-
-    public static boolean isShip(Set<AssetTrait> traits) {
-        Set<AssetTrait> a = EnumSet.copyOf(traits);
-        a.retainAll(AssetTrait.SHIP);
-        return !a.isEmpty();
     }
 }

@@ -1,18 +1,32 @@
 package ares.engine.command;
 
-import ares.engine.action.AbstractAction;
+import ares.engine.ClockEvent;
 import ares.engine.action.Action;
-import java.util.PriorityQueue;
+import ares.engine.action.ActionState;
+import ares.engine.action.ActionType;
+import ares.engine.action.actions.RestAction;
+import ares.engine.action.actions.WaitAction;
+import ares.scenario.Clock;
+import ares.scenario.forces.Unit;
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.Queue;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
+ * Holds the details of a tactical mission assigned to a unit: mission type, current plan of action Includes the engine
+ * to manage the live cycle of actions: create, schedule, execute
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-// TODO this class overlaps with Saul's TacticalMission in planner
-// Check with him to integrate new platform with his planner
 public class TacticalMission {
 
+    private static final Logger LOG = Logger.getLogger(TacticalMission.class.getName());
+    /**
+     * The unit assined to this tactical misssion
+     */
+    private final Unit unit;
     /**
      * The type of the mission (assault, support by fire, etc.)
      *
@@ -20,34 +34,79 @@ public class TacticalMission {
      */
     private final TacticalMissionType type;
     /**
-     * A plan to accomplish this tactical mission. It is specified as a sequence of actions
+     * The current, ongoing action
+     */
+    private Action currentAction;
+    /**
+     * A plan to accomplish the tactical mission. It is specified as a sequence of actions to be executed sequentially
      *
      * @see Action
      */
-    private Queue<Action> pendingActions;
+    private Deque<Action> pendingActions;
 
-    public TacticalMission(TacticalMissionType type) {
+    public TacticalMission(TacticalMissionType type, Unit unit) {
         this.type = type;
-        this.pendingActions = new PriorityQueue<>(2, AbstractAction.ACTION_START_COMPARATOR);
+        this.unit = unit;
+        this.pendingActions = pendingActions = new LinkedList<>();
+    }
+
+    public void act(ClockEvent ce) {
+        currentAction.execute();
+    }
+
+    public void schedule(ClockEvent ce) {
+        if (currentAction != null
+                && (currentAction.getState() == ActionState.COMPLETED
+                || currentAction.getState() == ActionState.ABORTED)) {
+            currentAction = null;
+        }
+        if (currentAction == null) {
+            if (!pendingActions.isEmpty() && pendingActions.peek().canBeStarted()) {
+                currentAction = pendingActions.poll();
+            } else {
+                if (unit.canExecute(ActionType.WAIT)) {
+                    currentAction = new WaitAction(unit, Clock.INSTANCE.getMINUTES_PER_TICK());
+                } else {
+                    currentAction = new RestAction(unit);
+                }
+            }
+            currentAction.start();
+        }
     }
 
     public TacticalMissionType getType() {
         return type;
     }
 
-    public Queue<Action> getPendingActions() {
-        return pendingActions;
-    }
-
     public void addAction(Action action) {
         pendingActions.add(action);
     }
 
-    public void setPendingActions(Queue<Action> pendingActions) {
-        this.pendingActions = pendingActions;
-    }
-
+//    public void setPendingActions(Queue<Action> pendingActions) {
+//        this.pendingActions = (Deque<Action>) pendingActions;
+//    }
     public void clearActions() {
         pendingActions.clear();
+    }
+
+    public Action getCurrentAction() {
+        return currentAction;
+    }
+
+    public Queue<Action> getPendingActions() {
+        return pendingActions;
+    }
+
+    public void addFirstAction(Action action) {
+        pendingActions.addFirst(action);
+    }
+
+    public void addLastAction(Action action) {
+        pendingActions.addLast(action);
+    }
+
+    @Override
+    public String toString() {
+        return "TacticalMission{" + type + " by " + unit.getName() + '}';
     }
 }

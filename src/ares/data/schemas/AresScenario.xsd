@@ -1,0 +1,740 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema version="1.0"
+        xmlns="http://www.w3.org/2001/XMLSchema"
+        elementFormDefault="qualified"
+        xmlns:ar="ares">
+    <element name="Scenario">
+        <complexType>
+            <sequence>
+                <element name="Header" type="ar:Header"/>
+                <element name="Calendar" type="ar:Calendar"/>
+                <element name="Environment" type="ar:Environment"/>
+                <element name="ForceVariables" type="ar:ForceVariables"/>
+                <element name="Variables" type="ar:Variables"/>
+                <element name="Map" type="ar:Map"/>
+                <element name="OOB" type="ar:OOB"/>
+                <element name="Events" type = "ar:Events"/>
+                <element name="Supplies" type="ar:Supplies"/>
+                <element name="Replacements" type = "ar:Replacements" />
+            </sequence>
+        </complexType>
+    </element>
+    
+    <!-- Header -->
+    
+    <complexType name = "Header">
+        <sequence>
+            <element name="Name" type="string" />
+            <element name="Description" type="string" />
+            <element name="ForceName" type="string" maxOccurs = "unbounded"/>
+            <element name="OutcomesWin" type="string" maxOccurs = "unbounded"/>
+            <element name="OutcomesLose" type="string" maxOccurs = "unbounded"/>
+            <element name="OutcomesDraw" type="string" maxOccurs = "unbounded"/>
+        </sequence>
+        <attribute name="version" type="int" />
+        <attribute name="fileType" type="int" />
+        <attribute name="firstPlayer" type="int" />
+    </complexType>
+
+    <!-- Calendar -->
+
+    
+    <complexType name="Calendar">
+        <sequence>
+            <element name="TurnLength" type="ar:TurnLength" />
+            <element name="StartQuarterDay" type="int" />
+            <element name="StartDate" type="date" />
+            <element name="CurrentTurn" type="int" />
+            <element name="FinalTurn" type="int" />
+        </sequence>
+    </complexType>
+    
+    <!-- Environment -->
+
+    <complexType name="Environment">
+        <sequence>
+            <element name="Scale" type="double" />
+            <element name="Zone" maxOccurs="unbounded">
+                <complexType>
+                    <sequence>
+                        <element name="Boundary" type="int" />
+                        <element name="Precipitation" type="int" />
+                        <element name="Temperature" type="int" />
+                        <element name="Visibility" type="int" />
+                        <element name="DeltaT" type="int" />
+                        <element name="Direction" type="int" />
+                        <element name="OlddeltaT" type="int" />
+                        <element name="Olddirection" type="int" />
+                        <element name="NextClouds" type="int" />
+                    </sequence>
+                    <attribute name="id" type="int" use="required"/>
+                </complexType>
+            </element>
+        </sequence>
+    </complexType>
+
+    <!-- Force variables -->
+
+    <complexType name="ForceVariables">
+        <sequence>
+            <element name="Force" maxOccurs="unbounded" >
+                <complexType>
+                    <sequence>
+                        <element name="microUnitIcon" type="int" />
+                        <element name="iconTints" type="int" />
+                        <element name="chemicalsUsed" type="int" />
+                        <element name="chemicalsAvailable" type="int" />
+                        <element name="nukesUsed" type="int" />
+                        <element name="nukesAvailableInitial" type="int" />
+                        <element name="nukesAvailableCurrent" type="int" />
+                        <element name="globalRecce" type="int" />
+                        <element name="globalGuerillas" type="int" />
+                        <element name="globalRailcapInitial" type="int" />
+                        <element name="globalRailcapCurrent" type="int" />
+                        <element name="globalRailcapLast" type="int" />
+                        <element name="globalAircapInitial" type="int" />
+                        <element name="globalAircapCurrent" type="int" />
+                        <element name="globalAircapLast" type="int" />
+                        <element name="globalSeacapInitial" type="int" />
+                        <element name="globalSeacapCurrent" type="int" />
+                        <element name="globalSeacapLast" type="int" />
+                        <element name="newReinforcements" type="int" />
+                        <element name="interdiction" type="int" />
+                        <element name="victoryModifications" type="int" />
+                        <element name="globalHandicap" type="int" default="100"/>
+                        <element name="globalRailRepair" type="int" default="1"/>
+                        <element name="globalRailDestruction" type="int" default="100"/>
+                        <element name="reconstitutionPointX" type="int" default ="999"/>
+                        <element name="reconstitutionPointY" type="int" default="999" />
+                        <element name="reconstitutionPointValue" type="int" />
+                        <element name="roadSupplyRadius" type="int" default="4"/>
+                        <element name="globalAirHandicap" type="int" default="100"/>
+                        <element name="forceNBCReadiness" type="int" default="50"/>
+                        <element name="forcePGWMultiplier" type="int" default="20"/>
+                        <element name="forceElectronicSupport" type="int" default="33"/>
+                        <element name="forceAirRefuel" type="int" />
+                        <element name="forceNightProficiency" type="int" default="33"/>
+                        <element name="externalPOBias" type="int" default="2"/>
+                        <element name="currentTrack" type="int" />
+                        <element name="forceMoveBias" type="int" default="100"/>
+                        <element name="forcePestilence" type="int" />
+                        <element name="forceCommunication" type="int" default="100"/>
+                        <element name="forceLossIntolerance" type="int" default="100"/>
+                        <element name="ZOCCost" type="int" default="100"/>
+                        <element name="recentAirLosses" type="int" />
+                    </sequence>
+                    <attribute name="id" type="int" use ="required"/>
+                </complexType>
+            </element>
+        </sequence>
+    </complexType>
+
+    <!-- Variables -->
+
+    <complexType name="Variables">
+        <sequence>
+            <element name="scenarioIsOver" type="int" />
+            <element name="ceaseFire" type="int" />
+            <element name="eventEngineVariable" type="int" />
+            <element name="riversAlongEdges" type="int" />
+            <element name="attritionDivider" type="int" default="10"/>
+            <element name="maxRoundsPerBattle" type="int" default="99"/>
+            <element name="AAALethalityRate" type="int" default="100"/>
+            <element name="engineeringRate" type="int" default="100"/>
+            <element name="hexConversionRate" type="int" default="100"/>
+            <element name="entrenchmentRate" type="int" default="100"/>
+            <element name="combatDensityRate" type="int" default="100"/>
+            <element name="supplyMovementRate" type="int" default="100"/>
+            <element name="supplyReadinessRate" type="int" default="100"/>
+        </sequence>
+    </complexType>
+
+    <!-- Map -->
+    
+    <complexType name="Map">
+        <sequence>
+            <element name="MaxX" type="int"  />
+            <element name="MaxY" type="int"  />
+            <element name="Cell" type="ar:Cell" maxOccurs="unbounded" />
+            <element name="Place" type="ar:Place" minOccurs= "0" maxOccurs="unbounded" />
+        </sequence>
+        <attribute name="version" type="string" />
+    </complexType>
+    
+    <complexType name="Cell">
+        <sequence>
+            <element name="Terrain" type="ar:Terrain" minOccurs= "0" maxOccurs="unbounded"/>
+            <element name="Feature" type="ar:TerrainFeature" minOccurs= "0" maxOccurs="unbounded"/>
+            <element name="Entrenchment" type="int" minOccurs= "0"/>
+            <element name="Distance" type= "int" minOccurs= "0"/>
+            <element name="Owner" type = "int" />
+            <element name="VP" type="int" minOccurs= "0"/>
+        </sequence>
+        <attribute name="x" type="int" />
+        <attribute name="y" type="int" />
+    </complexType>
+    
+    <complexType name="Terrain">
+        <attribute name="Type" type="ar:TerrainType" />
+        <attribute name="Dir" type="string" use="optional"/>
+        <!--<attribute name="graphic" type="int" use="required" />-->
+    </complexType>
+    
+    <complexType name="Place">
+        <sequence>
+            <element name="X" type="int" />
+            <element name="Y" type="int" />
+            <element name="Name" type="string" />   
+        </sequence>
+        <attribute name="id" type="int" use="required"/>
+    </complexType>
+
+    
+    <!-- Events -->
+    
+    <complexType name="Events">
+        <sequence>
+            <sequence>
+                <element maxOccurs="unbounded" name="Event">
+                    <complexType>
+                        <sequence> 
+                            <element name="Trigger" type="string" />
+                            <element name="Contingency" type="int" minOccurs="0" />
+                            <element name="Effect" type="string" />
+                            <element name="X" type="int" minOccurs="0" />
+                            <element name="Y" type="int" minOccurs="0" />
+                            <element name="Value" type="int" minOccurs="0" />
+                            <element name="Turn" type="int" minOccurs="0" />
+                            <element name="News" type="string" minOccurs="0" />
+                            <element name="Variable" type="int" minOccurs="0" />
+                        </sequence>
+                        <attribute name="id" type="int" use="required"/>
+                    </complexType>
+                </element>
+            </sequence>
+        </sequence>
+    </complexType>
+    
+    <!-- Supplies -->
+     
+    <complexType name="Supplies">
+        <sequence>
+            <element maxOccurs="unbounded" name="Force">
+                <complexType>
+                    <sequence>
+                        <element maxOccurs="unbounded" name="Node">
+                            <complexType>
+                                <sequence>
+                                    <element name="x" type="int" />
+                                    <element name="y" type="int" />
+                                    <element name="supply" type="int" />
+                                </sequence>
+                                <attribute name="id" type="int" use="required"/>
+                            </complexType>
+                        </element>
+                    </sequence>
+                    <attribute name="id" type="int" use="required" />
+                </complexType>
+            </element>
+        </sequence>
+    </complexType>
+    
+    <!-- Replacements -->
+      
+    <complexType name="Replacements">
+        <sequence>
+            <element maxOccurs="unbounded" name="Force">
+                <complexType>
+                    <sequence>
+                        <element name="Node" maxOccurs="unbounded">
+                            <complexType>
+                                <sequence>
+                                    <element name="Available" type="int" />
+                                    <element name="Rate" type="int" />
+                                    <element name="Start" type="int" />
+                                    <element name="End" type="int" />
+                                    <element name="Inventory" type="int" />
+                                </sequence>
+                                <attribute name="id" type="int" use ="required"/>
+                            </complexType>
+                        </element>
+                    </sequence>
+                    <attribute name="id" type="int" use ="required"/>
+                </complexType>
+            </element>
+        </sequence>
+    </complexType>
+
+    <!-- OOB -->
+    
+    <complexType name="OOB">
+        <sequence>
+            <element maxOccurs="unbounded" name="Force" type="ar:Force" />
+        </sequence>
+    </complexType>
+    
+    <complexType name="Force">
+        <sequence>
+            <element name="Name" type="string" />
+            <element name="Proficiency" type="int" default ="33"/>
+            <element name="Supply" type="int" default ="100" />
+            <element name="Flag" type="int" />
+            <element name="Formation" type="ar:Formation" maxOccurs="unbounded" />
+        </sequence>
+        <attribute name="id" type="int" use="required"/>
+    </complexType>
+    
+    <complexType name="Formation">
+        <sequence>
+            <element name="Name" type="string" />
+            <element name="Echelon" type="ar:Echelon"/>
+            <element name="Parent" type = "int" />
+            <element name="Color" type="int" />
+            <element name="Commander" type="string"/>
+            <element name="Details" type="string"/>
+            <element name="Proficiency" type="int"  default="33"/>
+            <element name="Supply" type="int"  default="100"/>
+            <element name="Orders" type="ar:Orders" />
+            <element name="Emphasis" type="ar:Emphasis" />
+            <element name="Supportscope" type="ar:SupportScope" />
+            <element name="Track" maxOccurs="unbounded">
+                <complexType>
+                    <sequence>
+                        <element minOccurs="0" maxOccurs="unbounded" name="Objective">
+                            <complexType>
+                                <sequence>
+                                    <!--<element name="Description" type="string" />-->
+                                    <element name="X" type="int" />
+                                    <element name="Y" type="int" />
+                                </sequence>
+                                <attribute name="id" type="int" use ="required"/>
+                            </complexType>
+                        </element>
+                    </sequence>
+                    <attribute name="id" type="int" use ="required"/>
+                </complexType>
+            </element>
+            <element name="Unit" type="ar:Unit"  maxOccurs="unbounded" />
+        </sequence>
+        <attribute name="id" type="int" use="required"/>
+    </complexType>
+        
+    
+    <complexType name="Unit">
+        <sequence>
+            <element name="Name" type="string" />
+            <element name="Type" type="ar:UnitType" />
+            <element name="IconId" type="int" />
+            <element name="Color" type="int" />
+            <element name="Size" type="ar:Echelon" />
+            <element name="Experience" type="ar:Experience" />
+            <element name="Proficiency" type="int" default ="33"/>
+            <element name="Readiness" type="int" default ="100"/>
+            <element name="Supply" type="int" default ="100"/>
+            <element name="X" type="int" />
+            <element name="Y" type="int" />
+            <element name="Emphasis" type="ar:Emphasis" />
+            <element name="Availability" type="ar:Availability" />
+            <element name="OpState" type="ar:OpState" />
+            <element name="ReplacementPriority" type="int" />
+            <element name="Entry" type="int" minOccurs="0"/>
+            <!--<element name="Next" type="int" minOccurs="0" />-->
+            <element name="Parent" type="int" minOccurs="0" />
+            <!--<element name="Characteristics" type="string" minOccurs="0" />-->
+            <element name="Equipment" maxOccurs="unbounded">
+                <complexType>
+                    <sequence>
+                        <element name="Name" type="string" />
+                        <element name="Number" type="int" />
+                        <element name="Max" type="int" />
+                    </sequence>
+                    <attribute name="id" type="int" use="required"/>
+                </complexType>
+            </element>
+        </sequence>
+        <attribute name="id" type="int" use="required"/>
+    </complexType>
+
+    <!-- Simple Types -->
+
+    <!--
+        <simpleType name="Scale">
+            <restriction base="string">
+                <enumeration value="SCALE_2_5_KM"/>
+                <enumeration value="SCALE_5_KM"/>
+                <enumeration value="SCALE_10_KM"/>
+                <enumeration value="SCALE_15_KM"/> 
+                <enumeration value="SCALE_20"/>
+                <enumeration value="SCALE_25_KM"/> 
+                <enumeration value="SCALE_50_KM"/> 
+            </restriction>
+        </simpleType>
+    -->  
+    <simpleType name="ClimateArea">
+        <restriction base="string">
+            <enumeration value="NORTHERN"/>
+            <enumeration value="SOUTHERN"/>
+            <enumeration value="ECUATORIAL"/>
+        </restriction>
+    </simpleType>
+  
+    <simpleType name="Temperature">
+        <restriction base="string">
+            <enumeration value="FROZEN_3"/>
+            <enumeration value="FROZEN_2"/>
+            <enumeration value="FROZEN_1"/>
+            <enumeration value="COLD"/> 
+            <enumeration value="COOL"/>
+            <enumeration value="TEMPERATE"/> 
+            <enumeration value="WARM"/> 
+            <enumeration value="HOT"/> 
+        </restriction>
+    </simpleType>
+  
+    <simpleType name="Precipitation">
+        <restriction base="string">
+            <enumeration value="HEAVY"/>
+            <enumeration value="MODERATE"/>
+            <enumeration value="LIGHT"/>
+            <enumeration value="OCCASIONAL"/> 
+            <enumeration value="NO_PRECIPITATIONS"/>
+        </restriction>
+    </simpleType>
+  
+    <simpleType name="Visibility">
+        <restriction base="string">
+            <enumeration value="FAIR"/>
+            <enumeration value="HAZE"/>
+            <enumeration value="OVERCAST"/>
+        </restriction>
+    </simpleType>
+  
+    <simpleType name="TurnLength">
+        <restriction base="string">
+            <enumeration value="SIX_HOURS"/>
+            <enumeration value="HALF_DAY"/>
+            <enumeration value="FULL_DAY"/>
+            <enumeration value="HALF_WEEK"/> 
+            <enumeration value="FULL_WEEK"/>
+        </restriction>
+    </simpleType>
+    
+    <simpleType name="Direction">
+        <restriction base="string">
+            <enumeration value="N"/>
+            <enumeration value="NE"/>
+            <enumeration value="SE"/>
+            <enumeration value="S"/>
+            <enumeration value="SW"/>
+            <enumeration value="NW"/>
+            <enumeration value="C"/>  
+        </restriction>
+    </simpleType>
+    
+    <simpleType name="TerrainType">
+        <restriction base="string">
+            <enumeration value="OPEN"/>
+            <enumeration value="ARID"/>
+            <enumeration value="SAND"/>
+            <enumeration value="DUNES"/>
+            <enumeration value="BADLANDS"/>
+            <enumeration value="HILLS"/>
+            <enumeration value="MOUNTAINS"/>
+            <enumeration value="ALPINE"/>
+            <enumeration value="MARSH"/>
+            <enumeration value="FLOODED_MARS"/>
+            <enumeration value="SHALLOW_WATER"/>
+            <enumeration value="DEEP_WATER"/>
+            <enumeration value="CROPLANDS"/>
+            <enumeration value="BOCAGE_HEDGEROW"/>
+            <enumeration value="URBAN"/>
+            <enumeration value="DENSE_URBAN"/>
+            <enumeration value="URBAN_RUIN"/>
+            <enumeration value="DENSE_URBAN_RUIN"/>
+            <enumeration value="ROCKY"/>
+            <enumeration value="ESCARPMENT"/>
+            <enumeration value="MAJOR_ESCARPMENT"/>
+            <enumeration value="WADY"/>
+            <enumeration value="RIVER"/>
+            <enumeration value="SUPER_RIVER"/>
+            <enumeration value="CANAL"/>
+            <enumeration value="SUPER_CANAL"/>
+            <enumeration value="EVERGREEN_FOREST"/>
+            <enumeration value="FOREST"/>
+            <enumeration value="LIGHT_WOODS"/>
+            <enumeration value="JUNGLE"/>
+            <enumeration value="FORTIFICATION"/>
+            <enumeration value="ROAD"/>
+            <enumeration value="IMPROVED_ROAD"/>
+            <enumeration value="RAIL"/>
+            <enumeration value="BROKEN_RAIL"/>
+            <enumeration value="BORDER"/>
+            <enumeration value="SHALLOW_WATER_DECORATOR"/>
+            <enumeration value="DEEP_WATER_DECORATOR"/>
+        </restriction>
+    </simpleType>
+    
+    <simpleType name="TerrainFeature">
+        <restriction base="string">
+            <enumeration value="ANCHORAGE"/>
+            <enumeration value="AIRFIELD"/>
+            <enumeration value="PEAK"/>
+            <enumeration value="CONTAMINATED"/>
+            <enumeration value="NON_PLAYABLE"/>
+            <enumeration value="MUDDY"/>
+            <enumeration value="SNOWY"/>
+            <enumeration value="BRIDGE_DESTROYED"/>
+            <!-- another flag-->
+            <enumeration value="FROZEN"/>
+            <enumeration value="EXCLUDED_1"/>
+            <enumeration value="EXCLUDED_2"/>
+        </restriction>
+    </simpleType>
+    
+    <simpleType name="Availability">
+        <restriction base="string">
+            <enumeration value="NOT_DEPLOYED"/> 
+            <enumeration value="TURN"/> 
+            <enumeration value="EVENT"/>
+            <enumeration value="AVAILABLE"/>
+            <enumeration value="WITHDRAWN"/>
+            <enumeration value="EXITED"/>
+            <enumeration value="ELIMINATED"/>
+            <enumeration value="DISBANDED"/>
+            <enumeration value="DIVIDED"/>
+        </restriction>
+    </simpleType>
+    
+    <simpleType name="Status">
+        <restriction base="string">
+            <enumeration value="DEFENDING"/> 
+            <enumeration value="ATTACKING"/> 
+            <enumeration value="ADVANCING"/> 
+            <enumeration value="MOVING"/>
+            <enumeration value="DELAYING"/>
+            <enumeration value="RETREATING"/>
+            <enumeration value="SCOUTING"/>
+            <enumeration value="MARCHING"/>
+            <enumeration value="ROUTING"/>
+            <enumeration value="REORGANIZING"/>
+            <enumeration value="EMBARKED"/>
+        </restriction>
+    </simpleType>
+    <simpleType name="OpState">
+        <restriction base="string">
+            <enumeration value="DEPLOYING"/>
+            <enumeration value="DEPLOYED"/>
+            <enumeration value="ASSEMBLING"/>
+            <enumeration value="MOBILE"/>
+            <enumeration value="MOVING"/>
+            <enumeration value="RETREATING"/>
+            <enumeration value="WITHDRAWING"/>
+            <enumeration value="ROUTING"/>
+            <enumeration value="REORGANIZING"/>
+            <enumeration value="EMBARKING"/>
+            <enumeration value="EMBARKED"/>
+            <enumeration value="DEFENDING"/>
+            <enumeration value="ASSAULTING"/>
+            <enumeration value="ATTACKING"/>
+            <enumeration value="BOMBARDING"/>
+        </restriction>
+    </simpleType>
+    
+    <simpleType name="Orders">
+        <restriction base="string">
+            <enumeration value="MOVE_TO_CONTACT"/>
+            <enumeration value="ATTACK"/>
+            <enumeration value="EXPLOITATION"/>
+            <enumeration value="PURSUIT"/>
+            <enumeration value="AREA_DEFENSE"/>
+            <enumeration value="MOBILE_DEFENSE"/>
+            <enumeration value="RETROGRADE"/>
+            <enumeration value="SCREEN"/>
+            <enumeration value="ADVANCE_GUARD"/>
+            <enumeration value="FLANK_REAR_GUARD"/>
+            <enumeration value="COVER"/>
+            <enumeration value="AREA_SECURITY"/>
+            <enumeration value="FORCE_SECURITY"/>
+            <enumeration value="ROUTE_RECONNAISSANCE"/>
+            <enumeration value="ZONE_RECONNAISSANCE"/>
+            <enumeration value="AREA_RECONNAISSANCE"/>
+            <enumeration value="RECON_IN_FORCE"/>
+        </restriction>
+    </simpleType>
+    
+    <simpleType name="Emphasis">
+        <restriction base="string">
+            <enumeration value="MINIMIZE_LOSSES"/>
+            <enumeration value="LIMIT_LOSSES"/>
+            <enumeration value="IGNORE_LOSSES"/>
+        </restriction>
+    </simpleType>
+    
+    <simpleType name="SupportScope">
+        <restriction base="string">
+            <enumeration value="INTERNAL_SUPPORT"/>
+            <enumeration value="ARMY_SUPPORT"/>
+            <enumeration value="FORCE_SUPPORT"/>
+            <enumeration value="FREE_SUPPORT"/>
+        </restriction>
+    </simpleType>
+    
+    <simpleType name="Echelon">
+        <restriction base="string">
+            <enumeration value="SECTION"/>
+            <enumeration value="SQUAD"/>
+            <enumeration value="PLATOON"/>
+            <enumeration value="COMPANY"/>
+            <enumeration value="BATTALION"/> 
+            <enumeration value="REGIMENT"/>
+            <enumeration value="BRIGADE"/> 
+            <enumeration value="DIVISION"/> 
+            <enumeration value="CORPS"/> 
+            <enumeration value="ARMY"/> 
+            <enumeration value="ARMY_GROUP"/> 
+            <enumeration value="REGION"/> 
+        </restriction>
+    </simpleType>
+    
+    <simpleType name="Experience">
+        <restriction base="string">
+            <enumeration value="untried"/>
+            <enumeration value="veteran"/>
+        </restriction>
+    </simpleType>
+    
+    
+    <simpleType name="UnitType">
+        <restriction base="string">
+            <enumeration value="HEADQUARTERS"/>
+            <enumeration value="KAMPFGRUPPE"/>
+            <enumeration value="TANK"/>
+            <enumeration value="MECHANIZED"/>
+            <enumeration value="ARMORED_CAVALRY"/>
+            <enumeration value="ASSAULT_GUN"/>
+            <enumeration value="ARMORED_ARTILLERY"/>
+            <enumeration value="ARMORED_ANTITANK"/>
+            <enumeration value="ARMORED_RECON"/>
+            <enumeration value="INFANTRY"/>
+            <enumeration value="INFANTRY_HVY_WPNS"/>
+            <enumeration value="MACHINE_GUN"/>
+            <enumeration value="CAVALRY"/>
+            <enumeration value="ANTITANK"/>
+            <enumeration value="ARTILLERY"/>
+            <enumeration value="HORSE_ARTILLERY"/>
+            <enumeration value="INF_ARTILLERY"/>
+            <enumeration value="ROCKET_ARTILLERY"/>
+            <enumeration value="ANTI_AIRCRAFT"/>
+            <enumeration value="MOTOR_INFANTRY"/>
+            <enumeration value="MOTOR_HVY_WPNS"/>
+            <enumeration value="MOTOR_CAVALRY"/>
+            <enumeration value="MOTORCYCLE"/>
+            <enumeration value="MOTOR_ANTITANK"/>
+            <enumeration value="MOTOR_ARTILLERY"/>
+            <enumeration value="MOTOR_ROCKET"/>
+            <enumeration value="MOTOR_ANTI_AIR"/>
+            <enumeration value="MOUNTAIN_INFANTRY"/>
+            <enumeration value="MOUNTAIN_HVY_WPNS"/>
+            <enumeration value="MOUNTAIN_CAV"/>
+            <enumeration value="MTN_CAV_HVY_WPNS"/>
+            <enumeration value="PARACHUTE"/>
+            <enumeration value="PARACHUTE_ANTITANK"/>
+            <enumeration value="PARACHUTE_INFANTRY"/>
+            <enumeration value="PARACHUTE_HVY_WPNS"/>
+            <enumeration value="AIRBORNE_RECON"/>
+            <enumeration value="AIRBORNE_ARTILLERY"/>
+            <enumeration value="AIR"/>
+            <enumeration value="FIGHTER"/>
+            <enumeration value="FIGHTER_BOMBER"/>
+            <enumeration value="LIGHT_BOMBER"/>
+            <enumeration value="MEDIUM_BOMBER"/>
+            <enumeration value="HEAVY_BOMBER"/>
+            <enumeration value="NAVAL_FIGHTER"/>
+            <enumeration value="NAVAL_ATTACK"/>
+            <enumeration value="NAVAL_BOMBER"/>
+            <enumeration value="JET_FIGHTER"/>
+            <enumeration value="JET_BOMBER"/>
+            <enumeration value="JET_HEAVY_BOMBER"/>
+            <enumeration value="GLIDER_TANK"/>
+            <enumeration value="GLIDER_INFANTRY"/>
+            <enumeration value="GLIDER_HVY_WPNS"/>
+            <enumeration value="GLIDER_ARTILLERY"/>
+            <enumeration value="GLIDER_RECON"/>
+            <enumeration value="GLIDER_ANTITANK"/>
+            <enumeration value="ENGINEER"/>
+            <enumeration value="AIRBORNE_ENGINEER"/>
+            <enumeration value="ARMORED_ENGINEER"/>
+            <enumeration value="AMPHIBIOUS_ARMOR"/>
+            <enumeration value="SPECIAL_FORCES"/>
+            <enumeration value="MARINE_INFANTRY"/>
+            <enumeration value="CHEMICAL_ARTILLERY"/>
+            <enumeration value="COASTAL_ARTILLERY"/>
+            <enumeration value="AMPHIBIOUS"/>
+            <enumeration value="NAVAL_TASK_FORCE"/>
+            <enumeration value="HEAVY_NAVAL"/>
+            <enumeration value="MEDIUM_NAVAL"/>
+            <enumeration value="LIGHT_NAVAL"/>
+            <enumeration value="RIVERINE"/>
+            <enumeration value="CARRIER_NAVAL"/>
+            <enumeration value="ARMORED_TRAIN"/>
+            <enumeration value="FIXED_ARTILLERY"/>
+            <enumeration value="RAIL_ARTILLERY"/>
+            <enumeration value="MILITARY_POLICE"/>
+            <enumeration value="TRANSPORT"/>
+            <enumeration value="IRREGULAR"/>
+            <enumeration value="FERRY_ENGINEER"/>
+            <enumeration value="AMPHIB_TRANSPORT"/>
+            <enumeration value="BICYCLE"/>
+            <enumeration value="SKI"/>
+            <enumeration value="COMBAT_COMMAND_A"/>
+            <enumeration value="COMBAT_COMMAND_B"/>
+            <enumeration value="COMBAT_COMMAND_C"/>
+            <enumeration value="COMBAT_COMMAND_R"/>
+            <enumeration value="TASK_FORCE"/>
+            <enumeration value="RAILROAD_REPAIR"/>
+            <enumeration value="HVY_ANTITANK"/>
+            <enumeration value="BORDER"/>
+            <enumeration value="BATTLEGROUP"/>
+            <enumeration value="SECURITY"/>
+            <enumeration value="HVY_ARMOR"/>
+            <enumeration value="RESERVE"/>
+            <enumeration value="TRANSPORT"/>
+            <enumeration value="GARRISON"/>
+            <enumeration value="MOTOR_MACHINEGUN"/>
+            <enumeration value="ARMORED_HVY_ARTY"/>
+            <enumeration value="MOTOR_ENGINEER"/>
+            <enumeration value="HVY_ARTILLERY"/>
+            <enumeration value="MORTAR"/>
+            <enumeration value="HVY_MORTAR"/>
+            <enumeration value="ATTACK_HELICOPTER"/>
+            <enumeration value="RECON_HELICOPTER"/>
+            <enumeration value="TRANS_HELICOPTER"/>
+            <enumeration value="GUERRILLA"/>
+            <enumeration value="AIRMOBILE"/>
+            <enumeration value="AIRMOBILE_ANTITANK"/>
+            <enumeration value="AIRMOBILE_INFANTRY"/>
+            <enumeration value="AIRMOBILE_HVY_WPN"/>
+            <enumeration value="AIRMOBILE_CAVALRY"/>
+            <enumeration value="AIRMOBILE_ARTY"/>
+            <enumeration value="AIRMOBILE_ENGINEER"/>
+            <enumeration value="AIRMOBILE_ANTI_AIR"/>
+            <enumeration value="PARACHUTE_ANTI_AIR"/>
+            <enumeration value="MISSILE_ARTILLERY"/>
+            <enumeration value="CIVILIAN"/>
+            <enumeration value="SUPPLY"/>
+            <enumeration value="EMBARKED_HELI"/>
+            <enumeration value="EMBARKED_NAVAL"/>
+            <enumeration value="EMBARKED_RAIL"/>
+            <enumeration value="EMBARKED_AIR"/>
+            <enumeration value="UNDEFINED"/>
+        </restriction>
+    </simpleType>
+    
+    <simpleType name="Percentage">
+        <restriction base="int">
+            <minInclusive value="0"/>
+            <maxInclusive value="100"/>
+        </restriction>
+    </simpleType>
+  
+</schema>

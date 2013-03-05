@@ -1,9 +1,11 @@
 package ares.scenario.forces;
 
+import ares.application.models.forces.UnitModel;
 import ares.engine.movement.MovementType;
 import ares.scenario.assets.Asset;
 import ares.scenario.assets.AssetType;
 import ares.scenario.Scenario;
+import ares.engine.knowledge.KnowledgeCategory;
 
 /**
  *
@@ -23,5 +25,4 @@ public class AirUnit extends Unit {
             }
         }
     }
-
 }

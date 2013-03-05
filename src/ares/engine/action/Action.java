@@ -1,8 +1,6 @@
 package ares.engine.action;
 
-import ares.engine.actors.Actor;
-import ares.engine.realtime.Clock;
-import ares.scenario.board.Tile;
+import ares.scenario.forces.Unit;
 
 /**
  *
@@ -10,21 +8,39 @@ import ares.scenario.board.Tile;
  */
 public interface Action {
 
-    public void execute(Clock clock);
-    
-    public void setStart(int s);
+    void execute();
 
-    public Actor getActor();
+    Unit getUnit();
 
-    public ActionType getType();
+    ActionType getType();
 
-    public int getStart();
+    int getStart();
 
-    public int getFinish();
+    int getFinish();
 
-    public Tile getOrigin();
+    ActionState getState();
 
-    public Tile getDestination();
+    int getTimeToComplete();
 
-    public ActionState getState();
+    /**
+     * Checks the conditions required to start executing the action
+     *
+     * @return true if the appropriate conditions are met
+     */
+    boolean canBeStarted();
+
+    /**
+     * Checks the conditions required to complete the executon of an action
+     *
+     * @return true if the appropriate conditions are met
+     */
+    boolean canBeCompleted();
+
+    /**
+     * Changes the status of the action to {@link AresState.STARTED} and determines the actual start time, which may
+     * differ from the planned start time. This method should be invoked only after checking the start time with
+     * {@link checkTimeToStart})
+     *
+     */
+    void start();
 }

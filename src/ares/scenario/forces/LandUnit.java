@@ -1,10 +1,10 @@
 package ares.scenario.forces;
 
 import ares.engine.movement.MovementType;
+import ares.scenario.Scenario;
 import ares.scenario.assets.Asset;
 import ares.scenario.assets.AssetTrait;
 import ares.scenario.assets.AssetType;
-import ares.scenario.Scenario;
 import java.util.Set;
 
 /**
@@ -33,18 +33,38 @@ public final class LandUnit extends SurfaceUnit {
         int nonTransportSpeed = Integer.MAX_VALUE;
         int numStatic = (traits.containsKey(AssetTrait.STATIC) ? traits.get(AssetTrait.STATIC) : 0);
         int numSlow = (traits.containsKey(AssetTrait.SLOW) ? traits.get(AssetTrait.SLOW) : 0);
-        numActiveDefenders = (traits.containsKey(AssetTrait.ACTIVE_DEFENDER) ? traits.get(AssetTrait.ACTIVE_DEFENDER) : 0);
-        reconnaissance = (traits.containsKey(AssetTrait.RECON) ? (int) (traits.get(AssetTrait.RECON) * AssetTrait.RECON.getFactor()) : 0);
-        engineering = (traits.containsKey(AssetTrait.ENGINEER) ? (int) (traits.get(AssetTrait.ENGINEER) * AssetTrait.ENGINEER.getFactor()) : 0);
-        majorFerry = (traits.containsKey(AssetTrait.MAJOR_FERRY) ? (int) (traits.get(AssetTrait.MAJOR_FERRY) * AssetTrait.MAJOR_FERRY.getFactor()) : 0);
-        minorFerry = (traits.containsKey(AssetTrait.MINOR_FERRY) ? (int) (traits.get(AssetTrait.MINOR_FERRY) * AssetTrait.MINOR_FERRY.getFactor()) : 0);
-        minorFerry += (traits.containsKey(AssetTrait.ENGINEER) ? (int) (traits.get(AssetTrait.ENGINEER) * AssetTrait.MINOR_FERRY.getFactor() / 2) : 0);
-        trafficControl = (traits.containsKey(AssetTrait.TRAFFIC_CONTROL) ? (int) (traits.get(AssetTrait.TRAFFIC_CONTROL) * AssetTrait.TRAFFIC_CONTROL.getFactor()) : 0);
-        logistics = (traits.containsKey(AssetTrait.LOGISTICS) ? (int) (traits.get(AssetTrait.LOGISTICS) * AssetTrait.LOGISTICS.getFactor()) : 0);
-        command = (traits.containsKey(AssetTrait.COMMAND) ? (int) (traits.get(AssetTrait.COMMAND) * AssetTrait.COMMAND.getFactor()) : 0);
-        railRepair = (traits.containsKey(AssetTrait.RAIL_REPAIR) ? (int) (traits.get(AssetTrait.RAIL_REPAIR) * AssetTrait.RAIL_REPAIR.getFactor()) : 0);
+        if (traits.containsKey(AssetTrait.ACTIVE_DEFENDER)) {
+            numActiveDefenders = traits.get(AssetTrait.ACTIVE_DEFENDER);
+        }
+        if (traits.containsKey(AssetTrait.RECON)) {
+            reconnaissance = (int) (traits.get(AssetTrait.RECON) * AssetTrait.RECON.getFactor());
+        }
+        if (traits.containsKey(AssetTrait.ENGINEER)) {
+            engineering = (int) (traits.get(AssetTrait.ENGINEER) * AssetTrait.ENGINEER.getFactor());
+        }
+        if (traits.containsKey(AssetTrait.MAJOR_FERRY)) {
+            majorFerry = (int) (traits.get(AssetTrait.MAJOR_FERRY) * AssetTrait.MAJOR_FERRY.getFactor());
+        }
+        if (traits.containsKey(AssetTrait.MINOR_FERRY)) {
+            minorFerry = (int) (traits.get(AssetTrait.MINOR_FERRY) * AssetTrait.MINOR_FERRY.getFactor());
+        }
+        if (traits.containsKey(AssetTrait.ENGINEER)) {
+            minorFerry += (int) (traits.get(AssetTrait.ENGINEER) * AssetTrait.MINOR_FERRY.getFactor() / 2);
+        }
+        if (traits.containsKey(AssetTrait.TRAFFIC_CONTROL)) {
+            trafficControl = (int) (traits.get(AssetTrait.TRAFFIC_CONTROL) * AssetTrait.TRAFFIC_CONTROL.getFactor());
+        }
+        if (traits.containsKey(AssetTrait.LOGISTICS)) {
+            logistics = (int) (traits.get(AssetTrait.LOGISTICS) * AssetTrait.LOGISTICS.getFactor());
+        }
+        if (traits.containsKey(AssetTrait.COMMAND)) {
+            command = (int) (traits.get(AssetTrait.COMMAND) * AssetTrait.COMMAND.getFactor());
+        }
+        if (traits.containsKey(AssetTrait.RAIL_REPAIR)) {
+            railRepair = (int) (traits.get(AssetTrait.RAIL_REPAIR) * AssetTrait.RAIL_REPAIR.getFactor());
+        }
         roadbound = traits.containsKey(AssetTrait.ROADBOUND);
-        
+
         for (Asset asset : assets.values()) {
             AssetType assetType = asset.getType();
             int amount = asset.getNumber();

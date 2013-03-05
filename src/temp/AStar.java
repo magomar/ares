@@ -62,9 +62,10 @@ public abstract class AStar<T> {
          * @return <code>less than 0</code> This object is smaller than <code>0</code>; <code>0</code> Object are the
          * same. <code>bigger than 0</code> This object is bigger than o.
          */
+        @SuppressWarnings("unchecked")
         @Override
         public int compareTo(Object o) {
-            Path p = (Path) o;
+            Path p = (AStar<T>.Path) o;
             return (int) (f - p.f);
         }
 

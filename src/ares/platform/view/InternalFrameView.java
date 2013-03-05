@@ -1,6 +1,5 @@
 package ares.platform.view;
 
-import java.beans.PropertyChangeEvent;
 import javax.swing.JComponent;
 import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
@@ -46,16 +45,15 @@ public class InternalFrameView<V extends AbstractView<? extends JComponent>> ext
         try {
             internalFrame.setSelected(true);
         } catch (java.beans.PropertyVetoException e) {
-        }    
+        }
+    }
+
+    public void hide() {
+        internalFrame.setVisible(false);
     }
 
     public void close() {
         internalFrame.dispose();
         desktopPane.remove(internalFrame);
-    }
-
-    @Override
-    public void modelPropertyChange(PropertyChangeEvent evt) {
-        view.modelPropertyChange(evt);
     }
 }

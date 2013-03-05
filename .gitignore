@@ -1,4 +1,55 @@
+# This file (.gitginore) tells git which files
+# don't need to be tracked
+
+# Syntax #
+##########################################################
+# Ignore folder:
+# folder/
+# folder/subfolder/
+
+
+# Ignore files by extension or name:
+# *.css
+# *.txt
+# mytextfile.txt
+
+# If slash "/" is at the beginning of the regexp, it will
+# match only folder or files at the root directory
+##########################################################
+
+
+
+# Java compiled sources #
+#######################
+
+*.class
+
+
+# Netbeans folders #
+####################
+
 build/
 dist/
 nbproject/private/
+
+
+# OS files #
+############
+
+.DS_Store
+._*
 *.swp
+Thumbs.db
+
+
+# Editor backup files #
+######################
+
+*~
+
+# Project Folders #
+##############################
+
+Graphics/Background/
+Temp/
+

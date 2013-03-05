@@ -8,8 +8,8 @@ import ares.scenario.forces.OpState;
  */
 public enum ActionType {
 
-    REST(3, 0, null, null, null),
-    WAIT(-1, 0, null, null, null),
+    REST(-3, 0, null, null, null),
+    WAIT(1, 0, null, null, null),
     DEPLOY(-1.5, 0, OpState.MOBILE, OpState.DEPLOYING, OpState.DEPLOYED),
     DIG_IN(-1.5, 0, OpState.DEPLOYED, OpState.DEPLOYED, OpState.DEPLOYED),
     EMBARK(-1.5, 0, OpState.MOBILE, OpState.EMBARKING, OpState.EMBARKED),
@@ -30,24 +30,22 @@ public enum ActionType {
     REPAIR(-1.5, 0, OpState.DEPLOYED, OpState.DEPLOYED, OpState.DEPLOYED),
     ASSEMBLE(-1.5, 0, OpState.DEPLOYED, OpState.ASSEMBLING, OpState.MOBILE),;
     /**
-     * Measures the intensity of an action, the speed or rate at which the
-     * endurance of a unit is consumed when carrying this type of action. It is
-     * specified in terms of endurance, that is, amount of seconds of low
-     * intensity activity per minute The intensity of low intensity actions is
-     * 60, since 1 minute = 60 seconds. A intensity of 120 means the action
-     * induces twice the fatigue induced by a low intensity action, and so on
+     * Measures the intensity of an action, the speed or rate at which the endurance of a unit is consumed when carrying
+     * this type of action. It is specified in terms of endurance, that is, amount of seconds of low intensity activity
+     * per minute The intensity of low intensity actions is 60, since 1 minute = 60 seconds. A intensity of 120 means
+     * the action induces twice the fatigue induced by a low intensity action, and so on
      */
     private final int wearRate;
     /**
-     * Speed modifier expressed as a factor to multiply the current unit speed
-     * by
+     * Speed modifier expressed as a factor to multiply the current unit speed by
      */
     private final double speedModifier;
     private final OpState precondition;
     private final OpState effectWhile;
     private final OpState effectAfter;
 
-    private ActionType(final double wearRate, final double speedModifier, final OpState precondition, final OpState effectWhile, final OpState effectAfter) {
+    private ActionType(final double wearRate, final double speedModifier, final OpState precondition,
+            final OpState effectWhile, final OpState effectAfter) {
         this.wearRate = (int) (wearRate * 60);
         this.speedModifier = speedModifier;
         this.precondition = precondition;
@@ -55,7 +53,7 @@ public enum ActionType {
         this.effectAfter = effectAfter;
     }
 
-    public double getWearRate() {
+    public int getWearRate() {
         return wearRate;
     }
 
@@ -73,5 +71,9 @@ public enum ActionType {
 
     public OpState getPrecondition() {
         return precondition;
+    }
+
+    public int getRequiredEndurace(int duration) {
+        return wearRate * duration;
     }
 }

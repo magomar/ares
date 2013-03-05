@@ -5,6 +5,7 @@ package ares.scenario.forces;
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public enum OpState {
+
     DEPLOYING,
     DEPLOYED,
     ASSEMBLING,
@@ -20,5 +21,4 @@ public enum OpState {
     ASSAULTING,
     ATTACKING,
     BOMBARDING;
-    
 }

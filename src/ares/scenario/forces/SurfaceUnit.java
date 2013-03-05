@@ -1,7 +1,6 @@
 package ares.scenario.forces;
 
 import ares.scenario.Scenario;
-import ares.engine.realtime.Clock;
 
 /**
  *
@@ -12,5 +11,4 @@ public abstract class SurfaceUnit extends Unit {
     public SurfaceUnit(ares.data.jaxb.Unit unit, Formation formation, Force force, Scenario scenario) {
         super(unit, formation, force, scenario);
     }
-
 }

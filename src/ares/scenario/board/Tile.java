@@ -1,26 +1,42 @@
 package ares.scenario.board;
 
-import ares.data.jaxb.Map.Cell;
+import ares.application.models.board.NonObservedTileModel;
+import ares.application.models.board.ObservedTileModel;
+import ares.application.models.board.TileModel;
+import ares.data.jaxb.Cell;
 import ares.data.jaxb.TerrainFeature;
 import ares.data.jaxb.TerrainType;
 import ares.engine.combat.CombatModifier;
+import ares.engine.knowledge.KnowledgeCategory;
+import ares.engine.knowledge.KnowledgeLevel;
 import ares.engine.movement.MovementCost;
+import ares.engine.movement.MovementType;
+import ares.platform.model.ModelProvider;
+import ares.platform.model.UserRole;
+import ares.scenario.Clock;
+import ares.scenario.Scenario;
+import ares.scenario.assets.AssetTrait;
 import ares.scenario.forces.AirUnit;
 import ares.scenario.forces.Capability;
 import ares.scenario.forces.Force;
 import ares.scenario.forces.SurfaceUnit;
 import ares.scenario.forces.Unit;
-import ares.engine.movement.MovementCost;
-import ares.scenario.Scale;
-import ares.scenario.Scenario;
-import java.util.*;
+import java.awt.Point;
+import java.util.Collection;
+import java.util.EnumMap;
+import java.util.EnumSet;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Objects;
+import java.util.Set;
 
 /**
  * This class holds the state of a single tile in the board, and it is uniquely identified by coordinates X and Y.
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public final class Tile {
+public final class Tile implements ModelProvider<TileModel> {
 
     /**
      * Set of terrain types found in this location whose effect does not depend on direction
@@ -38,7 +54,7 @@ public final class Tile {
      * and harbours,
      *
      */
-    private Set<TerrainFeature> features;
+    private Set<TerrainFeatures> features;
     /**
      * Entrenchment (fortification) level, expressed as a percentage
      */
@@ -57,14 +73,19 @@ public final class Tile {
      * Force in possesion of this tile
      */
     private Force owner;
+//    /**
+//     * Column (horizontal coordinate)
+//     */
+//    private int x;
+//    /**
+//     * Row (vertical coordinate)
+//     */
+//    private int y;
+    private Point coordinates;
     /**
-     * Column (horizontal coordinate)
+     * Unique identifier obtained from coordinates: index(x,y) = x * board.width + y
      */
-    private int x;
-    /**
-     * Row (vertical coordinate)
-     */
-    private int y;
+    private int index;
     /**
      * Level of visibility in this tile depending on the terrain (withouth considering the weather)
      */
@@ -72,11 +93,15 @@ public final class Tile {
     /*
      * Data structure containing all units in the location.
      */
-    private StackOfUnits units;
+    private UnitsStack units;
     /**
      * Precomputed movement costs for all directions
      */
     private Map<Direction, MovementCost> moveCosts;
+    /**
+     * Minimun movement cost per each movement type
+     */
+    private Map<MovementType, Integer> minMoveCost;
     /**
      * Modifiers to combat due to terrain
      */
@@ -86,18 +111,21 @@ public final class Tile {
      * the board), then there would be no entry for that direction.
      */
     private Map<Direction, Tile> neighbors;
+    private final Map<UserRole, KnowledgeLevel> knowledgeLevels;
+    private final Map<KnowledgeCategory, TileModel> models;
 
     public Tile(Cell c) {
         // numeric attributes
-        x = c.getX();
-        y = c.getY();
+//        x = c.getX();
+//        y = c.getY();
+        coordinates = new Point(c.getX(), c.getY());
         Integer ent = c.getEntrenchment();
         entrechment = (ent != null ? ent : 0);
         Integer dist = c.getDistance();
         distance = (dist != null ? dist : 0);
         Integer victPoints = c.getVP();
         vp = (victPoints != null ? victPoints : 0);
-        units = new StackOfUnits(this);
+        units = new UnitsStack(this);
 
         // Initialize terrain information
         tileTerrain = EnumSet.noneOf(Terrain.class);
@@ -106,7 +134,7 @@ public final class Tile {
             sideTerrain.put(d, EnumSet.noneOf(Terrain.class));
         }
         visibility = Vision.OPEN;
-        for (Cell.Terrain ct : c.getTerrain()) {
+        for (ares.data.jaxb.Terrain ct : c.getTerrain()) {
             TerrainType type = ct.getType();
             Terrain terr = Terrain.valueOf(type.name());
             String[] dirStrArray = ct.getDir().split(" ");
@@ -122,10 +150,13 @@ public final class Tile {
             }
 
         }
-        features = EnumSet.noneOf(TerrainFeature.class);
+        features = EnumSet.noneOf(TerrainFeatures.class);
+
         for (TerrainFeature feature : c.getFeature()) {
-            features.add(feature);
+            features.add(Enum.valueOf(TerrainFeatures.class, feature.name()));
         }
+        models = new HashMap<>();
+        knowledgeLevels = new HashMap<>();
     }
 
     /**
@@ -136,6 +167,7 @@ public final class Tile {
      * @param board
      */
     public void initialize(Map<Direction, Tile> neighbors, Force owner, Scenario scenario) {
+        index = coordinates.x * scenario.getBoard().getWidth() + coordinates.y;
         moveCosts = new EnumMap<>(Direction.class);
         combatModifiers = new EnumMap<>(Direction.class);
         this.neighbors = neighbors;
@@ -148,13 +180,99 @@ public final class Tile {
             combatModifiers.put(fromDir, combatModifier);
         }
         this.owner = owner;
+
+        knowledgeLevels.put(UserRole.GOD, new KnowledgeLevel(KnowledgeCategory.COMPLETE));
+        for (Force force : scenario.getForces()) {
+            if (owner.equals(force)) {
+                knowledgeLevels.put(UserRole.getForceRole(force), new KnowledgeLevel(KnowledgeCategory.COMPLETE));
+            } else {
+                knowledgeLevels.put(UserRole.getForceRole(force), new KnowledgeLevel(KnowledgeCategory.POOR));
+            }
+        }
+        models.put(KnowledgeCategory.NONE, new NonObservedTileModel(this, KnowledgeCategory.NONE));
+        models.put(KnowledgeCategory.POOR, new ObservedTileModel(this, KnowledgeCategory.POOR));
+        models.put(KnowledgeCategory.GOOD, new ObservedTileModel(this, KnowledgeCategory.GOOD));
+        models.put(KnowledgeCategory.COMPLETE, new ObservedTileModel(this, KnowledgeCategory.COMPLETE));
+    }
+
+    public void add(Unit unit) {
+        Set<Capability> capabilities = unit.getType().getCapabilities();
+        if (capabilities.contains(Capability.AIRCRAFT)) {
+            units.addAirUnit((AirUnit) unit);
+        } else {
+            units.addSurfaceUnit((SurfaceUnit) unit);
+            Force force = unit.getForce();
+            if (!force.equals(owner)) {
+                owner = force;
+            }
+            if (units.getSurfaceUnits().size() == 1) {
+                knowledgeLevels.get(UserRole.getForceRole(force)).modify(KnowledgeCategory.COMPLETE.getLowerBound());
+            }
+        }
+    }
+
+    public boolean remove(Unit unit) {
+        Set<Capability> capabilities = unit.getType().getCapabilities();
+        if (capabilities.contains(Capability.AIRCRAFT)) {
+            return units.removeAirUnit((AirUnit) unit);
+        } else {
+            return units.removeSurfaceUnit((SurfaceUnit) unit);
+        }
+    }
+
+    public void reconnoissance(Unit unit, double intensity) {
+        int minutes = Clock.INSTANCE.getMINUTES_PER_TICK();
+        double recon = unit.getTraitValue(AssetTrait.RECON) * AssetTrait.RECON.getFactor();
+        if (recon == 0) {
+            recon = AssetTrait.RECON.getFactor();
+        }
+        Force force = unit.getForce();
+        knowledgeLevels.get(UserRole.getForceRole(force)).modify(minutes * recon / (24 * 60));
+    }
+
+    public void setEntrechment(int entrechment) {
+        this.entrechment = entrechment;
+    }
+
+    public void updateKnowledge() {
+        int minutes = Clock.INSTANCE.getMINUTES_PER_TICK();
+        for (Entry<UserRole, KnowledgeLevel> entry : knowledgeLevels.entrySet()) {
+            if (!entry.getKey().isGod()) {
+                Force force = entry.getKey().getForce();
+                if (owner.equals(force)) {
+                    entry.getValue().modify(-minutes * 1.0 / (24 * 60));
+                } else {
+                    entry.getValue().modify(-minutes * 10.0 / (24 * 60));
+                }
+            }
+        }
+    }
+
+    public Unit getTopUnit() {
+        return units.getPointOfInterest();
+    }
+
+    public UnitsStack getUnitsStack() {
+        return units;
+    }
+
+    public Collection<SurfaceUnit> getSurfaceUnits() {
+        return units.getSurfaceUnits();
+    }
+
+    public Collection<AirUnit> getAirUnits() {
+        return units.getAirUnits();
     }
 
     public Map<Direction, Tile> getNeighbors() {
         return neighbors;
     }
 
-    public Set<TerrainFeature> getFeatures() {
+    public Tile getNeighbor(Direction direction) {
+        return neighbors.get(direction);
+    }
+
+    public Set<TerrainFeatures> getTerrainFeatures() {
         return features;
     }
 
@@ -170,72 +288,20 @@ public final class Tile {
         return entrechment;
     }
 
-    public void setEntrechment(int entrechment) {
-        this.entrechment = entrechment;
-    }
-
     public Force getOwner() {
         return owner;
     }
 
-//    public void setOwner(Force owner) {
-//        this.owner = owner;
-//    }
+    public int getIndex() {
+        return index;
+    }
+
     public Map<Direction, Set<Terrain>> getSideTerrain() {
         return sideTerrain;
     }
 
     public Set<Terrain> getTileTerrain() {
         return tileTerrain;
-    }
-
-//    public StackOfUnits getUnits() {
-//        return units;
-//    }
-    public Collection<SurfaceUnit> getSurfaceUnits() {
-        return units.getSurfaceUnits();
-    }
-
-    public Collection<AirUnit> getAirUnits() {
-        return units.getAirUnits();
-    }
-
-    public void add(Unit unit) {
-        Set<Capability> capabilities = unit.getType().getCapabilities();
-        if (capabilities.contains(Capability.AIRCRAFT)) {
-            units.addAirUnit((AirUnit) unit);
-        } else {
-            units.addSurfaceUnit((SurfaceUnit) unit);
-            Force force = unit.getForce();
-            if (!force.equals(owner)) {
-                owner = unit.getForce();
-            }
-        }
-    }
-
-    public boolean remove(Unit unit) {
-        Set<Capability> capabilities = unit.getType().getCapabilities();
-        if (capabilities.contains(Capability.AIRCRAFT)) {
-            return units.removeAirUnit((AirUnit) unit);
-        } else {
-            return units.removeSurfaceUnit((SurfaceUnit) unit);
-        }
-    }
-
-    public Unit getTopUnit() {
-        return units.getPointOfInterest();
-    }
-
-    public void nextTopUnit() {
-        units.next();
-    }
-
-    public int getStackingPenalty(Scale scale) {
-        return units.getStackingPenalty(scale);
-    }
-    
-    public int getNumStackedUnits() {
-        return units.size();
     }
 
     public Vision getVision() {
@@ -246,14 +312,21 @@ public final class Tile {
         return vp;
     }
 
-    public int getX() {
-        return x;
+    public Point getCoordinates() {
+        return coordinates;
     }
 
-    public int getY() {
-        return y;
-    }
-
+//    public int getSize() {
+//        return size;
+//    }
+//    
+//    public int getX() {
+//        return x;
+//    }
+//
+//    public int getY() {
+//        return y;
+//    }
 //    public Map<Direction, MovementCost> getMoveCosts() {
 //        return moveCosts;
 //    }
@@ -269,19 +342,72 @@ public final class Tile {
         return combatModifiers.get(dir);
     }
 
-//    public void getDensity() {
-//        int density = scenario.getScale().getCriticalDensity();
-//            int numHorsesAndVehicles = 0;
-//            for (Unit aUnit : destination.getSurfaceUnits()) {
-//                if (MovementType.MOBILE_LAND_UNIT.contains(aUnit.getMovement())) {
-//                    numHorsesAndVehicles += ((LandUnit) aUnit).getNumVehiclesAndHorses();
-//                }
-//            }
-//            cost = Math.max(ONE, Math.min(MAX_ROAD_COST, numHorsesAndVehicles / density));
-//    }
-    
+    public boolean isAlliedTerritory(Force force) {
+        return owner.equals(force);
+    }
+
+    public boolean hasEnemies(Force force) {
+        if (getSurfaceUnits().isEmpty()) {
+            return false;
+        } else {
+            return owner.equals(force);
+        }
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 53 * hash + Objects.hashCode(this.coordinates);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Tile other = (Tile) obj;
+        if (!Objects.equals(this.coordinates, other.coordinates)) {
+            return false;
+        }
+        return true;
+    }
+
+    public KnowledgeLevel getKnowledgeLevel(UserRole userRole) {
+        return knowledgeLevels.get(userRole);
+    }
+
+    public TileModel getModel(KnowledgeCategory knowledgeCategory) {
+        return models.get(knowledgeCategory);
+    }
+
+    @Override
+    public TileModel getModel(UserRole userRole) {
+        KnowledgeCategory category = knowledgeLevels.get(userRole).getCategory();
+        return models.get(category);
+    }
+
     @Override
     public String toString() {
-        return "<" + x + "," + y + ">";
+        return "<" + coordinates.x + "," + coordinates.y + ">";
+    }
+
+    public String toStringMultiline() {
+        StringBuilder sb = new StringBuilder("Location: " + toString() + '\n');
+        if (!tileTerrain.isEmpty()) {
+            sb.append("Terrain: ").append(tileTerrain).append('\n');
+        }
+        if (!features.isEmpty()) {
+            sb.append("Features: ").append(features).append('\n');
+        }
+        sb.append("Owner: ").append(owner).append('\n');
+        for (Entry<UserRole, KnowledgeLevel> entry : knowledgeLevels.entrySet()) {
+            sb.append(entry.getKey()).append(" -> ").append(entry.getValue()).append('\n');
+        }
+
+        return sb.toString();
     }
 }

@@ -1,19 +1,26 @@
 package ares.scenario.forces;
 
+import ares.application.models.forces.FormationModel;
 import ares.data.jaxb.Emphasis;
 import ares.data.jaxb.Formation.Track;
-import ares.data.jaxb.Formation.Track.Objective;
 import ares.data.jaxb.SupportScope;
+import ares.engine.algorithms.planning.Planner;
+import ares.engine.command.Objective;
 import ares.engine.command.OperationType;
-import ares.scenario.board.Tile;
+import ares.engine.command.OperationalPlan;
+import ares.engine.command.OperationalPlanFactory;
+import ares.engine.command.OperationalStance;
+import ares.platform.model.ModelProvider;
+import ares.platform.model.UserRole;
 import ares.scenario.Scenario;
+import ares.scenario.board.Tile;
 import java.util.*;
 
 /**
  *
  * @author Mario Gomez <margomez antiTank dsic.upv.es>
  */
-public class Formation {
+public class Formation implements ModelProvider<FormationModel> {
 
     private int id;
     private String name;
@@ -23,45 +30,24 @@ public class Formation {
     private String details;
     private int proficiency;
     private int supply;
-    private OperationType orders;
     private Emphasis emphasis;
     private SupportScope supportscope;
     /**
-     * List of objectives (used by the programmed opponent to generate plans)
+     * List of available (on-board) units. This collection excludes reinforcements, destroyed/withdrawed units and
+     * divided units.
      */
-    private List<Tile> objectives;
-    /**
-     * List of available (on-board) line units. This collection excludes
-     * reinforcements, destroyed/withdrawed units and divided units. Line units
-     * are able to perform assaults by themselves
-     */
-    private List<Unit> lineUnits;
-    /**
-     * List of active line-support and support units. This units are not
-     * able to perform assaults
-     */
-    private List<Unit> supportUnits;
-    private Unit headquarters;
-    /**
-     * List of active service-support units
-     */
-    private List<Unit> serviceUnits;
+    private List<Unit> activeUnits;
     /**
      * List of scheduled reinforcement units, stored in a queue
      */
-    /**
-     * List of available (on-board) units. This collection excludes
-     * reinforcements, destroyed/withdrawed units and divided units.
-     */
-    private List<Unit> activeUnits;
     private Queue<Unit> scheduledReinforcements;
     /**
-     * List of units that could be received as reinforcements, conditioned
-     * to certain events
+     * List of units that could be received as reinforcements, conditioned to certain events
      */
     private List<Unit> conditionalReinforcements;
     private Formation superior;
     private List<Formation> subordinates;
+    private OperationalPlan operationalPlan;
 
     // TODO each turn check for reinforcements and put them into the right unit collection
     public Formation(ares.data.jaxb.Formation formation, Force force, Scenario scenario) {
@@ -73,22 +59,12 @@ public class Formation {
         details = formation.getDetails();
         proficiency = formation.getProficiency();
         supply = formation.getSupply();
-        orders = Enum.valueOf(OperationType.class, formation.getOrders().name());
+
         emphasis = formation.getEmphasis();
         supportscope = formation.getSupportscope();
-        objectives = new ArrayList<>();
-        List<Track> tracks = formation.getTrack();
-        Tile[][] tile = scenario.getBoard().getMap();
-        if (tracks.size() > 0) {
-            for (Objective objective : tracks.get(0).getObjective()) {
-                Tile location = tile[objective.getX()][objective.getY()];
-                objectives.add(location);
-            }
-        }
+
         activeUnits = new ArrayList<>();
-        lineUnits = new ArrayList<>();
-        supportUnits = new ArrayList<>();
-        serviceUnits = new ArrayList<>();
+
         scheduledReinforcements = new PriorityQueue<>(2, Unit.UNIT_ENTRY_COMPARATOR);
         conditionalReinforcements = new ArrayList<>();
         subordinates = new ArrayList<>();
@@ -107,18 +83,6 @@ public class Formation {
                     break;
                 default:
                     activeUnits.add(u);
-                    switch (u.getType().getCombatClass()) {
-                        case LINE:
-                            lineUnits.add(u);
-                            break;
-                        case LINE_SUPPORT:
-                        case SUPPORT:
-                            supportUnits.add(u);
-                            break;
-                        case HQ:
-                            headquarters = u;
-                    }
-
             }
         }
         // Set parents for units resulting of division
@@ -127,6 +91,46 @@ public class Formation {
                 allUnits.get(unit.getId()).setParent(allUnits.get(unit.getParent()));
             }
         }
+
+        List<Objective> objectives = new ArrayList<>();
+        List<Track> tracks = formation.getTrack();
+        Tile[][] tile = scenario.getBoard().getMap();
+        OperationType operationType = Enum.valueOf(OperationType.class, formation.getOrders().name());
+        OperationalStance stance = operationType.getStance();
+        boolean inversePriority = false;
+        if (stance == OperationalStance.DEFENSIVE
+                || stance == OperationalStance.SECURITY
+                || stance == OperationalStance.RESERVE) {
+            inversePriority = true;
+        }
+        int index = 0;
+        int lastObjective = objectives.size() - 1;
+        if (tracks.size() > 0) {
+            for (ares.data.jaxb.Formation.Track.Objective obj : tracks.get(0).getObjective()) {
+                Tile location = tile[obj.getX()][obj.getY()];
+                Objective newObjective = (inversePriority
+                        ? new Objective(location, lastObjective - index++)
+                        : new Objective(location, index++));
+                objectives.add(newObjective);
+            }
+        }
+
+        operationalPlan = OperationalPlanFactory.getOperationalPlan(operationType, this, objectives);
+    }
+
+    /**
+     * This method makes the formation active, which implies a planing step
+     *
+     */
+    public void activate(Planner planner) {
+        for (Unit unit : activeUnits) {
+            unit.activate();
+        }
+        planner.plan(this);
+    }
+
+    public boolean isActive() {
+        return !activeUnits.isEmpty();
     }
 
     public void setSuperior(Formation superior) {
@@ -136,8 +140,6 @@ public class Formation {
     public void setSubordinates(List<Formation> subordinates) {
         this.subordinates = subordinates;
     }
-
- 
 
     public Formation getSuperior() {
         return superior;
@@ -179,8 +181,8 @@ public class Formation {
         return name;
     }
 
-    public OperationType getOrders() {
-        return orders;
+    public OperationalPlan getOperationalPlan() {
+        return operationalPlan;
     }
 
     public int getProficiency() {
@@ -199,35 +201,15 @@ public class Formation {
         return supportscope;
     }
 
-    public List<Tile> getObjectives() {
-        return objectives;
-    }
-
     public List<Unit> getActiveUnits() {
         return activeUnits;
     }
 
-    public List<Unit> getLineUnits() {
-        return lineUnits;
-    }
-
-    public List<Unit> getSupportUnits() {
-        return supportUnits;
-    }
-
-    public Unit getHeadquarters() {
-        return headquarters;
-    }
-
-    public List<Unit> getServiceUnits() {
-        return serviceUnits;
-    }
-
     @Override
     public int hashCode() {
-        int hash = 17;
-        hash = 31 * hash + id;
-        hash = 31 * hash + force.getId();
+        int hash = 7;
+        hash = 61 * hash + this.id;
+        hash = 61 * hash + Objects.hashCode(this.force);
         return hash;
     }
 
@@ -236,9 +218,6 @@ public class Formation {
         if (obj == null) {
             return false;
         }
-        if (obj == this) {
-            return true;
-        }
         if (getClass() != obj.getClass()) {
             return false;
         }
@@ -246,7 +225,7 @@ public class Formation {
         if (this.id != other.id) {
             return false;
         }
-        if (!this.force.equals(other.force)) {
+        if (!Objects.equals(this.force, other.force)) {
             return false;
         }
         return true;
@@ -254,6 +233,15 @@ public class Formation {
 
     @Override
     public String toString() {
-        return "{" + name + '}';
+        return name + "(" + id + ")";
+    }
+
+    @Override
+    public FormationModel getModel(UserRole role) {
+        return new FormationModel(this, role);
+    }
+
+    public void plan(Planner planner) {
+        planner.plan(this);
     }
 }

@@ -5,13 +5,16 @@ package ares.io;
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public enum AresPaths {
+
+    TEMP("Temp"),
     DATA("Data"),
     EQUIPMENT("Data/Equipment"),
     SCENARIOS("Data/Scenarios"),
     GRAPHICS("Graphics"),
+    GRAPHICS_BACKGROUND("Graphics/Background"),
     GRAPHICS_SMALL("Graphics/Medium"),
     GRAPHICS_MEDIUM("Graphics/Medium"),
-    GRAPHICS_LARGE("Graphics/Large");
+    GRAPHICS_HIGH("Graphics/High");
     private final String path;
 
     private AresPaths(final String path) {
@@ -22,5 +25,4 @@ public enum AresPaths {
     public String getPath() {
         return path;
     }
-    
 }

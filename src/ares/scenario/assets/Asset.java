@@ -9,23 +9,20 @@ public final class Asset {
     private int number;
     private int max;
     private AssetType type;
-   
 
     public Asset(ares.data.jaxb.Unit.Equipment e, AssetTypes assetTypes) {
-        type = assetTypes.getAssetTypes().get(e.getName());
+        type = assetTypes.getAssetType(e.getName());
         number = e.getNumber();
-        max = e.getMax(); 
+        max = e.getMax();
     }
 
     public AssetType getType() {
         return type;
     }
 
-
     public int getMax() {
         return max;
     }
-
 
     public int getNumber() {
         return number;
@@ -33,8 +30,6 @@ public final class Asset {
 
     @Override
     public String toString() {
-        return type.getName() + "(" + number + '/' + max + ')';
+        return type.getName() + " (" + number + '/' + max + ')';
     }
-
-
 }

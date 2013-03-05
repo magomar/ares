@@ -1,5 +1,8 @@
 package ares.scenario.forces;
 
+import ares.application.models.forces.ForceModel;
+import ares.platform.model.ModelProvider;
+import ares.platform.model.UserRole;
 import ares.scenario.Scenario;
 import java.util.*;
 
@@ -7,7 +10,7 @@ import java.util.*;
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public class Force {
+public class Force implements ModelProvider<ForceModel> {
 
     private int id;
     private String name;
@@ -15,6 +18,7 @@ public class Force {
     private int supply;
     private int flag;
     private List<Formation> formations;
+    private final Map<UserRole, ForceModel> models;
 
     public Force(ares.data.jaxb.Force force, Scenario scenario) {
         id = force.getId();
@@ -37,6 +41,16 @@ public class Force {
             }
         }
         formations.addAll(formMap.values());
+        models = new HashMap<>();
+
+
+    }
+
+    public void initialize(Force[] forces) {
+        models.put(UserRole.GOD, new ForceModel(this, UserRole.GOD));
+        for (Force f : forces) {
+            models.put(UserRole.getForceRole(f), new ForceModel(this, UserRole.getForceRole(f)));
+        }
     }
 
     public List<Unit> getActiveUnits() {
@@ -73,8 +87,8 @@ public class Force {
 
     @Override
     public int hashCode() {
-        int hash = 17;
-        hash = 31 * hash + id;
+        int hash = 7;
+        hash = 23 * hash + this.id;
         return hash;
     }
 
@@ -82,9 +96,6 @@ public class Force {
     public boolean equals(Object obj) {
         if (obj == null) {
             return false;
-        }
-        if (obj == this) {
-            return true;
         }
         if (getClass() != obj.getClass()) {
             return false;
@@ -98,6 +109,11 @@ public class Force {
 
     @Override
     public String toString() {
-        return "{" + name + '}';
+        return name;
+    }
+
+    @Override
+    public ForceModel getModel(UserRole role) {
+        return models.get(role);
     }
 }
