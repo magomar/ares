@@ -2,6 +2,7 @@ package ares.engine.action;
 
 import ares.scenario.forces.Unit;
 import ares.scenario.Clock;
+import ares.scenario.forces.OpState;
 import java.util.Comparator;
 
 /**
@@ -19,10 +20,6 @@ public abstract class AbstractAction implements Action {
      */
     public static final int TIME_UNKNOWN = Integer.MAX_VALUE;
     /**
-     * Action comparator used to sort actions by start time
-     */
-    public static final Comparator<Action> ACTION_START_COMPARATOR = new ActionStartComparator();
-    /**
      * Action comparator used to sort actions by finish time
      */
     public static final Comparator<Action> ACTION_FINISH_COMPARATOR = new ActionFinishComparator();
@@ -38,19 +35,19 @@ public abstract class AbstractAction implements Action {
     protected ActionType type;
     /**
      * Before starting the action, this attribute holds the estimated time to start performing the action, specified in
-     * minutes since the beginning of the scenario. Thereafter it holds the actual starting time. If (start ==
+     * time ticks passed since the beginning of the scenario. Thereafter it holds the actual starting time. If (start ==
      * AS_SOON_AS_POSSIBLE) then the action will be executed as soon as possible
      *
      */
     protected int start;
     /**
-     * Before finishing the action, this attribute holds the estimated finishing time, specified in minutes since the
+     * Before finishing the action, this attribute holds the estimated finishing time, specified in time ticks since the
      * beginning of the scenario. Thereafter it holds the actual finishing time
      */
     protected int finish;
     /**
-     * Estimated remaining time to complete the action in minutes. If (timeToComplete == TIME_UNKNOWN) then the action
-     * will be executed indefinitely, until a completion condition holds
+     * Estimated remaining time to complete the action in time ticks. If (timeToComplete == TIME_UNKNOWN) then the
+     * action will be executed indefinitely, until it is aborted or terminated because of some event
      */
     protected int timeToComplete;
     /**
@@ -62,10 +59,18 @@ public abstract class AbstractAction implements Action {
     protected int id;
 
     public AbstractAction(Unit unit, ActionType type) {
-        this(unit, type, AS_SOON_AS_POSSIBLE, TIME_UNKNOWN);
+        this(unit, AS_SOON_AS_POSSIBLE, type, TIME_UNKNOWN);
     }
 
-    public AbstractAction(Unit unit, ActionType type, int start, int timeToComplete) {
+    public AbstractAction(Unit unit, int start, ActionType type) {
+        this(unit, start, type, TIME_UNKNOWN);
+    }
+
+    public AbstractAction(Unit unit, ActionType type, int timeToComplete) {
+        this(unit, AS_SOON_AS_POSSIBLE, type, timeToComplete);
+    }
+
+    public AbstractAction(Unit unit, int start, ActionType type, int timeToComplete) {
         this.unit = unit;
         this.type = type;
         this.start = start;
@@ -81,12 +86,14 @@ public abstract class AbstractAction implements Action {
     }
 
     /**
-     * Checks if the planned start time is reached during the current time tick
+     * Checks if the planned start time has been reached or surpassed.<p>
+     * This way, an action would never start before the planned start time.
      *
      * @return
      */
-    public final boolean checkTimetoStart() {
-        return (start < Clock.INSTANCE.getCurrentTime() + ares.scenario.Clock.INSTANCE.getMINUTES_PER_TICK());
+    protected final boolean checkTimetoStart() {
+//        return (start < Clock.INSTANCE.getCurrentTime() + Clock.INSTANCE.getMINUTES_PER_TICK());
+        return start <= Clock.INSTANCE.getTick();
     }
 
     /**
@@ -95,21 +102,18 @@ public abstract class AbstractAction implements Action {
      * @return
      */
     public boolean checkPrecondition() {
+        // TODO try to make this method protected...
         return unit.getOpState() == type.getPrecondition();
     }
 
-    @Override
-    public boolean canBeCompleted() {
-        return checkTimeToComplete();
-    }
-
     /**
-     * Checks if the estimated completion time is reached during the current time tick
+     * Checks if the action can be completed during the next time tick
      *
-     * @return
+     * @return whether the estimated completion time is reached during the current time tick
      */
-    public final boolean checkTimeToComplete() {
-        return (timeToComplete <= Clock.INSTANCE.getMINUTES_PER_TICK());
+    protected boolean canBeCompleted() {
+//        return (timeToComplete <= Clock.INSTANCE.getMINUTES_PER_TICK());
+        return (timeToComplete <= 1);
     }
 
     /**
@@ -117,16 +121,17 @@ public abstract class AbstractAction implements Action {
      *
      * @return
      */
-    public final boolean checkEndurance() {
-        int duration = Math.min(timeToComplete, Clock.INSTANCE.getMINUTES_PER_TICK());
-        int requiredEndurance = type.getRequiredEndurace(duration);
-        return (unit.getEndurance() >= requiredEndurance);
+    protected final boolean checkEndurance() {
+//        int duration = Math.min(timeToComplete, Clock.INSTANCE.getMINUTES_PER_TICK());
+//        int requiredEndurance = type.getRequiredEndurace(duration);
+        return (unit.getEndurance() >= type.getRequiredEndurace(Clock.INSTANCE.getMINUTES_PER_TICK()));
     }
 
     @Override
     public void start() {
-        state = ActionState.STARTED;
-        start = Math.max(start, Clock.INSTANCE.getCurrentTime() - Clock.INSTANCE.getMINUTES_PER_TICK());
+        state = ActionState.ONGOING;
+//        start = Math.max(start, Clock.INSTANCE.getCurrentTime() - Clock.INSTANCE.getMINUTES_PER_TICK());
+        start = Clock.INSTANCE.getTick();
         unit.setOpState(type.getEffectWhile());
     }
 
@@ -138,30 +143,14 @@ public abstract class AbstractAction implements Action {
      * @return
      */
     public boolean canExecute() {
-        // TODO improve considering the remaining time to complete
-        return unit.getEndurance() > type.getRequiredEndurace(Clock.INSTANCE.getMINUTES_PER_TICK());
+        return unit.getEndurance() >= type.getRequiredEndurace(Clock.INSTANCE.getMINUTES_PER_TICK());
     }
 
-//    @Override
-//    public void execute() {
-//        if (checkFeasibility()) {
-//            if (checkEndurance()) {
-//                resume();
-//                if (canBeCompleted()) {
-//                    complete();
-//                }
-//            } else {
-//                delay();
-//            }
-//        } else {
-//            abort();
-//        }
-//    }
     @Override
     public void execute() {
         if (checkFeasibility()) {
             if (checkEndurance()) {
-                if (checkTimeToComplete()) {
+                if (canBeCompleted()) {
                     complete();
                 } else {
                     resume();
@@ -174,74 +163,92 @@ public abstract class AbstractAction implements Action {
         }
     }
 
-    protected void delay() {
+    @Override
+    public void commit() {
+        // TODO
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    /**
+     * Changes the status of the action to {@link ActionState#DELAYED}. The action is delayed for the entire time tick,
+     * the unit behaves as if it was executing a {@link WaitAction}, with the corresponding wear.
+     */
+    private void delay() {
         state = ActionState.DELAYED;
-        int duration = Clock.INSTANCE.getMINUTES_PER_TICK();
-        int wear = (int) (type.getWearRate() * duration);
-        unit.changeEndurance(wear);
+        wear(ActionType.WAIT.getWearRate());
     }
 
-    protected void abort() {
+    /**
+     * Changes the status of the action to {@link ActionState#ABORTED}. The action is aborted, this time tick the unit
+     * behaves as if it was executing a {@link WaitAction}, with the corresponding wear.
+     */
+    private void abort() {
         state = ActionState.ABORTED;
-        int duration = Clock.INSTANCE.getMINUTES_PER_TICK();
-        int wear = (int) (type.getWearRate() * duration);
-        unit.changeEndurance(wear);
+        wear();
         unit.setOpState(type.getPrecondition());
-        finish = Clock.INSTANCE.getCurrentTime();
+        finish = Clock.INSTANCE.getTick();
     }
 
-    protected void resume() {
-        int duration = Clock.INSTANCE.getMINUTES_PER_TICK();
-        timeToComplete -= duration;
-        wear(duration);
+    /**
+     * The action is executed for the entire time tick.
+     */
+    private void resume() {
+        timeToComplete -= 1;
         applyOngoingEffects();
+        wear();
     }
 
     /**
-     * Changes the status of the action to {@link AresState.COMPLETED} and determines the actual finish time, which may
-     * differ from the planned finish time. This method should be invoked only after checking the time to complete with
-     * {@link checkTimeToComplete})
-     *
+     * Changes the status of the action to {@link ActionState.COMPLETED} and determines the actual finish time, which
+     * may differ from the planned finish time. This method should be invoked only after checking the time to complete
+     * with {@link #checkTimeToComplete})
      */
-    public void complete() {
-        int duration = Math.min(timeToComplete, Clock.INSTANCE.getMINUTES_PER_TICK());
+    private void complete() {
         timeToComplete = 0;
+        applyOngoingEffects();
         state = ActionState.COMPLETED;
-        finish = Clock.INSTANCE.getCurrentTime() - Clock.INSTANCE.getMINUTES_PER_TICK() + duration;
-        unit.setOpState(type.getEffectAfter());
-        wear(duration);
+        finish = Clock.INSTANCE.getTick();
+        wear();
         applyEffects();
-        // TODO if the action is completed before the end of the time tick, do something, eg wait... or ask the TacAI
     }
 
-    public void wear(int duration) {
-        int wear = (int) (type.getWearRate() * duration);
-        unit.changeEndurance(wear);
+    private void wear() {
+        unit.changeEndurance(type.getWearRate() * Clock.INSTANCE.getMINUTES_PER_TICK());
     }
 
+    private void wear(int rate) {
+        unit.changeEndurance(rate * Clock.INSTANCE.getMINUTES_PER_TICK());
+    }
+
+//    protected void wear(int duration) {
+//        unit.changeEndurance(type.getWearRate() * duration);
+//    }
+
+//    protected void wear(ActionType type, int duration) {
+//        unit.changeEndurance(type.getWearRate() * duration);
+//    }
+//    protected void wear(int rate, int duration) {
+//        unit.changeEndurance(rate * duration);
+//    }
     /**
-     * Apply the effects of an action after completion
+     * Apply the effects of this action after completion: set the proper
+     * <code>OperationalState</code> for the unit executing this action
      */
-    public void applyEffects() {
+    private void applyEffects() {
         unit.setOpState(type.getEffectAfter());
     }
 
     /**
-     * Apply the effects of an action while it is being executed
+     * Apply the effects of an action while it is being executed.
      */
-    protected void applyOngoingEffects() {
-        // do nothing, to be overriden by subclasses
-    }
+    protected abstract void applyOngoingEffects();
 
     /**
-     * Checks if the acting unit can be executed
+     * Checks if the actions satisfies the requirements of this action's type.
      *
      * @return
      */
-    public boolean checkFeasibility() {
-        // do nothing, can be overriden by subclasses
-        return true;
-    }
+    protected abstract boolean checkFeasibility();
 
     @Override
     public ActionState getState() {
@@ -273,25 +280,11 @@ public abstract class AbstractAction implements Action {
         return unit;
     }
 
-    private static class ActionStartComparator implements Comparator<Action> {
-
-        @Override
-        public int compare(Action o1, Action o2) {
-            int start1 = o1.getStart();
-            int start2 = o2.getStart();
-            int diff = start1 - start2;
-            return (diff == 0 ? o1.getFinish() - o2.getStart() : diff);
-        }
-    }
-
     private static class ActionFinishComparator implements Comparator<Action> {
 
         @Override
         public int compare(Action o1, Action o2) {
-            int finish1 = o1.getFinish();
-            int finish2 = o2.getFinish();
-            int diff = finish1 - finish2;
-            return (diff == 0 ? o1.getStart() - o2.getStart() : diff);
+            return o1.getFinish() - o2.getFinish();
         }
     }
 

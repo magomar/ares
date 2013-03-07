@@ -6,6 +6,8 @@ import ares.application.models.forces.KnownUnitModel;
 import ares.application.models.forces.UnitModel;
 import ares.data.jaxb.Availability;
 import ares.data.jaxb.Emphasis;
+import ares.engine.action.Action;
+import ares.engine.action.ActionSpace;
 import ares.engine.action.ActionType;
 import ares.engine.command.TacticalMission;
 import ares.engine.command.TacticalMissionType;
@@ -708,6 +710,18 @@ public abstract class Unit implements ModelProvider<UnitModel> {
         return mission;
     }
 
+    public void act() {
+        mission.execute();
+    }
+
+    public Action schedule() {
+        return mission.schedule();
+    }
+
+    public void commit() {
+        mission.commit();
+    }
+
     /**
      * The unit gathers information on the surrounding environment. At this point only the adjacent tiles are considered
      */
@@ -717,7 +731,7 @@ public abstract class Unit implements ModelProvider<UnitModel> {
             tile.reconnoissance(this, Clock.INSTANCE.getMINUTES_PER_TICK());
         }
     }
-    
+
     public boolean isAircraft() {
         return movement == MovementType.AIRCRAFT;
     }

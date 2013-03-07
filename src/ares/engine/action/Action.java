@@ -8,6 +8,8 @@ import ares.scenario.forces.Unit;
  */
 public interface Action {
 
+    void commit();
+
     void execute();
 
     Unit getUnit();
@@ -29,17 +31,17 @@ public interface Action {
      */
     boolean canBeStarted();
 
-    /**
-     * Checks the conditions required to complete the executon of an action
-     *
-     * @return true if the appropriate conditions are met
-     */
-    boolean canBeCompleted();
+//    /**
+//     * Checks the conditions required to complete the executon of an action
+//     *
+//     * @return true if the appropriate conditions are met
+//     */
+//    boolean canBeCompleted();
+
 
     /**
-     * Changes the status of the action to {@link AresState.STARTED} and determines the actual start time, which may
-     * differ from the planned start time. This method should be invoked only after checking the start time with
-     * {@link checkTimeToStart})
+     * Changes the status of the action to {@link AresState#SCHEDULED} . Actions being selected for execution enter this
+     * state prior to start execution.
      *
      */
     void start();

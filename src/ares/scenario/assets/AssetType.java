@@ -8,12 +8,15 @@ import ares.data.jaxb.EquipmentDB.EquipmentCategory.Item;
 import ares.data.jaxb.Trait;
 import java.util.EnumSet;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public final class AssetType {
+    private static final Logger LOG = Logger.getLogger(AssetType.class.getName());
 
     private int id;
     private String name;
@@ -76,9 +79,9 @@ public final class AssetType {
         if (set.isEmpty()) { // this happens with SAM
             traits.add(AssetTrait.STATIC); // I assume SAM can not be moved without transport
             speed = (int) (AssetTrait.STATIC.getFactor() * 1000.0 / 60);
-            System.out.println("WARNING ! No movement traits, assuming it is SAM: " + name);
+            LOG.log(Level.WARNING, "No movement traits, assuming it is SAM: {0}", name);
         } else if (set.size() > 1) {
-            System.out.println("ERROR ! Too many movement traits: " + name);
+            LOG.log(Level.WARNING, "Too many movement traits: {0}", name);
         } else {
             AssetTrait ast = (AssetTrait) set.toArray()[0];
             speed = (int) (ast.getFactor() * 1000.0 / 60);

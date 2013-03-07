@@ -1,7 +1,5 @@
 package ares.engine.movement;
 
-import ares.application.models.board.TileModel;
-import ares.application.models.forces.UnitModel;
 import ares.scenario.Scale;
 import ares.scenario.Scenario;
 import ares.scenario.board.*;
@@ -15,8 +13,7 @@ import java.util.*;
 public class MovementCost {
 
     public static final int IMPASSABLE = Integer.MAX_VALUE;
-//    public static final int MAX_ROAD_COST = 3;
-//    public static final int MIN_ROAD_COST = 1;
+
     /**
      * Pre-computed movement costs. This map links the different movement types to their costs for a given destination
      * (tile and direction). Movement cost is specified in terms of how many times the cost is reduced. That is, a cost
@@ -26,10 +23,8 @@ public class MovementCost {
     // TODO check if it's better to initialize all costs to IMPASSABLE
     private Map<MovementType, Integer> movementCost;
     private static final int ONE = 1;
-    private Scenario scenario;
 
-    public MovementCost(Direction fromDir, Tile destination, Scenario scenario) {
-        this.scenario = scenario;
+    public MovementCost(Direction fromDir, Tile destination) {
         movementCost = new EnumMap<>(MovementType.class);
 
         //Set AIRCRAFT movement: can move across all tiles, even the non_playable ones (to move between playable areas)

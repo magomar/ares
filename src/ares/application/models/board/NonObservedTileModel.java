@@ -36,43 +36,21 @@ public class NonObservedTileModel extends TileModel {
         return tile.toStringMultiline();
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public String getOwner() {
         return "UNKNOWN";
     }
 
-    /**
-     *
-     * @return empty arraylist
-     */
     @Override
     public Collection<SurfaceUnit> getSurfaceUnits() {
         return new ArrayList<>();
     }
 
-    /**
-     * Checks if tile owner is an ally of {
-     *
-     * @param force} It is assumed that if the tile is non observed the it mustn't be ally territory
-     *
-     * @param force force name to check
-     * @return true if owner is ally
-     */
     @Override
     public boolean isAlliedTerritory(String force) {
         return false;
     }
 
-    /**
-     * Checks if tile has enemies
-     *
-     * @param force
-     * @return
-     */
     @Override
     public boolean hasEnemies(String force) {
         return false;

@@ -23,25 +23,25 @@ public enum Echelon {
     /**
      * Number of Logistics squads needed to achieve 100% supply distribution
      */
-    private final int logisticNeeds;
+    private final int logistics;
     /**
      * Number of command squads needed to achieve 100% C2 efficiency
      */
-    private final int commandNeeds;
+    private final int command;
     /**
-     * Speed modifier derived from the estimated C2 complexity, which in turn is estimated as a function of the command
-     * squads required by an echelon level
+     * Speed modifier derived from the estimated C2 complexity, which in turn is estimated as a function of the {@link #command}
+     * squads required by this echelon
      */
     private final double speedModifier;
     /**
-     * C2 modifier derived from estimated organization complexity, computed as a function of the command squads required
-     * by an echelon level
+     * C2 modifier derived from estimated organization complexity, computed as a function of the {@link #command} squads required
+     * by this echelon
      */
     private final double commandModifier;
 
     private Echelon(final int logistics, final int command) {
-        this.logisticNeeds = logistics;
-        this.commandNeeds = command;
+        this.logistics = logistics;
+        this.command = command;
         speedModifier = 1.0 + (command - 3)
                 * SPEED_FACTOR / 6.0;
         commandModifier = 1.0 + (command - 3)
@@ -50,7 +50,7 @@ public enum Echelon {
     }
 
     public int getCommand() {
-        return commandNeeds;
+        return command;
     }
 
     public double getCommandModifier() {
@@ -58,10 +58,14 @@ public enum Echelon {
     }
 
     public int getLogistics() {
-        return logisticNeeds;
+        return logistics;
     }
 
     public double getSpeedModifier() {
         return speedModifier;
+    }
+    
+    public double getModifiedTime(int time) {
+        return time * speedModifier;
     }
 }

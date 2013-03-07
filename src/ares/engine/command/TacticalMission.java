@@ -1,6 +1,5 @@
 package ares.engine.command;
 
-import ares.engine.ClockEvent;
 import ares.engine.action.Action;
 import ares.engine.action.ActionState;
 import ares.engine.action.ActionType;
@@ -11,18 +10,15 @@ import ares.scenario.forces.Unit;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Holds the details of a tactical mission assigned to a unit: mission type, current plan of action Includes the engine
- * to manage the live cycle of actions: create, schedule, execute
+ * to manage the live cycle of actions: create, start, execute
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class TacticalMission {
 
-    private static final Logger LOG = Logger.getLogger(TacticalMission.class.getName());
     /**
      * The unit assined to this tactical misssion
      */
@@ -38,7 +34,7 @@ public class TacticalMission {
      */
     private Action currentAction;
     /**
-     * A plan to accomplish the tactical mission. It is specified as a sequence of actions to be executed sequentially
+     * A plan to accomplish this tactical mission. It is specified as a sequence of actions to be executed sequentially
      *
      * @see Action
      */
@@ -50,11 +46,27 @@ public class TacticalMission {
         this.pendingActions = pendingActions = new LinkedList<>();
     }
 
-    public void act(ClockEvent ce) {
+    public void commit() {
+        currentAction.commit();
+    }
+
+    /**
+     * Executes {@link #currentAction}
+     *
+     * @param event
+     */
+    public void execute() {
         currentAction.execute();
     }
 
-    public void schedule(ClockEvent ce) {
+    /**
+     * Checks the currently scheduled action ({@link #currentAction}). If no action is scheduled it either schedules a
+     * new action from {@link #pendingActions}, or creates and schedules a new {@link Action} (a {@link WaitAction} or a
+     * {@link  RestAction}. It returns the currently scheduled action.
+     *
+     * @return the currently scheduled action ({@link #currentAction})
+     */
+    public Action schedule() {
         if (currentAction != null
                 && (currentAction.getState() == ActionState.COMPLETED
                 || currentAction.getState() == ActionState.ABORTED)) {
@@ -65,13 +77,14 @@ public class TacticalMission {
                 currentAction = pendingActions.poll();
             } else {
                 if (unit.canExecute(ActionType.WAIT)) {
-                    currentAction = new WaitAction(unit, Clock.INSTANCE.getMINUTES_PER_TICK());
+                    currentAction = new WaitAction(unit);
                 } else {
                     currentAction = new RestAction(unit);
                 }
             }
-            currentAction.start();
+//            currentAction.start();
         }
+        return currentAction;
     }
 
     public TacticalMissionType getType() {

@@ -1,5 +1,6 @@
 package ares.engine.action;
 
+import ares.scenario.Clock;
 import ares.scenario.forces.OpState;
 
 /**
@@ -33,7 +34,7 @@ public enum ActionType {
      * Measures the intensity of an action, the speed or rate at which the endurance of a unit is consumed when carrying
      * this type of action. It is specified in terms of endurance, that is, amount of seconds of low intensity activity
      * per minute The intensity of low intensity actions is 60, since 1 minute = 60 seconds. A intensity of 120 means
-     * the action induces twice the fatigue induced by a low intensity action, and so on
+     * the action induces twice the fatigue induced by a low intensity action, and so on.
      */
     private final int wearRate;
     /**
@@ -73,7 +74,13 @@ public enum ActionType {
         return precondition;
     }
 
+    /**
+     *
+     * @param duration in minutes
+     * @return the endurance required to execute this action type for the given {@link duration}
+     */
     public int getRequiredEndurace(int duration) {
         return wearRate * duration;
     }
+
 }
