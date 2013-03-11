@@ -8,7 +8,7 @@ public enum ActionState {
 
     CREATED,
     DELAYED,
-    STARTED,
+    ONGOING,
     COMPLETED,
     ABORTED;
 }

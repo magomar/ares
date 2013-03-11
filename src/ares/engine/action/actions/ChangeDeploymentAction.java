@@ -2,10 +2,12 @@ package ares.engine.action.actions;
 
 import ares.engine.action.AbstractAction;
 import ares.engine.action.ActionType;
+import ares.scenario.Clock;
+import ares.scenario.TurnLength;
 import ares.scenario.forces.Unit;
 
 /**
- * Action to change that change between static (deployed) and mobile status. Actually, there are two types of action in
+ * Action to alternate between static (deployed) and mobile status. Actually, there are two types of action in
  * this category:
  *
  * {@link ActionType.ASSEMBLE} changes operational state to null {@link OpState.MOBILE}
@@ -16,9 +18,22 @@ import ares.scenario.forces.Unit;
  */
 public class ChangeDeploymentAction extends AbstractAction {
 
-    public static final int CHANGE_DEPLOYMENT_TIME = 15;
+    public static final int CHANGE_DEPLOYMENT_TIME = TurnLength.FULL_WEEK.getMinutesPerTick(); // Base deployment time
 
     public ChangeDeploymentAction(Unit unit, ActionType type) {
-        super(unit, type, AbstractAction.AS_SOON_AS_POSSIBLE, (int) (CHANGE_DEPLOYMENT_TIME * unit.getEchelon().getSpeedModifier()));
+        super(unit, type, (int) (unit.getEchelon().getModifiedTime(CHANGE_DEPLOYMENT_TIME) / Clock.INSTANCE.getMINUTES_PER_TICK()));
+    }
+
+    public ChangeDeploymentAction(Unit unit, int start, ActionType type) {
+        super(unit, start, type, (int) (unit.getEchelon().getModifiedTime(CHANGE_DEPLOYMENT_TIME) / Clock.INSTANCE.getMINUTES_PER_TICK()));
+    }
+
+    @Override
+    protected void applyOngoingEffects() {
+    }
+
+    @Override
+    public boolean checkFeasibility() {
+        return true;
     }
 }

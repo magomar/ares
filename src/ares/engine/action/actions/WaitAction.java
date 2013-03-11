@@ -11,10 +11,24 @@ import ares.scenario.forces.Unit;
 public class WaitAction extends AbstractAction {
 
     public WaitAction(Unit unit) {
-        super(unit, ActionType.WAIT, AbstractAction.AS_SOON_AS_POSSIBLE, AbstractAction.TIME_UNKNOWN);
+        super(unit, ActionType.WAIT, AbstractAction.TIME_UNKNOWN);
     }
 
+    /**
+     *
+     * @param unit
+     * @param duration in time ticks
+     */
     public WaitAction(Unit unit, int duration) {
-        super(unit, ActionType.WAIT, AbstractAction.AS_SOON_AS_POSSIBLE, duration);
+        super(unit, ActionType.WAIT, duration);
+    }
+
+    @Override
+    protected void applyOngoingEffects() {
+    }
+
+    @Override
+    public boolean checkFeasibility() {
+        return true;
     }
 }

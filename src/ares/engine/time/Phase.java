@@ -1,4 +1,6 @@
-package ares.engine;
+package ares.engine.time;
+
+import ares.engine.RealTimeEngine;
 
 /**
  *
@@ -33,7 +35,7 @@ public enum Phase {
         SCHEDULE.next = PERCEIVE;
     }
 
-    abstract void run(final RealTimeEngine engine);
+    public abstract void run(final RealTimeEngine engine);
 
     public Phase getNext() {
         return next;

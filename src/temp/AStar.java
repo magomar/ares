@@ -122,7 +122,7 @@ public abstract class AStar<T> {
      * @return A list of possible next steps.
      */
     protected abstract List<T> generateSuccessors(T node);
-    private PriorityQueue<Path> paths;
+    private Queue<Path> paths;
     private HashMap<T, Double> mindists;
     private Double lastCost;
     private int expandedCounter;

@@ -202,7 +202,7 @@ public class BoardGraphicsModel {
      * Converts pixel coordinates into tile coordinates using an accurate method
      *
      * @param pixel
-     * @return
+     * @return the map coordinates corresponding to the pixel coordinates passed as a parameter
      */
     public static Point pixelToTileAccurate(Point pixel) {
         return pixelToTileAccurate(pixel.x, pixel.y);

@@ -1,7 +1,7 @@
 package ares.scenario;
 
-import ares.engine.ClockEvent;
-import ares.engine.ClockEventType;
+import ares.engine.time.ClockEvent;
+import ares.engine.time.ClockEventType;
 import ares.engine.RealTimeEngine;
 import java.text.SimpleDateFormat;
 import java.util.EnumSet;
@@ -66,14 +66,6 @@ public class Clock {
 
     public void setEngine(RealTimeEngine engine) {
         this.engine = engine;
-    }
-
-    public void setNow(GregorianCalendar now) {
-        this.now = now;
-    }
-
-    public void setTurn(int turn) {
-        this.turn = turn;
     }
 
     public int getMINUTES_PER_TICK() {
@@ -141,6 +133,11 @@ public class Clock {
     public String toString() {
         return FULL_DATE_FORMAT.format(now.getTime());
     }
+    
+    
+    public static int[] getTemporalData(int startTime, int duration) { 
+        return new int[3];
+    }
 
     private class Tick implements Runnable {
 
@@ -174,4 +171,5 @@ public class Clock {
             getEngine().update(new ClockEvent(eventTypes));
         }
     }
+    
 }

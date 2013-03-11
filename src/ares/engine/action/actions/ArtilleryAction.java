@@ -13,12 +13,21 @@ public class ArtilleryAction extends AbstractAction {
 
     private Tile target;
 
-    public ArtilleryAction(Unit unit, ActionType type, Tile target, int start, int duration) {
-        super(unit, type, start, duration);
+    public ArtilleryAction(Unit unit, int start, ActionType type, int duration, Tile target) {
+        super(unit, start, type, duration);
         this.target = target;
     }
 
     public Tile getTarget() {
         return target;
+    }
+
+    @Override
+    protected void applyOngoingEffects() {
+    }
+
+    @Override
+    public boolean checkFeasibility() {
+        return true;
     }
 }

@@ -13,4 +13,8 @@ public class CombatAction extends MoveAction {
     public CombatAction(Unit unit, ActionType type, Path path) {
         super(unit, type, path);
     }
+    @Override
+    public boolean checkFeasibility() {
+        return true;
+    }
 }

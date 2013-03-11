@@ -28,7 +28,7 @@ public class AStar extends AbstractPathFinder {
         // Map is used to have constant cost when getting neighbours
         Map<Integer, Node> map = new HashMap<>();
         // openSet is ordered by F, lowest node.getF() will be at the top
-        PriorityQueue<Node> openSet = new PriorityQueue<>(16, new Comparator<Node>() {
+        Queue<Node> openSet = new PriorityQueue<>(16, new Comparator<Node>() {
             @Override
             public int compare(Node o1, Node o2) {
                 if (o1.getF() < o2.getF()) {
@@ -49,7 +49,7 @@ public class AStar extends AbstractPathFinder {
         current.setF(heuristic.getCost(orig.getCoordinates(), dest.getCoordinates()));
         current.setFrom(Direction.C);
         map.put(current.getTile().getIndex(), current);
-        openSet.add(current);
+        openSet.offer(current);
 
         start = current; // save it for the double linked Path
 

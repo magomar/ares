@@ -174,7 +174,7 @@ public final class Tile implements ModelProvider<TileModel> {
         for (Map.Entry<Direction, Tile> neighbor : neighbors.entrySet()) {
             Direction fromDir = neighbor.getKey();
             Tile tile = neighbor.getValue();
-            MovementCost cost = new MovementCost(fromDir, tile, scenario);
+            MovementCost cost = new MovementCost(fromDir, tile);
             moveCosts.put(fromDir, cost);
             CombatModifier combatModifier = new CombatModifier(tile, fromDir);
             combatModifiers.put(fromDir, combatModifier);
