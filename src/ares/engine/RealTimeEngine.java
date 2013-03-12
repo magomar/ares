@@ -158,12 +158,7 @@ public class RealTimeEngine extends AbstractBean {
     public void schedule() {
 //        LOG.log(Level.INFO, "Schedule");
         for (Unit unit : units) {
-            Action action = unit.schedule();
-            if (action.getState() == ActionState.CREATED) { // non started yet
-                action.start();
-                actionSpace.addAction(action);
-            }
-
+            unit.schedule();
         }
     }
 

@@ -75,12 +75,12 @@ public abstract class MoveAction extends AbstractAction {
     }
 
     @Override
-    protected boolean canBeCompleted() {
+    public boolean isComplete() {
         return (currentNode.getNext()==null && timeToNextMovement <= Clock.INSTANCE.getMINUTES_PER_TICK());
     }
 
     @Override
-    public void applyOngoingEffects() {
+    protected void applyOngoingEffects() {
         if (timeToNextMovement <= 0) {
             completePartialMove();
         } else {
@@ -90,6 +90,6 @@ public abstract class MoveAction extends AbstractAction {
 
     @Override
     public String toString() {
-        return super.toString() + " from " + path.getFirst() + " to " + path.getLast() + " at " + (speed * 60.0 / 1000) + " km/h";
+        return super.toString() + "\n From " + path.getFirst() + " to " + path.getLast() + " at " + (speed * 60.0 / 1000) + " km/h";
     }
 }

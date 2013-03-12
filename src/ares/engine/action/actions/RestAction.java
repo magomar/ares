@@ -25,7 +25,7 @@ public class RestAction extends AbstractAction {
     }
 
     @Override
-    public boolean checkFeasibility() {
+    public boolean isFeasible() {
         return true;
     }
 }

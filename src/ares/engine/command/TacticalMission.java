@@ -6,6 +6,7 @@ import ares.engine.action.ActionType;
 import ares.engine.action.actions.RestAction;
 import ares.engine.action.actions.WaitAction;
 import ares.scenario.Clock;
+import ares.scenario.forces.OpState;
 import ares.scenario.forces.Unit;
 import java.util.Deque;
 import java.util.LinkedList;
@@ -13,7 +14,7 @@ import java.util.Queue;
 
 /**
  * Holds the details of a tactical mission assigned to a unit: mission type, current plan of action Includes the engine
- * to manage the live cycle of actions: create, start, execute
+ * to manage the live cycle of actions: create, start, executeAction
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
@@ -55,7 +56,7 @@ public class TacticalMission {
      *
      * @param event
      */
-    public void execute() {
+    public void executeAction() {
         currentAction.execute();
     }
 
@@ -66,25 +67,42 @@ public class TacticalMission {
      *
      * @return the currently scheduled action ({@link #currentAction})
      */
-    public Action schedule() {
-        if (currentAction != null
-                && (currentAction.getState() == ActionState.COMPLETED
-                || currentAction.getState() == ActionState.ABORTED)) {
-            currentAction = null;
+    public Action scheduleAction() {
+        // check currentAction and fix if needed
+        if (currentAction != null) {
+            switch (currentAction.getState()) {
+                case COMPLETED:
+                case ABORTED:
+                    currentAction = null;
+                    break;
+                default:
+                    if (!currentAction.canBeExecuted()) {
+                        pendingActions.push(currentAction);
+                        currentAction = null;
+                        break;
+                    }
+                    if (currentAction.getType() == ActionType.WAIT && hasExecutablePendingAction()) {
+                        currentAction = pendingActions.poll();
+                        break;
+                    }
+            }
         }
         if (currentAction == null) {
-            if (!pendingActions.isEmpty() && pendingActions.peek().canBeStarted()) {
+            if (hasExecutablePendingAction()) {
                 currentAction = pendingActions.poll();
             } else {
-                if (unit.canExecute(ActionType.WAIT)) {
+                if (unit.canEndure(ActionType.WAIT)) {
                     currentAction = new WaitAction(unit);
                 } else {
                     currentAction = new RestAction(unit);
                 }
             }
-//            currentAction.start();
         }
         return currentAction;
+    }
+
+    private boolean hasExecutablePendingAction() {
+        return !pendingActions.isEmpty() && pendingActions.peek().canBeExecuted();
     }
 
     public TacticalMissionType getType() {
@@ -95,9 +113,6 @@ public class TacticalMission {
         pendingActions.add(action);
     }
 
-//    public void setPendingActions(Queue<Action> pendingActions) {
-//        this.pendingActions = (Deque<Action>) pendingActions;
-//    }
     public void clearActions() {
         pendingActions.clear();
     }
@@ -110,12 +125,24 @@ public class TacticalMission {
         return pendingActions;
     }
 
-    public void addFirstAction(Action action) {
-        pendingActions.addFirst(action);
+    /**
+     * Pushes the given action to the head of the {@link pendingActions} queue
+     *
+     * @see Deque#push(java.lang.Object)
+     * @param action
+     */
+    public void pushAction(Action action) {
+        pendingActions.push(action);
     }
 
-    public void addLastAction(Action action) {
-        pendingActions.addLast(action);
+    /**
+     * Adds the given action to the tail of the {@link pendingActions} queue
+     *
+     * @see Deque#offer(java.lang.Object)
+     * @param action
+     */
+    public void offerAction(Action action) {
+        pendingActions.offer(action);
     }
 
     @Override

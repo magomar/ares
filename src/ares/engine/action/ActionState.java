@@ -7,7 +7,6 @@ package ares.engine.action;
 public enum ActionState {
 
     CREATED,
-    DELAYED,
     ONGOING,
     COMPLETED,
     ABORTED;

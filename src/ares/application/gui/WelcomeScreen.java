@@ -48,7 +48,7 @@ public final class WelcomeScreen extends AbstractImageLayer {
 
     private File randomImageFile() {
         File[] backgrounds = wallpapers.listFiles();
-        if (backgrounds.length == 0) {
+        if (backgrounds == null || backgrounds.length == 0) {
             return new File(AresPaths.GRAPHICS.getPath(), "main_menu_background.jpg");
         }
         Integer index = new Random().nextInt(backgrounds.length);

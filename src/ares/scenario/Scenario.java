@@ -9,12 +9,12 @@ import ares.platform.model.UserRole;
 import ares.scenario.assets.AssetTypes;
 import ares.scenario.board.Board;
 import ares.scenario.forces.Force;
-import ares.scenario.forces.Unit;
 import java.lang.ref.WeakReference;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -48,8 +48,7 @@ public final class Scenario implements ModelProvider<ScenarioModel> {
         }
         board.initialize(scenario, this, forces);
 
-        System.out.println(
-                "Scenario loaded: " + toString());
+        Logger.getLogger(Scenario.class.getName()).log(Level.FINE, "Scenario loaded: {0}", toString());
 
         boardInfo = new BoardGraphicsModel(board);
         models = new HashMap<>();

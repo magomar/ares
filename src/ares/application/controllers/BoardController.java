@@ -14,7 +14,9 @@ import ares.engine.action.ActionType;
 import ares.engine.action.actions.ChangeDeploymentAction;
 import ares.engine.action.actions.MoveAction;
 import ares.engine.action.actions.SurfaceMoveAction;
+import ares.engine.algorithms.planning.Planner;
 import ares.engine.algorithms.routing.*;
+import ares.engine.command.Objective;
 import ares.engine.command.TacticalMission;
 import ares.platform.controllers.AbstractSecondaryController;
 import ares.platform.model.UserRole;
@@ -143,19 +145,21 @@ public final class BoardController extends AbstractSecondaryController implement
             Tile objective = scenario.getBoard().getTile(tilePoint.x, tilePoint.y);
 
             RealTimeEngine engine = mainController.getEngine();
-            Path path = engine.getPathFinder().getPath(selectedUnit.getLocation(), objective);
-            if (path != null && path.relink() != -1) {
-                LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, "New path for {0}: {1}", new Object[]{selectedUnit.getName(), path.toString()});
-                TacticalMission mission = selectedUnit.getMission();
-                MoveAction moveAction = new SurfaceMoveAction(selectedUnit, ActionType.TACTICAL_MARCH, path);
-                mission.addFirstAction(moveAction);
-                if (!moveAction.checkPrecondition()) {
-                    mission.addFirstAction(new ChangeDeploymentAction(selectedUnit, ActionType.ASSEMBLE));
-                }
-                clickMouseButton2();
-            } else {
-                LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, "No path found for {0}", selectedUnit.getName());
-            }
+            Planner planner = engine.getPlanner();
+            planner.tacticalPlan(selectedUnit, new Objective(objective, 0));
+//            Path path = engine.getPathFinder().getPath(selectedUnit.getLocation(), objective);
+//            if (path != null && path.relink() != -1) {
+//                LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, "New path for {0}: {1}", new Object[]{selectedUnit.getName(), path.toString()});
+//                TacticalMission mission = selectedUnit.getMission();
+//                MoveAction moveAction = new SurfaceMoveAction(selectedUnit, ActionType.TACTICAL_MARCH, path);
+//                mission.pushAction(moveAction);
+//                if (!moveAction.checkPreconditions()) {
+//                    mission.pushAction(new ChangeDeploymentAction(selectedUnit, ActionType.ASSEMBLE));
+//                }
+//                clickMouseButton2();
+//            } else {
+//                LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, "No path found for {0}", selectedUnit.getName());
+//            }
         }
     }
 

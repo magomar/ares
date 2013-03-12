@@ -16,7 +16,7 @@ public class SurfaceMoveAction extends MoveAction {
     }
 
     @Override
-    public boolean checkFeasibility() {
+    public boolean isFeasible() {
         Tile nextDestination = currentNode.getTile();
         return !nextDestination.hasEnemies(unit.getForce());
     }

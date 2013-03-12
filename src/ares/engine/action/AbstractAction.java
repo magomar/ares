@@ -75,92 +75,63 @@ public abstract class AbstractAction implements Action {
         this.type = type;
         this.start = start;
         this.timeToComplete = timeToComplete;
-        finish = TIME_UNKNOWN;
+        if (timeToComplete != TIME_UNKNOWN) {
+            finish = start + timeToComplete;
+        } else {
+            finish = TIME_UNKNOWN;
+        }
         state = ActionState.CREATED;
         id = ActionCounter.count();
     }
 
+    /**
+     * Determines if the action can be executed this time tick by checking all the necessary conditions: if the action
+     * was already started then it performs two checks: {@link #checkEndurance()} and {@link #isFeasible()}, otherwise it
+     * performs the two former checks plus {@link #checkStartTime()} and {@link #checkPreconditions()}.
+     *
+     *
+     * @return true if the action can be executed
+     */
     @Override
-    public boolean canBeStarted() {
-        return checkTimetoStart() && checkPrecondition();
+    public final boolean canBeExecuted() {
+        if (state == ActionState.CREATED) {
+            return checkStartTime() && checkPreconditions() && checkEndurance() && isFeasible();
+        }
+        return checkEndurance() && isFeasible();
     }
 
     /**
-     * Checks if the planned start time has been reached or surpassed.<p>
-     * This way, an action would never start before the planned start time.
-     *
-     * @return
-     */
-    protected final boolean checkTimetoStart() {
-//        return (start < Clock.INSTANCE.getCurrentTime() + Clock.INSTANCE.getMINUTES_PER_TICK());
-        return start <= Clock.INSTANCE.getTick();
-    }
-
-    /**
-     * Checks if the acting unit has the right operational state to start this action ({@link OpState})
-     *
-     * @return
-     */
-    public boolean checkPrecondition() {
-        // TODO try to make this method protected...
-        return unit.getOpState() == type.getPrecondition();
-    }
-
-    /**
-     * Checks if the action can be completed during the next time tick
+     * Checks if the action satisfies its completion criteria. {@link AbstractAction} provides a default implementation
+     * that only verifies time completion. Subclasses may overwrite this method with specific implementations.
      *
      * @return whether the estimated completion time is reached during the current time tick
      */
-    protected boolean canBeCompleted() {
-//        return (timeToComplete <= Clock.INSTANCE.getMINUTES_PER_TICK());
-        return (timeToComplete <= 1);
+    @Override
+    public boolean isComplete() {
+        return timeToComplete <= 0;
     }
 
     /**
-     * Checks if the remaining endurance is enough to execute the action during the next time tick
-     *
-     * @return
+     * Changes the status of the action to {@link ActionState#ONGOING} and sets the {@link #start} time to the current
+     * time tick. This method should be used to start the execution of an action for the first time
      */
-    protected final boolean checkEndurance() {
-//        int duration = Math.min(timeToComplete, Clock.INSTANCE.getMINUTES_PER_TICK());
-//        int requiredEndurance = type.getRequiredEndurace(duration);
-        return (unit.getEndurance() >= type.getRequiredEndurace(Clock.INSTANCE.getMINUTES_PER_TICK()));
-    }
-
     @Override
-    public void start() {
+    public final void start() {
         state = ActionState.ONGOING;
-//        start = Math.max(start, Clock.INSTANCE.getCurrentTime() - Clock.INSTANCE.getMINUTES_PER_TICK());
         start = Clock.INSTANCE.getTick();
         unit.setOpState(type.getEffectWhile());
     }
 
     /**
-     * Returns true if the unit has enough endurance to perform the action. The answer depends of the current endurance
-     * of the unit as well as the type of action.
-     *
-     * @param actionType
-     * @return
+     * Changes the status of the action to {@link ActionState.COMPLETED}, determines the actual {@link finish} time,
+     * which may differ from the estimated finish time, and applies completion effects on the operational state of the
+     * {@link #unit}
      */
-    public boolean canExecute() {
-        return unit.getEndurance() >= type.getRequiredEndurace(Clock.INSTANCE.getMINUTES_PER_TICK());
-    }
-
     @Override
-    public void execute() {
-        if (checkFeasibility()) {
-            if (checkEndurance()) {
-                if (canBeCompleted()) {
-                    complete();
-                } else {
-                    resume();
-                }
-            } else {
-                delay();
-            }
-        } else {
-            abort();
-        }
+    public final void complete() {
+        state = ActionState.COMPLETED;
+        finish = Clock.INSTANCE.getTick();
+        unit.setOpState(type.getEffectAfter());
     }
 
     @Override
@@ -170,76 +141,69 @@ public abstract class AbstractAction implements Action {
     }
 
     /**
-     * Changes the status of the action to {@link ActionState#DELAYED}. The action is delayed for the entire time tick,
-     * the unit behaves as if it was executing a {@link WaitAction}, with the corresponding wear.
+     * The action is executed for the current time tick. If the the action is completed then sets the finish time
      */
-    private void delay() {
-        state = ActionState.DELAYED;
-        wear(ActionType.WAIT.getWearRate());
+    @Override
+    public final void execute() {
+        if (state == ActionState.CREATED) { // non started yet
+            start();
+        }
+        timeToComplete -= 1;
+        wear();
+        applyOngoingEffects();
+        if (isComplete()) {
+            complete();
+        }
     }
 
     /**
-     * Changes the status of the action to {@link ActionState#ABORTED}. The action is aborted, this time tick the unit
-     * behaves as if it was executing a {@link WaitAction}, with the corresponding wear.
+     * Changes the status of the action to {@link ActionState#ABORTED}.
      */
-    private void abort() {
+    @Override
+    public final void abort() {
         state = ActionState.ABORTED;
         wear();
-        unit.setOpState(type.getPrecondition());
+//        unit.setOpState(type.getPrecondition());
         finish = Clock.INSTANCE.getTick();
     }
 
     /**
-     * The action is executed for the entire time tick.
+     * Checks if the planned start time has been reached or surpassed.<p>
+     * This way, an action would never start before the planned start time.
+     *
+     * @return
      */
-    private void resume() {
-        timeToComplete -= 1;
-        applyOngoingEffects();
-        wear();
+    private boolean checkStartTime() {
+        return start <= Clock.INSTANCE.getTick();
     }
 
     /**
-     * Changes the status of the action to {@link ActionState.COMPLETED} and determines the actual finish time, which
-     * may differ from the planned finish time. This method should be invoked only after checking the time to complete
-     * with {@link #checkTimeToComplete})
+     * Checks if the acting unit has the right operational state to start this action ({@link OpState})
+     *
+     * @return
      */
-    private void complete() {
-        timeToComplete = 0;
-        applyOngoingEffects();
-        state = ActionState.COMPLETED;
-        finish = Clock.INSTANCE.getTick();
-        wear();
-        applyEffects();
+    public boolean checkPreconditions() {
+        // TODO try to make this method protected...
+        OpState precondition = type.getPrecondition();
+        return precondition == null || unit.getOpState() == precondition;
+    }
+
+    /**
+     * Checks if the remaining endurance is enough to execute the action during the next time tick
+     *
+     * @return
+     */
+    private boolean checkEndurance() {
+        return unit.canEndure(type);
     }
 
     private void wear() {
-        unit.changeEndurance(type.getWearRate() * Clock.INSTANCE.getMINUTES_PER_TICK());
-    }
-
-    private void wear(int rate) {
-        unit.changeEndurance(rate * Clock.INSTANCE.getMINUTES_PER_TICK());
-    }
-
-//    protected void wear(int duration) {
-//        unit.changeEndurance(type.getWearRate() * duration);
-//    }
-
-//    protected void wear(ActionType type, int duration) {
-//        unit.changeEndurance(type.getWearRate() * duration);
-//    }
-//    protected void wear(int rate, int duration) {
-//        unit.changeEndurance(rate * duration);
-//    }
-    /**
-     * Apply the effects of this action after completion: set the proper
-     * <code>OperationalState</code> for the unit executing this action
-     */
-    private void applyEffects() {
-        unit.setOpState(type.getEffectAfter());
+        unit.changeEndurance(-type.getRequiredEndurace(Clock.INSTANCE.getMINUTES_PER_TICK()));
     }
 
     /**
-     * Apply the effects of an action while it is being executed.
+     * Apply the effects of an action while it is being executed. Derived classes can overwrite this method to add
+     * specific effects
      */
     protected abstract void applyOngoingEffects();
 
@@ -248,7 +212,12 @@ public abstract class AbstractAction implements Action {
      *
      * @return
      */
-    protected abstract boolean checkFeasibility();
+    protected abstract boolean isFeasible();
+
+    @Override
+    public void setState(ActionState state) {
+        this.state = state;
+    }
 
     @Override
     public ActionState getState() {
@@ -290,6 +259,10 @@ public abstract class AbstractAction implements Action {
 
     @Override
     public String toString() {
+        return type.name() + '_' + id + '(' + state + ", " + start + ", " + timeToComplete + ')';
+    }
+
+    public String toStringVerbose() {
         return "[" + Clock.INSTANCE + "] #" + id + " > " + state + '{' + type + ": " + unit + '}';
     }
 }

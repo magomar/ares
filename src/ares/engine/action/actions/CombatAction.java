@@ -14,7 +14,7 @@ public class CombatAction extends MoveAction {
         super(unit, type, path);
     }
     @Override
-    public boolean checkFeasibility() {
+    public boolean isFeasible() {
         return true;
     }
 }

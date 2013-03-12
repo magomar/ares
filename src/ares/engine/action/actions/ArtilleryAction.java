@@ -27,7 +27,7 @@ public class ArtilleryAction extends AbstractAction {
     }
 
     @Override
-    public boolean checkFeasibility() {
+    public boolean isFeasible() {
         return true;
     }
 }

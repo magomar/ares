@@ -7,7 +7,6 @@ import ares.application.models.forces.UnitModel;
 import ares.data.jaxb.Availability;
 import ares.data.jaxb.Emphasis;
 import ares.engine.action.Action;
-import ares.engine.action.ActionSpace;
 import ares.engine.action.ActionType;
 import ares.engine.command.TacticalMission;
 import ares.engine.command.TacticalMissionType;
@@ -645,6 +644,10 @@ public abstract class Unit implements ModelProvider<UnitModel> {
         sb.append("Movement: ").append(movement).append(" (").append(speed * 60.0 / 1000).append(" Km/h)\n");
         sb.append("OpState: ").append(opState).append('\n');
         sb.append("Stamina: ").append(endurance * 100 / MAX_ENDURANCE).append('\n');
+//        sb.append("Endurance: ").append(endurance).append(" / ").append(MAX_ENDURANCE).append('\n');
+        sb.append("Mission: ").append(mission.getType()).append('\n');
+        sb.append("Action: ").append(mission.getCurrentAction()).append('\n');
+        sb.append("Pending: ").append(mission.getPendingActions()).append('\n');
         sb.append("Proficiency: ").append(proficiency).append('\n');
         sb.append("Readiness: ").append(readiness).append('\n');
         sb.append("Supply: ").append(supply).append('\n');
@@ -695,15 +698,14 @@ public abstract class Unit implements ModelProvider<UnitModel> {
     }
 
     /**
-     * Returns true if the
-     * <code>unit</code> has enough endurance to perform the action. The answer depends of the current endurance of the
-     * unit as well as the <type>type<type> of action.
+     * Returns true if the {@link #unit} has enough endurance to perform the action. The answer depends on the current {@link #endurance} of the
+     * unit as well as the {@link ActionType} passed as a parameter provided
      *
-     * @param actionType
+     * @param type
      * @return
      */
-    public boolean canExecute(ActionType type) {
-        return endurance > type.getRequiredEndurace(Clock.INSTANCE.getMINUTES_PER_TICK());
+    public boolean canEndure(ActionType type) {
+        return endurance > type.getRequiredEndurace(Clock.INSTANCE.getMINUTES_PER_TICK()) || type.getWearRate() < 0;
     }
 
     public TacticalMission getMission() {
@@ -711,11 +713,11 @@ public abstract class Unit implements ModelProvider<UnitModel> {
     }
 
     public void act() {
-        mission.execute();
+        mission.executeAction();
     }
 
     public Action schedule() {
-        return mission.schedule();
+        return mission.scheduleAction();
     }
 
     public void commit() {
