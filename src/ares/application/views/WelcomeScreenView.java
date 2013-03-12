@@ -19,8 +19,6 @@ import javax.swing.event.EventListenerList;
  */
 public class WelcomeScreenView extends AbstractView<JPanel> implements CommandBarViewer {
 
-    // Buttons in the main menu
-//    private LinkedList<TranslucidButton> buttons = new LinkedList<>();
     protected Map<String, EventListenerList> actionListeners = new HashMap<>();
 
     @Override
@@ -33,34 +31,7 @@ public class WelcomeScreenView extends AbstractView<JPanel> implements CommandBa
         return buttonsPanel;
     }
 
-//    public void setMenuButtons(ArrayList<Pair<Command, ActionListener>> buttonListener) {
-//
-//        // Button dimension
-//
-//        // WelcomeScreen panel is inside a LayeredPane, which is inside a JRootPane
-////        JFrame frame = (JFrame) this.getParent().getParent().getParent();
-//        // Where the first button will be placed
-////        Point buttonPos = new Point(frame.getSize().width / 2, frame.getSize().height / 2);
-//        // Vertical gap between buttons
-//        int vGap = 60;
-//
-//        int i = 0;
-//        for (Pair<Command, ActionListener> pair : buttonListener) {
-//            TranslucidButton b = new TranslucidButton(pair.getLeft().getText());
-//            b.setAlignmentX(Component.CENTER_ALIGNMENT);
-//            b.addActionListener(pair.getRight());
-////            b.setPreferredSize(dim);
-//            b.setMaximumSize(BUTTON_DIMENSION);
-//            b.setMinimumSize(BUTTON_DIMENSION);
-////            b.setSize(dim);
-////            b.setLocation(buttonPos.x, buttonPos.y + vGap * i);
-//            i++;
-//            contentPane.add(b);
-//        }
-//
-//    }
     protected Component getMenuElement(String elementName) {
-        Component found = null;
         for (Component button : contentPane.getComponents()) {
             if (elementName.equals(button.getName())) {
                 return button;

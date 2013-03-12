@@ -6,7 +6,6 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.lang.ref.SoftReference;
 import java.util.*;
-import java.util.logging.*;
 import javax.swing.*;
 
 /**
@@ -17,7 +16,7 @@ import javax.swing.*;
 public final class WelcomeScreen extends AbstractImageLayer {
 
     /**
-     * Background image to be loaded 
+     * Background image to be loaded
      */
     private SoftReference<BufferedImage> backgroundImage = new SoftReference<>(null);
     /**
@@ -35,12 +34,8 @@ public final class WelcomeScreen extends AbstractImageLayer {
     @Override
     protected void updateLayer() {
         if (backgroundImage.get() == null) {
-            try {
-                backgroundImage = new SoftReference<>(loadImage(randomImageFile()));
-                globalImage = backgroundImage.get();
-            } catch (Exception e) {
-                LOG.log(Level.SEVERE, e.getMessage());
-            }
+            backgroundImage = new SoftReference<>(loadImage(randomImageFile()));
+            globalImage = backgroundImage.get();
         }
     }
 
@@ -53,10 +48,25 @@ public final class WelcomeScreen extends AbstractImageLayer {
 
     private File randomImageFile() {
         File[] backgrounds = wallpapers.listFiles();
-        if (backgrounds == null) {
-            return null;
+        if (backgrounds.length == 0) {
+            return new File(AresPaths.GRAPHICS.getPath(), "main_menu_background.jpg");
         }
         Integer index = new Random().nextInt(backgrounds.length);
         return backgrounds[index];
+    }
+
+    @Override
+    public void paintComponent(Graphics g) {
+        if (parentLayer != null) {
+            parentLayer.paintComponent(g);
+        }
+        super.paintComponent(g);
+        Graphics2D g2 = (Graphics2D) g;
+        if (globalImage != null) {
+            g2.drawImage(globalImage, 0, 0, this.getWidth(), this.getHeight(), this);
+        } else {
+            g2.setBackground(Color.BLACK);
+            g2.fillRect(0, 0, this.getWidth(), this.getHeight());
+        }
     }
 }

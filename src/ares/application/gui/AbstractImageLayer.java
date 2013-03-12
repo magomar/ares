@@ -4,6 +4,7 @@ import ares.application.models.board.BoardGraphicsModel;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
@@ -17,7 +18,6 @@ public abstract class AbstractImageLayer extends javax.swing.JPanel implements I
     protected BufferedImage globalImage;
     // Nested layers
     protected AbstractImageLayer parentLayer;
-    protected static final Logger LOG = Logger.getLogger(AbstractImageLayer.class.getName());
 
     public AbstractImageLayer() {
         setOpaque(false);
@@ -40,15 +40,17 @@ public abstract class AbstractImageLayer extends javax.swing.JPanel implements I
     /**
      * Loads an image from file
      *
-     * @param f
+     * @param file
      * @return
      */
-    protected static BufferedImage loadImage(File f) {
+    protected static BufferedImage loadImage(File file) {
         BufferedImage i = null;
         try {
-            i = ImageIO.read(f);
-        } catch (IOException e) {
+            i = ImageIO.read(file);
+        } catch (IOException ex) {
+            Logger.getLogger(AbstractImageLayer.class.getName()).log(Level.SEVERE, null, ex);
         }
+
         return i;
     }
 
