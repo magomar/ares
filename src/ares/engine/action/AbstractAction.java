@@ -86,8 +86,8 @@ public abstract class AbstractAction implements Action {
 
     /**
      * Determines if the action can be executed this time tick by checking all the necessary conditions: if the action
-     * was already started then it performs two checks: {@link #checkEndurance()} and {@link #isFeasible()}, otherwise it
-     * performs the two former checks plus {@link #checkStartTime()} and {@link #checkPreconditions()}.
+     * was already started then it performs two checks: {@link #checkEndurance()} and {@link #isFeasible()}, otherwise
+     * it performs the two former checks plus {@link #checkStartTime()} and {@link #checkPreconditions()}.
      *
      *
      * @return true if the action can be executed
@@ -145,9 +145,6 @@ public abstract class AbstractAction implements Action {
      */
     @Override
     public final void execute() {
-        if (state == ActionState.CREATED) { // non started yet
-            start();
-        }
         timeToComplete -= 1;
         wear();
         applyOngoingEffects();

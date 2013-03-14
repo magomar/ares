@@ -5,8 +5,6 @@ import ares.engine.action.ActionState;
 import ares.engine.action.ActionType;
 import ares.engine.action.actions.RestAction;
 import ares.engine.action.actions.WaitAction;
-import ares.scenario.Clock;
-import ares.scenario.forces.OpState;
 import ares.scenario.forces.Unit;
 import java.util.Deque;
 import java.util.LinkedList;
@@ -76,20 +74,20 @@ public class TacticalMission {
                     currentAction = null;
                     break;
                 default:
-                    if (!currentAction.canBeExecuted()) {
+                    if (!currentAction.canBeExecuted() && currentAction.getType() != ActionType.WAIT) {
                         pendingActions.push(currentAction);
                         currentAction = null;
                         break;
                     }
                     if (currentAction.getType() == ActionType.WAIT && hasExecutablePendingAction()) {
-                        currentAction = pendingActions.poll();
+                        currentAction = scheduleNextAction();
                         break;
                     }
             }
         }
         if (currentAction == null) {
             if (hasExecutablePendingAction()) {
-                currentAction = pendingActions.poll();
+                currentAction = scheduleNextAction();
             } else {
                 if (unit.canEndure(ActionType.WAIT)) {
                     currentAction = new WaitAction(unit);
@@ -99,6 +97,15 @@ public class TacticalMission {
             }
         }
         return currentAction;
+    }
+
+    private Action scheduleNextAction() {
+        Action nextAction = pendingActions.poll();
+        if (nextAction.getState() == ActionState.CREATED) { // non started yet
+            nextAction.start();
+        }
+        return nextAction;
+
     }
 
     private boolean hasExecutablePendingAction() {
