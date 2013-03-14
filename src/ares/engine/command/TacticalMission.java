@@ -117,10 +117,6 @@ public class TacticalMission {
         return type;
     }
 
-    public void addAction(Action action) {
-        pendingActions.add(action);
-    }
-
     public void clearActions() {
         pendingActions.clear();
     }
