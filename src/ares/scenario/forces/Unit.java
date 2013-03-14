@@ -7,6 +7,7 @@ import ares.application.models.forces.UnitModel;
 import ares.data.jaxb.Availability;
 import ares.data.jaxb.Emphasis;
 import ares.engine.action.Action;
+import ares.engine.action.ActionSpace;
 import ares.engine.action.ActionType;
 import ares.engine.command.TacticalMission;
 import ares.engine.command.TacticalMissionType;
@@ -720,8 +721,8 @@ public abstract class Unit implements ModelProvider<UnitModel> {
         return mission.scheduleAction();
     }
 
-    public void commit() {
-        mission.commit();
+    public void commit(ActionSpace actionSpace) {
+        mission.commit(actionSpace);
     }
 
     /**

@@ -159,6 +159,7 @@ public class RealTimeEngine extends AbstractBean {
 //        LOG.log(Level.INFO, "Schedule");
         for (Unit unit : units) {
             unit.schedule();
+            unit.commit(actionSpace);
         }
     }
 

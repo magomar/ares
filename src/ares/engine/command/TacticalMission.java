@@ -1,6 +1,7 @@
 package ares.engine.command;
 
 import ares.engine.action.Action;
+import ares.engine.action.ActionSpace;
 import ares.engine.action.ActionState;
 import ares.engine.action.ActionType;
 import ares.engine.action.actions.RestAction;
@@ -45,7 +46,7 @@ public class TacticalMission {
         this.pendingActions = pendingActions = new LinkedList<>();
     }
 
-    public void commit() {
+    public void commit(ActionSpace actionSpace) {
         currentAction.commit();
     }
 
@@ -74,8 +75,8 @@ public class TacticalMission {
                     currentAction = null;
                     break;
                 default:
-                    if (!currentAction.canBeExecuted() && currentAction.getType() != ActionType.WAIT) {
-                        pendingActions.push(currentAction);
+                    if (!currentAction.canBeExecuted()) {
+                        if (currentAction.getType() != ActionType.WAIT) pendingActions.push(currentAction);
                         currentAction = null;
                         break;
                     }

@@ -43,5 +43,10 @@ public class Objective implements Comparable {
         return priority - objective.priority;
     }
 
+    @Override
+    public String toString() {
+        return location.toString();
+    }
+
 
 }
