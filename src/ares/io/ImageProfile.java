@@ -32,7 +32,7 @@ public enum ImageProfile {
     private final int hexOffset;
     private final int hexHeight;
     private final double hexRise;
-    private String path;
+    private final String path;
 
     /**
      *

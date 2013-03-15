@@ -1,4 +1,4 @@
-package ares.engine.command;
+package ares.engine.command.tactical;
 
 import ares.engine.action.Action;
 import ares.engine.action.ActionSpace;
@@ -6,6 +6,8 @@ import ares.engine.action.ActionState;
 import ares.engine.action.ActionType;
 import ares.engine.action.actions.RestAction;
 import ares.engine.action.actions.WaitAction;
+import ares.engine.algorithms.routing.PathFinder;
+import ares.scenario.board.Tile;
 import ares.scenario.forces.Unit;
 import java.util.Deque;
 import java.util.LinkedList;
@@ -17,34 +19,50 @@ import java.util.Queue;
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public class TacticalMission {
+public abstract class TacticalMission {
 
     /**
      * The unit assined to this tactical misssion
      */
-    private final Unit unit;
+    protected final Unit unit;
     /**
      * The type of the mission (assault, support by fire, etc.)
      *
      * @see TacticalMissionType
      */
-    private final TacticalMissionType type;
+    protected TacticalMissionType type;
+    protected Tile targetTile;
+//    protected Unit targetUnit;
     /**
      * The current, ongoing action
      */
-    private Action currentAction;
+    protected Action currentAction;
     /**
      * A plan to accomplish this tactical mission. It is specified as a sequence of actions to be executed sequentially
      *
      * @see Action
      */
-    private Deque<Action> pendingActions;
+    protected Deque<Action> pendingActions;
 
-    public TacticalMission(TacticalMissionType type, Unit unit) {
+    public TacticalMission(TacticalMissionType type, Unit unit, Tile target) {
         this.type = type;
         this.unit = unit;
-        this.pendingActions = pendingActions = new LinkedList<>();
+        this.targetTile = target;
+        this.pendingActions = new LinkedList<>();
     }
+
+    public void setTargetTile(Tile targetTile) {
+        this.targetTile = targetTile;
+    }
+
+//    public void setTargetUnit(Unit targetUnit) {
+//        this.targetUnit = targetUnit;
+//    }
+    public void setType(TacticalMissionType type) {
+        this.type = type;
+    }
+
+    public abstract void plan(PathFinder pathFinder);
 
     public void commit(ActionSpace actionSpace) {
         currentAction.commit();
@@ -76,7 +94,9 @@ public class TacticalMission {
                     break;
                 default:
                     if (!currentAction.canBeExecuted()) {
-                        if (currentAction.getType() != ActionType.WAIT) pendingActions.push(currentAction);
+                        if (currentAction.getType() != ActionType.WAIT) {
+                            pendingActions.push(currentAction);
+                        }
                         currentAction = null;
                         break;
                     }
@@ -117,9 +137,9 @@ public class TacticalMission {
         return type;
     }
 
-    public void clearActions() {
-        pendingActions.clear();
-    }
+//    public void clearActions() {
+//        pendingActions.clear();
+//    }
 
     public Action getCurrentAction() {
         return currentAction;
@@ -151,6 +171,14 @@ public class TacticalMission {
 
     @Override
     public String toString() {
-        return "TacticalMission{" + type + " by " + unit.getName() + '}';
+        return type.name() + ' ' + targetTile;
+    }
+
+    public String toStringMultiline() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(type.name()).append(' ').append(targetTile).append('\n');
+        sb.append("Action: ").append(currentAction).append('\n');
+        sb.append("Pending: ").append(pendingActions).append('\n');
+        return sb.toString();
     }
 }

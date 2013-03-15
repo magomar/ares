@@ -1,5 +1,6 @@
 package ares.scenario;
 
+import ares.engine.time.Clock;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.BoardGraphicsModel;
 import ares.data.jaxb.EquipmentDB;

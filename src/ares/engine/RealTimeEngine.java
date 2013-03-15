@@ -5,15 +5,11 @@ import ares.engine.time.ClockEventType;
 import ares.engine.time.ClockEvent;
 import static ares.engine.RealTimeEngine.CLOCK_EVENT_PROPERTY;
 import static ares.engine.RealTimeEngine.SCENARIO_PROPERTY;
-import ares.engine.action.Action;
 import ares.engine.action.ActionSpace;
-import ares.engine.action.ActionState;
-import ares.engine.algorithms.planning.BasicPlanner;
-import ares.engine.algorithms.planning.Planner;
 import ares.engine.algorithms.routing.AStar;
 import ares.engine.algorithms.routing.PathFinder;
 import ares.platform.model.AbstractBean;
-import ares.scenario.Clock;
+import ares.engine.time.Clock;
 import ares.scenario.Scenario;
 import ares.scenario.board.Tile;
 import ares.scenario.forces.Force;
@@ -56,10 +52,6 @@ public class RealTimeEngine extends AbstractBean {
      */
     private PathFinder pathFinder;
     /**
-     * Planning algorithm
-     */
-    private Planner planner;
-    /**
      * Executor service to perform tasks concurrently (eg. planning)
      */
     private ExecutorService executor;
@@ -72,10 +64,9 @@ public class RealTimeEngine extends AbstractBean {
     public RealTimeEngine() {
         units = new ArrayList<>();
         formations = new ArrayList<>();
-        phase = Phase.SCHEDULE;
+        phase = Phase.PERCEIVE;
         running = false;
 //        executor = Executors.newCachedThreadPool();
-        planner = new BasicPlanner(this);
         actionSpace = new ActionSpace();
         Clock.INSTANCE.setEngine(this);
     }
@@ -89,7 +80,7 @@ public class RealTimeEngine extends AbstractBean {
                 for (Formation formation : force.getFormations()) {
                     formations.add(formation);
                     units.addAll(formation.getActiveUnits());
-                    formation.activate(planner);
+                    formation.activate(pathFinder);
                 }
             }
         }
@@ -100,14 +91,19 @@ public class RealTimeEngine extends AbstractBean {
         return scenario;
     }
 
-    public void start() {
-        LOG.log(Level.INFO, "*** Clock Started {0}", Clock.INSTANCE);
+    public void resume() {
+        LOG.log(Level.INFO, "*** Engine started {0}", Clock.INSTANCE);
         running = true;
         Clock.INSTANCE.tick();
     }
 
-    public void stop() {
-        LOG.log(Level.INFO, "********** Clock Stopped {0}", Clock.INSTANCE);
+    public void step() {
+        LOG.log(Level.INFO, "*** Engine started for one time tick {0}", Clock.INSTANCE);
+        Clock.INSTANCE.tick();
+    }
+
+    public void pause() {
+        LOG.log(Level.INFO, "*** Engine stopped {0}", Clock.INSTANCE);
         running = false;
     }
 
@@ -120,7 +116,7 @@ public class RealTimeEngine extends AbstractBean {
         do {
             phase.run(this);
             phase = phase.getNext();
-        } while (phase != Phase.ACT);
+        } while (phase != Phase.PERCEIVE);
 
         if (clockEventTypes.contains(ClockEventType.DAY)) {
             LOG.log(Level.INFO, "++++++++++ New Day: {0}", Clock.INSTANCE.getTurn());
@@ -132,7 +128,7 @@ public class RealTimeEngine extends AbstractBean {
             LOG.log(Level.INFO, "++++++++++ New Turn: {0}", Clock.INSTANCE.getTurn());
             running = false;
             for (Formation formation : formations) {
-                formation.plan(planner);
+                formation.plan(pathFinder);
             }
         }
 
@@ -181,9 +177,5 @@ public class RealTimeEngine extends AbstractBean {
 
     public PathFinder getPathFinder() {
         return pathFinder;
-    }
-
-    public Planner getPlanner() {
-        return planner;
     }
 }

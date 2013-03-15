@@ -1,9 +1,15 @@
-package ares.engine.command;
+package ares.engine.command.operational;
 
+import ares.engine.action.Action;
+import ares.engine.algorithms.routing.PathFinder;
+import ares.engine.command.Objective;
+import ares.engine.command.tactical.TacticalMission;
+import ares.engine.command.tactical.TacticalMissionType;
 import ares.scenario.forces.Formation;
 import ares.scenario.forces.Unit;
 import java.util.List;
 import java.util.Map;
+import java.util.Queue;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
@@ -26,14 +32,29 @@ public abstract class OperationalPlan {
         this.objectives = objectives;
         goals = new TreeSet<>();
         goals.addAll(objectives);
-        for (Objective objective : objectives) {
-            goals.add(objective);
+    }
+
+    public void plan(PathFinder pathFinder) {
+//        updateObjectives();
+        if (!goals.isEmpty()) {
+            Objective objective = goals.first();
+            for (Unit unit : formation.getActiveUnits()) {
+                TacticalMission mission = TacticalMissionType.OCCUPY.getNewTacticalMission(unit, objective.getLocation(), pathFinder);
+//                mission.plan(pathFinder);
+                unit.setMission(mission);
+            }
+        } else {
+            for (Unit unit : formation.getActiveUnits()) {
+                TacticalMission mission = TacticalMissionType.OCCUPY.getNewTacticalMission(unit, unit.getLocation(), pathFinder);
+//                mission.plan(pathFinder);
+                unit.setMission(mission);
+            }
         }
     }
 
-    public void updateObjectives() {
+    private void updateObjectives() {
         for (Objective objective : objectives) {
-            if (objective.isAchieved(formation.getForce())) {
+            if (objective.isAchieved(formation)) {
                 if (!objective.isAchieved()) {
                     objective.setAchieved(true);
                     goals.remove(objective);
@@ -70,7 +91,7 @@ public abstract class OperationalPlan {
     public Map<Unit, TacticalMission> getMissions() {
         return missions;
     }
-    
+
     public boolean hasGoals() {
         return !goals.isEmpty();
     }

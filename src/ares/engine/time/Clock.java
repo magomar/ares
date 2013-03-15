@@ -1,8 +1,7 @@
-package ares.scenario;
+package ares.engine.time;
 
-import ares.engine.time.ClockEvent;
-import ares.engine.time.ClockEventType;
 import ares.engine.RealTimeEngine;
+import ares.scenario.TurnLength;
 import java.text.SimpleDateFormat;
 import java.util.EnumSet;
 import java.util.GregorianCalendar;
@@ -21,8 +20,6 @@ public class Clock {
     private int MINUTES_PER_TICK;
     private int MINUTES_PER_TURN;
     private int TICKS_PER_TURN;
-//    private int TICKS_PER_DAY;
-//    private int TICKS_PER_HOUR;
     private GregorianCalendar begins;
     private GregorianCalendar ends;
     private GregorianCalendar now;
@@ -48,20 +45,19 @@ public class Clock {
         gcal.set(GregorianCalendar.MINUTE, 0);
         begins = (GregorianCalendar) gcal.clone();
         turn = calendar.getCurrentTurn();
-        gcal.add(GregorianCalendar.MINUTE, turn * turnLength.getMinutesPerTurn() - turnLength.getMinutesPerTick());
+//        gcal.add(GregorianCalendar.MINUTE, turn * turnLength.getMinutesPerTurn() - turnLength.getMinutesPerTick());
+        gcal.add(GregorianCalendar.MINUTE, turn * turnLength.getMinutesPerTurn());
         now = (GregorianCalendar) gcal.clone();
         finalTurn = calendar.getFinalTurn();
         ends = (GregorianCalendar) begins.clone();
         ends.add(GregorianCalendar.MINUTE, finalTurn * turnLength.getMinutesPerTurn());
         TICKS_PER_TURN = MINUTES_PER_TURN / MINUTES_PER_TICK;
-//        TICKS_PER_DAY = 1440 / MINUTES_PER_TICK;
-//        TICKS_PER_HOUR = 60 / MINUTES_PER_TICK;
-        tick = TICKS_PER_TURN - 1;
-        currentTime = turn * MINUTES_PER_TURN - MINUTES_PER_TICK;
+        tick = 0;
+        currentTime = turn * MINUTES_PER_TURN;
     }
 
     public void tick() {
-        SwingUtilities.invokeLater(new Tick(this));
+        SwingUtilities.invokeLater(new Tick());
     }
 
     public void setEngine(RealTimeEngine engine) {
@@ -141,12 +137,6 @@ public class Clock {
 
     private class Tick implements Runnable {
 
-        private Clock clock;
-
-        public Tick(Clock clock) {
-            this.clock = clock;
-        }
-
         @Override
         public void run() {
             now.add(GregorianCalendar.MINUTE, MINUTES_PER_TICK);
@@ -159,14 +149,13 @@ public class Clock {
                 turn++;
                 eventTypes.add(ClockEventType.TURN);
                 // Check end of scenario
-                if (turn > finalTurn) {
+                if (turn == finalTurn) {
                     eventTypes.add(ClockEventType.FINISHED);
                 }
             }
             // Check new day condition
             if (getNow().get(GregorianCalendar.HOUR_OF_DAY) == 6 && getNow().get(GregorianCalendar.MINUTE) == 0) {
                 eventTypes.add(ClockEventType.DAY);
-//                Logger.getLogger(Clock.class.getName()).log(Level.INFO, "New day ! Turn = {0}, Time = {1}", new Object[]{turn, toString()});
             }
             getEngine().update(new ClockEvent(eventTypes));
         }

@@ -9,14 +9,13 @@ import ares.data.jaxb.Emphasis;
 import ares.engine.action.Action;
 import ares.engine.action.ActionSpace;
 import ares.engine.action.ActionType;
-import ares.engine.command.TacticalMission;
-import ares.engine.command.TacticalMissionType;
+import ares.engine.command.tactical.TacticalMission;
 import ares.engine.knowledge.KnowledgeCategory;
 import ares.engine.movement.MovementType;
 import ares.platform.model.ModelProvider;
 import ares.platform.model.UserRole;
 import ares.platform.util.MathUtils;
-import ares.scenario.Clock;
+import ares.engine.time.Clock;
 import ares.scenario.Scale;
 import ares.scenario.Scenario;
 import ares.scenario.assets.Asset;
@@ -302,7 +301,6 @@ public abstract class Unit implements ModelProvider<UnitModel> {
         range = maxRange;
         updateDerivedValues();
         location.add(this);
-        mission = new TacticalMission(TacticalMissionType.NULL, this);
     }
 
     /**
@@ -402,6 +400,10 @@ public abstract class Unit implements ModelProvider<UnitModel> {
         }
     }
 
+    public void setMission(TacticalMission mission) {
+        this.mission = mission;
+    }
+
     public Map<AssetType, Asset> getAssets() {
         return assets;
     }
@@ -468,6 +470,10 @@ public abstract class Unit implements ModelProvider<UnitModel> {
 
     public int getEndurance() {
         return endurance;
+    }
+
+    public int getStamina() {
+        return endurance * 100 / MAX_ENDURANCE;
     }
 
     public double getAttackStrength() {
@@ -566,14 +572,6 @@ public abstract class Unit implements ModelProvider<UnitModel> {
         return opState;
     }
 
-//    public void recover() {
-//        quality = (2 * proficiency + readiness) / 3;
-//        efficacy = (2 * proficiency + readiness + supply) / 4;
-//        int enduranceRestored = (MAX_ENDURANCE * 200 + MAX_ENDURANCE * readiness + MAX_ENDURANCE * supply) / 400;
-//        endurance = Math.min(endurance + enduranceRestored, enduranceRestored);
-//        maxRange = speed * MAX_ENDURANCE / 90 / 1000;
-//        range = speed * endurance / 90 / 1000;
-//    }
     /**
      * Compares two units in terms of the turn of entry
      */
@@ -638,17 +636,16 @@ public abstract class Unit implements ModelProvider<UnitModel> {
     }
 
     public String toStringMultiline() {
-        StringBuilder sb = new StringBuilder(name).append(" (").append(echelon).append(')').append('\n');
+        StringBuilder sb = new StringBuilder();
+        sb.append(name).append(" (").append(echelon).append(')').append('\n');
         sb.append("Belongs to ").append(formation).append(" (").append(force).append(")\n");
         sb.append("Unit type: ").append(type).append('\n');
         sb.append("Location: ").append(location).append('\n');
         sb.append("Movement: ").append(movement).append(" (").append(speed * 60.0 / 1000).append(" Km/h)\n");
         sb.append("OpState: ").append(opState).append('\n');
-        sb.append("Stamina: ").append(endurance * 100 / MAX_ENDURANCE).append('\n');
+        sb.append("Stamina: ").append(getStamina()).append('\n');
 //        sb.append("Endurance: ").append(endurance).append(" / ").append(MAX_ENDURANCE).append('\n');
-        sb.append("Mission: ").append(mission.getType()).append('\n');
-        sb.append("Action: ").append(mission.getCurrentAction()).append('\n');
-        sb.append("Pending: ").append(mission.getPendingActions()).append('\n');
+        sb.append(mission.toStringMultiline());
         sb.append("Proficiency: ").append(proficiency).append('\n');
         sb.append("Readiness: ").append(readiness).append('\n');
         sb.append("Supply: ").append(supply).append('\n');
@@ -699,8 +696,8 @@ public abstract class Unit implements ModelProvider<UnitModel> {
     }
 
     /**
-     * Returns true if the {@link #unit} has enough endurance to perform the action. The answer depends on the current {@link #endurance} of the
-     * unit as well as the {@link ActionType} passed as a parameter provided
+     * Returns true if the {@link #unit} has enough endurance to perform the action. The answer depends on the current
+     * {@link #endurance} of the unit as well as the {@link ActionType} passed as a parameter provided
      *
      * @param type
      * @return

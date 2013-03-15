@@ -2,7 +2,7 @@ package ares.engine.action.actions;
 
 import ares.engine.action.AbstractAction;
 import ares.engine.action.ActionType;
-import ares.scenario.Clock;
+import ares.engine.time.Clock;
 import ares.scenario.TurnLength;
 import ares.scenario.forces.Unit;
 

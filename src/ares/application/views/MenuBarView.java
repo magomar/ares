@@ -35,8 +35,9 @@ public class MenuBarView extends AbstractView<JMenuBar> implements CommandBarVie
                 ComponentFactory.menuItem(ViewCommands.SHOW_GRID, this),
                 ComponentFactory.menuItem(ViewCommands.HIDE_UNITS, this));
         JMenu engineMenu = ComponentFactory.menu(AresMenus.ENGINE_MENU, false,
-                ComponentFactory.menuItem(EngineCommands.START, this),
-                ComponentFactory.menuItem(EngineCommands.NEXT, this, false),
+//                ComponentFactory.menuItem(EngineCommands.RESUME, this, false),
+                ComponentFactory.menuItem(EngineCommands.TURN, this, true),
+                ComponentFactory.menuItem(EngineCommands.STEP, this, true),
                 ComponentFactory.menuItem(EngineCommands.PAUSE, this, false));
         JMenuBar jmenuBar = ComponentFactory.menuBar(fileMenu, viewMenu, engineMenu);
         return jmenuBar;

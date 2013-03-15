@@ -1,4 +1,4 @@
-package ares.engine.command;
+package ares.engine.command.commander;
 
 /**
  *

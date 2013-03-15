@@ -1,7 +1,7 @@
 package ares.engine.action;
 
 import ares.scenario.forces.Unit;
-import ares.scenario.Clock;
+import ares.engine.time.Clock;
 import ares.scenario.forces.OpState;
 import java.util.Comparator;
 
