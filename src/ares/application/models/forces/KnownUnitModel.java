@@ -1,5 +1,6 @@
 package ares.application.models.forces;
 
+import ares.engine.command.TacticalMission;
 import ares.engine.knowledge.KnowledgeCategory;
 import ares.scenario.forces.Unit;
 
@@ -15,5 +16,10 @@ public final class KnownUnitModel extends IdentifiedUnitModel {
 
     public int getStamina() {
         return unit.getEndurance() * 100 / Unit.MAX_ENDURANCE;
+    }
+    
+    @Override
+    public TacticalMission getTacticalMission() {
+        return unit.getMission();
     }
 }

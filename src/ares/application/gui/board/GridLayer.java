@@ -1,7 +1,7 @@
 package ares.application.gui.board;
 
 import ares.application.gui.AbstractImageLayer;
-import ares.application.models.board.BoardGraphicsModel;
+import ares.application.graphics.BoardGraphicsModel;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.lang.ref.SoftReference;
@@ -29,7 +29,7 @@ public class GridLayer extends AbstractImageLayer {
     private void paintTile(int x, int y) {
         Graphics2D g2 = globalImage.createGraphics();
         if (hexImage.get() == null) {
-            hexImage = new SoftReference<>(loadImage(BoardGraphicsModel.getImageProfile().getGridHexFilename()));
+            hexImage = new SoftReference<>(loadImage(BoardGraphicsModel.getImageProfile().getGridHexFile()));
         }
         g2.drawImage(hexImage.get(), x, y, null);
         repaint(x, y, hexImage.get().getWidth(), hexImage.get().getHeight());

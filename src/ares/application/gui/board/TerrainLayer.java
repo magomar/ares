@@ -1,5 +1,6 @@
 package ares.application.gui.board;
 
+import ares.application.graphics.BoardGraphicsModel;
 import ares.application.gui.AbstractImageLayer;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.*;

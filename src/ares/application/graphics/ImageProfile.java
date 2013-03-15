@@ -1,10 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-package ares.io;
+package ares.application.graphics;
 
 import ares.application.gui.UnitIcons;
+import ares.io.AresPaths;
 import ares.scenario.board.Terrain;
 import java.io.File;
 
@@ -17,7 +14,7 @@ public enum ImageProfile {
     // Units (Width,Height,Rows,Cols,Square side), Terran(W,H,R,C), Hex(Diam,Side,Offset,Height,rise), Path
     SMALL(272, 128, 8, 16,/*17x16*/ 0, 270, 192, 8, 10, 27, 13, 21, 22, 0.0, AresPaths.GRAPHICS_SMALL.getPath()),
     MEDIUM(496, 248, 8, 16, 31, 510, 352, 8, 10, 51, 28, 39, 44, 1.833, AresPaths.GRAPHICS_MEDIUM.getPath()),
-    HIGH(992, 446, 8, 16, 62, 1020, 704, 8, 10, 102, 51, 78, 88, 1.833, AresPaths.GRAPHICS_HIGH.getPath()),;
+    HIGH(992, 446, 8, 16, 62, 1020, 704, 8, 10, 102, 51, 78, 88, 1.833, AresPaths.GRAPHICS_HIGH.getPath());
     private final int unitsImageWidth;
     private final int unitsImageHeight;
     private final int unitsImageRows;
@@ -32,7 +29,7 @@ public enum ImageProfile {
     private final int hexOffset;
     private final int hexHeight;
     private final double hexRise;
-    private String path;
+    private final String path;
 
     /**
      *
@@ -228,19 +225,33 @@ public enum ImageProfile {
      *
      * @return grid hexagon file
      */
-    public File getGridHexFilename() {
+    public File getGridHexFile() {
         return new File(path, "Hexoutline.png");
     }
 
     /**
      *
-     * @return movement arrows image filename
+     * @return the file containing arrow images
      */
-    public File getArrowFilename() {
-        return new File(path, "Movement_arrows.png");
+    public File getArrowFile(ArrowType arrowType) {
+        String baseFilename = arrowType.getFilename();
+        switch (this) {
+            case SMALL:
+                return null;
+            case MEDIUM:
+                return new File(path, baseFilename);
+            case HIGH:
+                return new File(path, "h_" + baseFilename);
+            default:
+                throw new AssertionError("Assertion failed: unkown image profile " + this);
+        }
     }
 
-    public File getBrassCursorFilename() {
+    /**
+     *
+     * @return the file with the brass cursor image
+     */
+    public File getBrassCursorFile() {
         String baseFilename = "brass_cursor.png";
         switch (this) {
             case SMALL:
@@ -254,7 +265,11 @@ public enum ImageProfile {
         }
     }
 
-    public File getSteelCursorFilename() {
+    /**
+     *
+     * @return the file with the steel cursor image
+     */
+    public File getSteelCursorFile() {
         String baseFilename = "steel_cursor.png";
         switch (this) {
             case SMALL:
@@ -274,9 +289,7 @@ public enum ImageProfile {
      * @return the terrain filename based on the Image Profile
      */
     public String getTerrainFilename(Terrain terrain) {
-
         switch (this) {
-
             case SMALL:
                 return terrain.getGraphicFileSmall();
             case MEDIUM:
@@ -293,7 +306,7 @@ public enum ImageProfile {
      * @param icons
      * @return unit template image filename based on the Image Profile
      */
-    public String getUnitIconsFileName(UnitIcons icons) {
+    public String getUnitIconsFilename(UnitIcons icons) {
 
         switch (this) {
             case SMALL:

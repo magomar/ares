@@ -88,6 +88,10 @@ public abstract class MoveAction extends AbstractAction {
         }
     }
 
+    public Path getPath() {
+        return path;
+    }
+
     @Override
     public String toString() {
         return super.toString() + "\n From " + path.getFirst() + " to " + path.getLast() + " at " + (speed * 60.0 / 1000) + " km/h";

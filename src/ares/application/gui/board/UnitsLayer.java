@@ -1,5 +1,6 @@
 package ares.application.gui.board;
 
+import ares.application.graphics.BoardGraphicsModel;
 import ares.application.gui.AbstractImageLayer;
 import ares.application.gui.UnitIcons;
 import ares.application.models.ScenarioModel;
@@ -186,7 +187,7 @@ public class UnitsLayer extends AbstractImageLayer {
         SoftReference<BufferedImage> softImage = unitBufferMap.get(uc);
         //If image doesn't exist or has been GC'ed
         if (softImage == null || softImage.get() == null) {
-            String filename = BoardGraphicsModel.getImageProfile().getUnitIconsFileName(uc);
+            String filename = BoardGraphicsModel.getImageProfile().getUnitIconsFilename(uc);
             BufferedImage i = loadImage(AresIO.ARES_IO.getFile(BoardGraphicsModel.getImageProfile().getPath(), filename));
             unitBufferMap.put(uc, new SoftReference<>(i));
         }

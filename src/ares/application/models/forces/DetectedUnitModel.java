@@ -2,6 +2,8 @@ package ares.application.models.forces;
 
 import ares.application.gui.UnitIcons;
 import ares.application.models.board.TileModel;
+import ares.engine.algorithms.routing.Path;
+import ares.engine.command.TacticalMission;
 import ares.engine.knowledge.KnowledgeCategory;
 import ares.scenario.forces.*;
 
@@ -56,5 +58,10 @@ public class DetectedUnitModel extends UnitModel {
     @Override
     public String getDescription() {
         return unit.getType().name();
+    }
+
+    @Override
+    public TacticalMission getTacticalMission() {
+        return null;
     }
 }

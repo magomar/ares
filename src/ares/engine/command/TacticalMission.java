@@ -74,8 +74,10 @@ public class TacticalMission {
                     currentAction = null;
                     break;
                 default:
-                    if (!currentAction.canBeExecuted() && currentAction.getType() != ActionType.WAIT) {
-                        pendingActions.push(currentAction);
+                    if (!currentAction.canBeExecuted()) {
+                        if (currentAction.getType() != ActionType.WAIT) {
+                            pendingActions.push(currentAction);
+                        }
                         currentAction = null;
                         break;
                     }

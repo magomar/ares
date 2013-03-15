@@ -1,5 +1,6 @@
 package ares.application.views;
 
+import ares.application.graphics.BoardGraphicsModel;
 import ares.application.boundaries.view.BoardViewer;
 import ares.application.gui.ImageLayer;
 import ares.application.gui.board.ArrowLayer;
@@ -11,12 +12,18 @@ import ares.application.models.ScenarioModel;
 import ares.application.models.board.*;
 import ares.application.models.forces.FormationModel;
 import ares.application.models.forces.UnitModel;
+import ares.engine.action.Action;
+import ares.engine.action.actions.MoveAction;
 import ares.engine.algorithms.routing.Path;
+import ares.engine.command.TacticalMission;
 import ares.platform.view.AbstractView;
 import java.awt.*;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-import javax.swing.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import javax.swing.JLayeredPane;
+import javax.swing.JScrollPane;
 
 /**
  *
@@ -145,6 +152,16 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
     @Override
     public void updateSelectedUnit(UnitModel selectedUnit, FormationModel formation, ScenarioModel scenario) {
         selectionLayer.paintSelectedUnit(selectedUnit, formation);
+        Collection<Path> paths = new ArrayList<>();
+        for (UnitModel unit : formation.getUnitModels()) {
+            TacticalMission mission = unit.getTacticalMission();
+            Action action = mission.getCurrentAction();
+            if (action instanceof MoveAction) {
+                MoveAction move = (MoveAction) action;
+                paths.add(move.getPath());
+            }
+        }
+        arrowLayer.paintArrows(paths);
     }
 
     @Override

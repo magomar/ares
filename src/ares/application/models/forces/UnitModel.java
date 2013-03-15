@@ -2,6 +2,8 @@ package ares.application.models.forces;
 
 import ares.application.gui.UnitIcons;
 import ares.application.models.board.TileModel;
+import ares.engine.algorithms.routing.Path;
+import ares.engine.command.TacticalMission;
 import ares.engine.knowledge.KnowledgeCategory;
 import ares.engine.movement.MovementType;
 import ares.platform.model.KnowledgeMediatedModel;
@@ -34,6 +36,8 @@ public abstract class UnitModel extends KnowledgeMediatedModel {
     public abstract String getForce();
 
     public abstract String getDescription();
+    
+    public abstract TacticalMission getTacticalMission();
 
     public MovementType getMovement() {
         return unit.getMovement();

@@ -1,6 +1,6 @@
 package ares.application.gui;
 
-import ares.application.models.board.BoardGraphicsModel;
+import ares.application.graphics.BoardGraphicsModel;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
@@ -41,7 +41,7 @@ public abstract class AbstractImageLayer extends javax.swing.JPanel implements I
      * Loads an image from file
      *
      * @param file
-     * @return
+     * @return the image
      */
     protected static BufferedImage loadImage(File file) {
         BufferedImage i = null;

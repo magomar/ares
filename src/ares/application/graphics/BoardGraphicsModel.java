@@ -1,7 +1,7 @@
-package ares.application.models.board;
+package ares.application.graphics;
 
 import ares.application.gui.AbstractImageLayer;
-import ares.io.ImageProfile;
+import ares.application.graphics.ImageProfile;
 import ares.scenario.board.Board;
 import java.awt.Point;
 

@@ -1,5 +1,7 @@
 package ares.application.gui.board;
 
+import ares.application.graphics.ArrowType;
+import ares.application.graphics.BoardGraphicsModel;
 import ares.application.gui.AbstractImageLayer;
 import ares.application.models.board.*;
 import ares.engine.algorithms.routing.*;
@@ -17,54 +19,93 @@ import java.util.*;
  */
 public class ArrowLayer extends AbstractImageLayer {
 
-    private SoftReference<BufferedImage> arrowImage = new SoftReference<>(null);
+    private SoftReference<BufferedImage> arrowImageUnit = new SoftReference<>(null);
+    private SoftReference<BufferedImage> arrowImageFormation = new SoftReference<>(null);
     private final static Map<Integer, Point> imageIndexes = fillIndexMap();
-    private Path path;
+    private Path currentPath;
+    private Collection<Path> plannedPaths;
 
     public ArrowLayer(AbstractImageLayer parentLayer) {
         super(parentLayer);
+        plannedPaths = new ArrayList<>();
     }
 
     @Override
     protected void updateLayer() {
         initialize();
+        for (Path path : plannedPaths) {
+            paintArrow(path, ArrowType.CURRENT_ORDERS);
+        }
+        paintArrow(currentPath, ArrowType.GIVING_ORDERS);
+    }
+
+    private void paintArrow(Path path, ArrowType type) {
         if (path == null) {
-            //TODO set mouse icon to X or something
             return;
         }
         // Paint the last segment of the arrow
         Node last = path.getLast();
-        paintTile(last.getTile(), getDirectionToImageIndex(last.getDirection()));
+        paintTile(last.getTile(), getDirectionToImageIndex(last.getDirection()), type);
         // Paint the other segments
         for (Node current = last.getPrev(); current != null; last = current, current = last.getPrev()) {
             Direction from = current.getDirection();
             Direction to = last.getDirection().getOpposite();
-            paintTile(current.getTile(), getDirectionToImageIndex(from, to));
+            paintTile(current.getTile(), getDirectionToImageIndex(from, to), type);
         }
     }
 
-    public void paintArrow(Path path) {
-        this.path = path;
+    /**
+     * Paints complete arrow for the {@code path} passed as argument
+     *
+     * @param currentPath
+     */
+    public void paintArrow(Path currentPath) {
+        this.currentPath = currentPath;
         updateLayer();
     }
 
     /**
-     * Paints an arrow segment in the <code>tile</code> passed as parameter
+     * Paints complete arrow for the {@code path} passed as argument
+     *
+     * @param path
+     */
+    public void paintArrows(Collection<Path> plannedPaths) {
+        this.plannedPaths = plannedPaths;
+        updateLayer();
+    }
+
+    /**
+     * Paints a single arrow segment in the {@code tile} passed as argument, using the graphic identified by the
+     * {@code index} passed
      *
      * @param tile the tile where to paint an Arrow
      * @param index the position of the arrow segment within the array of arrow images
      */
-    private void paintTile(Tile tile, Integer index) {
+    private void paintTile(Tile tile, Integer index, ArrowType type) {
         Point subImagePos = imageIndexes.get(index);
         if (subImagePos != null) {
             Graphics2D g2 = globalImage.createGraphics();
-
-            if (arrowImage.get() == null) {
-                arrowImage = new SoftReference<>(loadImage(BoardGraphicsModel.getImageProfile().getArrowFilename()));
+            BufferedImage arrowImage = null;
+            switch (type) {
+                case GIVING_ORDERS:
+                    if (arrowImageUnit.get() == null) {
+                        arrowImageUnit = new SoftReference<>(loadImage(BoardGraphicsModel.getImageProfile().getArrowFile(type)));
+                    }
+                    arrowImage = arrowImageUnit.get();
+                    break;
+                case CURRENT_ORDERS:
+                    if (arrowImageFormation.get() == null) {
+                        arrowImageFormation = new SoftReference<>(loadImage(BoardGraphicsModel.getImageProfile().getArrowFile(type)));
+                    }
+                    arrowImage = arrowImageFormation.get();
+                    break;
+                default:
+                    throw new AssertionError("Assertion failed: unkown image profile " + this);
             }
+
             // Y attribute contains number of columns, X contains rows
             Point subImagePixel = new Point(subImagePos.y * BoardGraphicsModel.getHexDiameter(), subImagePos.x * BoardGraphicsModel.getHexHeight());
-            BufferedImage image = arrowImage.get().getSubimage(subImagePixel.x, subImagePixel.y, BoardGraphicsModel.getHexDiameter(), BoardGraphicsModel.getHexHeight());
+            BufferedImage image = arrowImage.getSubimage(subImagePixel.x, subImagePixel.y, BoardGraphicsModel.getHexDiameter(), BoardGraphicsModel.getHexHeight());
             Point pos = BoardGraphicsModel.tileToPixel(tile.getCoordinates());
             g2.drawImage(image, pos.x, pos.y, null);
             repaint(pos.x, pos.y, BoardGraphicsModel.getHexDiameter(), BoardGraphicsModel.getHexHeight());
@@ -137,5 +178,4 @@ public class ArrowLayer extends AbstractImageLayer {
 
         return map;
     }
-
 }
