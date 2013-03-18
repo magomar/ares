@@ -10,7 +10,7 @@ import ares.engine.time.ClockEvent;
 import ares.engine.time.ClockEventType;
 import ares.engine.RealTimeEngine;
 import ares.platform.controllers.AbstractSecondaryController;
-import ares.scenario.Clock;
+import ares.engine.time.Clock;
 import ares.scenario.Scenario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -42,9 +42,10 @@ public final class EngineController extends AbstractSecondaryController implemen
         this.infoView = mainController.getInfoView();
         LOG.addHandler(messagesView.getHandler());
 
-        menuView.addActionListener(EngineCommands.START.name(), new StartActionListener());
+//        menuView.addActionListener(EngineCommands.RESUME.name(), new ResumeActionListener());
         menuView.addActionListener(EngineCommands.PAUSE.name(), new PauseActionListener());
-        menuView.addActionListener(EngineCommands.NEXT.name(), new NextActionListener());
+        menuView.addActionListener(EngineCommands.TURN.name(), new NextTurnActionListener());
+        menuView.addActionListener(EngineCommands.STEP.name(), new NextStepActionListener());
 
         //Add change listeners to entities
         engine = mainController.getEngine();
@@ -61,7 +62,8 @@ public final class EngineController extends AbstractSecondaryController implemen
             infoView.updateScenInfo(scenInfo);
             if (clockEvent.getEventTypes().contains(ClockEventType.TURN)) {
                 menuView.setCommandEnabled(EngineCommands.PAUSE.getName(), false);
-                menuView.setCommandEnabled(EngineCommands.NEXT.getName(), true);
+                menuView.setCommandEnabled(EngineCommands.TURN.getName(), true);
+                menuView.setCommandEnabled(EngineCommands.STEP.getName(), true);
             }
         }
     }
@@ -70,37 +72,49 @@ public final class EngineController extends AbstractSecondaryController implemen
         return engine;
     }
 
-    class StartActionListener implements ActionListener {
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            LOG.log(MessagesHandler.MessageLevel.ENGINE, e.toString());
-            engine.start();
-            menuView.setCommandEnabled(EngineCommands.START.getName(), false);
-            menuView.setCommandEnabled(EngineCommands.PAUSE.getName(), true);
-        }
-    }
+//    class ResumeActionListener implements ActionListener {
+//
+//        @Override
+//        public void actionPerformed(ActionEvent e) {
+//            LOG.log(MessagesHandler.MessageLevel.ENGINE, e.toString());
+//            engine.resume();
+//            menuView.setCommandEnabled(EngineCommands.RESUME.getName(), false);
+//            menuView.setCommandEnabled(EngineCommands.PAUSE.getName(), true);
+//            menuView.setCommandEnabled(EngineCommands.STEP.getName(), false);
+//        }
+//    }
 
     class PauseActionListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
             LOG.log(MessagesHandler.MessageLevel.ENGINE, e.toString());
-            engine.stop();
-            menuView.setCommandEnabled(EngineCommands.START.getName(), true);
+            engine.pause();
             menuView.setCommandEnabled(EngineCommands.PAUSE.getName(), false);
+            menuView.setCommandEnabled(EngineCommands.TURN.getName(), true);
+            menuView.setCommandEnabled(EngineCommands.STEP.getName(), true);
         }
     }
 
-    class NextActionListener implements ActionListener {
+    class NextTurnActionListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
             messagesView.clear();
             LOG.log(MessagesHandler.MessageLevel.ENGINE, e.toString());
             menuView.setCommandEnabled(EngineCommands.PAUSE.getName(), true);
-            menuView.setCommandEnabled(EngineCommands.NEXT.getName(), false);
-            engine.start();
+            menuView.setCommandEnabled(EngineCommands.TURN.getName(), false);
+            menuView.setCommandEnabled(EngineCommands.STEP.getName(), false);
+            engine.resume();
+        }
+    }
+
+    class NextStepActionListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            LOG.log(MessagesHandler.MessageLevel.ENGINE, e.toString());
+            engine.step();
         }
     }
 }

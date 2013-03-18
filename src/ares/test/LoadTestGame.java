@@ -25,7 +25,7 @@ public class LoadTestGame {
         Scenario scenario = getTestScenario(fileName);
         RealTimeEngine engine = new RealTimeEngine();
         engine.setScenario(scenario);
-        engine.start();
+        engine.resume();
     }
 
     public static Scenario getTestScenario(String fileName) {

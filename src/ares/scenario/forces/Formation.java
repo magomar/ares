@@ -4,12 +4,12 @@ import ares.application.models.forces.FormationModel;
 import ares.data.jaxb.Emphasis;
 import ares.data.jaxb.Formation.Track;
 import ares.data.jaxb.SupportScope;
-import ares.engine.algorithms.planning.Planner;
+import ares.engine.algorithms.routing.PathFinder;
 import ares.engine.command.Objective;
-import ares.engine.command.OperationType;
-import ares.engine.command.OperationalPlan;
-import ares.engine.command.OperationalPlanFactory;
-import ares.engine.command.OperationalStance;
+import ares.engine.command.operational.OperationType;
+import ares.engine.command.operational.OperationalPlan;
+import ares.engine.command.operational.OperationalPlanFactory;
+import ares.engine.command.operational.OperationalStance;
 import ares.platform.model.ModelProvider;
 import ares.platform.model.UserRole;
 import ares.scenario.Scenario;
@@ -122,11 +122,11 @@ public class Formation implements ModelProvider<FormationModel> {
      * This method makes the formation active, which implies a planing step
      *
      */
-    public void activate(Planner planner) {
+    public void activate(PathFinder pathFinder) {
         for (Unit unit : activeUnits) {
             unit.activate();
         }
-        planner.plan(this);
+        operationalPlan.plan(pathFinder);
     }
 
     public boolean isActive() {
@@ -241,7 +241,7 @@ public class Formation implements ModelProvider<FormationModel> {
         return new FormationModel(this, role);
     }
 
-    public void plan(Planner planner) {
-        planner.plan(this);
+    public void plan(PathFinder pathFinder) {
+        operationalPlan.plan(pathFinder);
     }
 }

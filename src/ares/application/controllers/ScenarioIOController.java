@@ -17,7 +17,7 @@ import ares.platform.application.AbstractAresApplication;
 import ares.platform.controllers.AbstractSecondaryController;
 import ares.platform.model.UserRole;
 import ares.platform.util.AsynchronousOperation;
-import ares.scenario.Clock;
+import ares.engine.time.Clock;
 import ares.scenario.Scenario;
 import ares.scenario.forces.Force;
 import java.awt.event.ActionEvent;
@@ -74,8 +74,7 @@ public final class ScenarioIOController extends AbstractSecondaryController {
             JFileChooser fc = new JFileChooser();
             fc.setCurrentDirectory(AresIO.ARES_IO.getAbsolutePath(AresPaths.SCENARIOS.getPath()).toFile());
             fc.setFileFilter(AresFileType.SCENARIO.getFileTypeFilter());
-//            int returnVal = fc.showOpenDialog(aaa.getContentPane());
-            int returnVal = fc.showOpenDialog(null);
+            int returnVal = fc.showOpenDialog(mainView.getContentPane());
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 File file = fc.getSelectedFile();
                 // Load scenario and equipment files
@@ -129,9 +128,6 @@ public final class ScenarioIOController extends AbstractSecondaryController {
                         + "   Role: " + mainController.getUserRole());
                 menuView.setCommandEnabled(FileCommands.CLOSE_SCENARIO.getName(), true);
                 menuView.setCommandEnabled(AresMenus.ENGINE_MENU.getName(), true);
-                menuView.setCommandEnabled(EngineCommands.START.getName(), true);
-                menuView.setCommandEnabled(EngineCommands.PAUSE.getName(), false);
-                menuView.setCommandEnabled(EngineCommands.NEXT.getName(), false);
                 String scenInfo = scenario.getName() + "\n" + Clock.INSTANCE.toStringVerbose() + "\nRole: " + mainController.getUserRole();
                 infoView.updateScenInfo(scenInfo);
             }

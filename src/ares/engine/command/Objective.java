@@ -1,13 +1,15 @@
 package ares.engine.command;
 
 import ares.scenario.board.Tile;
-import ares.scenario.forces.Force;
+import ares.scenario.forces.Formation;
+import ares.scenario.forces.Unit;
 
 /**
  *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
 public class Objective implements Comparable {
+
     private Tile location;
     private int priority;
     private boolean achieved = false;
@@ -32,9 +34,17 @@ public class Objective implements Comparable {
     public int getPriority() {
         return priority;
     }
-    
-    public boolean isAchieved(Force force) {
-        return location.isAlliedTerritory(force);
+
+    public int getVictoryPoints() {
+        return location.getVictoryPoints();
+    }
+
+    public boolean isAchieved(Formation formation) {
+        if (!location.isAlliedTerritory(formation.getForce())) return false;
+        for (Unit unit : location.getSurfaceUnits()) {
+            if (unit.getFormation().equals(formation)) return true;
+        }
+        return false;
     }
 
     @Override
@@ -47,6 +57,4 @@ public class Objective implements Comparable {
     public String toString() {
         return location.toString();
     }
-
-
 }

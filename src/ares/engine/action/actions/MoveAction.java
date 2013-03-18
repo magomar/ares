@@ -5,7 +5,7 @@ import ares.engine.action.ActionType;
 import ares.engine.algorithms.routing.Node;
 import ares.engine.algorithms.routing.Path;
 import ares.engine.movement.MovementCost;
-import ares.scenario.Clock;
+import ares.engine.time.Clock;
 import ares.scenario.Scale;
 import ares.scenario.board.Direction;
 import ares.scenario.board.Tile;

@@ -1,6 +1,6 @@
 package ares.application.models.forces;
 
-import ares.engine.command.TacticalMission;
+import ares.engine.command.tactical.TacticalMission;
 import ares.engine.knowledge.KnowledgeCategory;
 import ares.scenario.forces.Unit;
 

@@ -13,7 +13,7 @@ import ares.engine.movement.MovementCost;
 import ares.engine.movement.MovementType;
 import ares.platform.model.ModelProvider;
 import ares.platform.model.UserRole;
-import ares.scenario.Clock;
+import ares.engine.time.Clock;
 import ares.scenario.Scenario;
 import ares.scenario.assets.AssetTrait;
 import ares.scenario.forces.AirUnit;
@@ -68,7 +68,7 @@ public final class Tile implements ModelProvider<TileModel> {
     /**
      * Victory points, represented by a positive integer
      */
-    private int vp;
+    private int victoryPoints;
     /**
      * Force in possesion of this tile
      */
@@ -124,7 +124,7 @@ public final class Tile implements ModelProvider<TileModel> {
         Integer dist = c.getDistance();
         distance = (dist != null ? dist : 0);
         Integer victPoints = c.getVP();
-        vp = (victPoints != null ? victPoints : 0);
+        victoryPoints = (victPoints != null ? victPoints : 0);
         units = new UnitsStack(this);
 
         // Initialize terrain information
@@ -308,8 +308,8 @@ public final class Tile implements ModelProvider<TileModel> {
         return visibility;
     }
 
-    public int getVp() {
-        return vp;
+    public int getVictoryPoints() {
+        return victoryPoints;
     }
 
     public Point getCoordinates() {

@@ -2,17 +2,17 @@ package ares.application.controllers;
 
 import ares.application.boundaries.view.BoardViewer;
 import ares.application.boundaries.view.UnitInfoViewer;
+import ares.application.graphics.BoardGraphicsModel;
 import ares.application.interaction.InteractionMode;
 import ares.application.models.ScenarioModel;
-import ares.application.graphics.BoardGraphicsModel;
 import ares.application.models.board.TileModel;
 import ares.application.models.forces.FormationModel;
 import ares.application.models.forces.UnitModel;
 import ares.application.views.MessagesHandler;
 import ares.engine.RealTimeEngine;
-import ares.engine.algorithms.planning.Planner;
 import ares.engine.algorithms.routing.*;
-import ares.engine.command.Objective;
+import ares.engine.command.tactical.TacticalMission;
+import ares.engine.command.tactical.TacticalMissionType;
 import ares.platform.controllers.AbstractSecondaryController;
 import ares.platform.model.UserRole;
 import ares.scenario.Scenario;
@@ -137,12 +137,11 @@ public final class BoardController extends AbstractSecondaryController implement
                 return;
             }
             Scenario scenario = mainController.getScenario();
-            Tile objective = scenario.getBoard().getTile(tilePoint.x, tilePoint.y);
+            Tile targetLocation = scenario.getBoard().getTile(tilePoint.x, tilePoint.y);
 
-            RealTimeEngine engine = mainController.getEngine();
-            Planner planner = engine.getPlanner();
-            selectedUnit.getMission().clearActions();
-            planner.tacticalPlan(selectedUnit, new Objective(objective, 0));
+            TacticalMission mission = TacticalMissionType.OCCUPY.getNewTacticalMission(selectedUnit, targetLocation, pathFinder);
+            selectedUnit.setMission(mission);
+
         }
     }
 

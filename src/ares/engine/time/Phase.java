@@ -14,25 +14,30 @@ public enum Phase {
             engine.perceive();
         }
     },
-    ACT {
-        @Override
-        public void run(RealTimeEngine engine) {
-            engine.act();
-
-        }
-    },
     SCHEDULE {
         @Override
         public void run(RealTimeEngine engine) {
             engine.schedule();
         }
+    },
+    ACT
+    {
+        @Override
+        public void run
+        (RealTimeEngine engine
+        
+            ) {
+            engine.act();
+
+        }
     };
+
     private Phase next;
 
     static {
-        PERCEIVE.next = ACT;
-        ACT.next = SCHEDULE;
-        SCHEDULE.next = PERCEIVE;
+        PERCEIVE.next = SCHEDULE;
+        SCHEDULE.next = ACT;
+        ACT.next = PERCEIVE;
     }
 
     public abstract void run(final RealTimeEngine engine);

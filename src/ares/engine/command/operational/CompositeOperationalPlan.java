@@ -1,5 +1,6 @@
-package ares.engine.command;
+package ares.engine.command.operational;
 
+import ares.engine.command.Objective;
 import ares.scenario.forces.Formation;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,14 +9,14 @@ import java.util.List;
  *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
-public class CompositePlan extends OperationalPlan {
+public class CompositeOperationalPlan extends OperationalPlan {
 
     /**
      * List of operational plans for subordinated formations
      */
     private List<OperationalPlan> plans;
 
-    public CompositePlan(OperationType type, Formation formation, List<Objective> objectives) {
+    public CompositeOperationalPlan(OperationType type, Formation formation, List<Objective> objectives) {
         super(type, formation, objectives);
         plans = new ArrayList<>();
         for (Formation subordinate : formation.getSubordinates()) {

@@ -1,4 +1,4 @@
-package ares.ai;
+package ares.engine.ai;
 
 import ares.scenario.forces.Unit;
 import java.util.ArrayList;
