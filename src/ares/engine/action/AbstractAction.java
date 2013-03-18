@@ -137,7 +137,6 @@ public abstract class AbstractAction implements Action {
     @Override
     public void commit() {
         // TODO
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**

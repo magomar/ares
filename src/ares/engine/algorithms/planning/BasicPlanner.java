@@ -6,10 +6,12 @@ import ares.engine.action.ActionType;
 import ares.engine.action.actions.ChangeDeploymentAction;
 import ares.engine.action.actions.MoveAction;
 import ares.engine.action.actions.SurfaceMoveAction;
+import ares.engine.action.actions.WaitAction;
 import ares.engine.algorithms.routing.Path;
 import ares.engine.command.Objective;
 import ares.engine.command.OperationalPlan;
 import ares.engine.command.TacticalMission;
+import ares.scenario.board.Tile;
 import ares.scenario.forces.Formation;
 import ares.scenario.forces.Unit;
 import java.util.Queue;
@@ -43,9 +45,14 @@ public class BasicPlanner implements Planner {
         }
     }
 
-
     @Override
     public boolean tacticalPlan(Unit unit, Objective objective) {
+        Tile destination = objective.getLocation();
+        TacticalMission mission = unit.getMission();
+        if (unit.getLocation().equals(destination)) {
+            mission.pushAction(new WaitAction(unit));
+            return true;
+        }
         Path path = engine.getPathFinder().getPath(unit.getLocation(), objective.getLocation());
         if (path == null || path.relink() == -1) {
             LOG.log(Level.WARNING, "No path found for {0}, or path.relink() failed", unit.toString());
@@ -53,7 +60,6 @@ public class BasicPlanner implements Planner {
         }
         LOG.log(Level.INFO, "New path for {0}: {1}", new Object[]{unit.toString(), path.toString()});
         MoveAction move = new SurfaceMoveAction(unit, ActionType.TACTICAL_MARCH, path);
-        TacticalMission mission = unit.getMission();
         mission.pushAction(move);
         if (!move.checkPreconditions()) {
             mission.pushAction(new ChangeDeploymentAction(unit, ActionType.ASSEMBLE));

@@ -1,6 +1,7 @@
 package ares.engine.command;
 
 import ares.engine.action.Action;
+import ares.engine.action.ActionSpace;
 import ares.engine.action.ActionState;
 import ares.engine.action.ActionType;
 import ares.engine.action.actions.RestAction;
@@ -45,7 +46,7 @@ public class TacticalMission {
         this.pendingActions = pendingActions = new LinkedList<>();
     }
 
-    public void commit() {
+    public void commit(ActionSpace actionSpace) {
         currentAction.commit();
     }
 
@@ -116,10 +117,6 @@ public class TacticalMission {
 
     public TacticalMissionType getType() {
         return type;
-    }
-
-    public void addAction(Action action) {
-        pendingActions.add(action);
     }
 
     public void clearActions() {

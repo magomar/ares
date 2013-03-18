@@ -141,20 +141,8 @@ public final class BoardController extends AbstractSecondaryController implement
 
             RealTimeEngine engine = mainController.getEngine();
             Planner planner = engine.getPlanner();
+            selectedUnit.getMission().clearActions();
             planner.tacticalPlan(selectedUnit, new Objective(objective, 0));
-//            Path path = engine.getPathFinder().getPath(selectedUnit.getLocation(), objective);
-//            if (path != null && path.relink() != -1) {
-//                LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, "New path for {0}: {1}", new Object[]{selectedUnit.getName(), path.toString()});
-//                TacticalMission mission = selectedUnit.getMission();
-//                MoveAction moveAction = new SurfaceMoveAction(selectedUnit, ActionType.TACTICAL_MARCH, path);
-//                mission.pushAction(moveAction);
-//                if (!moveAction.checkPreconditions()) {
-//                    mission.pushAction(new ChangeDeploymentAction(selectedUnit, ActionType.ASSEMBLE));
-//                }
-//                clickMouseButton2();
-//            } else {
-//                LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, "No path found for {0}", selectedUnit.getName());
-//            }
         }
     }
 
