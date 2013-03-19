@@ -56,7 +56,7 @@ public class Force implements ModelProvider<ForceModel> {
     public List<Unit> getActiveUnits() {
         List<Unit> activeUnits = new ArrayList<>();
         for (Formation formation : formations) {
-            activeUnits.addAll(formation.getActiveUnits());
+            activeUnits.addAll(formation.getAvailableUnits());
         }
         return activeUnits;
     }

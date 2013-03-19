@@ -3558,9 +3558,14 @@
         "commander" : "General Commander",
         "proficiency" : 75,
         "supply" : 15,
-        "orders" : "FORCE_SECURITY",
-        "emphasis" : "LIMIT_LOSSES",
-        "supportscope" : "ARMY_SUPPORT",
+        "orders" : {
+          "operationalStance" : "DEFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "MINIMIZE_LOSSES",
+          "supportscope" : "ARMY_SUPPORT"
+        },
         "id" : 0
       }, {
         "name" : "111th Pz Brigade",
@@ -3569,25 +3574,30 @@
         "color" : 0,
         "proficiency" : 60,
         "supply" : 60,
-        "orders" : "ATTACK",
-        "emphasis" : "LIMIT_LOSSES",
-        "supportscope" : "ARMY_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 13,
-            "y" : 14,
+        "orders" : {
+          "operationalStance" : "OFFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "LIMIT_LOSSES",
+          "supportscope" : "ARMY_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 13,
+              "y" : 14,
+              "id" : 1
+            }, {
+              "x" : 13,
+              "y" : 12,
+              "id" : 2
+            }, {
+              "x" : 8,
+              "y" : 12,
+              "id" : 3
+            } ],
             "id" : 1
-          }, {
-            "x" : 13,
-            "y" : 12,
-            "id" : 2
-          }, {
-            "x" : 8,
-            "y" : 12,
-            "id" : 3
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "111 Pz Brig HQ",
           "type" : "HEADQUARTERS",
@@ -4066,21 +4076,26 @@
         "color" : 0,
         "proficiency" : 60,
         "supply" : 60,
-        "orders" : "FLANK_REAR_GUARD",
-        "emphasis" : "LIMIT_LOSSES",
-        "supportscope" : "ARMY_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 13,
-            "y" : 12,
+        "orders" : {
+          "operationalStance" : "SECURITY",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "LIMIT_LOSSES",
+          "supportscope" : "ARMY_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 13,
+              "y" : 12,
+              "id" : 1
+            }, {
+              "x" : 7,
+              "y" : 10,
+              "id" : 2
+            } ],
             "id" : 1
-          }, {
-            "x" : 7,
-            "y" : 10,
-            "id" : 2
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "113 Pz Brig HQ",
           "type" : "HEADQUARTERS",
@@ -4567,9 +4582,14 @@
         "commander" : "General Commander",
         "proficiency" : 70,
         "supply" : 30,
-        "orders" : "FORCE_SECURITY",
-        "emphasis" : "LIMIT_LOSSES",
-        "supportscope" : "ARMY_SUPPORT",
+        "orders" : {
+          "operationalStance" : "DEFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "MINIMIZE_LOSSES",
+          "supportscope" : "ARMY_SUPPORT"
+        },
         "id" : 0
       }, {
         "name" : "CCA Support",
@@ -4578,33 +4598,38 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 80,
-        "orders" : "FLANK_REAR_GUARD",
-        "emphasis" : "IGNORE_LOSSES",
-        "supportscope" : "ARMY_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 0,
-            "y" : 12,
+        "orders" : {
+          "operationalStance" : "SECURITY",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "IGNORE_LOSSES",
+          "supportscope" : "ARMY_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 0,
+              "y" : 12,
+              "id" : 1
+            }, {
+              "x" : 4,
+              "y" : 11,
+              "id" : 2
+            }, {
+              "x" : 7,
+              "y" : 10,
+              "id" : 3
+            }, {
+              "x" : 6,
+              "y" : 13,
+              "id" : 4
+            }, {
+              "x" : 8,
+              "y" : 12,
+              "id" : 5
+            } ],
             "id" : 1
-          }, {
-            "x" : 4,
-            "y" : 11,
-            "id" : 2
-          }, {
-            "x" : 7,
-            "y" : 10,
-            "id" : 3
-          }, {
-            "x" : 6,
-            "y" : 13,
-            "id" : 4
-          }, {
-            "x" : 8,
-            "y" : 12,
-            "id" : 5
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "CCA/4 Arm HQ",
           "type" : "HEADQUARTERS",
@@ -4938,21 +4963,26 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 80,
-        "orders" : "FLANK_REAR_GUARD",
-        "emphasis" : "LIMIT_LOSSES",
-        "supportscope" : "FREE_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 2,
-            "y" : 2,
+        "orders" : {
+          "operationalStance" : "SECURITY",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "LIMIT_LOSSES",
+          "supportscope" : "FREE_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 2,
+              "y" : 2,
+              "id" : 1
+            }, {
+              "x" : 8,
+              "y" : 12,
+              "id" : 2
+            } ],
             "id" : 1
-          }, {
-            "x" : 8,
-            "y" : 12,
-            "id" : 2
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "69 FB",
           "type" : "FIGHTER_BOMBER",
@@ -5034,33 +5064,38 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 80,
-        "orders" : "ATTACK",
-        "emphasis" : "IGNORE_LOSSES",
-        "supportscope" : "ARMY_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 0,
-            "y" : 12,
+        "orders" : {
+          "operationalStance" : "OFFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "IGNORE_LOSSES",
+          "supportscope" : "ARMY_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 0,
+              "y" : 12,
+              "id" : 1
+            }, {
+              "x" : 4,
+              "y" : 11,
+              "id" : 2
+            }, {
+              "x" : 7,
+              "y" : 10,
+              "id" : 3
+            }, {
+              "x" : 8,
+              "y" : 12,
+              "id" : 4
+            }, {
+              "x" : 13,
+              "y" : 14,
+              "id" : 5
+            } ],
             "id" : 1
-          }, {
-            "x" : 4,
-            "y" : 11,
-            "id" : 2
-          }, {
-            "x" : 7,
-            "y" : 10,
-            "id" : 3
-          }, {
-            "x" : 8,
-            "y" : 12,
-            "id" : 4
-          }, {
-            "x" : 13,
-            "y" : 14,
-            "id" : 5
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "Lt/37 Tank",
           "type" : "TANK",
@@ -5178,33 +5213,38 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 80,
-        "orders" : "ATTACK",
-        "emphasis" : "IGNORE_LOSSES",
-        "supportscope" : "ARMY_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 0,
-            "y" : 12,
+        "orders" : {
+          "operationalStance" : "OFFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "IGNORE_LOSSES",
+          "supportscope" : "ARMY_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 0,
+              "y" : 12,
+              "id" : 1
+            }, {
+              "x" : 4,
+              "y" : 11,
+              "id" : 2
+            }, {
+              "x" : 6,
+              "y" : 13,
+              "id" : 3
+            }, {
+              "x" : 8,
+              "y" : 12,
+              "id" : 4
+            }, {
+              "x" : 13,
+              "y" : 14,
+              "id" : 5
+            } ],
             "id" : 1
-          }, {
-            "x" : 4,
-            "y" : 11,
-            "id" : 2
-          }, {
-            "x" : 6,
-            "y" : 13,
-            "id" : 3
-          }, {
-            "x" : 8,
-            "y" : 12,
-            "id" : 4
-          }, {
-            "x" : 13,
-            "y" : 14,
-            "id" : 5
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "1/51 Inf",
           "type" : "MECHANIZED",
@@ -5449,29 +5489,34 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 80,
-        "orders" : "AREA_DEFENSE",
-        "emphasis" : "IGNORE_LOSSES",
-        "supportscope" : "ARMY_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 4,
-            "y" : 11,
+        "orders" : {
+          "operationalStance" : "DEFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "IGNORE_LOSSES",
+          "supportscope" : "ARMY_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 4,
+              "y" : 11,
+              "id" : 1
+            }, {
+              "x" : 6,
+              "y" : 13,
+              "id" : 2
+            }, {
+              "x" : 7,
+              "y" : 10,
+              "id" : 3
+            }, {
+              "x" : 8,
+              "y" : 12,
+              "id" : 4
+            } ],
             "id" : 1
-          }, {
-            "x" : 6,
-            "y" : 13,
-            "id" : 2
-          }, {
-            "x" : 7,
-            "y" : 10,
-            "id" : 3
-          }, {
-            "x" : 8,
-            "y" : 12,
-            "id" : 4
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "1/24 Eng",
           "type" : "ARMORED_ENGINEER",

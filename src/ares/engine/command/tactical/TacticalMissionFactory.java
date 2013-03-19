@@ -10,5 +10,4 @@ import ares.scenario.forces.Unit;
  */
 public interface TacticalMissionFactory {
     TacticalMission getNewTacticalMission(Unit unit, Tile target, PathFinder pathFinder);
-//    TacticalMission getNewTacticalMission(Unit unit, Unit target);
 }

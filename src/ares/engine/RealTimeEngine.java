@@ -1,5 +1,6 @@
 package ares.engine;
 
+import ares.data.jaxb.Orders;
 import ares.engine.time.Phase;
 import ares.engine.time.ClockEventType;
 import ares.engine.time.ClockEvent;
@@ -16,7 +17,6 @@ import ares.scenario.forces.Force;
 import ares.scenario.forces.Formation;
 import ares.scenario.forces.Unit;
 import java.util.*;
-import java.util.concurrent.ExecutorService;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -32,7 +32,7 @@ public class RealTimeEngine extends AbstractBean {
     private Scenario scenario;
     private Phase phase;
     /**
-     * List of active units *
+     * List of available (on-board) units *
      */
     private List<Unit> units;
     /**
@@ -51,10 +51,10 @@ public class RealTimeEngine extends AbstractBean {
      * Pathfinder algorithm
      */
     private PathFinder pathFinder;
-    /**
-     * Executor service to perform tasks concurrently (eg. planning)
-     */
-    private ExecutorService executor;
+//    /**
+//     * Executor service to perform tasks concurrently (eg. planning)
+//     */
+//    private ExecutorService executor;
     /**
      * Action space is used to co-locate actions to find a solve interactions, eg. when several units participate in a
      * single combat.
@@ -68,10 +68,10 @@ public class RealTimeEngine extends AbstractBean {
         running = false;
 //        executor = Executors.newCachedThreadPool();
         actionSpace = new ActionSpace();
-        Clock.INSTANCE.setEngine(this);
     }
 
     public void setScenario(Scenario scenario) {
+        Clock.INSTANCE.setEngine(this);
         Scenario oldValue = this.scenario;
         this.scenario = scenario;
         if (scenario != null) {
@@ -79,9 +79,12 @@ public class RealTimeEngine extends AbstractBean {
             for (Force force : scenario.getForces()) {
                 for (Formation formation : force.getFormations()) {
                     formations.add(formation);
-                    units.addAll(formation.getActiveUnits());
-                    formation.activate(pathFinder);
+                    units.addAll(formation.getAvailableUnits());
+                    formation.initialize();
                 }
+            }
+            if (Clock.INSTANCE.getTurn() == 0) {
+                startNewTurn();
             }
         }
         firePropertyChange(SCENARIO_PROPERTY, oldValue, scenario);
@@ -113,6 +116,9 @@ public class RealTimeEngine extends AbstractBean {
         this.clockEvent = clockEvent;
         Set<ClockEventType> clockEventTypes = clockEvent.getEventTypes();
 
+        if (clockEventTypes.contains(ClockEventType.TURN)) {
+            startNewTurn();
+        }
         do {
             phase.run(this);
             phase = phase.getNext();
@@ -122,13 +128,6 @@ public class RealTimeEngine extends AbstractBean {
             LOG.log(Level.INFO, "++++++++++ New Day: {0}", Clock.INSTANCE.getTurn());
             for (Unit unit : units) {
                 unit.updateMaxValues();
-            }
-        }
-        if (clockEventTypes.contains(ClockEventType.TURN)) {
-            LOG.log(Level.INFO, "++++++++++ New Turn: {0}", Clock.INSTANCE.getTurn());
-            running = false;
-            for (Formation formation : formations) {
-                formation.plan(pathFinder);
             }
         }
 
@@ -172,6 +171,20 @@ public class RealTimeEngine extends AbstractBean {
 
         for (Unit unit : units) {
             unit.perceive();
+        }
+    }
+
+    private void startNewTurn() {
+        int turn = Clock.INSTANCE.getTurn();
+        LOG.log(Level.INFO, "++++++++++ New Turn: {0}", turn);
+        running = false;
+        // Check for activation
+        for (Formation formation : formations) {
+            if (!formation.isActive() && formation.mustBeActivated()) {
+                formation.activate();
+                formation.plan(pathFinder);
+            }
+
         }
     }
 

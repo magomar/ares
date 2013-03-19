@@ -219,11 +219,19 @@ public abstract class Unit implements ModelProvider<UnitModel> {
      * becoming exhausted.
      */
     protected int maxRange;
+    /**
+     * Models of the unit for every knowledge category
+     */
     private final Map<KnowledgeCategory, UnitModel> models;
     /**
-     * The actor assigned to this unit
+     * The tactical mission assigned to this unit
      */
     protected TacticalMission mission;
+    /**
+     * Whether the unit is active or not. Only available units may be active. Only active units can take orders.
+     * Non-active units keep their current locations and behave as defending.
+     */
+    protected boolean active;
 
     protected Unit(ares.data.jaxb.Unit unit, Formation formation, Force force, Scenario scenario) {
         id = unit.getId();
@@ -288,19 +296,27 @@ public abstract class Unit implements ModelProvider<UnitModel> {
         models.put(KnowledgeCategory.POOR, new DetectedUnitModel(this));
         models.put(KnowledgeCategory.GOOD, new IdentifiedUnitModel(this));
         models.put(KnowledgeCategory.COMPLETE, new KnownUnitModel(this));
-
+        active = false;
     }
 
     /**
-     * This method makes the unit active, which implies initializing state attributes & placing the unit in the board
-     *
+     * Places the unit on board and initializes its attributes.
      */
-    public void activate() {
+    public void initialize() {
         updateMaxValues();
         endurance = maxEndurance;
         range = maxRange;
         updateDerivedValues();
         location.add(this);
+    }
+
+    /**
+     * Activates the unit.Only active units may execute orders and accept new orders
+     *
+     * @see #active
+     */
+    public void activate() {
+        active = true;
     }
 
     /**

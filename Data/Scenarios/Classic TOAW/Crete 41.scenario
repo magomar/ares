@@ -20678,9 +20678,14 @@
         "commander" : "General Commander",
         "proficiency" : 85,
         "supply" : 15,
-        "orders" : "FORCE_SECURITY",
-        "emphasis" : "LIMIT_LOSSES",
-        "supportscope" : "ARMY_SUPPORT",
+        "orders" : {
+          "operationalStance" : "DEFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "MINIMIZE_LOSSES",
+          "supportscope" : "ARMY_SUPPORT"
+        },
         "id" : 0
       }, {
         "name" : "Abn Assault Rgt",
@@ -20689,37 +20694,42 @@
         "color" : 0,
         "proficiency" : 85,
         "supply" : 65,
-        "orders" : "ATTACK",
-        "emphasis" : "IGNORE_LOSSES",
-        "supportscope" : "FORCE_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 17,
-            "y" : 13,
+        "orders" : {
+          "operationalStance" : "OFFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "IGNORE_LOSSES",
+          "supportscope" : "FORCE_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 17,
+              "y" : 13,
+              "id" : 1
+            }, {
+              "x" : 16,
+              "y" : 11,
+              "id" : 2
+            }, {
+              "x" : 17,
+              "y" : 12,
+              "id" : 3
+            }, {
+              "x" : 19,
+              "y" : 11,
+              "id" : 4
+            }, {
+              "x" : 21,
+              "y" : 12,
+              "id" : 5
+            }, {
+              "x" : 23,
+              "y" : 11,
+              "id" : 6
+            } ],
             "id" : 1
-          }, {
-            "x" : 16,
-            "y" : 11,
-            "id" : 2
-          }, {
-            "x" : 17,
-            "y" : 12,
-            "id" : 3
-          }, {
-            "x" : 19,
-            "y" : 11,
-            "id" : 4
-          }, {
-            "x" : 21,
-            "y" : 12,
-            "id" : 5
-          }, {
-            "x" : 23,
-            "y" : 11,
-            "id" : 6
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "Abn Aslt Rgt HQ",
           "type" : "HEADQUARTERS",
@@ -20978,25 +20988,30 @@
         "color" : 0,
         "proficiency" : 85,
         "supply" : 65,
-        "orders" : "ATTACK",
-        "emphasis" : "IGNORE_LOSSES",
-        "supportscope" : "FORCE_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 76,
-            "y" : 13,
+        "orders" : {
+          "operationalStance" : "OFFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "IGNORE_LOSSES",
+          "supportscope" : "FORCE_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 76,
+              "y" : 13,
+              "id" : 1
+            }, {
+              "x" : 75,
+              "y" : 12,
+              "id" : 2
+            }, {
+              "x" : 72,
+              "y" : 12,
+              "id" : 3
+            } ],
             "id" : 1
-          }, {
-            "x" : 75,
-            "y" : 12,
-            "id" : 2
-          }, {
-            "x" : 72,
-            "y" : 12,
-            "id" : 3
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "1 Para Rgt HQ",
           "type" : "HEADQUARTERS",
@@ -21205,25 +21220,30 @@
         "color" : 0,
         "proficiency" : 85,
         "supply" : 65,
-        "orders" : "ATTACK",
-        "emphasis" : "IGNORE_LOSSES",
-        "supportscope" : "FORCE_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 47,
-            "y" : 16,
+        "orders" : {
+          "operationalStance" : "OFFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "IGNORE_LOSSES",
+          "supportscope" : "FORCE_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 47,
+              "y" : 16,
+              "id" : 1
+            }, {
+              "x" : 47,
+              "y" : 14,
+              "id" : 2
+            }, {
+              "x" : 44,
+              "y" : 14,
+              "id" : 3
+            } ],
             "id" : 1
-          }, {
-            "x" : 47,
-            "y" : 14,
-            "id" : 2
-          }, {
-            "x" : 44,
-            "y" : 14,
-            "id" : 3
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "2 Para Rgt HQ",
           "type" : "HEADQUARTERS",
@@ -21432,25 +21452,30 @@
         "color" : 0,
         "proficiency" : 85,
         "supply" : 65,
-        "orders" : "ATTACK",
-        "emphasis" : "IGNORE_LOSSES",
-        "supportscope" : "FORCE_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 21,
-            "y" : 13,
+        "orders" : {
+          "operationalStance" : "OFFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "IGNORE_LOSSES",
+          "supportscope" : "FORCE_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 21,
+              "y" : 13,
+              "id" : 1
+            }, {
+              "x" : 21,
+              "y" : 12,
+              "id" : 2
+            }, {
+              "x" : 23,
+              "y" : 11,
+              "id" : 3
+            } ],
             "id" : 1
-          }, {
-            "x" : 21,
-            "y" : 12,
-            "id" : 2
-          }, {
-            "x" : 23,
-            "y" : 11,
-            "id" : 3
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "3 Para Rgt HQ",
           "type" : "HEADQUARTERS",
@@ -21653,25 +21678,30 @@
         "color" : 0,
         "proficiency" : 85,
         "supply" : 65,
-        "orders" : "ATTACK",
-        "emphasis" : "IGNORE_LOSSES",
-        "supportscope" : "FORCE_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 23,
-            "y" : 14,
+        "orders" : {
+          "operationalStance" : "OFFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "IGNORE_LOSSES",
+          "supportscope" : "FORCE_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 23,
+              "y" : 14,
+              "id" : 1
+            }, {
+              "x" : 23,
+              "y" : 13,
+              "id" : 2
+            }, {
+              "x" : 26,
+              "y" : 11,
+              "id" : 3
+            } ],
             "id" : 1
-          }, {
-            "x" : 23,
-            "y" : 13,
-            "id" : 2
-          }, {
-            "x" : 26,
-            "y" : 11,
-            "id" : 3
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "7 Para Div HQ",
           "type" : "HEADQUARTERS",
@@ -21842,21 +21872,26 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 65,
-        "orders" : "ATTACK",
-        "emphasis" : "LIMIT_LOSSES",
-        "supportscope" : "FORCE_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 16,
-            "y" : 11,
+        "orders" : {
+          "operationalStance" : "OFFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "LIMIT_LOSSES",
+          "supportscope" : "FORCE_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 16,
+              "y" : 11,
+              "id" : 1
+            }, {
+              "x" : 18,
+              "y" : 12,
+              "id" : 2
+            } ],
             "id" : 1
-          }, {
-            "x" : 18,
-            "y" : 12,
-            "id" : 2
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "5 Mtn Div HQ",
           "type" : "HEADQUARTERS",
@@ -21900,25 +21935,30 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 65,
-        "orders" : "ATTACK",
-        "emphasis" : "LIMIT_LOSSES",
-        "supportscope" : "FORCE_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 16,
-            "y" : 11,
+        "orders" : {
+          "operationalStance" : "OFFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "LIMIT_LOSSES",
+          "supportscope" : "FORCE_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 16,
+              "y" : 11,
+              "id" : 1
+            }, {
+              "x" : 18,
+              "y" : 13,
+              "id" : 2
+            }, {
+              "x" : 23,
+              "y" : 13,
+              "id" : 3
+            } ],
             "id" : 1
-          }, {
-            "x" : 18,
-            "y" : 13,
-            "id" : 2
-          }, {
-            "x" : 23,
-            "y" : 13,
-            "id" : 3
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "85 Mtn Rgt HQ",
           "type" : "HEADQUARTERS",
@@ -22128,33 +22168,38 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 65,
-        "orders" : "ATTACK",
-        "emphasis" : "IGNORE_LOSSES",
-        "supportscope" : "FORCE_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 16,
-            "y" : 11,
+        "orders" : {
+          "operationalStance" : "OFFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "IGNORE_LOSSES",
+          "supportscope" : "FORCE_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 16,
+              "y" : 11,
+              "id" : 1
+            }, {
+              "x" : 19,
+              "y" : 12,
+              "id" : 2
+            }, {
+              "x" : 21,
+              "y" : 12,
+              "id" : 3
+            }, {
+              "x" : 23,
+              "y" : 11,
+              "id" : 4
+            }, {
+              "x" : 26,
+              "y" : 11,
+              "id" : 5
+            } ],
             "id" : 1
-          }, {
-            "x" : 19,
-            "y" : 12,
-            "id" : 2
-          }, {
-            "x" : 21,
-            "y" : 12,
-            "id" : 3
-          }, {
-            "x" : 23,
-            "y" : 11,
-            "id" : 4
-          }, {
-            "x" : 26,
-            "y" : 11,
-            "id" : 5
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "100 Mtn Rgt HQ",
           "type" : "HEADQUARTERS",
@@ -22364,17 +22409,22 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 85,
-        "orders" : "ATTACK",
-        "emphasis" : "LIMIT_LOSSES",
-        "supportscope" : "FREE_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 16,
-            "y" : 11,
+        "orders" : {
+          "operationalStance" : "OFFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "LIMIT_LOSSES",
+          "supportscope" : "FREE_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 16,
+              "y" : 11,
+              "id" : 1
+            } ],
             "id" : 1
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "StG1",
           "type" : "FIGHTER_BOMBER",
@@ -22660,17 +22710,22 @@
         "color" : 0,
         "proficiency" : 60,
         "supply" : 75,
-        "orders" : "ATTACK",
-        "emphasis" : "LIMIT_LOSSES",
-        "supportscope" : "FORCE_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 75,
-            "y" : 12,
+        "orders" : {
+          "operationalStance" : "OFFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "LIMIT_LOSSES",
+          "supportscope" : "FORCE_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 75,
+              "y" : 12,
+              "id" : 1
+            } ],
             "id" : 1
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "41 Gruppo AS",
           "type" : "FIGHTER_BOMBER",
@@ -22808,9 +22863,14 @@
         "commander" : "General Commander",
         "proficiency" : 65,
         "supply" : 18,
-        "orders" : "FORCE_SECURITY",
-        "emphasis" : "LIMIT_LOSSES",
-        "supportscope" : "ARMY_SUPPORT",
+        "orders" : {
+          "operationalStance" : "DEFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "MINIMIZE_LOSSES",
+          "supportscope" : "ARMY_SUPPORT"
+        },
         "id" : 0
       }, {
         "name" : "Suda Bay Brigade",
@@ -22819,17 +22879,22 @@
         "color" : 0,
         "proficiency" : 75,
         "supply" : 65,
-        "orders" : "AREA_DEFENSE",
-        "emphasis" : "LIMIT_LOSSES",
-        "supportscope" : "FORCE_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 23,
-            "y" : 11,
+        "orders" : {
+          "operationalStance" : "DEFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "LIMIT_LOSSES",
+          "supportscope" : "FORCE_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 23,
+              "y" : 11,
+              "id" : 1
+            } ],
             "id" : 1
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "Suda Bay Bde HQ",
           "type" : "HEADQUARTERS",
@@ -22992,17 +23057,22 @@
         "color" : 0,
         "proficiency" : 75,
         "supply" : 65,
-        "orders" : "AREA_DEFENSE",
-        "emphasis" : "LIMIT_LOSSES",
-        "supportscope" : "FORCE_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 26,
-            "y" : 11,
+        "orders" : {
+          "operationalStance" : "DEFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "LIMIT_LOSSES",
+          "supportscope" : "FORCE_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 26,
+              "y" : 11,
+              "id" : 1
+            } ],
             "id" : 1
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "MNDO HQ",
           "type" : "HEADQUARTERS",
@@ -23175,25 +23245,30 @@
         "color" : 0,
         "proficiency" : 75,
         "supply" : 65,
-        "orders" : "AREA_DEFENSE",
-        "emphasis" : "LIMIT_LOSSES",
-        "supportscope" : "FREE_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 26,
-            "y" : 9,
+        "orders" : {
+          "operationalStance" : "DEFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "LIMIT_LOSSES",
+          "supportscope" : "FREE_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 26,
+              "y" : 9,
+              "id" : 1
+            }, {
+              "x" : 24,
+              "y" : 10,
+              "id" : 2
+            }, {
+              "x" : 21,
+              "y" : 12,
+              "id" : 3
+            } ],
             "id" : 1
-          }, {
-            "x" : 24,
-            "y" : 10,
-            "id" : 2
-          }, {
-            "x" : 21,
-            "y" : 12,
-            "id" : 3
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "A Btty, Hv AA",
           "type" : "ANTI_AIRCRAFT",
@@ -23356,21 +23431,26 @@
         "color" : 0,
         "proficiency" : 75,
         "supply" : 65,
-        "orders" : "AREA_DEFENSE",
-        "emphasis" : "LIMIT_LOSSES",
-        "supportscope" : "FORCE_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 72,
-            "y" : 12,
+        "orders" : {
+          "operationalStance" : "DEFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "LIMIT_LOSSES",
+          "supportscope" : "FORCE_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 72,
+              "y" : 12,
+              "id" : 1
+            }, {
+              "x" : 75,
+              "y" : 12,
+              "id" : 2
+            } ],
             "id" : 1
-          }, {
-            "x" : 75,
-            "y" : 12,
-            "id" : 2
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "14 Brigade HQ",
           "type" : "HEADQUARTERS",
@@ -23586,21 +23666,26 @@
         "color" : 0,
         "proficiency" : 75,
         "supply" : 65,
-        "orders" : "AREA_DEFENSE",
-        "emphasis" : "LIMIT_LOSSES",
-        "supportscope" : "FORCE_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 44,
-            "y" : 14,
+        "orders" : {
+          "operationalStance" : "DEFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "LIMIT_LOSSES",
+          "supportscope" : "FORCE_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 44,
+              "y" : 14,
+              "id" : 1
+            }, {
+              "x" : 47,
+              "y" : 14,
+              "id" : 2
+            } ],
             "id" : 1
-          }, {
-            "x" : 47,
-            "y" : 14,
-            "id" : 2
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "19 Aust Bde HQ",
           "type" : "HEADQUARTERS",
@@ -23783,21 +23868,26 @@
         "color" : 0,
         "proficiency" : 75,
         "supply" : 65,
-        "orders" : "AREA_DEFENSE",
-        "emphasis" : "LIMIT_LOSSES",
-        "supportscope" : "ARMY_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 45,
-            "y" : 15,
+        "orders" : {
+          "operationalStance" : "DEFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "LIMIT_LOSSES",
+          "supportscope" : "ARMY_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 45,
+              "y" : 15,
+              "id" : 1
+            }, {
+              "x" : 47,
+              "y" : 14,
+              "id" : 2
+            } ],
             "id" : 1
-          }, {
-            "x" : 47,
-            "y" : 14,
-            "id" : 2
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "X Coast Def Bty",
           "type" : "COASTAL_ARTILLERY",
@@ -23876,21 +23966,26 @@
         "color" : 0,
         "proficiency" : 75,
         "supply" : 65,
-        "orders" : "AREA_DEFENSE",
-        "emphasis" : "LIMIT_LOSSES",
-        "supportscope" : "FORCE_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 23,
-            "y" : 11,
+        "orders" : {
+          "operationalStance" : "DEFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "LIMIT_LOSSES",
+          "supportscope" : "FORCE_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 23,
+              "y" : 11,
+              "id" : 1
+            }, {
+              "x" : 21,
+              "y" : 12,
+              "id" : 2
+            } ],
             "id" : 1
-          }, {
-            "x" : 21,
-            "y" : 12,
-            "id" : 2
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "4th NZ Bde HQ",
           "type" : "HEADQUARTERS",
@@ -24012,21 +24107,26 @@
         "color" : 0,
         "proficiency" : 75,
         "supply" : 65,
-        "orders" : "AREA_DEFENSE",
-        "emphasis" : "LIMIT_LOSSES",
-        "supportscope" : "FORCE_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 21,
-            "y" : 12,
+        "orders" : {
+          "operationalStance" : "DEFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "LIMIT_LOSSES",
+          "supportscope" : "FORCE_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 21,
+              "y" : 12,
+              "id" : 1
+            }, {
+              "x" : 19,
+              "y" : 13,
+              "id" : 2
+            } ],
             "id" : 1
-          }, {
-            "x" : 19,
-            "y" : 13,
-            "id" : 2
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "10th Bde HQ",
           "type" : "HEADQUARTERS",
@@ -24227,21 +24327,26 @@
         "color" : 0,
         "proficiency" : 75,
         "supply" : 65,
-        "orders" : "AREA_DEFENSE",
-        "emphasis" : "LIMIT_LOSSES",
-        "supportscope" : "FORCE_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 16,
-            "y" : 11,
+        "orders" : {
+          "operationalStance" : "DEFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "LIMIT_LOSSES",
+          "supportscope" : "FORCE_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 16,
+              "y" : 11,
+              "id" : 1
+            }, {
+              "x" : 17,
+              "y" : 12,
+              "id" : 2
+            } ],
             "id" : 1
-          }, {
-            "x" : 17,
-            "y" : 12,
-            "id" : 2
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "5th NZ Bde HQ",
           "type" : "HEADQUARTERS",
@@ -24452,25 +24557,30 @@
         "color" : 0,
         "proficiency" : 75,
         "supply" : 65,
-        "orders" : "AREA_DEFENSE",
-        "emphasis" : "LIMIT_LOSSES",
-        "supportscope" : "ARMY_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 72,
-            "y" : 12,
+        "orders" : {
+          "operationalStance" : "DEFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "LIMIT_LOSSES",
+          "supportscope" : "ARMY_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 72,
+              "y" : 12,
+              "id" : 1
+            }, {
+              "x" : 75,
+              "y" : 12,
+              "id" : 2
+            }, {
+              "x" : 78,
+              "y" : 12,
+              "id" : 3
+            } ],
             "id" : 1
-          }, {
-            "x" : 75,
-            "y" : 12,
-            "id" : 2
-          }, {
-            "x" : 78,
-            "y" : 12,
-            "id" : 3
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "C Btty, Hv AA",
           "type" : "ARTILLERY",
@@ -24592,25 +24702,30 @@
         "color" : 0,
         "proficiency" : 75,
         "supply" : 65,
-        "orders" : "AREA_DEFENSE",
-        "emphasis" : "LIMIT_LOSSES",
-        "supportscope" : "INTERNAL_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 7,
-            "y" : 13,
+        "orders" : {
+          "operationalStance" : "DEFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "LIMIT_LOSSES",
+          "supportscope" : "INTERNAL_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 7,
+              "y" : 13,
+              "id" : 1
+            }, {
+              "x" : 16,
+              "y" : 12,
+              "id" : 2
+            }, {
+              "x" : 23,
+              "y" : 13,
+              "id" : 3
+            } ],
             "id" : 1
-          }, {
-            "x" : 16,
-            "y" : 12,
-            "id" : 2
-          }, {
-            "x" : 23,
-            "y" : 13,
-            "id" : 3
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "Gendarmerie",
           "type" : "INFANTRY",

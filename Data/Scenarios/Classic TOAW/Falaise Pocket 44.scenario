@@ -19757,9 +19757,14 @@
         "commander" : "General Commander",
         "proficiency" : 70,
         "supply" : 35,
-        "orders" : "FORCE_SECURITY",
-        "emphasis" : "LIMIT_LOSSES",
-        "supportscope" : "ARMY_SUPPORT",
+        "orders" : {
+          "operationalStance" : "DEFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "MINIMIZE_LOSSES",
+          "supportscope" : "ARMY_SUPPORT"
+        },
         "id" : 0
       }, {
         "name" : "V US CORPS",
@@ -19768,45 +19773,50 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 75,
-        "orders" : "FLANK_REAR_GUARD",
-        "emphasis" : "IGNORE_LOSSES",
-        "supportscope" : "ARMY_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 35,
-            "y" : 28,
+        "orders" : {
+          "operationalStance" : "SECURITY",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "IGNORE_LOSSES",
+          "supportscope" : "ARMY_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 35,
+              "y" : 28,
+              "id" : 1
+            }, {
+              "x" : 39,
+              "y" : 25,
+              "id" : 2
+            }, {
+              "x" : 41,
+              "y" : 24,
+              "id" : 3
+            }, {
+              "x" : 38,
+              "y" : 22,
+              "id" : 4
+            }, {
+              "x" : 37,
+              "y" : 19,
+              "id" : 5
+            }, {
+              "x" : 43,
+              "y" : 16,
+              "id" : 6
+            }, {
+              "x" : 46,
+              "y" : 14,
+              "id" : 7
+            }, {
+              "x" : 51,
+              "y" : 15,
+              "id" : 8
+            } ],
             "id" : 1
-          }, {
-            "x" : 39,
-            "y" : 25,
-            "id" : 2
-          }, {
-            "x" : 41,
-            "y" : 24,
-            "id" : 3
-          }, {
-            "x" : 38,
-            "y" : 22,
-            "id" : 4
-          }, {
-            "x" : 37,
-            "y" : 19,
-            "id" : 5
-          }, {
-            "x" : 43,
-            "y" : 16,
-            "id" : 6
-          }, {
-            "x" : 46,
-            "y" : 14,
-            "id" : 7
-          }, {
-            "x" : 51,
-            "y" : 15,
-            "id" : 8
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "V US Corps HQ",
           "type" : "HEADQUARTERS",
@@ -20241,45 +20251,50 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 75,
-        "orders" : "FLANK_REAR_GUARD",
-        "emphasis" : "IGNORE_LOSSES",
-        "supportscope" : "ARMY_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 24,
-            "y" : 27,
+        "orders" : {
+          "operationalStance" : "SECURITY",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "IGNORE_LOSSES",
+          "supportscope" : "ARMY_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 24,
+              "y" : 27,
+              "id" : 1
+            }, {
+              "x" : 25,
+              "y" : 25,
+              "id" : 2
+            }, {
+              "x" : 28,
+              "y" : 23,
+              "id" : 3
+            }, {
+              "x" : 28,
+              "y" : 19,
+              "id" : 4
+            }, {
+              "x" : 28,
+              "y" : 16,
+              "id" : 5
+            }, {
+              "x" : 30,
+              "y" : 14,
+              "id" : 6
+            }, {
+              "x" : 37,
+              "y" : 14,
+              "id" : 7
+            }, {
+              "x" : 52,
+              "y" : 10,
+              "id" : 8
+            } ],
             "id" : 1
-          }, {
-            "x" : 25,
-            "y" : 25,
-            "id" : 2
-          }, {
-            "x" : 28,
-            "y" : 23,
-            "id" : 3
-          }, {
-            "x" : 28,
-            "y" : 19,
-            "id" : 4
-          }, {
-            "x" : 28,
-            "y" : 16,
-            "id" : 5
-          }, {
-            "x" : 30,
-            "y" : 14,
-            "id" : 6
-          }, {
-            "x" : 37,
-            "y" : 14,
-            "id" : 7
-          }, {
-            "x" : 52,
-            "y" : 10,
-            "id" : 8
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "VII US Corps HQ",
           "type" : "HEADQUARTERS",
@@ -20714,29 +20729,33 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 75,
-        "orders" : "AREA_DEFENSE",
-        "emphasis" : "IGNORE_LOSSES",
-        "supportscope" : "ARMY_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 4,
-            "y" : 27,
+        "orders" : {
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "IGNORE_LOSSES",
+          "supportscope" : "ARMY_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 4,
+              "y" : 27,
+              "id" : 1
+            }, {
+              "x" : 18,
+              "y" : 18,
+              "id" : 2
+            }, {
+              "x" : 37,
+              "y" : 19,
+              "id" : 3
+            }, {
+              "x" : 51,
+              "y" : 15,
+              "id" : 4
+            } ],
             "id" : 1
-          }, {
-            "x" : 18,
-            "y" : 18,
-            "id" : 2
-          }, {
-            "x" : 37,
-            "y" : 19,
-            "id" : 3
-          }, {
-            "x" : 51,
-            "y" : 15,
-            "id" : 4
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "XIX US Corps HQ",
           "type" : "HEADQUARTERS",
@@ -20943,81 +20962,86 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 75,
-        "orders" : "ATTACK",
-        "emphasis" : "IGNORE_LOSSES",
-        "supportscope" : "ARMY_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 28,
-            "y" : 21,
+        "orders" : {
+          "operationalStance" : "OFFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "IGNORE_LOSSES",
+          "supportscope" : "ARMY_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 28,
+              "y" : 21,
+              "id" : 1
+            }, {
+              "x" : 27,
+              "y" : 21,
+              "id" : 2
+            }, {
+              "x" : 29,
+              "y" : 22,
+              "id" : 3
+            }, {
+              "x" : 26,
+              "y" : 20,
+              "id" : 4
+            }, {
+              "x" : 30,
+              "y" : 21,
+              "id" : 5
+            }, {
+              "x" : 26,
+              "y" : 19,
+              "id" : 6
+            }, {
+              "x" : 31,
+              "y" : 21,
+              "id" : 7
+            }, {
+              "x" : 25,
+              "y" : 19,
+              "id" : 8
+            }, {
+              "x" : 32,
+              "y" : 20,
+              "id" : 9
+            }, {
+              "x" : 24,
+              "y" : 18,
+              "id" : 10
+            }, {
+              "x" : 23,
+              "y" : 19,
+              "id" : 11
+            }, {
+              "x" : 25,
+              "y" : 17,
+              "id" : 12
+            }, {
+              "x" : 29,
+              "y" : 19,
+              "id" : 13
+            }, {
+              "x" : 37,
+              "y" : 19,
+              "id" : 14
+            }, {
+              "x" : 43,
+              "y" : 16,
+              "id" : 15
+            }, {
+              "x" : 46,
+              "y" : 14,
+              "id" : 16
+            }, {
+              "x" : 53,
+              "y" : 10,
+              "id" : 17
+            } ],
             "id" : 1
-          }, {
-            "x" : 27,
-            "y" : 21,
-            "id" : 2
-          }, {
-            "x" : 29,
-            "y" : 22,
-            "id" : 3
-          }, {
-            "x" : 26,
-            "y" : 20,
-            "id" : 4
-          }, {
-            "x" : 30,
-            "y" : 21,
-            "id" : 5
-          }, {
-            "x" : 26,
-            "y" : 19,
-            "id" : 6
-          }, {
-            "x" : 31,
-            "y" : 21,
-            "id" : 7
-          }, {
-            "x" : 25,
-            "y" : 19,
-            "id" : 8
-          }, {
-            "x" : 32,
-            "y" : 20,
-            "id" : 9
-          }, {
-            "x" : 24,
-            "y" : 18,
-            "id" : 10
-          }, {
-            "x" : 23,
-            "y" : 19,
-            "id" : 11
-          }, {
-            "x" : 25,
-            "y" : 17,
-            "id" : 12
-          }, {
-            "x" : 29,
-            "y" : 19,
-            "id" : 13
-          }, {
-            "x" : 37,
-            "y" : 19,
-            "id" : 14
-          }, {
-            "x" : 43,
-            "y" : 16,
-            "id" : 15
-          }, {
-            "x" : 46,
-            "y" : 14,
-            "id" : 16
-          }, {
-            "x" : 53,
-            "y" : 10,
-            "id" : 17
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "3rd Arm Div HQ",
           "type" : "HEADQUARTERS",
@@ -21761,77 +21785,82 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 75,
-        "orders" : "ATTACK",
-        "emphasis" : "IGNORE_LOSSES",
-        "supportscope" : "ARMY_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 37,
-            "y" : 21,
+        "orders" : {
+          "operationalStance" : "OFFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "IGNORE_LOSSES",
+          "supportscope" : "ARMY_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 37,
+              "y" : 21,
+              "id" : 1
+            }, {
+              "x" : 36,
+              "y" : 20,
+              "id" : 2
+            }, {
+              "x" : 38,
+              "y" : 20,
+              "id" : 3
+            }, {
+              "x" : 35,
+              "y" : 20,
+              "id" : 4
+            }, {
+              "x" : 39,
+              "y" : 20,
+              "id" : 5
+            }, {
+              "x" : 34,
+              "y" : 19,
+              "id" : 6
+            }, {
+              "x" : 40,
+              "y" : 19,
+              "id" : 7
+            }, {
+              "x" : 33,
+              "y" : 19,
+              "id" : 8
+            }, {
+              "x" : 41,
+              "y" : 19,
+              "id" : 9
+            }, {
+              "x" : 32,
+              "y" : 19,
+              "id" : 10
+            }, {
+              "x" : 37,
+              "y" : 19,
+              "id" : 11
+            }, {
+              "x" : 38,
+              "y" : 15,
+              "id" : 12
+            }, {
+              "x" : 43,
+              "y" : 16,
+              "id" : 13
+            }, {
+              "x" : 46,
+              "y" : 14,
+              "id" : 14
+            }, {
+              "x" : 49,
+              "y" : 11,
+              "id" : 15
+            }, {
+              "x" : 52,
+              "y" : 14,
+              "id" : 16
+            } ],
             "id" : 1
-          }, {
-            "x" : 36,
-            "y" : 20,
-            "id" : 2
-          }, {
-            "x" : 38,
-            "y" : 20,
-            "id" : 3
-          }, {
-            "x" : 35,
-            "y" : 20,
-            "id" : 4
-          }, {
-            "x" : 39,
-            "y" : 20,
-            "id" : 5
-          }, {
-            "x" : 34,
-            "y" : 19,
-            "id" : 6
-          }, {
-            "x" : 40,
-            "y" : 19,
-            "id" : 7
-          }, {
-            "x" : 33,
-            "y" : 19,
-            "id" : 8
-          }, {
-            "x" : 41,
-            "y" : 19,
-            "id" : 9
-          }, {
-            "x" : 32,
-            "y" : 19,
-            "id" : 10
-          }, {
-            "x" : 37,
-            "y" : 19,
-            "id" : 11
-          }, {
-            "x" : 38,
-            "y" : 15,
-            "id" : 12
-          }, {
-            "x" : 43,
-            "y" : 16,
-            "id" : 13
-          }, {
-            "x" : 46,
-            "y" : 14,
-            "id" : 14
-          }, {
-            "x" : 49,
-            "y" : 11,
-            "id" : 15
-          }, {
-            "x" : 52,
-            "y" : 14,
-            "id" : 16
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "2ere Div Bl.HQ",
           "type" : "HEADQUARTERS",
@@ -22401,85 +22430,90 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 75,
-        "orders" : "AREA_DEFENSE",
-        "emphasis" : "IGNORE_LOSSES",
-        "supportscope" : "ARMY_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 32,
-            "y" : 25,
+        "orders" : {
+          "operationalStance" : "DEFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "IGNORE_LOSSES",
+          "supportscope" : "ARMY_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 32,
+              "y" : 25,
+              "id" : 1
+            }, {
+              "x" : 33,
+              "y" : 24,
+              "id" : 2
+            }, {
+              "x" : 34,
+              "y" : 22,
+              "id" : 3
+            }, {
+              "x" : 35,
+              "y" : 20,
+              "id" : 4
+            }, {
+              "x" : 37,
+              "y" : 19,
+              "id" : 5
+            }, {
+              "x" : 37,
+              "y" : 17,
+              "id" : 6
+            }, {
+              "x" : 38,
+              "y" : 15,
+              "id" : 7
+            }, {
+              "x" : 39,
+              "y" : 14,
+              "id" : 8
+            }, {
+              "x" : 39,
+              "y" : 12,
+              "id" : 9
+            }, {
+              "x" : 41,
+              "y" : 11,
+              "id" : 10
+            }, {
+              "x" : 45,
+              "y" : 11,
+              "id" : 11
+            }, {
+              "x" : 45,
+              "y" : 10,
+              "id" : 12
+            }, {
+              "x" : 45,
+              "y" : 12,
+              "id" : 13
+            }, {
+              "x" : 44,
+              "y" : 9,
+              "id" : 14
+            }, {
+              "x" : 45,
+              "y" : 13,
+              "id" : 15
+            }, {
+              "x" : 43,
+              "y" : 9,
+              "id" : 16
+            }, {
+              "x" : 45,
+              "y" : 14,
+              "id" : 17
+            }, {
+              "x" : 42,
+              "y" : 8,
+              "id" : 18
+            } ],
             "id" : 1
-          }, {
-            "x" : 33,
-            "y" : 24,
-            "id" : 2
-          }, {
-            "x" : 34,
-            "y" : 22,
-            "id" : 3
-          }, {
-            "x" : 35,
-            "y" : 20,
-            "id" : 4
-          }, {
-            "x" : 37,
-            "y" : 19,
-            "id" : 5
-          }, {
-            "x" : 37,
-            "y" : 17,
-            "id" : 6
-          }, {
-            "x" : 38,
-            "y" : 15,
-            "id" : 7
-          }, {
-            "x" : 39,
-            "y" : 14,
-            "id" : 8
-          }, {
-            "x" : 39,
-            "y" : 12,
-            "id" : 9
-          }, {
-            "x" : 41,
-            "y" : 11,
-            "id" : 10
-          }, {
-            "x" : 45,
-            "y" : 11,
-            "id" : 11
-          }, {
-            "x" : 45,
-            "y" : 10,
-            "id" : 12
-          }, {
-            "x" : 45,
-            "y" : 12,
-            "id" : 13
-          }, {
-            "x" : 44,
-            "y" : 9,
-            "id" : 14
-          }, {
-            "x" : 45,
-            "y" : 13,
-            "id" : 15
-          }, {
-            "x" : 43,
-            "y" : 9,
-            "id" : 16
-          }, {
-            "x" : 45,
-            "y" : 14,
-            "id" : 17
-          }, {
-            "x" : 42,
-            "y" : 8,
-            "id" : 18
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "4th Arm Div HQ",
           "type" : "HEADQUARTERS",
@@ -23049,89 +23083,94 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 75,
-        "orders" : "ATTACK",
-        "emphasis" : "IGNORE_LOSSES",
-        "supportscope" : "ARMY_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 14,
-            "y" : 20,
+        "orders" : {
+          "operationalStance" : "OFFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "IGNORE_LOSSES",
+          "supportscope" : "ARMY_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 14,
+              "y" : 20,
+              "id" : 1
+            }, {
+              "x" : 12,
+              "y" : 21,
+              "id" : 2
+            }, {
+              "x" : 16,
+              "y" : 19,
+              "id" : 3
+            }, {
+              "x" : 12,
+              "y" : 19,
+              "id" : 4
+            }, {
+              "x" : 12,
+              "y" : 17,
+              "id" : 5
+            }, {
+              "x" : 14,
+              "y" : 16,
+              "id" : 6
+            }, {
+              "x" : 15,
+              "y" : 18,
+              "id" : 7
+            }, {
+              "x" : 18,
+              "y" : 19,
+              "id" : 8
+            }, {
+              "x" : 20,
+              "y" : 19,
+              "id" : 9
+            }, {
+              "x" : 23,
+              "y" : 18,
+              "id" : 10
+            }, {
+              "x" : 26,
+              "y" : 18,
+              "id" : 11
+            }, {
+              "x" : 29,
+              "y" : 19,
+              "id" : 12
+            }, {
+              "x" : 32,
+              "y" : 18,
+              "id" : 13
+            }, {
+              "x" : 35,
+              "y" : 19,
+              "id" : 14
+            }, {
+              "x" : 39,
+              "y" : 19,
+              "id" : 15
+            }, {
+              "x" : 42,
+              "y" : 17,
+              "id" : 16
+            }, {
+              "x" : 43,
+              "y" : 16,
+              "id" : 17
+            }, {
+              "x" : 46,
+              "y" : 14,
+              "id" : 18
+            }, {
+              "x" : 51,
+              "y" : 15,
+              "id" : 19
+            } ],
             "id" : 1
-          }, {
-            "x" : 12,
-            "y" : 21,
-            "id" : 2
-          }, {
-            "x" : 16,
-            "y" : 19,
-            "id" : 3
-          }, {
-            "x" : 12,
-            "y" : 19,
-            "id" : 4
-          }, {
-            "x" : 12,
-            "y" : 17,
-            "id" : 5
-          }, {
-            "x" : 14,
-            "y" : 16,
-            "id" : 6
-          }, {
-            "x" : 15,
-            "y" : 18,
-            "id" : 7
-          }, {
-            "x" : 18,
-            "y" : 19,
-            "id" : 8
-          }, {
-            "x" : 20,
-            "y" : 19,
-            "id" : 9
-          }, {
-            "x" : 23,
-            "y" : 18,
-            "id" : 10
-          }, {
-            "x" : 26,
-            "y" : 18,
-            "id" : 11
-          }, {
-            "x" : 29,
-            "y" : 19,
-            "id" : 12
-          }, {
-            "x" : 32,
-            "y" : 18,
-            "id" : 13
-          }, {
-            "x" : 35,
-            "y" : 19,
-            "id" : 14
-          }, {
-            "x" : 39,
-            "y" : 19,
-            "id" : 15
-          }, {
-            "x" : 42,
-            "y" : 17,
-            "id" : 16
-          }, {
-            "x" : 43,
-            "y" : 16,
-            "id" : 17
-          }, {
-            "x" : 46,
-            "y" : 14,
-            "id" : 18
-          }, {
-            "x" : 51,
-            "y" : 15,
-            "id" : 19
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "1st Inf Div HQ",
           "type" : "HEADQUARTERS",
@@ -24052,73 +24091,78 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 75,
-        "orders" : "ATTACK",
-        "emphasis" : "IGNORE_LOSSES",
-        "supportscope" : "ARMY_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 19,
-            "y" : 20,
+        "orders" : {
+          "operationalStance" : "OFFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "IGNORE_LOSSES",
+          "supportscope" : "ARMY_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 19,
+              "y" : 20,
+              "id" : 1
+            }, {
+              "x" : 17,
+              "y" : 20,
+              "id" : 2
+            }, {
+              "x" : 21,
+              "y" : 20,
+              "id" : 3
+            }, {
+              "x" : 20,
+              "y" : 18,
+              "id" : 4
+            }, {
+              "x" : 22,
+              "y" : 18,
+              "id" : 5
+            }, {
+              "x" : 22,
+              "y" : 16,
+              "id" : 6
+            }, {
+              "x" : 24,
+              "y" : 17,
+              "id" : 7
+            }, {
+              "x" : 26,
+              "y" : 16,
+              "id" : 8
+            }, {
+              "x" : 29,
+              "y" : 17,
+              "id" : 9
+            }, {
+              "x" : 32,
+              "y" : 16,
+              "id" : 10
+            }, {
+              "x" : 35,
+              "y" : 17,
+              "id" : 11
+            }, {
+              "x" : 39,
+              "y" : 17,
+              "id" : 12
+            }, {
+              "x" : 42,
+              "y" : 16,
+              "id" : 13
+            }, {
+              "x" : 45,
+              "y" : 15,
+              "id" : 14
+            }, {
+              "x" : 50,
+              "y" : 13,
+              "id" : 15
+            } ],
             "id" : 1
-          }, {
-            "x" : 17,
-            "y" : 20,
-            "id" : 2
-          }, {
-            "x" : 21,
-            "y" : 20,
-            "id" : 3
-          }, {
-            "x" : 20,
-            "y" : 18,
-            "id" : 4
-          }, {
-            "x" : 22,
-            "y" : 18,
-            "id" : 5
-          }, {
-            "x" : 22,
-            "y" : 16,
-            "id" : 6
-          }, {
-            "x" : 24,
-            "y" : 17,
-            "id" : 7
-          }, {
-            "x" : 26,
-            "y" : 16,
-            "id" : 8
-          }, {
-            "x" : 29,
-            "y" : 17,
-            "id" : 9
-          }, {
-            "x" : 32,
-            "y" : 16,
-            "id" : 10
-          }, {
-            "x" : 35,
-            "y" : 17,
-            "id" : 11
-          }, {
-            "x" : 39,
-            "y" : 17,
-            "id" : 12
-          }, {
-            "x" : 42,
-            "y" : 16,
-            "id" : 13
-          }, {
-            "x" : 45,
-            "y" : 15,
-            "id" : 14
-          }, {
-            "x" : 50,
-            "y" : 13,
-            "id" : 15
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "9th Inf Div HQ",
           "type" : "HEADQUARTERS",
@@ -25039,53 +25083,57 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 75,
-        "orders" : "AREA_DEFENSE",
-        "emphasis" : "IGNORE_LOSSES",
-        "supportscope" : "ARMY_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 4,
-            "y" : 27,
+        "orders" : {
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "IGNORE_LOSSES",
+          "supportscope" : "ARMY_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 4,
+              "y" : 27,
+              "id" : 1
+            }, {
+              "x" : 13,
+              "y" : 21,
+              "id" : 2
+            }, {
+              "x" : 11,
+              "y" : 20,
+              "id" : 3
+            }, {
+              "x" : 15,
+              "y" : 22,
+              "id" : 4
+            }, {
+              "x" : 14,
+              "y" : 19,
+              "id" : 5
+            }, {
+              "x" : 12,
+              "y" : 18,
+              "id" : 6
+            }, {
+              "x" : 16,
+              "y" : 20,
+              "id" : 7
+            }, {
+              "x" : 15,
+              "y" : 18,
+              "id" : 8
+            }, {
+              "x" : 13,
+              "y" : 17,
+              "id" : 9
+            }, {
+              "x" : 17,
+              "y" : 19,
+              "id" : 10
+            } ],
             "id" : 1
-          }, {
-            "x" : 13,
-            "y" : 21,
-            "id" : 2
-          }, {
-            "x" : 11,
-            "y" : 20,
-            "id" : 3
-          }, {
-            "x" : 15,
-            "y" : 22,
-            "id" : 4
-          }, {
-            "x" : 14,
-            "y" : 19,
-            "id" : 5
-          }, {
-            "x" : 12,
-            "y" : 18,
-            "id" : 6
-          }, {
-            "x" : 16,
-            "y" : 20,
-            "id" : 7
-          }, {
-            "x" : 15,
-            "y" : 18,
-            "id" : 8
-          }, {
-            "x" : 13,
-            "y" : 17,
-            "id" : 9
-          }, {
-            "x" : 17,
-            "y" : 19,
-            "id" : 10
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "30th Inf Div HQ",
           "type" : "HEADQUARTERS",
@@ -26006,73 +26054,78 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 75,
-        "orders" : "ATTACK",
-        "emphasis" : "IGNORE_LOSSES",
-        "supportscope" : "ARMY_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 42,
-            "y" : 24,
+        "orders" : {
+          "operationalStance" : "OFFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "IGNORE_LOSSES",
+          "supportscope" : "ARMY_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 42,
+              "y" : 24,
+              "id" : 1
+            }, {
+              "x" : 42,
+              "y" : 20,
+              "id" : 2
+            }, {
+              "x" : 43,
+              "y" : 19,
+              "id" : 3
+            }, {
+              "x" : 43,
+              "y" : 16,
+              "id" : 4
+            }, {
+              "x" : 41,
+              "y" : 15,
+              "id" : 5
+            }, {
+              "x" : 39,
+              "y" : 14,
+              "id" : 6
+            }, {
+              "x" : 37,
+              "y" : 13,
+              "id" : 7
+            }, {
+              "x" : 35,
+              "y" : 13,
+              "id" : 8
+            }, {
+              "x" : 35,
+              "y" : 12,
+              "id" : 9
+            }, {
+              "x" : 35,
+              "y" : 14,
+              "id" : 10
+            }, {
+              "x" : 35,
+              "y" : 11,
+              "id" : 11
+            }, {
+              "x" : 35,
+              "y" : 15,
+              "id" : 12
+            }, {
+              "x" : 35,
+              "y" : 10,
+              "id" : 13
+            }, {
+              "x" : 35,
+              "y" : 16,
+              "id" : 14
+            }, {
+              "x" : 52,
+              "y" : 12,
+              "id" : 15
+            } ],
             "id" : 1
-          }, {
-            "x" : 42,
-            "y" : 20,
-            "id" : 2
-          }, {
-            "x" : 43,
-            "y" : 19,
-            "id" : 3
-          }, {
-            "x" : 43,
-            "y" : 16,
-            "id" : 4
-          }, {
-            "x" : 41,
-            "y" : 15,
-            "id" : 5
-          }, {
-            "x" : 39,
-            "y" : 14,
-            "id" : 6
-          }, {
-            "x" : 37,
-            "y" : 13,
-            "id" : 7
-          }, {
-            "x" : 35,
-            "y" : 13,
-            "id" : 8
-          }, {
-            "x" : 35,
-            "y" : 12,
-            "id" : 9
-          }, {
-            "x" : 35,
-            "y" : 14,
-            "id" : 10
-          }, {
-            "x" : 35,
-            "y" : 11,
-            "id" : 11
-          }, {
-            "x" : 35,
-            "y" : 15,
-            "id" : 12
-          }, {
-            "x" : 35,
-            "y" : 10,
-            "id" : 13
-          }, {
-            "x" : 35,
-            "y" : 16,
-            "id" : 14
-          }, {
-            "x" : 52,
-            "y" : 12,
-            "id" : 15
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "80th Inf Div HQ",
           "type" : "HEADQUARTERS",
@@ -26993,69 +27046,74 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 75,
-        "orders" : "ATTACK",
-        "emphasis" : "IGNORE_LOSSES",
-        "supportscope" : "ARMY_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 48,
-            "y" : 19,
+        "orders" : {
+          "operationalStance" : "OFFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "IGNORE_LOSSES",
+          "supportscope" : "ARMY_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 48,
+              "y" : 19,
+              "id" : 1
+            }, {
+              "x" : 47,
+              "y" : 19,
+              "id" : 2
+            }, {
+              "x" : 49,
+              "y" : 19,
+              "id" : 3
+            }, {
+              "x" : 46,
+              "y" : 18,
+              "id" : 4
+            }, {
+              "x" : 50,
+              "y" : 18,
+              "id" : 5
+            }, {
+              "x" : 45,
+              "y" : 18,
+              "id" : 6
+            }, {
+              "x" : 52,
+              "y" : 18,
+              "id" : 7
+            }, {
+              "x" : 43,
+              "y" : 18,
+              "id" : 8
+            }, {
+              "x" : 54,
+              "y" : 18,
+              "id" : 9
+            }, {
+              "x" : 46,
+              "y" : 16,
+              "id" : 10
+            }, {
+              "x" : 43,
+              "y" : 16,
+              "id" : 11
+            }, {
+              "x" : 43,
+              "y" : 14,
+              "id" : 12
+            }, {
+              "x" : 51,
+              "y" : 15,
+              "id" : 13
+            }, {
+              "x" : 54,
+              "y" : 14,
+              "id" : 14
+            } ],
             "id" : 1
-          }, {
-            "x" : 47,
-            "y" : 19,
-            "id" : 2
-          }, {
-            "x" : 49,
-            "y" : 19,
-            "id" : 3
-          }, {
-            "x" : 46,
-            "y" : 18,
-            "id" : 4
-          }, {
-            "x" : 50,
-            "y" : 18,
-            "id" : 5
-          }, {
-            "x" : 45,
-            "y" : 18,
-            "id" : 6
-          }, {
-            "x" : 52,
-            "y" : 18,
-            "id" : 7
-          }, {
-            "x" : 43,
-            "y" : 18,
-            "id" : 8
-          }, {
-            "x" : 54,
-            "y" : 18,
-            "id" : 9
-          }, {
-            "x" : 46,
-            "y" : 16,
-            "id" : 10
-          }, {
-            "x" : 43,
-            "y" : 16,
-            "id" : 11
-          }, {
-            "x" : 43,
-            "y" : 14,
-            "id" : 12
-          }, {
-            "x" : 51,
-            "y" : 15,
-            "id" : 13
-          }, {
-            "x" : 54,
-            "y" : 14,
-            "id" : 14
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "90th Inf Div HQ",
           "type" : "HEADQUARTERS",
@@ -27976,49 +28034,54 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 75,
-        "orders" : "FLANK_REAR_GUARD",
-        "emphasis" : "IGNORE_LOSSES",
-        "supportscope" : "ARMY_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 1,
-            "y" : 11,
+        "orders" : {
+          "operationalStance" : "SECURITY",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "IGNORE_LOSSES",
+          "supportscope" : "ARMY_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 1,
+              "y" : 11,
+              "id" : 1
+            }, {
+              "x" : 1,
+              "y" : 10,
+              "id" : 2
+            }, {
+              "x" : 1,
+              "y" : 12,
+              "id" : 3
+            }, {
+              "x" : 1,
+              "y" : 9,
+              "id" : 4
+            }, {
+              "x" : 1,
+              "y" : 13,
+              "id" : 5
+            }, {
+              "x" : 1,
+              "y" : 8,
+              "id" : 6
+            }, {
+              "x" : 1,
+              "y" : 14,
+              "id" : 7
+            }, {
+              "x" : 1,
+              "y" : 7,
+              "id" : 8
+            }, {
+              "x" : 1,
+              "y" : 15,
+              "id" : 9
+            } ],
             "id" : 1
-          }, {
-            "x" : 1,
-            "y" : 10,
-            "id" : 2
-          }, {
-            "x" : 1,
-            "y" : 12,
-            "id" : 3
-          }, {
-            "x" : 1,
-            "y" : 9,
-            "id" : 4
-          }, {
-            "x" : 1,
-            "y" : 13,
-            "id" : 5
-          }, {
-            "x" : 1,
-            "y" : 8,
-            "id" : 6
-          }, {
-            "x" : 1,
-            "y" : 14,
-            "id" : 7
-          }, {
-            "x" : 1,
-            "y" : 7,
-            "id" : 8
-          }, {
-            "x" : 1,
-            "y" : 15,
-            "id" : 9
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "36 FG",
           "type" : "FIGHTER_BOMBER",
@@ -28442,17 +28505,22 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 75,
-        "orders" : "FLANK_REAR_GUARD",
-        "emphasis" : "IGNORE_LOSSES",
-        "supportscope" : "ARMY_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 1,
-            "y" : 11,
+        "orders" : {
+          "operationalStance" : "SECURITY",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "IGNORE_LOSSES",
+          "supportscope" : "ARMY_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 1,
+              "y" : 11,
+              "id" : 1
+            } ],
             "id" : 1
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "409 BG(L)",
           "type" : "LIGHT_BOMBER",
@@ -28715,33 +28783,38 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 75,
-        "orders" : "FLANK_REAR_GUARD",
-        "emphasis" : "IGNORE_LOSSES",
-        "supportscope" : "ARMY_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 17,
-            "y" : 15,
+        "orders" : {
+          "operationalStance" : "SECURITY",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "IGNORE_LOSSES",
+          "supportscope" : "ARMY_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 17,
+              "y" : 15,
+              "id" : 1
+            }, {
+              "x" : 29,
+              "y" : 18,
+              "id" : 2
+            }, {
+              "x" : 36,
+              "y" : 17,
+              "id" : 3
+            }, {
+              "x" : 46,
+              "y" : 16,
+              "id" : 4
+            }, {
+              "x" : 54,
+              "y" : 13,
+              "id" : 5
+            } ],
             "id" : 1
-          }, {
-            "x" : 29,
-            "y" : 18,
-            "id" : 2
-          }, {
-            "x" : 36,
-            "y" : 17,
-            "id" : 3
-          }, {
-            "x" : 46,
-            "y" : 16,
-            "id" : 4
-          }, {
-            "x" : 54,
-            "y" : 13,
-            "id" : 5
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "VIII BR Corps HQ",
           "type" : "HEADQUARTERS",
@@ -28941,37 +29014,42 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 75,
-        "orders" : "FLANK_REAR_GUARD",
-        "emphasis" : "IGNORE_LOSSES",
-        "supportscope" : "ARMY_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 16,
-            "y" : 11,
+        "orders" : {
+          "operationalStance" : "SECURITY",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "IGNORE_LOSSES",
+          "supportscope" : "ARMY_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 16,
+              "y" : 11,
+              "id" : 1
+            }, {
+              "x" : 24,
+              "y" : 11,
+              "id" : 2
+            }, {
+              "x" : 33,
+              "y" : 12,
+              "id" : 3
+            }, {
+              "x" : 39,
+              "y" : 10,
+              "id" : 4
+            }, {
+              "x" : 47,
+              "y" : 10,
+              "id" : 5
+            }, {
+              "x" : 54,
+              "y" : 9,
+              "id" : 6
+            } ],
             "id" : 1
-          }, {
-            "x" : 24,
-            "y" : 11,
-            "id" : 2
-          }, {
-            "x" : 33,
-            "y" : 12,
-            "id" : 3
-          }, {
-            "x" : 39,
-            "y" : 10,
-            "id" : 4
-          }, {
-            "x" : 47,
-            "y" : 10,
-            "id" : 5
-          }, {
-            "x" : 54,
-            "y" : 9,
-            "id" : 6
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "XII BR Corps HQ",
           "type" : "HEADQUARTERS",
@@ -29242,33 +29320,38 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 75,
-        "orders" : "FLANK_REAR_GUARD",
-        "emphasis" : "IGNORE_LOSSES",
-        "supportscope" : "ARMY_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 16,
-            "y" : 14,
+        "orders" : {
+          "operationalStance" : "SECURITY",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "IGNORE_LOSSES",
+          "supportscope" : "ARMY_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 16,
+              "y" : 14,
+              "id" : 1
+            }, {
+              "x" : 23,
+              "y" : 14,
+              "id" : 2
+            }, {
+              "x" : 32,
+              "y" : 13,
+              "id" : 3
+            }, {
+              "x" : 46,
+              "y" : 11,
+              "id" : 4
+            }, {
+              "x" : 54,
+              "y" : 11,
+              "id" : 5
+            } ],
             "id" : 1
-          }, {
-            "x" : 23,
-            "y" : 14,
-            "id" : 2
-          }, {
-            "x" : 32,
-            "y" : 13,
-            "id" : 3
-          }, {
-            "x" : 46,
-            "y" : 11,
-            "id" : 4
-          }, {
-            "x" : 54,
-            "y" : 11,
-            "id" : 5
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "XXX BR Corps HQ",
           "type" : "HEADQUARTERS",
@@ -29468,37 +29551,42 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 75,
-        "orders" : "FLANK_REAR_GUARD",
-        "emphasis" : "IGNORE_LOSSES",
-        "supportscope" : "ARMY_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 26,
-            "y" : 12,
+        "orders" : {
+          "operationalStance" : "SECURITY",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "IGNORE_LOSSES",
+          "supportscope" : "ARMY_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 26,
+              "y" : 12,
+              "id" : 1
+            }, {
+              "x" : 31,
+              "y" : 10,
+              "id" : 2
+            }, {
+              "x" : 35,
+              "y" : 8,
+              "id" : 3
+            }, {
+              "x" : 40,
+              "y" : 11,
+              "id" : 4
+            }, {
+              "x" : 48,
+              "y" : 5,
+              "id" : 5
+            }, {
+              "x" : 53,
+              "y" : 8,
+              "id" : 6
+            } ],
             "id" : 1
-          }, {
-            "x" : 31,
-            "y" : 10,
-            "id" : 2
-          }, {
-            "x" : 35,
-            "y" : 8,
-            "id" : 3
-          }, {
-            "x" : 40,
-            "y" : 11,
-            "id" : 4
-          }, {
-            "x" : 48,
-            "y" : 5,
-            "id" : 5
-          }, {
-            "x" : 53,
-            "y" : 8,
-            "id" : 6
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "II CAN Corps HQ",
           "type" : "HEADQUARTERS",
@@ -29769,69 +29857,74 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 75,
-        "orders" : "FLANK_REAR_GUARD",
-        "emphasis" : "IGNORE_LOSSES",
-        "supportscope" : "ARMY_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 31,
-            "y" : 8,
+        "orders" : {
+          "operationalStance" : "SECURITY",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "IGNORE_LOSSES",
+          "supportscope" : "ARMY_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 31,
+              "y" : 8,
+              "id" : 1
+            }, {
+              "x" : 30,
+              "y" : 8,
+              "id" : 2
+            }, {
+              "x" : 32,
+              "y" : 7,
+              "id" : 3
+            }, {
+              "x" : 32,
+              "y" : 9,
+              "id" : 4
+            }, {
+              "x" : 31,
+              "y" : 10,
+              "id" : 5
+            }, {
+              "x" : 33,
+              "y" : 9,
+              "id" : 6
+            }, {
+              "x" : 33,
+              "y" : 11,
+              "id" : 7
+            }, {
+              "x" : 32,
+              "y" : 11,
+              "id" : 8
+            }, {
+              "x" : 34,
+              "y" : 10,
+              "id" : 9
+            }, {
+              "x" : 34,
+              "y" : 12,
+              "id" : 10
+            }, {
+              "x" : 35,
+              "y" : 12,
+              "id" : 11
+            }, {
+              "x" : 33,
+              "y" : 13,
+              "id" : 12
+            }, {
+              "x" : 37,
+              "y" : 14,
+              "id" : 13
+            }, {
+              "x" : 55,
+              "y" : 13,
+              "id" : 14
+            } ],
             "id" : 1
-          }, {
-            "x" : 30,
-            "y" : 8,
-            "id" : 2
-          }, {
-            "x" : 32,
-            "y" : 7,
-            "id" : 3
-          }, {
-            "x" : 32,
-            "y" : 9,
-            "id" : 4
-          }, {
-            "x" : 31,
-            "y" : 10,
-            "id" : 5
-          }, {
-            "x" : 33,
-            "y" : 9,
-            "id" : 6
-          }, {
-            "x" : 33,
-            "y" : 11,
-            "id" : 7
-          }, {
-            "x" : 32,
-            "y" : 11,
-            "id" : 8
-          }, {
-            "x" : 34,
-            "y" : 10,
-            "id" : 9
-          }, {
-            "x" : 34,
-            "y" : 12,
-            "id" : 10
-          }, {
-            "x" : 35,
-            "y" : 12,
-            "id" : 11
-          }, {
-            "x" : 33,
-            "y" : 13,
-            "id" : 12
-          }, {
-            "x" : 37,
-            "y" : 14,
-            "id" : 13
-          }, {
-            "x" : 55,
-            "y" : 13,
-            "id" : 14
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "1 Can Hussars",
           "type" : "TANK",
@@ -29955,77 +30048,82 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 75,
-        "orders" : "ATTACK",
-        "emphasis" : "IGNORE_LOSSES",
-        "supportscope" : "INTERNAL_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 20,
-            "y" : 9,
+        "orders" : {
+          "operationalStance" : "OFFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "IGNORE_LOSSES",
+          "supportscope" : "INTERNAL_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 20,
+              "y" : 9,
+              "id" : 1
+            }, {
+              "x" : 19,
+              "y" : 9,
+              "id" : 2
+            }, {
+              "x" : 21,
+              "y" : 9,
+              "id" : 3
+            }, {
+              "x" : 20,
+              "y" : 11,
+              "id" : 4
+            }, {
+              "x" : 19,
+              "y" : 11,
+              "id" : 5
+            }, {
+              "x" : 21,
+              "y" : 11,
+              "id" : 6
+            }, {
+              "x" : 20,
+              "y" : 13,
+              "id" : 7
+            }, {
+              "x" : 19,
+              "y" : 13,
+              "id" : 8
+            }, {
+              "x" : 21,
+              "y" : 13,
+              "id" : 9
+            }, {
+              "x" : 23,
+              "y" : 15,
+              "id" : 10
+            }, {
+              "x" : 22,
+              "y" : 15,
+              "id" : 11
+            }, {
+              "x" : 24,
+              "y" : 14,
+              "id" : 12
+            }, {
+              "x" : 29,
+              "y" : 16,
+              "id" : 13
+            }, {
+              "x" : 37,
+              "y" : 12,
+              "id" : 14
+            }, {
+              "x" : 45,
+              "y" : 8,
+              "id" : 15
+            }, {
+              "x" : 49,
+              "y" : 5,
+              "id" : 16
+            } ],
             "id" : 1
-          }, {
-            "x" : 19,
-            "y" : 9,
-            "id" : 2
-          }, {
-            "x" : 21,
-            "y" : 9,
-            "id" : 3
-          }, {
-            "x" : 20,
-            "y" : 11,
-            "id" : 4
-          }, {
-            "x" : 19,
-            "y" : 11,
-            "id" : 5
-          }, {
-            "x" : 21,
-            "y" : 11,
-            "id" : 6
-          }, {
-            "x" : 20,
-            "y" : 13,
-            "id" : 7
-          }, {
-            "x" : 19,
-            "y" : 13,
-            "id" : 8
-          }, {
-            "x" : 21,
-            "y" : 13,
-            "id" : 9
-          }, {
-            "x" : 23,
-            "y" : 15,
-            "id" : 10
-          }, {
-            "x" : 22,
-            "y" : 15,
-            "id" : 11
-          }, {
-            "x" : 24,
-            "y" : 14,
-            "id" : 12
-          }, {
-            "x" : 29,
-            "y" : 16,
-            "id" : 13
-          }, {
-            "x" : 37,
-            "y" : 12,
-            "id" : 14
-          }, {
-            "x" : 45,
-            "y" : 8,
-            "id" : 15
-          }, {
-            "x" : 49,
-            "y" : 5,
-            "id" : 16
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "Roy.Scots Greys",
           "type" : "TANK",
@@ -30179,61 +30277,66 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 75,
-        "orders" : "ATTACK",
-        "emphasis" : "IGNORE_LOSSES",
-        "supportscope" : "INTERNAL_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 10,
-            "y" : 17,
+        "orders" : {
+          "operationalStance" : "OFFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "IGNORE_LOSSES",
+          "supportscope" : "INTERNAL_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 10,
+              "y" : 17,
+              "id" : 1
+            }, {
+              "x" : 12,
+              "y" : 17,
+              "id" : 2
+            }, {
+              "x" : 14,
+              "y" : 17,
+              "id" : 3
+            }, {
+              "x" : 16,
+              "y" : 18,
+              "id" : 4
+            }, {
+              "x" : 17,
+              "y" : 17,
+              "id" : 5
+            }, {
+              "x" : 19,
+              "y" : 15,
+              "id" : 6
+            }, {
+              "x" : 23,
+              "y" : 15,
+              "id" : 7
+            }, {
+              "x" : 29,
+              "y" : 15,
+              "id" : 8
+            }, {
+              "x" : 35,
+              "y" : 15,
+              "id" : 9
+            }, {
+              "x" : 45,
+              "y" : 13,
+              "id" : 10
+            }, {
+              "x" : 50,
+              "y" : 11,
+              "id" : 11
+            }, {
+              "x" : 54,
+              "y" : 8,
+              "id" : 12
+            } ],
             "id" : 1
-          }, {
-            "x" : 12,
-            "y" : 17,
-            "id" : 2
-          }, {
-            "x" : 14,
-            "y" : 17,
-            "id" : 3
-          }, {
-            "x" : 16,
-            "y" : 18,
-            "id" : 4
-          }, {
-            "x" : 17,
-            "y" : 17,
-            "id" : 5
-          }, {
-            "x" : 19,
-            "y" : 15,
-            "id" : 6
-          }, {
-            "x" : 23,
-            "y" : 15,
-            "id" : 7
-          }, {
-            "x" : 29,
-            "y" : 15,
-            "id" : 8
-          }, {
-            "x" : 35,
-            "y" : 15,
-            "id" : 9
-          }, {
-            "x" : 45,
-            "y" : 13,
-            "id" : 10
-          }, {
-            "x" : 50,
-            "y" : 11,
-            "id" : 11
-          }, {
-            "x" : 54,
-            "y" : 8,
-            "id" : 12
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "4 Grenadier Gds",
           "type" : "TANK",
@@ -30387,77 +30490,82 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 75,
-        "orders" : "ATTACK",
-        "emphasis" : "IGNORE_LOSSES",
-        "supportscope" : "INTERNAL_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 11,
-            "y" : 12,
+        "orders" : {
+          "operationalStance" : "OFFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "IGNORE_LOSSES",
+          "supportscope" : "INTERNAL_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 11,
+              "y" : 12,
+              "id" : 1
+            }, {
+              "x" : 12,
+              "y" : 13,
+              "id" : 2
+            }, {
+              "x" : 13,
+              "y" : 13,
+              "id" : 3
+            }, {
+              "x" : 14,
+              "y" : 12,
+              "id" : 4
+            }, {
+              "x" : 13,
+              "y" : 15,
+              "id" : 5
+            }, {
+              "x" : 14,
+              "y" : 14,
+              "id" : 6
+            }, {
+              "x" : 15,
+              "y" : 14,
+              "id" : 7
+            }, {
+              "x" : 16,
+              "y" : 16,
+              "id" : 8
+            }, {
+              "x" : 25,
+              "y" : 16,
+              "id" : 9
+            }, {
+              "x" : 28,
+              "y" : 13,
+              "id" : 10
+            }, {
+              "x" : 32,
+              "y" : 12,
+              "id" : 11
+            }, {
+              "x" : 37,
+              "y" : 10,
+              "id" : 12
+            }, {
+              "x" : 39,
+              "y" : 9,
+              "id" : 13
+            }, {
+              "x" : 39,
+              "y" : 6,
+              "id" : 14
+            }, {
+              "x" : 38,
+              "y" : 3,
+              "id" : 15
+            }, {
+              "x" : 47,
+              "y" : 3,
+              "id" : 16
+            } ],
             "id" : 1
-          }, {
-            "x" : 12,
-            "y" : 13,
-            "id" : 2
-          }, {
-            "x" : 13,
-            "y" : 13,
-            "id" : 3
-          }, {
-            "x" : 14,
-            "y" : 12,
-            "id" : 4
-          }, {
-            "x" : 13,
-            "y" : 15,
-            "id" : 5
-          }, {
-            "x" : 14,
-            "y" : 14,
-            "id" : 6
-          }, {
-            "x" : 15,
-            "y" : 14,
-            "id" : 7
-          }, {
-            "x" : 16,
-            "y" : 16,
-            "id" : 8
-          }, {
-            "x" : 25,
-            "y" : 16,
-            "id" : 9
-          }, {
-            "x" : 28,
-            "y" : 13,
-            "id" : 10
-          }, {
-            "x" : 32,
-            "y" : 12,
-            "id" : 11
-          }, {
-            "x" : 37,
-            "y" : 10,
-            "id" : 12
-          }, {
-            "x" : 39,
-            "y" : 9,
-            "id" : 13
-          }, {
-            "x" : 39,
-            "y" : 6,
-            "id" : 14
-          }, {
-            "x" : 38,
-            "y" : 3,
-            "id" : 15
-          }, {
-            "x" : 47,
-            "y" : 3,
-            "id" : 16
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "4/7 R.Dragoon Gd",
           "type" : "AMPHIBIOUS_ARMOR",
@@ -30644,85 +30752,90 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 75,
-        "orders" : "ATTACK",
-        "emphasis" : "IGNORE_LOSSES",
-        "supportscope" : "INTERNAL_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 16,
-            "y" : 9,
+        "orders" : {
+          "operationalStance" : "OFFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "IGNORE_LOSSES",
+          "supportscope" : "INTERNAL_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 16,
+              "y" : 9,
+              "id" : 1
+            }, {
+              "x" : 17,
+              "y" : 9,
+              "id" : 2
+            }, {
+              "x" : 15,
+              "y" : 10,
+              "id" : 3
+            }, {
+              "x" : 16,
+              "y" : 11,
+              "id" : 4
+            }, {
+              "x" : 17,
+              "y" : 11,
+              "id" : 5
+            }, {
+              "x" : 15,
+              "y" : 12,
+              "id" : 6
+            }, {
+              "x" : 17,
+              "y" : 14,
+              "id" : 7
+            }, {
+              "x" : 16,
+              "y" : 14,
+              "id" : 8
+            }, {
+              "x" : 18,
+              "y" : 13,
+              "id" : 9
+            }, {
+              "x" : 20,
+              "y" : 14,
+              "id" : 10
+            }, {
+              "x" : 24,
+              "y" : 12,
+              "id" : 11
+            }, {
+              "x" : 29,
+              "y" : 12,
+              "id" : 12
+            }, {
+              "x" : 32,
+              "y" : 10,
+              "id" : 13
+            }, {
+              "x" : 34,
+              "y" : 9,
+              "id" : 14
+            }, {
+              "x" : 37,
+              "y" : 8,
+              "id" : 15
+            }, {
+              "x" : 41,
+              "y" : 6,
+              "id" : 16
+            }, {
+              "x" : 44,
+              "y" : 4,
+              "id" : 17
+            }, {
+              "x" : 49,
+              "y" : 4,
+              "id" : 18
+            } ],
             "id" : 1
-          }, {
-            "x" : 17,
-            "y" : 9,
-            "id" : 2
-          }, {
-            "x" : 15,
-            "y" : 10,
-            "id" : 3
-          }, {
-            "x" : 16,
-            "y" : 11,
-            "id" : 4
-          }, {
-            "x" : 17,
-            "y" : 11,
-            "id" : 5
-          }, {
-            "x" : 15,
-            "y" : 12,
-            "id" : 6
-          }, {
-            "x" : 17,
-            "y" : 14,
-            "id" : 7
-          }, {
-            "x" : 16,
-            "y" : 14,
-            "id" : 8
-          }, {
-            "x" : 18,
-            "y" : 13,
-            "id" : 9
-          }, {
-            "x" : 20,
-            "y" : 14,
-            "id" : 10
-          }, {
-            "x" : 24,
-            "y" : 12,
-            "id" : 11
-          }, {
-            "x" : 29,
-            "y" : 12,
-            "id" : 12
-          }, {
-            "x" : 32,
-            "y" : 10,
-            "id" : 13
-          }, {
-            "x" : 34,
-            "y" : 9,
-            "id" : 14
-          }, {
-            "x" : 37,
-            "y" : 8,
-            "id" : 15
-          }, {
-            "x" : 41,
-            "y" : 6,
-            "id" : 16
-          }, {
-            "x" : 44,
-            "y" : 4,
-            "id" : 17
-          }, {
-            "x" : 49,
-            "y" : 4,
-            "id" : 18
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "107 Rgt RAC",
           "type" : "TANK",
@@ -30876,81 +30989,86 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 75,
-        "orders" : "ATTACK",
-        "emphasis" : "IGNORE_LOSSES",
-        "supportscope" : "INTERNAL_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 25,
-            "y" : 6,
+        "orders" : {
+          "operationalStance" : "OFFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "IGNORE_LOSSES",
+          "supportscope" : "INTERNAL_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 25,
+              "y" : 6,
+              "id" : 1
+            }, {
+              "x" : 25,
+              "y" : 8,
+              "id" : 2
+            }, {
+              "x" : 27,
+              "y" : 8,
+              "id" : 3
+            }, {
+              "x" : 23,
+              "y" : 9,
+              "id" : 4
+            }, {
+              "x" : 26,
+              "y" : 10,
+              "id" : 5
+            }, {
+              "x" : 28,
+              "y" : 10,
+              "id" : 6
+            }, {
+              "x" : 24,
+              "y" : 10,
+              "id" : 7
+            }, {
+              "x" : 26,
+              "y" : 12,
+              "id" : 8
+            }, {
+              "x" : 28,
+              "y" : 12,
+              "id" : 9
+            }, {
+              "x" : 24,
+              "y" : 12,
+              "id" : 10
+            }, {
+              "x" : 26,
+              "y" : 14,
+              "id" : 11
+            }, {
+              "x" : 28,
+              "y" : 14,
+              "id" : 12
+            }, {
+              "x" : 24,
+              "y" : 14,
+              "id" : 13
+            }, {
+              "x" : 26,
+              "y" : 16,
+              "id" : 14
+            }, {
+              "x" : 24,
+              "y" : 16,
+              "id" : 15
+            }, {
+              "x" : 28,
+              "y" : 16,
+              "id" : 16
+            }, {
+              "x" : 55,
+              "y" : 11,
+              "id" : 17
+            } ],
             "id" : 1
-          }, {
-            "x" : 25,
-            "y" : 8,
-            "id" : 2
-          }, {
-            "x" : 27,
-            "y" : 8,
-            "id" : 3
-          }, {
-            "x" : 23,
-            "y" : 9,
-            "id" : 4
-          }, {
-            "x" : 26,
-            "y" : 10,
-            "id" : 5
-          }, {
-            "x" : 28,
-            "y" : 10,
-            "id" : 6
-          }, {
-            "x" : 24,
-            "y" : 10,
-            "id" : 7
-          }, {
-            "x" : 26,
-            "y" : 12,
-            "id" : 8
-          }, {
-            "x" : 28,
-            "y" : 12,
-            "id" : 9
-          }, {
-            "x" : 24,
-            "y" : 12,
-            "id" : 10
-          }, {
-            "x" : 26,
-            "y" : 14,
-            "id" : 11
-          }, {
-            "x" : 28,
-            "y" : 14,
-            "id" : 12
-          }, {
-            "x" : 24,
-            "y" : 14,
-            "id" : 13
-          }, {
-            "x" : 26,
-            "y" : 16,
-            "id" : 14
-          }, {
-            "x" : 24,
-            "y" : 16,
-            "id" : 15
-          }, {
-            "x" : 28,
-            "y" : 16,
-            "id" : 16
-          }, {
-            "x" : 55,
-            "y" : 11,
-            "id" : 17
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "2nd Can Div HQ",
           "type" : "HEADQUARTERS",
@@ -31898,53 +32016,58 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 75,
-        "orders" : "ATTACK",
-        "emphasis" : "IGNORE_LOSSES",
-        "supportscope" : "INTERNAL_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 29,
-            "y" : 6,
+        "orders" : {
+          "operationalStance" : "OFFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "IGNORE_LOSSES",
+          "supportscope" : "INTERNAL_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 29,
+              "y" : 6,
+              "id" : 1
+            }, {
+              "x" : 29,
+              "y" : 8,
+              "id" : 2
+            }, {
+              "x" : 30,
+              "y" : 8,
+              "id" : 3
+            }, {
+              "x" : 28,
+              "y" : 8,
+              "id" : 4
+            }, {
+              "x" : 32,
+              "y" : 9,
+              "id" : 5
+            }, {
+              "x" : 31,
+              "y" : 9,
+              "id" : 6
+            }, {
+              "x" : 33,
+              "y" : 10,
+              "id" : 7
+            }, {
+              "x" : 35,
+              "y" : 11,
+              "id" : 8
+            }, {
+              "x" : 34,
+              "y" : 10,
+              "id" : 9
+            }, {
+              "x" : 36,
+              "y" : 11,
+              "id" : 10
+            } ],
             "id" : 1
-          }, {
-            "x" : 29,
-            "y" : 8,
-            "id" : 2
-          }, {
-            "x" : 30,
-            "y" : 8,
-            "id" : 3
-          }, {
-            "x" : 28,
-            "y" : 8,
-            "id" : 4
-          }, {
-            "x" : 32,
-            "y" : 9,
-            "id" : 5
-          }, {
-            "x" : 31,
-            "y" : 9,
-            "id" : 6
-          }, {
-            "x" : 33,
-            "y" : 10,
-            "id" : 7
-          }, {
-            "x" : 35,
-            "y" : 11,
-            "id" : 8
-          }, {
-            "x" : 34,
-            "y" : 10,
-            "id" : 9
-          }, {
-            "x" : 36,
-            "y" : 11,
-            "id" : 10
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "3rd Can Div HQ",
           "type" : "HEADQUARTERS",
@@ -32990,85 +33113,90 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 75,
-        "orders" : "ATTACK",
-        "emphasis" : "IGNORE_LOSSES",
-        "supportscope" : "INTERNAL_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 9,
-            "y" : 17,
+        "orders" : {
+          "operationalStance" : "OFFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "IGNORE_LOSSES",
+          "supportscope" : "INTERNAL_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 9,
+              "y" : 17,
+              "id" : 1
+            }, {
+              "x" : 10,
+              "y" : 16,
+              "id" : 2
+            }, {
+              "x" : 13,
+              "y" : 16,
+              "id" : 3
+            }, {
+              "x" : 13,
+              "y" : 14,
+              "id" : 4
+            }, {
+              "x" : 13,
+              "y" : 18,
+              "id" : 5
+            }, {
+              "x" : 17,
+              "y" : 16,
+              "id" : 6
+            }, {
+              "x" : 17,
+              "y" : 14,
+              "id" : 7
+            }, {
+              "x" : 17,
+              "y" : 18,
+              "id" : 8
+            }, {
+              "x" : 20,
+              "y" : 11,
+              "id" : 9
+            }, {
+              "x" : 24,
+              "y" : 11,
+              "id" : 10
+            }, {
+              "x" : 27,
+              "y" : 11,
+              "id" : 11
+            }, {
+              "x" : 29,
+              "y" : 10,
+              "id" : 12
+            }, {
+              "x" : 34,
+              "y" : 8,
+              "id" : 13
+            }, {
+              "x" : 37,
+              "y" : 7,
+              "id" : 14
+            }, {
+              "x" : 39,
+              "y" : 5,
+              "id" : 15
+            }, {
+              "x" : 38,
+              "y" : 2,
+              "id" : 16
+            }, {
+              "x" : 43,
+              "y" : 2,
+              "id" : 17
+            }, {
+              "x" : 51,
+              "y" : 2,
+              "id" : 18
+            } ],
             "id" : 1
-          }, {
-            "x" : 10,
-            "y" : 16,
-            "id" : 2
-          }, {
-            "x" : 13,
-            "y" : 16,
-            "id" : 3
-          }, {
-            "x" : 13,
-            "y" : 14,
-            "id" : 4
-          }, {
-            "x" : 13,
-            "y" : 18,
-            "id" : 5
-          }, {
-            "x" : 17,
-            "y" : 16,
-            "id" : 6
-          }, {
-            "x" : 17,
-            "y" : 14,
-            "id" : 7
-          }, {
-            "x" : 17,
-            "y" : 18,
-            "id" : 8
-          }, {
-            "x" : 20,
-            "y" : 11,
-            "id" : 9
-          }, {
-            "x" : 24,
-            "y" : 11,
-            "id" : 10
-          }, {
-            "x" : 27,
-            "y" : 11,
-            "id" : 11
-          }, {
-            "x" : 29,
-            "y" : 10,
-            "id" : 12
-          }, {
-            "x" : 34,
-            "y" : 8,
-            "id" : 13
-          }, {
-            "x" : 37,
-            "y" : 7,
-            "id" : 14
-          }, {
-            "x" : 39,
-            "y" : 5,
-            "id" : 15
-          }, {
-            "x" : 38,
-            "y" : 2,
-            "id" : 16
-          }, {
-            "x" : 43,
-            "y" : 2,
-            "id" : 17
-          }, {
-            "x" : 51,
-            "y" : 2,
-            "id" : 18
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "3rd Div HQ",
           "type" : "HEADQUARTERS",
@@ -34114,65 +34242,70 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 75,
-        "orders" : "ATTACK",
-        "emphasis" : "IGNORE_LOSSES",
-        "supportscope" : "INTERNAL_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 13,
-            "y" : 10,
+        "orders" : {
+          "operationalStance" : "OFFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "IGNORE_LOSSES",
+          "supportscope" : "INTERNAL_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 13,
+              "y" : 10,
+              "id" : 1
+            }, {
+              "x" : 14,
+              "y" : 11,
+              "id" : 2
+            }, {
+              "x" : 15,
+              "y" : 13,
+              "id" : 3
+            }, {
+              "x" : 17,
+              "y" : 14,
+              "id" : 4
+            }, {
+              "x" : 21,
+              "y" : 14,
+              "id" : 5
+            }, {
+              "x" : 25,
+              "y" : 14,
+              "id" : 6
+            }, {
+              "x" : 29,
+              "y" : 14,
+              "id" : 7
+            }, {
+              "x" : 33,
+              "y" : 14,
+              "id" : 8
+            }, {
+              "x" : 37,
+              "y" : 14,
+              "id" : 9
+            }, {
+              "x" : 41,
+              "y" : 14,
+              "id" : 10
+            }, {
+              "x" : 45,
+              "y" : 14,
+              "id" : 11
+            }, {
+              "x" : 49,
+              "y" : 14,
+              "id" : 12
+            }, {
+              "x" : 53,
+              "y" : 14,
+              "id" : 13
+            } ],
             "id" : 1
-          }, {
-            "x" : 14,
-            "y" : 11,
-            "id" : 2
-          }, {
-            "x" : 15,
-            "y" : 13,
-            "id" : 3
-          }, {
-            "x" : 17,
-            "y" : 14,
-            "id" : 4
-          }, {
-            "x" : 21,
-            "y" : 14,
-            "id" : 5
-          }, {
-            "x" : 25,
-            "y" : 14,
-            "id" : 6
-          }, {
-            "x" : 29,
-            "y" : 14,
-            "id" : 7
-          }, {
-            "x" : 33,
-            "y" : 14,
-            "id" : 8
-          }, {
-            "x" : 37,
-            "y" : 14,
-            "id" : 9
-          }, {
-            "x" : 41,
-            "y" : 14,
-            "id" : 10
-          }, {
-            "x" : 45,
-            "y" : 14,
-            "id" : 11
-          }, {
-            "x" : 49,
-            "y" : 14,
-            "id" : 12
-          }, {
-            "x" : 53,
-            "y" : 14,
-            "id" : 13
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "43rd Wessex HQ",
           "type" : "HEADQUARTERS",
@@ -35218,73 +35351,78 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 75,
-        "orders" : "ATTACK",
-        "emphasis" : "IGNORE_LOSSES",
-        "supportscope" : "INTERNAL_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 10,
-            "y" : 12,
+        "orders" : {
+          "operationalStance" : "OFFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "IGNORE_LOSSES",
+          "supportscope" : "INTERNAL_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 10,
+              "y" : 12,
+              "id" : 1
+            }, {
+              "x" : 12,
+              "y" : 13,
+              "id" : 2
+            }, {
+              "x" : 14,
+              "y" : 14,
+              "id" : 3
+            }, {
+              "x" : 16,
+              "y" : 15,
+              "id" : 4
+            }, {
+              "x" : 20,
+              "y" : 15,
+              "id" : 5
+            }, {
+              "x" : 24,
+              "y" : 15,
+              "id" : 6
+            }, {
+              "x" : 28,
+              "y" : 15,
+              "id" : 7
+            }, {
+              "x" : 32,
+              "y" : 15,
+              "id" : 8
+            }, {
+              "x" : 36,
+              "y" : 15,
+              "id" : 9
+            }, {
+              "x" : 40,
+              "y" : 15,
+              "id" : 10
+            }, {
+              "x" : 44,
+              "y" : 15,
+              "id" : 11
+            }, {
+              "x" : 48,
+              "y" : 15,
+              "id" : 12
+            }, {
+              "x" : 51,
+              "y" : 14,
+              "id" : 13
+            }, {
+              "x" : 54,
+              "y" : 11,
+              "id" : 14
+            }, {
+              "x" : 54,
+              "y" : 6,
+              "id" : 15
+            } ],
             "id" : 1
-          }, {
-            "x" : 12,
-            "y" : 13,
-            "id" : 2
-          }, {
-            "x" : 14,
-            "y" : 14,
-            "id" : 3
-          }, {
-            "x" : 16,
-            "y" : 15,
-            "id" : 4
-          }, {
-            "x" : 20,
-            "y" : 15,
-            "id" : 5
-          }, {
-            "x" : 24,
-            "y" : 15,
-            "id" : 6
-          }, {
-            "x" : 28,
-            "y" : 15,
-            "id" : 7
-          }, {
-            "x" : 32,
-            "y" : 15,
-            "id" : 8
-          }, {
-            "x" : 36,
-            "y" : 15,
-            "id" : 9
-          }, {
-            "x" : 40,
-            "y" : 15,
-            "id" : 10
-          }, {
-            "x" : 44,
-            "y" : 15,
-            "id" : 11
-          }, {
-            "x" : 48,
-            "y" : 15,
-            "id" : 12
-          }, {
-            "x" : 51,
-            "y" : 14,
-            "id" : 13
-          }, {
-            "x" : 54,
-            "y" : 11,
-            "id" : 14
-          }, {
-            "x" : 54,
-            "y" : 6,
-            "id" : 15
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "50 North.Div HQ",
           "type" : "HEADQUARTERS",
@@ -36335,81 +36473,86 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 75,
-        "orders" : "ATTACK",
-        "emphasis" : "IGNORE_LOSSES",
-        "supportscope" : "INTERNAL_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 20,
-            "y" : 7,
+        "orders" : {
+          "operationalStance" : "OFFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "IGNORE_LOSSES",
+          "supportscope" : "INTERNAL_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 20,
+              "y" : 7,
+              "id" : 1
+            }, {
+              "x" : 20,
+              "y" : 9,
+              "id" : 2
+            }, {
+              "x" : 18,
+              "y" : 9,
+              "id" : 3
+            }, {
+              "x" : 22,
+              "y" : 9,
+              "id" : 4
+            }, {
+              "x" : 20,
+              "y" : 11,
+              "id" : 5
+            }, {
+              "x" : 18,
+              "y" : 11,
+              "id" : 6
+            }, {
+              "x" : 22,
+              "y" : 11,
+              "id" : 7
+            }, {
+              "x" : 20,
+              "y" : 13,
+              "id" : 8
+            }, {
+              "x" : 18,
+              "y" : 13,
+              "id" : 9
+            }, {
+              "x" : 22,
+              "y" : 13,
+              "id" : 10
+            }, {
+              "x" : 20,
+              "y" : 15,
+              "id" : 11
+            }, {
+              "x" : 18,
+              "y" : 15,
+              "id" : 12
+            }, {
+              "x" : 22,
+              "y" : 15,
+              "id" : 13
+            }, {
+              "x" : 20,
+              "y" : 17,
+              "id" : 14
+            }, {
+              "x" : 18,
+              "y" : 17,
+              "id" : 15
+            }, {
+              "x" : 22,
+              "y" : 17,
+              "id" : 16
+            }, {
+              "x" : 55,
+              "y" : 15,
+              "id" : 17
+            } ],
             "id" : 1
-          }, {
-            "x" : 20,
-            "y" : 9,
-            "id" : 2
-          }, {
-            "x" : 18,
-            "y" : 9,
-            "id" : 3
-          }, {
-            "x" : 22,
-            "y" : 9,
-            "id" : 4
-          }, {
-            "x" : 20,
-            "y" : 11,
-            "id" : 5
-          }, {
-            "x" : 18,
-            "y" : 11,
-            "id" : 6
-          }, {
-            "x" : 22,
-            "y" : 11,
-            "id" : 7
-          }, {
-            "x" : 20,
-            "y" : 13,
-            "id" : 8
-          }, {
-            "x" : 18,
-            "y" : 13,
-            "id" : 9
-          }, {
-            "x" : 22,
-            "y" : 13,
-            "id" : 10
-          }, {
-            "x" : 20,
-            "y" : 15,
-            "id" : 11
-          }, {
-            "x" : 18,
-            "y" : 15,
-            "id" : 12
-          }, {
-            "x" : 22,
-            "y" : 15,
-            "id" : 13
-          }, {
-            "x" : 20,
-            "y" : 17,
-            "id" : 14
-          }, {
-            "x" : 18,
-            "y" : 17,
-            "id" : 15
-          }, {
-            "x" : 22,
-            "y" : 17,
-            "id" : 16
-          }, {
-            "x" : 55,
-            "y" : 15,
-            "id" : 17
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "53 Welsh Div HQ",
           "type" : "HEADQUARTERS",
@@ -37460,97 +37603,102 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 75,
-        "orders" : "ATTACK",
-        "emphasis" : "IGNORE_LOSSES",
-        "supportscope" : "INTERNAL_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 17,
-            "y" : 7,
+        "orders" : {
+          "operationalStance" : "OFFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "IGNORE_LOSSES",
+          "supportscope" : "INTERNAL_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 17,
+              "y" : 7,
+              "id" : 1
+            }, {
+              "x" : 16,
+              "y" : 9,
+              "id" : 2
+            }, {
+              "x" : 17,
+              "y" : 11,
+              "id" : 3
+            }, {
+              "x" : 17,
+              "y" : 13,
+              "id" : 4
+            }, {
+              "x" : 17,
+              "y" : 14,
+              "id" : 5
+            }, {
+              "x" : 19,
+              "y" : 15,
+              "id" : 6
+            }, {
+              "x" : 21,
+              "y" : 16,
+              "id" : 7
+            }, {
+              "x" : 23,
+              "y" : 17,
+              "id" : 8
+            }, {
+              "x" : 25,
+              "y" : 17,
+              "id" : 9
+            }, {
+              "x" : 27,
+              "y" : 16,
+              "id" : 10
+            }, {
+              "x" : 29,
+              "y" : 16,
+              "id" : 11
+            }, {
+              "x" : 31,
+              "y" : 16,
+              "id" : 12
+            }, {
+              "x" : 32,
+              "y" : 17,
+              "id" : 13
+            }, {
+              "x" : 34,
+              "y" : 17,
+              "id" : 14
+            }, {
+              "x" : 36,
+              "y" : 18,
+              "id" : 15
+            }, {
+              "x" : 38,
+              "y" : 19,
+              "id" : 16
+            }, {
+              "x" : 39,
+              "y" : 18,
+              "id" : 17
+            }, {
+              "x" : 43,
+              "y" : 16,
+              "id" : 18
+            }, {
+              "x" : 43,
+              "y" : 14,
+              "id" : 19
+            }, {
+              "x" : 46,
+              "y" : 14,
+              "id" : 20
+            }, {
+              "x" : 51,
+              "y" : 15,
+              "id" : 21
+            } ],
             "id" : 1
-          }, {
-            "x" : 16,
-            "y" : 9,
-            "id" : 2
-          }, {
-            "x" : 17,
-            "y" : 11,
-            "id" : 3
-          }, {
-            "x" : 17,
-            "y" : 13,
-            "id" : 4
-          }, {
-            "x" : 17,
-            "y" : 14,
-            "id" : 5
-          }, {
-            "x" : 19,
-            "y" : 15,
-            "id" : 6
-          }, {
-            "x" : 21,
-            "y" : 16,
-            "id" : 7
-          }, {
-            "x" : 23,
-            "y" : 17,
-            "id" : 8
-          }, {
-            "x" : 25,
-            "y" : 17,
-            "id" : 9
-          }, {
-            "x" : 27,
-            "y" : 16,
-            "id" : 10
-          }, {
-            "x" : 29,
-            "y" : 16,
-            "id" : 11
-          }, {
-            "x" : 31,
-            "y" : 16,
-            "id" : 12
-          }, {
-            "x" : 32,
-            "y" : 17,
-            "id" : 13
-          }, {
-            "x" : 34,
-            "y" : 17,
-            "id" : 14
-          }, {
-            "x" : 36,
-            "y" : 18,
-            "id" : 15
-          }, {
-            "x" : 38,
-            "y" : 19,
-            "id" : 16
-          }, {
-            "x" : 39,
-            "y" : 18,
-            "id" : 17
-          }, {
-            "x" : 43,
-            "y" : 16,
-            "id" : 18
-          }, {
-            "x" : 43,
-            "y" : 14,
-            "id" : 19
-          }, {
-            "x" : 46,
-            "y" : 14,
-            "id" : 20
-          }, {
-            "x" : 51,
-            "y" : 15,
-            "id" : 21
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "59 Stafford.HQ",
           "type" : "HEADQUARTERS",
@@ -38596,61 +38744,66 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 75,
-        "orders" : "ATTACK",
-        "emphasis" : "IGNORE_LOSSES",
-        "supportscope" : "INTERNAL_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 29,
-            "y" : 0,
+        "orders" : {
+          "operationalStance" : "OFFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "IGNORE_LOSSES",
+          "supportscope" : "INTERNAL_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 29,
+              "y" : 0,
+              "id" : 1
+            }, {
+              "x" : 33,
+              "y" : 1,
+              "id" : 2
+            }, {
+              "x" : 33,
+              "y" : 3,
+              "id" : 3
+            }, {
+              "x" : 33,
+              "y" : 4,
+              "id" : 4
+            }, {
+              "x" : 34,
+              "y" : 5,
+              "id" : 5
+            }, {
+              "x" : 36,
+              "y" : 6,
+              "id" : 6
+            }, {
+              "x" : 38,
+              "y" : 7,
+              "id" : 7
+            }, {
+              "x" : 40,
+              "y" : 8,
+              "id" : 8
+            }, {
+              "x" : 42,
+              "y" : 9,
+              "id" : 9
+            }, {
+              "x" : 44,
+              "y" : 10,
+              "id" : 10
+            }, {
+              "x" : 44,
+              "y" : 12,
+              "id" : 11
+            }, {
+              "x" : 43,
+              "y" : 14,
+              "id" : 12
+            } ],
             "id" : 1
-          }, {
-            "x" : 33,
-            "y" : 1,
-            "id" : 2
-          }, {
-            "x" : 33,
-            "y" : 3,
-            "id" : 3
-          }, {
-            "x" : 33,
-            "y" : 4,
-            "id" : 4
-          }, {
-            "x" : 34,
-            "y" : 5,
-            "id" : 5
-          }, {
-            "x" : 36,
-            "y" : 6,
-            "id" : 6
-          }, {
-            "x" : 38,
-            "y" : 7,
-            "id" : 7
-          }, {
-            "x" : 40,
-            "y" : 8,
-            "id" : 8
-          }, {
-            "x" : 42,
-            "y" : 9,
-            "id" : 9
-          }, {
-            "x" : 44,
-            "y" : 10,
-            "id" : 10
-          }, {
-            "x" : 44,
-            "y" : 12,
-            "id" : 11
-          }, {
-            "x" : 43,
-            "y" : 14,
-            "id" : 12
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "1 Polish Arm HQ",
           "type" : "HEADQUARTERS",
@@ -39296,49 +39449,54 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 75,
-        "orders" : "ATTACK",
-        "emphasis" : "IGNORE_LOSSES",
-        "supportscope" : "INTERNAL_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 29,
-            "y" : 0,
+        "orders" : {
+          "operationalStance" : "OFFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "IGNORE_LOSSES",
+          "supportscope" : "INTERNAL_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 29,
+              "y" : 0,
+              "id" : 1
+            }, {
+              "x" : 34,
+              "y" : 4,
+              "id" : 2
+            }, {
+              "x" : 34,
+              "y" : 5,
+              "id" : 3
+            }, {
+              "x" : 34,
+              "y" : 6,
+              "id" : 4
+            }, {
+              "x" : 36,
+              "y" : 7,
+              "id" : 5
+            }, {
+              "x" : 38,
+              "y" : 8,
+              "id" : 6
+            }, {
+              "x" : 40,
+              "y" : 9,
+              "id" : 7
+            }, {
+              "x" : 40,
+              "y" : 11,
+              "id" : 8
+            }, {
+              "x" : 40,
+              "y" : 13,
+              "id" : 9
+            } ],
             "id" : 1
-          }, {
-            "x" : 34,
-            "y" : 4,
-            "id" : 2
-          }, {
-            "x" : 34,
-            "y" : 5,
-            "id" : 3
-          }, {
-            "x" : 34,
-            "y" : 6,
-            "id" : 4
-          }, {
-            "x" : 36,
-            "y" : 7,
-            "id" : 5
-          }, {
-            "x" : 38,
-            "y" : 8,
-            "id" : 6
-          }, {
-            "x" : 40,
-            "y" : 9,
-            "id" : 7
-          }, {
-            "x" : 40,
-            "y" : 11,
-            "id" : 8
-          }, {
-            "x" : 40,
-            "y" : 13,
-            "id" : 9
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "4 Can Armd HQ",
           "type" : "HEADQUARTERS",
@@ -39984,105 +40142,110 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 75,
-        "orders" : "ATTACK",
-        "emphasis" : "IGNORE_LOSSES",
-        "supportscope" : "INTERNAL_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 9,
-            "y" : 17,
+        "orders" : {
+          "operationalStance" : "OFFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "IGNORE_LOSSES",
+          "supportscope" : "INTERNAL_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 9,
+              "y" : 17,
+              "id" : 1
+            }, {
+              "x" : 10,
+              "y" : 17,
+              "id" : 2
+            }, {
+              "x" : 11,
+              "y" : 17,
+              "id" : 3
+            }, {
+              "x" : 11,
+              "y" : 18,
+              "id" : 4
+            }, {
+              "x" : 11,
+              "y" : 16,
+              "id" : 5
+            }, {
+              "x" : 11,
+              "y" : 19,
+              "id" : 6
+            }, {
+              "x" : 13,
+              "y" : 17,
+              "id" : 7
+            }, {
+              "x" : 13,
+              "y" : 16,
+              "id" : 8
+            }, {
+              "x" : 13,
+              "y" : 19,
+              "id" : 9
+            }, {
+              "x" : 13,
+              "y" : 18,
+              "id" : 10
+            }, {
+              "x" : 15,
+              "y" : 18,
+              "id" : 11
+            }, {
+              "x" : 15,
+              "y" : 17,
+              "id" : 12
+            }, {
+              "x" : 15,
+              "y" : 19,
+              "id" : 13
+            }, {
+              "x" : 15,
+              "y" : 20,
+              "id" : 14
+            }, {
+              "x" : 19,
+              "y" : 20,
+              "id" : 15
+            }, {
+              "x" : 21,
+              "y" : 19,
+              "id" : 16
+            }, {
+              "x" : 24,
+              "y" : 17,
+              "id" : 17
+            }, {
+              "x" : 28,
+              "y" : 15,
+              "id" : 18
+            }, {
+              "x" : 31,
+              "y" : 14,
+              "id" : 19
+            }, {
+              "x" : 34,
+              "y" : 12,
+              "id" : 20
+            }, {
+              "x" : 37,
+              "y" : 11,
+              "id" : 21
+            }, {
+              "x" : 40,
+              "y" : 11,
+              "id" : 22
+            }, {
+              "x" : 48,
+              "y" : 5,
+              "id" : 23
+            } ],
             "id" : 1
-          }, {
-            "x" : 10,
-            "y" : 17,
-            "id" : 2
-          }, {
-            "x" : 11,
-            "y" : 17,
-            "id" : 3
-          }, {
-            "x" : 11,
-            "y" : 18,
-            "id" : 4
-          }, {
-            "x" : 11,
-            "y" : 16,
-            "id" : 5
-          }, {
-            "x" : 11,
-            "y" : 19,
-            "id" : 6
-          }, {
-            "x" : 13,
-            "y" : 17,
-            "id" : 7
-          }, {
-            "x" : 13,
-            "y" : 16,
-            "id" : 8
-          }, {
-            "x" : 13,
-            "y" : 19,
-            "id" : 9
-          }, {
-            "x" : 13,
-            "y" : 18,
-            "id" : 10
-          }, {
-            "x" : 15,
-            "y" : 18,
-            "id" : 11
-          }, {
-            "x" : 15,
-            "y" : 17,
-            "id" : 12
-          }, {
-            "x" : 15,
-            "y" : 19,
-            "id" : 13
-          }, {
-            "x" : 15,
-            "y" : 20,
-            "id" : 14
-          }, {
-            "x" : 19,
-            "y" : 20,
-            "id" : 15
-          }, {
-            "x" : 21,
-            "y" : 19,
-            "id" : 16
-          }, {
-            "x" : 24,
-            "y" : 17,
-            "id" : 17
-          }, {
-            "x" : 28,
-            "y" : 15,
-            "id" : 18
-          }, {
-            "x" : 31,
-            "y" : 14,
-            "id" : 19
-          }, {
-            "x" : 34,
-            "y" : 12,
-            "id" : 20
-          }, {
-            "x" : 37,
-            "y" : 11,
-            "id" : 21
-          }, {
-            "x" : 40,
-            "y" : 11,
-            "id" : 22
-          }, {
-            "x" : 48,
-            "y" : 5,
-            "id" : 23
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "11th Armd Div HQ",
           "type" : "HEADQUARTERS",
@@ -40728,45 +40891,50 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 75,
-        "orders" : "FLANK_REAR_GUARD",
-        "emphasis" : "IGNORE_LOSSES",
-        "supportscope" : "INTERNAL_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 1,
-            "y" : 19,
+        "orders" : {
+          "operationalStance" : "SECURITY",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "IGNORE_LOSSES",
+          "supportscope" : "INTERNAL_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 1,
+              "y" : 19,
+              "id" : 1
+            }, {
+              "x" : 1,
+              "y" : 20,
+              "id" : 2
+            }, {
+              "x" : 1,
+              "y" : 18,
+              "id" : 3
+            }, {
+              "x" : 1,
+              "y" : 21,
+              "id" : 4
+            }, {
+              "x" : 1,
+              "y" : 17,
+              "id" : 5
+            }, {
+              "x" : 1,
+              "y" : 22,
+              "id" : 6
+            }, {
+              "x" : 1,
+              "y" : 16,
+              "id" : 7
+            }, {
+              "x" : 1,
+              "y" : 23,
+              "id" : 8
+            } ],
             "id" : 1
-          }, {
-            "x" : 1,
-            "y" : 20,
-            "id" : 2
-          }, {
-            "x" : 1,
-            "y" : 18,
-            "id" : 3
-          }, {
-            "x" : 1,
-            "y" : 21,
-            "id" : 4
-          }, {
-            "x" : 1,
-            "y" : 17,
-            "id" : 5
-          }, {
-            "x" : 1,
-            "y" : 22,
-            "id" : 6
-          }, {
-            "x" : 1,
-            "y" : 16,
-            "id" : 7
-          }, {
-            "x" : 1,
-            "y" : 23,
-            "id" : 8
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "121 Wing",
           "type" : "FIGHTER_BOMBER",
@@ -41190,17 +41358,22 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 75,
-        "orders" : "FLANK_REAR_GUARD",
-        "emphasis" : "IGNORE_LOSSES",
-        "supportscope" : "INTERNAL_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 1,
-            "y" : 20,
+        "orders" : {
+          "operationalStance" : "SECURITY",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "IGNORE_LOSSES",
+          "supportscope" : "INTERNAL_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 1,
+              "y" : 20,
+              "id" : 1
+            } ],
             "id" : 1
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "138 Wing",
           "type" : "LIGHT_BOMBER",
@@ -41302,17 +41475,22 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 75,
-        "orders" : "AREA_DEFENSE",
-        "emphasis" : "IGNORE_LOSSES",
-        "supportscope" : "INTERNAL_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 1,
-            "y" : 15,
+        "orders" : {
+          "operationalStance" : "GARRISON",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "IGNORE_LOSSES",
+          "supportscope" : "INTERNAL_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 1,
+              "y" : 15,
+              "id" : 1
+            } ],
             "id" : 1
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "AAA 1",
           "type" : "ANTI_AIRCRAFT",
@@ -41976,9 +42154,14 @@
         "commander" : "General Commander",
         "proficiency" : 75,
         "supply" : 30,
-        "orders" : "FORCE_SECURITY",
-        "emphasis" : "LIMIT_LOSSES",
-        "supportscope" : "ARMY_SUPPORT",
+        "orders" : {
+          "operationalStance" : "DEFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "MINIMIZE_LOSSES",
+          "supportscope" : "ARMY_SUPPORT"
+        },
         "id" : 0
       }, {
         "name" : "I SS PZ KORPS",
@@ -41987,37 +42170,42 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 50,
-        "orders" : "FLANK_REAR_GUARD",
-        "emphasis" : "MINIMIZE_LOSSES",
-        "supportscope" : "ARMY_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 53,
-            "y" : 7,
+        "orders" : {
+          "operationalStance" : "SECURITY",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "MINIMIZE_LOSSES",
+          "supportscope" : "ARMY_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 53,
+              "y" : 7,
+              "id" : 1
+            }, {
+              "x" : 48,
+              "y" : 11,
+              "id" : 2
+            }, {
+              "x" : 40,
+              "y" : 11,
+              "id" : 3
+            }, {
+              "x" : 43,
+              "y" : 14,
+              "id" : 4
+            }, {
+              "x" : 43,
+              "y" : 16,
+              "id" : 5
+            }, {
+              "x" : 27,
+              "y" : 11,
+              "id" : 6
+            } ],
             "id" : 1
-          }, {
-            "x" : 48,
-            "y" : 11,
-            "id" : 2
-          }, {
-            "x" : 40,
-            "y" : 11,
-            "id" : 3
-          }, {
-            "x" : 43,
-            "y" : 14,
-            "id" : 4
-          }, {
-            "x" : 43,
-            "y" : 16,
-            "id" : 5
-          }, {
-            "x" : 27,
-            "y" : 11,
-            "id" : 6
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "I SS PzKorps",
           "type" : "HEADQUARTERS",
@@ -42217,29 +42405,34 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 50,
-        "orders" : "AREA_DEFENSE",
-        "emphasis" : "LIMIT_LOSSES",
-        "supportscope" : "INTERNAL_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 51,
-            "y" : 7,
+        "orders" : {
+          "operationalStance" : "GARRISON",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "LIMIT_LOSSES",
+          "supportscope" : "INTERNAL_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 51,
+              "y" : 7,
+              "id" : 1
+            }, {
+              "x" : 48,
+              "y" : 8,
+              "id" : 2
+            }, {
+              "x" : 46,
+              "y" : 10,
+              "id" : 3
+            }, {
+              "x" : 43,
+              "y" : 12,
+              "id" : 4
+            } ],
             "id" : 1
-          }, {
-            "x" : 48,
-            "y" : 8,
-            "id" : 2
-          }, {
-            "x" : 46,
-            "y" : 10,
-            "id" : 3
-          }, {
-            "x" : 43,
-            "y" : 12,
-            "id" : 4
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "II SS PzKorps",
           "type" : "HEADQUARTERS",
@@ -42335,49 +42528,54 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 50,
-        "orders" : "FLANK_REAR_GUARD",
-        "emphasis" : "MINIMIZE_LOSSES",
-        "supportscope" : "ARMY_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 55,
-            "y" : 6,
+        "orders" : {
+          "operationalStance" : "SECURITY",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "MINIMIZE_LOSSES",
+          "supportscope" : "ARMY_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 55,
+              "y" : 6,
+              "id" : 1
+            }, {
+              "x" : 49,
+              "y" : 9,
+              "id" : 2
+            }, {
+              "x" : 46,
+              "y" : 9,
+              "id" : 3
+            }, {
+              "x" : 42,
+              "y" : 11,
+              "id" : 4
+            }, {
+              "x" : 36,
+              "y" : 13,
+              "id" : 5
+            }, {
+              "x" : 30,
+              "y" : 13,
+              "id" : 6
+            }, {
+              "x" : 21,
+              "y" : 14,
+              "id" : 7
+            }, {
+              "x" : 18,
+              "y" : 16,
+              "id" : 8
+            }, {
+              "x" : 16,
+              "y" : 18,
+              "id" : 9
+            } ],
             "id" : 1
-          }, {
-            "x" : 49,
-            "y" : 9,
-            "id" : 2
-          }, {
-            "x" : 46,
-            "y" : 9,
-            "id" : 3
-          }, {
-            "x" : 42,
-            "y" : 11,
-            "id" : 4
-          }, {
-            "x" : 36,
-            "y" : 13,
-            "id" : 5
-          }, {
-            "x" : 30,
-            "y" : 13,
-            "id" : 6
-          }, {
-            "x" : 21,
-            "y" : 14,
-            "id" : 7
-          }, {
-            "x" : 18,
-            "y" : 16,
-            "id" : 8
-          }, {
-            "x" : 16,
-            "y" : 18,
-            "id" : 9
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "LVIII PzKorps",
           "type" : "HEADQUARTERS",
@@ -42719,41 +42917,46 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 50,
-        "orders" : "FLANK_REAR_GUARD",
-        "emphasis" : "MINIMIZE_LOSSES",
-        "supportscope" : "ARMY_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 53,
-            "y" : 14,
+        "orders" : {
+          "operationalStance" : "SECURITY",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "MINIMIZE_LOSSES",
+          "supportscope" : "ARMY_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 53,
+              "y" : 14,
+              "id" : 1
+            }, {
+              "x" : 50,
+              "y" : 15,
+              "id" : 2
+            }, {
+              "x" : 45,
+              "y" : 14,
+              "id" : 3
+            }, {
+              "x" : 42,
+              "y" : 13,
+              "id" : 4
+            }, {
+              "x" : 32,
+              "y" : 13,
+              "id" : 5
+            }, {
+              "x" : 28,
+              "y" : 15,
+              "id" : 6
+            }, {
+              "x" : 19,
+              "y" : 12,
+              "id" : 7
+            } ],
             "id" : 1
-          }, {
-            "x" : 50,
-            "y" : 15,
-            "id" : 2
-          }, {
-            "x" : 45,
-            "y" : 14,
-            "id" : 3
-          }, {
-            "x" : 42,
-            "y" : 13,
-            "id" : 4
-          }, {
-            "x" : 32,
-            "y" : 13,
-            "id" : 5
-          }, {
-            "x" : 28,
-            "y" : 15,
-            "id" : 6
-          }, {
-            "x" : 19,
-            "y" : 12,
-            "id" : 7
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "LXXIV Korps",
           "type" : "HEADQUARTERS",
@@ -43039,57 +43242,62 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 50,
-        "orders" : "FLANK_REAR_GUARD",
-        "emphasis" : "MINIMIZE_LOSSES",
-        "supportscope" : "ARMY_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 53,
-            "y" : 12,
+        "orders" : {
+          "operationalStance" : "SECURITY",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "MINIMIZE_LOSSES",
+          "supportscope" : "ARMY_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 53,
+              "y" : 12,
+              "id" : 1
+            }, {
+              "x" : 50,
+              "y" : 15,
+              "id" : 2
+            }, {
+              "x" : 46,
+              "y" : 14,
+              "id" : 3
+            }, {
+              "x" : 43,
+              "y" : 14,
+              "id" : 4
+            }, {
+              "x" : 39,
+              "y" : 16,
+              "id" : 5
+            }, {
+              "x" : 35,
+              "y" : 16,
+              "id" : 6
+            }, {
+              "x" : 31,
+              "y" : 16,
+              "id" : 7
+            }, {
+              "x" : 27,
+              "y" : 16,
+              "id" : 8
+            }, {
+              "x" : 23,
+              "y" : 17,
+              "id" : 9
+            }, {
+              "x" : 20,
+              "y" : 15,
+              "id" : 10
+            }, {
+              "x" : 16,
+              "y" : 17,
+              "id" : 11
+            } ],
             "id" : 1
-          }, {
-            "x" : 50,
-            "y" : 15,
-            "id" : 2
-          }, {
-            "x" : 46,
-            "y" : 14,
-            "id" : 3
-          }, {
-            "x" : 43,
-            "y" : 14,
-            "id" : 4
-          }, {
-            "x" : 39,
-            "y" : 16,
-            "id" : 5
-          }, {
-            "x" : 35,
-            "y" : 16,
-            "id" : 6
-          }, {
-            "x" : 31,
-            "y" : 16,
-            "id" : 7
-          }, {
-            "x" : 27,
-            "y" : 16,
-            "id" : 8
-          }, {
-            "x" : 23,
-            "y" : 17,
-            "id" : 9
-          }, {
-            "x" : 20,
-            "y" : 15,
-            "id" : 10
-          }, {
-            "x" : 16,
-            "y" : 17,
-            "id" : 11
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "LXXXIV Korps",
           "type" : "HEADQUARTERS",
@@ -43413,53 +43621,58 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 50,
-        "orders" : "FLANK_REAR_GUARD",
-        "emphasis" : "MINIMIZE_LOSSES",
-        "supportscope" : "ARMY_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 53,
-            "y" : 13,
+        "orders" : {
+          "operationalStance" : "SECURITY",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "MINIMIZE_LOSSES",
+          "supportscope" : "ARMY_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 53,
+              "y" : 13,
+              "id" : 1
+            }, {
+              "x" : 51,
+              "y" : 15,
+              "id" : 2
+            }, {
+              "x" : 46,
+              "y" : 16,
+              "id" : 3
+            }, {
+              "x" : 43,
+              "y" : 16,
+              "id" : 4
+            }, {
+              "x" : 43,
+              "y" : 14,
+              "id" : 5
+            }, {
+              "x" : 40,
+              "y" : 11,
+              "id" : 6
+            }, {
+              "x" : 36,
+              "y" : 14,
+              "id" : 7
+            }, {
+              "x" : 30,
+              "y" : 14,
+              "id" : 8
+            }, {
+              "x" : 24,
+              "y" : 14,
+              "id" : 9
+            }, {
+              "x" : 14,
+              "y" : 14,
+              "id" : 10
+            } ],
             "id" : 1
-          }, {
-            "x" : 51,
-            "y" : 15,
-            "id" : 2
-          }, {
-            "x" : 46,
-            "y" : 16,
-            "id" : 3
-          }, {
-            "x" : 43,
-            "y" : 16,
-            "id" : 4
-          }, {
-            "x" : 43,
-            "y" : 14,
-            "id" : 5
-          }, {
-            "x" : 40,
-            "y" : 11,
-            "id" : 6
-          }, {
-            "x" : 36,
-            "y" : 14,
-            "id" : 7
-          }, {
-            "x" : 30,
-            "y" : 14,
-            "id" : 8
-          }, {
-            "x" : 24,
-            "y" : 14,
-            "id" : 9
-          }, {
-            "x" : 14,
-            "y" : 14,
-            "id" : 10
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "II FJ Korps",
           "type" : "HEADQUARTERS",
@@ -44150,17 +44363,22 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 50,
-        "orders" : "FLANK_REAR_GUARD",
-        "emphasis" : "MINIMIZE_LOSSES",
-        "supportscope" : "ARMY_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 54,
-            "y" : 12,
+        "orders" : {
+          "operationalStance" : "SECURITY",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "MINIMIZE_LOSSES",
+          "supportscope" : "ARMY_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 54,
+              "y" : 12,
+              "id" : 1
+            } ],
             "id" : 1
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "III Flak Korps",
           "type" : "HEADQUARTERS",
@@ -44223,41 +44441,46 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 50,
-        "orders" : "AREA_DEFENSE",
-        "emphasis" : "MINIMIZE_LOSSES",
-        "supportscope" : "ARMY_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 54,
-            "y" : 13,
+        "orders" : {
+          "operationalStance" : "DEFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "MINIMIZE_LOSSES",
+          "supportscope" : "ARMY_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 54,
+              "y" : 13,
+              "id" : 1
+            }, {
+              "x" : 46,
+              "y" : 13,
+              "id" : 2
+            }, {
+              "x" : 38,
+              "y" : 13,
+              "id" : 3
+            }, {
+              "x" : 32,
+              "y" : 14,
+              "id" : 4
+            }, {
+              "x" : 27,
+              "y" : 15,
+              "id" : 5
+            }, {
+              "x" : 24,
+              "y" : 13,
+              "id" : 6
+            }, {
+              "x" : 18,
+              "y" : 13,
+              "id" : 7
+            } ],
             "id" : 1
-          }, {
-            "x" : 46,
-            "y" : 13,
-            "id" : 2
-          }, {
-            "x" : 38,
-            "y" : 13,
-            "id" : 3
-          }, {
-            "x" : 32,
-            "y" : 14,
-            "id" : 4
-          }, {
-            "x" : 27,
-            "y" : 15,
-            "id" : 5
-          }, {
-            "x" : 24,
-            "y" : 13,
-            "id" : 6
-          }, {
-            "x" : 18,
-            "y" : 13,
-            "id" : 7
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "1.Flak Regt HQ",
           "type" : "HEADQUARTERS",
@@ -44477,33 +44700,38 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 50,
-        "orders" : "AREA_DEFENSE",
-        "emphasis" : "MINIMIZE_LOSSES",
-        "supportscope" : "ARMY_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 53,
-            "y" : 11,
+        "orders" : {
+          "operationalStance" : "DEFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "MINIMIZE_LOSSES",
+          "supportscope" : "ARMY_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 53,
+              "y" : 11,
+              "id" : 1
+            }, {
+              "x" : 40,
+              "y" : 11,
+              "id" : 2
+            }, {
+              "x" : 29,
+              "y" : 15,
+              "id" : 3
+            }, {
+              "x" : 21,
+              "y" : 16,
+              "id" : 4
+            }, {
+              "x" : 17,
+              "y" : 17,
+              "id" : 5
+            } ],
             "id" : 1
-          }, {
-            "x" : 40,
-            "y" : 11,
-            "id" : 2
-          }, {
-            "x" : 29,
-            "y" : 15,
-            "id" : 3
-          }, {
-            "x" : 21,
-            "y" : 16,
-            "id" : 4
-          }, {
-            "x" : 17,
-            "y" : 17,
-            "id" : 5
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "3.Flak Regt HQ",
           "type" : "HEADQUARTERS",
@@ -44895,41 +45123,46 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 50,
-        "orders" : "AREA_DEFENSE",
-        "emphasis" : "MINIMIZE_LOSSES",
-        "supportscope" : "ARMY_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 53,
-            "y" : 8,
+        "orders" : {
+          "operationalStance" : "DEFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "MINIMIZE_LOSSES",
+          "supportscope" : "ARMY_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 53,
+              "y" : 8,
+              "id" : 1
+            }, {
+              "x" : 48,
+              "y" : 9,
+              "id" : 2
+            }, {
+              "x" : 45,
+              "y" : 12,
+              "id" : 3
+            }, {
+              "x" : 40,
+              "y" : 15,
+              "id" : 4
+            }, {
+              "x" : 33,
+              "y" : 16,
+              "id" : 5
+            }, {
+              "x" : 28,
+              "y" : 16,
+              "id" : 6
+            }, {
+              "x" : 22,
+              "y" : 16,
+              "id" : 7
+            } ],
             "id" : 1
-          }, {
-            "x" : 48,
-            "y" : 9,
-            "id" : 2
-          }, {
-            "x" : 45,
-            "y" : 12,
-            "id" : 3
-          }, {
-            "x" : 40,
-            "y" : 15,
-            "id" : 4
-          }, {
-            "x" : 33,
-            "y" : 16,
-            "id" : 5
-          }, {
-            "x" : 28,
-            "y" : 16,
-            "id" : 6
-          }, {
-            "x" : 22,
-            "y" : 16,
-            "id" : 7
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "4.Flak Regt HQ",
           "type" : "HEADQUARTERS",
@@ -45493,81 +45726,86 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 50,
-        "orders" : "AREA_DEFENSE",
-        "emphasis" : "MINIMIZE_LOSSES",
-        "supportscope" : "ARMY_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 51,
-            "y" : 15,
+        "orders" : {
+          "operationalStance" : "DEFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "MINIMIZE_LOSSES",
+          "supportscope" : "ARMY_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 51,
+              "y" : 15,
+              "id" : 1
+            }, {
+              "x" : 47,
+              "y" : 17,
+              "id" : 2
+            }, {
+              "x" : 45,
+              "y" : 18,
+              "id" : 3
+            }, {
+              "x" : 43,
+              "y" : 16,
+              "id" : 4
+            }, {
+              "x" : 39,
+              "y" : 18,
+              "id" : 5
+            }, {
+              "x" : 37,
+              "y" : 19,
+              "id" : 6
+            }, {
+              "x" : 33,
+              "y" : 17,
+              "id" : 7
+            }, {
+              "x" : 31,
+              "y" : 17,
+              "id" : 8
+            }, {
+              "x" : 30,
+              "y" : 15,
+              "id" : 9
+            }, {
+              "x" : 28,
+              "y" : 15,
+              "id" : 10
+            }, {
+              "x" : 26,
+              "y" : 16,
+              "id" : 11
+            }, {
+              "x" : 22,
+              "y" : 16,
+              "id" : 12
+            }, {
+              "x" : 16,
+              "y" : 13,
+              "id" : 13
+            }, {
+              "x" : 58,
+              "y" : 4,
+              "id" : 14
+            }, {
+              "x" : 12,
+              "y" : 12,
+              "id" : 15
+            }, {
+              "x" : 13,
+              "y" : 12,
+              "id" : 16
+            }, {
+              "x" : 12,
+              "y" : 13,
+              "id" : 17
+            } ],
             "id" : 1
-          }, {
-            "x" : 47,
-            "y" : 17,
-            "id" : 2
-          }, {
-            "x" : 45,
-            "y" : 18,
-            "id" : 3
-          }, {
-            "x" : 43,
-            "y" : 16,
-            "id" : 4
-          }, {
-            "x" : 39,
-            "y" : 18,
-            "id" : 5
-          }, {
-            "x" : 37,
-            "y" : 19,
-            "id" : 6
-          }, {
-            "x" : 33,
-            "y" : 17,
-            "id" : 7
-          }, {
-            "x" : 31,
-            "y" : 17,
-            "id" : 8
-          }, {
-            "x" : 30,
-            "y" : 15,
-            "id" : 9
-          }, {
-            "x" : 28,
-            "y" : 15,
-            "id" : 10
-          }, {
-            "x" : 26,
-            "y" : 16,
-            "id" : 11
-          }, {
-            "x" : 22,
-            "y" : 16,
-            "id" : 12
-          }, {
-            "x" : 16,
-            "y" : 13,
-            "id" : 13
-          }, {
-            "x" : 58,
-            "y" : 4,
-            "id" : 14
-          }, {
-            "x" : 12,
-            "y" : 12,
-            "id" : 15
-          }, {
-            "x" : 13,
-            "y" : 12,
-            "id" : 16
-          }, {
-            "x" : 12,
-            "y" : 13,
-            "id" : 17
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "3.FJ Div HQ",
           "type" : "HEADQUARTERS",
@@ -46084,73 +46322,78 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 50,
-        "orders" : "AREA_DEFENSE",
-        "emphasis" : "MINIMIZE_LOSSES",
-        "supportscope" : "ARMY_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 55,
-            "y" : 10,
+        "orders" : {
+          "operationalStance" : "DEFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "MINIMIZE_LOSSES",
+          "supportscope" : "ARMY_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 55,
+              "y" : 10,
+              "id" : 1
+            }, {
+              "x" : 44,
+              "y" : 8,
+              "id" : 2
+            }, {
+              "x" : 40,
+              "y" : 11,
+              "id" : 3
+            }, {
+              "x" : 40,
+              "y" : 10,
+              "id" : 4
+            }, {
+              "x" : 39,
+              "y" : 11,
+              "id" : 5
+            }, {
+              "x" : 41,
+              "y" : 10,
+              "id" : 6
+            }, {
+              "x" : 38,
+              "y" : 11,
+              "id" : 7
+            }, {
+              "x" : 37,
+              "y" : 9,
+              "id" : 8
+            }, {
+              "x" : 38,
+              "y" : 8,
+              "id" : 9
+            }, {
+              "x" : 36,
+              "y" : 9,
+              "id" : 10
+            }, {
+              "x" : 39,
+              "y" : 8,
+              "id" : 11
+            }, {
+              "x" : 35,
+              "y" : 7,
+              "id" : 12
+            }, {
+              "x" : 34,
+              "y" : 7,
+              "id" : 13
+            }, {
+              "x" : 36,
+              "y" : 6,
+              "id" : 14
+            }, {
+              "x" : 33,
+              "y" : 8,
+              "id" : 15
+            } ],
             "id" : 1
-          }, {
-            "x" : 44,
-            "y" : 8,
-            "id" : 2
-          }, {
-            "x" : 40,
-            "y" : 11,
-            "id" : 3
-          }, {
-            "x" : 40,
-            "y" : 10,
-            "id" : 4
-          }, {
-            "x" : 39,
-            "y" : 11,
-            "id" : 5
-          }, {
-            "x" : 41,
-            "y" : 10,
-            "id" : 6
-          }, {
-            "x" : 38,
-            "y" : 11,
-            "id" : 7
-          }, {
-            "x" : 37,
-            "y" : 9,
-            "id" : 8
-          }, {
-            "x" : 38,
-            "y" : 8,
-            "id" : 9
-          }, {
-            "x" : 36,
-            "y" : 9,
-            "id" : 10
-          }, {
-            "x" : 39,
-            "y" : 8,
-            "id" : 11
-          }, {
-            "x" : 35,
-            "y" : 7,
-            "id" : 12
-          }, {
-            "x" : 34,
-            "y" : 7,
-            "id" : 13
-          }, {
-            "x" : 36,
-            "y" : 6,
-            "id" : 14
-          }, {
-            "x" : 33,
-            "y" : 8,
-            "id" : 15
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "85.ID HQ",
           "type" : "HEADQUARTERS",
@@ -46732,77 +46975,82 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 50,
-        "orders" : "AREA_DEFENSE",
-        "emphasis" : "MINIMIZE_LOSSES",
-        "supportscope" : "ARMY_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 55,
-            "y" : 11,
+        "orders" : {
+          "operationalStance" : "DEFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "MINIMIZE_LOSSES",
+          "supportscope" : "ARMY_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 55,
+              "y" : 11,
+              "id" : 1
+            }, {
+              "x" : 51,
+              "y" : 11,
+              "id" : 2
+            }, {
+              "x" : 47,
+              "y" : 11,
+              "id" : 3
+            }, {
+              "x" : 43,
+              "y" : 11,
+              "id" : 4
+            }, {
+              "x" : 39,
+              "y" : 11,
+              "id" : 5
+            }, {
+              "x" : 35,
+              "y" : 11,
+              "id" : 6
+            }, {
+              "x" : 31,
+              "y" : 11,
+              "id" : 7
+            }, {
+              "x" : 27,
+              "y" : 11,
+              "id" : 8
+            }, {
+              "x" : 23,
+              "y" : 13,
+              "id" : 9
+            }, {
+              "x" : 19,
+              "y" : 15,
+              "id" : 10
+            }, {
+              "x" : 15,
+              "y" : 17,
+              "id" : 11
+            }, {
+              "x" : 16,
+              "y" : 17,
+              "id" : 12
+            }, {
+              "x" : 14,
+              "y" : 18,
+              "id" : 13
+            }, {
+              "x" : 15,
+              "y" : 19,
+              "id" : 14
+            }, {
+              "x" : 12,
+              "y" : 20,
+              "id" : 15
+            }, {
+              "x" : 12,
+              "y" : 19,
+              "id" : 16
+            } ],
             "id" : 1
-          }, {
-            "x" : 51,
-            "y" : 11,
-            "id" : 2
-          }, {
-            "x" : 47,
-            "y" : 11,
-            "id" : 3
-          }, {
-            "x" : 43,
-            "y" : 11,
-            "id" : 4
-          }, {
-            "x" : 39,
-            "y" : 11,
-            "id" : 5
-          }, {
-            "x" : 35,
-            "y" : 11,
-            "id" : 6
-          }, {
-            "x" : 31,
-            "y" : 11,
-            "id" : 7
-          }, {
-            "x" : 27,
-            "y" : 11,
-            "id" : 8
-          }, {
-            "x" : 23,
-            "y" : 13,
-            "id" : 9
-          }, {
-            "x" : 19,
-            "y" : 15,
-            "id" : 10
-          }, {
-            "x" : 15,
-            "y" : 17,
-            "id" : 11
-          }, {
-            "x" : 16,
-            "y" : 17,
-            "id" : 12
-          }, {
-            "x" : 14,
-            "y" : 18,
-            "id" : 13
-          }, {
-            "x" : 15,
-            "y" : 19,
-            "id" : 14
-          }, {
-            "x" : 12,
-            "y" : 20,
-            "id" : 15
-          }, {
-            "x" : 12,
-            "y" : 19,
-            "id" : 16
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "84.ID HQ",
           "type" : "HEADQUARTERS",
@@ -47084,81 +47332,86 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 50,
-        "orders" : "AREA_DEFENSE",
-        "emphasis" : "MINIMIZE_LOSSES",
-        "supportscope" : "ARMY_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 55,
-            "y" : 12,
+        "orders" : {
+          "operationalStance" : "DEFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "MINIMIZE_LOSSES",
+          "supportscope" : "ARMY_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 55,
+              "y" : 12,
+              "id" : 1
+            }, {
+              "x" : 51,
+              "y" : 15,
+              "id" : 2
+            }, {
+              "x" : 46,
+              "y" : 14,
+              "id" : 3
+            }, {
+              "x" : 43,
+              "y" : 14,
+              "id" : 4
+            }, {
+              "x" : 40,
+              "y" : 11,
+              "id" : 5
+            }, {
+              "x" : 38,
+              "y" : 11,
+              "id" : 6
+            }, {
+              "x" : 36,
+              "y" : 11,
+              "id" : 7
+            }, {
+              "x" : 34,
+              "y" : 11,
+              "id" : 8
+            }, {
+              "x" : 32,
+              "y" : 11,
+              "id" : 9
+            }, {
+              "x" : 30,
+              "y" : 11,
+              "id" : 10
+            }, {
+              "x" : 28,
+              "y" : 11,
+              "id" : 11
+            }, {
+              "x" : 27,
+              "y" : 12,
+              "id" : 12
+            }, {
+              "x" : 29,
+              "y" : 11,
+              "id" : 13
+            }, {
+              "x" : 26,
+              "y" : 12,
+              "id" : 14
+            }, {
+              "x" : 26,
+              "y" : 9,
+              "id" : 15
+            }, {
+              "x" : 25,
+              "y" : 10,
+              "id" : 16
+            }, {
+              "x" : 27,
+              "y" : 9,
+              "id" : 17
+            } ],
             "id" : 1
-          }, {
-            "x" : 51,
-            "y" : 15,
-            "id" : 2
-          }, {
-            "x" : 46,
-            "y" : 14,
-            "id" : 3
-          }, {
-            "x" : 43,
-            "y" : 14,
-            "id" : 4
-          }, {
-            "x" : 40,
-            "y" : 11,
-            "id" : 5
-          }, {
-            "x" : 38,
-            "y" : 11,
-            "id" : 6
-          }, {
-            "x" : 36,
-            "y" : 11,
-            "id" : 7
-          }, {
-            "x" : 34,
-            "y" : 11,
-            "id" : 8
-          }, {
-            "x" : 32,
-            "y" : 11,
-            "id" : 9
-          }, {
-            "x" : 30,
-            "y" : 11,
-            "id" : 10
-          }, {
-            "x" : 28,
-            "y" : 11,
-            "id" : 11
-          }, {
-            "x" : 27,
-            "y" : 12,
-            "id" : 12
-          }, {
-            "x" : 29,
-            "y" : 11,
-            "id" : 13
-          }, {
-            "x" : 26,
-            "y" : 12,
-            "id" : 14
-          }, {
-            "x" : 26,
-            "y" : 9,
-            "id" : 15
-          }, {
-            "x" : 25,
-            "y" : 10,
-            "id" : 16
-          }, {
-            "x" : 27,
-            "y" : 9,
-            "id" : 17
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "89.ID HQ",
           "type" : "HEADQUARTERS",
@@ -47629,69 +47882,74 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 50,
-        "orders" : "AREA_DEFENSE",
-        "emphasis" : "MINIMIZE_LOSSES",
-        "supportscope" : "ARMY_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 55,
-            "y" : 13,
+        "orders" : {
+          "operationalStance" : "DEFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "MINIMIZE_LOSSES",
+          "supportscope" : "ARMY_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 55,
+              "y" : 13,
+              "id" : 1
+            }, {
+              "x" : 51,
+              "y" : 13,
+              "id" : 2
+            }, {
+              "x" : 47,
+              "y" : 13,
+              "id" : 3
+            }, {
+              "x" : 43,
+              "y" : 13,
+              "id" : 4
+            }, {
+              "x" : 39,
+              "y" : 13,
+              "id" : 5
+            }, {
+              "x" : 35,
+              "y" : 13,
+              "id" : 6
+            }, {
+              "x" : 31,
+              "y" : 13,
+              "id" : 7
+            }, {
+              "x" : 27,
+              "y" : 13,
+              "id" : 8
+            }, {
+              "x" : 25,
+              "y" : 12,
+              "id" : 9
+            }, {
+              "x" : 26,
+              "y" : 11,
+              "id" : 10
+            }, {
+              "x" : 24,
+              "y" : 12,
+              "id" : 11
+            }, {
+              "x" : 23,
+              "y" : 11,
+              "id" : 12
+            }, {
+              "x" : 24,
+              "y" : 10,
+              "id" : 13
+            }, {
+              "x" : 22,
+              "y" : 11,
+              "id" : 14
+            } ],
             "id" : 1
-          }, {
-            "x" : 51,
-            "y" : 13,
-            "id" : 2
-          }, {
-            "x" : 47,
-            "y" : 13,
-            "id" : 3
-          }, {
-            "x" : 43,
-            "y" : 13,
-            "id" : 4
-          }, {
-            "x" : 39,
-            "y" : 13,
-            "id" : 5
-          }, {
-            "x" : 35,
-            "y" : 13,
-            "id" : 6
-          }, {
-            "x" : 31,
-            "y" : 13,
-            "id" : 7
-          }, {
-            "x" : 27,
-            "y" : 13,
-            "id" : 8
-          }, {
-            "x" : 25,
-            "y" : 12,
-            "id" : 9
-          }, {
-            "x" : 26,
-            "y" : 11,
-            "id" : 10
-          }, {
-            "x" : 24,
-            "y" : 12,
-            "id" : 11
-          }, {
-            "x" : 23,
-            "y" : 11,
-            "id" : 12
-          }, {
-            "x" : 24,
-            "y" : 10,
-            "id" : 13
-          }, {
-            "x" : 22,
-            "y" : 11,
-            "id" : 14
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "271.ID HQ",
           "type" : "HEADQUARTERS",
@@ -47976,65 +48234,70 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 50,
-        "orders" : "AREA_DEFENSE",
-        "emphasis" : "MINIMIZE_LOSSES",
-        "supportscope" : "ARMY_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 55,
-            "y" : 12,
+        "orders" : {
+          "operationalStance" : "DEFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "MINIMIZE_LOSSES",
+          "supportscope" : "ARMY_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 55,
+              "y" : 12,
+              "id" : 1
+            }, {
+              "x" : 51,
+              "y" : 12,
+              "id" : 2
+            }, {
+              "x" : 47,
+              "y" : 12,
+              "id" : 3
+            }, {
+              "x" : 43,
+              "y" : 12,
+              "id" : 4
+            }, {
+              "x" : 39,
+              "y" : 12,
+              "id" : 5
+            }, {
+              "x" : 35,
+              "y" : 12,
+              "id" : 6
+            }, {
+              "x" : 31,
+              "y" : 12,
+              "id" : 7
+            }, {
+              "x" : 27,
+              "y" : 12,
+              "id" : 8
+            }, {
+              "x" : 23,
+              "y" : 12,
+              "id" : 9
+            }, {
+              "x" : 19,
+              "y" : 16,
+              "id" : 10
+            }, {
+              "x" : 15,
+              "y" : 19,
+              "id" : 11
+            }, {
+              "x" : 13,
+              "y" : 21,
+              "id" : 12
+            }, {
+              "x" : 12,
+              "y" : 21,
+              "id" : 13
+            } ],
             "id" : 1
-          }, {
-            "x" : 51,
-            "y" : 12,
-            "id" : 2
-          }, {
-            "x" : 47,
-            "y" : 12,
-            "id" : 3
-          }, {
-            "x" : 43,
-            "y" : 12,
-            "id" : 4
-          }, {
-            "x" : 39,
-            "y" : 12,
-            "id" : 5
-          }, {
-            "x" : 35,
-            "y" : 12,
-            "id" : 6
-          }, {
-            "x" : 31,
-            "y" : 12,
-            "id" : 7
-          }, {
-            "x" : 27,
-            "y" : 12,
-            "id" : 8
-          }, {
-            "x" : 23,
-            "y" : 12,
-            "id" : 9
-          }, {
-            "x" : 19,
-            "y" : 16,
-            "id" : 10
-          }, {
-            "x" : 15,
-            "y" : 19,
-            "id" : 11
-          }, {
-            "x" : 13,
-            "y" : 21,
-            "id" : 12
-          }, {
-            "x" : 12,
-            "y" : 21,
-            "id" : 13
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "275.ID HQ",
           "type" : "HEADQUARTERS",
@@ -48238,61 +48501,66 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 50,
-        "orders" : "AREA_DEFENSE",
-        "emphasis" : "MINIMIZE_LOSSES",
-        "supportscope" : "INTERNAL_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 55,
-            "y" : 13,
+        "orders" : {
+          "operationalStance" : "DEFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "MINIMIZE_LOSSES",
+          "supportscope" : "INTERNAL_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 55,
+              "y" : 13,
+              "id" : 1
+            }, {
+              "x" : 51,
+              "y" : 13,
+              "id" : 2
+            }, {
+              "x" : 47,
+              "y" : 13,
+              "id" : 3
+            }, {
+              "x" : 43,
+              "y" : 13,
+              "id" : 4
+            }, {
+              "x" : 39,
+              "y" : 13,
+              "id" : 5
+            }, {
+              "x" : 35,
+              "y" : 13,
+              "id" : 6
+            }, {
+              "x" : 31,
+              "y" : 13,
+              "id" : 7
+            }, {
+              "x" : 27,
+              "y" : 13,
+              "id" : 8
+            }, {
+              "x" : 23,
+              "y" : 13,
+              "id" : 9
+            }, {
+              "x" : 19,
+              "y" : 13,
+              "id" : 10
+            }, {
+              "x" : 18,
+              "y" : 10,
+              "id" : 11
+            }, {
+              "x" : 17,
+              "y" : 11,
+              "id" : 12
+            } ],
             "id" : 1
-          }, {
-            "x" : 51,
-            "y" : 13,
-            "id" : 2
-          }, {
-            "x" : 47,
-            "y" : 13,
-            "id" : 3
-          }, {
-            "x" : 43,
-            "y" : 13,
-            "id" : 4
-          }, {
-            "x" : 39,
-            "y" : 13,
-            "id" : 5
-          }, {
-            "x" : 35,
-            "y" : 13,
-            "id" : 6
-          }, {
-            "x" : 31,
-            "y" : 13,
-            "id" : 7
-          }, {
-            "x" : 27,
-            "y" : 13,
-            "id" : 8
-          }, {
-            "x" : 23,
-            "y" : 13,
-            "id" : 9
-          }, {
-            "x" : 19,
-            "y" : 13,
-            "id" : 10
-          }, {
-            "x" : 18,
-            "y" : 10,
-            "id" : 11
-          }, {
-            "x" : 17,
-            "y" : 11,
-            "id" : 12
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "276.ID HQ",
           "type" : "HEADQUARTERS",
@@ -48509,57 +48777,62 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 50,
-        "orders" : "AREA_DEFENSE",
-        "emphasis" : "MINIMIZE_LOSSES",
-        "supportscope" : "INTERNAL_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 55,
-            "y" : 13,
+        "orders" : {
+          "operationalStance" : "DEFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "MINIMIZE_LOSSES",
+          "supportscope" : "INTERNAL_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 55,
+              "y" : 13,
+              "id" : 1
+            }, {
+              "x" : 51,
+              "y" : 13,
+              "id" : 2
+            }, {
+              "x" : 47,
+              "y" : 13,
+              "id" : 3
+            }, {
+              "x" : 43,
+              "y" : 13,
+              "id" : 4
+            }, {
+              "x" : 39,
+              "y" : 13,
+              "id" : 5
+            }, {
+              "x" : 35,
+              "y" : 13,
+              "id" : 6
+            }, {
+              "x" : 31,
+              "y" : 13,
+              "id" : 7
+            }, {
+              "x" : 27,
+              "y" : 13,
+              "id" : 8
+            }, {
+              "x" : 23,
+              "y" : 13,
+              "id" : 9
+            }, {
+              "x" : 21,
+              "y" : 11,
+              "id" : 10
+            }, {
+              "x" : 20,
+              "y" : 11,
+              "id" : 11
+            } ],
             "id" : 1
-          }, {
-            "x" : 51,
-            "y" : 13,
-            "id" : 2
-          }, {
-            "x" : 47,
-            "y" : 13,
-            "id" : 3
-          }, {
-            "x" : 43,
-            "y" : 13,
-            "id" : 4
-          }, {
-            "x" : 39,
-            "y" : 13,
-            "id" : 5
-          }, {
-            "x" : 35,
-            "y" : 13,
-            "id" : 6
-          }, {
-            "x" : 31,
-            "y" : 13,
-            "id" : 7
-          }, {
-            "x" : 27,
-            "y" : 13,
-            "id" : 8
-          }, {
-            "x" : 23,
-            "y" : 13,
-            "id" : 9
-          }, {
-            "x" : 21,
-            "y" : 11,
-            "id" : 10
-          }, {
-            "x" : 20,
-            "y" : 11,
-            "id" : 11
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "277.ID HQ",
           "type" : "HEADQUARTERS",
@@ -48776,53 +49049,58 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 50,
-        "orders" : "AREA_DEFENSE",
-        "emphasis" : "MINIMIZE_LOSSES",
-        "supportscope" : "INTERNAL_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 55,
-            "y" : 9,
+        "orders" : {
+          "operationalStance" : "DEFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "MINIMIZE_LOSSES",
+          "supportscope" : "INTERNAL_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 55,
+              "y" : 9,
+              "id" : 1
+            }, {
+              "x" : 50,
+              "y" : 9,
+              "id" : 2
+            }, {
+              "x" : 45,
+              "y" : 10,
+              "id" : 3
+            }, {
+              "x" : 41,
+              "y" : 12,
+              "id" : 4
+            }, {
+              "x" : 37,
+              "y" : 13,
+              "id" : 5
+            }, {
+              "x" : 29,
+              "y" : 14,
+              "id" : 6
+            }, {
+              "x" : 23,
+              "y" : 16,
+              "id" : 7
+            }, {
+              "x" : 20,
+              "y" : 17,
+              "id" : 8
+            }, {
+              "x" : 21,
+              "y" : 20,
+              "id" : 9
+            }, {
+              "x" : 22,
+              "y" : 19,
+              "id" : 10
+            } ],
             "id" : 1
-          }, {
-            "x" : 50,
-            "y" : 9,
-            "id" : 2
-          }, {
-            "x" : 45,
-            "y" : 10,
-            "id" : 3
-          }, {
-            "x" : 41,
-            "y" : 12,
-            "id" : 4
-          }, {
-            "x" : 37,
-            "y" : 13,
-            "id" : 5
-          }, {
-            "x" : 29,
-            "y" : 14,
-            "id" : 6
-          }, {
-            "x" : 23,
-            "y" : 16,
-            "id" : 7
-          }, {
-            "x" : 20,
-            "y" : 17,
-            "id" : 8
-          }, {
-            "x" : 21,
-            "y" : 20,
-            "id" : 9
-          }, {
-            "x" : 22,
-            "y" : 19,
-            "id" : 10
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "708.ID(bo) HQ",
           "type" : "HEADQUARTERS",
@@ -49107,73 +49385,78 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 50,
-        "orders" : "AREA_DEFENSE",
-        "emphasis" : "MINIMIZE_LOSSES",
-        "supportscope" : "INTERNAL_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 38,
-            "y" : 2,
+        "orders" : {
+          "operationalStance" : "GARRISON",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "MINIMIZE_LOSSES",
+          "supportscope" : "INTERNAL_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 38,
+              "y" : 2,
+              "id" : 1
+            }, {
+              "x" : 35,
+              "y" : 3,
+              "id" : 2
+            }, {
+              "x" : 36,
+              "y" : 3,
+              "id" : 3
+            }, {
+              "x" : 35,
+              "y" : 2,
+              "id" : 4
+            }, {
+              "x" : 36,
+              "y" : 4,
+              "id" : 5
+            }, {
+              "x" : 36,
+              "y" : 1,
+              "id" : 6
+            }, {
+              "x" : 36,
+              "y" : 5,
+              "id" : 7
+            }, {
+              "x" : 36,
+              "y" : 0,
+              "id" : 8
+            }, {
+              "x" : 40,
+              "y" : 7,
+              "id" : 9
+            }, {
+              "x" : 41,
+              "y" : 8,
+              "id" : 10
+            }, {
+              "x" : 39,
+              "y" : 7,
+              "id" : 11
+            }, {
+              "x" : 42,
+              "y" : 8,
+              "id" : 12
+            }, {
+              "x" : 38,
+              "y" : 6,
+              "id" : 13
+            }, {
+              "x" : 43,
+              "y" : 9,
+              "id" : 14
+            }, {
+              "x" : 37,
+              "y" : 6,
+              "id" : 15
+            } ],
             "id" : 1
-          }, {
-            "x" : 35,
-            "y" : 3,
-            "id" : 2
-          }, {
-            "x" : 36,
-            "y" : 3,
-            "id" : 3
-          }, {
-            "x" : 35,
-            "y" : 2,
-            "id" : 4
-          }, {
-            "x" : 36,
-            "y" : 4,
-            "id" : 5
-          }, {
-            "x" : 36,
-            "y" : 1,
-            "id" : 6
-          }, {
-            "x" : 36,
-            "y" : 5,
-            "id" : 7
-          }, {
-            "x" : 36,
-            "y" : 0,
-            "id" : 8
-          }, {
-            "x" : 40,
-            "y" : 7,
-            "id" : 9
-          }, {
-            "x" : 41,
-            "y" : 8,
-            "id" : 10
-          }, {
-            "x" : 39,
-            "y" : 7,
-            "id" : 11
-          }, {
-            "x" : 42,
-            "y" : 8,
-            "id" : 12
-          }, {
-            "x" : 38,
-            "y" : 6,
-            "id" : 13
-          }, {
-            "x" : 43,
-            "y" : 9,
-            "id" : 14
-          }, {
-            "x" : 37,
-            "y" : 6,
-            "id" : 15
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "711. ID(bo) HQ",
           "type" : "HEADQUARTERS",
@@ -49786,77 +50069,82 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 50,
-        "orders" : "AREA_DEFENSE",
-        "emphasis" : "MINIMIZE_LOSSES",
-        "supportscope" : "INTERNAL_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 55,
-            "y" : 14,
+        "orders" : {
+          "operationalStance" : "DEFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "MINIMIZE_LOSSES",
+          "supportscope" : "INTERNAL_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 55,
+              "y" : 14,
+              "id" : 1
+            }, {
+              "x" : 51,
+              "y" : 14,
+              "id" : 2
+            }, {
+              "x" : 47,
+              "y" : 14,
+              "id" : 3
+            }, {
+              "x" : 43,
+              "y" : 14,
+              "id" : 4
+            }, {
+              "x" : 39,
+              "y" : 14,
+              "id" : 5
+            }, {
+              "x" : 35,
+              "y" : 14,
+              "id" : 6
+            }, {
+              "x" : 31,
+              "y" : 14,
+              "id" : 7
+            }, {
+              "x" : 27,
+              "y" : 14,
+              "id" : 8
+            }, {
+              "x" : 23,
+              "y" : 14,
+              "id" : 9
+            }, {
+              "x" : 19,
+              "y" : 14,
+              "id" : 10
+            }, {
+              "x" : 17,
+              "y" : 13,
+              "id" : 11
+            }, {
+              "x" : 18,
+              "y" : 12,
+              "id" : 12
+            }, {
+              "x" : 16,
+              "y" : 13,
+              "id" : 13
+            }, {
+              "x" : 15,
+              "y" : 11,
+              "id" : 14
+            }, {
+              "x" : 16,
+              "y" : 10,
+              "id" : 15
+            }, {
+              "x" : 14,
+              "y" : 11,
+              "id" : 16
+            } ],
             "id" : 1
-          }, {
-            "x" : 51,
-            "y" : 14,
-            "id" : 2
-          }, {
-            "x" : 47,
-            "y" : 14,
-            "id" : 3
-          }, {
-            "x" : 43,
-            "y" : 14,
-            "id" : 4
-          }, {
-            "x" : 39,
-            "y" : 14,
-            "id" : 5
-          }, {
-            "x" : 35,
-            "y" : 14,
-            "id" : 6
-          }, {
-            "x" : 31,
-            "y" : 14,
-            "id" : 7
-          }, {
-            "x" : 27,
-            "y" : 14,
-            "id" : 8
-          }, {
-            "x" : 23,
-            "y" : 14,
-            "id" : 9
-          }, {
-            "x" : 19,
-            "y" : 14,
-            "id" : 10
-          }, {
-            "x" : 17,
-            "y" : 13,
-            "id" : 11
-          }, {
-            "x" : 18,
-            "y" : 12,
-            "id" : 12
-          }, {
-            "x" : 16,
-            "y" : 13,
-            "id" : 13
-          }, {
-            "x" : 15,
-            "y" : 11,
-            "id" : 14
-          }, {
-            "x" : 16,
-            "y" : 10,
-            "id" : 15
-          }, {
-            "x" : 14,
-            "y" : 11,
-            "id" : 16
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "326.ID HQ",
           "type" : "HEADQUARTERS",
@@ -50209,89 +50497,94 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 50,
-        "orders" : "AREA_DEFENSE",
-        "emphasis" : "MINIMIZE_LOSSES",
-        "supportscope" : "INTERNAL_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 55,
-            "y" : 14,
+        "orders" : {
+          "operationalStance" : "DEFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "MINIMIZE_LOSSES",
+          "supportscope" : "INTERNAL_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 55,
+              "y" : 14,
+              "id" : 1
+            }, {
+              "x" : 51,
+              "y" : 14,
+              "id" : 2
+            }, {
+              "x" : 47,
+              "y" : 14,
+              "id" : 3
+            }, {
+              "x" : 43,
+              "y" : 14,
+              "id" : 4
+            }, {
+              "x" : 39,
+              "y" : 14,
+              "id" : 5
+            }, {
+              "x" : 35,
+              "y" : 14,
+              "id" : 6
+            }, {
+              "x" : 31,
+              "y" : 14,
+              "id" : 7
+            }, {
+              "x" : 27,
+              "y" : 14,
+              "id" : 8
+            }, {
+              "x" : 23,
+              "y" : 14,
+              "id" : 9
+            }, {
+              "x" : 19,
+              "y" : 14,
+              "id" : 10
+            }, {
+              "x" : 16,
+              "y" : 15,
+              "id" : 11
+            }, {
+              "x" : 16,
+              "y" : 14,
+              "id" : 12
+            }, {
+              "x" : 17,
+              "y" : 16,
+              "id" : 13
+            }, {
+              "x" : 14,
+              "y" : 16,
+              "id" : 14
+            }, {
+              "x" : 14,
+              "y" : 15,
+              "id" : 15
+            }, {
+              "x" : 15,
+              "y" : 17,
+              "id" : 16
+            }, {
+              "x" : 11,
+              "y" : 18,
+              "id" : 17
+            }, {
+              "x" : 11,
+              "y" : 17,
+              "id" : 18
+            }, {
+              "x" : 12,
+              "y" : 18,
+              "id" : 19
+            } ],
             "id" : 1
-          }, {
-            "x" : 51,
-            "y" : 14,
-            "id" : 2
-          }, {
-            "x" : 47,
-            "y" : 14,
-            "id" : 3
-          }, {
-            "x" : 43,
-            "y" : 14,
-            "id" : 4
-          }, {
-            "x" : 39,
-            "y" : 14,
-            "id" : 5
-          }, {
-            "x" : 35,
-            "y" : 14,
-            "id" : 6
-          }, {
-            "x" : 31,
-            "y" : 14,
-            "id" : 7
-          }, {
-            "x" : 27,
-            "y" : 14,
-            "id" : 8
-          }, {
-            "x" : 23,
-            "y" : 14,
-            "id" : 9
-          }, {
-            "x" : 19,
-            "y" : 14,
-            "id" : 10
-          }, {
-            "x" : 16,
-            "y" : 15,
-            "id" : 11
-          }, {
-            "x" : 16,
-            "y" : 14,
-            "id" : 12
-          }, {
-            "x" : 17,
-            "y" : 16,
-            "id" : 13
-          }, {
-            "x" : 14,
-            "y" : 16,
-            "id" : 14
-          }, {
-            "x" : 14,
-            "y" : 15,
-            "id" : 15
-          }, {
-            "x" : 15,
-            "y" : 17,
-            "id" : 16
-          }, {
-            "x" : 11,
-            "y" : 18,
-            "id" : 17
-          }, {
-            "x" : 11,
-            "y" : 17,
-            "id" : 18
-          }, {
-            "x" : 12,
-            "y" : 18,
-            "id" : 19
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "353.ID HQ",
           "type" : "HEADQUARTERS",
@@ -50710,65 +51003,70 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 50,
-        "orders" : "AREA_DEFENSE",
-        "emphasis" : "MINIMIZE_LOSSES",
-        "supportscope" : "INTERNAL_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 55,
-            "y" : 14,
+        "orders" : {
+          "operationalStance" : "DEFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "MINIMIZE_LOSSES",
+          "supportscope" : "INTERNAL_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 55,
+              "y" : 14,
+              "id" : 1
+            }, {
+              "x" : 51,
+              "y" : 14,
+              "id" : 2
+            }, {
+              "x" : 47,
+              "y" : 14,
+              "id" : 3
+            }, {
+              "x" : 43,
+              "y" : 14,
+              "id" : 4
+            }, {
+              "x" : 39,
+              "y" : 14,
+              "id" : 5
+            }, {
+              "x" : 35,
+              "y" : 14,
+              "id" : 6
+            }, {
+              "x" : 31,
+              "y" : 14,
+              "id" : 7
+            }, {
+              "x" : 27,
+              "y" : 14,
+              "id" : 8
+            }, {
+              "x" : 23,
+              "y" : 14,
+              "id" : 9
+            }, {
+              "x" : 19,
+              "y" : 14,
+              "id" : 10
+            }, {
+              "x" : 15,
+              "y" : 16,
+              "id" : 11
+            }, {
+              "x" : 12,
+              "y" : 15,
+              "id" : 12
+            }, {
+              "x" : 12,
+              "y" : 16,
+              "id" : 13
+            } ],
             "id" : 1
-          }, {
-            "x" : 51,
-            "y" : 14,
-            "id" : 2
-          }, {
-            "x" : 47,
-            "y" : 14,
-            "id" : 3
-          }, {
-            "x" : 43,
-            "y" : 14,
-            "id" : 4
-          }, {
-            "x" : 39,
-            "y" : 14,
-            "id" : 5
-          }, {
-            "x" : 35,
-            "y" : 14,
-            "id" : 6
-          }, {
-            "x" : 31,
-            "y" : 14,
-            "id" : 7
-          }, {
-            "x" : 27,
-            "y" : 14,
-            "id" : 8
-          }, {
-            "x" : 23,
-            "y" : 14,
-            "id" : 9
-          }, {
-            "x" : 19,
-            "y" : 14,
-            "id" : 10
-          }, {
-            "x" : 15,
-            "y" : 16,
-            "id" : 11
-          }, {
-            "x" : 12,
-            "y" : 15,
-            "id" : 12
-          }, {
-            "x" : 12,
-            "y" : 16,
-            "id" : 13
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "363.ID HQ",
           "type" : "HEADQUARTERS",
@@ -50985,53 +51283,57 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 50,
-        "orders" : "AREA_DEFENSE",
-        "emphasis" : "MINIMIZE_LOSSES",
-        "supportscope" : "INTERNAL_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 54,
-            "y" : 14,
+        "orders" : {
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "MINIMIZE_LOSSES",
+          "supportscope" : "INTERNAL_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 54,
+              "y" : 14,
+              "id" : 1
+            }, {
+              "x" : 51,
+              "y" : 15,
+              "id" : 2
+            }, {
+              "x" : 52,
+              "y" : 15,
+              "id" : 3
+            }, {
+              "x" : 50,
+              "y" : 14,
+              "id" : 4
+            }, {
+              "x" : 53,
+              "y" : 16,
+              "id" : 5
+            }, {
+              "x" : 49,
+              "y" : 14,
+              "id" : 6
+            }, {
+              "x" : 54,
+              "y" : 16,
+              "id" : 7
+            }, {
+              "x" : 48,
+              "y" : 13,
+              "id" : 8
+            }, {
+              "x" : 55,
+              "y" : 17,
+              "id" : 9
+            }, {
+              "x" : 47,
+              "y" : 13,
+              "id" : 10
+            } ],
             "id" : 1
-          }, {
-            "x" : 51,
-            "y" : 15,
-            "id" : 2
-          }, {
-            "x" : 52,
-            "y" : 15,
-            "id" : 3
-          }, {
-            "x" : 50,
-            "y" : 14,
-            "id" : 4
-          }, {
-            "x" : 53,
-            "y" : 16,
-            "id" : 5
-          }, {
-            "x" : 49,
-            "y" : 14,
-            "id" : 6
-          }, {
-            "x" : 54,
-            "y" : 16,
-            "id" : 7
-          }, {
-            "x" : 48,
-            "y" : 13,
-            "id" : 8
-          }, {
-            "x" : 55,
-            "y" : 17,
-            "id" : 9
-          }, {
-            "x" : 47,
-            "y" : 13,
-            "id" : 10
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "331.ID HQ",
           "type" : "HEADQUARTERS",
@@ -51634,57 +51936,62 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 50,
-        "orders" : "AREA_DEFENSE",
-        "emphasis" : "MINIMIZE_LOSSES",
-        "supportscope" : "INTERNAL_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 52,
-            "y" : 6,
+        "orders" : {
+          "operationalStance" : "DEFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "MINIMIZE_LOSSES",
+          "supportscope" : "INTERNAL_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 52,
+              "y" : 6,
+              "id" : 1
+            }, {
+              "x" : 49,
+              "y" : 8,
+              "id" : 2
+            }, {
+              "x" : 44,
+              "y" : 9,
+              "id" : 3
+            }, {
+              "x" : 40,
+              "y" : 11,
+              "id" : 4
+            }, {
+              "x" : 33,
+              "y" : 13,
+              "id" : 5
+            }, {
+              "x" : 28,
+              "y" : 14,
+              "id" : 6
+            }, {
+              "x" : 24,
+              "y" : 15,
+              "id" : 7
+            }, {
+              "x" : 21,
+              "y" : 17,
+              "id" : 8
+            }, {
+              "x" : 20,
+              "y" : 20,
+              "id" : 9
+            }, {
+              "x" : 19,
+              "y" : 21,
+              "id" : 10
+            }, {
+              "x" : 18,
+              "y" : 20,
+              "id" : 11
+            } ],
             "id" : 1
-          }, {
-            "x" : 49,
-            "y" : 8,
-            "id" : 2
-          }, {
-            "x" : 44,
-            "y" : 9,
-            "id" : 3
-          }, {
-            "x" : 40,
-            "y" : 11,
-            "id" : 4
-          }, {
-            "x" : 33,
-            "y" : 13,
-            "id" : 5
-          }, {
-            "x" : 28,
-            "y" : 14,
-            "id" : 6
-          }, {
-            "x" : 24,
-            "y" : 15,
-            "id" : 7
-          }, {
-            "x" : 21,
-            "y" : 17,
-            "id" : 8
-          }, {
-            "x" : 20,
-            "y" : 20,
-            "id" : 9
-          }, {
-            "x" : 19,
-            "y" : 21,
-            "id" : 10
-          }, {
-            "x" : 18,
-            "y" : 20,
-            "id" : 11
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "9.Pz Div HQ",
           "type" : "HEADQUARTERS",
@@ -51974,73 +52281,78 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 50,
-        "orders" : "AREA_DEFENSE",
-        "emphasis" : "MINIMIZE_LOSSES",
-        "supportscope" : "INTERNAL_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 37,
-            "y" : 18,
+        "orders" : {
+          "operationalStance" : "DEFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "MINIMIZE_LOSSES",
+          "supportscope" : "INTERNAL_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 37,
+              "y" : 18,
+              "id" : 1
+            }, {
+              "x" : 37,
+              "y" : 19,
+              "id" : 2
+            }, {
+              "x" : 37,
+              "y" : 20,
+              "id" : 3
+            }, {
+              "x" : 38,
+              "y" : 19,
+              "id" : 4
+            }, {
+              "x" : 36,
+              "y" : 19,
+              "id" : 5
+            }, {
+              "x" : 39,
+              "y" : 19,
+              "id" : 6
+            }, {
+              "x" : 35,
+              "y" : 19,
+              "id" : 7
+            }, {
+              "x" : 40,
+              "y" : 18,
+              "id" : 8
+            }, {
+              "x" : 34,
+              "y" : 18,
+              "id" : 9
+            }, {
+              "x" : 41,
+              "y" : 18,
+              "id" : 10
+            }, {
+              "x" : 33,
+              "y" : 18,
+              "id" : 11
+            }, {
+              "x" : 42,
+              "y" : 17,
+              "id" : 12
+            }, {
+              "x" : 32,
+              "y" : 18,
+              "id" : 13
+            }, {
+              "x" : 43,
+              "y" : 16,
+              "id" : 14
+            }, {
+              "x" : 46,
+              "y" : 14,
+              "id" : 15
+            } ],
             "id" : 1
-          }, {
-            "x" : 37,
-            "y" : 19,
-            "id" : 2
-          }, {
-            "x" : 37,
-            "y" : 20,
-            "id" : 3
-          }, {
-            "x" : 38,
-            "y" : 19,
-            "id" : 4
-          }, {
-            "x" : 36,
-            "y" : 19,
-            "id" : 5
-          }, {
-            "x" : 39,
-            "y" : 19,
-            "id" : 6
-          }, {
-            "x" : 35,
-            "y" : 19,
-            "id" : 7
-          }, {
-            "x" : 40,
-            "y" : 18,
-            "id" : 8
-          }, {
-            "x" : 34,
-            "y" : 18,
-            "id" : 9
-          }, {
-            "x" : 41,
-            "y" : 18,
-            "id" : 10
-          }, {
-            "x" : 33,
-            "y" : 18,
-            "id" : 11
-          }, {
-            "x" : 42,
-            "y" : 17,
-            "id" : 12
-          }, {
-            "x" : 32,
-            "y" : 18,
-            "id" : 13
-          }, {
-            "x" : 43,
-            "y" : 16,
-            "id" : 14
-          }, {
-            "x" : 46,
-            "y" : 14,
-            "id" : 15
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "116.Pz Div HQ",
           "type" : "HEADQUARTERS",
@@ -53433,61 +53745,66 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 50,
-        "orders" : "AREA_DEFENSE",
-        "emphasis" : "MINIMIZE_LOSSES",
-        "supportscope" : "INTERNAL_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 40,
-            "y" : 11,
+        "orders" : {
+          "operationalStance" : "DEFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "MINIMIZE_LOSSES",
+          "supportscope" : "INTERNAL_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 40,
+              "y" : 11,
+              "id" : 1
+            }, {
+              "x" : 38,
+              "y" : 14,
+              "id" : 2
+            }, {
+              "x" : 37,
+              "y" : 18,
+              "id" : 3
+            }, {
+              "x" : 36,
+              "y" : 18,
+              "id" : 4
+            }, {
+              "x" : 34,
+              "y" : 17,
+              "id" : 5
+            }, {
+              "x" : 31,
+              "y" : 17,
+              "id" : 6
+            }, {
+              "x" : 29,
+              "y" : 18,
+              "id" : 7
+            }, {
+              "x" : 29,
+              "y" : 20,
+              "id" : 8
+            }, {
+              "x" : 28,
+              "y" : 19,
+              "id" : 9
+            }, {
+              "x" : 30,
+              "y" : 19,
+              "id" : 10
+            }, {
+              "x" : 27,
+              "y" : 19,
+              "id" : 11
+            }, {
+              "x" : 31,
+              "y" : 19,
+              "id" : 12
+            } ],
             "id" : 1
-          }, {
-            "x" : 38,
-            "y" : 14,
-            "id" : 2
-          }, {
-            "x" : 37,
-            "y" : 18,
-            "id" : 3
-          }, {
-            "x" : 36,
-            "y" : 18,
-            "id" : 4
-          }, {
-            "x" : 34,
-            "y" : 17,
-            "id" : 5
-          }, {
-            "x" : 31,
-            "y" : 17,
-            "id" : 6
-          }, {
-            "x" : 29,
-            "y" : 18,
-            "id" : 7
-          }, {
-            "x" : 29,
-            "y" : 20,
-            "id" : 8
-          }, {
-            "x" : 28,
-            "y" : 19,
-            "id" : 9
-          }, {
-            "x" : 30,
-            "y" : 19,
-            "id" : 10
-          }, {
-            "x" : 27,
-            "y" : 19,
-            "id" : 11
-          }, {
-            "x" : 31,
-            "y" : 19,
-            "id" : 12
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "2.Pz Div HQ",
           "type" : "HEADQUARTERS",
@@ -54165,57 +54482,62 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 50,
-        "orders" : "AREA_DEFENSE",
-        "emphasis" : "MINIMIZE_LOSSES",
-        "supportscope" : "INTERNAL_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 49,
-            "y" : 12,
+        "orders" : {
+          "operationalStance" : "DEFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "MINIMIZE_LOSSES",
+          "supportscope" : "INTERNAL_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 49,
+              "y" : 12,
+              "id" : 1
+            }, {
+              "x" : 40,
+              "y" : 14,
+              "id" : 2
+            }, {
+              "x" : 40,
+              "y" : 13,
+              "id" : 3
+            }, {
+              "x" : 41,
+              "y" : 15,
+              "id" : 4
+            }, {
+              "x" : 40,
+              "y" : 12,
+              "id" : 5
+            }, {
+              "x" : 42,
+              "y" : 15,
+              "id" : 6
+            }, {
+              "x" : 40,
+              "y" : 11,
+              "id" : 7
+            }, {
+              "x" : 43,
+              "y" : 16,
+              "id" : 8
+            }, {
+              "x" : 40,
+              "y" : 10,
+              "id" : 9
+            }, {
+              "x" : 44,
+              "y" : 16,
+              "id" : 10
+            }, {
+              "x" : 26,
+              "y" : 13,
+              "id" : 11
+            } ],
             "id" : 1
-          }, {
-            "x" : 40,
-            "y" : 14,
-            "id" : 2
-          }, {
-            "x" : 40,
-            "y" : 13,
-            "id" : 3
-          }, {
-            "x" : 41,
-            "y" : 15,
-            "id" : 4
-          }, {
-            "x" : 40,
-            "y" : 12,
-            "id" : 5
-          }, {
-            "x" : 42,
-            "y" : 15,
-            "id" : 6
-          }, {
-            "x" : 40,
-            "y" : 11,
-            "id" : 7
-          }, {
-            "x" : 43,
-            "y" : 16,
-            "id" : 8
-          }, {
-            "x" : 40,
-            "y" : 10,
-            "id" : 9
-          }, {
-            "x" : 44,
-            "y" : 16,
-            "id" : 10
-          }, {
-            "x" : 26,
-            "y" : 13,
-            "id" : 11
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "21.Pz Div HQ",
           "type" : "HEADQUARTERS",
@@ -54963,29 +55285,34 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 50,
-        "orders" : "AREA_DEFENSE",
-        "emphasis" : "MINIMIZE_LOSSES",
-        "supportscope" : "INTERNAL_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 49,
-            "y" : 14,
+        "orders" : {
+          "operationalStance" : "DEFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "MINIMIZE_LOSSES",
+          "supportscope" : "INTERNAL_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 49,
+              "y" : 14,
+              "id" : 1
+            }, {
+              "x" : 48,
+              "y" : 15,
+              "id" : 2
+            }, {
+              "x" : 49,
+              "y" : 16,
+              "id" : 3
+            }, {
+              "x" : 47,
+              "y" : 15,
+              "id" : 4
+            } ],
             "id" : 1
-          }, {
-            "x" : 48,
-            "y" : 15,
-            "id" : 2
-          }, {
-            "x" : 49,
-            "y" : 16,
-            "id" : 3
-          }, {
-            "x" : 47,
-            "y" : 15,
-            "id" : 4
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "130.Pz Lehr HQ",
           "type" : "HEADQUARTERS",
@@ -55194,69 +55521,74 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 50,
-        "orders" : "AREA_DEFENSE",
-        "emphasis" : "MINIMIZE_LOSSES",
-        "supportscope" : "INTERNAL_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 51,
-            "y" : 15,
+        "orders" : {
+          "operationalStance" : "DEFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "MINIMIZE_LOSSES",
+          "supportscope" : "INTERNAL_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 51,
+              "y" : 15,
+              "id" : 1
+            }, {
+              "x" : 46,
+              "y" : 14,
+              "id" : 2
+            }, {
+              "x" : 46,
+              "y" : 16,
+              "id" : 3
+            }, {
+              "x" : 43,
+              "y" : 16,
+              "id" : 4
+            }, {
+              "x" : 43,
+              "y" : 14,
+              "id" : 5
+            }, {
+              "x" : 37,
+              "y" : 19,
+              "id" : 6
+            }, {
+              "x" : 34,
+              "y" : 17,
+              "id" : 7
+            }, {
+              "x" : 32,
+              "y" : 17,
+              "id" : 8
+            }, {
+              "x" : 29,
+              "y" : 16,
+              "id" : 9
+            }, {
+              "x" : 26,
+              "y" : 16,
+              "id" : 10
+            }, {
+              "x" : 25,
+              "y" : 18,
+              "id" : 11
+            }, {
+              "x" : 24,
+              "y" : 17,
+              "id" : 12
+            }, {
+              "x" : 26,
+              "y" : 18,
+              "id" : 13
+            }, {
+              "x" : 23,
+              "y" : 17,
+              "id" : 14
+            } ],
             "id" : 1
-          }, {
-            "x" : 46,
-            "y" : 14,
-            "id" : 2
-          }, {
-            "x" : 46,
-            "y" : 16,
-            "id" : 3
-          }, {
-            "x" : 43,
-            "y" : 16,
-            "id" : 4
-          }, {
-            "x" : 43,
-            "y" : 14,
-            "id" : 5
-          }, {
-            "x" : 37,
-            "y" : 19,
-            "id" : 6
-          }, {
-            "x" : 34,
-            "y" : 17,
-            "id" : 7
-          }, {
-            "x" : 32,
-            "y" : 17,
-            "id" : 8
-          }, {
-            "x" : 29,
-            "y" : 16,
-            "id" : 9
-          }, {
-            "x" : 26,
-            "y" : 16,
-            "id" : 10
-          }, {
-            "x" : 25,
-            "y" : 18,
-            "id" : 11
-          }, {
-            "x" : 24,
-            "y" : 17,
-            "id" : 12
-          }, {
-            "x" : 26,
-            "y" : 18,
-            "id" : 13
-          }, {
-            "x" : 23,
-            "y" : 17,
-            "id" : 14
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "1.SS Pz Div HQ",
           "type" : "HEADQUARTERS",
@@ -55712,41 +56044,46 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 50,
-        "orders" : "AREA_DEFENSE",
-        "emphasis" : "MINIMIZE_LOSSES",
-        "supportscope" : "INTERNAL_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 53,
-            "y" : 8,
+        "orders" : {
+          "operationalStance" : "GARRISON",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "MINIMIZE_LOSSES",
+          "supportscope" : "INTERNAL_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 53,
+              "y" : 8,
+              "id" : 1
+            }, {
+              "x" : 52,
+              "y" : 9,
+              "id" : 2
+            }, {
+              "x" : 50,
+              "y" : 10,
+              "id" : 3
+            }, {
+              "x" : 48,
+              "y" : 12,
+              "id" : 4
+            }, {
+              "x" : 46,
+              "y" : 14,
+              "id" : 5
+            }, {
+              "x" : 43,
+              "y" : 14,
+              "id" : 6
+            }, {
+              "x" : 43,
+              "y" : 16,
+              "id" : 7
+            } ],
             "id" : 1
-          }, {
-            "x" : 52,
-            "y" : 9,
-            "id" : 2
-          }, {
-            "x" : 50,
-            "y" : 10,
-            "id" : 3
-          }, {
-            "x" : 48,
-            "y" : 12,
-            "id" : 4
-          }, {
-            "x" : 46,
-            "y" : 14,
-            "id" : 5
-          }, {
-            "x" : 43,
-            "y" : 14,
-            "id" : 6
-          }, {
-            "x" : 43,
-            "y" : 16,
-            "id" : 7
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "2.SS Pz Div HQ",
           "type" : "HEADQUARTERS",
@@ -56167,37 +56504,42 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 50,
-        "orders" : "AREA_DEFENSE",
-        "emphasis" : "MINIMIZE_LOSSES",
-        "supportscope" : "INTERNAL_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 48,
-            "y" : 5,
+        "orders" : {
+          "operationalStance" : "GARRISON",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "MINIMIZE_LOSSES",
+          "supportscope" : "INTERNAL_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 48,
+              "y" : 5,
+              "id" : 1
+            }, {
+              "x" : 46,
+              "y" : 5,
+              "id" : 2
+            }, {
+              "x" : 44,
+              "y" : 6,
+              "id" : 3
+            }, {
+              "x" : 44,
+              "y" : 8,
+              "id" : 4
+            }, {
+              "x" : 41,
+              "y" : 10,
+              "id" : 5
+            }, {
+              "x" : 40,
+              "y" : 11,
+              "id" : 6
+            } ],
             "id" : 1
-          }, {
-            "x" : 46,
-            "y" : 5,
-            "id" : 2
-          }, {
-            "x" : 44,
-            "y" : 6,
-            "id" : 3
-          }, {
-            "x" : 44,
-            "y" : 8,
-            "id" : 4
-          }, {
-            "x" : 41,
-            "y" : 10,
-            "id" : 5
-          }, {
-            "x" : 40,
-            "y" : 11,
-            "id" : 6
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "9.SS Pz Div HQ",
           "type" : "HEADQUARTERS",
@@ -56641,81 +56983,86 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 50,
-        "orders" : "AREA_DEFENSE",
-        "emphasis" : "MINIMIZE_LOSSES",
-        "supportscope" : "INTERNAL_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 51,
-            "y" : 15,
+        "orders" : {
+          "operationalStance" : "DEFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "MINIMIZE_LOSSES",
+          "supportscope" : "INTERNAL_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 51,
+              "y" : 15,
+              "id" : 1
+            }, {
+              "x" : 46,
+              "y" : 16,
+              "id" : 2
+            }, {
+              "x" : 43,
+              "y" : 16,
+              "id" : 3
+            }, {
+              "x" : 43,
+              "y" : 14,
+              "id" : 4
+            }, {
+              "x" : 40,
+              "y" : 11,
+              "id" : 5
+            }, {
+              "x" : 37,
+              "y" : 19,
+              "id" : 6
+            }, {
+              "x" : 33,
+              "y" : 17,
+              "id" : 7
+            }, {
+              "x" : 30,
+              "y" : 15,
+              "id" : 8
+            }, {
+              "x" : 26,
+              "y" : 16,
+              "id" : 9
+            }, {
+              "x" : 23,
+              "y" : 17,
+              "id" : 10
+            }, {
+              "x" : 19,
+              "y" : 17,
+              "id" : 11
+            }, {
+              "x" : 17,
+              "y" : 18,
+              "id" : 12
+            }, {
+              "x" : 18,
+              "y" : 18,
+              "id" : 13
+            }, {
+              "x" : 17,
+              "y" : 17,
+              "id" : 14
+            }, {
+              "x" : 15,
+              "y" : 20,
+              "id" : 15
+            }, {
+              "x" : 16,
+              "y" : 19,
+              "id" : 16
+            }, {
+              "x" : 14,
+              "y" : 19,
+              "id" : 17
+            } ],
             "id" : 1
-          }, {
-            "x" : 46,
-            "y" : 16,
-            "id" : 2
-          }, {
-            "x" : 43,
-            "y" : 16,
-            "id" : 3
-          }, {
-            "x" : 43,
-            "y" : 14,
-            "id" : 4
-          }, {
-            "x" : 40,
-            "y" : 11,
-            "id" : 5
-          }, {
-            "x" : 37,
-            "y" : 19,
-            "id" : 6
-          }, {
-            "x" : 33,
-            "y" : 17,
-            "id" : 7
-          }, {
-            "x" : 30,
-            "y" : 15,
-            "id" : 8
-          }, {
-            "x" : 26,
-            "y" : 16,
-            "id" : 9
-          }, {
-            "x" : 23,
-            "y" : 17,
-            "id" : 10
-          }, {
-            "x" : 19,
-            "y" : 17,
-            "id" : 11
-          }, {
-            "x" : 17,
-            "y" : 18,
-            "id" : 12
-          }, {
-            "x" : 18,
-            "y" : 18,
-            "id" : 13
-          }, {
-            "x" : 17,
-            "y" : 17,
-            "id" : 14
-          }, {
-            "x" : 15,
-            "y" : 20,
-            "id" : 15
-          }, {
-            "x" : 16,
-            "y" : 19,
-            "id" : 16
-          }, {
-            "x" : 14,
-            "y" : 19,
-            "id" : 17
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "10.SS Pz Div HQ",
           "type" : "HEADQUARTERS",
@@ -57272,101 +57619,106 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 50,
-        "orders" : "AREA_DEFENSE",
-        "emphasis" : "MINIMIZE_LOSSES",
-        "supportscope" : "INTERNAL_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 55,
-            "y" : 10,
+        "orders" : {
+          "operationalStance" : "DEFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "MINIMIZE_LOSSES",
+          "supportscope" : "INTERNAL_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 55,
+              "y" : 10,
+              "id" : 1
+            }, {
+              "x" : 53,
+              "y" : 8,
+              "id" : 2
+            }, {
+              "x" : 48,
+              "y" : 5,
+              "id" : 3
+            }, {
+              "x" : 40,
+              "y" : 11,
+              "id" : 4
+            }, {
+              "x" : 38,
+              "y" : 11,
+              "id" : 5
+            }, {
+              "x" : 38,
+              "y" : 10,
+              "id" : 6
+            }, {
+              "x" : 38,
+              "y" : 12,
+              "id" : 7
+            }, {
+              "x" : 38,
+              "y" : 9,
+              "id" : 8
+            }, {
+              "x" : 35,
+              "y" : 12,
+              "id" : 9
+            }, {
+              "x" : 36,
+              "y" : 11,
+              "id" : 10
+            }, {
+              "x" : 34,
+              "y" : 12,
+              "id" : 11
+            }, {
+              "x" : 36,
+              "y" : 10,
+              "id" : 12
+            }, {
+              "x" : 32,
+              "y" : 11,
+              "id" : 13
+            }, {
+              "x" : 31,
+              "y" : 12,
+              "id" : 14
+            }, {
+              "x" : 33,
+              "y" : 11,
+              "id" : 15
+            }, {
+              "x" : 30,
+              "y" : 12,
+              "id" : 16
+            }, {
+              "x" : 34,
+              "y" : 10,
+              "id" : 17
+            }, {
+              "x" : 30,
+              "y" : 9,
+              "id" : 18
+            }, {
+              "x" : 31,
+              "y" : 9,
+              "id" : 19
+            }, {
+              "x" : 29,
+              "y" : 10,
+              "id" : 20
+            }, {
+              "x" : 32,
+              "y" : 8,
+              "id" : 21
+            }, {
+              "x" : 28,
+              "y" : 10,
+              "id" : 22
+            } ],
             "id" : 1
-          }, {
-            "x" : 53,
-            "y" : 8,
-            "id" : 2
-          }, {
-            "x" : 48,
-            "y" : 5,
-            "id" : 3
-          }, {
-            "x" : 40,
-            "y" : 11,
-            "id" : 4
-          }, {
-            "x" : 38,
-            "y" : 11,
-            "id" : 5
-          }, {
-            "x" : 38,
-            "y" : 10,
-            "id" : 6
-          }, {
-            "x" : 38,
-            "y" : 12,
-            "id" : 7
-          }, {
-            "x" : 38,
-            "y" : 9,
-            "id" : 8
-          }, {
-            "x" : 35,
-            "y" : 12,
-            "id" : 9
-          }, {
-            "x" : 36,
-            "y" : 11,
-            "id" : 10
-          }, {
-            "x" : 34,
-            "y" : 12,
-            "id" : 11
-          }, {
-            "x" : 36,
-            "y" : 10,
-            "id" : 12
-          }, {
-            "x" : 32,
-            "y" : 11,
-            "id" : 13
-          }, {
-            "x" : 31,
-            "y" : 12,
-            "id" : 14
-          }, {
-            "x" : 33,
-            "y" : 11,
-            "id" : 15
-          }, {
-            "x" : 30,
-            "y" : 12,
-            "id" : 16
-          }, {
-            "x" : 34,
-            "y" : 10,
-            "id" : 17
-          }, {
-            "x" : 30,
-            "y" : 9,
-            "id" : 18
-          }, {
-            "x" : 31,
-            "y" : 9,
-            "id" : 19
-          }, {
-            "x" : 29,
-            "y" : 10,
-            "id" : 20
-          }, {
-            "x" : 32,
-            "y" : 8,
-            "id" : 21
-          }, {
-            "x" : 28,
-            "y" : 10,
-            "id" : 22
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "12.SS Pz Div HQ",
           "type" : "HEADQUARTERS",
@@ -57966,41 +58318,46 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 50,
-        "orders" : "FLANK_REAR_GUARD",
-        "emphasis" : "MINIMIZE_LOSSES",
-        "supportscope" : "INTERNAL_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 54,
-            "y" : 10,
+        "orders" : {
+          "operationalStance" : "SECURITY",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "MINIMIZE_LOSSES",
+          "supportscope" : "INTERNAL_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 54,
+              "y" : 10,
+              "id" : 1
+            }, {
+              "x" : 46,
+              "y" : 12,
+              "id" : 2
+            }, {
+              "x" : 41,
+              "y" : 13,
+              "id" : 3
+            }, {
+              "x" : 34,
+              "y" : 14,
+              "id" : 4
+            }, {
+              "x" : 31,
+              "y" : 15,
+              "id" : 5
+            }, {
+              "x" : 26,
+              "y" : 16,
+              "id" : 6
+            }, {
+              "x" : 24,
+              "y" : 16,
+              "id" : 7
+            } ],
             "id" : 1
-          }, {
-            "x" : 46,
-            "y" : 12,
-            "id" : 2
-          }, {
-            "x" : 41,
-            "y" : 13,
-            "id" : 3
-          }, {
-            "x" : 34,
-            "y" : 14,
-            "id" : 4
-          }, {
-            "x" : 31,
-            "y" : 15,
-            "id" : 5
-          }, {
-            "x" : 26,
-            "y" : 16,
-            "id" : 6
-          }, {
-            "x" : 24,
-            "y" : 16,
-            "id" : 7
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "8.Werfer Bde HQ",
           "type" : "HEADQUARTERS",
@@ -58246,45 +58603,50 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 50,
-        "orders" : "FLANK_REAR_GUARD",
-        "emphasis" : "MINIMIZE_LOSSES",
-        "supportscope" : "INTERNAL_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 57,
-            "y" : 14,
+        "orders" : {
+          "operationalStance" : "SECURITY",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "MINIMIZE_LOSSES",
+          "supportscope" : "INTERNAL_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 57,
+              "y" : 14,
+              "id" : 1
+            }, {
+              "x" : 57,
+              "y" : 15,
+              "id" : 2
+            }, {
+              "x" : 57,
+              "y" : 13,
+              "id" : 3
+            }, {
+              "x" : 57,
+              "y" : 16,
+              "id" : 4
+            }, {
+              "x" : 57,
+              "y" : 12,
+              "id" : 5
+            }, {
+              "x" : 57,
+              "y" : 17,
+              "id" : 6
+            }, {
+              "x" : 57,
+              "y" : 11,
+              "id" : 7
+            }, {
+              "x" : 57,
+              "y" : 18,
+              "id" : 8
+            } ],
             "id" : 1
-          }, {
-            "x" : 57,
-            "y" : 15,
-            "id" : 2
-          }, {
-            "x" : 57,
-            "y" : 13,
-            "id" : 3
-          }, {
-            "x" : 57,
-            "y" : 16,
-            "id" : 4
-          }, {
-            "x" : 57,
-            "y" : 12,
-            "id" : 5
-          }, {
-            "x" : 57,
-            "y" : 17,
-            "id" : 6
-          }, {
-            "x" : 57,
-            "y" : 11,
-            "id" : 7
-          }, {
-            "x" : 57,
-            "y" : 18,
-            "id" : 8
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "I/JG 2",
           "type" : "FIGHTER_BOMBER",
@@ -58846,17 +59208,22 @@
         "color" : 0,
         "proficiency" : 80,
         "supply" : 50,
-        "orders" : "AREA_DEFENSE",
-        "emphasis" : "IGNORE_LOSSES",
-        "supportscope" : "INTERNAL_SUPPORT",
-        "track" : [ {
-          "objective" : [ {
-            "x" : 57,
-            "y" : 14,
+        "orders" : {
+          "operationalStance" : "GARRISON",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "IGNORE_LOSSES",
+          "supportscope" : "INTERNAL_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 57,
+              "y" : 14,
+              "id" : 1
+            } ],
             "id" : 1
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "S.Flak 1",
           "type" : "ANTI_AIRCRAFT",

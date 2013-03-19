@@ -1,15 +1,14 @@
 package ares.scenario.forces;
 
 import ares.application.models.forces.FormationModel;
-import ares.data.jaxb.Emphasis;
-import ares.data.jaxb.Formation.Track;
-import ares.data.jaxb.SupportScope;
+import ares.data.jaxb.Orders;
+import ares.data.jaxb.Track;
 import ares.engine.algorithms.routing.PathFinder;
 import ares.engine.command.Objective;
-import ares.engine.command.operational.OperationType;
-import ares.engine.command.operational.OperationalPlan;
-import ares.engine.command.operational.OperationalPlanFactory;
-import ares.engine.command.operational.OperationalStance;
+import ares.engine.command.ProgrammedOpponent;
+import ares.engine.command.operational.plans.OperationalPlan;
+import ares.engine.command.operational.plans.OperationalStance;
+import ares.engine.time.Clock;
 import ares.platform.model.ModelProvider;
 import ares.platform.model.UserRole;
 import ares.scenario.Scenario;
@@ -30,13 +29,11 @@ public class Formation implements ModelProvider<FormationModel> {
     private String details;
     private int proficiency;
     private int supply;
-    private Emphasis emphasis;
-    private SupportScope supportscope;
     /**
      * List of available (on-board) units. This collection excludes reinforcements, destroyed/withdrawed units and
      * divided units.
      */
-    private List<Unit> activeUnits;
+    private List<Unit> availableUnits;
     /**
      * List of scheduled reinforcement units, stored in a queue
      */
@@ -48,6 +45,8 @@ public class Formation implements ModelProvider<FormationModel> {
     private Formation superior;
     private List<Formation> subordinates;
     private OperationalPlan operationalPlan;
+    private ProgrammedOpponent po;
+    private boolean active;
 
     // TODO each turn check for reinforcements and put them into the right unit collection
     public Formation(ares.data.jaxb.Formation formation, Force force, Scenario scenario) {
@@ -59,12 +58,7 @@ public class Formation implements ModelProvider<FormationModel> {
         details = formation.getDetails();
         proficiency = formation.getProficiency();
         supply = formation.getSupply();
-
-        emphasis = formation.getEmphasis();
-        supportscope = formation.getSupportscope();
-
-        activeUnits = new ArrayList<>();
-
+        availableUnits = new ArrayList<>();
         scheduledReinforcements = new PriorityQueue<>(2, Unit.UNIT_ENTRY_COMPARATOR);
         conditionalReinforcements = new ArrayList<>();
         subordinates = new ArrayList<>();
@@ -82,7 +76,7 @@ public class Formation implements ModelProvider<FormationModel> {
                     conditionalReinforcements.add(u);
                     break;
                 default:
-                    activeUnits.add(u);
+                    availableUnits.add(u);
             }
         }
         // Set parents for units resulting of division
@@ -92,45 +86,32 @@ public class Formation implements ModelProvider<FormationModel> {
             }
         }
 
-        List<Objective> objectives = new ArrayList<>();
-        List<Track> tracks = formation.getTrack();
-        Tile[][] tile = scenario.getBoard().getMap();
-        OperationType operationType = Enum.valueOf(OperationType.class, formation.getOrders().name());
-        OperationalStance stance = operationType.getStance();
-        boolean inversePriority = false;
-        if (stance == OperationalStance.DEFENSIVE
-                || stance == OperationalStance.SECURITY
-                || stance == OperationalStance.RESERVE) {
-            inversePriority = true;
-        }
-        int index = 0;
-        int lastObjective = objectives.size() - 1;
-        if (tracks.size() > 0) {
-            for (ares.data.jaxb.Formation.Track.Objective obj : tracks.get(0).getObjective()) {
-                Tile location = tile[obj.getX()][obj.getY()];
-                Objective newObjective = (inversePriority
-                        ? new Objective(location, lastObjective - index++)
-                        : new Objective(location, index++));
-                objectives.add(newObjective);
-            }
-        }
+        po = new ProgrammedOpponent(formation.getOrders(), scenario.getBoard());
 
-        operationalPlan = OperationalPlanFactory.getOperationalPlan(operationType, this, objectives);
+        active = false;
     }
 
-    /**
-     * This method makes the formation active, which implies a planing step
-     *
-     */
-    public void activate(PathFinder pathFinder) {
-        for (Unit unit : activeUnits) {
+    public void initialize() {
+        for (Unit unit : availableUnits) {
+            unit.initialize();
+        }
+    }
+
+    public boolean mustBeActivated() {
+        return po.getActivates() <= Clock.INSTANCE.getTurn();
+    }
+
+    public void activate() {
+        for (Unit unit : availableUnits) {
             unit.activate();
         }
-        operationalPlan.plan(pathFinder);
+        active = true;
+        operationalPlan = po.obtainOperationalPlan(this);
+        po.activate();
     }
 
     public boolean isActive() {
-        return !activeUnits.isEmpty();
+        return active;
     }
 
     public void setSuperior(Formation superior) {
@@ -139,6 +120,10 @@ public class Formation implements ModelProvider<FormationModel> {
 
     public void setSubordinates(List<Formation> subordinates) {
         this.subordinates = subordinates;
+    }
+
+    public ProgrammedOpponent getProgrammedOpponent() {
+        return po;
     }
 
     public Formation getSuperior() {
@@ -163,10 +148,6 @@ public class Formation implements ModelProvider<FormationModel> {
 
     public Echelon getEchelon() {
         return echelon;
-    }
-
-    public Emphasis getEmphasis() {
-        return emphasis;
     }
 
     public Force getForce() {
@@ -197,12 +178,8 @@ public class Formation implements ModelProvider<FormationModel> {
         return supply;
     }
 
-    public SupportScope getSupportscope() {
-        return supportscope;
-    }
-
-    public List<Unit> getActiveUnits() {
-        return activeUnits;
+    public List<Unit> getAvailableUnits() {
+        return availableUnits;
     }
 
     @Override
@@ -242,6 +219,7 @@ public class Formation implements ModelProvider<FormationModel> {
     }
 
     public void plan(PathFinder pathFinder) {
+        operationalPlan.updateObjectives();
         operationalPlan.plan(pathFinder);
     }
 }

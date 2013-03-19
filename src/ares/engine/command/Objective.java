@@ -1,5 +1,6 @@
 package ares.engine.command;
 
+import ares.scenario.board.Board;
 import ares.scenario.board.Tile;
 import ares.scenario.forces.Formation;
 import ares.scenario.forces.Unit;
@@ -13,11 +14,16 @@ public class Objective implements Comparable {
     private Tile location;
     private int priority;
     private boolean achieved = false;
-
-    public Objective(Tile location, int priority) {
-        this.location = location;
-        this.priority = priority;
+    
+    public Objective(ares.data.jaxb.Objective obj, Board board) {
+        location = board.getTile(obj.getX(), obj.getY());
+        priority = obj.getId();
     }
+
+//    public Objective(Tile location, int priority) {
+//        this.location = location;
+//        this.priority = priority;
+//    }
 
     public boolean isAchieved() {
         return achieved;

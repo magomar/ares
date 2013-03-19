@@ -296,25 +296,6 @@
             <element name="Proficiency" type="int"  default="33"/>
             <element name="Supply" type="int"  default="100"/>
             <element name="Orders" type="ar:Orders" />
-            <element name="Emphasis" type="ar:Emphasis" />
-            <element name="Supportscope" type="ar:SupportScope" />
-            <element name="Track" maxOccurs="unbounded">
-                <complexType>
-                    <sequence>
-                        <element minOccurs="0" maxOccurs="unbounded" name="Objective">
-                            <complexType>
-                                <sequence>
-                                    <!--<element name="Description" type="string" />-->
-                                    <element name="X" type="int" />
-                                    <element name="Y" type="int" />
-                                </sequence>
-                                <attribute name="id" type="int" use ="required"/>
-                            </complexType>
-                        </element>
-                    </sequence>
-                    <attribute name="id" type="int" use ="required"/>
-                </complexType>
-            </element>
             <element name="Unit" type="ar:Unit"  maxOccurs="unbounded" />
         </sequence>
         <attribute name="id" type="int" use="required"/>
@@ -355,9 +336,44 @@
         </sequence>
         <attribute name="id" type="int" use="required"/>
     </complexType>
+    
+    <complexType name="Orders">
+        <sequence>
+            <element name="OperationalStance" type="ar:OperationalStance" />
+            <element name="Activates" type="int" default="0"/>
+            <element name="Frontage" type="ar:Frontage" default ="NORMAL"/>
+            <element name="OnlyPO" type ="boolean" default ="false"/>
+            <element name="Emphasis" type="ar:Emphasis" />
+            <element name="Supportscope" type="ar:SupportScope" />
+            <element name="Track" type="ar:Track" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    
+    <complexType name ="Track">
+        <sequence>
+            <element minOccurs="0" name="Objective" type="ar:Objective" maxOccurs="unbounded" />
+        </sequence>
+        <attribute name="id" type="int" use ="required"/>
+    </complexType>
+    
+    <complexType name ="Objective">
+        <sequence>
+            <!--<element name="Description" type="string" />-->
+            <element name="X" type="int" />
+            <element name="Y" type="int" />
+        </sequence>
+        <attribute name="id" type="int" use ="required"/>
+    </complexType>
 
     <!-- Simple Types -->
-
+    
+    <simpleType name="Frontage">
+        <restriction base="string">
+            <enumeration value="NARROW"/>
+            <enumeration value="NORMAL"/>
+            <enumeration value="WIDE"/>
+        </restriction>
+    </simpleType>
     <!--
         <simpleType name="Scale">
             <restriction base="string">
@@ -506,21 +522,18 @@
         </restriction>
     </simpleType>
     
-    <simpleType name="Status">
+    <simpleType name="OperationalStance">
         <restriction base="string">
-            <enumeration value="DEFENDING"/> 
-            <enumeration value="ATTACKING"/> 
-            <enumeration value="ADVANCING"/> 
-            <enumeration value="MOVING"/>
-            <enumeration value="DELAYING"/>
-            <enumeration value="RETREATING"/>
-            <enumeration value="SCOUTING"/>
-            <enumeration value="MARCHING"/>
-            <enumeration value="ROUTING"/>
-            <enumeration value="REORGANIZING"/>
-            <enumeration value="EMBARKED"/>
+            <enumeration value="OFFENSIVE"/>
+            <enumeration value="DEFENSIVE"/>
+            <enumeration value="SECURITY"/>
+            <enumeration value="RECONNAISSANCE"/>
+            <enumeration value="FIXED"/>
+            <enumeration value="GARRISON"/>
+            <enumeration value="RESERVE"/>
         </restriction>
     </simpleType>
+    
     <simpleType name="OpState">
         <restriction base="string">
             <enumeration value="DEPLOYING"/>
@@ -540,29 +553,25 @@
             <enumeration value="BOMBARDING"/>
         </restriction>
     </simpleType>
-    
+    <!--
     <simpleType name="Orders">
         <restriction base="string">
-            <enumeration value="MOVE_TO_CONTACT"/>
             <enumeration value="ATTACK"/>
-            <enumeration value="EXPLOITATION"/>
-            <enumeration value="PURSUIT"/>
-            <enumeration value="AREA_DEFENSE"/>
-            <enumeration value="MOBILE_DEFENSE"/>
-            <enumeration value="RETROGRADE"/>
+            <enumeration value="SECURE"/>
+            <enumeration value="ADVANCE"/>
+            <enumeration value="DELAY"/>
+            <enumeration value="WAIT"/>
+            <enumeration value="DEFEND"/>
             <enumeration value="SCREEN"/>
-            <enumeration value="ADVANCE_GUARD"/>
-            <enumeration value="FLANK_REAR_GUARD"/>
-            <enumeration value="COVER"/>
-            <enumeration value="AREA_SECURITY"/>
-            <enumeration value="FORCE_SECURITY"/>
-            <enumeration value="ROUTE_RECONNAISSANCE"/>
-            <enumeration value="ZONE_RECONNAISSANCE"/>
-            <enumeration value="AREA_RECONNAISSANCE"/>
-            <enumeration value="RECON_IN_FORCE"/>
+            <enumeration value="STATIC"/>
+            <enumeration value="HOLD"/>
+            <enumeration value="FIXED"/>
+            <enumeration value="GARRISON"/>
+            <enumeration value="INDEPENDENT"/>
+            <enumeration value="MANUAL"/>
         </restriction>
     </simpleType>
-    
+    -->
     <simpleType name="Emphasis">
         <restriction base="string">
             <enumeration value="MINIMIZE_LOSSES"/>
@@ -599,8 +608,8 @@
     
     <simpleType name="Experience">
         <restriction base="string">
-            <enumeration value="untried"/>
-            <enumeration value="veteran"/>
+            <enumeration value="UNTRIED"/>
+            <enumeration value="VETERAN"/>
         </restriction>
     </simpleType>
     

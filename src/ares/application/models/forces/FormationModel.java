@@ -26,7 +26,7 @@ public class FormationModel extends RoleMediatedModel {
 
     public Collection<UnitModel> getUnitModels() {
         Collection<UnitModel> unitModels = new ArrayList<>();
-        for (Unit unit : formation.getActiveUnits()) {
+        for (Unit unit : formation.getAvailableUnits()) {
             UnitModel unitModel = unit.getModel(getUserRole());
             if (unitModel != null) {
                 unitModels.add(unitModel);

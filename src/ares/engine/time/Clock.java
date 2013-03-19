@@ -75,14 +75,6 @@ public class Clock {
     public int getTICKS_PER_TURN() {
         return TICKS_PER_TURN;
     }
-//
-//    public int getTICKS_PER_DAY() {
-//        return TICKS_PER_DAY;
-//    }
-//
-//    public int getTICKS_PER_HOUR() {
-//        return TICKS_PER_HOUR;
-//    }
 
     public GregorianCalendar getBegins() {
         return begins;

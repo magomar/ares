@@ -1,13 +1,10 @@
 package ares.engine.command.tactical;
 
 import ares.engine.algorithms.routing.PathFinder;
-import ares.engine.command.Objective;
 import ares.engine.command.tactical.missions.AttackByFire;
 import ares.engine.command.tactical.missions.Occupy;
 import ares.scenario.board.Tile;
 import ares.scenario.forces.Unit;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
