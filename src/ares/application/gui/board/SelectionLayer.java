@@ -27,29 +27,28 @@ public class SelectionLayer extends AbstractImageLayer {
         if (unit == null) {
             return;
         }
+        Graphics2D g2 = globalImage.createGraphics();
         if (brassCursorImage.get() == null) {
             brassCursorImage = new SoftReference<>(loadImage(BoardGraphicsModel.getImageProfile().getBrassCursorFile()));
         }
         if (steelCursorImage.get() == null) {
             steelCursorImage = new SoftReference<>(loadImage(BoardGraphicsModel.getImageProfile().getSteelCursorFile()));
         }
-
-        Graphics2D g2 = globalImage.createGraphics();
         for (UnitModel u : formation.getUnitModels()) {
             if (!u.equals(unit)) {
                 TileModel t = u.getLocation();
-                Point p = BoardGraphicsModel.tileToPixel(t.getCoordinates());
-                g2.drawImage(steelCursorImage.get(), p.x, p.y, null);
-//                repaint(p.x, p.y, steelCursorImage.get().getWidth(), steelCursorImage.get().getHeight());
-                paintImmediately(p.x, p.y, steelCursorImage.get().getWidth(), steelCursorImage.get().getHeight());
+                paintCursor(g2, u.getLocation(), steelCursorImage.get());
             }
         }
-        TileModel tile = unit.getLocation();
-        Point pos = BoardGraphicsModel.tileToPixel(tile.getCoordinates());
-        g2.drawImage(brassCursorImage.get(), pos.x, pos.y, null);
-//        repaint(pos.x, pos.y, brassCursorImage.get().getWidth(), brassCursorImage.get().getHeight());
-        paintImmediately(pos.x, pos.y, brassCursorImage.get().getWidth(), brassCursorImage.get().getHeight());
+        paintCursor(g2, unit.getLocation(), brassCursorImage.get());
         g2.dispose();
+    }
+
+    private void paintCursor(Graphics2D g2, TileModel tile, BufferedImage image) {
+        Point pos = BoardGraphicsModel.tileToPixel(tile.getCoordinates());
+        g2.drawImage(image, pos.x, pos.y, null);
+        repaint(pos.x, pos.y, image.getWidth(), image.getHeight());
+//        paintImmediately(pos.x, pos.y, brassCursorImage.get().getWidth(), brassCursorImage.get().getHeight());
     }
 
     /**

@@ -10,7 +10,6 @@ import java.awt.image.BufferedImage;
 public interface ImageLayer {
 
     void initialize();
-//    void updateLayer();
 
     void flush();
 

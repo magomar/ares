@@ -68,10 +68,6 @@ public final class EngineController extends AbstractSecondaryController implemen
         }
     }
 
-    RealTimeEngine getEngine() {
-        return engine;
-    }
-
 //    class ResumeActionListener implements ActionListener {
 //
 //        @Override

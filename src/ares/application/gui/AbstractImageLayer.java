@@ -24,13 +24,13 @@ public abstract class AbstractImageLayer extends javax.swing.JPanel implements I
     }
 
     public AbstractImageLayer(AbstractImageLayer parentLayer) {
-        this();
+        setOpaque(false);
         this.parentLayer = parentLayer;
-        globalImage = parentLayer.getGlobalImage();
+        globalImage = parentLayer.globalImage;
     }
 
     @Override
-    public void initialize() {
+    public final void initialize() {
         globalImage = new BufferedImage(BoardGraphicsModel.getImageWidth(), BoardGraphicsModel.getImageHeight(), BufferedImage.TYPE_INT_ARGB);
         repaint();
     }
@@ -55,7 +55,7 @@ public abstract class AbstractImageLayer extends javax.swing.JPanel implements I
     }
 
     @Override
-    public void flush() {
+    public final void flush() {
         globalImage = null;
     }
 
@@ -90,5 +90,4 @@ public abstract class AbstractImageLayer extends javax.swing.JPanel implements I
     public BufferedImage getGlobalImage() {
         return globalImage;
     }
-    
 }

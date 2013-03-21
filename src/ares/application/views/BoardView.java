@@ -152,6 +152,10 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
     @Override
     public void updateSelectedUnit(UnitModel selectedUnit, FormationModel formation, ScenarioModel scenario) {
         selectionLayer.paintSelectedUnit(selectedUnit, formation);
+        if (selectedUnit == null) {
+            arrowLayer.paintArrows(null);
+            return;
+        }
         Collection<Path> paths = new ArrayList<>();
         for (UnitModel unit : formation.getUnitModels()) {
             TacticalMission mission = unit.getTacticalMission();

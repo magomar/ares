@@ -1,6 +1,8 @@
 package ares.application.gui.board;
 
 import ares.application.graphics.ArrowType;
+import static ares.application.graphics.ArrowType.CURRENT_ORDERS;
+import static ares.application.graphics.ArrowType.GIVING_ORDERS;
 import ares.application.graphics.BoardGraphicsModel;
 import ares.application.gui.AbstractImageLayer;
 import ares.application.models.board.*;
@@ -27,51 +29,34 @@ public class ArrowLayer extends AbstractImageLayer {
 
     public ArrowLayer(AbstractImageLayer parentLayer) {
         super(parentLayer);
-        plannedPaths = new ArrayList<>();
     }
 
     @Override
     protected void updateLayer() {
         initialize();
-        for (Path path : plannedPaths) {
-            paintArrow(path, ArrowType.CURRENT_ORDERS);
+        Graphics2D g2 = globalImage.createGraphics();
+        if (plannedPaths != null) {
+            for (Path path : plannedPaths) {
+                paintArrow(g2, path, ArrowType.CURRENT_ORDERS);
+            }
         }
-        paintArrow(currentPath, ArrowType.GIVING_ORDERS);
+        if (currentPath != null) {
+            paintArrow(g2, currentPath, ArrowType.GIVING_ORDERS);
+        }
+        g2.dispose();
     }
 
-    private void paintArrow(Path path, ArrowType type) {
-        if (path == null) {
-            return;
-        }
+    private void paintArrow(Graphics2D g2, Path path, ArrowType type) {
         // Paint the last segment of the arrow
         Node last = path.getLast();
-        paintTile(last.getTile(), getDirectionToImageIndex(last.getDirection()), type);
+        paintArrowSegment(g2, last.getTile(), getDirectionToImageIndex(last.getDirection()), type);
         // Paint the other segments
         for (Node current = last.getPrev(); current != null; last = current, current = last.getPrev()) {
             Direction from = current.getDirection();
             Direction to = last.getDirection().getOpposite();
-            paintTile(current.getTile(), getDirectionToImageIndex(from, to), type);
+
+            paintArrowSegment(g2, current.getTile(), getDirectionToImageIndex(from, to), type);
         }
-    }
-
-    /**
-     * Paints complete arrow for the {@code path} passed as argument
-     *
-     * @param currentPath
-     */
-    public void paintArrow(Path currentPath) {
-        this.currentPath = currentPath;
-        updateLayer();
-    }
-
-    /**
-     * Paints complete arrow for the {@code path} passed as argument
-     *
-     * @param path
-     */
-    public void paintArrows(Collection<Path> plannedPaths) {
-        this.plannedPaths = plannedPaths;
-        updateLayer();
     }
 
     /**
@@ -81,10 +66,9 @@ public class ArrowLayer extends AbstractImageLayer {
      * @param tile the tile where to paint an Arrow
      * @param index the position of the arrow segment within the array of arrow images
      */
-    private void paintTile(Tile tile, Integer index, ArrowType type) {
+    private void paintArrowSegment(Graphics2D g2, Tile tile, Integer index, ArrowType type) {
         Point subImagePos = imageIndexes.get(index);
         if (subImagePos != null) {
-            Graphics2D g2 = globalImage.createGraphics();
             BufferedImage arrowImage = null;
             switch (type) {
                 case GIVING_ORDERS:
@@ -109,8 +93,27 @@ public class ArrowLayer extends AbstractImageLayer {
             Point pos = BoardGraphicsModel.tileToPixel(tile.getCoordinates());
             g2.drawImage(image, pos.x, pos.y, null);
             repaint(pos.x, pos.y, BoardGraphicsModel.getHexDiameter(), BoardGraphicsModel.getHexHeight());
-            g2.dispose();
         }
+    }
+
+    /**
+     * Paints complete arrow for the {@code path} passed as argument
+     *
+     * @param currentPath
+     */
+    public void paintArrow(Path currentPath) {
+        this.currentPath = currentPath;
+        updateLayer();
+    }
+
+    /**
+     * Paints complete arrow for the {@code path} passed as argument
+     *
+     * @param path
+     */
+    public void paintArrows(Collection<Path> plannedPaths) {
+        this.plannedPaths = plannedPaths;
+        updateLayer();
     }
     /**
      *

@@ -52,5 +52,6 @@ public class UnitInfoView extends AbstractView<JScrollPane> implements UnitInfoV
     @Override
     public void clear() {
         tileInfo.setText("");
+        unitInfo.setText("");
     }
 }

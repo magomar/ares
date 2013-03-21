@@ -48,6 +48,9 @@ public final class BoardController extends AbstractSecondaryController implement
 
         boardView.addMouseListener(new BoardMouseListener());
         boardView.addMouseMotionListener(new BoardMouseMotionListener());
+
+         //Add change listeners to entities
+        mainController.getEngine().addPropertyChangeListener(this);
     }
 
     private class BoardMouseListener extends MouseAdapter {
@@ -57,20 +60,20 @@ public final class BoardController extends AbstractSecondaryController implement
             LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, "Mouse clicked {0}", me.getButton());
             switch (me.getButton()) {
                 case MouseEvent.BUTTON1:
-                    clickMouseButton1(me.getX(), me.getY());
+                    select(me.getX(), me.getY());
                     break;
                 case MouseEvent.BUTTON2:
-                    clickMouseButton2();
+                    deselect();
                     break;
                 case MouseEvent.BUTTON3:
-                    clickMouseButton3(me.getX(), me.getY());
+                    command(me.getX(), me.getY());
                     break;
             }
 
         }
     }
 
-    private void clickMouseButton1(int x, int y) {
+    private void select(int x, int y) {
         if (BoardGraphicsModel.isWithinImageRange(x, y)) {
             Point tilePoint = BoardGraphicsModel.pixelToTileAccurate(x, y);
             // XXX pixel to tile conversion is more expensive than two coordinates checks
@@ -107,30 +110,32 @@ public final class BoardController extends AbstractSecondaryController implement
                 TileModel tileModel = selectedTile.getModel(role);
                 unitView.updateInfo(tileModel);
                 boardView.updateUnitStack(tileModel);
-                if (selectedUnit != null) {// interactionMode = InteractionMode.UNIT_ORDERS;
-                    UnitModel unitModel = selectedUnit.getModel(role);
+//                if (selectedUnit != null) {
+                if (interactionMode == InteractionMode.UNIT_ORDERS) {
+                    UnitModel unit = selectedUnit.getModel(role);
                     FormationModel formation = selectedUnit.getFormation().getModel(role);
-                    ScenarioModel scenarioModel = mainController.getScenario().getModel(role);
-                    boardView.updateSelectedUnit(unitModel, formation, scenarioModel);
+                    ScenarioModel scenario = mainController.getScenario().getModel(role);
+                    boardView.updateSelectedUnit(unit, formation, scenario);
+                    boardView.updateArrowPath(scenario, null);
                 }
 
             }
         }
     }
 
-    private void clickMouseButton2() {
+    private void deselect() {
         if (selectedTile != null) {
             LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, "Deselecting");
             selectedTile = null;
             selectedUnit = null;
             interactionMode = InteractionMode.FREE;
             unitView.clear();
-//            boardView.updateArrowPath(mainController.getScenario().getModel(mainController.getUserRole()), Path.NULL_PATH);
-            boardView.updateArrowPath(mainController.getScenario().getModel(mainController.getUserRole()), null);
+            boardView.updateSelectedUnit(null, null, null);
+            boardView.updateArrowPath(null, null);
         }
     }
 
-    private void clickMouseButton3(int x, int y) {
+    private void command(int x, int y) {
         if (interactionMode == InteractionMode.UNIT_ORDERS && BoardGraphicsModel.isWithinImageRange(x, y)) {
             Point tilePoint = BoardGraphicsModel.pixelToTileAccurate(x, y);
             if (!BoardGraphicsModel.validCoordinates(tilePoint.x, tilePoint.y)) {
@@ -138,9 +143,12 @@ public final class BoardController extends AbstractSecondaryController implement
             }
             Scenario scenario = mainController.getScenario();
             Tile targetLocation = scenario.getBoard().getTile(tilePoint.x, tilePoint.y);
-
             TacticalMission mission = TacticalMissionType.OCCUPY.getNewTacticalMission(selectedUnit, targetLocation, pathFinder);
             selectedUnit.setMission(mission);
+            UserRole role = mainController.getUserRole();
+            UnitModel unit = selectedUnit.getModel(role);
+            FormationModel formation = selectedUnit.getFormation().getModel(role);
+            boardView.updateSelectedUnit(unit, formation, scenario.getModel(role));
 
         }
     }
@@ -172,9 +180,10 @@ public final class BoardController extends AbstractSecondaryController implement
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         if (RealTimeEngine.CLOCK_EVENT_PROPERTY.equals(evt.getPropertyName())) {
-            if (selectedTile != null) {
-                unitView.updateInfo(selectedTile.getModel(mainController.getUserRole()));
-            }
+//            if (selectedTile != null) {
+//                unitView.updateInfo(selectedTile.getModel(mainController.getUserRole()));
+//            }
+            deselect();
         }
     }
 }
