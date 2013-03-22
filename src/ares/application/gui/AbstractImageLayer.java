@@ -35,7 +35,7 @@ public abstract class AbstractImageLayer extends javax.swing.JPanel implements I
         repaint();
     }
 
-    protected abstract void updateLayer();
+    protected abstract void updateLayer(); // TODO try to remove this method, move code where appropriate
 
     /**
      * Loads an image from file

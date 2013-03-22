@@ -32,7 +32,6 @@ public class TerrainLayer extends AbstractImageLayer {
      * @see Tile
      * @see TerrainFeature
      */
-
     @Override
     protected void updateLayer() {
         initialize();
@@ -40,24 +39,27 @@ public class TerrainLayer extends AbstractImageLayer {
         // Paint it black!
         g2.setColor(Color.BLACK);
         g2.fillRect(0, 0, BoardGraphicsModel.getImageWidth(), BoardGraphicsModel.getImageHeight());
-        g2.dispose();
-        for (TileModel[] tt : scenario.getBoardModel().getMapModel()) {
-            for (TileModel t : tt) {
-                paintTile(t);
+
+        for (TileModel[] tiles : scenario.getBoardModel().getMapModel()) {
+            for (TileModel tile : tiles) {
+                paintTile(g2, tile);
             }
         }
+        g2.dispose();
     }
 
     public void paintTerrain(ScenarioModel scenario) {
         this.scenario = scenario;
         updateLayer();
     }
-    
+
     /**
-     * Paints the terrain of single tile, as described by <code>t</code>
-     * @param tile 
+     * Paints the terrain of single tile, as described by
+     * <code>t</code>
+     *
+     * @param tile
      */
-    private void paintTile(TileModel tile) {
+    private void paintTile(Graphics2D g2, TileModel tile) {
         //If I don't know anything about it
         if (tile.getKnowledgeCategory() == KnowledgeCategory.NONE) {
             return;
@@ -65,9 +67,6 @@ public class TerrainLayer extends AbstractImageLayer {
 
         //Calculate tile position
         Point pos = BoardGraphicsModel.tileToPixel(tile.getCoordinates());
-
-        //Final image graphics
-        Graphics2D g2 = globalImage.createGraphics();
 
         BufferedImage features = getTerrainFeaturesImage(tile);
         //If non playable, don't paint
@@ -113,7 +112,6 @@ public class TerrainLayer extends AbstractImageLayer {
         g2.drawImage(features, pos.x, pos.y, null);
 
         repaint(pos.x, pos.y, terrainImage.getWidth(null), terrainImage.getHeight(null));
-        g2.dispose();
     }
 
     private BufferedImage getTerrainImage(Terrain t, int index) {
@@ -181,9 +179,7 @@ public class TerrainLayer extends AbstractImageLayer {
         Graphics2D g2 = i.createGraphics();
 
         Set<TerrainFeatures> tf = tile.getTerrainFeatures();
-        Iterator it = tf.iterator();
-        while (it.hasNext()) {
-            TerrainFeatures f = (TerrainFeatures) it.next();
+        for (TerrainFeatures f : tf) {
 
             switch (f) {
                 case NON_PLAYABLE:

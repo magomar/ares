@@ -28,46 +28,57 @@ public class UnitsLayer extends AbstractImageLayer {
     /**
      * Offset distance from the upper left corner of the tile. The image will be painted at Point(X+offset, Y+offset)
      *
-     * @see paintTile(TileModel, int)
      */
     private final static int UNIT_IMAGE_OFFSET = 7;
     /**
      * Maximum numbers of units to be painted in a single tile
      *
-     * @see paintTile(TileModel, int)
      */
     private final static int MAX_STACK = 6;
     /**
      * The unit image can be composed of different layered images. Each layer is shifted
-     * <code>unitStackOffset</code> pixels. For example, say the first layer was painted at Point(X,Y), then the next
+     * {@code unitStackOffset} pixels. For example, say the first layer was painted at Point(X,Y), then the next
      * layer will start at Point(X+offset,Y+offset), and the third one at Point(X+2*offset, Y+2*offset) and so on.
      *
-     * @see paintTile(TileModel, int)
      */
     private static int UNIT_STACK_OFFSET = 1;
+    
+    private TileModel tile;
 
     @Override
     protected void updateLayer() {
         initialize();
+        Graphics2D g2 = globalImage.createGraphics();
         Collection<TileModel> tileModels = new HashSet<>();
         for (ForceModel forceModel : scenario.getForceModel()) {
             for (UnitModel unitModel : forceModel.getUnitModels()) {
                 TileModel tileModel = unitModel.getLocation();
                 if (tileModels.add(tileModel)) {
-                    paintUnitStack(tileModel);
+                    paintUnitStack(g2, tileModel);
                 }
             }
         }
+        g2.dispose();
     }
 
     /**
-     * Paints all the units visible in the  <code> scenario</code>
+     * Paints all the units visible in the {@code scenario}
      *
      * @param scenario
      */
     public void paintUnits(ScenarioModel scenario) {
         this.scenario = scenario;
         updateLayer();
+    }
+    /**
+     * Paints all the units visible in a single {@code tile}
+     *
+     * @param scenario
+     */
+    public void paintUnits(TileModel tile) {
+        Graphics2D g2 = globalImage.createGraphics();
+        paintUnitStack(g2, tile);
+        g2.dispose();
     }
 
     /**
@@ -76,9 +87,7 @@ public class UnitsLayer extends AbstractImageLayer {
      * @param tile TileModel where the units are
      * @param maxStack maximum units in the stack to be painted
      */
-    public void paintUnitStack(TileModel tile) {
-        //Graphics from the global image
-        Graphics2D g2 = globalImage.createGraphics();
+    private void paintUnitStack(Graphics2D g2, TileModel tile) {
 
         //Where the single unit image will be painted
         BufferedImage unitImage;
@@ -120,7 +129,7 @@ public class UnitsLayer extends AbstractImageLayer {
             g2.drawImage(unitImage, pos.x + d, pos.y + d, null);
             repaint(pos.x, pos.y, unitImage.getWidth(null) + d, unitImage.getHeight(null) + d);
         }
-        g2.dispose();
+
     }
 
     /**
@@ -131,7 +140,7 @@ public class UnitsLayer extends AbstractImageLayer {
      * @see KnowledgeCategory
      */
     private BufferedImage getUnitImage(UnitModel unit) {
-        
+
         // Color template
         UnitIcons uc = unit.getColor();
         //Make sure graphics are loaded

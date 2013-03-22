@@ -170,6 +170,6 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
 
     @Override
     public void updateUnitStack(TileModel tile) {
-        unitsLayer.paintUnitStack(tile);
+        unitsLayer.paintUnits(tile);
     }
 }
