@@ -41576,10 +41576,10 @@
         "proficiency" : 75,
         "supply" : 25,
         "orders" : {
-          "operationalStance" : "DEFENSIVE",
+          "operationalStance" : "SECURITY",
           "activates" : 0,
           "frontage" : "NORMAL",
-          "onlyPO" : false,
+          "onlyPO" : true,
           "emphasis" : "MINIMIZE_LOSSES",
           "supportscope" : "ARMY_SUPPORT"
         },
@@ -50029,10 +50029,10 @@
         "proficiency" : 70,
         "supply" : 25,
         "orders" : {
-          "operationalStance" : "DEFENSIVE",
+          "operationalStance" : "SECURITY",
           "activates" : 0,
           "frontage" : "NORMAL",
-          "onlyPO" : false,
+          "onlyPO" : true,
           "emphasis" : "MINIMIZE_LOSSES",
           "supportscope" : "ARMY_SUPPORT"
         },

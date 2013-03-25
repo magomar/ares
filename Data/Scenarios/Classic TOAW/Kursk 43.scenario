@@ -9648,10 +9648,10 @@
         "proficiency" : 78,
         "supply" : 55,
         "orders" : {
-          "operationalStance" : "DEFENSIVE",
+          "operationalStance" : "SECURITY",
           "activates" : 0,
           "frontage" : "NORMAL",
-          "onlyPO" : false,
+          "onlyPO" : true,
           "emphasis" : "MINIMIZE_LOSSES",
           "supportscope" : "ARMY_SUPPORT"
         },
@@ -10527,6 +10527,7 @@
         "proficiency" : 70,
         "supply" : 70,
         "orders" : {
+          "operationalStance" : "DEFENSIVE",
           "activates" : 0,
           "frontage" : "NORMAL",
           "onlyPO" : false,
@@ -13733,6 +13734,7 @@
         "proficiency" : 75,
         "supply" : 75,
         "orders" : {
+          "operationalStance" : "DEFENSIVE",
           "activates" : 0,
           "frontage" : "NORMAL",
           "onlyPO" : false,
@@ -21893,6 +21895,7 @@
         "proficiency" : 80,
         "supply" : 80,
         "orders" : {
+          "operationalStance" : "DEFENSIVE",
           "activates" : 0,
           "frontage" : "NORMAL",
           "onlyPO" : false,
@@ -24021,6 +24024,7 @@
         "proficiency" : 80,
         "supply" : 80,
         "orders" : {
+          "operationalStance" : "DEFENSIVE",
           "activates" : 0,
           "frontage" : "NORMAL",
           "onlyPO" : false,
@@ -31258,6 +31262,7 @@
         "proficiency" : 75,
         "supply" : 75,
         "orders" : {
+          "operationalStance" : "DEFENSIVE",
           "activates" : 0,
           "frontage" : "NORMAL",
           "onlyPO" : false,
@@ -32357,10 +32362,10 @@
         "proficiency" : 85,
         "supply" : 50,
         "orders" : {
-          "operationalStance" : "DEFENSIVE",
+          "operationalStance" : "SECURITY",
           "activates" : 0,
           "frontage" : "NORMAL",
-          "onlyPO" : false,
+          "onlyPO" : true,
           "emphasis" : "MINIMIZE_LOSSES",
           "supportscope" : "ARMY_SUPPORT"
         },
