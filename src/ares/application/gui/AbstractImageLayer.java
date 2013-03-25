@@ -3,10 +3,6 @@ package ares.application.gui;
 import ares.application.gui.graphics.BoardGraphicsModel;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.ImageIO;
 
 /**
  *

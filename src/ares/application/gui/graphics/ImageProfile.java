@@ -11,26 +11,25 @@ import java.io.File;
  */
 public enum ImageProfile {
 
-    // Units (Width,Height,Rows,Cols,Square side), Terran(W,H,R,C), Hex(Diam,Side,Offset,Height,rise), Path
-    SMALL(272, 128, 8, 16,/*17x16*/ 0, 270, 192, 8, 10, 27, 13, 21, 22, 0.0, AresPaths.GRAPHICS_SMALL.getPath()),
-    MEDIUM(496, 248, 8, 16, 31, 510, 352, 8, 10, 51, 28, 39, 44, 1.833, AresPaths.GRAPHICS_MEDIUM.getPath()),
-    HIGH(992, 446, 8, 16, 62, 1020, 704, 8, 10, 102, 51, 78, 88, 1.833, AresPaths.GRAPHICS_HIGH.getPath());
+    // Units (Width,Height,Rows,Cols,Square side), Terrain(W,H,R,C), Hex(Diam,Side,Offset,Height,rise), Path
+    SMALL(272, 128, /*17x16*/ 0, 270, 192, 27, 13, 21, 22, 0.0, AresPaths.GRAPHICS_SMALL.getPath()),
+    MEDIUM(496, 248, 31, 510, 352, 51, 28, 39, 44, 1.833, AresPaths.GRAPHICS_MEDIUM.getPath()),
+    HIGH(992, 446, 62, 1020, 704, 102, 51, 78, 88, 1.833, AresPaths.GRAPHICS_HIGH.getPath());
     private final int unitsImageWidth;
     private final int unitsImageHeight;
-    private final int unitsImageRows;
-    private final int unitsImageCols;
     private final int unitSquareSide;
     private final int terrainImageWidth;
     private final int terrainImageHeight;
-    private final int terrainImageRows;
-    private final int terrainImageCols;
     private final int hexDiameter;
     private final int hexSide;
     private final int hexOffset;
     private final int hexHeight;
     private final double hexRise;
     private final String path;
-
+    public final static int UNITS_IMAGE_ROWS = 8;
+    public final static int UNITS_IMAGE_COLS = 16;
+    public final static int TERRAIN_IMAGE_ROWS = 8;
+    public final static int TERRAIN_IMAGE_COLS = 10;
     /**
      *
      * ImageProfile stores information concerning the graphics used in the game i.e: units and terrain image files and
@@ -38,33 +37,29 @@ public enum ImageProfile {
      *
      * @param unitsImageWidth
      * @param unitsImageHeight
-     * @param unitsImageRows
-     * @param unitsImageCols
+     * @param UNITS_IMAGE_ROWS
+     * @param UNITS_IMAGE_COLS
      * @param unitSquareSide
      * @param terrainImageWidth
      * @param terrainImageHeight
-     * @param terrainImageRows
-     * @param terrainImageCols
+     * @param TERRAIN_IMAGE_ROWS
+     * @param TERRAIN_IMAGE_COLS
      * @param hexDiameter
      * @param hexSide
      * @param hexOffset
      * @param hexHeight
      * @param path
      */
-    private ImageProfile(final int unitsImageWidth, final int unitsImageHeight, final int unitsImageRows,
-            final int unitsImageCols, final int unitSquareSide, final int terrainImageWidth,
-            final int terrainImageHeight, final int terrainImageRows, final int terrainImageCols,
+    private ImageProfile(
+            final int unitsImageWidth, final int unitsImageHeight, final int unitSquareSide,
+            final int terrainImageWidth, final int terrainImageHeight,
             final int hexDiameter, final int hexSide, final int hexOffset, final int hexHeight,
             final double hexRise, final String path) {
         this.unitsImageWidth = unitsImageWidth;
         this.unitsImageHeight = unitsImageHeight;
-        this.unitsImageRows = unitsImageRows;
-        this.unitsImageCols = unitsImageCols;
         this.unitSquareSide = unitSquareSide;
         this.terrainImageWidth = terrainImageWidth;
         this.terrainImageHeight = terrainImageHeight;
-        this.terrainImageRows = terrainImageRows;
-        this.terrainImageCols = terrainImageCols;
         this.hexDiameter = hexDiameter;
         this.hexSide = hexSide;
         this.hexOffset = hexOffset;
@@ -89,24 +84,6 @@ public enum ImageProfile {
      */
     public int getUnitsImageHeight() {
         return unitsImageHeight;
-    }
-
-    /**
-     * Units image file rows
-     *
-     * @return the unitImageRows
-     */
-    public int getUnitsImageRows() {
-        return unitsImageRows;
-    }
-
-    /**
-     * Units image file columns
-     *
-     * @return the unitImageCols
-     */
-    public int getUnitsImageCols() {
-        return unitsImageCols;
     }
 
     /**
@@ -137,27 +114,9 @@ public enum ImageProfile {
     }
 
     /**
-     * Terrain image file rows
-     *
-     * @return the terrainImageRows
-     */
-    public int getTerrainImageRows() {
-        return terrainImageRows;
-    }
-
-    /**
-     * Terrain image file columns
-     *
-     * @return the terrainImageCols
-     */
-    public int getTerrainImageCols() {
-        return terrainImageCols;
-    }
-
-    /**
      * A ____ B F / \ C \____/ E D hexDiamter goes from F.x to C.x
      *
-     * hexDiameter = terrainImageWidth / terrainImageCols;
+     * hexDiameter = terrainImageWidth / TERRAIN_IMAGE_COLS;
      *
      * @return the hexDiameter
      */

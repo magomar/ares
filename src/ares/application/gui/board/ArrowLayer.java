@@ -7,7 +7,7 @@ import ares.application.gui.graphics.BoardGraphicsModel;
 import ares.application.gui.AbstractImageLayer;
 import ares.application.models.board.*;
 import ares.engine.algorithms.routing.*;
-import ares.platform.util.ImageTools;
+import ares.application.gui.graphics.ImageTools;
 import ares.scenario.board.Direction;
 import ares.scenario.board.Tile;
 import java.awt.*;

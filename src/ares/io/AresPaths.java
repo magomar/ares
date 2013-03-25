@@ -12,7 +12,7 @@ public enum AresPaths {
     SCENARIOS("Data/Scenarios"),
     GRAPHICS("Graphics"),
     GRAPHICS_BACKGROUND("Graphics/Background"),
-    GRAPHICS_SMALL("Graphics/Medium"),
+    GRAPHICS_SMALL("Graphics/Small"),
     GRAPHICS_MEDIUM("Graphics/Medium"),
     GRAPHICS_HIGH("Graphics/High");
     private final String path;

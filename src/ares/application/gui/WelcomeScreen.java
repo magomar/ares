@@ -1,7 +1,7 @@
 package ares.application.gui;
 
 import ares.io.*;
-import ares.platform.util.ImageTools;
+import ares.application.gui.graphics.ImageTools;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;

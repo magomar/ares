@@ -1,7 +1,6 @@
 package ares.application.models.board;
 
 import ares.application.models.forces.UnitModel;
-import ares.data.jaxb.TerrainFeature;
 import ares.engine.knowledge.KnowledgeCategory;
 import ares.engine.movement.MovementCost;
 import ares.platform.model.KnowledgeMediatedModel;

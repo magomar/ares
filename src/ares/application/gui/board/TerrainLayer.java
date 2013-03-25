@@ -2,11 +2,12 @@ package ares.application.gui.board;
 
 import ares.application.gui.graphics.BoardGraphicsModel;
 import ares.application.gui.AbstractImageLayer;
+import ares.application.gui.graphics.ImageProfile;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.*;
 import ares.engine.knowledge.KnowledgeCategory;
 import ares.io.*;
-import ares.platform.util.ImageTools;
+import ares.application.gui.graphics.ImageTools;
 import ares.scenario.board.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -61,144 +62,77 @@ public class TerrainLayer extends AbstractImageLayer {
 
         //Calculate tile position
         Point pos = BoardGraphicsModel.tileToPixel(tile.getCoordinates());
-
+        int w = BoardGraphicsModel.getHexDiameter();
+        int h = BoardGraphicsModel.getHexHeight();
         // First layer is the open terrain
-        BufferedImage openTerrain = getTerrainImage(Terrain.OPEN, 0);
+        BufferedImage openTerrain = getTerrainImage(Terrain.OPEN, 0, w, h);
         g2.drawImage(openTerrain, pos.x, pos.y, null);
 
         // Get the index of the terrain image
-        Map<Terrain, Integer> m = getTerrainToImageIndex(tile);
+        Map<Terrain, Integer> m = getTerrainBitMasks(tile);
         for (Map.Entry<Terrain, Integer> entry : m.entrySet()) {
-            Terrain t = entry.getKey();
-            int index = entry.getValue();
-            /*
-             * This process would be faster without the "if" statement
-             * but BORDER image file doesn't have the same size as other
-             * terrain images nor same number of columns and rows.
-             * It would increase performance to modify the file image and make it
-             * behave as the rest, that is:
-             *      * Scale the image to the size setted in the terrain image profile
-             *      * Use the same columns and rows
-             *      * Paint the borders of every possible case (N, NE, N/NE, N/S/NW/, and so on)
-             *        following the pattern as any other terrain image
-             *      
-             * I would do it myself, but sadly I lack at Photoshop skills :)
-             */
+            Terrain terrain = entry.getKey();
+            int bitMask = entry.getValue();
 
-            BufferedImage bi;
-            if (t == Terrain.BORDER) {
-                bi = drawTileBorders(index);
-            } else {
-                int index2 = t.getIndexByDirections(index);
-                bi = getTerrainImage(t, index2);
-            }
+            BufferedImage bi = getTerrainImage(terrain, bitMask, w, h);
             // Paint terrain image
             g2.drawImage(bi, pos.x, pos.y, null);
         }
         // Paint features 
-        int cols = BoardGraphicsModel.getImageProfile().getTerrainImageCols();
-        for (Feature f : tile.getTerrainFeatures()) {
-            g2.drawImage(
-                    getTerrainImage(Terrain.OPEN,
-                    f.getCol() + cols * f.getRow()),
-                    pos.x, pos.y, null);
+        for (Feature feature : tile.getTerrainFeatures()) {
+            BufferedImage bi = terrainBufferMap.get(Terrain.OPEN).get().
+                    getSubimage(w * feature.getImageCol(), h * feature.getImageRow(), w, h);
+            g2.drawImage(bi, pos.x, pos.y, null);
         }
         repaint(pos.x, pos.y, openTerrain.getWidth(), openTerrain.getHeight());
     }
 
-    private BufferedImage getTerrainImage(Terrain t, int index) {
+    private BufferedImage getTerrainImage(Terrain terrain, int bitMask, int w, int h) {
 
         // Ensure terrain graphics are loaded
-        loadTerrainGraphics(t);
+        SoftReference<BufferedImage> softImage = terrainBufferMap.get(terrain);
+        //If image doesn't exist or has been GC'ed
+        if (softImage == null || softImage.get() == null) {
+            String filename = BoardGraphicsModel.getImageProfile().getTerrainFilename(terrain);
+            BufferedImage bi = ImageTools.loadImage(AresIO.ARES_IO.getFile(BoardGraphicsModel.getImageProfile().getPath(), filename));
+            terrainBufferMap.put(terrain, new SoftReference<>(bi));
+        }
 
-        //Get the coordinates
-        int cols = BoardGraphicsModel.getImageProfile().getTerrainImageCols();
-        int w = BoardGraphicsModel.getHexDiameter();
-        int h = BoardGraphicsModel.getHexHeight();
-
-        return terrainBufferMap.get(t).get().getSubimage(w * (index % cols), h * (index / cols), w, h);
+        int imageIndex = terrain.getImageIndex(bitMask);
+        int column = imageIndex / ImageProfile.TERRAIN_IMAGE_ROWS;
+        int row = imageIndex % ImageProfile.TERRAIN_IMAGE_ROWS;
+        return terrainBufferMap.get(terrain).get().getSubimage(w * column, h * row, w, h);
     }
 
     /**
-     * Terrain class has a map with the index to the subimage based on directions. The map associates the subimage
-     * position with the subimage index
-     *
-     * For example, a road from north to south would have the index 72 "N NE SE S SW NW C" -> "1 0 0 1 0 0 0", binary to
-     * int -> 72
-     *
-     * This function returns a map with the terrain as key and its related index as value
+     * Obtains a bit mask for every terrain present in the tile. The resulting bit masks are easily transformed into
+     * indexes to locate a terrain image in the terrain image file. Each direction is encoded as a simple bitflag (the
+     * ordinal of Direction enum) Examples:<b>
+     * "N" -> 000001<b>
+     * "N NE" -> 000011<b>
+     * "S SE" -> 001100
      *
      * @param tile tile to get directions
-     * @return a map which associates each {@link Terrain} in a tile with its image index
-     * @see Terrain
+     * @return a Map which associates each {@link Terrain} in the tile with its bitmask
      *
      */
-    private static Map<Terrain, Integer> getTerrainToImageIndex(TileModel tile) {
+    private static Map<Terrain, Integer> getTerrainBitMasks(TileModel tile) {
 
         Map<Direction, Set<Terrain>> sideTerrain = tile.getSideTerrain();
 
-        SortedMap<Terrain, Integer> m = new TreeMap<>();
-        for (Map.Entry<Direction, Set<Terrain>> e : sideTerrain.entrySet()) {
-            for (Terrain t : e.getValue()) {
-                //Right shift until the 1 is in the position representing the direction
-                int dirbit = 64 >>> e.getKey().ordinal();
-                if (m.get(t) == null) {
-                    //Terrain wasn't in the map yet
-                    m.put(t, dirbit);
-
+        //SortedMap<Terrain, Integer> m = new TreeMap<>();
+        Map<Terrain, Integer> terrainMasks = new EnumMap<>(Terrain.class);
+        for (Map.Entry<Direction, Set<Terrain>> entry : sideTerrain.entrySet()) {
+            Direction dir = entry.getKey();
+            int dirbit = 1 << dir.ordinal();
+            for (Terrain terrain : entry.getValue()) {
+                if (!terrainMasks.containsKey(terrain)) {
+                    terrainMasks.put(terrain, dirbit);
                 } else {
-                    //Update the value we had with bitwise OR
-                    m.put(t, m.get(t) | dirbit);
+                    terrainMasks.put(terrain, terrainMasks.get(terrain) | dirbit);
                 }
             }
         }
-        return m;
-    }
-
-    /**
-     * Since borders are in a special file, they need a special method which draws all borders of a tile
-     *
-     * @param value Integer with its bits as directions
-     * @return Image with all borders painted
-     * @see TerrainLayer#getTerrainToImageIndex()
-     */
-    private BufferedImage drawTileBorders(Integer value) {
-        int mask = 64;
-        int w = BoardGraphicsModel.getHexDiameter();
-        int h = BoardGraphicsModel.getHexHeight();
-        BufferedImage bi = new BufferedImage(w, h, BufferedImage.TYPE_4BYTE_ABGR);
-        Graphics2D g2 = bi.createGraphics();
-
-        loadTerrainGraphics(Terrain.BORDER);
-
-        for (Direction d : Direction.values()) {
-
-            // Shift bites and draw when direction flag is 1
-            if ((mask & value) == mask) {
-                g2.drawImage(terrainBufferMap.get(Terrain.BORDER).get().getSubimage(2 * w, h * d.ordinal(), w, h), null, null);
-                value = value << 1;
-            } else {
-                value = value << 1;
-            }
-
-        }
-        g2.dispose();
-        return bi;
-    }
-
-    /**
-     * Stores in memory the terrain image
-     *
-     * @param t terrain to to load
-     */
-    private void loadTerrainGraphics(Terrain t) {
-
-        SoftReference<BufferedImage> softImage = terrainBufferMap.get(t);
-        //If image doesn't exist or has been GC'ed
-        if (softImage == null || softImage.get() == null) {
-            String filename = BoardGraphicsModel.getImageProfile().getTerrainFilename(t);
-            BufferedImage bi = ImageTools.loadImage(AresIO.ARES_IO.getFile(BoardGraphicsModel.getImageProfile().getPath(), filename));
-            terrainBufferMap.put(t, new SoftReference<>(bi));
-        }
+        return terrainMasks;
     }
 }

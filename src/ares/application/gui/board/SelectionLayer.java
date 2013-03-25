@@ -5,7 +5,7 @@ import ares.application.gui.AbstractImageLayer;
 import ares.application.models.board.*;
 import ares.application.models.forces.FormationModel;
 import ares.application.models.forces.UnitModel;
-import ares.platform.util.ImageTools;
+import ares.application.gui.graphics.ImageTools;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.lang.ref.SoftReference;

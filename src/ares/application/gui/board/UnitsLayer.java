@@ -3,12 +3,13 @@ package ares.application.gui.board;
 import ares.application.gui.graphics.BoardGraphicsModel;
 import ares.application.gui.AbstractImageLayer;
 import ares.application.gui.UnitIcons;
+import ares.application.gui.graphics.ImageProfile;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.*;
 import ares.application.models.forces.*;
 import ares.engine.knowledge.KnowledgeCategory;
 import ares.io.AresIO;
-import ares.platform.util.ImageTools;
+import ares.application.gui.graphics.ImageTools;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.lang.ref.SoftReference;
@@ -149,8 +150,8 @@ public class UnitsLayer extends AbstractImageLayer {
 
         //Get the coordinates
         int size = BoardGraphicsModel.getImageProfile().getUnitSquareSide();
-        int row = unit.getIconId() / BoardGraphicsModel.getImageProfile().getUnitsImageCols();
-        int col = unit.getIconId() % BoardGraphicsModel.getImageProfile().getUnitsImageCols();
+        int row = unit.getIconId() / ImageProfile.UNITS_IMAGE_COLS;
+        int col = unit.getIconId() % ImageProfile.UNITS_IMAGE_COLS;
 
         return unitBufferMap.get(uc).get().getSubimage(col * size, row * size, size, size);
     }

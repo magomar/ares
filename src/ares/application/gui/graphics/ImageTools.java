@@ -1,7 +1,7 @@
-package ares.platform.util;
+package ares.application.gui.graphics;
 
-import ares.application.gui.AbstractImageLayer;
 import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -13,7 +13,7 @@ import javax.imageio.ImageIO;
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
 public class ImageTools {
-    
+
     /**
      * Loads an image from file
      *
@@ -29,5 +29,19 @@ public class ImageTools {
         }
 
         return i;
+    }
+
+    /**
+     * Saves image into file
+     *
+     * @param image
+     * @param file
+     */
+    public static void saveImage(RenderedImage image, File file) {
+        try {
+            ImageIO.write(image, "png", file);
+        } catch (IOException ex) {
+            Logger.getLogger(ImageTools.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

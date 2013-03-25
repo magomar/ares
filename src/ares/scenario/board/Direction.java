@@ -1,6 +1,8 @@
 package ares.scenario.board;
 
+import java.util.ArrayList;
 import java.util.EnumSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -21,6 +23,7 @@ public enum Direction {
     private final int incJOdd;
     private Direction opposite;
     public final static Set<Direction> DIRECTIONS = EnumSet.range(Direction.N, Direction.NW);
+    private final static Direction[] ALL_DIRECTIONS = Direction.values();
 
     static {
         N.opposite = S;
@@ -52,5 +55,31 @@ public enum Direction {
 
     public Direction getOpposite() {
         return opposite;
+    }
+
+    public static int convertDirectionsToBitMask(List<Direction> directions) {
+        int mask = 0;
+        for (Direction dir : directions) {
+            int bit = 1<< dir.ordinal();
+            mask |= bit;
+        }
+        return mask;
+    }
+
+    public static List<Direction> convertBitMaskToDirections(int mask) {
+        List<Direction> directions = new ArrayList<>();
+        // TODO if possible, return an EnumSet instead of a list (I haven't been able yet)
+        for (int bit = 0; bit < ALL_DIRECTIONS.length; bit++) {
+            if (testBitFlag(mask, bit)) {
+                directions.add(ALL_DIRECTIONS[bit]);
+            }
+        }
+        return directions;
+    }
+
+    private static boolean testBitFlag(int mask, int bit) {
+        int flag = 1 << bit;
+        boolean bitIsSet = (mask & flag) != 0;
+        return bitIsSet;
     }
 }
