@@ -1,6 +1,7 @@
 package ares.application.gui;
 
 import ares.io.*;
+import ares.platform.util.ImageTools;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -34,7 +35,7 @@ public final class WelcomeScreen extends AbstractImageLayer {
     @Override
     protected void updateLayer() {
         if (backgroundImage.get() == null) {
-            backgroundImage = new SoftReference<>(loadImage(randomImageFile()));
+            backgroundImage = new SoftReference<>(ImageTools.loadImage(randomImageFile()));
             globalImage = backgroundImage.get();
         }
     }
@@ -63,7 +64,7 @@ public final class WelcomeScreen extends AbstractImageLayer {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         if (globalImage != null) {
-            g2.drawImage(globalImage, 0, 0, this.getWidth(), this.getHeight(), this);
+            g2.drawImage(globalImage, 0, 0, this.getWidth(), this.getHeight(), null);
         } else {
             g2.setBackground(Color.BLACK);
             g2.fillRect(0, 0, this.getWidth(), this.getHeight());

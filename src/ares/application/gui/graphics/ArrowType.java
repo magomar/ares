@@ -1,4 +1,4 @@
-package ares.application.graphics;
+package ares.application.gui.graphics;
 
 /**
  *

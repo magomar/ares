@@ -1,6 +1,6 @@
 package ares.application.views;
 
-import ares.application.graphics.BoardGraphicsModel;
+import ares.application.gui.graphics.BoardGraphicsModel;
 import ares.application.boundaries.view.BoardViewer;
 import ares.application.gui.ImageLayer;
 import ares.application.gui.board.ArrowLayer;

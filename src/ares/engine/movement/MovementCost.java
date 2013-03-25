@@ -29,20 +29,20 @@ public class MovementCost {
 
         //Set AIRCRAFT movement: can move across all tiles, even the non_playable ones (to move between playable areas)
         movementCost.put(MovementType.AIRCRAFT, ONE);
-        Set<TerrainFeatures> features = destination.getTerrainFeatures();
+        Set<Feature> features = destination.getFeatures();
 
         boolean destroyedBridge = false;
         boolean offRoadMovement = true;
 
-        for (TerrainFeatures tf : features) {
+        for (Feature tf : features) {
             // Tile only usable by aircrafts
-            if (tf.equals(TerrainFeatures.NON_PLAYABLE) || tf.equals(TerrainFeatures.PEAK)) {
+            if (tf.equals(Feature.NON_PLAYABLE) || tf.equals(Feature.PEAK)) {
                 for (MovementType moveType : EnumSet.range(MovementType.FIXED, MovementType.FOOT)) {
                     movementCost.put(moveType, IMPASSABLE);
                 }
                 return;
             }
-            if (tf.equals(TerrainFeatures.BRIDGE_DESTROYED)) {
+            if (tf.equals(Feature.BRIDGE_DESTROYED)) {
                 destroyedBridge = true;
             }
         }
@@ -212,7 +212,7 @@ public class MovementCost {
             cost = movementCost.get(unit.getMovement());
         }
 
-        if (destination.getTerrainFeatures().contains(TerrainFeatures.SNOWY) || destination.getTerrainFeatures().contains(TerrainFeatures.MUDDY)) {
+        if (destination.getFeatures().contains(Feature.SNOWY) || destination.getFeatures().contains(Feature.MUDDY)) {
             penalty++;
         }
         return cost + penalty;

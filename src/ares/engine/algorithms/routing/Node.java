@@ -8,7 +8,7 @@ import java.util.Objects;
  *
  * @author Saúl Esteban
  */
-public class Node {
+public class Node implements Comparable {
 
     private Tile tile;
     private Node prev;
@@ -129,4 +129,18 @@ public class Node {
         }
         return true;
     }
+
+    @Override
+    public int compareTo(Object o) {
+        Node n = (Node) o;
+   
+        if (f < n.f) {
+            return -1;
+        }
+        if (f > n.f) {
+            return 1;
+        }
+        return 0;
+    }
+    
 }

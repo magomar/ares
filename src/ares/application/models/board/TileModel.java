@@ -1,6 +1,7 @@
 package ares.application.models.board;
 
 import ares.application.models.forces.UnitModel;
+import ares.data.jaxb.TerrainFeature;
 import ares.engine.knowledge.KnowledgeCategory;
 import ares.engine.movement.MovementCost;
 import ares.platform.model.KnowledgeMediatedModel;
@@ -26,8 +27,8 @@ public abstract class TileModel extends KnowledgeMediatedModel {
         return Collections.unmodifiableMap(tile.getSideTerrain());
     }
 
-    public Set<TerrainFeatures> getTerrainFeatures() {
-        return Collections.unmodifiableSet(tile.getTerrainFeatures());
+    public Set<Feature> getTerrainFeatures() {
+        return Collections.unmodifiableSet(tile.getFeatures());
     }
 
     public Point getCoordinates() {
@@ -47,6 +48,11 @@ public abstract class TileModel extends KnowledgeMediatedModel {
         return tile.getIndex();
     }
 
+    public boolean isNonPlayable() {
+        Set<Feature> tf = tile.getFeatures();
+        return tf.contains(Feature.NON_PLAYABLE);
+    }
+    
     public abstract UnitModel getTopUnit();
 
     public abstract String getOwner();

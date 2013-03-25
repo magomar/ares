@@ -1,12 +1,12 @@
 package ares.application.gui.board;
 
-import ares.application.graphics.BoardGraphicsModel;
+import ares.application.gui.graphics.BoardGraphicsModel;
 import ares.application.gui.AbstractImageLayer;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.*;
-import ares.data.jaxb.TerrainFeature;
 import ares.engine.knowledge.KnowledgeCategory;
 import ares.io.*;
+import ares.platform.util.ImageTools;
 import ares.scenario.board.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -24,21 +24,13 @@ public class TerrainLayer extends AbstractImageLayer {
     private EnumMap<Terrain, SoftReference<BufferedImage>> terrainBufferMap = new EnumMap<>(Terrain.class);
     private ScenarioModel scenario;
 
-    /**
-     * Creates the whole terrain image. Paints all the playable tiles stored in
-     * <code>tileMap</code>
-     *
-     * @param s
-     * @see Tile
-     * @see TerrainFeature
-     */
     @Override
     protected void updateLayer() {
         initialize();
         Graphics2D g2 = globalImage.createGraphics();
         // Paint it black!
         g2.setColor(Color.BLACK);
-        g2.fillRect(0, 0, BoardGraphicsModel.getImageWidth(), BoardGraphicsModel.getImageHeight());
+        g2.fillRect(0, 0, globalImage.getWidth(), globalImage.getHeight());
 
         for (TileModel[] tiles : scenario.getBoardModel().getMapModel()) {
             for (TileModel tile : tiles) {
@@ -54,12 +46,14 @@ public class TerrainLayer extends AbstractImageLayer {
     }
 
     /**
-     * Paints the terrain of single tile, as described by
-     * <code>t</code>
+     * Paints the terrain of a single tile
      *
      * @param tile
      */
     private void paintTile(Graphics2D g2, TileModel tile) {
+        if (tile.isNonPlayable()) {
+            return;
+        }
         //If I don't know anything about it
         if (tile.getKnowledgeCategory() == KnowledgeCategory.NONE) {
             return;
@@ -68,22 +62,15 @@ public class TerrainLayer extends AbstractImageLayer {
         //Calculate tile position
         Point pos = BoardGraphicsModel.tileToPixel(tile.getCoordinates());
 
-        BufferedImage features = getTerrainFeaturesImage(tile);
-        //If non playable, don't paint
-        if (features == null) {
-            return;
-        }
-
-        //Where the terrain will be painted
         // First layer is the open terrain
-        BufferedImage terrainImage = getTerrainImage(Terrain.OPEN, 0);
-        g2.drawImage(terrainImage, pos.x, pos.y, this);
+        BufferedImage openTerrain = getTerrainImage(Terrain.OPEN, 0);
+        g2.drawImage(openTerrain, pos.x, pos.y, null);
 
         // Get the index of the terrain image
         Map<Terrain, Integer> m = getTerrainToImageIndex(tile);
-
-        for (Map.Entry<Terrain, Integer> e : m.entrySet()) {
-
+        for (Map.Entry<Terrain, Integer> entry : m.entrySet()) {
+            Terrain t = entry.getKey();
+            int index = entry.getValue();
             /*
              * This process would be faster without the "if" statement
              * but BORDER image file doesn't have the same size as other
@@ -99,29 +86,35 @@ public class TerrainLayer extends AbstractImageLayer {
              */
 
             BufferedImage bi;
-            if (e.getKey() == Terrain.BORDER) {
-                bi = drawTileBorders(e.getValue());
+            if (t == Terrain.BORDER) {
+                bi = drawTileBorders(index);
             } else {
-                int index = e.getKey().getIndexByDirections(e.getValue());
-
-                bi = getTerrainImage(e.getKey(), index);
+                int index2 = t.getIndexByDirections(index);
+                bi = getTerrainImage(t, index2);
             }
-
+            // Paint terrain image
             g2.drawImage(bi, pos.x, pos.y, null);
         }
-        g2.drawImage(features, pos.x, pos.y, null);
-
-        repaint(pos.x, pos.y, terrainImage.getWidth(null), terrainImage.getHeight(null));
+        // Paint features 
+        int cols = BoardGraphicsModel.getImageProfile().getTerrainImageCols();
+        for (Feature f : tile.getTerrainFeatures()) {
+            g2.drawImage(
+                    getTerrainImage(Terrain.OPEN,
+                    f.getCol() + cols * f.getRow()),
+                    pos.x, pos.y, null);
+        }
+        repaint(pos.x, pos.y, openTerrain.getWidth(), openTerrain.getHeight());
     }
 
     private BufferedImage getTerrainImage(Terrain t, int index) {
 
-        //Make graphics are loaded
+        // Ensure terrain graphics are loaded
         loadTerrainGraphics(t);
 
         //Get the coordinates
         int cols = BoardGraphicsModel.getImageProfile().getTerrainImageCols();
-        int w = BoardGraphicsModel.getHexDiameter(), h = BoardGraphicsModel.getHexHeight();
+        int w = BoardGraphicsModel.getHexDiameter();
+        int h = BoardGraphicsModel.getHexHeight();
 
         return terrainBufferMap.get(t).get().getSubimage(w * (index % cols), h * (index / cols), w, h);
     }
@@ -136,20 +129,17 @@ public class TerrainLayer extends AbstractImageLayer {
      * This function returns a map with the terrain as key and its related index as value
      *
      * @param tile tile to get directions
-     * @return <code>Map<Terrain,Integer></code> map which associates a terrain with its image position
+     * @return a map which associates each {@link Terrain} in a tile with its image index
      * @see Terrain
      *
      */
-    private Map<Terrain, Integer> getTerrainToImageIndex(TileModel tile) {
+    private static Map<Terrain, Integer> getTerrainToImageIndex(TileModel tile) {
 
         Map<Direction, Set<Terrain>> sideTerrain = tile.getSideTerrain();
 
         SortedMap<Terrain, Integer> m = new TreeMap<>();
-        Iterator it;
         for (Map.Entry<Direction, Set<Terrain>> e : sideTerrain.entrySet()) {
-            it = e.getValue().iterator();
-            while (it.hasNext()) {
-                Terrain t = (Terrain) it.next();
+            for (Terrain t : e.getValue()) {
                 //Right shift until the 1 is in the position representing the direction
                 int dirbit = 64 >>> e.getKey().ordinal();
                 if (m.get(t) == null) {
@@ -166,76 +156,6 @@ public class TerrainLayer extends AbstractImageLayer {
     }
 
     /**
-     * Creates the feature image. If tile is non playable, then it returns null
-     *
-     * @param tile
-     * @param tileFeaturesImage where the images are painted
-     * @return <code>Image</code> if tile is playable; otherwise null
-     * @see TerrainFeatures
-     */
-    private BufferedImage getTerrainFeaturesImage(TileModel tile) {
-
-        BufferedImage i = new BufferedImage(BoardGraphicsModel.getHexDiameter(), BoardGraphicsModel.getHexHeight(), BufferedImage.TYPE_4BYTE_ABGR);
-        Graphics2D g2 = i.createGraphics();
-
-        Set<TerrainFeatures> tf = tile.getTerrainFeatures();
-        for (TerrainFeatures f : tf) {
-
-            switch (f) {
-                case NON_PLAYABLE:
-                    return null;
-
-                case AIRFIELD:
-                    g2.drawImage(
-                            getTerrainImage(Terrain.OPEN,
-                            //I'm actually wasting cpu here
-                            TerrainFeatures.AIRFIELD.getCol() + BoardGraphicsModel.getImageProfile().getTerrainImageCols() * TerrainFeatures.AIRFIELD.getRow()),
-                            0, 0, this);
-                    break;
-                case ANCHORAGE:
-                    g2.drawImage(
-                            getTerrainImage(Terrain.OPEN,
-                            TerrainFeatures.ANCHORAGE.getCol() + BoardGraphicsModel.getImageProfile().getTerrainImageCols() * TerrainFeatures.ANCHORAGE.getRow()),
-                            0, 0, this);
-                    break;
-                case PEAK:
-                    g2.drawImage(
-                            getTerrainImage(Terrain.OPEN,
-                            TerrainFeatures.PEAK.getCol() + BoardGraphicsModel.getImageProfile().getTerrainImageCols() * TerrainFeatures.PEAK.getRow()),
-                            0, 0, this);
-                    break;
-
-                case CONTAMINATED:
-                    g2.drawImage(
-                            getTerrainImage(Terrain.OPEN,
-                            TerrainFeatures.CONTAMINATED.getCol() + BoardGraphicsModel.getImageProfile().getTerrainImageCols() * TerrainFeatures.CONTAMINATED.getRow()),
-                            0, 0, this);
-                    break;
-                case MUDDY:
-                    g2.drawImage(
-                            getTerrainImage(Terrain.OPEN,
-                            TerrainFeatures.MUDDY.getCol() + BoardGraphicsModel.getImageProfile().getTerrainImageCols() * TerrainFeatures.MUDDY.getRow()),
-                            0, 0, this);
-
-                    break;
-
-                case SNOWY:
-                case BRIDGE_DESTROYED:
-                case FROZEN:
-                case EXCLUDED_1:
-                case EXCLUDED_2:
-                    break;
-                default:
-                    // We shouldng't get here
-                    throw new AssertionError("Assertion failed: unkown terrain feature " + f.toString());
-            }
-        }
-
-        g2.dispose();
-        return i;
-    }
-
-    /**
      * Since borders are in a special file, they need a special method which draws all borders of a tile
      *
      * @param value Integer with its bits as directions
@@ -244,7 +164,8 @@ public class TerrainLayer extends AbstractImageLayer {
      */
     private BufferedImage drawTileBorders(Integer value) {
         int mask = 64;
-        int w = BoardGraphicsModel.getHexDiameter(), h = BoardGraphicsModel.getHexHeight();
+        int w = BoardGraphicsModel.getHexDiameter();
+        int h = BoardGraphicsModel.getHexHeight();
         BufferedImage bi = new BufferedImage(w, h, BufferedImage.TYPE_4BYTE_ABGR);
         Graphics2D g2 = bi.createGraphics();
 
@@ -254,7 +175,7 @@ public class TerrainLayer extends AbstractImageLayer {
 
             // Shift bites and draw when direction flag is 1
             if ((mask & value) == mask) {
-                g2.drawImage(terrainBufferMap.get(Terrain.BORDER).get().getSubimage(2 * w, h * d.ordinal(), w, h), null, this);
+                g2.drawImage(terrainBufferMap.get(Terrain.BORDER).get().getSubimage(2 * w, h * d.ordinal(), w, h), null, null);
                 value = value << 1;
             } else {
                 value = value << 1;
@@ -276,8 +197,8 @@ public class TerrainLayer extends AbstractImageLayer {
         //If image doesn't exist or has been GC'ed
         if (softImage == null || softImage.get() == null) {
             String filename = BoardGraphicsModel.getImageProfile().getTerrainFilename(t);
-            BufferedImage i = loadImage(AresIO.ARES_IO.getFile(BoardGraphicsModel.getImageProfile().getPath(), filename));
-            terrainBufferMap.put(t, new SoftReference<>(i));
+            BufferedImage bi = ImageTools.loadImage(AresIO.ARES_IO.getFile(BoardGraphicsModel.getImageProfile().getPath(), filename));
+            terrainBufferMap.put(t, new SoftReference<>(bi));
         }
     }
 }

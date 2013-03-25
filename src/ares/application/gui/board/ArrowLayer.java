@@ -1,12 +1,13 @@
 package ares.application.gui.board;
 
-import ares.application.graphics.ArrowType;
-import static ares.application.graphics.ArrowType.CURRENT_ORDERS;
-import static ares.application.graphics.ArrowType.GIVING_ORDERS;
-import ares.application.graphics.BoardGraphicsModel;
+import ares.application.gui.graphics.ArrowType;
+import static ares.application.gui.graphics.ArrowType.CURRENT_ORDERS;
+import static ares.application.gui.graphics.ArrowType.GIVING_ORDERS;
+import ares.application.gui.graphics.BoardGraphicsModel;
 import ares.application.gui.AbstractImageLayer;
 import ares.application.models.board.*;
 import ares.engine.algorithms.routing.*;
+import ares.platform.util.ImageTools;
 import ares.scenario.board.Direction;
 import ares.scenario.board.Tile;
 import java.awt.*;
@@ -73,13 +74,13 @@ public class ArrowLayer extends AbstractImageLayer {
             switch (type) {
                 case GIVING_ORDERS:
                     if (arrowImageUnit.get() == null) {
-                        arrowImageUnit = new SoftReference<>(loadImage(BoardGraphicsModel.getImageProfile().getArrowFile(type)));
+                        arrowImageUnit = new SoftReference<>(ImageTools.loadImage(BoardGraphicsModel.getImageProfile().getArrowFile(type)));
                     }
                     arrowImage = arrowImageUnit.get();
                     break;
                 case CURRENT_ORDERS:
                     if (arrowImageFormation.get() == null) {
-                        arrowImageFormation = new SoftReference<>(loadImage(BoardGraphicsModel.getImageProfile().getArrowFile(type)));
+                        arrowImageFormation = new SoftReference<>(ImageTools.loadImage(BoardGraphicsModel.getImageProfile().getArrowFile(type)));
                     }
                     arrowImage = arrowImageFormation.get();
                     break;

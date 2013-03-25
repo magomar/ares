@@ -17,4 +17,5 @@ public class MathUtils {
     public static int setLowerBound(int value, int lowerBound) {
         return Math.max(value, lowerBound);
     }
+    
 }

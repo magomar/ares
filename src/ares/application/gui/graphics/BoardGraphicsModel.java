@@ -1,9 +1,11 @@
-package ares.application.graphics;
+package ares.application.gui.graphics;
 
 import ares.application.gui.AbstractImageLayer;
-import ares.application.graphics.ImageProfile;
 import ares.scenario.board.Board;
 import java.awt.Point;
+import java.awt.image.BufferedImage;
+import java.awt.image.ColorModel;
+import java.awt.image.WritableRaster;
 
 /**
  * This class provides information on the graphics being used for a particular scenario
@@ -14,22 +16,23 @@ import java.awt.Point;
 public class BoardGraphicsModel {
 
     /**
-     * board width in tiles
+     * Board width in tiles
      */
     private static int tileColumns;
     /**
-     * board height in tiles
+     * Board height in tiles
      */
     private static int tileRows;
     /**
-     * Image width in pixels
+     * Board image width in pixels
      */
     private static int imageWidth;
     /**
-     * Image height in pixels
+     * Board image height in pixels
      */
     private static int imageHeight;
     private static ImageProfile imgProfile;
+    public static BufferedImage EMPTY_TILE_IMAGE;
 
     public BoardGraphicsModel(Board board) {
 
@@ -40,6 +43,8 @@ public class BoardGraphicsModel {
         // Variable information
         imgProfile = ImageProfile.MEDIUM;
         initGraphicVariables();
+        EMPTY_TILE_IMAGE = new BufferedImage(getHexDiameter(), getHexHeight(), BufferedImage.TYPE_INT_RGB);
+//        EMPTY_TILE_IMAGE_ABGR = new BufferedImage(getHexDiameter(), getHexHeight(), BufferedImage.TYPE_4BYTE_ABGR);
     }
 
     private static void initGraphicVariables() {
@@ -49,6 +54,13 @@ public class BoardGraphicsModel {
          */
         imageWidth = getHexDiameter() + (tileColumns - 1) * getHexOffset();
         imageHeight = tileRows * getHexHeight() + getHexHeight() / 2;
+    }
+
+    public static BufferedImage deepCopy(BufferedImage bi) {
+        ColorModel cm = bi.getColorModel();
+        boolean isAlphaPremultiplied = cm.isAlphaPremultiplied();
+        WritableRaster raster = bi.copyData(null);
+        return new BufferedImage(cm, raster, isAlphaPremultiplied, null);
     }
 
     public static int getTileRows() {

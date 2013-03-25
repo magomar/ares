@@ -19,10 +19,7 @@ public abstract class AbstractAction implements Action {
      * Value indicating that the duration or time to complete an action is unknown
      */
     public static final int TIME_UNKNOWN = Integer.MAX_VALUE;
-    /**
-     * Action comparator used to sort actions by finish time
-     */
-    public static final Comparator<Action> ACTION_FINISH_COMPARATOR = new ActionFinishComparator();
+
     /**
      * The unit to perform this action
      */
@@ -243,14 +240,6 @@ public abstract class AbstractAction implements Action {
     @Override
     public Unit getUnit() {
         return unit;
-    }
-
-    private static class ActionFinishComparator implements Comparator<Action> {
-
-        @Override
-        public int compare(Action o1, Action o2) {
-            return o1.getFinish() - o2.getFinish();
-        }
     }
 
     @Override

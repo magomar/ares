@@ -1,10 +1,11 @@
 package ares.application.gui.board;
 
-import ares.application.graphics.BoardGraphicsModel;
+import ares.application.gui.graphics.BoardGraphicsModel;
 import ares.application.gui.AbstractImageLayer;
 import ares.application.models.board.*;
 import ares.application.models.forces.FormationModel;
 import ares.application.models.forces.UnitModel;
+import ares.platform.util.ImageTools;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.lang.ref.SoftReference;
@@ -29,10 +30,10 @@ public class SelectionLayer extends AbstractImageLayer {
         }
         Graphics2D g2 = globalImage.createGraphics();
         if (brassCursorImage.get() == null) {
-            brassCursorImage = new SoftReference<>(loadImage(BoardGraphicsModel.getImageProfile().getBrassCursorFile()));
+            brassCursorImage = new SoftReference<>(ImageTools.loadImage(BoardGraphicsModel.getImageProfile().getBrassCursorFile()));
         }
         if (steelCursorImage.get() == null) {
-            steelCursorImage = new SoftReference<>(loadImage(BoardGraphicsModel.getImageProfile().getSteelCursorFile()));
+            steelCursorImage = new SoftReference<>(ImageTools.loadImage(BoardGraphicsModel.getImageProfile().getSteelCursorFile()));
         }
         for (UnitModel u : formation.getUnitModels()) {
             if (!u.equals(unit)) {

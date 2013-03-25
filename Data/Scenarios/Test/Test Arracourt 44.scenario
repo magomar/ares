@@ -3558,9 +3558,14 @@
         "commander" : "General Commander",
         "proficiency" : 75,
         "supply" : 15,
-        "orders" : "FORCE_SECURITY",
-        "emphasis" : "LIMIT_LOSSES",
-        "supportscope" : "ARMY_SUPPORT",
+        "orders" : {
+          "operationalStance" : "SECURITY",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : true,
+          "emphasis" : "MINIMIZE_LOSSES",
+          "supportscope" : "ARMY_SUPPORT"
+        },
         "id" : 0
       }, {
         "name" : "111th Pz Brigade",
@@ -3569,25 +3574,30 @@
         "color" : 0,
         "proficiency" : 60,
         "supply" : 60,
-        "orders" : "ATTACK",
-        "emphasis" : "LIMIT_LOSSES",
-        "supportscope" : "ARMY_SUPPORT",
-	"track" : [ {
-          "objective" : [ {
-            "x" : 0,
-            "y" : 5,
+        "orders" : {
+          "operationalStance" : "OFFENSIVE",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : false,
+          "emphasis" : "LIMIT_LOSSES",
+          "supportscope" : "ARMY_SUPPORT",
+          "track" : [ {
+            "objective" : [ {
+              "x" : 0,
+              "y" : 5,
+              "id" : 1
+            }, {
+              "x" : 0,
+              "y" : 15,
+              "id" : 2
+            }, {
+              "x" : 20,
+              "y" : 5,
+              "id" : 3
+            } ],
             "id" : 1
-          }, {
-            "x" : 0,
-            "y" : 15,
-            "id" : 2
-          }, {
-            "x" : 20,
-            "y" : 12,
-            "id" : 3
-          } ],
-          "id" : 1
-        } ],
+          } ]
+        },
         "unit" : [ {
           "name" : "111 Pz Brig HQ",
           "type" : "HEADQUARTERS",
@@ -3776,9 +3786,14 @@
         "commander" : "General Commander",
         "proficiency" : 70,
         "supply" : 30,
-        "orders" : "FORCE_SECURITY",
-        "emphasis" : "LIMIT_LOSSES",
-        "supportscope" : "ARMY_SUPPORT",
+        "orders" : {
+          "operationalStance" : "SECURITY",
+          "activates" : 0,
+          "frontage" : "NORMAL",
+          "onlyPO" : true,
+          "emphasis" : "MINIMIZE_LOSSES",
+          "supportscope" : "ARMY_SUPPORT"
+        },
         "id" : 0
       } ],
       "id" : 1

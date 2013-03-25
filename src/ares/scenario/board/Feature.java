@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package ares.scenario.board;
 
 /**
@@ -10,7 +6,7 @@ package ares.scenario.board;
  * @author Mario Gomez <margomez at dsic.upv.es>
  * @author Heine Heine <heisncfr@inf.upv.es> *
  */
-public enum TerrainFeatures {
+public enum Feature {
 
     /*
      * Features images are on the Terrain.OPEN file
@@ -33,7 +29,7 @@ public enum TerrainFeatures {
     private int imageRow;
     private int imageColumn;
 
-    private TerrainFeatures(int imageRow, int imageColumn) {
+    private Feature(int imageRow, int imageColumn) {
         this.imageRow = imageRow;
         this.imageColumn = imageColumn;
     }

@@ -2,7 +2,7 @@ package ares.scenario;
 
 import ares.engine.time.Clock;
 import ares.application.models.ScenarioModel;
-import ares.application.graphics.BoardGraphicsModel;
+import ares.application.gui.graphics.BoardGraphicsModel;
 import ares.data.jaxb.EquipmentDB;
 import ares.data.jaxb.OOB;
 import ares.platform.model.ModelProvider;
@@ -25,7 +25,7 @@ import java.util.logging.Logger;
  */
 public final class Scenario implements ModelProvider<ScenarioModel> {
 
-    public WeakReference<AssetTypes> assetTypes;
+    public AssetTypes assetTypes;
     private String name;
     private Board board;
     private Force[] forces;
@@ -36,7 +36,8 @@ public final class Scenario implements ModelProvider<ScenarioModel> {
         name = scenario.getHeader().getName();
         Scale.INSTANCE.initialize((int) (scenario.getEnvironment().getScale() * 1000));
         Clock.INSTANCE.initialize(scenario.getCalendar());
-        assetTypes = new WeakReference<>(new AssetTypes(eqpDB));
+//        assetTypes = new WeakReference<>(new AssetTypes(eqpDB));
+        assetTypes = new AssetTypes(eqpDB);
         board = new Board(scenario);
         OOB oob = scenario.getOOB();
         Collection<ares.data.jaxb.Force> scenForces = oob.getForce();
@@ -57,8 +58,7 @@ public final class Scenario implements ModelProvider<ScenarioModel> {
         for (Force force : forces) {
             models.put(UserRole.getForceRole(force), new ScenarioModel(this, UserRole.getForceRole(force)));
         }
-        assetTypes = null;
-
+//        assetTypes = null;
     }
 
     public Board getBoard() {
@@ -78,7 +78,7 @@ public final class Scenario implements ModelProvider<ScenarioModel> {
     }
 
     public AssetTypes getAssetTypes() {
-        return assetTypes.get();
+        return assetTypes;
     }
 
     @Override

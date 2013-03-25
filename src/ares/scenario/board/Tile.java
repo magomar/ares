@@ -3,9 +3,6 @@ package ares.scenario.board;
 import ares.application.models.board.NonObservedTileModel;
 import ares.application.models.board.ObservedTileModel;
 import ares.application.models.board.TileModel;
-import ares.data.jaxb.Cell;
-import ares.data.jaxb.TerrainFeature;
-import ares.data.jaxb.TerrainType;
 import ares.engine.combat.CombatModifier;
 import ares.engine.knowledge.KnowledgeCategory;
 import ares.engine.knowledge.KnowledgeLevel;
@@ -54,7 +51,7 @@ public final class Tile implements ModelProvider<TileModel> {
      * and harbours,
      *
      */
-    private Set<TerrainFeatures> features;
+    private Set<Feature> features;
     /**
      * Entrenchment (fortification) level, expressed as a percentage
      */
@@ -114,7 +111,7 @@ public final class Tile implements ModelProvider<TileModel> {
     private final Map<UserRole, KnowledgeLevel> knowledgeLevels;
     private final Map<KnowledgeCategory, TileModel> models;
 
-    public Tile(Cell c) {
+    public Tile(ares.data.jaxb.Cell c) {
         // numeric attributes
 //        x = c.getX();
 //        y = c.getY();
@@ -135,7 +132,7 @@ public final class Tile implements ModelProvider<TileModel> {
         }
         visibility = Vision.OPEN;
         for (ares.data.jaxb.Terrain ct : c.getTerrain()) {
-            TerrainType type = ct.getType();
+            ares.data.jaxb.TerrainType type = ct.getType();
             Terrain terr = Terrain.valueOf(type.name());
             String[] dirStrArray = ct.getDir().split(" ");
             for (int i = 0; i < dirStrArray.length; i++) {
@@ -150,10 +147,10 @@ public final class Tile implements ModelProvider<TileModel> {
             }
 
         }
-        features = EnumSet.noneOf(TerrainFeatures.class);
+        features = EnumSet.noneOf(Feature.class);
 
-        for (TerrainFeature feature : c.getFeature()) {
-            features.add(Enum.valueOf(TerrainFeatures.class, feature.name()));
+        for (ares.data.jaxb.TerrainFeature feature : c.getFeature()) {
+            features.add(Enum.valueOf(Feature.class, feature.name()));
         }
         models = new HashMap<>();
         knowledgeLevels = new HashMap<>();
@@ -272,7 +269,7 @@ public final class Tile implements ModelProvider<TileModel> {
         return neighbors.get(direction);
     }
 
-    public Set<TerrainFeatures> getTerrainFeatures() {
+    public Set<Feature> getFeatures() {
         return features;
     }
 

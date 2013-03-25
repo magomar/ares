@@ -1,6 +1,6 @@
 package ares.application.gui.board;
 
-import ares.application.graphics.BoardGraphicsModel;
+import ares.application.gui.graphics.BoardGraphicsModel;
 import ares.application.gui.AbstractImageLayer;
 import ares.application.gui.UnitIcons;
 import ares.application.models.ScenarioModel;
@@ -8,6 +8,7 @@ import ares.application.models.board.*;
 import ares.application.models.forces.*;
 import ares.engine.knowledge.KnowledgeCategory;
 import ares.io.AresIO;
+import ares.platform.util.ImageTools;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.lang.ref.SoftReference;
@@ -89,8 +90,6 @@ public class UnitsLayer extends AbstractImageLayer {
      */
     private void paintUnitStack(Graphics2D g2, TileModel tile) {
 
-        //Where the single unit image will be painted
-        BufferedImage unitImage;
 
         //Calculate unit position
         Point pos = BoardGraphicsModel.tileToPixel(tile.getCoordinates());
@@ -98,12 +97,11 @@ public class UnitsLayer extends AbstractImageLayer {
         //If no units on the tile
         if (tile.isEmpty()) {
             //Empty image
-            unitImage = new BufferedImage(BoardGraphicsModel.getHexDiameter(), BoardGraphicsModel.getHexHeight(), BufferedImage.TYPE_INT_ARGB);
-            g2.drawImage(unitImage, pos.x, pos.y, null);
-            repaint(pos.x, pos.y, unitImage.getWidth(null), unitImage.getHeight(null));
+            g2.drawImage(BoardGraphicsModel.EMPTY_TILE_IMAGE, pos.x, pos.y, null);
+            repaint(pos.x, pos.y, BoardGraphicsModel.EMPTY_TILE_IMAGE.getWidth(), BoardGraphicsModel.EMPTY_TILE_IMAGE.getHeight());
         } else {
             //Retrieve the single unit image
-            unitImage = getUnitImage(tile.getTopUnit());
+            BufferedImage unitImage = getUnitImage(tile.getTopUnit());
 
             //Num units to be painted
             int max = (tile.getNumStackedUnits() > MAX_STACK) ? MAX_STACK : tile.getNumStackedUnits();
@@ -127,7 +125,7 @@ public class UnitsLayer extends AbstractImageLayer {
             //Adds attributes to the image such as Health, Attack, Defense, etc.
             addUnitAttributes(unitImage, tile.getTopUnit());
             g2.drawImage(unitImage, pos.x + d, pos.y + d, null);
-            repaint(pos.x, pos.y, unitImage.getWidth(null) + d, unitImage.getHeight(null) + d);
+            repaint(pos.x, pos.y, unitImage.getWidth() + d, unitImage.getHeight() + d);
         }
 
     }
@@ -197,7 +195,7 @@ public class UnitsLayer extends AbstractImageLayer {
         //If image doesn't exist or has been GC'ed
         if (softImage == null || softImage.get() == null) {
             String filename = BoardGraphicsModel.getImageProfile().getUnitIconsFilename(uc);
-            BufferedImage i = loadImage(AresIO.ARES_IO.getFile(BoardGraphicsModel.getImageProfile().getPath(), filename));
+            BufferedImage i = ImageTools.loadImage(AresIO.ARES_IO.getFile(BoardGraphicsModel.getImageProfile().getPath(), filename));
             unitBufferMap.put(uc, new SoftReference<>(i));
         }
     }
