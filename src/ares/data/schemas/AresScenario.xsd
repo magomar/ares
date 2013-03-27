@@ -485,9 +485,9 @@
             <enumeration value="IMPROVED_ROAD"/>
             <enumeration value="RAIL"/>
             <enumeration value="BROKEN_RAIL"/>
-            <enumeration value="BORDER"/>
             <enumeration value="SHALLOW_WATER_DECORATOR"/>
             <enumeration value="DEEP_WATER_DECORATOR"/>
+            <enumeration value="BORDER"/>
         </restriction>
     </simpleType>
     

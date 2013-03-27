@@ -2,7 +2,7 @@ package ares.application.controllers;
 
 import ares.application.boundaries.view.BoardViewer;
 import ares.application.boundaries.view.UnitInfoViewer;
-import ares.application.gui.graphics.BoardGraphicsModel;
+import ares.application.graphics.BoardGraphicsModel;
 import ares.application.interaction.InteractionMode;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.TileModel;
