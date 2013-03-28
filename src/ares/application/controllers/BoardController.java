@@ -2,7 +2,7 @@ package ares.application.controllers;
 
 import ares.application.boundaries.view.BoardViewer;
 import ares.application.boundaries.view.UnitInfoViewer;
-import ares.application.graphics.BoardGraphicsModel;
+import ares.application.graphics.AresGraphicsModel;
 import ares.application.interaction.InteractionMode;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.TileModel;
@@ -44,7 +44,7 @@ public final class BoardController extends AbstractSecondaryController implement
         this.unitView = mainController.getInfoView();
         LOG.addHandler(mainController.getMessagesView().getHandler());
 
-        pathFinder = new AStar(BoardGraphicsModel.getTileRows() * BoardGraphicsModel.getTileColumns());
+        pathFinder = new AStar(AresGraphicsModel.getTileRows() * AresGraphicsModel.getTileColumns());
 
         boardView.addMouseListener(new BoardMouseListener());
         boardView.addMouseMotionListener(new BoardMouseMotionListener());
@@ -74,10 +74,10 @@ public final class BoardController extends AbstractSecondaryController implement
     }
 
     private void select(int x, int y) {
-        if (BoardGraphicsModel.isWithinImageRange(x, y)) {
-            Point tilePoint = BoardGraphicsModel.pixelToTileAccurate(x, y);
+        if (AresGraphicsModel.isWithinImageRange(x, y)) {
+            Point tilePoint = AresGraphicsModel.pixelToTileAccurate(x, y);
             // XXX pixel to tile conversion is more expensive than two coordinates checks
-            if (!BoardGraphicsModel.validCoordinates(tilePoint.x, tilePoint.y)) {
+            if (!AresGraphicsModel.validCoordinates(tilePoint.x, tilePoint.y)) {
                 return;
             }
             Tile tile = mainController.getScenario().getBoard().getTile(tilePoint.x, tilePoint.y);
@@ -136,9 +136,9 @@ public final class BoardController extends AbstractSecondaryController implement
     }
 
     private void command(int x, int y) {
-        if (interactionMode == InteractionMode.UNIT_ORDERS && BoardGraphicsModel.isWithinImageRange(x, y)) {
-            Point tilePoint = BoardGraphicsModel.pixelToTileAccurate(x, y);
-            if (!BoardGraphicsModel.validCoordinates(tilePoint.x, tilePoint.y)) {
+        if (interactionMode == InteractionMode.UNIT_ORDERS && AresGraphicsModel.isWithinImageRange(x, y)) {
+            Point tilePoint = AresGraphicsModel.pixelToTileAccurate(x, y);
+            if (!AresGraphicsModel.validCoordinates(tilePoint.x, tilePoint.y)) {
                 return;
             }
             Scenario scenario = mainController.getScenario();
@@ -160,10 +160,10 @@ public final class BoardController extends AbstractSecondaryController implement
             if (interactionMode == InteractionMode.UNIT_ORDERS) {
                 Scenario scenario = mainController.getScenario();
                 Point pixel = new Point(me.getX(), me.getY());
-                if (BoardGraphicsModel.isWithinImageRange(pixel)) {
-                    Point tilePoint = BoardGraphicsModel.pixelToTileAccurate(pixel);
+                if (AresGraphicsModel.isWithinImageRange(pixel)) {
+                    Point tilePoint = AresGraphicsModel.pixelToTileAccurate(pixel);
                     // XXX pixel to tile conversion is more expensive than two coordinates checks
-                    if (!BoardGraphicsModel.validCoordinates(tilePoint.x, tilePoint.y)) {
+                    if (!AresGraphicsModel.validCoordinates(tilePoint.x, tilePoint.y)) {
                         return;
                     }
                     Tile tile = scenario.getBoard().getTile(tilePoint.x, tilePoint.y);

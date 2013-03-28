@@ -1,12 +1,20 @@
 package ares.scenario.board;
 
+import ares.application.graphics.AresGraphicsProfile;
+import ares.application.graphics.providers.GraphicsProvider;
+import ares.application.graphics.providers.ImageProviderType;
+import ares.application.graphics.providers.MultiProfileImageProvider;
+import ares.io.FileIO;
+import java.awt.Dimension;
+import java.awt.image.BufferedImage;
+
 /**
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public enum Terrain {
+public enum Terrain implements GraphicsProvider<AresGraphicsProfile> {
 
-    OPEN(0, 0, 0, 0, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, Directionality.NONE),
+//    OPEN(0, 0, 0, 0, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, Directionality.NONE),
     ARID(0, 0, 0, 0, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, Directionality.NONE),
     SAND(1, 1, 1, 1, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, Directionality.NONE),
     DUNES(9999, 9999, 9999, 3, 1.0, 1.0, 1.0, 3.0, 2.0, Vision.NORMAL, Directionality.NONE),
@@ -56,7 +64,7 @@ public enum Terrain {
     private final Vision vision;
     private final Directionality directionality;
     private final String filename;
-    public final static Terrain[] ALL_TERRAINS = Terrain.values();
+    private final MultiProfileImageProvider<AresGraphicsProfile, Terrain> provider;
 
     private Terrain(final int motor, final int amph, final int mixed, final int foot,
             final double antiTank, final double antiPersonnel,
@@ -73,7 +81,9 @@ public enum Terrain {
         this.stationary = stationary;
         this.vision = vision;
         this.directionality = directionality;
-        this.filename = name().toLowerCase()+".png";
+        filename = "terrain_" + name().toLowerCase() + ".png";
+        provider = new MultiProfileImageProvider<>(this, ImageProviderType.TILE, AresGraphicsProfile.class,
+                AresGraphicsProfile.TERRAIN_IMAGE_ROWS, AresGraphicsProfile.TERRAIN_IMAGE_COLS);
     }
 
     public int getMotorized() {
@@ -120,12 +130,54 @@ public enum Terrain {
         return directionality;
     }
 
+    /**
+     * Obtains the image index in the image file, given a bitmask representing directions.<p>
+     * There are 6 standard directions, so 2^6=64 combinations are possible. In addition, there is a special direction,
+     * {@link Direction#C} that excludes any of the other directions. That makes 65 values to represent. However, the
+     * absence of any direction is not represented (it is assumed bitMask is never 0), so we actually have 64 values,
+     * numbered from 1 to 64.
+     *
+     * @see Direction
+     * @param bitMask
+     * @return
+     */
+    public static int getImageIndex(int bitMask) {
+        return bitMask - 1;
+    }
+
+    @Override
     public String getFilename() {
         return filename;
     }
 
-    public static int getImageIndex(int bitMask) {
-//        return 63 & bitMask; // not neccessary if bitMask is never 0
-        return bitMask - 1;
+    @Override
+    public BufferedImage getImage(AresGraphicsProfile profile, int row, int column, FileIO fileSystem) {
+        return provider.getImage(profile, row, column, fileSystem);
     }
+
+    @Override
+    public BufferedImage getImage(AresGraphicsProfile profile, int index, FileIO fileSystem) {
+        return provider.getImage(profile, index, fileSystem);
+    }
+
+    @Override
+    public BufferedImage getImage(AresGraphicsProfile profile, FileIO fileSystem) {
+        return provider.getImage(profile, fileSystem);
+    }
+    
+    @Override
+    public BufferedImage getFullImage(AresGraphicsProfile profile, FileIO fileSystem) {
+        return provider.getFullImage(profile, fileSystem);
+    }
+
+    @Override
+    public Dimension getFullImageDimension(AresGraphicsProfile profile) {
+        return provider.getFullImageDimension(profile);
+    }
+
+    @Override
+    public String getFilename(AresGraphicsProfile profile) {
+        return provider.getFilename(profile);
+    }
+    
 }

@@ -7292,7 +7292,7 @@
         }, {
           "name" : "Spt Co/1Tai Btn",
           "type" : "MOUNTAIN_INFANTRY",
-          "iconId" : 30,
+          "iconId" : 49,
           "color" : 25,
           "size" : "COMPANY",
           "experience" : "UNTRIED",
@@ -7360,7 +7360,7 @@
         }, {
           "name" : "HowCo/1TaiBtn",
           "type" : "ARTILLERY",
-          "iconId" : 16,
+          "iconId" : 1,
           "color" : 25,
           "size" : "COMPANY",
           "experience" : "UNTRIED",
@@ -7431,7 +7431,7 @@
         "unit" : [ {
           "name" : "Outpost1/North",
           "type" : "MOUNTAIN_INFANTRY",
-          "iconId" : 30,
+          "iconId" : 49,
           "color" : 25,
           "size" : "PLATOON",
           "experience" : "VETERAN",
@@ -7484,7 +7484,7 @@
         }, {
           "name" : "Outpost2/North",
           "type" : "MOUNTAIN_INFANTRY",
-          "iconId" : 30,
+          "iconId" : 49,
           "color" : 25,
           "size" : "PLATOON",
           "experience" : "UNTRIED",
@@ -7537,7 +7537,7 @@
         }, {
           "name" : "Outpost3/North",
           "type" : "MOUNTAIN_INFANTRY",
-          "iconId" : 30,
+          "iconId" : 49,
           "color" : 25,
           "size" : "PLATOON",
           "experience" : "VETERAN",
@@ -7627,7 +7627,7 @@
         "unit" : [ {
           "name" : "Outpost1/Center",
           "type" : "MOUNTAIN_INFANTRY",
-          "iconId" : 30,
+          "iconId" : 49,
           "color" : 25,
           "size" : "PLATOON",
           "experience" : "VETERAN",
@@ -7680,7 +7680,7 @@
         }, {
           "name" : "Outpost2/Center",
           "type" : "MOUNTAIN_INFANTRY",
-          "iconId" : 30,
+          "iconId" : 49,
           "color" : 25,
           "size" : "PLATOON",
           "experience" : "UNTRIED",
@@ -7733,7 +7733,7 @@
         }, {
           "name" : "Outpost3/Center",
           "type" : "MOUNTAIN_INFANTRY",
-          "iconId" : 30,
+          "iconId" : 49,
           "color" : 25,
           "size" : "PLATOON",
           "experience" : "VETERAN",
@@ -7786,7 +7786,7 @@
         }, {
           "name" : "Outpost4/Center",
           "type" : "MOUNTAIN_INFANTRY",
-          "iconId" : 30,
+          "iconId" : 49,
           "color" : 25,
           "size" : "PLATOON",
           "experience" : "VETERAN",
@@ -7872,7 +7872,7 @@
         "unit" : [ {
           "name" : "Outpost1/South",
           "type" : "MOUNTAIN_INFANTRY",
-          "iconId" : 30,
+          "iconId" : 49,
           "color" : 25,
           "size" : "PLATOON",
           "experience" : "UNTRIED",
@@ -7925,7 +7925,7 @@
         }, {
           "name" : "Outpost2/South",
           "type" : "MOUNTAIN_INFANTRY",
-          "iconId" : 30,
+          "iconId" : 49,
           "color" : 25,
           "size" : "PLATOON",
           "experience" : "VETERAN",
@@ -7978,7 +7978,7 @@
         }, {
           "name" : "Outpost3/South",
           "type" : "MOUNTAIN_INFANTRY",
-          "iconId" : 30,
+          "iconId" : 49,
           "color" : 25,
           "size" : "PLATOON",
           "experience" : "VETERAN",
@@ -8167,7 +8167,7 @@
         }, {
           "name" : "1Co/2BEP",
           "type" : "PARACHUTE_INFANTRY",
-          "iconId" : 36,
+          "iconId" : 34,
           "color" : 26,
           "size" : "COMPANY",
           "experience" : "UNTRIED",
@@ -8216,7 +8216,7 @@
         }, {
           "name" : "2Co/2BEP",
           "type" : "PARACHUTE_INFANTRY",
-          "iconId" : 36,
+          "iconId" : 34,
           "color" : 26,
           "size" : "COMPANY",
           "experience" : "VETERAN",
@@ -8265,7 +8265,7 @@
         }, {
           "name" : "3Co/2BEP",
           "type" : "PARACHUTE_INFANTRY",
-          "iconId" : 36,
+          "iconId" : 34,
           "color" : 26,
           "size" : "COMPANY",
           "experience" : "VETERAN",
@@ -8314,7 +8314,7 @@
         }, {
           "name" : "Wpns/2BEP",
           "type" : "PARACHUTE_HVY_WPNS",
-          "iconId" : 37,
+          "iconId" : 42,
           "color" : 26,
           "size" : "COMPANY",
           "experience" : "VETERAN",
@@ -8358,7 +8358,7 @@
         }, {
           "name" : "1stBatt/41Art",
           "type" : "GLIDER_ARTILLERY",
-          "iconId" : 52,
+          "iconId" : 35,
           "color" : 26,
           "size" : "COMPANY",
           "experience" : "VETERAN",
@@ -8392,7 +8392,7 @@
         }, {
           "name" : "Engineers/2BEP",
           "type" : "AIRBORNE_ENGINEER",
-          "iconId" : 56,
+          "iconId" : 3,
           "color" : 26,
           "size" : "COMPANY",
           "experience" : "VETERAN",
@@ -8569,7 +8569,7 @@
         }, {
           "name" : "1Co/8BPC",
           "type" : "PARACHUTE_INFANTRY",
-          "iconId" : 36,
+          "iconId" : 34,
           "color" : 28,
           "size" : "COMPANY",
           "experience" : "VETERAN",
@@ -8618,7 +8618,7 @@
         }, {
           "name" : "2Co/8BPC",
           "type" : "PARACHUTE_INFANTRY",
-          "iconId" : 36,
+          "iconId" : 34,
           "color" : 28,
           "size" : "COMPANY",
           "experience" : "UNTRIED",
@@ -8667,7 +8667,7 @@
         }, {
           "name" : "3Co/8BPC",
           "type" : "PARACHUTE_INFANTRY",
-          "iconId" : 36,
+          "iconId" : 34,
           "color" : 28,
           "size" : "COMPANY",
           "experience" : "VETERAN",
@@ -8716,7 +8716,7 @@
         }, {
           "name" : "Wpns/8BPC",
           "type" : "PARACHUTE_HVY_WPNS",
-          "iconId" : 37,
+          "iconId" : 42,
           "color" : 28,
           "size" : "COMPANY",
           "experience" : "UNTRIED",
@@ -8760,7 +8760,7 @@
         }, {
           "name" : "2ndBatt/41Art",
           "type" : "GLIDER_ARTILLERY",
-          "iconId" : 52,
+          "iconId" : 35,
           "color" : 27,
           "size" : "COMPANY",
           "experience" : "VETERAN",
@@ -8794,7 +8794,7 @@
         }, {
           "name" : "Engineers/8BPC",
           "type" : "AIRBORNE_ENGINEER",
-          "iconId" : 56,
+          "iconId" : 3,
           "color" : 28,
           "size" : "COMPANY",
           "experience" : "VETERAN",
@@ -8963,7 +8963,7 @@
         }, {
           "name" : "1Co/10BPCP",
           "type" : "PARACHUTE_INFANTRY",
-          "iconId" : 36,
+          "iconId" : 34,
           "color" : 29,
           "size" : "COMPANY",
           "experience" : "UNTRIED",
@@ -9012,7 +9012,7 @@
         }, {
           "name" : "2Co/10BPCP",
           "type" : "PARACHUTE_INFANTRY",
-          "iconId" : 36,
+          "iconId" : 34,
           "color" : 29,
           "size" : "COMPANY",
           "experience" : "VETERAN",
@@ -9061,7 +9061,7 @@
         }, {
           "name" : "3Co/10BPCP",
           "type" : "PARACHUTE_INFANTRY",
-          "iconId" : 36,
+          "iconId" : 34,
           "color" : 29,
           "size" : "COMPANY",
           "experience" : "VETERAN",
@@ -9110,7 +9110,7 @@
         }, {
           "name" : "Wpns/10BPCP",
           "type" : "PARACHUTE_HVY_WPNS",
-          "iconId" : 37,
+          "iconId" : 42,
           "color" : 29,
           "size" : "COMPANY",
           "experience" : "VETERAN",
@@ -9154,7 +9154,7 @@
         }, {
           "name" : "3rdBatt/41Art",
           "type" : "GLIDER_ARTILLERY",
-          "iconId" : 52,
+          "iconId" : 35,
           "color" : 28,
           "size" : "COMPANY",
           "experience" : "UNTRIED",
@@ -9188,7 +9188,7 @@
         }, {
           "name" : "Engineers/10BPCP",
           "type" : "AIRBORNE_ENGINEER",
-          "iconId" : 56,
+          "iconId" : 3,
           "color" : 29,
           "size" : "COMPANY",
           "experience" : "VETERAN",
@@ -9262,7 +9262,7 @@
         "unit" : [ {
           "name" : "FG 1/23",
           "type" : "FIGHTER_BOMBER",
-          "iconId" : 67,
+          "iconId" : 28,
           "color" : 1,
           "size" : "COMPANY",
           "experience" : "VETERAN",
@@ -9285,7 +9285,7 @@
         }, {
           "name" : "BG 1/28",
           "type" : "FIGHTER_BOMBER",
-          "iconId" : 67,
+          "iconId" : 28,
           "color" : 1,
           "size" : "COMPANY",
           "experience" : "VETERAN",
@@ -9345,7 +9345,7 @@
         "unit" : [ {
           "name" : "Hmong Partisans",
           "type" : "MOUNTAIN_INFANTRY",
-          "iconId" : 30,
+          "iconId" : 49,
           "color" : 29,
           "size" : "COMPANY",
           "experience" : "VETERAN",
@@ -9459,7 +9459,7 @@
         "unit" : [ {
           "name" : "HQ Unit 312 Div",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 15,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -9503,7 +9503,7 @@
         }, {
           "name" : "312 Div Art/1",
           "type" : "ARTILLERY",
-          "iconId" : 16,
+          "iconId" : 1,
           "color" : 15,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -9542,7 +9542,7 @@
         }, {
           "name" : "312 Div Art/2",
           "type" : "ARTILLERY",
-          "iconId" : 16,
+          "iconId" : 1,
           "color" : 15,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -9581,7 +9581,7 @@
         }, {
           "name" : "312 Div Art/3",
           "type" : "ARTILLERY",
-          "iconId" : 16,
+          "iconId" : 1,
           "color" : 15,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -9665,7 +9665,7 @@
         "unit" : [ {
           "name" : "HQ 141Rgt",
           "type" : "HEADQUARTERS",
-          "iconId" : 1,
+          "iconId" : 8,
           "color" : 16,
           "size" : "REGIMENT",
           "experience" : "VETERAN",
@@ -9728,7 +9728,7 @@
         }, {
           "name" : "1Co/141Rgt",
           "type" : "MOUNTAIN_INFANTRY",
-          "iconId" : 30,
+          "iconId" : 49,
           "color" : 16,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -9801,7 +9801,7 @@
         }, {
           "name" : "2Co/141Rgt",
           "type" : "MOUNTAIN_INFANTRY",
-          "iconId" : 30,
+          "iconId" : 49,
           "color" : 16,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -9869,7 +9869,7 @@
         }, {
           "name" : "3Co/141Rgt",
           "type" : "MOUNTAIN_INFANTRY",
-          "iconId" : 30,
+          "iconId" : 49,
           "color" : 16,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -9937,7 +9937,7 @@
         }, {
           "name" : "4Co/141Rgt",
           "type" : "MOUNTAIN_INFANTRY",
-          "iconId" : 30,
+          "iconId" : 49,
           "color" : 16,
           "size" : "BATTALION",
           "experience" : "UNTRIED",
@@ -10010,7 +10010,7 @@
         }, {
           "name" : "5Co/141Rgt",
           "type" : "MOUNTAIN_INFANTRY",
-          "iconId" : 30,
+          "iconId" : 49,
           "color" : 16,
           "size" : "BATTALION",
           "experience" : "UNTRIED",
@@ -10078,7 +10078,7 @@
         }, {
           "name" : "6Co/141Rgt",
           "type" : "MOUNTAIN_INFANTRY",
-          "iconId" : 30,
+          "iconId" : 49,
           "color" : 16,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -10146,7 +10146,7 @@
         }, {
           "name" : "7Co/141Rgt",
           "type" : "MOUNTAIN_INFANTRY",
-          "iconId" : 30,
+          "iconId" : 49,
           "color" : 16,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -10219,7 +10219,7 @@
         }, {
           "name" : "8Co/141Rgt",
           "type" : "MOUNTAIN_INFANTRY",
-          "iconId" : 30,
+          "iconId" : 49,
           "color" : 16,
           "size" : "BATTALION",
           "experience" : "UNTRIED",
@@ -10287,7 +10287,7 @@
         }, {
           "name" : "9Co/141Rgt",
           "type" : "MOUNTAIN_INFANTRY",
-          "iconId" : 30,
+          "iconId" : 49,
           "color" : 16,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -10355,7 +10355,7 @@
         }, {
           "name" : "Wpns/141InfRgt",
           "type" : "MOUNTAIN_HVY_WPNS",
-          "iconId" : 31,
+          "iconId" : 57,
           "color" : 16,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -10440,7 +10440,7 @@
         "unit" : [ {
           "name" : "Guerrilla Cadre1",
           "type" : "MOUNTAIN_HVY_WPNS",
-          "iconId" : 31,
+          "iconId" : 57,
           "color" : 19,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -10489,7 +10489,7 @@
         }, {
           "name" : "Guerrilla Cadre2",
           "type" : "MOUNTAIN_HVY_WPNS",
-          "iconId" : 31,
+          "iconId" : 57,
           "color" : 19,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -10583,7 +10583,7 @@
         "unit" : [ {
           "name" : "HQ 209 Rgt",
           "type" : "HEADQUARTERS",
-          "iconId" : 1,
+          "iconId" : 8,
           "color" : 17,
           "size" : "REGIMENT",
           "experience" : "VETERAN",
@@ -10646,7 +10646,7 @@
         }, {
           "name" : "1Co/209Rgt",
           "type" : "MOUNTAIN_INFANTRY",
-          "iconId" : 30,
+          "iconId" : 49,
           "color" : 17,
           "size" : "BATTALION",
           "experience" : "UNTRIED",
@@ -10719,7 +10719,7 @@
         }, {
           "name" : "2Co/209Rgt",
           "type" : "MOUNTAIN_INFANTRY",
-          "iconId" : 30,
+          "iconId" : 49,
           "color" : 17,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -10787,7 +10787,7 @@
         }, {
           "name" : "3Co/209Rgt",
           "type" : "MOUNTAIN_INFANTRY",
-          "iconId" : 30,
+          "iconId" : 49,
           "color" : 17,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -10855,7 +10855,7 @@
         }, {
           "name" : "4Co/209Rgt",
           "type" : "MOUNTAIN_INFANTRY",
-          "iconId" : 30,
+          "iconId" : 49,
           "color" : 17,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -10928,7 +10928,7 @@
         }, {
           "name" : "5Co/209Rgt",
           "type" : "MOUNTAIN_INFANTRY",
-          "iconId" : 30,
+          "iconId" : 49,
           "color" : 17,
           "size" : "BATTALION",
           "experience" : "UNTRIED",
@@ -10996,7 +10996,7 @@
         }, {
           "name" : "6Co/209Rgt",
           "type" : "MOUNTAIN_INFANTRY",
-          "iconId" : 30,
+          "iconId" : 49,
           "color" : 17,
           "size" : "BATTALION",
           "experience" : "UNTRIED",
@@ -11064,7 +11064,7 @@
         }, {
           "name" : "7Co/209Rgt",
           "type" : "MOUNTAIN_INFANTRY",
-          "iconId" : 30,
+          "iconId" : 49,
           "color" : 17,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -11138,7 +11138,7 @@
         }, {
           "name" : "8Co/209Rgt",
           "type" : "MOUNTAIN_INFANTRY",
-          "iconId" : 30,
+          "iconId" : 49,
           "color" : 17,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -11207,7 +11207,7 @@
         }, {
           "name" : "9Co/209Rgt",
           "type" : "MOUNTAIN_INFANTRY",
-          "iconId" : 30,
+          "iconId" : 49,
           "color" : 17,
           "size" : "BATTALION",
           "experience" : "UNTRIED",
@@ -11276,7 +11276,7 @@
         }, {
           "name" : "Wpns/209InfRgt",
           "type" : "MOUNTAIN_HVY_WPNS",
-          "iconId" : 31,
+          "iconId" : 57,
           "color" : 17,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -11370,7 +11370,7 @@
         "unit" : [ {
           "name" : "HQ 165 Rgt",
           "type" : "HEADQUARTERS",
-          "iconId" : 1,
+          "iconId" : 8,
           "color" : 18,
           "size" : "REGIMENT",
           "experience" : "VETERAN",
@@ -11434,7 +11434,7 @@
         }, {
           "name" : "1Co/165Rgt",
           "type" : "MOUNTAIN_INFANTRY",
-          "iconId" : 30,
+          "iconId" : 49,
           "color" : 18,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -11508,7 +11508,7 @@
         }, {
           "name" : "2Co/165Rgt",
           "type" : "MOUNTAIN_INFANTRY",
-          "iconId" : 30,
+          "iconId" : 49,
           "color" : 18,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -11577,7 +11577,7 @@
         }, {
           "name" : "3Co/165Rgt",
           "type" : "MOUNTAIN_INFANTRY",
-          "iconId" : 30,
+          "iconId" : 49,
           "color" : 18,
           "size" : "BATTALION",
           "experience" : "UNTRIED",
@@ -11646,7 +11646,7 @@
         }, {
           "name" : "4Co/165Rgt",
           "type" : "MOUNTAIN_INFANTRY",
-          "iconId" : 30,
+          "iconId" : 49,
           "color" : 18,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -11720,7 +11720,7 @@
         }, {
           "name" : "5Co/165Rgt",
           "type" : "MOUNTAIN_INFANTRY",
-          "iconId" : 30,
+          "iconId" : 49,
           "color" : 18,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -11789,7 +11789,7 @@
         }, {
           "name" : "6Co/165Rgt",
           "type" : "MOUNTAIN_INFANTRY",
-          "iconId" : 30,
+          "iconId" : 49,
           "color" : 18,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -11858,7 +11858,7 @@
         }, {
           "name" : "7Co/165Rgt",
           "type" : "MOUNTAIN_INFANTRY",
-          "iconId" : 30,
+          "iconId" : 49,
           "color" : 18,
           "size" : "BATTALION",
           "experience" : "UNTRIED",
@@ -11932,7 +11932,7 @@
         }, {
           "name" : "8Co/165Rgt",
           "type" : "MOUNTAIN_INFANTRY",
-          "iconId" : 30,
+          "iconId" : 49,
           "color" : 18,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -12001,7 +12001,7 @@
         }, {
           "name" : "9Co/165Rgt",
           "type" : "MOUNTAIN_INFANTRY",
-          "iconId" : 30,
+          "iconId" : 49,
           "color" : 18,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -12070,7 +12070,7 @@
         }, {
           "name" : "Wpns/165InfRgt",
           "type" : "MOUNTAIN_HVY_WPNS",
-          "iconId" : 31,
+          "iconId" : 57,
           "color" : 18,
           "size" : "BATTALION",
           "experience" : "VETERAN",

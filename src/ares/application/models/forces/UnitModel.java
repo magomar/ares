@@ -1,6 +1,6 @@
 package ares.application.models.forces;
 
-import ares.application.graphics.forces.UnitColor;
+import ares.application.graphics.forces.UnitsColor;
 import ares.application.models.board.TileModel;
 import ares.engine.command.tactical.TacticalMission;
 import ares.engine.knowledge.KnowledgeCategory;
@@ -24,7 +24,7 @@ public abstract class UnitModel extends KnowledgeMediatedModel {
 
     public abstract String getName();
 
-    public abstract UnitColor getColor();
+    public abstract UnitsColor getColor();
 
     public abstract int getIconId();
 

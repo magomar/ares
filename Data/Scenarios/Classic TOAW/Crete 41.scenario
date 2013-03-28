@@ -20766,7 +20766,7 @@
         }, {
           "name" : "I Abn Aslt Bn",
           "type" : "GLIDER_INFANTRY",
-          "iconId" : 50,
+          "iconId" : 19,
           "color" : 10,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -20804,7 +20804,7 @@
         }, {
           "name" : "II Abn Aslt Bn",
           "type" : "PARACHUTE_INFANTRY",
-          "iconId" : 36,
+          "iconId" : 34,
           "color" : 10,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -20842,7 +20842,7 @@
         }, {
           "name" : "III Abn Aslt Bn",
           "type" : "PARACHUTE_INFANTRY",
-          "iconId" : 36,
+          "iconId" : 34,
           "color" : 10,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -20880,7 +20880,7 @@
         }, {
           "name" : "IV Abn Aslt Bn",
           "type" : "PARACHUTE_INFANTRY",
-          "iconId" : 36,
+          "iconId" : 34,
           "color" : 10,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -20908,7 +20908,7 @@
         }, {
           "name" : "17th Company",
           "type" : "PARACHUTE_ANTITANK",
-          "iconId" : 35,
+          "iconId" : 26,
           "color" : 10,
           "size" : "COMPANY",
           "experience" : "VETERAN",
@@ -20931,7 +20931,7 @@
         }, {
           "name" : "18th Company",
           "type" : "PARACHUTE_HVY_WPNS",
-          "iconId" : 37,
+          "iconId" : 42,
           "color" : 10,
           "size" : "COMPANY",
           "experience" : "VETERAN",
@@ -20959,7 +20959,7 @@
         }, {
           "name" : "19th Company",
           "type" : "AIRBORNE_ARTILLERY",
-          "iconId" : 39,
+          "iconId" : 58,
           "color" : 10,
           "size" : "COMPANY",
           "experience" : "VETERAN",
@@ -21049,7 +21049,7 @@
         }, {
           "name" : "I Battalion",
           "type" : "PARACHUTE_INFANTRY",
-          "iconId" : 36,
+          "iconId" : 34,
           "color" : 10,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -21088,7 +21088,7 @@
         }, {
           "name" : "II Battalion",
           "type" : "PARACHUTE_INFANTRY",
-          "iconId" : 36,
+          "iconId" : 34,
           "color" : 10,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -21127,7 +21127,7 @@
         }, {
           "name" : "III Battalion",
           "type" : "PARACHUTE_INFANTRY",
-          "iconId" : 36,
+          "iconId" : 34,
           "color" : 10,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -21166,7 +21166,7 @@
         }, {
           "name" : "13th Company",
           "type" : "AIRBORNE_ARTILLERY",
-          "iconId" : 39,
+          "iconId" : 58,
           "color" : 10,
           "size" : "COMPANY",
           "experience" : "VETERAN",
@@ -21190,7 +21190,7 @@
         }, {
           "name" : "14th Company",
           "type" : "PARACHUTE_ANTITANK",
-          "iconId" : 35,
+          "iconId" : 26,
           "color" : 10,
           "size" : "COMPANY",
           "experience" : "VETERAN",
@@ -21281,7 +21281,7 @@
         }, {
           "name" : "I Battalion",
           "type" : "PARACHUTE_INFANTRY",
-          "iconId" : 36,
+          "iconId" : 34,
           "color" : 10,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -21320,7 +21320,7 @@
         }, {
           "name" : "II Battalion",
           "type" : "PARACHUTE_INFANTRY",
-          "iconId" : 36,
+          "iconId" : 34,
           "color" : 10,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -21359,7 +21359,7 @@
         }, {
           "name" : "III Battalion",
           "type" : "PARACHUTE_INFANTRY",
-          "iconId" : 36,
+          "iconId" : 34,
           "color" : 10,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -21398,7 +21398,7 @@
         }, {
           "name" : "13th Company",
           "type" : "AIRBORNE_ARTILLERY",
-          "iconId" : 39,
+          "iconId" : 58,
           "color" : 10,
           "size" : "COMPANY",
           "experience" : "VETERAN",
@@ -21422,7 +21422,7 @@
         }, {
           "name" : "14th Company",
           "type" : "PARACHUTE_ANTITANK",
-          "iconId" : 35,
+          "iconId" : 26,
           "color" : 10,
           "size" : "COMPANY",
           "experience" : "VETERAN",
@@ -21512,7 +21512,7 @@
         }, {
           "name" : "I Battalion",
           "type" : "PARACHUTE_INFANTRY",
-          "iconId" : 36,
+          "iconId" : 34,
           "color" : 10,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -21550,7 +21550,7 @@
         }, {
           "name" : "II Battalion",
           "type" : "PARACHUTE_INFANTRY",
-          "iconId" : 36,
+          "iconId" : 34,
           "color" : 10,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -21588,7 +21588,7 @@
         }, {
           "name" : "III Battalion",
           "type" : "PARACHUTE_INFANTRY",
-          "iconId" : 36,
+          "iconId" : 34,
           "color" : 10,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -21626,7 +21626,7 @@
         }, {
           "name" : "13th Company",
           "type" : "AIRBORNE_ARTILLERY",
-          "iconId" : 39,
+          "iconId" : 58,
           "color" : 10,
           "size" : "COMPANY",
           "experience" : "VETERAN",
@@ -21649,7 +21649,7 @@
         }, {
           "name" : "14th Company",
           "type" : "PARACHUTE_ANTITANK",
-          "iconId" : 35,
+          "iconId" : 26,
           "color" : 10,
           "size" : "COMPANY",
           "experience" : "VETERAN",
@@ -21738,7 +21738,7 @@
         }, {
           "name" : "7 Para Art",
           "type" : "AIRBORNE_ARTILLERY",
-          "iconId" : 39,
+          "iconId" : 58,
           "color" : 10,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -21766,7 +21766,7 @@
         }, {
           "name" : "7 Para Antitank",
           "type" : "PARACHUTE_ANTITANK",
-          "iconId" : 35,
+          "iconId" : 26,
           "color" : 10,
           "size" : "SECTION",
           "experience" : "VETERAN",
@@ -21799,7 +21799,7 @@
         }, {
           "name" : "7 Parachute Eng",
           "type" : "AIRBORNE_ENGINEER",
-          "iconId" : 56,
+          "iconId" : 3,
           "color" : 10,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -21832,7 +21832,7 @@
         }, {
           "name" : "7 Parachute MG",
           "type" : "PARACHUTE_HVY_WPNS",
-          "iconId" : 37,
+          "iconId" : 42,
           "color" : 10,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -21991,7 +21991,7 @@
         }, {
           "name" : "I Battalion",
           "type" : "MOUNTAIN_INFANTRY",
-          "iconId" : 30,
+          "iconId" : 49,
           "color" : 10,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -22040,7 +22040,7 @@
         }, {
           "name" : "II Battalion",
           "type" : "MOUNTAIN_INFANTRY",
-          "iconId" : 30,
+          "iconId" : 49,
           "color" : 10,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -22089,7 +22089,7 @@
         }, {
           "name" : "III Battalion",
           "type" : "MOUNTAIN_INFANTRY",
-          "iconId" : 30,
+          "iconId" : 49,
           "color" : 10,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -22138,7 +22138,7 @@
         }, {
           "name" : "16 Company",
           "type" : "ANTITANK",
-          "iconId" : 14,
+          "iconId" : 48,
           "color" : 10,
           "size" : "COMPANY",
           "experience" : "VETERAN",
@@ -22232,7 +22232,7 @@
         }, {
           "name" : "I Battalion",
           "type" : "MOUNTAIN_INFANTRY",
-          "iconId" : 30,
+          "iconId" : 49,
           "color" : 10,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -22281,7 +22281,7 @@
         }, {
           "name" : "II Battalion",
           "type" : "MOUNTAIN_INFANTRY",
-          "iconId" : 30,
+          "iconId" : 49,
           "color" : 10,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -22330,7 +22330,7 @@
         }, {
           "name" : "III Battalion",
           "type" : "MOUNTAIN_INFANTRY",
-          "iconId" : 30,
+          "iconId" : 49,
           "color" : 10,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -22379,7 +22379,7 @@
         }, {
           "name" : "16 Company",
           "type" : "ANTITANK",
-          "iconId" : 14,
+          "iconId" : 48,
           "color" : 10,
           "size" : "COMPANY",
           "experience" : "VETERAN",
@@ -22428,7 +22428,7 @@
         "unit" : [ {
           "name" : "StG1",
           "type" : "FIGHTER_BOMBER",
-          "iconId" : 67,
+          "iconId" : 28,
           "color" : 26,
           "size" : "COMPANY",
           "experience" : "VETERAN",
@@ -22451,7 +22451,7 @@
         }, {
           "name" : "StG2",
           "type" : "FIGHTER_BOMBER",
-          "iconId" : 67,
+          "iconId" : 28,
           "color" : 26,
           "size" : "COMPANY",
           "experience" : "VETERAN",
@@ -22474,7 +22474,7 @@
         }, {
           "name" : "StG3",
           "type" : "FIGHTER_BOMBER",
-          "iconId" : 67,
+          "iconId" : 28,
           "color" : 26,
           "size" : "COMPANY",
           "experience" : "VETERAN",
@@ -22497,7 +22497,7 @@
         }, {
           "name" : "StG77",
           "type" : "FIGHTER_BOMBER",
-          "iconId" : 67,
+          "iconId" : 28,
           "color" : 26,
           "size" : "COMPANY",
           "experience" : "VETERAN",
@@ -22520,7 +22520,7 @@
         }, {
           "name" : "JG77",
           "type" : "FIGHTER",
-          "iconId" : 66,
+          "iconId" : 20,
           "color" : 26,
           "size" : "COMPANY",
           "experience" : "VETERAN",
@@ -22543,7 +22543,7 @@
         }, {
           "name" : "JG26-A",
           "type" : "FIGHTER",
-          "iconId" : 66,
+          "iconId" : 20,
           "color" : 26,
           "size" : "COMPANY",
           "experience" : "VETERAN",
@@ -22566,7 +22566,7 @@
         }, {
           "name" : "JG26-B",
           "type" : "FIGHTER",
-          "iconId" : 66,
+          "iconId" : 20,
           "color" : 26,
           "size" : "COMPANY",
           "experience" : "VETERAN",
@@ -22589,7 +22589,7 @@
         }, {
           "name" : "KG26",
           "type" : "LIGHT_BOMBER",
-          "iconId" : 68,
+          "iconId" : 36,
           "color" : 26,
           "size" : "COMPANY",
           "experience" : "VETERAN",
@@ -22612,7 +22612,7 @@
         }, {
           "name" : "KG4",
           "type" : "LIGHT_BOMBER",
-          "iconId" : 68,
+          "iconId" : 36,
           "color" : 26,
           "size" : "COMPANY",
           "experience" : "VETERAN",
@@ -22635,7 +22635,7 @@
         }, {
           "name" : "LG1",
           "type" : "LIGHT_BOMBER",
-          "iconId" : 68,
+          "iconId" : 36,
           "color" : 26,
           "size" : "COMPANY",
           "experience" : "VETERAN",
@@ -22658,7 +22658,7 @@
         }, {
           "name" : "KG2",
           "type" : "LIGHT_BOMBER",
-          "iconId" : 68,
+          "iconId" : 36,
           "color" : 26,
           "size" : "COMPANY",
           "experience" : "VETERAN",
@@ -22681,7 +22681,7 @@
         }, {
           "name" : "KG3",
           "type" : "LIGHT_BOMBER",
-          "iconId" : 68,
+          "iconId" : 36,
           "color" : 26,
           "size" : "COMPANY",
           "experience" : "VETERAN",
@@ -22729,7 +22729,7 @@
         "unit" : [ {
           "name" : "41 Gruppo AS",
           "type" : "FIGHTER_BOMBER",
-          "iconId" : 67,
+          "iconId" : 28,
           "color" : 36,
           "size" : "COMPANY",
           "experience" : "UNTRIED",
@@ -22752,7 +22752,7 @@
         }, {
           "name" : "50 Gruppo CT",
           "type" : "FIGHTER_BOMBER",
-          "iconId" : 67,
+          "iconId" : 28,
           "color" : 36,
           "size" : "COMPANY",
           "experience" : "UNTRIED",
@@ -22775,7 +22775,7 @@
         }, {
           "name" : "92 Gruppo BT",
           "type" : "FIGHTER_BOMBER",
-          "iconId" : 67,
+          "iconId" : 28,
           "color" : 36,
           "size" : "COMPANY",
           "experience" : "UNTRIED",
@@ -22798,7 +22798,7 @@
         }, {
           "name" : "162 Sqdn Aut CT",
           "type" : "FIGHTER",
-          "iconId" : 66,
+          "iconId" : 20,
           "color" : 36,
           "size" : "COMPANY",
           "experience" : "UNTRIED",
@@ -22821,7 +22821,7 @@
         }, {
           "name" : "163 Sqdn Aut CT",
           "type" : "FIGHTER",
-          "iconId" : 66,
+          "iconId" : 20,
           "color" : 36,
           "size" : "COMPANY",
           "experience" : "UNTRIED",
@@ -22921,7 +22921,7 @@
         }, {
           "name" : "1st Welch",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 5,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -22949,7 +22949,7 @@
         }, {
           "name" : "1st Ranger",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 5,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -22972,7 +22972,7 @@
         }, {
           "name" : "Nrthumbrlnd Hsrs",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 5,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -22995,7 +22995,7 @@
         }, {
           "name" : "2nd Greek",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 8,
           "size" : "REGIMENT",
           "experience" : "UNTRIED",
@@ -23023,7 +23023,7 @@
         }, {
           "name" : "106 Royal Horse",
           "type" : "ARTILLERY",
-          "iconId" : 16,
+          "iconId" : 1,
           "color" : 5,
           "size" : "COMPANY",
           "experience" : "VETERAN",
@@ -23104,7 +23104,7 @@
         }, {
           "name" : "Royal Perivolian",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 5,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -23132,7 +23132,7 @@
         }, {
           "name" : "Layforce",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 5,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -23155,7 +23155,7 @@
         }, {
           "name" : "156 Lt Antiair",
           "type" : "ANTI_AIRCRAFT",
-          "iconId" : 20,
+          "iconId" : 33,
           "color" : 5,
           "size" : "COMPANY",
           "experience" : "UNTRIED",
@@ -23183,7 +23183,7 @@
         }, {
           "name" : "129 Lt Antiair",
           "type" : "ANTI_AIRCRAFT",
-          "iconId" : 20,
+          "iconId" : 33,
           "color" : 5,
           "size" : "COMPANY",
           "experience" : "UNTRIED",
@@ -23211,7 +23211,7 @@
         }, {
           "name" : "151 Hv Antiair",
           "type" : "ANTI_AIRCRAFT",
-          "iconId" : 20,
+          "iconId" : 33,
           "color" : 5,
           "size" : "COMPANY",
           "experience" : "UNTRIED",
@@ -23272,7 +23272,7 @@
         "unit" : [ {
           "name" : "A Btty, Hv AA",
           "type" : "ANTI_AIRCRAFT",
-          "iconId" : 20,
+          "iconId" : 33,
           "color" : 5,
           "size" : "COMPANY",
           "experience" : "VETERAN",
@@ -23300,7 +23300,7 @@
         }, {
           "name" : "C Btty, Hv AA",
           "type" : "ANTI_AIRCRAFT",
-          "iconId" : 20,
+          "iconId" : 33,
           "color" : 5,
           "size" : "COMPANY",
           "experience" : "VETERAN",
@@ -23328,7 +23328,7 @@
         }, {
           "name" : "234 Hv Antiair",
           "type" : "ANTI_AIRCRAFT",
-          "iconId" : 20,
+          "iconId" : 33,
           "color" : 5,
           "size" : "COMPANY",
           "experience" : "UNTRIED",
@@ -23356,7 +23356,7 @@
         }, {
           "name" : "42 Field Eng",
           "type" : "ENGINEER",
-          "iconId" : 55,
+          "iconId" : 59,
           "color" : 5,
           "size" : "COMPANY",
           "experience" : "VETERAN",
@@ -23379,7 +23379,7 @@
         }, {
           "name" : "Crete Composite",
           "type" : "ENGINEER",
-          "iconId" : 55,
+          "iconId" : 59,
           "color" : 8,
           "size" : "COMPANY",
           "experience" : "UNTRIED",
@@ -23402,7 +23402,7 @@
         }, {
           "name" : "3 Hussars",
           "type" : "TANK",
-          "iconId" : 3,
+          "iconId" : 24,
           "color" : 5,
           "size" : "COMPANY",
           "experience" : "UNTRIED",
@@ -23492,7 +23492,7 @@
         }, {
           "name" : "2nd Leicesters",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 5,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -23520,7 +23520,7 @@
         }, {
           "name" : "2nd York & Lanc",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 5,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -23548,7 +23548,7 @@
         }, {
           "name" : "2nd Black Watch",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 5,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -23576,7 +23576,7 @@
         }, {
           "name" : "2/4 Australian",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 7,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -23604,7 +23604,7 @@
         }, {
           "name" : "7 RTR (det. B)",
           "type" : "TANK",
-          "iconId" : 3,
+          "iconId" : 24,
           "color" : 5,
           "size" : "SECTION",
           "experience" : "UNTRIED",
@@ -23627,7 +23627,7 @@
         }, {
           "name" : "234 Medit Bty RA",
           "type" : "ARTILLERY",
-          "iconId" : 16,
+          "iconId" : 1,
           "color" : 5,
           "size" : "COMPANY",
           "experience" : "UNTRIED",
@@ -23727,7 +23727,7 @@
         }, {
           "name" : "2/1 Australian",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 7,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -23755,7 +23755,7 @@
         }, {
           "name" : "2/7 Australian",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 7,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -23783,7 +23783,7 @@
         }, {
           "name" : "2/8 Australian",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 7,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -23811,7 +23811,7 @@
         }, {
           "name" : "2/11 Australian",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 7,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -23839,7 +23839,7 @@
         }, {
           "name" : "7 RTR (det. A)",
           "type" : "TANK",
-          "iconId" : 3,
+          "iconId" : 24,
           "color" : 5,
           "size" : "SECTION",
           "experience" : "UNTRIED",
@@ -23891,7 +23891,7 @@
         "unit" : [ {
           "name" : "X Coast Def Bty",
           "type" : "COASTAL_ARTILLERY",
-          "iconId" : 62,
+          "iconId" : 51,
           "color" : 5,
           "size" : "COMPANY",
           "experience" : "UNTRIED",
@@ -23914,7 +23914,7 @@
         }, {
           "name" : "Z Coast Def Bty",
           "type" : "COASTAL_ARTILLERY",
-          "iconId" : 62,
+          "iconId" : 51,
           "color" : 5,
           "size" : "COMPANY",
           "experience" : "UNTRIED",
@@ -23937,7 +23937,7 @@
         }, {
           "name" : "7 RTR (det. C)",
           "type" : "TANK",
-          "iconId" : 3,
+          "iconId" : 24,
           "color" : 5,
           "size" : "SECTION",
           "experience" : "UNTRIED",
@@ -24017,7 +24017,7 @@
         }, {
           "name" : "18th Battalion",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 6,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -24045,7 +24045,7 @@
         }, {
           "name" : "19th Battalion",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 6,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -24073,7 +24073,7 @@
         }, {
           "name" : "20th Battalion",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 6,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -24158,7 +24158,7 @@
         }, {
           "name" : "NZ Composite Bn",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 6,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -24181,7 +24181,7 @@
         }, {
           "name" : "NZ Cav Div (det)",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 6,
           "size" : "COMPANY",
           "experience" : "VETERAN",
@@ -24204,7 +24204,7 @@
         }, {
           "name" : "6th Greek",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 8,
           "size" : "REGIMENT",
           "experience" : "UNTRIED",
@@ -24232,7 +24232,7 @@
         }, {
           "name" : "8th Greek",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 8,
           "size" : "REGIMENT",
           "experience" : "UNTRIED",
@@ -24260,7 +24260,7 @@
         }, {
           "name" : "28 Battery",
           "type" : "ARTILLERY",
-          "iconId" : 16,
+          "iconId" : 1,
           "color" : 5,
           "size" : "REGIMENT",
           "experience" : "VETERAN",
@@ -24298,7 +24298,7 @@
         }, {
           "name" : "7th NZ Engineer",
           "type" : "ENGINEER",
-          "iconId" : 55,
+          "iconId" : 59,
           "color" : 6,
           "size" : "COMPANY",
           "experience" : "VETERAN",
@@ -24378,7 +24378,7 @@
         }, {
           "name" : "21st Battalion",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 6,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -24406,7 +24406,7 @@
         }, {
           "name" : "22nd Battalion",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 6,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -24434,7 +24434,7 @@
         }, {
           "name" : "23rd Battalion",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 6,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -24462,7 +24462,7 @@
         }, {
           "name" : "28 (Maori) Btln",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 6,
           "size" : "BATTALION",
           "experience" : "VETERAN",
@@ -24490,7 +24490,7 @@
         }, {
           "name" : "5th NZ Fld Rgt",
           "type" : "ARTILLERY",
-          "iconId" : 16,
+          "iconId" : 1,
           "color" : 6,
           "size" : "REGIMENT",
           "experience" : "VETERAN",
@@ -24523,7 +24523,7 @@
         }, {
           "name" : "1st Greek",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 8,
           "size" : "REGIMENT",
           "experience" : "UNTRIED",
@@ -24584,7 +24584,7 @@
         "unit" : [ {
           "name" : "C Btty, Hv AA",
           "type" : "ARTILLERY",
-          "iconId" : 16,
+          "iconId" : 1,
           "color" : 5,
           "size" : "COMPANY",
           "experience" : "UNTRIED",
@@ -24612,7 +24612,7 @@
         }, {
           "name" : "7th Aust Lt AA",
           "type" : "ANTI_AIRCRAFT",
-          "iconId" : 20,
+          "iconId" : 33,
           "color" : 5,
           "size" : "COMPANY",
           "experience" : "VETERAN",
@@ -24640,7 +24640,7 @@
         }, {
           "name" : "3rd Greek",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 8,
           "size" : "REGIMENT",
           "experience" : "UNTRIED",
@@ -24668,7 +24668,7 @@
         }, {
           "name" : "7th Greek",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 8,
           "size" : "REGIMENT",
           "experience" : "UNTRIED",
@@ -24729,7 +24729,7 @@
         "unit" : [ {
           "name" : "Gendarmerie",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 8,
           "size" : "REGIMENT",
           "experience" : "UNTRIED",
@@ -24752,7 +24752,7 @@
         }, {
           "name" : "4th Greek",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 8,
           "size" : "REGIMENT",
           "experience" : "UNTRIED",
@@ -24780,7 +24780,7 @@
         }, {
           "name" : "5th Greek",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 8,
           "size" : "REGIMENT",
           "experience" : "UNTRIED",

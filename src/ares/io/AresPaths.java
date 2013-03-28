@@ -18,7 +18,6 @@ public enum AresPaths {
     private final String path;
 
     private AresPaths(final String path) {
-//        this.path = System.getProperty("user.dir") + path;
         this.path = path;
     }
 

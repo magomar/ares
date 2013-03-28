@@ -1,20 +1,17 @@
 package ares.application.graphics.board;
 
-import ares.application.graphics.BoardGraphicsModel;
+import ares.application.graphics.AresGraphicsModel;
 import ares.application.graphics.AbstractImageLayer;
-import ares.application.graphics.ImageProfile;
+import ares.application.graphics.AresGraphicsProfile;
+import ares.application.graphics.AresMiscGraphics;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.*;
 import ares.engine.knowledge.KnowledgeCategory;
-import ares.io.*;
-import ares.application.graphics.ImageTools;
+import ares.io.AresIO;
 import ares.scenario.board.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.lang.ref.SoftReference;
 import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Terrain image layer based on Sergio Musoles TerrainPanel
@@ -23,8 +20,6 @@ import java.util.logging.Logger;
  */
 public class TerrainLayer extends AbstractImageLayer {
 
-    //Map to store loaded images    
-    private EnumMap<Terrain, SoftReference<BufferedImage>> terrainBufferMap = new EnumMap<>(Terrain.class);
     private ScenarioModel scenario;
 
     @Override
@@ -34,7 +29,6 @@ public class TerrainLayer extends AbstractImageLayer {
         // Paint it black!
         g2.setColor(Color.BLACK);
         g2.fillRect(0, 0, globalImage.getWidth(), globalImage.getHeight());
-
         for (TileModel[] tiles : scenario.getBoardModel().getMapModel()) {
             for (TileModel tile : tiles) {
                 paintTile(g2, tile);
@@ -63,53 +57,30 @@ public class TerrainLayer extends AbstractImageLayer {
         }
 
         //Calculate tile position
-        Point pos = BoardGraphicsModel.tileToPixel(tile.getCoordinates());
-        int w = BoardGraphicsModel.getHexDiameter();
-        int h = BoardGraphicsModel.getHexHeight();
-        // First layer is the open terrain
-        BufferedImage openTerrain = getTerrainImage(Terrain.OPEN, 1, w, h);
-        g2.drawImage(openTerrain, pos.x, pos.y, null);
+        Point pos = AresGraphicsModel.tileToPixel(tile.getCoordinates());
+        AresGraphicsProfile profile = AresGraphicsModel.getProfile();
 
-        // Get the index of the terrain image
+        // First paints the open terrain, any other terrain will be rendered upon it
+        BufferedImage bi = AresMiscGraphics.TERRAIN_MISCELANEOUS.getImage(profile, AresIO.ARES_IO);
+        g2.drawImage(bi, pos.x, pos.y, null);
+
         Map<Terrain, Integer> m = getTerrainBitMasks(tile);
         for (Map.Entry<Terrain, Integer> entry : m.entrySet()) {
             Terrain terrain = entry.getKey();
             int bitMask = entry.getValue();
-
-            BufferedImage bi = getTerrainImage(terrain, bitMask, w, h);
+            BufferedImage i = terrain.getImage(profile, Terrain.getImageIndex(bitMask), AresIO.ARES_IO);
             // Paint terrain image
-            g2.drawImage(bi, pos.x, pos.y, null);
+            g2.drawImage(i, pos.x, pos.y, null);
         }
         // Paint features 
         for (Feature feature : tile.getTerrainFeatures()) {
-            BufferedImage bi = terrainBufferMap.get(Terrain.OPEN).get().
-                    getSubimage(w * feature.getImageCol(), h * feature.getImageRow(), w, h);
-            g2.drawImage(bi, pos.x, pos.y, null);
+            BufferedImage i = AresMiscGraphics.TERRAIN_MISCELANEOUS.getImage(profile, feature.getImageRow(), feature.getImageCol(), AresIO.ARES_IO);
+            g2.drawImage(i, pos.x, pos.y, null);
         }
-        repaint(pos.x, pos.y, openTerrain.getWidth(), openTerrain.getHeight());
-    }
-
-    private BufferedImage getTerrainImage(Terrain terrain, int bitMask, int w, int h) {
-
-        // Ensure terrain graphics are loaded
-        SoftReference<BufferedImage> softImage = terrainBufferMap.get(terrain);
-        //If image doesn't exist or has been GC'ed
-        if (softImage == null || softImage.get() == null) {
-            BufferedImage bi = ImageTools.loadImage(AresIO.ARES_IO.getFile(BoardGraphicsModel.getImageProfile().getPath(), terrain.getFilename()));
-            terrainBufferMap.put(terrain, new SoftReference<>(bi));
+        if (bi == null) {
+            return;
         }
-
-        int imageIndex = Terrain.getImageIndex(bitMask);
-        int column = imageIndex / ImageProfile.TERRAIN_IMAGE_ROWS;
-        int row = imageIndex % ImageProfile.TERRAIN_IMAGE_ROWS;
-        BufferedImage terrainImage = null;
-        try {
-            terrainImage = terrainBufferMap.get(terrain).get().getSubimage(w * column, h * row, w, h);
-        } catch (Exception e) {
-            Logger.getLogger(TerrainLayer.class.getName()).log(Level.SEVERE, "ERROR!");
-        }
-
-        return terrainImage;
+        repaint(pos.x, pos.y, bi.getWidth(), bi.getHeight());
     }
 
     /**

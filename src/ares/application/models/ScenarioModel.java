@@ -1,6 +1,6 @@
 package ares.application.models;
 
-import ares.application.graphics.BoardGraphicsModel;
+import ares.application.graphics.AresGraphicsModel;
 import ares.application.models.board.BoardModel;
 import ares.application.models.forces.ForceModel;
 import ares.platform.model.RoleMediatedModel;
@@ -28,7 +28,7 @@ public final class ScenarioModel extends RoleMediatedModel {
         }
     }
 
-    public BoardGraphicsModel getBoardGraphicsModel() {
+    public AresGraphicsModel getBoardGraphicsModel() {
         return scenario.getBoardGraphicsModel();
     }
 

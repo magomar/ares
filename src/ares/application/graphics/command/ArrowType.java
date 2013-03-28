@@ -1,20 +1,23 @@
 package ares.application.graphics.command;
 
+import ares.application.graphics.AresMiscGraphics;
+
 /**
  *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
 public enum ArrowType {
 
-    GIVING_ORDERS("Movement_arrows_Red.png"),
-    CURRENT_ORDERS("Movement_arrows_Gray.png");
-    private final String filename;
+    GIVING_ORDERS(AresMiscGraphics.RED_ARROWS),
+    CURRENT_ORDERS(AresMiscGraphics.GRAY_ARROWS);
+    private final AresMiscGraphics provider;
 
-    private ArrowType(String filename) {
-        this.filename = filename;
+    private ArrowType(final AresMiscGraphics provider) {
+        this.provider = provider;
     }
 
-    public String getFilename() {
-        return filename;
+    public AresMiscGraphics getProvider() {
+        return provider;
     }
+
 }

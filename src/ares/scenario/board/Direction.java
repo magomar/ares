@@ -56,12 +56,27 @@ public enum Direction {
     public Direction getOpposite() {
         return opposite;
     }
+//
+//    public static int convertDirectionsToBitMask(List<Direction> directions) {
+//        int mask = 0;
+//        for (Direction dir : directions) {
+//            // TODO Direction.C should not appear here !!
+//            if (dir != Direction.C) {
+//                int bit = 1 << dir.ordinal();
+//                mask |= bit;
+//            }
+//        }
+//        return mask;
+//    }
 
-    public static int convertDirectionsToBitMask(List<Direction> directions) {
+    public static int convertDirectionsToBitMask(Set<Direction> directions) {
         int mask = 0;
         for (Direction dir : directions) {
-            int bit = 1<< dir.ordinal();
-            mask |= bit;
+            // TODO Direction.C should not appear here !!
+            if (dir != Direction.C) {
+                int bit = 1 << dir.ordinal();
+                mask |= bit;
+            }
         }
         return mask;
     }

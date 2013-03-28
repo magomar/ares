@@ -39880,7 +39880,7 @@
         "unit" : [ {
           "name" : "4 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -39993,7 +39993,7 @@
         }, {
           "name" : "267 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -40130,7 +40130,7 @@
         "unit" : [ {
           "name" : "4 Army",
           "type" : "HEADQUARTERS",
-          "iconId" : 1,
+          "iconId" : 8,
           "color" : 10,
           "size" : "ARMY",
           "experience" : "VETERAN",
@@ -40223,7 +40223,7 @@
         }, {
           "name" : "87 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -40336,7 +40336,7 @@
         }, {
           "name" : "211 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -40444,7 +40444,7 @@
         }, {
           "name" : "263 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -40707,7 +40707,7 @@
         }, {
           "name" : "251 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -40815,7 +40815,7 @@
         }, {
           "name" : "267 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -41090,7 +41090,7 @@
         }, {
           "name" : "8 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -41203,7 +41203,7 @@
         }, {
           "name" : "28 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -41474,7 +41474,7 @@
         }, {
           "name" : "5 Panzer",
           "type" : "TANK",
-          "iconId" : 3,
+          "iconId" : 24,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -41607,7 +41607,7 @@
         }, {
           "name" : "7 Panzer",
           "type" : "TANK",
-          "iconId" : 3,
+          "iconId" : 24,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -41745,7 +41745,7 @@
         }, {
           "name" : "62 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -42017,7 +42017,7 @@
         }, {
           "name" : "12 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -42130,7 +42130,7 @@
         }, {
           "name" : "32 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -42276,7 +42276,7 @@
         "unit" : [ {
           "name" : "12 Army",
           "type" : "HEADQUARTERS",
-          "iconId" : 1,
+          "iconId" : 8,
           "color" : 10,
           "size" : "ARMY",
           "experience" : "VETERAN",
@@ -42369,7 +42369,7 @@
         }, {
           "name" : "9 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -42482,7 +42482,7 @@
         }, {
           "name" : "27 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -42746,7 +42746,7 @@
         }, {
           "name" : "3 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -42859,7 +42859,7 @@
         }, {
           "name" : "23 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -43127,7 +43127,7 @@
         }, {
           "name" : "16 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -43240,7 +43240,7 @@
         }, {
           "name" : "24 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -43512,7 +43512,7 @@
         }, {
           "name" : "5 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -43625,7 +43625,7 @@
         }, {
           "name" : "21 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -43738,7 +43738,7 @@
         }, {
           "name" : "25 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -43851,7 +43851,7 @@
         }, {
           "name" : "1 Mountain",
           "type" : "MOUNTAIN_INFANTRY",
-          "iconId" : 30,
+          "iconId" : 49,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -44094,7 +44094,7 @@
         }, {
           "name" : "1 Panzer",
           "type" : "TANK",
-          "iconId" : 3,
+          "iconId" : 24,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -44227,7 +44227,7 @@
         }, {
           "name" : "2 Panzer",
           "type" : "TANK",
-          "iconId" : 3,
+          "iconId" : 24,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -44360,7 +44360,7 @@
         }, {
           "name" : "10 Panzer",
           "type" : "TANK",
-          "iconId" : 3,
+          "iconId" : 24,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -44493,7 +44493,7 @@
         }, {
           "name" : "Grossdeutschla",
           "type" : "MOTOR_INFANTRY",
-          "iconId" : 21,
+          "iconId" : 41,
           "color" : 10,
           "size" : "REGIMENT",
           "experience" : "VETERAN",
@@ -44731,7 +44731,7 @@
         }, {
           "name" : "6 Panzer",
           "type" : "TANK",
-          "iconId" : 3,
+          "iconId" : 24,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -44859,7 +44859,7 @@
         }, {
           "name" : "8 Panzer",
           "type" : "TANK",
-          "iconId" : 3,
+          "iconId" : 24,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -44992,7 +44992,7 @@
         }, {
           "name" : "2 Motorized",
           "type" : "MOTOR_INFANTRY",
-          "iconId" : 21,
+          "iconId" : 41,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -45251,7 +45251,7 @@
         }, {
           "name" : "13 Motorized",
           "type" : "MOTOR_INFANTRY",
-          "iconId" : 21,
+          "iconId" : 41,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -45359,7 +45359,7 @@
         }, {
           "name" : "29 Motorized",
           "type" : "MOTOR_INFANTRY",
-          "iconId" : 21,
+          "iconId" : 41,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -45496,7 +45496,7 @@
         "unit" : [ {
           "name" : "16 Army",
           "type" : "HEADQUARTERS",
-          "iconId" : 1,
+          "iconId" : 8,
           "color" : 10,
           "size" : "ARMY",
           "experience" : "VETERAN",
@@ -45589,7 +45589,7 @@
         }, {
           "name" : "6 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -45702,7 +45702,7 @@
         }, {
           "name" : "15 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -45815,7 +45815,7 @@
         }, {
           "name" : "26 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -45928,7 +45928,7 @@
         }, {
           "name" : "33 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -46192,7 +46192,7 @@
         }, {
           "name" : "36 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -46305,7 +46305,7 @@
         }, {
           "name" : "68 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -46418,7 +46418,7 @@
         }, {
           "name" : "52 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -46678,7 +46678,7 @@
         }, {
           "name" : "17 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -46791,7 +46791,7 @@
         }, {
           "name" : "34 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -46904,7 +46904,7 @@
         }, {
           "name" : "71 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -47172,7 +47172,7 @@
         }, {
           "name" : "58 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -47285,7 +47285,7 @@
         }, {
           "name" : "76 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -47398,7 +47398,7 @@
         }, {
           "name" : "73 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -47540,7 +47540,7 @@
         "unit" : [ {
           "name" : "18 Army",
           "type" : "HEADQUARTERS",
-          "iconId" : 1,
+          "iconId" : 8,
           "color" : 10,
           "size" : "ARMY",
           "experience" : "VETERAN",
@@ -47633,7 +47633,7 @@
         }, {
           "name" : "208 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -47741,7 +47741,7 @@
         }, {
           "name" : "225 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -47849,7 +47849,7 @@
         }, {
           "name" : "9 Panzer",
           "type" : "TANK",
-          "iconId" : 3,
+          "iconId" : 24,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -48150,7 +48150,7 @@
         }, {
           "name" : "207 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -48258,7 +48258,7 @@
         }, {
           "name" : "227 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -48366,7 +48366,7 @@
         }, {
           "name" : "1 Cavalry",
           "type" : "CAVALRY",
-          "iconId" : 13,
+          "iconId" : 40,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -48464,7 +48464,7 @@
         }, {
           "name" : "LAH SS Mot",
           "type" : "MOTOR_INFANTRY",
-          "iconId" : 21,
+          "iconId" : 41,
           "color" : 11,
           "size" : "REGIMENT",
           "experience" : "VETERAN",
@@ -48707,7 +48707,7 @@
         }, {
           "name" : "254 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -48815,7 +48815,7 @@
         }, {
           "name" : "256 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -48923,7 +48923,7 @@
         }, {
           "name" : "VF SS Mot",
           "type" : "MOTOR_INFANTRY",
-          "iconId" : 21,
+          "iconId" : 41,
           "color" : 11,
           "size" : "REGIMENT",
           "experience" : "VETERAN",
@@ -49056,7 +49056,7 @@
         "unit" : [ {
           "name" : "6 Army",
           "type" : "HEADQUARTERS",
-          "iconId" : 1,
+          "iconId" : 8,
           "color" : 10,
           "size" : "ARMY",
           "experience" : "VETERAN",
@@ -49149,7 +49149,7 @@
         }, {
           "name" : "223 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -49257,7 +49257,7 @@
         }, {
           "name" : "255 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -49528,7 +49528,7 @@
         }, {
           "name" : "1 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -49641,7 +49641,7 @@
         }, {
           "name" : "11 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -49754,7 +49754,7 @@
         }, {
           "name" : "63 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -49867,7 +49867,7 @@
         }, {
           "name" : "216 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -50134,7 +50134,7 @@
         }, {
           "name" : "19 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -50247,7 +50247,7 @@
         }, {
           "name" : "30 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -50360,7 +50360,7 @@
         }, {
           "name" : "65 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -50636,7 +50636,7 @@
         }, {
           "name" : "7 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -50749,7 +50749,7 @@
         }, {
           "name" : "14 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -50862,7 +50862,7 @@
         }, {
           "name" : "31 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -51122,7 +51122,7 @@
         }, {
           "name" : "18 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -51235,7 +51235,7 @@
         }, {
           "name" : "35 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -51503,7 +51503,7 @@
         }, {
           "name" : "253 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -51611,7 +51611,7 @@
         }, {
           "name" : "269 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -51885,7 +51885,7 @@
         }, {
           "name" : "3 Panzer",
           "type" : "TANK",
-          "iconId" : 3,
+          "iconId" : 24,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -52018,7 +52018,7 @@
         }, {
           "name" : "4 Panzer",
           "type" : "TANK",
-          "iconId" : 3,
+          "iconId" : 24,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -52151,7 +52151,7 @@
         }, {
           "name" : "20 Motorized",
           "type" : "MOTOR_INFANTRY",
-          "iconId" : 21,
+          "iconId" : 41,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -52284,7 +52284,7 @@
         "unit" : [ {
           "name" : "197 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -52392,7 +52392,7 @@
         }, {
           "name" : "213 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -52500,7 +52500,7 @@
         }, {
           "name" : "215 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -52633,7 +52633,7 @@
         "unit" : [ {
           "name" : "1 Army",
           "type" : "HEADQUARTERS",
-          "iconId" : 1,
+          "iconId" : 8,
           "color" : 10,
           "size" : "ARMY",
           "experience" : "VETERAN",
@@ -52726,7 +52726,7 @@
         }, {
           "name" : "94 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -52834,7 +52834,7 @@
         }, {
           "name" : "98 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -53089,7 +53089,7 @@
         }, {
           "name" : "79 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -53202,7 +53202,7 @@
         }, {
           "name" : "95 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -53310,7 +53310,7 @@
         }, {
           "name" : "268 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -53565,7 +53565,7 @@
         }, {
           "name" : "75 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -53678,7 +53678,7 @@
         }, {
           "name" : "93 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -53786,7 +53786,7 @@
         }, {
           "name" : "258 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -54049,7 +54049,7 @@
         }, {
           "name" : "252 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -54157,7 +54157,7 @@
         }, {
           "name" : "257 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -54265,7 +54265,7 @@
         }, {
           "name" : "262 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -54373,7 +54373,7 @@
         }, {
           "name" : "268 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -54644,7 +54644,7 @@
         }, {
           "name" : "215 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -54752,7 +54752,7 @@
         }, {
           "name" : "246 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -54885,7 +54885,7 @@
         "unit" : [ {
           "name" : "7 Army",
           "type" : "HEADQUARTERS",
-          "iconId" : 1,
+          "iconId" : 8,
           "color" : 10,
           "size" : "ARMY",
           "experience" : "VETERAN",
@@ -54978,7 +54978,7 @@
         }, {
           "name" : "96 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -55237,7 +55237,7 @@
         }, {
           "name" : "555 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -55345,7 +55345,7 @@
         }, {
           "name" : "557 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -55600,7 +55600,7 @@
         }, {
           "name" : "239 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -55708,7 +55708,7 @@
         }, {
           "name" : "556 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -55963,7 +55963,7 @@
         }, {
           "name" : "218 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -56071,7 +56071,7 @@
         }, {
           "name" : "221 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -56204,7 +56204,7 @@
         "unit" : [ {
           "name" : "1 FJ",
           "type" : "PARACHUTE_INFANTRY",
-          "iconId" : 36,
+          "iconId" : 34,
           "color" : 10,
           "size" : "REGIMENT",
           "experience" : "VETERAN",
@@ -56301,7 +56301,7 @@
         "unit" : [ {
           "name" : "2 FJ",
           "type" : "PARACHUTE_INFANTRY",
-          "iconId" : 36,
+          "iconId" : 34,
           "color" : 10,
           "size" : "REGIMENT",
           "experience" : "VETERAN",
@@ -56394,7 +56394,7 @@
         "unit" : [ {
           "name" : "16 AL",
           "type" : "GLIDER_INFANTRY",
-          "iconId" : 50,
+          "iconId" : 19,
           "color" : 10,
           "size" : "REGIMENT",
           "experience" : "VETERAN",
@@ -56487,7 +56487,7 @@
         "unit" : [ {
           "name" : "47 AL",
           "type" : "GLIDER_INFANTRY",
-          "iconId" : 50,
+          "iconId" : 19,
           "color" : 10,
           "size" : "REGIMENT",
           "experience" : "VETERAN",
@@ -56580,7 +56580,7 @@
         "unit" : [ {
           "name" : "65 AL",
           "type" : "GLIDER_INFANTRY",
-          "iconId" : 50,
+          "iconId" : 19,
           "color" : 10,
           "size" : "REGIMENT",
           "experience" : "VETERAN",
@@ -56677,7 +56677,7 @@
         "unit" : [ {
           "name" : "10 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -56820,7 +56820,7 @@
         "unit" : [ {
           "name" : "44 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -56971,7 +56971,7 @@
         "unit" : [ {
           "name" : "46 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -57110,7 +57110,7 @@
         "unit" : [ {
           "name" : "57 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -57248,7 +57248,7 @@
         "unit" : [ {
           "name" : "217 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -57385,7 +57385,7 @@
         "unit" : [ {
           "name" : "11 Motorized",
           "type" : "MOTOR_INFANTRY",
-          "iconId" : 21,
+          "iconId" : 41,
           "color" : 10,
           "size" : "REGIMENT",
           "experience" : "VETERAN",
@@ -57510,7 +57510,7 @@
         "unit" : [ {
           "name" : "Totenkopf SS",
           "type" : "MOTOR_INFANTRY",
-          "iconId" : 21,
+          "iconId" : 41,
           "color" : 11,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -57662,7 +57662,7 @@
         "unit" : [ {
           "name" : "KG 4",
           "type" : "LIGHT_BOMBER",
-          "iconId" : 68,
+          "iconId" : 36,
           "color" : 10,
           "size" : "CORPS",
           "experience" : "VETERAN",
@@ -57690,7 +57690,7 @@
         }, {
           "name" : "KG 54",
           "type" : "LIGHT_BOMBER",
-          "iconId" : 68,
+          "iconId" : 36,
           "color" : 10,
           "size" : "CORPS",
           "experience" : "VETERAN",
@@ -57713,7 +57713,7 @@
         }, {
           "name" : "KG 27",
           "type" : "LIGHT_BOMBER",
-          "iconId" : 68,
+          "iconId" : 36,
           "color" : 10,
           "size" : "CORPS",
           "experience" : "VETERAN",
@@ -57736,7 +57736,7 @@
         }, {
           "name" : "KG 30",
           "type" : "LIGHT_BOMBER",
-          "iconId" : 68,
+          "iconId" : 36,
           "color" : 10,
           "size" : "CORPS",
           "experience" : "VETERAN",
@@ -57759,7 +57759,7 @@
         }, {
           "name" : "LG 1",
           "type" : "LIGHT_BOMBER",
-          "iconId" : 68,
+          "iconId" : 36,
           "color" : 10,
           "size" : "CORPS",
           "experience" : "VETERAN",
@@ -57797,7 +57797,7 @@
         }, {
           "name" : "KG 77",
           "type" : "LIGHT_BOMBER",
-          "iconId" : 68,
+          "iconId" : 36,
           "color" : 10,
           "size" : "CORPS",
           "experience" : "VETERAN",
@@ -57820,7 +57820,7 @@
         }, {
           "name" : "StG 2",
           "type" : "LIGHT_BOMBER",
-          "iconId" : 68,
+          "iconId" : 36,
           "color" : 10,
           "size" : "CORPS",
           "experience" : "VETERAN",
@@ -57848,7 +57848,7 @@
         }, {
           "name" : "StG 76",
           "type" : "LIGHT_BOMBER",
-          "iconId" : 68,
+          "iconId" : 36,
           "color" : 10,
           "size" : "CORPS",
           "experience" : "VETERAN",
@@ -57871,7 +57871,7 @@
         }, {
           "name" : "StG 77",
           "type" : "LIGHT_BOMBER",
-          "iconId" : 68,
+          "iconId" : 36,
           "color" : 10,
           "size" : "CORPS",
           "experience" : "VETERAN",
@@ -57899,7 +57899,7 @@
         }, {
           "name" : "LG 2",
           "type" : "FIGHTER_BOMBER",
-          "iconId" : 67,
+          "iconId" : 28,
           "color" : 10,
           "size" : "CORPS",
           "experience" : "VETERAN",
@@ -57927,7 +57927,7 @@
         }, {
           "name" : "JG 27",
           "type" : "FIGHTER",
-          "iconId" : 66,
+          "iconId" : 20,
           "color" : 10,
           "size" : "CORPS",
           "experience" : "VETERAN",
@@ -57950,7 +57950,7 @@
         }, {
           "name" : "JG 1",
           "type" : "FIGHTER",
-          "iconId" : 66,
+          "iconId" : 20,
           "color" : 10,
           "size" : "CORPS",
           "experience" : "VETERAN",
@@ -57973,7 +57973,7 @@
         }, {
           "name" : "JG 21",
           "type" : "FIGHTER",
-          "iconId" : 66,
+          "iconId" : 20,
           "color" : 10,
           "size" : "CORPS",
           "experience" : "VETERAN",
@@ -57996,7 +57996,7 @@
         }, {
           "name" : "TrGr 186",
           "type" : "FIGHTER_BOMBER",
-          "iconId" : 67,
+          "iconId" : 28,
           "color" : 10,
           "size" : "CORPS",
           "experience" : "VETERAN",
@@ -58024,7 +58024,7 @@
         }, {
           "name" : "JG 2",
           "type" : "FIGHTER",
-          "iconId" : 66,
+          "iconId" : 20,
           "color" : 10,
           "size" : "CORPS",
           "experience" : "VETERAN",
@@ -58047,7 +58047,7 @@
         }, {
           "name" : "JG 3",
           "type" : "FIGHTER",
-          "iconId" : 66,
+          "iconId" : 20,
           "color" : 10,
           "size" : "CORPS",
           "experience" : "VETERAN",
@@ -58070,7 +58070,7 @@
         }, {
           "name" : "JG 20",
           "type" : "FIGHTER",
-          "iconId" : 66,
+          "iconId" : 20,
           "color" : 10,
           "size" : "CORPS",
           "experience" : "VETERAN",
@@ -58093,7 +58093,7 @@
         }, {
           "name" : "JG 26",
           "type" : "FIGHTER",
-          "iconId" : 66,
+          "iconId" : 20,
           "color" : 10,
           "size" : "CORPS",
           "experience" : "VETERAN",
@@ -58116,7 +58116,7 @@
         }, {
           "name" : "JG 51",
           "type" : "FIGHTER",
-          "iconId" : 66,
+          "iconId" : 20,
           "color" : 10,
           "size" : "CORPS",
           "experience" : "VETERAN",
@@ -58139,7 +58139,7 @@
         }, {
           "name" : "ZG 1",
           "type" : "FIGHTER_BOMBER",
-          "iconId" : 67,
+          "iconId" : 28,
           "color" : 10,
           "size" : "CORPS",
           "experience" : "VETERAN",
@@ -58162,7 +58162,7 @@
         }, {
           "name" : "ZG 26",
           "type" : "FIGHTER_BOMBER",
-          "iconId" : 67,
+          "iconId" : 28,
           "color" : 10,
           "size" : "CORPS",
           "experience" : "VETERAN",
@@ -58210,7 +58210,7 @@
         "unit" : [ {
           "name" : "KG 1",
           "type" : "LIGHT_BOMBER",
-          "iconId" : 68,
+          "iconId" : 36,
           "color" : 10,
           "size" : "CORPS",
           "experience" : "VETERAN",
@@ -58233,7 +58233,7 @@
         }, {
           "name" : "KG 28",
           "type" : "LIGHT_BOMBER",
-          "iconId" : 68,
+          "iconId" : 36,
           "color" : 10,
           "size" : "CORPS",
           "experience" : "VETERAN",
@@ -58256,7 +58256,7 @@
         }, {
           "name" : "KG 76",
           "type" : "LIGHT_BOMBER",
-          "iconId" : 68,
+          "iconId" : 36,
           "color" : 10,
           "size" : "CORPS",
           "experience" : "VETERAN",
@@ -58279,7 +58279,7 @@
         }, {
           "name" : "StG 51",
           "type" : "LIGHT_BOMBER",
-          "iconId" : 68,
+          "iconId" : 36,
           "color" : 10,
           "size" : "CORPS",
           "experience" : "VETERAN",
@@ -58302,7 +58302,7 @@
         }, {
           "name" : "JG 77",
           "type" : "FIGHTER",
-          "iconId" : 66,
+          "iconId" : 20,
           "color" : 10,
           "size" : "CORPS",
           "experience" : "VETERAN",
@@ -58325,7 +58325,7 @@
         }, {
           "name" : "ZG 76",
           "type" : "FIGHTER_BOMBER",
-          "iconId" : 67,
+          "iconId" : 28,
           "color" : 10,
           "size" : "CORPS",
           "experience" : "VETERAN",
@@ -58348,7 +58348,7 @@
         }, {
           "name" : "KG 2",
           "type" : "LIGHT_BOMBER",
-          "iconId" : 68,
+          "iconId" : 36,
           "color" : 10,
           "size" : "CORPS",
           "experience" : "VETERAN",
@@ -58371,7 +58371,7 @@
         }, {
           "name" : "KG 3",
           "type" : "LIGHT_BOMBER",
-          "iconId" : 68,
+          "iconId" : 36,
           "color" : 10,
           "size" : "CORPS",
           "experience" : "VETERAN",
@@ -58394,7 +58394,7 @@
         }, {
           "name" : "KG 53",
           "type" : "LIGHT_BOMBER",
-          "iconId" : 68,
+          "iconId" : 36,
           "color" : 10,
           "size" : "CORPS",
           "experience" : "VETERAN",
@@ -58417,7 +58417,7 @@
         }, {
           "name" : "KG 51",
           "type" : "LIGHT_BOMBER",
-          "iconId" : 68,
+          "iconId" : 36,
           "color" : 10,
           "size" : "CORPS",
           "experience" : "VETERAN",
@@ -58445,7 +58445,7 @@
         }, {
           "name" : "KG 55",
           "type" : "LIGHT_BOMBER",
-          "iconId" : 68,
+          "iconId" : 36,
           "color" : 10,
           "size" : "CORPS",
           "experience" : "VETERAN",
@@ -58468,7 +58468,7 @@
         }, {
           "name" : "JG 52",
           "type" : "FIGHTER",
-          "iconId" : 66,
+          "iconId" : 20,
           "color" : 10,
           "size" : "CORPS",
           "experience" : "VETERAN",
@@ -58491,7 +58491,7 @@
         }, {
           "name" : "JG 54",
           "type" : "FIGHTER",
-          "iconId" : 66,
+          "iconId" : 20,
           "color" : 10,
           "size" : "CORPS",
           "experience" : "VETERAN",
@@ -58514,7 +58514,7 @@
         }, {
           "name" : "ZG 52",
           "type" : "FIGHTER_BOMBER",
-          "iconId" : 67,
+          "iconId" : 28,
           "color" : 10,
           "size" : "CORPS",
           "experience" : "VETERAN",
@@ -58537,7 +58537,7 @@
         }, {
           "name" : "JG 53",
           "type" : "FIGHTER",
-          "iconId" : 66,
+          "iconId" : 20,
           "color" : 10,
           "size" : "CORPS",
           "experience" : "VETERAN",
@@ -58560,7 +58560,7 @@
         }, {
           "name" : "JG 76",
           "type" : "FIGHTER",
-          "iconId" : 66,
+          "iconId" : 20,
           "color" : 10,
           "size" : "CORPS",
           "experience" : "VETERAN",
@@ -58583,7 +58583,7 @@
         }, {
           "name" : "ZG 2",
           "type" : "FIGHTER_BOMBER",
-          "iconId" : 67,
+          "iconId" : 28,
           "color" : 10,
           "size" : "CORPS",
           "experience" : "VETERAN",
@@ -58631,7 +58631,7 @@
         "unit" : [ {
           "name" : "246 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -58739,7 +58739,7 @@
         }, {
           "name" : "262 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -58847,7 +58847,7 @@
         }, {
           "name" : "554 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 10,
           "size" : "DIVISION",
           "experience" : "VETERAN",
@@ -59012,7 +59012,7 @@
         "unit" : [ {
           "name" : "7 Army",
           "type" : "HEADQUARTERS",
-          "iconId" : 1,
+          "iconId" : 8,
           "color" : 2,
           "size" : "ARMY",
           "experience" : "UNTRIED",
@@ -59095,7 +59095,7 @@
         }, {
           "name" : "1 D.L.M.",
           "type" : "MECHANIZED",
-          "iconId" : 4,
+          "iconId" : 32,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -59223,7 +59223,7 @@
         }, {
           "name" : "9 Motorized",
           "type" : "MOTOR_INFANTRY",
-          "iconId" : 21,
+          "iconId" : 41,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -59336,7 +59336,7 @@
         }, {
           "name" : "515 Arm Gp",
           "type" : "TANK",
-          "iconId" : 3,
+          "iconId" : 24,
           "color" : 2,
           "size" : "REGIMENT",
           "experience" : "UNTRIED",
@@ -59364,7 +59364,7 @@
         }, {
           "name" : "68 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -59593,7 +59593,7 @@
         }, {
           "name" : "4 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -59691,7 +59691,7 @@
         }, {
           "name" : "25 Motorized",
           "type" : "MOTOR_INFANTRY",
-          "iconId" : 21,
+          "iconId" : 41,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -59947,7 +59947,7 @@
         }, {
           "name" : "21 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -60045,7 +60045,7 @@
         }, {
           "name" : "60 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -60184,7 +60184,7 @@
         "unit" : [ {
           "name" : "1 Army",
           "type" : "HEADQUARTERS",
-          "iconId" : 1,
+          "iconId" : 8,
           "color" : 2,
           "size" : "ARMY",
           "experience" : "UNTRIED",
@@ -60267,7 +60267,7 @@
         }, {
           "name" : "2 D.L.M.",
           "type" : "MECHANIZED",
-          "iconId" : 4,
+          "iconId" : 32,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -60395,7 +60395,7 @@
         }, {
           "name" : "3 D.L.M.",
           "type" : "MECHANIZED",
-          "iconId" : 4,
+          "iconId" : 32,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -60523,7 +60523,7 @@
         }, {
           "name" : "6 Motorized",
           "type" : "MOTOR_INFANTRY",
-          "iconId" : 21,
+          "iconId" : 41,
           "color" : 2,
           "size" : "BRIGADE",
           "experience" : "UNTRIED",
@@ -60748,7 +60748,7 @@
         }, {
           "name" : "2 NA Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -60846,7 +60846,7 @@
         }, {
           "name" : "1 Motorized",
           "type" : "MOTOR_INFANTRY",
-          "iconId" : 21,
+          "iconId" : 41,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -61094,7 +61094,7 @@
         }, {
           "name" : "1 Moroccan",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -61192,7 +61192,7 @@
         }, {
           "name" : "15 Motorized",
           "type" : "MOTOR_INFANTRY",
-          "iconId" : 21,
+          "iconId" : 41,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -61440,7 +61440,7 @@
         }, {
           "name" : "101 Fort Inf",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -61528,7 +61528,7 @@
         }, {
           "name" : "5 NA Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -61626,7 +61626,7 @@
         }, {
           "name" : "12 Motorized",
           "type" : "MOTOR_INFANTRY",
-          "iconId" : 21,
+          "iconId" : 41,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -61739,7 +61739,7 @@
         }, {
           "name" : "519 Arm Gp",
           "type" : "TANK",
-          "iconId" : 3,
+          "iconId" : 24,
           "color" : 2,
           "size" : "REGIMENT",
           "experience" : "UNTRIED",
@@ -61800,7 +61800,7 @@
         "unit" : [ {
           "name" : "9 Army",
           "type" : "HEADQUARTERS",
-          "iconId" : 1,
+          "iconId" : 8,
           "color" : 2,
           "size" : "ARMY",
           "experience" : "UNTRIED",
@@ -61883,7 +61883,7 @@
         }, {
           "name" : "1 Lt. Cavalry",
           "type" : "CAVALRY",
-          "iconId" : 13,
+          "iconId" : 40,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -61996,7 +61996,7 @@
         }, {
           "name" : "33 NA Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -62094,7 +62094,7 @@
         }, {
           "name" : "53 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -62323,7 +62323,7 @@
         }, {
           "name" : "5 Motorized",
           "type" : "MOTOR_INFANTRY",
-          "iconId" : 21,
+          "iconId" : 41,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -62436,7 +62436,7 @@
         }, {
           "name" : "4 Lt. Cavalry",
           "type" : "CAVALRY",
-          "iconId" : 13,
+          "iconId" : 40,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -62688,7 +62688,7 @@
         }, {
           "name" : "4 NA Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -62786,7 +62786,7 @@
         }, {
           "name" : "22 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -62884,7 +62884,7 @@
         }, {
           "name" : "18 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -63121,7 +63121,7 @@
         }, {
           "name" : "102 Fort Inf",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -63209,7 +63209,7 @@
         }, {
           "name" : "61 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -63307,7 +63307,7 @@
         }, {
           "name" : "3 Spahi Mot",
           "type" : "MOTOR_INFANTRY",
-          "iconId" : 21,
+          "iconId" : 41,
           "color" : 2,
           "size" : "BRIGADE",
           "experience" : "UNTRIED",
@@ -63450,7 +63450,7 @@
         "unit" : [ {
           "name" : "2 Army",
           "type" : "HEADQUARTERS",
-          "iconId" : 1,
+          "iconId" : 8,
           "color" : 2,
           "size" : "ARMY",
           "experience" : "UNTRIED",
@@ -63533,7 +63533,7 @@
         }, {
           "name" : "2 Lt. Cavalry",
           "type" : "CAVALRY",
-          "iconId" : 13,
+          "iconId" : 40,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -63646,7 +63646,7 @@
         }, {
           "name" : "5 Lt. Cavalry",
           "type" : "CAVALRY",
-          "iconId" : 13,
+          "iconId" : 40,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -63759,7 +63759,7 @@
         }, {
           "name" : "1 Colonial",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -63857,7 +63857,7 @@
         }, {
           "name" : "71 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -63955,7 +63955,7 @@
         }, {
           "name" : "3 Motorized",
           "type" : "MOTOR_INFANTRY",
-          "iconId" : 21,
+          "iconId" : 41,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -64068,7 +64068,7 @@
         }, {
           "name" : "503 Arm Gp",
           "type" : "TANK",
-          "iconId" : 3,
+          "iconId" : 24,
           "color" : 2,
           "size" : "REGIMENT",
           "experience" : "UNTRIED",
@@ -64223,7 +64223,7 @@
         }, {
           "name" : "3 NA Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -64321,7 +64321,7 @@
         }, {
           "name" : "20 NA Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -64419,7 +64419,7 @@
         }, {
           "name" : "55 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -64644,7 +64644,7 @@
         }, {
           "name" : "3 Colonial",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -64742,7 +64742,7 @@
         }, {
           "name" : "41 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -64967,7 +64967,7 @@
         }, {
           "name" : "1 NA Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -65065,7 +65065,7 @@
         }, {
           "name" : "32 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -65163,7 +65163,7 @@
         }, {
           "name" : "43 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -65261,7 +65261,7 @@
         }, {
           "name" : "68 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -65359,7 +65359,7 @@
         }, {
           "name" : "1 Armored",
           "type" : "TANK",
-          "iconId" : 3,
+          "iconId" : 24,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -65472,7 +65472,7 @@
         }, {
           "name" : "2 Armored",
           "type" : "TANK",
-          "iconId" : 3,
+          "iconId" : 24,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -65585,7 +65585,7 @@
         }, {
           "name" : "3 Armored",
           "type" : "TANK",
-          "iconId" : 3,
+          "iconId" : 24,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -65735,7 +65735,7 @@
         "unit" : [ {
           "name" : "3 Army",
           "type" : "HEADQUARTERS",
-          "iconId" : 1,
+          "iconId" : 8,
           "color" : 2,
           "size" : "ARMY",
           "experience" : "UNTRIED",
@@ -65818,7 +65818,7 @@
         }, {
           "name" : "6 NA Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -65916,7 +65916,7 @@
         }, {
           "name" : "6 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -66014,7 +66014,7 @@
         }, {
           "name" : "14 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -66251,7 +66251,7 @@
         }, {
           "name" : "26 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -66349,7 +66349,7 @@
         }, {
           "name" : "42 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -66447,7 +66447,7 @@
         }, {
           "name" : "51 Highland",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 5,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -66681,7 +66681,7 @@
         }, {
           "name" : "36 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -66779,7 +66779,7 @@
         }, {
           "name" : "51 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -66877,7 +66877,7 @@
         }, {
           "name" : "58 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -67122,7 +67122,7 @@
         }, {
           "name" : "2 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -67220,7 +67220,7 @@
         }, {
           "name" : "20 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -67318,7 +67318,7 @@
         }, {
           "name" : "56 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -67445,7 +67445,7 @@
         "unit" : [ {
           "name" : "4 Army",
           "type" : "HEADQUARTERS",
-          "iconId" : 1,
+          "iconId" : 8,
           "color" : 2,
           "size" : "ARMY",
           "experience" : "UNTRIED",
@@ -67528,7 +67528,7 @@
         }, {
           "name" : "45 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -67626,7 +67626,7 @@
         }, {
           "name" : "87 NA Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -67724,7 +67724,7 @@
         }, {
           "name" : "10 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -67949,7 +67949,7 @@
         }, {
           "name" : "11 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -68047,7 +68047,7 @@
         }, {
           "name" : "47 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -68276,7 +68276,7 @@
         }, {
           "name" : "52 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -68374,7 +68374,7 @@
         }, {
           "name" : "82 NA Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -68497,7 +68497,7 @@
         "unit" : [ {
           "name" : "5 Army",
           "type" : "HEADQUARTERS",
-          "iconId" : 1,
+          "iconId" : 8,
           "color" : 2,
           "size" : "ARMY",
           "experience" : "UNTRIED",
@@ -68580,7 +68580,7 @@
         }, {
           "name" : "4 Colonial",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -68678,7 +68678,7 @@
         }, {
           "name" : "44 Alpine",
           "type" : "MOUNTAIN_INFANTRY",
-          "iconId" : 30,
+          "iconId" : 49,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -68776,7 +68776,7 @@
         }, {
           "name" : "501 Arm Gp",
           "type" : "TANK",
-          "iconId" : 3,
+          "iconId" : 24,
           "color" : 2,
           "size" : "REGIMENT",
           "experience" : "UNTRIED",
@@ -68804,7 +68804,7 @@
         }, {
           "name" : "517 Arm Gp",
           "type" : "TANK",
-          "iconId" : 3,
+          "iconId" : 24,
           "color" : 2,
           "size" : "REGIMENT",
           "experience" : "UNTRIED",
@@ -68963,7 +68963,7 @@
         }, {
           "name" : "24 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -69061,7 +69061,7 @@
         }, {
           "name" : "31 Alpine",
           "type" : "MOUNTAIN_INFANTRY",
-          "iconId" : 30,
+          "iconId" : 49,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -69294,7 +69294,7 @@
         }, {
           "name" : "16 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -69392,7 +69392,7 @@
         }, {
           "name" : "35 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -69490,7 +69490,7 @@
         }, {
           "name" : "70 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -69723,7 +69723,7 @@
         }, {
           "name" : "30 Alpine",
           "type" : "MOUNTAIN_INFANTRY",
-          "iconId" : 30,
+          "iconId" : 49,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -69821,7 +69821,7 @@
         }, {
           "name" : "6 Colonial",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -69944,7 +69944,7 @@
         "unit" : [ {
           "name" : "3 Motorized",
           "type" : "MOTOR_INFANTRY",
-          "iconId" : 21,
+          "iconId" : 41,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -70057,7 +70057,7 @@
         }, {
           "name" : "7 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -70155,7 +70155,7 @@
         }, {
           "name" : "7 Colonial",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -70253,7 +70253,7 @@
         }, {
           "name" : "3 Lt. Cavalry",
           "type" : "CAVALRY",
-          "iconId" : 13,
+          "iconId" : 40,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -70391,7 +70391,7 @@
         "unit" : [ {
           "name" : "8 Army",
           "type" : "HEADQUARTERS",
-          "iconId" : 1,
+          "iconId" : 8,
           "color" : 2,
           "size" : "ARMY",
           "experience" : "UNTRIED",
@@ -70474,7 +70474,7 @@
         }, {
           "name" : "57 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -70572,7 +70572,7 @@
         }, {
           "name" : "63 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -70801,7 +70801,7 @@
         }, {
           "name" : "13 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -70899,7 +70899,7 @@
         }, {
           "name" : "27 Alpine",
           "type" : "MOUNTAIN_INFANTRY",
-          "iconId" : 30,
+          "iconId" : 49,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -70997,7 +70997,7 @@
         }, {
           "name" : "2 Spahi Mot",
           "type" : "MOTOR_INFANTRY",
-          "iconId" : 21,
+          "iconId" : 41,
           "color" : 2,
           "size" : "BRIGADE",
           "experience" : "UNTRIED",
@@ -71226,7 +71226,7 @@
         }, {
           "name" : "54 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -71324,7 +71324,7 @@
         }, {
           "name" : "104 Fort Inf",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -71412,7 +71412,7 @@
         }, {
           "name" : "105 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -71645,7 +71645,7 @@
         }, {
           "name" : "19 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -71743,7 +71743,7 @@
         }, {
           "name" : "67 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -71964,7 +71964,7 @@
         }, {
           "name" : "23 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -72062,7 +72062,7 @@
         }, {
           "name" : "28 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -72160,7 +72160,7 @@
         }, {
           "name" : "29 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -72291,7 +72291,7 @@
         "unit" : [ {
           "name" : "4 Armored",
           "type" : "TANK",
-          "iconId" : 3,
+          "iconId" : 24,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -72405,7 +72405,7 @@
         }, {
           "name" : "3 Lt. Inf",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -72484,7 +72484,7 @@
         }, {
           "name" : "237 Lt. Inf",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -72600,7 +72600,7 @@
         "unit" : [ {
           "name" : "17 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -72699,7 +72699,7 @@
         }, {
           "name" : "8 Colonial",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -72798,7 +72798,7 @@
         }, {
           "name" : "241 Lt. Inf",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -72918,7 +72918,7 @@
         "unit" : [ {
           "name" : "40 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -73016,7 +73016,7 @@
         }, {
           "name" : "7 NA Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -73155,7 +73155,7 @@
         "unit" : [ {
           "name" : "53 Lt. Inf",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -73233,7 +73233,7 @@
         }, {
           "name" : "59 Lt. Inf",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -73311,7 +73311,7 @@
         }, {
           "name" : "235 Lt. Inf",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -73389,7 +73389,7 @@
         }, {
           "name" : "238 Lt. Inf",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -73467,7 +73467,7 @@
         }, {
           "name" : "239 Lt. Inf",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -73582,7 +73582,7 @@
         "unit" : [ {
           "name" : "84 African",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -73681,7 +73681,7 @@
         }, {
           "name" : "85 African",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -73813,7 +73813,7 @@
         "unit" : [ {
           "name" : "236 Lt. Inf",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -73892,7 +73892,7 @@
         }, {
           "name" : "240 Lt. Inf",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -73996,7 +73996,7 @@
         "unit" : [ {
           "name" : "Group 21",
           "type" : "FIGHTER_BOMBER",
-          "iconId" : 67,
+          "iconId" : 28,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -74024,7 +74024,7 @@
         }, {
           "name" : "Group 23",
           "type" : "FIGHTER_BOMBER",
-          "iconId" : 67,
+          "iconId" : 28,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -74047,7 +74047,7 @@
         }, {
           "name" : "Group 25",
           "type" : "FIGHTER_BOMBER",
-          "iconId" : 67,
+          "iconId" : 28,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -74070,7 +74070,7 @@
         }, {
           "name" : "Paris Night Ftr",
           "type" : "FIGHTER_BOMBER",
-          "iconId" : 67,
+          "iconId" : 28,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -74098,7 +74098,7 @@
         }, {
           "name" : "1 Air Div",
           "type" : "LIGHT_BOMBER",
-          "iconId" : 68,
+          "iconId" : 36,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -74131,7 +74131,7 @@
         }, {
           "name" : "AF 107",
           "type" : "LIGHT_BOMBER",
-          "iconId" : 68,
+          "iconId" : 36,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -74164,7 +74164,7 @@
         }, {
           "name" : "AF 101",
           "type" : "LIGHT_BOMBER",
-          "iconId" : 68,
+          "iconId" : 36,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -74197,7 +74197,7 @@
         }, {
           "name" : "AF 102",
           "type" : "FIGHTER_BOMBER",
-          "iconId" : 67,
+          "iconId" : 28,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -74255,7 +74255,7 @@
         "unit" : [ {
           "name" : "Group 22",
           "type" : "FIGHTER_BOMBER",
-          "iconId" : 67,
+          "iconId" : 28,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -74288,7 +74288,7 @@
         }, {
           "name" : "3 Air Div",
           "type" : "LIGHT_BOMBER",
-          "iconId" : 68,
+          "iconId" : 36,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -74321,7 +74321,7 @@
         }, {
           "name" : "AF 103",
           "type" : "LIGHT_BOMBER",
-          "iconId" : 68,
+          "iconId" : 36,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -74354,7 +74354,7 @@
         }, {
           "name" : "AF 104",
           "type" : "LIGHT_BOMBER",
-          "iconId" : 68,
+          "iconId" : 36,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -74387,7 +74387,7 @@
         }, {
           "name" : "AF 105",
           "type" : "LIGHT_BOMBER",
-          "iconId" : 68,
+          "iconId" : 36,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -74445,7 +74445,7 @@
         "unit" : [ {
           "name" : "Group 24",
           "type" : "LIGHT_BOMBER",
-          "iconId" : 68,
+          "iconId" : 36,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -74468,7 +74468,7 @@
         }, {
           "name" : "6 Air Div",
           "type" : "LIGHT_BOMBER",
-          "iconId" : 68,
+          "iconId" : 36,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -74491,7 +74491,7 @@
         }, {
           "name" : "AF 108",
           "type" : "LIGHT_BOMBER",
-          "iconId" : 68,
+          "iconId" : 36,
           "color" : 2,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -74554,7 +74554,7 @@
         "unit" : [ {
           "name" : "Fortress Regt",
           "type" : "INFANTRY_HVY_WPNS",
-          "iconId" : 11,
+          "iconId" : 24,
           "color" : 4,
           "size" : "REGIMENT",
           "experience" : "UNTRIED",
@@ -74627,7 +74627,7 @@
         }, {
           "name" : "Fortress Regt",
           "type" : "INFANTRY_HVY_WPNS",
-          "iconId" : 11,
+          "iconId" : 24,
           "color" : 4,
           "size" : "REGIMENT",
           "experience" : "UNTRIED",
@@ -74700,7 +74700,7 @@
         }, {
           "name" : "Fortress Regt",
           "type" : "INFANTRY_HVY_WPNS",
-          "iconId" : 11,
+          "iconId" : 24,
           "color" : 4,
           "size" : "REGIMENT",
           "experience" : "UNTRIED",
@@ -74798,7 +74798,7 @@
         "unit" : [ {
           "name" : "Fortress Regt",
           "type" : "INFANTRY_HVY_WPNS",
-          "iconId" : 11,
+          "iconId" : 24,
           "color" : 4,
           "size" : "REGIMENT",
           "experience" : "UNTRIED",
@@ -74871,7 +74871,7 @@
         }, {
           "name" : "Fortress Regt",
           "type" : "INFANTRY_HVY_WPNS",
-          "iconId" : 11,
+          "iconId" : 24,
           "color" : 4,
           "size" : "REGIMENT",
           "experience" : "UNTRIED",
@@ -74944,7 +74944,7 @@
         }, {
           "name" : "Fortress Regt",
           "type" : "INFANTRY_HVY_WPNS",
-          "iconId" : 11,
+          "iconId" : 24,
           "color" : 4,
           "size" : "REGIMENT",
           "experience" : "UNTRIED",
@@ -75042,7 +75042,7 @@
         "unit" : [ {
           "name" : "BEF HQ",
           "type" : "HEADQUARTERS",
-          "iconId" : 1,
+          "iconId" : 8,
           "color" : 5,
           "size" : "ARMY",
           "experience" : "UNTRIED",
@@ -75110,7 +75110,7 @@
         }, {
           "name" : "5 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 5,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -75213,7 +75213,7 @@
         }, {
           "name" : "4/7th RDG",
           "type" : "ARMORED_CAVALRY",
-          "iconId" : 5,
+          "iconId" : 40,
           "color" : 5,
           "size" : "BATTALION",
           "experience" : "UNTRIED",
@@ -75266,7 +75266,7 @@
         }, {
           "name" : "13/18th Hus",
           "type" : "ARMORED_CAVALRY",
-          "iconId" : 5,
+          "iconId" : 40,
           "color" : 5,
           "size" : "BATTALION",
           "experience" : "UNTRIED",
@@ -75319,7 +75319,7 @@
         }, {
           "name" : "1 L&B",
           "type" : "ARMORED_CAVALRY",
-          "iconId" : 5,
+          "iconId" : 40,
           "color" : 5,
           "size" : "BATTALION",
           "experience" : "UNTRIED",
@@ -75372,7 +75372,7 @@
         }, {
           "name" : "BEF AA Gp",
           "type" : "MOTOR_ANTI_AIR",
-          "iconId" : 29,
+          "iconId" : 41,
           "color" : 5,
           "size" : "BRIGADE",
           "experience" : "UNTRIED",
@@ -75400,7 +75400,7 @@
         }, {
           "name" : "BEF Hvy Art Gp",
           "type" : "ARTILLERY",
-          "iconId" : 16,
+          "iconId" : 1,
           "color" : 5,
           "size" : "BRIGADE",
           "experience" : "UNTRIED",
@@ -75438,7 +75438,7 @@
         }, {
           "name" : "BEF Med Art Gp",
           "type" : "ARTILLERY",
-          "iconId" : 16,
+          "iconId" : 1,
           "color" : 5,
           "size" : "BRIGADE",
           "experience" : "UNTRIED",
@@ -75476,7 +75476,7 @@
         }, {
           "name" : "BEF FA Gp",
           "type" : "ARTILLERY",
-          "iconId" : 16,
+          "iconId" : 1,
           "color" : 5,
           "size" : "BRIGADE",
           "experience" : "UNTRIED",
@@ -75547,7 +75547,7 @@
         "unit" : [ {
           "name" : "1 ARB",
           "type" : "TANK",
-          "iconId" : 3,
+          "iconId" : 24,
           "color" : 5,
           "size" : "BRIGADE",
           "experience" : "UNTRIED",
@@ -75605,7 +75605,7 @@
         }, {
           "name" : "2 ARB",
           "type" : "TANK",
-          "iconId" : 3,
+          "iconId" : 24,
           "color" : 5,
           "size" : "BRIGADE",
           "experience" : "UNTRIED",
@@ -75658,7 +75658,7 @@
         }, {
           "name" : "1 ATB",
           "type" : "TANK",
-          "iconId" : 3,
+          "iconId" : 24,
           "color" : 5,
           "size" : "BRIGADE",
           "experience" : "UNTRIED",
@@ -75827,7 +75827,7 @@
         }, {
           "name" : "1 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 5,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -75930,7 +75930,7 @@
         }, {
           "name" : "2 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 5,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -76033,7 +76033,7 @@
         }, {
           "name" : "48 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 5,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -76252,7 +76252,7 @@
         }, {
           "name" : "3 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 5,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -76355,7 +76355,7 @@
         }, {
           "name" : "4 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 5,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -76458,7 +76458,7 @@
         }, {
           "name" : "50 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 5,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -76677,7 +76677,7 @@
         }, {
           "name" : "42 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 5,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -76780,7 +76780,7 @@
         }, {
           "name" : "44 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 5,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -76916,7 +76916,7 @@
         "unit" : [ {
           "name" : "20 Gds Brigade",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 5,
           "size" : "BRIGADE",
           "experience" : "UNTRIED",
@@ -77039,7 +77039,7 @@
         "unit" : [ {
           "name" : "30 Inf Brigade",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 5,
           "size" : "BRIGADE",
           "experience" : "UNTRIED",
@@ -77167,7 +77167,7 @@
         "unit" : [ {
           "name" : "12 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 5,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -77296,7 +77296,7 @@
         "unit" : [ {
           "name" : "23 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 5,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -77425,7 +77425,7 @@
         "unit" : [ {
           "name" : "46 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 5,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -77554,7 +77554,7 @@
         "unit" : [ {
           "name" : "No.60 Ftr",
           "type" : "FIGHTER",
-          "iconId" : 66,
+          "iconId" : 20,
           "color" : 5,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -77577,7 +77577,7 @@
         }, {
           "name" : "NO.61 Ftr",
           "type" : "FIGHTER",
-          "iconId" : 66,
+          "iconId" : 20,
           "color" : 5,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -77600,7 +77600,7 @@
         }, {
           "name" : "No.70 Bmbr",
           "type" : "LIGHT_BOMBER",
-          "iconId" : 68,
+          "iconId" : 36,
           "color" : 5,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -77623,7 +77623,7 @@
         }, {
           "name" : "No.52 Bmbr",
           "type" : "LIGHT_BOMBER",
-          "iconId" : 68,
+          "iconId" : 36,
           "color" : 5,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -77646,7 +77646,7 @@
         }, {
           "name" : "No.50 Army CoOp",
           "type" : "LIGHT_BOMBER",
-          "iconId" : 68,
+          "iconId" : 36,
           "color" : 5,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -77669,7 +77669,7 @@
         }, {
           "name" : "No.51 Army CoOp",
           "type" : "LIGHT_BOMBER",
-          "iconId" : 68,
+          "iconId" : 36,
           "color" : 5,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -77717,7 +77717,7 @@
         "unit" : [ {
           "name" : "No.71 Bmbr",
           "type" : "LIGHT_BOMBER",
-          "iconId" : 68,
+          "iconId" : 36,
           "color" : 5,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -77745,7 +77745,7 @@
         }, {
           "name" : "No.75 Bmbr",
           "type" : "LIGHT_BOMBER",
-          "iconId" : 68,
+          "iconId" : 36,
           "color" : 5,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -77768,7 +77768,7 @@
         }, {
           "name" : "No.76 Bmbr",
           "type" : "LIGHT_BOMBER",
-          "iconId" : 68,
+          "iconId" : 36,
           "color" : 5,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -77791,7 +77791,7 @@
         }, {
           "name" : "No.67 Ftr",
           "type" : "FIGHTER",
-          "iconId" : 66,
+          "iconId" : 20,
           "color" : 5,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -77847,7 +77847,7 @@
         "unit" : [ {
           "name" : "No.11 Group",
           "type" : "FIGHTER",
-          "iconId" : 66,
+          "iconId" : 20,
           "color" : 6,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -77876,7 +77876,7 @@
         }, {
           "name" : "No.12 Group",
           "type" : "FIGHTER",
-          "iconId" : 66,
+          "iconId" : 20,
           "color" : 6,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -77905,7 +77905,7 @@
         }, {
           "name" : "No.13 Group",
           "type" : "FIGHTER",
-          "iconId" : 66,
+          "iconId" : 20,
           "color" : 6,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -77954,7 +77954,7 @@
         "unit" : [ {
           "name" : "No.2 Group",
           "type" : "LIGHT_BOMBER",
-          "iconId" : 68,
+          "iconId" : 36,
           "color" : 6,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -77978,7 +77978,7 @@
         }, {
           "name" : "No.3 Group",
           "type" : "LIGHT_BOMBER",
-          "iconId" : 68,
+          "iconId" : 36,
           "color" : 6,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -78002,7 +78002,7 @@
         }, {
           "name" : "No.4 Group",
           "type" : "LIGHT_BOMBER",
-          "iconId" : 68,
+          "iconId" : 36,
           "color" : 6,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -78031,7 +78031,7 @@
         }, {
           "name" : "No.5 Group",
           "type" : "LIGHT_BOMBER",
-          "iconId" : 68,
+          "iconId" : 36,
           "color" : 6,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -78085,7 +78085,7 @@
         "unit" : [ {
           "name" : "Belgian Army",
           "type" : "HEADQUARTERS",
-          "iconId" : 1,
+          "iconId" : 8,
           "color" : 26,
           "size" : "ARMY",
           "experience" : "UNTRIED",
@@ -78163,7 +78163,7 @@
         }, {
           "name" : "1 Lt. Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 26,
           "size" : "REGIMENT",
           "experience" : "UNTRIED",
@@ -78241,7 +78241,7 @@
         }, {
           "name" : "2 Lt. Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 26,
           "size" : "REGIMENT",
           "experience" : "UNTRIED",
@@ -78319,7 +78319,7 @@
         }, {
           "name" : "3 Lt. Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 26,
           "size" : "REGIMENT",
           "experience" : "UNTRIED",
@@ -78397,7 +78397,7 @@
         }, {
           "name" : "1 Cavalry",
           "type" : "CAVALRY",
-          "iconId" : 13,
+          "iconId" : 40,
           "color" : 26,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -78475,7 +78475,7 @@
         }, {
           "name" : "2 Cavalry",
           "type" : "CAVALRY",
-          "iconId" : 13,
+          "iconId" : 40,
           "color" : 26,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -78553,7 +78553,7 @@
         }, {
           "name" : "BE Army Art Gp",
           "type" : "ARTILLERY",
-          "iconId" : 16,
+          "iconId" : 1,
           "color" : 26,
           "size" : "BRIGADE",
           "experience" : "UNTRIED",
@@ -78717,7 +78717,7 @@
         }, {
           "name" : "1 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 26,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -78805,7 +78805,7 @@
         }, {
           "name" : "4 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 26,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -78893,7 +78893,7 @@
         }, {
           "name" : "7 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 26,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -79107,7 +79107,7 @@
         }, {
           "name" : "6 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 26,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -79195,7 +79195,7 @@
         }, {
           "name" : "11 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 26,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -79283,7 +79283,7 @@
         }, {
           "name" : "14 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 26,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -79493,7 +79493,7 @@
         }, {
           "name" : "1 Chasseurs",
           "type" : "ARMORED_CAVALRY",
-          "iconId" : 5,
+          "iconId" : 40,
           "color" : 26,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -79591,7 +79591,7 @@
         }, {
           "name" : "2 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 26,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -79679,7 +79679,7 @@
         }, {
           "name" : "3 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 26,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -79886,7 +79886,7 @@
         }, {
           "name" : "9 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 26,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -79974,7 +79974,7 @@
         }, {
           "name" : "15 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 26,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -80062,7 +80062,7 @@
         }, {
           "name" : "18 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 26,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -80269,7 +80269,7 @@
         }, {
           "name" : "12 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 26,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -80357,7 +80357,7 @@
         }, {
           "name" : "13 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 26,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -80445,7 +80445,7 @@
         }, {
           "name" : "17 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 26,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -80656,7 +80656,7 @@
         }, {
           "name" : "5 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 26,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -80744,7 +80744,7 @@
         }, {
           "name" : "10 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 26,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -80832,7 +80832,7 @@
         }, {
           "name" : "16 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 26,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -81043,7 +81043,7 @@
         }, {
           "name" : "2 Chasseurs",
           "type" : "ARMORED_CAVALRY",
-          "iconId" : 5,
+          "iconId" : 40,
           "color" : 26,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -81141,7 +81141,7 @@
         }, {
           "name" : "8 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 26,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -81254,7 +81254,7 @@
         "unit" : [ {
           "name" : "BE Fortress Regt",
           "type" : "INFANTRY_HVY_WPNS",
-          "iconId" : 11,
+          "iconId" : 24,
           "color" : 26,
           "size" : "REGIMENT",
           "experience" : "UNTRIED",
@@ -81347,7 +81347,7 @@
         "unit" : [ {
           "name" : "BE Fortress Regt",
           "type" : "INFANTRY_HVY_WPNS",
-          "iconId" : 11,
+          "iconId" : 24,
           "color" : 26,
           "size" : "REGIMENT",
           "experience" : "UNTRIED",
@@ -81440,7 +81440,7 @@
         "unit" : [ {
           "name" : "BE Fortress Regt",
           "type" : "INFANTRY_HVY_WPNS",
-          "iconId" : 11,
+          "iconId" : 24,
           "color" : 26,
           "size" : "REGIMENT",
           "experience" : "UNTRIED",
@@ -81533,7 +81533,7 @@
         "unit" : [ {
           "name" : "Belgian Airforce",
           "type" : "FIGHTER_BOMBER",
-          "iconId" : 67,
+          "iconId" : 28,
           "color" : 26,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -81585,7 +81585,7 @@
         "unit" : [ {
           "name" : "Dutch Army",
           "type" : "HEADQUARTERS",
-          "iconId" : 1,
+          "iconId" : 8,
           "color" : 38,
           "size" : "ARMY",
           "experience" : "UNTRIED",
@@ -81663,7 +81663,7 @@
         }, {
           "name" : "A Brigade",
           "type" : "MOTOR_INFANTRY",
-          "iconId" : 21,
+          "iconId" : 41,
           "color" : 38,
           "size" : "BRIGADE",
           "experience" : "UNTRIED",
@@ -81761,7 +81761,7 @@
         }, {
           "name" : "B Brigade",
           "type" : "MOTOR_INFANTRY",
-          "iconId" : 21,
+          "iconId" : 41,
           "color" : 38,
           "size" : "BRIGADE",
           "experience" : "UNTRIED",
@@ -81859,7 +81859,7 @@
         }, {
           "name" : "G Brigade",
           "type" : "MOTOR_INFANTRY",
-          "iconId" : 21,
+          "iconId" : 41,
           "color" : 38,
           "size" : "BRIGADE",
           "experience" : "UNTRIED",
@@ -81947,7 +81947,7 @@
         }, {
           "name" : "NE Army Art Gp",
           "type" : "ARTILLERY",
-          "iconId" : 16,
+          "iconId" : 1,
           "color" : 38,
           "size" : "BRIGADE",
           "experience" : "UNTRIED",
@@ -82110,7 +82110,7 @@
         }, {
           "name" : "1 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 38,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -82198,7 +82198,7 @@
         }, {
           "name" : "3 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 38,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -82412,7 +82412,7 @@
         }, {
           "name" : "2 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 38,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -82500,7 +82500,7 @@
         }, {
           "name" : "4 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 38,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -82710,7 +82710,7 @@
         }, {
           "name" : "5 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 38,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -82798,7 +82798,7 @@
         }, {
           "name" : "6 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 38,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -83005,7 +83005,7 @@
         }, {
           "name" : "7 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 38,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -83094,7 +83094,7 @@
         }, {
           "name" : "8 Infantry",
           "type" : "INFANTRY",
-          "iconId" : 10,
+          "iconId" : 16,
           "color" : 38,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -83208,7 +83208,7 @@
         "unit" : [ {
           "name" : "Fortress Regt",
           "type" : "INFANTRY_HVY_WPNS",
-          "iconId" : 11,
+          "iconId" : 24,
           "color" : 4,
           "size" : "REGIMENT",
           "experience" : "UNTRIED",
@@ -83281,7 +83281,7 @@
         }, {
           "name" : "Fortress Regt",
           "type" : "INFANTRY_HVY_WPNS",
-          "iconId" : 11,
+          "iconId" : 24,
           "color" : 4,
           "size" : "REGIMENT",
           "experience" : "UNTRIED",
@@ -83354,7 +83354,7 @@
         }, {
           "name" : "Fortress Regt",
           "type" : "INFANTRY_HVY_WPNS",
-          "iconId" : 11,
+          "iconId" : 24,
           "color" : 4,
           "size" : "REGIMENT",
           "experience" : "UNTRIED",
@@ -83452,7 +83452,7 @@
         "unit" : [ {
           "name" : "NE Fortress Regt",
           "type" : "INFANTRY_HVY_WPNS",
-          "iconId" : 11,
+          "iconId" : 24,
           "color" : 38,
           "size" : "REGIMENT",
           "experience" : "UNTRIED",
@@ -83540,7 +83540,7 @@
         "unit" : [ {
           "name" : "NE Fortress Regt",
           "type" : "INFANTRY_HVY_WPNS",
-          "iconId" : 11,
+          "iconId" : 24,
           "color" : 38,
           "size" : "REGIMENT",
           "experience" : "UNTRIED",
@@ -83628,7 +83628,7 @@
         "unit" : [ {
           "name" : "NE Fortress Regt",
           "type" : "INFANTRY_HVY_WPNS",
-          "iconId" : 11,
+          "iconId" : 24,
           "color" : 38,
           "size" : "REGIMENT",
           "experience" : "UNTRIED",
@@ -83716,7 +83716,7 @@
         "unit" : [ {
           "name" : "NE Fortress Regt",
           "type" : "INFANTRY_HVY_WPNS",
-          "iconId" : 11,
+          "iconId" : 24,
           "color" : 38,
           "size" : "REGIMENT",
           "experience" : "UNTRIED",
@@ -83804,7 +83804,7 @@
         "unit" : [ {
           "name" : "NE Fortress Regt",
           "type" : "INFANTRY_HVY_WPNS",
-          "iconId" : 11,
+          "iconId" : 24,
           "color" : 38,
           "size" : "REGIMENT",
           "experience" : "UNTRIED",
@@ -83892,7 +83892,7 @@
         "unit" : [ {
           "name" : "NE Fortress Regt",
           "type" : "INFANTRY_HVY_WPNS",
-          "iconId" : 11,
+          "iconId" : 24,
           "color" : 38,
           "size" : "REGIMENT",
           "experience" : "UNTRIED",
@@ -83955,7 +83955,7 @@
         }, {
           "name" : "NE Fortress Regt",
           "type" : "INFANTRY_HVY_WPNS",
-          "iconId" : 11,
+          "iconId" : 24,
           "color" : 38,
           "size" : "REGIMENT",
           "experience" : "UNTRIED",
@@ -84043,7 +84043,7 @@
         "unit" : [ {
           "name" : "NE Fortress Regt",
           "type" : "INFANTRY_HVY_WPNS",
-          "iconId" : 11,
+          "iconId" : 24,
           "color" : 38,
           "size" : "REGIMENT",
           "experience" : "UNTRIED",
@@ -84131,7 +84131,7 @@
         "unit" : [ {
           "name" : "Dutch Airforce",
           "type" : "FIGHTER_BOMBER",
-          "iconId" : 67,
+          "iconId" : 28,
           "color" : 38,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -84189,7 +84189,7 @@
         "unit" : [ {
           "name" : "1 Armored",
           "type" : "TANK",
-          "iconId" : 3,
+          "iconId" : 24,
           "color" : 5,
           "size" : "DIVISION",
           "experience" : "UNTRIED",
@@ -84333,7 +84333,7 @@
         "unit" : [ {
           "name" : "Fortress Regt",
           "type" : "INFANTRY_HVY_WPNS",
-          "iconId" : 11,
+          "iconId" : 24,
           "color" : 4,
           "size" : "REGIMENT",
           "experience" : "UNTRIED",
@@ -84406,7 +84406,7 @@
         }, {
           "name" : "Fortress Regt",
           "type" : "INFANTRY_HVY_WPNS",
-          "iconId" : 11,
+          "iconId" : 24,
           "color" : 4,
           "size" : "REGIMENT",
           "experience" : "UNTRIED",
@@ -84479,7 +84479,7 @@
         }, {
           "name" : "Fortress Regt",
           "type" : "INFANTRY_HVY_WPNS",
-          "iconId" : 11,
+          "iconId" : 24,
           "color" : 4,
           "size" : "REGIMENT",
           "experience" : "UNTRIED",
@@ -84577,7 +84577,7 @@
         "unit" : [ {
           "name" : "Fortress Regt",
           "type" : "INFANTRY_HVY_WPNS",
-          "iconId" : 11,
+          "iconId" : 24,
           "color" : 4,
           "size" : "REGIMENT",
           "experience" : "UNTRIED",
@@ -84650,7 +84650,7 @@
         }, {
           "name" : "Fortress Regt",
           "type" : "INFANTRY_HVY_WPNS",
-          "iconId" : 11,
+          "iconId" : 24,
           "color" : 4,
           "size" : "REGIMENT",
           "experience" : "UNTRIED",
@@ -84723,7 +84723,7 @@
         }, {
           "name" : "Fortress Regt",
           "type" : "INFANTRY_HVY_WPNS",
-          "iconId" : 11,
+          "iconId" : 24,
           "color" : 4,
           "size" : "REGIMENT",
           "experience" : "UNTRIED",
@@ -84821,7 +84821,7 @@
         "unit" : [ {
           "name" : "Fortress Regt",
           "type" : "INFANTRY_HVY_WPNS",
-          "iconId" : 11,
+          "iconId" : 24,
           "color" : 4,
           "size" : "REGIMENT",
           "experience" : "UNTRIED",
@@ -84894,7 +84894,7 @@
         }, {
           "name" : "Fortress Regt",
           "type" : "INFANTRY_HVY_WPNS",
-          "iconId" : 11,
+          "iconId" : 24,
           "color" : 4,
           "size" : "REGIMENT",
           "experience" : "UNTRIED",
@@ -84967,7 +84967,7 @@
         }, {
           "name" : "Fortress Regt",
           "type" : "INFANTRY_HVY_WPNS",
-          "iconId" : 11,
+          "iconId" : 24,
           "color" : 4,
           "size" : "REGIMENT",
           "experience" : "UNTRIED",
@@ -85065,7 +85065,7 @@
         "unit" : [ {
           "name" : "Fortress Regt",
           "type" : "INFANTRY_HVY_WPNS",
-          "iconId" : 11,
+          "iconId" : 24,
           "color" : 4,
           "size" : "REGIMENT",
           "experience" : "UNTRIED",
@@ -85138,7 +85138,7 @@
         }, {
           "name" : "Fortress Regt",
           "type" : "INFANTRY_HVY_WPNS",
-          "iconId" : 11,
+          "iconId" : 24,
           "color" : 4,
           "size" : "REGIMENT",
           "experience" : "UNTRIED",
@@ -85211,7 +85211,7 @@
         }, {
           "name" : "Fortress Regt",
           "type" : "INFANTRY_HVY_WPNS",
-          "iconId" : 11,
+          "iconId" : 24,
           "color" : 4,
           "size" : "REGIMENT",
           "experience" : "UNTRIED",
@@ -85317,7 +85317,7 @@
         "unit" : [ {
           "name" : "Fortress Regt",
           "type" : "INFANTRY_HVY_WPNS",
-          "iconId" : 11,
+          "iconId" : 24,
           "color" : 4,
           "size" : "REGIMENT",
           "experience" : "UNTRIED",
@@ -85390,7 +85390,7 @@
         }, {
           "name" : "Fortress Regt",
           "type" : "INFANTRY_HVY_WPNS",
-          "iconId" : 11,
+          "iconId" : 24,
           "color" : 4,
           "size" : "REGIMENT",
           "experience" : "UNTRIED",
@@ -85463,7 +85463,7 @@
         }, {
           "name" : "Fortress Regt",
           "type" : "INFANTRY_HVY_WPNS",
-          "iconId" : 11,
+          "iconId" : 24,
           "color" : 4,
           "size" : "REGIMENT",
           "experience" : "UNTRIED",

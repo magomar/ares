@@ -3674,7 +3674,7 @@
         }, {
           "name" : "111 Recon",
           "type" : "ARMORED_CAVALRY",
-          "iconId" : 5,
+          "iconId" : 40,
           "color" : 10,
           "size" : "COMPANY",
           "experience" : "UNTRIED",

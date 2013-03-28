@@ -1,6 +1,6 @@
 package ares.application.views;
 
-import ares.application.graphics.BoardGraphicsModel;
+import ares.application.graphics.AresGraphicsModel;
 import ares.application.boundaries.view.BoardViewer;
 import ares.application.graphics.ImageLayer;
 import ares.application.graphics.command.ArrowLayer;
@@ -93,7 +93,7 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
 
     @Override
     public void loadScenario(final ScenarioModel scenario) {
-        Dimension imageSize = new Dimension(BoardGraphicsModel.getImageWidth(), BoardGraphicsModel.getImageHeight());
+        Dimension imageSize = new Dimension(AresGraphicsModel.getImageWidth(), AresGraphicsModel.getImageHeight());
         layeredPane.setPreferredSize(imageSize);
         layeredPane.setSize(imageSize);
         // Prepare each layer's thread
@@ -113,7 +113,7 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
             layerThreads[index].start();
         }
         terrainLayer.paintTerrain(scenario);
-        unitsLayer.paintUnits(scenario);
+        unitsLayer.paintAllUnits(scenario);
     }
 
     @Override
@@ -124,7 +124,7 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
 //                layer.update(scenario);
 //            }
 //        }
-        unitsLayer.paintUnits(scenario);
+        unitsLayer.paintAllUnits(scenario);
     }
 
     @Override
@@ -170,6 +170,6 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
 
     @Override
     public void updateUnitStack(TileModel tile) {
-        unitsLayer.paintUnits(tile);
+        unitsLayer.paintUnitStack(tile);
     }
 }

@@ -3,7 +3,6 @@ package ares.application.controllers;
 import ares.application.boundaries.view.BoardViewer;
 import ares.application.boundaries.view.CommandBarViewer;
 import ares.application.boundaries.view.UnitInfoViewer;
-import ares.application.commands.EngineCommands;
 import ares.application.commands.FileCommands;
 import ares.application.models.ScenarioModel;
 import ares.application.player.AresMenus;

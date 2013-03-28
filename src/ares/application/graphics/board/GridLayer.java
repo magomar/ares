@@ -1,11 +1,11 @@
 package ares.application.graphics.board;
 
 import ares.application.graphics.AbstractImageLayer;
-import ares.application.graphics.BoardGraphicsModel;
-import ares.application.graphics.ImageTools;
+import ares.application.graphics.AresMiscGraphics;
+import ares.application.graphics.AresGraphicsModel;
+import ares.io.AresIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.lang.ref.SoftReference;
 
 /**
  * Grid image layer
@@ -14,26 +14,21 @@ import java.lang.ref.SoftReference;
  */
 public class GridLayer extends AbstractImageLayer {
 
-    private SoftReference<BufferedImage> hexImage = new SoftReference<>(null);
-    
+    private final AresMiscGraphics grid = AresMiscGraphics.GRID;
+
     @Override
     protected void updateLayer() {
-        int w = BoardGraphicsModel.getTileColumns();
-        int y = BoardGraphicsModel.getTileRows();
+        int w = AresGraphicsModel.getTileColumns();
+        int y = AresGraphicsModel.getTileRows();
+        Graphics2D g2 = globalImage.createGraphics();
+        BufferedImage bi = grid.getImage(AresGraphicsModel.getProfile(), AresIO.ARES_IO);
         for (int i = 0; i < w; ++i) {
             for (int j = 0; j < y; ++j) {
-                paintTile(i, j);
+                Point pos = AresGraphicsModel.tileToPixel(i,j);
+                g2.drawImage(bi, pos.x, pos.y, null);
+                repaint(pos.x, pos.y, bi.getWidth(), bi.getHeight());
+                g2.dispose();
             }
         }
-    }
-
-    private void paintTile(int x, int y) {
-        Graphics2D g2 = globalImage.createGraphics();
-        if (hexImage.get() == null) {
-            hexImage = new SoftReference<>(ImageTools.loadImage(BoardGraphicsModel.getImageProfile().getGridHexFile()));
-        }
-        g2.drawImage(hexImage.get(), x, y, null);
-        repaint(x, y, hexImage.get().getWidth(), hexImage.get().getHeight());
-        g2.dispose();
     }
 }

@@ -2,13 +2,13 @@ package ares.application.graphics.menu;
 
 import ares.application.graphics.AbstractImageLayer;
 import ares.io.*;
-import ares.application.graphics.ImageTools;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.lang.ref.SoftReference;
 import java.util.*;
 import javax.swing.*;
+import temp.ImageTools;
 
 /**
  * Main menu and welcome screen. Sets a background picture and handles the main menu buttons.
@@ -36,7 +36,8 @@ public final class WelcomeScreen extends AbstractImageLayer {
     @Override
     protected void updateLayer() {
         if (backgroundImage.get() == null) {
-            backgroundImage = new SoftReference<>(ImageTools.loadImage(randomImageFile()));
+            BufferedImage bi = AresIO.ARES_IO.loadImage(randomImageFile());
+            backgroundImage = new SoftReference<>(bi);
             globalImage = backgroundImage.get();
         }
     }

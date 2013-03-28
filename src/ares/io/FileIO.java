@@ -3,6 +3,8 @@ package ares.io;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
+import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -16,6 +18,7 @@ import java.util.logging.Logger;
 import java.util.zip.GZIPOutputStream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
+import javax.imageio.ImageIO;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -31,24 +34,24 @@ import org.xml.sax.helpers.XMLReaderFactory;
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public class FileIO<E extends Enum<E> & FileType> {
+public class FileIO<T extends Enum<T> & FileType> {
 
     private static final Logger LOG = Logger.getLogger(FileIO.class.getName());
     private String namespace;
     private Unmarshaller unmarshaller;
     private Marshaller marshaller;
     private Path basePath;
-    ObjectMapper mapper;
+    private ObjectMapper mapper;
 
-    public FileIO(Class<E> fileTypeEnumClass, String jaxbContextPath, String namespace) {
+    public FileIO(Class<T> fileTypeEnumClass, String jaxbContextPath, String namespace) {
         this(System.getProperty("user.dir"), fileTypeEnumClass, jaxbContextPath, namespace);
     }
 
-    public FileIO(String path, Class<E> fileTypeEnumClass, String jaxbContextPath, String namespace) {
+    public FileIO(String path, Class<T> fileTypeEnumClass, String jaxbContextPath, String namespace) {
         this(FileSystems.getDefault().getPath(path), fileTypeEnumClass, jaxbContextPath, namespace);
     }
 
-    public FileIO(Path path, Class<E> fileTypeEnumClass, String jaxbContextPath, String namespace) {
+    public FileIO(Path path, Class<T> fileTypeEnumClass, String jaxbContextPath, String namespace) {
         this.namespace = namespace;
         if (path.isAbsolute()) {
             this.basePath = path;
@@ -67,29 +70,26 @@ public class FileIO<E extends Enum<E> & FileType> {
         mapper.setSerializationInclusion(JsonInclude.Include.NON_EMPTY);
     }
 
-    public Path getBasePath() {
+    public final Path getBasePath() {
         return basePath;
     }
 
-    public Path getRelativePath(File file) {
+    public final Path getRelativePath(File file) {
         return file.toPath().relativize(basePath);
     }
 
-    public Path getAbsolutePath(String relativePath) {
+    public final Path getAbsolutePath(String relativePath) {
         return FileSystems.getDefault().getPath(basePath.toString(), relativePath);
     }
 
-    public Path getAbsolutePath(String... relativePaths) {
+    public final Path getAbsolutePath(String... relativePaths) {
         return FileSystems.getDefault().getPath(basePath.toString(), relativePaths);
     }
 
-    public File getFile(String relativePath, String fileName) {
+    public final File getFile(String relativePath, String fileName) {
         return getAbsolutePath(relativePath, fileName).toFile();
     }
 
-//    public File getFile(Path relativePath, String fileName) {
-//        return getAbsolutePath(relativePath.toString(), fileName).toFile();
-//    }
     /**
      * Unmarshalls XML element from file into java object
      *
@@ -255,5 +255,36 @@ public class FileIO<E extends Enum<E> & FileType> {
             LOG.log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+
+    
+     /**
+     * Loads an image from file
+     *
+     * @param file
+     * @return the image
+     */
+    public static BufferedImage loadImage(File file) {
+        BufferedImage i = null;
+        try {
+            i = ImageIO.read(file);
+        } catch (IOException ex) {
+            LOG.log(Level.SEVERE, "Error loading " + file.getAbsolutePath(), ex);
+        }
+        return i;
+    }
+
+    /**
+     * Saves image into file
+     *
+     * @param image
+     * @param file
+     */
+    public static void saveImage(RenderedImage image, File file) {
+        try {
+            ImageIO.write(image, "png", file);
+        } catch (IOException ex) {
+            LOG.log(Level.SEVERE, null, ex);
+        }
     }
 }

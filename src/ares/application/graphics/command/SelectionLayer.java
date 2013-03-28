@@ -1,14 +1,15 @@
 package ares.application.graphics.command;
 
-import ares.application.graphics.BoardGraphicsModel;
+import ares.application.graphics.AresGraphicsModel;
 import ares.application.graphics.AbstractImageLayer;
+import ares.application.graphics.AresGraphicsProfile;
+import ares.application.graphics.AresMiscGraphics;
 import ares.application.models.board.*;
 import ares.application.models.forces.FormationModel;
 import ares.application.models.forces.UnitModel;
-import ares.application.graphics.ImageTools;
+import ares.io.AresIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.lang.ref.SoftReference;
 
 /**
  * Draws the movement arrows on a BufferedImage
@@ -17,8 +18,8 @@ import java.lang.ref.SoftReference;
  */
 public class SelectionLayer extends AbstractImageLayer {
 
-    private SoftReference<BufferedImage> brassCursorImage = new SoftReference<>(null);
-    private SoftReference<BufferedImage> steelCursorImage = new SoftReference<>(null);
+    private final AresMiscGraphics brassCursor = AresMiscGraphics.BRASS_CURSOR;
+    private final AresMiscGraphics steelCursor = AresMiscGraphics.STEEL_CURSOR;
     private UnitModel unit;
     private FormationModel formation;
 
@@ -29,24 +30,19 @@ public class SelectionLayer extends AbstractImageLayer {
             return;
         }
         Graphics2D g2 = globalImage.createGraphics();
-        if (brassCursorImage.get() == null) {
-            brassCursorImage = new SoftReference<>(ImageTools.loadImage(BoardGraphicsModel.getImageProfile().getBrassCursorFile()));
-        }
-        if (steelCursorImage.get() == null) {
-            steelCursorImage = new SoftReference<>(ImageTools.loadImage(BoardGraphicsModel.getImageProfile().getSteelCursorFile()));
-        }
+        AresGraphicsProfile profile = AresGraphicsModel.getProfile();
         for (UnitModel u : formation.getUnitModels()) {
             if (!u.equals(unit)) {
                 TileModel t = u.getLocation();
-                paintCursor(g2, u.getLocation(), steelCursorImage.get());
+                paintCursor(g2, u.getLocation(), steelCursor.getImage(profile, AresIO.ARES_IO));
             }
         }
-        paintCursor(g2, unit.getLocation(), brassCursorImage.get());
+        paintCursor(g2, unit.getLocation(), brassCursor.getImage(profile, AresIO.ARES_IO));
         g2.dispose();
     }
 
     private void paintCursor(Graphics2D g2, TileModel tile, BufferedImage image) {
-        Point pos = BoardGraphicsModel.tileToPixel(tile.getCoordinates());
+        Point pos = AresGraphicsModel.tileToPixel(tile.getCoordinates());
         g2.drawImage(image, pos.x, pos.y, null);
         repaint(pos.x, pos.y, image.getWidth(), image.getHeight());
 //        paintImmediately(pos.x, pos.y, brassCursorImage.get().getWidth(), brassCursorImage.get().getHeight());

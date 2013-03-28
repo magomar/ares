@@ -9,15 +9,25 @@ import java.awt.image.BufferedImage;
  */
 public abstract class AbstractImageLayer extends javax.swing.JPanel implements ImageLayer {
 
-    // Final image to be painted on the JComponent
+    /**
+     * Image to be rendered on this layer
+     */
     protected BufferedImage globalImage;
-    // Nested layers
+    /**
+     * A layer that shares his {@link #globalImage} with this layer
+     * This attribute is null if the layer uses its own {@link #globalImage}
+     */ 
     protected AbstractImageLayer parentLayer;
 
+    /**
+     * Creates a new instance of this class with independent graphics ({@code parentLayer == null})
+     */
     public AbstractImageLayer() {
         setOpaque(false);
     }
-
+   /**
+     * Creates a new instance of this class sharing its graphics with {@code parentLayer}
+     */
     public AbstractImageLayer(AbstractImageLayer parentLayer) {
         setOpaque(false);
         this.parentLayer = parentLayer;
@@ -26,7 +36,7 @@ public abstract class AbstractImageLayer extends javax.swing.JPanel implements I
 
     @Override
     public final void initialize() {
-        globalImage = new BufferedImage(BoardGraphicsModel.getImageWidth(), BoardGraphicsModel.getImageHeight(), BufferedImage.TYPE_INT_ARGB);
+        globalImage = new BufferedImage(AresGraphicsModel.getImageWidth(), AresGraphicsModel.getImageHeight(), BufferedImage.TYPE_INT_ARGB);
         repaint();
     }
 
