@@ -8,7 +8,6 @@ import java.io.File;
 import java.lang.ref.SoftReference;
 import java.util.*;
 import javax.swing.*;
-import temp.ImageTools;
 
 /**
  * Main menu and welcome screen. Sets a background picture and handles the main menu buttons.
