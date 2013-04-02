@@ -81,8 +81,8 @@ public enum Direction {
         return mask;
     }
 
-    public static List<Direction> convertBitMaskToDirections(int mask) {
-        List<Direction> directions = new ArrayList<>();
+    public static Set<Direction> convertBitMaskToDirections(int mask) {
+        Set<Direction> directions = EnumSet.noneOf(Direction.class);
         // TODO if possible, return an EnumSet instead of a list (I haven't been able yet)
         for (int bit = 0; bit < ALL_DIRECTIONS.length; bit++) {
             if (testBitFlag(mask, bit)) {

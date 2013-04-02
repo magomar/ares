@@ -176,7 +176,7 @@
     
     <complexType name="Terrain">
         <attribute name="Type" type="ar:TerrainType" />
-        <attribute name="Dir" type="string" use="optional"/>
+        <attribute name="Dir" type="ar:MultiDirection" use="optional"/>
         <!--<attribute name="graphic" type="int" use="required" />-->
     </complexType>
     
@@ -746,5 +746,73 @@
             <maxInclusive value="100"/>
         </restriction>
     </simpleType>
-  
+    
+    <simpleType name="MultiDirection">
+        <restriction base="string">
+            <enumeration value="C"/>
+            <enumeration value="N"/>
+            <enumeration value="NE"/>
+            <enumeration value="N_NE"/>
+            <enumeration value="SE"/>
+            <enumeration value="N_SE"/>
+            <enumeration value="NE_SE"/>
+            <enumeration value="N_NE_SE"/>
+            <enumeration value="S"/>
+            <enumeration value="N_S"/>
+            <enumeration value="NE_S"/>
+            <enumeration value="N_NE_S"/>
+            <enumeration value="SE_S"/>
+            <enumeration value="N_SE_S"/>
+            <enumeration value="NE_SE_S"/>
+            <enumeration value="N_NE_SE_S"/>
+            <enumeration value="SW"/>
+            <enumeration value="N_SW"/>
+            <enumeration value="NE_SW"/>
+            <enumeration value="N_NE_SW"/>
+            <enumeration value="SE_SW"/>
+            <enumeration value="N_SE_SW"/>
+            <enumeration value="NE_SE_SW"/>
+            <enumeration value="N_NE_SE_SW"/>
+            <enumeration value="S_SW"/>
+            <enumeration value="N_S_SW"/>
+            <enumeration value="NE_S_SW"/>
+            <enumeration value="N_NE_S_SW"/>
+            <enumeration value="SE_S_SW"/>
+            <enumeration value="N_SE_S_SW"/>
+            <enumeration value="NE_SE_S_SW"/>
+            <enumeration value="N_NE_SE_S_SW"/>
+            <enumeration value="NW"/>
+            <enumeration value="N_NW"/>
+            <enumeration value="NE_NW"/>
+            <enumeration value="N_NE_NW"/>
+            <enumeration value="SE_NW"/>
+            <enumeration value="N_SE_NW"/>
+            <enumeration value="NE_SE_NW"/>
+            <enumeration value="N_NE_SE_NW"/>
+            <enumeration value="S_NW"/>
+            <enumeration value="N_S_NW"/>
+            <enumeration value="NE_S_NW"/>
+            <enumeration value="N_NE_S_NW"/>
+            <enumeration value="SE_S_NW"/>
+            <enumeration value="N_SE_S_NW"/>
+            <enumeration value="NE_SE_S_NW"/>
+            <enumeration value="N_NE_SE_S_NW"/>
+            <enumeration value="SW_NW"/>
+            <enumeration value="N_SW_NW"/>
+            <enumeration value="NE_SW_NW"/>
+            <enumeration value="N_NE_SW_NW"/>
+            <enumeration value="SE_SW_NW"/>
+            <enumeration value="N_SE_SW_NW"/>
+            <enumeration value="NE_SE_SW_NW"/>
+            <enumeration value="N_NE_SE_SW_NW"/>
+            <enumeration value="S_SW_NW"/>
+            <enumeration value="N_S_SW_NW"/>
+            <enumeration value="NE_S_SW_NW"/>
+            <enumeration value="N_NE_S_SW_NW"/>
+            <enumeration value="SE_S_SW_NW"/>
+            <enumeration value="N_SE_S_SW_NW"/>
+            <enumeration value="NE_SE_S_SW_NW"/>
+            <enumeration value="N_NE_SE_S_SW_NW"/>
+        </restriction>
+    </simpleType>
 </schema>
