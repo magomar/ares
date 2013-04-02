@@ -53,7 +53,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 1,
       "x" : 0,
@@ -69,13 +69,13 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "S SW NW"
+        "dir" : "S_SW_NW"
       }, {
         "type" : "LIGHT_WOODS",
-        "dir" : "SE SW NW"
+        "dir" : "SE_SW_NW"
       }, {
         "type" : "RAIL",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 1,
       "x" : 0,
@@ -83,10 +83,10 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       }, {
         "type" : "FOREST",
-        "dir" : "N SE SW NW"
+        "dir" : "N_SE_SW_NW"
       } ],
       "owner" : 1,
       "x" : 0,
@@ -110,7 +110,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SE SW NW"
+        "dir" : "SE_SW_NW"
       } ],
       "owner" : 0,
       "x" : 0,
@@ -122,7 +122,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 0,
@@ -130,7 +130,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 0,
@@ -179,7 +179,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "feature" : [ "NON_PLAYABLE" ],
       "owner" : 1,
@@ -220,7 +220,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       } ],
       "owner" : 1,
       "x" : 1,
@@ -228,7 +228,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "N SE"
+        "dir" : "N_SE"
       } ],
       "owner" : 1,
       "x" : 1,
@@ -240,10 +240,10 @@
     }, {
       "terrain" : [ {
         "type" : "LIGHT_WOODS",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       }, {
         "type" : "RAIL",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 1,
       "x" : 1,
@@ -251,7 +251,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       }, {
         "type" : "FOREST",
         "dir" : "NW"
@@ -278,7 +278,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       } ],
       "owner" : 0,
       "x" : 1,
@@ -289,7 +289,7 @@
         "dir" : "N"
       }, {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 1,
@@ -297,7 +297,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 1,
@@ -337,7 +337,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       } ],
       "owner" : 0,
       "x" : 1,
@@ -345,7 +345,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 1,
@@ -393,7 +393,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 2,
@@ -404,7 +404,7 @@
         "dir" : "SW"
       }, {
         "type" : "RAIL",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 2,
@@ -412,7 +412,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 2,
@@ -440,7 +440,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 2,
@@ -456,7 +456,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 2,
@@ -464,7 +464,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       } ],
       "owner" : 0,
       "x" : 2,
@@ -472,7 +472,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 2,
@@ -483,7 +483,7 @@
         "dir" : "SE"
       }, {
         "type" : "RAIL",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 2,
@@ -491,7 +491,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 2,
@@ -499,7 +499,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 2,
@@ -507,7 +507,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 2,
@@ -515,10 +515,10 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       }, {
         "type" : "RAIL",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       } ],
       "owner" : 0,
       "x" : 2,
@@ -526,7 +526,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 2,
@@ -534,7 +534,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 2,
@@ -578,7 +578,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE SE"
+        "dir" : "NE_SE"
       } ],
       "owner" : 0,
       "x" : 3,
@@ -590,7 +590,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       } ],
       "owner" : 0,
       "x" : 3,
@@ -604,7 +604,7 @@
         "dir" : "SE"
       }, {
         "type" : "RAIL",
-        "dir" : "N SE S NW"
+        "dir" : "N_SE_S_NW"
       } ],
       "owner" : 0,
       "x" : 3,
@@ -615,10 +615,10 @@
         "dir" : "N"
       }, {
         "type" : "RIVER",
-        "dir" : "NE S NW"
+        "dir" : "NE_S_NW"
       }, {
         "type" : "RAIL",
-        "dir" : "N NE S"
+        "dir" : "N_NE_S"
       } ],
       "owner" : 0,
       "x" : 3,
@@ -629,7 +629,7 @@
         "dir" : "N"
       }, {
         "type" : "RAIL",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 3,
@@ -637,7 +637,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 3,
@@ -645,7 +645,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 3,
@@ -653,10 +653,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE SE"
+        "dir" : "NE_SE"
       }, {
         "type" : "RAIL",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 3,
@@ -664,10 +664,10 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       }, {
         "type" : "RAIL",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 3,
@@ -678,13 +678,13 @@
         "dir" : "SW"
       }, {
         "type" : "RIVER",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       }, {
         "type" : "ROAD",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       }, {
         "type" : "RAIL",
-        "dir" : "N NE S"
+        "dir" : "N_NE_S"
       } ],
       "owner" : 0,
       "x" : 3,
@@ -695,13 +695,13 @@
         "dir" : "C"
       }, {
         "type" : "RIVER",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       }, {
         "type" : "ROAD",
         "dir" : "N"
       }, {
         "type" : "RAIL",
-        "dir" : "N SE S"
+        "dir" : "N_SE_S"
       } ],
       "owner" : 0,
       "vp" : 5,
@@ -713,7 +713,7 @@
         "dir" : "NE"
       }, {
         "type" : "RAIL",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       } ],
       "owner" : 0,
       "x" : 3,
@@ -733,7 +733,7 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       }, {
         "type" : "URBAN",
         "dir" : "SE"
@@ -744,7 +744,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       } ],
       "owner" : 0,
       "x" : 3,
@@ -752,10 +752,10 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N S"
+        "dir" : "N_S"
       }, {
         "type" : "FOREST",
-        "dir" : "SE S"
+        "dir" : "SE_S"
       } ],
       "owner" : 0,
       "x" : 3,
@@ -763,10 +763,10 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       }, {
         "type" : "FOREST",
-        "dir" : "N NE SE"
+        "dir" : "N_NE_SE"
       } ],
       "owner" : 0,
       "x" : 3,
@@ -782,7 +782,7 @@
     }, {
       "terrain" : [ {
         "type" : "SHALLOW_WATER_DECORATOR",
-        "dir" : "N NE S SW NW"
+        "dir" : "N_NE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 4,
@@ -790,7 +790,7 @@
     }, {
       "terrain" : [ {
         "type" : "SHALLOW_WATER_DECORATOR",
-        "dir" : "N SE S SW NW"
+        "dir" : "N_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 4,
@@ -810,10 +810,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE SE S"
+        "dir" : "NE_SE_S"
       }, {
         "type" : "LIGHT_WOODS",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       } ],
       "owner" : 1,
       "x" : 4,
@@ -821,10 +821,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SE"
+        "dir" : "N_NE_SE"
       }, {
         "type" : "LIGHT_WOODS",
-        "dir" : "N SE"
+        "dir" : "N_SE"
       } ],
       "owner" : 0,
       "x" : 4,
@@ -836,7 +836,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SE S SW"
+        "dir" : "SE_S_SW"
       } ],
       "owner" : 0,
       "x" : 4,
@@ -844,7 +844,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE NW"
+        "dir" : "N_NE_NW"
       } ],
       "owner" : 0,
       "x" : 4,
@@ -856,7 +856,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       }, {
         "type" : "LIGHT_WOODS",
         "dir" : "C"
@@ -873,13 +873,13 @@
         "dir" : "C"
       }, {
         "type" : "RIVER",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       }, {
         "type" : "ROAD",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       }, {
         "type" : "RAIL",
-        "dir" : "SE SW NW"
+        "dir" : "SE_SW_NW"
       } ],
       "owner" : 0,
       "vp" : 10,
@@ -894,7 +894,7 @@
         "dir" : "C"
       }, {
         "type" : "ROAD",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 4,
@@ -905,7 +905,7 @@
         "dir" : "N"
       }, {
         "type" : "ROAD",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 4,
@@ -913,7 +913,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 4,
@@ -921,10 +921,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SE S SW"
+        "dir" : "SE_S_SW"
       }, {
         "type" : "ROAD",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 4,
@@ -932,10 +932,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE NW"
+        "dir" : "N_NE_NW"
       }, {
         "type" : "ROAD",
-        "dir" : "N NE S SW"
+        "dir" : "N_NE_S_SW"
       } ],
       "owner" : 0,
       "x" : 4,
@@ -943,13 +943,13 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       }, {
         "type" : "ROAD",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       }, {
         "type" : "RAIL",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 4,
@@ -964,10 +964,10 @@
         "dir" : "SW"
       }, {
         "type" : "RIVER",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       }, {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 4,
@@ -975,7 +975,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 4,
@@ -983,7 +983,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 4,
@@ -994,7 +994,7 @@
         "dir" : "SW"
       }, {
         "type" : "RIVER",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 4,
@@ -1005,7 +1005,7 @@
         "dir" : "NW"
       }, {
         "type" : "RIVER",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       } ],
       "owner" : 0,
       "vp" : 5,
@@ -1018,7 +1018,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "S SW NW"
+        "dir" : "S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 4,
@@ -1026,7 +1026,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N SE NW"
+        "dir" : "N_SE_NW"
       } ],
       "owner" : 0,
       "x" : 4,
@@ -1042,10 +1042,10 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       }, {
         "type" : "SHALLOW_WATER_DECORATOR",
-        "dir" : "N NE SE SW NW"
+        "dir" : "N_NE_SE_SW_NW"
       } ],
       "owner" : 1,
       "x" : 5,
@@ -1053,7 +1053,7 @@
     }, {
       "terrain" : [ {
         "type" : "SHALLOW_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 5,
@@ -1061,7 +1061,7 @@
     }, {
       "terrain" : [ {
         "type" : "SHALLOW_WATER_DECORATOR",
-        "dir" : "SE S SW NW"
+        "dir" : "SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 5,
@@ -1077,7 +1077,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "S SW"
+        "dir" : "S_SW"
       }, {
         "type" : "LIGHT_WOODS",
         "dir" : "SW"
@@ -1088,7 +1088,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N SE S SW NW"
+        "dir" : "N_SE_S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 5,
@@ -1096,10 +1096,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE NW"
+        "dir" : "N_NE_NW"
       }, {
         "type" : "LIGHT_WOODS",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 5,
@@ -1111,7 +1111,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SW NW"
+        "dir" : "SW_NW"
       } ],
       "owner" : 0,
       "x" : 5,
@@ -1123,7 +1123,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 5,
@@ -1134,7 +1134,7 @@
         "dir" : "C"
       }, {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 5,
@@ -1142,7 +1142,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 5,
@@ -1162,10 +1162,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SW NW"
+        "dir" : "SW_NW"
       }, {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 5,
@@ -1173,10 +1173,10 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       }, {
         "type" : "RAIL",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 5,
@@ -1192,7 +1192,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 5,
@@ -1224,7 +1224,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE SE NW"
+        "dir" : "NE_SE_NW"
       } ],
       "owner" : 0,
       "x" : 5,
@@ -1236,10 +1236,10 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       }, {
         "type" : "SHALLOW_WATER_DECORATOR",
-        "dir" : "N NE SE NW"
+        "dir" : "N_NE_SE_NW"
       } ],
       "owner" : 1,
       "x" : 6,
@@ -1247,10 +1247,10 @@
     }, {
       "terrain" : [ {
         "type" : "SHALLOW_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       }, {
         "type" : "SHALLOW_WATER_DECORATOR",
-        "dir" : "N NE SE S SW"
+        "dir" : "N_NE_SE_S_SW"
       } ],
       "owner" : 1,
       "x" : 6,
@@ -1258,7 +1258,7 @@
     }, {
       "terrain" : [ {
         "type" : "SHALLOW_WATER_DECORATOR",
-        "dir" : "NE SE S SW NW"
+        "dir" : "NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 6,
@@ -1278,10 +1278,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE SW NW"
+        "dir" : "NE_SW_NW"
       }, {
         "type" : "LIGHT_WOODS",
-        "dir" : "NE SE SW"
+        "dir" : "NE_SE_SW"
       } ],
       "owner" : 0,
       "x" : 6,
@@ -1301,7 +1301,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 6,
@@ -1309,7 +1309,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 6,
@@ -1321,7 +1321,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 6,
@@ -1337,7 +1337,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 6,
@@ -1345,10 +1345,10 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       }, {
         "type" : "RAIL",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 6,
@@ -1368,7 +1368,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 6,
@@ -1396,7 +1396,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SE S SW"
+        "dir" : "SE_S_SW"
       } ],
       "owner" : 0,
       "x" : 6,
@@ -1404,7 +1404,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SE NW"
+        "dir" : "N_NE_SE_NW"
       } ],
       "owner" : 0,
       "x" : 6,
@@ -1423,10 +1423,10 @@
         "dir" : "C"
       }, {
         "type" : "ROAD",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       }, {
         "type" : "SHALLOW_WATER_DECORATOR",
-        "dir" : "N NE SE S NW"
+        "dir" : "N_NE_SE_S_NW"
       } ],
       "owner" : 1,
       "x" : 7,
@@ -1434,10 +1434,10 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "N S"
+        "dir" : "N_S"
       }, {
         "type" : "SHALLOW_WATER_DECORATOR",
-        "dir" : "N NE SE S SW"
+        "dir" : "N_NE_SE_S_SW"
       } ],
       "owner" : 1,
       "x" : 7,
@@ -1445,7 +1445,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 1,
       "x" : 7,
@@ -1453,7 +1453,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 1,
       "x" : 7,
@@ -1461,7 +1461,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 7,
@@ -1472,10 +1472,10 @@
         "dir" : "SW"
       }, {
         "type" : "LIGHT_WOODS",
-        "dir" : "S SW"
+        "dir" : "S_SW"
       }, {
         "type" : "ROAD",
-        "dir" : "N SE"
+        "dir" : "N_SE"
       } ],
       "owner" : 0,
       "x" : 7,
@@ -1483,7 +1483,7 @@
     }, {
       "terrain" : [ {
         "type" : "LIGHT_WOODS",
-        "dir" : "N NW"
+        "dir" : "N_NW"
       } ],
       "owner" : 0,
       "x" : 7,
@@ -1511,7 +1511,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 7,
@@ -1519,7 +1519,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 7,
@@ -1531,7 +1531,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 7,
@@ -1543,10 +1543,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SE S"
+        "dir" : "SE_S"
       }, {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 7,
@@ -1554,13 +1554,13 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE"
+        "dir" : "N_NE"
       }, {
         "type" : "LIGHT_WOODS",
         "dir" : "C"
       }, {
         "type" : "RAIL",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 7,
@@ -1568,7 +1568,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 7,
@@ -1588,7 +1588,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 7,
@@ -1616,7 +1616,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SE S SW NW"
+        "dir" : "SE_S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 7,
@@ -1624,7 +1624,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SE S NW"
+        "dir" : "N_NE_SE_S_NW"
       } ],
       "owner" : 0,
       "x" : 7,
@@ -1632,10 +1632,10 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N S"
+        "dir" : "N_S"
       }, {
         "type" : "FOREST",
-        "dir" : "NE SE"
+        "dir" : "NE_SE"
       } ],
       "owner" : 1,
       "x" : 8,
@@ -1643,7 +1643,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N SE"
+        "dir" : "N_SE"
       } ],
       "owner" : 1,
       "x" : 8,
@@ -1655,7 +1655,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       } ],
       "owner" : 1,
       "x" : 8,
@@ -1663,7 +1663,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 8,
@@ -1671,7 +1671,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       } ],
       "owner" : 0,
       "x" : 8,
@@ -1679,10 +1679,10 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       }, {
         "type" : "SHALLOW_WATER_DECORATOR",
-        "dir" : "N NE S SW NW"
+        "dir" : "N_NE_S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 8,
@@ -1690,7 +1690,7 @@
     }, {
       "terrain" : [ {
         "type" : "SHALLOW_WATER_DECORATOR",
-        "dir" : "N SE S SW NW"
+        "dir" : "N_SE_S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 8,
@@ -1706,7 +1706,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE SE"
+        "dir" : "NE_SE"
       } ],
       "owner" : 0,
       "x" : 8,
@@ -1714,7 +1714,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 8,
@@ -1722,7 +1722,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE SE NW"
+        "dir" : "NE_SE_NW"
       } ],
       "owner" : 0,
       "x" : 8,
@@ -1730,7 +1730,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 8,
@@ -1742,7 +1742,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 8,
@@ -1750,7 +1750,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 8,
@@ -1758,10 +1758,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SW NW"
+        "dir" : "SW_NW"
       }, {
         "type" : "RAIL",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 8,
@@ -1769,7 +1769,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 8,
@@ -1793,7 +1793,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 8,
@@ -1821,7 +1821,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SE S SW NW"
+        "dir" : "SE_S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 8,
@@ -1829,10 +1829,10 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       }, {
         "type" : "FOREST",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 8,
@@ -1840,7 +1840,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE S SW NW"
+        "dir" : "N_NE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 9,
@@ -1848,7 +1848,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N SE NW"
+        "dir" : "N_SE_NW"
       } ],
       "owner" : 1,
       "x" : 9,
@@ -1856,7 +1856,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       } ],
       "owner" : 1,
       "x" : 9,
@@ -1864,7 +1864,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       } ],
       "owner" : 1,
       "x" : 9,
@@ -1883,10 +1883,10 @@
         "dir" : "SE"
       }, {
         "type" : "ROAD",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       }, {
         "type" : "SHALLOW_WATER_DECORATOR",
-        "dir" : "N NE SE SW NW"
+        "dir" : "N_NE_SE_SW_NW"
       } ],
       "owner" : 0,
       "x" : 9,
@@ -1894,7 +1894,7 @@
     }, {
       "terrain" : [ {
         "type" : "SHALLOW_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       }, {
         "type" : "RIVER",
         "dir" : "S"
@@ -1905,10 +1905,10 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N SE"
+        "dir" : "N_SE"
       }, {
         "type" : "SHALLOW_WATER_DECORATOR",
-        "dir" : "NE SE S SW NW"
+        "dir" : "NE_SE_S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 9,
@@ -1916,7 +1916,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 9,
@@ -1924,7 +1924,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE S NW"
+        "dir" : "NE_S_NW"
       }, {
         "type" : "LIGHT_WOODS",
         "dir" : "NE"
@@ -1935,13 +1935,13 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       }, {
         "type" : "FOREST",
-        "dir" : "NE SE S NW"
+        "dir" : "NE_SE_S_NW"
       }, {
         "type" : "ROAD",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       } ],
       "owner" : 0,
       "x" : 9,
@@ -1949,13 +1949,13 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       }, {
         "type" : "FOREST",
-        "dir" : "N NE"
+        "dir" : "N_NE"
       }, {
         "type" : "ROAD",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       } ],
       "owner" : 0,
       "x" : 9,
@@ -1978,7 +1978,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 9,
@@ -1986,10 +1986,10 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       }, {
         "type" : "RAIL",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 9,
@@ -1997,7 +1997,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 9,
@@ -2025,7 +2025,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       } ],
       "owner" : 0,
       "x" : 9,
@@ -2033,7 +2033,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "N SE"
+        "dir" : "N_SE"
       } ],
       "owner" : 0,
       "x" : 9,
@@ -2053,7 +2053,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       } ],
       "owner" : 0,
       "x" : 9,
@@ -2061,10 +2061,10 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       }, {
         "type" : "FOREST",
-        "dir" : "NE S SW NW"
+        "dir" : "NE_S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 9,
@@ -2099,10 +2099,10 @@
         "dir" : "NW"
       }, {
         "type" : "ROAD",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       }, {
         "type" : "SHALLOW_WATER_DECORATOR",
-        "dir" : "N NE SE S NW"
+        "dir" : "N_NE_SE_S_NW"
       } ],
       "owner" : 0,
       "x" : 10,
@@ -2110,7 +2110,7 @@
     }, {
       "terrain" : [ {
         "type" : "SHALLOW_WATER_DECORATOR",
-        "dir" : "N NE SE S SW"
+        "dir" : "N_NE_SE_S_SW"
       } ],
       "owner" : 0,
       "x" : 10,
@@ -2118,7 +2118,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SW NW"
+        "dir" : "SW_NW"
       } ],
       "owner" : 0,
       "x" : 10,
@@ -2126,10 +2126,10 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       }, {
         "type" : "LIGHT_WOODS",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 10,
@@ -2137,10 +2137,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SE S SW"
+        "dir" : "SE_S_SW"
       }, {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 10,
@@ -2148,7 +2148,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SW NW"
+        "dir" : "N_NE_SW_NW"
       } ],
       "owner" : 0,
       "x" : 10,
@@ -2156,7 +2156,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 10,
@@ -2168,7 +2168,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 10,
@@ -2182,10 +2182,10 @@
         "dir" : "SE"
       }, {
         "type" : "ROAD",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       }, {
         "type" : "RAIL",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 10,
@@ -2193,7 +2193,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 10,
@@ -2236,7 +2236,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 10,
@@ -2252,7 +2252,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 10,
@@ -2260,7 +2260,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 10,
@@ -2276,7 +2276,7 @@
     }, {
       "terrain" : [ {
         "type" : "SHALLOW_WATER_DECORATOR",
-        "dir" : "N NE S SW NW"
+        "dir" : "N_NE_S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 11,
@@ -2284,7 +2284,7 @@
     }, {
       "terrain" : [ {
         "type" : "SHALLOW_WATER_DECORATOR",
-        "dir" : "N SE S SW NW"
+        "dir" : "N_SE_S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 11,
@@ -2308,7 +2308,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 11,
@@ -2324,10 +2324,10 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       }, {
         "type" : "LIGHT_WOODS",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       } ],
       "owner" : 0,
       "x" : 11,
@@ -2335,7 +2335,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 11,
@@ -2343,7 +2343,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SW NW"
+        "dir" : "SW_NW"
       } ],
       "owner" : 0,
       "x" : 11,
@@ -2351,7 +2351,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 11,
@@ -2367,7 +2367,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 11,
@@ -2381,10 +2381,10 @@
         "dir" : "NW"
       }, {
         "type" : "ROAD",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       }, {
         "type" : "RAIL",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 11,
@@ -2392,7 +2392,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 11,
@@ -2432,7 +2432,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "NE SE NW"
+        "dir" : "NE_SE_NW"
       } ],
       "owner" : 0,
       "x" : 11,
@@ -2444,7 +2444,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 11,
@@ -2452,7 +2452,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE SE SW"
+        "dir" : "NE_SE_SW"
       } ],
       "owner" : 0,
       "x" : 11,
@@ -2464,7 +2464,7 @@
     }, {
       "terrain" : [ {
         "type" : "SHALLOW_WATER_DECORATOR",
-        "dir" : "N NE SW NW"
+        "dir" : "N_NE_SW_NW"
       } ],
       "owner" : 0,
       "x" : 12,
@@ -2472,10 +2472,10 @@
     }, {
       "terrain" : [ {
         "type" : "SHALLOW_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       }, {
         "type" : "SHALLOW_WATER_DECORATOR",
-        "dir" : "N S SW NW"
+        "dir" : "N_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 12,
@@ -2483,7 +2483,7 @@
     }, {
       "terrain" : [ {
         "type" : "SHALLOW_WATER_DECORATOR",
-        "dir" : "SE S SW NW"
+        "dir" : "SE_S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 12,
@@ -2507,7 +2507,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 12,
@@ -2515,7 +2515,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 12,
@@ -2523,7 +2523,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 12,
@@ -2539,7 +2539,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 12,
@@ -2555,7 +2555,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 12,
@@ -2563,10 +2563,10 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       }, {
         "type" : "RAIL",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 12,
@@ -2578,7 +2578,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 12,
@@ -2610,7 +2610,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 12,
@@ -2618,7 +2618,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       } ],
       "owner" : 0,
       "x" : 12,
@@ -2629,10 +2629,10 @@
         "dir" : "SE"
       }, {
         "type" : "RIVER",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       }, {
         "type" : "RAIL",
-        "dir" : "N SE"
+        "dir" : "N_SE"
       } ],
       "owner" : 0,
       "x" : 12,
@@ -2640,7 +2640,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SE S SW"
+        "dir" : "SE_S_SW"
       } ],
       "owner" : 0,
       "x" : 12,
@@ -2648,7 +2648,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SE NW"
+        "dir" : "N_NE_SE_NW"
       } ],
       "owner" : 0,
       "x" : 12,
@@ -2660,7 +2660,7 @@
     }, {
       "terrain" : [ {
         "type" : "SHALLOW_WATER_DECORATOR",
-        "dir" : "N NE SE SW NW"
+        "dir" : "N_NE_SE_SW_NW"
       } ],
       "owner" : 0,
       "x" : 13,
@@ -2668,7 +2668,7 @@
     }, {
       "terrain" : [ {
         "type" : "SHALLOW_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       }, {
         "type" : "RIVER",
         "dir" : "NE"
@@ -2679,7 +2679,7 @@
     }, {
       "terrain" : [ {
         "type" : "SHALLOW_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 13,
@@ -2687,7 +2687,7 @@
     }, {
       "terrain" : [ {
         "type" : "SHALLOW_WATER_DECORATOR",
-        "dir" : "NE SE S SW NW"
+        "dir" : "NE_SE_S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 13,
@@ -2714,7 +2714,7 @@
         "dir" : "SE"
       }, {
         "type" : "ROAD",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 13,
@@ -2722,7 +2722,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 13,
@@ -2730,7 +2730,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 13,
@@ -2742,10 +2742,10 @@
     }, {
       "terrain" : [ {
         "type" : "MARSH",
-        "dir" : "NE SE"
+        "dir" : "NE_SE"
       }, {
         "type" : "RIVER",
-        "dir" : "NE SE NW"
+        "dir" : "NE_SE_NW"
       } ],
       "owner" : 0,
       "x" : 13,
@@ -2761,7 +2761,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 13,
@@ -2769,10 +2769,10 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       }, {
         "type" : "RAIL",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 13,
@@ -2784,7 +2784,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 13,
@@ -2796,7 +2796,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE SE"
+        "dir" : "NE_SE"
       } ],
       "owner" : 0,
       "x" : 13,
@@ -2804,7 +2804,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       } ],
       "owner" : 0,
       "x" : 13,
@@ -2812,7 +2812,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 13,
@@ -2820,7 +2820,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N SE"
+        "dir" : "N_SE"
       } ],
       "owner" : 0,
       "x" : 13,
@@ -2835,7 +2835,7 @@
         "dir" : "NE"
       }, {
         "type" : "RAIL",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 13,
@@ -2847,16 +2847,16 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       }, {
         "type" : "URBAN",
         "dir" : "S"
       }, {
         "type" : "RIVER",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       }, {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 13,
@@ -2864,7 +2864,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SE S SW NW"
+        "dir" : "SE_S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 13,
@@ -2872,7 +2872,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE S NW"
+        "dir" : "N_NE_S_NW"
       } ],
       "owner" : 0,
       "x" : 13,
@@ -2880,13 +2880,13 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       }, {
         "type" : "FOREST",
-        "dir" : "N NE SE"
+        "dir" : "N_NE_SE"
       }, {
         "type" : "SHALLOW_WATER_DECORATOR",
-        "dir" : "N NE SE S NW"
+        "dir" : "N_NE_SE_S_NW"
       } ],
       "owner" : 0,
       "x" : 14,
@@ -2894,7 +2894,7 @@
     }, {
       "terrain" : [ {
         "type" : "SHALLOW_WATER_DECORATOR",
-        "dir" : "N NE SE S"
+        "dir" : "N_NE_SE_S"
       } ],
       "owner" : 0,
       "x" : 14,
@@ -2902,7 +2902,7 @@
     }, {
       "terrain" : [ {
         "type" : "SHALLOW_WATER_DECORATOR",
-        "dir" : "N NE SE S SW"
+        "dir" : "N_NE_SE_S_SW"
       } ],
       "owner" : 0,
       "x" : 14,
@@ -2922,7 +2922,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       } ],
       "owner" : 0,
       "x" : 14,
@@ -2930,7 +2930,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 14,
@@ -2941,10 +2941,10 @@
         "dir" : "NW"
       }, {
         "type" : "RIVER",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       }, {
         "type" : "ROAD",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       } ],
       "owner" : 0,
       "x" : 14,
@@ -2952,7 +2952,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       } ],
       "owner" : 0,
       "x" : 14,
@@ -2964,10 +2964,10 @@
     }, {
       "terrain" : [ {
         "type" : "MARSH",
-        "dir" : "S SW"
+        "dir" : "S_SW"
       }, {
         "type" : "RIVER",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 14,
@@ -2975,10 +2975,10 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "NE SE"
+        "dir" : "NE_SE"
       }, {
         "type" : "RIVER",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       }, {
         "type" : "ROAD",
         "dir" : "NE"
@@ -2997,7 +2997,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 14,
@@ -3005,10 +3005,10 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       }, {
         "type" : "RAIL",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 14,
@@ -3020,7 +3020,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 14,
@@ -3040,7 +3040,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SW NW"
+        "dir" : "SW_NW"
       } ],
       "owner" : 0,
       "x" : 14,
@@ -3056,7 +3056,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 14,
@@ -3064,13 +3064,13 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       }, {
         "type" : "URBAN",
         "dir" : "C"
       }, {
         "type" : "RAIL",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 14,
@@ -3082,7 +3082,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 14,
@@ -3093,7 +3093,7 @@
         "dir" : "NW"
       }, {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 14,
@@ -3101,7 +3101,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SW NW"
+        "dir" : "SW_NW"
       } ],
       "owner" : 0,
       "x" : 14,
@@ -3113,7 +3113,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 15,
@@ -3121,10 +3121,10 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE S NW"
+        "dir" : "SE_S_NW"
       }, {
         "type" : "FOREST",
-        "dir" : "N NE NW"
+        "dir" : "N_NE_NW"
       } ],
       "owner" : 0,
       "x" : 15,
@@ -3132,7 +3132,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N SE"
+        "dir" : "N_SE"
       } ],
       "owner" : 0,
       "x" : 15,
@@ -3148,7 +3148,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 15,
@@ -3156,7 +3156,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       }, {
         "type" : "FOREST",
         "dir" : "N"
@@ -3194,10 +3194,10 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "S SW"
+        "dir" : "S_SW"
       }, {
         "type" : "ROAD",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 15,
@@ -3205,7 +3205,7 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "N NW"
+        "dir" : "N_NW"
       } ],
       "owner" : 0,
       "x" : 15,
@@ -3213,7 +3213,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 15,
@@ -3221,10 +3221,10 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       }, {
         "type" : "RAIL",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 15,
@@ -3232,7 +3232,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       } ],
       "owner" : 0,
       "x" : 15,
@@ -3240,7 +3240,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       } ],
       "owner" : 0,
       "x" : 15,
@@ -3272,7 +3272,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE S NW"
+        "dir" : "NE_S_NW"
       } ],
       "owner" : 0,
       "x" : 15,
@@ -3280,13 +3280,13 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "NE S NW"
+        "dir" : "NE_S_NW"
       }, {
         "type" : "RIVER",
-        "dir" : "N S"
+        "dir" : "N_S"
       }, {
         "type" : "RAIL",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 15,
@@ -3297,7 +3297,7 @@
         "dir" : "N"
       }, {
         "type" : "RIVER",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       } ],
       "owner" : 0,
       "x" : 15,
@@ -3309,7 +3309,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 15,
@@ -3321,10 +3321,10 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N S"
+        "dir" : "N_S"
       }, {
         "type" : "FOREST",
-        "dir" : "N NE SE SW NW"
+        "dir" : "N_NE_SE_SW_NW"
       } ],
       "owner" : 0,
       "x" : 16,
@@ -3332,7 +3332,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N NE NW"
+        "dir" : "N_NE_NW"
       } ],
       "owner" : 0,
       "x" : 16,
@@ -3340,7 +3340,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       } ],
       "owner" : 0,
       "x" : 16,
@@ -3348,10 +3348,10 @@
     }, {
       "terrain" : [ {
         "type" : "MARSH",
-        "dir" : "SE S"
+        "dir" : "SE_S"
       }, {
         "type" : "RIVER",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 16,
@@ -3359,10 +3359,10 @@
     }, {
       "terrain" : [ {
         "type" : "MARSH",
-        "dir" : "N NE"
+        "dir" : "N_NE"
       }, {
         "type" : "RIVER",
-        "dir" : "N NE S"
+        "dir" : "N_NE_S"
       } ],
       "owner" : 0,
       "x" : 16,
@@ -3370,7 +3370,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 16,
@@ -3378,7 +3378,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N NW"
+        "dir" : "N_NW"
       } ],
       "owner" : 0,
       "x" : 16,
@@ -3398,7 +3398,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE SE SW"
+        "dir" : "NE_SE_SW"
       } ],
       "owner" : 0,
       "x" : 16,
@@ -3410,7 +3410,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 16,
@@ -3422,10 +3422,10 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       }, {
         "type" : "RAIL",
-        "dir" : "SE SW NW"
+        "dir" : "SE_SW_NW"
       } ],
       "owner" : 0,
       "x" : 16,
@@ -3433,7 +3433,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 16,
@@ -3465,7 +3465,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       } ],
       "owner" : 0,
       "x" : 16,
@@ -3473,7 +3473,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       } ],
       "owner" : 0,
       "x" : 16,
@@ -3484,7 +3484,7 @@
         "dir" : "SW"
       }, {
         "type" : "RAIL",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 16,
@@ -3504,7 +3504,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 16,
@@ -3516,7 +3516,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 17,
@@ -3524,10 +3524,10 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       }, {
         "type" : "FOREST",
-        "dir" : "N NE NW"
+        "dir" : "N_NE_NW"
       } ],
       "owner" : 0,
       "x" : 17,
@@ -3543,10 +3543,10 @@
     }, {
       "terrain" : [ {
         "type" : "MARSH",
-        "dir" : "SW NW"
+        "dir" : "SW_NW"
       }, {
         "type" : "RIVER",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 17,
@@ -3554,7 +3554,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE SE"
+        "dir" : "NE_SE"
       } ],
       "owner" : 0,
       "x" : 17,
@@ -3566,7 +3566,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE SE"
+        "dir" : "NE_SE"
       } ],
       "owner" : 0,
       "x" : 17,
@@ -3582,7 +3582,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE S SW"
+        "dir" : "NE_S_SW"
       } ],
       "owner" : 0,
       "x" : 17,
@@ -3590,7 +3590,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NW"
+        "dir" : "N_NW"
       } ],
       "owner" : 0,
       "x" : 17,
@@ -3602,7 +3602,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 17,
@@ -3610,7 +3610,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 17,
@@ -3618,10 +3618,10 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       }, {
         "type" : "RAIL",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 17,
@@ -3653,7 +3653,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 17,
@@ -3669,7 +3669,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 17,
@@ -3689,7 +3689,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       } ],
       "owner" : 0,
       "x" : 17,
@@ -3697,7 +3697,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SW NW"
+        "dir" : "N_NE_SW_NW"
       } ],
       "owner" : 0,
       "x" : 18,
@@ -3705,7 +3705,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 18,
@@ -3717,7 +3717,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 18,
@@ -3725,7 +3725,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE SE S SW"
+        "dir" : "NE_SE_S_SW"
       } ],
       "owner" : 0,
       "x" : 18,
@@ -3733,7 +3733,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE S NW"
+        "dir" : "N_NE_S_NW"
       } ],
       "owner" : 0,
       "x" : 18,
@@ -3741,7 +3741,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N SE S SW"
+        "dir" : "N_SE_S_SW"
       } ],
       "owner" : 0,
       "x" : 18,
@@ -3749,7 +3749,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE NW"
+        "dir" : "N_NE_NW"
       } ],
       "owner" : 0,
       "x" : 18,
@@ -3761,7 +3761,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 18,
@@ -3781,7 +3781,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "SE SW NW"
+        "dir" : "SE_SW_NW"
       } ],
       "owner" : 0,
       "x" : 18,
@@ -3789,10 +3789,10 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       }, {
         "type" : "RAIL",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 18,
@@ -3824,7 +3824,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 18,
@@ -3840,7 +3840,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 18,
@@ -3860,7 +3860,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE S"
+        "dir" : "SE_S"
       } ],
       "owner" : 0,
       "x" : 18,
@@ -3868,7 +3868,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 18,
@@ -3876,7 +3876,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SE SW NW"
+        "dir" : "N_NE_SE_SW_NW"
       } ],
       "owner" : 0,
       "x" : 19,
@@ -3884,7 +3884,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 19,
@@ -3896,7 +3896,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 19,
@@ -3904,7 +3904,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE S SW"
+        "dir" : "NE_S_SW"
       } ],
       "owner" : 0,
       "x" : 19,
@@ -3912,7 +3912,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N SW NW"
+        "dir" : "N_SW_NW"
       } ],
       "owner" : 0,
       "x" : 19,
@@ -3924,7 +3924,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SW NW"
+        "dir" : "SW_NW"
       } ],
       "owner" : 0,
       "x" : 19,
@@ -3940,7 +3940,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 19,
@@ -3960,7 +3960,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "NE SE NW"
+        "dir" : "NE_SE_NW"
       } ],
       "owner" : 0,
       "x" : 19,
@@ -3968,10 +3968,10 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       }, {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 19,
@@ -3999,7 +3999,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 19,
@@ -4019,7 +4019,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 19,
@@ -4039,7 +4039,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 19,
@@ -4047,7 +4047,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NW"
+        "dir" : "N_NW"
       } ],
       "owner" : 0,
       "x" : 20,
@@ -4055,7 +4055,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 20,
@@ -4063,7 +4063,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 20,
@@ -4071,7 +4071,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 20,
@@ -4095,7 +4095,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE SE S"
+        "dir" : "NE_SE_S"
       } ],
       "owner" : 0,
       "x" : 20,
@@ -4103,7 +4103,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SW"
+        "dir" : "N_NE_SW"
       } ],
       "owner" : 0,
       "x" : 20,
@@ -4123,7 +4123,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "NE S SW"
+        "dir" : "NE_S_SW"
       } ],
       "owner" : 0,
       "x" : 20,
@@ -4131,7 +4131,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "N SE NW"
+        "dir" : "N_SE_NW"
       } ],
       "owner" : 0,
       "x" : 20,
@@ -4139,13 +4139,13 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       }, {
         "type" : "RIVER",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       }, {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 20,
@@ -4172,7 +4172,7 @@
         "dir" : "S"
       }, {
         "type" : "LIGHT_WOODS",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 20,
@@ -4180,10 +4180,10 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       }, {
         "type" : "LIGHT_WOODS",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 20,
@@ -4211,7 +4211,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 20,
@@ -4227,7 +4227,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 20,
@@ -4243,7 +4243,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 21,
@@ -4251,7 +4251,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       }, {
         "type" : "FOREST",
         "dir" : "NE"
@@ -4266,7 +4266,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE SE S NW"
+        "dir" : "NE_SE_S_NW"
       } ],
       "owner" : 0,
       "x" : 21,
@@ -4274,7 +4274,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE S"
+        "dir" : "N_NE_S"
       } ],
       "owner" : 0,
       "x" : 21,
@@ -4282,7 +4282,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 21,
@@ -4290,7 +4290,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N SE S"
+        "dir" : "N_SE_S"
       } ],
       "owner" : 0,
       "x" : 21,
@@ -4298,7 +4298,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SE S SW"
+        "dir" : "N_NE_SE_S_SW"
       } ],
       "owner" : 0,
       "x" : 21,
@@ -4306,7 +4306,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SW NW"
+        "dir" : "N_NE_SW_NW"
       } ],
       "owner" : 0,
       "x" : 21,
@@ -4326,7 +4326,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 21,
@@ -4341,7 +4341,7 @@
         "dir" : "SW"
       }, {
         "type" : "ROAD",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       } ],
       "owner" : 0,
       "x" : 21,
@@ -4349,16 +4349,16 @@
     }, {
       "terrain" : [ {
         "type" : "DENSE_URBAN",
-        "dir" : "N S"
+        "dir" : "N_S"
       }, {
         "type" : "RIVER",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       }, {
         "type" : "ROAD",
-        "dir" : "N S"
+        "dir" : "N_S"
       }, {
         "type" : "RAIL",
-        "dir" : "SE S NW"
+        "dir" : "SE_S_NW"
       } ],
       "owner" : 0,
       "vp" : 10,
@@ -4370,10 +4370,10 @@
         "dir" : "N"
       }, {
         "type" : "ROAD",
-        "dir" : "N S"
+        "dir" : "N_S"
       }, {
         "type" : "RAIL",
-        "dir" : "N NE SE"
+        "dir" : "N_NE_SE"
       } ],
       "owner" : 0,
       "vp" : 10,
@@ -4385,7 +4385,7 @@
         "dir" : "NE"
       }, {
         "type" : "ROAD",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 21,
@@ -4393,7 +4393,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "N SE"
+        "dir" : "N_SE"
       } ],
       "owner" : 0,
       "x" : 21,
@@ -4425,7 +4425,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 21,
@@ -4433,7 +4433,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       } ],
       "owner" : 0,
       "x" : 21,
@@ -4441,7 +4441,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 21,
@@ -4449,7 +4449,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N NW"
+        "dir" : "N_NW"
       } ],
       "owner" : 0,
       "x" : 21,
@@ -4457,7 +4457,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 22,
@@ -4465,7 +4465,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 22,
@@ -4473,7 +4473,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 22,
@@ -4481,7 +4481,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SE S SW"
+        "dir" : "SE_S_SW"
       } ],
       "owner" : 0,
       "x" : 22,
@@ -4489,7 +4489,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SW NW"
+        "dir" : "N_NE_SW_NW"
       } ],
       "owner" : 0,
       "x" : 22,
@@ -4505,7 +4505,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SE S SW NW"
+        "dir" : "SE_S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 22,
@@ -4513,7 +4513,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SW NW"
+        "dir" : "N_NE_SW_NW"
       } ],
       "owner" : 0,
       "x" : 22,
@@ -4537,7 +4537,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 22,
@@ -4553,13 +4553,13 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "SE S"
+        "dir" : "SE_S"
       }, {
         "type" : "RIVER",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       }, {
         "type" : "RAIL",
-        "dir" : "NE SE SW NW"
+        "dir" : "NE_SE_SW_NW"
       } ],
       "owner" : 0,
       "x" : 22,
@@ -4567,13 +4567,13 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "N NE SW"
+        "dir" : "N_NE_SW"
       }, {
         "type" : "RIVER",
-        "dir" : "N SE"
+        "dir" : "N_SE"
       }, {
         "type" : "RAIL",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       } ],
       "owner" : 0,
       "x" : 22,
@@ -4581,7 +4581,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "N SE"
+        "dir" : "N_SE"
       } ],
       "owner" : 0,
       "x" : 22,
@@ -4589,7 +4589,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 22,
@@ -4617,7 +4617,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 22,
@@ -4625,7 +4625,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 22,
@@ -4649,7 +4649,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 23,
@@ -4657,7 +4657,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE SE NW"
+        "dir" : "NE_SE_NW"
       } ],
       "owner" : 0,
       "x" : 23,
@@ -4665,7 +4665,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 23,
@@ -4673,7 +4673,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SW NW"
+        "dir" : "SW_NW"
       } ],
       "owner" : 0,
       "x" : 23,
@@ -4693,7 +4693,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SW NW"
+        "dir" : "SW_NW"
       } ],
       "owner" : 0,
       "x" : 23,
@@ -4717,7 +4717,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 23,
@@ -4733,7 +4733,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "NE S SW"
+        "dir" : "NE_S_SW"
       } ],
       "owner" : 0,
       "x" : 23,
@@ -4741,10 +4741,10 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "SW NW"
+        "dir" : "SW_NW"
       }, {
         "type" : "RAIL",
-        "dir" : "N SE NW"
+        "dir" : "N_SE_NW"
       } ],
       "owner" : 0,
       "x" : 23,
@@ -4752,7 +4752,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 23,
@@ -4760,7 +4760,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 23,
@@ -4768,7 +4768,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       } ],
       "owner" : 0,
       "x" : 23,
@@ -4776,7 +4776,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 23,
@@ -4787,7 +4787,7 @@
         "dir" : "SE"
       }, {
         "type" : "ROAD",
-        "dir" : "N SE"
+        "dir" : "N_SE"
       } ],
       "owner" : 0,
       "x" : 23,
@@ -4803,7 +4803,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SE S"
+        "dir" : "SE_S"
       } ],
       "owner" : 0,
       "x" : 23,
@@ -4811,10 +4811,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SE"
+        "dir" : "N_NE_SE"
       }, {
         "type" : "RAIL",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 23,
@@ -4822,7 +4822,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 23,
@@ -4838,7 +4838,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 24,
@@ -4846,7 +4846,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SE S SW"
+        "dir" : "SE_S_SW"
       } ],
       "owner" : 0,
       "x" : 24,
@@ -4854,7 +4854,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE NW"
+        "dir" : "N_NE_NW"
       } ],
       "owner" : 0,
       "x" : 24,
@@ -4862,7 +4862,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 24,
@@ -4910,7 +4910,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 24,
@@ -4922,7 +4922,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 24,
@@ -4937,10 +4937,10 @@
         "dir" : "C"
       }, {
         "type" : "RIVER",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       }, {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 24,
@@ -4952,7 +4952,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       } ],
       "owner" : 0,
       "x" : 24,
@@ -4960,7 +4960,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 24,
@@ -4968,7 +4968,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 24,
@@ -4976,13 +4976,13 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       }, {
         "type" : "ROAD",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       }, {
         "type" : "RAIL",
-        "dir" : "N SE"
+        "dir" : "N_SE"
       } ],
       "owner" : 0,
       "x" : 24,
@@ -4990,10 +4990,10 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "N SE"
+        "dir" : "N_SE"
       }, {
         "type" : "ROAD",
-        "dir" : "N SE"
+        "dir" : "N_SE"
       } ],
       "owner" : 0,
       "x" : 24,
@@ -5005,10 +5005,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SE S SW NW"
+        "dir" : "SE_S_SW_NW"
       }, {
         "type" : "RAIL",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 24,
@@ -5016,7 +5016,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE NW"
+        "dir" : "N_NE_NW"
       } ],
       "owner" : 0,
       "x" : 24,
@@ -5024,7 +5024,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE SE NW"
+        "dir" : "NE_SE_NW"
       } ],
       "owner" : 0,
       "x" : 24,
@@ -5044,7 +5044,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 25,
@@ -5052,7 +5052,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE SW NW"
+        "dir" : "NE_SW_NW"
       } ],
       "owner" : 0,
       "x" : 25,
@@ -5060,7 +5060,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 25,
@@ -5100,7 +5100,7 @@
     }, {
       "terrain" : [ {
         "type" : "LIGHT_WOODS",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       } ],
       "owner" : 0,
       "x" : 25,
@@ -5116,7 +5116,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 25,
@@ -5128,7 +5128,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 25,
@@ -5140,7 +5140,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 25,
@@ -5148,7 +5148,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 25,
@@ -5172,7 +5172,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       } ],
       "owner" : 0,
       "x" : 25,
@@ -5180,13 +5180,13 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       }, {
         "type" : "ROAD",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       }, {
         "type" : "RAIL",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 25,
@@ -5194,13 +5194,13 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "N SE"
+        "dir" : "N_SE"
       }, {
         "type" : "ROAD",
-        "dir" : "N SE"
+        "dir" : "N_SE"
       }, {
         "type" : "RAIL",
-        "dir" : "N SE"
+        "dir" : "N_SE"
       } ],
       "owner" : 0,
       "x" : 25,
@@ -5208,10 +5208,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE SW NW"
+        "dir" : "NE_SW_NW"
       }, {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 25,
@@ -5222,7 +5222,7 @@
         "dir" : "SE"
       }, {
         "type" : "RIVER",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 25,
@@ -5230,7 +5230,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       }, {
         "type" : "FOREST",
         "dir" : "SE"
@@ -5241,7 +5241,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       } ],
       "owner" : 0,
       "x" : 25,
@@ -5249,7 +5249,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       } ],
       "owner" : 0,
       "x" : 26,
@@ -5257,7 +5257,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE SE SW"
+        "dir" : "NE_SE_SW"
       } ],
       "owner" : 0,
       "x" : 26,
@@ -5265,7 +5265,7 @@
     }, {
       "terrain" : [ {
         "type" : "MARSH",
-        "dir" : "SE S"
+        "dir" : "SE_S"
       } ],
       "owner" : 0,
       "x" : 26,
@@ -5276,7 +5276,7 @@
         "dir" : "N"
       }, {
         "type" : "RIVER",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 26,
@@ -5284,7 +5284,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 26,
@@ -5324,10 +5324,10 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "NE SE"
+        "dir" : "NE_SE"
       }, {
         "type" : "ROAD",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 26,
@@ -5335,7 +5335,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 26,
@@ -5343,7 +5343,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       } ],
       "owner" : 0,
       "x" : 26,
@@ -5351,7 +5351,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N SE SW"
+        "dir" : "N_SE_SW"
       } ],
       "owner" : 0,
       "x" : 26,
@@ -5363,7 +5363,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 26,
@@ -5399,7 +5399,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 26,
@@ -5410,7 +5410,7 @@
         "dir" : "NW"
       }, {
         "type" : "RIVER",
-        "dir" : "N S"
+        "dir" : "N_S"
       }, {
         "type" : "FOREST",
         "dir" : "SW"
@@ -5419,10 +5419,10 @@
         "dir" : "C"
       }, {
         "type" : "ROAD",
-        "dir" : "SE S NW"
+        "dir" : "SE_S_NW"
       }, {
         "type" : "RAIL",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       } ],
       "owner" : 0,
       "x" : 26,
@@ -5433,13 +5433,13 @@
         "dir" : "C"
       }, {
         "type" : "RIVER",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       }, {
         "type" : "ROAD",
-        "dir" : "N NE"
+        "dir" : "N_NE"
       }, {
         "type" : "RAIL",
-        "dir" : "N S NW"
+        "dir" : "N_S_NW"
       } ],
       "owner" : 0,
       "vp" : 10,
@@ -5451,7 +5451,7 @@
         "dir" : "NW"
       }, {
         "type" : "RAIL",
-        "dir" : "N SE"
+        "dir" : "N_SE"
       } ],
       "owner" : 0,
       "x" : 26,
@@ -5459,13 +5459,13 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SW NW"
+        "dir" : "SW_NW"
       }, {
         "type" : "FOREST",
-        "dir" : "NE SE NW"
+        "dir" : "NE_SE_NW"
       }, {
         "type" : "LIGHT_WOODS",
-        "dir" : "SE S"
+        "dir" : "SE_S"
       } ],
       "owner" : 0,
       "x" : 26,
@@ -5473,7 +5473,7 @@
     }, {
       "terrain" : [ {
         "type" : "LIGHT_WOODS",
-        "dir" : "N NE SE S SW"
+        "dir" : "N_NE_SE_S_SW"
       } ],
       "owner" : 0,
       "x" : 26,
@@ -5481,7 +5481,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SE S NW"
+        "dir" : "N_NE_SE_S_NW"
       } ],
       "owner" : 0,
       "x" : 27,
@@ -5489,7 +5489,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SE S SW"
+        "dir" : "N_NE_SE_S_SW"
       } ],
       "owner" : 0,
       "x" : 27,
@@ -5497,7 +5497,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE S NW"
+        "dir" : "N_NE_S_NW"
       } ],
       "owner" : 0,
       "x" : 27,
@@ -5513,7 +5513,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 27,
@@ -5521,7 +5521,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE SE S NW"
+        "dir" : "NE_SE_S_NW"
       } ],
       "owner" : 0,
       "x" : 27,
@@ -5529,7 +5529,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SE S"
+        "dir" : "N_NE_SE_S"
       } ],
       "owner" : 0,
       "x" : 27,
@@ -5537,7 +5537,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SE"
+        "dir" : "N_NE_SE"
       } ],
       "owner" : 0,
       "x" : 27,
@@ -5565,7 +5565,7 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "S SW"
+        "dir" : "S_SW"
       } ],
       "owner" : 0,
       "x" : 27,
@@ -5573,13 +5573,13 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "N SE NW"
+        "dir" : "N_SE_NW"
       }, {
         "type" : "ROAD",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       }, {
         "type" : "RAIL",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 27,
@@ -5587,7 +5587,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 27,
@@ -5599,7 +5599,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 27,
@@ -5607,7 +5607,7 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "SE S"
+        "dir" : "SE_S"
       } ],
       "owner" : 0,
       "x" : 27,
@@ -5615,10 +5615,10 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "N NE SE"
+        "dir" : "N_NE_SE"
       }, {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 27,
@@ -5654,10 +5654,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE SE S"
+        "dir" : "NE_SE_S"
       }, {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 27,
@@ -5665,7 +5665,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE S"
+        "dir" : "N_NE_S"
       } ],
       "owner" : 0,
       "x" : 27,
@@ -5673,10 +5673,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N S SW"
+        "dir" : "N_S_SW"
       }, {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 27,
@@ -5684,10 +5684,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N SE S NW"
+        "dir" : "N_SE_S_NW"
       }, {
         "type" : "LIGHT_WOODS",
-        "dir" : "S SW NW"
+        "dir" : "S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 27,
@@ -5695,7 +5695,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE S SW NW"
+        "dir" : "N_NE_S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 28,
@@ -5703,7 +5703,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N SW NW"
+        "dir" : "N_SW_NW"
       } ],
       "owner" : 0,
       "x" : 28,
@@ -5711,10 +5711,10 @@
     }, {
       "terrain" : [ {
         "type" : "MARSH",
-        "dir" : "NE SE S"
+        "dir" : "NE_SE_S"
       }, {
         "type" : "RIVER",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       } ],
       "owner" : 0,
       "x" : 28,
@@ -5722,10 +5722,10 @@
     }, {
       "terrain" : [ {
         "type" : "MARSH",
-        "dir" : "N NE"
+        "dir" : "N_NE"
       }, {
         "type" : "RIVER",
-        "dir" : "N NE SW"
+        "dir" : "N_NE_SW"
       } ],
       "owner" : 0,
       "x" : 28,
@@ -5733,7 +5733,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE SE S SW"
+        "dir" : "NE_SE_S_SW"
       } ],
       "owner" : 0,
       "x" : 28,
@@ -5741,7 +5741,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 28,
@@ -5749,7 +5749,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE S SW NW"
+        "dir" : "N_NE_S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 28,
@@ -5757,7 +5757,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NW"
+        "dir" : "N_NW"
       } ],
       "owner" : 0,
       "x" : 28,
@@ -5785,7 +5785,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       } ],
       "owner" : 0,
       "x" : 28,
@@ -5793,16 +5793,16 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       }, {
         "type" : "RIVER",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       }, {
         "type" : "ROAD",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       }, {
         "type" : "RAIL",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 28,
@@ -5814,7 +5814,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 28,
@@ -5826,7 +5826,7 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "S SW NW"
+        "dir" : "S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 28,
@@ -5834,10 +5834,10 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "N NW"
+        "dir" : "N_NW"
       }, {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 28,
@@ -5853,7 +5853,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE SE"
+        "dir" : "NE_SE"
       }, {
         "type" : "LIGHT_WOODS",
         "dir" : "NE"
@@ -5868,7 +5868,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 28,
@@ -5876,10 +5876,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N S SW"
+        "dir" : "N_S_SW"
       }, {
         "type" : "ROAD",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 28,
@@ -5887,7 +5887,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N SE SW NW"
+        "dir" : "N_SE_SW_NW"
       }, {
         "type" : "LIGHT_WOODS",
         "dir" : "SE"
@@ -5902,7 +5902,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 28,
@@ -5910,7 +5910,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE SE S SW NW"
+        "dir" : "NE_SE_S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 28,
@@ -5918,7 +5918,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SW NW"
+        "dir" : "N_NE_SW_NW"
       } ],
       "owner" : 0,
       "x" : 29,
@@ -5926,7 +5926,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       } ],
       "owner" : 0,
       "x" : 29,
@@ -5934,10 +5934,10 @@
     }, {
       "terrain" : [ {
         "type" : "MARSH",
-        "dir" : "SE S SW"
+        "dir" : "SE_S_SW"
       }, {
         "type" : "RIVER",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       } ],
       "owner" : 0,
       "x" : 29,
@@ -5945,10 +5945,10 @@
     }, {
       "terrain" : [ {
         "type" : "MARSH",
-        "dir" : "N NE SW NW"
+        "dir" : "N_NE_SW_NW"
       }, {
         "type" : "RIVER",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 29,
@@ -5956,7 +5956,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "S SW"
+        "dir" : "S_SW"
       } ],
       "owner" : 0,
       "x" : 29,
@@ -5964,7 +5964,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N S SW NW"
+        "dir" : "N_S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 29,
@@ -5972,7 +5972,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N SW NW"
+        "dir" : "N_SW_NW"
       } ],
       "owner" : 0,
       "x" : 29,
@@ -6012,10 +6012,10 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       }, {
         "type" : "RAIL",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 29,
@@ -6035,7 +6035,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 29,
@@ -6051,7 +6051,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       } ],
       "owner" : 0,
       "x" : 29,
@@ -6062,7 +6062,7 @@
         "dir" : "NE"
       }, {
         "type" : "RAIL",
-        "dir" : "N SE"
+        "dir" : "N_SE"
       } ],
       "owner" : 0,
       "x" : 29,
@@ -6081,7 +6081,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 29,
@@ -6097,7 +6097,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 29,
@@ -6120,13 +6120,13 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "S SW"
+        "dir" : "S_SW"
       }, {
         "type" : "LIGHT_WOODS",
-        "dir" : "SE S"
+        "dir" : "SE_S"
       }, {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 29,
@@ -6137,7 +6137,7 @@
         "dir" : "SW"
       }, {
         "type" : "LIGHT_WOODS",
-        "dir" : "N SE"
+        "dir" : "N_SE"
       } ],
       "owner" : 0,
       "x" : 30,
@@ -6145,7 +6145,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE SE"
+        "dir" : "NE_SE"
       } ],
       "owner" : 0,
       "x" : 30,
@@ -6153,10 +6153,10 @@
     }, {
       "terrain" : [ {
         "type" : "MARSH",
-        "dir" : "SE SW NW"
+        "dir" : "SE_SW_NW"
       }, {
         "type" : "RIVER",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 30,
@@ -6216,10 +6216,10 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       }, {
         "type" : "RAIL",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 30,
@@ -6231,7 +6231,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 30,
@@ -6255,7 +6255,7 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 30,
@@ -6266,7 +6266,7 @@
         "dir" : "C"
       }, {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "vp" : 10,
@@ -6279,7 +6279,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       } ],
       "owner" : 0,
       "x" : 30,
@@ -6287,7 +6287,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N SE"
+        "dir" : "N_SE"
       } ],
       "owner" : 0,
       "x" : 30,
@@ -6298,7 +6298,7 @@
         "dir" : "NE"
       }, {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 30,
@@ -6318,10 +6318,10 @@
     }, {
       "terrain" : [ {
         "type" : "LIGHT_WOODS",
-        "dir" : "SE S SW NW"
+        "dir" : "SE_S_SW_NW"
       }, {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 30,
@@ -6333,7 +6333,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SE S SW"
+        "dir" : "SE_S_SW"
       }, {
         "type" : "LIGHT_WOODS",
         "dir" : "NW"
@@ -6344,10 +6344,10 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       }, {
         "type" : "FOREST",
-        "dir" : "N NE SE NW"
+        "dir" : "N_NE_SE_NW"
       } ],
       "owner" : 0,
       "x" : 31,
@@ -6414,13 +6414,13 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       }, {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       }, {
         "type" : "RAIL",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 31,
@@ -6436,7 +6436,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 31,
@@ -6456,7 +6456,7 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "NE SE NW"
+        "dir" : "NE_SE_NW"
       } ],
       "owner" : 0,
       "x" : 31,
@@ -6464,7 +6464,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 31,
@@ -6483,10 +6483,10 @@
         "dir" : "SW"
       }, {
         "type" : "RIVER",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       }, {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 31,
@@ -6514,7 +6514,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SE S SW NW"
+        "dir" : "SE_S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 32,
@@ -6522,10 +6522,10 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       }, {
         "type" : "FOREST",
-        "dir" : "N NE NW"
+        "dir" : "N_NE_NW"
       } ],
       "owner" : 0,
       "x" : 32,
@@ -6573,10 +6573,10 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       }, {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 32,
@@ -6584,7 +6584,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 32,
@@ -6596,7 +6596,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 32,
@@ -6616,7 +6616,7 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "S SW"
+        "dir" : "S_SW"
       } ],
       "owner" : 0,
       "x" : 32,
@@ -6624,10 +6624,10 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "N NW"
+        "dir" : "N_NW"
       }, {
         "type" : "RAIL",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 32,
@@ -6639,7 +6639,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       } ],
       "owner" : 0,
       "x" : 32,
@@ -6647,10 +6647,10 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       }, {
         "type" : "ROAD",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       } ],
       "owner" : 0,
       "x" : 32,
@@ -6658,7 +6658,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N S NW"
+        "dir" : "N_S_NW"
       } ],
       "owner" : 0,
       "x" : 32,
@@ -6666,7 +6666,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 32,
@@ -6674,7 +6674,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N SE"
+        "dir" : "N_SE"
       } ],
       "owner" : 0,
       "x" : 32,
@@ -6682,7 +6682,7 @@
     }, {
       "terrain" : [ {
         "type" : "LIGHT_WOODS",
-        "dir" : "NE SE S"
+        "dir" : "NE_SE_S"
       } ],
       "owner" : 0,
       "x" : 32,
@@ -6690,7 +6690,7 @@
     }, {
       "terrain" : [ {
         "type" : "LIGHT_WOODS",
-        "dir" : "N NE SE S SW"
+        "dir" : "N_NE_SE_S_SW"
       } ],
       "owner" : 0,
       "x" : 32,
@@ -6706,10 +6706,10 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       }, {
         "type" : "FOREST",
-        "dir" : "SE SW NW"
+        "dir" : "SE_SW_NW"
       } ],
       "owner" : 0,
       "x" : 33,
@@ -6757,10 +6757,10 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       }, {
         "type" : "ROAD",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 33,
@@ -6768,7 +6768,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 33,
@@ -6784,7 +6784,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 33,
@@ -6812,7 +6812,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 33,
@@ -6820,7 +6820,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 33,
@@ -6848,10 +6848,10 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       }, {
         "type" : "LIGHT_WOODS",
-        "dir" : "S SW"
+        "dir" : "S_SW"
       } ],
       "owner" : 0,
       "x" : 33,
@@ -6859,10 +6859,10 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N S"
+        "dir" : "N_S"
       }, {
         "type" : "LIGHT_WOODS",
-        "dir" : "N S SW NW"
+        "dir" : "N_S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 33,
@@ -6882,10 +6882,10 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       }, {
         "type" : "FOREST",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       }, {
         "type" : "LIGHT_WOODS",
         "dir" : "NE"
@@ -6924,7 +6924,7 @@
     }, {
       "terrain" : [ {
         "type" : "LIGHT_WOODS",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 34,
@@ -6940,7 +6940,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       } ],
       "owner" : 0,
       "x" : 34,
@@ -6948,13 +6948,13 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       }, {
         "type" : "RIVER",
-        "dir" : "N S"
+        "dir" : "N_S"
       }, {
         "type" : "ROAD",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 34,
@@ -6962,13 +6962,13 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       }, {
         "type" : "RIVER",
-        "dir" : "N S"
+        "dir" : "N_S"
       }, {
         "type" : "RAIL",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 34,
@@ -6976,7 +6976,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       } ],
       "owner" : 0,
       "x" : 34,
@@ -7004,7 +7004,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE SE"
+        "dir" : "NE_SE"
       } ],
       "owner" : 0,
       "x" : 34,
@@ -7015,7 +7015,7 @@
         "dir" : "SE"
       }, {
         "type" : "RAIL",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 34,
@@ -7023,7 +7023,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 34,
@@ -7051,7 +7051,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE SE S"
+        "dir" : "NE_SE_S"
       } ],
       "owner" : 0,
       "x" : 34,
@@ -7059,7 +7059,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SE S SW"
+        "dir" : "N_NE_SE_S_SW"
       } ],
       "owner" : 0,
       "x" : 34,
@@ -7075,13 +7075,13 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       }, {
         "type" : "FOREST",
         "dir" : "SW"
       }, {
         "type" : "LIGHT_WOODS",
-        "dir" : "NE SE SW"
+        "dir" : "NE_SE_SW"
       } ],
       "owner" : 0,
       "x" : 35,
@@ -7109,7 +7109,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE S"
+        "dir" : "SE_S"
       } ],
       "owner" : 0,
       "x" : 35,
@@ -7117,7 +7117,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 35,
@@ -7125,7 +7125,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 35,
@@ -7133,7 +7133,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 35,
@@ -7141,7 +7141,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 35,
@@ -7149,7 +7149,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       } ],
       "owner" : 0,
       "x" : 35,
@@ -7157,7 +7157,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 35,
@@ -7165,7 +7165,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 35,
@@ -7181,7 +7181,7 @@
     }, {
       "terrain" : [ {
         "type" : "LIGHT_WOODS",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       } ],
       "owner" : 0,
       "x" : 35,
@@ -7201,7 +7201,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 35,
@@ -7217,13 +7217,13 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       }, {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       }, {
         "type" : "RAIL",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 35,
@@ -7243,7 +7243,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE SE"
+        "dir" : "NE_SE"
       } ],
       "owner" : 0,
       "x" : 35,
@@ -7255,10 +7255,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE SE S SW"
+        "dir" : "NE_SE_S_SW"
       }, {
         "type" : "LIGHT_WOODS",
-        "dir" : "NE SE S"
+        "dir" : "NE_SE_S"
       } ],
       "owner" : 0,
       "x" : 35,
@@ -7266,10 +7266,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       }, {
         "type" : "LIGHT_WOODS",
-        "dir" : "N NE SE S"
+        "dir" : "N_NE_SE_S"
       } ],
       "owner" : 0,
       "x" : 35,
@@ -7281,10 +7281,10 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       }, {
         "type" : "LIGHT_WOODS",
-        "dir" : "NE S SW"
+        "dir" : "NE_S_SW"
       } ],
       "owner" : 0,
       "x" : 36,
@@ -7292,7 +7292,7 @@
     }, {
       "terrain" : [ {
         "type" : "LIGHT_WOODS",
-        "dir" : "N SE S NW"
+        "dir" : "N_SE_S_NW"
       } ],
       "owner" : 0,
       "x" : 36,
@@ -7300,7 +7300,7 @@
     }, {
       "terrain" : [ {
         "type" : "LIGHT_WOODS",
-        "dir" : "N NE SE S"
+        "dir" : "N_NE_SE_S"
       } ],
       "owner" : 0,
       "x" : 36,
@@ -7308,7 +7308,7 @@
     }, {
       "terrain" : [ {
         "type" : "LIGHT_WOODS",
-        "dir" : "N NE SE"
+        "dir" : "N_NE_SE"
       } ],
       "owner" : 0,
       "x" : 36,
@@ -7320,7 +7320,7 @@
     }, {
       "terrain" : [ {
         "type" : "LIGHT_WOODS",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 36,
@@ -7328,7 +7328,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 36,
@@ -7359,7 +7359,7 @@
         "dir" : "C"
       }, {
         "type" : "ROAD",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 36,
@@ -7367,7 +7367,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 36,
@@ -7391,7 +7391,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 36,
@@ -7399,7 +7399,7 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "NE SE S"
+        "dir" : "NE_SE_S"
       } ],
       "owner" : 0,
       "x" : 36,
@@ -7407,13 +7407,13 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "N NE SW"
+        "dir" : "N_NE_SW"
       }, {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       }, {
         "type" : "RAIL",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 36,
@@ -7433,7 +7433,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SE S SW"
+        "dir" : "SE_S_SW"
       } ],
       "owner" : 0,
       "x" : 36,
@@ -7441,7 +7441,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE S NW"
+        "dir" : "N_NE_S_NW"
       } ],
       "owner" : 0,
       "x" : 36,
@@ -7449,10 +7449,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N S SW"
+        "dir" : "N_S_SW"
       }, {
         "type" : "LIGHT_WOODS",
-        "dir" : "S SW"
+        "dir" : "S_SW"
       } ],
       "owner" : 0,
       "x" : 36,
@@ -7460,10 +7460,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N SE S SW NW"
+        "dir" : "N_SE_S_SW_NW"
       }, {
         "type" : "LIGHT_WOODS",
-        "dir" : "N S SW NW"
+        "dir" : "N_S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 36,
@@ -7471,10 +7471,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       }, {
         "type" : "LIGHT_WOODS",
-        "dir" : "N SE S SW NW"
+        "dir" : "N_SE_S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 36,
@@ -7489,7 +7489,7 @@
         "dir" : "SW"
       }, {
         "type" : "LIGHT_WOODS",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 37,
@@ -7501,7 +7501,7 @@
     }, {
       "terrain" : [ {
         "type" : "LIGHT_WOODS",
-        "dir" : "S SW NW"
+        "dir" : "S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 37,
@@ -7509,10 +7509,10 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N S"
+        "dir" : "N_S"
       }, {
         "type" : "LIGHT_WOODS",
-        "dir" : "N SE S SW NW"
+        "dir" : "N_SE_S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 37,
@@ -7520,10 +7520,10 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N S"
+        "dir" : "N_S"
       }, {
         "type" : "LIGHT_WOODS",
-        "dir" : "N NE S NW"
+        "dir" : "N_NE_S_NW"
       } ],
       "owner" : 0,
       "x" : 37,
@@ -7531,10 +7531,10 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N S"
+        "dir" : "N_S"
       }, {
         "type" : "LIGHT_WOODS",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       } ],
       "owner" : 0,
       "x" : 37,
@@ -7542,7 +7542,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       } ],
       "owner" : 0,
       "x" : 37,
@@ -7562,7 +7562,7 @@
     }, {
       "terrain" : [ {
         "type" : "LIGHT_WOODS",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       } ],
       "owner" : 0,
       "x" : 37,
@@ -7578,7 +7578,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 37,
@@ -7590,7 +7590,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 37,
@@ -7610,7 +7610,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 37,
@@ -7618,7 +7618,7 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "S SW"
+        "dir" : "S_SW"
       } ],
       "owner" : 0,
       "x" : 37,
@@ -7626,10 +7626,10 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "N SW NW"
+        "dir" : "N_SW_NW"
       }, {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 37,
@@ -7637,7 +7637,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 37,
@@ -7661,7 +7661,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SW NW"
+        "dir" : "SW_NW"
       } ],
       "owner" : 0,
       "x" : 37,
@@ -7677,7 +7677,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "S SW NW"
+        "dir" : "S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 37,
@@ -7685,10 +7685,10 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N SE"
+        "dir" : "N_SE"
       }, {
         "type" : "LIGHT_WOODS",
-        "dir" : "N SE SW"
+        "dir" : "N_SE_SW"
       } ],
       "owner" : 0,
       "x" : 38,
@@ -7708,7 +7708,7 @@
     }, {
       "terrain" : [ {
         "type" : "LIGHT_WOODS",
-        "dir" : "SW NW"
+        "dir" : "SW_NW"
       } ],
       "owner" : 0,
       "x" : 38,
@@ -7752,7 +7752,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 38,
@@ -7760,7 +7760,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 38,
@@ -7780,7 +7780,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "S SW"
+        "dir" : "S_SW"
       } ],
       "owner" : 0,
       "x" : 38,
@@ -7788,7 +7788,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N NE"
+        "dir" : "N_NE"
       } ],
       "owner" : 0,
       "x" : 38,
@@ -7796,7 +7796,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 38,
@@ -7804,7 +7804,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 38,
@@ -7844,7 +7844,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 38,
@@ -7852,10 +7852,10 @@
     }, {
       "terrain" : [ {
         "type" : "DENSE_URBAN",
-        "dir" : "N NE SE NW"
+        "dir" : "N_NE_SE_NW"
       }, {
         "type" : "RAIL",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       } ],
       "owner" : 0,
       "vp" : 5,
@@ -7864,16 +7864,16 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "NE SE"
+        "dir" : "NE_SE"
       }, {
         "type" : "RIVER",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       }, {
         "type" : "LIGHT_WOODS",
         "dir" : "NW"
       }, {
         "type" : "RAIL",
-        "dir" : "N SE"
+        "dir" : "N_SE"
       } ],
       "owner" : 0,
       "x" : 39,
@@ -7925,10 +7925,10 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "NE SE S"
+        "dir" : "NE_SE_S"
       }, {
         "type" : "ROAD",
-        "dir" : "NE SE SW"
+        "dir" : "NE_SE_SW"
       } ],
       "owner" : 0,
       "x" : 39,
@@ -7936,7 +7936,7 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "N NE"
+        "dir" : "N_NE"
       } ],
       "owner" : 0,
       "x" : 39,
@@ -7944,7 +7944,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 39,
@@ -7964,7 +7964,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 39,
@@ -7976,7 +7976,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 39,
@@ -7984,7 +7984,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 39,
@@ -8016,7 +8016,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 39,
@@ -8024,10 +8024,10 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "N S SW"
+        "dir" : "N_S_SW"
       }, {
         "type" : "RIVER",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 40,
@@ -8035,10 +8035,10 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "N NW"
+        "dir" : "N_NW"
       }, {
         "type" : "RAIL",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       } ],
       "owner" : 0,
       "x" : 40,
@@ -8046,7 +8046,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 40,
@@ -8054,7 +8054,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 40,
@@ -8062,7 +8062,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 40,
@@ -8070,7 +8070,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 40,
@@ -8078,7 +8078,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 40,
@@ -8086,7 +8086,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 40,
@@ -8094,7 +8094,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 40,
@@ -8102,7 +8102,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 40,
@@ -8110,7 +8110,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 40,
@@ -8118,10 +8118,10 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "SE S"
+        "dir" : "SE_S"
       }, {
         "type" : "RAIL",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 40,
@@ -8129,13 +8129,13 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "N NE S SW"
+        "dir" : "N_NE_S_SW"
       }, {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       }, {
         "type" : "RAIL",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 40,
@@ -8143,13 +8143,13 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "N SE SW NW"
+        "dir" : "N_SE_SW_NW"
       }, {
         "type" : "ROAD",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       }, {
         "type" : "RAIL",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 40,
@@ -8157,13 +8157,13 @@
     }, {
       "terrain" : [ {
         "type" : "DENSE_URBAN",
-        "dir" : "N SE S"
+        "dir" : "N_SE_S"
       }, {
         "type" : "ROAD",
         "dir" : "N"
       }, {
         "type" : "RAIL",
-        "dir" : "N NE SW"
+        "dir" : "N_NE_SW"
       } ],
       "owner" : 0,
       "vp" : 15,
@@ -8188,7 +8188,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 40,
@@ -8196,7 +8196,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 40,
@@ -8204,7 +8204,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 40,
@@ -8232,7 +8232,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N SE"
+        "dir" : "N_SE"
       } ],
       "owner" : 0,
       "x" : 40,
@@ -8244,10 +8244,10 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       }, {
         "type" : "RAIL",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 40,
@@ -8255,7 +8255,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 40,
@@ -8263,7 +8263,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SE NW"
+        "dir" : "N_NE_SE_NW"
       } ],
       "owner" : 0,
       "x" : 41,
@@ -8271,7 +8271,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 41,
@@ -8311,7 +8311,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       } ],
       "owner" : 0,
       "x" : 41,
@@ -8319,7 +8319,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 41,
@@ -8327,13 +8327,13 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "SW NW"
+        "dir" : "SW_NW"
       }, {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       }, {
         "type" : "RAIL",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 41,
@@ -8341,7 +8341,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 41,
@@ -8349,10 +8349,10 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       }, {
         "type" : "RAIL",
-        "dir" : "N SE SW"
+        "dir" : "N_SE_SW"
       } ],
       "owner" : 0,
       "x" : 41,
@@ -8372,7 +8372,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       } ],
       "owner" : 0,
       "x" : 41,
@@ -8380,7 +8380,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 41,
@@ -8388,7 +8388,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       } ],
       "owner" : 0,
       "x" : 41,
@@ -8396,7 +8396,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 41,
@@ -8408,7 +8408,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 41,
@@ -8436,7 +8436,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       } ],
       "owner" : 0,
       "x" : 41,
@@ -8444,10 +8444,10 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       }, {
         "type" : "RAIL",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 41,
@@ -8459,10 +8459,10 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       }, {
         "type" : "FOREST",
-        "dir" : "N NW"
+        "dir" : "N_NW"
       }, {
         "type" : "LIGHT_WOODS",
         "dir" : "N"
@@ -8509,7 +8509,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 42,
@@ -8517,7 +8517,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       } ],
       "owner" : 0,
       "x" : 42,
@@ -8528,7 +8528,7 @@
         "dir" : "S"
       }, {
         "type" : "ROAD",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       } ],
       "owner" : 0,
       "x" : 42,
@@ -8536,7 +8536,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N SE"
+        "dir" : "N_SE"
       } ],
       "owner" : 0,
       "x" : 42,
@@ -8552,10 +8552,10 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       }, {
         "type" : "RAIL",
-        "dir" : "SE S NW"
+        "dir" : "SE_S_NW"
       } ],
       "owner" : 0,
       "x" : 42,
@@ -8563,10 +8563,10 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       }, {
         "type" : "RAIL",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 42,
@@ -8574,10 +8574,10 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       }, {
         "type" : "RAIL",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 42,
@@ -8585,7 +8585,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 42,
@@ -8593,7 +8593,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 42,
@@ -8601,7 +8601,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "N SE"
+        "dir" : "N_SE"
       } ],
       "owner" : 0,
       "x" : 42,
@@ -8609,7 +8609,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 42,
@@ -8621,7 +8621,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 42,
@@ -8649,7 +8649,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 42,
@@ -8657,7 +8657,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SE S SW"
+        "dir" : "SE_S_SW"
       } ],
       "owner" : 0,
       "x" : 42,
@@ -8669,7 +8669,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 43,
@@ -8685,7 +8685,7 @@
     }, {
       "terrain" : [ {
         "type" : "LIGHT_WOODS",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       } ],
       "owner" : 0,
       "x" : 43,
@@ -8713,7 +8713,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 43,
@@ -8721,7 +8721,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 43,
@@ -8737,7 +8737,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       } ],
       "owner" : 0,
       "x" : 43,
@@ -8745,7 +8745,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 43,
@@ -8753,13 +8753,13 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "NE SE NW"
+        "dir" : "NE_SE_NW"
       }, {
         "type" : "RIVER",
-        "dir" : "N S SW"
+        "dir" : "N_S_SW"
       }, {
         "type" : "RAIL",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 43,
@@ -8767,7 +8767,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N S"
+        "dir" : "N_S"
       }, {
         "type" : "LIGHT_WOODS",
         "dir" : "SE"
@@ -8778,7 +8778,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N SE"
+        "dir" : "N_SE"
       } ],
       "owner" : 0,
       "x" : 43,
@@ -8798,10 +8798,10 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       }, {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 43,
@@ -8813,7 +8813,7 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "SE S"
+        "dir" : "SE_S"
       } ],
       "owner" : 0,
       "x" : 43,
@@ -8821,10 +8821,10 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "N NE SE"
+        "dir" : "N_NE_SE"
       }, {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 43,
@@ -8848,7 +8848,7 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       } ],
       "owner" : 0,
       "x" : 43,
@@ -8859,7 +8859,7 @@
         "dir" : "N"
       }, {
         "type" : "RAIL",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 43,
@@ -8871,7 +8871,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 44,
@@ -8903,7 +8903,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       } ],
       "owner" : 0,
       "x" : 44,
@@ -8911,7 +8911,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       } ],
       "owner" : 0,
       "x" : 44,
@@ -8919,7 +8919,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 44,
@@ -8943,10 +8943,10 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "S SW"
+        "dir" : "S_SW"
       }, {
         "type" : "RAIL",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 44,
@@ -8954,7 +8954,7 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "N NW"
+        "dir" : "N_NW"
       } ],
       "owner" : 0,
       "x" : 44,
@@ -8965,7 +8965,7 @@
         "dir" : "SE"
       }, {
         "type" : "LIGHT_WOODS",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 44,
@@ -8973,7 +8973,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 44,
@@ -8981,7 +8981,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       } ],
       "owner" : 0,
       "x" : 44,
@@ -8989,10 +8989,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N S"
+        "dir" : "N_S"
       }, {
         "type" : "ROAD",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 44,
@@ -9003,7 +9003,7 @@
         "dir" : "N"
       }, {
         "type" : "RAIL",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       } ],
       "owner" : 0,
       "x" : 44,
@@ -9011,7 +9011,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 44,
@@ -9019,10 +9019,10 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "S SW NW"
+        "dir" : "S_SW_NW"
       }, {
         "type" : "RAIL",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 44,
@@ -9030,10 +9030,10 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "N SE S NW"
+        "dir" : "N_SE_S_NW"
       }, {
         "type" : "RAIL",
-        "dir" : "N SE S NW"
+        "dir" : "N_SE_S_NW"
       } ],
       "owner" : 0,
       "x" : 44,
@@ -9041,10 +9041,10 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "N NE"
+        "dir" : "N_NE"
       }, {
         "type" : "RAIL",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 44,
@@ -9052,7 +9052,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 44,
@@ -9066,7 +9066,7 @@
         "dir" : "NE"
       }, {
         "type" : "RAIL",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 44,
@@ -9077,7 +9077,7 @@
         "dir" : "C"
       }, {
         "type" : "RAIL",
-        "dir" : "N S SW"
+        "dir" : "N_S_SW"
       } ],
       "owner" : 0,
       "x" : 44,
@@ -9085,7 +9085,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 44,
@@ -9093,10 +9093,10 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "SE S SW"
+        "dir" : "SE_S_SW"
       }, {
         "type" : "RAIL",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 44,
@@ -9104,10 +9104,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SE NW"
+        "dir" : "N_NE_SE_NW"
       }, {
         "type" : "LIGHT_WOODS",
-        "dir" : "N NE NW"
+        "dir" : "N_NE_NW"
       } ],
       "owner" : 0,
       "x" : 45,
@@ -9115,7 +9115,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 45,
@@ -9143,7 +9143,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 45,
@@ -9155,7 +9155,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 45,
@@ -9183,7 +9183,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 45,
@@ -9195,10 +9195,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       }, {
         "type" : "LIGHT_WOODS",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 45,
@@ -9206,7 +9206,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 45,
@@ -9218,7 +9218,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 45,
@@ -9238,10 +9238,10 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "SW NW"
+        "dir" : "SW_NW"
       }, {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 45,
@@ -9280,10 +9280,10 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       }, {
         "type" : "FOREST",
-        "dir" : "N NW"
+        "dir" : "N_NW"
       } ],
       "owner" : 0,
       "x" : 46,
@@ -9314,7 +9314,7 @@
         "dir" : "SE"
       }, {
         "type" : "RAIL",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 46,
@@ -9326,7 +9326,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 46,
@@ -9358,7 +9358,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 46,
@@ -9370,7 +9370,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       }, {
         "type" : "LIGHT_WOODS",
         "dir" : "NW"
@@ -9381,7 +9381,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       } ],
       "owner" : 0,
       "x" : 46,
@@ -9389,7 +9389,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N NE S"
+        "dir" : "N_NE_S"
       } ],
       "owner" : 0,
       "x" : 46,
@@ -9400,10 +9400,10 @@
         "dir" : "NE"
       }, {
         "type" : "RIVER",
-        "dir" : "N S"
+        "dir" : "N_S"
       }, {
         "type" : "ROAD",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 46,
@@ -9411,7 +9411,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N SE"
+        "dir" : "N_SE"
       } ],
       "owner" : 0,
       "x" : 46,
@@ -9423,7 +9423,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE SE"
+        "dir" : "NE_SE"
       } ],
       "owner" : 0,
       "x" : 46,
@@ -9431,7 +9431,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 46,
@@ -9450,7 +9450,7 @@
         "dir" : "SW"
       }, {
         "type" : "RAIL",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       } ],
       "owner" : 0,
       "x" : 46,
@@ -9458,7 +9458,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 46,
@@ -9466,7 +9466,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 46,
@@ -9474,7 +9474,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 47,
@@ -9512,7 +9512,7 @@
         "dir" : "S"
       }, {
         "type" : "RAIL",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "vp" : 5,
@@ -9521,10 +9521,10 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "NE SE S NW"
+        "dir" : "NE_SE_S_NW"
       }, {
         "type" : "ROAD",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 47,
@@ -9532,10 +9532,10 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "N NE"
+        "dir" : "N_NE"
       }, {
         "type" : "ROAD",
-        "dir" : "N NE SW"
+        "dir" : "N_NE_SW"
       } ],
       "owner" : 0,
       "x" : 47,
@@ -9567,7 +9567,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 47,
@@ -9591,7 +9591,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 47,
@@ -9599,10 +9599,10 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       }, {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 47,
@@ -9614,7 +9614,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       } ],
       "owner" : 0,
       "x" : 47,
@@ -9622,7 +9622,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       } ],
       "owner" : 0,
       "x" : 47,
@@ -9630,7 +9630,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 47,
@@ -9638,7 +9638,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 47,
@@ -9650,7 +9650,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 47,
@@ -9698,10 +9698,10 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "N SE S SW"
+        "dir" : "N_SE_S_SW"
       }, {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 48,
@@ -9709,10 +9709,10 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "N NE SW NW"
+        "dir" : "N_NE_SW_NW"
       }, {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 48,
@@ -9748,7 +9748,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 48,
@@ -9760,7 +9760,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       } ],
       "owner" : 0,
       "x" : 48,
@@ -9768,16 +9768,16 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       }, {
         "type" : "URBAN",
         "dir" : "S"
       }, {
         "type" : "RIVER",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       }, {
         "type" : "ROAD",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 48,
@@ -9785,10 +9785,10 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       }, {
         "type" : "ROAD",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       } ],
       "owner" : 0,
       "x" : 48,
@@ -9812,7 +9812,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 48,
@@ -9820,7 +9820,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 48,
@@ -9828,7 +9828,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 48,
@@ -9876,13 +9876,13 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "SE SW NW"
+        "dir" : "SE_SW_NW"
       }, {
         "type" : "ROAD",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       }, {
         "type" : "RAIL",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 49,
@@ -9925,7 +9925,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 49,
@@ -9937,7 +9937,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 49,
@@ -9953,7 +9953,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       }, {
         "type" : "FOREST",
         "dir" : "SE"
@@ -9987,7 +9987,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 49,
@@ -9995,10 +9995,10 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "NE SE"
+        "dir" : "NE_SE"
       }, {
         "type" : "RAIL",
-        "dir" : "NE SE SW NW"
+        "dir" : "NE_SE_SW_NW"
       } ],
       "owner" : 0,
       "x" : 49,
@@ -10038,7 +10038,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE SE"
+        "dir" : "NE_SE"
       } ],
       "owner" : 0,
       "x" : 50,
@@ -10050,7 +10050,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 50,
@@ -10061,7 +10061,7 @@
         "dir" : "NW"
       }, {
         "type" : "ROAD",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 50,
@@ -10105,10 +10105,10 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "NE SE"
+        "dir" : "NE_SE"
       }, {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 50,
@@ -10116,7 +10116,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 50,
@@ -10128,7 +10128,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 50,
@@ -10139,7 +10139,7 @@
         "dir" : "NW"
       }, {
         "type" : "LIGHT_WOODS",
-        "dir" : "NE SE NW"
+        "dir" : "NE_SE_NW"
       } ],
       "owner" : 0,
       "x" : 50,
@@ -10167,13 +10167,13 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "S SW"
+        "dir" : "S_SW"
       }, {
         "type" : "RIVER",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       }, {
         "type" : "RAIL",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 50,
@@ -10181,13 +10181,13 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "N NW"
+        "dir" : "N_NW"
       }, {
         "type" : "RIVER",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       }, {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 50,
@@ -10223,7 +10223,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "S SW"
+        "dir" : "S_SW"
       }, {
         "type" : "LIGHT_WOODS",
         "dir" : "S"
@@ -10234,10 +10234,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N SE NW"
+        "dir" : "N_SE_NW"
       }, {
         "type" : "LIGHT_WOODS",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 51,
@@ -10256,10 +10256,10 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       }, {
         "type" : "RAIL",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 51,
@@ -10295,10 +10295,10 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "SE S SW"
+        "dir" : "SE_S_SW"
       }, {
         "type" : "ROAD",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       } ],
       "owner" : 0,
       "x" : 51,
@@ -10306,13 +10306,13 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "N NE NW"
+        "dir" : "N_NE_NW"
       }, {
         "type" : "ROAD",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       }, {
         "type" : "RAIL",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 51,
@@ -10328,10 +10328,10 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       }, {
         "type" : "LIGHT_WOODS",
-        "dir" : "S SW"
+        "dir" : "S_SW"
       } ],
       "owner" : 0,
       "x" : 51,
@@ -10339,7 +10339,7 @@
     }, {
       "terrain" : [ {
         "type" : "LIGHT_WOODS",
-        "dir" : "N S NW"
+        "dir" : "N_S_NW"
       } ],
       "owner" : 0,
       "x" : 51,
@@ -10363,7 +10363,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 51,
@@ -10375,7 +10375,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 51,
@@ -10407,7 +10407,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE S"
+        "dir" : "SE_S"
       } ],
       "owner" : 0,
       "x" : 52,
@@ -10415,7 +10415,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       } ],
       "owner" : 0,
       "x" : 52,
@@ -10423,10 +10423,10 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       }, {
         "type" : "RAIL",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 52,
@@ -10434,10 +10434,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SE S"
+        "dir" : "SE_S"
       }, {
         "type" : "LIGHT_WOODS",
-        "dir" : "SE S"
+        "dir" : "SE_S"
       } ],
       "owner" : 0,
       "x" : 52,
@@ -10445,10 +10445,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SE"
+        "dir" : "N_NE_SE"
       }, {
         "type" : "LIGHT_WOODS",
-        "dir" : "N NE"
+        "dir" : "N_NE"
       } ],
       "owner" : 0,
       "x" : 52,
@@ -10476,7 +10476,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 52,
@@ -10484,10 +10484,10 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "SW NW"
+        "dir" : "SW_NW"
       }, {
         "type" : "RAIL",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 52,
@@ -10507,7 +10507,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       } ],
       "owner" : 0,
       "x" : 52,
@@ -10515,7 +10515,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N NE"
+        "dir" : "N_NE"
       } ],
       "owner" : 0,
       "x" : 52,
@@ -10531,7 +10531,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       } ],
       "owner" : 0,
       "x" : 52,
@@ -10539,7 +10539,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       } ],
       "owner" : 0,
       "x" : 52,
@@ -10555,7 +10555,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 52,
@@ -10591,7 +10591,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       } ],
       "owner" : 0,
       "x" : 53,
@@ -10599,7 +10599,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N SE"
+        "dir" : "N_SE"
       } ],
       "owner" : 0,
       "x" : 53,
@@ -10607,10 +10607,10 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       }, {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 53,
@@ -10618,10 +10618,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "S SW NW"
+        "dir" : "S_SW_NW"
       }, {
         "type" : "LIGHT_WOODS",
-        "dir" : "SW NW"
+        "dir" : "SW_NW"
       } ],
       "owner" : 0,
       "x" : 53,
@@ -10629,7 +10629,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N S NW"
+        "dir" : "N_S_NW"
       } ],
       "owner" : 0,
       "x" : 53,
@@ -10664,7 +10664,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 53,
@@ -10672,7 +10672,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 53,
@@ -10692,7 +10692,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 53,
@@ -10708,7 +10708,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 53,
@@ -10732,7 +10732,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 53,
@@ -10748,7 +10748,7 @@
     }, {
       "terrain" : [ {
         "type" : "SHALLOW_WATER_DECORATOR",
-        "dir" : "N NE S SW NW"
+        "dir" : "N_NE_S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 54,
@@ -10756,7 +10756,7 @@
     }, {
       "terrain" : [ {
         "type" : "SHALLOW_WATER_DECORATOR",
-        "dir" : "N SE S SW NW"
+        "dir" : "N_SE_S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 54,
@@ -10776,7 +10776,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 54,
@@ -10784,10 +10784,10 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       }, {
         "type" : "RAIL",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 54,
@@ -10819,7 +10819,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 54,
@@ -10831,7 +10831,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 54,
@@ -10847,7 +10847,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 54,
@@ -10863,7 +10863,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 54,
@@ -10891,7 +10891,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       } ],
       "owner" : 0,
       "x" : 54,
@@ -10899,13 +10899,13 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "SE S SW"
+        "dir" : "SE_S_SW"
       }, {
         "type" : "RIVER",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       }, {
         "type" : "RAIL",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 54,
@@ -10913,7 +10913,7 @@
     }, {
       "terrain" : [ {
         "type" : "SHALLOW_WATER_DECORATOR",
-        "dir" : "N NE S SW NW"
+        "dir" : "N_NE_S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 55,
@@ -10921,7 +10921,7 @@
     }, {
       "terrain" : [ {
         "type" : "SHALLOW_WATER_DECORATOR",
-        "dir" : "N SW NW"
+        "dir" : "N_SW_NW"
       } ],
       "owner" : 0,
       "x" : 55,
@@ -10929,10 +10929,10 @@
     }, {
       "terrain" : [ {
         "type" : "SHALLOW_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       }, {
         "type" : "SHALLOW_WATER_DECORATOR",
-        "dir" : "N SE S SW NW"
+        "dir" : "N_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 55,
@@ -10940,7 +10940,7 @@
     }, {
       "terrain" : [ {
         "type" : "SHALLOW_WATER_DECORATOR",
-        "dir" : "NE SE S SW NW"
+        "dir" : "NE_SE_S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 55,
@@ -10948,7 +10948,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SE S"
+        "dir" : "SE_S"
       } ],
       "owner" : 0,
       "x" : 55,
@@ -10956,7 +10956,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SE"
+        "dir" : "N_NE_SE"
       } ],
       "owner" : 0,
       "x" : 55,
@@ -10971,13 +10971,13 @@
         "dir" : "C"
       }, {
         "type" : "RIVER",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       }, {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       }, {
         "type" : "RAIL",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 55,
@@ -10993,7 +10993,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE SE"
+        "dir" : "NE_SE"
       }, {
         "type" : "LIGHT_WOODS",
         "dir" : "C"
@@ -11020,7 +11020,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 55,
@@ -11032,7 +11032,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       } ],
       "owner" : 0,
       "x" : 55,
@@ -11040,7 +11040,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "N SE"
+        "dir" : "N_SE"
       } ],
       "owner" : 0,
       "x" : 55,
@@ -11052,7 +11052,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 55,
@@ -11064,7 +11064,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 55,
@@ -11096,7 +11096,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 55,
@@ -11104,10 +11104,10 @@
     }, {
       "terrain" : [ {
         "type" : "SHALLOW_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       }, {
         "type" : "SHALLOW_WATER_DECORATOR",
-        "dir" : "N NE SW NW"
+        "dir" : "N_NE_SW_NW"
       } ],
       "owner" : 1,
       "x" : 56,
@@ -11115,7 +11115,7 @@
     }, {
       "terrain" : [ {
         "type" : "SHALLOW_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 56,
@@ -11123,7 +11123,7 @@
     }, {
       "terrain" : [ {
         "type" : "SHALLOW_WATER_DECORATOR",
-        "dir" : "NE SE S SW"
+        "dir" : "NE_SE_S_SW"
       } ],
       "owner" : 0,
       "x" : 56,
@@ -11135,7 +11135,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE S SW NW"
+        "dir" : "NE_S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 56,
@@ -11143,7 +11143,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NW"
+        "dir" : "N_NW"
       }, {
         "type" : "LIGHT_WOODS",
         "dir" : "C"
@@ -11154,10 +11154,10 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       }, {
         "type" : "RAIL",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 56,
@@ -11165,7 +11165,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 56,
@@ -11173,7 +11173,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SE S"
+        "dir" : "SE_S"
       } ],
       "owner" : 0,
       "x" : 56,
@@ -11181,7 +11181,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SE S SW"
+        "dir" : "N_NE_SE_S_SW"
       } ],
       "owner" : 0,
       "x" : 56,
@@ -11189,7 +11189,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SE NW"
+        "dir" : "N_NE_SE_NW"
       } ],
       "owner" : 0,
       "x" : 56,
@@ -11209,7 +11209,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 56,
@@ -11225,7 +11225,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE SE"
+        "dir" : "NE_SE"
       } ],
       "owner" : 0,
       "x" : 56,
@@ -11233,7 +11233,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 56,
@@ -11245,7 +11245,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       }, {
         "type" : "FOREST",
         "dir" : "NE"
@@ -11259,7 +11259,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 56,
@@ -11291,7 +11291,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 56,
@@ -11303,7 +11303,7 @@
     }, {
       "terrain" : [ {
         "type" : "SHALLOW_WATER_DECORATOR",
-        "dir" : "N NE SE NW"
+        "dir" : "N_NE_SE_NW"
       } ],
       "owner" : 0,
       "x" : 57,
@@ -11311,7 +11311,7 @@
     }, {
       "terrain" : [ {
         "type" : "SHALLOW_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 57,
@@ -11319,7 +11319,7 @@
     }, {
       "terrain" : [ {
         "type" : "SHALLOW_WATER_DECORATOR",
-        "dir" : "NE SE S SW"
+        "dir" : "NE_SE_S_SW"
       } ],
       "owner" : 0,
       "x" : 57,
@@ -11331,7 +11331,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE SE SW"
+        "dir" : "NE_SE_SW"
       }, {
         "type" : "LIGHT_WOODS",
         "dir" : "SE"
@@ -11346,10 +11346,10 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       }, {
         "type" : "RAIL",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 57,
@@ -11357,7 +11357,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 57,
@@ -11369,7 +11369,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE SE S SW NW"
+        "dir" : "NE_SE_S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 57,
@@ -11377,7 +11377,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 57,
@@ -11385,7 +11385,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SE NW"
+        "dir" : "N_NE_SE_NW"
       } ],
       "owner" : 0,
       "x" : 57,
@@ -11405,7 +11405,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 57,
@@ -11417,7 +11417,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "S SW"
+        "dir" : "S_SW"
       }, {
         "type" : "LIGHT_WOODS",
         "dir" : "S"
@@ -11428,10 +11428,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N SE NW"
+        "dir" : "N_SE_NW"
       }, {
         "type" : "LIGHT_WOODS",
-        "dir" : "N SE"
+        "dir" : "N_SE"
       } ],
       "owner" : 0,
       "x" : 57,
@@ -11442,7 +11442,7 @@
         "dir" : "SE"
       }, {
         "type" : "RAIL",
-        "dir" : "SE S NW"
+        "dir" : "SE_S_NW"
       } ],
       "owner" : 0,
       "x" : 57,
@@ -11453,10 +11453,10 @@
         "dir" : "SW"
       }, {
         "type" : "LIGHT_WOODS",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       }, {
         "type" : "RAIL",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 57,
@@ -11464,10 +11464,10 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE S NW"
+        "dir" : "NE_S_NW"
       }, {
         "type" : "RAIL",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       } ],
       "owner" : 0,
       "x" : 57,
@@ -11475,7 +11475,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 57,
@@ -11483,7 +11483,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 57,
@@ -11491,7 +11491,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 57,
@@ -11499,7 +11499,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N SE"
+        "dir" : "N_SE"
       } ],
       "owner" : 0,
       "x" : 57,
@@ -11507,7 +11507,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       } ],
       "owner" : 0,
       "x" : 57,
@@ -11515,7 +11515,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 57,
@@ -11523,7 +11523,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N S SW"
+        "dir" : "N_S_SW"
       } ],
       "owner" : 0,
       "x" : 57,
@@ -11531,7 +11531,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N SE"
+        "dir" : "N_SE"
       } ],
       "owner" : 0,
       "x" : 57,
@@ -11539,7 +11539,7 @@
     }, {
       "terrain" : [ {
         "type" : "SHALLOW_WATER_DECORATOR",
-        "dir" : "N SE S NW"
+        "dir" : "N_SE_S_NW"
       } ],
       "owner" : 0,
       "x" : 58,
@@ -11547,7 +11547,7 @@
     }, {
       "terrain" : [ {
         "type" : "SHALLOW_WATER_DECORATOR",
-        "dir" : "N NE SE S SW"
+        "dir" : "N_NE_SE_S_SW"
       } ],
       "owner" : 0,
       "x" : 58,
@@ -11559,7 +11559,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SE S SW"
+        "dir" : "SE_S_SW"
       } ],
       "owner" : 0,
       "x" : 58,
@@ -11567,10 +11567,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SE S NW"
+        "dir" : "N_NE_SE_S_NW"
       }, {
         "type" : "LIGHT_WOODS",
-        "dir" : "NE SE NW"
+        "dir" : "NE_SE_NW"
       } ],
       "owner" : 0,
       "x" : 58,
@@ -11581,13 +11581,13 @@
         "dir" : "SE"
       }, {
         "type" : "FOREST",
-        "dir" : "N NE"
+        "dir" : "N_NE"
       }, {
         "type" : "ROAD",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       }, {
         "type" : "RAIL",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 58,
@@ -11595,7 +11595,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 58,
@@ -11603,7 +11603,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SE S"
+        "dir" : "SE_S"
       } ],
       "owner" : 0,
       "x" : 58,
@@ -11611,7 +11611,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SE S SW"
+        "dir" : "N_NE_SE_S_SW"
       } ],
       "owner" : 0,
       "x" : 58,
@@ -11619,7 +11619,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 58,
@@ -11627,7 +11627,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 58,
@@ -11635,7 +11635,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SE S NW"
+        "dir" : "N_NE_SE_S_NW"
       } ],
       "owner" : 0,
       "x" : 58,
@@ -11643,7 +11643,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SE S"
+        "dir" : "N_NE_SE_S"
       } ],
       "owner" : 0,
       "x" : 58,
@@ -11651,7 +11651,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE"
+        "dir" : "N_NE"
       } ],
       "owner" : 0,
       "x" : 58,
@@ -11659,10 +11659,10 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "NE SE"
+        "dir" : "NE_SE"
       }, {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 58,
@@ -11693,13 +11693,13 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       }, {
         "type" : "RIVER",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       }, {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 58,
@@ -11710,10 +11710,10 @@
         "dir" : "N"
       }, {
         "type" : "RIVER",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       }, {
         "type" : "LIGHT_WOODS",
-        "dir" : "SE S NW"
+        "dir" : "SE_S_NW"
       } ],
       "owner" : 0,
       "x" : 58,
@@ -11724,7 +11724,7 @@
         "dir" : "NE"
       }, {
         "type" : "LIGHT_WOODS",
-        "dir" : "N NE"
+        "dir" : "N_NE"
       } ],
       "owner" : 0,
       "x" : 58,
@@ -11744,7 +11744,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SW NW"
+        "dir" : "SW_NW"
       } ],
       "owner" : 0,
       "x" : 58,
@@ -11765,7 +11765,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "feature" : [ "NON_PLAYABLE" ],
       "owner" : 1,
@@ -11774,7 +11774,7 @@
     }, {
       "terrain" : [ {
         "type" : "SHALLOW_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 59,
@@ -11782,7 +11782,7 @@
     }, {
       "terrain" : [ {
         "type" : "SHALLOW_WATER_DECORATOR",
-        "dir" : "NE SE S SW NW"
+        "dir" : "NE_SE_S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 59,
@@ -11790,7 +11790,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       } ],
       "owner" : 0,
       "x" : 59,
@@ -11798,7 +11798,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N SE"
+        "dir" : "N_SE"
       } ],
       "owner" : 0,
       "x" : 59,
@@ -11806,10 +11806,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE SE S SW NW"
+        "dir" : "NE_SE_S_SW_NW"
       }, {
         "type" : "LIGHT_WOODS",
-        "dir" : "NE SE S SW"
+        "dir" : "NE_SE_S_SW"
       } ],
       "owner" : 0,
       "x" : 59,
@@ -11817,10 +11817,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SE SW NW"
+        "dir" : "N_NE_SE_SW_NW"
       }, {
         "type" : "LIGHT_WOODS",
-        "dir" : "N NE SE S NW"
+        "dir" : "N_NE_SE_S_NW"
       } ],
       "owner" : 0,
       "x" : 59,
@@ -11828,16 +11828,16 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "NE SE S NW"
+        "dir" : "NE_SE_S_NW"
       }, {
         "type" : "LIGHT_WOODS",
-        "dir" : "N NE SE"
+        "dir" : "N_NE_SE"
       }, {
         "type" : "ROAD",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       }, {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "vp" : 20,
@@ -11846,10 +11846,10 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "N NE SE"
+        "dir" : "N_NE_SE"
       }, {
         "type" : "RIVER",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 59,
@@ -11857,7 +11857,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE SE S SW NW"
+        "dir" : "NE_SE_S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 59,
@@ -11865,7 +11865,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 59,
@@ -11873,7 +11873,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 59,
@@ -11881,7 +11881,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 59,
@@ -11889,7 +11889,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 59,
@@ -11897,7 +11897,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SE SW NW"
+        "dir" : "N_NE_SE_SW_NW"
       } ],
       "owner" : 0,
       "x" : 59,
@@ -11905,10 +11905,10 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "NE SE S SW"
+        "dir" : "NE_SE_S_SW"
       }, {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "vp" : 20,
@@ -11917,7 +11917,7 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "N NE SE NW"
+        "dir" : "N_NE_SE_NW"
       } ],
       "owner" : 0,
       "x" : 59,
@@ -11937,7 +11937,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 59,
@@ -11945,10 +11945,10 @@
     }, {
       "terrain" : [ {
         "type" : "DENSE_URBAN",
-        "dir" : "N NE SE"
+        "dir" : "N_NE_SE"
       }, {
         "type" : "RAIL",
-        "dir" : "NE SE NW"
+        "dir" : "NE_SE_NW"
       } ],
       "owner" : 0,
       "x" : 59,
@@ -11956,10 +11956,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE SE SW"
+        "dir" : "NE_SE_SW"
       }, {
         "type" : "LIGHT_WOODS",
-        "dir" : "NE SE SW NW"
+        "dir" : "NE_SE_SW_NW"
       } ],
       "owner" : 0,
       "x" : 59,

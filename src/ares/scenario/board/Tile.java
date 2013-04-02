@@ -3,6 +3,7 @@ package ares.scenario.board;
 import ares.application.models.board.NonObservedTileModel;
 import ares.application.models.board.ObservedTileModel;
 import ares.application.models.board.TileModel;
+import ares.data.jaxb.MultiDirection;
 import ares.engine.combat.CombatModifier;
 import ares.engine.knowledge.KnowledgeCategory;
 import ares.engine.knowledge.KnowledgeLevel;
@@ -47,8 +48,8 @@ public final class Tile implements ModelProvider<TileModel> {
      */
     private Map<Direction, Set<Terrain>> sideTerrain;
     /**
-     * Set of features found in the terrain that are not exactly "terrain types". This set includes both such airports
-     * and harbours,
+     * Set of features found in the terrain that are not exactly "terrain types". This set includes airports and
+     * harbours, mud, snow, etc.
      *
      */
     private Set<Feature> features;
@@ -134,9 +135,9 @@ public final class Tile implements ModelProvider<TileModel> {
         for (ares.data.jaxb.Terrain ct : c.getTerrain()) {
             ares.data.jaxb.TerrainType type = ct.getType();
             Terrain terr = Terrain.valueOf(type.name());
-            String[] dirStrArray = ct.getDir().split(" ");
-            for (int i = 0; i < dirStrArray.length; i++) {
-                Direction d = Direction.valueOf(dirStrArray[i]);
+            MultiDirection multiDir = ct.getDir();
+            Set<Direction> directions = Direction.convertMultiDirectionToDirections(multiDir);
+            for (Direction d : directions) {
                 sideTerrain.get(d).add(terr);
                 if (terr.getDirectionality() != Directionality.LOGICAL) {
                     tileTerrain.add(terr);
@@ -145,7 +146,17 @@ public final class Tile implements ModelProvider<TileModel> {
                     }
                 }
             }
-
+//            String[] dirStrArray = ct.getDir().split(" ");
+//            for (int i = 0; i < dirStrArray.length; i++) {
+//                Direction d = Direction.valueOf(dirStrArray[i]);
+//                sideTerrain.get(d).add(terr);
+//                if (terr.getDirectionality() != Directionality.LOGICAL) {
+//                    tileTerrain.add(terr);
+//                    if (terr.getVision().ordinal() < visibility.ordinal()) {
+//                        visibility = terr.getVision();
+//                    }
+//                }
+//            }
         }
         features = EnumSet.noneOf(Feature.class);
 

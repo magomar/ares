@@ -1,8 +1,7 @@
 package ares.scenario.board;
 
-import java.util.ArrayList;
+import ares.data.jaxb.MultiDirection;
 import java.util.EnumSet;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -56,18 +55,12 @@ public enum Direction {
     public Direction getOpposite() {
         return opposite;
     }
-//
-//    public static int convertDirectionsToBitMask(List<Direction> directions) {
-//        int mask = 0;
-//        for (Direction dir : directions) {
-//            // TODO Direction.C should not appear here !!
-//            if (dir != Direction.C) {
-//                int bit = 1 << dir.ordinal();
-//                mask |= bit;
-//            }
-//        }
-//        return mask;
-//    }
+
+    public static Set<Direction> convertMultiDirectionToDirections(MultiDirection multiDir) {
+        int bitmask = multiDir.ordinal() + 1;
+        Set<Direction> directions = convertBitMaskToDirections(bitmask);
+        return directions;
+    }
 
     public static int convertDirectionsToBitMask(Set<Direction> directions) {
         int mask = 0;
@@ -81,20 +74,19 @@ public enum Direction {
         return mask;
     }
 
-    public static Set<Direction> convertBitMaskToDirections(int mask) {
+    public static Set<Direction> convertBitMaskToDirections(int bitmask) {
         Set<Direction> directions = EnumSet.noneOf(Direction.class);
-        // TODO if possible, return an EnumSet instead of a list (I haven't been able yet)
         for (int bit = 0; bit < ALL_DIRECTIONS.length; bit++) {
-            if (testBitFlag(mask, bit)) {
+            if (testBitFlag(bitmask, bit)) {
                 directions.add(ALL_DIRECTIONS[bit]);
             }
         }
         return directions;
     }
 
-    private static boolean testBitFlag(int mask, int bit) {
+    private static boolean testBitFlag(int bitmask, int bit) {
         int flag = 1 << bit;
-        boolean bitIsSet = (mask & flag) != 0;
+        boolean bitIsSet = (bitmask & flag) != 0;
         return bitIsSet;
     }
 }

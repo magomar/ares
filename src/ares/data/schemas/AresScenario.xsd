@@ -746,10 +746,8 @@
             <maxInclusive value="100"/>
         </restriction>
     </simpleType>
-    
     <simpleType name="MultiDirection">
         <restriction base="string">
-            <enumeration value="C"/>
             <enumeration value="N"/>
             <enumeration value="NE"/>
             <enumeration value="N_NE"/>
@@ -813,6 +811,7 @@
             <enumeration value="N_SE_S_SW_NW"/>
             <enumeration value="NE_SE_S_SW_NW"/>
             <enumeration value="N_NE_SE_S_SW_NW"/>
+            <enumeration value="C"/>
         </restriction>
     </simpleType>
 </schema>

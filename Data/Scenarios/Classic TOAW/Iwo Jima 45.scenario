@@ -19,7 +19,7 @@
     "cell" : [ {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 0,
@@ -27,7 +27,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 0,
@@ -35,7 +35,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 0,
@@ -43,7 +43,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 0,
@@ -51,7 +51,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 0,
@@ -59,7 +59,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 0,
@@ -67,7 +67,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 0,
@@ -75,7 +75,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 0,
@@ -83,7 +83,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 0,
@@ -91,10 +91,10 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "SW NW"
+        "dir" : "SW_NW"
       } ],
       "owner" : 1,
       "x" : 0,
@@ -102,7 +102,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 0,
@@ -110,7 +110,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 0,
@@ -118,7 +118,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 0,
@@ -126,7 +126,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 0,
@@ -134,7 +134,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 0,
@@ -142,7 +142,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 0,
@@ -150,7 +150,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 0,
@@ -158,7 +158,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 0,
@@ -166,7 +166,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 0,
@@ -174,7 +174,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 0,
@@ -182,7 +182,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 1,
@@ -190,7 +190,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 1,
@@ -198,7 +198,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 1,
@@ -206,7 +206,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 1,
@@ -214,7 +214,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 1,
@@ -222,7 +222,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 1,
@@ -230,7 +230,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 1,
@@ -238,7 +238,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 1,
@@ -246,7 +246,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 1,
@@ -254,7 +254,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 1,
@@ -262,7 +262,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 1,
@@ -270,7 +270,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 1,
@@ -278,7 +278,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 1,
@@ -286,7 +286,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 1,
@@ -294,7 +294,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 1,
@@ -302,7 +302,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 1,
@@ -310,7 +310,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 1,
@@ -318,7 +318,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 1,
@@ -326,7 +326,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 1,
@@ -334,7 +334,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 1,
@@ -342,7 +342,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 2,
@@ -350,7 +350,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 2,
@@ -358,7 +358,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 2,
@@ -366,7 +366,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 2,
@@ -374,7 +374,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 2,
@@ -382,7 +382,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 2,
@@ -390,7 +390,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 2,
@@ -398,7 +398,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 2,
@@ -406,7 +406,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 2,
@@ -414,7 +414,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 2,
@@ -422,7 +422,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 2,
@@ -430,7 +430,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 2,
@@ -438,7 +438,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 2,
@@ -446,7 +446,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 2,
@@ -454,7 +454,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 2,
@@ -462,7 +462,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 2,
@@ -470,7 +470,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 2,
@@ -478,7 +478,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 2,
@@ -486,7 +486,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 2,
@@ -494,7 +494,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 2,
@@ -502,7 +502,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 3,
@@ -510,7 +510,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 3,
@@ -518,45 +518,45 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
-      }, {
-        "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "C"
-      } ],
-      "owner" : 1,
-      "x" : 3,
-      "y" : 2
-    }, {
-      "terrain" : [ {
-        "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
-      } ],
-      "owner" : 1,
-      "x" : 3,
-      "y" : 3
-    }, {
-      "terrain" : [ {
-        "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
-      } ],
-      "owner" : 1,
-      "x" : 3,
-      "y" : 4
-    }, {
-      "terrain" : [ {
-        "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
         "dir" : "C"
       } ],
       "owner" : 1,
       "x" : 3,
+      "y" : 2
+    }, {
+      "terrain" : [ {
+        "type" : "DEEP_WATER",
+        "dir" : "N_NE_SE_S_SW_NW"
+      } ],
+      "owner" : 1,
+      "x" : 3,
+      "y" : 3
+    }, {
+      "terrain" : [ {
+        "type" : "DEEP_WATER",
+        "dir" : "N_NE_SE_S_SW_NW"
+      } ],
+      "owner" : 1,
+      "x" : 3,
+      "y" : 4
+    }, {
+      "terrain" : [ {
+        "type" : "DEEP_WATER",
+        "dir" : "N_NE_SE_S_SW_NW"
+      }, {
+        "type" : "DEEP_WATER_DECORATOR",
+        "dir" : "C"
+      } ],
+      "owner" : 1,
+      "x" : 3,
       "y" : 5
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 3,
@@ -564,7 +564,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 3,
@@ -572,7 +572,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 3,
@@ -580,7 +580,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 3,
@@ -588,7 +588,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 3,
@@ -596,7 +596,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 3,
@@ -604,7 +604,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 3,
@@ -612,7 +612,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 3,
@@ -620,10 +620,10 @@
     }, {
       "terrain" : [ {
         "type" : "BADLANDS",
-        "dir" : "NE SE S"
+        "dir" : "NE_SE_S"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "NE SE S"
+        "dir" : "NE_SE_S"
       } ],
       "owner" : 0,
       "x" : 3,
@@ -631,13 +631,13 @@
     }, {
       "terrain" : [ {
         "type" : "BADLANDS",
-        "dir" : "N NE SE S"
+        "dir" : "N_NE_SE_S"
       }, {
         "type" : "ROCKY",
         "dir" : "NE"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "N NE SE S"
+        "dir" : "N_NE_SE_S"
       } ],
       "owner" : 0,
       "x" : 3,
@@ -645,10 +645,10 @@
     }, {
       "terrain" : [ {
         "type" : "BADLANDS",
-        "dir" : "N NE SE"
+        "dir" : "N_NE_SE"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "N NE SE"
+        "dir" : "N_NE_SE"
       } ],
       "owner" : 0,
       "x" : 3,
@@ -656,7 +656,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 3,
@@ -664,7 +664,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 3,
@@ -672,7 +672,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 3,
@@ -680,7 +680,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 4,
@@ -688,7 +688,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 4,
@@ -696,7 +696,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 4,
@@ -704,7 +704,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 4,
@@ -712,7 +712,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 4,
@@ -720,7 +720,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 4,
@@ -728,7 +728,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 4,
@@ -736,7 +736,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 4,
@@ -744,7 +744,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 4,
@@ -752,7 +752,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 4,
@@ -760,7 +760,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 4,
@@ -768,7 +768,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 4,
@@ -776,7 +776,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 4,
@@ -784,13 +784,13 @@
     }, {
       "terrain" : [ {
         "type" : "BADLANDS",
-        "dir" : "SE S SW"
+        "dir" : "SE_S_SW"
       }, {
         "type" : "ROCKY",
         "dir" : "S"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "NE SE S SW"
+        "dir" : "NE_SE_S_SW"
       } ],
       "owner" : 0,
       "x" : 4,
@@ -798,13 +798,13 @@
     }, {
       "terrain" : [ {
         "type" : "BADLANDS",
-        "dir" : "N NE S SW NW"
+        "dir" : "N_NE_S_SW_NW"
       }, {
         "type" : "HILLS",
-        "dir" : "NE SE S"
+        "dir" : "NE_SE_S"
       }, {
         "type" : "ROCKY",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       } ],
       "owner" : 0,
       "x" : 4,
@@ -812,10 +812,10 @@
     }, {
       "terrain" : [ {
         "type" : "BADLANDS",
-        "dir" : "N SE S SW NW"
+        "dir" : "N_SE_S_SW_NW"
       }, {
         "type" : "HILLS",
-        "dir" : "N NE SE"
+        "dir" : "N_NE_SE"
       } ],
       "owner" : 0,
       "x" : 4,
@@ -823,13 +823,13 @@
     }, {
       "terrain" : [ {
         "type" : "BADLANDS",
-        "dir" : "N NE S NW"
+        "dir" : "N_NE_S_NW"
       }, {
         "type" : "ROCKY",
         "dir" : "SE"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "N NE SE NW"
+        "dir" : "N_NE_SE_NW"
       } ],
       "owner" : 0,
       "x" : 4,
@@ -837,10 +837,10 @@
     }, {
       "terrain" : [ {
         "type" : "BADLANDS",
-        "dir" : "N SE"
+        "dir" : "N_SE"
       }, {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 4,
@@ -848,7 +848,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 4,
@@ -856,7 +856,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 4,
@@ -864,7 +864,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 5,
@@ -872,7 +872,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 5,
@@ -880,7 +880,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 5,
@@ -888,7 +888,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 5,
@@ -896,7 +896,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 5,
@@ -904,7 +904,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 5,
@@ -912,13 +912,13 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "NE SE"
+        "dir" : "NE_SE"
       }, {
         "type" : "ROCKY",
         "dir" : "C"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "NE SE S"
+        "dir" : "NE_SE_S"
       } ],
       "owner" : 0,
       "x" : 5,
@@ -929,7 +929,7 @@
         "dir" : "SE"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "N NE SE"
+        "dir" : "N_NE_SE"
       } ],
       "owner" : 0,
       "x" : 5,
@@ -937,7 +937,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 5,
@@ -945,10 +945,10 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "NE SE"
+        "dir" : "NE_SE"
       } ],
       "owner" : 1,
       "x" : 5,
@@ -956,7 +956,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 5,
@@ -964,7 +964,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 5,
@@ -972,10 +972,10 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "NE SE S"
+        "dir" : "NE_SE_S"
       } ],
       "owner" : 1,
       "x" : 5,
@@ -986,7 +986,7 @@
         "dir" : "S"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "NE SE S SW"
+        "dir" : "NE_SE_S_SW"
       } ],
       "feature" : [ "ANCHORAGE" ],
       "owner" : 0,
@@ -998,10 +998,10 @@
         "dir" : "N"
       }, {
         "type" : "BADLANDS",
-        "dir" : "SE SW NW"
+        "dir" : "SE_SW_NW"
       }, {
         "type" : "HILLS",
-        "dir" : "SE S SW"
+        "dir" : "SE_S_SW"
       } ],
       "owner" : 0,
       "x" : 5,
@@ -1009,13 +1009,13 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       }, {
         "type" : "MOUNTAINS",
         "dir" : "C"
       }, {
         "type" : "FORTIFICATION",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "entrenchment" : 12,
       "owner" : 0,
@@ -1025,13 +1025,13 @@
     }, {
       "terrain" : [ {
         "type" : "ARID",
-        "dir" : "NE SE"
+        "dir" : "NE_SE"
       }, {
         "type" : "BADLANDS",
-        "dir" : "SE SW NW"
+        "dir" : "SE_SW_NW"
       }, {
         "type" : "HILLS",
-        "dir" : "N NE NW"
+        "dir" : "N_NE_NW"
       } ],
       "owner" : 0,
       "x" : 5,
@@ -1039,10 +1039,10 @@
     }, {
       "terrain" : [ {
         "type" : "ROCKY",
-        "dir" : "NE SE NW"
+        "dir" : "NE_SE_NW"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "N NE NW"
+        "dir" : "N_NE_NW"
       } ],
       "owner" : 0,
       "x" : 5,
@@ -1050,10 +1050,10 @@
     }, {
       "terrain" : [ {
         "type" : "BADLANDS",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       }, {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 5,
@@ -1061,7 +1061,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 5,
@@ -1069,7 +1069,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 6,
@@ -1077,7 +1077,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 6,
@@ -1085,7 +1085,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 6,
@@ -1093,7 +1093,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 6,
@@ -1104,13 +1104,13 @@
         "dir" : "S"
       }, {
         "type" : "ROCKY",
-        "dir" : "NE SE"
+        "dir" : "NE_SE"
       }, {
         "type" : "WADY",
         "dir" : "SE"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "NE SE S"
+        "dir" : "NE_SE_S"
       } ],
       "owner" : 0,
       "vp" : 6,
@@ -1119,10 +1119,10 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "N SE S SW"
+        "dir" : "N_SE_S_SW"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "N NE SE S SW"
+        "dir" : "N_NE_SE_S_SW"
       } ],
       "owner" : 0,
       "x" : 6,
@@ -1130,7 +1130,7 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "N NE SE NW"
+        "dir" : "N_NE_SE_NW"
       } ],
       "owner" : 0,
       "x" : 6,
@@ -1141,7 +1141,7 @@
         "dir" : "NW"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "N NE SE S NW"
+        "dir" : "N_NE_SE_S_NW"
       } ],
       "owner" : 0,
       "x" : 6,
@@ -1149,10 +1149,10 @@
     }, {
       "terrain" : [ {
         "type" : "SAND",
-        "dir" : "N S"
+        "dir" : "N_S"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "N NE SE S"
+        "dir" : "N_NE_SE_S"
       } ],
       "owner" : 0,
       "x" : 6,
@@ -1160,10 +1160,10 @@
     }, {
       "terrain" : [ {
         "type" : "SAND",
-        "dir" : "N S"
+        "dir" : "N_S"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "N NE SE S"
+        "dir" : "N_NE_SE_S"
       } ],
       "owner" : 0,
       "x" : 6,
@@ -1171,10 +1171,10 @@
     }, {
       "terrain" : [ {
         "type" : "SAND",
-        "dir" : "N S"
+        "dir" : "N_S"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "N NE SE S"
+        "dir" : "N_NE_SE_S"
       } ],
       "feature" : [ "ANCHORAGE" ],
       "owner" : 0,
@@ -1186,7 +1186,7 @@
         "dir" : "N"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "N NE SE S"
+        "dir" : "N_NE_SE_S"
       } ],
       "feature" : [ "ANCHORAGE" ],
       "owner" : 0,
@@ -1195,7 +1195,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "N NE SE S SW"
+        "dir" : "N_NE_SE_S_SW"
       } ],
       "feature" : [ "ANCHORAGE" ],
       "owner" : 0,
@@ -1211,7 +1211,7 @@
         "dir" : "NW"
       }, {
         "type" : "HILLS",
-        "dir" : "S SW NW"
+        "dir" : "S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 6,
@@ -1219,13 +1219,13 @@
     }, {
       "terrain" : [ {
         "type" : "ARID",
-        "dir" : "NE S SW"
+        "dir" : "NE_S_SW"
       }, {
         "type" : "HILLS",
-        "dir" : "N SW NW"
+        "dir" : "N_SW_NW"
       }, {
         "type" : "ROCKY",
-        "dir" : "SE S"
+        "dir" : "SE_S"
       } ],
       "owner" : 0,
       "x" : 6,
@@ -1233,16 +1233,16 @@
     }, {
       "terrain" : [ {
         "type" : "ARID",
-        "dir" : "N NW"
+        "dir" : "N_NW"
       }, {
         "type" : "BADLANDS",
-        "dir" : "SE S NW"
+        "dir" : "SE_S_NW"
       }, {
         "type" : "ROCKY",
-        "dir" : "N NE SE S SW"
+        "dir" : "N_NE_SE_S_SW"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "N NE SW NW"
+        "dir" : "N_NE_SW_NW"
       } ],
       "owner" : 0,
       "x" : 6,
@@ -1250,19 +1250,19 @@
     }, {
       "terrain" : [ {
         "type" : "BADLANDS",
-        "dir" : "N NE SW"
+        "dir" : "N_NE_SW"
       }, {
         "type" : "HILLS",
         "dir" : "C"
       }, {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       }, {
         "type" : "ROCKY",
-        "dir" : "N NE NW"
+        "dir" : "N_NE_NW"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "N NW"
+        "dir" : "N_NW"
       } ],
       "owner" : 1,
       "x" : 6,
@@ -1270,7 +1270,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 6,
@@ -1278,7 +1278,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 6,
@@ -1286,7 +1286,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 7,
@@ -1294,7 +1294,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
         "dir" : "C"
@@ -1305,7 +1305,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 7,
@@ -1313,7 +1313,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 7,
@@ -1321,10 +1321,10 @@
     }, {
       "terrain" : [ {
         "type" : "ROCKY",
-        "dir" : "NE S SW"
+        "dir" : "NE_S_SW"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "NE SE S SW"
+        "dir" : "NE_SE_S_SW"
       } ],
       "owner" : 0,
       "x" : 7,
@@ -1335,13 +1335,13 @@
         "dir" : "C"
       }, {
         "type" : "ROCKY",
-        "dir" : "N SE NW"
+        "dir" : "N_SE_NW"
       }, {
         "type" : "WADY",
         "dir" : "NW"
       }, {
         "type" : "ROAD",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       } ],
       "owner" : 0,
       "x" : 7,
@@ -1349,10 +1349,10 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "NE S SW NW"
+        "dir" : "NE_S_SW_NW"
       }, {
         "type" : "ROAD",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 7,
@@ -1360,16 +1360,16 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "N NW"
+        "dir" : "N_NW"
       }, {
         "type" : "URBAN",
         "dir" : "C"
       }, {
         "type" : "FORTIFICATION",
-        "dir" : "N SE S SW NW"
+        "dir" : "N_SE_S_SW_NW"
       }, {
         "type" : "ROAD",
-        "dir" : "N SE S"
+        "dir" : "N_SE_S"
       } ],
       "owner" : 0,
       "vp" : 2,
@@ -1378,7 +1378,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "N NE S"
+        "dir" : "N_NE_S"
       } ],
       "owner" : 0,
       "x" : 7,
@@ -1386,13 +1386,13 @@
     }, {
       "terrain" : [ {
         "type" : "BADLANDS",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       }, {
         "type" : "FORTIFICATION",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       }, {
         "type" : "ROAD",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 7,
@@ -1400,7 +1400,7 @@
     }, {
       "terrain" : [ {
         "type" : "ARID",
-        "dir" : "NE SE S"
+        "dir" : "NE_SE_S"
       }, {
         "type" : "BADLANDS",
         "dir" : "N"
@@ -1414,7 +1414,7 @@
     }, {
       "terrain" : [ {
         "type" : "ARID",
-        "dir" : "N NE SW NW"
+        "dir" : "N_NE_SW_NW"
       } ],
       "owner" : 0,
       "x" : 7,
@@ -1430,10 +1430,10 @@
     }, {
       "terrain" : [ {
         "type" : "SAND",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "N NE S SW NW"
+        "dir" : "N_NE_S_SW_NW"
       } ],
       "feature" : [ "ANCHORAGE" ],
       "owner" : 0,
@@ -1445,10 +1445,10 @@
         "dir" : "SW"
       }, {
         "type" : "SAND",
-        "dir" : "N SE"
+        "dir" : "N_SE"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "N S SW NW"
+        "dir" : "N_S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 7,
@@ -1456,13 +1456,13 @@
     }, {
       "terrain" : [ {
         "type" : "ROCKY",
-        "dir" : "S SW NW"
+        "dir" : "S_SW_NW"
       }, {
         "type" : "FORTIFICATION",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "N SW NW"
+        "dir" : "N_SW_NW"
       } ],
       "owner" : 0,
       "x" : 7,
@@ -1470,13 +1470,13 @@
     }, {
       "terrain" : [ {
         "type" : "BADLANDS",
-        "dir" : "SW NW"
+        "dir" : "SW_NW"
       }, {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       }, {
         "type" : "ROCKY",
-        "dir" : "N SW NW"
+        "dir" : "N_SW_NW"
       } ],
       "owner" : 1,
       "x" : 7,
@@ -1484,7 +1484,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 7,
@@ -1492,7 +1492,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 7,
@@ -1500,7 +1500,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 8,
@@ -1508,7 +1508,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 8,
@@ -1516,7 +1516,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 8,
@@ -1524,13 +1524,13 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "NE SE SW"
+        "dir" : "NE_SE_SW"
       }, {
         "type" : "ROCKY",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "NE SE S SW"
+        "dir" : "NE_SE_S_SW"
       } ],
       "owner" : 0,
       "x" : 8,
@@ -1541,7 +1541,7 @@
         "dir" : "C"
       }, {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "vp" : 10,
@@ -1550,10 +1550,10 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       }, {
         "type" : "ROCKY",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "vp" : 3,
@@ -1562,7 +1562,7 @@
     }, {
       "terrain" : [ {
         "type" : "FORTIFICATION",
-        "dir" : "N NE S NW"
+        "dir" : "N_NE_S_NW"
       } ],
       "owner" : 0,
       "x" : 8,
@@ -1573,7 +1573,7 @@
         "dir" : "S"
       }, {
         "type" : "ROAD",
-        "dir" : "SE SW NW"
+        "dir" : "SE_SW_NW"
       } ],
       "owner" : 0,
       "x" : 8,
@@ -1581,7 +1581,7 @@
     }, {
       "terrain" : [ {
         "type" : "ARID",
-        "dir" : "N S SW"
+        "dir" : "N_S_SW"
       }, {
         "type" : "BADLANDS",
         "dir" : "SW"
@@ -1592,7 +1592,7 @@
     }, {
       "terrain" : [ {
         "type" : "ARID",
-        "dir" : "N SE S SW"
+        "dir" : "N_SE_S_SW"
       } ],
       "owner" : 0,
       "x" : 8,
@@ -1600,7 +1600,7 @@
     }, {
       "terrain" : [ {
         "type" : "ARID",
-        "dir" : "N NE SE SW NW"
+        "dir" : "N_NE_SE_SW_NW"
       } ],
       "owner" : 0,
       "x" : 8,
@@ -1616,10 +1616,10 @@
     }, {
       "terrain" : [ {
         "type" : "SAND",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "N NE SW NW"
+        "dir" : "N_NE_SW_NW"
       } ],
       "feature" : [ "ANCHORAGE" ],
       "owner" : 0,
@@ -1628,7 +1628,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 8,
@@ -1639,7 +1639,7 @@
         "dir" : "NW"
       }, {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 8,
@@ -1647,7 +1647,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 8,
@@ -1655,7 +1655,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 8,
@@ -1663,7 +1663,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 8,
@@ -1671,7 +1671,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 8,
@@ -1679,7 +1679,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 9,
@@ -1687,7 +1687,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 9,
@@ -1695,7 +1695,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 9,
@@ -1703,13 +1703,13 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "NE SE S SW"
+        "dir" : "NE_SE_S_SW"
       }, {
         "type" : "ROCKY",
-        "dir" : "NE SE SW"
+        "dir" : "NE_SE_SW"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "NE SE S SW"
+        "dir" : "NE_SE_S_SW"
       } ],
       "owner" : 0,
       "x" : 9,
@@ -1720,13 +1720,13 @@
         "dir" : "C"
       }, {
         "type" : "HILLS",
-        "dir" : "N NE S NW"
+        "dir" : "N_NE_S_NW"
       }, {
         "type" : "FORTIFICATION",
-        "dir" : "N NE SW NW"
+        "dir" : "N_NE_SW_NW"
       }, {
         "type" : "ROAD",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       }, {
         "type" : "BROKEN_RAIL",
         "dir" : "C"
@@ -1740,10 +1740,10 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "N SE SW"
+        "dir" : "N_SE_SW"
       }, {
         "type" : "FORTIFICATION",
-        "dir" : "SE S SW NW"
+        "dir" : "SE_S_SW_NW"
       } ],
       "owner" : 0,
       "vp" : 3,
@@ -1767,7 +1767,7 @@
         "dir" : "C"
       }, {
         "type" : "FORTIFICATION",
-        "dir" : "N NE SE S SW"
+        "dir" : "N_NE_SE_S_SW"
       } ],
       "owner" : 0,
       "vp" : 2,
@@ -1776,7 +1776,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "NE S NW"
+        "dir" : "NE_S_NW"
       } ],
       "owner" : 0,
       "x" : 9,
@@ -1784,7 +1784,7 @@
     }, {
       "terrain" : [ {
         "type" : "FORTIFICATION",
-        "dir" : "N NE S SW NW"
+        "dir" : "N_NE_S_SW_NW"
       } ],
       "owner" : 0,
       "vp" : 1,
@@ -1793,7 +1793,7 @@
     }, {
       "terrain" : [ {
         "type" : "ARID",
-        "dir" : "SE S SW NW"
+        "dir" : "SE_S_SW_NW"
       }, {
         "type" : "ROAD",
         "dir" : "NE"
@@ -1806,7 +1806,7 @@
     }, {
       "terrain" : [ {
         "type" : "ARID",
-        "dir" : "N NE SE NW"
+        "dir" : "N_NE_SE_NW"
       } ],
       "owner" : 0,
       "x" : 9,
@@ -1818,10 +1818,10 @@
     }, {
       "terrain" : [ {
         "type" : "SAND",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "N NE SW NW"
+        "dir" : "N_NE_SW_NW"
       } ],
       "feature" : [ "ANCHORAGE" ],
       "owner" : 0,
@@ -1830,7 +1830,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 9,
@@ -1838,7 +1838,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 9,
@@ -1846,7 +1846,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 9,
@@ -1854,7 +1854,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 9,
@@ -1862,7 +1862,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 9,
@@ -1870,7 +1870,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 9,
@@ -1878,7 +1878,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 10,
@@ -1886,7 +1886,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 10,
@@ -1894,13 +1894,13 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "NE SE S SW"
+        "dir" : "NE_SE_S_SW"
       }, {
         "type" : "ROCKY",
-        "dir" : "NE SE S SW"
+        "dir" : "NE_SE_S_SW"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "NE SE S SW"
+        "dir" : "NE_SE_S_SW"
       } ],
       "owner" : 0,
       "x" : 10,
@@ -1908,10 +1908,10 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "N NE SE SW NW"
+        "dir" : "N_NE_SE_SW_NW"
       }, {
         "type" : "ROCKY",
-        "dir" : "N NE NW"
+        "dir" : "N_NE_NW"
       } ],
       "owner" : 0,
       "x" : 10,
@@ -1922,7 +1922,7 @@
         "dir" : "C"
       }, {
         "type" : "FORTIFICATION",
-        "dir" : "N NE SE S"
+        "dir" : "N_NE_SE_S"
       }, {
         "type" : "ROAD",
         "dir" : "NW"
@@ -1944,7 +1944,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       } ],
       "owner" : 0,
       "x" : 10,
@@ -1952,7 +1952,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       } ],
       "owner" : 0,
       "x" : 10,
@@ -1960,7 +1960,7 @@
     }, {
       "terrain" : [ {
         "type" : "ARID",
-        "dir" : "NE SE S"
+        "dir" : "NE_SE_S"
       } ],
       "owner" : 0,
       "x" : 10,
@@ -1968,13 +1968,13 @@
     }, {
       "terrain" : [ {
         "type" : "ROCKY",
-        "dir" : "SE S"
+        "dir" : "SE_S"
       }, {
         "type" : "FORTIFICATION",
-        "dir" : "N SE S SW"
+        "dir" : "N_SE_S_SW"
       }, {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "entrenchment" : 9,
       "owner" : 0,
@@ -1984,10 +1984,10 @@
     }, {
       "terrain" : [ {
         "type" : "ARID",
-        "dir" : "NE SE S SW NW"
+        "dir" : "NE_SE_S_SW_NW"
       }, {
         "type" : "ROCKY",
-        "dir" : "N NE"
+        "dir" : "N_NE"
       } ],
       "owner" : 0,
       "x" : 10,
@@ -1995,7 +1995,7 @@
     }, {
       "terrain" : [ {
         "type" : "ARID",
-        "dir" : "N NE NW"
+        "dir" : "N_NE_NW"
       } ],
       "owner" : 0,
       "vp" : 1,
@@ -2004,10 +2004,10 @@
     }, {
       "terrain" : [ {
         "type" : "SAND",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "N NE SW NW"
+        "dir" : "N_NE_SW_NW"
       } ],
       "feature" : [ "ANCHORAGE" ],
       "owner" : 0,
@@ -2016,7 +2016,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 10,
@@ -2024,7 +2024,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 10,
@@ -2032,7 +2032,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 10,
@@ -2040,7 +2040,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 10,
@@ -2048,7 +2048,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 10,
@@ -2056,7 +2056,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 10,
@@ -2064,7 +2064,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 10,
@@ -2072,7 +2072,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 11,
@@ -2080,7 +2080,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 11,
@@ -2088,13 +2088,13 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "SE S SW"
+        "dir" : "SE_S_SW"
       }, {
         "type" : "ROCKY",
-        "dir" : "SE S SW"
+        "dir" : "SE_S_SW"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "SE S SW"
+        "dir" : "SE_S_SW"
       } ],
       "owner" : 0,
       "vp" : 6,
@@ -2103,13 +2103,13 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       }, {
         "type" : "ROCKY",
-        "dir" : "N NE SW NW"
+        "dir" : "N_NE_SW_NW"
       }, {
         "type" : "FORTIFICATION",
-        "dir" : "N NE S SW NW"
+        "dir" : "N_NE_S_SW_NW"
       } ],
       "owner" : 0,
       "vp" : 5,
@@ -2118,7 +2118,7 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "N NE NW"
+        "dir" : "N_NE_NW"
       } ],
       "feature" : [ "AIRFIELD" ],
       "owner" : 0,
@@ -2135,7 +2135,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 11,
@@ -2147,13 +2147,13 @@
     }, {
       "terrain" : [ {
         "type" : "ARID",
-        "dir" : "S SW"
+        "dir" : "S_SW"
       }, {
         "type" : "HILLS",
         "dir" : "NE"
       }, {
         "type" : "FORTIFICATION",
-        "dir" : "N NE SE SW NW"
+        "dir" : "N_NE_SE_SW_NW"
       } ],
       "owner" : 0,
       "vp" : 1,
@@ -2162,13 +2162,13 @@
     }, {
       "terrain" : [ {
         "type" : "ARID",
-        "dir" : "N S NW"
+        "dir" : "N_S_NW"
       }, {
         "type" : "FORTIFICATION",
-        "dir" : "NE SE S NW"
+        "dir" : "NE_SE_S_NW"
       }, {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 11,
@@ -2176,10 +2176,10 @@
     }, {
       "terrain" : [ {
         "type" : "ARID",
-        "dir" : "N SE S SW"
+        "dir" : "N_SE_S_SW"
       }, {
         "type" : "ROCKY",
-        "dir" : "SW NW"
+        "dir" : "SW_NW"
       } ],
       "owner" : 0,
       "vp" : 1,
@@ -2188,7 +2188,7 @@
     }, {
       "terrain" : [ {
         "type" : "ARID",
-        "dir" : "N NE NW"
+        "dir" : "N_NE_NW"
       }, {
         "type" : "ROAD",
         "dir" : "NE"
@@ -2199,10 +2199,10 @@
     }, {
       "terrain" : [ {
         "type" : "SAND",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "N NE SW NW"
+        "dir" : "N_NE_SW_NW"
       } ],
       "owner" : 0,
       "x" : 11,
@@ -2210,7 +2210,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 11,
@@ -2218,7 +2218,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 11,
@@ -2226,7 +2226,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 11,
@@ -2234,7 +2234,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 11,
@@ -2242,7 +2242,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 11,
@@ -2250,7 +2250,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 11,
@@ -2258,7 +2258,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 11,
@@ -2266,7 +2266,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 12,
@@ -2274,7 +2274,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 12,
@@ -2285,13 +2285,13 @@
         "dir" : "C"
       }, {
         "type" : "HILLS",
-        "dir" : "SE S SW NW"
+        "dir" : "SE_S_SW_NW"
       }, {
         "type" : "ROCKY",
-        "dir" : "SE SW NW"
+        "dir" : "SE_SW_NW"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "SE S SW NW"
+        "dir" : "SE_S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 12,
@@ -2299,10 +2299,10 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "N NE SW NW"
+        "dir" : "N_NE_SW_NW"
       }, {
         "type" : "FORTIFICATION",
-        "dir" : "N NE S SW"
+        "dir" : "N_NE_S_SW"
       } ],
       "owner" : 0,
       "vp" : 3,
@@ -2311,7 +2311,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       } ],
       "owner" : 0,
       "x" : 12,
@@ -2322,7 +2322,7 @@
         "dir" : "C"
       }, {
         "type" : "ROAD",
-        "dir" : "N SE SW"
+        "dir" : "N_SE_SW"
       } ],
       "owner" : 0,
       "x" : 12,
@@ -2330,7 +2330,7 @@
     }, {
       "terrain" : [ {
         "type" : "FORTIFICATION",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "feature" : [ "AIRFIELD" ],
       "owner" : 0,
@@ -2349,7 +2349,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 12,
@@ -2366,10 +2366,10 @@
     }, {
       "terrain" : [ {
         "type" : "ARID",
-        "dir" : "SW NW"
+        "dir" : "SW_NW"
       }, {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 12,
@@ -2380,7 +2380,7 @@
         "dir" : "SW"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "N NE SW NW"
+        "dir" : "N_NE_SW_NW"
       } ],
       "owner" : 0,
       "x" : 12,
@@ -2388,7 +2388,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 12,
@@ -2396,7 +2396,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 12,
@@ -2404,7 +2404,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 12,
@@ -2412,7 +2412,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 12,
@@ -2420,7 +2420,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 12,
@@ -2428,7 +2428,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "NE SE"
+        "dir" : "NE_SE"
       } ],
       "owner" : 1,
       "x" : 12,
@@ -2436,7 +2436,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 12,
@@ -2444,7 +2444,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 12,
@@ -2452,7 +2452,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 13,
@@ -2460,7 +2460,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 13,
@@ -2468,7 +2468,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 13,
@@ -2476,13 +2476,13 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "SE SW NW"
+        "dir" : "SE_SW_NW"
       }, {
         "type" : "ROCKY",
         "dir" : "SE"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "SE S SW NW"
+        "dir" : "SE_S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 13,
@@ -2493,7 +2493,7 @@
         "dir" : "C"
       }, {
         "type" : "FORTIFICATION",
-        "dir" : "N NE SE S SW"
+        "dir" : "N_NE_SE_S_SW"
       }, {
         "type" : "ROAD",
         "dir" : "SW"
@@ -2513,7 +2513,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 13,
@@ -2537,7 +2537,7 @@
         "dir" : "SE"
       }, {
         "type" : "ROAD",
-        "dir" : "NE S NW"
+        "dir" : "NE_S_NW"
       } ],
       "owner" : 0,
       "x" : 13,
@@ -2548,7 +2548,7 @@
         "dir" : "NW"
       }, {
         "type" : "ROAD",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       } ],
       "owner" : 0,
       "x" : 13,
@@ -2556,10 +2556,10 @@
     }, {
       "terrain" : [ {
         "type" : "FORTIFICATION",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "N NE SW NW"
+        "dir" : "N_NE_SW_NW"
       } ],
       "owner" : 0,
       "x" : 13,
@@ -2567,7 +2567,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 13,
@@ -2575,7 +2575,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 13,
@@ -2583,7 +2583,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 13,
@@ -2591,7 +2591,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 13,
@@ -2599,7 +2599,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 13,
@@ -2607,7 +2607,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "NE SE S SW"
+        "dir" : "NE_SE_S_SW"
       } ],
       "feature" : [ "ANCHORAGE" ],
       "owner" : 1,
@@ -2616,7 +2616,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "N NE NW"
+        "dir" : "N_NE_NW"
       } ],
       "owner" : 1,
       "x" : 13,
@@ -2624,7 +2624,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 13,
@@ -2632,7 +2632,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 14,
@@ -2640,7 +2640,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 14,
@@ -2648,7 +2648,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 14,
@@ -2659,13 +2659,13 @@
         "dir" : "C"
       }, {
         "type" : "HILLS",
-        "dir" : "SE S NW"
+        "dir" : "SE_S_NW"
       }, {
         "type" : "ROCKY",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "SE S SW NW"
+        "dir" : "SE_S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 14,
@@ -2673,7 +2673,7 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "N NE SE"
+        "dir" : "N_NE_SE"
       } ],
       "owner" : 0,
       "vp" : 3,
@@ -2689,10 +2689,10 @@
         "dir" : "SE"
       }, {
         "type" : "FORTIFICATION",
-        "dir" : "N NE S SW NW"
+        "dir" : "N_NE_S_SW_NW"
       }, {
         "type" : "ROAD",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "entrenchment" : 3,
       "owner" : 0,
@@ -2714,10 +2714,10 @@
         "dir" : "SE"
       }, {
         "type" : "FORTIFICATION",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       }, {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "vp" : 1,
@@ -2726,7 +2726,7 @@
     }, {
       "terrain" : [ {
         "type" : "ARID",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 14,
@@ -2734,7 +2734,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "N NE SW NW"
+        "dir" : "N_NE_SW_NW"
       } ],
       "owner" : 0,
       "x" : 14,
@@ -2742,7 +2742,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 14,
@@ -2750,7 +2750,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 14,
@@ -2758,7 +2758,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 14,
@@ -2766,7 +2766,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 14,
@@ -2774,7 +2774,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 14,
@@ -2782,7 +2782,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "NE SE S SW"
+        "dir" : "NE_SE_S_SW"
       } ],
       "feature" : [ "ANCHORAGE" ],
       "owner" : 1,
@@ -2791,7 +2791,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "N NE SW NW"
+        "dir" : "N_NE_SW_NW"
       } ],
       "owner" : 1,
       "x" : 14,
@@ -2799,7 +2799,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 14,
@@ -2807,7 +2807,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 14,
@@ -2815,7 +2815,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 15,
@@ -2823,7 +2823,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 15,
@@ -2831,7 +2831,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 15,
@@ -2839,7 +2839,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 15,
@@ -2847,13 +2847,13 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "S SW NW"
+        "dir" : "S_SW_NW"
       }, {
         "type" : "ROCKY",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "S SW NW"
+        "dir" : "S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 15,
@@ -2861,13 +2861,13 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "N SE NW"
+        "dir" : "N_SE_NW"
       }, {
         "type" : "ROCKY",
-        "dir" : "N SE"
+        "dir" : "N_SE"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "N SE S SW NW"
+        "dir" : "N_SE_S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 15,
@@ -2879,13 +2879,13 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "NE SE NW"
+        "dir" : "NE_SE_NW"
       }, {
         "type" : "FORTIFICATION",
-        "dir" : "N NE SE S SW"
+        "dir" : "N_NE_SE_S_SW"
       }, {
         "type" : "ROAD",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       } ],
       "owner" : 0,
       "x" : 15,
@@ -2893,7 +2893,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       } ],
       "owner" : 0,
       "x" : 15,
@@ -2912,10 +2912,10 @@
     }, {
       "terrain" : [ {
         "type" : "ARID",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "N NE SE SW NW"
+        "dir" : "N_NE_SE_SW_NW"
       } ],
       "owner" : 0,
       "x" : 15,
@@ -2923,7 +2923,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 15,
@@ -2931,7 +2931,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 15,
@@ -2939,7 +2939,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 15,
@@ -2947,7 +2947,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 15,
@@ -2955,7 +2955,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 15,
@@ -2963,7 +2963,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "NE SE S SW"
+        "dir" : "NE_SE_S_SW"
       } ],
       "feature" : [ "ANCHORAGE" ],
       "owner" : 1,
@@ -2972,7 +2972,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "N NE SW NW"
+        "dir" : "N_NE_SW_NW"
       } ],
       "owner" : 1,
       "x" : 15,
@@ -2980,7 +2980,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 15,
@@ -2988,7 +2988,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 15,
@@ -2996,7 +2996,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 16,
@@ -3004,7 +3004,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 16,
@@ -3012,7 +3012,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 16,
@@ -3020,7 +3020,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 16,
@@ -3028,7 +3028,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 16,
@@ -3036,16 +3036,16 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       }, {
         "type" : "ROCKY",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       }, {
         "type" : "MAJOR_ESCARPMENT",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "S SW NW"
+        "dir" : "S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 16,
@@ -3053,13 +3053,13 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "N SE S SW"
+        "dir" : "N_SE_S_SW"
       }, {
         "type" : "ROCKY",
-        "dir" : "N SE S"
+        "dir" : "N_SE_S"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "N SE S SW NW"
+        "dir" : "N_SE_S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 16,
@@ -3067,10 +3067,10 @@
     }, {
       "terrain" : [ {
         "type" : "ARID",
-        "dir" : "SE S"
+        "dir" : "SE_S"
       }, {
         "type" : "HILLS",
-        "dir" : "N NE NW"
+        "dir" : "N_NE_NW"
       } ],
       "owner" : 0,
       "x" : 16,
@@ -3078,10 +3078,10 @@
     }, {
       "terrain" : [ {
         "type" : "ARID",
-        "dir" : "N NE S"
+        "dir" : "N_NE_S"
       }, {
         "type" : "ROCKY",
-        "dir" : "NE SE SW"
+        "dir" : "NE_SE_SW"
       } ],
       "owner" : 0,
       "x" : 16,
@@ -3089,7 +3089,7 @@
     }, {
       "terrain" : [ {
         "type" : "ARID",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       } ],
       "owner" : 0,
       "x" : 16,
@@ -3100,10 +3100,10 @@
         "dir" : "NE"
       }, {
         "type" : "FORTIFICATION",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "N NE NW"
+        "dir" : "N_NE_NW"
       } ],
       "owner" : 0,
       "vp" : 5,
@@ -3112,7 +3112,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 16,
@@ -3120,7 +3120,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 16,
@@ -3128,7 +3128,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 16,
@@ -3136,7 +3136,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 16,
@@ -3144,7 +3144,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "NE SE S SW"
+        "dir" : "NE_SE_S_SW"
       } ],
       "feature" : [ "ANCHORAGE" ],
       "owner" : 1,
@@ -3153,7 +3153,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "N NE SW NW"
+        "dir" : "N_NE_SW_NW"
       } ],
       "owner" : 1,
       "x" : 16,
@@ -3161,7 +3161,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 16,
@@ -3169,7 +3169,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 16,
@@ -3177,7 +3177,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 16,
@@ -3185,10 +3185,10 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "N NE NW"
+        "dir" : "N_NE_NW"
       } ],
       "owner" : 1,
       "x" : 17,
@@ -3196,7 +3196,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 17,
@@ -3204,7 +3204,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 17,
@@ -3212,7 +3212,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
         "dir" : "C"
@@ -3223,7 +3223,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 17,
@@ -3231,7 +3231,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 17,
@@ -3239,7 +3239,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 17,
@@ -3247,16 +3247,16 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "SW NW"
+        "dir" : "SW_NW"
       }, {
         "type" : "ROCKY",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       }, {
         "type" : "FORTIFICATION",
-        "dir" : "N NE SE SW NW"
+        "dir" : "N_NE_SE_SW_NW"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "S SW NW"
+        "dir" : "S_SW_NW"
       } ],
       "entrenchment" : 8,
       "owner" : 0,
@@ -3266,13 +3266,13 @@
     }, {
       "terrain" : [ {
         "type" : "ARID",
-        "dir" : "SW NW"
+        "dir" : "SW_NW"
       }, {
         "type" : "ROCKY",
-        "dir" : "N S SW"
+        "dir" : "N_S_SW"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "N S SW NW"
+        "dir" : "N_S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 17,
@@ -3280,10 +3280,10 @@
     }, {
       "terrain" : [ {
         "type" : "ROCKY",
-        "dir" : "N S NW"
+        "dir" : "N_S_NW"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "N S SW NW"
+        "dir" : "N_S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 17,
@@ -3291,10 +3291,10 @@
     }, {
       "terrain" : [ {
         "type" : "ROCKY",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "N SW NW"
+        "dir" : "N_SW_NW"
       } ],
       "owner" : 0,
       "x" : 17,
@@ -3302,7 +3302,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 17,
@@ -3310,7 +3310,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 17,
@@ -3318,7 +3318,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 17,
@@ -3326,7 +3326,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 17,
@@ -3334,7 +3334,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "S SW"
+        "dir" : "S_SW"
       } ],
       "owner" : 1,
       "x" : 17,
@@ -3342,7 +3342,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "N SW NW"
+        "dir" : "N_SW_NW"
       } ],
       "owner" : 1,
       "x" : 17,
@@ -3350,7 +3350,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 17,
@@ -3361,7 +3361,7 @@
         "dir" : "NE"
       }, {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 17,
@@ -3369,7 +3369,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 17,
@@ -3377,7 +3377,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 18,
@@ -3385,7 +3385,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 18,
@@ -3393,7 +3393,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 18,
@@ -3401,7 +3401,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 18,
@@ -3409,7 +3409,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 18,
@@ -3417,7 +3417,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 18,
@@ -3425,7 +3425,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 18,
@@ -3433,7 +3433,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 18,
@@ -3441,10 +3441,10 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
-        "dir" : "SW NW"
+        "dir" : "SW_NW"
       } ],
       "owner" : 1,
       "x" : 18,
@@ -3452,7 +3452,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 18,
@@ -3460,7 +3460,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 18,
@@ -3468,7 +3468,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 18,
@@ -3476,7 +3476,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 18,
@@ -3484,7 +3484,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 18,
@@ -3492,7 +3492,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 18,
@@ -3500,7 +3500,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 18,
@@ -3508,7 +3508,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 18,
@@ -3516,7 +3516,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 18,
@@ -3524,7 +3524,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 18,
@@ -3532,7 +3532,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 18,
@@ -3540,7 +3540,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 19,
@@ -3548,7 +3548,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 19,
@@ -3556,7 +3556,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 19,
@@ -3564,7 +3564,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 19,
@@ -3572,7 +3572,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 19,
@@ -3580,7 +3580,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 19,
@@ -3588,7 +3588,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 19,
@@ -3596,7 +3596,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 19,
@@ -3604,7 +3604,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 19,
@@ -3612,7 +3612,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 19,
@@ -3620,7 +3620,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 19,
@@ -3628,7 +3628,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 19,
@@ -3636,7 +3636,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 19,
@@ -3644,7 +3644,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 19,
@@ -3652,7 +3652,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 19,
@@ -3660,7 +3660,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 19,
@@ -3668,7 +3668,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 19,
@@ -3676,7 +3676,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 19,
@@ -3684,7 +3684,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 19,
@@ -3692,7 +3692,7 @@
     }, {
       "terrain" : [ {
         "type" : "DEEP_WATER",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 19,
