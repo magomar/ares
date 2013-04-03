@@ -50,7 +50,7 @@ public class FileIO<T extends Enum<T> & FileType> {
     public FileIO(String path, Class<T> fileTypeEnumClass, String jaxbContextPath, String namespace) {
         this(FileSystems.getDefault().getPath(path), fileTypeEnumClass, jaxbContextPath, namespace);
     }
-
+// TODO fileTypeEnumClass is not used, can we remove this?
     public FileIO(Path path, Class<T> fileTypeEnumClass, String jaxbContextPath, String namespace) {
         this.namespace = namespace;
         if (path.isAbsolute()) {

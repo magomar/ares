@@ -16,8 +16,8 @@ import java.util.logging.Logger;
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public final class AssetType {
-    private static final Logger LOG = Logger.getLogger(AssetType.class.getName());
 
+    private static final Logger LOG = Logger.getLogger(AssetType.class.getName());
     private int id;
     private String name;
     private String country;
@@ -76,6 +76,7 @@ public final class AssetType {
 
         Set<AssetTrait> set = EnumSet.copyOf(traits);
         set.retainAll(AssetTrait.MOVEMENT);
+        // TODO fix the equipment file when importing from TOAW, so as to avoid these checkings when loading the EquipmentDb file
         if (set.isEmpty()) { // this happens with SAM
             traits.add(AssetTrait.STATIC); // I assume SAM can not be moved without transport
             speed = (int) (AssetTrait.STATIC.getFactor() * 1000.0 / 60);
