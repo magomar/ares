@@ -22,8 +22,8 @@ public abstract class TileModel extends KnowledgeMediatedModel {
         this.tile = tile;
     }
 
-    public Map<Direction, Set<Terrain>> getSideTerrain() {
-        return Collections.unmodifiableMap(tile.getSideTerrain());
+    public Map<Terrain, Directions> getTerrain() {
+        return Collections.unmodifiableMap(tile.getTerrain());
     }
 
     public Set<Feature> getTerrainFeatures() {

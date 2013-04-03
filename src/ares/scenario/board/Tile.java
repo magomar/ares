@@ -39,19 +39,20 @@ public final class Tile implements ModelProvider<TileModel> {
     /**
      * Set of terrain types found in this location whose effect does not depend on direction
      */
-    private Set<Terrain> tileTerrain;
+//    private Set<Terrain> tileTerrain;
     /**
      * Board containing the terrain types found in this location for each direction of the tile These terrain types may
      * either have and effect that depends on the direction (roads and escarpments), or need to be represented
      * graphically as having direction, although their effect would be global for the entire tile (rivers and wadis) or
      * it would have no effect at all (political boundaries [borders])
      */
-    private Map<Direction, Set<Terrain>> sideTerrain;
+//    private Map<Direction, Set<Terrain>> sideTerrain;
     /**
      * Set of features found in the terrain that are not exactly "terrain types". This set includes airports and
      * harbours, mud, snow, etc.
      *
      */
+    private final Map<Terrain, Directions> terrain;
     private Set<Feature> features;
     /**
      * Entrenchment (fortification) level, expressed as a percentage
@@ -126,26 +127,32 @@ public final class Tile implements ModelProvider<TileModel> {
         units = new UnitsStack(this);
 
         // Initialize terrain information
-        tileTerrain = EnumSet.noneOf(Terrain.class);
-        sideTerrain = new EnumMap<>(Direction.class);
-        for (Direction d : Direction.values()) {
-            sideTerrain.put(d, EnumSet.noneOf(Terrain.class));
-        }
+//        tileTerrain = EnumSet.noneOf(Terrain.class);
+//        sideTerrain = new EnumMap<>(Direction.class);
+//        for (Direction d : Direction.values()) {
+//            sideTerrain.put(d, EnumSet.noneOf(Terrain.class));
+//        }
+        terrain = new EnumMap<>(Terrain.class);
         visibility = Vision.OPEN;
         for (ares.data.jaxb.Terrain ct : c.getTerrain()) {
             ares.data.jaxb.TerrainType type = ct.getType();
             Terrain terr = Terrain.valueOf(type.name());
-            MultiDirection multiDir = ct.getDir();
-            Set<Direction> directions = Direction.convertMultiDirectionToDirections(multiDir);
-            for (Direction d : directions) {
-                sideTerrain.get(d).add(terr);
-                if (terr.getDirectionality() != Directionality.LOGICAL) {
-                    tileTerrain.add(terr);
-                    if (terr.getVision().ordinal() < visibility.ordinal()) {
-                        visibility = terr.getVision();
-                    }
-                }
+            Directions multiDir = Directions.valueOf(ct.getDir().name());
+            terrain.put(terr, multiDir);
+            Vision vision = terr.getVision();
+            if (vision.compareTo(visibility) < 0) {
+                visibility = vision;
             }
+//            Set<Direction> directions = Direction.convertMultiDirectionToDirections(multiDir);
+//            for (Direction d : directions) {
+//                sideTerrain.get(d).add(terr);
+//                if (terr.getDirectionality() != Directionality.LOGICAL) {
+//                    tileTerrain.add(terr);
+//                    if (terr.getVision().ordinal() < visibility.ordinal()) {
+//                        visibility = terr.getVision();
+//                    }
+//                }
+//            }
 //            String[] dirStrArray = ct.getDir().split(" ");
 //            for (int i = 0; i < dirStrArray.length; i++) {
 //                Direction d = Direction.valueOf(dirStrArray[i]);
@@ -304,12 +311,16 @@ public final class Tile implements ModelProvider<TileModel> {
         return index;
     }
 
-    public Map<Direction, Set<Terrain>> getSideTerrain() {
-        return sideTerrain;
-    }
-
-    public Set<Terrain> getTileTerrain() {
-        return tileTerrain;
+    //
+    //    public Map<Direction, Set<Terrain>> getSideTerrain() {
+    //        return sideTerrain;
+    //    }
+    //
+    //    public Set<Terrain> getTileTerrain() {
+    //    }
+    //    }
+    public Map<Terrain, Directions> getTerrain() {
+        return terrain;
     }
 
     public Vision getVision() {
@@ -405,9 +416,10 @@ public final class Tile implements ModelProvider<TileModel> {
 
     public String toStringMultiline() {
         StringBuilder sb = new StringBuilder("Location: " + toString() + '\n');
-        if (!tileTerrain.isEmpty()) {
-            sb.append("Terrain: ").append(tileTerrain).append('\n');
-        }
+        if (!terrain.isEmpty()) sb.append("Terrain").append(terrain.keySet()).append('\n');
+//        if (!tileTerrain.isEmpty()) {
+//            sb.append("Terrain: ").append(tileTerrain).append('\n');
+//        }
         if (!features.isEmpty()) {
             sb.append("Features: ").append(features).append('\n');
         }
@@ -418,4 +430,5 @@ public final class Tile implements ModelProvider<TileModel> {
 
         return sb.toString();
     }
+    
 }

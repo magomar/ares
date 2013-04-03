@@ -56,12 +56,6 @@ public enum Direction {
         return opposite;
     }
 
-    public static Set<Direction> convertMultiDirectionToDirections(MultiDirection multiDir) {
-        int bitmask = multiDir.ordinal() + 1;
-        Set<Direction> directions = convertBitMaskToDirections(bitmask);
-        return directions;
-    }
-
     public static int convertDirectionsToBitMask(Set<Direction> directions) {
         int mask = 0;
         for (Direction dir : directions) {
@@ -74,7 +68,7 @@ public enum Direction {
         return mask;
     }
 
-    public static Set<Direction> convertBitMaskToDirections(int bitmask) {
+    public static Set<Direction> convertBitmaskToDirections(int bitmask) {
         Set<Direction> directions = EnumSet.noneOf(Direction.class);
         for (int bit = 0; bit < ALL_DIRECTIONS.length; bit++) {
             if (testBitFlag(bitmask, bit)) {

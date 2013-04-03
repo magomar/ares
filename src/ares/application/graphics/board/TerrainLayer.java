@@ -64,10 +64,10 @@ public class TerrainLayer extends AbstractImageLayer {
         BufferedImage bi = AresMiscGraphics.TERRAIN_MISCELANEOUS.getImage(profile, AresIO.ARES_IO);
         g2.drawImage(bi, pos.x, pos.y, null);
 
-        Map<Terrain, Integer> m = getTerrainBitMasks(tile);
-        for (Map.Entry<Terrain, Integer> entry : m.entrySet()) {
+        Map<Terrain, Directions> m = tile.getTerrain();
+        for (Map.Entry<Terrain, Directions> entry : m.entrySet()) {
             Terrain terrain = entry.getKey();
-            int bitMask = entry.getValue();
+            int bitMask = entry.getValue().getBitmask();
             BufferedImage i = terrain.getImage(profile, Terrain.getImageIndex(bitMask), AresIO.ARES_IO);
             // Paint terrain image
             g2.drawImage(i, pos.x, pos.y, null);
@@ -83,35 +83,35 @@ public class TerrainLayer extends AbstractImageLayer {
         repaint(pos.x, pos.y, bi.getWidth(), bi.getHeight());
     }
 
-    /**
-     * Obtains a bit mask for every terrain present in the tile. The resulting bit masks are easily transformed into
-     * indexes to locate a terrain image in the terrain image file. Each direction is encoded as a simple bitflag (the
-     * ordinal of Direction enum) Examples:<b>
-     * "N" -> 000001<b>
-     * "N NE" -> 000011<b>
-     * "S SE" -> 001100
-     *
-     * @param tile tile to get directions
-     * @return a Map which associates each {@link Terrain} in the tile with its bitmask
-     *
-     */
-    private static Map<Terrain, Integer> getTerrainBitMasks(TileModel tile) {
-
-        Map<Direction, Set<Terrain>> sideTerrain = tile.getSideTerrain();
-
-        //SortedMap<Terrain, Integer> m = new TreeMap<>();
-        Map<Terrain, Integer> terrainMasks = new EnumMap<>(Terrain.class);
-        for (Map.Entry<Direction, Set<Terrain>> entry : sideTerrain.entrySet()) {
-            Direction dir = entry.getKey();
-            int dirbit = 1 << dir.ordinal();
-            for (Terrain terrain : entry.getValue()) {
-                if (!terrainMasks.containsKey(terrain)) {
-                    terrainMasks.put(terrain, dirbit);
-                } else {
-                    terrainMasks.put(terrain, terrainMasks.get(terrain) | dirbit);
-                }
-            }
-        }
-        return terrainMasks;
-    }
+//    /**
+//     * Obtains a bit mask for every terrain present in the tile. The resulting bit masks are easily transformed into
+//     * indexes to locate a terrain image in the terrain image file. Each direction is encoded as a simple bitflag (the
+//     * ordinal of Direction enum) Examples:<b>
+//     * "N" -> 000001<b>
+//     * "N NE" -> 000011<b>
+//     * "S SE" -> 001100
+//     *
+//     * @param tile tile to get directions
+//     * @return a Map which associates each {@link Terrain} in the tile with its bitmask
+//     *
+//     */
+//    private static Map<Terrain, Integer> getTerrainBitMasks(TileModel tile) {
+//
+//        Map<Direction, Set<Terrain>> sideTerrain = tile.getSideTerrain();
+//
+//        //SortedMap<Terrain, Integer> m = new TreeMap<>();
+//        Map<Terrain, Integer> terrainMasks = new EnumMap<>(Terrain.class);
+//        for (Map.Entry<Direction, Set<Terrain>> entry : sideTerrain.entrySet()) {
+//            Direction dir = entry.getKey();
+//            int dirbit = 1 << dir.ordinal();
+//            for (Terrain terrain : entry.getValue()) {
+//                if (!terrainMasks.containsKey(terrain)) {
+//                    terrainMasks.put(terrain, dirbit);
+//                } else {
+//                    terrainMasks.put(terrain, terrainMasks.get(terrain) | dirbit);
+//                }
+//            }
+//        }
+//        return terrainMasks;
+//    }
 }

@@ -24,7 +24,9 @@ public enum MovementType {
     private final int maxOffRoadCost;
     private final int minOnRoadCost;
     private final int maxOnRoadCost;
-    public static final Set<MovementType> MOBILE_LAND_UNIT = EnumSet.of(AMPHIBIOUS, MOTORIZED, MIXED, FOOT);
+    public static final Set<MovementType> ANY_LAND_OR_AMPH_MOVEMENT = EnumSet.of(AMPHIBIOUS, MOTORIZED, MIXED, FOOT);
+    public static final Set<MovementType> ANY_LAND_OR_RIVERINE_RAIL_AMPHIBIOUS_MOVEMENT = EnumSet.range(RIVERINE, FOOT);
+    public static final Set<MovementType> ANY_LAND_MOVEMENT = EnumSet.range(MovementType.MOTORIZED, MovementType.FOOT);
 
     private MovementType(final int minCost, final int maxCost) {
         this.minOffRoadCost = minCost;
@@ -59,6 +61,6 @@ public enum MovementType {
     }
 
     public boolean isMobileLandUnit() {
-        return MovementType.MOBILE_LAND_UNIT.contains(this);
+        return MovementType.ANY_LAND_OR_AMPH_MOVEMENT.contains(this);
     }
 }

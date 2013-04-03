@@ -1,9 +1,10 @@
 package ares.engine.combat;
 
 import ares.scenario.board.Direction;
-import ares.scenario.board.Directionality;
+import ares.scenario.board.Directions;
 import ares.scenario.board.Terrain;
 import ares.scenario.board.Tile;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -19,23 +20,17 @@ public class CombatModifier {
     private double stationary;
 
     public CombatModifier(Tile where, Direction dir) {
-        Set<Terrain> tileTerrain = where.getTileTerrain();
+        Map<Terrain, Directions> terrainMap = where.getTerrain();
+        Set<Terrain> tileTerrain = terrainMap.keySet();
         for (Terrain terrain : tileTerrain) {
-            antiTank += terrain.getAntiTank();
-            antiPersonnel += terrain.getAntiPersonnel();
-            vehicles += terrain.getVehicles();
-            infantry += terrain.getInfantry();
-            stationary += terrain.getStationary();
-        }
-        Set<Terrain> sideTerrain = where.getSideTerrain().get(dir);
-        for (Terrain terrain : sideTerrain) {
-            if (terrain.getDirectionality() == Directionality.LOGICAL) {
+            if (!terrain.isDirectional() || containsTerrainInDirection(terrainMap, terrain, dir)) {
                 antiTank += terrain.getAntiTank();
                 antiPersonnel += terrain.getAntiPersonnel();
                 vehicles += terrain.getVehicles();
                 infantry += terrain.getInfantry();
                 stationary += terrain.getStationary();
             }
+
         }
     }
 
@@ -57,5 +52,13 @@ public class CombatModifier {
 
     public double getVehicles() {
         return vehicles;
+    }
+
+    private boolean containsTerrainInDirection(Map<Terrain, Directions> terrainMap, Terrain terrain, Direction fromDir) {
+        Directions directions = terrainMap.get(terrain);
+        if (directions == null) {
+            return false;
+        }
+        return directions.contains(fromDir);
     }
 }
