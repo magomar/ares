@@ -26,7 +26,6 @@ class SecurityOperationalPlan extends OperationalPlan {
 
     @Override
     public void plan(PathFinder pathFinder) {
-        //        updateObjectives();
         if (!goals.isEmpty()) {
             Objective objective = goals.first();
             for (Unit unit : formation.getAvailableUnits()) {

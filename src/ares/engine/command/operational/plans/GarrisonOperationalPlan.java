@@ -4,7 +4,10 @@ import ares.data.jaxb.Emphasis;
 import ares.data.jaxb.SupportScope;
 import ares.engine.algorithms.routing.PathFinder;
 import ares.engine.command.Objective;
+import ares.engine.command.tactical.TacticalMission;
+import ares.engine.command.tactical.TacticalMissionType;
 import ares.scenario.forces.Formation;
+import ares.scenario.forces.Unit;
 import java.util.List;
 
 /**
@@ -19,7 +22,9 @@ class GarrisonOperationalPlan extends OperationalPlan {
 
     @Override
     public void plan(PathFinder pathFinder) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for (Unit unit : formation.getAvailableUnits()) {
+            TacticalMission mission = TacticalMissionType.OCCUPY.getNewTacticalMission(unit, unit.getLocation(), pathFinder);
+            unit.setMission(mission);
+        }
     }
-    
 }
