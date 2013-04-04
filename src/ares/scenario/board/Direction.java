@@ -45,10 +45,10 @@ public enum Direction {
         int mask = 0;
         for (Direction dir : directions) {
             // TODO Direction.C should not appear here !!
-            if (dir != Direction.C) {
+//            if (dir != Direction.C) {
                 int bit = 1 << dir.ordinal();
                 mask |= bit;
-            }
+//            }
         }
         return mask;
     }

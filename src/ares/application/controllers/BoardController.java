@@ -76,7 +76,6 @@ public final class BoardController extends AbstractSecondaryController implement
     private void select(int x, int y) {
         if (AresGraphicsModel.isWithinImageRange(x, y)) {
             Point tilePoint = AresGraphicsModel.pixelToTileAccurate(x, y);
-            // XXX pixel to tile conversion is more expensive than two coordinates checks
             if (!AresGraphicsModel.validCoordinates(tilePoint.x, tilePoint.y)) {
                 return;
             }
@@ -162,7 +161,6 @@ public final class BoardController extends AbstractSecondaryController implement
                 Point pixel = new Point(me.getX(), me.getY());
                 if (AresGraphicsModel.isWithinImageRange(pixel)) {
                     Point tilePoint = AresGraphicsModel.pixelToTileAccurate(pixel);
-                    // XXX pixel to tile conversion is more expensive than two coordinates checks
                     if (!AresGraphicsModel.validCoordinates(tilePoint.x, tilePoint.y)) {
                         return;
                     }
