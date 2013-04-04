@@ -7,6 +7,7 @@ import ares.application.graphics.providers.ImageProviderType;
 import ares.io.FileIO;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Point;
 import java.awt.image.BufferedImage;
 
 /**
@@ -128,12 +129,20 @@ public enum UnitsColor implements GraphicsProvider<AresGraphicsProfile> {
     private final Color foreground;
     private final String filename;
     private final MultiProfileImageProvider<AresGraphicsProfile, UnitsColor> provider;
+    private final Point[] coordinatesByIndex;
 
     private UnitsColor(Color foreground) {
         this.foreground = foreground;
         filename = name().toLowerCase() + ".png";
         provider = new MultiProfileImageProvider<>(this, ImageProviderType.UNIT, AresGraphicsProfile.class,
                 AresGraphicsProfile.UNITS_IMAGE_ROWS, AresGraphicsProfile.UNITS_IMAGE_COLS);
+        int icons = AresGraphicsProfile.UNITS_IMAGE_ROWS * AresGraphicsProfile.UNITS_IMAGE_COLS;
+        coordinatesByIndex = new Point[icons];
+        for (int i = 0; i < icons; i++) {
+            int column = i / AresGraphicsProfile.UNITS_IMAGE_ROWS;
+            int row = i % AresGraphicsProfile.UNITS_IMAGE_ROWS;
+            coordinatesByIndex[i] = new Point(column, row);
+        }
     }
 
     public Color getForeground() {
@@ -146,15 +155,14 @@ public enum UnitsColor implements GraphicsProvider<AresGraphicsProfile> {
     }
 
     @Override
-    public BufferedImage getImage(AresGraphicsProfile profile, int row, int column, FileIO fileSystem) {
-        return provider.getImage(profile, row, column, fileSystem);
+    public BufferedImage getImage(AresGraphicsProfile profile, Point coordinates, FileIO fileSystem) {
+        return provider.getImage(profile, coordinates, fileSystem);
     }
 
-    @Override
     public BufferedImage getImage(AresGraphicsProfile profile, int index, FileIO fileSystem) {
-        return provider.getImage(profile, index, fileSystem);
+        return provider.getImage(profile, coordinatesByIndex[index], fileSystem);
     }
-
+    
     @Override
     public BufferedImage getImage(AresGraphicsProfile profile, FileIO fileSystem) {
         return provider.getImage(profile, fileSystem);

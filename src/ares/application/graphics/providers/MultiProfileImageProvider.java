@@ -3,6 +3,7 @@ package ares.application.graphics.providers;
 import ares.application.graphics.GraphicsProfile;
 import ares.io.FileIO;
 import java.awt.Dimension;
+import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.util.EnumMap;
 import java.util.Map;
@@ -29,14 +30,14 @@ public class MultiProfileImageProvider<K extends Enum<K> & GraphicsProfile, P ex
     }
 
     @Override
-    public BufferedImage getImage(K profile, int row, int column, FileIO fileSystem) {
-        return provider.get(profile).getImage(row, column, fileSystem);
+    public BufferedImage getImage(K profile, Point coordinates, FileIO fileSystem) {
+        return provider.get(profile).getImage(coordinates, fileSystem);
     }
 
-    @Override
-    public BufferedImage getImage(K profile, int index, FileIO fileSystem) {
-        return provider.get(profile).getImage(index, fileSystem);
-    }
+//    @Override
+//    public BufferedImage getImage(K profile, int index, FileIO fileSystem) {
+//        return provider.get(profile).getImage(index, fileSystem);
+//    }
 
     @Override
     public BufferedImage getImage(K profile, FileIO fileSystem) {

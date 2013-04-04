@@ -44,7 +44,7 @@
     }, {
       "terrain" : [ {
         "type" : "IMPROVED_ROAD",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 0,
@@ -52,7 +52,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE SW NW"
+        "dir" : "NE_SW_NW"
       } ],
       "owner" : 0,
       "x" : 0,
@@ -60,7 +60,7 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "NE SE SW NW"
+        "dir" : "NE_SE_SW_NW"
       } ],
       "owner" : 0,
       "x" : 0,
@@ -68,7 +68,7 @@
     }, {
       "terrain" : [ {
         "type" : "IMPROVED_ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 0,
@@ -76,7 +76,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 0,
@@ -84,7 +84,7 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "NE SE S SW NW"
+        "dir" : "NE_SE_S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 0,
@@ -92,7 +92,7 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "N NE SW NW"
+        "dir" : "N_NE_SW_NW"
       } ],
       "owner" : 0,
       "x" : 0,
@@ -100,10 +100,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE SW NW"
+        "dir" : "NE_SW_NW"
       }, {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 0,
@@ -119,10 +119,10 @@
     }, {
       "terrain" : [ {
         "type" : "CANAL",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       }, {
         "type" : "ROAD",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 0,
@@ -179,7 +179,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SE S"
+        "dir" : "SE_S"
       } ],
       "owner" : 0,
       "x" : 1,
@@ -187,10 +187,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SE SW"
+        "dir" : "N_NE_SE_SW"
       }, {
         "type" : "IMPROVED_ROAD",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       } ],
       "owner" : 0,
       "x" : 1,
@@ -198,10 +198,10 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "S SW"
+        "dir" : "S_SW"
       }, {
         "type" : "IMPROVED_ROAD",
-        "dir" : "N SE"
+        "dir" : "N_SE"
       } ],
       "owner" : 0,
       "x" : 1,
@@ -209,13 +209,13 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "N SE S NW"
+        "dir" : "N_SE_S_NW"
       }, {
         "type" : "FOREST",
         "dir" : "SE"
       }, {
         "type" : "IMPROVED_ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 1,
@@ -223,10 +223,10 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "N NE SE S"
+        "dir" : "N_NE_SE_S"
       }, {
         "type" : "RAIL",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 1,
@@ -234,7 +234,7 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "N NE SE S SW"
+        "dir" : "N_NE_SE_S_SW"
       } ],
       "owner" : 0,
       "x" : 1,
@@ -242,10 +242,10 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "N NE SW NW"
+        "dir" : "N_NE_SW_NW"
       }, {
         "type" : "FOREST",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       } ],
       "owner" : 0,
       "x" : 1,
@@ -253,10 +253,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       }, {
         "type" : "ROAD",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 1,
@@ -264,7 +264,7 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "NE SE"
+        "dir" : "NE_SE"
       } ],
       "owner" : 0,
       "x" : 1,
@@ -280,13 +280,13 @@
     }, {
       "terrain" : [ {
         "type" : "CANAL",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       }, {
         "type" : "FOREST",
-        "dir" : "N SE S"
+        "dir" : "N_SE_S"
       }, {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 1,
@@ -294,7 +294,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE S"
+        "dir" : "N_NE_S"
       } ],
       "owner" : 0,
       "x" : 1,
@@ -348,7 +348,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "S SW NW"
+        "dir" : "S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 2,
@@ -356,10 +356,10 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "NE SE S"
+        "dir" : "NE_SE_S"
       }, {
         "type" : "FOREST",
-        "dir" : "N NW"
+        "dir" : "N_NW"
       } ],
       "owner" : 0,
       "x" : 2,
@@ -367,10 +367,10 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "N NE"
+        "dir" : "N_NE"
       }, {
         "type" : "IMPROVED_ROAD",
-        "dir" : "NE SW NW"
+        "dir" : "NE_SW_NW"
       } ],
       "owner" : 0,
       "x" : 2,
@@ -378,13 +378,13 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "NE SE S SW NW"
+        "dir" : "NE_SE_S_SW_NW"
       }, {
         "type" : "FOREST",
-        "dir" : "NE S NW"
+        "dir" : "NE_S_NW"
       }, {
         "type" : "RAIL",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 2,
@@ -392,10 +392,10 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "N NE S SW NW"
+        "dir" : "N_NE_S_SW_NW"
       }, {
         "type" : "FOREST",
-        "dir" : "N SE S"
+        "dir" : "N_SE_S"
       } ],
       "owner" : 0,
       "x" : 2,
@@ -403,10 +403,10 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "N SE SW NW"
+        "dir" : "N_SE_SW_NW"
       }, {
         "type" : "FOREST",
-        "dir" : "N NE SE SW"
+        "dir" : "N_NE_SE_SW"
       } ],
       "owner" : 0,
       "x" : 2,
@@ -422,10 +422,10 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "N SE S SW"
+        "dir" : "N_SE_S_SW"
       }, {
         "type" : "ROAD",
-        "dir" : "NE S NW"
+        "dir" : "NE_S_NW"
       } ],
       "owner" : 0,
       "x" : 2,
@@ -433,10 +433,10 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "N NE SE S NW"
+        "dir" : "N_NE_SE_S_NW"
       }, {
         "type" : "ROAD",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 2,
@@ -444,7 +444,7 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "N NE SE"
+        "dir" : "N_NE_SE"
       }, {
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "NE"
@@ -453,10 +453,10 @@
         "dir" : "C"
       }, {
         "type" : "CANAL",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       }, {
         "type" : "ROAD",
-        "dir" : "N NE S SW"
+        "dir" : "N_NE_S_SW"
       } ],
       "owner" : 0,
       "x" : 2,
@@ -464,10 +464,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SE SW NW"
+        "dir" : "SE_SW_NW"
       }, {
         "type" : "ROAD",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 2,
@@ -532,10 +532,10 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "S SW"
+        "dir" : "S_SW"
       }, {
         "type" : "ROAD",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       } ],
       "owner" : 0,
       "x" : 3,
@@ -543,16 +543,16 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "N SW NW"
+        "dir" : "N_SW_NW"
       }, {
         "type" : "URBAN",
         "dir" : "C"
       }, {
         "type" : "IMPROVED_ROAD",
-        "dir" : "N SE SW"
+        "dir" : "N_SE_SW"
       }, {
         "type" : "RAIL",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       } ],
       "owner" : 0,
       "x" : 3,
@@ -560,13 +560,13 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "NE SE S SW"
+        "dir" : "NE_SE_S_SW"
       }, {
         "type" : "FOREST",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       }, {
         "type" : "RAIL",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       } ],
       "owner" : 0,
       "x" : 3,
@@ -574,7 +574,7 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "N NE SW NW"
+        "dir" : "N_NE_SW_NW"
       } ],
       "owner" : 0,
       "x" : 3,
@@ -582,7 +582,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SE S SW NW"
+        "dir" : "SE_S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 3,
@@ -590,10 +590,10 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "NE SE S NW"
+        "dir" : "NE_SE_S_NW"
       }, {
         "type" : "FOREST",
-        "dir" : "N NE NW"
+        "dir" : "N_NE_NW"
       } ],
       "owner" : 0,
       "x" : 3,
@@ -601,7 +601,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 3,
@@ -609,7 +609,7 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "S SW NW"
+        "dir" : "S_SW_NW"
       } ],
       "owner" : 0,
       "x" : 3,
@@ -617,16 +617,16 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "N S SW NW"
+        "dir" : "N_S_SW_NW"
       }, {
         "type" : "BOCAGE_HEDGEROW",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       }, {
         "type" : "CANAL",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       }, {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 3,
@@ -634,7 +634,7 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "N NW"
+        "dir" : "N_NW"
       } ],
       "owner" : 0,
       "x" : 3,
@@ -702,7 +702,7 @@
         "dir" : "S"
       }, {
         "type" : "ROAD",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       } ],
       "owner" : 1,
       "x" : 4,
@@ -713,10 +713,10 @@
         "dir" : "S"
       }, {
         "type" : "FOREST",
-        "dir" : "N SE S"
+        "dir" : "N_SE_S"
       }, {
         "type" : "RAIL",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 1,
       "x" : 4,
@@ -724,13 +724,13 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "N S SW"
+        "dir" : "N_S_SW"
       }, {
         "type" : "FOREST",
-        "dir" : "N NE SE SW"
+        "dir" : "N_NE_SE_SW"
       }, {
         "type" : "IMPROVED_ROAD",
-        "dir" : "NE SE NW"
+        "dir" : "NE_SE_NW"
       } ],
       "owner" : 1,
       "x" : 4,
@@ -738,7 +738,7 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "N SW NW"
+        "dir" : "N_SW_NW"
       } ],
       "owner" : 0,
       "x" : 4,
@@ -746,10 +746,10 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "NE SE"
+        "dir" : "NE_SE"
       }, {
         "type" : "ROAD",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       } ],
       "owner" : 0,
       "x" : 4,
@@ -757,10 +757,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SW NW"
+        "dir" : "SW_NW"
       }, {
         "type" : "ROAD",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 0,
       "x" : 4,
@@ -768,13 +768,13 @@
     }, {
       "terrain" : [ {
         "type" : "BOCAGE_HEDGEROW",
-        "dir" : "NE SE S"
+        "dir" : "NE_SE_S"
       }, {
         "type" : "URBAN",
         "dir" : "C"
       }, {
         "type" : "ROAD",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       } ],
       "owner" : 0,
       "vp" : 25,
@@ -783,7 +783,7 @@
     }, {
       "terrain" : [ {
         "type" : "BOCAGE_HEDGEROW",
-        "dir" : "N NE S"
+        "dir" : "N_NE_S"
       } ],
       "owner" : 0,
       "x" : 4,
@@ -791,13 +791,13 @@
     }, {
       "terrain" : [ {
         "type" : "BOCAGE_HEDGEROW",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       }, {
         "type" : "CANAL",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       }, {
         "type" : "ROAD",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "x" : 4,
@@ -871,10 +871,10 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "NE SE"
+        "dir" : "NE_SE"
       }, {
         "type" : "RAIL",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 1,
       "x" : 5,
@@ -882,10 +882,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SE S SW NW"
+        "dir" : "SE_S_SW_NW"
       }, {
         "type" : "ROAD",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       } ],
       "owner" : 1,
       "x" : 5,
@@ -896,10 +896,10 @@
         "dir" : "S"
       }, {
         "type" : "FOREST",
-        "dir" : "N NE NW"
+        "dir" : "N_NE_NW"
       }, {
         "type" : "IMPROVED_ROAD",
-        "dir" : "N S NW"
+        "dir" : "N_S_NW"
       } ],
       "owner" : 1,
       "x" : 5,
@@ -907,13 +907,13 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "N SE S SW"
+        "dir" : "N_SE_S_SW"
       }, {
         "type" : "URBAN",
         "dir" : "C"
       }, {
         "type" : "IMPROVED_ROAD",
-        "dir" : "N NE SE SW"
+        "dir" : "N_NE_SE_SW"
       } ],
       "owner" : 0,
       "x" : 5,
@@ -921,7 +921,7 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "N NE S NW"
+        "dir" : "N_NE_S_NW"
       } ],
       "owner" : 0,
       "x" : 5,
@@ -929,10 +929,10 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "N SE S"
+        "dir" : "N_SE_S"
       }, {
         "type" : "BOCAGE_HEDGEROW",
-        "dir" : "S SW"
+        "dir" : "S_SW"
       } ],
       "owner" : 0,
       "x" : 5,
@@ -940,10 +940,10 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "N NE S"
+        "dir" : "N_NE_S"
       }, {
         "type" : "BOCAGE_HEDGEROW",
-        "dir" : "N SW NW"
+        "dir" : "N_SW_NW"
       } ],
       "owner" : 0,
       "x" : 5,
@@ -951,7 +951,7 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "N SE S"
+        "dir" : "N_SE_S"
       } ],
       "owner" : 0,
       "x" : 5,
@@ -959,16 +959,16 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "N NE"
+        "dir" : "N_NE"
       }, {
         "type" : "URBAN",
         "dir" : "NE"
       }, {
         "type" : "CANAL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       }, {
         "type" : "ROAD",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 0,
       "x" : 5,
@@ -976,7 +976,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE SE S NW"
+        "dir" : "NE_SE_S_NW"
       } ],
       "owner" : 0,
       "x" : 5,
@@ -984,7 +984,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE S"
+        "dir" : "N_NE_S"
       } ],
       "owner" : 1,
       "x" : 5,
@@ -1037,7 +1037,7 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "S SW"
+        "dir" : "S_SW"
       } ],
       "owner" : 1,
       "x" : 6,
@@ -1045,16 +1045,16 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "N NW"
+        "dir" : "N_NW"
       }, {
         "type" : "URBAN",
         "dir" : "C"
       }, {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       }, {
         "type" : "RAIL",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 1,
       "x" : 6,
@@ -1062,7 +1062,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE SW NW"
+        "dir" : "NE_SW_NW"
       } ],
       "owner" : 1,
       "x" : 6,
@@ -1070,10 +1070,10 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "NE SE"
+        "dir" : "NE_SE"
       }, {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 0,
       "x" : 6,
@@ -1081,10 +1081,10 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "SW NW"
+        "dir" : "SW_NW"
       }, {
         "type" : "IMPROVED_ROAD",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 6,
@@ -1096,7 +1096,7 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "SW NW"
+        "dir" : "SW_NW"
       } ],
       "owner" : 0,
       "x" : 6,
@@ -1112,13 +1112,13 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "NE SW NW"
+        "dir" : "NE_SW_NW"
       }, {
         "type" : "URBAN",
-        "dir" : "N S SW"
+        "dir" : "N_S_SW"
       }, {
         "type" : "ROAD",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 0,
       "vp" : 15,
@@ -1127,10 +1127,10 @@
     }, {
       "terrain" : [ {
         "type" : "CANAL",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       }, {
         "type" : "FOREST",
-        "dir" : "NE SE S SW"
+        "dir" : "NE_SE_S_SW"
       } ],
       "owner" : 0,
       "x" : 6,
@@ -1138,7 +1138,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SE SW NW"
+        "dir" : "N_NE_SE_SW_NW"
       } ],
       "owner" : 1,
       "x" : 6,
@@ -1204,13 +1204,13 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "N SE S"
+        "dir" : "N_SE_S"
       }, {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       }, {
         "type" : "RAIL",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 1,
       "x" : 7,
@@ -1218,10 +1218,10 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "N NE SE S"
+        "dir" : "N_NE_SE_S"
       }, {
         "type" : "FOREST",
-        "dir" : "NE SE SW"
+        "dir" : "NE_SE_SW"
       } ],
       "owner" : 1,
       "x" : 7,
@@ -1229,10 +1229,10 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "N NE S SW"
+        "dir" : "N_NE_S_SW"
       }, {
         "type" : "ROAD",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 1,
       "x" : 7,
@@ -1240,7 +1240,7 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "N NE S NW"
+        "dir" : "N_NE_S_NW"
       } ],
       "owner" : 1,
       "x" : 7,
@@ -1251,7 +1251,7 @@
         "dir" : "C"
       }, {
         "type" : "IMPROVED_ROAD",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "vp" : 15,
@@ -1260,7 +1260,7 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "NE SE S"
+        "dir" : "NE_SE_S"
       } ],
       "owner" : 0,
       "x" : 7,
@@ -1268,10 +1268,10 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "N NE"
+        "dir" : "N_NE"
       }, {
         "type" : "FOREST",
-        "dir" : "N S SW"
+        "dir" : "N_S_SW"
       } ],
       "owner" : 1,
       "x" : 7,
@@ -1279,7 +1279,7 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "NE SE SW"
+        "dir" : "NE_SE_SW"
       } ],
       "owner" : 1,
       "x" : 7,
@@ -1287,13 +1287,13 @@
     }, {
       "terrain" : [ {
         "type" : "CANAL",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       }, {
         "type" : "FOREST",
-        "dir" : "NE S SW"
+        "dir" : "NE_S_SW"
       }, {
         "type" : "ROAD",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 1,
       "x" : 7,
@@ -1301,7 +1301,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N S SW NW"
+        "dir" : "N_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 7,
@@ -1309,7 +1309,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NW"
+        "dir" : "N_NW"
       } ],
       "owner" : 1,
       "x" : 7,
@@ -1369,10 +1369,10 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "N SE SW"
+        "dir" : "N_SE_SW"
       }, {
         "type" : "RAIL",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       } ],
       "owner" : 1,
       "x" : 8,
@@ -1380,10 +1380,10 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "SE S SW NW"
+        "dir" : "SE_S_SW_NW"
       }, {
         "type" : "FOREST",
-        "dir" : "NE SE S SW"
+        "dir" : "NE_SE_S_SW"
       } ],
       "owner" : 1,
       "x" : 8,
@@ -1391,10 +1391,10 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "N NE SE SW NW"
+        "dir" : "N_NE_SE_SW_NW"
       }, {
         "type" : "FOREST",
-        "dir" : "N NE NW"
+        "dir" : "N_NE_NW"
       } ],
       "owner" : 1,
       "x" : 8,
@@ -1402,7 +1402,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 1,
       "x" : 8,
@@ -1414,10 +1414,10 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "NE SE S SW"
+        "dir" : "NE_SE_S_SW"
       }, {
         "type" : "IMPROVED_ROAD",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 0,
       "x" : 8,
@@ -1425,7 +1425,7 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "N NE SE SW NW"
+        "dir" : "N_NE_SE_SW_NW"
       } ],
       "feature" : [ "PEAK" ],
       "owner" : 1,
@@ -1434,7 +1434,7 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "S SW"
+        "dir" : "S_SW"
       }, {
         "type" : "URBAN",
         "dir" : "C"
@@ -1447,16 +1447,16 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "N NW"
+        "dir" : "N_NW"
       }, {
         "type" : "CANAL",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       }, {
         "type" : "FOREST",
         "dir" : "SW"
       }, {
         "type" : "ROAD",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 1,
       "x" : 8,
@@ -1530,10 +1530,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N S SW"
+        "dir" : "N_S_SW"
       }, {
         "type" : "ROAD",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 1,
       "x" : 9,
@@ -1541,10 +1541,10 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "S SW NW"
+        "dir" : "S_SW_NW"
       }, {
         "type" : "FOREST",
-        "dir" : "N SW NW"
+        "dir" : "N_SW_NW"
       } ],
       "owner" : 1,
       "x" : 9,
@@ -1552,10 +1552,10 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "N NW"
+        "dir" : "N_NW"
       }, {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 1,
       "x" : 9,
@@ -1567,7 +1567,7 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "SE S SW"
+        "dir" : "SE_S_SW"
       } ],
       "owner" : 1,
       "x" : 9,
@@ -1575,10 +1575,10 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "N NE S SW NW"
+        "dir" : "N_NE_S_SW_NW"
       }, {
         "type" : "IMPROVED_ROAD",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 1,
       "x" : 9,
@@ -1586,7 +1586,7 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "N S NW"
+        "dir" : "N_S_NW"
       } ],
       "owner" : 1,
       "x" : 9,
@@ -1605,10 +1605,10 @@
         "dir" : "C"
       }, {
         "type" : "CANAL",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       }, {
         "type" : "ROAD",
-        "dir" : "NE S NW"
+        "dir" : "NE_S_NW"
       } ],
       "owner" : 1,
       "x" : 9,
@@ -1616,7 +1616,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "N SE"
+        "dir" : "N_SE"
       } ],
       "owner" : 1,
       "x" : 9,
@@ -1681,10 +1681,10 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "SE S"
+        "dir" : "SE_S"
       }, {
         "type" : "ROAD",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       } ],
       "owner" : 1,
       "x" : 10,
@@ -1692,10 +1692,10 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "N NE S"
+        "dir" : "N_NE_S"
       }, {
         "type" : "ROAD",
-        "dir" : "N SE SW"
+        "dir" : "N_SE_SW"
       } ],
       "owner" : 1,
       "x" : 10,
@@ -1718,7 +1718,7 @@
     }, {
       "terrain" : [ {
         "type" : "HILLS",
-        "dir" : "SW NW"
+        "dir" : "SW_NW"
       } ],
       "owner" : 1,
       "x" : 10,
@@ -1726,10 +1726,10 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "NE SE S"
+        "dir" : "NE_SE_S"
       }, {
         "type" : "IMPROVED_ROAD",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 1,
       "x" : 10,
@@ -1737,7 +1737,7 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "N NE"
+        "dir" : "N_NE"
       } ],
       "owner" : 1,
       "x" : 10,
@@ -1745,10 +1745,10 @@
     }, {
       "terrain" : [ {
         "type" : "CANAL",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       }, {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 1,
       "x" : 10,
@@ -1756,7 +1756,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SE S"
+        "dir" : "SE_S"
       } ],
       "owner" : 1,
       "x" : 10,
@@ -1764,10 +1764,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SE SW"
+        "dir" : "N_NE_SE_SW"
       }, {
         "type" : "ROAD",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       } ],
       "owner" : 1,
       "x" : 10,
@@ -1824,7 +1824,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SE S"
+        "dir" : "SE_S"
       } ],
       "feature" : [ "NON_PLAYABLE" ],
       "owner" : 1,
@@ -1833,7 +1833,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SE"
+        "dir" : "N_NE_SE"
       } ],
       "owner" : 1,
       "x" : 11,
@@ -1845,7 +1845,7 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "SE SW NW"
+        "dir" : "SE_SW_NW"
       } ],
       "owner" : 1,
       "x" : 11,
@@ -1856,10 +1856,10 @@
         "dir" : "C"
       }, {
         "type" : "ROAD",
-        "dir" : "NE S NW"
+        "dir" : "NE_S_NW"
       }, {
         "type" : "RAIL",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       } ],
       "owner" : 1,
       "x" : 11,
@@ -1867,13 +1867,13 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       }, {
         "type" : "ROAD",
-        "dir" : "N SE"
+        "dir" : "N_SE"
       }, {
         "type" : "RAIL",
-        "dir" : "N SE"
+        "dir" : "N_SE"
       } ],
       "owner" : 1,
       "x" : 11,
@@ -1885,7 +1885,7 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "S SW"
+        "dir" : "S_SW"
       } ],
       "owner" : 1,
       "x" : 11,
@@ -1893,13 +1893,13 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "N SW NW"
+        "dir" : "N_SW_NW"
       }, {
         "type" : "URBAN",
         "dir" : "C"
       }, {
         "type" : "IMPROVED_ROAD",
-        "dir" : "SE S NW"
+        "dir" : "SE_S_NW"
       } ],
       "owner" : 1,
       "x" : 11,
@@ -1907,13 +1907,13 @@
     }, {
       "terrain" : [ {
         "type" : "CANAL",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       }, {
         "type" : "FOREST",
         "dir" : "NE"
       }, {
         "type" : "ROAD",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       } ],
       "owner" : 1,
       "x" : 11,
@@ -1921,7 +1921,7 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "SE S"
+        "dir" : "SE_S"
       } ],
       "owner" : 1,
       "x" : 11,
@@ -1929,7 +1929,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SE S SW NW"
+        "dir" : "SE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 11,
@@ -1937,7 +1937,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE NW"
+        "dir" : "N_NE_NW"
       } ],
       "owner" : 1,
       "x" : 11,
@@ -1985,7 +1985,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE SE S SW NW"
+        "dir" : "NE_SE_S_SW_NW"
       }, {
         "type" : "RAIL",
         "dir" : "S"
@@ -1997,10 +1997,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE S NW"
+        "dir" : "N_NE_S_NW"
       }, {
         "type" : "RAIL",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 1,
       "x" : 12,
@@ -2011,7 +2011,7 @@
         "dir" : "N"
       }, {
         "type" : "RAIL",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 1,
       "x" : 12,
@@ -2022,10 +2022,10 @@
         "dir" : "NW"
       }, {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       }, {
         "type" : "RAIL",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       } ],
       "owner" : 1,
       "x" : 12,
@@ -2033,7 +2033,7 @@
     }, {
       "terrain" : [ {
         "type" : "FLOODED_MARS",
-        "dir" : "NE SE S"
+        "dir" : "NE_SE_S"
       } ],
       "owner" : 1,
       "x" : 12,
@@ -2041,13 +2041,13 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SE S NW"
+        "dir" : "SE_S_NW"
       }, {
         "type" : "ROAD",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       }, {
         "type" : "RAIL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 1,
       "x" : 12,
@@ -2055,7 +2055,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE"
+        "dir" : "N_NE"
       } ],
       "owner" : 1,
       "x" : 12,
@@ -2063,7 +2063,7 @@
     }, {
       "terrain" : [ {
         "type" : "BOCAGE_HEDGEROW",
-        "dir" : "NE SE S"
+        "dir" : "NE_SE_S"
       } ],
       "owner" : 1,
       "x" : 12,
@@ -2071,10 +2071,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       }, {
         "type" : "IMPROVED_ROAD",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 1,
       "x" : 12,
@@ -2082,7 +2082,7 @@
     }, {
       "terrain" : [ {
         "type" : "CANAL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 1,
       "x" : 12,
@@ -2090,7 +2090,7 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "NE SE SW NW"
+        "dir" : "NE_SE_SW_NW"
       } ],
       "owner" : 1,
       "x" : 12,
@@ -2098,7 +2098,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SE SW NW"
+        "dir" : "SE_SW_NW"
       } ],
       "owner" : 1,
       "x" : 12,
@@ -2155,7 +2155,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "S SW"
+        "dir" : "S_SW"
       } ],
       "feature" : [ "NON_PLAYABLE" ],
       "owner" : 1,
@@ -2164,7 +2164,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N SW NW"
+        "dir" : "N_SW_NW"
       } ],
       "owner" : 1,
       "x" : 13,
@@ -2176,7 +2176,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 1,
       "x" : 13,
@@ -2192,7 +2192,7 @@
     }, {
       "terrain" : [ {
         "type" : "MARSH",
-        "dir" : "N SW NW"
+        "dir" : "N_SW_NW"
       } ],
       "owner" : 1,
       "x" : 13,
@@ -2200,13 +2200,13 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SW NW"
+        "dir" : "SW_NW"
       }, {
         "type" : "ROAD",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       }, {
         "type" : "RAIL",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       } ],
       "owner" : 1,
       "x" : 13,
@@ -2214,13 +2214,13 @@
     }, {
       "terrain" : [ {
         "type" : "BOCAGE_HEDGEROW",
-        "dir" : "N NE S SW"
+        "dir" : "N_NE_S_SW"
       }, {
         "type" : "ROAD",
-        "dir" : "N S"
+        "dir" : "N_S"
       }, {
         "type" : "RAIL",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 1,
       "x" : 13,
@@ -2228,16 +2228,16 @@
     }, {
       "terrain" : [ {
         "type" : "BOCAGE_HEDGEROW",
-        "dir" : "N NW"
+        "dir" : "N_NW"
       }, {
         "type" : "URBAN",
         "dir" : "C"
       }, {
         "type" : "IMPROVED_ROAD",
-        "dir" : "N NE S SW"
+        "dir" : "N_NE_S_SW"
       }, {
         "type" : "RAIL",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 1,
       "vp" : 25,
@@ -2246,13 +2246,13 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       }, {
         "type" : "ROAD",
-        "dir" : "N S"
+        "dir" : "N_S"
       }, {
         "type" : "RAIL",
-        "dir" : "N SE"
+        "dir" : "N_SE"
       } ],
       "owner" : 1,
       "x" : 13,
@@ -2260,16 +2260,16 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "S SW"
+        "dir" : "S_SW"
       }, {
         "type" : "URBAN",
         "dir" : "C"
       }, {
         "type" : "CANAL",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       }, {
         "type" : "ROAD",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 1,
       "vp" : 15,
@@ -2278,13 +2278,13 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "N NW"
+        "dir" : "N_NW"
       }, {
         "type" : "ROAD",
-        "dir" : "N SE"
+        "dir" : "N_SE"
       }, {
         "type" : "RAIL",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       } ],
       "owner" : 1,
       "x" : 13,
@@ -2292,10 +2292,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE S NW"
+        "dir" : "NE_S_NW"
       }, {
         "type" : "RAIL",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       } ],
       "owner" : 1,
       "x" : 13,
@@ -2356,7 +2356,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 1,
       "x" : 14,
@@ -2364,13 +2364,13 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "NE SE"
+        "dir" : "NE_SE"
       }, {
         "type" : "FOREST",
         "dir" : "S"
       }, {
         "type" : "ROAD",
-        "dir" : "N SE SW"
+        "dir" : "N_SE_SW"
       } ],
       "owner" : 1,
       "x" : 14,
@@ -2378,7 +2378,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N SE SW"
+        "dir" : "N_SE_SW"
       } ],
       "owner" : 1,
       "x" : 14,
@@ -2401,7 +2401,7 @@
         "dir" : "C"
       }, {
         "type" : "IMPROVED_ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 1,
       "x" : 14,
@@ -2409,7 +2409,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE SE SW"
+        "dir" : "NE_SE_SW"
       } ],
       "owner" : 1,
       "x" : 14,
@@ -2417,10 +2417,10 @@
     }, {
       "terrain" : [ {
         "type" : "CANAL",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       }, {
         "type" : "RAIL",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       } ],
       "owner" : 1,
       "x" : 14,
@@ -2428,10 +2428,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE SE S"
+        "dir" : "NE_SE_S"
       }, {
         "type" : "RAIL",
-        "dir" : "N SE SW"
+        "dir" : "N_SE_SW"
       } ],
       "owner" : 1,
       "x" : 14,
@@ -2439,10 +2439,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SW"
+        "dir" : "N_NE_SW"
       }, {
         "type" : "ROAD",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 1,
       "x" : 14,
@@ -2508,7 +2508,7 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "S SW"
+        "dir" : "S_SW"
       } ],
       "owner" : 1,
       "x" : 15,
@@ -2516,13 +2516,13 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "N SE NW"
+        "dir" : "N_SE_NW"
       }, {
         "type" : "URBAN",
         "dir" : "C"
       }, {
         "type" : "ROAD",
-        "dir" : "NE S NW"
+        "dir" : "NE_S_NW"
       } ],
       "owner" : 1,
       "x" : 15,
@@ -2530,10 +2530,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       }, {
         "type" : "ROAD",
-        "dir" : "N SE"
+        "dir" : "N_SE"
       } ],
       "owner" : 1,
       "x" : 15,
@@ -2549,7 +2549,7 @@
     }, {
       "terrain" : [ {
         "type" : "IMPROVED_ROAD",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 1,
       "x" : 15,
@@ -2557,7 +2557,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "S SW"
+        "dir" : "S_SW"
       } ],
       "owner" : 1,
       "x" : 15,
@@ -2565,10 +2565,10 @@
     }, {
       "terrain" : [ {
         "type" : "CANAL",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       }, {
         "type" : "FOREST",
-        "dir" : "N SE S NW"
+        "dir" : "N_SE_S_NW"
       } ],
       "owner" : 1,
       "x" : 15,
@@ -2576,7 +2576,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE S SW"
+        "dir" : "N_NE_S_SW"
       } ],
       "owner" : 1,
       "x" : 15,
@@ -2584,10 +2584,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N SW NW"
+        "dir" : "N_SW_NW"
       }, {
         "type" : "RAIL",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 1,
       "x" : 15,
@@ -2595,7 +2595,7 @@
     }, {
       "terrain" : [ {
         "type" : "ROAD",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 1,
       "x" : 15,
@@ -2648,7 +2648,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE SE S NW"
+        "dir" : "NE_SE_S_NW"
       } ],
       "owner" : 1,
       "x" : 16,
@@ -2656,10 +2656,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SE"
+        "dir" : "N_NE_SE"
       }, {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 1,
       "x" : 16,
@@ -2675,10 +2675,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE SE S NW"
+        "dir" : "NE_SE_S_NW"
       }, {
         "type" : "ROAD",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 1,
       "x" : 16,
@@ -2686,7 +2686,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SE S"
+        "dir" : "N_NE_SE_S"
       } ],
       "owner" : 1,
       "x" : 16,
@@ -2694,7 +2694,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE"
+        "dir" : "N_NE"
       } ],
       "owner" : 1,
       "x" : 16,
@@ -2705,7 +2705,7 @@
         "dir" : "SE"
       }, {
         "type" : "IMPROVED_ROAD",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 1,
       "x" : 16,
@@ -2716,7 +2716,7 @@
         "dir" : "SE"
       }, {
         "type" : "CANAL",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 1,
       "x" : 16,
@@ -2724,7 +2724,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "SE SW NW"
+        "dir" : "SE_SW_NW"
       } ],
       "owner" : 1,
       "x" : 16,
@@ -2732,7 +2732,7 @@
     }, {
       "terrain" : [ {
         "type" : "RAIL",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 1,
       "x" : 16,
@@ -2744,7 +2744,7 @@
     }, {
       "terrain" : [ {
         "type" : "IMPROVED_ROAD",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "feature" : [ "NON_PLAYABLE" ],
       "owner" : 1,
@@ -2798,7 +2798,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "S SW"
+        "dir" : "S_SW"
       } ],
       "owner" : 1,
       "x" : 17,
@@ -2806,10 +2806,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N S SW NW"
+        "dir" : "N_S_SW_NW"
       }, {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 1,
       "x" : 17,
@@ -2817,7 +2817,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N S NW"
+        "dir" : "N_S_NW"
       } ],
       "owner" : 1,
       "x" : 17,
@@ -2825,7 +2825,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N SE S SW"
+        "dir" : "N_SE_S_SW"
       } ],
       "owner" : 1,
       "x" : 17,
@@ -2833,10 +2833,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE S SW NW"
+        "dir" : "N_NE_S_SW_NW"
       }, {
         "type" : "ROAD",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 1,
       "x" : 17,
@@ -2844,7 +2844,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N SW NW"
+        "dir" : "N_SW_NW"
       } ],
       "owner" : 1,
       "x" : 17,
@@ -2859,7 +2859,7 @@
         "dir" : "NW"
       }, {
         "type" : "IMPROVED_ROAD",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 1,
       "x" : 17,
@@ -2867,10 +2867,10 @@
     }, {
       "terrain" : [ {
         "type" : "FLOODED_MARS",
-        "dir" : "NE SE NW"
+        "dir" : "NE_SE_NW"
       }, {
         "type" : "CANAL",
-        "dir" : "NE SE NW"
+        "dir" : "NE_SE_NW"
       } ],
       "owner" : 1,
       "x" : 17,
@@ -2878,7 +2878,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE SE S NW"
+        "dir" : "NE_SE_S_NW"
       } ],
       "owner" : 1,
       "x" : 17,
@@ -2886,10 +2886,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SE S"
+        "dir" : "N_NE_SE_S"
       }, {
         "type" : "RAIL",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 1,
       "x" : 17,
@@ -2897,10 +2897,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SE S"
+        "dir" : "N_NE_SE_S"
       }, {
         "type" : "IMPROVED_ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 1,
       "x" : 17,
@@ -2908,7 +2908,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE"
+        "dir" : "N_NE"
       } ],
       "feature" : [ "NON_PLAYABLE" ],
       "owner" : 1,
@@ -2957,13 +2957,13 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "NE SE"
+        "dir" : "NE_SE"
       }, {
         "type" : "RIVER",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       }, {
         "type" : "ROAD",
-        "dir" : "SE SW"
+        "dir" : "SE_SW"
       } ],
       "owner" : 1,
       "x" : 18,
@@ -2974,7 +2974,7 @@
         "dir" : "SE"
       }, {
         "type" : "RIVER",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 1,
       "x" : 18,
@@ -2985,7 +2985,7 @@
         "dir" : "C"
       }, {
         "type" : "RIVER",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 1,
       "x" : 18,
@@ -2993,10 +2993,10 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N S"
+        "dir" : "N_S"
       }, {
         "type" : "FOREST",
-        "dir" : "NE SE SW NW"
+        "dir" : "NE_SE_SW_NW"
       } ],
       "owner" : 1,
       "x" : 18,
@@ -3004,10 +3004,10 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "N S"
+        "dir" : "N_S"
       }, {
         "type" : "ROAD",
-        "dir" : "NE S NW"
+        "dir" : "NE_S_NW"
       } ],
       "owner" : 1,
       "x" : 18,
@@ -3015,13 +3015,13 @@
     }, {
       "terrain" : [ {
         "type" : "BOCAGE_HEDGEROW",
-        "dir" : "N S"
+        "dir" : "N_S"
       }, {
         "type" : "RIVER",
-        "dir" : "N S"
+        "dir" : "N_S"
       }, {
         "type" : "ROAD",
-        "dir" : "N SE"
+        "dir" : "N_SE"
       } ],
       "owner" : 1,
       "x" : 18,
@@ -3029,10 +3029,10 @@
     }, {
       "terrain" : [ {
         "type" : "BOCAGE_HEDGEROW",
-        "dir" : "N SE"
+        "dir" : "N_SE"
       }, {
         "type" : "RIVER",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 1,
       "x" : 18,
@@ -3040,13 +3040,13 @@
     }, {
       "terrain" : [ {
         "type" : "FLOODED_MARS",
-        "dir" : "S SW"
+        "dir" : "S_SW"
       }, {
         "type" : "RIVER",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       }, {
         "type" : "IMPROVED_ROAD",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 1,
       "x" : 18,
@@ -3054,10 +3054,10 @@
     }, {
       "terrain" : [ {
         "type" : "FLOODED_MARS",
-        "dir" : "N S NW"
+        "dir" : "N_S_NW"
       }, {
         "type" : "CANAL",
-        "dir" : "SE NW"
+        "dir" : "SE_NW"
       } ],
       "owner" : 1,
       "x" : 18,
@@ -3065,13 +3065,13 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "S SW NW"
+        "dir" : "S_SW_NW"
       }, {
         "type" : "IMPROVED_ROAD",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       }, {
         "type" : "RAIL",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 1,
       "x" : 18,
@@ -3079,10 +3079,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N SE S SW NW"
+        "dir" : "N_SE_S_SW_NW"
       }, {
         "type" : "IMPROVED_ROAD",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       } ],
       "owner" : 1,
       "x" : 18,
@@ -3090,7 +3090,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SE NW"
+        "dir" : "N_NE_SE_NW"
       } ],
       "feature" : [ "NON_PLAYABLE" ],
       "owner" : 1,
@@ -3144,10 +3144,10 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "SE S SW"
+        "dir" : "SE_S_SW"
       }, {
         "type" : "RIVER",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 1,
       "x" : 19,
@@ -3155,13 +3155,13 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "N NE NW"
+        "dir" : "N_NE_NW"
       }, {
         "type" : "URBAN",
         "dir" : "C"
       }, {
         "type" : "ROAD",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       } ],
       "owner" : 1,
       "x" : 19,
@@ -3177,7 +3177,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE SE S SW"
+        "dir" : "NE_SE_S_SW"
       } ],
       "owner" : 1,
       "x" : 19,
@@ -3185,10 +3185,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SE S NW"
+        "dir" : "N_NE_SE_S_NW"
       }, {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 1,
       "x" : 19,
@@ -3196,7 +3196,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE S"
+        "dir" : "N_NE_S"
       } ],
       "owner" : 1,
       "x" : 19,
@@ -3204,10 +3204,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N S"
+        "dir" : "N_S"
       }, {
         "type" : "ROAD",
-        "dir" : "S NW"
+        "dir" : "S_NW"
       } ],
       "owner" : 1,
       "x" : 19,
@@ -3218,13 +3218,13 @@
         "dir" : "C"
       }, {
         "type" : "BOCAGE_HEDGEROW",
-        "dir" : "SE S NW"
+        "dir" : "SE_S_NW"
       }, {
         "type" : "FOREST",
         "dir" : "N"
       }, {
         "type" : "ROAD",
-        "dir" : "N S"
+        "dir" : "N_S"
       } ],
       "owner" : 1,
       "x" : 19,
@@ -3232,16 +3232,16 @@
     }, {
       "terrain" : [ {
         "type" : "BOCAGE_HEDGEROW",
-        "dir" : "N NE SE S"
+        "dir" : "N_NE_SE_S"
       }, {
         "type" : "URBAN",
         "dir" : "C"
       }, {
         "type" : "IMPROVED_ROAD",
-        "dir" : "N NE S NW"
+        "dir" : "N_NE_S_NW"
       }, {
         "type" : "RAIL",
-        "dir" : "NE S"
+        "dir" : "NE_S"
       } ],
       "owner" : 1,
       "x" : 19,
@@ -3249,16 +3249,16 @@
     }, {
       "terrain" : [ {
         "type" : "BOCAGE_HEDGEROW",
-        "dir" : "N NE S"
+        "dir" : "N_NE_S"
       }, {
         "type" : "CANAL",
-        "dir" : "NE NW"
+        "dir" : "NE_NW"
       }, {
         "type" : "IMPROVED_ROAD",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       }, {
         "type" : "RAIL",
-        "dir" : "N SW"
+        "dir" : "N_SW"
       } ],
       "owner" : 1,
       "x" : 19,
@@ -3277,7 +3277,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE S SW NW"
+        "dir" : "NE_S_SW_NW"
       } ],
       "owner" : 1,
       "x" : 19,
@@ -3285,7 +3285,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NW"
+        "dir" : "N_NW"
       } ],
       "feature" : [ "NON_PLAYABLE" ],
       "owner" : 1,
@@ -3329,7 +3329,7 @@
     }, {
       "terrain" : [ {
         "type" : "RIVER",
-        "dir" : "NE SE SW"
+        "dir" : "NE_SE_SW"
       } ],
       "feature" : [ "NON_PLAYABLE" ],
       "owner" : 1,
@@ -3338,10 +3338,10 @@
     }, {
       "terrain" : [ {
         "type" : "CROPLANDS",
-        "dir" : "NE SE SW NW"
+        "dir" : "NE_SE_SW_NW"
       }, {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 1,
       "x" : 20,
@@ -3349,7 +3349,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE SE S"
+        "dir" : "NE_SE_S"
       } ],
       "owner" : 1,
       "x" : 20,
@@ -3357,7 +3357,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SE S SW"
+        "dir" : "N_NE_SE_S_SW"
       } ],
       "owner" : 1,
       "x" : 20,
@@ -3365,10 +3365,10 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SE S SW NW"
+        "dir" : "N_NE_SE_S_SW_NW"
       }, {
         "type" : "ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 1,
       "x" : 20,
@@ -3376,7 +3376,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "N NE SE SW NW"
+        "dir" : "N_NE_SE_SW_NW"
       } ],
       "owner" : 1,
       "x" : 20,
@@ -3392,13 +3392,13 @@
     }, {
       "terrain" : [ {
         "type" : "BOCAGE_HEDGEROW",
-        "dir" : "NE SE S SW NW"
+        "dir" : "NE_SE_S_SW_NW"
       }, {
         "type" : "IMPROVED_ROAD",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       }, {
         "type" : "RAIL",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 1,
       "x" : 20,
@@ -3406,10 +3406,10 @@
     }, {
       "terrain" : [ {
         "type" : "BOCAGE_HEDGEROW",
-        "dir" : "N NE SE SW NW"
+        "dir" : "N_NE_SE_SW_NW"
       }, {
         "type" : "CANAL",
-        "dir" : "NE SW"
+        "dir" : "NE_SW"
       } ],
       "owner" : 1,
       "x" : 20,
@@ -3421,7 +3421,7 @@
     }, {
       "terrain" : [ {
         "type" : "FOREST",
-        "dir" : "NE SE SW"
+        "dir" : "NE_SE_SW"
       } ],
       "owner" : 1,
       "x" : 20,

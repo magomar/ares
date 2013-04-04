@@ -6,11 +6,10 @@ import ares.application.graphics.AresGraphicsModel;
 import ares.application.graphics.AbstractImageLayer;
 import ares.application.graphics.AresGraphicsProfile;
 import ares.application.graphics.AresMiscGraphics;
-import ares.application.graphics.board.TerrainLayer;
 import ares.engine.algorithms.routing.*;
 import ares.io.AresIO;
 import ares.scenario.board.Direction;
-import ares.scenario.board.Terrain;
+import ares.scenario.board.Directions;
 import ares.scenario.board.Tile;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -73,13 +72,13 @@ public class ArrowLayer extends AbstractImageLayer {
     private void paintFinalArrowSegment(Graphics2D g2, Tile tile, Direction direction, ArrowType type) {
         BufferedImage arrowImage = null;
         AresGraphicsProfile profile = AresGraphicsModel.getProfile();
-        int index = Terrain.getImageIndex(direction.ordinal() + 25);
+        Point coordinates = Directions.getDirections(direction.ordinal()+25).getCoordinates();
         switch (type) {
             case GIVING_ORDERS:
-                arrowImage = unitArrow.getImage(profile, index, AresIO.ARES_IO);
+                arrowImage = unitArrow.getImage(profile, coordinates, AresIO.ARES_IO);
                 break;
             case CURRENT_ORDERS:
-                arrowImage = formationArrow.getImage(profile, index, AresIO.ARES_IO);
+                arrowImage = formationArrow.getImage(profile, coordinates, AresIO.ARES_IO);
                 break;
             default:
                 throw new AssertionError("Assertion failed: unkown image profile " + this);
@@ -102,13 +101,13 @@ public class ArrowLayer extends AbstractImageLayer {
     private void paintArrowSegment(Graphics2D g2, Tile tile, Set<Direction> directions, ArrowType type) {
         BufferedImage arrowImage = null;
         AresGraphicsProfile profile = AresGraphicsModel.getProfile();
-        int index = Terrain.getImageIndex(Direction.convertDirectionsToBitMask(directions));
+        Point coordinates = Directions.getDirections(Direction.getBitmask(directions)).getCoordinates();
         switch (type) {
             case GIVING_ORDERS:
-                arrowImage = unitArrow.getImage(profile, index, AresIO.ARES_IO);
+                arrowImage = unitArrow.getImage(profile, coordinates, AresIO.ARES_IO);
                 break;
             case CURRENT_ORDERS:
-                arrowImage = formationArrow.getImage(profile, index, AresIO.ARES_IO);
+                arrowImage = formationArrow.getImage(profile, coordinates, AresIO.ARES_IO);
                 break;
             default:
                 throw new AssertionError("Assertion failed: unkown image profile " + this);

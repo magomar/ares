@@ -3,9 +3,9 @@ package ares.application.graphics.providers;
 import ares.application.graphics.GraphicsProfile;
 import ares.io.FileIO;
 import java.awt.Dimension;
+import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.lang.ref.SoftReference;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -49,7 +49,7 @@ public abstract class AbstractImageProvider implements ImageProvider {
     }
 
     @Override
-    public BufferedImage getImage(int row, int column, FileIO fileSystem) {
+    public BufferedImage getImage(Point coordinates, FileIO fileSystem) {
         BufferedImage bi;
         if (image == null) {
             bi = loadGraphics(path, fileSystem);
@@ -57,23 +57,22 @@ public abstract class AbstractImageProvider implements ImageProvider {
             bi = image;
         }
         try {
-            BufferedImage result = bi.getSubimage(column * imageDimension.width, row * imageDimension.height,
+            BufferedImage result = bi.getSubimage(coordinates.x * imageDimension.width, coordinates.y * imageDimension.height,
                     imageDimension.width, imageDimension.height);
             return result;
         } catch (Exception e) {
-            LOG.log(Level.SEVERE, " Error getting subimage from {0}", filename + e.getMessage());
+            LOG.log(Level.SEVERE, " Error getting subimage from {0}: {1}", new Object[]{filename, e});
         }
         return null;
     }
 
-    @Override
-    public BufferedImage getImage(int index, FileIO fileSystem) {
-        int column = index / rows;
-        int row = index % rows;
-        return getImage(row, column, fileSystem);
-
-    }
-
+//    @Override
+//    public BufferedImage getImage(int index, FileIO fileSystem) {
+//        int column = index / rows;
+//        int row = index % rows;
+//        return getImage(row, column, fileSystem);
+//    }
+    
     @Override
     public BufferedImage getFullImage(FileIO fileSystem) {
         BufferedImage bi;
@@ -87,7 +86,19 @@ public abstract class AbstractImageProvider implements ImageProvider {
 
     @Override
     public BufferedImage getImage(FileIO fileSystem) {
-        return getImage(0, 0, fileSystem);
+        BufferedImage bi;
+        if (image == null) {
+            bi = loadGraphics(path, fileSystem);
+        } else {
+            bi = image;
+        }
+        try {
+            BufferedImage result = bi.getSubimage(0, 0, imageDimension.width, imageDimension.height);
+            return result;
+        } catch (Exception e) {
+            LOG.log(Level.SEVERE, " Error getting subimage from {0}: {1}", new Object[]{filename, e});
+        }
+        return null;
 
     }
 

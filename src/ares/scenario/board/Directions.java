@@ -1,7 +1,6 @@
 package ares.scenario.board;
 
 import java.awt.Point;
-import java.util.EnumSet;
 import java.util.Set;
 
 /**
@@ -75,23 +74,36 @@ public enum Directions {
     N_NE_SE_S_SW_NW,
     C;
     private final int bitmask;
-    private final Point graphicsLocation;
+    private final Point coordinates;
     private final Set<Direction> directions;
+    public static final Directions[] ALL_COMBINED_DIRECTIONS = Directions.values();
 
     private Directions() {
         this.bitmask = ordinal() + 1;
         int column = ordinal() / 8;
         int row = ordinal() % 8;
-        graphicsLocation = new Point(column, row);
-        directions = Direction.convertBitmaskToDirections(bitmask);
+        coordinates = new Point(column, row);
+        directions = Direction.getDirections(bitmask);
     }
 
+    /**
+     * Obtains a bitmask for the combination of {@link #directions}. The resulting bitmasks are easily transformed into
+     * indexes to locate a terrain image in the terrain image file. Each direction is encoded as a simple bitflag (the
+     * ordinal of Direction enum)
+     * <b>Examples:
+     * <b>"N" -> 000001
+     * <b>"N NE" -> 000011
+     * <b>"S SE" -> 001100
+     *
+     * @param directions
+     * @return
+     */
     public int getBitmask() {
         return bitmask;
     }
 
-    public Point getGraphicsLocation() {
-        return graphicsLocation;
+    public Point getCoordinates() {
+        return coordinates;
     }
 
     public Set<Direction> getDirections() {
@@ -102,10 +114,12 @@ public enum Directions {
         return directions.contains(direction);
     }
 
+    public static Directions getDirections(int bitmask) {
+        return ALL_COMBINED_DIRECTIONS[bitmask - 1];
+    }
 //    public boolean containsSome(Set<Direction> directions) {
 //        Set<Direction> result = EnumSet.copyOf(directions);
 //        result.retainAll(this.directions);
 //        return !result.isEmpty();
 //    }
-    
 }

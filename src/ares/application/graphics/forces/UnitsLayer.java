@@ -96,7 +96,7 @@ public class UnitsLayer extends AbstractImageLayer {
         } else {
             //Retrieve the single unit image
             UnitModel unit = tile.getTopUnit();
-            BufferedImage unitImage = unit.getColor().getImage(AresGraphicsModel.getProfile(),unit.getIconId(), AresIO.ARES_IO);
+            BufferedImage unitImage = unit.getColor().getImage(AresGraphicsModel.getProfile(), unit.getIconId(), AresIO.ARES_IO);
 
             //Num units to be painted
             int max = Math.min(tile.getNumStackedUnits(), MAX_STACK);

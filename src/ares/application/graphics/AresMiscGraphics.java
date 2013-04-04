@@ -5,6 +5,7 @@ import ares.application.graphics.providers.MultiProfileImageProvider;
 import ares.application.graphics.providers.ImageProviderType;
 import ares.io.FileIO;
 import java.awt.Dimension;
+import java.awt.Point;
 import java.awt.image.BufferedImage;
 
 /**
@@ -14,7 +15,7 @@ import java.awt.image.BufferedImage;
 public enum AresMiscGraphics implements GraphicsProvider<AresGraphicsProfile> {
 
     TERRAIN_MISCELANEOUS(8, 8),
-    BORDER(6, 1),
+    TERRAIN_BORDER(8, 8),
     GRID(1, 1),
     BRASS_CURSOR(1, 1),
     STEEL_CURSOR(1, 1),
@@ -35,15 +36,14 @@ public enum AresMiscGraphics implements GraphicsProvider<AresGraphicsProfile> {
     }
 
     @Override
-    public BufferedImage getImage(AresGraphicsProfile profile, int row, int column, FileIO fileSystem) {
-        return provider.getImage(profile, row, column, fileSystem);
+    public BufferedImage getImage(AresGraphicsProfile profile, Point coordinates, FileIO fileSystem) {
+        return provider.getImage(profile, coordinates, fileSystem);
     }
 
-    @Override
-    public BufferedImage getImage(AresGraphicsProfile profile, int index, FileIO fileSystem) {
-        return provider.getImage(profile, index, fileSystem);
-    }
-
+//    @Override
+//    public BufferedImage getImage(AresGraphicsProfile profile, int index, FileIO fileSystem) {
+//        return provider.getImage(profile, index, fileSystem);
+//    }
     @Override
     public BufferedImage getImage(AresGraphicsProfile profile, FileIO fileSystem) {
         return provider.getImage(profile, fileSystem);
@@ -58,8 +58,7 @@ public enum AresMiscGraphics implements GraphicsProvider<AresGraphicsProfile> {
     public Dimension getFullImageDimension(AresGraphicsProfile profile) {
         return provider.getFullImageDimension(profile);
     }
-    
-    
+
     @Override
     public String getFilename(AresGraphicsProfile profile) {
         return provider.getFilename(profile);

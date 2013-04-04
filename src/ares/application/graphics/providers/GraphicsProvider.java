@@ -3,6 +3,7 @@ package ares.application.graphics.providers;
 import ares.application.graphics.GraphicsProfile;
 import ares.io.FileIO;
 import java.awt.Dimension;
+import java.awt.Point;
 import java.awt.image.BufferedImage;
 
 /**
@@ -21,8 +22,8 @@ public interface GraphicsProvider<T extends Enum<T> & GraphicsProfile> {
     String getFilename();
 
     /**
-     * Returns the actual filename of a particular graphics provider.
-     * for the graphics {@code profile} passed as a parameter
+     * Returns the actual filename of a particular graphics provider. for the graphics {@code profile} passed as a
+     * parameter
      *
      * @see GraphicsProfile
      * @return the base filename
@@ -30,13 +31,13 @@ public interface GraphicsProvider<T extends Enum<T> & GraphicsProfile> {
     String getFilename(T profile);
 
     /**
-     * Gets the sprite located in given {@code row} and {@code column} of the graphics of this provider
+     * Gets the image located in given {@code row} and {@code column} of the graphics of this provider
      *
-     * @param row
      * @param column
+     * @param row
      * @return
      */
-    BufferedImage getImage(T profile, int row, int column, FileIO fileSystem);
+    BufferedImage getImage(T profile, Point coordinates, FileIO fileSystem);
 
     /**
      * Gets the sprite in coordinates encoded by a single {@code index}
@@ -48,7 +49,7 @@ public interface GraphicsProvider<T extends Enum<T> & GraphicsProfile> {
      * @param fileSystem
      * @return
      */
-    BufferedImage getImage(T profile, int index, FileIO fileSystem);
+//    BufferedImage getImage(T profile, int index, FileIO fileSystem);
 
     /**
      * Gets the first or only sprite in the graphics of this provider

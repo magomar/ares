@@ -24,6 +24,7 @@ public enum MovementType {
     private final int maxOffRoadCost;
     private final int minOnRoadCost;
     private final int maxOnRoadCost;
+    public static final Set<MovementType> ANY_NON_AIRCRAFT_MOVEMENT = EnumSet.range(FIXED, FOOT);
     public static final Set<MovementType> ANY_LAND_OR_AMPH_MOVEMENT = EnumSet.of(AMPHIBIOUS, MOTORIZED, MIXED, FOOT);
     public static final Set<MovementType> ANY_LAND_OR_RIVERINE_RAIL_AMPHIBIOUS_MOVEMENT = EnumSet.range(RIVERINE, FOOT);
     public static final Set<MovementType> ANY_LAND_MOVEMENT = EnumSet.range(MovementType.MOTORIZED, MovementType.FOOT);

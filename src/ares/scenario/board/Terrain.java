@@ -6,6 +6,7 @@ import ares.application.graphics.providers.ImageProviderType;
 import ares.application.graphics.providers.MultiProfileImageProvider;
 import ares.io.FileIO;
 import java.awt.Dimension;
+import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.util.EnumSet;
 import java.util.Set;
@@ -156,14 +157,14 @@ public enum Terrain implements GraphicsProvider<AresGraphicsProfile> {
     }
 
     @Override
-    public BufferedImage getImage(AresGraphicsProfile profile, int row, int column, FileIO fileSystem) {
-        return provider.getImage(profile, row, column, fileSystem);
+    public BufferedImage getImage(AresGraphicsProfile profile, Point coordinates, FileIO fileSystem) {
+        return provider.getImage(profile, coordinates, fileSystem);
     }
 
-    @Override
-    public BufferedImage getImage(AresGraphicsProfile profile, int index, FileIO fileSystem) {
-        return provider.getImage(profile, index, fileSystem);
-    }
+//    @Override
+//    public BufferedImage getImage(AresGraphicsProfile profile, int index, FileIO fileSystem) {
+//        return provider.getImage(profile, index, fileSystem);
+//    }
 
     @Override
     public BufferedImage getImage(AresGraphicsProfile profile, FileIO fileSystem) {

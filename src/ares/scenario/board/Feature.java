@@ -5,6 +5,7 @@ import ares.application.graphics.AresMiscGraphics;
 import ares.application.graphics.providers.GraphicsProvider;
 import ares.io.FileIO;
 import java.awt.Dimension;
+import java.awt.Point;
 import java.awt.image.BufferedImage;
 
 /**
@@ -29,22 +30,15 @@ public enum Feature implements GraphicsProvider<AresGraphicsProfile> {
     BRIDGE_DESTROYED(3, 0),
     FROZEN(2, 6),
     EXCLUDED_1(5, 6),
-    EXCLUDED_2(5, 7)
-    ;
-    private final int imageRow;
-    private final int imageColumn;
+    EXCLUDED_2(5, 7);
+    private final Point coordinates;
 
     private Feature(final int imageColumn, final int imageRow) {
-        this.imageRow = imageRow;
-        this.imageColumn = imageColumn;
+        this.coordinates = new Point(imageColumn, imageRow);
     }
 
-    public int getImageRow() {
-        return imageRow;
-    }
-
-    public int getImageCol() {
-        return imageColumn;
+    public Point getCoordinates() {
+        return coordinates;
     }
 
     @Override
@@ -53,15 +47,14 @@ public enum Feature implements GraphicsProvider<AresGraphicsProfile> {
     }
 
     @Override
-    public BufferedImage getImage(AresGraphicsProfile profile, int row, int column, FileIO fileSystem) {
-        return AresMiscGraphics.TERRAIN_MISCELANEOUS.getImage(profile, row, column, fileSystem);
+    public BufferedImage getImage(AresGraphicsProfile profile, Point coordinates, FileIO fileSystem) {
+        return AresMiscGraphics.TERRAIN_MISCELANEOUS.getImage(profile, coordinates, fileSystem);
     }
 
-    @Override
-    public BufferedImage getImage(AresGraphicsProfile profile, int index, FileIO fileSystem) {
-        return AresMiscGraphics.TERRAIN_MISCELANEOUS.getImage(profile, index, fileSystem);
-    }
-
+//    @Override
+//    public BufferedImage getImage(AresGraphicsProfile profile, int index, FileIO fileSystem) {
+//        return AresMiscGraphics.TERRAIN_MISCELANEOUS.getImage(profile, index, fileSystem);
+//    }
     @Override
     public BufferedImage getImage(AresGraphicsProfile profile, FileIO fileSystem) {
         return AresMiscGraphics.TERRAIN_MISCELANEOUS.getImage(profile, fileSystem);

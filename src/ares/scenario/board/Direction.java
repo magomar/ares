@@ -39,18 +39,28 @@ public enum Direction {
         this.incRowOdd = incJOdd;
     }
 
- 
-
-    public static int convertDirectionsToBitMask(Set<Direction> directions) {
+    /**
+     * Obtains a bitmask for the combination of {@code directions} passed as parameter. The resulting bitmasks are
+     * easily transformed into indexes to locate a terrain image in the terrain image file. Each direction is encoded as
+     * a simple bitflag (the ordinal of Direction enum)
+     * <b>Examples:
+     * <b>"N" -> 000001
+     * <b>"N NE" -> 000011
+     * <b>"S SE" -> 001100
+     *
+     * @param directions
+     * @return
+     */
+    public static int getBitmask(Set<Direction> directions) {
         int mask = 0;
         for (Direction dir : directions) {
-                int bit = 1 << dir.ordinal();
-                mask |= bit;
+            int bit = 1 << dir.ordinal();
+            mask |= bit;
         }
         return mask;
     }
 
-    public static Set<Direction> convertBitmaskToDirections(int bitmask) {
+    public static Set<Direction> getDirections(int bitmask) {
         Set<Direction> directions = EnumSet.noneOf(Direction.class);
         for (int bit = 0; bit < ALL_DIRECTIONS.length; bit++) {
             if (testBitFlag(bitmask, bit)) {

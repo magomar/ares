@@ -3,6 +3,7 @@ package ares.application.graphics.providers;
 import ares.application.graphics.GraphicsProfile;
 import ares.io.FileIO;
 import java.awt.Dimension;
+import java.awt.Point;
 import java.awt.image.BufferedImage;
 
 /**
@@ -36,11 +37,11 @@ public interface ImageProvider {
     /**
      * Gets the sprite located in given {@code row} and {@code column} of the graphics of this provider
      *
-     * @param row
      * @param column
+     * @param row
      * @return
      */
-    BufferedImage getImage(int row, int column, FileIO fileSystem);
+    BufferedImage getImage(Point coordinates, FileIO fileSystem);
 
     /**
      * Gets the sprite in coordinates encoded by a single {@code index}
@@ -52,7 +53,7 @@ public interface ImageProvider {
      * @param fileSystem
      * @return
      */
-    BufferedImage getImage(int index, FileIO fileSystem);
+//    BufferedImage getImage(int index, FileIO fileSystem);
 
     /**
      * Gets the first or only sprite in the graphics of this provider

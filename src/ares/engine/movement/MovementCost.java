@@ -39,10 +39,13 @@ public class MovementCost {
 
         boolean destroyedBridge = false;
 
+        //Set AIRCRAFT movement: can move across all tiles, even the non_playable ones (to move between playable areas)
+        movementCost.put(MovementType.AIRCRAFT, UNITARY_MOVEMENT_COST);
+        
         for (Feature tf : features) {
             // Tile only usable by aircrafts
             if (tf.equals(Feature.NON_PLAYABLE) || tf.equals(Feature.PEAK)) {
-                for (MovementType moveType : EnumSet.range(MovementType.FIXED, MovementType.FOOT)) {
+                for (MovementType moveType : MovementType.ANY_NON_AIRCRAFT_MOVEMENT) {
                     movementCost.put(moveType, IMPASSABLE);
                 }
                 return;
@@ -51,8 +54,6 @@ public class MovementCost {
                 destroyedBridge = true;
             }
         }
-        //Set AIRCRAFT movement: can move across all tiles, even the non_playable ones (to move between playable areas)
-        movementCost.put(MovementType.AIRCRAFT, UNITARY_MOVEMENT_COST);
 
         // Set FIXED movement, impassable for any tile
         movementCost.put(MovementType.FIXED, IMPASSABLE);
@@ -78,8 +79,7 @@ public class MovementCost {
             movementCost.put(MovementType.RIVERINE, IMPASSABLE);
         }
         // Set RAIL movement, only allowed across non broken RAIL 
-        if (containsTerrainInDirection(terrainMap, Terrain.RAIL, direction) 
-                //     && !containsTerrainInDirection(terrainMap, Terrain.BROKEN_RAIL, fromDir) // Assuming RAIL and BROKEN_RAIL are mutually exclusive
+        if (containsTerrainInDirection(terrainMap, Terrain.RAIL, direction) //     && !containsTerrainInDirection(terrainMap, Terrain.BROKEN_RAIL, fromDir) // Assuming RAIL and BROKEN_RAIL are mutually exclusive
                 ) {
             movementCost.put(MovementType.RAIL, UNITARY_MOVEMENT_COST);
         } else {
@@ -120,9 +120,6 @@ public class MovementCost {
             movementCost.put(MovementType.AMPHIBIOUS, amphibiousCost);
         }
 
-//        if (movementCost.keySet().size() < MovementType.values().length) {
-//            System.out.println(movementCost.entrySet());
-//        }
     }
 
     /**
@@ -169,7 +166,9 @@ public class MovementCost {
         Map<Terrain, Directions> terrainMap = destination.getTerrain();
         MovementType moveType = unit.getMovement();
         int cost;
-
+        if (moveType == null || movementCost == null || !movementCost.containsKey(moveType)) {
+            System.out.println(unit);
+        }
         int penalty = 0;
         if (destination.hasEnemies(unit.getForce())) {
             if (avoidEnemies) {
