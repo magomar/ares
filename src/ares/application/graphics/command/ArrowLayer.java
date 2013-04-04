@@ -51,12 +51,16 @@ public class ArrowLayer extends AbstractImageLayer {
         // Paint the last segment of the arrow
         Node last = path.getLast();
         paintFinalArrowSegment(g2, last.getTile(), last.getDirection(), type);
-        // Paint the other segments
-        for (Node current = last.getPrev(); current != null; last = current, current = last.getPrev()) {
+        // Paint the intermediary segments
+        Node current;
+        for (current = last.getPrev(); current.getPrev() != null; last = current, current = last.getPrev()) {
             Direction from = current.getDirection();
             Direction to = last.getDirection().getOpposite();
             paintArrowSegment(g2, current.getTile(), EnumSet.of(from, to), type);
         }
+        // Paint the final segment
+        Direction to = last.getDirection().getOpposite();
+        paintArrowSegment(g2, current.getTile(), EnumSet.of(to), type);
     }
 
     /**
@@ -69,7 +73,7 @@ public class ArrowLayer extends AbstractImageLayer {
     private void paintFinalArrowSegment(Graphics2D g2, Tile tile, Direction direction, ArrowType type) {
         BufferedImage arrowImage = null;
         AresGraphicsProfile profile = AresGraphicsModel.getProfile();
-        int index = Terrain.getImageIndex(direction.ordinal()+25);
+        int index = Terrain.getImageIndex(direction.ordinal() + 25);
         switch (type) {
             case GIVING_ORDERS:
                 arrowImage = unitArrow.getImage(profile, index, AresIO.ARES_IO);
@@ -87,7 +91,7 @@ public class ArrowLayer extends AbstractImageLayer {
         g2.drawImage(arrowImage, pos.x, pos.y, null);
         repaint(pos.x, pos.y, arrowImage.getWidth(), arrowImage.getHeight());
     }
-    
+
     /**
      * Paints a single arrow segment in the {@code tile} passed as argument, using the graphic identified by the
      * {@code index} passed

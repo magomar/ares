@@ -27,7 +27,7 @@ public abstract class AbstractImageProvider implements ImageProvider {
      * The dimension of the image where the sprites are stored
      */
     private final Dimension fullImageDimension;
-    private SoftReference<BufferedImage> image;
+    private BufferedImage image;
     private final String path;
 
     public AbstractImageProvider(String filename, int imageWidth, int imageHeight, GraphicsProfile profile) {
@@ -51,18 +51,17 @@ public abstract class AbstractImageProvider implements ImageProvider {
     @Override
     public BufferedImage getImage(int row, int column, FileIO fileSystem) {
         BufferedImage bi;
-        if (image == null || image.get() == null) {
+        if (image == null) {
             bi = loadGraphics(path, fileSystem);
-            image = new SoftReference<>(bi);
         } else {
-            bi = image.get();
+            bi = image;
         }
         try {
             BufferedImage result = bi.getSubimage(column * imageDimension.width, row * imageDimension.height,
                     imageDimension.width, imageDimension.height);
             return result;
         } catch (Exception e) {
-            LOG.log(Level.SEVERE, " Error getting subimage from {0}", filename);
+            LOG.log(Level.SEVERE, " Error getting subimage from {0}", filename + e.getMessage());
         }
         return null;
     }
@@ -78,11 +77,10 @@ public abstract class AbstractImageProvider implements ImageProvider {
     @Override
     public BufferedImage getFullImage(FileIO fileSystem) {
         BufferedImage bi;
-        if (image == null || image.get() == null) {
+        if (image == null) {
             bi = loadGraphics(path, fileSystem);
-            image = new SoftReference<>(bi);
         } else {
-            bi = image.get();
+            bi = image;
         }
         return bi;
     }
