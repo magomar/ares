@@ -66,8 +66,8 @@ public final class Board implements ModelProvider<BoardModel> {
      */
     public Tile getNeighbor(Tile from, Direction dir) {
         Point coord = from.getCoordinates();
-        int x = coord.x + dir.getIncI();
-        int y = coord.y + (coord.x % 2 == 0 ? dir.getIncJEven() : dir.getIncJOdd());
+        int x = coord.x + dir.getIncColumn();
+        int y = coord.y + (coord.x % 2 == 0 ? dir.getIncRowEven() : dir.getIncRowOdd());
         if (x >= 0 && x < width && y >= 0 && y < height) {
             return map[x][y];
         } else {
@@ -84,8 +84,8 @@ public final class Board implements ModelProvider<BoardModel> {
         Map<Direction, Tile> neighbors = new EnumMap<>(Direction.class);
         Point coord = from.getCoordinates();
         for (Direction dir : Direction.DIRECTIONS) {
-            int x = coord.x + dir.getIncI();
-            int y = coord.y + (coord.x % 2 == 0 ? dir.getIncJEven() : dir.getIncJOdd());
+            int x = coord.x + dir.getIncColumn();
+            int y = coord.y + (coord.x % 2 == 0 ? dir.getIncRowEven() : dir.getIncRowOdd());
             if (x >= 0 && x < width && y >= 0 && y < height) {
                 neighbors.put(dir, map[x][y]);
             }
@@ -105,13 +105,13 @@ public final class Board implements ModelProvider<BoardModel> {
         int incY = to.getCoordinates().y - from.getCoordinates().y;
         if (from.getCoordinates().x % 2 == 0) {
             for (Direction dir : Direction.values()) {
-                if (dir.getIncI() == incX && dir.getIncJEven() == incY) {
+                if (dir.getIncColumn()== incX && dir.getIncRowEven() == incY) {
                     return dir;
                 }
             }
         } else {
             for (Direction dir : Direction.values()) {
-                if (dir.getIncI() == incX && dir.getIncJOdd() == incY) {
+                if (dir.getIncColumn()== incX && dir.getIncRowOdd() == incY) {
                     return dir;
                 }
             }

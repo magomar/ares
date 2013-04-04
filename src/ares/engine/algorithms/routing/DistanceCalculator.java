@@ -138,8 +138,8 @@ public class DistanceCalculator implements Heuristic {
         Point current = new Point(orig);
         while (true) {
             cost++;
-            current.x += dir.getIncI();
-            current.y += (oddColumn) ? dir.getIncJOdd() : dir.getIncJEven();
+            current.x += dir.getIncColumn();
+            current.y += (oddColumn) ? dir.getIncRowOdd() : dir.getIncRowEven();
             oddColumn = !oddColumn;
             if (current.x == dest.x) {
                 return cost + Math.abs(dest.y - current.y);

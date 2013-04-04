@@ -36,9 +36,9 @@ public abstract class MoveAction extends AbstractAction {
         this.path = path;
         currentNode = path.getFirst().getNext();
         Tile destination = currentNode.getTile();
-        Direction fromDir = currentNode.getDirection().getOpposite();
-        MovementCost moveCost = unit.getLocation().getMoveCost(fromDir);
-        int cost = moveCost.getActualCost(unit, destination, fromDir);
+        Direction direction = currentNode.getDirection();
+        MovementCost moveCost = destination.getMoveCost(direction);
+        int cost = moveCost.getActualCost(unit, destination);
         speed = unit.getSpeed() / cost;
         // TODO avoid creating move actions for static units (speed=0) !
         timeToNextMovement = (speed > 0 ? Scale.INSTANCE.getTileSize() / speed : Integer.MAX_VALUE);
@@ -54,16 +54,13 @@ public abstract class MoveAction extends AbstractAction {
      * each partial movement (the precission error only happens once for the entire movement)
      */
     protected void completePartialMove() {
-        // move to next node in path
-        Direction fromDir = currentNode.getDirection().getOpposite();
-        unit.move(fromDir);
+        unit.move(currentNode.getDirection().getOpposite());
         // start moving to the next node
         currentNode = currentNode.getNext();
         if (currentNode != null) {
             Tile destination = currentNode.getTile();
-            fromDir = currentNode.getDirection().getOpposite();
-            MovementCost moveCost = unit.getLocation().getMoveCost(fromDir);
-            int cost = moveCost.getActualCost(unit, destination, fromDir);
+            MovementCost moveCost = destination.getMoveCost(currentNode.getDirection());
+            int cost = moveCost.getActualCost(unit, destination);
             speed = unit.getSpeed() / cost;
             // timeToNextMovement <= 0. If it is negative we can add it to the new timeToNextMovement as a way to not propagate the precision error each movement segment
             timeToNextMovement = (speed > 0 ? (int) (Scale.INSTANCE.getTileSize() / speed) + timeToNextMovement : Integer.MAX_VALUE);

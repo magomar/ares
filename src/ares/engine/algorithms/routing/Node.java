@@ -14,7 +14,7 @@ public class Node implements Comparable {
     private Node prev;
     private Node next;
     /**
-     * Direction from the previous node to reach this node, relative to this node
+     * Direction used to reach this node from previous node (ie. relative to this node)
      */
     private Direction direction;
     /**
@@ -133,7 +133,7 @@ public class Node implements Comparable {
     @Override
     public int compareTo(Object o) {
         Node n = (Node) o;
-   
+
         if (f < n.f) {
             return -1;
         }
@@ -142,5 +142,4 @@ public class Node implements Comparable {
         }
         return 0;
     }
-    
 }

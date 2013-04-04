@@ -391,11 +391,10 @@ public abstract class Unit implements ModelProvider<UnitModel> {
     }
 
     /**
-     * Moves the unit one tile in the indicated
-     * <code>direction</code>. This method simply changes the location of the unit, and updates the board accordingly
-     * (removes unit from previous location and adds it to the new location)
+     * Moves the unit one tile in the indicated {@code direction}. This method simply changes the location of the unit,
+     * and updates the board accordingly (removes unit from previous location and adds it to the new location)
      *
-     * @param direction
+     * @param direction Direction of the movement relative to the origin of the movement
      */
     public void move(Direction direction) {
         location.remove(this);

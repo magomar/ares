@@ -1,6 +1,5 @@
 package ares.engine.movement;
 
-import ares.data.jaxb.MultiDirection;
 import ares.platform.util.EnumSetOperations;
 import ares.scenario.Scale;
 import ares.scenario.board.*;
@@ -8,26 +7,35 @@ import ares.scenario.forces.*;
 import java.util.*;
 
 /**
+ * MovementCost objects contain the precomputed movement costs for all movement types and a single tile and direction.
+ * Each movement type has a cost to enter a {@link Tile}, which depends on the {@link TerrainType} it contains.
+ *
+ * @see Tile#moveCosts
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class MovementCost {
 
     public static final int IMPASSABLE = Integer.MAX_VALUE;
+    public static final int UNITARY_MOVEMENT_COST = 1;
+    private static final int ENEMIES_PENALTY = 10;
+    private static final int SNOW_PENALTY = 2;
+    private static final int MUDDY_PENALTY = 2;
     /**
      * Pre-computed movement costs. This map links the different movement types to their costs for a given destination
-     * (tile and direction). Movement cost is specified in terms of how many times the cost is reduced. That is, a cost
-     * of 1 means moving at standard speed, 2 means moving at half the standard speed, 3 means moving at a third of the
-     * standard speed and so on.
+     * (tile and direction). Movement speed is inversely proportional to the cost. A cost of 1 means moving at standard
+     * speed, 2 means moving at half the standard speed, 3 means moving at a third of the standard speed and so on.
      */
-    // TODO check if it's better to initialize all costs to IMPASSABLE
-    private Map<MovementType, Integer> movementCost;
-    private static final int ONE = 1;
+    private final Map<MovementType, Integer> movementCost;
+    /**
+     * Whether there is a (non-destroyed) road
+     */
+    private boolean hasRoad;
 
-    public MovementCost(Direction fromDir, Tile destination) {
+    public MovementCost(Tile tile, Direction direction) {
         movementCost = new EnumMap<>(MovementType.class);
 
-        Set<Feature> features = destination.getFeatures();
+        Set<Feature> features = tile.getFeatures();
 
         boolean destroyedBridge = false;
 
@@ -44,17 +52,17 @@ public class MovementCost {
             }
         }
         //Set AIRCRAFT movement: can move across all tiles, even the non_playable ones (to move between playable areas)
-        movementCost.put(MovementType.AIRCRAFT, ONE);
+        movementCost.put(MovementType.AIRCRAFT, UNITARY_MOVEMENT_COST);
 
         // Set FIXED movement, impassable for any tile
         movementCost.put(MovementType.FIXED, IMPASSABLE);
-        Map<Terrain, Directions> terrainMap = destination.getTerrain();
+        Map<Terrain, Directions> terrainMap = tile.getTerrain();
         Set<Terrain> terrains = terrainMap.keySet();
 
         // Set NAVAL movement, only allowed across water tiles (DEEP_WATER and SHALLOW water)
         // Water tiles are impasable for all movement types except NAVAL and AIRCRAFT
         if (EnumSetOperations.nonEmptyIntersection(terrains, Terrain.ANY_WATER)) {
-            movementCost.put(MovementType.NAVAL, ONE);
+            movementCost.put(MovementType.NAVAL, UNITARY_MOVEMENT_COST);
             for (MovementType moveType : EnumSet.range(MovementType.RIVERINE, MovementType.FOOT)) {
                 movementCost.put(moveType, IMPASSABLE);
             }
@@ -65,25 +73,25 @@ public class MovementCost {
         // Set RIVERINE movement, only allowed across RIVER, SUPER_RIVER,CANAL and SUPER_CANAL
         // River tiles are have a unitary cost for units capable of RIVERINE movement
         if (EnumSetOperations.nonEmptyIntersection(terrains, Terrain.ANY_RIVER)) {
-            movementCost.put(MovementType.RIVERINE, ONE);
+            movementCost.put(MovementType.RIVERINE, UNITARY_MOVEMENT_COST);
         } else {
             movementCost.put(MovementType.RIVERINE, IMPASSABLE);
         }
         // Set RAIL movement, only allowed across non broken RAIL 
-        if (containsTerrainInDirection(terrainMap, Terrain.RAIL, fromDir) //      && !containsTerrainInDirection(terrainMap, Terrain.BROKEN_RAIL, fromDir) // Assuming RAIL and BROKEN_RAIL are mutually exclusive
+        if (containsTerrainInDirection(terrainMap, Terrain.RAIL, direction) 
+                //     && !containsTerrainInDirection(terrainMap, Terrain.BROKEN_RAIL, fromDir) // Assuming RAIL and BROKEN_RAIL are mutually exclusive
                 ) {
-            movementCost.put(MovementType.RAIL, ONE);
+            movementCost.put(MovementType.RAIL, UNITARY_MOVEMENT_COST);
         } else {
             movementCost.put(MovementType.RAIL, IMPASSABLE);
         }
 
-        boolean offRoadMovement = (containsSomeTerrainInDirection(terrainMap, Terrain.ANY_ROAD, fromDir) && !destroyedBridge ? false : true);
-
         // Set remaining movement types
         //Distinguishes between movement along roads and off-road movement
-        if (!offRoadMovement) {
+        hasRoad = (containsSomeTerrainInDirection(terrainMap, Terrain.ANY_ROAD, direction) && !destroyedBridge ? true : false);
+        if (hasRoad) {
             // Road-based movement
-            for (MovementType moveType : MovementType.ANY_LAND_MOVEMENT) {
+            for (MovementType moveType : MovementType.ANY_LAND_OR_AMPH_MOVEMENT) {
                 movementCost.put(moveType, moveType.getMinOnRoadCost());
             }
         } else {
@@ -95,7 +103,7 @@ public class MovementCost {
             for (Map.Entry<Terrain, Directions> entry : terrainMap.entrySet()) {
                 Terrain t = entry.getKey();
                 Directions directions = entry.getValue();
-                if (!t.isDirectional() || directions.contains(fromDir)) {
+                if (!t.isDirectional() || directions.contains(direction)) {
                     motorizedCost += t.getMotorized();
                     mixedCost += t.getMixed();
                     footCost += t.getFoot();
@@ -103,14 +111,18 @@ public class MovementCost {
                 }
             }
             motorizedCost = Math.min(motorizedCost, Math.min(MovementType.MOTORIZED.getMaxOffRoadCost(), IMPASSABLE));
-            mixedCost = Math.min(motorizedCost, Math.min(MovementType.MIXED.getMaxOffRoadCost(), IMPASSABLE));
-            footCost = Math.min(motorizedCost, Math.min(MovementType.FOOT.getMaxOffRoadCost(), IMPASSABLE));
-            amphibiousCost = Math.min(motorizedCost, Math.min(MovementType.AMPHIBIOUS.getMaxOffRoadCost(), IMPASSABLE));
+            mixedCost = Math.min(mixedCost, Math.min(MovementType.MIXED.getMaxOffRoadCost(), IMPASSABLE));
+            footCost = Math.min(footCost, Math.min(MovementType.FOOT.getMaxOffRoadCost(), IMPASSABLE));
+            amphibiousCost = Math.min(amphibiousCost, Math.min(MovementType.AMPHIBIOUS.getMaxOffRoadCost(), IMPASSABLE));
             movementCost.put(MovementType.MOTORIZED, motorizedCost);
             movementCost.put(MovementType.MIXED, mixedCost);
             movementCost.put(MovementType.FOOT, footCost);
             movementCost.put(MovementType.AMPHIBIOUS, amphibiousCost);
         }
+
+//        if (movementCost.keySet().size() < MovementType.values().length) {
+//            System.out.println(movementCost.entrySet());
+//        }
     }
 
     /**
@@ -120,26 +132,20 @@ public class MovementCost {
      *
      * @param unit
      * @param destination
-     * @param fromDir
+     * @param direction
      * @return
      */
-    public int getActualCost(Unit unit, Tile destination, Direction fromDir) {
+    public int getActualCost(Unit unit, Tile destination) {
         int cost;
-        Direction toDir = fromDir.getOpposite();
 
-        // TODO check for enemies
-        if (!unit.getForce().equals(destination.getOwner()) && destination.getSurfaceUnits().size() > 0) {
-            return IMPASSABLE;
-        }
         if (destination.hasEnemies(unit.getForce())) {
             return IMPASSABLE;
         }
 
-        Map<Terrain, Directions> terrainMap = destination.getTerrain();
-//        Set<Terrain> terrains = terrainMap.keySet();
         MovementType moveType = unit.getMovement();
         if (MovementType.ANY_LAND_OR_AMPH_MOVEMENT.contains(moveType)
-                && containsSomeTerrainInDirection(terrainMap, Terrain.ANY_ROAD, toDir)) {
+                && hasRoad) {
+            // Apply On-road movement density penalties
             int density = Scale.INSTANCE.getCriticalDensity();
             int numHorsesAndVehicles = 0;
             for (SurfaceUnit surfaceUnit : destination.getSurfaceUnits()) {
@@ -147,7 +153,7 @@ public class MovementCost {
                     numHorsesAndVehicles += ((LandUnit) surfaceUnit).getNumVehiclesAndHorses();
                 }
             }
-            cost = Math.max(ONE, Math.min(moveType.getMaxOnRoadCost(), numHorsesAndVehicles / density));
+            cost = Math.max(UNITARY_MOVEMENT_COST, Math.min(moveType.getMaxOnRoadCost(), numHorsesAndVehicles / density));
         } else {
             cost = movementCost.get(moveType);
         }
@@ -159,27 +165,22 @@ public class MovementCost {
         return cost;
     }
 
-    public int getActualCost(Unit unit, Tile destination, Direction fromDir, boolean avoidEnemies, boolean shortest) {
-        int cost;
+    public int getEstimatedCost(Unit unit, Tile destination, Direction direction, boolean avoidEnemies) {
+        Map<Terrain, Directions> terrainMap = destination.getTerrain();
         MovementType moveType = unit.getMovement();
+        int cost;
+
         int penalty = 0;
-        if (shortest) {
-            // If it's possible, then go for it
-            int d = movementCost.get(moveType);
-            return (d < IMPASSABLE) ? 1 : IMPASSABLE;
-        }
         if (destination.hasEnemies(unit.getForce())) {
             if (avoidEnemies) {
                 return IMPASSABLE;
             }
             // Enemies on the way
-            penalty++;
+            penalty += ENEMIES_PENALTY;
         }
-        Direction toDir = fromDir.getOpposite();
-        Map<Terrain, Directions> terrainMap = destination.getTerrain();
 
         if (MovementType.ANY_LAND_OR_AMPH_MOVEMENT.contains(moveType)
-                && containsSomeTerrainInDirection(terrainMap, Terrain.ANY_ROAD, toDir)) {
+                && containsSomeTerrainInDirection(terrainMap, Terrain.ANY_ROAD, direction)) {
             int density = Scale.INSTANCE.getCriticalDensity(), numHorsesAndVehicles = 0;
             // If destination isn't oberved SurfaceUnits will be empty
             for (SurfaceUnit su : destination.getSurfaceUnits()) {
@@ -187,13 +188,16 @@ public class MovementCost {
                     numHorsesAndVehicles += ((LandUnit) su).getNumVehiclesAndHorses();
                 }
             }
-            cost = Math.max(ONE, Math.min(moveType.getMaxOnRoadCost(), numHorsesAndVehicles / density));
+            cost = Math.max(UNITARY_MOVEMENT_COST, Math.min(moveType.getMaxOnRoadCost(), numHorsesAndVehicles / density));
         } else {
-            cost = movementCost.get(unit.getMovement());
+            cost = movementCost.get(moveType);
         }
 
-        if (destination.getFeatures().contains(Feature.SNOWY) || destination.getFeatures().contains(Feature.MUDDY)) {
-            penalty++;
+        if (destination.getFeatures().contains(Feature.SNOWY)) {
+            penalty += SNOW_PENALTY;
+        }
+        if (destination.getFeatures().contains(Feature.MUDDY)) {
+            penalty += MUDDY_PENALTY;
         }
         return cost + penalty;
     }
@@ -224,5 +228,9 @@ public class MovementCost {
             }
         }
         return false;
+    }
+
+    public void setHasRoad(boolean hasRoad) {
+        this.hasRoad = hasRoad;
     }
 }

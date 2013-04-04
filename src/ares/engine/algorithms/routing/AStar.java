@@ -1,5 +1,6 @@
 package ares.engine.algorithms.routing;
 
+import ares.engine.movement.MovementCost;
 import ares.scenario.board.Board;
 import ares.scenario.board.Direction;
 import ares.scenario.board.Tile;
@@ -32,7 +33,7 @@ public class AStar extends AbstractPathFinder {
         Point from = origin.getCoordinates();
         Point to = destination.getCoordinates();
         int distance = DistanceCalculator.getCost(from, to, algorithm);
-        Queue<Node> openSet = new PriorityQueue<>((int)(distance * 1.5));
+        Queue<Node> openSet = new PriorityQueue<>((int) (distance * 1.5));
 
         Node start;
         Node goal = new Node(destination);
@@ -56,19 +57,26 @@ public class AStar extends AbstractPathFinder {
             }
 
             closedSet.set(current.getTile().getIndex());
-            for (Map.Entry<Direction, Tile> iter : current.getTile().getNeighbors().entrySet()) {
-                int index = iter.getValue().getIndex();
+            for (Map.Entry<Direction, Tile> entry : current.getTile().getNeighbors().entrySet()) {
+                Direction fromDir = entry.getKey();
+                Direction toDir = fromDir.getOpposite();
+                Tile tile = entry.getValue();
+                int index = tile.getIndex();
+
                 if (closedSet.get(index)) {
                     continue;
                 }
-                double tentativeG = current.getG() + current.getTile().getMoveCost(iter.getKey()).getActualCost(origin.getTopUnit(), iter.getValue(), iter.getKey().getOpposite(), avoidingEnemies(), getPathType() == SHORTEST);
+                MovementCost mc = current.getTile().getMoveCost(entry.getKey());
+                double tentativeG = current.getG() 
+                        + mc.getEstimatedCost(origin.getTopUnit(), tile, toDir, avoidingEnemies());
 
                 Node neighbour = map.get(index);
                 if (neighbour == null) {
-                    neighbour = new Node(iter.getValue(), current);
-                    neighbour.setFrom(iter.getKey().getOpposite());
+                    neighbour = new Node(entry.getValue(), current);
+                    neighbour.setFrom(entry.getKey().getOpposite());
                     neighbour.setG(tentativeG);
-                    neighbour.setF(tentativeG + heuristic.getCost(neighbour.getTile().getCoordinates(), destination.getCoordinates()));
+                    neighbour.setF(tentativeG 
+                            + heuristic.getCost(neighbour.getTile().getCoordinates(), destination.getCoordinates()));
                     map.put(index, neighbour);
                     if (tentativeG < Integer.MAX_VALUE) {
                         openSet.add(neighbour);
@@ -80,7 +88,8 @@ public class AStar extends AbstractPathFinder {
                     neighbour.setFrom(dir.getOpposite());
                     neighbour.setPrev(current);
                     neighbour.setG(tentativeG);
-                    neighbour.setF(tentativeG + heuristic.getCost(neighbour.getTile().getCoordinates(), destination.getCoordinates()));
+                    neighbour.setF(tentativeG 
+                            + heuristic.getCost(neighbour.getTile().getCoordinates(), destination.getCoordinates()));
                 }
             }
             //assert current != null;

@@ -37,22 +37,12 @@ import java.util.Set;
 public final class Tile implements ModelProvider<TileModel> {
 
     /**
-     * Set of terrain types found in this location whose effect does not depend on direction
-     */
-//    private Set<Terrain> tileTerrain;
-    /**
-     * Board containing the terrain types found in this location for each direction of the tile These terrain types may
-     * either have and effect that depends on the direction (roads and escarpments), or need to be represented
-     * graphically as having direction, although their effect would be global for the entire tile (rivers and wadis) or
-     * it would have no effect at all (political boundaries [borders])
-     */
-//    private Map<Direction, Set<Terrain>> sideTerrain;
-    /**
-     * Set of features found in the terrain that are not exactly "terrain types". This set includes airports and
-     * harbours, mud, snow, etc.
-     *
+     * Terrain types and directions in which they apply
      */
     private final Map<Terrain, Directions> terrain;
+    /**
+     * Terrain features
+     */
     private Set<Feature> features;
     /**
      * Entrenchment (fortification) level, expressed as a percentage
@@ -82,7 +72,7 @@ public final class Tile implements ModelProvider<TileModel> {
 //    private int y;
     private Point coordinates;
     /**
-     * Unique identifier obtained from coordinates: index(x,y) = x * board.width + y
+     * Unique identifier obtained from coordinates: {@code index(x,y) = x * board.width + y}
      */
     private int index;
     /**
@@ -94,7 +84,7 @@ public final class Tile implements ModelProvider<TileModel> {
      */
     private UnitsStack units;
     /**
-     * Precomputed movement costs for all directions
+     * Precomputed movement costs for all directions. Movement costs are applied when entering a location
      */
     private Map<Direction, MovementCost> moveCosts;
     /**
@@ -102,7 +92,7 @@ public final class Tile implements ModelProvider<TileModel> {
      */
     private Map<MovementType, Integer> minMoveCost;
     /**
-     * Modifiers to combat due to terrain
+     * Modifiers to combat due to terrain. This modifier applies to the unit defending this location
      */
     private Map<Direction, CombatModifier> combatModifiers;
     /**
@@ -110,11 +100,16 @@ public final class Tile implements ModelProvider<TileModel> {
      * the board), then there would be no entry for that direction.
      */
     private Map<Direction, Tile> neighbors;
+    /**
+     * Knowledge leves for every possible {@link UserRole}
+     */
     private final Map<UserRole, KnowledgeLevel> knowledgeLevels;
+    /**
+     * {@link TileModel} for every possible {@link KnowledgeCategory}
+     */
     private final Map<KnowledgeCategory, TileModel> models;
 
     public Tile(ares.data.jaxb.Cell c) {
-        // numeric attributes
 //        x = c.getX();
 //        y = c.getY();
         coordinates = new Point(c.getX(), c.getY());
@@ -127,11 +122,6 @@ public final class Tile implements ModelProvider<TileModel> {
         units = new UnitsStack(this);
 
         // Initialize terrain information
-//        tileTerrain = EnumSet.noneOf(Terrain.class);
-//        sideTerrain = new EnumMap<>(Direction.class);
-//        for (Direction d : Direction.values()) {
-//            sideTerrain.put(d, EnumSet.noneOf(Terrain.class));
-//        }
         terrain = new EnumMap<>(Terrain.class);
         visibility = Vision.OPEN;
         for (ares.data.jaxb.Terrain ct : c.getTerrain()) {
@@ -143,33 +133,14 @@ public final class Tile implements ModelProvider<TileModel> {
             if (vision.compareTo(visibility) < 0) {
                 visibility = vision;
             }
-//            Set<Direction> directions = Direction.convertMultiDirectionToDirections(multiDir);
-//            for (Direction d : directions) {
-//                sideTerrain.get(d).add(terr);
-//                if (terr.getDirectionality() != Directionality.LOGICAL) {
-//                    tileTerrain.add(terr);
-//                    if (terr.getVision().ordinal() < visibility.ordinal()) {
-//                        visibility = terr.getVision();
-//                    }
-//                }
-//            }
-//            String[] dirStrArray = ct.getDir().split(" ");
-//            for (int i = 0; i < dirStrArray.length; i++) {
-//                Direction d = Direction.valueOf(dirStrArray[i]);
-//                sideTerrain.get(d).add(terr);
-//                if (terr.getDirectionality() != Directionality.LOGICAL) {
-//                    tileTerrain.add(terr);
-//                    if (terr.getVision().ordinal() < visibility.ordinal()) {
-//                        visibility = terr.getVision();
-//                    }
-//                }
-//            }
         }
         features = EnumSet.noneOf(Feature.class);
-
+        // Initialize terrain features
         for (ares.data.jaxb.TerrainFeature feature : c.getFeature()) {
             features.add(Enum.valueOf(Feature.class, feature.name()));
         }
+
+        // Initialize models and knowledge levels
         models = new HashMap<>();
         knowledgeLevels = new HashMap<>();
     }
@@ -186,13 +157,11 @@ public final class Tile implements ModelProvider<TileModel> {
         moveCosts = new EnumMap<>(Direction.class);
         combatModifiers = new EnumMap<>(Direction.class);
         this.neighbors = neighbors;
-        for (Map.Entry<Direction, Tile> neighbor : neighbors.entrySet()) {
-            Direction fromDir = neighbor.getKey();
-            Tile tile = neighbor.getValue();
-            MovementCost cost = new MovementCost(fromDir, tile);
-            moveCosts.put(fromDir, cost);
-            CombatModifier combatModifier = new CombatModifier(tile, fromDir);
-            combatModifiers.put(fromDir, combatModifier);
+        for (Direction direction : neighbors.keySet()) {
+            MovementCost cost = new MovementCost(this, direction);
+            moveCosts.put(direction, cost);
+            CombatModifier combatModifier = new CombatModifier(this, direction);
+            combatModifiers.put(direction, combatModifier);
         }
         this.owner = owner;
 
@@ -416,7 +385,9 @@ public final class Tile implements ModelProvider<TileModel> {
 
     public String toStringMultiline() {
         StringBuilder sb = new StringBuilder("Location: " + toString() + '\n');
-        if (!terrain.isEmpty()) sb.append("Terrain").append(terrain.keySet()).append('\n');
+        if (!terrain.isEmpty()) {
+            sb.append("Terrain").append(terrain.keySet()).append('\n');
+        }
 //        if (!tileTerrain.isEmpty()) {
 //            sb.append("Terrain: ").append(tileTerrain).append('\n');
 //        }
@@ -430,5 +401,4 @@ public final class Tile implements ModelProvider<TileModel> {
 
         return sb.toString();
     }
-    
 }

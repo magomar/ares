@@ -1,6 +1,5 @@
 package ares.scenario.board;
 
-import ares.data.jaxb.MultiDirection;
 import java.util.EnumSet;
 import java.util.Set;
 
@@ -17,9 +16,9 @@ public enum Direction {
     SW(-1, 1, 0),
     NW(-1, 0, -1),
     C(0, 0, 0);
-    private final int incI;
-    private final int incJEven;
-    private final int incJOdd;
+    private final int incColumn;
+    private final int incRowEven;
+    private final int incRowOdd;
     private Direction opposite;
     public final static Set<Direction> DIRECTIONS = EnumSet.range(Direction.N, Direction.NW);
     private final static Direction[] ALL_DIRECTIONS = Direction.values();
@@ -35,26 +34,12 @@ public enum Direction {
     }
 
     private Direction(final int incI, final int incJEven, final int incJOdd) {
-        this.incI = incI;
-        this.incJEven = incJEven;
-        this.incJOdd = incJOdd;
+        this.incColumn = incI;
+        this.incRowEven = incJEven;
+        this.incRowOdd = incJOdd;
     }
 
-    public int getIncI() {
-        return incI;
-    }
-
-    public int getIncJEven() {
-        return incJEven;
-    }
-
-    public int getIncJOdd() {
-        return incJOdd;
-    }
-
-    public Direction getOpposite() {
-        return opposite;
-    }
+ 
 
     public static int convertDirectionsToBitMask(Set<Direction> directions) {
         int mask = 0;
@@ -82,5 +67,21 @@ public enum Direction {
         int flag = 1 << bit;
         boolean bitIsSet = (bitmask & flag) != 0;
         return bitIsSet;
+    }
+
+    public int getIncColumn() {
+        return incColumn;
+    }
+
+    public int getIncRowEven() {
+        return incRowEven;
+    }
+
+    public int getIncRowOdd() {
+        return incRowOdd;
+    }
+
+    public Direction getOpposite() {
+        return opposite;
     }
 }
