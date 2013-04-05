@@ -6,7 +6,7 @@ package ares.engine.command.operational.plans;
 
 import ares.data.jaxb.Emphasis;
 import ares.data.jaxb.SupportScope;
-import ares.engine.algorithms.routing.PathFinder;
+import ares.engine.algorithms.pathfinding.PathFinder;
 import ares.engine.command.Objective;
 import ares.engine.command.tactical.TacticalMission;
 import ares.engine.command.tactical.TacticalMissionType;

@@ -1,12 +1,13 @@
 package ares.application.graphics.command;
 
+import ares.engine.algorithms.pathfinding.Path;
+import ares.engine.algorithms.pathfinding.Node;
 import static ares.application.graphics.command.ArrowType.CURRENT_ORDERS;
 import static ares.application.graphics.command.ArrowType.GIVING_ORDERS;
 import ares.application.graphics.AresGraphicsModel;
 import ares.application.graphics.AbstractImageLayer;
 import ares.application.graphics.AresGraphicsProfile;
 import ares.application.graphics.AresMiscGraphics;
-import ares.engine.algorithms.routing.*;
 import ares.io.AresIO;
 import ares.scenario.board.Direction;
 import ares.scenario.board.Directions;

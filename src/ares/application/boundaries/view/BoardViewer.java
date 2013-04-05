@@ -4,7 +4,7 @@ import ares.application.models.ScenarioModel;
 import ares.application.models.board.TileModel;
 import ares.application.models.forces.FormationModel;
 import ares.application.models.forces.UnitModel;
-import ares.engine.algorithms.routing.Path;
+import ares.engine.algorithms.pathfinding.Path;
 import ares.platform.view.View;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;

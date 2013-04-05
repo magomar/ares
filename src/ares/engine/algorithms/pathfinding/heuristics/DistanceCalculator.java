@@ -1,64 +1,42 @@
-package ares.engine.algorithms.routing;
+package ares.engine.algorithms.pathfinding.heuristics;
 
 import ares.scenario.board.Direction;
+import ares.scenario.board.Tile;
 import java.awt.Point;
 
 /**
  *
  * @author Heine <heisncfr@inf.upv.es>
+ * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public class DistanceCalculator implements Heuristic {
+public enum DistanceCalculator implements Heuristic {
 
-    public final static int DELTA = 0;
-    public final static int DELTABITWISE = 1;
-    public final static int EUCLIDEAN = 2;
-    public final static int HEINIAN = 3;
-    private static int algo;
-
-    public DistanceCalculator() {
-        this(HEINIAN);
-    }
-
-    public DistanceCalculator(int algorithm) {
-        algo = algorithm;
-    }
-
-    public void setAlgorithm(int algorithm) {
-        algo = algorithm;
-    }
-
-    @Override
-    public int getCost(Point orig, Point dest) {
-        switch (algo) {
-            case HEINIAN:
-                return heinian(orig, dest);
-            case DELTA:
-                return deltaDistance(orig, dest);
-            case DELTABITWISE:
-                return deltaBitwiseDistance(orig, dest);
-            case EUCLIDEAN:
-                return euclidean(orig, dest);
-            default:
-                throw new AssertionError("Assertion failed: unkown algorithm");
+    DELTA {
+        @Override
+        public int getCost(Tile origin, Tile destination) {
+            return deltaDistance(origin.getCoordinates(), origin.getCoordinates());
         }
-    }
-
-    public static int getCost(Point orig, Point dest, int algorithm) {
-        switch (algorithm) {
-            case HEINIAN:
-                return heinian(orig, dest);
-            case DELTA:
-                return deltaDistance(orig, dest);
-            case DELTABITWISE:
-                return deltaBitwiseDistance(orig, dest);
-            case EUCLIDEAN:
-                return euclidean(orig, dest);
-            default:
-                throw new AssertionError("Assertion failed: unkown algorithm");
+    },
+    DELTABITWISE {
+        @Override
+        public int getCost(Tile origin, Tile destination) {
+            return deltaBitwiseDistance(origin.getCoordinates(), origin.getCoordinates());
         }
-    }
+    },
+    EUCLIDEAN {
+        @Override
+        public int getCost(Tile origin, Tile destination) {
+            return euclideanDistance(origin.getCoordinates(), origin.getCoordinates());
+        }
+    },
+    HEINIAN {
+        @Override
+        public int getCost(Tile origin, Tile destination) {
+            return heinianDistance(origin.getCoordinates(), origin.getCoordinates());
+        }
+    };
 
-    private static int euclidean(Point orig, Point dest) {
+    private static int euclideanDistance(Point orig, Point dest) {
         int dx = dest.x - orig.x;
         int dy = dest.y - orig.y;
         return (int) Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
@@ -75,8 +53,14 @@ public class DistanceCalculator implements Heuristic {
         return cost;
     }
 
+    /**
+     * Adapted from <a href="http://www-cs-students.stanford.edu/~amitp/Articles/HexLOS.html">Amit's article</a>
+     *
+     * @param from
+     * @param to
+     * @return
+     */
     private static int deltaBitwiseDistance(Point from, Point to) {
-        // adapted from http://www-cs-students.stanford.edu/~amitp/Articles/HexLOS.html
         int x1 = from.x;
         int y1 = from.y;
         int x2 = to.x;
@@ -97,8 +81,14 @@ public class DistanceCalculator implements Heuristic {
     private static int Ceil2(int val) {
         return ((val + 1) >> 1);
     }
-
-    private static int heinian(Point orig, Point dest) {
+    /**
+     * This is an exact method for computing minimum distance between two hexes in an hexagonal map.
+     * This method is slower than other methods due because it requires to iterate through some hexes 
+     * @param orig
+     * @param dest
+     * @return 
+     */
+    private static int heinianDistance(Point orig, Point dest) {
         int cost = 0;
         // If points are on the same column
         if (orig.x == dest.x) {

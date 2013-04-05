@@ -3,7 +3,7 @@ package ares.scenario.forces;
 import ares.application.models.forces.FormationModel;
 import ares.data.jaxb.Orders;
 import ares.data.jaxb.Track;
-import ares.engine.algorithms.routing.PathFinder;
+import ares.engine.algorithms.pathfinding.PathFinder;
 import ares.engine.command.Objective;
 import ares.engine.command.ProgrammedOpponent;
 import ares.engine.command.operational.plans.OperationalPlan;

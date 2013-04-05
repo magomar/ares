@@ -5,8 +5,8 @@ import ares.engine.action.actions.ChangeDeploymentAction;
 import ares.engine.action.actions.MoveAction;
 import ares.engine.action.actions.SurfaceMoveAction;
 import ares.engine.action.actions.WaitAction;
-import ares.engine.algorithms.routing.Path;
-import ares.engine.algorithms.routing.PathFinder;
+import ares.engine.algorithms.pathfinding.Path;
+import ares.engine.algorithms.pathfinding.PathFinder;
 import ares.engine.command.tactical.TacticalMission;
 import ares.engine.command.tactical.TacticalMissionType;
 import ares.scenario.board.Tile;
@@ -33,7 +33,7 @@ public class Occupy extends TacticalMission {
             pushAction(new WaitAction(unit));
             return;
         }
-        Path path = pathFinder.getPath(unit.getLocation(), targetTile);
+        Path path = pathFinder.getPath(unit.getLocation(), targetTile, unit);
         if (path == null || path.relink() == -1) {
             LOG.log(Level.WARNING, "No path found for {0}, or path.relink() failed", unit.toString());
             return;

@@ -1,6 +1,6 @@
 package ares.engine.command.tactical.missions;
 
-import ares.engine.algorithms.routing.PathFinder;
+import ares.engine.algorithms.pathfinding.PathFinder;
 import ares.engine.command.tactical.TacticalMission;
 import ares.engine.command.tactical.TacticalMissionType;
 import ares.scenario.board.Tile;

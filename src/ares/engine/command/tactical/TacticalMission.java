@@ -6,7 +6,7 @@ import ares.engine.action.ActionState;
 import ares.engine.action.ActionType;
 import ares.engine.action.actions.RestAction;
 import ares.engine.action.actions.WaitAction;
-import ares.engine.algorithms.routing.PathFinder;
+import ares.engine.algorithms.pathfinding.PathFinder;
 import ares.scenario.board.Tile;
 import ares.scenario.forces.Unit;
 import java.util.Deque;

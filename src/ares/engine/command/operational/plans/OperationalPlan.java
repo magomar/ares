@@ -3,7 +3,7 @@ package ares.engine.command.operational.plans;
 import ares.data.jaxb.Emphasis;
 import ares.data.jaxb.SupportScope;
 import ares.engine.command.operational.Operation;
-import ares.engine.algorithms.routing.PathFinder;
+import ares.engine.algorithms.pathfinding.PathFinder;
 import ares.engine.command.Objective;
 import ares.scenario.forces.Formation;
 import java.util.Collection;

@@ -1,4 +1,4 @@
-package ares.engine.algorithms.routing;
+package ares.engine.algorithms.pathfinding;
 
 import ares.scenario.board.Direction;
 import ares.scenario.board.Tile;
@@ -7,12 +7,14 @@ import java.util.Objects;
 /**
  *
  * @author Saúl Esteban
+ * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class Node implements Comparable {
 
     private Tile tile;
     private Node prev;
     private Node next;
+    
     /**
      * Direction used to reach this node from previous node (ie. relative to this node)
      */
@@ -26,13 +28,16 @@ public class Node implements Comparable {
      */
     private double f;
 
-    public Node(Tile t) {
-        tile = t;
+    public Node(Tile tile) {
+        this.tile = tile;
     }
 
-    public Node(Tile t, Node p) {
-        tile = t;
-        prev = p;
+    public Node(Tile tile, Direction direction, Node prev, double g, double f) {
+        this.tile = tile;
+        this.direction = direction;
+        this.prev = prev;
+        this.g = g;
+        this.f = f;
     }
 
     public Tile getTile() {
@@ -63,8 +68,8 @@ public class Node implements Comparable {
         return direction;
     }
 
-    public void setFrom(Direction from) {
-        this.direction = from;
+    public void setDirection(Direction direction) {
+        this.direction = direction;
     }
 
     public double getG() {
@@ -87,6 +92,10 @@ public class Node implements Comparable {
     public String toString() {
         return direction.name() + tile;
     }
+//    @Override
+//    public String toString() {
+//        return direction.name() + tile + "(g=" + g + ", f=" + f + ')';
+//    }
 
     public String toStringVerbose() {
         StringBuilder sb = new StringBuilder();

@@ -3,6 +3,8 @@ package ares.io;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
+import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.awt.image.RenderedImage;
 import java.io.BufferedOutputStream;
@@ -19,6 +21,7 @@ import java.util.zip.GZIPOutputStream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -265,13 +268,17 @@ public class FileIO<T extends Enum<T> & FileType> {
      * @return the image
      */
     public static BufferedImage loadImage(File file) {
-        BufferedImage i = null;
+        BufferedImage bi = null;
         try {
-            i = ImageIO.read(file);
+            bi = ImageIO.read(file);
         } catch (IOException ex) {
             LOG.log(Level.SEVERE, "Error loading " + file.getAbsolutePath(), ex);
         }
-        return i;
+//        Image i = new ImageIcon(file.getPath()).getImage();
+//        BufferedImage bi = new BufferedImage(i.getWidth(null),i.getHeight(null),BufferedImage.TYPE_INT_ARGB);
+//        Graphics2D g2 = bi.createGraphics();
+//        g2.drawImage(i, 0, 0, null);
+        return bi;
     }
 
     /**

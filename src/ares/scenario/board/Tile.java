@@ -3,7 +3,6 @@ package ares.scenario.board;
 import ares.application.models.board.NonObservedTileModel;
 import ares.application.models.board.ObservedTileModel;
 import ares.application.models.board.TileModel;
-import ares.data.jaxb.MultiDirection;
 import ares.engine.combat.CombatModifier;
 import ares.engine.knowledge.KnowledgeCategory;
 import ares.engine.knowledge.KnowledgeLevel;

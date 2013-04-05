@@ -14,7 +14,7 @@ import ares.application.models.forces.FormationModel;
 import ares.application.models.forces.UnitModel;
 import ares.engine.action.Action;
 import ares.engine.action.actions.MoveAction;
-import ares.engine.algorithms.routing.Path;
+import ares.engine.algorithms.pathfinding.Path;
 import ares.engine.command.tactical.TacticalMission;
 import ares.platform.view.AbstractView;
 import java.awt.*;

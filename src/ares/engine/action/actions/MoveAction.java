@@ -2,8 +2,8 @@ package ares.engine.action.actions;
 
 import ares.engine.action.AbstractAction;
 import ares.engine.action.ActionType;
-import ares.engine.algorithms.routing.Node;
-import ares.engine.algorithms.routing.Path;
+import ares.engine.algorithms.pathfinding.Node;
+import ares.engine.algorithms.pathfinding.Path;
 import ares.engine.movement.MovementCost;
 import ares.engine.time.Clock;
 import ares.scenario.Scale;
@@ -38,7 +38,7 @@ public abstract class MoveAction extends AbstractAction {
         Tile destination = currentNode.getTile();
         Direction direction = currentNode.getDirection();
         MovementCost moveCost = destination.getMoveCost(direction);
-        int cost = moveCost.getActualCost(unit, destination);
+        int cost = moveCost.getActualCost(unit);
         speed = unit.getSpeed() / cost;
         // TODO avoid creating move actions for static units (speed=0) !
         timeToNextMovement = (speed > 0 ? Scale.INSTANCE.getTileSize() / speed : Integer.MAX_VALUE);
@@ -60,7 +60,7 @@ public abstract class MoveAction extends AbstractAction {
         if (currentNode != null) {
             Tile destination = currentNode.getTile();
             MovementCost moveCost = destination.getMoveCost(currentNode.getDirection());
-            int cost = moveCost.getActualCost(unit, destination);
+            int cost = moveCost.getActualCost(unit);
             speed = unit.getSpeed() / cost;
             // timeToNextMovement <= 0. If it is negative we can add it to the new timeToNextMovement as a way to not propagate the precision error each movement segment
             timeToNextMovement = (speed > 0 ? (int) (Scale.INSTANCE.getTileSize() / speed) + timeToNextMovement : Integer.MAX_VALUE);

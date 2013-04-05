@@ -1,6 +1,6 @@
 package ares.test;
 
-import ares.engine.algorithms.routing.DistanceCalculator;
+import ares.engine.algorithms.pathfinding.heuristics.DistanceCalculator;
 import java.awt.Point;
 import java.lang.reflect.*;
 import java.util.*;
@@ -55,7 +55,8 @@ public class MethodShowdown {
         //Point close = new Point(0, 0); Point far = new Point(1000, 1000);
 
         //invoke method needs an object from the invoked class
-        DistanceCalculator dc = new DistanceCalculator();
+//        DistanceCalculator dc = new DistanceCalculator();
+        DistanceCalculator dc = DistanceCalculator.DELTA;
         for (Method test : methods) {
             // Pair of points with most expensive instace time
             Point[] maxPoints = {new Point(), new Point()};

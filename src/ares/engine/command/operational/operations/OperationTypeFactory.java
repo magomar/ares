@@ -1,6 +1,6 @@
 package ares.engine.command.operational.operations;
 
-import ares.engine.algorithms.routing.PathFinder;
+import ares.engine.algorithms.pathfinding.PathFinder;
 import ares.engine.command.Objective;
 import ares.engine.command.operational.Operation;
 import ares.scenario.forces.Formation;

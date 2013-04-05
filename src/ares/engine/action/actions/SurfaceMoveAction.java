@@ -1,7 +1,7 @@
 package ares.engine.action.actions;
 
 import ares.engine.action.ActionType;
-import ares.engine.algorithms.routing.Path;
+import ares.engine.algorithms.pathfinding.Path;
 import ares.scenario.board.Tile;
 import ares.scenario.forces.Unit;
 

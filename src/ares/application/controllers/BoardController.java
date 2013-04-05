@@ -1,5 +1,8 @@
 package ares.application.controllers;
 
+import ares.engine.algorithms.pathfinding.PathFinder;
+import ares.engine.algorithms.pathfinding.Path;
+import ares.engine.algorithms.pathfinding.AStar;
 import ares.application.boundaries.view.BoardViewer;
 import ares.application.boundaries.view.UnitInfoViewer;
 import ares.application.graphics.AresGraphicsModel;
@@ -10,7 +13,6 @@ import ares.application.models.forces.FormationModel;
 import ares.application.models.forces.UnitModel;
 import ares.application.views.MessagesHandler;
 import ares.engine.RealTimeEngine;
-import ares.engine.algorithms.routing.*;
 import ares.engine.command.tactical.TacticalMission;
 import ares.engine.command.tactical.TacticalMissionType;
 import ares.platform.controllers.AbstractSecondaryController;
@@ -44,7 +46,7 @@ public final class BoardController extends AbstractSecondaryController implement
         this.unitView = mainController.getInfoView();
         LOG.addHandler(mainController.getMessagesView().getHandler());
 
-        pathFinder = new AStar(AresGraphicsModel.getTileRows() * AresGraphicsModel.getTileColumns());
+        pathFinder = new AStar();
 
         boardView.addMouseListener(new BoardMouseListener());
         boardView.addMouseMotionListener(new BoardMouseMotionListener());
@@ -165,7 +167,7 @@ public final class BoardController extends AbstractSecondaryController implement
                         return;
                     }
                     Tile tile = scenario.getBoard().getTile(tilePoint.x, tilePoint.y);
-                    Path path = pathFinder.getPath(selectedUnit.getLocation(), tile);
+                    Path path = pathFinder.getPath(selectedUnit.getLocation(), tile, selectedUnit);
                     if (path == null || path.isEmpty()) {
                         return;
                     }

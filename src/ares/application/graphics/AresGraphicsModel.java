@@ -11,7 +11,7 @@ import java.awt.image.BufferedImage;
  * @author Heine <heisncfr@inf.upv.es>
  */
 public class AresGraphicsModel {
-
+// TODO refactor this class, it shouldn't use static methods, perhaps becoming a Singleton, or passing it to dependent objects
     /**
      * Board width in tiles
      */

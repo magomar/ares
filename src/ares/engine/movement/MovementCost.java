@@ -1,6 +1,8 @@
 package ares.engine.movement;
 
+import ares.data.jaxb.TerrainType;
 import ares.platform.util.EnumSetOperations;
+import ares.platform.util.MathUtils;
 import ares.scenario.Scale;
 import ares.scenario.board.*;
 import ares.scenario.forces.*;
@@ -18,7 +20,7 @@ public class MovementCost {
 
     public static final int IMPASSABLE = Integer.MAX_VALUE;
     public static final int UNITARY_MOVEMENT_COST = 1;
-    private static final int ENEMIES_PENALTY = 10;
+    private static final int ENEMIES_PENALTY = 2;
     private static final int SNOW_PENALTY = 2;
     private static final int MUDDY_PENALTY = 2;
     /**
@@ -31,8 +33,12 @@ public class MovementCost {
      * Whether there is a (non-destroyed) road
      */
     private boolean hasRoad;
+    private final Direction direction;
+    private final Tile tile;
 
     public MovementCost(Tile tile, Direction direction) {
+        this.tile = tile;
+        this.direction = direction;
         movementCost = new EnumMap<>(MovementType.class);
 
         Set<Feature> features = tile.getFeatures();
@@ -41,7 +47,7 @@ public class MovementCost {
 
         //Set AIRCRAFT movement: can move across all tiles, even the non_playable ones (to move between playable areas)
         movementCost.put(MovementType.AIRCRAFT, UNITARY_MOVEMENT_COST);
-        
+
         for (Feature tf : features) {
             // Tile only usable by aircrafts
             if (tf.equals(Feature.NON_PLAYABLE) || tf.equals(Feature.PEAK)) {
@@ -132,10 +138,10 @@ public class MovementCost {
      * @param direction
      * @return
      */
-    public int getActualCost(Unit unit, Tile destination) {
+    public int getActualCost(Unit unit) {
         int cost;
-
-        if (destination.hasEnemies(unit.getForce())) {
+        int penalty = 0;
+        if (tile.hasEnemies(unit.getForce())) {
             return IMPASSABLE;
         }
 
@@ -145,59 +151,43 @@ public class MovementCost {
             // Apply On-road movement density penalties
             int density = Scale.INSTANCE.getCriticalDensity();
             int numHorsesAndVehicles = 0;
-            for (SurfaceUnit surfaceUnit : destination.getSurfaceUnits()) {
+            for (SurfaceUnit surfaceUnit : tile.getSurfaceUnits()) {
                 if (MovementType.ANY_LAND_OR_AMPH_MOVEMENT.contains(surfaceUnit.getMovement())) {
                     numHorsesAndVehicles += ((LandUnit) surfaceUnit).getNumVehiclesAndHorses();
                 }
             }
-            cost = Math.max(UNITARY_MOVEMENT_COST, Math.min(moveType.getMaxOnRoadCost(), numHorsesAndVehicles / density));
+            int minCost = moveType.getMinOnRoadCost();
+            int maxCost = moveType.getMaxOnRoadCost();
+//            cost = Math.max(minCost, Math.min(maxCost, numHorsesAndVehicles / density));
+            cost = MathUtils.setBounds(numHorsesAndVehicles / density, minCost, maxCost);
         } else {
             cost = movementCost.get(moveType);
         }
-        // TODO check for mud and snow
+        if (tile.getFeatures().contains(Feature.SNOWY)) {
+            penalty += SNOW_PENALTY;
+        }
+        if (tile.getFeatures().contains(Feature.MUDDY)) {
+            penalty += MUDDY_PENALTY;
+        }
 
         // TODO check for enemy ZOC's
 
         // TODO check for enemy controlled territory
-        return cost;
+        return cost + penalty;
     }
 
-    public int getEstimatedCost(Unit unit, Tile destination, Direction direction, boolean avoidEnemies) {
-        Map<Terrain, Directions> terrainMap = destination.getTerrain();
+    public int getEstimatedCost(Unit unit) {
         MovementType moveType = unit.getMovement();
         int cost;
-        if (moveType == null || movementCost == null || !movementCost.containsKey(moveType)) {
-            System.out.println(unit);
-        }
+
         int penalty = 0;
-        if (destination.hasEnemies(unit.getForce())) {
-            if (avoidEnemies) {
-                return IMPASSABLE;
-            }
-            // Enemies on the way
+        if (tile.hasEnemies(unit.getForce())) {
             penalty += ENEMIES_PENALTY;
         }
 
-        if (MovementType.ANY_LAND_OR_AMPH_MOVEMENT.contains(moveType)
-                && containsSomeTerrainInDirection(terrainMap, Terrain.ANY_ROAD, direction)) {
-            int density = Scale.INSTANCE.getCriticalDensity(), numHorsesAndVehicles = 0;
-            // If destination isn't oberved SurfaceUnits will be empty
-            for (SurfaceUnit su : destination.getSurfaceUnits()) {
-                if (MovementType.ANY_LAND_OR_AMPH_MOVEMENT.contains(su.getMovement())) {
-                    numHorsesAndVehicles += ((LandUnit) su).getNumVehiclesAndHorses();
-                }
-            }
-            cost = Math.max(UNITARY_MOVEMENT_COST, Math.min(moveType.getMaxOnRoadCost(), numHorsesAndVehicles / density));
-        } else {
-            cost = movementCost.get(moveType);
-        }
+        cost = movementCost.get(moveType);
 
-        if (destination.getFeatures().contains(Feature.SNOWY)) {
-            penalty += SNOW_PENALTY;
-        }
-        if (destination.getFeatures().contains(Feature.MUDDY)) {
-            penalty += MUDDY_PENALTY;
-        }
+
         return cost + penalty;
     }
 
@@ -231,5 +221,10 @@ public class MovementCost {
 
     public void setHasRoad(boolean hasRoad) {
         this.hasRoad = hasRoad;
+    }
+
+    @Override
+    public String toString() {
+        return "MovementCost{" + "movementCost=" + movementCost + ", hasRoad=" + hasRoad + ", direction=" + direction + ", tile=" + tile + '}';
     }
 }

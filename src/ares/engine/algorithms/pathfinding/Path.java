@@ -1,9 +1,9 @@
-package ares.engine.algorithms.routing;
+package ares.engine.algorithms.pathfinding;
 
 import java.util.*;
 
 /**
- * Path for routing algorithms, sort of a poor man's linked list.
+ * Path for pathfinding algorithms, sort of a poor man's linked list.
  *
  * Use it at your own risk, this is not meant to be bug free. {@code first} can be null and {@code nodes} might be an
  * empty array even with a correct {@code last} node.
@@ -13,7 +13,6 @@ import java.util.*;
  * @author Heine <heisncfr@inf.upv.es>
  */
 public class Path {
-//    public final static Path NULL_PATH = new Path();
     private Node last;
     private Node first;
     // Like a back up collection, not really necessary
@@ -21,44 +20,44 @@ public class Path {
     
 
     /**
-     * Default constructor.
+     * Returns a new instance with an empty {@link #nodes} list.
      */
     public Path() {
         nodes = new LinkedList<>();
     }
 
-    /**
-     * Constructor by copy another object.
-     *
-     * @param p The path object to clone.
-     */
-    public Path(Path p) {
-        this();
-        nodes = new LinkedList<>(p.getNodes());
-        last = nodes.getLast();
-        first = nodes.getFirst();
-    }
+//    /**
+//     * Constructor by copy another object.
+//     *
+//     * @param p The path object to clone.
+//     */
+//    public Path(Path p) {
+//        this();
+//        nodes = new LinkedList<>(p.getNodes());
+//        last = nodes.getLast();
+//        first = nodes.getFirst();
+//    }
 
     /**
-     * Sets n as the last node in the path.
+     * Returns a new instance having {@code node} as the last {@link Node} in {@link #nodes}.
      *
-     * @param n
+     * @param last
      */
-    public Path(Node n) {
-        last = n;
-        last.setNext(null);
+    public Path(Node last) {
+        this.last = last;
+        this.last.setNext(null);
         nodes = new LinkedList<>();
     }
 
     /**
-     * Sets f as the first node and l as the last node.
+     * Returns a new instance having {@code first}  as the first {@link Node} and {@code last}  as the last {@link Node} in {@link #nodes}.
      *
-     * @param f
-     * @param l
+     * @param first
+     * @param last
      */
-    public Path(Node f, Node l) {
-        first = f;
-        last = l;
+    public Path(Node first, Node last) {
+        this.first = first;
+        this.last = last;
         nodes = new LinkedList<>();
     }
 
