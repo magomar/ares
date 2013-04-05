@@ -10,7 +10,7 @@ import ares.scenario.forces.Unit;
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public enum TacticalMissionType implements TacticalMissionFactory {
+public enum TacticalMissionType  {
 
     //    ASSAULT(TacticalMissionAssault.class),
     ATTACK_BY_FIRE {
@@ -61,4 +61,6 @@ public enum TacticalMissionType implements TacticalMissionFactory {
     //    SUPRESS(TacticalMissionExample.class),
     //    TURN(TacticalMissionExample.class)
     ;
+    
+    public abstract TacticalMission getNewTacticalMission(Unit unit, Tile target, PathFinder pathFinder);
 }
