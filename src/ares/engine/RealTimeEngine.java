@@ -83,12 +83,16 @@ public class RealTimeEngine extends AbstractBean {
                     formation.initialize();
                 }
             }
-            if (Clock.INSTANCE.getTurn() == 0) {
-                startNewTurn();
-                schedule();
-            }
+
         }
         firePropertyChange(SCENARIO_PROPERTY, oldValue, scenario);
+    }
+
+    public void activate() {
+        if (Clock.INSTANCE.getTurn() == 0) {
+            startNewTurn();
+            schedule();
+        }
     }
 
     public Scenario getScenario() {

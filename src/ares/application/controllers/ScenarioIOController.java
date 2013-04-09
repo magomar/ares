@@ -125,6 +125,7 @@ public final class ScenarioIOController extends AbstractSecondaryController {
                 // set main window title & show appropriate views
                 mainView.setTitle("ARES   " + scenario.getName() + "   " + Clock.INSTANCE.toStringVerbose()
                         + "   Role: " + mainController.getUserRole());
+                mainController.getEngine().activate();
                 menuView.setCommandEnabled(FileCommands.CLOSE_SCENARIO.getName(), true);
                 menuView.setCommandEnabled(AresMenus.ENGINE_MENU.getName(), true);
                 String scenInfo = scenario.getName() + "\n" + Clock.INSTANCE.toStringVerbose() + "\nRole: " + mainController.getUserRole();
