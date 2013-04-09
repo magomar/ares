@@ -25,7 +25,7 @@ public class GridLayer extends AbstractImageLayer {
         for (int i = 0; i < w; ++i) {
             for (int j = 0; j < y; ++j) {
                 Point pos = AresGraphicsModel.tileToPixel(i,j);
-                g2.drawImage(bi, pos.x, pos.y, null);
+                g2.drawImage(bi, pos.x, pos.y, this);
                 repaint(pos.x, pos.y, bi.getWidth(), bi.getHeight());
                 g2.dispose();
             }

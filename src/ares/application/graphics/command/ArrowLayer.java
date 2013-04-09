@@ -88,7 +88,7 @@ public class ArrowLayer extends AbstractImageLayer {
             return;
         }
         Point pos = AresGraphicsModel.tileToPixel(tile.getCoordinates());
-        g2.drawImage(arrowImage, pos.x, pos.y, null);
+        g2.drawImage(arrowImage, pos.x, pos.y, this);
         repaint(pos.x, pos.y, arrowImage.getWidth(), arrowImage.getHeight());
     }
 
@@ -114,7 +114,7 @@ public class ArrowLayer extends AbstractImageLayer {
                 throw new AssertionError("Assertion failed: unkown image profile " + this);
         }
         Point pos = AresGraphicsModel.tileToPixel(tile.getCoordinates());
-        g2.drawImage(arrowImage, pos.x, pos.y, null);
+        g2.drawImage(arrowImage, pos.x, pos.y, this);
         repaint(pos.x, pos.y, arrowImage.getWidth(), arrowImage.getHeight());
     }
 

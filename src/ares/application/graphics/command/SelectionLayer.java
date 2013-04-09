@@ -43,7 +43,7 @@ public class SelectionLayer extends AbstractImageLayer {
 
     private void paintCursor(Graphics2D g2, TileModel tile, BufferedImage image) {
         Point pos = AresGraphicsModel.tileToPixel(tile.getCoordinates());
-        g2.drawImage(image, pos.x, pos.y, null);
+        g2.drawImage(image, pos.x, pos.y, this);
         repaint(pos.x, pos.y, image.getWidth(), image.getHeight());
 //        paintImmediately(pos.x, pos.y, brassCursorImage.get().getWidth(), brassCursorImage.get().getHeight());
     }

@@ -90,7 +90,7 @@ public class UnitsLayer extends AbstractImageLayer {
         //If no units on the tile
         if (tile.isEmpty()) {
             //Empty image
-//            g2.drawImage(AresGraphicsModel.EMPTY_TILE_IMAGE, pos.x, pos.y, null);
+//            g2.drawImage(AresGraphicsModel.EMPTY_TILE_IMAGE, pos.x, pos.y, this);
 //            repaint(pos.x, pos.y, AresGraphicsModel.EMPTY_TILE_IMAGE.getWidth(),
 //                    AresGraphicsModel.EMPTY_TILE_IMAGE.getHeight());
         } else {
@@ -113,13 +113,13 @@ public class UnitsLayer extends AbstractImageLayer {
 
             //Paint the same top unit
             for (int i = 0; i < max; i++) {
-                g2.drawImage(unitImage, pos.x + d, pos.y + d, null);
+                g2.drawImage(unitImage, pos.x + d, pos.y + d, this);
                 d += UNIT_STACK_OFFSET;
             }
 
             //Adds attributes to the image such as Health, Attack, Defense, etc.
             addUnitAttributes(unitImage, tile.getTopUnit());
-            g2.drawImage(unitImage, pos.x + d, pos.y + d, null);
+            g2.drawImage(unitImage, pos.x + d, pos.y + d, this);
             repaint(pos.x, pos.y, unitImage.getWidth() + d, unitImage.getHeight() + d);
         }
 

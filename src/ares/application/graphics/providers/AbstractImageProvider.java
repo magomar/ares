@@ -3,6 +3,7 @@ package ares.application.graphics.providers;
 import ares.application.graphics.GraphicsProfile;
 import ares.io.FileIO;
 import java.awt.Dimension;
+import java.awt.MediaTracker;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.io.File;

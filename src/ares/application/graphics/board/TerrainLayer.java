@@ -61,28 +61,24 @@ public class TerrainLayer extends AbstractImageLayer {
         AresGraphicsProfile profile = AresGraphicsModel.getProfile();
 
         // First paints the open terrain, any other terrain will be rendered upon it
-        BufferedImage bi = AresMiscGraphics.TERRAIN_MISCELANEOUS.getImage(profile, AresIO.ARES_IO);
-        g2.drawImage(bi, pos.x, pos.y, null);
+        BufferedImage terrainImage = AresMiscGraphics.TERRAIN_MISCELANEOUS.getImage(profile, AresIO.ARES_IO);
+        g2.drawImage(terrainImage, pos.x, pos.y, this);
 
         Map<Terrain, Directions> m = tile.getTerrain();
         for (Map.Entry<Terrain, Directions> entry : m.entrySet()) {
             Terrain terrain = entry.getKey();
             Directions directions = entry.getValue();
-//            int bitMask = entry.getValue().getBitmask();
             Point imageCoordinates = directions.getCoordinates();
-            BufferedImage i = terrain.getImage(profile, imageCoordinates, AresIO.ARES_IO);
+            terrainImage = terrain.getImage(profile, imageCoordinates, AresIO.ARES_IO);
             // Paint terrain image
-            g2.drawImage(i, pos.x, pos.y, null);
+            g2.drawImage(terrainImage, pos.x, pos.y, this);
         }
         // Paint features 
         for (Feature feature : tile.getTerrainFeatures()) {
-            BufferedImage i = AresMiscGraphics.TERRAIN_MISCELANEOUS.getImage(profile, feature.getCoordinates(), AresIO.ARES_IO);
-            g2.drawImage(i, pos.x, pos.y, null);
+            terrainImage = AresMiscGraphics.TERRAIN_MISCELANEOUS.getImage(profile, feature.getCoordinates(), AresIO.ARES_IO);
+            g2.drawImage(terrainImage, pos.x, pos.y, this);
         }
-        if (bi == null) {
-            return;
-        }
-        repaint(pos.x, pos.y, bi.getWidth(), bi.getHeight());
+        repaint(pos.x, pos.y, terrainImage.getWidth(), terrainImage.getHeight());
     }
 
 }
