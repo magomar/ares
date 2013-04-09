@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.lang.ref.SoftReference;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -27,7 +28,7 @@ public abstract class AbstractImageProvider implements ImageProvider {
      * The dimension of the image where the sprites are stored
      */
     private final Dimension fullImageDimension;
-    private BufferedImage image;
+    private SoftReference<BufferedImage> image;
     private final String path;
 
     public AbstractImageProvider(String filename, int imageWidth, int imageHeight, GraphicsProfile profile) {
@@ -51,17 +52,18 @@ public abstract class AbstractImageProvider implements ImageProvider {
     @Override
     public BufferedImage getImage(Point coordinates, FileIO fileSystem) {
         BufferedImage bi;
-        if (image == null) {
+        if (image == null || image.get() == null) {
             bi = loadGraphics(path, fileSystem);
+            image = new SoftReference<>(bi);
         } else {
-            bi = image;
+            bi = image.get();
         }
         try {
             BufferedImage result = bi.getSubimage(coordinates.x * imageDimension.width, coordinates.y * imageDimension.height,
                     imageDimension.width, imageDimension.height);
             return result;
         } catch (Exception e) {
-            LOG.log(Level.SEVERE, " Error getting subimage from {0}: {1}", new Object[]{filename, e});
+            LOG.log(Level.SEVERE, " Error getting subimage from {0}", filename);
         }
         return null;
     }
@@ -72,31 +74,33 @@ public abstract class AbstractImageProvider implements ImageProvider {
 //        int row = index % rows;
 //        return getImage(row, column, fileSystem);
 //    }
-    
     @Override
     public BufferedImage getFullImage(FileIO fileSystem) {
         BufferedImage bi;
-        if (image == null) {
+        if (image == null || image.get() == null) {
             bi = loadGraphics(path, fileSystem);
+            image = new SoftReference<>(bi);
         } else {
-            bi = image;
+            bi = image.get();
         }
         return bi;
     }
 
     @Override
     public BufferedImage getImage(FileIO fileSystem) {
-        BufferedImage bi;
-        if (image == null) {
+               BufferedImage bi;
+        if (image == null || image.get() == null) {
             bi = loadGraphics(path, fileSystem);
+            image = new SoftReference<>(bi);
         } else {
-            bi = image;
+            bi = image.get();
         }
         try {
-            BufferedImage result = bi.getSubimage(0, 0, imageDimension.width, imageDimension.height);
+            BufferedImage result = bi.getSubimage(0, 0,
+                    imageDimension.width, imageDimension.height);
             return result;
         } catch (Exception e) {
-            LOG.log(Level.SEVERE, " Error getting subimage from {0}: {1}", new Object[]{filename, e});
+            LOG.log(Level.SEVERE, " Error getting subimage from {0}", filename);
         }
         return null;
 
