@@ -40,30 +40,6 @@ public interface GraphicsProvider<T extends Enum<T> & GraphicsProfile> {
     BufferedImage getImage(T profile, Point coordinates, FileIO fileSystem);
 
     /**
-     * Gets the sprite in coordinates encoded by a single {@code index}
-     * <p> {@code column = index / rows}
-     * <p> {@code row = index % rows}
-     *
-     * @param profile
-     * @param index
-     * @param fileSystem
-     * @return
-     */
-//    BufferedImage getImage(T profile, int index, FileIO fileSystem);
-
-    /**
-     * Gets the first or only sprite in the graphics of this provider
-     * <p> {@code column = 1}
-     * <p> {@code row = 1}
-     *
-     * @param profile
-     * @param index
-     * @param fileSystem
-     * @return
-     */
-    BufferedImage getImage(T profile, FileIO fileSystem);
-
-    /**
      * Gets the complete image containing all the graphics for this provider
      *
      * @param profile

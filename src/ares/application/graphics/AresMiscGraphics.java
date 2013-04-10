@@ -23,6 +23,7 @@ public enum AresMiscGraphics implements GraphicsProvider<AresGraphicsProfile> {
     GRAY_ARROWS(8, 6);
     private final String filename;
     private final MultiProfileImageProvider<AresGraphicsProfile, AresMiscGraphics> provider;
+    private static final Point ORIGIN_COORDINATES = new Point(0, 0);
 
     private AresMiscGraphics(final int rows, final int columns) {
         filename = name().toLowerCase() + ".png";
@@ -40,13 +41,8 @@ public enum AresMiscGraphics implements GraphicsProvider<AresGraphicsProfile> {
         return provider.getImage(profile, coordinates, fileSystem);
     }
 
-//    @Override
-//    public BufferedImage getImage(AresGraphicsProfile profile, int index, FileIO fileSystem) {
-//        return provider.getImage(profile, index, fileSystem);
-//    }
-    @Override
     public BufferedImage getImage(AresGraphicsProfile profile, FileIO fileSystem) {
-        return provider.getImage(profile, fileSystem);
+        return provider.getImage(profile,ORIGIN_COORDINATES, fileSystem);
     }
 
     @Override

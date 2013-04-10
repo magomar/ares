@@ -162,11 +162,6 @@ public enum UnitsColor implements GraphicsProvider<AresGraphicsProfile> {
     public BufferedImage getImage(AresGraphicsProfile profile, int index, FileIO fileSystem) {
         return provider.getImage(profile, coordinatesByIndex[index], fileSystem);
     }
-    
-    @Override
-    public BufferedImage getImage(AresGraphicsProfile profile, FileIO fileSystem) {
-        return provider.getImage(profile, fileSystem);
-    }
 
     @Override
     public BufferedImage getFullImage(AresGraphicsProfile profile, FileIO fileSystem) {

@@ -51,15 +51,6 @@ public enum Feature implements GraphicsProvider<AresGraphicsProfile> {
         return AresMiscGraphics.TERRAIN_MISCELANEOUS.getImage(profile, coordinates, fileSystem);
     }
 
-//    @Override
-//    public BufferedImage getImage(AresGraphicsProfile profile, int index, FileIO fileSystem) {
-//        return AresMiscGraphics.TERRAIN_MISCELANEOUS.getImage(profile, index, fileSystem);
-//    }
-    @Override
-    public BufferedImage getImage(AresGraphicsProfile profile, FileIO fileSystem) {
-        return AresMiscGraphics.TERRAIN_MISCELANEOUS.getImage(profile, fileSystem);
-    }
-
     @Override
     public BufferedImage getFullImage(AresGraphicsProfile profile, FileIO fileSystem) {
         return AresMiscGraphics.TERRAIN_MISCELANEOUS.getFullImage(profile, fileSystem);

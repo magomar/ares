@@ -34,16 +34,6 @@ public class MultiProfileImageProvider<K extends Enum<K> & GraphicsProfile, P ex
         return provider.get(profile).getImage(coordinates, fileSystem);
     }
 
-//    @Override
-//    public BufferedImage getImage(K profile, int index, FileIO fileSystem) {
-//        return provider.get(profile).getImage(index, fileSystem);
-//    }
-
-    @Override
-    public BufferedImage getImage(K profile, FileIO fileSystem) {
-        return provider.get(profile).getImage(fileSystem);
-    }
-
     @Override
     public BufferedImage getFullImage(K profile, FileIO fileSystem) {
        return provider.get(profile).getFullImage(fileSystem);

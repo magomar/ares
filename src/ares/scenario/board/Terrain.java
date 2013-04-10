@@ -161,16 +161,6 @@ public enum Terrain implements GraphicsProvider<AresGraphicsProfile> {
         return provider.getImage(profile, coordinates, fileSystem);
     }
 
-//    @Override
-//    public BufferedImage getImage(AresGraphicsProfile profile, int index, FileIO fileSystem) {
-//        return provider.getImage(profile, index, fileSystem);
-//    }
-
-    @Override
-    public BufferedImage getImage(AresGraphicsProfile profile, FileIO fileSystem) {
-        return provider.getImage(profile, fileSystem);
-    }
-
     @Override
     public BufferedImage getFullImage(AresGraphicsProfile profile, FileIO fileSystem) {
         return provider.getFullImage(profile, fileSystem);
