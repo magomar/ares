@@ -4,9 +4,10 @@ import ares.application.boundaries.view.BoardViewer;
 import ares.application.boundaries.view.CommandBarViewer;
 import ares.application.boundaries.view.UnitInfoViewer;
 import ares.application.commands.FileCommands;
+import ares.application.gui.ProgressMonitor;
 import ares.application.models.ScenarioModel;
-import ares.application.player.AresMenus;
-import ares.application.player.AresPlayerGUI;
+import ares.application.gui.main.AresMenus;
+import ares.application.gui.main.AresPlayerGUI;
 import ares.application.views.MessagesHandler;
 import ares.data.jaxb.EquipmentDB;
 import ares.io.AresFileType;
@@ -19,6 +20,8 @@ import ares.platform.util.AsynchronousOperation;
 import ares.engine.time.Clock;
 import ares.scenario.Scenario;
 import ares.scenario.forces.Force;
+import java.awt.Container;
+import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -75,6 +78,8 @@ public final class ScenarioIOController extends AbstractSecondaryController {
             fc.setFileFilter(AresFileType.SCENARIO.getFileTypeFilter());
             int returnVal = fc.showOpenDialog(mainView.getContentPane());
             if (returnVal == JFileChooser.APPROVE_OPTION) {
+                Container container = welcomeView.getContentPane();
+                container.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));               
                 File file = fc.getSelectedFile();
                 // Load scenario and equipment files
                 ares.data.jaxb.Scenario scen = AresIO.ARES_IO.unmarshallJson(file, ares.data.jaxb.Scenario.class);
@@ -90,8 +95,7 @@ public final class ScenarioIOController extends AbstractSecondaryController {
                 }
                 options[forces.length] = UserRole.GOD;
 
-//                int n = JOptionPane.showOptionDialog(aaa.getContentPane(),
-                int n = JOptionPane.showOptionDialog(null,
+                int n = JOptionPane.showOptionDialog(container,
                         "Please select a user role",
                         "Select your role",
                         JOptionPane.YES_NO_CANCEL_OPTION,
@@ -104,6 +108,7 @@ public final class ScenarioIOController extends AbstractSecondaryController {
                     mainController.setUserRole(options[n]);
                     return scenario;
                 }
+                container.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));   
             }
             return null;
         }
@@ -112,6 +117,9 @@ public final class ScenarioIOController extends AbstractSecondaryController {
         protected void onSuccess(Scenario scenario) {
 
             if (scenario != null) {
+                Container container = welcomeView.getContentPane();
+                container.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));      
+
                 // Show the menu bar
                 menuView.setVisible(true);
                 mainView.switchCard(AresPlayerGUI.PLAY_CARD);
@@ -130,6 +138,7 @@ public final class ScenarioIOController extends AbstractSecondaryController {
                 menuView.setCommandEnabled(AresMenus.ENGINE_MENU.getName(), true);
                 String scenInfo = scenario.getName() + "\n" + Clock.INSTANCE.toStringVerbose() + "\nRole: " + mainController.getUserRole();
                 infoView.updateScenInfo(scenInfo);
+                container.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
             }
         }
     }

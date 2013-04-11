@@ -1,9 +1,9 @@
 package ares.scenario.board;
 
-import ares.application.graphics.AresGraphicsProfile;
-import ares.application.graphics.providers.GraphicsProvider;
-import ares.application.graphics.providers.ImageProviderType;
-import ares.application.graphics.providers.MultiProfileImageProvider;
+import ares.application.gui.AresGraphicsProfile;
+import ares.application.gui.providers.GraphicsProvider;
+import ares.application.gui.providers.ImageProviderType;
+import ares.application.gui.providers.MultiProfileImageProvider;
 import ares.io.FileIO;
 import java.awt.Dimension;
 import java.awt.Point;

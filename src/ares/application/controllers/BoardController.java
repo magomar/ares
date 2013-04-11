@@ -5,7 +5,7 @@ import ares.engine.algorithms.pathfinding.Path;
 import ares.engine.algorithms.pathfinding.AStar;
 import ares.application.boundaries.view.BoardViewer;
 import ares.application.boundaries.view.UnitInfoViewer;
-import ares.application.graphics.AresGraphicsModel;
+import ares.application.gui.AresGraphicsModel;
 import ares.application.interaction.InteractionMode;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.TileModel;

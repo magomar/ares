@@ -1,7 +1,7 @@
 package ares.application.controllers;
 
 import ares.application.boundaries.view.*;
-import ares.application.player.AresPlayerGUI;
+import ares.application.gui.main.AresPlayerGUI;
 import ares.engine.RealTimeEngine;
 import ares.platform.application.*;
 import ares.platform.model.UserRole;

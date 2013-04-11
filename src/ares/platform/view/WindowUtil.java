@@ -1,11 +1,9 @@
 package ares.platform.view;
 
 import java.awt.Dimension;
-import java.awt.GraphicsEnvironment;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.Window;
-import javax.swing.JFrame;
 
 /**
  *

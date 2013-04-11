@@ -1,13 +1,13 @@
 package ares.application.views;
 
-import ares.application.graphics.AresGraphicsModel;
+import ares.application.gui.AresGraphicsModel;
 import ares.application.boundaries.view.BoardViewer;
-import ares.application.graphics.ImageLayer;
-import ares.application.graphics.command.ArrowLayer;
-import ares.application.graphics.board.GridLayer;
-import ares.application.graphics.command.SelectionLayer;
-import ares.application.graphics.board.TerrainLayer;
-import ares.application.graphics.forces.UnitsLayer;
+import ares.application.gui.ImageLayer;
+import ares.application.gui.command.ArrowLayer;
+import ares.application.gui.board.GridLayer;
+import ares.application.gui.command.SelectionLayer;
+import ares.application.gui.board.TerrainLayer;
+import ares.application.gui.forces.UnitsLayer;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.*;
 import ares.application.models.forces.FormationModel;

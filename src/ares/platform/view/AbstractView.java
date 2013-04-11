@@ -17,6 +17,7 @@ public abstract class AbstractView<C extends Container> implements View {
 
     protected abstract C layout();
 
+    @Override
     public C getContentPane() {
         return contentPane;
     }

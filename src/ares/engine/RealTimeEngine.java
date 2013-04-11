@@ -1,5 +1,6 @@
 package ares.engine;
 
+import ares.application.gui.ProgressMonitor;
 import ares.data.jaxb.Orders;
 import ares.engine.time.Phase;
 import ares.engine.time.ClockEventType;
@@ -60,6 +61,7 @@ public class RealTimeEngine extends AbstractBean {
      * single combat.
      */
     private ActionSpace actionSpace;
+    ProgressMonitor monitor;
 
     public RealTimeEngine() {
         units = new ArrayList<>();
@@ -68,9 +70,16 @@ public class RealTimeEngine extends AbstractBean {
         running = false;
 //        executor = Executors.newCachedThreadPool();
         actionSpace = new ActionSpace();
+        monitor = new ProgressMonitor(null, "Busy", "Loading scenario", ProgressMonitor.Options.SHOW_PERCENT_COMPLETE);
     }
 
+    /**
+     * Sets a new scenario and initializes it
+     *
+     * @param scenario
+     */
     public void setScenario(Scenario scenario) {
+        monitor.show();
         Clock.INSTANCE.setEngine(this);
         Scenario oldValue = this.scenario;
         this.scenario = scenario;
@@ -85,14 +94,39 @@ public class RealTimeEngine extends AbstractBean {
             }
 
         }
+        monitor.hide();
         firePropertyChange(SCENARIO_PROPERTY, oldValue, scenario);
     }
 
+    /**
+     * Initial activation of an scenario to ensure all active formations have operational plans ready for execution.
+     * This behavior is separated from method {@code setScenario()} because planning can be costly in some scenarios.
+     * That way the board can be rendered before computing all plans.
+     */
     public void activate() {
         if (Clock.INSTANCE.getTurn() == 0) {
             startNewTurn();
             schedule();
         }
+    }
+
+    private void startNewTurn() {
+        monitor.setStatus("Starting new turn");
+        int formationsChecked = 0;
+        monitor.setProgress(0, formationsChecked, formations.size());
+        monitor.show();
+        int turn = Clock.INSTANCE.getTurn();
+        LOG.log(Level.INFO, "++++++++++ New Turn: {0}", turn);
+        running = false;
+        // Check for activation
+        for (Formation formation : formations) {
+            if (!formation.isActive() && formation.mustBeActivated()) {
+                formation.activate();
+                formation.plan(pathFinder);
+            }
+            monitor.setProgress(0, formationsChecked++, formations.size());
+        }
+        monitor.hide();
     }
 
     public Scenario getScenario() {
@@ -176,20 +210,6 @@ public class RealTimeEngine extends AbstractBean {
 
         for (Unit unit : units) {
             unit.perceive();
-        }
-    }
-
-    private void startNewTurn() {
-        int turn = Clock.INSTANCE.getTurn();
-        LOG.log(Level.INFO, "++++++++++ New Turn: {0}", turn);
-        running = false;
-        // Check for activation
-        for (Formation formation : formations) {
-            if (!formation.isActive() && formation.mustBeActivated()) {
-                formation.activate();
-                formation.plan(pathFinder);
-            }
-
         }
     }
 

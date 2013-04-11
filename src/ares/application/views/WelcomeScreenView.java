@@ -2,7 +2,7 @@ package ares.application.views;
 
 import ares.application.boundaries.view.CommandBarViewer;
 import ares.application.commands.FileCommands;
-import ares.application.graphics.menu.WelcomeScreen;
+import ares.application.gui.menu.WelcomeScreen;
 import ares.platform.view.AbstractView;
 import ares.platform.view.ComponentFactory;
 import java.awt.Component;

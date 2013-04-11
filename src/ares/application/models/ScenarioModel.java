@@ -1,6 +1,6 @@
 package ares.application.models;
 
-import ares.application.graphics.AresGraphicsModel;
+import ares.application.gui.AresGraphicsModel;
 import ares.application.models.board.BoardModel;
 import ares.application.models.forces.ForceModel;
 import ares.platform.model.RoleMediatedModel;

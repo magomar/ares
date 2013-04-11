@@ -3,9 +3,6 @@ package ares.io;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.MediaTracker;
 import java.awt.image.BufferedImage;
 import java.awt.image.RenderedImage;
 import java.io.BufferedOutputStream;
@@ -22,7 +19,6 @@ import java.util.zip.GZIPOutputStream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -55,6 +51,7 @@ public class FileIO<T extends Enum<T> & FileType> {
         this(FileSystems.getDefault().getPath(path), fileTypeEnumClass, jaxbContextPath, namespace);
     }
 // TODO fileTypeEnumClass is not used, can we remove this?
+
     public FileIO(Path path, Class<T> fileTypeEnumClass, String jaxbContextPath, String namespace) {
         this.namespace = namespace;
         if (path.isAbsolute()) {
@@ -261,8 +258,7 @@ public class FileIO<T extends Enum<T> & FileType> {
         return null;
     }
 
-    
-     /**
+    /**
      * Loads an image from file
      *
      * @param file
@@ -273,12 +269,8 @@ public class FileIO<T extends Enum<T> & FileType> {
         try {
             bi = ImageIO.read(file);
         } catch (IOException ex) {
-            LOG.log(Level.SEVERE, "Error loading " + file.getAbsolutePath(), ex);
+            LOG.log(Level.SEVERE, "Error loading " + file.getPath(), ex);
         }
-//        Image i = new ImageIcon(file.getPath()).getImage();
-//        BufferedImage bi = new BufferedImage(i.getWidth(null),i.getHeight(null),BufferedImage.TYPE_INT_ARGB);
-//        Graphics2D g2 = bi.createGraphics();
-//        g2.drawImage(i, 0, 0, null);
         return bi;
     }
 

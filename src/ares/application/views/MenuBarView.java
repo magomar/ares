@@ -4,7 +4,7 @@ import ares.application.boundaries.view.CommandBarViewer;
 import ares.application.commands.EngineCommands;
 import ares.application.commands.FileCommands;
 import ares.application.commands.ViewCommands;
-import ares.application.player.AresMenus;
+import ares.application.gui.main.AresMenus;
 import ares.platform.view.AbstractView;
 import ares.platform.view.ComponentFactory;
 import java.awt.Component;
