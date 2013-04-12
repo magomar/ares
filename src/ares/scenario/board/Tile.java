@@ -280,14 +280,6 @@ public final class Tile implements ModelProvider<TileModel> {
         return index;
     }
 
-    //
-    //    public Map<Direction, Set<Terrain>> getSideTerrain() {
-    //        return sideTerrain;
-    //    }
-    //
-    //    public Set<Terrain> getTileTerrain() {
-    //    }
-    //    }
     public Map<Terrain, Directions> getTerrain() {
         return terrain;
     }
@@ -304,24 +296,10 @@ public final class Tile implements ModelProvider<TileModel> {
         return coordinates;
     }
 
-//    public int getSize() {
-//        return size;
-//    }
-//    
-//    public int getX() {
-//        return x;
-//    }
-//
-//    public int getY() {
-//        return y;
-//    }
-//
-//    public Map<Direction, CombatModifier> getCombatModifiers() {
-//        return combatModifiers;
-//    }
-//    public Map<Direction, MovementCost> getMoveCosts() {
-//        return moveCosts;
-//    }
+    public Map<MovementType, Integer> getMinMoveCosts() {
+        return minMoveCost;
+    }
+    
     public MovementCost getMoveCost(Direction fromDir) {
         return moveCosts.get(fromDir);
     }

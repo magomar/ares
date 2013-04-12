@@ -1,7 +1,6 @@
 package ares.engine.algorithms.pathfinding;
 
 import ares.engine.algorithms.pathfinding.heuristics.Heuristic;
-import ares.engine.algorithms.pathfinding.heuristics.DistanceCalculator;
 import ares.scenario.board.Tile;
 import ares.scenario.forces.Unit;
 
@@ -12,17 +11,11 @@ import ares.scenario.forces.Unit;
  */
 public abstract class AbstractPathFinder implements PathFinder {
 
-    protected Heuristic heuristic;
+    protected final Heuristic heuristic;
 
 
-    public AbstractPathFinder() {
-        heuristic = DistanceCalculator.DELTA;
-    }
-
-
-    @Override
-    public void setHeuristic(Heuristic heuristic) {
-        this.heuristic = heuristic;
+    public AbstractPathFinder(Heuristic heuristic) {
+       this.heuristic = heuristic;
     }
 
     @Override

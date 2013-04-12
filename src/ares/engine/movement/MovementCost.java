@@ -132,7 +132,6 @@ public class MovementCost {
 //        this.direction = null;
 //        this.tile = tile;
 //    }
-    
     /**
      * Return the actual movement cost, having into account both the precomputed cost and dinamic conditions such as the
      * traffic density in case of using roads, the presence of near enemy units, or the presence of dynamic terrain

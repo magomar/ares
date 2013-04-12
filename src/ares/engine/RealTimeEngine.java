@@ -10,6 +10,8 @@ import static ares.engine.RealTimeEngine.SCENARIO_PROPERTY;
 import ares.engine.action.ActionSpace;
 import ares.engine.algorithms.pathfinding.AStar;
 import ares.engine.algorithms.pathfinding.PathFinder;
+import ares.engine.algorithms.pathfinding.heuristics.DistanceCalculator;
+import ares.engine.algorithms.pathfinding.heuristics.EnhancedMinimunDistance;
 import ares.platform.model.AbstractBean;
 import ares.engine.time.Clock;
 import ares.scenario.Scenario;
@@ -84,7 +86,7 @@ public class RealTimeEngine extends AbstractBean {
         Scenario oldValue = this.scenario;
         this.scenario = scenario;
         if (scenario != null) {
-            pathFinder = new AStar(scenario.getBoard().getWidth() * scenario.getBoard().getHeight());
+            pathFinder = new AStar(scenario, new EnhancedMinimunDistance(DistanceCalculator.DELTA));
             for (Force force : scenario.getForces()) {
                 for (Formation formation : force.getFormations()) {
                     formations.add(formation);

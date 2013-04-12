@@ -1,6 +1,7 @@
 package ares.engine.algorithms.pathfinding.heuristics;
 
 import ares.scenario.board.Tile;
+import ares.scenario.forces.Unit;
 
 /**
  *
@@ -8,5 +9,5 @@ import ares.scenario.board.Tile;
  */
 public interface Heuristic {
 
-    int getCost(Tile origin, Tile destination);
+    double getCost(Tile origin, Tile destination, Unit unit);
 }

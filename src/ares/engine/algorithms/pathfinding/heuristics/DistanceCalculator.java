@@ -9,7 +9,7 @@ import java.awt.Point;
  * @author Heine <heisncfr@inf.upv.es>
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public enum DistanceCalculator implements Heuristic {
+public enum DistanceCalculator {
 
     DELTA {
         @Override
@@ -139,4 +139,6 @@ public enum DistanceCalculator implements Heuristic {
             }
         }
     }
+    
+    abstract int getCost(Tile origin, Tile destination);
 }

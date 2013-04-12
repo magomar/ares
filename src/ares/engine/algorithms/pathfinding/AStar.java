@@ -1,6 +1,8 @@
 package ares.engine.algorithms.pathfinding;
 
+import ares.engine.algorithms.pathfinding.heuristics.Heuristic;
 import ares.engine.movement.MovementCost;
+import ares.scenario.Scenario;
 import ares.scenario.board.Board;
 import ares.scenario.board.Direction;
 import ares.scenario.board.Tile;
@@ -17,12 +19,13 @@ public class AStar extends AbstractPathFinder {
     private static final int OPEN_SET_INITIAL_CAPACITY_DIVISOR = 4;
     private int length;
 
-    public AStar() {
-        this(100);
-    }
-
-    public AStar(int length) {
+    public AStar(Heuristic heuristic, int length) {
+        super(heuristic);
         this.length = length;
+    }
+    public AStar(Scenario scenario, Heuristic heuristic) {
+        super(heuristic);
+        this.length = scenario.getBoard().getWidth() * scenario.getBoard().getHeight();
     }
 
     @Override
@@ -39,7 +42,7 @@ public class AStar extends AbstractPathFinder {
         int initialCapacity = (int) (length / OPEN_SET_INITIAL_CAPACITY_DIVISOR);
         Queue<Node> openSet = new PriorityQueue<>(initialCapacity);
 
-        Node first = new Node(origin, Direction.C, null, 0, heuristic.getCost(origin, destination));
+        Node first = new Node(origin, Direction.C, null, 0, heuristic.getCost(origin, destination, unit));
         map.put(origin.getIndex(), first);
         openSet.add(first);
 
@@ -69,7 +72,7 @@ public class AStar extends AbstractPathFinder {
 
                 Node neighbour = map.get(index);
                 if (neighbour == null) {
-                    neighbour = new Node(tile, toDir, current, tentativeG, tentativeG + heuristic.getCost(tile, destination));
+                    neighbour = new Node(tile, toDir, current, tentativeG, tentativeG + heuristic.getCost(tile, destination, unit));
                     map.put(index, neighbour);
                     if (tentativeG < MovementCost.IMPASSABLE) {
                         openSet.add(neighbour);
@@ -82,8 +85,7 @@ public class AStar extends AbstractPathFinder {
                     neighbour.setDirection(dir);
                     neighbour.setPrev(current);
                     neighbour.setG(tentativeG);
-                    neighbour.setF(tentativeG
-                            + heuristic.getCost(neighbour.getTile(), destination));
+                    neighbour.setF(tentativeG + heuristic.getCost(neighbour.getTile(), destination, unit));
                 }
             }
             //assert current != null;

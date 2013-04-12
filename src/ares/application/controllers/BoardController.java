@@ -13,6 +13,8 @@ import ares.application.models.forces.FormationModel;
 import ares.application.models.forces.UnitModel;
 import ares.application.views.MessagesHandler;
 import ares.engine.RealTimeEngine;
+import ares.engine.algorithms.pathfinding.heuristics.DistanceCalculator;
+import ares.engine.algorithms.pathfinding.heuristics.EnhancedMinimunDistance;
 import ares.engine.command.tactical.TacticalMission;
 import ares.engine.command.tactical.TacticalMissionType;
 import ares.platform.controllers.AbstractSecondaryController;
@@ -46,7 +48,7 @@ public final class BoardController extends AbstractSecondaryController implement
         this.unitView = mainController.getInfoView();
         LOG.addHandler(mainController.getMessagesView().getHandler());
 
-        pathFinder = new AStar();
+        pathFinder = new AStar(new EnhancedMinimunDistance(DistanceCalculator.DELTA), 100);
 
         boardView.addMouseListener(new BoardMouseListener());
         boardView.addMouseMotionListener(new BoardMouseMotionListener());
