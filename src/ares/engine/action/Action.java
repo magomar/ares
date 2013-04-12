@@ -8,21 +8,43 @@ import ares.scenario.forces.Unit;
  */
 public interface Action {
 
+    /**
+     * Commits the action for execution
+     */
     void commit();
 
+    /**
+     * Executes the action for the current time tick.
+     */
     void execute();
 
     /**
-     * Changes the status of the action to {@link AresState#ONGOING} . Actions being selected for execution enter this
-     * state prior to start execution.
+     * Starts executing the action. Actions to be executed have to invoke this method before executing for the first
+     * time.
      *
      */
     void start();
-    
+
+    /**
+     * Aborts the action. Once aborted, an action is completely abandoned
+     */
     void abort();
-    
+
+    /**
+     * Completes the action. Actions have to execute this method after completion.
+     */
     void complete();
-    
+
+    /**
+     * Delays the actions. Actions already started that can not be executed have to execute this method.
+     */
+    void delay();
+
+    /**
+     * Changes the state of the action to the {@code state} passed as parameter.
+     *
+     * @param state
+     */
     void setState(ActionState state);
 
     /**
@@ -33,9 +55,9 @@ public interface Action {
     boolean isComplete();
 
     /**
-     * Checks the conditions required to execute the action
+     * Determines if the action can be executed by checking all the necessary conditions
      *
-     * @return true if the appropriate conditions are met
+     * @return true if the action can be executed
      */
     boolean canBeExecuted();
 

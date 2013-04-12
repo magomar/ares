@@ -7,9 +7,10 @@ package ares.engine.action;
 public class ActionCounter {
 
     private static ActionCounter INSTANCE = new ActionCounter();
-    private static int counter = 0;
+    private static int counter;
 
     private ActionCounter() {
+        counter = 0;
     }
 
     public static int count() {

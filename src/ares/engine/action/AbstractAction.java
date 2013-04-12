@@ -3,7 +3,6 @@ package ares.engine.action;
 import ares.scenario.forces.Unit;
 import ares.engine.time.Clock;
 import ares.scenario.forces.OpState;
-import java.util.Comparator;
 
 /**
  *
@@ -19,7 +18,6 @@ public abstract class AbstractAction implements Action {
      * Value indicating that the duration or time to complete an action is unknown
      */
     public static final int TIME_UNKNOWN = Integer.MAX_VALUE;
-
     /**
      * The unit to perform this action
      */
@@ -82,9 +80,9 @@ public abstract class AbstractAction implements Action {
     }
 
     /**
-     * Determines if the action can be executed this time tick by checking all the necessary conditions: if the action
-     * was already started then it performs two checks: {@link #checkEndurance()} and {@link #isFeasible()}, otherwise
-     * it performs the two former checks plus {@link #checkStartTime()} and {@link #checkPreconditions()}.
+     * Determines if the action can be executed by checking all the necessary conditions: if the action was already
+     * started then it performs two checks: {@link #checkEndurance()} and {@link #isFeasible()}, otherwise it performs
+     * the two former checks plus {@link #checkStartTime()} and {@link #checkPreconditions()}.
      *
      *
      * @return true if the action can be executed
@@ -93,8 +91,9 @@ public abstract class AbstractAction implements Action {
     public final boolean canBeExecuted() {
         if (state == ActionState.CREATED) {
             return checkStartTime() && checkPreconditions() && checkEndurance() && isFeasible();
+        } else {
+            return checkEndurance() && isFeasible();
         }
-        return checkEndurance() && isFeasible();
     }
 
     /**
@@ -109,8 +108,9 @@ public abstract class AbstractAction implements Action {
     }
 
     /**
-     * Changes the status of the action to {@link ActionState#ONGOING} and sets the {@link #start} time to the current
-     * time tick. This method should be used to start the execution of an action for the first time
+     * Starts executing the action. Changes the status of the action to {@link ActionState#ONGOING} and sets the
+     * {@link #start} time to the current time tick. This method should be used to start the execution of an action for
+     * the first time, not thereafter.
      */
     @Override
     public final void start() {
@@ -120,9 +120,9 @@ public abstract class AbstractAction implements Action {
     }
 
     /**
-     * Changes the status of the action to {@link ActionState.COMPLETED}, determines the actual {@link finish} time,
-     * which may differ from the estimated finish time, and applies completion effects on the operational state of the
-     * {@link #unit}
+     * Completes the action. Changes the status of the action to {@link ActionState.COMPLETED}, determines the actual
+     * {@link finish} time, which may differ from the estimated finish time, and applies completion effects on the
+     * operational state of the {@link #unit}
      */
     @Override
     public final void complete() {
@@ -131,13 +131,16 @@ public abstract class AbstractAction implements Action {
         unit.setOpState(type.getEffectAfter());
     }
 
+    /**
+     * Commits the action for execution
+     */
     @Override
     public void commit() {
         // TODO
     }
 
     /**
-     * The action is executed for the current time tick. If the the action is completed then sets the finish time
+     * Executes the action for the current time tick. If the the action is completed then complete it.
      */
     @Override
     public final void execute() {
@@ -150,7 +153,7 @@ public abstract class AbstractAction implements Action {
     }
 
     /**
-     * Changes the status of the action to {@link ActionState#ABORTED}.
+     * Aborts the action. Changes the status of the action to {@link ActionState#ABORTED}.
      */
     @Override
     public final void abort() {
@@ -158,6 +161,11 @@ public abstract class AbstractAction implements Action {
         wear();
 //        unit.setOpState(type.getPrecondition());
         finish = Clock.INSTANCE.getTick();
+    }
+
+    @Override
+    public void delay() {
+        unit.setOpState(type.getPrecondition());
     }
 
     /**

@@ -4,9 +4,12 @@ import ares.engine.action.Action;
 import ares.engine.action.ActionSpace;
 import ares.engine.action.ActionState;
 import ares.engine.action.ActionType;
+import ares.engine.action.actions.CombatAction;
+import ares.engine.action.actions.MoveAction;
 import ares.engine.action.actions.RestAction;
 import ares.engine.action.actions.WaitAction;
 import ares.engine.algorithms.pathfinding.PathFinder;
+import ares.engine.command.tactical.missions.Occupy;
 import ares.scenario.board.Tile;
 import ares.scenario.forces.Unit;
 import java.util.Deque;
@@ -31,6 +34,11 @@ public abstract class TacticalMission {
      * @see TacticalMissionType
      */
     protected TacticalMissionType type;
+    /**
+     * The tile targeted by this mission. The objective of the mission is related to this tile. For example, for an
+     * {@link TacticalMissionType#OCCUPY} mission this tile has to be taken, for a
+     * {@link TacticalMissionType#ATTACK_BY_FIRE} this tile has to be fired at.
+     */
     protected Tile targetTile;
 //    protected Unit targetUnit;
     /**
@@ -95,12 +103,15 @@ public abstract class TacticalMission {
                 default:
                     if (!currentAction.canBeExecuted()) {
                         if (currentAction.getType() != ActionType.WAIT) {
-                            pendingActions.push(currentAction);
+                            // if current action is not wait and cannot be executed, then delay it
+                            currentAction.delay();
+                            pendingActions.addFirst(currentAction);
                         }
                         currentAction = null;
                         break;
                     }
                     if (currentAction.getType() == ActionType.WAIT && hasExecutablePendingAction()) {
+                        // Wait actions are abandoned and replaced by pending actions if possible
                         currentAction = scheduleNextAction();
                         break;
                     }
@@ -140,7 +151,6 @@ public abstract class TacticalMission {
 //    public void clearActions() {
 //        pendingActions.clear();
 //    }
-
     public Action getCurrentAction() {
         return currentAction;
     }
@@ -150,23 +160,21 @@ public abstract class TacticalMission {
     }
 
     /**
-     * Pushes the given action to the head of the {@link pendingActions} queue
+     * Adds the given action to the head of {@link pendingActions}
      *
-     * @see Deque#push(java.lang.Object)
      * @param action
      */
-    public void pushAction(Action action) {
-        pendingActions.push(action);
+    public void addFirstAction(Action action) {
+        pendingActions.addFirst(action);
     }
 
     /**
-     * Adds the given action to the tail of the {@link pendingActions} queue
+     * Adds the given action to the tail of {@link pendingActions}
      *
-     * @see Deque#offer(java.lang.Object)
      * @param action
      */
-    public void offerAction(Action action) {
-        pendingActions.offer(action);
+    public void addLastAction(Action action) {
+        pendingActions.addLast(action);
     }
 
     @Override
