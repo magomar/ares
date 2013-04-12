@@ -162,6 +162,7 @@ public final class Tile implements ModelProvider<TileModel> {
             CombatModifier combatModifier = new CombatModifier(this, direction);
             combatModifiers.put(direction, combatModifier);
         }
+        minMoveCost = computeMinCosts();
         this.owner = owner;
 
         knowledgeLevels.put(UserRole.GOD, new KnowledgeLevel(KnowledgeCategory.COMPLETE));
@@ -314,12 +315,12 @@ public final class Tile implements ModelProvider<TileModel> {
 //    public int getY() {
 //        return y;
 //    }
-//    public Map<Direction, MovementCost> getMoveCosts() {
-//        return moveCosts;
-//    }
 //
 //    public Map<Direction, CombatModifier> getCombatModifiers() {
 //        return combatModifiers;
+//    }
+//    public Map<Direction, MovementCost> getMoveCosts() {
+//        return moveCosts;
 //    }
     public MovementCost getMoveCost(Direction fromDir) {
         return moveCosts.get(fromDir);
@@ -399,5 +400,23 @@ public final class Tile implements ModelProvider<TileModel> {
         }
 
         return sb.toString();
+    }
+
+    private Map<MovementType, Integer> computeMinCosts() {
+        Map<MovementType, Integer> movementCost = new HashMap<>();
+        for (MovementType mt : MovementType.values()) {
+            movementCost.put(mt, MovementCost.IMPASSABLE);
+        }
+
+        for (MovementCost mc : moveCosts.values()) {
+            for (Map.Entry<MovementType, Integer> entry : mc.getMovementCost().entrySet()) {
+                MovementType mt = entry.getKey();
+                int cost = entry.getValue();
+                if (cost < movementCost.get(mt)) {
+                    movementCost.put(mt, cost);
+                }
+            }
+        }
+        return movementCost;
     }
 }

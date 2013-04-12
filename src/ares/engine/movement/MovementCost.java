@@ -125,9 +125,14 @@ public class MovementCost {
             movementCost.put(MovementType.FOOT, footCost);
             movementCost.put(MovementType.AMPHIBIOUS, amphibiousCost);
         }
-
     }
 
+//    public MovementCost(Map<MovementType, Integer> movementCost, Tile tile) {
+//        this.movementCost = movementCost;
+//        this.direction = null;
+//        this.tile = tile;
+//    }
+    
     /**
      * Return the actual movement cost, having into account both the precomputed cost and dinamic conditions such as the
      * traffic density in case of using roads, the presence of near enemy units, or the presence of dynamic terrain
@@ -192,14 +197,23 @@ public class MovementCost {
     }
 
     /**
-     * Return the precomputed movement cost (cost depending on inmutable terrain characteristics such as the terrain
-     * type)
+     * Gets the precomputed movement cost for a single {@code movementType}
      *
-     * @param movement
+     * @param movementType
      * @return
      */
-    public int getPrecomputedCost(MovementType movement) {
-        return movementCost.get(movement);
+    public int getMovementCost(MovementType movementType) {
+        return movementCost.get(movementType);
+    }
+
+    /**
+     * Gets the precomputed costs for all the movement types
+     *
+     * @see MovementType
+     * @return
+     */
+    public Map<MovementType, Integer> getMovementCost() {
+        return movementCost;
     }
 
     private boolean containsTerrainInDirection(Map<Terrain, Directions> terrainMap, Terrain terrain, Direction fromDir) {
