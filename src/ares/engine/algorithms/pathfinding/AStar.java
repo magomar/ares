@@ -67,7 +67,7 @@ public class AStar extends AbstractPathFinder {
                     // if current tile was already visited by the algorithm skip it
                     continue;
                 }
-                MovementCost mc = tile.getMoveCost(toDir);
+                MovementCost mc = tile.getEnterCost(toDir);
                 double tentativeG = current.getG() + mc.getEstimatedCost(unit);
 
                 Node neighbour = map.get(index);

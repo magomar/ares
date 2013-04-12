@@ -20,7 +20,13 @@ public enum Direction {
     private final int incRowEven;
     private final int incRowOdd;
     private Direction opposite;
+    /**
+     * All real directions, that is all directions except {@link #C}
+     */
     public final static Set<Direction> DIRECTIONS = EnumSet.range(Direction.N, Direction.NW);
+    /**
+     * All directions, which includes the 6 real directions plus {@link #C}
+     */
     private final static Direction[] ALL_DIRECTIONS = Direction.values();
 
     static {

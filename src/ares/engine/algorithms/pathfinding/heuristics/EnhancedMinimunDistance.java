@@ -15,6 +15,6 @@ public class EnhancedMinimunDistance extends MinimunDistance {
 
     @Override
     public double getCost(Tile origin, Tile destination, Unit unit) {
-        return distanceCalculator.getCost(origin, destination) - 1 + origin.getMinMoveCosts().get(unit.getMovement());
+        return distanceCalculator.getCost(origin, destination) - 1 + origin.getMinExitCosts().get(unit.getMovement());
     }
 }

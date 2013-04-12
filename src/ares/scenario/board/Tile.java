@@ -61,14 +61,11 @@ public final class Tile implements ModelProvider<TileModel> {
      * Force in possesion of this tile
      */
     private Force owner;
-//    /**
-//     * Column (horizontal coordinate)
-//     */
-//    private int x;
-//    /**
-//     * Row (vertical coordinate)
-//     */
-//    private int y;
+    /**
+     * Coordinates of the tile in the board. {@link Point#x} holds the column (horizontal coordinate) and
+     * {@link Point#y} holds the row (vertical coordinate). The origin of coordinates corresponds to the Top-Left corner
+     * of the board.
+     */
     private Point coordinates;
     /**
      * Unique identifier obtained from coordinates: {@code index(x,y) = x * board.width + y}
@@ -83,13 +80,13 @@ public final class Tile implements ModelProvider<TileModel> {
      */
     private UnitsStack units;
     /**
-     * Precomputed movement costs for all directions. Movement costs are applied when entering a location
+     * Precomputed movement costs to enter the tile from every possible direction.
      */
-    private Map<Direction, MovementCost> moveCosts;
+    private Map<Direction, MovementCost> enterCost;
     /**
      * Minimun movement cost per each movement type
      */
-    private Map<MovementType, Integer> minMoveCost;
+    private Map<MovementType, Integer> minExitCost;
     /**
      * Modifiers to combat due to terrain. This modifier applies to the unit defending this location
      */
@@ -142,6 +139,14 @@ public final class Tile implements ModelProvider<TileModel> {
         // Initialize models and knowledge levels
         models = new HashMap<>();
         knowledgeLevels = new HashMap<>();
+        enterCost = new EnumMap<>(Direction.class);
+        combatModifiers = new EnumMap<>(Direction.class);
+        for (Direction direction : Direction.DIRECTIONS) {
+            MovementCost cost = new MovementCost(this, direction);
+            enterCost.put(direction, cost);
+            CombatModifier combatModifier = new CombatModifier(this, direction);
+            combatModifiers.put(direction, combatModifier);
+        }
     }
 
     /**
@@ -152,19 +157,16 @@ public final class Tile implements ModelProvider<TileModel> {
      * @param board
      */
     public void initialize(Map<Direction, Tile> neighbors, Force owner, Scenario scenario) {
-        index = coordinates.x * scenario.getBoard().getWidth() + coordinates.y;
-        moveCosts = new EnumMap<>(Direction.class);
-        combatModifiers = new EnumMap<>(Direction.class);
-        this.neighbors = neighbors;
-        for (Direction direction : neighbors.keySet()) {
-            MovementCost cost = new MovementCost(this, direction);
-            moveCosts.put(direction, cost);
-            CombatModifier combatModifier = new CombatModifier(this, direction);
-            combatModifiers.put(direction, combatModifier);
-        }
-        minMoveCost = computeMinCosts();
         this.owner = owner;
-
+        index = coordinates.x * scenario.getBoard().getWidth() + coordinates.y;
+        this.neighbors = neighbors;
+//        for (Direction direction : neighbors.keySet()) {
+//            MovementCost cost = new MovementCost(this, direction);
+//            enterCost.put(direction, cost);
+//            CombatModifier combatModifier = new CombatModifier(this, direction);
+//            combatModifiers.put(direction, combatModifier);
+//        }
+        minExitCost = computeMinExitCosts();
         knowledgeLevels.put(UserRole.GOD, new KnowledgeLevel(KnowledgeCategory.COMPLETE));
         for (Force force : scenario.getForces()) {
             if (owner.equals(force)) {
@@ -296,12 +298,12 @@ public final class Tile implements ModelProvider<TileModel> {
         return coordinates;
     }
 
-    public Map<MovementType, Integer> getMinMoveCosts() {
-        return minMoveCost;
+    public Map<MovementType, Integer> getMinExitCosts() {
+        return minExitCost;
     }
-    
-    public MovementCost getMoveCost(Direction fromDir) {
-        return moveCosts.get(fromDir);
+
+    public MovementCost getEnterCost(Direction fromDir) {
+        return enterCost.get(fromDir);
     }
 
     public CombatModifier getCombatModifiers(Direction dir) {
@@ -380,21 +382,24 @@ public final class Tile implements ModelProvider<TileModel> {
         return sb.toString();
     }
 
-    private Map<MovementType, Integer> computeMinCosts() {
-        Map<MovementType, Integer> movementCost = new HashMap<>();
+    private Map<MovementType, Integer> computeMinExitCosts() {
+        Map<MovementType, Integer> minimunCosts = new HashMap<>();
         for (MovementType mt : MovementType.values()) {
-            movementCost.put(mt, MovementCost.IMPASSABLE);
+            minimunCosts.put(mt, MovementCost.IMPASSABLE);
         }
-
-        for (MovementCost mc : moveCosts.values()) {
-            for (Map.Entry<MovementType, Integer> entry : mc.getMovementCost().entrySet()) {
-                MovementType mt = entry.getKey();
-                int cost = entry.getValue();
-                if (cost < movementCost.get(mt)) {
-                    movementCost.put(mt, cost);
+        for (Map.Entry<MovementType, Integer> entry : minimunCosts.entrySet()) {
+            MovementType mt = entry.getKey();
+            int cost = MovementCost.IMPASSABLE;
+            for (Map.Entry<Direction, Tile> neighbourEntry : neighbors.entrySet()) {
+                Direction dir = neighbourEntry.getKey();
+                Tile neighbour = neighbourEntry.getValue();
+                int neighborCost = neighbour.getEnterCost(dir.getOpposite()).getMovementCost(mt);
+                if (neighborCost < cost) {
+                    cost = neighborCost;
                 }
             }
+            minimunCosts.put(mt, cost);
         }
-        return movementCost;
+        return minimunCosts;
     }
 }

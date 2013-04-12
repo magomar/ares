@@ -69,7 +69,7 @@ public abstract class TileModel extends KnowledgeMediatedModel {
     public abstract boolean hasEnemies(String force);
 
     public MovementCost getMoveCost(Direction d) {
-        return tile.getMoveCost(d);
+        return tile.getEnterCost(d);
     }
 
     @Override

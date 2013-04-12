@@ -37,7 +37,7 @@ public abstract class MoveAction extends AbstractAction {
         currentNode = path.getFirst().getNext();
         Tile destination = currentNode.getTile();
         Direction direction = currentNode.getDirection();
-        MovementCost moveCost = destination.getMoveCost(direction);
+        MovementCost moveCost = destination.getEnterCost(direction);
         int cost = moveCost.getActualCost(unit);
         speed = unit.getSpeed() / cost;
         // TODO avoid creating move actions for static units (speed=0) !
@@ -59,7 +59,7 @@ public abstract class MoveAction extends AbstractAction {
         currentNode = currentNode.getNext();
         if (currentNode != null) {
             Tile destination = currentNode.getTile();
-            MovementCost moveCost = destination.getMoveCost(currentNode.getDirection());
+            MovementCost moveCost = destination.getEnterCost(currentNode.getDirection());
             int cost = moveCost.getActualCost(unit);
             speed = unit.getSpeed() / cost;
             // timeToNextMovement <= 0. If it is negative we can add it to the new timeToNextMovement as a way to not propagate the precision error each movement segment
