@@ -30,7 +30,7 @@ public class Occupy extends TacticalMission {
         currentAction = null;
         pendingActions.clear();
         if (unit.getLocation().equals(targetTile)) {
-            pushAction(new WaitAction(unit));
+            addFirstAction(new WaitAction(unit));
             return;
         }
         Path path = pathFinder.getPath(unit.getLocation(), targetTile, unit);
@@ -40,9 +40,9 @@ public class Occupy extends TacticalMission {
         }
         LOG.log(Level.INFO, "New path for {0}: {1}", new Object[]{unit.toString(), path.toString()});
         MoveAction move = new SurfaceMoveAction(unit, ActionType.TACTICAL_MARCH, path);
-        pushAction(move);
+        addFirstAction(move);
         if (!move.checkPreconditions()) {
-            pushAction(new ChangeDeploymentAction(unit, ActionType.ASSEMBLE));
+            addFirstAction(new ChangeDeploymentAction(unit, ActionType.ASSEMBLE));
         }
     }
     
