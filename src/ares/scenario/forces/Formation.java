@@ -1,18 +1,13 @@
 package ares.scenario.forces;
 
 import ares.application.models.forces.FormationModel;
-import ares.data.jaxb.Orders;
-import ares.data.jaxb.Track;
 import ares.engine.algorithms.pathfinding.PathFinder;
-import ares.engine.command.Objective;
 import ares.engine.command.ProgrammedOpponent;
 import ares.engine.command.operational.plans.OperationalPlan;
-import ares.engine.command.operational.plans.OperationalStance;
 import ares.engine.time.Clock;
 import ares.platform.model.ModelProvider;
 import ares.platform.model.UserRole;
 import ares.scenario.Scenario;
-import ares.scenario.board.Tile;
 import java.util.*;
 
 /**
@@ -180,6 +175,10 @@ public class Formation implements ModelProvider<FormationModel> {
 
     public List<Unit> getAvailableUnits() {
         return availableUnits;
+    }
+
+    public ProgrammedOpponent getPo() {
+        return po;
     }
 
     @Override

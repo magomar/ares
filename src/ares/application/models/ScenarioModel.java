@@ -15,7 +15,6 @@ import ares.scenario.forces.Force;
 public final class ScenarioModel extends RoleMediatedModel {
 
     private final Scenario scenario;
-//    private final BoardModel boardModel;
     private final ForceModel[] forceModel;
 
     public ScenarioModel(Scenario scenario, UserRole userRole) {
@@ -24,7 +23,7 @@ public final class ScenarioModel extends RoleMediatedModel {
         Force[] forces = scenario.getForces();
         forceModel = new ForceModel[forces.length];
         for (int i = 0; i < forces.length; i++) {
-            forceModel[i] = forces[i].getModel(getUserRole());
+            forceModel[i] = forces[i].getModel(userRole);
         }
     }
 
@@ -33,7 +32,7 @@ public final class ScenarioModel extends RoleMediatedModel {
     }
 
     public BoardModel getBoardModel() {
-        return scenario.getBoard().getModel(getUserRole());
+        return scenario.getBoard().getModel(userRole);
     }
 
     public ForceModel[] getForceModel() {

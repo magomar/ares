@@ -6,13 +6,13 @@ package ares.platform.model;
  */
 public abstract class RoleMediatedModel<T> {
 
-    private final UserRole userRole;
+    protected final UserRole userRole;
 
     public RoleMediatedModel(UserRole userRole) {
         this.userRole = userRole;
     }
 
-    public UserRole getUserRole() {
-        return userRole;
-    }
+//    public UserRole getUserRole() {
+//        return userRole;
+//    }
 }

@@ -6,13 +6,16 @@ import ares.scenario.forces.Force;
 import ares.scenario.forces.Formation;
 import ares.scenario.forces.Unit;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
+import javax.swing.event.TreeModelListener;
+import javax.swing.tree.TreeModel;
+import javax.swing.tree.TreePath;
 
 /**
  *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
-public final class ForceModel extends RoleMediatedModel {
+public final class ForceModel extends RoleMediatedModel implements TreeModel {
 
     protected final Force force;
 
@@ -25,10 +28,10 @@ public final class ForceModel extends RoleMediatedModel {
         return force.getName();
     }
 
-    public Collection<UnitModel> getUnitModels() {
-        Collection<UnitModel> unitModels = new ArrayList<>();
+    public List<UnitModel> getUnitModels() {
+        List<UnitModel> unitModels = new ArrayList<>();
         for (Unit unit : force.getActiveUnits()) {
-            UnitModel unitModel = unit.getModel(getUserRole());
+            UnitModel unitModel = unit.getModel(userRole);
             if (unitModel != null) {
                 unitModels.add(unitModel);
             }
@@ -36,14 +39,54 @@ public final class ForceModel extends RoleMediatedModel {
         return unitModels;
     }
 
-    public Collection<FormationModel> getFormationModels() {
-        Collection<FormationModel> formationModels = new ArrayList<>();
+    public List<FormationModel> getFormationModels() {
+        List<FormationModel> formations = new ArrayList<>();
         for (Formation formation : force.getFormations()) {
-            FormationModel formationModel = formation.getModel(getUserRole());
+            FormationModel formationModel = formation.getModel(userRole);
             if (formationModel != null) {
-                formationModels.add(formationModel);
+                formations.add(formationModel);
             }
         }
-        return formationModels;
+        return formations;
+    }
+
+    @Override
+    public Object getRoot() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Object getChild(Object parent, int index) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int getChildCount(Object parent) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean isLeaf(Object node) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void valueForPathChanged(TreePath path, Object newValue) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int getIndexOfChild(Object parent, Object child) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void addTreeModelListener(TreeModelListener l) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void removeTreeModelListener(TreeModelListener l) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

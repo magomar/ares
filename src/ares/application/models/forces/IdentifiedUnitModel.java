@@ -1,14 +1,15 @@
 package ares.application.models.forces;
 
 import ares.engine.knowledge.KnowledgeCategory;
-import ares.scenario.Scale;
 import ares.scenario.forces.*;
+import java.util.Enumeration;
+import javax.swing.tree.TreeNode;
 
 /**
  *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
-public class IdentifiedUnitModel extends DetectedUnitModel {
+public class IdentifiedUnitModel extends DetectedUnitModel  {
 
     public IdentifiedUnitModel(Unit unit) {
         super(unit, KnowledgeCategory.GOOD);
@@ -48,4 +49,5 @@ public class IdentifiedUnitModel extends DetectedUnitModel {
     public String getDescription() {
         return unit.toStringMultiline();
     }
+
 }

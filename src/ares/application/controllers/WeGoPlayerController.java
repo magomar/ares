@@ -21,6 +21,7 @@ public class WeGoPlayerController {
     private final AbstractAresApplication mainView;
     private final BoardViewer boardView;
     private final UnitInfoViewer infoView;
+    private final OOBViewer oobView;
     private final CommandBarViewer menuView;
     private final MessagesViewer messagesView;
     private final CommandBarViewer welcomeScreenView;
@@ -37,7 +38,7 @@ public class WeGoPlayerController {
     private final ExecutorService executor;
     private static final Logger LOG = Logger.getLogger(WeGoPlayerController.class.getName());
 
-    public WeGoPlayerController(AbstractAresApplication mainView, BoardViewer boardView, UnitInfoViewer unitView, CommandBarViewer menuView, MessagesViewer messagesView, CommandBarViewer welcomeScreenV) {
+    public WeGoPlayerController(AbstractAresApplication mainView, BoardViewer boardView, UnitInfoViewer unitView, OOBViewer oobView, CommandBarViewer menuView, MessagesViewer messagesView, CommandBarViewer welcomeScreenV) {
         //        executor = Executors.newCachedThreadPool();
         executor = Executors.newSingleThreadExecutor();
         this.engine = new RealTimeEngine();
@@ -46,6 +47,7 @@ public class WeGoPlayerController {
 
         this.boardView = boardView;
         this.infoView = unitView;
+        this.oobView = oobView;
         this.menuView = menuView;
         this.messagesView = messagesView;
         this.welcomeScreenView = welcomeScreenV;

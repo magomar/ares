@@ -14,8 +14,8 @@ import javax.swing.*;
 public class AresPlayerGUI extends AbstractAresApplication {
 
     private static final int INFO_WINDOW_WIDTH = 250;
+    private static final int OOB_WINDOW_WIDTH = 200;
     private static final int MESSAGES_WINDOW_HEIGHT = 150;
-    private static final int SPLIT_DIVIDER_SIZE = 5;
     public static final String MAIN_MENU_CARD = "Main";
     public static final String PLAY_CARD = "Play";
     private BoardView boardV;
@@ -25,19 +25,22 @@ public class AresPlayerGUI extends AbstractAresApplication {
     private WelcomeScreenView welcomeScreenV;
     private JSplitPane splitHoriz;
     private JSplitPane splitVert;
+    private JSplitPane splitHoriz2;
     private JPanel cards;
     private WeGoPlayerController mainController;
+    private OOBView oobV;
 
     public AresPlayerGUI() {
         super(); // creates layout
         // Create controllers and passes the views
-        mainController = new WeGoPlayerController(this, boardV, unitV, menuV, messagesV, welcomeScreenV);
+        mainController = new WeGoPlayerController(this, boardV, unitV, oobV, menuV, messagesV, welcomeScreenV);
     }
 
     @Override
     protected JFrame layout() {
         menuV = new MenuBarView();
         unitV = new UnitInfoView();
+        oobV = new OOBView();
         boardV = new BoardView();
         messagesV = new MessagesView();
         welcomeScreenV = new WelcomeScreenView();
@@ -64,18 +67,17 @@ public class AresPlayerGUI extends AbstractAresApplication {
         boardV.getContentPane().setPreferredSize(getBoardPaneDimension(mainFrame.getContentPane()));
         unitV.getContentPane().setPreferredSize(getInfoPaneDimension(mainFrame.getContentPane()));
         unitV.getContentPane().setMaximumSize(unitV.getContentPane().getPreferredSize());
+        oobV.getContentPane().setPreferredSize(getOOBPaneDimension(mainFrame.getContentPane()));
+        oobV.getContentPane().setMaximumSize(oobV.getContentPane().getPreferredSize());
         messagesV.getContentPane().setPreferredSize(getMessagesPaneDimension(mainFrame.getContentPane()));
 
-        splitVert = new JSplitPane(JSplitPane.VERTICAL_SPLIT, true, boardV.getContentPane(), messagesV.getContentPane());
-        splitVert.setResizeWeight(1);
-        splitHoriz = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, true, unitV.getContentPane(), splitVert);
-        splitHoriz.setResizeWeight(0);
-        splitVert.setDividerSize(SPLIT_DIVIDER_SIZE);
-        splitHoriz.setDividerSize(SPLIT_DIVIDER_SIZE);
+        splitVert = ComponentFactory.verticalSplitPane(true, boardV.getContentPane(), messagesV.getContentPane(),1);    
+        splitHoriz = ComponentFactory.horizontalSplitPane(true, unitV.getContentPane(), splitVert,0);
+        splitHoriz2 = ComponentFactory.horizontalSplitPane(true, splitHoriz, oobV.getContentPane(), 1);
 
         cards = new JPanel(new CardLayout());
         cards.add(welcomeScreenV.getContentPane(), MAIN_MENU_CARD);
-        cards.add(splitHoriz, PLAY_CARD);
+        cards.add(splitHoriz2, PLAY_CARD);
         mainFrame.setContentPane(cards);
         return mainFrame;
     }
@@ -86,17 +88,21 @@ public class AresPlayerGUI extends AbstractAresApplication {
         cl.show(cards, cardName);
     }
 
+    private Dimension getOOBPaneDimension(Container container) {
+        return new Dimension(OOB_WINDOW_WIDTH, container.getWidth());
+    }
+
     private Dimension getInfoPaneDimension(Container container) {
         return new Dimension(INFO_WINDOW_WIDTH, container.getHeight());
     }
 
     private Dimension getBoardPaneDimension(Container container) {
-        return new Dimension(container.getWidth() - INFO_WINDOW_WIDTH - SPLIT_DIVIDER_SIZE, container.getHeight()
-                - MESSAGES_WINDOW_HEIGHT - SPLIT_DIVIDER_SIZE);
+        return new Dimension(container.getWidth() - INFO_WINDOW_WIDTH - ComponentFactory.SPLIT_DIVIDER_SIZE, container.getHeight()
+                - MESSAGES_WINDOW_HEIGHT - ComponentFactory.SPLIT_DIVIDER_SIZE);
     }
 
     private Dimension getMessagesPaneDimension(Container container) {
-        return new Dimension(container.getWidth() - INFO_WINDOW_WIDTH - SPLIT_DIVIDER_SIZE, MESSAGES_WINDOW_HEIGHT);
+        return new Dimension(container.getWidth() - INFO_WINDOW_WIDTH - ComponentFactory.SPLIT_DIVIDER_SIZE, MESSAGES_WINDOW_HEIGHT);
     }
 
     public static void main(String[] args) {

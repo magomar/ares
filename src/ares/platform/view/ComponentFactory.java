@@ -1,7 +1,6 @@
 package ares.platform.view;
 
 import ares.application.gui.menu.TranslucidButton;
-import ares.application.gui.menu.WelcomeScreen;
 import ares.platform.application.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -25,6 +24,10 @@ public abstract class ComponentFactory {
      * The highlight color for invalid fields.
      */
     public final static Color HIGHLIGHT_COLOR = new Color(255, 240, 240);
+    /**
+     * Size of split dividers
+     */
+    public static final int SPLIT_DIVIDER_SIZE = 5;
 
     public static JFrame frame(String title, JComponent contentPane, JMenuBar menuBar, JToolBar toolBar) {
         JFrame frame = new JFrame();
@@ -50,6 +53,23 @@ public abstract class ComponentFactory {
         return frame;
     }
 
+    public static JInternalFrame internalFrame(Container contentPane, String title) {
+        JInternalFrame internalFrame = new JInternalFrame();
+        internalFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        internalFrame.setResizable(true);
+        internalFrame.setClosable(true);
+        internalFrame.setMaximizable(true);
+        internalFrame.setIconifiable(true);
+        internalFrame.setPreferredSize(new Dimension(600, 400));
+        if (contentPane != null) {
+            internalFrame.setContentPane(contentPane);
+        }
+        if (title != null) {
+            internalFrame.setTitle(title);
+        }
+        return internalFrame;
+    }
+
     public static JPanel panel(LayoutManager layoutManager, String title) {
         JPanel panel = new JPanel();
         if (layoutManager != null) {
@@ -59,6 +79,20 @@ public abstract class ComponentFactory {
             panel.setBorder(new TitledBorder(title));
         }
         return panel;
+    }
+
+    public static JSplitPane verticalSplitPane(boolean continuosLayout, Component topComponent, Component bottomComponent, double resizeWeight) {
+        JSplitPane pane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, continuosLayout, topComponent, bottomComponent);
+        pane.setResizeWeight(resizeWeight);
+        pane.setDividerSize(SPLIT_DIVIDER_SIZE);
+        return pane;
+    }
+
+    public static JSplitPane horizontalSplitPane(boolean continuosLayout, Component leftComponent, Component rightComponent, double resizeWeight) {
+        JSplitPane pane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, continuosLayout, leftComponent, rightComponent);
+        pane.setResizeWeight(resizeWeight);
+        pane.setDividerSize(SPLIT_DIVIDER_SIZE);
+        return pane;
     }
 
     public static JLabel label(String text, Font font) {
@@ -117,23 +151,6 @@ public abstract class ComponentFactory {
         return table;
     }
 
-    public static JInternalFrame internalFrame(Container contentPane, String title) {
-        JInternalFrame internalFrame = new JInternalFrame();
-        internalFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        internalFrame.setResizable(true);
-        internalFrame.setClosable(true);
-        internalFrame.setMaximizable(true);
-        internalFrame.setIconifiable(true);
-        internalFrame.setPreferredSize(new Dimension(600, 400));
-        if (contentPane != null) {
-            internalFrame.setContentPane(contentPane);
-        }
-        if (title != null) {
-            internalFrame.setTitle(title);
-        }
-        return internalFrame;
-    }
-
     public static JTree tree(TreeModel treeModel, MouseListener mouseListener) {
         JTree tree = new JTree();
         tree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
@@ -146,6 +163,9 @@ public abstract class ComponentFactory {
         return tree;
     }
 
+    //------------------------------------------------
+    // Factories for menus
+    //--------------------------------------------------
     public static JPopupMenu popupMenu(Action... actions) {
         JPopupMenu popupMenu = new JPopupMenu();
         for (Action action : actions) {
@@ -191,7 +211,7 @@ public abstract class ComponentFactory {
         return menuItem(command, listener, true);
     }
 
-    //----------------------------------------------------------------------------
+//----------------------------------------------------------------------------
 //  Factories for standard spacing objects
 //----------------------------------------------------------------------------
     /**
