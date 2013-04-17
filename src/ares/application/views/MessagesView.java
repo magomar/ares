@@ -6,7 +6,6 @@ import ares.platform.view.AbstractView;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.*;
-import java.util.logging.Handler;
 import java.util.logging.Level;
 import javax.swing.*;
 

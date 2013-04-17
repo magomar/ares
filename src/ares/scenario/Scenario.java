@@ -10,7 +10,6 @@ import ares.platform.model.UserRole;
 import ares.scenario.assets.AssetTypes;
 import ares.scenario.board.Board;
 import ares.scenario.forces.Force;
-import java.lang.ref.WeakReference;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -25,7 +24,7 @@ import java.util.logging.Logger;
  */
 public final class Scenario implements ModelProvider<ScenarioModel> {
 
-    public AssetTypes assetTypes;
+    private AssetTypes assetTypes;
     private String name;
     private Board board;
     private Force[] forces;
@@ -58,7 +57,7 @@ public final class Scenario implements ModelProvider<ScenarioModel> {
         for (Force force : forces) {
             models.put(UserRole.getForceRole(force), new ScenarioModel(this, UserRole.getForceRole(force)));
         }
-//        assetTypes = null;
+        assetTypes = null;
     }
 
     public Board getBoard() {

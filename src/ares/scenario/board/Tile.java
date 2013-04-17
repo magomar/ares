@@ -92,7 +92,7 @@ public final class Tile implements ModelProvider<TileModel> {
      */
     private Map<Direction, CombatModifier> combatModifiers;
     /**
-     * Neighbour tiles in all valid directions. If there is no neighbor in one direction (which happens at the edges of
+     * Neighbor tiles in all valid directions. If there is no neighbor in one direction (which happens at the edges of
      * the board), then there would be no entry for that direction.
      */
     private Map<Direction, Tile> neighbors;
@@ -182,8 +182,7 @@ public final class Tile implements ModelProvider<TileModel> {
     }
 
     public void add(Unit unit) {
-        Set<Capability> capabilities = unit.getType().getCapabilities();
-        if (capabilities.contains(Capability.AIRCRAFT)) {
+        if (unit.isAircraft()) {
             units.addAirUnit((AirUnit) unit);
         } else {
             units.addSurfaceUnit((SurfaceUnit) unit);
@@ -191,6 +190,7 @@ public final class Tile implements ModelProvider<TileModel> {
             if (!force.equals(owner)) {
                 owner = force;
             }
+            // TODO review this
             if (units.getSurfaceUnits().size() == 1) {
                 knowledgeLevels.get(UserRole.getForceRole(force)).modify(KnowledgeCategory.COMPLETE.getLowerBound());
             }
@@ -315,11 +315,20 @@ public final class Tile implements ModelProvider<TileModel> {
     }
 
     public boolean hasEnemies(Force force) {
-        if (getSurfaceUnits().isEmpty()) {
-            return false;
+        if (!isAlliedTerritory(force) && !getSurfaceUnits().isEmpty()) {
+            return true;
         } else {
-            return owner.equals(force);
+            return false;
         }
+    }
+
+    public boolean hasEnemiesNearby(Force force) {
+        for (Tile neighbor : neighbors.values()) {
+            if (neighbor.hasEnemies(force)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
@@ -390,10 +399,10 @@ public final class Tile implements ModelProvider<TileModel> {
         for (Map.Entry<MovementType, Integer> entry : minimunCosts.entrySet()) {
             MovementType mt = entry.getKey();
             int cost = MovementCost.IMPASSABLE;
-            for (Map.Entry<Direction, Tile> neighbourEntry : neighbors.entrySet()) {
-                Direction dir = neighbourEntry.getKey();
-                Tile neighbour = neighbourEntry.getValue();
-                int neighborCost = neighbour.getEnterCost(dir.getOpposite()).getMovementCost(mt);
+            for (Map.Entry<Direction, Tile> neighborEntry : neighbors.entrySet()) {
+                Direction dir = neighborEntry.getKey();
+                Tile neighbor = neighborEntry.getValue();
+                int neighborCost = neighbor.getEnterCost(dir.getOpposite()).getMovementCost(mt);
                 if (neighborCost < cost) {
                     cost = neighborCost;
                 }
@@ -401,5 +410,9 @@ public final class Tile implements ModelProvider<TileModel> {
             minimunCosts.put(mt, cost);
         }
         return minimunCosts;
+    }
+    
+    public boolean isPlayable() {
+        return !features.contains(Feature.NON_PLAYABLE);
     }
 }

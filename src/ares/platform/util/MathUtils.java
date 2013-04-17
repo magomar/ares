@@ -17,5 +17,13 @@ public class MathUtils {
     public static int setLowerBound(int value, int lowerBound) {
         return Math.max(value, lowerBound);
     }
-    
+
+    public static int addBounded(int value, int addend, int upperBound) {
+        long result = ((long) value) + addend;
+        if (result > upperBound) {
+            return upperBound;
+        } else {
+            return (int) result;
+        }
+    }
 }

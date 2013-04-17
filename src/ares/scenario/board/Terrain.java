@@ -4,6 +4,7 @@ import ares.application.gui.AresGraphicsProfile;
 import ares.application.gui.providers.GraphicsProvider;
 import ares.application.gui.providers.ImageProviderType;
 import ares.application.gui.providers.MultiProfileImageProvider;
+import ares.engine.movement.MovementCost;
 import ares.io.FileIO;
 import java.awt.Dimension;
 import java.awt.Point;
@@ -20,15 +21,15 @@ public enum Terrain implements GraphicsProvider<AresGraphicsProfile> {
 //    OPEN(0, 0, 0, 0, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, Directionality.NONE),
     ARID(0, 0, 0, 0, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, false),
     SAND(1, 1, 1, 1, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, false),
-    DUNES(9999, 9999, 9999, 3, 1.0, 1.0, 1.0, 3.0, 2.0, Vision.NORMAL, false),
-    BADLANDS(9999, 9999, 9999, 2, 1.0, 1.0, 1.0, 4.0, 3.0, Vision.NORMAL, false),
+    DUNES(MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, 3, 1.0, 1.0, 1.0, 3.0, 2.0, Vision.NORMAL, false),
+    BADLANDS(MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, 2, 1.0, 1.0, 1.0, 4.0, 3.0, Vision.NORMAL, false),
     HILLS(2, 2, 2, 1, 1.0, 1.0, 1.0, 2.0, 1.5, Vision.NORMAL, false),
     MOUNTAINS(3, 3, 3, 3, 3.5, 1.5, 1.0, 3.0, 2.0, Vision.NORMAL, false),
-    ALPINE(9999, 9999, 9999, 9999, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.NORMAL, false),
+    ALPINE(MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.NORMAL, false),
     MARSH(3, 3, 3, 2, 2.0, 1.0, 1.0, 1.0, 1.0, Vision.NORMAL, false),
-    FLOODED_MARS(9999, 9999, 9999, 9999, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.NORMAL, false),
-    SHALLOW_WATER(9999, 9999, 9999, 9999, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, false),
-    DEEP_WATER(9999, 9999, 9999, 9999, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, false),
+    FLOODED_MARS(MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.NORMAL, false),
+    SHALLOW_WATER(MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, false),
+    DEEP_WATER(MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, false),
     CROPLANDS(1, 1, 1, 1, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.NORMAL, false),
     BOCAGE_HEDGEROW(2, 2, 2, 2, 2.0, 3.0, 1.0, 3.0, 1.5, Vision.RESTRICTED, false),
     URBAN(0, 0, 0, 0, 2.0, 1.0, 1.0, 3.0, 1.5, Vision.RESTRICTED, false),
@@ -37,12 +38,12 @@ public enum Terrain implements GraphicsProvider<AresGraphicsProfile> {
     DENSE_URBAN_RUIN(1, 1, 1, 1, 3.5, 1.0, 1.5, 4.0, 2.0, Vision.RESTRICTED, false),
     ROCKY(2, 2, 2, 1, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, false),
     ESCARPMENT(3, 3, 3, 2, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, true),
-    MAJOR_ESCARPMENT(9999, 9999, 9999, 9999, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, true),
+    MAJOR_ESCARPMENT(MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, true),
     WADY(2, 2, 2, 1, 1.0, 1.0, 1.0, 2.0, 1.5, Vision.NORMAL, false),
     RIVER(2, 0, 2, 2, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, false),
-    SUPER_RIVER(9999, 2, 9999, 9999, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, false),
+    SUPER_RIVER(MovementCost.IMPASSABLE, 2, MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, false),
     CANAL(2, 0, 2, 2, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, false),
-    SUPER_CANAL(9999, 2, 9999, 9999, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, false),
+    SUPER_CANAL(MovementCost.IMPASSABLE, 2, MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, false),
     EVERGREEN_FOREST(2, 2, 2, 2, 1.0, 1.0, 1.0, 2.0, 1.5, Vision.RESTRICTED, false),
     FOREST(2, 2, 2, 2, 1.0, 1.0, 1.0, 2.0, 1.5, Vision.RESTRICTED, false),
     LIGHT_WOODS(1, 1, 1, 1, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.NORMAL, false),

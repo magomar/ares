@@ -65,10 +65,6 @@ public abstract class MoveAction extends AbstractAction {
             // timeToNextMovement <= 0. If it is negative we can add it to the new timeToNextMovement as a way to not propagate the precision error each movement segment
             timeToNextMovement = (speed > 0 ? (int) (Scale.INSTANCE.getTileSize() / speed) + timeToNextMovement : Integer.MAX_VALUE);
         } 
-//        else { // this was the last partial movement, so movement action is complete
-//            timeToNextMovement = 0;
-//            timeToComplete = 0;
-//        }
     }
 
     @Override
