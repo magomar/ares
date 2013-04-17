@@ -94,7 +94,7 @@ public final class Board implements ModelProvider<BoardModel> {
     }
 
     /**
-     * Direction between to neighbour tiles
+     * Direction between to neighbor tiles
      *
      * @param from
      * @param to

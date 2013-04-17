@@ -210,7 +210,7 @@ public class AresGraphicsModel {
      *
      * The map is composed of sections which can be of two types: A or B, each one with 3 areas.
      *
-     * A sections are in odd columns. They have NW and SW neighbours, and the rest is the tile we want
+     * A sections are in odd columns. They have NW and SW neighbors, and the rest is the tile we want
      *
      * B sections are in even columns. areas: puff... easier done than explained.
      *
@@ -230,7 +230,7 @@ public class AresGraphicsModel {
         if ((section.x % 2) == 1) {
             //odd column
             if ((-getHexRise()) * pixelInSection.x + dy > pixelInSection.y) {
-                //Pixel is in the NW neighbour tile
+                //Pixel is in the NW neighbor tile
                 /*  ________
                  *  |x /    |
                  *  |<      |
@@ -261,7 +261,7 @@ public class AresGraphicsModel {
                 //upper side
                 if ((getHexRise() * pixelInSection.x) > pixelInSection.y) {
                     //right side
-                    /* Pixel is in the N neighbour tile
+                    /* Pixel is in the N neighbor tile
                      * ________
                      * | \  x  |
                      * |  >----|

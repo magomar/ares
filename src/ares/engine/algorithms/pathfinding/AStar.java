@@ -1,5 +1,6 @@
 package ares.engine.algorithms.pathfinding;
 
+import ares.engine.algorithms.pathfinding.costfunctions.CostFunctions;
 import ares.engine.algorithms.pathfinding.heuristics.Heuristic;
 import ares.engine.movement.MovementCost;
 import ares.scenario.Scenario;
@@ -36,7 +37,7 @@ public class AStar extends AbstractPathFinder {
         }
 
         BitSet closedSet = new BitSet(length);
-        // Map is used to have constant cost when getting neighbours
+        // Map is used to have constant cost when getting neighbors
         Map<Integer, Node> map = new HashMap<>();
         // openSet is ordered by F, lowest node.getF() will be at the top
         int initialCapacity = (int) (length / OPEN_SET_INITIAL_CAPACITY_DIVISOR);
@@ -67,25 +68,24 @@ public class AStar extends AbstractPathFinder {
                     // if current tile was already visited by the algorithm skip it
                     continue;
                 }
-                MovementCost mc = tile.getEnterCost(toDir);
-                double tentativeG = current.getG() + mc.getEstimatedCost(unit);
+                double tentativeG = current.getG() + CostFunctions.SHORTEST.getCost(toDir, destination, unit);
 
-                Node neighbour = map.get(index);
-                if (neighbour == null) {
-                    neighbour = new Node(tile, toDir, current, tentativeG, tentativeG + heuristic.getCost(tile, destination, unit));
-                    map.put(index, neighbour);
+                Node neighbor = map.get(index);
+                if (neighbor == null) {
+                    neighbor = new Node(tile, toDir, current, tentativeG, tentativeG + heuristic.getCost(tile, destination, unit));
+                    map.put(index, neighbor);
                     if (tentativeG < MovementCost.IMPASSABLE) {
-                        openSet.add(neighbour);
+                        openSet.add(neighbor);
                     }
-                } else if (neighbour.getG() > tentativeG) {
+                } else if (neighbor.getG() > tentativeG) {
                     Tile fromTile = current.getTile();
-                    Tile toTile = neighbour.getTile();
+                    Tile toTile = neighbor.getTile();
                     // Obtain direction relative to toTile
                     Direction dir = Board.getDirBetween(toTile, fromTile);
-                    neighbour.setDirection(dir);
-                    neighbour.setPrev(current);
-                    neighbour.setG(tentativeG);
-                    neighbour.setF(tentativeG + heuristic.getCost(neighbour.getTile(), destination, unit));
+                    neighbor.setDirection(dir);
+                    neighbor.setPrev(current);
+                    neighbor.setG(tentativeG);
+                    neighbor.setF(tentativeG + heuristic.getCost(neighbor.getTile(), destination, unit));
                 }
             }
             //assert current != null;
