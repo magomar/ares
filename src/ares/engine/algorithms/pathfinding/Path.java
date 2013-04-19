@@ -118,7 +118,6 @@ public class Path {
      */
     public int relink() {
 
-
         // No nodes in here!
         if (last == null) {
             return 0;

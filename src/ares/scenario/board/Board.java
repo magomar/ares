@@ -135,11 +135,6 @@ public final class Board implements ModelProvider<BoardModel> {
         return width;
     }
 
-    private static void getDistanceInMetersBetween(Tile from, Tile to) {
-        //TODO implement getDistanceInMetersBetween(Tile from, Tile to)
-        throw new UnsupportedOperationException("Not yet implemented");
-    }
-
     @Override
     public BoardModel getModel(UserRole role) {
         return models.get(role);

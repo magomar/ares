@@ -14,7 +14,6 @@ public class Node implements Comparable {
     private Tile tile;
     private Node prev;
     private Node next;
-    
     /**
      * Direction used to reach this node from previous node (ie. relative to this node)
      */
@@ -26,18 +25,23 @@ public class Node implements Comparable {
     /**
      * Estimated cost from this node to the goal
      */
+    private double h;
+    /**
+     * Estimated cost from start to the goal (g + h)
+     */
     private double f;
 
     public Node(Tile tile) {
         this.tile = tile;
     }
 
-    public Node(Tile tile, Direction direction, Node prev, double g, double f) {
+    public Node(Tile tile, Direction direction, Node prev, double g, double h) {
         this.tile = tile;
         this.direction = direction;
         this.prev = prev;
         this.g = g;
-        this.f = f;
+        this.h = h;
+        this.f = g + h;
     }
 
     public Tile getTile() {
@@ -76,46 +80,29 @@ public class Node implements Comparable {
         return g;
     }
 
-    public void setG(double g) {
-        this.g = g;
+    public double getH() {
+        return h;
     }
 
     public double getF() {
         return f;
     }
 
-    public void setF(double f) {
-        this.f = f;
+    public void setCost(double g, double h) {
+        this.g = g;
+        this.h = h;
+        f = g + h;
     }
 
     @Override
     public String toString() {
         return direction.name() + tile;
     }
-//    @Override
-//    public String toString() {
-//        return direction.name() + tile + "(g=" + g + ", f=" + f + ')';
-//    }
 
     public String toStringVerbose() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("[ ");
-        sb.append(" From: ");
-        sb.append(direction.name());
-        sb.append(" to (");
-        sb.append(tile.getCoordinates().x);
-        sb.append(",");
-        sb.append(tile.getCoordinates().y);
-        sb.append(") ");
-        sb.append(" F:(");
-        sb.append(f);
-        sb.append(")");
-        sb.append(" G:(");
-        sb.append(g);
-        sb.append(")");
-        sb.append(" ]\n");
-        return sb.toString();
+        return direction.name() + tile.toString() + "(g=" + g + ", f=" + f + ')';
     }
+
 
     @Override
     public int hashCode() {

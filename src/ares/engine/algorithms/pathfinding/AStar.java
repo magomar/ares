@@ -68,14 +68,14 @@ public class AStar extends AbstractPathFinder {
                 Tile tile = entry.getValue();
                 int index = tile.getIndex();
                 if (closedSet.get(index)) {
-                    // if current tile was already visited by the algorithm skip it
+                    // if current node has been fully explored (is in the closed set) then skip it
                     continue;
                 }
                 double tentativeG = current.getG() + costFunction.getCost(toDir, destination, unit);
 
                 Node neighbor = map.get(index);
                 if (neighbor == null) {
-                    neighbor = new Node(tile, toDir, current, tentativeG, tentativeG + heuristic.getCost(tile, destination, unit));
+                    neighbor = new Node(tile, toDir, current, tentativeG,heuristic.getCost(tile, destination, unit));
                     map.put(index, neighbor);
                     if (tentativeG < MovementCost.IMPASSABLE) {
                         openSet.add(neighbor);
@@ -87,8 +87,7 @@ public class AStar extends AbstractPathFinder {
                     Direction dir = Board.getDirBetween(toTile, fromTile);
                     neighbor.setDirection(dir);
                     neighbor.setPrev(current);
-                    neighbor.setG(tentativeG);
-                    neighbor.setF(tentativeG + heuristic.getCost(neighbor.getTile(), destination, unit));
+                    neighbor.setCost(tentativeG, heuristic.getCost(neighbor.getTile(), destination, unit));
                 }
             }
             //assert current != null;
