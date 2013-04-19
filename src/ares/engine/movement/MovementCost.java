@@ -179,7 +179,7 @@ public class MovementCost {
         // Chose minimun of on-road and off-road movement costs
         int maxCost;
         int cost;
-        if (offRoadcost > onRoadCost) {
+        if (offRoadcost < onRoadCost) {
             cost = offRoadcost;
             maxCost = moveType.getMaxOffRoadCost();
         } else {

@@ -1,5 +1,6 @@
 package ares.engine.algorithms.pathfinding;
 
+import ares.engine.algorithms.pathfinding.costfunctions.CostFunction;
 import ares.engine.algorithms.pathfinding.costfunctions.CostFunctions;
 import ares.engine.algorithms.pathfinding.heuristics.Heuristic;
 import ares.engine.movement.MovementCost;
@@ -19,11 +20,13 @@ public class AStar extends AbstractPathFinder {
 
     private static final int OPEN_SET_INITIAL_CAPACITY_DIVISOR = 4;
     private int length;
+    private final CostFunction costFunction = CostFunctions.FASTEST;
 
     public AStar(Heuristic heuristic, int length) {
         super(heuristic);
         this.length = length;
     }
+
     public AStar(Scenario scenario, Heuristic heuristic) {
         super(heuristic);
         this.length = scenario.getBoard().getWidth() * scenario.getBoard().getHeight();
@@ -68,7 +71,7 @@ public class AStar extends AbstractPathFinder {
                     // if current tile was already visited by the algorithm skip it
                     continue;
                 }
-                double tentativeG = current.getG() + CostFunctions.SHORTEST.getCost(toDir, destination, unit);
+                double tentativeG = current.getG() + costFunction.getCost(toDir, destination, unit);
 
                 Node neighbor = map.get(index);
                 if (neighbor == null) {

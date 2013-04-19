@@ -50,30 +50,31 @@ public class ArrowLayer extends AbstractImageLayer {
     private void paintArrow(Graphics2D g2, Path path, ArrowType type) {
         // Paint the last segment of the arrow
         Node last = path.getLast();
-        paintFinalArrowSegment(g2, last.getTile(), last.getDirection(), type);
+        paintFinalArrowSegment(g2, last, last.getDirection(), type);
         // Paint the intermediary segments
         Node current;
         for (current = last.getPrev(); current.getPrev() != null; last = current, current = last.getPrev()) {
             Direction from = current.getDirection();
             Direction to = last.getDirection().getOpposite();
-            paintArrowSegment(g2, current.getTile(), EnumSet.of(from, to), type);
+            paintArrowSegment(g2, current, EnumSet.of(from, to), type);
         }
         // Paint the final segment
         Direction to = last.getDirection().getOpposite();
-        paintArrowSegment(g2, current.getTile(), EnumSet.of(to), type);
+        paintArrowSegment(g2, current, EnumSet.of(to), type);
     }
 
     /**
-     * Paints a single arrow segment in the {@code tile} passed as argument, using the graphic identified by the
-     * {@code index} passed
+     * Paints a single arrow segment for the path {@code node} passed as argument
      *
-     * @param tile the tile where to paint an Arrow
-     * @param index the position of the arrow segment within the array of arrow images
+     * @param g2
+     * @param node
+     * @param direction
+     * @param type
      */
-    private void paintFinalArrowSegment(Graphics2D g2, Tile tile, Direction direction, ArrowType type) {
+    private void paintFinalArrowSegment(Graphics2D g2, Node node, Direction direction, ArrowType type) {
         BufferedImage arrowImage = null;
         AresGraphicsProfile profile = AresGraphicsModel.getProfile();
-        Point coordinates = Directions.getDirections(direction.ordinal()+25).getCoordinates();
+        Point coordinates = Directions.getDirections(direction.ordinal() + 25).getCoordinates();
         switch (type) {
             case GIVING_ORDERS:
                 arrowImage = unitArrow.getImage(profile, coordinates, AresIO.ARES_IO);
@@ -87,8 +88,11 @@ public class ArrowLayer extends AbstractImageLayer {
         if (arrowImage == null) {
             return;
         }
+        Tile tile = node.getTile();
         Point pos = AresGraphicsModel.tileToPixel(tile.getCoordinates());
         g2.drawImage(arrowImage, pos.x, pos.y, this);
+        int cost = (int) node.getG();
+        g2.drawString(Integer.toString(cost), pos.x + arrowImage.getWidth() / 2, pos.y + arrowImage.getHeight() / 2);
         repaint(pos.x, pos.y, arrowImage.getWidth(), arrowImage.getHeight());
     }
 
@@ -99,7 +103,7 @@ public class ArrowLayer extends AbstractImageLayer {
      * @param tile the tile where to paint an Arrow
      * @param index the position of the arrow segment within the array of arrow images
      */
-    private void paintArrowSegment(Graphics2D g2, Tile tile, Set<Direction> directions, ArrowType type) {
+    private void paintArrowSegment(Graphics2D g2, Node node, Set<Direction> directions, ArrowType type) {
         BufferedImage arrowImage = null;
         AresGraphicsProfile profile = AresGraphicsModel.getProfile();
         Point coordinates = Directions.getDirections(Direction.getBitmask(directions)).getCoordinates();
@@ -113,8 +117,14 @@ public class ArrowLayer extends AbstractImageLayer {
             default:
                 throw new AssertionError("Assertion failed: unkown image profile " + this);
         }
+        if (arrowImage == null) {
+            return;
+        }
+        Tile tile = node.getTile();
         Point pos = AresGraphicsModel.tileToPixel(tile.getCoordinates());
         g2.drawImage(arrowImage, pos.x, pos.y, this);
+        int cost = (int) node.getG();
+        g2.drawString(Integer.toString(cost), pos.x + arrowImage.getWidth() / 2, pos.y + arrowImage.getHeight() / 2);
         repaint(pos.x, pos.y, arrowImage.getWidth(), arrowImage.getHeight());
     }
 
