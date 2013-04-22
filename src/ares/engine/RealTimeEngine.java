@@ -18,6 +18,7 @@ import ares.scenario.board.Tile;
 import ares.scenario.forces.Force;
 import ares.scenario.forces.Formation;
 import ares.scenario.forces.Unit;
+import ares.test.Stopwatch;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -58,7 +59,7 @@ public class RealTimeEngine extends AbstractBean {
 //     */
 //    private ExecutorService executor;
     /**
-     * Action space is used to co-locate actions to find a solve interactions, eg. when several units participate in a
+     * Action space is used to co-locate actions to find and solve interactions, eg. when several units participate in a
      * single combat.
      */
     private ActionSpace actionSpace;
@@ -85,7 +86,7 @@ public class RealTimeEngine extends AbstractBean {
         Scenario oldValue = this.scenario;
         this.scenario = scenario;
         if (scenario != null) {
-            pathFinder = new AStar(scenario, new MinimunDistance(DistanceCalculator.DELTA));
+            pathFinder = new AStar(new MinimunDistance(DistanceCalculator.DELTA));
             for (Force force : scenario.getForces()) {
                 for (Formation formation : force.getFormations()) {
                     formations.add(formation);
@@ -102,13 +103,18 @@ public class RealTimeEngine extends AbstractBean {
     /**
      * Initial activation of an scenario to ensure all active formations have operational plans ready for execution.
      * This behavior is separated from method {@code setScenario()} because planning can be costly in some scenarios.
-     * That way the board can be rendered before computing all plans.
+     * That way the board can be rendered before actually computing plans.
      */
     public void activate() {
+        Stopwatch watch = new Stopwatch();
+        watch.start();
+
         if (Clock.INSTANCE.getTurn() == 0) {
             startNewTurn();
             schedule();
         }
+        watch.stop();
+        System.out.println("Activation " + watch);
     }
 
     private void startNewTurn() {

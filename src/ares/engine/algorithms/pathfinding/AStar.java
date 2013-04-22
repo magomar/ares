@@ -4,8 +4,6 @@ import ares.engine.algorithms.pathfinding.costfunctions.CostFunction;
 import ares.engine.algorithms.pathfinding.costfunctions.CostFunctions;
 import ares.engine.algorithms.pathfinding.heuristics.Heuristic;
 import ares.engine.movement.MovementCost;
-import ares.scenario.Scenario;
-import ares.scenario.board.Board;
 import ares.scenario.board.Direction;
 import ares.scenario.board.Tile;
 import ares.scenario.forces.Unit;
@@ -13,85 +11,100 @@ import java.util.*;
 
 /**
  *
- * @author Heine <heisncfr@inf.upv.es>
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class AStar extends AbstractPathFinder {
 
-    private static final int OPEN_SET_INITIAL_CAPACITY_DIVISOR = 4;
-    private int length;
+//    private static int nodes;
     private final CostFunction costFunction = CostFunctions.FASTEST;
 
-    public AStar(Heuristic heuristic, int length) {
+    public AStar(Heuristic heuristic) {
         super(heuristic);
-        this.length = length;
-    }
 
-    public AStar(Scenario scenario, Heuristic heuristic) {
-        super(heuristic);
-        this.length = scenario.getBoard().getWidth() * scenario.getBoard().getHeight();
     }
 
     @Override
     public Path getPath(Tile origin, Tile destination, Unit unit) {
+        // Create data structures
+        Map<Integer, Node> closedSet = new HashMap<>();
+        OpenSet openSet = new OpenSet();
+        Node firstNode = new Node(origin, Direction.C, null, 0, heuristic.getCost(origin, destination, unit));
+//        nodes = 1;
+        openSet.add(firstNode);
 
-        if (origin.equals(destination)) {
-            return null;
-        }
-
-        BitSet closedSet = new BitSet(length);
-        // Map is used to have constant cost when getting neighbors
-        Map<Integer, Node> map = new HashMap<>();
-        // openSet is ordered by F, lowest node.getF() will be at the top
-        int initialCapacity = (int) (length / OPEN_SET_INITIAL_CAPACITY_DIVISOR);
-        Queue<Node> openSet = new PriorityQueue<>(initialCapacity);
-
-        Node first = new Node(origin, Direction.C, null, 0, heuristic.getCost(origin, destination, unit));
-        map.put(origin.getIndex(), first);
-        openSet.add(first);
-
-        Node goal = new Node(destination);
-        Node current;
         while (!openSet.isEmpty()) {
-            // Take next node in openSet
-            current = openSet.remove();
-            if (current.equals(goal)) {
-                // Goal reached, returning path from first to current node
-                return new Path(first, current);
+            // Obtain next best node from openSet and add it to the closed in the 
+            Node bestNode = openSet.poll();
+            int bestNodeIndex = bestNode.getIndex();
+            closedSet.put(bestNodeIndex, bestNode);
+            // Check for termination
+            if (bestNode.getTile().equals(destination)) {
+                Path path = new Path(bestNode);
+                return path;
             }
-            // mark current as closed
-            closedSet.set(current.getTile().getIndex());
-            // Expand node
-            for (Map.Entry<Direction, Tile> entry : current.getTile().getNeighbors().entrySet()) {
+            // Expand best node (Generate successors)
+            for (Map.Entry<Direction, Tile> entry : bestNode.getTile().getNeighbors().entrySet()) {
                 Direction fromDir = entry.getKey();
                 Direction toDir = fromDir.getOpposite();
-                Tile tile = entry.getValue();
-                int index = tile.getIndex();
-                if (closedSet.get(index)) {
-                    // if current node has been fully explored (is in the closed set) then skip it
+                Tile neighbor = entry.getValue();
+                int neighborIndex = neighbor.getIndex();
+                double localCost = costFunction.getCost(toDir, neighbor, unit);
+                // Skip impassable neighbors
+                if (localCost >= MovementCost.IMPASSABLE) {
                     continue;
                 }
-                double tentativeG = current.getG() + costFunction.getCost(toDir, destination, unit);
-
-                Node neighbor = map.get(index);
-                if (neighbor == null) {
-                    neighbor = new Node(tile, toDir, current, tentativeG,heuristic.getCost(tile, destination, unit));
-                    map.put(index, neighbor);
-                    if (tentativeG < MovementCost.IMPASSABLE) {
-                        openSet.add(neighbor);
+                double tentative_g = bestNode.getG() + localCost;
+                Node neighborNode;
+                if (closedSet.containsKey(neighborIndex)) {
+                    neighborNode = closedSet.get(neighborIndex);
+                    if (tentative_g >= neighborNode.getG()) {
+                        continue;
                     }
-                } else if (neighbor.getG() > tentativeG) {
-                    Tile fromTile = current.getTile();
-                    Tile toTile = neighbor.getTile();
-                    // Obtain direction relative to toTile
-                    Direction dir = Board.getDirBetween(toTile, fromTile);
-                    neighbor.setDirection(dir);
-                    neighbor.setPrev(current);
-                    neighbor.setCost(tentativeG, heuristic.getCost(neighbor.getTile(), destination, unit));
+                }
+                if (openSet.contains(neighborIndex)) {
+                    neighborNode = openSet.get(neighborIndex);
+                    if (tentative_g < neighborNode.getG()) {
+                        neighborNode.setPrev(toDir, bestNode, tentative_g);
+                    }
+                } else {
+                    neighborNode = new Node(neighbor, toDir, bestNode, tentative_g, heuristic.getCost(neighbor, destination, unit));
+                    openSet.add(neighborNode);
+//                    nodes++;
                 }
             }
-            //assert current != null;
         }
         return null;
+    }
+
+    class OpenSet {
+
+        Queue<Node> list;
+        Map<Integer, Node> map;
+
+        OpenSet() {
+            list = new PriorityQueue<>();
+            map = new HashMap<>();
+        }
+
+        void add(Node node) {
+            list.add(node);
+            map.put(node.getIndex(), node);
+        }
+
+        Node poll() {
+            return list.poll();
+        }
+
+        boolean contains(int index) {
+            return map.containsKey(index);
+        }
+
+        Node get(int index) {
+            return map.get(index);
+        }
+
+        boolean isEmpty() {
+            return list.isEmpty();
+        }
     }
 }

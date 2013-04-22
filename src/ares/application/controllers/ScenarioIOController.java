@@ -4,6 +4,7 @@ import ares.application.boundaries.view.BoardViewer;
 import ares.application.boundaries.view.CommandBarViewer;
 import ares.application.boundaries.view.UnitInfoViewer;
 import ares.application.commands.FileCommands;
+import ares.application.gui.ProgressMonitor;
 import ares.application.models.ScenarioModel;
 import ares.application.gui.main.AresMenus;
 import ares.application.gui.main.AresPlayerGUI;
@@ -118,7 +119,6 @@ public final class ScenarioIOController extends AbstractSecondaryController {
             if (scenario != null) {
                 Container container = welcomeView.getContentPane();
                 container.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-
                 // Show the menu bar
                 menuView.setVisible(true);
                 mainView.switchCard(AresPlayerGUI.PLAY_CARD);

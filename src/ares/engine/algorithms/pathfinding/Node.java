@@ -9,11 +9,12 @@ import java.util.Objects;
  * @author Saúl Esteban
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public class Node implements Comparable {
+public class Node implements Comparable<Node> {
 
     private Tile tile;
     private Node prev;
     private Node next;
+
     /**
      * Direction used to reach this node from previous node (ie. relative to this node)
      */
@@ -35,10 +36,14 @@ public class Node implements Comparable {
         this.tile = tile;
     }
 
-    public Node(Tile tile, Direction direction, Node prev, double g, double h) {
-        this.tile = tile;
+    public Node(Tile tile, Direction direction, Node prev) {
+        this(tile);
         this.direction = direction;
         this.prev = prev;
+    }
+
+    public Node(Tile tile, Direction direction, Node prev, double g, double h) {
+        this(tile, direction, prev);
         this.g = g;
         this.h = h;
         this.f = g + h;
@@ -48,32 +53,31 @@ public class Node implements Comparable {
         return tile;
     }
 
-    public void setTile(Tile tile) {
-        this.tile = tile;
-    }
-
     public Node getPrev() {
         return prev;
     }
 
-    public void setPrev(Node prev) {
+    public void setPrev(Direction direction, Node prev, double g) {
+        this.direction = direction;
         this.prev = prev;
-    }
-
-    public Node getNext() {
-        return next;
+        this.g = g;
+        f = g + h;
     }
 
     public void setNext(Node next) {
         this.next = next;
     }
 
+    public int getIndex() {
+        return tile.getIndex();
+    }
+
     public Direction getDirection() {
         return direction;
     }
 
-    public void setDirection(Direction direction) {
-        this.direction = direction;
+    public Node getNext() {
+        return next;
     }
 
     public double getG() {
@@ -88,12 +92,6 @@ public class Node implements Comparable {
         return f;
     }
 
-    public void setCost(double g, double h) {
-        this.g = g;
-        this.h = h;
-        f = g + h;
-    }
-
     @Override
     public String toString() {
         return direction.name() + tile;
@@ -101,14 +99,6 @@ public class Node implements Comparable {
 
     public String toStringVerbose() {
         return direction.name() + tile.toString() + "(g=" + g + ", f=" + f + ')';
-    }
-
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 61 * hash + Objects.hashCode(this.tile);
-        return hash;
     }
 
     @Override
@@ -127,13 +117,19 @@ public class Node implements Comparable {
     }
 
     @Override
-    public int compareTo(Object o) {
-        Node n = (Node) o;
+    public int hashCode() {
+        int hash = 5;
+        hash = 59 * hash + Objects.hashCode(this.tile);
+        return hash;
+    }
 
-        if (f < n.f) {
+
+    @Override
+    public int compareTo(Node o) {
+        if (f < o.f) {
             return -1;
         }
-        if (f > n.f) {
+        if (f > o.f) {
             return 1;
         }
         return 0;

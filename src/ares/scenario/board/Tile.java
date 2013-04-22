@@ -332,13 +332,6 @@ public final class Tile implements ModelProvider<TileModel> {
     }
 
     @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 53 * hash + Objects.hashCode(this.coordinates);
-        return hash;
-    }
-
-    @Override
     public boolean equals(Object obj) {
         if (obj == null) {
             return false;
@@ -347,11 +340,20 @@ public final class Tile implements ModelProvider<TileModel> {
             return false;
         }
         final Tile other = (Tile) obj;
-        if (!Objects.equals(this.coordinates, other.coordinates)) {
+        if (this.index != other.index) {
             return false;
         }
         return true;
     }
+
+    @Override
+    public int hashCode() {
+//        int hash = 5;
+//        hash = 11 * hash + this.index;
+//        return hash;
+        return index;
+    }
+
 
     public KnowledgeLevel getKnowledgeLevel(UserRole userRole) {
         return knowledgeLevels.get(userRole);
