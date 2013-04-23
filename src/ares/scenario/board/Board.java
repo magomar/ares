@@ -94,7 +94,7 @@ public final class Board implements ModelProvider<BoardModel> {
     }
 
     /**
-     * Direction between to neighbour tiles
+     * Direction between to neighbor tiles
      *
      * @param from
      * @param to
@@ -133,11 +133,6 @@ public final class Board implements ModelProvider<BoardModel> {
 
     public int getWidth() {
         return width;
-    }
-
-    private static void getDistanceInMetersBetween(Tile from, Tile to) {
-        //TODO implement getDistanceInMetersBetween(Tile from, Tile to)
-        throw new UnsupportedOperationException("Not yet implemented");
     }
 
     @Override

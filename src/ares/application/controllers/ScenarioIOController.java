@@ -79,7 +79,7 @@ public final class ScenarioIOController extends AbstractSecondaryController {
             int returnVal = fc.showOpenDialog(mainView.getContentPane());
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 Container container = welcomeView.getContentPane();
-                container.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));               
+                container.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 File file = fc.getSelectedFile();
                 // Load scenario and equipment files
                 ares.data.jaxb.Scenario scen = AresIO.ARES_IO.unmarshallJson(file, ares.data.jaxb.Scenario.class);
@@ -108,7 +108,7 @@ public final class ScenarioIOController extends AbstractSecondaryController {
                     mainController.setUserRole(options[n]);
                     return scenario;
                 }
-                container.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));   
+                container.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
             }
             return null;
         }
@@ -118,8 +118,7 @@ public final class ScenarioIOController extends AbstractSecondaryController {
 
             if (scenario != null) {
                 Container container = welcomeView.getContentPane();
-                container.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));      
-
+                container.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 // Show the menu bar
                 menuView.setVisible(true);
                 mainView.switchCard(AresPlayerGUI.PLAY_CARD);
@@ -139,6 +138,7 @@ public final class ScenarioIOController extends AbstractSecondaryController {
                 String scenInfo = scenario.getName() + "\n" + Clock.INSTANCE.toStringVerbose() + "\nRole: " + mainController.getUserRole();
                 infoView.updateScenInfo(scenInfo);
                 container.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+                System.gc();
             }
         }
     }

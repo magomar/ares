@@ -6,6 +6,7 @@ import ares.engine.RealTimeEngine;
 import ares.platform.application.*;
 import ares.platform.model.UserRole;
 import ares.scenario.Scenario;
+import ares.test.Stopwatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.logging.*;

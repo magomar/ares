@@ -43,7 +43,6 @@ public class Formation implements ModelProvider<FormationModel> {
     private ProgrammedOpponent po;
     private boolean active;
 
-    // TODO each turn check for reinforcements and put them into the right unit collection
     public Formation(ares.data.jaxb.Formation formation, Force force, Scenario scenario) {
         id = formation.getId();
         name = formation.getName();
@@ -217,6 +216,7 @@ public class Formation implements ModelProvider<FormationModel> {
         return new FormationModel(this, role);
     }
 
+    // TODO each turn check for reinforcements and put them into the right unit collection
     public void plan(PathFinder pathFinder) {
         operationalPlan.updateObjectives();
         operationalPlan.plan(pathFinder);

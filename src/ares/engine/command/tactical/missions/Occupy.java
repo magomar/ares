@@ -34,8 +34,8 @@ public class Occupy extends TacticalMission {
             return;
         }
         Path path = pathFinder.getPath(unit.getLocation(), targetTile, unit);
-        if (path == null || path.relink() == -1) {
-            LOG.log(Level.WARNING, "No path found for {0}, or path.relink() failed", unit.toString());
+        if (path == null) {
+            LOG.log(Level.WARNING, "No path found for {0}", unit.toString());
             return;
         }
         LOG.log(Level.INFO, "New path for {0}: {1}", new Object[]{unit.toString(), path.toString()});

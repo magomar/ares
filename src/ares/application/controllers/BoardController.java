@@ -14,7 +14,7 @@ import ares.application.models.forces.UnitModel;
 import ares.application.views.MessagesHandler;
 import ares.engine.RealTimeEngine;
 import ares.engine.algorithms.pathfinding.heuristics.DistanceCalculator;
-import ares.engine.algorithms.pathfinding.heuristics.EnhancedMinimunDistance;
+import ares.engine.algorithms.pathfinding.heuristics.MinimunDistance;
 import ares.engine.command.tactical.TacticalMission;
 import ares.engine.command.tactical.TacticalMissionType;
 import ares.platform.controllers.AbstractSecondaryController;
@@ -48,12 +48,12 @@ public final class BoardController extends AbstractSecondaryController implement
         this.unitView = mainController.getInfoView();
         LOG.addHandler(mainController.getMessagesView().getHandler());
 
-        pathFinder = new AStar(new EnhancedMinimunDistance(DistanceCalculator.DELTA), 100);
+        pathFinder = new AStar(new MinimunDistance(DistanceCalculator.DELTA));
 
         boardView.addMouseListener(new BoardMouseListener());
         boardView.addMouseMotionListener(new BoardMouseMotionListener());
 
-         //Add change listeners to entities
+        //Add change listeners to entities
         mainController.getEngine().addPropertyChangeListener(this);
     }
 
@@ -170,7 +170,7 @@ public final class BoardController extends AbstractSecondaryController implement
                     }
                     Tile tile = scenario.getBoard().getTile(tilePoint.x, tilePoint.y);
                     Path path = pathFinder.getPath(selectedUnit.getLocation(), tile, selectedUnit);
-                    if (path == null || path.isEmpty()) {
+                    if (path == null || path.size() < 2) {
                         return;
                     }
                     boardView.updateArrowPath(scenario.getModel(mainController.getUserRole()), path);

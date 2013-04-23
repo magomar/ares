@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <schema version="1.0"
-        xmlns="http://www.w3.org/2001/XMLSchema"
-        elementFormDefault="qualified"
-        targetNamespace="ares"
-        xmlns:ar="ares">
+           xmlns="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified"
+           targetNamespace="ares"
+           xmlns:ar="ares">
     <include schemaLocation="AresEquipment.xsd"/>
     <include schemaLocation="AresScenario.xsd"/>
 </schema>
