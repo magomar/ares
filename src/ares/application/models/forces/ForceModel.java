@@ -52,12 +52,12 @@ public final class ForceModel extends RoleMediatedModel implements TreeModel {
 
     @Override
     public Object getRoot() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return force.getFormations().get(0);
     }
 
     @Override
     public Object getChild(Object parent, int index) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override

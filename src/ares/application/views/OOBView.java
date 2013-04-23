@@ -33,12 +33,11 @@ public class OOBView extends AbstractView<JScrollPane> implements OOBViewer {
         oobTree = new JTree[force.length];
         int index = 0;
         for (ForceModel forceModel : force) {
-            
-            oobTree[index++] = ComponentFactory.tree(null, null)
-            List<FormationModel> formations = forceModel.getFormationModels();
-            for (FormationModel formationModel : formations) {
-                
-            }
+            oobTree[index++] = ComponentFactory.tree(forceModel, null);
+//            List<FormationModel> formations = forceModel.getFormationModels();
+//            for (FormationModel formationModel : formations) {
+//                
+//            }
         }
     }
 
