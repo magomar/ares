@@ -7,7 +7,7 @@ import ares.application.gui.AresMiscGraphics;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.*;
 import ares.engine.knowledge.KnowledgeCategory;
-import ares.io.AresIO;
+import ares.application.io.AresIO;
 import ares.scenario.board.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;

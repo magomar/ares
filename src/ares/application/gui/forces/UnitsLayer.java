@@ -6,7 +6,7 @@ import ares.application.models.ScenarioModel;
 import ares.application.models.board.*;
 import ares.application.models.forces.*;
 import ares.engine.knowledge.KnowledgeCategory;
-import ares.io.AresIO;
+import ares.application.io.AresIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.*;

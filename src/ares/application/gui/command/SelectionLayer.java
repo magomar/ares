@@ -7,7 +7,7 @@ import ares.application.gui.AresMiscGraphics;
 import ares.application.models.board.*;
 import ares.application.models.forces.FormationModel;
 import ares.application.models.forces.UnitModel;
-import ares.io.AresIO;
+import ares.application.io.AresIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 

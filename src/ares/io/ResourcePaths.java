@@ -4,7 +4,7 @@ package ares.io;
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public enum AresPaths {
+public enum ResourcePaths {
 
     TEMP("Temp"),
     DATA("Data"),
@@ -17,7 +17,7 @@ public enum AresPaths {
     GRAPHICS_HIGH("Graphics/High");
     private final String path;
 
-    private AresPaths(final String path) {
+    private ResourcePaths(final String path) {
         this.path = path;
     }
 
