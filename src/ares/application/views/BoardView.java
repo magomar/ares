@@ -55,10 +55,10 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
         {gridLayer, selectionLayer, arrowLayer},
         // High level
         {unitsLayer}};
-    private final Thread[] layerThreads;
+//    private final Thread[] layerThreads;
 
     public BoardView() {
-        layerThreads = new Thread[imageLayers.length];
+//        layerThreads = new Thread[imageLayers.length];
     }
 
     @Override
@@ -75,9 +75,9 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
 
         // Add the last layer from each level to the layered pane
         layeredPane.add(terrainLayer, JLayeredPane.DEFAULT_LAYER);
-        layeredPane.add(gridLayer, JLayeredPane.DEFAULT_LAYER + 10);
-        layeredPane.add(arrowLayer, JLayeredPane.DEFAULT_LAYER + 20);
-        layeredPane.add(unitsLayer, JLayeredPane.DRAG_LAYER);
+        layeredPane.add(gridLayer, JLayeredPane.PALETTE_LAYER);
+        layeredPane.add(arrowLayer, JLayeredPane.MODAL_LAYER);
+        layeredPane.add(unitsLayer, JLayeredPane.POPUP_LAYER);
 
         JScrollPane scrollPane = new JScrollPane();
         scrollPane.add(layeredPane);
@@ -99,24 +99,25 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
         layeredPane.setPreferredSize(imageSize);
         layeredPane.setSize(imageSize);
         // Prepare each layer's thread
-        for (int depth = 0; depth < imageLayers.length; depth++) {
-            final int depthLevel = depth;
-            layerThreads[depth] = new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    for (int priority = 0; priority < imageLayers[depthLevel].length; priority++) {
-                        imageLayers[depthLevel][priority].initialize();
-                    }
-                }
-            });
-        }
+//        for (int depth = 0; depth < imageLayers.length; depth++) {
+//            final int depthLevel = depth;
+//            layerThreads[depth] = new Thread(new Runnable() {
+//                @Override
+//                public void run() {
+//                    for (int priority = 0; priority < imageLayers[depthLevel].length; priority++) {
+//                        imageLayers[depthLevel][priority].initialize();
+//                    }
+//                }
+//            });
+//        }
         // Setup laye sizes and the start threads
         for (int depthLevel = 0; depthLevel < imageLayers.length; depthLevel++) {
             for (int priority = 0; priority < imageLayers[depthLevel].length; priority++) {
                 imageLayers[depthLevel][priority].setPreferredSize(imageSize);
                 imageLayers[depthLevel][priority].setSize(imageSize);
+                imageLayers[depthLevel][priority].initialize();
             }
-            layerThreads[depthLevel].start();
+//            layerThreads[depthLevel].start();
         }
         // Render board: paint terrain and units
         terrainLayer.paintTerrain(scenario);
