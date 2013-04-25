@@ -16,8 +16,8 @@ import javax.swing.tree.*;
 public abstract class ComponentFactory {
 
     /**
-     * An "inter-component" horizontal space, also used as the standard inset from a frame to its content. This is the
-     * nominal "Em" space.
+     * An "inter-component" horizontal space, also used as the standard inset
+     * from a frame to its content. This is the nominal "Em" space.
      */
     public final static int STANDARD_SPACE = 12;
     /**
@@ -151,6 +151,15 @@ public abstract class ComponentFactory {
         return table;
     }
 
+    public static JTree tree(TreeModel treeModel) {
+        JTree tree = new JTree();
+        tree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
+        if (treeModel != null) {
+            tree.setModel(treeModel);
+        }
+        return tree;
+    }
+
     public static JTree tree(TreeModel treeModel, MouseListener mouseListener) {
         JTree tree = new JTree();
         tree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
@@ -224,8 +233,9 @@ public abstract class ComponentFactory {
     }
 
     /**
-     * The border to be used around a group of components in a dialog. Assumes that there will be a label above the
-     * group, and that there won't be decoration between groups.
+     * The border to be used around a group of components in a dialog. Assumes
+     * that there will be a label above the group, and that there won't be
+     * decoration between groups.
      */
     public static Border dialogGroupBorder() {
         return BorderFactory.createEmptyBorder(
@@ -246,7 +256,8 @@ public abstract class ComponentFactory {
 //  Factories for consistent GUI objects
 //----------------------------------------------------------------------------
     /**
-     * Builds a standard modal input dialog, with content and buttons to accept or cancel that content.
+     * Builds a standard modal input dialog, with content and buttons to accept
+     * or cancel that content.
      */
     public static JDialog newModalDialog(
             JFrame owner, String title,
@@ -276,7 +287,8 @@ public abstract class ComponentFactory {
     }
 
     /**
-     * Builds a standard modal input dialog, with content and buttons to accept or cancel that content.
+     * Builds a standard modal input dialog, with content and buttons to accept
+     * or cancel that content.
      */
     public static JDialog newModalDialog(
             JFrame owner, String title,

@@ -2,9 +2,9 @@ package ares.application.controllers;
 
 import ares.application.boundaries.view.BoardViewer;
 import ares.application.boundaries.view.CommandBarViewer;
+import ares.application.boundaries.view.OOBViewer;
 import ares.application.boundaries.view.UnitInfoViewer;
 import ares.application.commands.FileCommands;
-import ares.application.gui.ProgressMonitor;
 import ares.application.models.ScenarioModel;
 import ares.application.gui.main.AresMenus;
 import ares.application.gui.main.AresPlayerGUI;
@@ -42,6 +42,7 @@ public final class ScenarioIOController extends AbstractSecondaryController {
     private final CommandBarViewer welcomeView;
     private final BoardViewer boardView;
     private final UnitInfoViewer infoView;
+    private final OOBViewer oobView;
 
     public ScenarioIOController(WeGoPlayerController mainController) {
         super(mainController);
@@ -50,6 +51,7 @@ public final class ScenarioIOController extends AbstractSecondaryController {
         this.boardView = mainController.getBoardView();
         this.infoView = mainController.getInfoView();
         this.welcomeView = mainController.getWelcomeScreenView();
+        this.oobView = mainController.getOobView();
         LOG.addHandler(mainController.getMessagesView().getHandler());
 
         //Create & add listeners to the views
@@ -118,7 +120,7 @@ public final class ScenarioIOController extends AbstractSecondaryController {
 
             if (scenario != null) {
                 Container container = welcomeView.getContentPane();
-                container.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                
                 // Show the menu bar
                 menuView.setVisible(true);
                 mainView.switchCard(AresPlayerGUI.PLAY_CARD);
@@ -137,6 +139,7 @@ public final class ScenarioIOController extends AbstractSecondaryController {
                 menuView.setCommandEnabled(AresMenus.ENGINE_MENU.getName(), true);
                 String scenInfo = scenario.getName() + "\n" + Clock.INSTANCE.toStringVerbose() + "\nRole: " + mainController.getUserRole();
                 infoView.updateScenInfo(scenInfo);
+                oobView.loadScenario(scenarioModel);
                 container.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
                 System.gc();
             }

@@ -106,6 +106,10 @@ public class WeGoPlayerController {
         return messagesView;
     }
 
+    public OOBViewer getOobView() {
+        return oobView;
+    }
+
     public CommandBarViewer getWelcomeScreenView() {
         return welcomeScreenView;
     }

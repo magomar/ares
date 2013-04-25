@@ -3,11 +3,8 @@ package ares.application.views;
 import ares.application.boundaries.view.OOBViewer;
 import ares.application.models.ScenarioModel;
 import ares.application.models.forces.ForceModel;
-import ares.application.models.forces.FormationModel;
 import ares.platform.view.AbstractView;
 import ares.platform.view.ComponentFactory;
-import java.awt.Component;
-import java.util.List;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTree;
@@ -33,11 +30,10 @@ public class OOBView extends AbstractView<JScrollPane> implements OOBViewer {
         oobTree = new JTree[force.length];
         int index = 0;
         for (ForceModel forceModel : force) {
-            oobTree[index++] = ComponentFactory.tree(forceModel, null);
-//            List<FormationModel> formations = forceModel.getFormationModels();
-//            for (FormationModel formationModel : formations) {
-//                
-//            }
+            JTree tree = ComponentFactory.tree(forceModel.getTreeModel());
+            tree.setName(forceModel.getName());
+            tabbedPane.add(tree);
+            oobTree[index++] = tree;
         }
     }
 

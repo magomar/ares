@@ -5,15 +5,13 @@ import ares.platform.model.UserRole;
 import ares.scenario.forces.Formation;
 import ares.scenario.forces.Unit;
 import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.List;
-import javax.swing.tree.TreeNode;
 
 /**
  *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
-public class FormationModel extends RoleMediatedModel implements TreeNode {
+public class FormationModel extends RoleMediatedModel {
 
     private final Formation formation;
 
@@ -46,46 +44,5 @@ public class FormationModel extends RoleMediatedModel implements TreeNode {
             }
         }
         return unitModels;
-    }
-
-    @Override
-    public TreeNode getChildAt(int childIndex) {
-        List<Formation> subordinates = formation.getSubordinates();
-        int numSubordinates = subordinates.size();
-        if (childIndex < numSubordinates) {
-            return subordinates.get(childIndex).getModel(userRole);
-        } else {
-            return formation.getAvailableUnits().get(childIndex - numSubordinates).getModel(userRole);
-        }
-    }
-
-    @Override
-    public int getChildCount() {
-        return formation.getAvailableUnits().size() + formation.getSubordinates().size();
-    }
-
-    @Override
-    public TreeNode getParent() {
-        return formation.getSuperior().getModel(userRole);
-    }
-
-    @Override
-    public int getIndex(TreeNode node) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean getAllowsChildren() {
-        return true;
-    }
-
-    @Override
-    public boolean isLeaf() {
-        return false;
-    }
-
-    @Override
-    public Enumeration children() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

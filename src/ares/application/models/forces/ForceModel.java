@@ -6,18 +6,22 @@ import ares.scenario.forces.Force;
 import ares.scenario.forces.Formation;
 import ares.scenario.forces.Unit;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import javax.swing.event.TreeModelListener;
+import java.util.Map;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.MutableTreeNode;
 import javax.swing.tree.TreeModel;
-import javax.swing.tree.TreePath;
+import javax.swing.tree.TreeNode;
 
 /**
  *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
-public final class ForceModel extends RoleMediatedModel implements TreeModel {
+public final class ForceModel extends RoleMediatedModel {
 
-    protected final Force force;
+    private final Force force;
 
     public ForceModel(Force force, UserRole role) {
         super(role);
@@ -50,43 +54,29 @@ public final class ForceModel extends RoleMediatedModel implements TreeModel {
         return formations;
     }
 
-    @Override
-    public Object getRoot() {
-        return force.getFormations().get(0);
+    public TreeModel getTreeModel() {
+        Map<Formation, MutableTreeNode> formationNodes = new HashMap<>();
+        for (Formation formation : force.getFormations()) {
+            MutableTreeNode formationNode = new DefaultMutableTreeNode(formation.getName());
+            formationNodes.put(formation, formationNode);
+        }
+        Formation top = force.getFormations().get(0);
+        MutableTreeNode root = formationNodes.get(top);
+        DefaultTreeModel treeModel = new DefaultTreeModel(root);
+        for (Unit unit : force.getActiveUnits()) {
+            MutableTreeNode unitNode = new DefaultMutableTreeNode(unit.getName());
+            MutableTreeNode parent = formationNodes.get(unit.getFormation());
+            treeModel.insertNodeInto(unitNode, parent, parent.getChildCount());
+        }
+        for (Formation formation : force.getFormations()) {
+            Formation superior = formation.getSuperior();
+            if (!formation.equals(top)) {
+                MutableTreeNode node = formationNodes.get(formation);
+                MutableTreeNode parent = formationNodes.get(superior);
+                treeModel.insertNodeInto(node, parent, parent.getChildCount());
+            }
+        }
+        return treeModel;
     }
 
-    @Override
-    public Object getChild(Object parent, int index) {
-        
-    }
-
-    @Override
-    public int getChildCount(Object parent) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean isLeaf(Object node) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void valueForPathChanged(TreePath path, Object newValue) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public int getIndexOfChild(Object parent, Object child) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void addTreeModelListener(TreeModelListener l) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void removeTreeModelListener(TreeModelListener l) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }
