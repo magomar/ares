@@ -3,7 +3,7 @@ package ares.application.gui.board;
 import ares.application.gui.AbstractImageLayer;
 import ares.application.gui.AresMiscGraphics;
 import ares.application.gui.AresGraphicsModel;
-import ares.io.AresIO;
+import ares.application.io.AresIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 

@@ -8,7 +8,7 @@ import ares.application.gui.AresGraphicsModel;
 import ares.application.gui.AbstractImageLayer;
 import ares.application.gui.AresGraphicsProfile;
 import ares.application.gui.AresMiscGraphics;
-import ares.io.AresIO;
+import ares.application.io.AresIO;
 import ares.scenario.board.Direction;
 import ares.scenario.board.Directions;
 import ares.scenario.board.Tile;

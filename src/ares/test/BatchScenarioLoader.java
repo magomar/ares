@@ -3,8 +3,8 @@ package ares.test;
 import ares.data.jaxb.EquipmentDB;
 import ares.data.jaxb.Scenario;
 import ares.io.AresFileType;
-import ares.io.AresIO;
-import ares.io.AresPaths;
+import ares.application.io.AresIO;
+import ares.io.ResourcePaths;
 import ares.io.FileIO;
 import java.io.File;
 import java.io.FilenameFilter;
@@ -28,7 +28,7 @@ public class BatchScenarioLoader {
     private static final Logger LOG = Logger.getLogger(BatchScenarioLoader.class.getName());
 
     public static EquipmentDB loadEquipment() {
-        File equipmentFile = AresIO.ARES_IO.getAbsolutePath(AresPaths.EQUIPMENT.getPath(), "ToawEquipment.equipment").toFile();
+        File equipmentFile = AresIO.ARES_IO.getAbsolutePath(ResourcePaths.EQUIPMENT.getPath(), "ToawEquipment.equipment").toFile();
         EquipmentDB eqp = (EquipmentDB) AresIO.ARES_IO.unmarshallJson(equipmentFile, EquipmentDB.class);
         Logger.getLogger(LoadTestGame.class.getName()).log(Level.INFO, "Equipment database opened: {0}", equipmentFile.getName());
         return eqp;
@@ -39,7 +39,7 @@ public class BatchScenarioLoader {
         Stopwatch sw = new Stopwatch();
         int totalFiles = 0;
         sw.start();
-        Path targetPath = AresIO.ARES_IO.getAbsolutePath(AresPaths.SCENARIOS.getPath(), scenarioPath);
+        Path targetPath = AresIO.ARES_IO.getAbsolutePath(ResourcePaths.SCENARIOS.getPath(), scenarioPath);
         Collection<File> files = listFiles(targetPath.toFile(), AresFileType.SCENARIO.getFileTypeFilter(), true);
         for (File file : files) {
             Scenario scen = AresIO.ARES_IO.unmarshallJson(file, Scenario.class);

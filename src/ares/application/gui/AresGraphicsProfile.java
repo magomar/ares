@@ -1,6 +1,6 @@
 package ares.application.gui;
 
-import ares.io.AresPaths;
+import ares.io.ResourcePaths;
 
 /**
  *
@@ -9,19 +9,19 @@ import ares.io.AresPaths;
 public enum AresGraphicsProfile implements GraphicsProfile {
 
     // Units (Width,Height), Terrain(W,H), Hex(Side,Offset,rise), Path
-    SMALL(272, 128, 216, 192, 13, 21, 1.833, AresPaths.GRAPHICS_SMALL.getPath()) {
+    SMALL(272, 128, 216, 192, 13, 21, 1.833, ResourcePaths.GRAPHICS_SMALL.getPath()) {
         @Override
         public String getFilename(String filename) {
             return "s_" + filename;
         }
     },
-    MEDIUM(496, 248, 408, 352, 28, 39, 1.833, AresPaths.GRAPHICS_MEDIUM.getPath()) {
+    MEDIUM(496, 248, 408, 352, 28, 39, 1.833, ResourcePaths.GRAPHICS_MEDIUM.getPath()) {
         @Override
         public String getFilename(String filename) {
             return "m_" + filename;
         }
     },
-    HIGH(992, 496, 816, 704, 51, 78, 1.833, AresPaths.GRAPHICS_HIGH.getPath()) {
+    HIGH(992, 496, 816, 704, 51, 78, 1.833, ResourcePaths.GRAPHICS_HIGH.getPath()) {
         @Override
         public String getFilename(String filename) {
             return "h_" + filename;
