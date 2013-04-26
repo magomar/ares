@@ -12,16 +12,11 @@ import ares.application.models.ScenarioModel;
 import ares.application.models.board.*;
 import ares.application.models.forces.FormationModel;
 import ares.application.models.forces.UnitModel;
-import ares.engine.action.Action;
-import ares.engine.action.actions.MoveAction;
 import ares.engine.algorithms.pathfinding.Path;
-import ares.engine.command.tactical.TacticalMission;
 import ares.platform.view.AbstractView;
 import java.awt.*;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-import java.util.ArrayList;
-import java.util.Collection;
 import javax.swing.JLayeredPane;
 import javax.swing.JScrollPane;
 
@@ -162,20 +157,6 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
     @Override
     public void updateSelectedUnit(UnitModel selectedUnit, FormationModel formation, ScenarioModel scenario) {
         selectionLayer.paintSelectedUnit(selectedUnit, formation);
-        if (selectedUnit == null) {
-            arrowLayer.paintArrows(null);
-            return;
-        }
-        Collection<Path> paths = new ArrayList<>();
-        for (UnitModel unit : formation.getUnitModels()) {
-            TacticalMission mission = unit.getTacticalMission();
-            Action action = mission.getCurrentAction();
-            if (action instanceof MoveAction) {
-                MoveAction move = (MoveAction) action;
-                paths.add(move.getPath());
-            }
-        }
-        arrowLayer.paintArrows(paths);
     }
 
     @Override
