@@ -60,17 +60,18 @@ public abstract class AbstractImageLayer extends javax.swing.JPanel implements I
      */
     @Override
     public void paintComponent(Graphics g) {
+        super.paintComponent(g);
         if (parentLayer != null) {
             parentLayer.updateLayer();
         }
-        super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         if (globalImage != null) {
             g2.drawImage(globalImage, 0, 0, this);
-        } else {
+        }
+//        else {
 //            g2.setBackground(Color.BLACK);
 //            g2.fillRect(0, 0, this.getWidth(), this.getHeight());
-        }
+//        }
     }
 
     @Override

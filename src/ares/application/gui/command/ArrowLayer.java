@@ -25,7 +25,7 @@ public class ArrowLayer extends AbstractImageLayer {
 
     private final AresMiscGraphics unitArrow = AresMiscGraphics.RED_ARROWS;
     private final AresMiscGraphics formationArrow = AresMiscGraphics.GRAY_ARROWS;
-    private Path currentPath;
+    private Path activePath;
     private Collection<Path> plannedPaths;
 
     public ArrowLayer(AbstractImageLayer parentLayer) {
@@ -41,10 +41,30 @@ public class ArrowLayer extends AbstractImageLayer {
                 paintArrow(g2, path, ArrowType.CURRENT_ORDERS);
             }
         }
-        if (currentPath != null) {
-            paintArrow(g2, currentPath, ArrowType.GIVING_ORDERS);
+        if (activePath != null) {
+            paintArrow(g2, activePath, ArrowType.GIVING_ORDERS);
         }
         g2.dispose();
+    }
+
+    /**
+     * Paints complete arrow for the {@code path} passed as argument
+     *
+     * @param activePath
+     */
+    public void paintSelectedUnitArrow(Path activePath) {
+        this.activePath = activePath;
+        updateLayer();
+    }
+
+    /**
+     * Paints complete arrows for the {@code plannedPaths} passed as argument
+     *
+     * @param path
+     */
+    public void paintFormationArrows(Collection<Path> plannedPaths) {
+        this.plannedPaths = plannedPaths;
+        updateLayer();
     }
 
     private void paintArrow(Graphics2D g2, Path path, ArrowType type) {
@@ -64,7 +84,8 @@ public class ArrowLayer extends AbstractImageLayer {
     }
 
     /**
-     * Paints a single arrow segment for the path {@code node} passed as argument
+     * Paints a single arrow segment for the path {@code node} passed as
+     * argument
      *
      * @param g2
      * @param node
@@ -97,11 +118,12 @@ public class ArrowLayer extends AbstractImageLayer {
     }
 
     /**
-     * Paints a single arrow segment in the {@code tile} passed as argument, using the graphic identified by the
-     * {@code index} passed
+     * Paints a single arrow segment in the {@code tile} passed as argument,
+     * using the graphic identified by the {@code index} passed
      *
      * @param tile the tile where to paint an Arrow
-     * @param index the position of the arrow segment within the array of arrow images
+     * @param index the position of the arrow segment within the array of arrow
+     * images
      */
     private void paintArrowSegment(Graphics2D g2, Node node, Set<Direction> directions, ArrowType type) {
         BufferedImage arrowImage = null;
@@ -126,25 +148,5 @@ public class ArrowLayer extends AbstractImageLayer {
         int cost = (int) node.getG();
         g2.drawString(Integer.toString(cost), pos.x + arrowImage.getWidth() / 2, pos.y + arrowImage.getHeight() / 2);
         repaint(pos.x, pos.y, arrowImage.getWidth(), arrowImage.getHeight());
-    }
-
-    /**
-     * Paints complete arrow for the {@code path} passed as argument
-     *
-     * @param currentPath
-     */
-    public void paintArrow(Path currentPath) {
-        this.currentPath = currentPath;
-        updateLayer();
-    }
-
-    /**
-     * Paints complete arrow for the {@code path} passed as argument
-     *
-     * @param path
-     */
-    public void paintArrows(Collection<Path> plannedPaths) {
-        this.plannedPaths = plannedPaths;
-        updateLayer();
     }
 }

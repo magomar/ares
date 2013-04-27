@@ -20,24 +20,24 @@ public class SelectionLayer extends AbstractImageLayer {
 
     private final AresMiscGraphics brassCursor = AresMiscGraphics.BRASS_CURSOR;
     private final AresMiscGraphics steelCursor = AresMiscGraphics.STEEL_CURSOR;
-    private UnitModel unit;
+    private UnitModel selectedUnit;
     private FormationModel formation;
 
     @Override
     protected void updateLayer() {
         initialize();
-        if (unit == null) {
+        if (selectedUnit == null) {
             return;
         }
         Graphics2D g2 = globalImage.createGraphics();
         AresGraphicsProfile profile = AresGraphicsModel.getProfile();
         for (UnitModel u : formation.getUnitModels()) {
-            if (!u.equals(unit)) {
+            if (!u.equals(selectedUnit)) {
                 TileModel t = u.getLocation();
                 paintCursor(g2, u.getLocation(), steelCursor.getImage(profile, AresIO.ARES_IO));
             }
         }
-        paintCursor(g2, unit.getLocation(), brassCursor.getImage(profile, AresIO.ARES_IO));
+        paintCursor(g2, selectedUnit.getLocation(), brassCursor.getImage(profile, AresIO.ARES_IO));
         g2.dispose();
     }
 
@@ -45,7 +45,6 @@ public class SelectionLayer extends AbstractImageLayer {
         Point pos = AresGraphicsModel.tileToPixel(tile.getCoordinates());
         g2.drawImage(image, pos.x, pos.y, this);
         repaint(pos.x, pos.y, image.getWidth(), image.getHeight());
-//        paintImmediately(pos.x, pos.y, brassCursorImage.get().getWidth(), brassCursorImage.get().getHeight());
     }
 
     /**
@@ -55,7 +54,7 @@ public class SelectionLayer extends AbstractImageLayer {
      * @param formation
      */
     public void paintSelectedUnit(UnitModel unit, FormationModel formation) {
-        this.unit = unit;
+        this.selectedUnit = unit;
         this.formation = formation;
         updateLayer();
     }

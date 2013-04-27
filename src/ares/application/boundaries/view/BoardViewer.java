@@ -27,7 +27,7 @@ public interface BoardViewer extends View {
 
     public void addMouseMotionListener(MouseMotionListener listener);
 
-    public void updateArrowPath(ScenarioModel s, Path path);
+    public void updateArrowPath(Path path);
 
-    public void updateSelectedUnit(UnitModel selectedUnit, FormationModel formation, ScenarioModel scenario);
+    public void updateSelectedUnit(UnitModel selectedUnit, FormationModel formation);
 }

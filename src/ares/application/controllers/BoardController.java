@@ -117,9 +117,8 @@ public final class BoardController extends AbstractSecondaryController implement
                 if (interactionMode == InteractionMode.UNIT_ORDERS) {
                     UnitModel unit = selectedUnit.getModel(role);
                     FormationModel formation = selectedUnit.getFormation().getModel(role);
-                    ScenarioModel scenario = mainController.getScenario().getModel(role);
-                    boardView.updateSelectedUnit(unit, formation, scenario);
-                    boardView.updateArrowPath(scenario, null);
+                    boardView.updateSelectedUnit(unit, formation);
+                    boardView.updateArrowPath(null);
                 }
 
             }
@@ -133,8 +132,9 @@ public final class BoardController extends AbstractSecondaryController implement
             selectedUnit = null;
             interactionMode = InteractionMode.FREE;
             unitView.clear();
-            boardView.updateSelectedUnit(null, null, null);
-            boardView.updateArrowPath(null, null);
+            boardView.updateArrowPath(null);
+            // the order matters here, updateSelectedUnit must be done after updateArrowPath, or updateArrowPath will have no effect
+            boardView.updateSelectedUnit(null, null);
         }
     }
 
@@ -148,11 +148,6 @@ public final class BoardController extends AbstractSecondaryController implement
             Tile targetLocation = scenario.getBoard().getTile(tilePoint.x, tilePoint.y);
             TacticalMission mission = TacticalMissionType.OCCUPY.getNewTacticalMission(selectedUnit, targetLocation, pathFinder);
             selectedUnit.setMission(mission);
-            UserRole role = mainController.getUserRole();
-            UnitModel unit = selectedUnit.getModel(role);
-            FormationModel formation = selectedUnit.getFormation().getModel(role);
-            boardView.updateSelectedUnit(unit, formation, scenario.getModel(role));
-
         }
     }
 
@@ -173,7 +168,7 @@ public final class BoardController extends AbstractSecondaryController implement
                     if (path == null || path.size() < 2) {
                         return;
                     }
-                    boardView.updateArrowPath(scenario.getModel(mainController.getUserRole()), path);
+                    boardView.updateArrowPath(path);
                 }
             }
         }
