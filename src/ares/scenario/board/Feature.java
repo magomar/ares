@@ -1,7 +1,7 @@
 package ares.scenario.board;
 
 import ares.application.gui.AresGraphicsProfile;
-import ares.application.gui.AresMiscGraphics;
+import ares.application.gui.providers.AresMiscGraphics;
 import ares.application.gui.providers.GraphicsProvider;
 import ares.io.FileIO;
 import java.awt.Dimension;

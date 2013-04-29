@@ -16,7 +16,7 @@ public class Path {
      * @param first
      * @param last
      */
-    public Path(Node last) {
+    public Path(Node first, Node last) {
         this.last = last;
         size = 1;
         Node current = last;
@@ -26,8 +26,13 @@ public class Path {
             current = prev;
             prev = current.getPrev();
             size++;
+            if (current.equals(first)) {
+                this.first = current;
+                return;
+            }
         }
-        first = current;
+        throw new IllegalArgumentException("First node not reachable from last node");
+
     }
 
     public Node getFirst() {
@@ -57,5 +62,9 @@ public class Path {
 
     public int size() {
         return size;
+    }
+
+    public Path subPath(Node node) {
+        return new Path(node, last);
     }
 }

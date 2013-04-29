@@ -1,7 +1,7 @@
 package ares.application.gui.board;
 
 import ares.application.gui.AbstractImageLayer;
-import ares.application.gui.AresMiscGraphics;
+import ares.application.gui.providers.AresMiscGraphics;
 import ares.application.gui.AresGraphicsModel;
 import ares.application.io.AresIO;
 import java.awt.*;

@@ -12,16 +12,15 @@ import ares.application.models.ScenarioModel;
 import ares.application.models.board.*;
 import ares.application.models.forces.FormationModel;
 import ares.application.models.forces.UnitModel;
-import ares.engine.action.Action;
-import ares.engine.action.actions.MoveAction;
 import ares.engine.algorithms.pathfinding.Path;
 import ares.engine.command.tactical.TacticalMission;
 import ares.platform.view.AbstractView;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 import javax.swing.JLayeredPane;
 import javax.swing.JScrollPane;
 
@@ -44,9 +43,8 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
     /**
      * This matrix has all the layers sorted by depth and priority.
      *
-     * First level (index 0) is the array with all the existing layers Next
-     * indexes are set in such way that the bigger it is the "closer" is to the
-     * user. Layers are processed in index order (from left to right)
+     * First level (index 0) is the array with all the existing layers Next indexes are set in such way that the bigger
+     * it is the "closer" is to the user. Layers are processed in index order (from left to right)
      */
     private final ImageLayer[][] imageLayers = {
         // Low level
@@ -155,31 +153,31 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
     }
 
     @Override
-    public void updateArrowPath(Path path) {
-        arrowLayer.paintSelectedUnitArrow(path);
+    public void updateCurrentOrders(Path path) {
+        arrowLayer.paintCurrentOrders(path);
+    }
+
+    @Override
+    public void updateLastOrders(Path path) {
+        arrowLayer.paintLastOrders(path);
     }
 
     @Override
     public void updateSelectedUnit(UnitModel selectedUnit, FormationModel formation) {
         selectionLayer.paintSelectedUnit(selectedUnit, formation);
         if (selectedUnit == null) {
-            arrowLayer.paintFormationArrows(null);
+            arrowLayer.paintPlannedOrders(null);
             return;
         }
-        Collection<Path> paths = new ArrayList<>();
+        List<Path> paths = new ArrayList<>();
         for (UnitModel unit : formation.getUnitModels()) {
             TacticalMission mission = unit.getTacticalMission();
-            Action action = mission.getCurrentAction();
-            if (action instanceof MoveAction) {
-                paths.add(((MoveAction) action).getPath());
-            } else {
-                Action nextAction = mission.getPendingActions().peek();
-                if (nextAction instanceof MoveAction) {
-                    paths.add(((MoveAction) nextAction).getPath());
-                }
+            Path path = mission.getPath();
+            if (path != null) {
+                paths.add(path);
             }
         }
-        arrowLayer.paintFormationArrows(paths);
+        arrowLayer.paintPlannedOrders(paths);
     }
 
     @Override

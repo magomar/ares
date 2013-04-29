@@ -4,12 +4,11 @@ import ares.engine.action.Action;
 import ares.engine.action.ActionSpace;
 import ares.engine.action.ActionState;
 import ares.engine.action.ActionType;
-import ares.engine.action.actions.CombatAction;
 import ares.engine.action.actions.MoveAction;
 import ares.engine.action.actions.RestAction;
 import ares.engine.action.actions.WaitAction;
+import ares.engine.algorithms.pathfinding.Path;
 import ares.engine.algorithms.pathfinding.PathFinder;
-import ares.engine.command.tactical.missions.Occupy;
 import ares.scenario.board.Tile;
 import ares.scenario.forces.Unit;
 import java.util.Deque;
@@ -188,5 +187,21 @@ public abstract class TacticalMission {
         sb.append("Action: ").append(currentAction).append('\n');
         sb.append("Pending: ").append(pendingActions).append('\n');
         return sb.toString();
+    }
+
+    public Path getPath() {
+        Path path = null;
+        Action action = currentAction;
+        if (action instanceof MoveAction) {
+            path = ((MoveAction) action).getPath();
+        } 
+        
+        else {
+            Action nextAction = pendingActions.peek();
+            if (nextAction instanceof MoveAction) {
+                path = ((MoveAction) nextAction).getPath();
+            }
+        }
+        return path;
     }
 }

@@ -1,8 +1,6 @@
-package ares.application.gui;
+package ares.application.gui.providers;
 
-import ares.application.gui.providers.GraphicsProvider;
-import ares.application.gui.providers.MultiProfileImageProvider;
-import ares.application.gui.providers.ImageProviderType;
+import ares.application.gui.AresGraphicsProfile;
 import ares.io.FileIO;
 import java.awt.Dimension;
 import java.awt.Point;
@@ -20,7 +18,8 @@ public enum AresMiscGraphics implements GraphicsProvider<AresGraphicsProfile> {
     BRASS_CURSOR(1, 1),
     STEEL_CURSOR(1, 1),
     RED_ARROWS(8, 6),
-    GRAY_ARROWS(8, 6);
+    PURPLE_ARROWS(8, 6),
+    BLUE_ARROWS(8, 6);
     private final String filename;
     private final MultiProfileImageProvider<AresGraphicsProfile, AresMiscGraphics> provider;
     private static final Point ORIGIN_COORDINATES = new Point(0, 0);

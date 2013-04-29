@@ -1,6 +1,6 @@
 package ares.application.gui.command;
 
-import ares.application.gui.AresMiscGraphics;
+import ares.application.gui.providers.AresMiscGraphics;
 
 /**
  *
@@ -8,8 +8,9 @@ import ares.application.gui.AresMiscGraphics;
  */
 public enum ArrowType {
 
-    GIVING_ORDERS(AresMiscGraphics.RED_ARROWS),
-    CURRENT_ORDERS(AresMiscGraphics.GRAY_ARROWS);
+    ACTIVE(AresMiscGraphics.RED_ARROWS),
+    LAST(AresMiscGraphics.PURPLE_ARROWS),
+    PLANNED(AresMiscGraphics.BLUE_ARROWS);
     private final AresMiscGraphics provider;
 
     private ArrowType(final AresMiscGraphics provider) {

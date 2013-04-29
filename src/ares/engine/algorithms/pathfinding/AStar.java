@@ -39,7 +39,7 @@ public class AStar extends AbstractPathFinder {
             closedSet.put(bestNodeIndex, bestNode);
             // Check for termination
             if (bestNode.getTile().equals(destination)) {
-                Path path = new Path(bestNode);
+                Path path = new Path(firstNode, bestNode);
                 return path;
             }
             // Expand best node (Generate successors)

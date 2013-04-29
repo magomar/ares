@@ -2,12 +2,12 @@ package ares.application.gui.command;
 
 import ares.engine.algorithms.pathfinding.Path;
 import ares.engine.algorithms.pathfinding.Node;
-import static ares.application.gui.command.ArrowType.CURRENT_ORDERS;
-import static ares.application.gui.command.ArrowType.GIVING_ORDERS;
+import static ares.application.gui.command.ArrowType.PLANNED;
+import static ares.application.gui.command.ArrowType.ACTIVE;
 import ares.application.gui.AresGraphicsModel;
 import ares.application.gui.AbstractImageLayer;
 import ares.application.gui.AresGraphicsProfile;
-import ares.application.gui.AresMiscGraphics;
+import ares.application.gui.providers.AresMiscGraphics;
 import ares.application.io.AresIO;
 import ares.scenario.board.Direction;
 import ares.scenario.board.Directions;
@@ -23,9 +23,8 @@ import java.util.*;
  */
 public class ArrowLayer extends AbstractImageLayer {
 
-    private final AresMiscGraphics unitArrow = AresMiscGraphics.RED_ARROWS;
-    private final AresMiscGraphics formationArrow = AresMiscGraphics.GRAY_ARROWS;
-    private Path activePath;
+    private Path currentPath;
+    private Path lastPath;
     private Collection<Path> plannedPaths;
 
     public ArrowLayer(AbstractImageLayer parentLayer) {
@@ -38,11 +37,14 @@ public class ArrowLayer extends AbstractImageLayer {
         Graphics2D g2 = globalImage.createGraphics();
         if (plannedPaths != null) {
             for (Path path : plannedPaths) {
-                paintArrow(g2, path, ArrowType.CURRENT_ORDERS);
+                paintArrow(g2, path, ArrowType.PLANNED);
             }
         }
-        if (activePath != null) {
-            paintArrow(g2, activePath, ArrowType.GIVING_ORDERS);
+        if (lastPath != null) {
+            paintArrow(g2, lastPath, ArrowType.LAST);
+        }
+        if (currentPath != null) {
+            paintArrow(g2, currentPath, ArrowType.ACTIVE);
         }
         g2.dispose();
     }
@@ -52,8 +54,18 @@ public class ArrowLayer extends AbstractImageLayer {
      *
      * @param activePath
      */
-    public void paintSelectedUnitArrow(Path activePath) {
-        this.activePath = activePath;
+    public void paintCurrentOrders(Path activePath) {
+        this.currentPath = activePath;
+        updateLayer();
+    }
+    
+        /**
+     * Paints complete arrow for the {@code path} passed as argument
+     *
+     * @param activePath
+     */
+    public void paintLastOrders(Path lastPath) {
+        this.lastPath = lastPath;
         updateLayer();
     }
 
@@ -62,7 +74,7 @@ public class ArrowLayer extends AbstractImageLayer {
      *
      * @param path
      */
-    public void paintFormationArrows(Collection<Path> plannedPaths) {
+    public void paintPlannedOrders(Collection<Path> plannedPaths) {
         this.plannedPaths = plannedPaths;
         updateLayer();
     }
@@ -84,8 +96,7 @@ public class ArrowLayer extends AbstractImageLayer {
     }
 
     /**
-     * Paints a single arrow segment for the path {@code node} passed as
-     * argument
+     * Paints a single arrow segment for the path {@code node} passed as argument
      *
      * @param g2
      * @param node
@@ -93,22 +104,9 @@ public class ArrowLayer extends AbstractImageLayer {
      * @param type
      */
     private void paintFinalArrowSegment(Graphics2D g2, Node node, Direction direction, ArrowType type) {
-        BufferedImage arrowImage = null;
         AresGraphicsProfile profile = AresGraphicsModel.getProfile();
         Point coordinates = Directions.getDirections(direction.ordinal() + 25).getCoordinates();
-        switch (type) {
-            case GIVING_ORDERS:
-                arrowImage = unitArrow.getImage(profile, coordinates, AresIO.ARES_IO);
-                break;
-            case CURRENT_ORDERS:
-                arrowImage = formationArrow.getImage(profile, coordinates, AresIO.ARES_IO);
-                break;
-            default:
-                throw new AssertionError("Assertion failed: unkown image profile " + this);
-        }
-        if (arrowImage == null) {
-            return;
-        }
+        BufferedImage arrowImage = type.getProvider().getImage(profile, coordinates, AresIO.ARES_IO);
         Tile tile = node.getTile();
         Point pos = AresGraphicsModel.tileToPixel(tile.getCoordinates());
         g2.drawImage(arrowImage, pos.x, pos.y, this);
@@ -118,30 +116,16 @@ public class ArrowLayer extends AbstractImageLayer {
     }
 
     /**
-     * Paints a single arrow segment in the {@code tile} passed as argument,
-     * using the graphic identified by the {@code index} passed
+     * Paints a single arrow segment in the {@code tile} passed as argument, using the graphic identified by the
+     * {@code index} passed
      *
      * @param tile the tile where to paint an Arrow
-     * @param index the position of the arrow segment within the array of arrow
-     * images
+     * @param index the position of the arrow segment within the array of arrow images
      */
     private void paintArrowSegment(Graphics2D g2, Node node, Set<Direction> directions, ArrowType type) {
-        BufferedImage arrowImage = null;
         AresGraphicsProfile profile = AresGraphicsModel.getProfile();
         Point coordinates = Directions.getDirections(Direction.getBitmask(directions)).getCoordinates();
-        switch (type) {
-            case GIVING_ORDERS:
-                arrowImage = unitArrow.getImage(profile, coordinates, AresIO.ARES_IO);
-                break;
-            case CURRENT_ORDERS:
-                arrowImage = formationArrow.getImage(profile, coordinates, AresIO.ARES_IO);
-                break;
-            default:
-                throw new AssertionError("Assertion failed: unkown image profile " + this);
-        }
-        if (arrowImage == null) {
-            return;
-        }
+        BufferedImage arrowImage = type.getProvider().getImage(profile, coordinates, AresIO.ARES_IO);
         Tile tile = node.getTile();
         Point pos = AresGraphicsModel.tileToPixel(tile.getCoordinates());
         g2.drawImage(arrowImage, pos.x, pos.y, this);

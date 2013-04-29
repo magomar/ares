@@ -13,6 +13,8 @@ import ares.application.models.forces.FormationModel;
 import ares.application.models.forces.UnitModel;
 import ares.application.views.MessagesHandler;
 import ares.engine.RealTimeEngine;
+import ares.engine.action.Action;
+import ares.engine.action.actions.MoveAction;
 import ares.engine.algorithms.pathfinding.heuristics.DistanceCalculator;
 import ares.engine.algorithms.pathfinding.heuristics.MinimunDistance;
 import ares.engine.command.tactical.TacticalMission;
@@ -118,7 +120,8 @@ public final class BoardController extends AbstractSecondaryController implement
                     UnitModel unit = selectedUnit.getModel(role);
                     FormationModel formation = selectedUnit.getFormation().getModel(role);
                     boardView.updateSelectedUnit(unit, formation);
-                    boardView.updateArrowPath(null);
+                    boardView.updateLastOrders(null);
+                    boardView.updateCurrentOrders(null);
                 }
 
             }
@@ -132,8 +135,9 @@ public final class BoardController extends AbstractSecondaryController implement
             selectedUnit = null;
             interactionMode = InteractionMode.FREE;
             unitView.clear();
-            boardView.updateArrowPath(null);
-            // the order matters here, updateSelectedUnit must be done after updateArrowPath, or updateArrowPath will have no effect
+            boardView.updateCurrentOrders(null);
+            boardView.updateLastOrders(null);
+            // the order matters here, updateSelectedUnit must be done after updateCurrentOrders, or updateCurrentOrders will have no effect
             boardView.updateSelectedUnit(null, null);
         }
     }
@@ -145,9 +149,11 @@ public final class BoardController extends AbstractSecondaryController implement
                 return;
             }
             Scenario scenario = mainController.getScenario();
-            Tile targetLocation = scenario.getBoard().getTile(tilePoint.x, tilePoint.y);
-            TacticalMission mission = TacticalMissionType.OCCUPY.getNewTacticalMission(selectedUnit, targetLocation, pathFinder);
+            Tile tile = scenario.getBoard().getTile(tilePoint.x, tilePoint.y);
+            TacticalMission mission = TacticalMissionType.OCCUPY.getNewTacticalMission(selectedUnit, tile, pathFinder);
             selectedUnit.setMission(mission);
+            selectedUnit.schedule();
+            boardView.updateLastOrders(mission.getPath());
         }
     }
 
@@ -168,7 +174,7 @@ public final class BoardController extends AbstractSecondaryController implement
                     if (path == null || path.size() < 2) {
                         return;
                     }
-                    boardView.updateArrowPath(path);
+                    boardView.updateCurrentOrders(path);
                 }
             }
         }
