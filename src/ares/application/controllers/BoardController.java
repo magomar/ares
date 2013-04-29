@@ -170,7 +170,7 @@ public final class BoardController extends AbstractSecondaryController implement
                     }
                     Tile tile = scenario.getBoard().getTile(tilePoint.x, tilePoint.y);
                     Path path = pathFinder.getPath(selectedUnit.getLocation(), tile, selectedUnit);
-                    if (path == null || path.size() < 2) {
+                    if (path == null) {
                         return;
                     }
                     boardView.updateCurrentOrders(path);

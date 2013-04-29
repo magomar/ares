@@ -25,6 +25,9 @@ public class AStar extends AbstractPathFinder {
 
     @Override
     public Path getPath(Tile origin, Tile destination, Unit unit) {
+        if (origin.equals(destination)) {
+            return null;
+        }
         // Create data structures
         Map<Integer, Node> closedSet = new HashMap<>();
         OpenSet openSet = new OpenSet();
