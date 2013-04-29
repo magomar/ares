@@ -7,7 +7,6 @@ import ares.application.boundaries.view.BoardViewer;
 import ares.application.boundaries.view.UnitInfoViewer;
 import ares.application.gui.AresGraphicsModel;
 import ares.application.interaction.InteractionMode;
-import ares.application.models.ScenarioModel;
 import ares.application.models.board.TileModel;
 import ares.application.models.forces.FormationModel;
 import ares.application.models.forces.UnitModel;

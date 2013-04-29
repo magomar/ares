@@ -186,7 +186,8 @@ public abstract class AbstractAction implements Action {
     public boolean checkPreconditions() {
         // TODO try to make this method protected...
         OpState precondition = type.getPrecondition();
-        return precondition == null || unit.getOpState() == precondition;
+        OpState unitState = unit.getOpState();
+        return precondition == null || unitState.equals(precondition) || unitState.equals(type.getEffectWhile());
     }
 
     /**

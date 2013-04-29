@@ -35,7 +35,6 @@ public final class EngineController extends AbstractSecondaryController implemen
 
     public EngineController(WeGoPlayerController mainController) {
         super(mainController);
-
         this.menuView = mainController.getMenuView();
         this.messagesView = mainController.getMessagesView();
         this.boardView = mainController.getBoardView();
@@ -68,19 +67,7 @@ public final class EngineController extends AbstractSecondaryController implemen
         }
     }
 
-//    class ResumeActionListener implements ActionListener {
-//
-//        @Override
-//        public void actionPerformed(ActionEvent e) {
-//            LOG.log(MessagesHandler.MessageLevel.ENGINE, e.toString());
-//            engine.resume();
-//            menuView.setCommandEnabled(EngineCommands.RESUME.getName(), false);
-//            menuView.setCommandEnabled(EngineCommands.PAUSE.getName(), true);
-//            menuView.setCommandEnabled(EngineCommands.STEP.getName(), false);
-//        }
-//    }
-
-    class PauseActionListener implements ActionListener {
+    private class PauseActionListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -92,7 +79,7 @@ public final class EngineController extends AbstractSecondaryController implemen
         }
     }
 
-    class NextTurnActionListener implements ActionListener {
+     private class NextTurnActionListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -105,7 +92,7 @@ public final class EngineController extends AbstractSecondaryController implemen
         }
     }
 
-    class NextStepActionListener implements ActionListener {
+     private class NextStepActionListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
