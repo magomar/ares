@@ -1,6 +1,8 @@
 package ares.application.boundaries.view;
 
 import ares.application.models.ScenarioModel;
+import ares.scenario.forces.Unit;
+import javax.swing.event.TreeSelectionListener;
 
 /**
  *
@@ -8,7 +10,11 @@ import ares.application.models.ScenarioModel;
  */
 public interface OOBViewer {
 
-    public void loadScenario(ScenarioModel scenario);
+    void loadScenario(ScenarioModel scenario);
 
-    public void updateScenario(ScenarioModel scenario);
+    void updateScenario(ScenarioModel scenario);
+    
+    void addTreeSelectionListener(TreeSelectionListener listener);
+    
+    void select(Unit unit);
 }

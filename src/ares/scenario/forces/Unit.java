@@ -647,6 +647,10 @@ public abstract class Unit implements ModelProvider<UnitModel> {
 
     @Override
     public String toString() {
+        return name;
+    }
+
+    public String toStringVerbose() {
         return name + "(" + type.name() + ")." + movement + "." + opState + " @ " + location;
     }
 

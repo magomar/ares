@@ -32,4 +32,6 @@ public interface BoardViewer extends View {
     public void updateLastOrders(Path path);
 
     public void updateSelectedUnit(UnitModel selectedUnit, FormationModel formation);
+
+    public void centerViewOn(UnitModel unit, FormationModel formation);
 }

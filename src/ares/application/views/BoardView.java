@@ -17,11 +17,14 @@ import ares.engine.command.tactical.TacticalMission;
 import ares.platform.view.AbstractView;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JLayeredPane;
+import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 
 /**
@@ -43,8 +46,9 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
     /**
      * This matrix has all the layers sorted by depth and priority.
      *
-     * First level (index 0) is the array with all the existing layers Next indexes are set in such way that the bigger
-     * it is the "closer" is to the user. Layers are processed in index order (from left to right)
+     * First level (index 0) is the array with all the existing layers Next
+     * indexes are set in such way that the bigger it is the "closer" is to the
+     * user. Layers are processed in index order (from left to right)
      */
     private final ImageLayer[][] imageLayers = {
         // Low level
@@ -183,5 +187,19 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
     @Override
     public void updateUnitStack(TileModel tile) {
         unitsLayer.paintUnitStack(tile);
+    }
+
+    @Override
+    public void centerViewOn(UnitModel unit, FormationModel formation) {
+        JScrollBar verticalScrollBar = contentPane.getVerticalScrollBar();
+        JScrollBar horizontalScrollBar = contentPane.getHorizontalScrollBar();
+        Point pos = AresGraphicsModel.tileToPixel(unit.getLocation().getCoordinates());
+        Dimension viewportSize = contentPane.getViewport().getSize();
+        int boardWidth = terrainLayer.getGlobalImage().getWidth();
+        int boardHeight = terrainLayer.getGlobalImage().getHeight();
+        int x = pos.x - Math.min(viewportSize.width / 2, boardWidth - pos.x);
+        int y = pos.y - Math.min(viewportSize.height / 2, boardHeight - pos.y);
+        horizontalScrollBar.setValue(x);
+        verticalScrollBar.setValue(y);
     }
 }

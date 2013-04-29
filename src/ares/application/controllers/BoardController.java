@@ -4,6 +4,7 @@ import ares.engine.algorithms.pathfinding.PathFinder;
 import ares.engine.algorithms.pathfinding.Path;
 import ares.engine.algorithms.pathfinding.AStar;
 import ares.application.boundaries.view.BoardViewer;
+import ares.application.boundaries.view.OOBViewer;
 import ares.application.boundaries.view.UnitInfoViewer;
 import ares.application.gui.AresGraphicsModel;
 import ares.application.interaction.InteractionMode;
@@ -12,8 +13,6 @@ import ares.application.models.forces.FormationModel;
 import ares.application.models.forces.UnitModel;
 import ares.application.views.MessagesHandler;
 import ares.engine.RealTimeEngine;
-import ares.engine.action.Action;
-import ares.engine.action.actions.MoveAction;
 import ares.engine.algorithms.pathfinding.heuristics.DistanceCalculator;
 import ares.engine.algorithms.pathfinding.heuristics.MinimunDistance;
 import ares.engine.command.tactical.TacticalMission;
@@ -22,12 +21,18 @@ import ares.platform.controllers.AbstractSecondaryController;
 import ares.platform.model.UserRole;
 import ares.scenario.Scenario;
 import ares.scenario.board.*;
+import ares.scenario.forces.Formation;
 import ares.scenario.forces.Unit;
 import java.awt.Point;
 import java.awt.event.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.List;
 import java.util.logging.Logger;
+import javax.swing.JTree;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
+import javax.swing.tree.DefaultMutableTreeNode;
 
 /**
  * @author Mario Gomez <margomez at dsic.upv.es>
@@ -38,6 +43,7 @@ public final class BoardController extends AbstractSecondaryController implement
     private static final Logger LOG = Logger.getLogger(BoardController.class.getName());
     private final BoardViewer boardView;
     private final UnitInfoViewer unitView;
+    private final OOBViewer oobView;
     private final PathFinder pathFinder;
     private Tile selectedTile;
     private Unit selectedUnit;
@@ -45,17 +51,62 @@ public final class BoardController extends AbstractSecondaryController implement
 
     public BoardController(WeGoPlayerController mainController) {
         super(mainController);
+        LOG.addHandler(mainController.getMessagesView().getHandler());
         this.boardView = mainController.getBoardView();
         this.unitView = mainController.getInfoView();
-        LOG.addHandler(mainController.getMessagesView().getHandler());
+        this.oobView = mainController.getOobView();
 
         pathFinder = new AStar(new MinimunDistance(DistanceCalculator.DELTA));
 
+        // Adds various component listeners
         boardView.addMouseListener(new BoardMouseListener());
         boardView.addMouseMotionListener(new BoardMouseMotionListener());
+        oobView.addTreeSelectionListener(new OOBTreeSelectionListener());
 
         //Add change listeners to entities
         mainController.getEngine().addPropertyChangeListener(this);
+    }
+
+    private class OOBTreeSelectionListener implements TreeSelectionListener {
+
+        @Override
+        public void valueChanged(TreeSelectionEvent se) {
+            JTree tree = (JTree) se.getSource();
+            //Returns the last path element of the selection.
+            //This method is useful only when the selection model allows a single selection.
+            DefaultMutableTreeNode node = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
+            if (node == null) {
+                return;
+            }
+            Object object = node.getUserObject();
+            if (object instanceof Unit) {
+                selectedUnit = (Unit) object;
+            } else {
+                Formation selectedFormation = (Formation) object;
+                List<Unit> availableUnits = selectedFormation.getAvailableUnits();
+                if (!availableUnits.isEmpty()) {
+                    selectedUnit = selectedFormation.getAvailableUnits().get(0);
+                }
+            }
+            if (selectedUnit != null) {
+                selectedTile = selectedUnit.getLocation();
+                interactionMode = InteractionMode.UNIT_ORDERS;
+                LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, "New unit selected");
+                UserRole role = mainController.getUserRole();
+                TileModel tileModel = selectedTile.getModel(role);
+                unitView.updateInfo(tileModel);
+                boardView.updateUnitStack(tileModel);
+//                if (selectedUnit != null) {
+                if (interactionMode == InteractionMode.UNIT_ORDERS) {
+                    UnitModel unit = selectedUnit.getModel(role);
+                    FormationModel formation = selectedUnit.getFormation().getModel(role);
+                    boardView.updateSelectedUnit(unit, formation);
+                    boardView.centerViewOn(unit, formation);
+                    boardView.updateLastOrders(null);
+                    boardView.updateCurrentOrders(null);
+                }
+            }
+        }
     }
 
     private class BoardMouseListener extends MouseAdapter {
@@ -78,6 +129,29 @@ public final class BoardController extends AbstractSecondaryController implement
         }
     }
 
+    private void changeSelectedTile(Tile tile) {
+        selectedTile = tile;
+        UserRole role = mainController.getUserRole();
+        TileModel tileModel = selectedTile.getModel(role);
+        unitView.updateInfo(tileModel);
+    }
+
+    private void changeSelectedUnit(Unit unit) {
+        selectedUnit = unit;
+        UserRole role = mainController.getUserRole();
+        TileModel tileModel = selectedTile.getModel(role);
+        boardView.updateUnitStack(tileModel);
+        if (selectedUnit != null) {
+            UnitModel unitModel = selectedUnit.getModel(role);
+            FormationModel formation = selectedUnit.getFormation().getModel(role);
+            boardView.updateLastOrders(null);
+            boardView.updateCurrentOrders(null);
+            boardView.updateSelectedUnit(unitModel, formation);
+            oobView.select(selectedUnit);
+            unitView.updateInfo(tileModel);
+        }
+    }
+
     private void select(int x, int y) {
         if (AresGraphicsModel.isWithinImageRange(x, y)) {
             Point tilePoint = AresGraphicsModel.pixelToTileAccurate(x, y);
@@ -87,43 +161,41 @@ public final class BoardController extends AbstractSecondaryController implement
             Tile tile = mainController.getScenario().getBoard().getTile(tilePoint.x, tilePoint.y);
             UnitsStack stack = tile.getUnitsStack();
 
-            boolean changeTile = !tile.equals(selectedTile);
-            boolean changeUnit = false;
-            if (changeTile) {
-                selectedTile = tile;
+            if (!tile.equals(selectedTile)) {
+                changeSelectedTile(tile);
                 if (stack.isEmpty()) {
-                    selectedUnit = null;
+                    changeSelectedUnit(null);
                     interactionMode = InteractionMode.FREE;
                     LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, "New tile selected");
                 } else {
-                    selectedUnit = tile.getTopUnit();
+                    changeSelectedUnit(tile.getTopUnit());
                     interactionMode = InteractionMode.UNIT_ORDERS;
                     LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, "New unit selected");
                 }
+
             } else {
                 if (stack.size() > 1) {
                     stack.next();
-                    changeUnit = true;
-                    selectedUnit = tile.getTopUnit();
+                    changeSelectedUnit(tile.getTopUnit());
                     LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, "Next unit in stack selected");
                 }
             }
 
-            if (changeTile || changeUnit) {
-                UserRole role = mainController.getUserRole();
-                TileModel tileModel = selectedTile.getModel(role);
-                unitView.updateInfo(tileModel);
-                boardView.updateUnitStack(tileModel);
-//                if (selectedUnit != null) {
-                if (interactionMode == InteractionMode.UNIT_ORDERS) {
-                    UnitModel unit = selectedUnit.getModel(role);
-                    FormationModel formation = selectedUnit.getFormation().getModel(role);
-                    boardView.updateSelectedUnit(unit, formation);
-                    boardView.updateLastOrders(null);
-                    boardView.updateCurrentOrders(null);
-                }
-
-            }
+//            if (changeTile || changeUnit) {
+//                UserRole role = mainController.getUserRole();
+//                TileModel tileModel = selectedTile.getModel(role);
+//                unitView.updateInfo(tileModel);
+//                boardView.updateUnitStack(tileModel);
+////                if (selectedUnit != null) {
+//                if (interactionMode == InteractionMode.UNIT_ORDERS) {
+//                    UnitModel unit = selectedUnit.getModel(role);
+//                    FormationModel formation = selectedUnit.getFormation().getModel(role);
+//                    boardView.updateLastOrders(null);
+//                    boardView.updateCurrentOrders(null);
+//                    boardView.updateSelectedUnit(unit, formation);
+//                    oobView.select(selectedUnit);
+//                }
+//            }
         }
     }
 

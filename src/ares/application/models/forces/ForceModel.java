@@ -56,14 +56,14 @@ public final class ForceModel extends RoleMediatedModel {
     public TreeModel getTreeModel() {
         Map<Formation, MutableTreeNode> formationNodes = new HashMap<>();
         for (Formation formation : force.getFormations()) {
-            MutableTreeNode formationNode = new DefaultMutableTreeNode(formation.getName());
+            MutableTreeNode formationNode = new DefaultMutableTreeNode(formation);
             formationNodes.put(formation, formationNode);
         }
         Formation top = force.getFormations().get(0);
         MutableTreeNode root = formationNodes.get(top);
         DefaultTreeModel treeModel = new DefaultTreeModel(root);
         for (Unit unit : force.getActiveUnits()) {
-            MutableTreeNode unitNode = new DefaultMutableTreeNode(unit.getName());
+            MutableTreeNode unitNode = new DefaultMutableTreeNode(unit);
             MutableTreeNode parent = formationNodes.get(unit.getFormation());
             treeModel.insertNodeInto(unitNode, parent, parent.getChildCount());
         }
