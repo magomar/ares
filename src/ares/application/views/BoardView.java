@@ -10,6 +10,7 @@ import ares.application.gui.board.TerrainLayer;
 import ares.application.gui.forces.UnitsLayer;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.*;
+import ares.application.models.forces.ForceModel;
 import ares.application.models.forces.FormationModel;
 import ares.application.models.forces.UnitModel;
 import ares.engine.algorithms.pathfinding.Path;
@@ -18,7 +19,6 @@ import ares.platform.view.AbstractView;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
-import java.awt.Rectangle;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
@@ -40,9 +40,9 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
     private ArrowLayer arrowLayer;
     private SelectionLayer selectionLayer;
 //    private final static int ALL = 0;
-    private final static int LOW = 1;
-    private final static int MID = 2;
-    private final static int HIGH = 3;
+//    private final static int LOW = 1;
+//    private final static int MID = 2;
+//    private final static int HIGH = 3;
     /**
      * This matrix has all the layers sorted by depth and priority.
      *
@@ -158,7 +158,7 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
 
     @Override
     public void updateCurrentOrders(Path path) {
-        arrowLayer.paintCurrentOrders(path);
+        arrowLayer.paintActiveOrders(path);
     }
 
     @Override
@@ -167,21 +167,36 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
     }
 
     @Override
-    public void updateSelectedUnit(UnitModel selectedUnit, FormationModel formation) {
-        selectionLayer.paintSelectedUnit(selectedUnit, formation);
+    public void updateSelectedUnit(UnitModel selectedUnit, FormationModel selectedFormation, ForceModel selectedForce) {
+        selectionLayer.paintSelectedUnit(selectedUnit, selectedFormation);
         if (selectedUnit == null) {
-            arrowLayer.paintPlannedOrders(null);
+            arrowLayer.paintPlannedOrders(null, null, null);
             return;
         }
-        List<Path> paths = new ArrayList<>();
-        for (UnitModel unit : formation.getUnitModels()) {
-            TacticalMission mission = unit.getTacticalMission();
-            Path path = mission.getPath();
-            if (path != null) {
-                paths.add(path);
+        List<Path> forcePaths = new ArrayList<>();
+        for (FormationModel fModel : selectedForce.getFormationModels()) {
+            if (!fModel.equals(selectedFormation)) {
+                for (UnitModel uModel : fModel.getUnitModels()) {
+                    TacticalMission mission = uModel.getTacticalMission();
+                    Path path = mission.getPath();
+                    if (path != null) {
+                        forcePaths.add(path);
+                    }
+                }
             }
         }
-        arrowLayer.paintPlannedOrders(paths);
+        List<Path> formationPaths = new ArrayList<>();
+        for (UnitModel uModel : selectedFormation.getUnitModels()) {
+            if (!uModel.equals(selectedUnit)) {
+                TacticalMission mission = uModel.getTacticalMission();
+                Path path = mission.getPath();
+                if (path != null) {
+                    formationPaths.add(path);
+                }
+            }
+        }
+        Path selectedUnitPath = selectedUnit.getTacticalMission().getPath();
+        arrowLayer.paintPlannedOrders(selectedUnitPath, formationPaths, forcePaths);
     }
 
     @Override
@@ -190,10 +205,10 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
     }
 
     @Override
-    public void centerViewOn(UnitModel unit, FormationModel formation) {
+    public void centerViewOn(UnitModel selectedUnit, FormationModel selectedFormation) {
         JScrollBar verticalScrollBar = contentPane.getVerticalScrollBar();
         JScrollBar horizontalScrollBar = contentPane.getHorizontalScrollBar();
-        Point pos = AresGraphicsModel.tileToPixel(unit.getLocation().getCoordinates());
+        Point pos = AresGraphicsModel.tileToPixel(selectedUnit.getLocation().getCoordinates());
         Dimension viewportSize = contentPane.getViewport().getSize();
         int boardWidth = terrainLayer.getGlobalImage().getWidth();
         int boardHeight = terrainLayer.getGlobalImage().getHeight();

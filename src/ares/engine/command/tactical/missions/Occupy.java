@@ -11,15 +11,13 @@ import ares.engine.command.tactical.TacticalMission;
 import ares.engine.command.tactical.TacticalMissionType;
 import ares.scenario.board.Tile;
 import ares.scenario.forces.Unit;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
 public class Occupy extends TacticalMission {
-    private static final Logger LOG = Logger.getLogger(Occupy.class.getName());
+//    private static final Logger LOG = Logger.getLogger(Occupy.class.getName());
 
     public Occupy(TacticalMissionType type, Unit unit, Tile target) {
         super(type, unit, target);
@@ -35,10 +33,10 @@ public class Occupy extends TacticalMission {
         }
         Path path = pathFinder.getPath(unit.getLocation(), targetTile, unit);
         if (path == null) {
-            LOG.log(Level.WARNING, "No path found for {0}", unit.toString());
+//            LOG.log(Level.WARNING, "No path found for {0}", unit.toString());
             return;
         }
-        LOG.log(Level.INFO, "New path for {0}: {1}", new Object[]{unit.toString(), path.toString()});
+//        LOG.log(Level.INFO, "New path for {0}: {1}", new Object[]{unit.toString(), path.toString()});
         MoveAction move = new SurfaceMoveAction(unit, ActionType.TACTICAL_MARCH, path);
         addFirstAction(move);
         if (!move.checkPreconditions()) {

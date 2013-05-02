@@ -45,4 +45,8 @@ public class FormationModel extends RoleMediatedModel {
         }
         return unitModels;
     }
+
+    public ForceModel getForceModel(UserRole role) {
+        return formation.getForce().getModel(role);
+    }
 }

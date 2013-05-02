@@ -9,6 +9,7 @@ import ares.application.boundaries.view.UnitInfoViewer;
 import ares.application.gui.AresGraphicsModel;
 import ares.application.interaction.InteractionMode;
 import ares.application.models.board.TileModel;
+import ares.application.models.forces.ForceModel;
 import ares.application.models.forces.FormationModel;
 import ares.application.models.forces.UnitModel;
 import ares.application.views.MessagesHandler;
@@ -98,10 +99,11 @@ public final class BoardController extends AbstractSecondaryController implement
                 boardView.updateUnitStack(tileModel);
 //                if (selectedUnit != null) {
                 if (interactionMode == InteractionMode.UNIT_ORDERS) {
-                    UnitModel unit = selectedUnit.getModel(role);
-                    FormationModel formation = selectedUnit.getFormation().getModel(role);
-                    boardView.updateSelectedUnit(unit, formation);
-                    boardView.centerViewOn(unit, formation);
+                    UnitModel unitModel = selectedUnit.getModel(role);
+                    FormationModel formationModel = selectedUnit.getFormation().getModel(role);
+                    ForceModel forceModel = selectedUnit.getForce().getModel(role);
+                    boardView.updateSelectedUnit(unitModel, formationModel, forceModel);
+                    boardView.centerViewOn(unitModel, formationModel);
                     boardView.updateLastOrders(null);
                     boardView.updateCurrentOrders(null);
                 }
@@ -143,10 +145,11 @@ public final class BoardController extends AbstractSecondaryController implement
         boardView.updateUnitStack(tileModel);
         if (selectedUnit != null) {
             UnitModel unitModel = selectedUnit.getModel(role);
-            FormationModel formation = selectedUnit.getFormation().getModel(role);
-            boardView.updateLastOrders(null);
+            FormationModel formationModel = selectedUnit.getFormation().getModel(role);
+            ForceModel forceModel = selectedUnit.getForce().getModel(role);
+//            boardView.updateLastOrders(null);
             boardView.updateCurrentOrders(null);
-            boardView.updateSelectedUnit(unitModel, formation);
+            boardView.updateSelectedUnit(unitModel, formationModel, forceModel);
             oobView.select(selectedUnit);
             unitView.updateInfo(tileModel);
         }
@@ -207,9 +210,9 @@ public final class BoardController extends AbstractSecondaryController implement
             interactionMode = InteractionMode.FREE;
             unitView.clear();
             boardView.updateCurrentOrders(null);
-            boardView.updateLastOrders(null);
+//            boardView.updateLastOrders(null);
             // the order matters here, updateSelectedUnit must be done after updateCurrentOrders, or updateCurrentOrders will have no effect
-            boardView.updateSelectedUnit(null, null);
+            boardView.updateSelectedUnit(null, null, null);
         }
     }
 

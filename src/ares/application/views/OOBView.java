@@ -5,7 +5,6 @@ import ares.application.models.ScenarioModel;
 import ares.application.models.forces.ForceModel;
 import ares.platform.view.AbstractView;
 import ares.platform.view.ComponentFactory;
-import ares.scenario.forces.Formation;
 import ares.scenario.forces.Unit;
 import java.util.Enumeration;
 import javax.swing.JScrollPane;

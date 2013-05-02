@@ -2,6 +2,7 @@ package ares.application.boundaries.view;
 
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.TileModel;
+import ares.application.models.forces.ForceModel;
 import ares.application.models.forces.FormationModel;
 import ares.application.models.forces.UnitModel;
 import ares.engine.algorithms.pathfinding.Path;
@@ -31,7 +32,7 @@ public interface BoardViewer extends View {
     
     public void updateLastOrders(Path path);
 
-    public void updateSelectedUnit(UnitModel selectedUnit, FormationModel formation);
+    public void updateSelectedUnit(UnitModel selectedUnit, FormationModel selectedFormation, ForceModel selectedForce);
 
-    public void centerViewOn(UnitModel unit, FormationModel formation);
+    public void centerViewOn(UnitModel selectedUnit, FormationModel selectedFormation);
 }

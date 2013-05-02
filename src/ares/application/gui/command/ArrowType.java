@@ -9,8 +9,9 @@ import ares.application.gui.providers.AresMiscGraphics;
 public enum ArrowType {
 
     ACTIVE(AresMiscGraphics.RED_ARROWS),
-    LAST(AresMiscGraphics.PURPLE_ARROWS),
-    PLANNED(AresMiscGraphics.BLUE_ARROWS);
+    UNIT(AresMiscGraphics.PURPLE_ARROWS),
+    FORMATION(AresMiscGraphics.BLUE_ARROWS),
+    FORCE(AresMiscGraphics.GRAY_ARROWS);
     private final AresMiscGraphics provider;
 
     private ArrowType(final AresMiscGraphics provider) {

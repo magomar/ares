@@ -19,7 +19,8 @@ public enum AresMiscGraphics implements GraphicsProvider<AresGraphicsProfile> {
     STEEL_CURSOR(1, 1),
     RED_ARROWS(8, 6),
     PURPLE_ARROWS(8, 6),
-    BLUE_ARROWS(8, 6);
+    BLUE_ARROWS(8, 6),
+    GRAY_ARROWS(8, 6);
     private final String filename;
     private final MultiProfileImageProvider<AresGraphicsProfile, AresMiscGraphics> provider;
     private static final Point ORIGIN_COORDINATES = new Point(0, 0);
