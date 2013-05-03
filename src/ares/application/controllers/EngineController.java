@@ -3,7 +3,7 @@ package ares.application.controllers;
 import ares.application.boundaries.view.ActionBarViewer;
 import ares.application.boundaries.view.BoardViewer;
 import ares.application.boundaries.view.MessagesViewer;
-import ares.application.boundaries.view.UnitInfoViewer;
+import ares.application.boundaries.view.InfoViewer;
 import ares.application.commands.EngineCommands;
 import ares.application.commands.AresCommandGroup;
 import ares.application.views.MessagesHandler;
@@ -37,7 +37,7 @@ public final class EngineController extends AbstractSecondaryController implemen
     private final ActionBarViewer<JButton> toolBarView;
     private final MessagesViewer messagesView;
     private final BoardViewer boardView;
-    private final UnitInfoViewer infoView;
+    private final InfoViewer infoView;
     // Entities (bussines logic), they interact with the model providers and provide models to the views
     private final RealTimeEngine engine;
     private Action pause = new CommandAction(EngineCommands.PAUSE, new PauseActionListener(), false);
@@ -63,7 +63,7 @@ public final class EngineController extends AbstractSecondaryController implemen
         }
 
         //Add change listeners to entities
-        
+
         engine = mainController.getEngine();
         engine.addPropertyChangeListener(this);
     }
@@ -75,7 +75,7 @@ public final class EngineController extends AbstractSecondaryController implemen
             Scenario scenario = engine.getScenario();
             boardView.updateScenario(scenario.getModel(mainController.getUserRole()));
             String scenInfo = scenario.getName() + "\n" + Clock.INSTANCE.toStringVerbose() + "\nRole: " + mainController.getUserRole();
-            infoView.updateScenInfo(scenInfo);
+            infoView.updateScenarioInfo(scenInfo);
             if (clockEvent.getEventTypes().contains(ClockEventType.TURN)) {
                 pause.setEnabled(false);
                 turn.setEnabled(true);
@@ -100,11 +100,12 @@ public final class EngineController extends AbstractSecondaryController implemen
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            messagesView.clear();
             LOG.log(MessagesHandler.MessageLevel.ENGINE, e.toString());
+            messagesView.clear();
             pause.setEnabled(true);
             turn.setEnabled(false);
             step.setEnabled(false);
+            boardView.updateCurrentOrders(null);
             engine.resume();
         }
     }
@@ -114,6 +115,7 @@ public final class EngineController extends AbstractSecondaryController implemen
         @Override
         public void actionPerformed(ActionEvent e) {
             LOG.log(MessagesHandler.MessageLevel.ENGINE, e.toString());
+            boardView.updateCurrentOrders(null);
             engine.step();
         }
     }

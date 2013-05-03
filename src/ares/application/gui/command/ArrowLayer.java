@@ -12,7 +12,6 @@ import ares.scenario.board.Tile;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.*;
-import java.util.List;
 
 /**
  * Draws the movement arrows on a BufferedImage
@@ -86,35 +85,39 @@ public class ArrowLayer extends AbstractImageLayer {
     }
 
     private void paintArrow(Graphics2D g2, Path path, ArrowType type) {
-        // Paint the last segment of the arrow
+        if (path.size() < 2) {
+            return;
+        }
         Node last = path.getLast();
-        paintFinalArrowSegment(g2, last, last.getDirection(), type);
-        // Paint the intermediary segments
-        Node current;
-        for (current = last.getPrev(); current.getPrev() != null; last = current, current = last.getPrev()) {
+        Node current = path.getFirst();
+        Node next = current.getNext();
+        paintArrowSegment(g2, current, EnumSet.of(next.getDirection().getOpposite()), type);
+        while (next != last) {
+            current = next;
+            next = next.getNext();
             Direction from = current.getDirection();
-            Direction to = last.getDirection().getOpposite();
+            Direction to = next.getDirection().getOpposite();
             paintArrowSegment(g2, current, EnumSet.of(from, to), type);
         }
-        // Paint the final segment
-        Direction to = last.getDirection().getOpposite();
-        paintArrowSegment(g2, current, EnumSet.of(to), type);
+        paintFinalArrowSegment(g2, last, last.getDirection(), type);
     }
-    
-       private void paintArrowWithCost(Graphics2D g2, Path path, ArrowType type) {
-        // Paint the last segment of the arrow
+
+    private void paintArrowWithCost(Graphics2D g2, Path path, ArrowType type) {
+        if (path.size() < 2) {
+            return;
+        }
         Node last = path.getLast();
-        paintFinalArrowSegmentWithCost(g2, last, last.getDirection(), type);
-        // Paint the intermediary segments
-        Node current;
-        for (current = last.getPrev(); current.getPrev() != null; last = current, current = last.getPrev()) {
+        Node current = path.getFirst();
+        Node next = current.getNext();
+        paintArrowSegmentWithCost(g2, current, EnumSet.of(next.getDirection().getOpposite()), type);
+        while (next != last) {
+            current = next;
+            next = next.getNext();
             Direction from = current.getDirection();
-            Direction to = last.getDirection().getOpposite();
+            Direction to = next.getDirection().getOpposite();
             paintArrowSegmentWithCost(g2, current, EnumSet.of(from, to), type);
         }
-        // Paint the final segment
-        Direction to = last.getDirection().getOpposite();
-        paintArrowSegmentWithCost(g2, current, EnumSet.of(to), type);
+        paintFinalArrowSegmentWithCost(g2, last, last.getDirection(), type);
     }
 
     /**
@@ -134,8 +137,8 @@ public class ArrowLayer extends AbstractImageLayer {
         g2.drawImage(arrowImage, pos.x, pos.y, this);
         repaint(pos.x, pos.y, arrowImage.getWidth(), arrowImage.getHeight());
     }
-    
-  /**
+
+    /**
      * Paints a final arrow segment together with the final movement cost
      *
      * @param g2
@@ -155,14 +158,13 @@ public class ArrowLayer extends AbstractImageLayer {
         repaint(pos.x, pos.y, arrowImage.getWidth(), arrowImage.getHeight());
     }
 
-
     /**
-     * Paints a single arrow segment 
-     * 
+     * Paints a single arrow segment
+     *
      * @param g2
      * @param node
      * @param directions
-     * @param type 
+     * @param type
      */
     private void paintArrowSegment(Graphics2D g2, Node node, Set<Direction> directions, ArrowType type) {
         AresGraphicsProfile profile = AresGraphicsModel.getProfile();

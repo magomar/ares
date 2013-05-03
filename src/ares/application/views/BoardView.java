@@ -180,7 +180,7 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
                     TacticalMission mission = uModel.getTacticalMission();
                     Path path = mission.getPath();
                     if (path != null) {
-                        forcePaths.add(path);
+                        forcePaths.add(path.subPath(uModel.getLocation()));
                     }
                 }
             }
@@ -191,11 +191,15 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
                 TacticalMission mission = uModel.getTacticalMission();
                 Path path = mission.getPath();
                 if (path != null) {
-                    formationPaths.add(path);
+                    formationPaths.add(path.subPath(uModel.getLocation()));
                 }
             }
         }
-        Path selectedUnitPath = selectedUnit.getTacticalMission().getPath();
+        Path path = selectedUnit.getTacticalMission().getPath();
+        Path selectedUnitPath = null;
+        if (path != null) {
+            selectedUnitPath = path.subPath(selectedUnit.getLocation());
+        }
         arrowLayer.paintPlannedOrders(selectedUnitPath, formationPaths, forcePaths);
     }
 

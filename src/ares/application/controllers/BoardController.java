@@ -5,7 +5,7 @@ import ares.engine.algorithms.pathfinding.Path;
 import ares.engine.algorithms.pathfinding.AStar;
 import ares.application.boundaries.view.BoardViewer;
 import ares.application.boundaries.view.OOBViewer;
-import ares.application.boundaries.view.UnitInfoViewer;
+import ares.application.boundaries.view.InfoViewer;
 import ares.application.gui.AresGraphicsModel;
 import ares.application.interaction.InteractionMode;
 import ares.application.models.board.TileModel;
@@ -43,7 +43,7 @@ public final class BoardController extends AbstractSecondaryController implement
 
     private static final Logger LOG = Logger.getLogger(BoardController.class.getName());
     private final BoardViewer boardView;
-    private final UnitInfoViewer unitView;
+    private final InfoViewer infoView;
     private final OOBViewer oobView;
     private final PathFinder pathFinder;
     private Tile selectedTile;
@@ -54,7 +54,7 @@ public final class BoardController extends AbstractSecondaryController implement
         super(mainController);
         LOG.addHandler(mainController.getMessagesView().getHandler());
         this.boardView = mainController.getBoardView();
-        this.unitView = mainController.getInfoView();
+        this.infoView = mainController.getInfoView();
         this.oobView = mainController.getOobView();
 
         pathFinder = new AStar(new MinimunDistance(DistanceCalculator.DELTA));
@@ -95,7 +95,7 @@ public final class BoardController extends AbstractSecondaryController implement
                 LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, "New unit selected");
                 UserRole role = mainController.getUserRole();
                 TileModel tileModel = selectedTile.getModel(role);
-                unitView.updateInfo(tileModel);
+                infoView.updateTileInfo(tileModel);
                 boardView.updateUnitStack(tileModel);
 //                if (selectedUnit != null) {
                 if (interactionMode == InteractionMode.UNIT_ORDERS) {
@@ -135,7 +135,7 @@ public final class BoardController extends AbstractSecondaryController implement
         selectedTile = tile;
         UserRole role = mainController.getUserRole();
         TileModel tileModel = selectedTile.getModel(role);
-        unitView.updateInfo(tileModel);
+        infoView.updateTileInfo(tileModel);
     }
 
     private void changeSelectedUnit(Unit unit) {
@@ -150,7 +150,7 @@ public final class BoardController extends AbstractSecondaryController implement
             boardView.updateCurrentOrders(null);
             boardView.updateSelectedUnit(unitModel, formationModel, forceModel);
             oobView.select(selectedUnit);
-            unitView.updateInfo(tileModel);
+            infoView.updateUnitInfo(unitModel);
         }
     }
 
@@ -191,7 +191,7 @@ public final class BoardController extends AbstractSecondaryController implement
             selectedTile = null;
             selectedUnit = null;
             interactionMode = InteractionMode.FREE;
-            unitView.clear();
+            infoView.clear();
             boardView.updateCurrentOrders(null);
             // the order matters here, updateSelectedUnit must be done after updateCurrentOrders, or updateCurrentOrders will have no effect
             boardView.updateSelectedUnit(null, null, null);
@@ -217,7 +217,7 @@ public final class BoardController extends AbstractSecondaryController implement
 
         @Override
         public void mouseMoved(MouseEvent me) {
-            if (interactionMode == InteractionMode.UNIT_ORDERS) {
+            if (interactionMode == InteractionMode.UNIT_ORDERS && !mainController.getEngine().isRunning()) {
                 Scenario scenario = mainController.getScenario();
                 Point pixel = new Point(me.getX(), me.getY());
                 if (AresGraphicsModel.isWithinImageRange(pixel)) {
@@ -239,7 +239,16 @@ public final class BoardController extends AbstractSecondaryController implement
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         if (RealTimeEngine.CLOCK_EVENT_PROPERTY.equals(evt.getPropertyName())) {
-            deselect();
+            if (selectedUnit != null) {
+                UserRole role = mainController.getUserRole();
+                UnitModel unitModel = selectedUnit.getModel(role);
+                FormationModel formationModel = selectedUnit.getFormation().getModel(role);
+                ForceModel forceModel = selectedUnit.getForce().getModel(role);
+//                boardView.updateCurrentOrders(null);
+                boardView.updateSelectedUnit(unitModel, formationModel, forceModel);
+                infoView.updateTileInfo(unitModel.getLocation());
+                infoView.updateUnitInfo(unitModel);
+            }
         }
     }
 }

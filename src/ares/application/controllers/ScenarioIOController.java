@@ -3,7 +3,7 @@ package ares.application.controllers;
 import ares.application.boundaries.view.ActionBarViewer;
 import ares.application.boundaries.view.BoardViewer;
 import ares.application.boundaries.view.OOBViewer;
-import ares.application.boundaries.view.UnitInfoViewer;
+import ares.application.boundaries.view.InfoViewer;
 import ares.application.commands.FileCommands;
 import ares.application.models.ScenarioModel;
 import ares.application.commands.AresCommandGroup;
@@ -48,7 +48,7 @@ public final class ScenarioIOController extends AbstractSecondaryController {
     private final ActionBarViewer<JButton> welcomeView;
     private final ActionBarViewer<JButton> toolBarView;
     private final BoardViewer boardView;
-    private final UnitInfoViewer infoView;
+    private final InfoViewer infoView;
     private final OOBViewer oobView;
     Action open = new CommandAction(FileCommands.OPEN_SCENARIO, new OpenScenarioActionListener());
     Action load = new CommandAction(FileCommands.LOAD_SCENARIO, new LoadScenarioActionListener());
@@ -148,7 +148,7 @@ public final class ScenarioIOController extends AbstractSecondaryController {
                 menuView.setActionEnabled(FileCommands.CLOSE_SCENARIO.getName(), true);
                 menuView.setActionEnabled(AresCommandGroup.ENGINE.getName(), true);
                 String scenInfo = scenario.getName() + "\n" + Clock.INSTANCE.toStringVerbose() + "\nRole: " + mainController.getUserRole();
-                infoView.updateScenInfo(scenInfo);
+                infoView.updateScenarioInfo(scenInfo);
                 oobView.loadScenario(scenarioModel);
                 container.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
                 System.gc();

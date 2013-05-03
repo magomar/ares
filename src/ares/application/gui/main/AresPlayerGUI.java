@@ -19,7 +19,7 @@ public class AresPlayerGUI extends AbstractAresApplication {
     public static final String MAIN_MENU_CARD = "Main";
     public static final String PLAY_CARD = "Play";
     private BoardView boardV;
-    private UnitInfoView unitV;
+    private InfoView infoV;
     private MenuBarView menuV;
     private MessagesView messagesV;
     private WelcomeScreenView welcomeScreenV;
@@ -34,13 +34,13 @@ public class AresPlayerGUI extends AbstractAresApplication {
     public AresPlayerGUI() {
         super(); // creates layout
         // Create controllers and passes the views
-        mainController = new WeGoPlayerController(this, boardV, unitV, oobV, menuV, messagesV, welcomeScreenV, toolBarV);
+        mainController = new WeGoPlayerController(this, boardV, infoV, oobV, menuV, messagesV, welcomeScreenV, toolBarV);
     }
 
     @Override
     protected JFrame layout() {
         menuV = new MenuBarView();
-        unitV = new UnitInfoView();
+        infoV = new InfoView();
         oobV = new OOBView();
         boardV = new BoardView();
         messagesV = new MessagesView();
@@ -70,14 +70,14 @@ public class AresPlayerGUI extends AbstractAresApplication {
 //        toolBarV.getContentPane().setPreferredSize(new Dimension(preferredSize.width, 30));
 //        toolBarV.getContentPane().setSize(new Dimension(preferredSize.width, 30));
         boardV.getContentPane().setPreferredSize(getBoardPaneDimension(mainFrame.getContentPane()));
-        unitV.getContentPane().setPreferredSize(getInfoPaneDimension(mainFrame.getContentPane()));
-        unitV.getContentPane().setMaximumSize(unitV.getContentPane().getPreferredSize());
+        infoV.getContentPane().setPreferredSize(getInfoPaneDimension(mainFrame.getContentPane()));
+        infoV.getContentPane().setMaximumSize(infoV.getContentPane().getPreferredSize());
         oobV.getContentPane().setPreferredSize(getOOBPaneDimension(mainFrame.getContentPane()));
         oobV.getContentPane().setMaximumSize(oobV.getContentPane().getPreferredSize());
         messagesV.getContentPane().setPreferredSize(getMessagesPaneDimension(mainFrame.getContentPane()));
 
         splitVert = ComponentFactory.verticalSplitPane(true, boardV.getContentPane(), messagesV.getContentPane(),1);    
-        splitHoriz = ComponentFactory.horizontalSplitPane(true, unitV.getContentPane(), splitVert,0);
+        splitHoriz = ComponentFactory.horizontalSplitPane(true, infoV.getContentPane(), splitVert,0);
         splitHoriz2 = ComponentFactory.horizontalSplitPane(true, splitHoriz, oobV.getContentPane(), 1);
 
         cards = new JPanel(new CardLayout());

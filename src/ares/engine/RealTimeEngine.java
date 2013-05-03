@@ -223,4 +223,8 @@ public class RealTimeEngine extends AbstractBean {
     public PathFinder getPathFinder() {
         return pathFinder;
     }
+
+    public boolean isRunning() {
+        return running;
+    }
 }

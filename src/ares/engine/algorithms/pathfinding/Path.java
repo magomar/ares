@@ -1,5 +1,7 @@
 package ares.engine.algorithms.pathfinding;
 
+import ares.application.models.board.TileModel;
+
 /**
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
@@ -11,7 +13,8 @@ public class Path {
     private int size;
 
     /**
-     * Creates a path connecting the {@code first} to the {@code last}  {@link Node}}.
+     * Creates a path connecting the {@code first} to the
+     * {@code last}  {@link Node}}.
      *
      * @param first
      * @param last
@@ -46,11 +49,11 @@ public class Path {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("Path{");
-        Node l;
-        for (l = last; l.getPrev() != null; l = l.getPrev()) {
-            sb.append(l.getTile().toString());
+        Node n;
+        for (n = first; n != null; n = n.getNext()) {
+            sb.append(n.getTile().toString());
         }
-        sb.append(l.getTile().toString());
+//        sb.append(n.getTile().toString());
         sb.append("}");
         sb.append(size);
         return sb.toString();
@@ -66,5 +69,16 @@ public class Path {
 
     public Path subPath(Node node) {
         return new Path(node, last);
+    }
+
+    public Path subPath(TileModel from) {
+        int tileIndex = from.getIndex();
+        Node n;
+        for (n = first; n != null; n = n.getNext()) {
+            if (n.getTile().getIndex() == tileIndex) {
+                return new Path(n, last);
+            }
+        }
+        return null;
     }
 }

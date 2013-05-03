@@ -1,7 +1,8 @@
 package ares.application.views;
 
-import ares.application.boundaries.view.UnitInfoViewer;
+import ares.application.boundaries.view.InfoViewer;
 import ares.application.models.board.TileModel;
+import ares.application.models.forces.UnitModel;
 import ares.platform.view.AbstractView;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
@@ -12,7 +13,7 @@ import javax.swing.JTextArea;
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public class UnitInfoView extends AbstractView<JScrollPane> implements UnitInfoViewer {
+public class InfoView extends AbstractView<JScrollPane> implements InfoViewer {
 
     private JTextArea scenInfo;
     private JTextArea unitInfo;
@@ -35,17 +36,12 @@ public class UnitInfoView extends AbstractView<JScrollPane> implements UnitInfoV
     }
 
     @Override
-    public void updateInfo(TileModel tile) {
-        if (tile.isEmpty()) {
-            tileInfo.setText(tile.getDescription());
-        } else {
-            tileInfo.setText(tile.getDescription());
-            unitInfo.setText(tile.getTopUnit().getDescription());
-        }
+    public void updateTileInfo(TileModel tile) {
+        tileInfo.setText(tile.getDescription());
     }
 
     @Override
-    public void updateScenInfo(String text) {
+    public void updateScenarioInfo(String text) {
         scenInfo.setText(text);
     }
 
@@ -53,5 +49,10 @@ public class UnitInfoView extends AbstractView<JScrollPane> implements UnitInfoV
     public void clear() {
         tileInfo.setText("");
         unitInfo.setText("");
+    }
+
+    @Override
+    public void updateUnitInfo(UnitModel unitModel) {
+        unitInfo.setText(unitModel.getDescription());
     }
 }
