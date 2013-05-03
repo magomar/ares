@@ -1,7 +1,6 @@
 package ares.platform.view;
 
 import ares.application.gui.menu.TranslucidButton;
-import ares.platform.application.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -29,6 +28,9 @@ public abstract class ComponentFactory {
      */
     public static final int SPLIT_DIVIDER_SIZE = 5;
 
+    //------------------------------------------------
+    // Factories for frames
+    //--------------------------------------------------
     public static JFrame frame(String title, JComponent contentPane, JMenuBar menuBar, JToolBar toolBar) {
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -48,7 +50,8 @@ public abstract class ComponentFactory {
             frame.setJMenuBar(menuBar);
         }
         if (toolBar != null) {
-            frame.getContentPane().add(toolBar, BorderLayout.PAGE_START);
+//            frame.getContentPane().add(toolBar, BorderLayout.PAGE_START);
+            frame.add(toolBar, BorderLayout.NORTH);
         }
         return frame;
     }
@@ -70,6 +73,9 @@ public abstract class ComponentFactory {
         return internalFrame;
     }
 
+    //------------------------------------------------
+    // Factories for panels
+    //--------------------------------------------------
     public static JPanel panel(LayoutManager layoutManager, String title) {
         JPanel panel = new JPanel();
         if (layoutManager != null) {
@@ -95,6 +101,9 @@ public abstract class ComponentFactory {
         return pane;
     }
 
+    //------------------------------------------------
+    // Factories for text components
+    //--------------------------------------------------
     public static JLabel label(String text, Font font) {
         JLabel label = new JLabel();
         if (text != null) {
@@ -115,33 +124,9 @@ public abstract class ComponentFactory {
         return textField;
     }
 
-    public static JButton translucidButton(Command command, ActionListener listener) {
-        JButton button = new TranslucidButton(command.getText());
-        button.setName(command.getName());
-        button.setActionCommand(command.getName());
-        button.addActionListener(listener);
-        return button;
-    }
-
-    public static JButton button(String label, Action action) {
-        JButton button = new JButton();
-        if (label != null) {
-            button.setText(label);
-        }
-        if (action != null) {
-            button.setAction(action);
-        }
-        return button;
-    }
-
-    public static JPanel buttons(JButton... buttons) {
-        JPanel panel = panel(new FlowLayout(), null);
-        for (JButton button : buttons) {
-            panel.add(button);
-        }
-        return panel;
-    }
-
+    //------------------------------------------------
+    // Factories for multi-data components (Tables, Trees, etc.)
+    //--------------------------------------------------
     public static JTable table(TableModel tableModel) {
         JTable table = new JTable();
         table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -173,29 +158,62 @@ public abstract class ComponentFactory {
     }
 
     //------------------------------------------------
-    // Factories for menus
+    // Factories for buttons and tool bars
     //--------------------------------------------------
-    public static JPopupMenu popupMenu(Action... actions) {
-        JPopupMenu popupMenu = new JPopupMenu();
+
+    public static JButton translucidButton(Action action) {
+        JButton button = new TranslucidButton(action);
+        button.setName((String) action.getValue(Action.ACTION_COMMAND_KEY));
+        return button;
+    }
+
+    public static JButton button(Action action) {
+        JButton button = new JButton(action);
+        button.setName((String) action.getValue(Action.ACTION_COMMAND_KEY));
+        return button;
+    }
+
+//    public static JPanel buttonsPanel(JButton... buttons) {
+//        JPanel panel = panel(new FlowLayout(), null);
+//        for (JButton button : buttons) {
+//            panel.add(button);
+//        }
+//        return panel;
+//    }
+
+    public static JToolBar toolBar(String name, JButton... buttons) {
+        return toolBar(name, SwingConstants.HORIZONTAL, buttons);
+    }
+
+    public static JToolBar toolBar(String name, int orientation, JButton... buttons) {
+        JToolBar toolBar = new JToolBar(name, orientation);
+        for (JButton button : buttons) {
+            toolBar.add(button);
+        }
+        return toolBar;
+    }
+
+    //------------------------------------------------
+    // Factories for menus 
+    //--------------------------------------------------
+//    public static JMenu menu(String name, String text, int mnemonic, JMenuItem... items) {
+//        JMenu menu = new JMenu(text);
+//        menu.setName(name);
+//        menu.setMnemonic(mnemonic);
+//        for (JMenuItem item : items) {
+//            menu.add(item);
+//        }
+//        return menu;
+//    }
+
+    public static JMenu menu(String name, String text, int mnemonic, Action... actions) {
+        JMenu menu = new JMenu(text);
+        menu.setName(name);
+        menu.setMnemonic(mnemonic);
         for (Action action : actions) {
-            popupMenu.add(action);
+            menu.add(menuItem(action));
         }
-        return popupMenu;
-    }
-
-    public static JMenu menu(MenuEntry menuEntry, boolean enabled, JMenuItem... items) {
-        JMenu menu = new JMenu(menuEntry.getText());
-        menu.setName(menuEntry.getName());
-        menu.setMnemonic(menuEntry.getMnemonic());
-        for (JMenuItem item : items) {
-            menu.add(item);
-        }
-        menu.setEnabled(enabled);
         return menu;
-    }
-
-    public static JMenu menu(MenuEntry menuEntry, JMenuItem... items) {
-        return menu(menuEntry, true, items);
     }
 
     public static JMenuBar menuBar(JMenu... menus) {
@@ -206,23 +224,23 @@ public abstract class ComponentFactory {
         return menuBar;
     }
 
-    public static JMenuItem menuItem(Command command, ActionListener listener, boolean enabled) {
-        JMenuItem menuItem = new JMenuItem(command.getText(), command.getMnemonic());
-//        menuItem.getAction().putValue(AbstractAction.SHORT_DESCRIPTION,command.getDesc());
-        menuItem.setName(command.getName());
-        menuItem.setActionCommand(command.getName());
-        menuItem.addActionListener(listener);
-        menuItem.setEnabled(enabled);
+    public static JMenuItem menuItem(Action action) {
+        JMenuItem menuItem = new JMenuItem(action);
+        menuItem.setName((String) action.getValue(Action.ACTION_COMMAND_KEY));
         return menuItem;
     }
 
-    public static JMenuItem menuItem(Command command, ActionListener listener) {
-        return menuItem(command, listener, true);
+    public static JPopupMenu popupMenu(Action... actions) {
+        JPopupMenu popupMenu = new JPopupMenu();
+        for (Action action : actions) {
+            popupMenu.add(action);
+        }
+        return popupMenu;
     }
-
 //----------------------------------------------------------------------------
 //  Factories for standard spacing objects
 //----------------------------------------------------------------------------
+
     /**
      * The border to be used around a dialog's content.
      */

@@ -2,10 +2,10 @@ package ares.test;
 
 import ares.data.jaxb.EquipmentDB;
 import ares.data.jaxb.Scenario;
-import ares.io.AresFileType;
+import ares.application.io.AresFileType;
 import ares.application.io.AresIO;
-import ares.io.ResourcePaths;
-import ares.io.FileIO;
+import ares.platform.io.ResourcePaths;
+import ares.platform.io.FileIO;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.nio.file.Path;

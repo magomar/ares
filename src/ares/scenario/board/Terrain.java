@@ -5,7 +5,7 @@ import ares.application.gui.providers.GraphicsProvider;
 import ares.application.gui.providers.ImageProviderType;
 import ares.application.gui.providers.MultiProfileImageProvider;
 import ares.engine.movement.MovementCost;
-import ares.io.FileIO;
+import ares.platform.io.FileIO;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.image.BufferedImage;

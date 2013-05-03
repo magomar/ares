@@ -147,7 +147,6 @@ public final class BoardController extends AbstractSecondaryController implement
             UnitModel unitModel = selectedUnit.getModel(role);
             FormationModel formationModel = selectedUnit.getFormation().getModel(role);
             ForceModel forceModel = selectedUnit.getForce().getModel(role);
-//            boardView.updateLastOrders(null);
             boardView.updateCurrentOrders(null);
             boardView.updateSelectedUnit(unitModel, formationModel, forceModel);
             oobView.select(selectedUnit);
@@ -183,22 +182,6 @@ public final class BoardController extends AbstractSecondaryController implement
                     LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, "Next unit in stack selected");
                 }
             }
-
-//            if (changeTile || changeUnit) {
-//                UserRole role = mainController.getUserRole();
-//                TileModel tileModel = selectedTile.getModel(role);
-//                unitView.updateInfo(tileModel);
-//                boardView.updateUnitStack(tileModel);
-////                if (selectedUnit != null) {
-//                if (interactionMode == InteractionMode.UNIT_ORDERS) {
-//                    UnitModel unit = selectedUnit.getModel(role);
-//                    FormationModel formation = selectedUnit.getFormation().getModel(role);
-//                    boardView.updateLastOrders(null);
-//                    boardView.updateCurrentOrders(null);
-//                    boardView.updateSelectedUnit(unit, formation);
-//                    oobView.select(selectedUnit);
-//                }
-//            }
         }
     }
 
@@ -210,7 +193,6 @@ public final class BoardController extends AbstractSecondaryController implement
             interactionMode = InteractionMode.FREE;
             unitView.clear();
             boardView.updateCurrentOrders(null);
-//            boardView.updateLastOrders(null);
             // the order matters here, updateSelectedUnit must be done after updateCurrentOrders, or updateCurrentOrders will have no effect
             boardView.updateSelectedUnit(null, null, null);
         }
@@ -257,9 +239,6 @@ public final class BoardController extends AbstractSecondaryController implement
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         if (RealTimeEngine.CLOCK_EVENT_PROPERTY.equals(evt.getPropertyName())) {
-//            if (selectedTile != null) {
-//                unitView.updateInfo(selectedTile.getModel(mainController.getUserRole()));
-//            }
             deselect();
         }
     }

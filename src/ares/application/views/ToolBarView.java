@@ -1,22 +1,22 @@
 package ares.application.views;
 
 import ares.application.boundaries.view.ActionBarViewer;
-import ares.application.gui.menu.WelcomeScreen;
 import ares.platform.view.AbstractView;
+import ares.platform.view.ComponentFactory;
 import java.awt.Component;
 import javax.swing.JButton;
-import javax.swing.JPanel;
+import javax.swing.JToolBar;
 
 /**
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public class WelcomeScreenView extends AbstractView<JPanel> implements ActionBarViewer<JButton> {
+public class ToolBarView extends AbstractView<JToolBar> implements ActionBarViewer<JButton> {
 
     @Override
-    protected JPanel layout() {
-        JPanel buttonsPanel = new WelcomeScreen();
-        return buttonsPanel;
+    protected JToolBar layout() {
+        JToolBar toolBar = ComponentFactory.toolBar("Tools");
+        return toolBar;
     }
 
     protected JButton getButton(String elementName) {
@@ -30,14 +30,13 @@ public class WelcomeScreenView extends AbstractView<JPanel> implements ActionBar
     }
 
     @Override
-    public void setActionEnabled(String name, boolean enabled) {
-        getButton(name).setEnabled(enabled);
+    public void setActionEnabled(String actionName, boolean enabled) {
+        getButton(actionName).setEnabled(enabled);
+
     }
 
     @Override
     public void addActionButton(JButton actionButton) {
         contentPane.add(actionButton);
     }
-
-  
 }

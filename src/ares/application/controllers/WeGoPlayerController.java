@@ -9,6 +9,8 @@ import ares.scenario.Scenario;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.logging.*;
+import javax.swing.JButton;
+import javax.swing.JMenu;
 
 /**
  *
@@ -22,9 +24,10 @@ public class WeGoPlayerController {
     private final BoardViewer boardView;
     private final UnitInfoViewer infoView;
     private final OOBViewer oobView;
-    private final CommandBarViewer menuView;
+    private final ActionBarViewer<JMenu> menuView;
     private final MessagesViewer messagesView;
-    private final CommandBarViewer welcomeScreenView;
+    private final ActionBarViewer<JButton> welcomeScreenView;
+    private final ActionBarViewer<JButton> toolBarView;
     //Secondary controllers
     private final BoardController boardController;
     private final EngineController engineController;
@@ -38,19 +41,19 @@ public class WeGoPlayerController {
     private final ExecutorService executor;
     private static final Logger LOG = Logger.getLogger(WeGoPlayerController.class.getName());
 
-    public WeGoPlayerController(AbstractAresApplication mainView, BoardViewer boardView, UnitInfoViewer unitView, OOBViewer oobView, CommandBarViewer menuView, MessagesViewer messagesView, CommandBarViewer welcomeScreenV) {
+    public WeGoPlayerController(AbstractAresApplication mainView, BoardViewer boardView, UnitInfoViewer unitView, OOBViewer oobView, ActionBarViewer<JMenu> menuView, MessagesViewer messagesView, ActionBarViewer<JButton> welcomeScreenV, ActionBarViewer<JButton> toolBarView) {
         //        executor = Executors.newCachedThreadPool();
         executor = Executors.newSingleThreadExecutor();
         this.engine = new RealTimeEngine();
 
         this.mainView = mainView;
-
+        this.welcomeScreenView = welcomeScreenV;
         this.boardView = boardView;
         this.infoView = unitView;
         this.oobView = oobView;
         this.menuView = menuView;
         this.messagesView = messagesView;
-        this.welcomeScreenView = welcomeScreenV;
+        this.toolBarView = toolBarView;
 
         this.boardController = new BoardController(this);
         this.engineController = new EngineController(this);
@@ -97,7 +100,11 @@ public class WeGoPlayerController {
         return infoView;
     }
 
-    public CommandBarViewer getMenuView() {
+    public ActionBarViewer<JButton> getToolBarView() {
+        return toolBarView;
+    }
+
+    public ActionBarViewer<JMenu> getMenuView() {
         return menuView;
     }
 
@@ -109,7 +116,7 @@ public class WeGoPlayerController {
         return oobView;
     }
 
-    public CommandBarViewer getWelcomeScreenView() {
+    public ActionBarViewer<JButton> getWelcomeScreenView() {
         return welcomeScreenView;
     }
 

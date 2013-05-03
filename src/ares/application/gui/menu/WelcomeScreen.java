@@ -1,8 +1,8 @@
 package ares.application.gui.menu;
 
+import ares.platform.io.ResourcePaths;
 import ares.application.io.AresIO;
 import ares.application.gui.AbstractImageLayer;
-import ares.io.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;

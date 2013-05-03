@@ -1,4 +1,4 @@
-package ares.io;
+package ares.platform.io;
 
 import java.io.File;
 import java.io.FilenameFilter;

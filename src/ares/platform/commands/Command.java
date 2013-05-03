@@ -1,6 +1,6 @@
-package ares.platform.application;
+package ares.platform.commands;
 
-import javax.swing.ImageIcon;
+import javax.swing.Icon;
 
 /**
  *
@@ -12,9 +12,10 @@ public interface Command {
 
     public String getText();
 
-    public String getDesc();
+    public String getDescription();
 
     public Integer getMnemonic();
 
-    public ImageIcon getImageIcon();
+    public Icon getIcon();
+    
 }

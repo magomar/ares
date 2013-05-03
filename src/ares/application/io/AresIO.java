@@ -1,7 +1,6 @@
 package ares.application.io;
 
-import ares.io.AresFileType;
-import ares.io.FileIO;
+import ares.platform.io.FileIO;
 
 /**
  *

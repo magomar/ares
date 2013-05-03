@@ -1,7 +1,9 @@
 package ares.application.commands;
 
-import ares.platform.application.Command;
+import ares.platform.commands.Command;
+import ares.platform.io.ResourcePaths;
 import java.awt.event.KeyEvent;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 /**
@@ -32,7 +34,8 @@ public enum UnitCommands implements Command {
     REPAIR("Repair", "Repair", new Integer(KeyEvent.VK_P)),
     ASSEMBLE("Assemble", "Assemble", new Integer(KeyEvent.VK_L)),;
     private final String text;
-    private final ImageIcon icon;
+    private final String iconFilename;
+    private Icon icon;
     private final String desc;
     private final Integer mnemonic;
 
@@ -40,7 +43,7 @@ public enum UnitCommands implements Command {
         this.text = text;
         this.desc = desc;
         this.mnemonic = mnemonic;
-        icon = null;
+        this.iconFilename = this.name().toLowerCase() + ".png";
     }
 
     @Override
@@ -49,7 +52,7 @@ public enum UnitCommands implements Command {
     }
 
     @Override
-    public String getDesc() {
+    public String getDescription() {
         return desc;
     }
 
@@ -64,7 +67,10 @@ public enum UnitCommands implements Command {
     }
 
     @Override
-    public ImageIcon getImageIcon() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public Icon getIcon() {
+        if (icon == null) {
+            icon = new ImageIcon(getClass().getResource(ResourcePaths.ICONS + iconFilename));
+        }
+        return icon;
     }
 }

@@ -1,4 +1,7 @@
-package ares.io;
+package ares.application.io;
+
+import ares.platform.io.FileTypeFilter;
+import ares.platform.io.FileType;
 
 /**
  *

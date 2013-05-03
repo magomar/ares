@@ -1,6 +1,6 @@
 package ares.application.gui;
 
-import ares.io.ResourcePaths;
+import ares.platform.io.ResourcePaths;
 
 /**
  *

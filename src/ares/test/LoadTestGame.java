@@ -3,7 +3,7 @@ package ares.test;
 import ares.data.jaxb.EquipmentDB;
 import ares.engine.RealTimeEngine;
 import ares.application.io.AresIO;
-import ares.io.ResourcePaths;
+import ares.platform.io.ResourcePaths;
 import ares.scenario.Scenario;
 import java.io.File;
 import java.util.logging.Level;

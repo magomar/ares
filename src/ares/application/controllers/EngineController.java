@@ -1,22 +1,29 @@
 package ares.application.controllers;
 
+import ares.application.boundaries.view.ActionBarViewer;
 import ares.application.boundaries.view.BoardViewer;
-import ares.application.boundaries.view.CommandBarViewer;
 import ares.application.boundaries.view.MessagesViewer;
 import ares.application.boundaries.view.UnitInfoViewer;
 import ares.application.commands.EngineCommands;
+import ares.application.commands.AresCommandGroup;
 import ares.application.views.MessagesHandler;
 import ares.engine.time.ClockEvent;
 import ares.engine.time.ClockEventType;
 import ares.engine.RealTimeEngine;
 import ares.platform.controllers.AbstractSecondaryController;
 import ares.engine.time.Clock;
+import ares.platform.commands.CommandAction;
+import ares.platform.commands.CommandGroup;
+import ares.platform.view.ComponentFactory;
 import ares.scenario.Scenario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.logging.Logger;
+import javax.swing.Action;
+import javax.swing.JButton;
+import javax.swing.JMenu;
 
 /**
  *
@@ -26,27 +33,37 @@ import java.util.logging.Logger;
 public final class EngineController extends AbstractSecondaryController implements PropertyChangeListener {
 
     private static final Logger LOG = Logger.getLogger(EngineController.class.getName());
-    private final CommandBarViewer menuView;
+    private final ActionBarViewer<JMenu> menuView;
+    private final ActionBarViewer<JButton> toolBarView;
     private final MessagesViewer messagesView;
     private final BoardViewer boardView;
     private final UnitInfoViewer infoView;
     // Entities (bussines logic), they interact with the model providers and provide models to the views
     private final RealTimeEngine engine;
+    private Action pause = new CommandAction(EngineCommands.PAUSE, new PauseActionListener(), false);
+    private Action turn = new CommandAction(EngineCommands.TURN, new NextTurnActionListener());
+    private Action step = new CommandAction(EngineCommands.STEP, new NextStepActionListener());
 
     public EngineController(WeGoPlayerController mainController) {
         super(mainController);
         this.menuView = mainController.getMenuView();
+        this.toolBarView = mainController.getToolBarView();
         this.messagesView = mainController.getMessagesView();
         this.boardView = mainController.getBoardView();
         this.infoView = mainController.getInfoView();
         LOG.addHandler(messagesView.getHandler());
 
-//        menuView.addActionListener(EngineCommands.RESUME.name(), new ResumeActionListener());
-        menuView.addActionListener(EngineCommands.PAUSE.name(), new PauseActionListener());
-        menuView.addActionListener(EngineCommands.TURN.name(), new NextTurnActionListener());
-        menuView.addActionListener(EngineCommands.STEP.name(), new NextStepActionListener());
+        //Add actions to the views
+
+        Action[] actions = {pause, turn, step};
+        CommandGroup group = AresCommandGroup.ENGINE;
+        menuView.addActionButton(ComponentFactory.menu(group.getName(), group.getText(), group.getMnemonic(), actions));
+        for (Action action : actions) {
+            toolBarView.addActionButton(ComponentFactory.button(action));
+        }
 
         //Add change listeners to entities
+        
         engine = mainController.getEngine();
         engine.addPropertyChangeListener(this);
     }
@@ -60,9 +77,9 @@ public final class EngineController extends AbstractSecondaryController implemen
             String scenInfo = scenario.getName() + "\n" + Clock.INSTANCE.toStringVerbose() + "\nRole: " + mainController.getUserRole();
             infoView.updateScenInfo(scenInfo);
             if (clockEvent.getEventTypes().contains(ClockEventType.TURN)) {
-                menuView.setCommandEnabled(EngineCommands.PAUSE.getName(), false);
-                menuView.setCommandEnabled(EngineCommands.TURN.getName(), true);
-                menuView.setCommandEnabled(EngineCommands.STEP.getName(), true);
+                pause.setEnabled(false);
+                turn.setEnabled(true);
+                step.setEnabled(true);
             }
         }
     }
@@ -73,26 +90,26 @@ public final class EngineController extends AbstractSecondaryController implemen
         public void actionPerformed(ActionEvent e) {
             LOG.log(MessagesHandler.MessageLevel.ENGINE, e.toString());
             engine.pause();
-            menuView.setCommandEnabled(EngineCommands.PAUSE.getName(), false);
-            menuView.setCommandEnabled(EngineCommands.TURN.getName(), true);
-            menuView.setCommandEnabled(EngineCommands.STEP.getName(), true);
+            pause.setEnabled(false);
+            turn.setEnabled(true);
+            step.setEnabled(true);
         }
     }
 
-     private class NextTurnActionListener implements ActionListener {
+    private class NextTurnActionListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
             messagesView.clear();
             LOG.log(MessagesHandler.MessageLevel.ENGINE, e.toString());
-            menuView.setCommandEnabled(EngineCommands.PAUSE.getName(), true);
-            menuView.setCommandEnabled(EngineCommands.TURN.getName(), false);
-            menuView.setCommandEnabled(EngineCommands.STEP.getName(), false);
+            pause.setEnabled(true);
+            turn.setEnabled(false);
+            step.setEnabled(false);
             engine.resume();
         }
     }
 
-     private class NextStepActionListener implements ActionListener {
+    private class NextStepActionListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {

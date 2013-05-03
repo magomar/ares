@@ -1,4 +1,4 @@
-package ares.io;
+package ares.platform.io;
 
 /**
  *
@@ -11,6 +11,7 @@ public enum ResourcePaths {
     EQUIPMENT("Data/Equipment"),
     SCENARIOS("Data/Scenarios"),
     GRAPHICS("Graphics"),
+    ICONS("Graphics/Icons"),
     GRAPHICS_BACKGROUND("Graphics/Background"),
     GRAPHICS_SMALL("Graphics/Small"),
     GRAPHICS_MEDIUM("Graphics/Medium"),

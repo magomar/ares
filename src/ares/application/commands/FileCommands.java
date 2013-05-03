@@ -1,8 +1,8 @@
 package ares.application.commands;
 
-import ares.platform.application.Command;
+import ares.platform.commands.Command;
 import java.awt.event.KeyEvent;
-import javax.swing.ImageIcon;
+import javax.swing.Icon;
 
 /**
  *
@@ -17,7 +17,8 @@ public enum FileCommands implements Command {
     CLOSE_SCENARIO("Close Scenario", "Close the current scenario", new Integer(KeyEvent.VK_U)),
     EXIT("Exit", "Exit the application", new Integer(KeyEvent.VK_X));
     private final String text;
-    private final ImageIcon icon;
+//    private final String iconFilename;
+    private final Icon icon;
     private final String desc;
     private final Integer mnemonic;
 
@@ -34,7 +35,7 @@ public enum FileCommands implements Command {
     }
 
     @Override
-    public String getDesc() {
+    public String getDescription() {
         return desc;
     }
 
@@ -48,8 +49,8 @@ public enum FileCommands implements Command {
         return name();
     }
 
-    @Override
-    public ImageIcon getImageIcon() {
-        throw new UnsupportedOperationException("Not supported yet.");
+   @Override
+    public Icon getIcon() {
+        return icon;
     }
 }

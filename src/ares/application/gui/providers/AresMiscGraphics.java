@@ -1,7 +1,7 @@
 package ares.application.gui.providers;
 
 import ares.application.gui.AresGraphicsProfile;
-import ares.io.FileIO;
+import ares.platform.io.FileIO;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.image.BufferedImage;

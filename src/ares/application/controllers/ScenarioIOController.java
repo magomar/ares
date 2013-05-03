@@ -1,23 +1,26 @@
 package ares.application.controllers;
 
+import ares.application.boundaries.view.ActionBarViewer;
 import ares.application.boundaries.view.BoardViewer;
-import ares.application.boundaries.view.CommandBarViewer;
 import ares.application.boundaries.view.OOBViewer;
 import ares.application.boundaries.view.UnitInfoViewer;
 import ares.application.commands.FileCommands;
 import ares.application.models.ScenarioModel;
-import ares.application.gui.main.AresMenus;
+import ares.application.commands.AresCommandGroup;
 import ares.application.gui.main.AresPlayerGUI;
 import ares.application.views.MessagesHandler;
 import ares.data.jaxb.EquipmentDB;
-import ares.io.AresFileType;
+import ares.application.io.AresFileType;
 import ares.application.io.AresIO;
-import ares.io.ResourcePaths;
+import ares.platform.io.ResourcePaths;
 import ares.platform.application.AbstractAresApplication;
 import ares.platform.controllers.AbstractSecondaryController;
 import ares.platform.model.UserRole;
 import ares.platform.util.AsynchronousOperation;
 import ares.engine.time.Clock;
+import ares.platform.commands.CommandAction;
+import ares.platform.commands.CommandGroup;
+import ares.platform.view.ComponentFactory;
 import ares.scenario.Scenario;
 import ares.scenario.forces.Force;
 import java.awt.Container;
@@ -26,7 +29,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.logging.Logger;
+import javax.swing.Action;
+import javax.swing.JButton;
 import javax.swing.JFileChooser;
+import javax.swing.JMenu;
 import javax.swing.JOptionPane;
 
 /**
@@ -38,36 +44,39 @@ public final class ScenarioIOController extends AbstractSecondaryController {
 
     private static final Logger LOG = Logger.getLogger(ScenarioIOController.class.getName());
     private final AbstractAresApplication mainView;
-    private final CommandBarViewer menuView;
-    private final CommandBarViewer welcomeView;
+    private final ActionBarViewer<JMenu> menuView;
+    private final ActionBarViewer<JButton> welcomeView;
+    private final ActionBarViewer<JButton> toolBarView;
     private final BoardViewer boardView;
     private final UnitInfoViewer infoView;
     private final OOBViewer oobView;
+    Action open = new CommandAction(FileCommands.OPEN_SCENARIO, new OpenScenarioActionListener());
+    Action load = new CommandAction(FileCommands.LOAD_SCENARIO, new LoadScenarioActionListener());
+    Action close = new CommandAction(FileCommands.CLOSE_SCENARIO, new CloseScenarioActionListener(), false);
+    Action exit = new CommandAction(FileCommands.EXIT, new ExitActionListener());
+    Action settings = new CommandAction(FileCommands.SETTINGS, new SettingsActionListener());
 
     public ScenarioIOController(WeGoPlayerController mainController) {
         super(mainController);
         this.mainView = mainController.getMainView();
         this.menuView = mainController.getMenuView();
+        this.toolBarView = mainController.getToolBarView();
         this.boardView = mainController.getBoardView();
         this.infoView = mainController.getInfoView();
         this.welcomeView = mainController.getWelcomeScreenView();
         this.oobView = mainController.getOobView();
         LOG.addHandler(mainController.getMessagesView().getHandler());
+        
+        //Add actions to the views
+        
+        Action[] actions = {open, load, close, settings, exit};
+        CommandGroup group = AresCommandGroup.FILE;
+        menuView.addActionButton(ComponentFactory.menu(group.getName(), group.getText(), group.getMnemonic(), actions));
 
-        //Create & add listeners to the views
-        OpenScenarioActionListener open = new OpenScenarioActionListener();
-        LoadScenarioActionListener load = new LoadScenarioActionListener();
-        ExitActionListener exit = new ExitActionListener();
-
-        menuView.addActionListener(FileCommands.OPEN_SCENARIO.getName(), open);
-        menuView.addActionListener(FileCommands.CLOSE_SCENARIO.getName(), new CloseScenarioActionListener());
-        menuView.addActionListener(FileCommands.LOAD_SCENARIO.getName(), load);
-        menuView.addActionListener(FileCommands.EXIT.getName(), exit);
-
-        welcomeView.addActionListener(FileCommands.OPEN_SCENARIO.getName(), open);
-        welcomeView.addActionListener(FileCommands.LOAD_SCENARIO.getName(), load);
-        welcomeView.addActionListener(FileCommands.SETTINGS.getName(), new SettingsActionListener());
-        welcomeView.addActionListener(FileCommands.EXIT.getName(), exit);
+         Action[] welcomeActions = {open, load, settings, exit};
+         for (Action action : welcomeActions) {
+            welcomeView.addActionButton(ComponentFactory.translucidButton(action));
+        }
     }
 
     private class OpenScenarioInteractor extends AsynchronousOperation<Scenario> {
@@ -120,9 +129,10 @@ public final class ScenarioIOController extends AbstractSecondaryController {
 
             if (scenario != null) {
                 Container container = welcomeView.getContentPane();
-                
+
                 // Show the menu bar
                 menuView.setVisible(true);
+                toolBarView.setVisible(true);
                 mainView.switchCard(AresPlayerGUI.PLAY_CARD);
 
                 // Set the engine with the new scenario
@@ -135,8 +145,8 @@ public final class ScenarioIOController extends AbstractSecondaryController {
                 mainView.setTitle("ARES   " + scenario.getName() + "   " + Clock.INSTANCE.toStringVerbose()
                         + "   Role: " + mainController.getUserRole());
                 mainController.getEngine().activate();
-                menuView.setCommandEnabled(FileCommands.CLOSE_SCENARIO.getName(), true);
-                menuView.setCommandEnabled(AresMenus.ENGINE_MENU.getName(), true);
+                menuView.setActionEnabled(FileCommands.CLOSE_SCENARIO.getName(), true);
+                menuView.setActionEnabled(AresCommandGroup.ENGINE.getName(), true);
                 String scenInfo = scenario.getName() + "\n" + Clock.INSTANCE.toStringVerbose() + "\nRole: " + mainController.getUserRole();
                 infoView.updateScenInfo(scenInfo);
                 oobView.loadScenario(scenarioModel);
@@ -162,8 +172,8 @@ public final class ScenarioIOController extends AbstractSecondaryController {
         public void actionPerformed(ActionEvent e) {
             LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, e.toString());
             mainController.setScenario(null);
-            menuView.setCommandEnabled(FileCommands.CLOSE_SCENARIO.getName(), false);
-            menuView.setCommandEnabled(AresMenus.ENGINE_MENU.getName(), false);
+            menuView.setActionEnabled(FileCommands.CLOSE_SCENARIO.getName(), false);
+            menuView.setActionEnabled(AresCommandGroup.ENGINE.getName(), false);
             boardView.closeScenario();
             mainView.switchCard(AresPlayerGUI.MAIN_MENU_CARD);
 

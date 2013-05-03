@@ -3,7 +3,7 @@ package ares.scenario.board;
 import ares.application.gui.AresGraphicsProfile;
 import ares.application.gui.providers.AresMiscGraphics;
 import ares.application.gui.providers.GraphicsProvider;
-import ares.io.FileIO;
+import ares.platform.io.FileIO;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
