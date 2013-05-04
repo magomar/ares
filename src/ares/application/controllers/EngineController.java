@@ -40,9 +40,9 @@ public final class EngineController extends AbstractSecondaryController implemen
     private final InfoViewer infoView;
     // Entities (bussines logic), they interact with the model providers and provide models to the views
     private final RealTimeEngine engine;
-    private Action pause = new CommandAction(EngineCommands.PAUSE, new PauseActionListener(), false);
-    private Action turn = new CommandAction(EngineCommands.TURN, new NextTurnActionListener());
-    private Action step = new CommandAction(EngineCommands.STEP, new NextStepActionListener());
+    private Action pause = new CommandAction(EngineCommands.ENGINE_PAUSE, new PauseActionListener(), false);
+    private Action turn = new CommandAction(EngineCommands.ENGINE_NEXT_TURN, new NextTurnActionListener());
+    private Action step = new CommandAction(EngineCommands.ENGINE_NEXT_STEP, new NextStepActionListener());
 
     public EngineController(WeGoPlayerController mainController) {
         super(mainController);

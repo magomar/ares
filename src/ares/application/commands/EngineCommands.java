@@ -2,11 +2,11 @@ package ares.application.commands;
 
 import ares.platform.commands.Command;
 import ares.platform.io.ResourcePaths;
-import java.awt.event.KeyEvent;
+import java.io.File;
 import java.nio.file.FileSystems;
-import java.nio.file.Path;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.KeyStroke;
 
 /**
  *
@@ -14,20 +14,22 @@ import javax.swing.ImageIcon;
  */
 public enum EngineCommands implements Command {
 
-    PAUSE("Pause", "Pause the engine", new Integer(KeyEvent.VK_P), "pause.png"),
-    TURN("Next turn", "Play until new turn", new Integer(KeyEvent.VK_T), "next_turn.png"),
-    STEP("Next step", "Play just one time tick", new Integer(KeyEvent.VK_S), "next_step.png");
+    ENGINE_PAUSE("Pause", "Pause the engine", 'P'),
+    ENGINE_NEXT_TURN("Next turn", "Play until new turn", 'T'),
+    ENGINE_NEXT_STEP("Next step", "Play just one time tick", 'S');
     private final String text;
     private final String iconFilename;
     private Icon icon;
     private final String desc;
     private final Integer mnemonic;
+    private final KeyStroke accelerator;
 
-    private EngineCommands(final String text, final String desc, final Integer mnemonic, final String iconFilename) {
+    private EngineCommands(final String text, final String desc, final char keyChar) {
         this.text = text;
         this.desc = desc;
-        this.mnemonic = mnemonic;
-        this.iconFilename = iconFilename;
+        this.mnemonic = new Integer(keyChar);
+        this.accelerator = KeyStroke.getKeyStroke(keyChar);
+        this.iconFilename = name().toLowerCase()+".png";
     }
 
     @Override
@@ -46,15 +48,29 @@ public enum EngineCommands implements Command {
     }
 
     @Override
+    public KeyStroke getAccelerator() {
+        return accelerator;
+    }
+
+    @Override
     public String getName() {
         return name();
     }
 
     @Override
-    public Icon getIcon() {
+    public Icon getLargeIcon() {
         if (icon == null) {
-            String filename = FileSystems.getDefault().getPath(ResourcePaths.ICONS.getPath(), iconFilename).toString();
-            icon = new ImageIcon(filename);
+            File iconFile = FileSystems.getDefault().getPath(ResourcePaths.ICONS_LARGE.getPath(), iconFilename).toFile();
+            icon = new ImageIcon(iconFile.getPath());
+        }
+        return icon;
+    }
+
+    @Override
+    public Icon getSmallIcon() {
+        if (icon == null) {
+            File iconFile = FileSystems.getDefault().getPath(ResourcePaths.ICONS_SMALL.getPath(), iconFilename).toFile();
+            icon = new ImageIcon(iconFile.getPath());
         }
         return icon;
     }

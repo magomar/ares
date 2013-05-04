@@ -1,4 +1,4 @@
-package ares.application.gui.main;
+package ares.application;
 
 import ares.application.controllers.WeGoPlayerController;
 import ares.application.views.*;

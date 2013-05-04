@@ -1,5 +1,6 @@
 package ares.application.gui;
 
+import ares.platform.view.ComponentFactory;
 import ares.platform.view.WindowUtil;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -258,7 +259,7 @@ public class ProgressMonitor {
         }
 
         if (action != null) {
-            JButton button = new JButton(action);
+            JButton button = ComponentFactory.button(action);
             JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER));
             panel.setBorder(BorderFactory.createEmptyBorder(12, 0, 0, 0));
             panel.add(button);

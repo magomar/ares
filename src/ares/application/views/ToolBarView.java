@@ -19,21 +19,21 @@ public class ToolBarView extends AbstractView<JToolBar> implements ActionBarView
         return toolBar;
     }
 
-    protected JButton getButton(String elementName) {
-        for (Component component : contentPane.getComponents()) {
-            if (component.getName().equals(elementName)) {
-                JButton button = (JButton) component;
-                return button;
-            }
-        }
-        return null;
-    }
-
-    @Override
-    public void setActionEnabled(String actionName, boolean enabled) {
-        getButton(actionName).setEnabled(enabled);
-
-    }
+//    protected JButton getButton(String elementName) {
+//        for (Component component : contentPane.getComponents()) {
+//            if (component.getName().equals(elementName)) {
+//                JButton button = (JButton) component;
+//                return button;
+//            }
+//        }
+//        return null;
+//    }
+//
+//    @Override
+//    public void setActionEnabled(String actionName, boolean enabled) {
+//        getButton(actionName).setEnabled(enabled);
+//
+//    }
 
     @Override
     public void addActionButton(JButton actionButton) {

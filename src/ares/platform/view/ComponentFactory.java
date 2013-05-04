@@ -15,8 +15,8 @@ import javax.swing.tree.*;
 public abstract class ComponentFactory {
 
     /**
-     * An "inter-component" horizontal space, also used as the standard inset
-     * from a frame to its content. This is the nominal "Em" space.
+     * An "inter-component" horizontal space, also used as the standard inset from a frame to its content. This is the
+     * nominal "Em" space.
      */
     public final static int STANDARD_SPACE = 12;
     /**
@@ -160,16 +160,19 @@ public abstract class ComponentFactory {
     //------------------------------------------------
     // Factories for buttons and tool bars
     //--------------------------------------------------
-
     public static JButton translucidButton(Action action) {
         JButton button = new TranslucidButton(action);
         button.setName((String) action.getValue(Action.ACTION_COMMAND_KEY));
+        button.setIcon((Icon) action.getValue(Action.LARGE_ICON_KEY));
         return button;
     }
 
     public static JButton button(Action action) {
         JButton button = new JButton(action);
         button.setName((String) action.getValue(Action.ACTION_COMMAND_KEY));
+        if (action.getValue(Action.LARGE_ICON_KEY) != null) {
+            button.setHideActionText(true);
+        }
         return button;
     }
 
@@ -180,7 +183,6 @@ public abstract class ComponentFactory {
 //        }
 //        return panel;
 //    }
-
     public static JToolBar toolBar(String name, JButton... buttons) {
         return toolBar(name, SwingConstants.HORIZONTAL, buttons);
     }
@@ -205,8 +207,7 @@ public abstract class ComponentFactory {
 //        }
 //        return menu;
 //    }
-
-    public static JMenu menu(String name, String text, int mnemonic, Action... actions) {
+    public static JMenu menu(String name, String text, Integer mnemonic, Action... actions) {
         JMenu menu = new JMenu(text);
         menu.setName(name);
         menu.setMnemonic(mnemonic);
@@ -227,6 +228,13 @@ public abstract class ComponentFactory {
     public static JMenuItem menuItem(Action action) {
         JMenuItem menuItem = new JMenuItem(action);
         menuItem.setName((String) action.getValue(Action.ACTION_COMMAND_KEY));
+//        menuItem.setIcon((Icon) action.getValue(Action.SMALL_ICON));
+//        menuItem.setToolTipText((String) action.getValue(Action.SHORT_DESCRIPTION));
+//        menuItem.setText((String) action.getValue(Action.NAME));
+//        Icon icon = (Icon) action.getValue(Action.SMALL_ICON);
+//        if (icon != null) {
+//            menuItem.setIcon(icon);
+//        }
         return menuItem;
     }
 
@@ -251,9 +259,8 @@ public abstract class ComponentFactory {
     }
 
     /**
-     * The border to be used around a group of components in a dialog. Assumes
-     * that there will be a label above the group, and that there won't be
-     * decoration between groups.
+     * The border to be used around a group of components in a dialog. Assumes that there will be a label above the
+     * group, and that there won't be decoration between groups.
      */
     public static Border dialogGroupBorder() {
         return BorderFactory.createEmptyBorder(
@@ -274,8 +281,7 @@ public abstract class ComponentFactory {
 //  Factories for consistent GUI objects
 //----------------------------------------------------------------------------
     /**
-     * Builds a standard modal input dialog, with content and buttons to accept
-     * or cancel that content.
+     * Builds a standard modal input dialog, with content and buttons to accept or cancel that content.
      */
     public static JDialog newModalDialog(
             JFrame owner, String title,
@@ -305,15 +311,12 @@ public abstract class ComponentFactory {
     }
 
     /**
-     * Builds a standard modal input dialog, with content and buttons to accept
-     * or cancel that content.
+     * Builds a standard modal input dialog, with content and buttons to accept or cancel that content.
      */
-    public static JDialog newModalDialog(
-            JFrame owner, String title,
-            JPanel content, Action... actions) {
+    public static JDialog newModalDialog(JFrame owner, String title, JPanel content, Action... actions) {
         JButton[] buttons = new JButton[actions.length];
-        for (int ii = 0; ii < actions.length; ii++) {
-            buttons[ii] = new JButton(actions[ii]);
+        for (int i = 0; i < actions.length; i++) {
+            buttons[i] = ComponentFactory.button(actions[i]);
         }
         return newModalDialog(owner, title, content, buttons);
     }

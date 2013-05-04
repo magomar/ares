@@ -20,8 +20,9 @@ public class CommandAction extends AbstractAction {
     public CommandAction(Command command, ActionListener listener, boolean enabled) {
         super(command.getText());
         this.listener = listener;
-        putValue(Action.LARGE_ICON_KEY, command.getIcon());
-        putValue(Action.SMALL_ICON, command.getIcon());
+        putValue(Action.SMALL_ICON, command.getSmallIcon());
+        putValue(Action.LARGE_ICON_KEY, command.getLargeIcon());
+        putValue(Action.ACCELERATOR_KEY, command.getAccelerator());
         putValue(Action.MNEMONIC_KEY, command.getMnemonic());
         putValue(Action.ACTION_COMMAND_KEY, command.getName());
         putValue(Action.SHORT_DESCRIPTION, command.getText());

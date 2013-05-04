@@ -6,7 +6,7 @@ import ares.application.controllers.WeGoPlayerController;
  *
  * @author Heine <heisncfr@inf.upv.es>
  */
-public class AbstractSecondaryController {
+public abstract class AbstractSecondaryController  {
 
     protected final WeGoPlayerController mainController;
 

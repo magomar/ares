@@ -17,19 +17,6 @@ public class TranslucidButton extends JButton {
 
     private final static Dimension BUTTON_DIMENSION = new Dimension(250, 50);
 
-//    public TranslucidButton(String string) {
-//        super(string);
-////        setBorder(null);
-////        setBorderPainted(false);
-////        setContentAreaFilled(false);
-//        setOpaque(false);
-//        setFont(getFont().deriveFont(Font.BOLD));
-//        setAlignmentX(CENTER_ALIGNMENT);
-//        setSize(BUTTON_DIMENSION);
-//        setMaximumSize(BUTTON_DIMENSION);
-//        setMinimumSize(BUTTON_DIMENSION);
-//    }
-
     public TranslucidButton(Action action) {
         super(action);
         setOpaque(false);
@@ -39,6 +26,10 @@ public class TranslucidButton extends JButton {
         setMaximumSize(BUTTON_DIMENSION);
         setMinimumSize(BUTTON_DIMENSION);
     }
+
+//    public TranslucidButton() {
+//        this(null);
+//    }
 
     @Override
     public void paint(Graphics g) {

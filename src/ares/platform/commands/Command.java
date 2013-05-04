@@ -1,6 +1,7 @@
 package ares.platform.commands;
 
 import javax.swing.Icon;
+import javax.swing.KeyStroke;
 
 /**
  *
@@ -8,14 +9,18 @@ import javax.swing.Icon;
  */
 public interface Command {
 
-    public String getName();
+    String getName();
 
-    public String getText();
+    String getText();
 
-    public String getDescription();
+    String getDescription();
 
-    public Integer getMnemonic();
+    Integer getMnemonic();
+    
+    KeyStroke getAccelerator();
 
-    public Icon getIcon();
+    Icon getLargeIcon();
+    
+    Icon getSmallIcon();
     
 }

@@ -1,8 +1,12 @@
 package ares.application.commands;
 
 import ares.platform.commands.Command;
-import java.awt.event.KeyEvent;
+import ares.platform.io.ResourcePaths;
+import java.io.File;
+import java.nio.file.FileSystems;
 import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.KeyStroke;
 
 /**
  *
@@ -10,23 +14,25 @@ import javax.swing.Icon;
  */
 public enum FileCommands implements Command {
 
-    OPEN_SCENARIO("Play Scenario", "Starts playing an scenario", new Integer(KeyEvent.VK_O)),
-    LOAD_SCENARIO("Play Saved Scenario", "Resume playing a saved fame", new Integer(KeyEvent.VK_L)),
-    SETTINGS("Settings", "Game settings", new Integer(KeyEvent.VK_S)),
-    OPEN_EQUIPMENT("Open Equipment", "Open an equipment database", new Integer(KeyEvent.VK_E)),
-    CLOSE_SCENARIO("Close Scenario", "Close the current scenario", new Integer(KeyEvent.VK_U)),
-    EXIT("Exit", "Exit the application", new Integer(KeyEvent.VK_X));
+    GAME_NEW("New Game", "Start a new scenario"),
+    GAME_LOAD("Load Game", "Resum a saved scenario"),
+    GAME_SAVE("Save Game", "Save scenario into file"),
+    GAME_CLOSE("Close Game", "Close scenario"),
+    SETTINGS("Settings", "Game settings"),
+    EXIT("Exit", "Exit");
     private final String text;
-//    private final String iconFilename;
-    private final Icon icon;
+    private final String iconFilename;
+    private Icon icon;
     private final String desc;
     private final Integer mnemonic;
+    private final KeyStroke accelerator;
 
-    private FileCommands(String text, String desc, Integer mnemonic) {
+    private FileCommands(final String text, final String desc) {
         this.text = text;
         this.desc = desc;
-        this.mnemonic = mnemonic;
-        icon = null;
+        this.mnemonic = null;
+        this.accelerator = null;
+        this.iconFilename = name().toLowerCase() + ".png";
     }
 
     @Override
@@ -45,12 +51,30 @@ public enum FileCommands implements Command {
     }
 
     @Override
+    public KeyStroke getAccelerator() {
+        return accelerator;
+    }
+
+    @Override
     public String getName() {
         return name();
     }
 
-   @Override
-    public Icon getIcon() {
+    @Override
+    public Icon getLargeIcon() {
+        if (icon == null) {
+            File iconFile = FileSystems.getDefault().getPath(ResourcePaths.ICONS_LARGE.getPath(), iconFilename).toFile();
+            icon = new ImageIcon(iconFile.getPath());
+        }
+        return icon;
+    }
+
+    @Override
+    public Icon getSmallIcon() {
+        if (icon == null) {
+            File iconFile = FileSystems.getDefault().getPath(ResourcePaths.ICONS_SMALL.getPath(), iconFilename).toFile();
+            icon = new ImageIcon(iconFile.getPath());
+        }
         return icon;
     }
 }

@@ -9,27 +9,27 @@ import ares.platform.commands.CommandGroup;
  */
 public enum AresCommandGroup implements CommandGroup {
 
-    FILE("File", 'f'){
+    FILE("File", 'F'){
     @Override
     public Command[] getCommands() {
         return FileCommands.values();
     }},
-    VIEW("View", 'v'){
+    VIEW("View", 'V'){
     @Override
     public Command[] getCommands() {
         return ViewCommands.values();
     }},
-    ENGINE("Engine", 'e'){
+    ENGINE("Engine", 'E'){
     @Override
     public Command[] getCommands() {
         return EngineCommands.values();
     }};
-    private final char mnemonic;
+    private final Integer mnemonic;
     private final String text;
 
     private AresCommandGroup(final String text, final char mnemonic) {
         this.text = text;
-        this.mnemonic = mnemonic;
+        this.mnemonic = new Integer(mnemonic);
     }
 
     @Override
@@ -38,7 +38,7 @@ public enum AresCommandGroup implements CommandGroup {
     }
 
     @Override
-    public char getMnemonic() {
+    public Integer getMnemonic() {
         return mnemonic;
     }
 

@@ -6,7 +6,7 @@ package ares.platform.commands;
  */
 public interface CommandGroup {
 
-    char getMnemonic();
+    Integer getMnemonic();
 
     String getName();
 

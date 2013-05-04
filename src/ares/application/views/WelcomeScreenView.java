@@ -19,20 +19,20 @@ public class WelcomeScreenView extends AbstractView<JPanel> implements ActionBar
         return buttonsPanel;
     }
 
-    protected JButton getButton(String elementName) {
-        for (Component component : contentPane.getComponents()) {
-            if (component.getName().equals(elementName)) {
-                JButton button = (JButton) component;
-                return button;
-            }
-        }
-        return null;
-    }
-
-    @Override
-    public void setActionEnabled(String name, boolean enabled) {
-        getButton(name).setEnabled(enabled);
-    }
+//    protected JButton getButton(String elementName) {
+//        for (Component component : contentPane.getComponents()) {
+//            if (component.getName().equals(elementName)) {
+//                JButton button = (JButton) component;
+//                return button;
+//            }
+//        }
+//        return null;
+//    }
+//
+//    @Override
+//    public void setActionEnabled(String name, boolean enabled) {
+//        getButton(name).setEnabled(enabled);
+//    }
 
     @Override
     public void addActionButton(JButton actionButton) {

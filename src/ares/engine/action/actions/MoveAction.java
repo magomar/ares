@@ -64,12 +64,12 @@ public abstract class MoveAction extends AbstractAction {
             speed = unit.getSpeed() / cost;
             // timeToNextMovement <= 0. If it is negative we can add it to the new timeToNextMovement as a way to not propagate the precision error each movement segment
             timeToNextMovement = (speed > 0 ? (int) (Scale.INSTANCE.getTileSize() / speed) + timeToNextMovement : Integer.MAX_VALUE);
-        } 
+        }
     }
 
     @Override
     public boolean isComplete() {
-        return (currentNode.getNext()==null && timeToNextMovement <= Clock.INSTANCE.getMINUTES_PER_TICK());
+        return (currentNode.getNext() == null && timeToNextMovement <= Clock.INSTANCE.getMINUTES_PER_TICK());
     }
 
     @Override

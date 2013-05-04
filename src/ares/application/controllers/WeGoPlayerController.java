@@ -1,7 +1,7 @@
 package ares.application.controllers;
 
 import ares.application.boundaries.view.*;
-import ares.application.gui.main.AresPlayerGUI;
+import ares.application.AresPlayerGUI;
 import ares.engine.RealTimeEngine;
 import ares.platform.application.*;
 import ares.platform.model.UserRole;
@@ -55,14 +55,16 @@ public class WeGoPlayerController {
         this.messagesView = messagesView;
         this.toolBarView = toolBarView;
 
+        this.scenarioController = new ScenarioIOController(this);
         this.boardController = new BoardController(this);
         this.engineController = new EngineController(this);
         this.messagesController = new MessagesController(this);
-        this.scenarioController = new ScenarioIOController(this);
 
         LOG.addHandler(messagesView.getHandler());
 
-        //Initialize views
+        //add buttons and menu elements fro here to have them in proper order
+
+        //sets the main menu as the mainView
         mainView.switchCard(AresPlayerGUI.MAIN_MENU_CARD);
 
     }
