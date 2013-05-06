@@ -10,7 +10,7 @@ import java.util.Set;
  *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
-public final class AresLookupService<T> {
+public final class MultiValuedLookupService<T> {
 
     private final Map<Class<? extends T>, Set<T>> lookup = new HashMap<>();
 

@@ -37,8 +37,9 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
     private TerrainLayer terrainLayer;
     private UnitsLayer unitsLayer;
     private GridLayer gridLayer;
-    private ArrowLayer arrowLayer;
     private SelectionLayer selectionLayer;
+    private ArrowLayer arrowLayer;
+    private final ImageLayer[] allLayers = {terrainLayer, gridLayer, selectionLayer, arrowLayer, unitsLayer};
 //    private final static int ALL = 0;
 //    private final static int LOW = 1;
 //    private final static int MID = 2;
@@ -46,11 +47,10 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
     /**
      * This matrix has all the layers sorted by depth and priority.
      *
-     * First level (index 0) is the array with all the existing layers Next
-     * indexes are set in such way that the bigger it is the "closer" is to the
-     * user. Layers are processed in index order (from left to right)
+     * First level (index 0) is the array with all the existing layers Next indexes are set in such way that the bigger
+     * it is the "closer" is to the user. Layers are processed in index order (from left to right)
      */
-    private final ImageLayer[][] imageLayers = {
+    private final ImageLayer[][] imageLayersMatrix = {
         // Low level
         {terrainLayer},
         // Mid level
@@ -65,9 +65,11 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
 
     @Override
     protected JScrollPane layout() {
+        //Create layered pane to hold all the layers
         layeredPane = new JLayeredPane();
         layeredPane.setOpaque(true);
         layeredPane.setBackground(Color.BLACK);
+        // Create layers
         terrainLayer = new TerrainLayer();
         unitsLayer = new UnitsLayer();
         gridLayer = new GridLayer();
@@ -81,6 +83,7 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
         layeredPane.add(arrowLayer, JLayeredPane.MODAL_LAYER);
         layeredPane.add(unitsLayer, JLayeredPane.POPUP_LAYER);
 
+        // Create and set up scroll pane as the content pane
         JScrollPane scrollPane = new JScrollPane();
         scrollPane.add(layeredPane);
         scrollPane.setViewportView(layeredPane);
@@ -113,17 +116,18 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
 //            });
 //        }
         // Setup laye sizes and the start threads
-        for (int depthLevel = 0; depthLevel < imageLayers.length; depthLevel++) {
-            for (int priority = 0; priority < imageLayers[depthLevel].length; priority++) {
-                imageLayers[depthLevel][priority].setPreferredSize(imageSize);
-                imageLayers[depthLevel][priority].setSize(imageSize);
-                imageLayers[depthLevel][priority].initialize();
+        for (int depthLevel = 0; depthLevel < imageLayersMatrix.length; depthLevel++) {
+            for (int priority = 0; priority < imageLayersMatrix[depthLevel].length; priority++) {
+                imageLayersMatrix[depthLevel][priority].setPreferredSize(imageSize);
+                imageLayersMatrix[depthLevel][priority].setSize(imageSize);
+                imageLayersMatrix[depthLevel][priority].initialize();
             }
 //            layerThreads[depthLevel].start();
         }
         // Render board: paint terrain and units
         terrainLayer.paintTerrain(scenario);
         unitsLayer.paintAllUnits(scenario);
+        gridLayer.paintGrid(scenario);
     }
 
     @Override
@@ -139,9 +143,9 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
 
     @Override
     public void closeScenario() {
-        for (int layer = 0; layer < imageLayers.length; layer++) {
-            for (int subLayer = 0; subLayer < imageLayers[layer].length; subLayer++) {
-                imageLayers[layer][subLayer].flush();
+        for (int layer = 0; layer < imageLayersMatrix.length; layer++) {
+            for (int subLayer = 0; subLayer < imageLayersMatrix[layer].length; subLayer++) {
+                imageLayersMatrix[layer][subLayer].flush();
             }
         }
     }
@@ -220,5 +224,15 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
         int y = pos.y - Math.min(viewportSize.height / 2, boardHeight - pos.y);
         horizontalScrollBar.setValue(x);
         verticalScrollBar.setValue(y);
+    }
+
+    @Override
+    public void setLayerVisible(int layer, boolean visible) {
+        allLayers[layer].setVisible(visible);
+    }
+
+    @Override
+    public boolean isLayerVisible(int layer) {
+        return allLayers[layer].isVisible();
     }
 }

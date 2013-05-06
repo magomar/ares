@@ -10,6 +10,8 @@ import java.awt.image.BufferedImage;
 public interface ImageLayer {
 
     void initialize();
+    
+    void updateLayer();
 
     void flush();
 
@@ -21,4 +23,7 @@ public interface ImageLayer {
     
     void setSize(Dimension dim);
     
+    void setVisible(boolean visible);
+    
+    boolean isVisible();
 }

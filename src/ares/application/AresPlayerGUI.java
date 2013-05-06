@@ -76,8 +76,8 @@ public class AresPlayerGUI extends AbstractAresApplication {
         oobV.getContentPane().setMaximumSize(oobV.getContentPane().getPreferredSize());
         messagesV.getContentPane().setPreferredSize(getMessagesPaneDimension(mainFrame.getContentPane()));
 
-        splitVert = ComponentFactory.verticalSplitPane(true, boardV.getContentPane(), messagesV.getContentPane(),1);    
-        splitHoriz = ComponentFactory.horizontalSplitPane(true, infoV.getContentPane(), splitVert,0);
+        splitVert = ComponentFactory.verticalSplitPane(true, boardV.getContentPane(), messagesV.getContentPane(), 1);
+        splitHoriz = ComponentFactory.horizontalSplitPane(true, infoV.getContentPane(), splitVert, 0);
         splitHoriz2 = ComponentFactory.horizontalSplitPane(true, splitHoriz, oobV.getContentPane(), 1);
 
         cards = new JPanel(new CardLayout());

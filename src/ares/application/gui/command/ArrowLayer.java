@@ -30,7 +30,7 @@ public class ArrowLayer extends AbstractImageLayer {
     }
 
     @Override
-    protected void updateLayer() {
+    public void updateLayer() {
         initialize();
         Graphics2D g2 = globalImage.createGraphics();
         if (forcePaths != null) {

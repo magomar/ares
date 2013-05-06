@@ -50,11 +50,11 @@ public final class ScenarioIOController extends AbstractSecondaryController {
     private final BoardViewer boardView;
     private final InfoViewer infoView;
     private final OOBViewer oobView;
-    Action open = new CommandAction(FileCommands.GAME_NEW, new OpenScenarioActionListener());
-    Action load = new CommandAction(FileCommands.GAME_LOAD, new LoadScenarioActionListener());
-    Action close = new CommandAction(FileCommands.GAME_CLOSE, new CloseScenarioActionListener(), false);
-    Action exit = new CommandAction(FileCommands.EXIT, new ExitActionListener());
-    Action settings = new CommandAction(FileCommands.SETTINGS, new SettingsActionListener());
+    private final Action open = new CommandAction(FileCommands.GAME_NEW, new OpenScenarioActionListener());
+    private final Action load = new CommandAction(FileCommands.GAME_LOAD, new LoadScenarioActionListener());
+    private final Action close = new CommandAction(FileCommands.GAME_CLOSE, new CloseScenarioActionListener(), false);
+    private final Action exit = new CommandAction(FileCommands.EXIT, new ExitActionListener());
+    private final Action settings = new CommandAction(FileCommands.SETTINGS, new SettingsActionListener());
 
     public ScenarioIOController(WeGoPlayerController mainController) {
         super(mainController);
@@ -107,7 +107,7 @@ public final class ScenarioIOController extends AbstractSecondaryController {
                     options[i] = UserRole.getForceRole(force);
                 }
                 options[forces.length] = UserRole.GOD;
-
+                container.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
                 int n = JOptionPane.showOptionDialog(container,
                         "Please select a user role",
                         "Select your role",
@@ -121,7 +121,6 @@ public final class ScenarioIOController extends AbstractSecondaryController {
                     mainController.setUserRole(options[n]);
                     return scenario;
                 }
-                container.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
             }
             return null;
         }
@@ -130,8 +129,9 @@ public final class ScenarioIOController extends AbstractSecondaryController {
         protected void onSuccess(Scenario scenario) {
 
             if (scenario != null) {
-                Container container = welcomeView.getContentPane();
-                // Show the menu bar
+                Container container = boardView.getContentPane();
+                container.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+                // Show the menu bar and tool bar
                 menuView.setVisible(true);
                 toolBarView.setVisible(true);
                 mainView.switchCard(AresPlayerGUI.PLAY_CARD);
@@ -152,7 +152,6 @@ public final class ScenarioIOController extends AbstractSecondaryController {
                 String scenInfo = scenario.getName() + "\n" + Clock.INSTANCE.toStringVerbose() + "\nRole: " + mainController.getUserRole();
                 infoView.updateScenarioInfo(scenInfo);
                 oobView.loadScenario(scenarioModel);
-                container.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
                 System.gc();
             }
         }

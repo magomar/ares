@@ -12,8 +12,8 @@ import java.util.Set;
 public class LookupService<T> {
 
     Map<Class<? extends T>, T> classMap = new HashMap<>();
-
-    public <C extends T, D extends T> void put(Class<C> key, D value) {
+    
+    public void put(Class<? extends T> key, T value) {
         classMap.put(key, value);
     }
 

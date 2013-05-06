@@ -47,9 +47,10 @@ public abstract class TileModel extends KnowledgeMediatedModel {
         return tile.getIndex();
     }
 
-    public boolean isNonPlayable() {
-        Set<Feature> tf = tile.getFeatures();
-        return tf.contains(Feature.NON_PLAYABLE);
+    public boolean isPlayable() {
+//        Set<Feature> tf = tile.getFeatures();
+//        return tf.contains(Feature.NON_PLAYABLE);
+        return tile.isPlayable();
     }
     
     public abstract UnitModel getTopUnit();

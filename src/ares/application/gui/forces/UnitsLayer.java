@@ -40,7 +40,7 @@ public class UnitsLayer extends AbstractImageLayer {
 
 //    private TileModel tile;
     @Override
-    protected void updateLayer() {
+    public void updateLayer() {
         initialize();
         Graphics2D g2 = globalImage.createGraphics();
         Collection<TileModel> tileModels = new HashSet<>();

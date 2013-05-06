@@ -46,7 +46,8 @@ public abstract class AbstractImageLayer extends javax.swing.JPanel implements I
         repaint();
     }
 
-    protected abstract void updateLayer();
+//    @Override
+//    public abstract void updateLayer();
 
     @Override
     public final void flush() {
@@ -83,4 +84,6 @@ public abstract class AbstractImageLayer extends javax.swing.JPanel implements I
     public BufferedImage getGlobalImage() {
         return globalImage;
     }
+    
+    
 }

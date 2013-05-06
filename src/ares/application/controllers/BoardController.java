@@ -1,11 +1,14 @@
 package ares.application.controllers;
 
+import ares.application.boundaries.view.ActionBarViewer;
 import ares.engine.algorithms.pathfinding.PathFinder;
 import ares.engine.algorithms.pathfinding.Path;
 import ares.engine.algorithms.pathfinding.AStar;
 import ares.application.boundaries.view.BoardViewer;
 import ares.application.boundaries.view.OOBViewer;
 import ares.application.boundaries.view.InfoViewer;
+import ares.application.commands.AresCommandGroup;
+import ares.application.commands.ViewCommands;
 import ares.application.gui.AresGraphicsModel;
 import ares.application.interaction.InteractionMode;
 import ares.application.models.board.TileModel;
@@ -18,8 +21,11 @@ import ares.engine.algorithms.pathfinding.heuristics.DistanceCalculator;
 import ares.engine.algorithms.pathfinding.heuristics.MinimunDistance;
 import ares.engine.command.tactical.TacticalMission;
 import ares.engine.command.tactical.TacticalMissionType;
+import ares.platform.commands.CommandAction;
+import ares.platform.commands.CommandGroup;
 import ares.platform.controllers.AbstractSecondaryController;
 import ares.platform.model.UserRole;
+import ares.platform.view.ComponentFactory;
 import ares.scenario.Scenario;
 import ares.scenario.board.*;
 import ares.scenario.forces.Formation;
@@ -30,6 +36,9 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.List;
 import java.util.logging.Logger;
+import javax.swing.Action;
+import javax.swing.JButton;
+import javax.swing.JMenu;
 import javax.swing.JTree;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
@@ -45,10 +54,14 @@ public final class BoardController extends AbstractSecondaryController implement
     private final BoardViewer boardView;
     private final InfoViewer infoView;
     private final OOBViewer oobView;
+    private final ActionBarViewer<JMenu> menuView;
+    private final ActionBarViewer<JButton> toolBarView;
     private final PathFinder pathFinder;
     private Tile selectedTile;
     private Unit selectedUnit;
     private InteractionMode interactionMode = InteractionMode.FREE;
+    private final Action viewGrid = new CommandAction(ViewCommands.VIEW_GRID, new ViewGridActionListener());
+    private final Action viewUnits = new CommandAction(ViewCommands.VIEW_UNITS, new ViewUnitsActionListener());
 
     public BoardController(WeGoPlayerController mainController) {
         super(mainController);
@@ -56,8 +69,17 @@ public final class BoardController extends AbstractSecondaryController implement
         this.boardView = mainController.getBoardView();
         this.infoView = mainController.getInfoView();
         this.oobView = mainController.getOobView();
+        this.menuView = mainController.getMenuView();
+        this.toolBarView = mainController.getToolBarView();
 
         pathFinder = new AStar(new MinimunDistance(DistanceCalculator.DELTA));
+//Add actions to the views
+        Action[] viewActions = {viewGrid, viewUnits};
+        CommandGroup group = AresCommandGroup.VIEW;
+        menuView.addActionButton(ComponentFactory.menu(group.getName(), group.getText(), group.getMnemonic(), viewActions));
+        for (Action action : viewActions) {
+            toolBarView.addActionButton(ComponentFactory.button(action));
+        }
 
         // Adds various component listeners
         boardView.addMouseListener(new BoardMouseListener());
@@ -66,6 +88,22 @@ public final class BoardController extends AbstractSecondaryController implement
 
         //Add change listeners to entities
         mainController.getEngine().addPropertyChangeListener(this);
+    }
+
+    private class ViewGridActionListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            boardView.setLayerVisible(BoardViewer.GRID, !boardView.isLayerVisible(BoardViewer.GRID));
+        }
+    }
+
+    private class ViewUnitsActionListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            boardView.setLayerVisible(BoardViewer.UNITS, !boardView.isLayerVisible(BoardViewer.UNITS));
+        }
     }
 
     private class OOBTreeSelectionListener implements TreeSelectionListener {

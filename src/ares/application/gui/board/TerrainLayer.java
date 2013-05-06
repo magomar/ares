@@ -23,7 +23,7 @@ public class TerrainLayer extends AbstractImageLayer {
     private ScenarioModel scenario;
 
     @Override
-    protected void updateLayer() {
+    public void updateLayer() {
         initialize();
         Graphics2D g2 = globalImage.createGraphics();
         // Paint it black!
@@ -48,7 +48,7 @@ public class TerrainLayer extends AbstractImageLayer {
      * @param tile
      */
     private void paintTile(Graphics2D g2, TileModel tile) {
-        if (tile.isNonPlayable()) {
+        if (!tile.isPlayable()) {
             return;
         }
         //If I don't know anything about it

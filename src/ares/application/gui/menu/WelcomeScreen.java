@@ -34,7 +34,7 @@ public final class WelcomeScreen extends AbstractImageLayer {
     }
 
     @Override
-    protected void updateLayer() {
+    public void updateLayer() {
         if (backgroundImage.get() == null) {
             BufferedImage bi = AresIO.ARES_IO.loadImage(randomImageFile());
             backgroundImage = new SoftReference<>(bi);

@@ -1,5 +1,6 @@
 package ares.application.boundaries.view;
 
+import ares.application.gui.ImageLayer;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.TileModel;
 import ares.application.models.forces.ForceModel;
@@ -16,23 +17,33 @@ import java.awt.event.MouseMotionListener;
  */
 public interface BoardViewer extends View {
 
-    public void loadScenario(ScenarioModel scenario);
+    final static int TERRAIN = 0;
+    final static int GRID = 1;
+    final static int SELECTION = 2;
+    final static int ARROWS = 3;
+    final static int UNITS = 4;
 
-    public void updateScenario(ScenarioModel scenario);
+    void loadScenario(ScenarioModel scenario);
 
-    public void closeScenario();
+    void updateScenario(ScenarioModel scenario);
 
-    public void updateUnitStack(TileModel tile);
+    void closeScenario();
 
-    public void addMouseListener(MouseListener listener);
+    void updateUnitStack(TileModel tile);
 
-    public void addMouseMotionListener(MouseMotionListener listener);
+    void addMouseListener(MouseListener listener);
 
-    public void updateCurrentOrders(Path path);
-    
-    public void updateLastOrders(Path path);
+    void addMouseMotionListener(MouseMotionListener listener);
 
-    public void updateSelectedUnit(UnitModel selectedUnit, FormationModel selectedFormation, ForceModel selectedForce);
+    void updateCurrentOrders(Path path);
 
-    public void centerViewOn(UnitModel selectedUnit, FormationModel selectedFormation);
+    void updateLastOrders(Path path);
+
+    void updateSelectedUnit(UnitModel selectedUnit, FormationModel selectedFormation, ForceModel selectedForce);
+
+    void centerViewOn(UnitModel selectedUnit, FormationModel selectedFormation);
+
+    void setLayerVisible(int layer, boolean visible);
+
+    boolean isLayerVisible(int layer);
 }

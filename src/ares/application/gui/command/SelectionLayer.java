@@ -24,7 +24,7 @@ public class SelectionLayer extends AbstractImageLayer {
     private FormationModel formation;
 
     @Override
-    protected void updateLayer() {
+    public void updateLayer() {
         initialize();
         if (selectedUnit == null) {
             return;
