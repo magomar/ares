@@ -6,10 +6,11 @@ import ares.platform.io.FileIO;
 import ares.scenario.board.Board;
 import java.awt.Point;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * This class provides information on the graphics being used for a particular scenario
@@ -41,6 +42,7 @@ public class GraphicsModel {
     int activeProfileIndex;
     private GraphicsProfile[] profiles;
     private List<Map<GraphicsDescriptor, ImageProvider>> providers;
+    private static final Logger LOG = Logger.getLogger(GraphicsModel.class.getName());
 
     private GraphicsModel() {
     }
@@ -57,16 +59,19 @@ public class GraphicsModel {
         setActiveProfile(profiles.length / 2);
     }
 
-    public void add(GraphicsDescriptor descriptor) {
+    public void addGraphics(GraphicsDescriptor descriptor) {
         for (int i = 0; i < profiles.length; i++) {
-            providers.get(i).put(descriptor, descriptor.getImageProviderType().getImageProvider(descriptor.getFilename(), descriptor.getRows(), descriptor.getColumns(), activeProfile));
+            ImageProvider newImageProvider = descriptor.getImageProviderType().getImageProvider(descriptor.getFilename(), descriptor.getRows(), descriptor.getColumns(), profiles[i]);
+            providers.get(i).put(descriptor, newImageProvider);
         }
     }
 
-    public void addAll(GraphicsDescriptor[] descriptors) {
-        for (GraphicsDescriptor descriptor : descriptors) {
-            for (int i = 0; i < profiles.length; i++) {
-                providers.get(i).put(descriptor, descriptor.getImageProviderType().getImageProvider(descriptor.getFilename(), descriptor.getRows(), descriptor.getColumns(), activeProfile));
+    public void addAllGraphics(GraphicsDescriptor[] descriptors) {
+        for (int i = 0; i < profiles.length; i++) {
+            Map<GraphicsDescriptor, ImageProvider> providersMap = providers.get(i);
+            for (GraphicsDescriptor descriptor : descriptors) {
+                ImageProvider newImageProvider = descriptor.getImageProviderType().getImageProvider(descriptor.getFilename(), descriptor.getRows(), descriptor.getColumns(), profiles[i]);
+                providersMap.put(descriptor, newImageProvider);
             }
         }
     }

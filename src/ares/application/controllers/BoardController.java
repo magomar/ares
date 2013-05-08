@@ -76,7 +76,7 @@ public final class BoardController extends AbstractSecondaryController implement
 
         pathFinder = new AStar(new MinimunDistance(DistanceCalculator.DELTA));
         //Add actions to the views
-        Action[] viewActions = {viewGrid, viewUnits};
+        Action[] viewActions = {viewGrid, viewUnits, zoomIn, zoomOut};
         CommandGroup group = AresCommandGroup.VIEW;
         menuView.addActionButton(ComponentFactory.menu(group.getName(), group.getText(), group.getMnemonic(), viewActions));
         for (Action action : viewActions) {
@@ -97,6 +97,7 @@ public final class BoardController extends AbstractSecondaryController implement
         @Override
         public void actionPerformed(ActionEvent e) {
             GraphicsModel.INSTANCE.nextActiveProfile();
+            boardView.loadScenario(mainController.getScenario().getModel(mainController.getUserRole()));
         }
     }
 
@@ -105,6 +106,7 @@ public final class BoardController extends AbstractSecondaryController implement
         @Override
         public void actionPerformed(ActionEvent e) {
             GraphicsModel.INSTANCE.previousActiveProfile();
+            boardView.loadScenario(mainController.getScenario().getModel(mainController.getUserRole()));
         }
     }
 

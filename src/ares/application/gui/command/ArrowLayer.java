@@ -182,7 +182,6 @@ public class ArrowLayer extends AbstractImageLayer {
      * images
      */
     private void paintArrowSegmentWithCost(Graphics2D g2, Node node, Set<Direction> directions, ArrowType type) {
-        GraphicsProfile profile = GraphicsModel.INSTANCE.getActiveProfile();
         Point coordinates = Directions.getDirections(Direction.getBitmask(directions)).getCoordinates();
         BufferedImage arrowImage = GraphicsModel.INSTANCE.getActiveProvider(type.getProvider()).getImage(coordinates, AresIO.ARES_IO);
         Tile tile = node.getTile();

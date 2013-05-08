@@ -99,10 +99,10 @@ public class WeGoPlayerController {
         engine.setScenario(scenario);
         // Initialize GraphicsModel
         GraphicsModel.INSTANCE.initialize(scenario.getBoard(), profiles, AresIO.ARES_IO);
-        GraphicsModel.INSTANCE.addAll(Terrain.values());
-        GraphicsModel.INSTANCE.addAll(Feature.values());
-        GraphicsModel.INSTANCE.addAll(AresMiscGraphics.values());
-        GraphicsModel.INSTANCE.addAll(UnitsColor.values());
+        GraphicsModel.INSTANCE.addAllGraphics(Terrain.values());
+        GraphicsModel.INSTANCE.addAllGraphics(Feature.values());
+        GraphicsModel.INSTANCE.addAllGraphics(AresMiscGraphics.values());
+        GraphicsModel.INSTANCE.addAllGraphics(UnitsColor.values());
     }
 
     public AbstractAresApplication getMainView() {
