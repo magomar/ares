@@ -1,6 +1,6 @@
 package ares.application.views;
 
-import ares.application.gui.AresGraphicsModel;
+import ares.application.gui.GraphicsModel;
 import ares.application.boundaries.view.BoardViewer;
 import ares.application.gui.ImageLayer;
 import ares.application.gui.command.ArrowLayer;
@@ -40,7 +40,6 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
     private SelectionLayer selectionLayer;
     private ArrowLayer arrowLayer;
     private final ImageLayer[] allLayers = {terrainLayer, gridLayer, selectionLayer, arrowLayer, unitsLayer};
-//    private final static int ALL = 0;
 //    private final static int LOW = 1;
 //    private final static int MID = 2;
 //    private final static int HIGH = 3;
@@ -100,7 +99,7 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
 
     @Override
     public void loadScenario(final ScenarioModel scenario) {
-        Dimension imageSize = new Dimension(AresGraphicsModel.getImageWidth(), AresGraphicsModel.getImageHeight());
+        Dimension imageSize = new Dimension(GraphicsModel.INSTANCE.getImageWidth(), GraphicsModel.INSTANCE.getImageHeight());
         layeredPane.setPreferredSize(imageSize);
         layeredPane.setSize(imageSize);
         // Prepare each layer's thread
@@ -216,7 +215,7 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
     public void centerViewOn(UnitModel selectedUnit, FormationModel selectedFormation) {
         JScrollBar verticalScrollBar = contentPane.getVerticalScrollBar();
         JScrollBar horizontalScrollBar = contentPane.getHorizontalScrollBar();
-        Point pos = AresGraphicsModel.tileToPixel(selectedUnit.getLocation().getCoordinates());
+        Point pos = GraphicsModel.INSTANCE.tileToPixel(selectedUnit.getLocation().getCoordinates());
         Dimension viewportSize = contentPane.getViewport().getSize();
         int boardWidth = terrainLayer.getGlobalImage().getWidth();
         int boardHeight = terrainLayer.getGlobalImage().getHeight();
@@ -235,4 +234,5 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
     public boolean isLayerVisible(int layer) {
         return allLayers[layer].isVisible();
     }
+
 }

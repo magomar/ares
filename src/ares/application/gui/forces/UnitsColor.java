@@ -1,12 +1,12 @@
 package ares.application.gui.forces;
 
 import ares.application.gui.AresGraphicsProfile;
-import ares.application.gui.providers.GraphicsProvider;
-import ares.application.gui.providers.MultiProfileImageProvider;
+import ares.application.gui.GraphicsProfile;
+import ares.application.gui.providers.GraphicsDescriptor;
+import ares.application.gui.providers.ImageProvider;
 import ares.application.gui.providers.ImageProviderType;
 import ares.platform.io.FileIO;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
 
@@ -14,7 +14,7 @@ import java.awt.image.BufferedImage;
  *
  * @author Sergio Musoles
  */
-public enum UnitsColor implements GraphicsProvider<AresGraphicsProfile> {
+public enum UnitsColor implements GraphicsDescriptor {
 
     UNITS_GRAY_0(Color.BLACK),
     UNITS_GRAY_1(Color.BLACK),
@@ -128,14 +128,12 @@ public enum UnitsColor implements GraphicsProvider<AresGraphicsProfile> {
     UNITS_022_4(Color.BLACK);
     private final Color foreground;
     private final String filename;
-    private final MultiProfileImageProvider<AresGraphicsProfile, UnitsColor> provider;
     private final Point[] coordinatesByIndex;
+    private final ImageProviderType imageProviderType = ImageProviderType.UNIT;
 
     private UnitsColor(Color foreground) {
         this.foreground = foreground;
         filename = name().toLowerCase() + ".png";
-        provider = new MultiProfileImageProvider<>(this, ImageProviderType.UNIT, AresGraphicsProfile.class,
-                AresGraphicsProfile.UNITS_IMAGE_ROWS, AresGraphicsProfile.UNITS_IMAGE_COLS);
         int icons = AresGraphicsProfile.UNITS_IMAGE_ROWS * AresGraphicsProfile.UNITS_IMAGE_COLS;
         coordinatesByIndex = new Point[icons];
         for (int i = 0; i < icons; i++) {
@@ -155,26 +153,21 @@ public enum UnitsColor implements GraphicsProvider<AresGraphicsProfile> {
     }
 
     @Override
-    public BufferedImage getImage(AresGraphicsProfile profile, Point coordinates, FileIO fileSystem) {
-        return provider.getImage(profile, coordinates, fileSystem);
-    }
-
-    public BufferedImage getImage(AresGraphicsProfile profile, int index, FileIO fileSystem) {
-        return provider.getImage(profile, coordinatesByIndex[index], fileSystem);
+    public ImageProviderType getImageProviderType() {
+        return imageProviderType;
     }
 
     @Override
-    public BufferedImage getFullImage(AresGraphicsProfile profile, FileIO fileSystem) {
-        return provider.getFullImage(profile, fileSystem);
+    public int getRows() {
+        return AresGraphicsProfile.TERRAIN_IMAGE_ROWS;
     }
 
     @Override
-    public Dimension getFullImageDimension(AresGraphicsProfile profile) {
-        return provider.getFullImageDimension(profile);
+    public int getColumns() {
+        return AresGraphicsProfile.TERRAIN_IMAGE_COLS;
     }
 
-    @Override
-    public String getFilename(AresGraphicsProfile profile) {
-        return provider.getFilename(profile);
+    public BufferedImage getImage(ImageProvider provider, int index, FileIO fileSystem) {
+        return provider.getImage(coordinatesByIndex[index], fileSystem);
     }
 }

@@ -8,10 +8,6 @@ import ares.application.gui.GraphicsProfile;
  */
 public class UnitImageProvider extends AbstractImageProvider {
 
-    public UnitImageProvider(String filename, GraphicsProfile profile) {
-        this(filename, 1, 1, profile);
-    }
-
     public UnitImageProvider(String filename, int rows, int columns, GraphicsProfile profile) {
         super(filename, rows, columns, profile.getUnitWidth(), profile.getUnitHeight(), profile);
     }

@@ -9,7 +9,7 @@ import ares.application.boundaries.view.OOBViewer;
 import ares.application.boundaries.view.InfoViewer;
 import ares.application.commands.AresCommandGroup;
 import ares.application.commands.ViewCommands;
-import ares.application.gui.AresGraphicsModel;
+import ares.application.gui.GraphicsModel;
 import ares.application.interaction.InteractionMode;
 import ares.application.models.board.TileModel;
 import ares.application.models.forces.ForceModel;
@@ -62,6 +62,8 @@ public final class BoardController extends AbstractSecondaryController implement
     private InteractionMode interactionMode = InteractionMode.FREE;
     private final Action viewGrid = new CommandAction(ViewCommands.VIEW_GRID, new ViewGridActionListener());
     private final Action viewUnits = new CommandAction(ViewCommands.VIEW_UNITS, new ViewUnitsActionListener());
+    private final Action zoomIn = new CommandAction(ViewCommands.VIEW_ZOOM_IN, new ZoomInActionListener());
+    private final Action zoomOut = new CommandAction(ViewCommands.VIEW_ZOOM_OUT, new ZoomOutActionListener());
 
     public BoardController(WeGoPlayerController mainController) {
         super(mainController);
@@ -73,7 +75,7 @@ public final class BoardController extends AbstractSecondaryController implement
         this.toolBarView = mainController.getToolBarView();
 
         pathFinder = new AStar(new MinimunDistance(DistanceCalculator.DELTA));
-//Add actions to the views
+        //Add actions to the views
         Action[] viewActions = {viewGrid, viewUnits};
         CommandGroup group = AresCommandGroup.VIEW;
         menuView.addActionButton(ComponentFactory.menu(group.getName(), group.getText(), group.getMnemonic(), viewActions));
@@ -88,6 +90,22 @@ public final class BoardController extends AbstractSecondaryController implement
 
         //Add change listeners to entities
         mainController.getEngine().addPropertyChangeListener(this);
+    }
+
+    private class ZoomInActionListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            GraphicsModel.INSTANCE.nextActiveProfile();
+        }
+    }
+
+    private class ZoomOutActionListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            GraphicsModel.INSTANCE.previousActiveProfile();
+        }
     }
 
     private class ViewGridActionListener implements ActionListener {
@@ -193,9 +211,9 @@ public final class BoardController extends AbstractSecondaryController implement
     }
 
     private void select(int x, int y) {
-        if (AresGraphicsModel.isWithinImageRange(x, y)) {
-            Point tilePoint = AresGraphicsModel.pixelToTileAccurate(x, y);
-            if (!AresGraphicsModel.validCoordinates(tilePoint.x, tilePoint.y)) {
+        if (GraphicsModel.INSTANCE.isWithinImageRange(x, y)) {
+            Point tilePoint = GraphicsModel.INSTANCE.pixelToTileAccurate(x, y);
+            if (!GraphicsModel.INSTANCE.validCoordinates(tilePoint.x, tilePoint.y)) {
                 return;
             }
             Tile tile = mainController.getScenario().getBoard().getTile(tilePoint.x, tilePoint.y);
@@ -237,9 +255,9 @@ public final class BoardController extends AbstractSecondaryController implement
     }
 
     private void command(int x, int y) {
-        if (interactionMode == InteractionMode.UNIT_ORDERS && AresGraphicsModel.isWithinImageRange(x, y)) {
-            Point tilePoint = AresGraphicsModel.pixelToTileAccurate(x, y);
-            if (!AresGraphicsModel.validCoordinates(tilePoint.x, tilePoint.y)) {
+        if (interactionMode == InteractionMode.UNIT_ORDERS && GraphicsModel.INSTANCE.isWithinImageRange(x, y)) {
+            Point tilePoint = GraphicsModel.INSTANCE.pixelToTileAccurate(x, y);
+            if (!GraphicsModel.INSTANCE.validCoordinates(tilePoint.x, tilePoint.y)) {
                 return;
             }
             Scenario scenario = mainController.getScenario();
@@ -258,9 +276,9 @@ public final class BoardController extends AbstractSecondaryController implement
             if (interactionMode == InteractionMode.UNIT_ORDERS && !mainController.getEngine().isRunning()) {
                 Scenario scenario = mainController.getScenario();
                 Point pixel = new Point(me.getX(), me.getY());
-                if (AresGraphicsModel.isWithinImageRange(pixel)) {
-                    Point tilePoint = AresGraphicsModel.pixelToTileAccurate(pixel);
-                    if (!AresGraphicsModel.validCoordinates(tilePoint.x, tilePoint.y)) {
+                if (GraphicsModel.INSTANCE.isWithinImageRange(pixel)) {
+                    Point tilePoint = GraphicsModel.INSTANCE.pixelToTileAccurate(pixel);
+                    if (!GraphicsModel.INSTANCE.validCoordinates(tilePoint.x, tilePoint.y)) {
                         return;
                     }
                     Tile tile = scenario.getBoard().getTile(tilePoint.x, tilePoint.y);

@@ -35,13 +35,22 @@ public interface ImageProvider {
     int getRows();
 
     /**
-     * Gets the sprite located in given {@code row} and {@code column} of the graphics of this provider
+     * Gets the sprite located in given {@code coordinates} of the graphics of this provider
      *
      * @param column
      * @param row
      * @return
      */
     BufferedImage getImage(Point coordinates, FileIO fileSystem);
+
+    /**
+     * Gets the sprite located in given {@code row} and {@code column} of the graphics of this provider
+     *
+     * @param column
+     * @param row
+     * @return
+     */
+    public BufferedImage getImage(int column, int row, FileIO fileSystem);
 
     /**
      * Gets the sprite in coordinates encoded by a single {@code index}
@@ -53,7 +62,7 @@ public interface ImageProvider {
      * @param fileSystem
      * @return
      */
-//    BufferedImage getImage(int index, FileIO fileSystem);
+    BufferedImage getImage(int index, FileIO fileSystem);
 
     /**
      * Gets the first or only sprite in the graphics of this provider
@@ -66,7 +75,7 @@ public interface ImageProvider {
      * @return
      */
     BufferedImage getImage(FileIO fileSystem);
-    
+
     /**
      * Gets the complete image containing all the graphics for this provider
      *

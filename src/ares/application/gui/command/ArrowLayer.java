@@ -2,9 +2,10 @@ package ares.application.gui.command;
 
 import ares.engine.algorithms.pathfinding.Path;
 import ares.engine.algorithms.pathfinding.Node;
-import ares.application.gui.AresGraphicsModel;
+import ares.application.gui.GraphicsModel;
 import ares.application.gui.AbstractImageLayer;
 import ares.application.gui.AresGraphicsProfile;
+import ares.application.gui.GraphicsProfile;
 import ares.application.io.AresIO;
 import ares.scenario.board.Direction;
 import ares.scenario.board.Directions;
@@ -53,7 +54,7 @@ public class ArrowLayer extends AbstractImageLayer {
     }
 
     /**
-     * Paints complete arrow for the {@code path} passed as argument
+     * Paints complete arrow for the {@code activePath} passed as argument
      *
      * @param activePath
      */
@@ -129,11 +130,10 @@ public class ArrowLayer extends AbstractImageLayer {
      * @param type
      */
     private void paintFinalArrowSegment(Graphics2D g2, Node node, Direction direction, ArrowType type) {
-        AresGraphicsProfile profile = AresGraphicsModel.getProfile();
         Point coordinates = Directions.getDirections(direction.ordinal() + 25).getCoordinates();
-        BufferedImage arrowImage = type.getProvider().getImage(profile, coordinates, AresIO.ARES_IO);
+        BufferedImage arrowImage = GraphicsModel.INSTANCE.getActiveProvider(type.getProvider()).getImage(coordinates, AresIO.ARES_IO);
         Tile tile = node.getTile();
-        Point pos = AresGraphicsModel.tileToPixel(tile.getCoordinates());
+        Point pos = GraphicsModel.INSTANCE.tileToPixel(tile.getCoordinates());
         g2.drawImage(arrowImage, pos.x, pos.y, this);
         repaint(pos.x, pos.y, arrowImage.getWidth(), arrowImage.getHeight());
     }
@@ -147,11 +147,10 @@ public class ArrowLayer extends AbstractImageLayer {
      * @param type
      */
     private void paintFinalArrowSegmentWithCost(Graphics2D g2, Node node, Direction direction, ArrowType type) {
-        AresGraphicsProfile profile = AresGraphicsModel.getProfile();
         Point coordinates = Directions.getDirections(direction.ordinal() + 25).getCoordinates();
-        BufferedImage arrowImage = type.getProvider().getImage(profile, coordinates, AresIO.ARES_IO);
+        BufferedImage arrowImage = GraphicsModel.INSTANCE.getActiveProvider(type.getProvider()).getImage(coordinates, AresIO.ARES_IO);
         Tile tile = node.getTile();
-        Point pos = AresGraphicsModel.tileToPixel(tile.getCoordinates());
+        Point pos = GraphicsModel.INSTANCE.tileToPixel(tile.getCoordinates());
         g2.drawImage(arrowImage, pos.x, pos.y, this);
         int cost = (int) node.getG();
         g2.drawString(Integer.toString(cost), pos.x + arrowImage.getWidth() / 2, pos.y + arrowImage.getHeight() / 2);
@@ -167,11 +166,10 @@ public class ArrowLayer extends AbstractImageLayer {
      * @param type
      */
     private void paintArrowSegment(Graphics2D g2, Node node, Set<Direction> directions, ArrowType type) {
-        AresGraphicsProfile profile = AresGraphicsModel.getProfile();
         Point coordinates = Directions.getDirections(Direction.getBitmask(directions)).getCoordinates();
-        BufferedImage arrowImage = type.getProvider().getImage(profile, coordinates, AresIO.ARES_IO);
+        BufferedImage arrowImage = GraphicsModel.INSTANCE.getActiveProvider(type.getProvider()).getImage(coordinates, AresIO.ARES_IO);
         Tile tile = node.getTile();
-        Point pos = AresGraphicsModel.tileToPixel(tile.getCoordinates());
+        Point pos = GraphicsModel.INSTANCE.tileToPixel(tile.getCoordinates());
         g2.drawImage(arrowImage, pos.x, pos.y, this);
         repaint(pos.x, pos.y, arrowImage.getWidth(), arrowImage.getHeight());
     }
@@ -184,11 +182,11 @@ public class ArrowLayer extends AbstractImageLayer {
      * images
      */
     private void paintArrowSegmentWithCost(Graphics2D g2, Node node, Set<Direction> directions, ArrowType type) {
-        AresGraphicsProfile profile = AresGraphicsModel.getProfile();
+        GraphicsProfile profile = GraphicsModel.INSTANCE.getActiveProfile();
         Point coordinates = Directions.getDirections(Direction.getBitmask(directions)).getCoordinates();
-        BufferedImage arrowImage = type.getProvider().getImage(profile, coordinates, AresIO.ARES_IO);
+        BufferedImage arrowImage = GraphicsModel.INSTANCE.getActiveProvider(type.getProvider()).getImage(coordinates, AresIO.ARES_IO);
         Tile tile = node.getTile();
-        Point pos = AresGraphicsModel.tileToPixel(tile.getCoordinates());
+        Point pos = GraphicsModel.INSTANCE.tileToPixel(tile.getCoordinates());
         g2.drawImage(arrowImage, pos.x, pos.y, this);
         int cost = (int) node.getG();
         g2.drawString(Integer.toString(cost), pos.x + arrowImage.getWidth() / 2, pos.y + arrowImage.getHeight() / 2);

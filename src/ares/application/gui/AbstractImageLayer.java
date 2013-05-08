@@ -39,7 +39,7 @@ public abstract class AbstractImageLayer extends javax.swing.JPanel implements I
     @Override
     public final void initialize() {
         if (parentLayer == null) {
-            globalImage = new BufferedImage(AresGraphicsModel.getImageWidth(), AresGraphicsModel.getImageHeight(), BufferedImage.TYPE_INT_ARGB);
+            globalImage = new BufferedImage(GraphicsModel.INSTANCE.getImageWidth(), GraphicsModel.INSTANCE.getImageHeight(), BufferedImage.TYPE_INT_ARGB);
         } else {
             globalImage = parentLayer.globalImage;
         }

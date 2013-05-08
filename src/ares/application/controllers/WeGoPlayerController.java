@@ -2,10 +2,18 @@ package ares.application.controllers;
 
 import ares.application.boundaries.view.*;
 import ares.application.AresPlayerGUI;
+import ares.application.gui.AresGraphicsProfile;
+import ares.application.gui.GraphicsModel;
+import ares.application.gui.GraphicsProfile;
+import ares.application.gui.forces.UnitsColor;
+import ares.application.gui.providers.AresMiscGraphics;
+import ares.application.io.AresIO;
 import ares.engine.RealTimeEngine;
 import ares.platform.application.*;
 import ares.platform.model.UserRole;
 import ares.scenario.Scenario;
+import ares.scenario.board.Feature;
+import ares.scenario.board.Terrain;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.logging.*;
@@ -37,11 +45,12 @@ public class WeGoPlayerController {
     private final RealTimeEngine engine;
     private UserRole userRole;
     private Scenario scenario;
+    private final GraphicsProfile[] profiles = AresGraphicsProfile.values();
     // Other fields
     private final ExecutorService executor;
     private static final Logger LOG = Logger.getLogger(WeGoPlayerController.class.getName());
 
-    public WeGoPlayerController(AbstractAresApplication mainView, BoardViewer boardView, InfoViewer unitView, OOBViewer oobView, ActionBarViewer<JMenu> menuView, MessagesViewer messagesView, ActionBarViewer<JButton> welcomeScreenV, ActionBarViewer<JButton> toolBarView) {
+    public WeGoPlayerController(AbstractAresApplication mainView, BoardViewer boardView, InfoViewer unitView, OOBViewer oobView, ActionBarViewer<JMenu> menuView, MessagesViewer messagesView, ActionBarViewer<JButton> welcomeScreenV, ActionBarViewer<JButton> toolBarView, GraphicsProfile[] profiles) {
         //        executor = Executors.newCachedThreadPool();
         executor = Executors.newSingleThreadExecutor();
         this.engine = new RealTimeEngine();
@@ -88,6 +97,12 @@ public class WeGoPlayerController {
     void setScenario(Scenario scenario) {
         this.scenario = scenario;
         engine.setScenario(scenario);
+        // Initialize GraphicsModel
+        GraphicsModel.INSTANCE.initialize(scenario.getBoard(), profiles, AresIO.ARES_IO);
+        GraphicsModel.INSTANCE.addAll(Terrain.values());
+        GraphicsModel.INSTANCE.addAll(Feature.values());
+        GraphicsModel.INSTANCE.addAll(AresMiscGraphics.values());
+        GraphicsModel.INSTANCE.addAll(UnitsColor.values());
     }
 
     public AbstractAresApplication getMainView() {

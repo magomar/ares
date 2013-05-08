@@ -1,6 +1,6 @@
 package ares.application.gui.forces;
 
-import ares.application.gui.AresGraphicsModel;
+import ares.application.gui.GraphicsModel;
 import ares.application.gui.AbstractImageLayer;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.*;
@@ -85,7 +85,7 @@ public class UnitsLayer extends AbstractImageLayer {
     private void paintUnitStack(Graphics2D g2, TileModel tile) {
 
         //Calculate unit position
-        Point pos = AresGraphicsModel.tileToPixel(tile.getCoordinates());
+        Point pos = GraphicsModel.INSTANCE.tileToPixel(tile.getCoordinates());
 
         //If no units on the tile
         if (tile.isEmpty()) {
@@ -96,7 +96,7 @@ public class UnitsLayer extends AbstractImageLayer {
         } else {
             //Retrieve the single unit image
             UnitModel unit = tile.getTopUnit();
-            BufferedImage unitImage = unit.getColor().getImage(AresGraphicsModel.getProfile(), unit.getIconId(), AresIO.ARES_IO);
+            BufferedImage unitImage = GraphicsModel.INSTANCE.getActiveProvider(unit.getColor()).getImage(unit.getIconId(), AresIO.ARES_IO);
 
             //Num units to be painted
             int max = Math.min(tile.getNumStackedUnits(), MAX_STACK);

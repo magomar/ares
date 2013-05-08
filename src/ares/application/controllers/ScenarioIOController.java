@@ -8,6 +8,8 @@ import ares.application.commands.FileCommands;
 import ares.application.models.ScenarioModel;
 import ares.application.commands.AresCommandGroup;
 import ares.application.AresPlayerGUI;
+import ares.application.gui.GraphicsModel;
+import ares.application.gui.GraphicsProfile;
 import ares.application.views.MessagesHandler;
 import ares.data.jaxb.EquipmentDB;
 import ares.application.io.AresFileType;
@@ -212,4 +214,5 @@ public final class ScenarioIOController extends AbstractSecondaryController {
         public void actionPerformed(ActionEvent e) {
         }
     }
+    
 }

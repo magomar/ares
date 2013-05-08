@@ -2,7 +2,7 @@ package ares.scenario;
 
 import ares.engine.time.Clock;
 import ares.application.models.ScenarioModel;
-import ares.application.gui.AresGraphicsModel;
+import ares.application.gui.GraphicsModel;
 import ares.data.jaxb.EquipmentDB;
 import ares.data.jaxb.OOB;
 import ares.platform.model.ModelProvider;
@@ -28,14 +28,12 @@ public final class Scenario implements ModelProvider<ScenarioModel> {
     private String name;
     private Board board;
     private Force[] forces;
-    private AresGraphicsModel boardInfo;
     private Map<UserRole, ScenarioModel> models;
 
     public Scenario(ares.data.jaxb.Scenario scenario, EquipmentDB eqpDB) {
         name = scenario.getHeader().getName();
         Scale.INSTANCE.initialize((int) (scenario.getEnvironment().getScale() * 1000));
         Clock.INSTANCE.initialize(scenario.getCalendar());
-//        assetTypes = new WeakReference<>(new AssetTypes(eqpDB));
         assetTypes = new AssetTypes(eqpDB);
         board = new Board(scenario);
         OOB oob = scenario.getOOB();
@@ -50,8 +48,6 @@ public final class Scenario implements ModelProvider<ScenarioModel> {
         board.initialize(scenario, this, forces);
 
         Logger.getLogger(Scenario.class.getName()).log(Level.FINE, "Scenario loaded: {0}", toString());
-
-        boardInfo = new AresGraphicsModel(board);
         models = new HashMap<>();
         models.put(UserRole.GOD, new ScenarioModel(this, UserRole.GOD));
         for (Force force : forces) {
@@ -62,10 +58,6 @@ public final class Scenario implements ModelProvider<ScenarioModel> {
 
     public Board getBoard() {
         return board;
-    }
-
-    public AresGraphicsModel getBoardGraphicsModel() {
-        return boardInfo;
     }
 
     public Force[] getForces() {

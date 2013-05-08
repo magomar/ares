@@ -1,6 +1,7 @@
 package ares.application;
 
 import ares.application.controllers.WeGoPlayerController;
+import ares.application.gui.AresGraphicsProfile;
 import ares.application.views.*;
 import ares.platform.application.AbstractAresApplication;
 import ares.platform.view.ComponentFactory;
@@ -34,7 +35,7 @@ public class AresPlayerGUI extends AbstractAresApplication {
     public AresPlayerGUI() {
         super(); // creates layout
         // Create controllers and passes the views
-        mainController = new WeGoPlayerController(this, boardV, infoV, oobV, menuV, messagesV, welcomeScreenV, toolBarV);
+        mainController = new WeGoPlayerController(this, boardV, infoV, oobV, menuV, messagesV, welcomeScreenV, toolBarV, AresGraphicsProfile.values());
     }
 
     @Override
