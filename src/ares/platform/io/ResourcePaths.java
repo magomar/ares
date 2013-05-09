@@ -12,6 +12,7 @@ public enum ResourcePaths {
     SCENARIOS("Data/Scenarios"),
     GRAPHICS("Graphics"),
     ICONS_SMALL("Graphics/Icons/Small"),
+    ICONS_MEDIUM("Graphics/Icons/Medium"),
     ICONS_LARGE("Graphics/Icons/Large"),
     GRAPHICS_BACKGROUND("Graphics/Background"),
     GRAPHICS_SMALL("Graphics/Small"),

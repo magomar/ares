@@ -45,6 +45,7 @@ public abstract class AbstractImageProvider implements ImageProvider {
         return filename;
     }
 
+    @Override
     public BufferedImage getImage(int index, FileIO fileSystem) {
         int column = index / rows;
         int row = index % rows;

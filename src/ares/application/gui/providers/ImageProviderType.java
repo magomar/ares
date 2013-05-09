@@ -10,16 +10,16 @@ public enum ImageProviderType {
 
     TILE {
         @Override
-        public ImageProvider getImageProvider(String filename, int rows, int columns, GraphicsProfile profile) {
+        public ImageProvider createImageProvider(String filename, int rows, int columns, GraphicsProfile profile) {
             return new TileImageProvider(filename, rows, columns, profile);
         }
     },
     UNIT {
         @Override
-        public ImageProvider getImageProvider(String filename, int rows, int columns, GraphicsProfile profile) {
+        public ImageProvider createImageProvider(String filename, int rows, int columns, GraphicsProfile profile) {
             return new UnitImageProvider(filename, rows, columns, profile);
         }
     };
 
-    public abstract ImageProvider getImageProvider(String filename, int rows, int columns, GraphicsProfile profile);
+    public abstract ImageProvider createImageProvider(String filename, int rows, int columns, GraphicsProfile profile);
 }

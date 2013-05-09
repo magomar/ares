@@ -5,6 +5,7 @@ import ares.platform.io.ResourcePaths;
 /**
  *
  * @author Heine <heisncfr@inf.upv.es>
+ * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
 public enum AresGraphicsProfile implements GraphicsProfile {
 

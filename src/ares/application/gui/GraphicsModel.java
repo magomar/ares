@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -37,12 +36,16 @@ public class GraphicsModel {
      * Board image height in pixels
      */
     private int imageHeight;
+    /**
+     * Graphics profile currently in use. Typically a profile corresponds to a different zoom level, but it could also
+     * correspond to an alternate graphics set
+     */
     private GraphicsProfile activeProfile;
     private Map<GraphicsDescriptor, ImageProvider> activeProviders;
     int activeProfileIndex;
     private GraphicsProfile[] profiles;
     private List<Map<GraphicsDescriptor, ImageProvider>> providers;
-    private static final Logger LOG = Logger.getLogger(GraphicsModel.class.getName());
+//    private static final Logger LOG = Logger.getLogger(GraphicsModel.class.getName());
 
     private GraphicsModel() {
     }
@@ -61,7 +64,7 @@ public class GraphicsModel {
 
     public void addGraphics(GraphicsDescriptor descriptor) {
         for (int i = 0; i < profiles.length; i++) {
-            ImageProvider newImageProvider = descriptor.getImageProviderType().getImageProvider(descriptor.getFilename(), descriptor.getRows(), descriptor.getColumns(), profiles[i]);
+            ImageProvider newImageProvider = descriptor.getImageProviderType().createImageProvider(descriptor.getFilename(), descriptor.getRows(), descriptor.getColumns(), profiles[i]);
             providers.get(i).put(descriptor, newImageProvider);
         }
     }
@@ -70,7 +73,7 @@ public class GraphicsModel {
         for (int i = 0; i < profiles.length; i++) {
             Map<GraphicsDescriptor, ImageProvider> providersMap = providers.get(i);
             for (GraphicsDescriptor descriptor : descriptors) {
-                ImageProvider newImageProvider = descriptor.getImageProviderType().getImageProvider(descriptor.getFilename(), descriptor.getRows(), descriptor.getColumns(), profiles[i]);
+                ImageProvider newImageProvider = descriptor.getImageProviderType().createImageProvider(descriptor.getFilename(), descriptor.getRows(), descriptor.getColumns(), profiles[i]);
                 providersMap.put(descriptor, newImageProvider);
             }
         }
@@ -349,4 +352,13 @@ public class GraphicsModel {
     public boolean isWithinImageRange(int x, int y) {
         return ((x < imageWidth && x > 0) && (y > 0 && y < imageHeight));
     }
+
+//    public static int computeBoardImageWidth(GraphicsProfile profile, int columns) {
+//        return profile.getHexDiameter() + (columns - 1) * profile.getHexOffset();
+//
+//    }
+//
+//    public static int computeBoardImageHeight(GraphicsProfile profile, int boardHeight) {
+//        return boardHeight * profile.getHexHeight() + profile.getHexHeight() / 2;
+//    }
 }

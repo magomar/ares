@@ -4,8 +4,6 @@ import ares.engine.algorithms.pathfinding.Path;
 import ares.engine.algorithms.pathfinding.Node;
 import ares.application.gui.GraphicsModel;
 import ares.application.gui.AbstractImageLayer;
-import ares.application.gui.AresGraphicsProfile;
-import ares.application.gui.GraphicsProfile;
 import ares.application.io.AresIO;
 import ares.scenario.board.Direction;
 import ares.scenario.board.Directions;
@@ -18,6 +16,7 @@ import java.util.*;
  * Draws the movement arrows on a BufferedImage
  *
  * @author Heine <heisncfr@inf.upv.es>
+ * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
 public class ArrowLayer extends AbstractImageLayer {
 
