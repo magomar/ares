@@ -1,7 +1,7 @@
 package ares.application.commands;
 
 import ares.platform.commands.Command;
-import ares.platform.io.ResourcePaths;
+import ares.platform.io.ResourcePath;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.nio.file.FileSystems;
@@ -77,7 +77,7 @@ public enum UnitCommands implements Command {
     @Override
     public Icon getLargeIcon() {
         if (icon == null) {
-            File iconFile = FileSystems.getDefault().getPath(ResourcePaths.ICONS_MEDIUM.getPath(), iconFilename).toFile();
+            File iconFile = FileSystems.getDefault().getPath(ResourcePath.ICONS_MEDIUM.getPath(), iconFilename).toFile();
             icon = new ImageIcon(iconFile.getPath());
         }
         return icon;
@@ -86,7 +86,7 @@ public enum UnitCommands implements Command {
     @Override
     public Icon getSmallIcon() {
         if (icon == null) {
-            File iconFile = FileSystems.getDefault().getPath(ResourcePaths.ICONS_SMALL.getPath(), iconFilename).toFile();
+            File iconFile = FileSystems.getDefault().getPath(ResourcePath.ICONS_SMALL.getPath(), iconFilename).toFile();
             icon = new ImageIcon(iconFile.getPath());
         }
         return icon;

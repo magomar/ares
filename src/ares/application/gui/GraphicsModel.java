@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Logger;
 
 /**
  * This class provides information on the graphics being used for a particular scenario
@@ -20,6 +19,7 @@ import java.util.logging.Logger;
 public class GraphicsModel {
 
     public static final GraphicsModel INSTANCE = new GraphicsModel();
+    
     /**
      * Board width in tiles
      */

@@ -7,19 +7,20 @@ package ares.scenario.forces;
 public enum Echelon {
 
 //    SQUAD(0, 0),
-    SECTION(0, 0),
-    PLATOON(1, 1),
-    COMPANY(3, 2),
-    BATTALION(5, 3),
-    REGIMENT(15, 4),
-    BRIGADE(20, 4),
-    DIVISION(40, 5),
-    CORPS(80, 6),
-    ARMY(120, 7),
-    ARMY_GROUP(140, 8),
-    REGION(150, 9);
+    SECTION("..", 0, 0),
+    PLATOON("...", 1, 1),
+    COMPANY("|", 3, 2),
+    BATTALION("||", 5, 3),
+    REGIMENT("|||", 15, 4),
+    BRIGADE("X", 20, 4),
+    DIVISION("XX", 40, 5),
+    CORPS("XXX", 80, 6),
+    ARMY("XXXX", 120, 7),
+    ARMY_GROUP("XXXXX", 140, 8),
+    REGION("XXXXXX", 150, 9);
     private final static double SPEED_FACTOR = -0.5;
     private final static double COMMAND_FACTOR = 0.5;
+    private final String symbol;
     /**
      * Number of Logistics squads needed to achieve 100% supply distribution
      */
@@ -39,7 +40,8 @@ public enum Echelon {
      */
     private final double commandModifier;
 
-    private Echelon(final int logistics, final int command) {
+    private Echelon(final String symbol,final int logistics, final int command) {
+        this.symbol = symbol;
         this.logistics = logistics;
         this.command = command;
         speedModifier = 1.0 + (command - 3)
@@ -47,6 +49,10 @@ public enum Echelon {
         commandModifier = 1.0 + (command - 3)
                 * COMMAND_FACTOR / 6.0;
 
+    }
+
+    public String getSymbol() {
+        return symbol;
     }
 
     public int getCommand() {

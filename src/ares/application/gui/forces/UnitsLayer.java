@@ -7,7 +7,13 @@ import ares.application.models.board.*;
 import ares.application.models.forces.*;
 import ares.engine.knowledge.KnowledgeCategory;
 import ares.application.io.AresIO;
+import static ares.engine.knowledge.KnowledgeCategory.COMPLETE;
+import static ares.engine.knowledge.KnowledgeCategory.GOOD;
+import static ares.engine.knowledge.KnowledgeCategory.NONE;
+import static ares.engine.knowledge.KnowledgeCategory.POOR;
+import ares.scenario.forces.Echelon;
 import java.awt.*;
+import java.awt.color.ICC_ProfileRGB;
 import java.awt.image.BufferedImage;
 import java.util.*;
 
@@ -19,7 +25,6 @@ import java.util.*;
 public class UnitsLayer extends AbstractImageLayer {
 
     private ScenarioModel scenario;
-
     /**
      * Offset distance from the upper left corner of the tile. The image will be painted at Point(X+offset, Y+offset)
      *
@@ -118,39 +123,11 @@ public class UnitsLayer extends AbstractImageLayer {
             }
 
             //Adds attributes to the image such as Health, Attack, Defense, etc.
-            addUnitAttributes(unitImage, tile.getTopUnit());
+            UnitsInfographicProfile unitsProfile = GraphicsModel.INSTANCE.getActiveProfile().getUnitsProfile();
+            unitsProfile.paintUnitAttributes(unitImage.createGraphics(), unit);
             g2.drawImage(unitImage, pos.x + d, pos.y + d, this);
             repaint(pos.x, pos.y, unitImage.getWidth() + d, unitImage.getHeight() + d);
         }
 
-    }
-
-    /**
-     * Adds unit attributes to the image depending on what much do we know about the unit
-     *
-     *
-     * @param unitImage <code>BufferedImage</code> with the unit color and icon
-     * @param unit to get its information
-     * @see UnitAttributes
-     */
-    private void addUnitAttributes(BufferedImage unitImage, UnitModel unit) {
-        UnitAttributes ua = new UnitAttributes(unitImage);
-        KnowledgeCategory kc = unit.getKnowledgeCategory();
-        switch (kc) {
-            case COMPLETE:
-                ua.paintUnitAttributes((KnownUnitModel) unit);
-                break;
-            case GOOD:
-                ua.paintUnitAttributes((IdentifiedUnitModel) unit);
-                break;
-            case POOR:
-                ua.paintUnitAttributes((DetectedUnitModel) unit);
-                break;
-            case NONE:
-                break;
-            default:
-                //We shouldn't get here
-                throw new AssertionError("Assertion failed: unknown knowledge category " + unit.getKnowledgeCategory().toString());
-        }
     }
 }

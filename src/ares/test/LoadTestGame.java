@@ -3,7 +3,7 @@ package ares.test;
 import ares.data.jaxb.EquipmentDB;
 import ares.engine.RealTimeEngine;
 import ares.application.io.AresIO;
-import ares.platform.io.ResourcePaths;
+import ares.platform.io.ResourcePath;
 import ares.scenario.Scenario;
 import java.io.File;
 import java.util.logging.Level;
@@ -29,11 +29,11 @@ public class LoadTestGame {
     }
 
     public static Scenario getTestScenario(String fileName) {
-        File equipmentFile = AresIO.ARES_IO.getAbsolutePath(ResourcePaths.EQUIPMENT.getPath(), "ToawEquipment.equipment").toFile();
+        File equipmentFile = AresIO.ARES_IO.getAbsolutePath(ResourcePath.EQUIPMENT.getPath(), "ToawEquipment.equipment").toFile();
         EquipmentDB eqp = (EquipmentDB) AresIO.ARES_IO.unmarshall(equipmentFile);
         Logger.getLogger(LoadTestGame.class.getName()).log(Level.INFO, "Equipment database opened: {0}", equipmentFile.getName());
 
-        File scenariofile = AresIO.ARES_IO.getAbsolutePath(ResourcePaths.SCENARIOS.getPath(), fileName).toFile();
+        File scenariofile = AresIO.ARES_IO.getAbsolutePath(ResourcePath.SCENARIOS.getPath(), fileName).toFile();
         ares.data.jaxb.Scenario scen = (ares.data.jaxb.Scenario) AresIO.ARES_IO.unmarshall(scenariofile);
         Logger.getLogger(LoadTestGame.class.getName()).log(Level.INFO, "Scenario opened: {0}", scenariofile.getName());
 
