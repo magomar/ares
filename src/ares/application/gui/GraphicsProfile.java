@@ -1,5 +1,7 @@
 package ares.application.gui;
 
+import ares.application.gui.forces.UnitsInfographicProfile;
+
 /**
  *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
@@ -109,4 +111,12 @@ public interface GraphicsProfile {
      * @return the rise of the hexagon
      */
     double getHexRise();
+    
+    int getFontSize();
+    
+    int getLedSize();
+    
+    int getBarSize();
+    
+    UnitsInfographicProfile getUnitsProfile();
 }

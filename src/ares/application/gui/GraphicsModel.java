@@ -1,8 +1,14 @@
 package ares.application.gui;
 
+import ares.application.gui.providers.GraphicsDescriptor;
+import ares.application.gui.providers.ImageProvider;
+import ares.platform.io.FileIO;
 import ares.scenario.board.Board;
 import java.awt.Point;
-import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * This class provides information on the graphics being used for a particular scenario
@@ -10,108 +16,123 @@ import java.awt.image.BufferedImage;
  * @author Mario Gomez <margomez at dsic.upv.es>
  * @author Heine <heisncfr@inf.upv.es>
  */
-public class AresGraphicsModel {
-// TODO refactor this class, it shouldn't use static methods, perhaps becoming a Singleton, or passing it to dependent objects
+public class GraphicsModel {
+
+    public static final GraphicsModel INSTANCE = new GraphicsModel();
+    
     /**
      * Board width in tiles
      */
-    private static int tileColumns;
+    private int tileColumns;
     /**
      * Board height in tiles
      */
-    private static int tileRows;
+    private int tileRows;
     /**
      * Board image width in pixels
      */
-    private static int imageWidth;
+    private int imageWidth;
     /**
      * Board image height in pixels
      */
-    private static int imageHeight;
-    private static AresGraphicsProfile profile;
-    public static BufferedImage EMPTY_TILE_IMAGE;
+    private int imageHeight;
+    /**
+     * Graphics profile currently in use. Typically a profile corresponds to a different zoom level, but it could also
+     * correspond to an alternate graphics set
+     */
+    private GraphicsProfile activeProfile;
+    private Map<GraphicsDescriptor, ImageProvider> activeProviders;
+    int activeProfileIndex;
+    private GraphicsProfile[] profiles;
+    private List<Map<GraphicsDescriptor, ImageProvider>> providers;
+//    private static final Logger LOG = Logger.getLogger(GraphicsModel.class.getName());
 
-    public AresGraphicsModel(Board board) {
+    private GraphicsModel() {
+    }
 
-        // Constant during the same scenario
+    public void initialize(Board board, GraphicsProfile[] profiles, FileIO fileSystem) {
+
         tileColumns = board.getWidth();
         tileRows = board.getHeight();
-
-        // Variable information
-        profile = AresGraphicsProfile.MEDIUM;
-        initGraphicVariables();
-        EMPTY_TILE_IMAGE = new BufferedImage(getHexDiameter(), getHexHeight(), BufferedImage.TYPE_INT_RGB);
-//        EMPTY_TILE_IMAGE_ABGR = new BufferedImage(getHexDiameter(), getHexHeight(), BufferedImage.TYPE_4BYTE_ABGR);
+        this.profiles = profiles;
+        providers = new ArrayList<>();
+        for (int i = 0; i < profiles.length; i++) {
+            providers.add(new HashMap<GraphicsDescriptor, ImageProvider>());
+        }
+        setActiveProfile(profiles.length / 2);
     }
 
-    private static void initGraphicVariables() {
-        /*
-         * Width =  first column + (columns-1) * (around 3/4 Diameter)
-         * Hexagons aren't regular
-         */
+    public void addGraphics(GraphicsDescriptor descriptor) {
+        for (int i = 0; i < profiles.length; i++) {
+            ImageProvider newImageProvider = descriptor.getImageProviderType().createImageProvider(descriptor.getFilename(), descriptor.getRows(), descriptor.getColumns(), profiles[i]);
+            providers.get(i).put(descriptor, newImageProvider);
+        }
+    }
+
+    public void addAllGraphics(GraphicsDescriptor[] descriptors) {
+        for (int i = 0; i < profiles.length; i++) {
+            Map<GraphicsDescriptor, ImageProvider> providersMap = providers.get(i);
+            for (GraphicsDescriptor descriptor : descriptors) {
+                ImageProvider newImageProvider = descriptor.getImageProviderType().createImageProvider(descriptor.getFilename(), descriptor.getRows(), descriptor.getColumns(), profiles[i]);
+                providersMap.put(descriptor, newImageProvider);
+            }
+        }
+    }
+
+    public ImageProvider getActiveProvider(GraphicsDescriptor descriptor) {
+        return activeProviders.get(descriptor);
+    }
+
+    /*
+     * Width =  first column + (columns-1) * offset (around 3/4 Diameter)
+     * Hexagons aren't regular
+     */
+    private void setActiveProfile(int profileIndex) {
+        this.activeProfileIndex = profileIndex;
+        activeProfile = profiles[activeProfileIndex];
+        activeProviders = providers.get(activeProfileIndex);
         imageWidth = getHexDiameter() + (tileColumns - 1) * getHexOffset();
         imageHeight = tileRows * getHexHeight() + getHexHeight() / 2;
+
     }
 
-    public static int getTileRows() {
+    public GraphicsProfile getActiveProfile() {
+        return activeProfile;
+    }
+
+    public void nextActiveProfile() {
+        if (activeProfileIndex < profiles.length - 1) {
+            setActiveProfile(activeProfileIndex + 1);
+        }
+    }
+
+    public void previousActiveProfile() {
+        if (activeProfileIndex > 0) {
+            setActiveProfile(activeProfileIndex - 1);
+        }
+    }
+
+    public int getTileRows() {
         return tileRows;
     }
 
-    public static int getTileColumns() {
+    public int getTileColumns() {
         return tileColumns;
     }
 
     /**
-     * Tile diameter (vertex to opposite vertex)
      *
-     * @see AresGraphicsProfile#getHexDiameter()
+     * @return the image width in pixesl
      */
-    public static int getHexDiameter() {
-        return profile.getHexDiameter();
-    }
-
-
-    /**
-     * Tile side
-     *
-     * @see AresGraphicsProfile#getHexSide()
-     */
-    public static int getHexSide() {
-        return profile.getHexSide();
-    }
-
-    /**
-     * Tile offset position to draw in a new column
-     *
-     * @see AresGraphicsProfile method getHexOffset
-     */
-    public static int getHexOffset() {
-        return profile.getHexOffset();
-    }
-
-    /**
-     * Tile height (flat side to flat side)
-     *
-     * @see AresGraphicsProfile#getHexHeight
-     */
-    public static int getHexHeight() {
-        return profile.getHexHeight();
-    }
-
-    /**
-     * Tile side gradient
-     *
-     * @see AresGraphicsProfile#getHexRise()
-     */
-    public static double getHexRise() {
-        return profile.getHexRise();
-    }
-
-    public static int getImageWidth() {
+    public int getImageWidth() {
         return imageWidth;
     }
 
-    public static int getImageHeight() {
+    /**
+     *
+     * @return the image height in pixels
+     */
+    public int getImageHeight() {
         return imageHeight;
     }
 
@@ -122,31 +143,53 @@ public class AresGraphicsModel {
      * @param j as column
      * @return true if (i,j) is within the board range
      */
-    public static boolean validCoordinates(int i, int j) {
+    public boolean validCoordinates(int i, int j) {
         return i >= 0 && i < tileColumns && j >= 0 && j < tileRows;
     }
 
-//    /**
-//     * Converts tile coordinates [x,y] to full index form
-//     *
-//     *
-//     * @param coordinates
-//     * @return X * Columns + Y
-//     */
-//    public static int tileMapIndex(Point coordinates) {
-//        return coordinates.x * tileColumns + coordinates.y;
-//    }
     /**
-     * @return current image profile (SMALL, MEDIUM or HIGH)
-     * @see AresGraphicsProfile
+     * Tile diameter (vertex to opposite vertex)
+     *
+     * @see AresGraphicsProfile#getHexDiameter()
      */
-    public static AresGraphicsProfile getProfile() {
-        return profile;
+    public int getHexDiameter() {
+        return activeProfile.getHexDiameter();
     }
 
-    public static void setImageProfile(AresGraphicsProfile ip) {
-        profile = ip;
-        initGraphicVariables();
+    /**
+     * Tile side
+     *
+     * @see GraphicsProfile#getHexSide()
+     */
+    public int getHexSide() {
+        return activeProfile.getHexSide();
+    }
+
+    /**
+     * Tile offset position to draw in a new column
+     *
+     * @see GraphicsProfile#getHexOffset()
+     */
+    public int getHexOffset() {
+        return activeProfile.getHexOffset();
+    }
+
+    /**
+     * Tile height (flat side to flat side)
+     *
+     * @see GraphicsProfile#getHexHeight()
+     */
+    public int getHexHeight() {
+        return activeProfile.getHexHeight();
+    }
+
+    /**
+     * Tile side gradient
+     *
+     * @see GraphicsProfile#getHexRise()
+     */
+    public double getHexRise() {
+        return activeProfile.getHexRise();
     }
 
     /**
@@ -157,11 +200,11 @@ public class AresGraphicsModel {
      * @see AresGraphicsModel
      * @see AbstractImageLayer
      */
-    public static Point tileToPixel(Point tile) {
+    public Point tileToPixel(Point tile) {
         return tileToPixel(tile.x, tile.y);
     }
 
-    public static Point tileToPixel(int x, int y) {
+    public Point tileToPixel(int x, int y) {
         Point pixel = new Point();
         //X component is "row" times the "offset"
         pixel.x = getHexOffset() * x;
@@ -179,11 +222,11 @@ public class AresGraphicsModel {
      * @see AresGraphicsModel
      * @see Board getTile
      */
-    public static Point pixelToTile(Point pixel) {
+    public Point pixelToTile(Point pixel) {
         return pixelToTile(pixel.x, pixel.y);
     }
 
-    public static Point pixelToTile(int x, int y) {
+    public Point pixelToTile(int x, int y) {
         Point tile = new Point();
         tile.x = x / getHexOffset();
         //If tile is on even row, first we substract half the hexagon height to the Y component, then we divide it by the height
@@ -198,7 +241,7 @@ public class AresGraphicsModel {
      * @param pixel
      * @return the map coordinates corresponding to the pixel coordinates passed as a parameter
      */
-    public static Point pixelToTileAccurate(Point pixel) {
+    public Point pixelToTileAccurate(Point pixel) {
         return pixelToTileAccurate(pixel.x, pixel.y);
     }
 
@@ -218,7 +261,7 @@ public class AresGraphicsModel {
      * @param y
      * @return
      */
-    public static Point pixelToTileAccurate(int x, int y) {
+    public Point pixelToTileAccurate(int x, int y) {
 
         int dy = getHexHeight() / 2;
         // gradient = dy/dx
@@ -302,11 +345,20 @@ public class AresGraphicsModel {
         return section;
     }
 
-    public static boolean isWithinImageRange(Point pixel) {
+    public boolean isWithinImageRange(Point pixel) {
         return ((pixel.x < imageWidth && pixel.x > 0) && (pixel.y > 0 && pixel.y < imageHeight));
     }
 
-    public static boolean isWithinImageRange(int x, int y) {
+    public boolean isWithinImageRange(int x, int y) {
         return ((x < imageWidth && x > 0) && (y > 0 && y < imageHeight));
     }
+
+//    public static int computeBoardImageWidth(GraphicsProfile profile, int columns) {
+//        return profile.getHexDiameter() + (columns - 1) * profile.getHexOffset();
+//
+//    }
+//
+//    public static int computeBoardImageHeight(GraphicsProfile profile, int boardHeight) {
+//        return boardHeight * profile.getHexHeight() + profile.getHexHeight() / 2;
+//    }
 }

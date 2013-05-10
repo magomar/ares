@@ -2,22 +2,18 @@ package ares.scenario.board;
 
 import ares.application.gui.AresGraphicsProfile;
 import ares.application.gui.providers.AresMiscGraphics;
-import ares.application.gui.providers.GraphicsProvider;
-import ares.platform.io.FileIO;
-import java.awt.Dimension;
+import ares.application.gui.providers.GraphicsDescriptor;
+import ares.application.gui.providers.ImageProviderType;
 import java.awt.Point;
-import java.awt.image.BufferedImage;
 
 /**
  * Tiles have special features besides common terrain such as weather or buildings that affect the tile * Features
  * images are on the Terrain.OPEN file here we specify on which row and column<p>
  *
- * (0,3) is an invisible image
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  * @author Heine Heine <heisncfr@inf.upv.es> *
  */
-public enum Feature implements GraphicsProvider<AresGraphicsProfile> {
+public enum Feature implements GraphicsDescriptor {
 
 //    OPEN(0, 0),
     ANCHORAGE(0, 1),
@@ -32,6 +28,7 @@ public enum Feature implements GraphicsProvider<AresGraphicsProfile> {
     EXCLUDED_1(5, 6),
     EXCLUDED_2(5, 7);
     private final Point coordinates;
+    private final ImageProviderType imageProviderType = ImageProviderType.TILE;
 
     private Feature(final int imageColumn, final int imageRow) {
         this.coordinates = new Point(imageColumn, imageRow);
@@ -47,22 +44,17 @@ public enum Feature implements GraphicsProvider<AresGraphicsProfile> {
     }
 
     @Override
-    public BufferedImage getImage(AresGraphicsProfile profile, Point coordinates, FileIO fileSystem) {
-        return AresMiscGraphics.TERRAIN_MISCELANEOUS.getImage(profile, coordinates, fileSystem);
+    public ImageProviderType getImageProviderType() {
+        return imageProviderType;
     }
 
     @Override
-    public BufferedImage getFullImage(AresGraphicsProfile profile, FileIO fileSystem) {
-        return AresMiscGraphics.TERRAIN_MISCELANEOUS.getFullImage(profile, fileSystem);
+    public int getRows() {
+        return AresGraphicsProfile.TERRAIN_IMAGE_ROWS;
     }
 
     @Override
-    public Dimension getFullImageDimension(AresGraphicsProfile profile) {
-        return AresMiscGraphics.TERRAIN_MISCELANEOUS.getFullImageDimension(profile);
-    }
-
-    @Override
-    public String getFilename(AresGraphicsProfile profile) {
-        return AresMiscGraphics.TERRAIN_MISCELANEOUS.getFilename(profile);
+    public int getColumns() {
+        return AresGraphicsProfile.TERRAIN_IMAGE_COLS;
     }
 }

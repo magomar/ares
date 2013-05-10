@@ -45,4 +45,11 @@ public abstract class UnitModel extends KnowledgeMediatedModel {
     public FormationModel getFormationModel(UserRole role) {
         return unit.getFormation().getModel(role);
     }
+
+    @Override
+    public String toString() {
+        return getName();
+    }
+    
+    
 }

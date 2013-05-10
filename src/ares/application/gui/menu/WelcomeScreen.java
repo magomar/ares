@@ -1,6 +1,6 @@
 package ares.application.gui.menu;
 
-import ares.platform.io.ResourcePaths;
+import ares.platform.io.ResourcePath;
 import ares.application.io.AresIO;
 import ares.application.gui.AbstractImageLayer;
 import java.awt.*;
@@ -24,7 +24,7 @@ public final class WelcomeScreen extends AbstractImageLayer {
     /**
      * Folder containing wallpapers
      */
-    private final static File wallpapers = new File(ResourcePaths.GRAPHICS.getPath(), "Background");
+    private final static File wallpapers = new File(ResourcePath.GRAPHICS.getPath(), "Background");
 
     public WelcomeScreen() {
         BoxLayout bl = new BoxLayout(this, BoxLayout.PAGE_AXIS);
@@ -52,7 +52,7 @@ public final class WelcomeScreen extends AbstractImageLayer {
     private File randomImageFile() {
         File[] backgrounds = wallpapers.listFiles();
         if (backgrounds == null || backgrounds.length == 0) {
-            return new File(ResourcePaths.GRAPHICS.getPath(), "main_menu_background.jpg");
+            return new File(ResourcePath.GRAPHICS.getPath(), "main_menu_background.jpg");
         }
         Integer index = new Random().nextInt(backgrounds.length);
         return backgrounds[index];

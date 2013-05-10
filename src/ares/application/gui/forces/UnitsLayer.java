@@ -1,13 +1,19 @@
 package ares.application.gui.forces;
 
-import ares.application.gui.AresGraphicsModel;
+import ares.application.gui.GraphicsModel;
 import ares.application.gui.AbstractImageLayer;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.*;
 import ares.application.models.forces.*;
 import ares.engine.knowledge.KnowledgeCategory;
 import ares.application.io.AresIO;
+import static ares.engine.knowledge.KnowledgeCategory.COMPLETE;
+import static ares.engine.knowledge.KnowledgeCategory.GOOD;
+import static ares.engine.knowledge.KnowledgeCategory.NONE;
+import static ares.engine.knowledge.KnowledgeCategory.POOR;
+import ares.scenario.forces.Echelon;
 import java.awt.*;
+import java.awt.color.ICC_ProfileRGB;
 import java.awt.image.BufferedImage;
 import java.util.*;
 
@@ -19,7 +25,6 @@ import java.util.*;
 public class UnitsLayer extends AbstractImageLayer {
 
     private ScenarioModel scenario;
-
     /**
      * Offset distance from the upper left corner of the tile. The image will be painted at Point(X+offset, Y+offset)
      *
@@ -85,18 +90,12 @@ public class UnitsLayer extends AbstractImageLayer {
     private void paintUnitStack(Graphics2D g2, TileModel tile) {
 
         //Calculate unit position
-        Point pos = AresGraphicsModel.tileToPixel(tile.getCoordinates());
+        Point pos = GraphicsModel.INSTANCE.tileToPixel(tile.getCoordinates());
 
-        //If no units on the tile
-        if (tile.isEmpty()) {
-            //Empty image
-//            g2.drawImage(AresGraphicsModel.EMPTY_TILE_IMAGE, pos.x, pos.y, this);
-//            repaint(pos.x, pos.y, AresGraphicsModel.EMPTY_TILE_IMAGE.getWidth(),
-//                    AresGraphicsModel.EMPTY_TILE_IMAGE.getHeight());
-        } else {
+        if (!tile.isEmpty()) {
             //Retrieve the single unit image
             UnitModel unit = tile.getTopUnit();
-            BufferedImage unitImage = unit.getColor().getImage(AresGraphicsModel.getProfile(), unit.getIconId(), AresIO.ARES_IO);
+            BufferedImage unitImage = GraphicsModel.INSTANCE.getActiveProvider(unit.getColor()).getImage(unit.getIconId(), AresIO.ARES_IO);
 
             //Num units to be painted
             int max = Math.min(tile.getNumStackedUnits(), MAX_STACK);
@@ -118,39 +117,13 @@ public class UnitsLayer extends AbstractImageLayer {
             }
 
             //Adds attributes to the image such as Health, Attack, Defense, etc.
-            addUnitAttributes(unitImage, tile.getTopUnit());
+            UnitsInfographicProfile unitsProfile = GraphicsModel.INSTANCE.getActiveProfile().getUnitsProfile();
+            Graphics2D unitGraphics = unitImage.createGraphics();
+            unitsProfile.paintUnitAttributes(unitGraphics, unit);
+            unitGraphics.dispose();
             g2.drawImage(unitImage, pos.x + d, pos.y + d, this);
             repaint(pos.x, pos.y, unitImage.getWidth() + d, unitImage.getHeight() + d);
         }
 
-    }
-
-    /**
-     * Adds unit attributes to the image depending on what much do we know about the unit
-     *
-     *
-     * @param unitImage <code>BufferedImage</code> with the unit color and icon
-     * @param unit to get its information
-     * @see UnitAttributes
-     */
-    private void addUnitAttributes(BufferedImage unitImage, UnitModel unit) {
-        UnitAttributes ua = new UnitAttributes(unitImage);
-        KnowledgeCategory kc = unit.getKnowledgeCategory();
-        switch (kc) {
-            case COMPLETE:
-                ua.paintUnitAttributes((KnownUnitModel) unit);
-                break;
-            case GOOD:
-                ua.paintUnitAttributes((IdentifiedUnitModel) unit);
-                break;
-            case POOR:
-                ua.paintUnitAttributes((DetectedUnitModel) unit);
-                break;
-            case NONE:
-                break;
-            default:
-                //We shouldn't get here
-                throw new AssertionError("Assertion failed: unknown knowledge category " + unit.getKnowledgeCategory().toString());
-        }
     }
 }

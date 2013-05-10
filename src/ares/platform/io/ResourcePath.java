@@ -4,7 +4,7 @@ package ares.platform.io;
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public enum ResourcePaths {
+public enum ResourcePath {
 
     TEMP("Temp"),
     DATA("Data"),
@@ -12,6 +12,7 @@ public enum ResourcePaths {
     SCENARIOS("Data/Scenarios"),
     GRAPHICS("Graphics"),
     ICONS_SMALL("Graphics/Icons/Small"),
+    ICONS_MEDIUM("Graphics/Icons/Medium"),
     ICONS_LARGE("Graphics/Icons/Large"),
     GRAPHICS_BACKGROUND("Graphics/Background"),
     GRAPHICS_SMALL("Graphics/Small"),
@@ -19,7 +20,7 @@ public enum ResourcePaths {
     GRAPHICS_HIGH("Graphics/High");
     private final String path;
 
-    private ResourcePaths(final String path) {
+    private ResourcePath(final String path) {
         this.path = path;
     }
 
