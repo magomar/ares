@@ -92,13 +92,7 @@ public class UnitsLayer extends AbstractImageLayer {
         //Calculate unit position
         Point pos = GraphicsModel.INSTANCE.tileToPixel(tile.getCoordinates());
 
-        //If no units on the tile
-        if (tile.isEmpty()) {
-            //Empty image
-//            g2.drawImage(AresGraphicsModel.EMPTY_TILE_IMAGE, pos.x, pos.y, this);
-//            repaint(pos.x, pos.y, AresGraphicsModel.EMPTY_TILE_IMAGE.getWidth(),
-//                    AresGraphicsModel.EMPTY_TILE_IMAGE.getHeight());
-        } else {
+        if (!tile.isEmpty()) {
             //Retrieve the single unit image
             UnitModel unit = tile.getTopUnit();
             BufferedImage unitImage = GraphicsModel.INSTANCE.getActiveProvider(unit.getColor()).getImage(unit.getIconId(), AresIO.ARES_IO);
@@ -124,7 +118,9 @@ public class UnitsLayer extends AbstractImageLayer {
 
             //Adds attributes to the image such as Health, Attack, Defense, etc.
             UnitsInfographicProfile unitsProfile = GraphicsModel.INSTANCE.getActiveProfile().getUnitsProfile();
-            unitsProfile.paintUnitAttributes(unitImage.createGraphics(), unit);
+            Graphics2D unitGraphics = unitImage.createGraphics();
+            unitsProfile.paintUnitAttributes(unitGraphics, unit);
+            unitGraphics.dispose();
             g2.drawImage(unitImage, pos.x + d, pos.y + d, this);
             repaint(pos.x, pos.y, unitImage.getWidth() + d, unitImage.getHeight() + d);
         }
