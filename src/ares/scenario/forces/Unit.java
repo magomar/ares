@@ -492,11 +492,11 @@ public abstract class Unit implements ModelProvider<UnitModel> {
     }
 
     public double getAttackStrength() {
-        return efficacy * (double) (antiTank + antiPersonnel) / Scale.INSTANCE.getArea();
+        return efficacy * (double) (antiTank + antiPersonnel) / (Scale.INSTANCE.getArea()*1.25);
     }
 
     public double getDefenseStrength() {
-        return efficacy * (double) defense / Scale.INSTANCE.getArea();
+        return efficacy * (double) defense / (Scale.INSTANCE.getArea()*1.25);
     }
 
     public int getEfficacy() {

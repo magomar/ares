@@ -111,12 +111,32 @@ public interface GraphicsProfile {
      * @return the rise of the hexagon
      */
     double getHexRise();
-    
+
     int getFontSize();
-    
+
     int getLedSize();
-    
+
     int getBarSize();
-    
+
     UnitsInfographicProfile getUnitsProfile();
+
+    /**
+     * @return the offset distance from the left and upper corners of the tile(same distance vertically and
+     * horizontally). The image will be painted at Point(X+offset, Y+offset)
+     */
+    public int getUnitImageOffset();
+
+    /**
+     * A stack of units is represented showing overlapping unit images. Each layer is shifted this number of pixels. For
+     * example, say the first unit was painted at Point(X,Y), then the next layer will start at
+     * Point(X+offset,Y+offset), and the third one at Point(X+2*offset, Y+2*offset) and so on.
+     *
+     * @return the offset distance both horizontally and vertically between unit images painted in the same tile.
+     */
+    public int getUnitStackOffset();
+
+    /**
+     * @return the maximum numbers of units to be painted in a single tile
+     */
+    int getMaxUnitsStack();
 }
