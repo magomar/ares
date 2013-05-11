@@ -1,11 +1,11 @@
 package ares.application.gui.forces;
 
-import ares.application.gui.AresGraphicsModel;
+import ares.application.gui.GraphicsModel;
 import ares.application.gui.AbstractImageLayer;
+import ares.application.gui.GraphicsProfile;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.*;
 import ares.application.models.forces.*;
-import ares.engine.knowledge.KnowledgeCategory;
 import ares.application.io.AresIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -20,29 +20,12 @@ public class UnitsLayer extends AbstractImageLayer {
 
     private ScenarioModel scenario;
 
-    /**
-     * Offset distance from the upper left corner of the tile. The image will be painted at Point(X+offset, Y+offset)
-     *
-     */
-    private final static int UNIT_IMAGE_OFFSET = 7;
-    /**
-     * Maximum numbers of units to be painted in a single tile
-     *
-     */
-    private final static int MAX_STACK = 6;
-    /**
-     * The unit image can be composed of different layered images. Each layer is shifted {@code unitStackOffset} pixels.
-     * For example, say the first layer was painted at Point(X,Y), then the next layer will start at
-     * Point(X+offset,Y+offset), and the third one at Point(X+2*offset, Y+2*offset) and so on.
-     *
-     */
-    private static int UNIT_STACK_OFFSET = 1;
-
 //    private TileModel tile;
     @Override
     public void updateLayer() {
         initialize();
         Graphics2D g2 = globalImage.createGraphics();
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         Collection<TileModel> tileModels = new HashSet<>();
         for (ForceModel forceModel : scenario.getForceModel()) {
             for (UnitModel unitModel : forceModel.getUnitModels()) {
@@ -84,73 +67,44 @@ public class UnitsLayer extends AbstractImageLayer {
      */
     private void paintUnitStack(Graphics2D g2, TileModel tile) {
 
-        //Calculate unit position
-        Point pos = AresGraphicsModel.tileToPixel(tile.getCoordinates());
-
-        //If no units on the tile
-        if (tile.isEmpty()) {
-            //Empty image
-//            g2.drawImage(AresGraphicsModel.EMPTY_TILE_IMAGE, pos.x, pos.y, this);
-//            repaint(pos.x, pos.y, AresGraphicsModel.EMPTY_TILE_IMAGE.getWidth(),
-//                    AresGraphicsModel.EMPTY_TILE_IMAGE.getHeight());
-        } else {
+        if (!tile.isEmpty()) {
+            //Calculate unit location in board
+            Point pos = GraphicsModel.INSTANCE.tileToPixel(tile.getCoordinates());
             //Retrieve the single unit image
             UnitModel unit = tile.getTopUnit();
-            BufferedImage unitImage = unit.getColor().getImage(AresGraphicsModel.getProfile(), unit.getIconId(), AresIO.ARES_IO);
-
+            BufferedImage unitImage = GraphicsModel.INSTANCE.getActiveProvider(unit.getColor()).getImage(unit.getIconId(), AresIO.ARES_IO);
+            GraphicsProfile graphicsProfile = GraphicsModel.INSTANCE.getActiveProfile();
             //Num units to be painted
-            int max = Math.min(tile.getNumStackedUnits(), MAX_STACK);
+            int unitsToPaint = Math.min(tile.getNumStackedUnits(), graphicsProfile.getMaxUnitsStack());
             // Attributes are painted only on the last image
-            max--;
+            unitsToPaint--;
 
             // Offset from the upper left corner of the tile
-            pos.x += UNIT_IMAGE_OFFSET;
-            pos.y += UNIT_IMAGE_OFFSET;
+            int imageOffset = graphicsProfile.getUnitImageOffset();
+            pos.x += imageOffset;
+            pos.y += imageOffset;
 
+            int stackOffset = graphicsProfile.getUnitStackOffset();
             // Offset from the upper left corner of the last painted unit
-            // incremented by unitStackOffset
-            int d = 0;
+            int maxOffset = unitsToPaint * stackOffset;
 
             //Paint the same top unit
-            for (int i = 0; i < max; i++) {
+            for (int d = maxOffset; d >= 0; d -= stackOffset) {
                 g2.drawImage(unitImage, pos.x + d, pos.y + d, this);
-                d += UNIT_STACK_OFFSET;
             }
+            BufferedImage subImage = globalImage.getSubimage(pos.x, pos.y, graphicsProfile.getUnitWidth(), graphicsProfile.getUnitHeight());
 
-            //Adds attributes to the image such as Health, Attack, Defense, etc.
-            addUnitAttributes(unitImage, tile.getTopUnit());
-            g2.drawImage(unitImage, pos.x + d, pos.y + d, this);
-            repaint(pos.x, pos.y, unitImage.getWidth() + d, unitImage.getHeight() + d);
+            //Paint additional unit info (Health, Stamina, Attack, Defense, etc.)
+            
+            Graphics2D unitG2 = subImage.createGraphics();
+            unitG2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+//            g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+            UnitsInfographicProfile unitsProfile = graphicsProfile.getUnitsProfile();
+            unitsProfile.paintUnitAttributes(unitG2, unit);
+//            unitsProfile.paintUnitAttributes(g2, unit);
+            unitG2.dispose();
+            repaint(pos.x, pos.y, unitImage.getWidth() + maxOffset, unitImage.getHeight() + maxOffset);
         }
 
-    }
-
-    /**
-     * Adds unit attributes to the image depending on what much do we know about the unit
-     *
-     *
-     * @param unitImage <code>BufferedImage</code> with the unit color and icon
-     * @param unit to get its information
-     * @see UnitAttributes
-     */
-    private void addUnitAttributes(BufferedImage unitImage, UnitModel unit) {
-        UnitAttributes ua = new UnitAttributes(unitImage);
-        KnowledgeCategory kc = unit.getKnowledgeCategory();
-        switch (kc) {
-            case COMPLETE:
-                ua.paintUnitAttributes((KnownUnitModel) unit);
-                break;
-            case GOOD:
-                ua.paintUnitAttributes((IdentifiedUnitModel) unit);
-                break;
-            case POOR:
-                ua.paintUnitAttributes((DetectedUnitModel) unit);
-                break;
-            case NONE:
-                break;
-            default:
-                //We shouldn't get here
-                throw new AssertionError("Assertion failed: unknown knowledge category " + unit.getKnowledgeCategory().toString());
-        }
     }
 }

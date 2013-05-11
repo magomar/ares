@@ -8,11 +8,13 @@ import ares.application.commands.FileCommands;
 import ares.application.models.ScenarioModel;
 import ares.application.commands.AresCommandGroup;
 import ares.application.AresPlayerGUI;
+import ares.application.gui.GraphicsModel;
+import ares.application.gui.GraphicsProfile;
 import ares.application.views.MessagesHandler;
 import ares.data.jaxb.EquipmentDB;
 import ares.application.io.AresFileType;
 import ares.application.io.AresIO;
-import ares.platform.io.ResourcePaths;
+import ares.platform.io.ResourcePath;
 import ares.platform.application.AbstractAresApplication;
 import ares.platform.controllers.AbstractSecondaryController;
 import ares.platform.model.UserRole;
@@ -87,7 +89,7 @@ public final class ScenarioIOController extends AbstractSecondaryController {
         protected Scenario performOperation() throws Exception {
 
             JFileChooser fc = new JFileChooser();
-            fc.setCurrentDirectory(AresIO.ARES_IO.getAbsolutePath(ResourcePaths.SCENARIOS.getPath()).toFile());
+            fc.setCurrentDirectory(AresIO.ARES_IO.getAbsolutePath(ResourcePath.SCENARIOS.getPath()).toFile());
             fc.setFileFilter(AresFileType.SCENARIO.getFileTypeFilter());
             int returnVal = fc.showOpenDialog(mainView.getContentPane());
             if (returnVal == JFileChooser.APPROVE_OPTION) {
@@ -96,7 +98,7 @@ public final class ScenarioIOController extends AbstractSecondaryController {
                 File file = fc.getSelectedFile();
                 // Load scenario and equipment files
                 ares.data.jaxb.Scenario scen = AresIO.ARES_IO.unmarshallJson(file, ares.data.jaxb.Scenario.class);
-                File equipmentFile = AresIO.ARES_IO.getAbsolutePath(ResourcePaths.EQUIPMENT.getPath(), "ToawEquipment" + AresFileType.EQUIPMENT.getFileExtension()).toFile();
+                File equipmentFile = AresIO.ARES_IO.getAbsolutePath(ResourcePath.EQUIPMENT.getPath(), "ToawEquipment" + AresFileType.EQUIPMENT.getFileExtension()).toFile();
                 EquipmentDB eqp = AresIO.ARES_IO.unmarshallJson(equipmentFile, EquipmentDB.class);
                 Scenario scenario = new Scenario(scen, eqp);
                 // set the user role by asking (using a dialog window)
@@ -212,4 +214,5 @@ public final class ScenarioIOController extends AbstractSecondaryController {
         public void actionPerformed(ActionEvent e) {
         }
     }
+    
 }

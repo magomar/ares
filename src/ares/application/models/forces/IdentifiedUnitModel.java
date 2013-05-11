@@ -2,8 +2,6 @@ package ares.application.models.forces;
 
 import ares.engine.knowledge.KnowledgeCategory;
 import ares.scenario.forces.*;
-import java.util.Enumeration;
-import javax.swing.tree.TreeNode;
 
 /**
  *

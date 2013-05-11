@@ -1,16 +1,10 @@
 package ares.application.gui.providers;
 
-import ares.application.gui.AresGraphicsProfile;
-import ares.platform.io.FileIO;
-import java.awt.Dimension;
-import java.awt.Point;
-import java.awt.image.BufferedImage;
-
 /**
  *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
-public enum AresMiscGraphics implements GraphicsProvider<AresGraphicsProfile> {
+public enum AresMiscGraphics implements GraphicsDescriptor {
 
     TERRAIN_MISCELANEOUS(8, 8),
     TERRAIN_BORDER(8, 8),
@@ -22,13 +16,14 @@ public enum AresMiscGraphics implements GraphicsProvider<AresGraphicsProfile> {
     BLUE_ARROWS(8, 6),
     GRAY_ARROWS(8, 6);
     private final String filename;
-    private final MultiProfileImageProvider<AresGraphicsProfile, AresMiscGraphics> provider;
-    private static final Point ORIGIN_COORDINATES = new Point(0, 0);
+    private final ImageProviderType imageProviderType = ImageProviderType.TILE;
+    private final int rows;
+    private final int columns;
 
     private AresMiscGraphics(final int rows, final int columns) {
+        this.rows = rows;
+        this.columns = columns;
         filename = name().toLowerCase() + ".png";
-        provider = new MultiProfileImageProvider<>(this, ImageProviderType.TILE, AresGraphicsProfile.class,
-                rows, columns);
     }
 
     @Override
@@ -37,26 +32,17 @@ public enum AresMiscGraphics implements GraphicsProvider<AresGraphicsProfile> {
     }
 
     @Override
-    public BufferedImage getImage(AresGraphicsProfile profile, Point coordinates, FileIO fileSystem) {
-        return provider.getImage(profile, coordinates, fileSystem);
-    }
-
-    public BufferedImage getImage(AresGraphicsProfile profile, FileIO fileSystem) {
-        return provider.getImage(profile,ORIGIN_COORDINATES, fileSystem);
+    public ImageProviderType getImageProviderType() {
+        return imageProviderType;
     }
 
     @Override
-    public BufferedImage getFullImage(AresGraphicsProfile profile, FileIO fileSystem) {
-        return provider.getFullImage(profile, fileSystem);
+    public int getRows() {
+        return rows;
     }
-
+    
     @Override
-    public Dimension getFullImageDimension(AresGraphicsProfile profile) {
-        return provider.getFullImageDimension(profile);
-    }
-
-    @Override
-    public String getFilename(AresGraphicsProfile profile) {
-        return provider.getFilename(profile);
+    public int getColumns() {
+        return columns;
     }
 }

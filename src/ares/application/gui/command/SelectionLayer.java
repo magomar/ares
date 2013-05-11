@@ -1,6 +1,6 @@
 package ares.application.gui.command;
 
-import ares.application.gui.AresGraphicsModel;
+import ares.application.gui.GraphicsModel;
 import ares.application.gui.AbstractImageLayer;
 import ares.application.gui.AresGraphicsProfile;
 import ares.application.gui.providers.AresMiscGraphics;
@@ -30,19 +30,18 @@ public class SelectionLayer extends AbstractImageLayer {
             return;
         }
         Graphics2D g2 = globalImage.createGraphics();
-        AresGraphicsProfile profile = AresGraphicsModel.getProfile();
         for (UnitModel u : formation.getUnitModels()) {
             if (!u.equals(selectedUnit)) {
                 TileModel t = u.getLocation();
-                paintCursor(g2, u.getLocation(), steelCursor.getImage(profile, AresIO.ARES_IO));
+                paintCursor(g2, u.getLocation(), GraphicsModel.INSTANCE.getActiveProvider(steelCursor).getImage(AresIO.ARES_IO));
             }
         }
-        paintCursor(g2, selectedUnit.getLocation(), brassCursor.getImage(profile, AresIO.ARES_IO));
+        paintCursor(g2, selectedUnit.getLocation(), GraphicsModel.INSTANCE.getActiveProvider(brassCursor).getImage(AresIO.ARES_IO));
         g2.dispose();
     }
 
     private void paintCursor(Graphics2D g2, TileModel tile, BufferedImage image) {
-        Point pos = AresGraphicsModel.tileToPixel(tile.getCoordinates());
+        Point pos = GraphicsModel.INSTANCE.tileToPixel(tile.getCoordinates());
         g2.drawImage(image, pos.x, pos.y, this);
         repaint(pos.x, pos.y, image.getWidth(), image.getHeight());
     }

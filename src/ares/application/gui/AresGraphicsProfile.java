@@ -1,35 +1,41 @@
 package ares.application.gui;
 
-import ares.platform.io.ResourcePaths;
+import ares.application.gui.forces.UnitsInfographicProfile;
+import ares.platform.io.ResourcePath;
 
 /**
  *
  * @author Heine <heisncfr@inf.upv.es>
+ * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
 public enum AresGraphicsProfile implements GraphicsProfile {
 
-    // Units (Width,Height), Terrain(W,H), Hex(Side,Offset,rise), Path
-    SMALL(272, 128, 216, 192, 13, 21, 1.833, ResourcePaths.GRAPHICS_SMALL.getPath()) {
+    // ResourcePath, Units (Width,Height), Terrain(W,H), Hex(Side,Offset), Unit image offset, unit stack offset, max unit stack, Font size, Led vert. size, Bar vert. size
+    SMALL(ResourcePath.GRAPHICS_SMALL, 272, 128, 216, 192, 13, 21, 3, 0, 0, 5, 2, 5) {
         @Override
         public String getFilename(String filename) {
             return "s_" + filename;
         }
     },
-    MEDIUM(496, 248, 408, 352, 28, 39, 1.833, ResourcePaths.GRAPHICS_MEDIUM.getPath()) {
+    MEDIUM(ResourcePath.GRAPHICS_MEDIUM, 496, 248, 408, 352, 28, 39, 6, 2, 3, 10, 4, 10) {
         @Override
         public String getFilename(String filename) {
             return "m_" + filename;
         }
     },
-    HIGH(992, 496, 816, 704, 51, 78, 1.833, ResourcePaths.GRAPHICS_HIGH.getPath()) {
+    HIGH(ResourcePath.GRAPHICS_HIGH, 992, 496, 816, 704, 51, 78, 12, 4, 5, 20, 8, 20) {
         @Override
         public String getFilename(String filename) {
             return "h_" + filename;
         }
     };
+    public final static int UNITS_IMAGE_ROWS = 8;
+    public final static int UNITS_IMAGE_COLS = 16;
+    public final static int TERRAIN_IMAGE_ROWS = 8;
+    public final static int TERRAIN_IMAGE_COLS = 8;
     private final int unitsImageWidth;
     private final int unitsImageHeight;
-    private final int unitWitdh;
+    private final int unitWidth;
     private final int unitHeight;
     private final int terrainImageWidth;
     private final int terrainImageHeight;
@@ -37,44 +43,57 @@ public enum AresGraphicsProfile implements GraphicsProfile {
     private final int hexSide;
     private final int hexOffset;
     private final int hexHeight;
-    private final double hexRise;
+    private final int fontSize;
+    private final int ledSize;
+    private final int barSize;
+    private final int unitImageOffset;
+    private final int unitStackOffset;
+    private final int maxUnitsStack;
+    private final double hexRise = 1.833;
     private final String path;
-    public final static int UNITS_IMAGE_ROWS = 8;
-    public final static int UNITS_IMAGE_COLS = 16;
-    public final static int TERRAIN_IMAGE_ROWS = 8;
-    public final static int TERRAIN_IMAGE_COLS = 8;
+    private final UnitsInfographicProfile unitsProfile;
+
 
     /**
-     *
-     * AresGraphicsProfile stores information concerning the graphics used in the game i.e: units and terrain image
-     * files and hexagon measures based on the desired profile (SMALL, MEDIUM or HIGH)
-     *
+     * Holds information concerning the graphics used in the game, including the files containing the graphics and 
+     * metrics relative to those graphics (image sizes, distances between reference points (offsets), font size,etc)
+     * 
+     * @param resourcePath
      * @param unitsImageWidth
      * @param unitsImageHeight
      * @param terrainImageWidth
      * @param terrainImageHeight
      * @param hexSide
      * @param hexOffset
-     * @param hexHeight
-     * @param path
+     * @param unitImageOffset
+     * @param unitStackOffset
+     * @param maxUnitsStack
+     * @param fontSize
+     * @param ledSize
+     * @param barSize 
      */
-    private AresGraphicsProfile(
-            final int unitsImageWidth, final int unitsImageHeight,
-            final int terrainImageWidth, final int terrainImageHeight,
-            final int hexSide, final int hexOffset, final double hexRise,
-            final String path) {
+    private AresGraphicsProfile(final ResourcePath resourcePath, final int unitsImageWidth, final int unitsImageHeight,
+            final int terrainImageWidth, final int terrainImageHeight, final int hexSide, final int hexOffset,
+            final int unitImageOffset, final int unitStackOffset, final int maxUnitsStack,
+            final int fontSize, final int ledSize, final int barSize) {
+        this.path = resourcePath.getPath();
         this.unitsImageWidth = unitsImageWidth;
         this.unitsImageHeight = unitsImageHeight;
         this.terrainImageWidth = terrainImageWidth;
         this.terrainImageHeight = terrainImageHeight;
         this.hexSide = hexSide;
         this.hexOffset = hexOffset;
-        this.hexRise = hexRise;
-        this.path = path;
-        unitWitdh = unitsImageWidth / UNITS_IMAGE_COLS;
+        this.fontSize = fontSize;
+        this.ledSize = ledSize;
+        this.barSize = barSize;
+        this.unitImageOffset = unitImageOffset;
+        this.unitStackOffset = unitStackOffset;
+        this.maxUnitsStack = maxUnitsStack;
+        unitWidth = unitsImageWidth / UNITS_IMAGE_COLS;
         unitHeight = unitsImageHeight / UNITS_IMAGE_ROWS;
         hexDiameter = terrainImageWidth / TERRAIN_IMAGE_COLS;
         hexHeight = terrainImageHeight / TERRAIN_IMAGE_ROWS;
+        unitsProfile = new UnitsInfographicProfile(this);
     }
 
     /**
@@ -104,7 +123,7 @@ public enum AresGraphicsProfile implements GraphicsProfile {
      */
     @Override
     public int getUnitWidth() {
-        return unitWitdh;
+        return unitWidth;
     }
 
     /**
@@ -209,5 +228,54 @@ public enum AresGraphicsProfile implements GraphicsProfile {
     @Override
     public String getPath() {
         return path;
+    }
+
+    @Override
+    public int getFontSize() {
+        return fontSize;
+    }
+
+    @Override
+    public int getLedSize() {
+        return ledSize;
+    }
+
+    @Override
+    public int getBarSize() {
+        return barSize;
+    }
+
+    @Override
+    public UnitsInfographicProfile getUnitsProfile() {
+        return unitsProfile;
+    }
+
+    /**
+     * @return the offset distance from the left and upper corners of the tile(same distance vertically and
+     * horizontally). The image will be painted at Point(X+offset, Y+offset)
+     */
+    @Override
+    public int getUnitImageOffset() {
+        return unitImageOffset;
+    }
+
+    /**
+     * A stack of units is represented showing overlapping unit images. Each layer is shifted this number of pixels. For
+     * example, say the first unit was painted at Point(X,Y), then the next layer will start at
+     * Point(X+offset,Y+offset), and the third one at Point(X+2*offset, Y+2*offset) and so on.
+     *
+     * @return the offset distance both horizontally and vertically between unit images painted in the same tile.
+     */
+    @Override
+    public int getUnitStackOffset() {
+        return unitStackOffset;
+    }
+
+    /**
+     * @return the maximum numbers of units to be painted in a single tile
+     */
+    @Override
+    public int getMaxUnitsStack() {
+        return maxUnitsStack;
     }
 }

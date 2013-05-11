@@ -1,8 +1,8 @@
 package ares.application.gui.board;
 
-import ares.application.gui.AresGraphicsModel;
+import ares.application.gui.GraphicsModel;
 import ares.application.gui.AbstractImageLayer;
-import ares.application.gui.AresGraphicsProfile;
+import ares.application.gui.GraphicsProfile;
 import ares.application.gui.providers.AresMiscGraphics;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.*;
@@ -57,11 +57,10 @@ public class TerrainLayer extends AbstractImageLayer {
         }
 
         //Calculate tile position
-        Point pos = AresGraphicsModel.tileToPixel(tile.getCoordinates());
-        AresGraphicsProfile profile = AresGraphicsModel.getProfile();
+        Point pos = GraphicsModel.INSTANCE.tileToPixel(tile.getCoordinates());
 
         // First paints the open terrain, any other terrain will be rendered upon it
-        BufferedImage terrainImage = AresMiscGraphics.TERRAIN_MISCELANEOUS.getImage(profile, AresIO.ARES_IO);
+        BufferedImage terrainImage = GraphicsModel.INSTANCE.getActiveProvider(AresMiscGraphics.TERRAIN_MISCELANEOUS).getImage(AresIO.ARES_IO);
         g2.drawImage(terrainImage, pos.x, pos.y, this);
 
         Map<Terrain, Directions> m = tile.getTerrain();
@@ -69,13 +68,13 @@ public class TerrainLayer extends AbstractImageLayer {
             Terrain terrain = entry.getKey();
             Directions directions = entry.getValue();
             Point imageCoordinates = directions.getCoordinates();
-            terrainImage = terrain.getImage(profile, imageCoordinates, AresIO.ARES_IO);
+            terrainImage = GraphicsModel.INSTANCE.getActiveProvider(terrain).getImage(imageCoordinates, AresIO.ARES_IO);
             // Paint terrain image
             g2.drawImage(terrainImage, pos.x, pos.y, this);
         }
         // Paint features 
         for (Feature feature : tile.getTerrainFeatures()) {
-            terrainImage = AresMiscGraphics.TERRAIN_MISCELANEOUS.getImage(profile, feature.getCoordinates(), AresIO.ARES_IO);
+            terrainImage = GraphicsModel.INSTANCE.getActiveProvider(AresMiscGraphics.TERRAIN_MISCELANEOUS).getImage(feature.getCoordinates(), AresIO.ARES_IO);
             g2.drawImage(terrainImage, pos.x, pos.y, this);
         }
         repaint(pos.x, pos.y, terrainImage.getWidth(), terrainImage.getHeight());

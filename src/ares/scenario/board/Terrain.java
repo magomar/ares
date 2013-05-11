@@ -1,14 +1,9 @@
 package ares.scenario.board;
 
 import ares.application.gui.AresGraphicsProfile;
-import ares.application.gui.providers.GraphicsProvider;
+import ares.application.gui.providers.GraphicsDescriptor;
 import ares.application.gui.providers.ImageProviderType;
-import ares.application.gui.providers.MultiProfileImageProvider;
 import ares.engine.movement.MovementCost;
-import ares.platform.io.FileIO;
-import java.awt.Dimension;
-import java.awt.Point;
-import java.awt.image.BufferedImage;
 import java.util.EnumSet;
 import java.util.Set;
 
@@ -16,9 +11,10 @@ import java.util.Set;
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public enum Terrain implements GraphicsProvider<AresGraphicsProfile> {
-
+public enum Terrain implements GraphicsDescriptor {
+//motor, amph, mixed, foot, AT, AP, vehicles, infantry, stationary, vision, directional
 //    OPEN(0, 0, 0, 0, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, Directionality.NONE),
+
     ARID(0, 0, 0, 0, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, false),
     SAND(1, 1, 1, 1, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, false),
     DUNES(MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, 3, 1.0, 1.0, 1.0, 3.0, 2.0, Vision.NORMAL, false),
@@ -68,7 +64,7 @@ public enum Terrain implements GraphicsProvider<AresGraphicsProfile> {
     private final Vision vision;
     private final boolean directional;
     private final String filename;
-    private final MultiProfileImageProvider<AresGraphicsProfile, Terrain> provider;
+    private final ImageProviderType imageProviderType = ImageProviderType.TILE;
     public static final Set<Terrain> ANY_WATER = EnumSet.of(SHALLOW_WATER, DEEP_WATER);
     public static final Set<Terrain> ANY_RIVER = EnumSet.of(RIVER, SUPER_RIVER, CANAL, SUPER_CANAL);
     public static final Set<Terrain> ANY_ROAD = EnumSet.of(ROAD, IMPROVED_ROAD);
@@ -89,8 +85,6 @@ public enum Terrain implements GraphicsProvider<AresGraphicsProfile> {
         this.vision = vision;
         this.directional = directional;
         filename = "terrain_" + name().toLowerCase() + ".png";
-        provider = new MultiProfileImageProvider<>(this, ImageProviderType.TILE, AresGraphicsProfile.class,
-                AresGraphicsProfile.TERRAIN_IMAGE_ROWS, AresGraphicsProfile.TERRAIN_IMAGE_COLS);
     }
 
     public int getMotorized() {
@@ -136,7 +130,7 @@ public enum Terrain implements GraphicsProvider<AresGraphicsProfile> {
     public boolean isDirectional() {
         return directional;
     }
-    
+
     /**
      * Obtains the image index in the image file, given a bitmask representing directions.<p>
      * There are 6 standard directions, so 2^6=64 combinations are possible. In addition, there is a special direction,
@@ -158,23 +152,17 @@ public enum Terrain implements GraphicsProvider<AresGraphicsProfile> {
     }
 
     @Override
-    public BufferedImage getImage(AresGraphicsProfile profile, Point coordinates, FileIO fileSystem) {
-        return provider.getImage(profile, coordinates, fileSystem);
+    public ImageProviderType getImageProviderType() {
+        return imageProviderType;
     }
 
     @Override
-    public BufferedImage getFullImage(AresGraphicsProfile profile, FileIO fileSystem) {
-        return provider.getFullImage(profile, fileSystem);
+    public int getRows() {
+        return AresGraphicsProfile.TERRAIN_IMAGE_ROWS;
     }
 
     @Override
-    public Dimension getFullImageDimension(AresGraphicsProfile profile) {
-        return provider.getFullImageDimension(profile);
+    public int getColumns() {
+        return AresGraphicsProfile.TERRAIN_IMAGE_COLS;
     }
-
-    @Override
-    public String getFilename(AresGraphicsProfile profile) {
-        return provider.getFilename(profile);
-    }
-
 }
