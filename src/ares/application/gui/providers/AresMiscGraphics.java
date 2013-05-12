@@ -9,6 +9,8 @@ public enum AresMiscGraphics implements GraphicsDescriptor {
     TERRAIN_MISCELANEOUS(8, 8),
     TERRAIN_BORDER(8, 8),
     GRID(1, 1),
+    GRID_GREEN(1,1),
+    GRID_YELLOW(1, 1),
     BRASS_CURSOR(1, 1),
     STEEL_CURSOR(1, 1),
     RED_ARROWS(8, 6),

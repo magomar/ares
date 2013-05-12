@@ -8,8 +8,10 @@ import ares.application.models.forces.FormationModel;
 import ares.application.models.forces.UnitModel;
 import ares.engine.algorithms.pathfinding.Path;
 import ares.platform.view.View;
+import ares.scenario.board.Tile;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.util.Collection;
 
 /**
  *
@@ -38,6 +40,8 @@ public interface BoardViewer extends View {
     void updateCurrentOrders(Path path);
 
     void updateLastOrders(Path path);
+    
+    void updateLastPathSearch(Collection<Tile> openSet, Collection<Tile> closedSet);
 
     void updateSelectedUnit(UnitModel selectedUnit, FormationModel selectedFormation, ForceModel selectedForce);
 
