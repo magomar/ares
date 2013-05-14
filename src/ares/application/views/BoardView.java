@@ -29,6 +29,7 @@ import java.util.List;
 import javax.swing.JLayeredPane;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
+import javax.swing.JViewport;
 
 /**
  *
@@ -68,18 +69,20 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
 
     @Override
     protected JScrollPane layout() {
+        JScrollPane scrollPane = new JScrollPane();
         //Create layered pane to hold all the layers
         layeredPane = new JLayeredPane();
         layeredPane.setOpaque(true);
         layeredPane.setBackground(Color.BLACK);
         // Create layers
-        terrainLayer = new TerrainLayer();
-        unitsLayer = new UnitsLayer();
-        gridLayer = new GridLayer();
-        selectionLayer = new SelectionLayer();
+        JViewport viewport = scrollPane.getViewport();
+        terrainLayer = new TerrainLayer(viewport);
+        unitsLayer = new UnitsLayer(viewport);
+        gridLayer = new GridLayer(viewport);
+        selectionLayer = new SelectionLayer(viewport);
         //Shares image with selection layer
-        arrowLayer = new ArrowLayer(selectionLayer);
-        pathSearchLayer = new PathSearchLayer(selectionLayer);
+        arrowLayer = new ArrowLayer(viewport, selectionLayer);
+        pathSearchLayer = new PathSearchLayer(viewport, selectionLayer);
 
         // Add the last layer from each level to the layered pane
         layeredPane.add(terrainLayer, JLayeredPane.DEFAULT_LAYER);
@@ -89,7 +92,6 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
         layeredPane.add(unitsLayer, JLayeredPane.POPUP_LAYER);
 
         // Create and set up scroll pane as the content pane
-        JScrollPane scrollPane = new JScrollPane();
         scrollPane.add(layeredPane);
         scrollPane.setViewportView(layeredPane);
         scrollPane.setBackground(Color.BLACK);
@@ -137,12 +139,6 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
 
     @Override
     public void updateScenario(ScenarioModel scenario) {
-        //Update all layers from the HIGH level
-//        for (int index = HIGH; index < imageLayers.length; index++) {
-//            for (AbstractImageLayer layer : imageLayers[index]) {
-//                layer.update(scenario);
-//            }
-//        }
         unitsLayer.paintAllUnits(scenario);
     }
 
@@ -174,7 +170,7 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
     public void updateLastOrders(Path path) {
         arrowLayer.paintLastOrders(path);
     }
-    
+
     @Override
     public void updateLastPathSearch(Collection<Tile> openSet, Collection<Tile> closedSet) {
         pathSearchLayer.paintPathfindingProcess(openSet, closedSet);
@@ -245,5 +241,4 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
     public boolean isLayerVisible(int layer) {
         return allLayers[layer].isVisible();
     }
-
 }

@@ -11,6 +11,7 @@ import ares.scenario.board.Tile;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.*;
+import javax.swing.JViewport;
 
 /**
  * Draws the movement arrows on a BufferedImage
@@ -25,8 +26,8 @@ public class ArrowLayer extends AbstractImageLayer {
     private Collection<Path> formationPaths;
     private Collection<Path> forcePaths;
 
-    public ArrowLayer(AbstractImageLayer parentLayer) {
-        super(parentLayer);
+    public ArrowLayer(JViewport viewport, AbstractImageLayer parentLayer) {
+        super(viewport, parentLayer);
     }
 
     @Override
@@ -177,8 +178,7 @@ public class ArrowLayer extends AbstractImageLayer {
      * Paints a single arrow segment together with the accumulated movement cost
      *
      * @param tile the tile where to paint an Arrow
-     * @param index the position of the arrow segment within the array of arrow
-     * images
+     * @param index the position of the arrow segment within the array of arrow images
      */
     private void paintArrowSegmentWithCost(Graphics2D g2, Node node, Set<Direction> directions, ArrowType type) {
         Point coordinates = Directions.getDirections(Direction.getBitmask(directions)).getCoordinates();

@@ -12,6 +12,7 @@ import ares.scenario.board.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.*;
+import javax.swing.JViewport;
 
 /**
  * Terrain image layer based on Sergio Musoles TerrainPanel
@@ -21,6 +22,10 @@ import java.util.*;
 public class TerrainLayer extends AbstractImageLayer {
 
     private ScenarioModel scenario;
+
+    public TerrainLayer(JViewport viewport) {
+        super(viewport);
+    }
 
     @Override
     public void updateLayer() {

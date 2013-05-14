@@ -8,6 +8,7 @@ import ares.application.models.ScenarioModel;
 import ares.application.models.board.TileModel;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import javax.swing.JViewport;
 
 /**
  * Grid image layer
@@ -17,6 +18,10 @@ import java.awt.image.BufferedImage;
 public class GridLayer extends AbstractImageLayer {
 
     private ScenarioModel scenario;
+
+    public GridLayer(JViewport viewport) {
+        super(viewport);
+    }
 
     @Override
     public void updateLayer() {

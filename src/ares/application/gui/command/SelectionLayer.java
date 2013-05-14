@@ -2,7 +2,6 @@ package ares.application.gui.command;
 
 import ares.application.gui.GraphicsModel;
 import ares.application.gui.AbstractImageLayer;
-import ares.application.gui.AresGraphicsProfile;
 import ares.application.gui.providers.AresMiscGraphics;
 import ares.application.models.board.*;
 import ares.application.models.forces.FormationModel;
@@ -10,6 +9,7 @@ import ares.application.models.forces.UnitModel;
 import ares.application.io.AresIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import javax.swing.JViewport;
 
 /**
  * Draws the movement arrows on a BufferedImage
@@ -22,6 +22,10 @@ public class SelectionLayer extends AbstractImageLayer {
     private final AresMiscGraphics steelCursor = AresMiscGraphics.STEEL_CURSOR;
     private UnitModel selectedUnit;
     private FormationModel formation;
+
+    public SelectionLayer(JViewport viewport) {
+        super(viewport);
+    }
 
     @Override
     public void updateLayer() {

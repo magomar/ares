@@ -2,14 +2,13 @@ package ares.application.gui.command;
 
 import ares.application.gui.AbstractImageLayer;
 import ares.application.gui.GraphicsModel;
-import ares.application.gui.providers.AresMiscGraphics;
 import ares.application.io.AresIO;
-import ares.engine.algorithms.pathfinding.Path;
 import ares.scenario.board.Tile;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.util.Collection;
+import javax.swing.JViewport;
 
 /**
  *Draws the pathfinding process on a BufferedImage
@@ -21,8 +20,8 @@ public class PathSearchLayer extends AbstractImageLayer {
     private Collection<Tile> closedSet;
     private Graphics2D g2;
     
-    public PathSearchLayer(AbstractImageLayer parentLayer) {
-        super(parentLayer);
+    public PathSearchLayer(JViewport viewport, AbstractImageLayer parentLayer) {
+        super(viewport, parentLayer);
     }
     
     @Override

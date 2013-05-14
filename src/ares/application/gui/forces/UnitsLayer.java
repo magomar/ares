@@ -10,6 +10,7 @@ import ares.application.io.AresIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.*;
+import javax.swing.JViewport;
 
 /**
  * Units image layer based on Sergio Musoles TerrainPanel
@@ -20,7 +21,10 @@ public class UnitsLayer extends AbstractImageLayer {
 
     private ScenarioModel scenario;
 
-//    private TileModel tile;
+    public UnitsLayer(JViewport viewport) {
+        super(viewport);
+    }
+    
     @Override
     public void updateLayer() {
         initialize();

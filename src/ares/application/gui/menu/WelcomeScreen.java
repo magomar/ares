@@ -27,6 +27,7 @@ public final class WelcomeScreen extends AbstractImageLayer {
     private final static File wallpapers = new File(ResourcePath.GRAPHICS.getPath(), "Background");
 
     public WelcomeScreen() {
+        super(null, null);
         BoxLayout bl = new BoxLayout(this, BoxLayout.PAGE_AXIS);
         setLayout(bl);
         add(Box.createRigidArea(new Dimension(0, 300)));
