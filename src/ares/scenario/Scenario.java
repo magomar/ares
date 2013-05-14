@@ -29,9 +29,11 @@ public final class Scenario implements ModelProvider<ScenarioModel> {
     private Board board;
     private Force[] forces;
     private Map<UserRole, ScenarioModel> models;
+    private String description;
 
     public Scenario(ares.data.jaxb.Scenario scenario, EquipmentDB eqpDB) {
         name = scenario.getHeader().getName();
+        description = scenario.getHeader().getDescription();
         Scale.INSTANCE.initialize((int) (scenario.getEnvironment().getScale() * 1000));
         Clock.INSTANCE.initialize(scenario.getCalendar());
         assetTypes = new AssetTypes(eqpDB);
@@ -66,6 +68,10 @@ public final class Scenario implements ModelProvider<ScenarioModel> {
 
     public String getName() {
         return name;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     public AssetTypes getAssetTypes() {

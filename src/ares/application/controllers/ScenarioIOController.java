@@ -8,8 +8,7 @@ import ares.application.commands.FileCommands;
 import ares.application.models.ScenarioModel;
 import ares.application.commands.AresCommandGroup;
 import ares.application.AresPlayerGUI;
-import ares.application.gui.GraphicsModel;
-import ares.application.gui.GraphicsProfile;
+import ares.application.gui.components.StartScenarioPane;
 import ares.application.views.MessagesHandler;
 import ares.data.jaxb.EquipmentDB;
 import ares.application.io.AresFileType;
@@ -27,6 +26,7 @@ import ares.scenario.Scenario;
 import ares.scenario.forces.Force;
 import java.awt.Container;
 import java.awt.Cursor;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -36,6 +36,8 @@ import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JMenu;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTextPane;
 
 /**
  *
@@ -101,26 +103,11 @@ public final class ScenarioIOController extends AbstractSecondaryController {
                 File equipmentFile = AresIO.ARES_IO.getAbsolutePath(ResourcePath.EQUIPMENT.getPath(), "ToawEquipment" + AresFileType.EQUIPMENT.getFileExtension()).toFile();
                 EquipmentDB eqp = AresIO.ARES_IO.unmarshallJson(equipmentFile, EquipmentDB.class);
                 Scenario scenario = new Scenario(scen, eqp);
-                // set the user role by asking (using a dialog window)
-                Force[] forces = scenario.getForces();
-                UserRole[] options = new UserRole[forces.length + 1];
-                for (int i = 0; i < forces.length; i++) {
-                    Force force = forces[i];
-                    options[i] = UserRole.getForceRole(force);
-                }
-                options[forces.length] = UserRole.GOD;
                 container.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-                int n = JOptionPane.showOptionDialog(container,
-                        "Please select a user role",
-                        "Select your role",
-                        JOptionPane.YES_NO_CANCEL_OPTION,
-                        JOptionPane.QUESTION_MESSAGE,
-                        null,
-                        options,
-                        options[2]);
-                if (n >= 0) {
-                    // Loading scenario...
-                    mainController.setUserRole(options[n]);
+                StartScenarioPane startScenarioPane = new StartScenarioPane(scenario);
+                UserRole userRole = startScenarioPane.showOptionDialog(container);
+                if (userRole != null) {
+                    mainController.setUserRole(userRole);
                     return scenario;
                 }
             }
@@ -214,5 +201,4 @@ public final class ScenarioIOController extends AbstractSecondaryController {
         public void actionPerformed(ActionEvent e) {
         }
     }
-    
 }
