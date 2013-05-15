@@ -97,7 +97,8 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
         scrollPane.setBackground(Color.BLACK);
         scrollPane.setVisible(true);
         scrollPane.setOpaque(true);
-        scrollPane.getVerticalScrollBar().setUnitIncrement(20);
+        scrollPane.getVerticalScrollBar().setUnitIncrement(50);
+        scrollPane.getHorizontalScrollBar().setUnitIncrement(50);
         return scrollPane;
     }
 
@@ -109,7 +110,7 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
     public void loadScenario(final ScenarioModel scenario) {
         Dimension imageSize = new Dimension(GraphicsModel.INSTANCE.getImageWidth(), GraphicsModel.INSTANCE.getImageHeight());
         layeredPane.setPreferredSize(imageSize);
-        layeredPane.setSize(imageSize);
+//        layeredPane.setSize(imageSize);
         // Prepare each layer's thread
 //        for (int depth = 0; depth < imageLayers.length; depth++) {
 //            final int depthLevel = depth;

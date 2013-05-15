@@ -2,13 +2,15 @@ package ares.application.gui;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import javax.swing.JPanel;
 import javax.swing.JViewport;
 
 /**
  *
  * @author Heine <heisncfr@inf.upv.es>
+ * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public abstract class AbstractImageLayer extends javax.swing.JPanel implements ImageLayer {
+public abstract class AbstractImageLayer extends JPanel implements ImageLayer {
 
     /**
      * Image to be rendered on this layer
@@ -19,6 +21,9 @@ public abstract class AbstractImageLayer extends javax.swing.JPanel implements I
      * {@link #globalImage}
      */
     protected AbstractImageLayer parentLayer;
+    /**
+     * Viewport where this layer is placed
+     */
     protected JViewport viewport;
 
     /**
@@ -28,25 +33,12 @@ public abstract class AbstractImageLayer extends javax.swing.JPanel implements I
         this(viewport, null);
     }
 
-//    /**
-//     * Creates a new instance of this class with independent graphics ({@code parentLayer == null})
-//     */
-//    public AbstractImageLayer() {
-//        setOpaque(false);
-//    }
     public AbstractImageLayer(JViewport viewport, AbstractImageLayer parentLayer) {
         setOpaque(false);
         this.viewport = viewport;
         this.parentLayer = parentLayer;
     }
 
-    /**
-     * Creates a new instance of this class sharing its graphics with {@code parentLayer}
-     */
-    public AbstractImageLayer(AbstractImageLayer parentLayer) {
-        setOpaque(false);
-        this.parentLayer = parentLayer;
-    }
 
     @Override
     public final void initialize() {
@@ -58,8 +50,9 @@ public abstract class AbstractImageLayer extends javax.swing.JPanel implements I
         repaint();
     }
 
-//    @Override
-//    public abstract void updateLayer();
+    @Override
+    public abstract void updateLayer();
+    
     @Override
     public final void flush() {
         globalImage = null;
