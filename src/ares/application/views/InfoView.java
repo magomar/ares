@@ -1,6 +1,7 @@
 package ares.application.views;
 
 import ares.application.boundaries.view.InfoViewer;
+import ares.application.gui.components.ScenarioInfoPane;
 import ares.application.models.board.TileModel;
 import ares.application.models.forces.UnitModel;
 import ares.platform.view.AbstractView;
@@ -16,18 +17,18 @@ import javax.swing.JTextArea;
  */
 public class InfoView extends AbstractView<JScrollPane> implements InfoViewer {
 
-    private JTextArea scenInfo;
+//    private JTextArea scenInfo;
     private JTextArea unitInfo;
     private JTextArea tileInfo;
+    private ScenarioInfoPane scenInfo;
     
     @Override
     protected JScrollPane layout() {
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-        scenInfo = new JTextArea();
+        scenInfo = new ScenarioInfoPane();
         tileInfo = new JTextArea();
         unitInfo = new JTextArea();
-        scenInfo.setEditable(false);
         tileInfo.setEditable(false);
         unitInfo.setEditable(false);
         panel.add(scenInfo);
@@ -43,7 +44,8 @@ public class InfoView extends AbstractView<JScrollPane> implements InfoViewer {
 
     @Override
     public void updateScenarioInfo(String text, Calendar calendar) {
-        scenInfo.setText(text);
+//        scenInfo.setText(text);
+        scenInfo.update(calendar);
     }
 
     @Override
