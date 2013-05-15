@@ -2,7 +2,6 @@ package ares.application.gui.board;
 
 import ares.application.gui.GraphicsModel;
 import ares.application.gui.AbstractImageLayer;
-import ares.application.gui.GraphicsProfile;
 import ares.application.gui.providers.AresMiscGraphics;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.*;
@@ -15,9 +14,9 @@ import java.util.*;
 import javax.swing.JViewport;
 
 /**
- * Terrain image layer based on Sergio Musoles TerrainPanel
  *
  * @author Heine <heisncfr@inf.upv.es>
+ * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
 public class TerrainLayer extends AbstractImageLayer {
 
@@ -84,5 +83,4 @@ public class TerrainLayer extends AbstractImageLayer {
         }
         repaint(pos.x, pos.y, terrainImage.getWidth(), terrainImage.getHeight());
     }
-
 }

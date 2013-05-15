@@ -13,9 +13,9 @@ import java.util.*;
 import javax.swing.JViewport;
 
 /**
- * Units image layer based on Sergio Musoles TerrainPanel
  *
  * @author Heine <heisncfr@inf.upv.es>
+ * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class UnitsLayer extends AbstractImageLayer {
 
@@ -24,7 +24,7 @@ public class UnitsLayer extends AbstractImageLayer {
     public UnitsLayer(JViewport viewport) {
         super(viewport);
     }
-    
+
     @Override
     public void updateLayer() {
         initialize();
@@ -78,28 +78,26 @@ public class UnitsLayer extends AbstractImageLayer {
             UnitModel unit = tile.getTopUnit();
             BufferedImage unitImage = GraphicsModel.INSTANCE.getActiveProvider(unit.getColor()).getImage(unit.getIconId(), AresIO.ARES_IO);
             GraphicsProfile graphicsProfile = GraphicsModel.INSTANCE.getActiveProfile();
-            //Num units to be painted
-            int unitsToPaint = Math.min(tile.getNumStackedUnits(), graphicsProfile.getMaxUnitsStack());
-            // Attributes are painted only on the last image
-            unitsToPaint--;
 
             // Offset from the upper left corner of the tile
             int imageOffset = graphicsProfile.getUnitImageOffset();
             pos.x += imageOffset;
             pos.y += imageOffset;
-
-            int stackOffset = graphicsProfile.getUnitStackOffset();
             // Offset from the upper left corner of the last painted unit
-            int maxOffset = unitsToPaint * stackOffset;
+            int stackOffset = graphicsProfile.getUnitStackOffset();
+            //Num units to be painted
+            int unitsToPaint = Math.min(tile.getNumStackedUnits(), graphicsProfile.getMaxUnitsStack());
+            // Max stack  offset
+            int maxStackOffset = unitsToPaint * stackOffset - stackOffset;
 
             //Paint the same top unit
-            for (int d = maxOffset; d >= 0; d -= stackOffset) {
+            for (int d = maxStackOffset; d >= 0; d -= stackOffset) {
                 g2.drawImage(unitImage, pos.x + d, pos.y + d, this);
             }
             BufferedImage subImage = globalImage.getSubimage(pos.x, pos.y, graphicsProfile.getUnitWidth(), graphicsProfile.getUnitHeight());
 
             //Paint additional unit info (Health, Stamina, Attack, Defense, etc.)
-            
+
             Graphics2D unitG2 = subImage.createGraphics();
             unitG2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 //            g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
@@ -107,7 +105,7 @@ public class UnitsLayer extends AbstractImageLayer {
             unitsProfile.paintUnitAttributes(unitG2, unit);
 //            unitsProfile.paintUnitAttributes(g2, unit);
             unitG2.dispose();
-            repaint(pos.x, pos.y, unitImage.getWidth() + maxOffset, unitImage.getHeight() + maxOffset);
+            repaint(pos.x, pos.y, unitImage.getWidth() + maxStackOffset, unitImage.getHeight() + maxStackOffset);
         }
 
     }

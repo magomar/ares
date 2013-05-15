@@ -11,30 +11,31 @@ import java.util.Collection;
 import javax.swing.JViewport;
 
 /**
- *Draws the pathfinding process on a BufferedImage
- * 
+ * Draws the pathfinding process on a BufferedImage
+ *
  * @author Saúl Esteban <saesmar1@ei.upv.es>
  */
 public class PathSearchLayer extends AbstractImageLayer {
+
     private Collection<Tile> openSet;
     private Collection<Tile> closedSet;
     private Graphics2D g2;
-    
+
     public PathSearchLayer(JViewport viewport, AbstractImageLayer parentLayer) {
         super(viewport, parentLayer);
     }
-    
+
     @Override
     public void updateLayer() {
         initialize();
         g2 = globalImage.createGraphics();
-        
+
         paintOpenSet();
         paintClosedSet();
-        
+
         g2.dispose();
     }
-    
+
     /**
      * Paints complete process for the {@code openSet} and {@code closedSet} passed as argument
      *
@@ -46,19 +47,19 @@ public class PathSearchLayer extends AbstractImageLayer {
         this.closedSet = closedSet;
         updateLayer();
     }
-    
+
     private void paintOpenSet() {
         for (Tile tile : openSet) {
             paintTile(tile, TileType.OPEN_SET);
         }
     }
-    
+
     private void paintClosedSet() {
         for (Tile tile : closedSet) {
             paintTile(tile, TileType.CLOSED_SET);
         }
     }
-    
+
     private void paintTile(Tile tile, TileType type) {
         BufferedImage tileImage = GraphicsModel.INSTANCE.getActiveProvider(type.getProvider()).getImage(AresIO.ARES_IO);
         Point pos = GraphicsModel.INSTANCE.tileToPixel(tile.getCoordinates());

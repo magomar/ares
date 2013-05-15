@@ -14,7 +14,7 @@ import javax.swing.JViewport;
 /**
  * Draws the movement arrows on a BufferedImage
  *
- * @author Heine <heisncfr@inf.upv.es>
+ * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
 public class SelectionLayer extends AbstractImageLayer {
 
