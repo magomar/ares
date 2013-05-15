@@ -11,7 +11,7 @@ import ares.platform.io.ResourcePath;
 public enum AresGraphicsProfile implements GraphicsProfile {
 
     // ResourcePath, Units (Width,Height), Terrain(W,H), Hex(Side,Offset), Unit image offset, unit stack offset, max unit stack, Font size, Led vert. size, Bar vert. size
-    SMALL(ResourcePath.GRAPHICS_SMALL, 272, 128, 216, 192, 13, 21, 3, 0, 1, 0, 0, 0) {
+    SMALL(ResourcePath.GRAPHICS_SMALL, 272, 128, 216, 192, 13, 21, 3, 1, 1, 0, 0, 0) {
         @Override
         public String getFilename(String filename) {
             return "s_" + filename;
