@@ -1,6 +1,6 @@
 package ares.engine;
 
-import ares.application.gui.ProgressMonitor;
+import ares.application.gui.components.ProgressMonitor;
 import ares.engine.time.Phase;
 import ares.engine.time.ClockEventType;
 import ares.engine.time.ClockEvent;

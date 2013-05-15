@@ -1,6 +1,6 @@
 package ares.application.gui;
 
-import ares.application.gui.forces.UnitsInfographicProfile;
+import ares.application.gui.profiles.UnitsInfographicProfile;
 
 /**
  *

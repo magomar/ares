@@ -1,4 +1,4 @@
-package ares.application.gui.menu;
+package ares.application.gui.components;
 
 import java.awt.AlphaComposite;
 import static java.awt.Component.CENTER_ALIGNMENT;

@@ -1,6 +1,6 @@
-package ares.application.gui;
+package ares.application.gui.profiles;
 
-import ares.application.gui.forces.UnitsInfographicProfile;
+import ares.application.gui.GraphicsProfile;
 import ares.platform.io.ResourcePath;
 
 /**

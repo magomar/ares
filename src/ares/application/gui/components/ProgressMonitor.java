@@ -1,4 +1,4 @@
-package ares.application.gui;
+package ares.application.gui.components;
 
 import ares.platform.view.ComponentFactory;
 import ares.platform.view.WindowUtil;

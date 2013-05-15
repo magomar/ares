@@ -1,6 +1,6 @@
 package ares.platform.view;
 
-import ares.application.gui.menu.TranslucidButton;
+import ares.application.gui.components.TranslucidButton;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;

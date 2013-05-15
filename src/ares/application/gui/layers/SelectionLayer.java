@@ -1,7 +1,8 @@
-package ares.application.gui.command;
+package ares.application.gui.layers;
 
 import ares.application.gui.GraphicsModel;
 import ares.application.gui.AbstractImageLayer;
+import ares.application.gui.profiles.AresGraphicsProfile;
 import ares.application.gui.providers.AresMiscGraphics;
 import ares.application.models.board.*;
 import ares.application.models.forces.FormationModel;

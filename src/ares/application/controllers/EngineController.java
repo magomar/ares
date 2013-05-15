@@ -75,7 +75,7 @@ public final class EngineController extends AbstractSecondaryController implemen
             Scenario scenario = engine.getScenario();
             boardView.updateScenario(scenario.getModel(mainController.getUserRole()));
             String scenInfo = scenario.getName() + "\n" + Clock.INSTANCE.toStringVerbose() + "\nRole: " + mainController.getUserRole();
-            infoView.updateScenarioInfo(scenInfo);
+            infoView.updateScenarioInfo(scenInfo,  Clock.INSTANCE.getNow());
             if (clockEvent.getEventTypes().contains(ClockEventType.TURN)) {
                 pause.setEnabled(false);
                 turn.setEnabled(true);

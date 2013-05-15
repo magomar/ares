@@ -3,6 +3,7 @@ package ares.application.boundaries.view;
 import ares.application.models.board.TileModel;
 import ares.application.models.forces.UnitModel;
 import ares.platform.view.View;
+import java.util.Calendar;
 
 /**
  *
@@ -10,11 +11,11 @@ import ares.platform.view.View;
  */
 public interface InfoViewer extends View {
 
-    public void updateUnitInfo(UnitModel unitModel);
+    void updateUnitInfo(UnitModel unitModel);
 
-    public void updateTileInfo(TileModel tile);
+    void updateTileInfo(TileModel tile);
 
-    public void updateScenarioInfo(String text);
+    void updateScenarioInfo(String text, Calendar calendar);
 
-    public void clear();
+    void clear();
 }

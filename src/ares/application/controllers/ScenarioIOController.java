@@ -23,10 +23,8 @@ import ares.platform.commands.CommandAction;
 import ares.platform.commands.CommandGroup;
 import ares.platform.view.ComponentFactory;
 import ares.scenario.Scenario;
-import ares.scenario.forces.Force;
 import java.awt.Container;
 import java.awt.Cursor;
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -35,9 +33,6 @@ import javax.swing.Action;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JMenu;
-import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
-import javax.swing.JTextPane;
 
 /**
  *
@@ -139,7 +134,7 @@ public final class ScenarioIOController extends AbstractSecondaryController {
                 menuView.setVisible(true);
                 toolBarView.setVisible(true);
                 String scenInfo = scenario.getName() + "\n" + Clock.INSTANCE.toStringVerbose() + "\nRole: " + mainController.getUserRole();
-                infoView.updateScenarioInfo(scenInfo);
+                infoView.updateScenarioInfo(scenInfo, Clock.INSTANCE.getNow());
                 oobView.loadScenario(scenarioModel);
                 System.gc();
             }

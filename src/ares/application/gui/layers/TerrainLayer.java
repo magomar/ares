@@ -1,4 +1,4 @@
-package ares.application.gui.board;
+package ares.application.gui.layers;
 
 import ares.application.gui.GraphicsModel;
 import ares.application.gui.AbstractImageLayer;

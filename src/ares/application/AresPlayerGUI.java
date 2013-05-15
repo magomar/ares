@@ -1,7 +1,7 @@
 package ares.application;
 
 import ares.application.controllers.WeGoPlayerController;
-import ares.application.gui.AresGraphicsProfile;
+import ares.application.gui.profiles.AresGraphicsProfile;
 import ares.application.views.*;
 import ares.platform.application.AbstractAresApplication;
 import ares.platform.view.ComponentFactory;
