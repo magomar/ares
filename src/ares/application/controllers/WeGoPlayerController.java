@@ -2,10 +2,10 @@ package ares.application.controllers;
 
 import ares.application.boundaries.view.*;
 import ares.application.AresPlayerGUI;
-import ares.application.gui.AresGraphicsProfile;
+import ares.application.gui.profiles.AresGraphicsProfile;
 import ares.application.gui.GraphicsModel;
 import ares.application.gui.GraphicsProfile;
-import ares.application.gui.forces.UnitsColor;
+import ares.application.gui.providers.UnitsColor;
 import ares.application.gui.providers.AresMiscGraphics;
 import ares.application.io.AresIO;
 import ares.engine.RealTimeEngine;

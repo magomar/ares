@@ -1,9 +1,10 @@
-package ares.application.gui.command;
+package ares.application.gui.layers;
 
 import ares.engine.algorithms.pathfinding.Path;
 import ares.engine.algorithms.pathfinding.Node;
 import ares.application.gui.GraphicsModel;
 import ares.application.gui.AbstractImageLayer;
+import ares.application.gui.providers.AresMiscGraphics;
 import ares.application.io.AresIO;
 import ares.scenario.board.Direction;
 import ares.scenario.board.Directions;
@@ -177,8 +178,7 @@ public class ArrowLayer extends AbstractImageLayer {
      * Paints a single arrow segment together with the accumulated movement cost
      *
      * @param tile the tile where to paint an Arrow
-     * @param index the position of the arrow segment within the array of arrow
-     * images
+     * @param index the position of the arrow segment within the array of arrow images
      */
     private void paintArrowSegmentWithCost(Graphics2D g2, Node node, Set<Direction> directions, ArrowType type) {
         Point coordinates = Directions.getDirections(Direction.getBitmask(directions)).getCoordinates();
@@ -189,5 +189,22 @@ public class ArrowLayer extends AbstractImageLayer {
         int cost = (int) node.getG();
         g2.drawString(Integer.toString(cost), pos.x + arrowImage.getWidth() / 2, pos.y + arrowImage.getHeight() / 2);
         repaint(pos.x, pos.y, arrowImage.getWidth(), arrowImage.getHeight());
+    }
+
+    private enum ArrowType {
+
+        ACTIVE(AresMiscGraphics.RED_ARROWS),
+        UNIT(AresMiscGraphics.PURPLE_ARROWS),
+        FORMATION(AresMiscGraphics.BLUE_ARROWS),
+        FORCE(AresMiscGraphics.GRAY_ARROWS);
+        private final AresMiscGraphics provider;
+
+        private ArrowType(final AresMiscGraphics provider) {
+            this.provider = provider;
+        }
+
+        public AresMiscGraphics getProvider() {
+            return provider;
+        }
     }
 }

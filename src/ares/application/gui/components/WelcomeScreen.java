@@ -1,4 +1,4 @@
-package ares.application.gui.menu;
+package ares.application.gui.components;
 
 import ares.platform.io.ResourcePath;
 import ares.application.io.AresIO;

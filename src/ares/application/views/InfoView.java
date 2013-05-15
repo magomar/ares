@@ -9,7 +9,6 @@ import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import temp.AnalogClockDayNight;
 
 /**
  *
@@ -20,7 +19,6 @@ public class InfoView extends AbstractView<JScrollPane> implements InfoViewer {
     private JTextArea scenInfo;
     private JTextArea unitInfo;
     private JTextArea tileInfo;
-    private AnalogClockDayNight clock;
     
     @Override
     protected JScrollPane layout() {
@@ -29,14 +27,12 @@ public class InfoView extends AbstractView<JScrollPane> implements InfoViewer {
         scenInfo = new JTextArea();
         tileInfo = new JTextArea();
         unitInfo = new JTextArea();
-        clock = new AnalogClockDayNight();
         scenInfo.setEditable(false);
         tileInfo.setEditable(false);
         unitInfo.setEditable(false);
-        panel.add(clock);
-//        panel.add(scenInfo);
-//        panel.add(tileInfo);
-//        panel.add(unitInfo);
+        panel.add(scenInfo);
+        panel.add(tileInfo);
+        panel.add(unitInfo);
         return new JScrollPane(panel);
     }
 
@@ -48,8 +44,6 @@ public class InfoView extends AbstractView<JScrollPane> implements InfoViewer {
     @Override
     public void updateScenarioInfo(String text, Calendar calendar) {
         scenInfo.setText(text);
-        clock.update(calendar);
-        
     }
 
     @Override

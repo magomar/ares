@@ -1,7 +1,7 @@
 package ares.application.views;
 
 import ares.application.boundaries.view.ActionBarViewer;
-import ares.application.gui.menu.WelcomeScreen;
+import ares.application.gui.components.WelcomeScreen;
 import ares.platform.view.AbstractView;
 import java.awt.Component;
 import javax.swing.JButton;

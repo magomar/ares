@@ -1,8 +1,9 @@
-package ares.application.gui.forces;
+package ares.application.gui.layers;
 
 import ares.application.gui.GraphicsModel;
 import ares.application.gui.AbstractImageLayer;
 import ares.application.gui.GraphicsProfile;
+import ares.application.gui.profiles.UnitsInfographicProfile;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.*;
 import ares.application.models.forces.*;

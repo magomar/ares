@@ -1,6 +1,6 @@
 package ares.scenario.board;
 
-import ares.application.gui.AresGraphicsProfile;
+import ares.application.gui.profiles.AresGraphicsProfile;
 import ares.application.gui.providers.GraphicsDescriptor;
 import ares.application.gui.providers.ImageProviderType;
 import ares.engine.movement.MovementCost;

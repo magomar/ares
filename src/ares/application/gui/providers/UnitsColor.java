@@ -1,6 +1,6 @@
-package ares.application.gui.forces;
+package ares.application.gui.providers;
 
-import ares.application.gui.AresGraphicsProfile;
+import ares.application.gui.profiles.AresGraphicsProfile;
 import ares.application.gui.providers.GraphicsDescriptor;
 import ares.application.gui.providers.ImageProvider;
 import ares.application.gui.providers.ImageProviderType;

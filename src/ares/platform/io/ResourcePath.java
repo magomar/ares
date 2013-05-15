@@ -17,7 +17,8 @@ public enum ResourcePath {
     GRAPHICS_BACKGROUND("Graphics/Background"),
     GRAPHICS_SMALL("Graphics/Small"),
     GRAPHICS_MEDIUM("Graphics/Medium"),
-    GRAPHICS_HIGH("Graphics/High");
+    GRAPHICS_HIGH("Graphics/High"),
+    OTHER("Graphics/Other");
     private final String path;
 
     private ResourcePath(final String path) {
