@@ -39,7 +39,6 @@ public abstract class AbstractImageLayer extends JPanel implements ImageLayer {
         this.parentLayer = parentLayer;
     }
 
-
     @Override
     public final void initialize() {
         if (parentLayer == null) {
@@ -49,10 +48,10 @@ public abstract class AbstractImageLayer extends JPanel implements ImageLayer {
         }
         repaint();
     }
+//
+//    @Override
+//    public abstract void updateLayer();
 
-    @Override
-    public abstract void updateLayer();
-    
     @Override
     public final void flush() {
         globalImage = null;
@@ -71,14 +70,12 @@ public abstract class AbstractImageLayer extends JPanel implements ImageLayer {
         }
         Graphics2D g2 = (Graphics2D) g;
         if (globalImage != null) {
-            if (viewport != null) {
-                Rectangle rect = viewport.getViewRect();
-                BufferedImage viewImage = globalImage.getSubimage(rect.x, rect.y, rect.width, rect.height);
-                g2.drawImage(viewImage, rect.x, rect.y, this);
-            } else {
-                g2.drawImage(globalImage, 0, 0, this);
-            }
-
+            Rectangle rect = viewport.getViewRect();
+            int visibleImageWidth = Math.min(rect.width, globalImage.getWidth());
+            int visibleImageHeight = Math.min(rect.height, globalImage.getHeight());
+            BufferedImage viewImage = globalImage.getSubimage(rect.x, rect.y, visibleImageWidth, visibleImageHeight);
+//            BufferedImage viewImage = globalImage.getSubimage(rect.x, rect.y, rect.width, rect.height);
+            g2.drawImage(viewImage, rect.x, rect.y, this);
         }
     }
 
