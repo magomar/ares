@@ -59,7 +59,7 @@ public class GraphicsModel {
         for (int i = 0; i < profiles.length; i++) {
             providers.add(new HashMap<GraphicsDescriptor, ImageProvider>());
         }
-        setActiveProfile(profiles.length / 2);
+        setActiveProfile(0);
     }
 
     public void addGraphics(GraphicsDescriptor descriptor) {

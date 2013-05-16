@@ -242,4 +242,8 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
     public boolean isLayerVisible(int layer) {
         return allLayers[layer].isVisible();
     }
+
+    public ImageLayer[] getAllLayers() {
+        return allLayers;
+    }
 }

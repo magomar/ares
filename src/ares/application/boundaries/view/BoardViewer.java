@@ -1,6 +1,5 @@
 package ares.application.boundaries.view;
 
-import ares.application.gui.ImageLayer;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.TileModel;
 import ares.application.models.forces.ForceModel;
@@ -23,7 +22,8 @@ public interface BoardViewer extends View {
     final static int GRID = 1;
     final static int SELECTION = 2;
     final static int ARROWS = 3;
-    final static int UNITS = 4;
+    final static int PATHFINDING = 4;
+    final static int UNITS = 5;
 
     void loadScenario(ScenarioModel scenario);
 

@@ -45,7 +45,6 @@ public class WeGoPlayerController {
     private final RealTimeEngine engine;
     private UserRole userRole;
     private Scenario scenario;
-    private final GraphicsProfile[] profiles = AresGraphicsProfile.values();
     // Other fields
     private final ExecutorService executor;
     private static final Logger LOG = Logger.getLogger(WeGoPlayerController.class.getName());
@@ -99,7 +98,7 @@ public class WeGoPlayerController {
         engine.setScenario(scenario);
         // Initialize GraphicsModel
         if (scenario != null) {
-            GraphicsModel.INSTANCE.initialize(scenario.getBoard(), profiles, AresIO.ARES_IO);
+            GraphicsModel.INSTANCE.initialize(scenario.getBoard(), AresGraphicsProfile.values(), AresIO.ARES_IO);
             GraphicsModel.INSTANCE.addAllGraphics(Terrain.values());
             GraphicsModel.INSTANCE.addAllGraphics(Feature.values());
             GraphicsModel.INSTANCE.addAllGraphics(AresMiscGraphics.values());

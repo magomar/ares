@@ -280,9 +280,9 @@ public class FileIO<T extends Enum<T> & FileType> {
      * @param image
      * @param file
      */
-    public static void saveImage(RenderedImage image, File file) {
+    public static void saveImage(RenderedImage image, File file, String imageFormat) {
         try {
-            ImageIO.write(image, "png", file);
+            ImageIO.write(image, imageFormat, file);
         } catch (IOException ex) {
             LOG.log(Level.SEVERE, null, ex);
         }

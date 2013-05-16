@@ -99,7 +99,7 @@ public final class ScenarioIOController extends AbstractSecondaryController {
                 EquipmentDB eqp = AresIO.ARES_IO.unmarshallJson(equipmentFile, EquipmentDB.class);
                 Scenario scenario = new Scenario(scen, eqp);
                 container.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-                StartScenarioPane startScenarioPane = new StartScenarioPane(scenario);
+                StartScenarioPane startScenarioPane = new StartScenarioPane(scenario, file);
                 UserRole userRole = startScenarioPane.showOptionDialog(container);
                 if (userRole != null) {
                     mainController.setUserRole(userRole);
