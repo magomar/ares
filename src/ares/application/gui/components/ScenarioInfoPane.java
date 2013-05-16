@@ -1,11 +1,6 @@
 package ares.application.gui.components;
 
-import ares.platform.io.FileIO;
-import ares.platform.io.ResourcePath;
 import java.awt.Dimension;
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.util.Calendar;
 import javax.swing.JPanel;
 

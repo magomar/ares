@@ -3,13 +3,11 @@ package ares.application.gui.components;
 import ares.platform.io.FileIO;
 import ares.platform.io.ResourcePath;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.text.DateFormatSymbols;
 import java.util.Calendar;
 import java.util.Locale;
 import javax.swing.JPanel;
@@ -22,11 +20,11 @@ public class WallCalendar extends JPanel {
 
     private final BufferedImage backgroundImage;
     private Calendar calendar;
-    private final Font headFont = new Font("Arial", Font.PLAIN, 10);
-    private final Font bodyFont = new Font("Arial", Font.PLAIN, 20);
+    private final Font headFont = new Font("Arial", Font.PLAIN, 12);
+    private final Font bodyFont = new Font("Arial Black", Font.BOLD, 30);
 
     public WallCalendar() {
-        backgroundImage = FileIO.loadImage(new File(ResourcePath.OTHER.getPath(), "calendar-background.png"));
+        backgroundImage = FileIO.loadImage(new File(ResourcePath.OTHER.getPath(), "calendar-background-icon.png"));
     }
 
     @Override
@@ -41,10 +39,12 @@ public class WallCalendar extends JPanel {
         }
         if (calendar != null) {
             g2.setFont(headFont);
-            g2.drawString(Integer.toString(calendar.get(Calendar.YEAR)), 10, 15);
-            g2.drawString(calendar.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.US), 40, 15);
+            g2.setColor(Color.WHITE);
+            g2.drawString(Integer.toString(calendar.get(Calendar.YEAR)), 10, 20);
+            g2.drawString(calendar.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.US).substring(0, 3), 45, 20);
             g2.setFont(bodyFont);
-            g2.drawString(Integer.toString(calendar.get(Calendar.DAY_OF_MONTH)), 20, 50);
+            g2.setColor(Color.BLACK);
+            g2.drawString(Integer.toString(calendar.get(Calendar.DAY_OF_MONTH)), 15, 60);
         }
         g2.dispose();
     }
