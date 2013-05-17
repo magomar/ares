@@ -18,22 +18,22 @@ public class StartScenarioPane extends JOptionPane {
 
     public StartScenarioPane(Scenario scenario) {
         Force[] forces = scenario.getForces();
-        UserRole[] options = new UserRole[forces.length + 1];
+        UserRole[] roles = new UserRole[forces.length + 1];
         for (int i = 0; i < forces.length; i++) {
             Force force = forces[i];
-            options[i] = UserRole.getForceRole(force);
+            roles[i] = UserRole.getForceRole(force);
         }
-        options[forces.length] = UserRole.GOD;
+        roles[forces.length] = UserRole.GOD;
         JTextPane textPane = new JTextPane();
         textPane.setEditable(false);
         textPane.setText(scenario.getDescription());
         JScrollPane scrollPane = new JScrollPane(textPane);
         scrollPane.setPreferredSize(new Dimension(500, 500));
         setMessage(scrollPane);
-        setOptions(options);
+        setOptions(roles);
         setMessageType(QUESTION_MESSAGE);
         setOptionType(YES_NO_CANCEL_OPTION);
-        setInitialValue(options[2]);
+        setInitialValue(roles[2]);
     }
 
     public UserRole showOptionDialog(Component parent) {

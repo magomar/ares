@@ -10,13 +10,13 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.Calendar;
 import java.util.Locale;
-import javax.swing.JPanel;
+import javax.swing.JComponent;
 
 /**
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public class WallCalendar extends JPanel {
+public class WallCalendar extends JComponent {
 
     private final BufferedImage backgroundImage;
     private Calendar calendar;
@@ -24,7 +24,7 @@ public class WallCalendar extends JPanel {
     private final Font bodyFont = new Font("Arial Black", Font.BOLD, 30);
 
     public WallCalendar() {
-        backgroundImage = FileIO.loadImage(new File(ResourcePath.OTHER.getPath(), "calendar-background-icon.png"));
+        backgroundImage = FileIO.loadImage(new File(ResourcePath.OTHER.getPath(), "calendar_background.png"));
     }
 
     @Override
