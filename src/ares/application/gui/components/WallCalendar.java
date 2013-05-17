@@ -33,10 +33,7 @@ public class WallCalendar extends JComponent {
         Graphics2D g2 = (Graphics2D) g;
         if (backgroundImage != null) {
             g2.drawImage(backgroundImage, 0, 0, this.getWidth(), this.getHeight(), this);
-        } else {
-            g2.setBackground(Color.BLACK);
-            g2.fillRect(0, 0, this.getWidth(), this.getHeight());
-        }
+        } 
         if (calendar != null) {
             g2.setFont(headFont);
             g2.setColor(Color.WHITE);

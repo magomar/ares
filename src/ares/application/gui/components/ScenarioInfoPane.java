@@ -15,7 +15,8 @@ import java.util.Calendar;
 public class ScenarioInfoPane extends JTexturedPanel {
 
     private AnalogClockDayNight clock;
-    private WallCalendar calendarPane;
+    private WallCalendar calendar;
+    private WeatherInfo weather;
     private BufferedImage backImage;
 
     public ScenarioInfoPane() {
@@ -24,17 +25,21 @@ public class ScenarioInfoPane extends JTexturedPanel {
         clock.setPreferredSize(new Dimension(75, 75));
         add(clock);
         
-        calendarPane = new WallCalendar();
-        calendarPane.setPreferredSize(new Dimension(75, 75));
-        add(calendarPane);
+        calendar = new WallCalendar();
+        calendar.setPreferredSize(new Dimension(75, 75));
+        add(calendar);
         backImage = FileIO.loadImage(new File(ResourcePath.OTHER.getPath(), "wood.png"));
         setTextureImage(backImage);
+        
+        weather = new WeatherInfo();
+        weather.setPreferredSize(new Dimension(32,32));
+        add(weather);
 
     }
 
     public void update(Calendar calendar) {
         clock.update(calendar);
-        calendarPane.update(calendar);
+        this.calendar.update(calendar);
     }
 
 }
