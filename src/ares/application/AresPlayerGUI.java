@@ -6,6 +6,8 @@ import ares.application.views.*;
 import ares.platform.application.AbstractAresApplication;
 import ares.platform.view.ComponentFactory;
 import java.awt.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 
 /**
