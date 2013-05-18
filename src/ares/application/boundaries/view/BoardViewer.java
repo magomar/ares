@@ -10,7 +10,7 @@ import ares.platform.view.View;
 import ares.scenario.board.Tile;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  *
@@ -41,7 +41,7 @@ public interface BoardViewer extends View {
 
     void updateLastOrders(Path path);
     
-    void updateLastPathSearch(ArrayList<Tile> openSet, ArrayList<Tile> closedSet);
+    void updateLastPathSearch(Collection<Tile> openSet, Collection<Tile> closedSet);
 
     void updateSelectedUnit(UnitModel selectedUnit, FormationModel selectedFormation, ForceModel selectedForce);
 

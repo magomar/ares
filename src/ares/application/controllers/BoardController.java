@@ -268,7 +268,7 @@ public final class BoardController extends AbstractSecondaryController implement
             selectedUnit.setMission(mission);
             selectedUnit.schedule();
             boardView.updateLastOrders(mission.getPath());
-            //boardView.updateLastPathSearch(mission.getPath().getOpenSetTiles(), mission.getPath().getClosedSetTiles());
+//            boardView.updateLastPathSearch(null, null);
         }
     }
 

@@ -24,6 +24,7 @@ import java.awt.Point;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import javax.swing.JLayeredPane;
 import javax.swing.JScrollBar;
@@ -172,7 +173,7 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
     }
 
     @Override
-    public void updateLastPathSearch(ArrayList<Tile> openSet, ArrayList<Tile> closedSet) {
+    public void updateLastPathSearch(Collection<Tile> openSet, Collection<Tile> closedSet) {
         pathSearchLayer.paintPathfindingProcess(openSet, closedSet);
     }
 
