@@ -8,7 +8,7 @@ import ares.scenario.board.Tile;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
-import java.util.Collection;
+import java.util.ArrayList;
 import javax.swing.JViewport;
 
 /**
@@ -18,8 +18,8 @@ import javax.swing.JViewport;
  */
 public class PathSearchLayer extends AbstractImageLayer {
 
-    private Collection<Tile> openSet;
-    private Collection<Tile> closedSet;
+    private ArrayList<Tile> openSet;
+    private ArrayList<Tile> closedSet;
     private Graphics2D g2;
 
     public PathSearchLayer(JViewport viewport, AbstractImageLayer parentLayer) {
@@ -43,7 +43,7 @@ public class PathSearchLayer extends AbstractImageLayer {
      * @param openSet
      * @param closedSet
      */
-    public void paintPathfindingProcess(Collection<Tile> openSet, Collection<Tile> closedSet) {
+    public void paintPathfindingProcess(ArrayList<Tile> openSet, ArrayList<Tile> closedSet) {
         this.openSet = openSet;
         this.closedSet = closedSet;
         updateLayer();
@@ -70,8 +70,8 @@ public class PathSearchLayer extends AbstractImageLayer {
 
     private enum TileType {
 
-        OPEN_SET(AresMiscGraphics.GRID_GREEN),
-        CLOSED_SET(AresMiscGraphics.GRID_YELLOW);
+        OPEN_SET(AresMiscGraphics.GRID_YELLOW),
+        CLOSED_SET(AresMiscGraphics.GRID_GREEN);
         private final AresMiscGraphics provider;
 
         private TileType(final AresMiscGraphics provider) {

@@ -29,20 +29,34 @@ public class AStar extends AbstractPathFinder {
             return null;
         }
         // Create data structures
+        ArrayList<Tile> openSetTiles = new ArrayList<>();
+        ArrayList<Tile> closedSetTiles = new ArrayList<>();
         Map<Integer, Node> closedSet = new HashMap<>();
         OpenSet openSet = new OpenSet();
         Node firstNode = new Node(origin, Direction.C, null, 0, heuristic.getCost(origin, destination, unit));
 //        nodes = 1;
         openSet.add(firstNode);
+        openSetTiles.add(firstNode.getTile());
 
         while (!openSet.isEmpty()) {
             // Obtain next best node from openSet and add it to the closed in the 
             Node bestNode = openSet.poll();
             int bestNodeIndex = bestNode.getIndex();
             closedSet.put(bestNodeIndex, bestNode);
+            closedSetTiles.add(bestNode.getTile());
             // Check for termination
             if (bestNode.getTile().equals(destination)) {
                 Path path = new Path(firstNode, bestNode);
+                
+                for (Tile tile : openSetTiles) {
+                    if (closedSetTiles.contains(tile)) {
+                        openSetTiles.remove(tile);
+                    }
+                }
+                
+                path.setOpenSetTiles(openSetTiles);
+                path.setClosedSetTiles(closedSetTiles);
+                
                 return path;
             }
             // Expand best node (Generate successors)
@@ -72,6 +86,7 @@ public class AStar extends AbstractPathFinder {
                 } else {
                     neighborNode = new Node(neighbor, toDir, bestNode, tentative_g, heuristic.getCost(neighbor, destination, unit));
                     openSet.add(neighborNode);
+                    openSetTiles.add(neighborNode.getTile());
 //                    nodes++;
                 }
             }

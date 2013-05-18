@@ -1,6 +1,8 @@
 package ares.engine.algorithms.pathfinding;
 
 import ares.application.models.board.TileModel;
+import ares.scenario.board.Tile;
+import java.util.ArrayList;
 
 /**
  *
@@ -11,6 +13,8 @@ public class Path {
     private Node last;
     private Node first;
     private int size;
+    private ArrayList<Tile> openSetTiles;
+    private ArrayList<Tile> closedSetTiles;
 
     /**
      * Creates a path connecting the {@code first} to the
@@ -80,5 +84,21 @@ public class Path {
             }
         }
         return null;
+    }
+    
+    public void setOpenSetTiles(ArrayList<Tile> tiles) {
+        openSetTiles = tiles;
+    }
+    
+    public ArrayList<Tile> getOpenSetTiles() {
+        return openSetTiles;
+    }
+    
+    public void setClosedSetTiles(ArrayList<Tile> tiles) {
+        closedSetTiles = tiles;
+    }
+    
+    public ArrayList<Tile> getClosedSetTiles() {
+        return closedSetTiles;
     }
 }
