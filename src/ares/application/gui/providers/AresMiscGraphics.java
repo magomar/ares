@@ -16,6 +16,7 @@ public enum AresMiscGraphics implements GraphicsDescriptor {
     RED_ARROWS(8, 6),
     PURPLE_ARROWS(8, 6),
     BLUE_ARROWS(8, 6),
+    DARK_BLUE_ARROWS(8, 6),
     GRAY_ARROWS(8, 6);
     private final String filename;
     private final ImageProviderType imageProviderType = ImageProviderType.TILE;

@@ -196,8 +196,8 @@ public class ArrowLayer extends AbstractImageLayer {
 
         ACTIVE(AresMiscGraphics.RED_ARROWS),
         UNIT(AresMiscGraphics.PURPLE_ARROWS),
-        FORMATION(AresMiscGraphics.BLUE_ARROWS),
-        FORCE(AresMiscGraphics.GRAY_ARROWS);
+        FORMATION(AresMiscGraphics.DARK_BLUE_ARROWS),
+        FORCE(AresMiscGraphics.BLUE_ARROWS);
         private final AresMiscGraphics provider;
 
         private ArrowType(final AresMiscGraphics provider) {
