@@ -1,5 +1,6 @@
 package ares.scenario.forces;
 
+import ares.application.gui.providers.UnitsColor;
 import ares.application.models.forces.DetectedUnitModel;
 import ares.application.models.forces.IdentifiedUnitModel;
 import ares.application.models.forces.KnownUnitModel;
@@ -52,7 +53,7 @@ public abstract class Unit implements ModelProvider<UnitModel> {
     /**
      * Identifies the combination of colors of the graphical icon {@link iconId}
      */
-    protected int color;
+    protected UnitsColor color;
     /**
      * The type of unit (infantry, mechanized infantry, artillery, etc.)
      *
@@ -241,7 +242,7 @@ public abstract class Unit implements ModelProvider<UnitModel> {
             System.err.println(unit.getName() + " *** " + type);
         }
         iconId = unit.getIconId();
-        color = unit.getColor();
+        color = UnitsColor.values()[unit.getColor()];
         echelon = Echelon.valueOf(unit.getSize().name());
         this.formation = formation;
         this.force = force;
@@ -471,7 +472,7 @@ public abstract class Unit implements ModelProvider<UnitModel> {
         return antiTank * efficacy;
     }
 
-    public int getColor() {
+    public UnitsColor getColor() {
         return color;
     }
 

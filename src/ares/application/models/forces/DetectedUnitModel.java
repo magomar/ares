@@ -31,7 +31,7 @@ public class DetectedUnitModel extends UnitModel {
 
     @Override
     public UnitsColor getColor() {
-        return UnitsColor.values()[unit.getColor()];
+        return unit.getColor();
     }
 
     @Override

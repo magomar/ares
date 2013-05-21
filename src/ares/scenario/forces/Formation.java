@@ -42,6 +42,7 @@ public class Formation implements ModelProvider<FormationModel> {
     private OperationalPlan operationalPlan;
     private ProgrammedOpponent po;
     private boolean active;
+    private Unit hq;
 
     public Formation(ares.data.jaxb.Formation formation, Force force, Scenario scenario) {
         id = formation.getId();
@@ -72,6 +73,9 @@ public class Formation implements ModelProvider<FormationModel> {
                 default:
                     availableUnits.add(u);
             }
+            if (u.getType() == UnitType.HEADQUARTERS) {
+                hq = u;
+            }
         }
         // Set parents for units resulting of division
         for (ares.data.jaxb.Unit unit : formation.getUnit()) {
@@ -81,7 +85,6 @@ public class Formation implements ModelProvider<FormationModel> {
         }
 
         po = new ProgrammedOpponent(formation.getOrders(), scenario.getBoard());
-
         active = false;
     }
 
@@ -174,6 +177,10 @@ public class Formation implements ModelProvider<FormationModel> {
 
     public List<Unit> getAvailableUnits() {
         return availableUnits;
+    }
+
+    public Unit getHq() {
+        return hq;
     }
 
     public ProgrammedOpponent getPo() {

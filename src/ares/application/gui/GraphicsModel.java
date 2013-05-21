@@ -19,7 +19,6 @@ import java.util.Map;
 public class GraphicsModel {
 
     public static final GraphicsModel INSTANCE = new GraphicsModel();
-    
     /**
      * Board width in tiles
      */
@@ -353,12 +352,20 @@ public class GraphicsModel {
         return ((x < imageWidth && x > 0) && (y > 0 && y < imageHeight));
     }
 
-//    public static int computeBoardImageWidth(GraphicsProfile profile, int columns) {
-//        return profile.getHexDiameter() + (columns - 1) * profile.getHexOffset();
-//
-//    }
-//
-//    public static int computeBoardImageHeight(GraphicsProfile profile, int boardHeight) {
-//        return boardHeight * profile.getHexHeight() + profile.getHexHeight() / 2;
-//    }
+    //    public static int computeBoardImageWidth(GraphicsProfile profile, int columns) {
+    //        return profile.getHexDiameter() + (columns - 1) * profile.getHexOffset();
+    //
+    //    }
+    //
+    //    public static int computeBoardImageHeight(GraphicsProfile profile, int boardHeight) {
+    //        return boardHeight * profile.getHexHeight() + profile.getHexHeight() / 2;
+    //    }
+    
+    public GraphicsProfile[] getProfiles() {
+        return profiles;
+    }
+    
+    public Map<GraphicsDescriptor, ImageProvider> getImageProviders(int profileIndex) {
+        return providers.get(profileIndex);
+    }
 }

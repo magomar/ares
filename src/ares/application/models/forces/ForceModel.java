@@ -1,5 +1,9 @@
 package ares.application.models.forces;
 
+import ares.application.gui.GraphicsModel;
+import ares.application.gui.components.OOBTreeNode;
+import ares.application.gui.providers.ImageProvider;
+import ares.application.io.AresIO;
 import ares.platform.model.RoleMediatedModel;
 import ares.platform.model.UserRole;
 import ares.scenario.forces.Force;
@@ -9,6 +13,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.swing.ImageIcon;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.MutableTreeNode;
@@ -56,14 +61,25 @@ public final class ForceModel extends RoleMediatedModel {
     public TreeModel getTreeModel() {
         Map<Formation, MutableTreeNode> formationNodes = new HashMap<>();
         for (Formation formation : force.getFormations()) {
-            MutableTreeNode formationNode = new DefaultMutableTreeNode(formation);
+            Unit hq = formation.getHq();
+            MutableTreeNode formationNode;
+            if (hq != null) {
+                ImageProvider unitImageProvider = GraphicsModel.INSTANCE.getImageProviders(0).get(hq.getColor());
+                ImageIcon treeNodeIcon = new ImageIcon(unitImageProvider.getImage(hq.getIconId(), AresIO.ARES_IO));
+                formationNode = new OOBTreeNode(formation, treeNodeIcon);
+            } else {
+                formationNode = new DefaultMutableTreeNode(formation);
+            }
+
             formationNodes.put(formation, formationNode);
         }
         Formation top = force.getFormations().get(0);
         MutableTreeNode root = formationNodes.get(top);
         DefaultTreeModel treeModel = new DefaultTreeModel(root);
         for (Unit unit : force.getActiveUnits()) {
-            MutableTreeNode unitNode = new DefaultMutableTreeNode(unit);
+            ImageProvider unitImageProvider = GraphicsModel.INSTANCE.getImageProviders(0).get(unit.getColor());
+            ImageIcon treeNodeIcon = new ImageIcon(unitImageProvider.getImage(unit.getIconId(), AresIO.ARES_IO));
+            MutableTreeNode unitNode = new OOBTreeNode(unit, treeNodeIcon);
             MutableTreeNode parent = formationNodes.get(unit.getFormation());
             treeModel.insertNodeInto(unitNode, parent, parent.getChildCount());
         }
@@ -77,5 +93,4 @@ public final class ForceModel extends RoleMediatedModel {
         }
         return treeModel;
     }
-
 }
