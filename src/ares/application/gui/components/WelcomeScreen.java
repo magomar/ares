@@ -20,10 +20,6 @@ public final class WelcomeScreen extends JPanel {
      * Background image to be loaded
      */
     private SoftReference<BufferedImage> backgroundImage = new SoftReference<>(null);
-    /**
-     * Folder containing wallpapers
-     */
-    private final static File wallpapers = new File(ResourcePath.GRAPHICS.getPath(), "Background");
 
     public WelcomeScreen() {
         BoxLayout bl = new BoxLayout(this, BoxLayout.PAGE_AXIS);
@@ -31,7 +27,6 @@ public final class WelcomeScreen extends JPanel {
         add(Box.createRigidArea(new Dimension(0, 300)));
         updateBackgroundImage();
     }
-
 
     public void updateBackgroundImage() {
         if (backgroundImage.get() == null) {
@@ -41,9 +36,9 @@ public final class WelcomeScreen extends JPanel {
     }
 
     private File randomImageFile() {
-        File[] backgrounds = wallpapers.listFiles();
+        File[] backgrounds = ResourcePath.GRAPHICS_BACKGROUND.getFolderPath().toFile().listFiles();
         if (backgrounds == null || backgrounds.length == 0) {
-            return new File(ResourcePath.GRAPHICS.getPath(), "main_menu_background.jpg");
+            return ResourcePath.GRAPHICS.getFile("main_menu_background.jpg");
         }
         Integer index = new Random().nextInt(backgrounds.length);
         return backgrounds[index];

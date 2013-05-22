@@ -6,7 +6,6 @@ import ares.application.gui.providers.AresMiscGraphics;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.*;
 import ares.engine.knowledge.KnowledgeCategory;
-import ares.application.io.AresIO;
 import ares.scenario.board.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -64,7 +63,7 @@ public class TerrainLayer extends AbstractImageLayer {
         Point pos = GraphicsModel.INSTANCE.tileToPixel(tile.getCoordinates());
 
         // First paints the open terrain, any other terrain will be rendered upon it
-        BufferedImage terrainImage = GraphicsModel.INSTANCE.getActiveProvider(AresMiscGraphics.TERRAIN_MISCELANEOUS).getImage(AresIO.ARES_IO);
+        BufferedImage terrainImage = GraphicsModel.INSTANCE.getActiveProvider(AresMiscGraphics.TERRAIN_MISCELANEOUS).getImage();
         g2.drawImage(terrainImage, pos.x, pos.y, this);
 
         Map<Terrain, Directions> m = tile.getTerrain();
@@ -72,13 +71,13 @@ public class TerrainLayer extends AbstractImageLayer {
             Terrain terrain = entry.getKey();
             Directions directions = entry.getValue();
             Point imageCoordinates = directions.getCoordinates();
-            terrainImage = GraphicsModel.INSTANCE.getActiveProvider(terrain).getImage(imageCoordinates, AresIO.ARES_IO);
+            terrainImage = GraphicsModel.INSTANCE.getActiveProvider(terrain).getImage(imageCoordinates);
             // Paint terrain image
             g2.drawImage(terrainImage, pos.x, pos.y, this);
         }
         // Paint features 
         for (Feature feature : tile.getTerrainFeatures()) {
-            terrainImage = GraphicsModel.INSTANCE.getActiveProvider(AresMiscGraphics.TERRAIN_MISCELANEOUS).getImage(feature.getCoordinates(), AresIO.ARES_IO);
+            terrainImage = GraphicsModel.INSTANCE.getActiveProvider(AresMiscGraphics.TERRAIN_MISCELANEOUS).getImage(feature.getCoordinates());
             g2.drawImage(terrainImage, pos.x, pos.y, this);
         }
         repaint(pos.x, pos.y, terrainImage.getWidth(), terrainImage.getHeight());

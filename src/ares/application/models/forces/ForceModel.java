@@ -3,7 +3,6 @@ package ares.application.models.forces;
 import ares.application.gui.GraphicsModel;
 import ares.application.gui.components.OOBTreeNode;
 import ares.application.gui.providers.ImageProvider;
-import ares.application.io.AresIO;
 import ares.platform.model.RoleMediatedModel;
 import ares.platform.model.UserRole;
 import ares.scenario.forces.Force;
@@ -65,7 +64,7 @@ public final class ForceModel extends RoleMediatedModel {
             MutableTreeNode formationNode;
             if (hq != null) {
                 ImageProvider unitImageProvider = GraphicsModel.INSTANCE.getImageProviders(0).get(hq.getColor());
-                ImageIcon treeNodeIcon = new ImageIcon(unitImageProvider.getImage(hq.getIconId(), AresIO.ARES_IO));
+                ImageIcon treeNodeIcon = new ImageIcon(unitImageProvider.getImage(hq.getIconId()));
                 formationNode = new OOBTreeNode(formation, treeNodeIcon);
             } else {
                 formationNode = new DefaultMutableTreeNode(formation);
@@ -78,7 +77,7 @@ public final class ForceModel extends RoleMediatedModel {
         DefaultTreeModel treeModel = new DefaultTreeModel(root);
         for (Unit unit : force.getActiveUnits()) {
             ImageProvider unitImageProvider = GraphicsModel.INSTANCE.getImageProviders(0).get(unit.getColor());
-            ImageIcon treeNodeIcon = new ImageIcon(unitImageProvider.getImage(unit.getIconId(), AresIO.ARES_IO));
+            ImageIcon treeNodeIcon = new ImageIcon(unitImageProvider.getImage(unit.getIconId()));
             MutableTreeNode unitNode = new OOBTreeNode(unit, treeNodeIcon);
             MutableTreeNode parent = formationNodes.get(unit.getFormation());
             treeModel.insertNodeInto(unitNode, parent, parent.getChildCount());

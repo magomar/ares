@@ -7,7 +7,6 @@ import ares.application.gui.profiles.UnitsInfographicProfile;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.*;
 import ares.application.models.forces.*;
-import ares.application.io.AresIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.*;
@@ -78,7 +77,7 @@ public class UnitsLayer extends AbstractImageLayer {
             Point pos = GraphicsModel.INSTANCE.tileToPixel(tile.getCoordinates());
             //Retrieve the single unit image
             UnitModel unit = tile.getTopUnit();
-            BufferedImage unitImage = GraphicsModel.INSTANCE.getActiveProvider(unit.getColor()).getImage(unit.getIconId(), AresIO.ARES_IO);
+            BufferedImage unitImage = GraphicsModel.INSTANCE.getActiveProvider(unit.getColor()).getImage(unit.getIconId());
             GraphicsProfile graphicsProfile = GraphicsModel.INSTANCE.getActiveProfile();
 
             // Offset from the upper left corner of the tile

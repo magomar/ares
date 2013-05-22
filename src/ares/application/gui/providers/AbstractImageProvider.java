@@ -7,6 +7,7 @@ import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.lang.ref.SoftReference;
+import java.nio.file.FileSystems;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -46,17 +47,17 @@ public abstract class AbstractImageProvider implements ImageProvider {
     }
 
     @Override
-    public BufferedImage getImage(int index, FileIO fileSystem) {
+    public BufferedImage getImage(int index) {
         int column = index / rows;
         int row = index % rows;
-        return getImage(column, row, fileSystem);
+        return getImage(column, row);
     }
 
     @Override
-    public BufferedImage getImage(int column, int row, FileIO fileSystem) {
+    public BufferedImage getImage(int column, int row) {
         BufferedImage bi;
         if (image == null || image.get() == null) {
-            bi = loadGraphics(path, fileSystem);
+            bi = loadGraphics(path);
             image = new SoftReference<>(bi);
         } else {
             bi = image.get();
@@ -72,21 +73,21 @@ public abstract class AbstractImageProvider implements ImageProvider {
     }
 
     @Override
-    public BufferedImage getImage(Point coordinates, FileIO fileSystem) {
-        return getImage(coordinates.x, coordinates.y, fileSystem);
+    public BufferedImage getImage(Point coordinates) {
+        return getImage(coordinates.x, coordinates.y);
     }
 
     @Override
-    public BufferedImage getImage(FileIO fileSystem) {
-        return getImage(0, 0, fileSystem);
+    public BufferedImage getImage() {
+        return getImage(0, 0);
 
     }
 
     @Override
-    public BufferedImage getFullImage(FileIO fileSystem) {
+    public BufferedImage getFullImage() {
         BufferedImage bi;
         if (image == null || image.get() == null) {
-            bi = loadGraphics(path, fileSystem);
+            bi = loadGraphics(path);
             image = new SoftReference<>(bi);
         } else {
             bi = image.get();
@@ -114,11 +115,11 @@ public abstract class AbstractImageProvider implements ImageProvider {
         return rows;
     }
 
-    private BufferedImage loadGraphics(String path, FileIO fileSystem) {
-        File file = fileSystem.getFile(path, filename);
+    private BufferedImage loadGraphics(String path) {
+        File file = FileSystems.getDefault().getPath(path, filename).toFile();
         if (!file.exists()) {
             String alternateFilename = filename.substring(0, filename.lastIndexOf('.')) + ".bmp";
-            file = fileSystem.getFile(path, alternateFilename);
+            file = FileSystems.getDefault().getPath(path, alternateFilename).toFile();
         }
         if (!file.exists()) {
             LOG.log(Level.SEVERE, " Image file not found {0}", filename);

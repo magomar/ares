@@ -3,7 +3,6 @@ package ares.application.gui.layers;
 import ares.application.gui.AbstractImageLayer;
 import ares.application.gui.GraphicsModel;
 import ares.application.gui.providers.AresMiscGraphics;
-import ares.application.io.AresIO;
 import ares.scenario.board.Tile;
 import java.awt.Graphics2D;
 import java.awt.Point;
@@ -62,7 +61,7 @@ public class PathSearchLayer extends AbstractImageLayer {
     }
 
     private void paintTile(Tile tile, TileType type) {
-        BufferedImage tileImage = GraphicsModel.INSTANCE.getActiveProvider(type.getProvider()).getImage(AresIO.ARES_IO);
+        BufferedImage tileImage = GraphicsModel.INSTANCE.getActiveProvider(type.getProvider()).getImage();
         Point pos = GraphicsModel.INSTANCE.tileToPixel(tile.getCoordinates());
         g2.drawImage(tileImage, pos.x, pos.y, this);
         repaint(pos.x, pos.y, tileImage.getWidth(), tileImage.getHeight());

@@ -1,10 +1,6 @@
 package ares.application.gui.providers;
 
 import ares.application.gui.profiles.AresGraphicsProfile;
-import ares.application.gui.providers.GraphicsDescriptor;
-import ares.application.gui.providers.ImageProvider;
-import ares.application.gui.providers.ImageProviderType;
-import ares.platform.io.FileIO;
 import java.awt.Color;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
@@ -166,7 +162,7 @@ public enum UnitsColor implements GraphicsDescriptor {
         return AresGraphicsProfile.TERRAIN_IMAGE_COLS;
     }
 
-    public BufferedImage getImage(ImageProvider provider, int index, FileIO fileSystem) {
-        return provider.getImage(coordinatesByIndex[index], fileSystem);
+    public BufferedImage getImage(ImageProvider provider, int index) {
+        return provider.getImage(coordinatesByIndex[index]);
     }
 }

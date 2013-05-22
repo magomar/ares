@@ -49,7 +49,7 @@ public class GraphicsModel {
     private GraphicsModel() {
     }
 
-    public void initialize(Board board, GraphicsProfile[] profiles, FileIO fileSystem) {
+    public void initialize(Board board, GraphicsProfile[] profiles) {
 
         tileColumns = board.getWidth();
         tileRows = board.getHeight();

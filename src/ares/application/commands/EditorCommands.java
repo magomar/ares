@@ -2,8 +2,6 @@ package ares.application.commands;
 
 import ares.platform.commands.Command;
 import ares.platform.io.ResourcePath;
-import java.io.File;
-import java.nio.file.FileSystems;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.KeyStroke;
@@ -59,8 +57,7 @@ public enum EditorCommands implements Command {
     @Override
     public Icon getLargeIcon() {
         if (icon == null) {
-            File iconFile = FileSystems.getDefault().getPath(ResourcePath.ICONS_MEDIUM.getPath(), iconFilename).toFile();
-            icon = new ImageIcon(iconFile.getPath());
+            icon = new ImageIcon(ResourcePath.ICONS_MEDIUM.getFilename(iconFilename));
         }
         return icon;
     }
@@ -68,8 +65,7 @@ public enum EditorCommands implements Command {
     @Override
     public Icon getSmallIcon() {
         if (icon == null) {
-            File iconFile = FileSystems.getDefault().getPath(ResourcePath.ICONS_SMALL.getPath(), iconFilename).toFile();
-            icon = new ImageIcon(iconFile.getPath());
+            icon = new ImageIcon(ResourcePath.ICONS_SMALL.getFilename(iconFilename));
         }
         return icon;
     }

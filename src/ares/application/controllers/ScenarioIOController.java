@@ -12,7 +12,6 @@ import ares.application.gui.components.StartScenarioPane;
 import ares.application.views.MessagesHandler;
 import ares.data.jaxb.EquipmentDB;
 import ares.application.io.AresFileType;
-import ares.application.io.AresIO;
 import ares.platform.io.ResourcePath;
 import ares.platform.application.AbstractAresApplication;
 import ares.platform.controllers.AbstractSecondaryController;
@@ -21,6 +20,7 @@ import ares.platform.util.AsynchronousOperation;
 import ares.engine.time.Clock;
 import ares.platform.commands.CommandAction;
 import ares.platform.commands.CommandGroup;
+import ares.platform.io.FileIO;
 import ares.platform.view.ComponentFactory;
 import ares.scenario.Scenario;
 import java.awt.Container;
@@ -86,7 +86,7 @@ public final class ScenarioIOController extends AbstractSecondaryController {
         protected Scenario performOperation() throws Exception {
 
             JFileChooser fc = new JFileChooser();
-            fc.setCurrentDirectory(AresIO.ARES_IO.getAbsolutePath(ResourcePath.SCENARIOS.getPath()).toFile());
+            fc.setCurrentDirectory(ResourcePath.SCENARIOS.getFolderPath().toFile());
             fc.setFileFilter(AresFileType.SCENARIO.getFileTypeFilter());
             int returnVal = fc.showOpenDialog(mainView.getContentPane());
             if (returnVal == JFileChooser.APPROVE_OPTION) {
@@ -94,9 +94,9 @@ public final class ScenarioIOController extends AbstractSecondaryController {
                 container.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 File file = fc.getSelectedFile();
                 // Load scenario and equipment files
-                ares.data.jaxb.Scenario scen = AresIO.ARES_IO.unmarshallJson(file, ares.data.jaxb.Scenario.class);
-                File equipmentFile = AresIO.ARES_IO.getAbsolutePath(ResourcePath.EQUIPMENT.getPath(), "ToawEquipment" + AresFileType.EQUIPMENT.getFileExtension()).toFile();
-                EquipmentDB eqp = AresIO.ARES_IO.unmarshallJson(equipmentFile, EquipmentDB.class);
+                ares.data.jaxb.Scenario scen = FileIO.unmarshallJson(file, ares.data.jaxb.Scenario.class);
+                File equipmentFile = ResourcePath.EQUIPMENT.getFile("ToawEquipment" + AresFileType.EQUIPMENT.getFileExtension());
+                EquipmentDB eqp = FileIO.unmarshallJson(equipmentFile, EquipmentDB.class);
                 Scenario scenario = new Scenario(scen, eqp);
                 container.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
                 StartScenarioPane startScenarioPane = new StartScenarioPane(scenario, file);

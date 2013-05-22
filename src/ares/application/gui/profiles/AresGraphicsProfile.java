@@ -76,7 +76,7 @@ public enum AresGraphicsProfile implements GraphicsProfile {
             final int terrainImageWidth, final int terrainImageHeight, final int hexSide, final int hexOffset,
             final int unitImageOffset, final int unitStackOffset, final int maxUnitsStack,
             final int fontSize, final int ledSize, final int barSize) {
-        this.path = resourcePath.getPath();
+        this.path = resourcePath.getFolderPath().toString();
         this.unitsImageWidth = unitsImageWidth;
         this.unitsImageHeight = unitsImageHeight;
         this.terrainImageWidth = terrainImageWidth;

@@ -5,7 +5,6 @@ import ares.platform.io.ResourcePath;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.util.Calendar;
 
 /**
@@ -27,7 +26,7 @@ public class ScenarioInfoPane extends JTexturedPanel {
         calendarPane = new WallCalendar();
         calendarPane.setPreferredSize(new Dimension(75, 75));
         add(calendarPane);
-        backImage = FileIO.loadImage(new File(ResourcePath.OTHER.getPath(), "wood.png"));
+        backImage = FileIO.loadImage(ResourcePath.OTHER.getFile("wood.png"));
         setTextureImage(backImage);
 
     }

@@ -7,7 +7,6 @@ import ares.application.gui.GraphicsModel;
 import ares.application.gui.GraphicsProfile;
 import ares.application.gui.providers.UnitsColor;
 import ares.application.gui.providers.AresMiscGraphics;
-import ares.application.io.AresIO;
 import ares.engine.RealTimeEngine;
 import ares.platform.application.*;
 import ares.platform.model.UserRole;
@@ -98,7 +97,7 @@ public class WeGoPlayerController {
         engine.setScenario(scenario);
         // Initialize GraphicsModel
         if (scenario != null) {
-            GraphicsModel.INSTANCE.initialize(scenario.getBoard(), AresGraphicsProfile.values(), AresIO.ARES_IO);
+            GraphicsModel.INSTANCE.initialize(scenario.getBoard(), AresGraphicsProfile.values());
             GraphicsModel.INSTANCE.addAllGraphics(Terrain.values());
             GraphicsModel.INSTANCE.addAllGraphics(Feature.values());
             GraphicsModel.INSTANCE.addAllGraphics(AresMiscGraphics.values());

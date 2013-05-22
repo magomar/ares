@@ -7,7 +7,6 @@ import ares.application.gui.providers.AresMiscGraphics;
 import ares.application.models.board.*;
 import ares.application.models.forces.FormationModel;
 import ares.application.models.forces.UnitModel;
-import ares.application.io.AresIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import javax.swing.JViewport;
@@ -38,10 +37,10 @@ public class SelectionLayer extends AbstractImageLayer {
         for (UnitModel u : formation.getUnitModels()) {
             if (!u.equals(selectedUnit)) {
                 TileModel t = u.getLocation();
-                paintCursor(g2, u.getLocation(), GraphicsModel.INSTANCE.getActiveProvider(steelCursor).getImage(AresIO.ARES_IO));
+                paintCursor(g2, u.getLocation(), GraphicsModel.INSTANCE.getActiveProvider(steelCursor).getImage());
             }
         }
-        paintCursor(g2, selectedUnit.getLocation(), GraphicsModel.INSTANCE.getActiveProvider(brassCursor).getImage(AresIO.ARES_IO));
+        paintCursor(g2, selectedUnit.getLocation(), GraphicsModel.INSTANCE.getActiveProvider(brassCursor).getImage());
         g2.dispose();
     }
 

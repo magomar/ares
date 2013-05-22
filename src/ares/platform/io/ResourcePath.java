@@ -1,5 +1,9 @@
 package ares.platform.io;
 
+import java.io.File;
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
+
 /**
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
@@ -19,13 +23,26 @@ public enum ResourcePath {
     GRAPHICS_MEDIUM("Graphics/Medium"),
     GRAPHICS_HIGH("Graphics/High"),
     OTHER("Graphics/Other");
-    private final String path;
+    private final Path folderPath;
 
-    private ResourcePath(final String path) {
-        this.path = path;
+    private ResourcePath(final String relativePath) {
+//        this.path = ResourcePath.class.getResource(relativePath);
+        this.folderPath = FileSystems.getDefault().getPath(System.getProperty("user.dir"), relativePath);
     }
 
-    public String getPath() {
-        return path;
+    public Path getFolderPath() {
+        return folderPath;
+    }
+
+    public Path getFilePath(String filename) {
+        return FileSystems.getDefault().getPath(folderPath.toString(), filename);
+    }
+
+    public File getFile(String filename) {
+        return getFilePath(filename).toFile();
+    }
+
+    public String getFilename(String filename) {
+        return getFilePath(filename).toString();
     }
 }

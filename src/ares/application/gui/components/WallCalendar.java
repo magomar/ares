@@ -7,7 +7,6 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.util.Calendar;
 import java.util.Locale;
 import javax.swing.JComponent;
@@ -24,7 +23,7 @@ public class WallCalendar extends JComponent {
     private final Font bodyFont = new Font("Arial Black", Font.BOLD, 30);
 
     public WallCalendar() {
-        backgroundImage = FileIO.loadImage(new File(ResourcePath.OTHER.getPath(), "calendar_background.png"));
+        backgroundImage = FileIO.loadImage(ResourcePath.OTHER.getFile("calendar_background.png"));
     }
 
     @Override
