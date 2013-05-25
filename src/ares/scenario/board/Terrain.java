@@ -1,9 +1,13 @@
 package ares.scenario.board;
 
-import ares.application.gui.profiles.AresGraphicsProfile;
-import ares.application.gui.providers.GraphicsDescriptor;
-import ares.application.gui.providers.ImageProviderType;
+import ares.application.gui.profiles.GraphicsModel;
+import ares.application.gui.profiles.GraphicsProfile;
+import ares.application.gui.providers.ImageProvider;
+import ares.application.gui.providers.ImageProviderFactory;
+import ares.application.gui.providers.ImageProviderFactoryMethods;
 import ares.engine.movement.MovementCost;
+import config.NonProfiledGraphicProperty;
+import config.ProfiledGraphicProperty;
 import java.util.EnumSet;
 import java.util.Set;
 
@@ -11,7 +15,7 @@ import java.util.Set;
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public enum Terrain implements GraphicsDescriptor {
+public enum Terrain implements ImageProviderFactory {
 //motor, amph, mixed, foot, AT, AP, vehicles, infantry, stationary, vision, directional
 //    OPEN(0, 0, 0, 0, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, Directionality.NONE),
 
@@ -64,7 +68,6 @@ public enum Terrain implements GraphicsDescriptor {
     private final Vision vision;
     private final boolean directional;
     private final String filename;
-    private final ImageProviderType imageProviderType = ImageProviderType.TILE;
     public static final Set<Terrain> ANY_WATER = EnumSet.of(SHALLOW_WATER, DEEP_WATER);
     public static final Set<Terrain> ANY_RIVER = EnumSet.of(RIVER, SUPER_RIVER, CANAL, SUPER_CANAL);
     public static final Set<Terrain> ANY_ROAD = EnumSet.of(ROAD, IMPROVED_ROAD);
@@ -152,17 +155,12 @@ public enum Terrain implements GraphicsDescriptor {
     }
 
     @Override
-    public ImageProviderType getImageProviderType() {
-        return imageProviderType;
+    public ImageProvider createImageProvider(GraphicsProfile profile) {
+        int rows = GraphicsModel.INSTANCE.getProperty(NonProfiledGraphicProperty.TILES_ROWS);
+        int columns = GraphicsModel.INSTANCE.getProperty(NonProfiledGraphicProperty.TILES_COLUMNS);
+        int fullImageWidth = GraphicsModel.INSTANCE.getProperty(ProfiledGraphicProperty.TILES_WIDTH);
+        int fullImageHeight = GraphicsModel.INSTANCE.getProperty(ProfiledGraphicProperty.TILES_HEIGHT);
+        return ImageProviderFactoryMethods.createImageProvider(filename, rows, columns, fullImageWidth, fullImageHeight, profile);
     }
 
-    @Override
-    public int getRows() {
-        return AresGraphicsProfile.TERRAIN_IMAGE_ROWS;
-    }
-
-    @Override
-    public int getColumns() {
-        return AresGraphicsProfile.TERRAIN_IMAGE_COLS;
-    }
 }

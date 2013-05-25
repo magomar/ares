@@ -6,6 +6,7 @@ import ares.application.gui.profiles.UnitDecorator;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.*;
 import ares.application.models.forces.*;
+import config.ProfiledGraphicProperty;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.*;
@@ -80,13 +81,13 @@ public class UnitsLayer extends AbstractImageLayer {
             GraphicsProfile graphicsProfile = GraphicsModel.INSTANCE.getActiveProfile();
 
             // Offset from the upper left corner of the tile
-            int imageOffset = graphicsProfile.getUnitImageOffset();
+            int imageOffset = GraphicsModel.INSTANCE.getProperty(ProfiledGraphicProperty.UNIT_OFFSET);
             pos.x += imageOffset;
             pos.y += imageOffset;
             // Offset from the upper left corner of the last painted unit
-            int stackOffset = graphicsProfile.getUnitStackOffset();
+            int stackOffset = GraphicsModel.INSTANCE.getProperty(ProfiledGraphicProperty.UNIT_STACK_OFFSET);
             //Num units to be painted
-            int unitsToPaint = Math.min(tile.getNumStackedUnits(), graphicsProfile.getMaxUnitsStack());
+            int unitsToPaint = Math.min(tile.getNumStackedUnits(), GraphicsModel.INSTANCE.getProperty(ProfiledGraphicProperty.UNIT_MAX_STACK));
             // Max stack  offset
             int maxStackOffset = unitsToPaint * stackOffset - stackOffset;
 
@@ -94,14 +95,14 @@ public class UnitsLayer extends AbstractImageLayer {
             for (int d = maxStackOffset; d >= 0; d -= stackOffset) {
                 g2.drawImage(unitImage, pos.x + d, pos.y + d, this);
             }
-            BufferedImage subImage = globalImage.getSubimage(pos.x, pos.y, graphicsProfile.getUnitWidth(), graphicsProfile.getUnitHeight());
+            BufferedImage subImage = globalImage.getSubimage(pos.x, pos.y, unitImage.getWidth(), unitImage.getHeight());
 
             //Paint additional unit info (Health, Stamina, Attack, Defense, etc.)
 
             Graphics2D unitG2 = subImage.createGraphics();
             unitG2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 //            g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-            UnitDecorator unitsProfile = graphicsProfile.getUnitsProfile();
+            UnitDecorator unitsProfile = GraphicsModel.INSTANCE.getUnitDecorator();
             unitsProfile.paintUnitAttributes(unitG2, unit);
 //            unitsProfile.paintUnitAttributes(g2, unit);
             unitG2.dispose();

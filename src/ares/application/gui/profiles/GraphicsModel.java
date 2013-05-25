@@ -1,7 +1,7 @@
 package ares.application.gui.profiles;
 
 import ares.application.gui.layers.AbstractImageLayer;
-import ares.application.gui.providers.GraphicsDescriptor;
+import ares.application.gui.providers.ImageProviderFactory;
 import ares.application.gui.providers.ImageProvider;
 import ares.scenario.board.Board;
 import config.GraphicProperty;
@@ -25,64 +25,68 @@ public class GraphicsModel {
     /**
      * Board width in tiles
      */
-    private int tileColumns;
+    private int boardColumns;
     /**
      * Board height in tiles
      */
-    private int tileRows;
+    private int boardRows;
     /**
      * Board image width in pixels
      */
-    private int imageWidth;
+    private int boardWidth;
     /**
      * Board image height in pixels
      */
-    private int imageHeight;
+    private int boardHeight;
     /**
      * Graphics profile currently in use. Typically a profile corresponds to a different zoom level, but it could also
      * correspond to an alternate graphics set
      */
     private GraphicsProfile activeProfile;
-    private Map<GraphicsDescriptor, ImageProvider> activeProviders;
+    private Map<ImageProviderFactory, ImageProvider> activeProviders;
     int activeProfileIndex;
     private GraphicsProfile[] profiles;
-    private List<Map<GraphicsDescriptor, ImageProvider>> providers;
+    private List<Map<ImageProviderFactory, ImageProvider>> providers;
 //    private static final Logger LOG = Logger.getLogger(GraphicsModel.class.getName());
-    static final double hexRise = GraphicProperties.getReal(NonProfiledGraphicProperty.TILE_RISE);
+    private static final double hexRise = GraphicProperties.getReal(NonProfiledGraphicProperty.TILE_RISE);
+    private UnitDecorator[] unitDecorators;
 
     private GraphicsModel() {
     }
 
     public void initialize(Board board, GraphicsProfile[] profiles) {
 
-        tileColumns = board.getWidth();
-        tileRows = board.getHeight();
+        boardColumns = board.getWidth();
+        boardRows = board.getHeight();
         this.profiles = profiles;
         providers = new ArrayList<>();
+        unitDecorators = new UnitDecorator[profiles.length];
         for (int i = 0; i < profiles.length; i++) {
-            providers.add(new HashMap<GraphicsDescriptor, ImageProvider>());
+            providers.add(new HashMap<ImageProviderFactory, ImageProvider>());
         }
-        setActiveProfile(0);
+        setActiveProfile(profiles.length / 2);
+        for (int i = 0; i < profiles.length; i++) {
+            unitDecorators[i] = new UnitDecorator(profiles[i]);
+        }
+        
     }
 
-    public void addGraphics(GraphicsDescriptor descriptor) {
+    public void addGraphics(ImageProviderFactory factory) {
         for (int i = 0; i < profiles.length; i++) {
-            ImageProvider newImageProvider = descriptor.getImageProviderType().createImageProvider(descriptor.getFilename(), descriptor.getRows(), descriptor.getColumns(), profiles[i]);
-            providers.get(i).put(descriptor, newImageProvider);
+            providers.get(i).put(factory, factory.createImageProvider(profiles[i]));
         }
     }
 
-    public void addAllGraphics(GraphicsDescriptor[] descriptors) {
+    public void addAllGraphics(ImageProviderFactory[] factories) {
         for (int i = 0; i < profiles.length; i++) {
-            Map<GraphicsDescriptor, ImageProvider> providersMap = providers.get(i);
-            for (GraphicsDescriptor descriptor : descriptors) {
-                ImageProvider newImageProvider = descriptor.getImageProviderType().createImageProvider(descriptor.getFilename(), descriptor.getRows(), descriptor.getColumns(), profiles[i]);
-                providersMap.put(descriptor, newImageProvider);
+            Map<ImageProviderFactory, ImageProvider> providersMap = providers.get(i);
+            for (ImageProviderFactory factory : factories) {
+                providersMap.put(factory, factory.createImageProvider(profiles[i]));
             }
         }
     }
 
-    public ImageProvider getActiveProvider(GraphicsDescriptor descriptor) {
+    public ImageProvider getActiveProvider(ImageProviderFactory descriptor) {
         return activeProviders.get(descriptor);
     }
 
@@ -94,9 +98,9 @@ public class GraphicsModel {
         this.activeProfileIndex = profileIndex;
         activeProfile = profiles[activeProfileIndex];
         activeProviders = providers.get(activeProfileIndex);
-        imageWidth = getProperty(ProfiledGraphicProperty.TILE_WIDTH) + (tileColumns - 1) * getProperty(ProfiledGraphicProperty.TILE_OFFSET);
+        boardWidth = getProperty(ProfiledGraphicProperty.TILE_WIDTH) + (boardColumns - 1) * getProperty(ProfiledGraphicProperty.TILE_OFFSET);
         int hexHeight = getProperty(ProfiledGraphicProperty.TILE_HEIGHT);
-        imageHeight = tileRows * hexHeight + hexHeight / 2;
+        boardHeight = boardRows * hexHeight + hexHeight / 2;
 
     }
 
@@ -116,28 +120,28 @@ public class GraphicsModel {
         }
     }
 
-    public int getTileRows() {
-        return tileRows;
+    public int getBoardRows() {
+        return boardRows;
     }
 
-    public int getTileColumns() {
-        return tileColumns;
+    public int getBoardColumns() {
+        return boardColumns;
     }
 
     /**
      *
      * @return the image width in pixesl
      */
-    public int getImageWidth() {
-        return imageWidth;
+    public int getBoardWidth() {
+        return boardWidth;
     }
 
     /**
      *
      * @return the image height in pixels
      */
-    public int getImageHeight() {
-        return imageHeight;
+    public int getBoardHeight() {
+        return boardHeight;
     }
 
     /**
@@ -148,7 +152,7 @@ public class GraphicsModel {
      * @return true if (i,j) is within the board range
      */
     public boolean validCoordinates(int i, int j) {
-        return i >= 0 && i < tileColumns && j >= 0 && j < tileRows;
+        return i >= 0 && i < boardColumns && j >= 0 && j < boardRows;
     }
 
     /**
@@ -308,34 +312,30 @@ public class GraphicsModel {
     }
 
     public boolean isWithinImageRange(Point pixel) {
-        return ((pixel.x < imageWidth && pixel.x > 0) && (pixel.y > 0 && pixel.y < imageHeight));
+        return ((pixel.x < boardWidth && pixel.x > 0) && (pixel.y > 0 && pixel.y < boardHeight));
     }
 
     public boolean isWithinImageRange(int x, int y) {
-        return ((x < imageWidth && x > 0) && (y > 0 && y < imageHeight));
+        return ((x < boardWidth && x > 0) && (y > 0 && y < boardHeight));
     }
 
     public GraphicsProfile[] getProfiles() {
         return profiles;
     }
 
-    public Map<GraphicsDescriptor, ImageProvider> getImageProviders(int profileIndex) {
+    public Map<ImageProviderFactory, ImageProvider> getImageProviders(int profileIndex) {
         return providers.get(profileIndex);
     }
 
+    public UnitDecorator getUnitDecorator() {
+        return unitDecorators[activeProfileIndex];
+    }
+    
     public int getProperty(GraphicProperty property) {
         if (property.isProfiled()) {
-            return getProperty((ProfiledGraphicProperty) property);
+            return GraphicProperties.getInt(property, activeProfile);
         } else {
-            return getProperty((NonProfiledGraphicProperty) property);
+            return GraphicProperties.getInt(property);
         }
-    }
-
-    private int getProperty(NonProfiledGraphicProperty property) {
-        return GraphicProperties.getInt(property);
-    }
-
-    private int getProperty(ProfiledGraphicProperty property) {
-        return GraphicProperties.getInt(property, activeProfile);
     }
 }

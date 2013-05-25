@@ -27,8 +27,8 @@ public class GridLayer extends AbstractImageLayer {
         if (scenario == null) {
             return;
         }
-        int w = GraphicsModel.INSTANCE.getTileColumns();
-        int y = GraphicsModel.INSTANCE.getTileRows();
+        int w = GraphicsModel.INSTANCE.getBoardColumns();
+        int y = GraphicsModel.INSTANCE.getBoardRows();
         Graphics2D g2 = globalImage.createGraphics();
         BufferedImage bi = GraphicsModel.INSTANCE.getActiveProvider(AresMiscGraphics.GRID).getImage();
         for (int i = 0; i < w; i++) {

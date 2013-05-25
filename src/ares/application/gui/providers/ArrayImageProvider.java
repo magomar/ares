@@ -15,9 +15,9 @@ import java.util.logging.Logger;
  *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
-public abstract class AbstractImageProvider implements ImageProvider {
+public class ArrayImageProvider implements ImageProvider {
 
-    private static final Logger LOG = Logger.getLogger(AbstractImageProvider.class.getName());
+    private static final Logger LOG = Logger.getLogger(ArrayImageProvider.class.getName());
     private final String filename;
     /**
      * The dimension of the sprite image in pixels
@@ -32,13 +32,13 @@ public abstract class AbstractImageProvider implements ImageProvider {
     private SoftReference<BufferedImage> image;
     private final String path;
 
-    public AbstractImageProvider(String baseFilename, int rows, int columns, int imageWidth, int imageHeight, GraphicsProfile profile) {
-        this.filename = profile.getFilename(baseFilename);
+    public ArrayImageProvider(String path, String filename, int rows, int columns, int fullImageWidth, int fullImageHeight) {
+        this.filename = filename;
+        this.path = path;
         this.rows = rows;
         this.columns = columns;
-        fullImageDimension = new Dimension(imageWidth * columns, imageHeight * rows);
-        imageDimension = new Dimension(imageWidth, imageHeight);
-        path = profile.getPath();
+        fullImageDimension = new Dimension(fullImageWidth, fullImageHeight);
+        imageDimension = new Dimension(fullImageWidth / columns, fullImageHeight / rows);
     }
 
     @Override

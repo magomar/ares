@@ -1,12 +1,14 @@
 package ares.application.gui.providers;
 
+import ares.application.gui.profiles.GraphicsProfile;
+
 /**
  * Classess implementing this interface are used to describe graphic files which are arranged as a matrix of independent
  * images.
  *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
-public interface GraphicsDescriptor {
+public interface ImageProviderFactory {
 
     /**
      *
@@ -15,20 +17,9 @@ public interface GraphicsDescriptor {
     String getFilename();
 
     /**
-     *
-     * @return the type of images provided
+     * 
+     * @return an image provider
      */
-    ImageProviderType getImageProviderType();
+    ImageProvider createImageProvider(GraphicsProfile profile);
 
-    /**
-     *
-     * @return the number of rows in the image matrix
-     */
-    int getRows();
-
-    /**
-     *
-     * @return the number of columns in the image matrix
-     */
-    int getColumns();
 }

@@ -1,15 +1,21 @@
-package ares.application.gui.providers;
+package ares.scenario.forces;
 
-import ares.application.gui.profiles.AresGraphicsProfile;
+import ares.application.gui.profiles.GraphicProperties;
+import ares.application.gui.profiles.GraphicsModel;
+import ares.application.gui.profiles.GraphicsProfile;
+import ares.application.gui.providers.ImageProvider;
+import ares.application.gui.providers.ImageProviderFactory;
+import ares.application.gui.providers.ImageProviderFactoryMethods;
+import config.NonProfiledGraphicProperty;
+import config.ProfiledGraphicProperty;
 import java.awt.Color;
 import java.awt.Point;
-import java.awt.image.BufferedImage;
 
 /**
  *
  * @author Sergio Musoles
  */
-public enum UnitsColor implements GraphicsDescriptor {
+public enum UnitsColor implements ImageProviderFactory {
 
     UNITS_BLUE_0(Color.WHITE),
     UNITS_BLUE_1(Color.WHITE),
@@ -124,16 +130,21 @@ public enum UnitsColor implements GraphicsDescriptor {
     private final Color foreground;
     private final String filename;
     private final Point[] coordinatesByIndex;
-    private final ImageProviderType imageProviderType = ImageProviderType.UNIT;
 
     private UnitsColor(Color foreground) {
         this.foreground = foreground;
         filename = name().toLowerCase() + ".png";
-        int numIcons = AresGraphicsProfile.UNITS_IMAGE_ROWS * AresGraphicsProfile.UNITS_IMAGE_COLS;
+//        int rows = GraphicsModel.getProperty(NonProfiledGraphicProperty.UNITS_ROWS);
+//        int rows = GraphicProperties.getInt(NonProfiledGraphicProperty.UNITS_ROWS);
+        int rows = 8;
+//        int columns = GraphicsModel.getProperty(NonProfiledGraphicProperty.UNITS_COLUMNS);
+//        int columns = GraphicProperties.getInt(NonProfiledGraphicProperty.UNITS_COLUMNS);
+        int columns = 16;
+        int numIcons = rows * columns;
         coordinatesByIndex = new Point[numIcons];
         for (int i = 0; i < numIcons; i++) {
-            int column = i / AresGraphicsProfile.UNITS_IMAGE_ROWS;
-            int row = i % AresGraphicsProfile.UNITS_IMAGE_ROWS;
+            int column = i / rows;
+            int row = i % rows;
             coordinatesByIndex[i] = new Point(column, row);
         }
     }
@@ -148,21 +159,18 @@ public enum UnitsColor implements GraphicsDescriptor {
     }
 
     @Override
-    public ImageProviderType getImageProviderType() {
-        return imageProviderType;
+    public ImageProvider createImageProvider(GraphicsProfile profile) {
+        int rows = GraphicsModel.INSTANCE.getProperty(NonProfiledGraphicProperty.UNITS_ROWS);
+        int columns = GraphicsModel.INSTANCE.getProperty(NonProfiledGraphicProperty.UNITS_COLUMNS);
+        int fullImageWidth = GraphicsModel.INSTANCE.getProperty(ProfiledGraphicProperty.UNITS_WIDTH);
+        int fullImageHeight = GraphicsModel.INSTANCE.getProperty(ProfiledGraphicProperty.UNITS_HEIGHT);
+        return ImageProviderFactoryMethods.createImageProvider(filename, rows, columns, fullImageWidth, fullImageHeight, profile);
     }
 
-    @Override
-    public int getRows() {
-        return AresGraphicsProfile.TERRAIN_IMAGE_ROWS;
-    }
-
-    @Override
-    public int getColumns() {
-        return AresGraphicsProfile.TERRAIN_IMAGE_COLS;
-    }
-
-    public BufferedImage getImage(ImageProvider provider, int index) {
-        return provider.getImage(coordinatesByIndex[index]);
+//    public BufferedImage getImage(ImageProvider provider, int index) {
+//        return provider.getImage(coordinatesByIndex[index]);
+//    }
+    public Point getCoordinates(int index) {
+        return coordinatesByIndex[index];
     }
 }

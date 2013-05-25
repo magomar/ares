@@ -108,7 +108,7 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
 
     @Override
     public void loadScenario(final ScenarioModel scenario) {
-        Dimension imageSize = new Dimension(GraphicsModel.INSTANCE.getImageWidth(), GraphicsModel.INSTANCE.getImageHeight());
+        Dimension imageSize = new Dimension(GraphicsModel.INSTANCE.getBoardWidth(), GraphicsModel.INSTANCE.getBoardHeight());
         layeredPane.setPreferredSize(imageSize);
 //        layeredPane.setSize(imageSize);
         // Prepare each layer's thread

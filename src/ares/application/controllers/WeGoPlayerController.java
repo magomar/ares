@@ -5,7 +5,7 @@ import ares.application.AresPlayerGUI;
 import ares.application.gui.profiles.AresGraphicsProfile;
 import ares.application.gui.profiles.GraphicsModel;
 import ares.application.gui.profiles.GraphicsProfile;
-import ares.application.gui.providers.UnitsColor;
+import ares.scenario.forces.UnitsColor;
 import ares.application.gui.providers.AresMiscGraphics;
 import ares.engine.RealTimeEngine;
 import ares.platform.application.*;
@@ -99,7 +99,6 @@ public class WeGoPlayerController {
         if (scenario != null) {
             GraphicsModel.INSTANCE.initialize(scenario.getBoard(), AresGraphicsProfile.values());
             GraphicsModel.INSTANCE.addAllGraphics(Terrain.values());
-            GraphicsModel.INSTANCE.addAllGraphics(Feature.values());
             GraphicsModel.INSTANCE.addAllGraphics(AresMiscGraphics.values());
             GraphicsModel.INSTANCE.addAllGraphics(UnitsColor.values());
         }

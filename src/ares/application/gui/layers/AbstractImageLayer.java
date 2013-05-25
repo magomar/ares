@@ -44,7 +44,7 @@ public abstract class AbstractImageLayer extends JPanel implements ImageLayer {
     @Override
     public final void initialize() {
         if (parentLayer == null) {
-            globalImage = new BufferedImage(GraphicsModel.INSTANCE.getImageWidth(), GraphicsModel.INSTANCE.getImageHeight(), BufferedImage.TYPE_INT_ARGB);
+            globalImage = new BufferedImage(GraphicsModel.INSTANCE.getBoardWidth(), GraphicsModel.INSTANCE.getBoardHeight(), BufferedImage.TYPE_INT_ARGB);
         } else {
             globalImage = parentLayer.globalImage;
         }
