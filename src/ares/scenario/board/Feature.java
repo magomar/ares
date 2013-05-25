@@ -1,9 +1,5 @@
 package ares.scenario.board;
 
-import ares.application.gui.profiles.AresGraphicsProfile;
-import ares.application.gui.providers.AresMiscGraphics;
-import ares.application.gui.providers.GraphicsDescriptor;
-import ares.application.gui.providers.ImageProviderType;
 import java.awt.Point;
 
 /**
@@ -13,9 +9,9 @@ import java.awt.Point;
  * @author Mario Gomez <margomez at dsic.upv.es>
  * @author Heine Heine <heisncfr@inf.upv.es> *
  */
-public enum Feature implements GraphicsDescriptor {
+public enum Feature {
 
-//    OPEN(0, 0),
+    OPEN(0, 0),
     ANCHORAGE(0, 1),
     AIRFIELD(0, 2),
     PEAK(0, 3),
@@ -28,7 +24,6 @@ public enum Feature implements GraphicsDescriptor {
     EXCLUDED_1(5, 6),
     EXCLUDED_2(5, 7);
     private final Point coordinates;
-    private final ImageProviderType imageProviderType = ImageProviderType.TILE;
 
     private Feature(final int imageColumn, final int imageRow) {
         this.coordinates = new Point(imageColumn, imageRow);
@@ -36,25 +31,5 @@ public enum Feature implements GraphicsDescriptor {
 
     public Point getCoordinates() {
         return coordinates;
-    }
-
-    @Override
-    public String getFilename() {
-        return AresMiscGraphics.TERRAIN_MISCELANEOUS.getFilename();
-    }
-
-    @Override
-    public ImageProviderType getImageProviderType() {
-        return imageProviderType;
-    }
-
-    @Override
-    public int getRows() {
-        return AresGraphicsProfile.TERRAIN_IMAGE_ROWS;
-    }
-
-    @Override
-    public int getColumns() {
-        return AresGraphicsProfile.TERRAIN_IMAGE_COLS;
     }
 }

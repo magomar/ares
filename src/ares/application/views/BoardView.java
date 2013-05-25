@@ -1,8 +1,8 @@
 package ares.application.views;
 
-import ares.application.gui.GraphicsModel;
+import ares.application.gui.profiles.GraphicsModel;
 import ares.application.boundaries.view.BoardViewer;
-import ares.application.gui.ImageLayer;
+import ares.application.gui.layers.ImageLayer;
 import ares.application.gui.layers.ArrowLayer;
 import ares.application.gui.layers.GridLayer;
 import ares.application.gui.layers.SelectionLayer;
@@ -108,7 +108,7 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
 
     @Override
     public void loadScenario(final ScenarioModel scenario) {
-        Dimension imageSize = new Dimension(GraphicsModel.INSTANCE.getImageWidth(), GraphicsModel.INSTANCE.getImageHeight());
+        Dimension imageSize = new Dimension(GraphicsModel.INSTANCE.getBoardWidth(), GraphicsModel.INSTANCE.getBoardHeight());
         layeredPane.setPreferredSize(imageSize);
 //        layeredPane.setSize(imageSize);
         // Prepare each layer's thread

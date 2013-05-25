@@ -1,8 +1,7 @@
 package ares.application.gui.layers;
 
-import ares.application.gui.AbstractImageLayer;
 import ares.application.gui.providers.AresMiscGraphics;
-import ares.application.gui.GraphicsModel;
+import ares.application.gui.profiles.GraphicsModel;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.TileModel;
 import java.awt.*;
@@ -28,10 +27,10 @@ public class GridLayer extends AbstractImageLayer {
         if (scenario == null) {
             return;
         }
-        int w = GraphicsModel.INSTANCE.getTileColumns();
-        int y = GraphicsModel.INSTANCE.getTileRows();
+        int w = GraphicsModel.INSTANCE.getBoardColumns();
+        int y = GraphicsModel.INSTANCE.getBoardRows();
         Graphics2D g2 = globalImage.createGraphics();
-        BufferedImage bi = GraphicsModel.INSTANCE.getActiveProvider(AresMiscGraphics.GRID).getImage();
+        BufferedImage bi = GraphicsModel.INSTANCE.getActiveProvider(AresMiscGraphics.GRID).getImage(0,0);
         for (int i = 0; i < w; i++) {
             for (int j = 0; j < y; j++) {
                 TileModel tile = scenario.getBoardModel().getMapModel()[i][j];

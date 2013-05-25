@@ -160887,7 +160887,7 @@
         "type" : "BADLANDS",
         "dir" : "SE"
       }, {
-        "type" : "FLOODED_MARS",
+        "type" : "FLOODED_MARSH",
         "dir" : "SE"
       }, {
         "type" : "SUPER_RIVER",
@@ -161492,7 +161492,7 @@
         "type" : "BADLANDS",
         "dir" : "NE_SE_NW"
       }, {
-        "type" : "FLOODED_MARS",
+        "type" : "FLOODED_MARSH",
         "dir" : "NE_SE_NW"
       }, {
         "type" : "SUPER_RIVER",
@@ -162091,7 +162091,7 @@
         "type" : "BADLANDS",
         "dir" : "NE_SE_S_SW"
       }, {
-        "type" : "FLOODED_MARS",
+        "type" : "FLOODED_MARSH",
         "dir" : "NE_SE_S_SW"
       }, {
         "type" : "SHALLOW_WATER_DECORATOR",
@@ -162105,7 +162105,7 @@
         "type" : "BADLANDS",
         "dir" : "N_NE_SE_NW"
       }, {
-        "type" : "FLOODED_MARS",
+        "type" : "FLOODED_MARSH",
         "dir" : "N_NE_SE_NW"
       }, {
         "type" : "SUPER_RIVER",

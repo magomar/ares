@@ -11257,7 +11257,7 @@
       "y" : 54
     }, {
       "terrain" : [ {
-        "type" : "FLOODED_MARS",
+        "type" : "FLOODED_MARSH",
         "dir" : "NE_SE_SW_NW"
       } ],
       "owner" : 0,
@@ -11668,7 +11668,7 @@
       "y" : 54
     }, {
       "terrain" : [ {
-        "type" : "FLOODED_MARS",
+        "type" : "FLOODED_MARSH",
         "dir" : "N_NE_NW"
       } ],
       "owner" : 0,
@@ -12084,7 +12084,7 @@
       "y" : 53
     }, {
       "terrain" : [ {
-        "type" : "FLOODED_MARS",
+        "type" : "FLOODED_MARSH",
         "dir" : "S_SW"
       }, {
         "type" : "ROAD",
@@ -12098,7 +12098,7 @@
       "y" : 54
     }, {
       "terrain" : [ {
-        "type" : "FLOODED_MARS",
+        "type" : "FLOODED_MARSH",
         "dir" : "N_SW_NW"
       } ],
       "owner" : 0,

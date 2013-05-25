@@ -1,6 +1,5 @@
 package ares.scenario.forces;
 
-import ares.application.gui.providers.UnitsColor;
 import ares.application.models.forces.DetectedUnitModel;
 import ares.application.models.forces.IdentifiedUnitModel;
 import ares.application.models.forces.KnownUnitModel;

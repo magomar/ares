@@ -8732,7 +8732,7 @@
       "y" : 8
     }, {
       "terrain" : [ {
-        "type" : "FLOODED_MARS",
+        "type" : "FLOODED_MARSH",
         "dir" : "N_SE"
       } ],
       "owner" : 0,
@@ -31882,7 +31882,7 @@
       "y" : 4
     }, {
       "terrain" : [ {
-        "type" : "FLOODED_MARS",
+        "type" : "FLOODED_MARSH",
         "dir" : "S_SW"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
@@ -31893,7 +31893,7 @@
       "y" : 5
     }, {
       "terrain" : [ {
-        "type" : "FLOODED_MARS",
+        "type" : "FLOODED_MARSH",
         "dir" : "N_S_SW_NW"
       }, {
         "type" : "SUPER_RIVER",
@@ -31907,7 +31907,7 @@
       "y" : 6
     }, {
       "terrain" : [ {
-        "type" : "FLOODED_MARS",
+        "type" : "FLOODED_MARSH",
         "dir" : "N_S_SW_NW"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
@@ -31918,7 +31918,7 @@
       "y" : 7
     }, {
       "terrain" : [ {
-        "type" : "FLOODED_MARS",
+        "type" : "FLOODED_MARSH",
         "dir" : "N_SE_S_SW_NW"
       }, {
         "type" : "DEEP_WATER_DECORATOR",
@@ -31929,7 +31929,7 @@
       "y" : 8
     }, {
       "terrain" : [ {
-        "type" : "FLOODED_MARS",
+        "type" : "FLOODED_MARSH",
         "dir" : "N_NE_NW"
       }, {
         "type" : "ROAD",
@@ -31985,7 +31985,7 @@
       "y" : 12
     }, {
       "terrain" : [ {
-        "type" : "FLOODED_MARS",
+        "type" : "FLOODED_MARSH",
         "dir" : "NW"
       }, {
         "type" : "ROAD",
@@ -35473,7 +35473,7 @@
       "y" : 60
     }, {
       "terrain" : [ {
-        "type" : "FLOODED_MARS",
+        "type" : "FLOODED_MARSH",
         "dir" : "SE"
       }, {
         "type" : "ROAD",
@@ -36137,7 +36137,7 @@
       "y" : 61
     }, {
       "terrain" : [ {
-        "type" : "FLOODED_MARS",
+        "type" : "FLOODED_MARSH",
         "dir" : "NE_SE_S_NW"
       }, {
         "type" : "SHALLOW_WATER",
@@ -36148,7 +36148,7 @@
       "y" : 62
     }, {
       "terrain" : [ {
-        "type" : "FLOODED_MARS",
+        "type" : "FLOODED_MARSH",
         "dir" : "N_NE"
       }, {
         "type" : "SHALLOW_WATER_DECORATOR",
@@ -36748,7 +36748,7 @@
       "y" : 60
     }, {
       "terrain" : [ {
-        "type" : "FLOODED_MARS",
+        "type" : "FLOODED_MARSH",
         "dir" : "S_SW"
       }, {
         "type" : "SHALLOW_WATER",
@@ -36762,7 +36762,7 @@
       "y" : 61
     }, {
       "terrain" : [ {
-        "type" : "FLOODED_MARS",
+        "type" : "FLOODED_MARSH",
         "dir" : "N_S_SW_NW"
       }, {
         "type" : "SHALLOW_WATER_DECORATOR",
@@ -36776,7 +36776,7 @@
         "type" : "ARID",
         "dir" : "SE_S_SW"
       }, {
-        "type" : "FLOODED_MARS",
+        "type" : "FLOODED_MARSH",
         "dir" : "N_NW"
       } ],
       "owner" : 1,

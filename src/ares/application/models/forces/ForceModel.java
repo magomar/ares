@@ -1,6 +1,6 @@
 package ares.application.models.forces;
 
-import ares.application.gui.GraphicsModel;
+import ares.application.gui.profiles.GraphicsModel;
 import ares.application.gui.components.OOBTreeNode;
 import ares.application.gui.providers.ImageProvider;
 import ares.platform.model.RoleMediatedModel;

@@ -1,15 +1,20 @@
 package ares.application.gui.providers;
 
+import ares.application.gui.profiles.GraphicProperties;
+import ares.application.gui.profiles.GraphicsModel;
+import ares.application.gui.profiles.GraphicsProfile;
+import ares.application.gui.profiles.ProfiledGraphicProperty;
+
 /**
  *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
-public enum AresMiscGraphics implements GraphicsDescriptor {
+public enum AresMiscGraphics implements ImageProviderFactory {
 
     TERRAIN_MISCELANEOUS(8, 8),
     TERRAIN_BORDER(8, 8),
     GRID(1, 1),
-    GRID_GREEN(1,1),
+    GRID_GREEN(1, 1),
     GRID_YELLOW(1, 1),
     BRASS_CURSOR(1, 1),
     STEEL_CURSOR(1, 1),
@@ -19,7 +24,6 @@ public enum AresMiscGraphics implements GraphicsDescriptor {
     DARK_BLUE_ARROWS(8, 6),
     GRAY_ARROWS(8, 6);
     private final String filename;
-    private final ImageProviderType imageProviderType = ImageProviderType.TILE;
     private final int rows;
     private final int columns;
 
@@ -35,17 +39,9 @@ public enum AresMiscGraphics implements GraphicsDescriptor {
     }
 
     @Override
-    public ImageProviderType getImageProviderType() {
-        return imageProviderType;
-    }
-
-    @Override
-    public int getRows() {
-        return rows;
-    }
-    
-    @Override
-    public int getColumns() {
-        return columns;
+    public ImageProvider createImageProvider(GraphicsProfile profile) {
+        int fullImageWidth = GraphicProperties.getProperty(ProfiledGraphicProperty.TILE_WIDTH, profile) * columns;
+        int fullImageHeight = GraphicProperties.getProperty(ProfiledGraphicProperty.TILE_HEIGHT, profile) * rows;
+        return ImageProviderFactoryMethods.createImageProvider(filename, rows, columns, fullImageWidth, fullImageHeight, profile);
     }
 }

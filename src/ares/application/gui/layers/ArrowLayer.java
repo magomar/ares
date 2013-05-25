@@ -2,8 +2,7 @@ package ares.application.gui.layers;
 
 import ares.engine.algorithms.pathfinding.Path;
 import ares.engine.algorithms.pathfinding.Node;
-import ares.application.gui.GraphicsModel;
-import ares.application.gui.AbstractImageLayer;
+import ares.application.gui.profiles.GraphicsModel;
 import ares.application.gui.providers.AresMiscGraphics;
 import ares.scenario.board.Direction;
 import ares.scenario.board.Directions;

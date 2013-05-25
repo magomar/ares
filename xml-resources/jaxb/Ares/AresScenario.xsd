@@ -459,7 +459,7 @@
             <enumeration value="MOUNTAINS"/>
             <enumeration value="ALPINE"/>
             <enumeration value="MARSH"/>
-            <enumeration value="FLOODED_MARS"/>
+            <enumeration value="FLOODED_MARSH"/>
             <enumeration value="SHALLOW_WATER"/>
             <enumeration value="DEEP_WATER"/>
             <enumeration value="CROPLANDS"/>
