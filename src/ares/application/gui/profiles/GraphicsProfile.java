@@ -23,6 +23,8 @@ public interface GraphicsProfile {
      */
     String getPath();
 
+    int getOrdinal();
+    
     /**
      * Units image width in pixels
      *

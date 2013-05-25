@@ -1,15 +1,17 @@
 package ares.application.gui.profiles;
 
+import ares.application.gui.layers.AbstractImageLayer;
 import ares.application.gui.providers.GraphicsDescriptor;
 import ares.application.gui.providers.ImageProvider;
 import ares.scenario.board.Board;
+import config.GraphicProperty;
+import config.NonProfiledGraphicProperty;
+import config.ProfiledGraphicProperty;
 import java.awt.Point;
 import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 
 /**
  * This class provides information on the graphics being used for a particular scenario
@@ -46,16 +48,9 @@ public class GraphicsModel {
     private GraphicsProfile[] profiles;
     private List<Map<GraphicsDescriptor, ImageProvider>> providers;
 //    private static final Logger LOG = Logger.getLogger(GraphicsModel.class.getName());
-
+    static final double hexRise = GraphicProperties.getReal(NonProfiledGraphicProperty.TILE_RISE);
 
     private GraphicsModel() {
-        Properties properties = GraphicProperties.GRAPHICS;
-        Enumeration keys  = properties.propertyNames();
-        while (keys.hasMoreElements() ) {
-            String propName = (String) keys.nextElement();
-            System.out.println(propName);
-        }
-
     }
 
     public void initialize(Board board, GraphicsProfile[] profiles) {
@@ -99,8 +94,9 @@ public class GraphicsModel {
         this.activeProfileIndex = profileIndex;
         activeProfile = profiles[activeProfileIndex];
         activeProviders = providers.get(activeProfileIndex);
-        imageWidth = getHexDiameter() + (tileColumns - 1) * getHexOffset();
-        imageHeight = tileRows * getHexHeight() + getHexHeight() / 2;
+        imageWidth = getProperty(ProfiledGraphicProperty.TILE_WIDTH) + (tileColumns - 1) * getProperty(ProfiledGraphicProperty.TILE_OFFSET);
+        int hexHeight = getProperty(ProfiledGraphicProperty.TILE_HEIGHT);
+        imageHeight = tileRows * hexHeight + hexHeight / 2;
 
     }
 
@@ -156,51 +152,6 @@ public class GraphicsModel {
     }
 
     /**
-     * Tile diameter (vertex to opposite vertex)
-     *
-     * @see AresGraphicsProfile#getHexDiameter()
-     */
-    public int getHexDiameter() {
-        return activeProfile.getHexDiameter();
-    }
-
-    /**
-     * Tile side
-     *
-     * @see GraphicsProfile#getHexSide()
-     */
-    public int getHexSide() {
-        return activeProfile.getHexSide();
-    }
-
-    /**
-     * Tile offset position to draw in a new column
-     *
-     * @see GraphicsProfile#getHexOffset()
-     */
-    public int getHexOffset() {
-        return activeProfile.getHexOffset();
-    }
-
-    /**
-     * Tile height (flat side to flat side)
-     *
-     * @see GraphicsProfile#getHexHeight()
-     */
-    public int getHexHeight() {
-        return activeProfile.getHexHeight();
-    }
-
-    /**
-     * Tile side gradient
-     *
-     * @see GraphicsProfile#getHexRise()
-     */
-    public double getHexRise() {
-        return activeProfile.getHexRise();
-    }
-
-    /**
      * Converts a tile location to its corresponding pixel on the global image
      *
      * @param tile position to be converted
@@ -215,10 +166,11 @@ public class GraphicsModel {
     public Point tileToPixel(int x, int y) {
         Point pixel = new Point();
         //X component is "row" times the "offset"
-        pixel.x = getHexOffset() * x;
+        pixel.x = getProperty(ProfiledGraphicProperty.TILE_OFFSET) * x;
         //Y component depends on the row.
         //If it's even number, then "column" times the "height" plus half the height, if it's odd then just "column" times the "height"
-        pixel.y = (x % 2 == 0 ? (getHexHeight() * y) + (getHexHeight() / 2) : (getHexHeight() * y));
+        int hexHeight = getProperty(ProfiledGraphicProperty.TILE_HEIGHT);
+        pixel.y = (x % 2 == 0 ? (hexHeight * y) + (hexHeight / 2) : (hexHeight * y));
         return pixel;
     }
 
@@ -236,10 +188,11 @@ public class GraphicsModel {
 
     public Point pixelToTile(int x, int y) {
         Point tile = new Point();
-        tile.x = x / getHexOffset();
+        tile.x = x / getProperty(ProfiledGraphicProperty.TILE_OFFSET);
         //If tile is on even row, first we substract half the hexagon height to the Y component, then we divide it by the height
         //if it's on odd row, divide Y component by hexagon height
-        tile.y = (tile.x % 2 == 0 ? (y - (getHexHeight() / 2)) / getHexHeight() : (y / getHexHeight()));
+        int hexHeight = getProperty(ProfiledGraphicProperty.TILE_HEIGHT);
+        tile.y = (tile.x % 2 == 0 ? (y - (hexHeight / 2)) / hexHeight : (y / hexHeight));
         return tile;
     }
 
@@ -271,16 +224,17 @@ public class GraphicsModel {
      */
     public Point pixelToTileAccurate(int x, int y) {
 
-        int dy = getHexHeight() / 2;
+        int hexHeight = getProperty(ProfiledGraphicProperty.TILE_HEIGHT);
+        int dy = hexHeight / 2;
         // gradient = dy/dx
-        Point section = new Point(x / getHexOffset(), y / getHexHeight());
+        int hexOffset = getProperty(ProfiledGraphicProperty.TILE_OFFSET);
+        Point section = new Point(x / hexOffset, y / hexHeight);
         // Pixel within the section
-        Point pixelInSection = new Point(x % getHexOffset(), y % getHexHeight());
-
+        Point pixelInSection = new Point(x % hexOffset, y % hexHeight);
 
         if ((section.x % 2) == 1) {
             //odd column
-            if ((-getHexRise()) * pixelInSection.x + dy > pixelInSection.y) {
+            if ((-hexRise) * pixelInSection.x + dy > pixelInSection.y) {
                 //Pixel is in the NW neighbor tile
                 /*  ________
                  *  |x /    |
@@ -290,7 +244,7 @@ public class GraphicsModel {
                 section.x--;
                 section.y--;
 
-            } else if (pixelInSection.x * getHexRise() + dy < pixelInSection.y) {
+            } else if (pixelInSection.x * hexRise + dy < pixelInSection.y) {
                 //Pixel is in the SE neighbout tile     
                 /*  ________
                  *  |  /    |
@@ -310,7 +264,7 @@ public class GraphicsModel {
             //even column
             if (pixelInSection.y < dy) {
                 //upper side
-                if ((getHexRise() * pixelInSection.x) > pixelInSection.y) {
+                if ((hexRise * pixelInSection.x) > pixelInSection.y) {
                     //right side
                     /* Pixel is in the N neighbor tile
                      * ________
@@ -332,7 +286,7 @@ public class GraphicsModel {
                 }
             } else {
                 //lower side
-                if (((-getHexRise()) * pixelInSection.x + getHexHeight()) > pixelInSection.y) {
+                if (((-hexRise) * pixelInSection.x + hexHeight) > pixelInSection.y) {
                     /* Left side
                      * ________
                      * | \     |
@@ -361,20 +315,27 @@ public class GraphicsModel {
         return ((x < imageWidth && x > 0) && (y > 0 && y < imageHeight));
     }
 
-    //    public static int computeBoardImageWidth(GraphicsProfile profile, int columns) {
-    //        return profile.getHexDiameter() + (columns - 1) * profile.getHexOffset();
-    //
-    //    }
-    //
-    //    public static int computeBoardImageHeight(GraphicsProfile profile, int boardHeight) {
-    //        return boardHeight * profile.getHexHeight() + profile.getHexHeight() / 2;
-    //    }
-    
     public GraphicsProfile[] getProfiles() {
         return profiles;
     }
-    
+
     public Map<GraphicsDescriptor, ImageProvider> getImageProviders(int profileIndex) {
         return providers.get(profileIndex);
+    }
+
+    public int getProperty(GraphicProperty property) {
+        if (property.isProfiled()) {
+            return getProperty((ProfiledGraphicProperty) property);
+        } else {
+            return getProperty((NonProfiledGraphicProperty) property);
+        }
+    }
+
+    private int getProperty(NonProfiledGraphicProperty property) {
+        return GraphicProperties.getInt(property);
+    }
+
+    private int getProperty(ProfiledGraphicProperty property) {
+        return GraphicProperties.getInt(property, activeProfile);
     }
 }

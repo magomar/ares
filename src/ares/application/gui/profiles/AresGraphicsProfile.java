@@ -277,4 +277,11 @@ public enum AresGraphicsProfile implements GraphicsProfile {
     public int getMaxUnitsStack() {
         return maxUnitsStack;
     }
+
+    @Override
+    public int getOrdinal() {
+        return ordinal();
+    }
+    
+    
 }
