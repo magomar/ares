@@ -5,6 +5,7 @@ import ares.application.gui.providers.ImageProvider;
 import ares.scenario.board.Board;
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -48,8 +49,13 @@ public class GraphicsModel {
 
 
     private GraphicsModel() {
-//        Properties properties = GraphicProperties.GRAPHICS;
-//        System.out.println(properties.propertyNames());
+        Properties properties = GraphicProperties.GRAPHICS;
+        Enumeration keys  = properties.propertyNames();
+        while (keys.hasMoreElements() ) {
+            String propName = (String) keys.nextElement();
+            System.out.println(propName);
+        }
+
     }
 
     public void initialize(Board board, GraphicsProfile[] profiles) {
