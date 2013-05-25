@@ -1,6 +1,5 @@
 package ares.application.gui.profiles;
 
-import config.GraphicProperty;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -25,20 +24,20 @@ public class GraphicProperties {
         }
     }
 
-    public static int getInt(GraphicProperty property) {
+    public static int getProperty(GraphicProperty property) {
         return Integer.parseInt(GRAPHICS.getProperty(property.getName()));
     }
 
-    public static double getReal(GraphicProperty property) {
+    public static double getRealProperty(GraphicProperty property) {
         return Double.parseDouble(GRAPHICS.getProperty(property.getName()));
     }
 
-    public static int getInt(GraphicProperty property, GraphicsProfile profile) {
+    public static int getProperty(GraphicProperty property, GraphicsProfile profile) {
         String[] values = GRAPHICS.getProperty(property.getName()).split(",");
         return Integer.parseInt(values[profile.getOrdinal()]);
     }
 
-    public static double getReal(GraphicProperty property, GraphicsProfile profile) {
+    public static double getRealProperty(GraphicProperty property, GraphicsProfile profile) {
         String[] values = GRAPHICS.getProperty(property.getName()).split(",");
         return Double.parseDouble(values[profile.getOrdinal()]);
     }

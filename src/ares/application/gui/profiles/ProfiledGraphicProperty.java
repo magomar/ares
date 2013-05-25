@@ -1,4 +1,4 @@
-package config;
+package ares.application.gui.profiles;
 
 /**
  * A ____ B F / \ C \____/ E D hexDiamter goes from F.x to C.x

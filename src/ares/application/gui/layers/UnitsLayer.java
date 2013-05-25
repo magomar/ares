@@ -1,12 +1,13 @@
 package ares.application.gui.layers;
 
+import ares.application.gui.profiles.GraphicProperties;
 import ares.application.gui.profiles.GraphicsModel;
 import ares.application.gui.profiles.GraphicsProfile;
 import ares.application.gui.profiles.UnitDecorator;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.*;
 import ares.application.models.forces.*;
-import config.ProfiledGraphicProperty;
+import ares.application.gui.profiles.ProfiledGraphicProperty;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.*;
@@ -78,16 +79,15 @@ public class UnitsLayer extends AbstractImageLayer {
             //Retrieve the single unit image
             UnitModel unit = tile.getTopUnit();
             BufferedImage unitImage = GraphicsModel.INSTANCE.getActiveProvider(unit.getColor()).getImage(unit.getIconId());
-            GraphicsProfile graphicsProfile = GraphicsModel.INSTANCE.getActiveProfile();
 
             // Offset from the upper left corner of the tile
-            int imageOffset = GraphicsModel.INSTANCE.getProperty(ProfiledGraphicProperty.UNIT_OFFSET);
+            int imageOffset = GraphicsModel.INSTANCE.getActiveProfilerProperty(ProfiledGraphicProperty.UNIT_OFFSET);
             pos.x += imageOffset;
             pos.y += imageOffset;
             // Offset from the upper left corner of the last painted unit
-            int stackOffset = GraphicsModel.INSTANCE.getProperty(ProfiledGraphicProperty.UNIT_STACK_OFFSET);
+            int stackOffset = GraphicsModel.INSTANCE.getActiveProfilerProperty(ProfiledGraphicProperty.UNIT_STACK_OFFSET);
             //Num units to be painted
-            int unitsToPaint = Math.min(tile.getNumStackedUnits(), GraphicsModel.INSTANCE.getProperty(ProfiledGraphicProperty.UNIT_MAX_STACK));
+            int unitsToPaint = Math.min(tile.getNumStackedUnits(), GraphicsModel.INSTANCE.getActiveProfilerProperty(ProfiledGraphicProperty.UNIT_MAX_STACK));
             // Max stack  offset
             int maxStackOffset = unitsToPaint * stackOffset - stackOffset;
 

@@ -1,6 +1,5 @@
 package ares.application.gui.providers;
 
-import ares.application.gui.profiles.GraphicsProfile;
 import ares.platform.io.FileIO;
 import java.awt.Dimension;
 import java.awt.Point;
@@ -77,11 +76,11 @@ public class ArrayImageProvider implements ImageProvider {
         return getImage(coordinates.x, coordinates.y);
     }
 
-    @Override
-    public BufferedImage getImage() {
-        return getImage(0, 0);
-
-    }
+//    @Override
+//    public BufferedImage getImage() {
+//        return getImage(0, 0);
+//
+//    }
 
     @Override
     public BufferedImage getFullImage() {

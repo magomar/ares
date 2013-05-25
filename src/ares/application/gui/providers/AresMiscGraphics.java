@@ -1,9 +1,9 @@
 package ares.application.gui.providers;
 
+import ares.application.gui.profiles.GraphicProperties;
 import ares.application.gui.profiles.GraphicsModel;
 import ares.application.gui.profiles.GraphicsProfile;
-import config.NonProfiledGraphicProperty;
-import config.ProfiledGraphicProperty;
+import ares.application.gui.profiles.ProfiledGraphicProperty;
 
 /**
  *
@@ -40,8 +40,8 @@ public enum AresMiscGraphics implements ImageProviderFactory {
 
     @Override
     public ImageProvider createImageProvider(GraphicsProfile profile) {
-        int fullImageWidth = GraphicsModel.INSTANCE.getProperty(ProfiledGraphicProperty.TILES_WIDTH);
-        int fullImageHeight = GraphicsModel.INSTANCE.getProperty(ProfiledGraphicProperty.TILES_HEIGHT);
+        int fullImageWidth = GraphicProperties.getProperty(ProfiledGraphicProperty.TILE_WIDTH, profile) * columns;
+        int fullImageHeight = GraphicProperties.getProperty(ProfiledGraphicProperty.TILE_HEIGHT, profile) * rows;
         return ImageProviderFactoryMethods.createImageProvider(filename, rows, columns, fullImageWidth, fullImageHeight, profile);
     }
 }

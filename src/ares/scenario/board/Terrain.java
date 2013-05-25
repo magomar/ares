@@ -1,13 +1,14 @@
 package ares.scenario.board;
 
+import ares.application.gui.profiles.GraphicProperties;
 import ares.application.gui.profiles.GraphicsModel;
 import ares.application.gui.profiles.GraphicsProfile;
 import ares.application.gui.providers.ImageProvider;
 import ares.application.gui.providers.ImageProviderFactory;
 import ares.application.gui.providers.ImageProviderFactoryMethods;
 import ares.engine.movement.MovementCost;
-import config.NonProfiledGraphicProperty;
-import config.ProfiledGraphicProperty;
+import ares.application.gui.profiles.NonProfiledGraphicProperty;
+import ares.application.gui.profiles.ProfiledGraphicProperty;
 import java.util.EnumSet;
 import java.util.Set;
 
@@ -156,10 +157,10 @@ public enum Terrain implements ImageProviderFactory {
 
     @Override
     public ImageProvider createImageProvider(GraphicsProfile profile) {
-        int rows = GraphicsModel.INSTANCE.getProperty(NonProfiledGraphicProperty.TILES_ROWS);
-        int columns = GraphicsModel.INSTANCE.getProperty(NonProfiledGraphicProperty.TILES_COLUMNS);
-        int fullImageWidth = GraphicsModel.INSTANCE.getProperty(ProfiledGraphicProperty.TILES_WIDTH);
-        int fullImageHeight = GraphicsModel.INSTANCE.getProperty(ProfiledGraphicProperty.TILES_HEIGHT);
+        int rows = GraphicProperties.getProperty(NonProfiledGraphicProperty.TILES_ROWS);
+        int columns = GraphicProperties.getProperty(NonProfiledGraphicProperty.TILES_COLUMNS);
+        int fullImageWidth = GraphicProperties.getProperty(ProfiledGraphicProperty.TILES_WIDTH, profile);
+        int fullImageHeight = GraphicProperties.getProperty(ProfiledGraphicProperty.TILES_HEIGHT, profile);
         return ImageProviderFactoryMethods.createImageProvider(filename, rows, columns, fullImageWidth, fullImageHeight, profile);
     }
 

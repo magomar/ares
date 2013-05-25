@@ -62,7 +62,7 @@ public class TerrainLayer extends AbstractImageLayer {
         Point pos = GraphicsModel.INSTANCE.tileToPixel(tile.getCoordinates());
 
         // First paints the open terrain, any other terrain will be rendered upon it
-        BufferedImage terrainImage = GraphicsModel.INSTANCE.getActiveProvider(AresMiscGraphics.TERRAIN_MISCELANEOUS).getImage();
+        BufferedImage terrainImage = GraphicsModel.INSTANCE.getActiveProvider(AresMiscGraphics.TERRAIN_MISCELANEOUS).getImage(Feature.OPEN.getCoordinates());
         g2.drawImage(terrainImage, pos.x, pos.y, this);
 
         Map<Terrain, Directions> m = tile.getTerrain();

@@ -4,9 +4,6 @@ import ares.application.gui.layers.AbstractImageLayer;
 import ares.application.gui.providers.ImageProviderFactory;
 import ares.application.gui.providers.ImageProvider;
 import ares.scenario.board.Board;
-import config.GraphicProperty;
-import config.NonProfiledGraphicProperty;
-import config.ProfiledGraphicProperty;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -48,7 +45,7 @@ public class GraphicsModel {
     private GraphicsProfile[] profiles;
     private List<Map<ImageProviderFactory, ImageProvider>> providers;
 //    private static final Logger LOG = Logger.getLogger(GraphicsModel.class.getName());
-    private static final double hexRise = GraphicProperties.getReal(NonProfiledGraphicProperty.TILE_RISE);
+    private static final double hexRise = GraphicProperties.getRealProperty(NonProfiledGraphicProperty.TILE_RISE);
     private UnitDecorator[] unitDecorators;
 
     private GraphicsModel() {
@@ -64,11 +61,12 @@ public class GraphicsModel {
         for (int i = 0; i < profiles.length; i++) {
             providers.add(new HashMap<ImageProviderFactory, ImageProvider>());
         }
-        setActiveProfile(profiles.length / 2);
+//        setActiveProfile(profiles.length / 2);
+        setActiveProfile(0);
         for (int i = 0; i < profiles.length; i++) {
             unitDecorators[i] = new UnitDecorator(profiles[i]);
         }
-        
+
     }
 
     public void addGraphics(ImageProviderFactory factory) {
@@ -86,8 +84,8 @@ public class GraphicsModel {
         }
     }
 
-    public ImageProvider getActiveProvider(ImageProviderFactory descriptor) {
-        return activeProviders.get(descriptor);
+    public ImageProvider getActiveProvider(ImageProviderFactory factory) {
+        return activeProviders.get(factory);
     }
 
     /*
@@ -98,10 +96,10 @@ public class GraphicsModel {
         this.activeProfileIndex = profileIndex;
         activeProfile = profiles[activeProfileIndex];
         activeProviders = providers.get(activeProfileIndex);
-        boardWidth = getProperty(ProfiledGraphicProperty.TILE_WIDTH) + (boardColumns - 1) * getProperty(ProfiledGraphicProperty.TILE_OFFSET);
-        int hexHeight = getProperty(ProfiledGraphicProperty.TILE_HEIGHT);
+        boardWidth = getActiveProfilerProperty(ProfiledGraphicProperty.TILE_WIDTH) + (boardColumns - 1) * getActiveProfilerProperty(ProfiledGraphicProperty.TILE_OFFSET);
+        int hexHeight = getActiveProfilerProperty(ProfiledGraphicProperty.TILE_HEIGHT);
         boardHeight = boardRows * hexHeight + hexHeight / 2;
-
+//        System.out.println("W= " + boardWidth + ", H= " + boardHeight);
     }
 
     public GraphicsProfile getActiveProfile() {
@@ -170,10 +168,10 @@ public class GraphicsModel {
     public Point tileToPixel(int x, int y) {
         Point pixel = new Point();
         //X component is "row" times the "offset"
-        pixel.x = getProperty(ProfiledGraphicProperty.TILE_OFFSET) * x;
+        pixel.x = getActiveProfilerProperty(ProfiledGraphicProperty.TILE_OFFSET) * x;
         //Y component depends on the row.
         //If it's even number, then "column" times the "height" plus half the height, if it's odd then just "column" times the "height"
-        int hexHeight = getProperty(ProfiledGraphicProperty.TILE_HEIGHT);
+        int hexHeight = getActiveProfilerProperty(ProfiledGraphicProperty.TILE_HEIGHT);
         pixel.y = (x % 2 == 0 ? (hexHeight * y) + (hexHeight / 2) : (hexHeight * y));
         return pixel;
     }
@@ -192,10 +190,10 @@ public class GraphicsModel {
 
     public Point pixelToTile(int x, int y) {
         Point tile = new Point();
-        tile.x = x / getProperty(ProfiledGraphicProperty.TILE_OFFSET);
+        tile.x = x / getActiveProfilerProperty(ProfiledGraphicProperty.TILE_OFFSET);
         //If tile is on even row, first we substract half the hexagon height to the Y component, then we divide it by the height
         //if it's on odd row, divide Y component by hexagon height
-        int hexHeight = getProperty(ProfiledGraphicProperty.TILE_HEIGHT);
+        int hexHeight = getActiveProfilerProperty(ProfiledGraphicProperty.TILE_HEIGHT);
         tile.y = (tile.x % 2 == 0 ? (y - (hexHeight / 2)) / hexHeight : (y / hexHeight));
         return tile;
     }
@@ -228,10 +226,10 @@ public class GraphicsModel {
      */
     public Point pixelToTileAccurate(int x, int y) {
 
-        int hexHeight = getProperty(ProfiledGraphicProperty.TILE_HEIGHT);
+        int hexHeight = getActiveProfilerProperty(ProfiledGraphicProperty.TILE_HEIGHT);
         int dy = hexHeight / 2;
         // gradient = dy/dx
-        int hexOffset = getProperty(ProfiledGraphicProperty.TILE_OFFSET);
+        int hexOffset = getActiveProfilerProperty(ProfiledGraphicProperty.TILE_OFFSET);
         Point section = new Point(x / hexOffset, y / hexHeight);
         // Pixel within the section
         Point pixelInSection = new Point(x % hexOffset, y % hexHeight);
@@ -331,11 +329,7 @@ public class GraphicsModel {
         return unitDecorators[activeProfileIndex];
     }
     
-    public int getProperty(GraphicProperty property) {
-        if (property.isProfiled()) {
-            return GraphicProperties.getInt(property, activeProfile);
-        } else {
-            return GraphicProperties.getInt(property);
-        }
+    public int getActiveProfilerProperty(ProfiledGraphicProperty property) {
+        return GraphicProperties.getProperty(property, activeProfile);
     }
 }

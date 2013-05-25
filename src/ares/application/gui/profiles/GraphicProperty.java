@@ -1,4 +1,4 @@
-package config;
+package ares.application.gui.profiles;
 
 /**
  *

@@ -30,7 +30,7 @@ public class GridLayer extends AbstractImageLayer {
         int w = GraphicsModel.INSTANCE.getBoardColumns();
         int y = GraphicsModel.INSTANCE.getBoardRows();
         Graphics2D g2 = globalImage.createGraphics();
-        BufferedImage bi = GraphicsModel.INSTANCE.getActiveProvider(AresMiscGraphics.GRID).getImage();
+        BufferedImage bi = GraphicsModel.INSTANCE.getActiveProvider(AresMiscGraphics.GRID).getImage(0,0);
         for (int i = 0; i < w; i++) {
             for (int j = 0; j < y; j++) {
                 TileModel tile = scenario.getBoardModel().getMapModel()[i][j];

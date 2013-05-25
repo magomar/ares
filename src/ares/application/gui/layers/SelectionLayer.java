@@ -36,10 +36,10 @@ public class SelectionLayer extends AbstractImageLayer {
         for (UnitModel u : formation.getUnitModels()) {
             if (!u.equals(selectedUnit)) {
                 TileModel t = u.getLocation();
-                paintCursor(g2, u.getLocation(), GraphicsModel.INSTANCE.getActiveProvider(steelCursor).getImage());
+                paintCursor(g2, u.getLocation(), GraphicsModel.INSTANCE.getActiveProvider(steelCursor).getImage(0,0));
             }
         }
-        paintCursor(g2, selectedUnit.getLocation(), GraphicsModel.INSTANCE.getActiveProvider(brassCursor).getImage());
+        paintCursor(g2, selectedUnit.getLocation(), GraphicsModel.INSTANCE.getActiveProvider(brassCursor).getImage(0,0));
         g2.dispose();
     }
 

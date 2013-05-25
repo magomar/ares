@@ -6,8 +6,8 @@ import ares.application.gui.profiles.GraphicsProfile;
 import ares.application.gui.providers.ImageProvider;
 import ares.application.gui.providers.ImageProviderFactory;
 import ares.application.gui.providers.ImageProviderFactoryMethods;
-import config.NonProfiledGraphicProperty;
-import config.ProfiledGraphicProperty;
+import ares.application.gui.profiles.NonProfiledGraphicProperty;
+import ares.application.gui.profiles.ProfiledGraphicProperty;
 import java.awt.Color;
 import java.awt.Point;
 
@@ -134,12 +134,8 @@ public enum UnitsColor implements ImageProviderFactory {
     private UnitsColor(Color foreground) {
         this.foreground = foreground;
         filename = name().toLowerCase() + ".png";
-//        int rows = GraphicsModel.getProperty(NonProfiledGraphicProperty.UNITS_ROWS);
-//        int rows = GraphicProperties.getInt(NonProfiledGraphicProperty.UNITS_ROWS);
-        int rows = 8;
-//        int columns = GraphicsModel.getProperty(NonProfiledGraphicProperty.UNITS_COLUMNS);
-//        int columns = GraphicProperties.getInt(NonProfiledGraphicProperty.UNITS_COLUMNS);
-        int columns = 16;
+        int rows = GraphicProperties.getProperty(NonProfiledGraphicProperty.UNITS_ROWS);
+        int columns = GraphicProperties.getProperty(NonProfiledGraphicProperty.UNITS_COLUMNS);
         int numIcons = rows * columns;
         coordinatesByIndex = new Point[numIcons];
         for (int i = 0; i < numIcons; i++) {
@@ -160,16 +156,13 @@ public enum UnitsColor implements ImageProviderFactory {
 
     @Override
     public ImageProvider createImageProvider(GraphicsProfile profile) {
-        int rows = GraphicsModel.INSTANCE.getProperty(NonProfiledGraphicProperty.UNITS_ROWS);
-        int columns = GraphicsModel.INSTANCE.getProperty(NonProfiledGraphicProperty.UNITS_COLUMNS);
-        int fullImageWidth = GraphicsModel.INSTANCE.getProperty(ProfiledGraphicProperty.UNITS_WIDTH);
-        int fullImageHeight = GraphicsModel.INSTANCE.getProperty(ProfiledGraphicProperty.UNITS_HEIGHT);
+        int rows = GraphicProperties.getProperty(NonProfiledGraphicProperty.UNITS_ROWS);
+        int columns = GraphicProperties.getProperty(NonProfiledGraphicProperty.UNITS_COLUMNS);
+        int fullImageWidth = GraphicProperties.getProperty(ProfiledGraphicProperty.UNITS_WIDTH, profile);
+        int fullImageHeight = GraphicProperties.getProperty(ProfiledGraphicProperty.UNITS_HEIGHT, profile);
         return ImageProviderFactoryMethods.createImageProvider(filename, rows, columns, fullImageWidth, fullImageHeight, profile);
     }
 
-//    public BufferedImage getImage(ImageProvider provider, int index) {
-//        return provider.getImage(coordinatesByIndex[index]);
-//    }
     public Point getCoordinates(int index) {
         return coordinatesByIndex[index];
     }
