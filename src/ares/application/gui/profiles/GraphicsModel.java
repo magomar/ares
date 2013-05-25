@@ -1,14 +1,14 @@
-package ares.application.gui;
+package ares.application.gui.profiles;
 
 import ares.application.gui.providers.GraphicsDescriptor;
 import ares.application.gui.providers.ImageProvider;
-import ares.platform.io.FileIO;
 import ares.scenario.board.Board;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 /**
  * This class provides information on the graphics being used for a particular scenario
@@ -46,7 +46,10 @@ public class GraphicsModel {
     private List<Map<GraphicsDescriptor, ImageProvider>> providers;
 //    private static final Logger LOG = Logger.getLogger(GraphicsModel.class.getName());
 
+
     private GraphicsModel() {
+//        Properties properties = GraphicProperties.GRAPHICS;
+//        System.out.println(properties.propertyNames());
     }
 
     public void initialize(Board board, GraphicsProfile[] profiles) {

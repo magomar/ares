@@ -1,5 +1,7 @@
-package ares.application.gui;
+package ares.application.gui.layers;
 
+import ares.application.gui.profiles.GraphicsModel;
+import ares.application.gui.layers.ImageLayer;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import javax.swing.JPanel;

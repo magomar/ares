@@ -1,4 +1,4 @@
-package ares.application.gui;
+package ares.application.gui.layers;
 
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;

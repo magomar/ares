@@ -1,6 +1,6 @@
-package ares.application.gui;
+package ares.application.gui.profiles;
 
-import ares.application.gui.profiles.UnitsInfographicProfile;
+import ares.application.gui.profiles.UnitDecorator;
 
 /**
  *
@@ -118,7 +118,7 @@ public interface GraphicsProfile {
 
     int getBarSize();
 
-    UnitsInfographicProfile getUnitsProfile();
+    UnitDecorator getUnitsProfile();
 
     /**
      * @return the offset distance from the left and upper corners of the tile(same distance vertically and
