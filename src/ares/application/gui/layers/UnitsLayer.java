@@ -1,9 +1,8 @@
 package ares.application.gui.layers;
 
-import ares.application.gui.GraphicsModel;
-import ares.application.gui.AbstractImageLayer;
-import ares.application.gui.GraphicsProfile;
-import ares.application.gui.profiles.UnitsInfographicProfile;
+import ares.application.gui.profiles.GraphicsModel;
+import ares.application.gui.profiles.GraphicsProfile;
+import ares.application.gui.profiles.UnitDecorator;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.*;
 import ares.application.models.forces.*;
@@ -102,7 +101,7 @@ public class UnitsLayer extends AbstractImageLayer {
             Graphics2D unitG2 = subImage.createGraphics();
             unitG2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 //            g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-            UnitsInfographicProfile unitsProfile = graphicsProfile.getUnitsProfile();
+            UnitDecorator unitsProfile = graphicsProfile.getUnitsProfile();
             unitsProfile.paintUnitAttributes(unitG2, unit);
 //            unitsProfile.paintUnitAttributes(g2, unit);
             unitG2.dispose();

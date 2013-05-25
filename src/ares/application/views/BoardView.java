@@ -1,8 +1,8 @@
 package ares.application.views;
 
-import ares.application.gui.GraphicsModel;
+import ares.application.gui.profiles.GraphicsModel;
 import ares.application.boundaries.view.BoardViewer;
-import ares.application.gui.ImageLayer;
+import ares.application.gui.layers.ImageLayer;
 import ares.application.gui.layers.ArrowLayer;
 import ares.application.gui.layers.GridLayer;
 import ares.application.gui.layers.SelectionLayer;

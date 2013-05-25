@@ -1,6 +1,5 @@
 package ares.application.gui.profiles;
 
-import ares.application.gui.GraphicsProfile;
 import ares.platform.io.ResourcePath;
 
 /**
@@ -51,7 +50,7 @@ public enum AresGraphicsProfile implements GraphicsProfile {
     private final int maxUnitsStack;
     private final double hexRise = 1.833;
     private final String path;
-    private final UnitsInfographicProfile unitsProfile;
+    private final UnitDecorator unitsProfile;
 
 
     /**
@@ -93,7 +92,7 @@ public enum AresGraphicsProfile implements GraphicsProfile {
         unitHeight = unitsImageHeight / UNITS_IMAGE_ROWS;
         hexDiameter = terrainImageWidth / TERRAIN_IMAGE_COLS;
         hexHeight = terrainImageHeight / TERRAIN_IMAGE_ROWS;
-        unitsProfile = new UnitsInfographicProfile(this);
+        unitsProfile = new UnitDecorator(this);
     }
 
     /**
@@ -246,7 +245,7 @@ public enum AresGraphicsProfile implements GraphicsProfile {
     }
 
     @Override
-    public UnitsInfographicProfile getUnitsProfile() {
+    public UnitDecorator getUnitsProfile() {
         return unitsProfile;
     }
 

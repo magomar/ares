@@ -1,7 +1,6 @@
 package ares.application.gui.layers;
 
-import ares.application.gui.AbstractImageLayer;
-import ares.application.gui.GraphicsModel;
+import ares.application.gui.profiles.GraphicsModel;
 import ares.application.gui.providers.AresMiscGraphics;
 import ares.scenario.board.Tile;
 import java.awt.Graphics2D;

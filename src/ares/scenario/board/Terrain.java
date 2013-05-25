@@ -23,7 +23,7 @@ public enum Terrain implements GraphicsDescriptor {
     MOUNTAINS(3, 3, 3, 3, 3.5, 1.5, 1.0, 3.0, 2.0, Vision.NORMAL, false),
     ALPINE(MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.NORMAL, false),
     MARSH(3, 3, 3, 2, 2.0, 1.0, 1.0, 1.0, 1.0, Vision.NORMAL, false),
-    FLOODED_MARS(MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.NORMAL, false),
+    FLOODED_MARSH(MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.NORMAL, false),
     SHALLOW_WATER(MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, false),
     DEEP_WATER(MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, false),
     CROPLANDS(1, 1, 1, 1, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.NORMAL, false),

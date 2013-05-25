@@ -1,6 +1,6 @@
 package ares.application.gui.providers;
 
-import ares.application.gui.GraphicsProfile;
+import ares.application.gui.profiles.GraphicsProfile;
 import ares.platform.io.FileIO;
 import java.awt.Dimension;
 import java.awt.Point;
