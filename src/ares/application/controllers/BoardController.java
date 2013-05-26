@@ -9,7 +9,7 @@ import ares.application.boundaries.view.OOBViewer;
 import ares.application.boundaries.view.InfoViewer;
 import ares.application.commands.AresCommandGroup;
 import ares.application.commands.ViewCommands;
-import ares.application.gui.GraphicsModel;
+import ares.application.gui.profiles.GraphicsModel;
 import ares.application.interaction.InteractionMode;
 import ares.application.models.board.TileModel;
 import ares.application.models.forces.ForceModel;
@@ -268,6 +268,7 @@ public final class BoardController extends AbstractSecondaryController implement
             selectedUnit.setMission(mission);
             selectedUnit.schedule();
             boardView.updateLastOrders(mission.getPath());
+//            boardView.updateLastPathSearch(null, null);
         }
     }
 

@@ -1,6 +1,6 @@
 package ares.application.gui.providers;
 
-import ares.application.gui.GraphicsProfile;
+import ares.application.gui.profiles.GraphicsProfile;
 import ares.platform.io.FileIO;
 import java.awt.Dimension;
 import java.awt.Point;
@@ -41,7 +41,7 @@ public interface ImageProvider {
      * @param row
      * @return
      */
-    BufferedImage getImage(Point coordinates, FileIO fileSystem);
+    BufferedImage getImage(Point coordinates);
 
     /**
      * Gets the sprite located in given {@code row} and {@code column} of the graphics of this provider
@@ -50,7 +50,7 @@ public interface ImageProvider {
      * @param row
      * @return
      */
-    public BufferedImage getImage(int column, int row, FileIO fileSystem);
+    public BufferedImage getImage(int column, int row);
 
     /**
      * Gets the sprite in coordinates encoded by a single {@code index}
@@ -59,31 +59,28 @@ public interface ImageProvider {
      *
      * @param profile
      * @param index
-     * @param fileSystem
      * @return
      */
-    BufferedImage getImage(int index, FileIO fileSystem);
+    BufferedImage getImage(int index);
 
-    /**
-     * Gets the first or only sprite in the graphics of this provider
-     * <p> {@code column = 1}
-     * <p> {@code row = 1}
-     *
-     * @param profile
-     * @param index
-     * @param fileSystem
-     * @return
-     */
-    BufferedImage getImage(FileIO fileSystem);
+//    /**
+//     * Gets the first or only sprite in the graphics of this provider
+//     * <p> {@code column = 1}
+//     * <p> {@code row = 1}
+//     *
+//     * @param profile
+//     * @param index
+//     * @return
+//     */
+//    BufferedImage getImage();
 
     /**
      * Gets the complete image containing all the graphics for this provider
      *
      * @param profile
-     * @param fileSystem
      * @return
      */
-    BufferedImage getFullImage(FileIO fileSystem);
+    BufferedImage getFullImage();
 
     /**
      * Gets the dimension of the image containing the graphics of this provider

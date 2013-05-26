@@ -61,8 +61,7 @@ public enum ViewCommands implements Command {
     @Override
     public Icon getLargeIcon() {
         if (icon == null) {
-            File iconFile = FileSystems.getDefault().getPath(ResourcePath.ICONS_MEDIUM.getPath(), iconFilename).toFile();
-            icon = new ImageIcon(iconFile.getPath());
+            icon = new ImageIcon(ResourcePath.ICONS_MEDIUM.getFilename(iconFilename));
         }
         return icon;
     }
@@ -70,8 +69,7 @@ public enum ViewCommands implements Command {
     @Override
     public Icon getSmallIcon() {
         if (icon == null) {
-            File iconFile = FileSystems.getDefault().getPath(ResourcePath.ICONS_SMALL.getPath(), iconFilename).toFile();
-            icon = new ImageIcon(iconFile.getPath());
+            icon = new ImageIcon(ResourcePath.ICONS_SMALL.getFilename(iconFilename));
         }
         return icon;
     }

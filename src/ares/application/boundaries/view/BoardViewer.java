@@ -1,6 +1,5 @@
 package ares.application.boundaries.view;
 
-import ares.application.gui.ImageLayer;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.TileModel;
 import ares.application.models.forces.ForceModel;
@@ -8,8 +7,10 @@ import ares.application.models.forces.FormationModel;
 import ares.application.models.forces.UnitModel;
 import ares.engine.algorithms.pathfinding.Path;
 import ares.platform.view.View;
+import ares.scenario.board.Tile;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.util.Collection;
 
 /**
  *
@@ -21,7 +22,8 @@ public interface BoardViewer extends View {
     final static int GRID = 1;
     final static int SELECTION = 2;
     final static int ARROWS = 3;
-    final static int UNITS = 4;
+    final static int PATHFINDING = 4;
+    final static int UNITS = 5;
 
     void loadScenario(ScenarioModel scenario);
 
@@ -38,6 +40,8 @@ public interface BoardViewer extends View {
     void updateCurrentOrders(Path path);
 
     void updateLastOrders(Path path);
+    
+    void updateLastPathSearch(Collection<Tile> openSet, Collection<Tile> closedSet);
 
     void updateSelectedUnit(UnitModel selectedUnit, FormationModel selectedFormation, ForceModel selectedForce);
 

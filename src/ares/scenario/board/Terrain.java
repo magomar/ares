@@ -1,9 +1,14 @@
 package ares.scenario.board;
 
-import ares.application.gui.AresGraphicsProfile;
-import ares.application.gui.providers.GraphicsDescriptor;
-import ares.application.gui.providers.ImageProviderType;
+import ares.application.gui.profiles.GraphicProperties;
+import ares.application.gui.profiles.GraphicsModel;
+import ares.application.gui.profiles.GraphicsProfile;
+import ares.application.gui.providers.ImageProvider;
+import ares.application.gui.providers.ImageProviderFactory;
+import ares.application.gui.providers.ImageProviderFactoryMethods;
 import ares.engine.movement.MovementCost;
+import ares.application.gui.profiles.NonProfiledGraphicProperty;
+import ares.application.gui.profiles.ProfiledGraphicProperty;
 import java.util.EnumSet;
 import java.util.Set;
 
@@ -11,7 +16,7 @@ import java.util.Set;
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public enum Terrain implements GraphicsDescriptor {
+public enum Terrain implements ImageProviderFactory {
 //motor, amph, mixed, foot, AT, AP, vehicles, infantry, stationary, vision, directional
 //    OPEN(0, 0, 0, 0, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, Directionality.NONE),
 
@@ -23,7 +28,7 @@ public enum Terrain implements GraphicsDescriptor {
     MOUNTAINS(3, 3, 3, 3, 3.5, 1.5, 1.0, 3.0, 2.0, Vision.NORMAL, false),
     ALPINE(MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.NORMAL, false),
     MARSH(3, 3, 3, 2, 2.0, 1.0, 1.0, 1.0, 1.0, Vision.NORMAL, false),
-    FLOODED_MARS(MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.NORMAL, false),
+    FLOODED_MARSH(MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.NORMAL, false),
     SHALLOW_WATER(MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, false),
     DEEP_WATER(MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, false),
     CROPLANDS(1, 1, 1, 1, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.NORMAL, false),
@@ -64,7 +69,6 @@ public enum Terrain implements GraphicsDescriptor {
     private final Vision vision;
     private final boolean directional;
     private final String filename;
-    private final ImageProviderType imageProviderType = ImageProviderType.TILE;
     public static final Set<Terrain> ANY_WATER = EnumSet.of(SHALLOW_WATER, DEEP_WATER);
     public static final Set<Terrain> ANY_RIVER = EnumSet.of(RIVER, SUPER_RIVER, CANAL, SUPER_CANAL);
     public static final Set<Terrain> ANY_ROAD = EnumSet.of(ROAD, IMPROVED_ROAD);
@@ -152,17 +156,12 @@ public enum Terrain implements GraphicsDescriptor {
     }
 
     @Override
-    public ImageProviderType getImageProviderType() {
-        return imageProviderType;
+    public ImageProvider createImageProvider(GraphicsProfile profile) {
+        int rows = GraphicProperties.getProperty(NonProfiledGraphicProperty.TILES_ROWS);
+        int columns = GraphicProperties.getProperty(NonProfiledGraphicProperty.TILES_COLUMNS);
+        int fullImageWidth = GraphicProperties.getProperty(ProfiledGraphicProperty.TILES_WIDTH, profile);
+        int fullImageHeight = GraphicProperties.getProperty(ProfiledGraphicProperty.TILES_HEIGHT, profile);
+        return ImageProviderFactoryMethods.createImageProvider(filename, rows, columns, fullImageWidth, fullImageHeight, profile);
     }
 
-    @Override
-    public int getRows() {
-        return AresGraphicsProfile.TERRAIN_IMAGE_ROWS;
-    }
-
-    @Override
-    public int getColumns() {
-        return AresGraphicsProfile.TERRAIN_IMAGE_COLS;
-    }
 }

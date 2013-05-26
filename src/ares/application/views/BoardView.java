@@ -1,13 +1,14 @@
 package ares.application.views;
 
-import ares.application.gui.GraphicsModel;
+import ares.application.gui.profiles.GraphicsModel;
 import ares.application.boundaries.view.BoardViewer;
-import ares.application.gui.ImageLayer;
-import ares.application.gui.command.ArrowLayer;
-import ares.application.gui.board.GridLayer;
-import ares.application.gui.command.SelectionLayer;
-import ares.application.gui.board.TerrainLayer;
-import ares.application.gui.forces.UnitsLayer;
+import ares.application.gui.layers.ImageLayer;
+import ares.application.gui.layers.ArrowLayer;
+import ares.application.gui.layers.GridLayer;
+import ares.application.gui.layers.SelectionLayer;
+import ares.application.gui.layers.TerrainLayer;
+import ares.application.gui.layers.PathSearchLayer;
+import ares.application.gui.layers.UnitsLayer;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.*;
 import ares.application.models.forces.ForceModel;
@@ -16,16 +17,19 @@ import ares.application.models.forces.UnitModel;
 import ares.engine.algorithms.pathfinding.Path;
 import ares.engine.command.tactical.TacticalMission;
 import ares.platform.view.AbstractView;
+import ares.scenario.board.Tile;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import javax.swing.JLayeredPane;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
+import javax.swing.JViewport;
 
 /**
  *
@@ -39,7 +43,8 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
     private GridLayer gridLayer;
     private SelectionLayer selectionLayer;
     private ArrowLayer arrowLayer;
-    private final ImageLayer[] allLayers = {terrainLayer, gridLayer, selectionLayer, arrowLayer, unitsLayer};
+    private PathSearchLayer pathSearchLayer;
+    private final ImageLayer[] allLayers = {terrainLayer, gridLayer, selectionLayer, arrowLayer, pathSearchLayer, unitsLayer};
 //    private final static int LOW = 1;
 //    private final static int MID = 2;
 //    private final static int HIGH = 3;
@@ -53,7 +58,7 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
         // Low level
         {terrainLayer},
         // Mid level
-        {gridLayer, selectionLayer, arrowLayer},
+        {gridLayer, selectionLayer, arrowLayer, pathSearchLayer},
         // High level
         {unitsLayer}};
 //    private final Thread[] layerThreads;
@@ -64,32 +69,36 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
 
     @Override
     protected JScrollPane layout() {
+        JScrollPane scrollPane = new JScrollPane();
         //Create layered pane to hold all the layers
         layeredPane = new JLayeredPane();
         layeredPane.setOpaque(true);
         layeredPane.setBackground(Color.BLACK);
         // Create layers
-        terrainLayer = new TerrainLayer();
-        unitsLayer = new UnitsLayer();
-        gridLayer = new GridLayer();
-        selectionLayer = new SelectionLayer();
+        JViewport viewport = scrollPane.getViewport();
+        terrainLayer = new TerrainLayer(viewport);
+        unitsLayer = new UnitsLayer(viewport);
+        gridLayer = new GridLayer(viewport);
+        selectionLayer = new SelectionLayer(viewport);
         //Shares image with selection layer
-        arrowLayer = new ArrowLayer(selectionLayer);
+        arrowLayer = new ArrowLayer(viewport, selectionLayer);
+        pathSearchLayer = new PathSearchLayer(viewport, selectionLayer);
 
         // Add the last layer from each level to the layered pane
         layeredPane.add(terrainLayer, JLayeredPane.DEFAULT_LAYER);
         layeredPane.add(gridLayer, JLayeredPane.PALETTE_LAYER);
         layeredPane.add(arrowLayer, JLayeredPane.MODAL_LAYER);
+        layeredPane.add(pathSearchLayer, JLayeredPane.MODAL_LAYER);
         layeredPane.add(unitsLayer, JLayeredPane.POPUP_LAYER);
 
         // Create and set up scroll pane as the content pane
-        JScrollPane scrollPane = new JScrollPane();
         scrollPane.add(layeredPane);
         scrollPane.setViewportView(layeredPane);
         scrollPane.setBackground(Color.BLACK);
         scrollPane.setVisible(true);
         scrollPane.setOpaque(true);
-        scrollPane.getVerticalScrollBar().setUnitIncrement(20);
+        scrollPane.getVerticalScrollBar().setUnitIncrement(50);
+        scrollPane.getHorizontalScrollBar().setUnitIncrement(50);
         return scrollPane;
     }
 
@@ -99,9 +108,9 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
 
     @Override
     public void loadScenario(final ScenarioModel scenario) {
-        Dimension imageSize = new Dimension(GraphicsModel.INSTANCE.getImageWidth(), GraphicsModel.INSTANCE.getImageHeight());
+        Dimension imageSize = new Dimension(GraphicsModel.INSTANCE.getBoardWidth(), GraphicsModel.INSTANCE.getBoardHeight());
         layeredPane.setPreferredSize(imageSize);
-        layeredPane.setSize(imageSize);
+//        layeredPane.setSize(imageSize);
         // Prepare each layer's thread
 //        for (int depth = 0; depth < imageLayers.length; depth++) {
 //            final int depthLevel = depth;
@@ -131,12 +140,6 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
 
     @Override
     public void updateScenario(ScenarioModel scenario) {
-        //Update all layers from the HIGH level
-//        for (int index = HIGH; index < imageLayers.length; index++) {
-//            for (AbstractImageLayer layer : imageLayers[index]) {
-//                layer.update(scenario);
-//            }
-//        }
         unitsLayer.paintAllUnits(scenario);
     }
 
@@ -167,6 +170,11 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
     @Override
     public void updateLastOrders(Path path) {
         arrowLayer.paintLastOrders(path);
+    }
+
+    @Override
+    public void updateLastPathSearch(Collection<Tile> openSet, Collection<Tile> closedSet) {
+        pathSearchLayer.paintPathfindingProcess(openSet, closedSet);
     }
 
     @Override
@@ -235,4 +243,7 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
         return allLayers[layer].isVisible();
     }
 
+    public ImageLayer[] getAllLayers() {
+        return allLayers;
+    }
 }

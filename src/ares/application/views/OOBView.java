@@ -1,6 +1,7 @@
 package ares.application.views;
 
 import ares.application.boundaries.view.OOBViewer;
+import ares.application.gui.components.OOBTreeCellRenderer;
 import ares.application.models.ScenarioModel;
 import ares.application.models.forces.ForceModel;
 import ares.platform.view.AbstractView;
@@ -37,6 +38,7 @@ public class OOBView extends AbstractView<JScrollPane> implements OOBViewer {
         int index = 0;
         for (ForceModel forceModel : force) {
             JTree tree = ComponentFactory.tree(forceModel.getTreeModel());
+            tree.setCellRenderer(new OOBTreeCellRenderer());
             tree.setName(forceModel.getName());
             tree.addTreeSelectionListener(treeSelectionListener);
             tabbedPane.add(tree);

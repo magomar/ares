@@ -15,8 +15,8 @@ public enum AresFileType implements FileType {
     private final String fileExtension;
     private final String description;
     private final FileTypeFilter fileTypeFilter;
-    public static final String JAXB_CONTEXT_PATH = "ares.data.jaxb";
-    public static final String JAXB_NAMESPACE = "ares";
+//    public static final String JAXB_CONTEXT_PATH = "ares.data.jaxb";
+//    public static final String JAXB_NAMESPACE = "ares";
 
     private AresFileType(final String fileExtension, final String description) {
         this.fileExtension = fileExtension;

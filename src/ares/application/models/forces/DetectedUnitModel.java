@@ -1,6 +1,6 @@
 package ares.application.models.forces;
 
-import ares.application.gui.forces.UnitsColor;
+import ares.scenario.forces.UnitsColor;
 import ares.application.models.board.TileModel;
 import ares.engine.command.tactical.TacticalMission;
 import ares.engine.knowledge.KnowledgeCategory;
@@ -31,7 +31,7 @@ public class DetectedUnitModel extends UnitModel {
 
     @Override
     public UnitsColor getColor() {
-        return UnitsColor.values()[unit.getColor()];
+        return unit.getColor();
     }
 
     @Override
