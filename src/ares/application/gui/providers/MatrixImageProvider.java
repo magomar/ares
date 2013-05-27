@@ -14,9 +14,9 @@ import java.util.logging.Logger;
  *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
-public class ArrayImageProvider implements ImageProvider {
+public class MatrixImageProvider implements ImageProvider {
 
-    private static final Logger LOG = Logger.getLogger(ArrayImageProvider.class.getName());
+    private static final Logger LOG = Logger.getLogger(MatrixImageProvider.class.getName());
     private final String filename;
     /**
      * The dimension of the sprite image in pixels
@@ -31,7 +31,7 @@ public class ArrayImageProvider implements ImageProvider {
     private SoftReference<BufferedImage> image;
     private final String path;
 
-    public ArrayImageProvider(String path, String filename, int rows, int columns, int fullImageWidth, int fullImageHeight) {
+    public MatrixImageProvider(String path, String filename, int rows, int columns, int fullImageWidth, int fullImageHeight) {
         this.filename = filename;
         this.path = path;
         this.rows = rows;
@@ -56,7 +56,7 @@ public class ArrayImageProvider implements ImageProvider {
     public BufferedImage getImage(int column, int row) {
         BufferedImage bi;
         if (image == null || image.get() == null) {
-            bi = loadGraphics(path);
+            bi = loadGraphics();
             image = new SoftReference<>(bi);
         } else {
             bi = image.get();
@@ -86,7 +86,7 @@ public class ArrayImageProvider implements ImageProvider {
     public BufferedImage getFullImage() {
         BufferedImage bi;
         if (image == null || image.get() == null) {
-            bi = loadGraphics(path);
+            bi = loadGraphics();
             image = new SoftReference<>(bi);
         } else {
             bi = image.get();
@@ -114,7 +114,7 @@ public class ArrayImageProvider implements ImageProvider {
         return rows;
     }
 
-    private BufferedImage loadGraphics(String path) {
+    private BufferedImage loadGraphics() {
         File file = FileSystems.getDefault().getPath(path, filename).toFile();
         if (!file.exists()) {
             String alternateFilename = filename.substring(0, filename.lastIndexOf('.')) + ".bmp";

@@ -1,7 +1,6 @@
 package ares.scenario.board;
 
 import ares.application.gui.profiles.GraphicProperties;
-import ares.application.gui.profiles.GraphicsModel;
 import ares.application.gui.profiles.GraphicsProfile;
 import ares.application.gui.providers.ImageProvider;
 import ares.application.gui.providers.ImageProviderFactory;

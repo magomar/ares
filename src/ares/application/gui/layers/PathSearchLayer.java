@@ -1,7 +1,7 @@
 package ares.application.gui.layers;
 
 import ares.application.gui.profiles.GraphicsModel;
-import ares.application.gui.providers.AresMiscGraphics;
+import ares.application.gui.providers.AresMiscTerrainGraphics;
 import ares.scenario.board.Tile;
 import java.awt.Graphics2D;
 import java.awt.Point;
@@ -68,15 +68,15 @@ public class PathSearchLayer extends AbstractImageLayer {
 
     private enum TileType {
 
-        OPEN_SET(AresMiscGraphics.GRID_GREEN),
-        CLOSED_SET(AresMiscGraphics.GRID_YELLOW);
-        private final AresMiscGraphics provider;
+        OPEN_SET(AresMiscTerrainGraphics.GRID_GREEN),
+        CLOSED_SET(AresMiscTerrainGraphics.GRID_YELLOW);
+        private final AresMiscTerrainGraphics provider;
 
-        private TileType(final AresMiscGraphics provider) {
+        private TileType(final AresMiscTerrainGraphics provider) {
             this.provider = provider;
         }
 
-        public AresMiscGraphics getProvider() {
+        public AresMiscTerrainGraphics getProvider() {
             return provider;
         }
     }

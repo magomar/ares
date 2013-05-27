@@ -3,7 +3,7 @@ package ares.application.gui.layers;
 import ares.engine.algorithms.pathfinding.Path;
 import ares.engine.algorithms.pathfinding.Node;
 import ares.application.gui.profiles.GraphicsModel;
-import ares.application.gui.providers.AresMiscGraphics;
+import ares.application.gui.providers.AresMiscTerrainGraphics;
 import ares.scenario.board.Direction;
 import ares.scenario.board.Directions;
 import ares.scenario.board.Tile;
@@ -192,17 +192,17 @@ public class ArrowLayer extends AbstractImageLayer {
 
     private enum ArrowType {
 
-        ACTIVE(AresMiscGraphics.RED_ARROWS),
-        UNIT(AresMiscGraphics.PURPLE_ARROWS),
-        FORMATION(AresMiscGraphics.DARK_BLUE_ARROWS),
-        FORCE(AresMiscGraphics.BLUE_ARROWS);
-        private final AresMiscGraphics provider;
+        ACTIVE(AresMiscTerrainGraphics.RED_ARROWS),
+        UNIT(AresMiscTerrainGraphics.PURPLE_ARROWS),
+        FORMATION(AresMiscTerrainGraphics.DARK_BLUE_ARROWS),
+        FORCE(AresMiscTerrainGraphics.BLUE_ARROWS);
+        private final AresMiscTerrainGraphics provider;
 
-        private ArrowType(final AresMiscGraphics provider) {
+        private ArrowType(final AresMiscTerrainGraphics provider) {
             this.provider = provider;
         }
 
-        public AresMiscGraphics getProvider() {
+        public AresMiscTerrainGraphics getProvider() {
             return provider;
         }
     }

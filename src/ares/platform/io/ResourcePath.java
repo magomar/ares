@@ -23,10 +23,11 @@ public enum ResourcePath {
     GRAPHICS_MEDIUM("Graphics/Medium"),
     GRAPHICS_HIGH("Graphics/High"),
     OTHER("Graphics/Other");
+    private final String relativePath;
     private final Path folderPath;
 
     private ResourcePath(final String relativePath) {
-//        this.path = ResourcePath.class.getResource(relativePath);
+        this.relativePath = relativePath;
         this.folderPath = FileSystems.getDefault().getPath(System.getProperty("user.dir"), relativePath);
     }
 
@@ -45,4 +46,9 @@ public enum ResourcePath {
     public String getFilename(String filename) {
         return getFilePath(filename).toString();
     }
+
+    public String getRelativePath() {
+        return relativePath;
+    }
+    
 }

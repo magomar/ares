@@ -1,7 +1,6 @@
 package ares.application.gui.providers;
 
 import ares.application.gui.profiles.GraphicProperties;
-import ares.application.gui.profiles.GraphicsModel;
 import ares.application.gui.profiles.GraphicsProfile;
 import ares.application.gui.profiles.ProfiledGraphicProperty;
 
@@ -9,7 +8,7 @@ import ares.application.gui.profiles.ProfiledGraphicProperty;
  *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
-public enum AresMiscGraphics implements ImageProviderFactory {
+public enum AresMiscTerrainGraphics implements ImageProviderFactory {
 
     TERRAIN_MISCELANEOUS(8, 8),
     TERRAIN_BORDER(8, 8),
@@ -27,7 +26,7 @@ public enum AresMiscGraphics implements ImageProviderFactory {
     private final int rows;
     private final int columns;
 
-    private AresMiscGraphics(final int rows, final int columns) {
+    private AresMiscTerrainGraphics(final int rows, final int columns) {
         this.rows = rows;
         this.columns = columns;
         filename = name().toLowerCase() + ".png";

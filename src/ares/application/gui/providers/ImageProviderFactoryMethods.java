@@ -8,7 +8,7 @@ import ares.application.gui.profiles.GraphicsProfile;
  */
 public class ImageProviderFactoryMethods {
     public static ImageProvider createImageProvider(String filename, int rows, int columns, int fullImageWidth, int fullImageHeight, GraphicsProfile profile){
-        return new ArrayImageProvider(profile.getPath(), profile.getFilename(filename), rows, columns, fullImageWidth, fullImageHeight);
+        return new MatrixImageProvider(profile.getPath(), profile.getFilename(filename), rows, columns, fullImageWidth, fullImageHeight);
     }
     
 }

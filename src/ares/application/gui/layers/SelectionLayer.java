@@ -2,7 +2,7 @@ package ares.application.gui.layers;
 
 import ares.application.gui.profiles.GraphicsModel;
 import ares.application.gui.profiles.AresGraphicsProfile;
-import ares.application.gui.providers.AresMiscGraphics;
+import ares.application.gui.providers.AresMiscTerrainGraphics;
 import ares.application.models.board.*;
 import ares.application.models.forces.FormationModel;
 import ares.application.models.forces.UnitModel;
@@ -17,8 +17,8 @@ import javax.swing.JViewport;
  */
 public class SelectionLayer extends AbstractImageLayer {
 
-    private final AresMiscGraphics brassCursor = AresMiscGraphics.BRASS_CURSOR;
-    private final AresMiscGraphics steelCursor = AresMiscGraphics.STEEL_CURSOR;
+    private final AresMiscTerrainGraphics brassCursor = AresMiscTerrainGraphics.BRASS_CURSOR;
+    private final AresMiscTerrainGraphics steelCursor = AresMiscTerrainGraphics.STEEL_CURSOR;
     private UnitModel selectedUnit;
     private FormationModel formation;
 
