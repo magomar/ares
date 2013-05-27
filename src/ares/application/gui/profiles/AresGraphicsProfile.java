@@ -44,11 +44,9 @@ public enum AresGraphicsProfile implements GraphicsProfile {
         return path;
     }
 
-
     @Override
     public int getOrdinal() {
         return ordinal();
     }
-    
-    
+  
 }

@@ -1,7 +1,7 @@
 package ares.application.gui.layers;
 
 import ares.application.gui.profiles.GraphicsModel;
-import ares.application.gui.providers.AresMiscGraphics;
+import ares.application.gui.providers.AresMiscTerrainGraphics;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.*;
 import ares.engine.knowledge.KnowledgeCategory;
@@ -62,7 +62,7 @@ public class TerrainLayer extends AbstractImageLayer {
         Point pos = GraphicsModel.INSTANCE.tileToPixel(tile.getCoordinates());
 
         // First paints the open terrain, any other terrain will be rendered upon it
-        BufferedImage terrainImage = GraphicsModel.INSTANCE.getActiveProvider(AresMiscGraphics.TERRAIN_MISCELANEOUS).getImage(Feature.OPEN.getCoordinates());
+        BufferedImage terrainImage = GraphicsModel.INSTANCE.getActiveProvider(AresMiscTerrainGraphics.TERRAIN_MISCELANEOUS).getImage(Feature.OPEN.getCoordinates());
         g2.drawImage(terrainImage, pos.x, pos.y, this);
 
         Map<Terrain, Directions> m = tile.getTerrain();
@@ -76,7 +76,7 @@ public class TerrainLayer extends AbstractImageLayer {
         }
         // Paint features 
         for (Feature feature : tile.getTerrainFeatures()) {
-            terrainImage = GraphicsModel.INSTANCE.getActiveProvider(AresMiscGraphics.TERRAIN_MISCELANEOUS).getImage(feature.getCoordinates());
+            terrainImage = GraphicsModel.INSTANCE.getActiveProvider(AresMiscTerrainGraphics.TERRAIN_MISCELANEOUS).getImage(feature.getCoordinates());
             g2.drawImage(terrainImage, pos.x, pos.y, this);
         }
         repaint(pos.x, pos.y, terrainImage.getWidth(), terrainImage.getHeight());
