@@ -18,7 +18,7 @@ import java.util.Map;
  */
 public class GraphicsModel {
 
-    public static final GraphicsModel INSTANCE = new GraphicsModel();
+    public static final GraphicsModel INSTANCE = new GraphicsModel(AresGraphicsProfile.values());
     /**
      * Board width in tiles
      */
@@ -48,25 +48,22 @@ public class GraphicsModel {
     private static final double hexRise = GraphicProperties.getRealProperty(NonProfiledGraphicProperty.TILE_RISE);
     private UnitDecorator[] unitDecorators;
 
-    private GraphicsModel() {
-    }
-
-    public void initialize(Board board, GraphicsProfile[] profiles) {
-
-        boardColumns = board.getWidth();
-        boardRows = board.getHeight();
+    private GraphicsModel(GraphicsProfile[] profiles) {
         this.profiles = profiles;
         providers = new ArrayList<>();
         unitDecorators = new UnitDecorator[profiles.length];
         for (int i = 0; i < profiles.length; i++) {
             providers.add(new HashMap<ImageProviderFactory, ImageProvider>());
         }
-//        setActiveProfile(profiles.length / 2);
-        setActiveProfile(0);
         for (int i = 0; i < profiles.length; i++) {
             unitDecorators[i] = new UnitDecorator(profiles[i]);
         }
+    }
 
+    public void initialize(Board board) {
+        boardColumns = board.getWidth();
+        boardRows = board.getHeight();
+        setActiveProfile(profiles.length / 2);   
     }
 
     public void addGraphics(ImageProviderFactory factory) {

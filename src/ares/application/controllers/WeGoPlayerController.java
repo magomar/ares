@@ -97,7 +97,7 @@ public class WeGoPlayerController {
         engine.setScenario(scenario);
         // Initialize GraphicsModel
         if (scenario != null) {
-            GraphicsModel.INSTANCE.initialize(scenario.getBoard(), AresGraphicsProfile.values());
+            GraphicsModel.INSTANCE.initialize(scenario.getBoard());
             GraphicsModel.INSTANCE.addAllGraphics(Terrain.values());
             GraphicsModel.INSTANCE.addAllGraphics(AresMiscTerrainGraphics.values());
             GraphicsModel.INSTANCE.addAllGraphics(UnitsColor.values());

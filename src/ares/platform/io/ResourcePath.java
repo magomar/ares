@@ -51,4 +51,7 @@ public enum ResourcePath {
         return relativePath;
     }
     
+    public Path getSubPath(String... subPath) {
+        return FileSystems.getDefault().getPath(folderPath.toString(), subPath);
+    }
 }
