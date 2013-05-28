@@ -32,14 +32,14 @@ public class GraphicProperties {
         return Double.parseDouble(GRAPHICS.getProperty(property.getName()));
     }
 
-    public static int getProperty(GraphicProperty property, GraphicsProfile profile) {
+    public static int getProperty(GraphicProperty property, int profile) {
         String[] values = GRAPHICS.getProperty(property.getName()).split(",");
-        return Integer.parseInt(values[profile.getOrdinal()]);
+        return Integer.parseInt(values[profile]);
     }
 
-    public static double getRealProperty(GraphicProperty property, GraphicsProfile profile) {
+    public static double getRealProperty(GraphicProperty property, int profile) {
         String[] values = GRAPHICS.getProperty(property.getName()).split(",");
-        return Double.parseDouble(values[profile.getOrdinal()]);
+        return Double.parseDouble(values[profile]);
     }
 //    private static boolean isInteger(String s) {
 //        try {

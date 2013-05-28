@@ -9,6 +9,12 @@ import ares.platform.io.ResourcePath;
  */
 public enum AresGraphicsProfile implements GraphicsProfile {
 
+    MICRO(ResourcePath.GRAPHICS_MICRO) {
+        @Override
+        public String getFilename(String filename) {
+            return "micro_" + filename;
+        }
+    },
     SMALL(ResourcePath.GRAPHICS_SMALL) {
         @Override
         public String getFilename(String filename) {
@@ -27,7 +33,6 @@ public enum AresGraphicsProfile implements GraphicsProfile {
             return "h_" + filename;
         }
     };
-
     private final String path;
 
     private AresGraphicsProfile(final ResourcePath resourcePath) {
@@ -48,5 +53,4 @@ public enum AresGraphicsProfile implements GraphicsProfile {
     public int getOrdinal() {
         return ordinal();
     }
-  
 }

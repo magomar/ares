@@ -116,13 +116,13 @@ public class MatrixImageProvider implements ImageProvider {
 
     private BufferedImage loadGraphics() {
         File file = FileSystems.getDefault().getPath(path, filename).toFile();
-        if (!file.exists()) {
-            String alternateFilename = filename.substring(0, filename.lastIndexOf('.')) + ".bmp";
-            file = FileSystems.getDefault().getPath(path, alternateFilename).toFile();
-        }
+//        if (!file.exists()) {
+//            String alternateFilename = filename.substring(0, filename.lastIndexOf('.')) + ".bmp";
+//            file = FileSystems.getDefault().getPath(path, alternateFilename).toFile();
+//        }
         if (!file.exists()) {
             LOG.log(Level.SEVERE, " Image file not found {0}", filename);
-            return null;
+            return new BufferedImage(fullImageDimension.width, fullImageDimension.height, BufferedImage.TYPE_INT_ARGB);
         }
         BufferedImage bi = FileIO.loadImage(file);
         return bi;
