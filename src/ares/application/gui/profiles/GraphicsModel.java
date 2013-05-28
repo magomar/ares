@@ -327,6 +327,6 @@ public class GraphicsModel {
     }
     
     public int getActiveProfilerProperty(ProfiledGraphicProperty property) {
-        return GraphicProperties.getProperty(property, activeProfile);
+        return GraphicProperties.getProperty(property, activeProfileIndex);
     }
 }
