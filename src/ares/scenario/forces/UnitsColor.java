@@ -1,7 +1,6 @@
 package ares.scenario.forces;
 
 import ares.application.gui.profiles.GraphicProperties;
-import ares.application.gui.profiles.GraphicsProfile;
 import ares.application.gui.providers.ImageProvider;
 import ares.application.gui.providers.ImageProviderFactory;
 import ares.application.gui.profiles.NonProfiledGraphicProperty;
@@ -151,22 +150,23 @@ public enum UnitsColor implements ImageProviderFactory {
     }
 
     @Override
-    public String getFilename(GraphicsProfile profile) {
-        if (profile.getOrdinal() == 0) {
-            return profile.getFilename(microFilename);
+    public String getFilename(int profile) {
+        String prefix = GraphicProperties.getProfilePrefix(profile);
+        if (profile == 0) {
+            return prefix + "_" + microFilename;
         } else {
-            return profile.getFilename(filename);
+            return prefix + "_" + filename;
         }
     }
 
     @Override
-    public ImageProvider createImageProvider(GraphicsProfile profile) {
-        int ordinal = profile.getOrdinal();
+    public ImageProvider createImageProvider(int profile) {
         int rows = GraphicProperties.getProperty(NonProfiledGraphicProperty.UNITS_ROWS);
         int columns = GraphicProperties.getProperty(NonProfiledGraphicProperty.UNITS_COLUMNS);
-        int fullImageWidth = GraphicProperties.getProperty(ProfiledGraphicProperty.UNITS_WIDTH, ordinal);
-        int fullImageHeight = GraphicProperties.getProperty(ProfiledGraphicProperty.UNITS_HEIGHT, ordinal);
-        return new MatrixImageProvider(profile.getPath(), getFilename(profile), rows, columns, fullImageWidth, fullImageHeight);
+        int fullImageWidth = GraphicProperties.getProperty(ProfiledGraphicProperty.UNITS_WIDTH, profile);
+        int fullImageHeight = GraphicProperties.getProperty(ProfiledGraphicProperty.UNITS_HEIGHT, profile);
+        return new MatrixImageProvider(GraphicProperties.getProfilePath(profile), getFilename(profile), 
+                rows, columns, fullImageWidth, fullImageHeight);
     }
 
     public Point getCoordinates(int index) {

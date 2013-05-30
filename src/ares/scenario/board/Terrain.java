@@ -1,7 +1,6 @@
 package ares.scenario.board;
 
 import ares.application.gui.profiles.GraphicProperties;
-import ares.application.gui.profiles.GraphicsProfile;
 import ares.application.gui.providers.ImageProvider;
 import ares.application.gui.providers.ImageProviderFactory;
 import ares.application.gui.profiles.NonProfiledGraphicProperty;
@@ -152,21 +151,21 @@ public enum Terrain implements ImageProviderFactory {
     }
 
     @Override
-    public String getFilename(GraphicsProfile profile) {
-        if (profile.getOrdinal() == 0 && !microProfile) {
-            return profile.getFilename("terrain_null.png");
+    public String getFilename(int profile) {
+        String prefix = GraphicProperties.getProfilePrefix(profile);
+        if (profile == 0 && !microProfile) {
+            return prefix +"_terrain_null.png";
         } else {
-            return profile.getFilename(filename);
+            return prefix + "_" + filename;
         }
     }
 
     @Override
-    public ImageProvider createImageProvider(GraphicsProfile profile) {
-        int ordinal = profile.getOrdinal();
+    public ImageProvider createImageProvider(int profile) {
         int rows = GraphicProperties.getProperty(NonProfiledGraphicProperty.TILES_ROWS);
         int columns = GraphicProperties.getProperty(NonProfiledGraphicProperty.TILES_COLUMNS);
-        int fullImageWidth = GraphicProperties.getProperty(ProfiledGraphicProperty.TILES_WIDTH, ordinal);
-        int fullImageHeight = GraphicProperties.getProperty(ProfiledGraphicProperty.TILES_HEIGHT, ordinal);
-        return new MatrixImageProvider(profile.getPath(), getFilename(profile), rows, columns, fullImageWidth, fullImageHeight);
+        int fullImageWidth = GraphicProperties.getProperty(ProfiledGraphicProperty.TILES_WIDTH, profile);
+        int fullImageHeight = GraphicProperties.getProperty(ProfiledGraphicProperty.TILES_HEIGHT, profile);
+        return new MatrixImageProvider(GraphicProperties.getProfilePath(profile), getFilename(profile), rows, columns, fullImageWidth, fullImageHeight);
     }
 }

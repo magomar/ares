@@ -19,10 +19,6 @@ public enum ResourcePath {
     ICONS_MEDIUM("Graphics/Icons/Medium"),
     ICONS_LARGE("Graphics/Icons/Large"),
     GRAPHICS_BACKGROUND("Graphics/Background"),
-    GRAPHICS_MICRO("Graphics/Micro"),
-    GRAPHICS_SMALL("Graphics/Small"),
-    GRAPHICS_MEDIUM("Graphics/Medium"),
-    GRAPHICS_HIGH("Graphics/High"),
     OTHER("Graphics/Other");
     private final String relativePath;
     private final Path folderPath;

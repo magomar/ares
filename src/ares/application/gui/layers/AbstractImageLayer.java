@@ -1,7 +1,6 @@
 package ares.application.gui.layers;
 
 import ares.application.gui.profiles.GraphicsModel;
-import ares.application.gui.layers.ImageLayer;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import javax.swing.JPanel;
@@ -14,6 +13,7 @@ import javax.swing.JViewport;
  */
 public abstract class AbstractImageLayer extends JPanel implements ImageLayer {
 
+    protected int profile;
     /**
      * Image to be rendered on this layer
      */
@@ -29,12 +29,21 @@ public abstract class AbstractImageLayer extends JPanel implements ImageLayer {
     protected JViewport viewport;
 
     /**
-     * Creates a new instance of this class with independent graphics ({@code parentLayer == null})
+     * Creates a new instance of this class with independent image ({@code parentLayer == null}) of given {@code width}
+     * and {@code height}, linked to given {@code viewport}
+     *
+     * @param viewport
      */
     public AbstractImageLayer(JViewport viewport) {
         this(viewport, null);
     }
 
+    /**
+     * Creates a new instance of this class sharing image with {@code parentLayer}
+     *
+     * @param viewport the viewport where this image layer is shown
+     * @param parentLayer the {@link AbstractImageLayer} this layer shares its {@link #globalImage} with
+     */
     public AbstractImageLayer(JViewport viewport, AbstractImageLayer parentLayer) {
         setOpaque(false);
         this.viewport = viewport;
@@ -44,7 +53,9 @@ public abstract class AbstractImageLayer extends JPanel implements ImageLayer {
     @Override
     public final void initialize() {
         if (parentLayer == null) {
-            globalImage = new BufferedImage(GraphicsModel.INSTANCE.getBoardWidth(), GraphicsModel.INSTANCE.getBoardHeight(), BufferedImage.TYPE_INT_ARGB);
+            globalImage = new BufferedImage(GraphicsModel.INSTANCE.getBoardWidth(profile),
+            GraphicsModel.INSTANCE.getBoardHeight(profile), BufferedImage.TYPE_INT_ARGB);
+//            globalImage = new BufferedImage(this.getWidth(), this.getHeight(), BufferedImage.TYPE_INT_ARGB);
         } else {
             globalImage = parentLayer.globalImage;
         }
@@ -56,6 +67,7 @@ public abstract class AbstractImageLayer extends JPanel implements ImageLayer {
 
     @Override
     public final void flush() {
+        globalImage.flush();
         globalImage = null;
     }
 
@@ -89,5 +101,13 @@ public abstract class AbstractImageLayer extends JPanel implements ImageLayer {
     @Override
     public BufferedImage getGlobalImage() {
         return globalImage;
+    }
+
+    @Override
+    public void setProfile(int profile) {
+        this.profile = profile;
+        Dimension imageSize = new Dimension(GraphicsModel.INSTANCE.getBoardWidth(profile), GraphicsModel.INSTANCE.getBoardHeight(profile));
+        setPreferredSize(imageSize);
+        setSize(imageSize);
     }
 }

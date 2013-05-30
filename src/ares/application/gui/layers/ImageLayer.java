@@ -26,4 +26,6 @@ public interface ImageLayer {
     void setVisible(boolean visible);
     
     boolean isVisible();
+    
+    void setProfile(int profile);
 }

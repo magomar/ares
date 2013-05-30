@@ -1,7 +1,6 @@
 package ares.application.gui.providers;
 
 import ares.application.gui.profiles.GraphicProperties;
-import ares.application.gui.profiles.GraphicsProfile;
 import ares.application.gui.profiles.ProfiledGraphicProperty;
 
 /**
@@ -35,19 +34,19 @@ public enum AresMiscTerrainGraphics implements ImageProviderFactory {
     }
 
     @Override
-    public String getFilename(GraphicsProfile profile) {
-        if (profile.getOrdinal() == 0 && !microProfile) {
-            return profile.getFilename("terrain_null.png");
+    public String getFilename(int profile) {
+        String prefix = GraphicProperties.getProfilePrefix(profile);
+        if (profile == 0 && !microProfile) {
+            return prefix + "_terrain_null.png";
         } else {
-            return profile.getFilename(filename);
+            return prefix + "_" + filename;
         }
     }
 
     @Override
-    public ImageProvider createImageProvider(GraphicsProfile profile) {
-        int ordinal = profile.getOrdinal();
-        int fullImageWidth = GraphicProperties.getProperty(ProfiledGraphicProperty.TILE_WIDTH, ordinal) * columns;
-        int fullImageHeight = GraphicProperties.getProperty(ProfiledGraphicProperty.TILE_HEIGHT, ordinal) * rows;
-        return new MatrixImageProvider(profile.getPath(), getFilename(profile), rows, columns, fullImageWidth, fullImageHeight);
+    public ImageProvider createImageProvider(int profile) {
+        int fullImageWidth = GraphicProperties.getProperty(ProfiledGraphicProperty.TILE_WIDTH, profile) * columns;
+        int fullImageHeight = GraphicProperties.getProperty(ProfiledGraphicProperty.TILE_HEIGHT, profile) * rows;
+        return new MatrixImageProvider(GraphicProperties.getProfilePath(profile), getFilename(profile), rows, columns, fullImageWidth, fullImageHeight);
     }
 }

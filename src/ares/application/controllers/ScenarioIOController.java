@@ -8,7 +8,9 @@ import ares.application.commands.FileCommands;
 import ares.application.models.ScenarioModel;
 import ares.application.commands.AresCommandGroup;
 import ares.application.AresPlayerGUI;
+import ares.application.boundaries.view.MiniMapViewer;
 import ares.application.gui.components.StartScenarioPane;
+import ares.application.gui.profiles.GraphicsModel;
 import ares.application.views.MessagesHandler;
 import ares.data.jaxb.EquipmentDB;
 import ares.application.io.AresFileType;
@@ -49,6 +51,7 @@ public final class ScenarioIOController extends AbstractSecondaryController {
     private final BoardViewer boardView;
     private final InfoViewer infoView;
     private final OOBViewer oobView;
+    private final MiniMapViewer miniMapView;
     private final Action open = new CommandAction(FileCommands.GAME_NEW, new OpenScenarioActionListener());
     private final Action load = new CommandAction(FileCommands.GAME_LOAD, new LoadScenarioActionListener());
     private final Action close = new CommandAction(FileCommands.GAME_CLOSE, new CloseScenarioActionListener(), false);
@@ -64,6 +67,7 @@ public final class ScenarioIOController extends AbstractSecondaryController {
         this.infoView = mainController.getInfoView();
         this.welcomeView = mainController.getWelcomeScreenView();
         this.oobView = mainController.getOobView();
+        this.miniMapView = mainController.getMiniMapView();
         LOG.addHandler(mainController.getMessagesView().getHandler());
 
         //Add actions to the views
@@ -125,7 +129,12 @@ public final class ScenarioIOController extends AbstractSecondaryController {
 
                 // obtain the scenario model with the active userRole
                 ScenarioModel scenarioModel = scenario.getModel(mainController.getUserRole());
+                miniMapView.setProfile(0);
+                miniMapView.loadScenario(scenarioModel);
+                boardView.setProfile(GraphicsModel.INSTANCE.getActiveProfile());
                 boardView.loadScenario(scenarioModel);
+
+                oobView.loadScenario(scenarioModel);
                 // set main window title & show appropriate views
                 mainView.setTitle("ARES   " + scenario.getName() + "   " + Clock.INSTANCE.toStringVerbose()
                         + "   Role: " + mainController.getUserRole());
@@ -135,7 +144,6 @@ public final class ScenarioIOController extends AbstractSecondaryController {
                 toolBarView.setVisible(true);
                 String scenInfo = scenario.getName() + "\n" + Clock.INSTANCE.toStringVerbose() + "\nRole: " + mainController.getUserRole();
                 infoView.updateScenarioInfo(scenInfo, Clock.INSTANCE.getNow());
-                oobView.loadScenario(scenarioModel);
                 System.gc();
             }
         }
@@ -160,9 +168,11 @@ public final class ScenarioIOController extends AbstractSecondaryController {
             close.setEnabled(false);
             menuView.setVisible(false);
             toolBarView.setVisible(false);
-            boardView.closeScenario();
+            boardView.flush();
+            miniMapView.flush();
+            oobView.flush();
             mainView.switchCard(AresPlayerGUI.MAIN_MENU_CARD);
-
+            System.gc();
         }
     }
 
