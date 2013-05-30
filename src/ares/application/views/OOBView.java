@@ -83,4 +83,9 @@ public class OOBView extends AbstractView<JScrollPane> implements OOBViewer {
         }
         return null;
     }
+
+    @Override
+    public void flush() {
+       tabbedPane.removeAll();
+    }
 }

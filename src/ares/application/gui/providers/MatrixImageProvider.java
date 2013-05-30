@@ -1,6 +1,7 @@
 package ares.application.gui.providers;
 
 import ares.platform.io.FileIO;
+import ares.platform.io.ResourcePath;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
@@ -115,13 +116,13 @@ public class MatrixImageProvider implements ImageProvider {
     }
 
     private BufferedImage loadGraphics() {
-        File file = FileSystems.getDefault().getPath(path, filename).toFile();
+        File file = FileSystems.getDefault().getPath(ResourcePath.GRAPHICS.getFolderPath().toString(), path, filename).toFile();
 //        if (!file.exists()) {
 //            String alternateFilename = filename.substring(0, filename.lastIndexOf('.')) + ".bmp";
 //            file = FileSystems.getDefault().getPath(path, alternateFilename).toFile();
 //        }
         if (!file.exists()) {
-            LOG.log(Level.SEVERE, " Image file not found {0}", filename);
+            LOG.log(Level.SEVERE, " Image file not found {0}", file.getPath());
             return new BufferedImage(fullImageDimension.width, fullImageDimension.height, BufferedImage.TYPE_INT_ARGB);
         }
         BufferedImage bi = FileIO.loadImage(file);

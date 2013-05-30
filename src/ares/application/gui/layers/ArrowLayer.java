@@ -1,5 +1,6 @@
 package ares.application.gui.layers;
 
+import ares.application.gui.decorators.ImageDecorators;
 import ares.engine.algorithms.pathfinding.Path;
 import ares.engine.algorithms.pathfinding.Node;
 import ares.application.gui.profiles.GraphicsModel;
@@ -130,9 +131,9 @@ public class ArrowLayer extends AbstractImageLayer {
      */
     private void paintFinalArrowSegment(Graphics2D g2, Node node, Direction direction, ArrowType type) {
         Point coordinates = Directions.getDirections(direction.ordinal() + 25).getCoordinates();
-        BufferedImage arrowImage = GraphicsModel.INSTANCE.getActiveProvider(type.getProvider()).getImage(coordinates);
+        BufferedImage arrowImage = GraphicsModel.INSTANCE.getImageProvider(type.getProvider(), profile).getImage(coordinates);
         Tile tile = node.getTile();
-        Point pos = GraphicsModel.INSTANCE.tileToPixel(tile.getCoordinates());
+        Point pos = GraphicsModel.INSTANCE.tileToPixel(tile.getCoordinates(), profile);
         g2.drawImage(arrowImage, pos.x, pos.y, this);
         repaint(pos.x, pos.y, arrowImage.getWidth(), arrowImage.getHeight());
     }
@@ -147,12 +148,17 @@ public class ArrowLayer extends AbstractImageLayer {
      */
     private void paintFinalArrowSegmentWithCost(Graphics2D g2, Node node, Direction direction, ArrowType type) {
         Point coordinates = Directions.getDirections(direction.ordinal() + 25).getCoordinates();
-        BufferedImage arrowImage = GraphicsModel.INSTANCE.getActiveProvider(type.getProvider()).getImage(coordinates);
+        BufferedImage arrowImage = GraphicsModel.INSTANCE.getImageProvider(type.getProvider(), profile).getImage(coordinates);
         Tile tile = node.getTile();
-        Point pos = GraphicsModel.INSTANCE.tileToPixel(tile.getCoordinates());
+        Point pos = GraphicsModel.INSTANCE.tileToPixel(tile.getCoordinates(), profile);
         g2.drawImage(arrowImage, pos.x, pos.y, this);
+        BufferedImage subImage = globalImage.getSubimage(pos.x, pos.y, arrowImage.getWidth(), arrowImage.getHeight());
+        Graphics2D arrowG2 = subImage.createGraphics();
+        arrowG2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+        ImageDecorators decorator = GraphicsModel.INSTANCE.getImageDecorators(profile);
         int cost = (int) node.getG();
-        g2.drawString(Integer.toString(cost), pos.x + arrowImage.getWidth() / 2, pos.y + arrowImage.getHeight() / 2);
+        decorator.paintArrowCost(arrowG2, cost);
+        arrowG2.dispose();
         repaint(pos.x, pos.y, arrowImage.getWidth(), arrowImage.getHeight());
     }
 
@@ -166,9 +172,9 @@ public class ArrowLayer extends AbstractImageLayer {
      */
     private void paintArrowSegment(Graphics2D g2, Node node, Set<Direction> directions, ArrowType type) {
         Point coordinates = Directions.getDirections(Direction.getBitmask(directions)).getCoordinates();
-        BufferedImage arrowImage = GraphicsModel.INSTANCE.getActiveProvider(type.getProvider()).getImage(coordinates);
+        BufferedImage arrowImage = GraphicsModel.INSTANCE.getImageProvider(type.getProvider(), profile).getImage(coordinates);
         Tile tile = node.getTile();
-        Point pos = GraphicsModel.INSTANCE.tileToPixel(tile.getCoordinates());
+        Point pos = GraphicsModel.INSTANCE.tileToPixel(tile.getCoordinates(), profile);
         g2.drawImage(arrowImage, pos.x, pos.y, this);
         repaint(pos.x, pos.y, arrowImage.getWidth(), arrowImage.getHeight());
     }
@@ -181,12 +187,17 @@ public class ArrowLayer extends AbstractImageLayer {
      */
     private void paintArrowSegmentWithCost(Graphics2D g2, Node node, Set<Direction> directions, ArrowType type) {
         Point coordinates = Directions.getDirections(Direction.getBitmask(directions)).getCoordinates();
-        BufferedImage arrowImage = GraphicsModel.INSTANCE.getActiveProvider(type.getProvider()).getImage(coordinates);
+        BufferedImage arrowImage = GraphicsModel.INSTANCE.getImageProvider(type.getProvider(), profile).getImage(coordinates);
         Tile tile = node.getTile();
-        Point pos = GraphicsModel.INSTANCE.tileToPixel(tile.getCoordinates());
+        Point pos = GraphicsModel.INSTANCE.tileToPixel(tile.getCoordinates(), profile);
         g2.drawImage(arrowImage, pos.x, pos.y, this);
+        BufferedImage subImage = globalImage.getSubimage(pos.x, pos.y, arrowImage.getWidth(), arrowImage.getHeight());
+        Graphics2D arrowG2 = subImage.createGraphics();
+        arrowG2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+        ImageDecorators decorator = GraphicsModel.INSTANCE.getImageDecorators(profile);
         int cost = (int) node.getG();
-        g2.drawString(Integer.toString(cost), pos.x + arrowImage.getWidth() / 2, pos.y + arrowImage.getHeight() / 2);
+        decorator.paintArrowCost(arrowG2, cost);
+        arrowG2.dispose();
         repaint(pos.x, pos.y, arrowImage.getWidth(), arrowImage.getHeight());
     }
 

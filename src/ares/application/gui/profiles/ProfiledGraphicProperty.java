@@ -53,7 +53,8 @@ public enum ProfiledGraphicProperty implements GraphicProperty {
     UNIT_HEIGHT,
     UNIT_FONT_SIZE,
     UNIT_LED_LENGHT,
-    UNIT_BAR_LENGHT;
+    UNIT_BAR_LENGHT,
+    ARROW_FONT_SIZE;
     private final String name;
 
     private ProfiledGraphicProperty() {

@@ -1,5 +1,6 @@
 package ares.application.gui.profiles;
 
+import java.awt.Font;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -14,6 +15,8 @@ public class GraphicProperties {
 
     private static final Properties GRAPHICS;
     private static final String filename = "config/graphics.properties";
+    public static final String FONT_NAME = "Arial";
+    public static final int FONT_STYLE = Font.PLAIN;
 
     static {
         GRAPHICS = new Properties();
@@ -22,6 +25,20 @@ public class GraphicProperties {
         } catch (IOException ex) {
             Logger.getLogger(GraphicProperties.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public static int getNumProfiles() {
+        return Integer.parseInt(GRAPHICS.getProperty("num_profiles"));
+    }
+
+    public static String getProfilePath(int profile) {
+        String[] values = GRAPHICS.getProperty("paths").split(",");
+        return values[profile];
+    }
+
+    public static String getProfilePrefix(int profile) {
+        String[] values = GRAPHICS.getProperty("filename_prefix").split(",");
+        return values[profile];
     }
 
     public static int getProperty(GraphicProperty property) {

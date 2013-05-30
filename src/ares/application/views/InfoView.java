@@ -8,14 +8,13 @@ import ares.platform.view.AbstractView;
 import java.util.Calendar;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 /**
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public class InfoView extends AbstractView<JScrollPane> implements InfoViewer {
+public class InfoView extends AbstractView<JPanel> implements InfoViewer {
 
 //    private JTextArea scenInfo;
     private JTextArea unitInfo;
@@ -23,7 +22,7 @@ public class InfoView extends AbstractView<JScrollPane> implements InfoViewer {
     private ScenarioInfoPane scenInfo;
     
     @Override
-    protected JScrollPane layout() {
+    protected JPanel layout() {
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         scenInfo = new ScenarioInfoPane();
@@ -34,7 +33,7 @@ public class InfoView extends AbstractView<JScrollPane> implements InfoViewer {
         panel.add(scenInfo);
         panel.add(tileInfo);
         panel.add(unitInfo);
-        return new JScrollPane(panel);
+        return panel;
     }
 
     @Override

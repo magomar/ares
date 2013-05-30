@@ -17,4 +17,6 @@ public interface OOBViewer {
     void addTreeSelectionListener(TreeSelectionListener listener);
     
     void select(Unit unit);
+
+    public void flush();
 }
