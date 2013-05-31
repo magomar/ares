@@ -1,8 +1,7 @@
 package ares.application.gui.layers;
 
 import ares.application.gui.profiles.GraphicsModel;
-import ares.application.gui.profiles.AresGraphicsProfile;
-import ares.application.gui.providers.AresMiscGraphics;
+import ares.application.gui.providers.AresMiscTerrainGraphics;
 import ares.application.models.board.*;
 import ares.application.models.forces.FormationModel;
 import ares.application.models.forces.UnitModel;
@@ -17,8 +16,6 @@ import javax.swing.JViewport;
  */
 public class SelectionLayer extends AbstractImageLayer {
 
-    private final AresMiscGraphics brassCursor = AresMiscGraphics.BRASS_CURSOR;
-    private final AresMiscGraphics steelCursor = AresMiscGraphics.STEEL_CURSOR;
     private UnitModel selectedUnit;
     private FormationModel formation;
 
@@ -36,15 +33,15 @@ public class SelectionLayer extends AbstractImageLayer {
         for (UnitModel u : formation.getUnitModels()) {
             if (!u.equals(selectedUnit)) {
                 TileModel t = u.getLocation();
-                paintCursor(g2, u.getLocation(), GraphicsModel.INSTANCE.getActiveProvider(steelCursor).getImage(0,0));
+                paintCursor(g2, u.getLocation(), GraphicsModel.INSTANCE.getImageProvider(AresMiscTerrainGraphics.STEEL_CURSOR, profile).getImage(0,0));
             }
         }
-        paintCursor(g2, selectedUnit.getLocation(), GraphicsModel.INSTANCE.getActiveProvider(brassCursor).getImage(0,0));
+        paintCursor(g2, selectedUnit.getLocation(), GraphicsModel.INSTANCE.getImageProvider(AresMiscTerrainGraphics.BRASS_CURSOR,profile).getImage(0,0));
         g2.dispose();
     }
 
     private void paintCursor(Graphics2D g2, TileModel tile, BufferedImage image) {
-        Point pos = GraphicsModel.INSTANCE.tileToPixel(tile.getCoordinates());
+        Point pos = GraphicsModel.INSTANCE.tileToPixel(tile.getCoordinates(), profile);
         g2.drawImage(image, pos.x, pos.y, this);
         repaint(pos.x, pos.y, image.getWidth(), image.getHeight());
     }

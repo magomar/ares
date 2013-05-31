@@ -1,7 +1,5 @@
 package ares.application.gui.providers;
 
-import ares.application.gui.profiles.GraphicsProfile;
-import ares.platform.io.FileIO;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
@@ -13,8 +11,7 @@ import java.awt.image.BufferedImage;
 public interface ImageProvider {
 
     /**
-     * Returns the base filename of a particular graphics provider.
-     * <p>Note that the actual filename depends on the particular {@link GraphicsProfile}
+     * Returns filename of a graphics image file
      *
      * @return
      */
@@ -62,17 +59,6 @@ public interface ImageProvider {
      * @return
      */
     BufferedImage getImage(int index);
-
-//    /**
-//     * Gets the first or only sprite in the graphics of this provider
-//     * <p> {@code column = 1}
-//     * <p> {@code row = 1}
-//     *
-//     * @param profile
-//     * @param index
-//     * @return
-//     */
-//    BufferedImage getImage();
 
     /**
      * Gets the complete image containing all the graphics for this provider

@@ -37,6 +37,7 @@ import javax.swing.JViewport;
  */
 public class BoardView extends AbstractView<JScrollPane> implements BoardViewer {
 
+    private int profile;
     private JLayeredPane layeredPane;
     private TerrainLayer terrainLayer;
     private UnitsLayer unitsLayer;
@@ -48,25 +49,24 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
 //    private final static int LOW = 1;
 //    private final static int MID = 2;
 //    private final static int HIGH = 3;
+
     /**
      * This matrix has all the layers sorted by depth and priority.
      *
      * First level (index 0) is the array with all the existing layers Next indexes are set in such way that the bigger
      * it is the "closer" is to the user. Layers are processed in index order (from left to right)
      */
-    private final ImageLayer[][] imageLayersMatrix = {
-        // Low level
-        {terrainLayer},
-        // Mid level
-        {gridLayer, selectionLayer, arrowLayer, pathSearchLayer},
-        // High level
-        {unitsLayer}};
+//    private final ImageLayer[][] imageLayersMatrix = {
+//        // Low level
+//        {terrainLayer},
+//        // Mid level
+//        {gridLayer, selectionLayer, arrowLayer, pathSearchLayer},
+//        // High level
+//        {unitsLayer}};
 //    private final Thread[] layerThreads;
-
-    public BoardView() {
+//    public BoardView() {
 //        layerThreads = new Thread[imageLayers.length];
-    }
-
+//    }
     @Override
     protected JScrollPane layout() {
         JScrollPane scrollPane = new JScrollPane();
@@ -108,8 +108,14 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
 
     @Override
     public void loadScenario(final ScenarioModel scenario) {
-        Dimension imageSize = new Dimension(GraphicsModel.INSTANCE.getBoardWidth(), GraphicsModel.INSTANCE.getBoardHeight());
+        Dimension imageSize = new Dimension(GraphicsModel.INSTANCE.getBoardWidth(profile), GraphicsModel.INSTANCE.getBoardHeight(profile));
         layeredPane.setPreferredSize(imageSize);
+        for (int i = 0; i < allLayers.length; i++) {
+            ImageLayer imageLayer = allLayers[i];
+            imageLayer.setProfile(profile);
+            imageLayer.initialize();
+        }
+
 //        layeredPane.setSize(imageSize);
         // Prepare each layer's thread
 //        for (int depth = 0; depth < imageLayers.length; depth++) {
@@ -123,15 +129,15 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
 //                }
 //            });
 //        }
-        // Setup laye sizes and the start threads
-        for (int depthLevel = 0; depthLevel < imageLayersMatrix.length; depthLevel++) {
-            for (int priority = 0; priority < imageLayersMatrix[depthLevel].length; priority++) {
-                imageLayersMatrix[depthLevel][priority].setPreferredSize(imageSize);
-                imageLayersMatrix[depthLevel][priority].setSize(imageSize);
-                imageLayersMatrix[depthLevel][priority].initialize();
-            }
+        // Setup layer sizes and the start threads
+//        for (int depthLevel = 0; depthLevel < imageLayersMatrix.length; depthLevel++) {
+//            for (int priority = 0; priority < imageLayersMatrix[depthLevel].length; priority++) {
+//                imageLayersMatrix[depthLevel][priority].setPreferredSize(imageSize);
+//                imageLayersMatrix[depthLevel][priority].setSize(imageSize);
+//                imageLayersMatrix[depthLevel][priority].initialize();
+//            }
 //            layerThreads[depthLevel].start();
-        }
+//        }
         // Render board: paint terrain and units
         terrainLayer.paintTerrain(scenario);
         unitsLayer.paintAllUnits(scenario);
@@ -144,11 +150,10 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
     }
 
     @Override
-    public void closeScenario() {
-        for (int layer = 0; layer < imageLayersMatrix.length; layer++) {
-            for (int subLayer = 0; subLayer < imageLayersMatrix[layer].length; subLayer++) {
-                imageLayersMatrix[layer][subLayer].flush();
-            }
+    public void flush() {
+        for (int i = 0; i < allLayers.length; i++) {
+            ImageLayer imageLayer = allLayers[i];
+            imageLayer.flush();
         }
     }
 
@@ -223,7 +228,7 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
     public void centerViewOn(UnitModel selectedUnit, FormationModel selectedFormation) {
         JScrollBar verticalScrollBar = contentPane.getVerticalScrollBar();
         JScrollBar horizontalScrollBar = contentPane.getHorizontalScrollBar();
-        Point pos = GraphicsModel.INSTANCE.tileToPixel(selectedUnit.getLocation().getCoordinates());
+        Point pos = GraphicsModel.INSTANCE.tileToPixel(selectedUnit.getLocation().getCoordinates(), profile);
         Dimension viewportSize = contentPane.getViewport().getSize();
         int boardWidth = terrainLayer.getGlobalImage().getWidth();
         int boardHeight = terrainLayer.getGlobalImage().getHeight();
@@ -245,5 +250,18 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
 
     public ImageLayer[] getAllLayers() {
         return allLayers;
+    }
+
+    @Override
+    public void setProfile(int profile) {
+        this.profile = profile;
+        Dimension imageSize = new Dimension(GraphicsModel.INSTANCE.getBoardWidth(profile), GraphicsModel.INSTANCE.getBoardHeight(profile));
+        layeredPane.setPreferredSize(imageSize);
+        layeredPane.setSize(imageSize);
+        for (int i = 0; i < allLayers.length; i++) {
+            ImageLayer imageLayer = allLayers[i];
+            imageLayer.setProfile(profile);
+            imageLayer.initialize();
+        }
     }
 }

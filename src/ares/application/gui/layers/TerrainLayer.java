@@ -1,7 +1,7 @@
 package ares.application.gui.layers;
 
 import ares.application.gui.profiles.GraphicsModel;
-import ares.application.gui.providers.AresMiscGraphics;
+import ares.application.gui.providers.AresMiscTerrainGraphics;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.*;
 import ares.engine.knowledge.KnowledgeCategory;
@@ -59,10 +59,11 @@ public class TerrainLayer extends AbstractImageLayer {
         }
 
         //Calculate tile position
-        Point pos = GraphicsModel.INSTANCE.tileToPixel(tile.getCoordinates());
+        Point pos = GraphicsModel.INSTANCE.tileToPixel(tile.getCoordinates(), profile);
 
         // First paints the open terrain, any other terrain will be rendered upon it
-        BufferedImage terrainImage = GraphicsModel.INSTANCE.getActiveProvider(AresMiscGraphics.TERRAIN_MISCELANEOUS).getImage(Feature.OPEN.getCoordinates());
+        BufferedImage terrainImage = GraphicsModel.INSTANCE.getImageProvider(AresMiscTerrainGraphics.TERRAIN_MISCELANEOUS, profile).getImage(Feature.OPEN.getCoordinates());
+        
         g2.drawImage(terrainImage, pos.x, pos.y, this);
 
         Map<Terrain, Directions> m = tile.getTerrain();
@@ -70,13 +71,13 @@ public class TerrainLayer extends AbstractImageLayer {
             Terrain terrain = entry.getKey();
             Directions directions = entry.getValue();
             Point imageCoordinates = directions.getCoordinates();
-            terrainImage = GraphicsModel.INSTANCE.getActiveProvider(terrain).getImage(imageCoordinates);
+            terrainImage = GraphicsModel.INSTANCE.getImageProvider(terrain, profile).getImage(imageCoordinates);
             // Paint terrain image
             g2.drawImage(terrainImage, pos.x, pos.y, this);
         }
         // Paint features 
         for (Feature feature : tile.getTerrainFeatures()) {
-            terrainImage = GraphicsModel.INSTANCE.getActiveProvider(AresMiscGraphics.TERRAIN_MISCELANEOUS).getImage(feature.getCoordinates());
+            terrainImage = GraphicsModel.INSTANCE.getImageProvider(AresMiscTerrainGraphics.TERRAIN_MISCELANEOUS, profile).getImage(feature.getCoordinates());
             g2.drawImage(terrainImage, pos.x, pos.y, this);
         }
         repaint(pos.x, pos.y, terrainImage.getWidth(), terrainImage.getHeight());

@@ -7,6 +7,7 @@ import ares.engine.algorithms.pathfinding.AStar;
 import ares.application.boundaries.view.BoardViewer;
 import ares.application.boundaries.view.OOBViewer;
 import ares.application.boundaries.view.InfoViewer;
+import ares.application.boundaries.view.MiniMapViewer;
 import ares.application.commands.AresCommandGroup;
 import ares.application.commands.ViewCommands;
 import ares.application.gui.profiles.GraphicsModel;
@@ -56,6 +57,7 @@ public final class BoardController extends AbstractSecondaryController implement
     private final OOBViewer oobView;
     private final ActionBarViewer<JMenu> menuView;
     private final ActionBarViewer<JButton> toolBarView;
+    private final MiniMapViewer miniMapView;
     private final PathFinder pathFinder;
     private Tile selectedTile;
     private Unit selectedUnit;
@@ -73,6 +75,7 @@ public final class BoardController extends AbstractSecondaryController implement
         this.oobView = mainController.getOobView();
         this.menuView = mainController.getMenuView();
         this.toolBarView = mainController.getToolBarView();
+        this.miniMapView = mainController.getMiniMapView();
 
         pathFinder = new AStar(new MinimunDistance(DistanceCalculator.DELTA));
         //Add actions to the views
@@ -95,8 +98,8 @@ public final class BoardController extends AbstractSecondaryController implement
     private class ZoomInActionListener implements ActionListener {
 
         @Override
-        public void actionPerformed(ActionEvent e) {
-            GraphicsModel.INSTANCE.nextActiveProfile();
+        public void actionPerformed(ActionEvent e) { 
+            boardView.setProfile(GraphicsModel.INSTANCE.nextActiveProfile());
             boardView.loadScenario(mainController.getScenario().getModel(mainController.getUserRole()));
         }
     }
@@ -105,7 +108,7 @@ public final class BoardController extends AbstractSecondaryController implement
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            GraphicsModel.INSTANCE.previousActiveProfile();
+            boardView.setProfile(GraphicsModel.INSTANCE.previousActiveProfile());
             boardView.loadScenario(mainController.getScenario().getModel(mainController.getUserRole()));
         }
     }
@@ -213,8 +216,9 @@ public final class BoardController extends AbstractSecondaryController implement
     }
 
     private void select(int x, int y) {
-        if (GraphicsModel.INSTANCE.isWithinImageRange(x, y)) {
-            Point tilePoint = GraphicsModel.INSTANCE.pixelToTileAccurate(x, y);
+        int profile = GraphicsModel.INSTANCE.getActiveProfile();
+        if (GraphicsModel.INSTANCE.isWithinImageRange(x, y, profile)) {
+            Point tilePoint = GraphicsModel.INSTANCE.pixelToTileAccurate(x, y, profile);
             if (!GraphicsModel.INSTANCE.validCoordinates(tilePoint.x, tilePoint.y)) {
                 return;
             }
@@ -257,8 +261,9 @@ public final class BoardController extends AbstractSecondaryController implement
     }
 
     private void command(int x, int y) {
-        if (interactionMode == InteractionMode.UNIT_ORDERS && GraphicsModel.INSTANCE.isWithinImageRange(x, y)) {
-            Point tilePoint = GraphicsModel.INSTANCE.pixelToTileAccurate(x, y);
+        int profile = GraphicsModel.INSTANCE.getActiveProfile();
+        if (interactionMode == InteractionMode.UNIT_ORDERS && GraphicsModel.INSTANCE.isWithinImageRange(x, y, profile)) {
+            Point tilePoint = GraphicsModel.INSTANCE.pixelToTileAccurate(x, y, profile);
             if (!GraphicsModel.INSTANCE.validCoordinates(tilePoint.x, tilePoint.y)) {
                 return;
             }
@@ -277,10 +282,11 @@ public final class BoardController extends AbstractSecondaryController implement
         @Override
         public void mouseMoved(MouseEvent me) {
             if (interactionMode == InteractionMode.UNIT_ORDERS && !mainController.getEngine().isRunning()) {
+                int profile = GraphicsModel.INSTANCE.getActiveProfile();
                 Scenario scenario = mainController.getScenario();
                 Point pixel = new Point(me.getX(), me.getY());
-                if (GraphicsModel.INSTANCE.isWithinImageRange(pixel)) {
-                    Point tilePoint = GraphicsModel.INSTANCE.pixelToTileAccurate(pixel);
+                if (GraphicsModel.INSTANCE.isWithinImageRange(pixel, profile)) {
+                    Point tilePoint = GraphicsModel.INSTANCE.pixelToTileAccurate(pixel, profile);
                     if (!GraphicsModel.INSTANCE.validCoordinates(tilePoint.x, tilePoint.y)) {
                         return;
                     }

@@ -1,9 +1,8 @@
 package ares.application.gui.layers;
 
-import ares.application.gui.profiles.GraphicProperties;
 import ares.application.gui.profiles.GraphicsModel;
-import ares.application.gui.profiles.GraphicsProfile;
-import ares.application.gui.profiles.UnitDecorator;
+import ares.application.gui.decorators.ImageDecorators;
+import ares.application.gui.profiles.GraphicProperties;
 import ares.application.models.ScenarioModel;
 import ares.application.models.board.*;
 import ares.application.models.forces.*;
@@ -75,19 +74,19 @@ public class UnitsLayer extends AbstractImageLayer {
 
         if (!tile.isEmpty()) {
             //Calculate unit location in board
-            Point pos = GraphicsModel.INSTANCE.tileToPixel(tile.getCoordinates());
+            Point pos = GraphicsModel.INSTANCE.tileToPixel(tile.getCoordinates(), profile);
             //Retrieve the single unit image
             UnitModel unit = tile.getTopUnit();
-            BufferedImage unitImage = GraphicsModel.INSTANCE.getActiveProvider(unit.getColor()).getImage(unit.getIconId());
+            BufferedImage unitImage = GraphicsModel.INSTANCE.getImageProvider(unit.getColor(), profile).getImage(unit.getIconId());
 
             // Offset from the upper left corner of the tile
-            int imageOffset = GraphicsModel.INSTANCE.getActiveProfilerProperty(ProfiledGraphicProperty.UNIT_OFFSET);
+            int imageOffset = GraphicProperties.getProperty(ProfiledGraphicProperty.UNIT_OFFSET, profile);
             pos.x += imageOffset;
             pos.y += imageOffset;
             // Offset from the upper left corner of the last painted unit
-            int stackOffset = GraphicsModel.INSTANCE.getActiveProfilerProperty(ProfiledGraphicProperty.UNIT_STACK_OFFSET);
+            int stackOffset = GraphicProperties.getProperty(ProfiledGraphicProperty.UNIT_STACK_OFFSET, profile);
             //Num units to be painted
-            int unitsToPaint = Math.min(tile.getNumStackedUnits(), GraphicsModel.INSTANCE.getActiveProfilerProperty(ProfiledGraphicProperty.UNIT_MAX_STACK));
+            int unitsToPaint = Math.min(tile.getNumStackedUnits(), GraphicProperties.getProperty(ProfiledGraphicProperty.UNIT_MAX_STACK, profile));
             // Max stack  offset
             int maxStackOffset = unitsToPaint * stackOffset - stackOffset;
 
@@ -102,7 +101,7 @@ public class UnitsLayer extends AbstractImageLayer {
             Graphics2D unitG2 = subImage.createGraphics();
             unitG2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 //            g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-            UnitDecorator unitsProfile = GraphicsModel.INSTANCE.getUnitDecorator();
+            ImageDecorators unitsProfile = GraphicsModel.INSTANCE.getImageDecorators(profile);
             unitsProfile.paintUnitAttributes(unitG2, unit);
 //            unitsProfile.paintUnitAttributes(g2, unit);
             unitG2.dispose();

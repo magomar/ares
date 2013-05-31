@@ -29,7 +29,7 @@ public interface BoardViewer extends View {
 
     void updateScenario(ScenarioModel scenario);
 
-    void closeScenario();
+    void flush();
 
     void updateUnitStack(TileModel tile);
 
@@ -50,4 +50,6 @@ public interface BoardViewer extends View {
     void setLayerVisible(int layer, boolean visible);
 
     boolean isLayerVisible(int layer);
+    
+    void setProfile(int profile);
 }

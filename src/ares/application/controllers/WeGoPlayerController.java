@@ -2,16 +2,13 @@ package ares.application.controllers;
 
 import ares.application.boundaries.view.*;
 import ares.application.AresPlayerGUI;
-import ares.application.gui.profiles.AresGraphicsProfile;
 import ares.application.gui.profiles.GraphicsModel;
-import ares.application.gui.profiles.GraphicsProfile;
 import ares.scenario.forces.UnitsColor;
-import ares.application.gui.providers.AresMiscGraphics;
+import ares.application.gui.providers.AresMiscTerrainGraphics;
 import ares.engine.RealTimeEngine;
 import ares.platform.application.*;
 import ares.platform.model.UserRole;
 import ares.scenario.Scenario;
-import ares.scenario.board.Feature;
 import ares.scenario.board.Terrain;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -35,6 +32,7 @@ public class WeGoPlayerController {
     private final MessagesViewer messagesView;
     private final ActionBarViewer<JButton> welcomeScreenView;
     private final ActionBarViewer<JButton> toolBarView;
+    private final MiniMapViewer miniMapView;
     //Secondary controllers
     private final BoardController boardController;
     private final EngineController engineController;
@@ -48,7 +46,9 @@ public class WeGoPlayerController {
     private final ExecutorService executor;
     private static final Logger LOG = Logger.getLogger(WeGoPlayerController.class.getName());
 
-    public WeGoPlayerController(AbstractAresApplication mainView, BoardViewer boardView, InfoViewer unitView, OOBViewer oobView, ActionBarViewer<JMenu> menuView, MessagesViewer messagesView, ActionBarViewer<JButton> welcomeScreenV, ActionBarViewer<JButton> toolBarView, GraphicsProfile[] profiles) {
+    public WeGoPlayerController(AbstractAresApplication mainView, BoardViewer boardView, InfoViewer unitView, 
+            OOBViewer oobView, ActionBarViewer<JMenu> menuView, MessagesViewer messagesView, 
+            ActionBarViewer<JButton> welcomeScreenV, ActionBarViewer<JButton> toolBarView, MiniMapViewer miniMapView) {
         //        executor = Executors.newCachedThreadPool();
         executor = Executors.newSingleThreadExecutor();
         this.engine = new RealTimeEngine();
@@ -61,6 +61,7 @@ public class WeGoPlayerController {
         this.menuView = menuView;
         this.messagesView = messagesView;
         this.toolBarView = toolBarView;
+        this.miniMapView = miniMapView;
 
         this.scenarioController = new ScenarioIOController(this);
         this.boardController = new BoardController(this);
@@ -97,9 +98,9 @@ public class WeGoPlayerController {
         engine.setScenario(scenario);
         // Initialize GraphicsModel
         if (scenario != null) {
-            GraphicsModel.INSTANCE.initialize(scenario.getBoard(), AresGraphicsProfile.values());
+            GraphicsModel.INSTANCE.initialize(scenario.getBoard());
             GraphicsModel.INSTANCE.addAllGraphics(Terrain.values());
-            GraphicsModel.INSTANCE.addAllGraphics(AresMiscGraphics.values());
+            GraphicsModel.INSTANCE.addAllGraphics(AresMiscTerrainGraphics.values());
             GraphicsModel.INSTANCE.addAllGraphics(UnitsColor.values());
         }
     }
@@ -130,6 +131,10 @@ public class WeGoPlayerController {
 
     public OOBViewer getOobView() {
         return oobView;
+    }
+
+    public MiniMapViewer getMiniMapView() {
+        return miniMapView;
     }
 
     public ActionBarViewer<JButton> getWelcomeScreenView() {
