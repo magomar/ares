@@ -1,6 +1,6 @@
 package ares.platform.engine;
 
-import ares.application.gui.components.ProgressMonitor;
+import ares.application.shared.gui.components.ProgressMonitor;
 import ares.platform.engine.time.Phase;
 import ares.platform.engine.time.ClockEventType;
 import ares.platform.engine.time.ClockEvent;
@@ -8,6 +8,7 @@ import static ares.platform.engine.RealTimeEngine.CLOCK_EVENT_PROPERTY;
 import ares.platform.engine.action.ActionSpace;
 import ares.platform.engine.algorithms.pathfinding.AStar;
 import ares.platform.engine.algorithms.pathfinding.PathFinder;
+import ares.platform.engine.algorithms.pathfinding.costfunctions.CostFunctions;
 import ares.platform.engine.algorithms.pathfinding.heuristics.DistanceCalculator;
 import ares.platform.engine.algorithms.pathfinding.heuristics.MinimunDistance;
 import ares.platform.model.AbstractBean;
@@ -81,10 +82,9 @@ public class RealTimeEngine extends AbstractBean {
     public void setScenario(Scenario scenario) {
         monitor.show();
         Clock.INSTANCE.setEngine(this);
-        Scenario oldValue = this.scenario;
         this.scenario = scenario;
         if (scenario != null) {
-            pathFinder = new AStar(new MinimunDistance(DistanceCalculator.DELTA));
+            pathFinder = new AStar(new MinimunDistance(DistanceCalculator.DELTA), CostFunctions.FASTEST);
             for (Force force : scenario.getForces()) {
                 for (Formation formation : force.getFormations()) {
                     formations.add(formation);
@@ -95,7 +95,6 @@ public class RealTimeEngine extends AbstractBean {
 
         }
         monitor.hide();
-//        firePropertyChange(SCENARIO_PROPERTY, oldValue, scenario);
     }
 
     /**

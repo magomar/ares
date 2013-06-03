@@ -1,9 +1,9 @@
 package ares.platform.scenario.forces;
 
-import ares.application.models.forces.DetectedUnitModel;
-import ares.application.models.forces.IdentifiedUnitModel;
-import ares.application.models.forces.KnownUnitModel;
-import ares.application.models.forces.UnitModel;
+import ares.application.shared.models.forces.DetectedUnitModel;
+import ares.application.shared.models.forces.IdentifiedUnitModel;
+import ares.application.shared.models.forces.KnownUnitModel;
+import ares.application.shared.models.forces.UnitModel;
 import ares.data.jaxb.Availability;
 import ares.data.jaxb.Emphasis;
 import ares.platform.engine.action.Action;

@@ -1,6 +1,6 @@
 package ares.platform.engine.algorithms.pathfinding;
 
-import ares.application.models.board.TileModel;
+import ares.application.shared.models.board.TileModel;
 
 /**
  *
@@ -8,8 +8,8 @@ import ares.application.models.board.TileModel;
  */
 public class Path {
 
-    private Node last;
-    private Node first;
+    private final Node last;
+    private final Node first;
     private int size;
 
     /**

@@ -1,6 +1,6 @@
 package ares.platform.scenario.forces;
 
-import ares.application.models.forces.UnitModel;
+import ares.application.shared.models.forces.UnitModel;
 import ares.platform.engine.movement.MovementType;
 import ares.platform.scenario.assets.Asset;
 import ares.platform.scenario.assets.AssetType;

@@ -1,8 +1,8 @@
 package ares.platform.scenario.board;
 
-import ares.application.models.board.NonObservedTileModel;
-import ares.application.models.board.ObservedTileModel;
-import ares.application.models.board.TileModel;
+import ares.application.shared.models.board.NonObservedTileModel;
+import ares.application.shared.models.board.ObservedTileModel;
+import ares.application.shared.models.board.TileModel;
 import ares.platform.engine.combat.CombatModifier;
 import ares.platform.engine.knowledge.KnowledgeCategory;
 import ares.platform.engine.knowledge.KnowledgeLevel;

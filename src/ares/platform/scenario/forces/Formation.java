@@ -1,6 +1,6 @@
 package ares.platform.scenario.forces;
 
-import ares.application.models.forces.FormationModel;
+import ares.application.shared.models.forces.FormationModel;
 import ares.platform.engine.algorithms.pathfinding.PathFinder;
 import ares.platform.engine.command.ProgrammedOpponent;
 import ares.platform.engine.command.operational.plans.OperationalPlan;

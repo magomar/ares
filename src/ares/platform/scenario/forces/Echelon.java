@@ -5,16 +5,16 @@ package ares.platform.scenario.forces;
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public enum Echelon {
-
-//    SQUAD(0, 0),
-    SECTION("..", 0, 0),
-    PLATOON("...", 1, 1),
-    COMPANY("|", 3, 2),
-    BATTALION("||", 5, 3),
-    REGIMENT("|||", 15, 4),
-    BRIGADE("X", 20, 4),
-    DIVISION("XX", 40, 5),
-    CORPS("XXX", 80, 6),
+    TEAM("    0",0,0),
+    SQUAD("    .", 0, 0),
+    SECTION("  ..", 0, 0),
+    PLATOON(" ...", 1, 1),
+    COMPANY("   |", 3, 2),
+    BATTALION("  ||", 5, 3),
+    REGIMENT(" |||", 15, 4),
+    BRIGADE("   X", 20, 4),
+    DIVISION("  XX", 40, 5),
+    CORPS(" XXX", 80, 6),
     ARMY("XXXX", 120, 7),
     ARMY_GROUP("XXXXX", 140, 8),
     REGION("XXXXXX", 150, 9);

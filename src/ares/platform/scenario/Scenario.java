@@ -1,7 +1,7 @@
 package ares.platform.scenario;
 
 import ares.platform.engine.time.Clock;
-import ares.application.models.ScenarioModel;
+import ares.application.shared.models.ScenarioModel;
 import ares.data.jaxb.EquipmentDB;
 import ares.data.jaxb.OOB;
 import ares.platform.model.ModelProvider;

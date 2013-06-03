@@ -1,6 +1,6 @@
 package ares.platform.scenario.forces;
 
-import ares.application.models.forces.ForceModel;
+import ares.application.shared.models.forces.ForceModel;
 import ares.platform.model.ModelProvider;
 import ares.platform.model.UserRole;
 import ares.platform.scenario.Scenario;

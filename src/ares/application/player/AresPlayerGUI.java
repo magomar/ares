@@ -1,24 +1,24 @@
 package ares.application.player;
 
-import ares.application.views.BoardView;
-import ares.application.views.MessagesView;
-import ares.application.views.OOBView;
-import ares.application.views.MainMenuView;
-import ares.application.views.ToolBarView;
-import ares.application.views.InfoView;
-import ares.application.views.MenuBarView;
-import ares.application.views.MiniMapView;
-import ares.application.gui.ComponentFactory;
-import ares.application.gui.WindowUtil;
-import ares.platform.view.AbstractView;
-import ares.application.boundaries.view.ActionBarViewer;
-import ares.application.boundaries.view.BoardViewer;
-import ares.application.boundaries.view.InfoViewer;
-import ares.application.boundaries.view.MessagesViewer;
-import ares.application.boundaries.view.MiniMapViewer;
-import ares.application.boundaries.view.OOBViewer;
-import ares.application.boundaries.view.PlayerViewer;
-import ares.application.controllers.WeGoPlayerController;
+import ares.application.shared.boundaries.viewers.BoardViewer;
+import ares.application.player.boundaries.viewers.PlayerViewer;
+import ares.application.player.controllers.WeGoPlayerController;
+import ares.application.shared.views.BoardView;
+import ares.application.shared.views.MessagesView;
+import ares.application.shared.views.OOBView;
+import ares.application.shared.views.MainMenuView;
+import ares.application.shared.views.ToolBarView;
+import ares.application.shared.views.InfoView;
+import ares.application.shared.views.MenuBarView;
+import ares.application.shared.views.MiniMapView;
+import ares.application.shared.gui.ComponentFactory;
+import ares.application.shared.gui.WindowUtil;
+import ares.application.shared.views.AbstractView;
+import ares.application.shared.boundaries.viewers.ActionBarViewer;
+import ares.application.shared.boundaries.viewers.InfoViewer;
+import ares.application.shared.boundaries.viewers.MessagesViewer;
+import ares.application.shared.boundaries.viewers.MiniMapViewer;
+import ares.application.shared.boundaries.viewers.OOBViewer;
 import java.awt.*;
 import javax.swing.*;
 
@@ -37,14 +37,14 @@ public final class AresPlayerGUI extends AbstractView<JFrame> implements PlayerV
     private JSplitPane splitHoriz2;
     private JSplitPane splitVert2;
     private JPanel cards;
-    MainMenuView mainMenuV;
-    MenuBarView menuV;
-    InfoView infoV;
-    OOBView oobV;
-    BoardView boardV;
-    MessagesView messagesV;
-    ToolBarView toolBarV;
-    MiniMapView miniMapV;
+    private MainMenuView mainMenuV;
+    private MenuBarView menuV;
+    private InfoView infoV;
+    private OOBView oobV;
+    private BoardView boardV;
+    private MessagesView messagesV;
+    private ToolBarView toolBarV;
+    private MiniMapView miniMapV;
 
     @Override
     protected JFrame layout() {
@@ -151,9 +151,9 @@ public final class AresPlayerGUI extends AbstractView<JFrame> implements PlayerV
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                AresPlayerGUI playerView = new AresPlayerGUI();
-                WeGoPlayerController weGoPlayerController = new WeGoPlayerController(playerView);
-                playerView.show();
+                AresPlayerGUI mainView = new AresPlayerGUI();
+                WeGoPlayerController mainController = new WeGoPlayerController(mainView);
+                mainView.show();
             }
         });
     }

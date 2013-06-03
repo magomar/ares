@@ -1,7 +1,7 @@
 package temp;
 
-import ares.platform.view.AbstractView;
-import ares.application.gui.ComponentFactory;
+import ares.application.shared.views.AbstractView;
+import ares.application.shared.gui.ComponentFactory;
 import javax.swing.JComponent;
 import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
