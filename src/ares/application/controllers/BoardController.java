@@ -1,36 +1,33 @@
 package ares.application.controllers;
 
-import ares.application.boundaries.view.ActionBarViewer;
-import ares.engine.algorithms.pathfinding.PathFinder;
-import ares.engine.algorithms.pathfinding.Path;
-import ares.engine.algorithms.pathfinding.AStar;
+import ares.platform.scenario.board.UnitsStack;
+import ares.platform.scenario.board.Tile;
+import ares.platform.engine.algorithms.pathfinding.PathFinder;
+import ares.platform.engine.algorithms.pathfinding.Path;
+import ares.platform.engine.algorithms.pathfinding.AStar;
 import ares.application.boundaries.view.BoardViewer;
-import ares.application.boundaries.view.OOBViewer;
-import ares.application.boundaries.view.InfoViewer;
-import ares.application.boundaries.view.MiniMapViewer;
 import ares.application.commands.AresCommandGroup;
 import ares.application.commands.ViewCommands;
 import ares.application.gui.profiles.GraphicsModel;
-import ares.application.interaction.InteractionMode;
 import ares.application.models.board.TileModel;
 import ares.application.models.forces.ForceModel;
 import ares.application.models.forces.FormationModel;
 import ares.application.models.forces.UnitModel;
 import ares.application.views.MessagesHandler;
-import ares.engine.RealTimeEngine;
-import ares.engine.algorithms.pathfinding.heuristics.DistanceCalculator;
-import ares.engine.algorithms.pathfinding.heuristics.MinimunDistance;
-import ares.engine.command.tactical.TacticalMission;
-import ares.engine.command.tactical.TacticalMissionType;
+import ares.platform.engine.RealTimeEngine;
+import ares.platform.engine.algorithms.pathfinding.heuristics.DistanceCalculator;
+import ares.platform.engine.algorithms.pathfinding.heuristics.MinimunDistance;
+import ares.platform.engine.command.tactical.TacticalMission;
+import ares.platform.engine.command.tactical.TacticalMissionType;
 import ares.platform.commands.CommandAction;
 import ares.platform.commands.CommandGroup;
-import ares.platform.controllers.AbstractSecondaryController;
 import ares.platform.model.UserRole;
-import ares.platform.view.ComponentFactory;
-import ares.scenario.Scenario;
-import ares.scenario.board.*;
-import ares.scenario.forces.Formation;
-import ares.scenario.forces.Unit;
+import ares.application.boundaries.interactor.PlayerBoardInteractor;
+import ares.application.models.ScenarioModel;
+import ares.platform.engine.time.Clock;
+import ares.platform.scenario.Scenario;
+import ares.platform.scenario.forces.Formation;
+import ares.platform.scenario.forces.Unit;
 import java.awt.Point;
 import java.awt.event.*;
 import java.beans.PropertyChangeEvent;
@@ -38,8 +35,6 @@ import java.beans.PropertyChangeListener;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.swing.Action;
-import javax.swing.JButton;
-import javax.swing.JMenu;
 import javax.swing.JTree;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
@@ -49,58 +44,60 @@ import javax.swing.tree.DefaultMutableTreeNode;
  * @author Mario Gomez <margomez at dsic.upv.es>
  * @author Heine <heisncfr@inf.upv.es>
  */
-public final class BoardController extends AbstractSecondaryController implements PropertyChangeListener {
+public final class BoardController implements PropertyChangeListener {
 
     private static final Logger LOG = Logger.getLogger(BoardController.class.getName());
-    private final BoardViewer boardView;
-    private final InfoViewer infoView;
-    private final OOBViewer oobView;
-    private final ActionBarViewer<JMenu> menuView;
-    private final ActionBarViewer<JButton> toolBarView;
-    private final MiniMapViewer miniMapView;
+    private final PlayerBoardInteractor coordinator;
     private final PathFinder pathFinder;
     private Tile selectedTile;
     private Unit selectedUnit;
+    private Scenario scenario;
     private InteractionMode interactionMode = InteractionMode.FREE;
     private final Action viewGrid = new CommandAction(ViewCommands.VIEW_GRID, new ViewGridActionListener());
     private final Action viewUnits = new CommandAction(ViewCommands.VIEW_UNITS, new ViewUnitsActionListener());
     private final Action zoomIn = new CommandAction(ViewCommands.VIEW_ZOOM_IN, new ZoomInActionListener());
     private final Action zoomOut = new CommandAction(ViewCommands.VIEW_ZOOM_OUT, new ZoomOutActionListener());
 
-    public BoardController(WeGoPlayerController mainController) {
-        super(mainController);
-        LOG.addHandler(mainController.getMessagesView().getHandler());
-        this.boardView = mainController.getBoardView();
-        this.infoView = mainController.getInfoView();
-        this.oobView = mainController.getOobView();
-        this.menuView = mainController.getMenuView();
-        this.toolBarView = mainController.getToolBarView();
-        this.miniMapView = mainController.getMiniMapView();
-
+    public BoardController(PlayerBoardInteractor coordinator, RealTimeEngine engine) {
+        this.coordinator = coordinator;
         pathFinder = new AStar(new MinimunDistance(DistanceCalculator.DELTA));
         //Add actions to the views
-        Action[] viewActions = {viewGrid, viewUnits, zoomIn, zoomOut};
+        Action[] actions = {viewGrid, viewUnits, zoomIn, zoomOut};
         CommandGroup group = AresCommandGroup.VIEW;
-        menuView.addActionButton(ComponentFactory.menu(group.getName(), group.getText(), group.getMnemonic(), viewActions));
-        for (Action action : viewActions) {
-            toolBarView.addActionButton(ComponentFactory.button(action));
-        }
+        coordinator.addActions(actions);
+        coordinator.addMenu(group.getName(), group.getText(), group.getMnemonic(), actions);
 
         // Adds various component listeners
-        boardView.addMouseListener(new BoardMouseListener());
-        boardView.addMouseMotionListener(new BoardMouseMotionListener());
-        oobView.addTreeSelectionListener(new OOBTreeSelectionListener());
+        coordinator.getBoardView().addMouseListener(new BoardMouseListener());
+        coordinator.getBoardView().addMouseMotionListener(new BoardMouseMotionListener());
+        coordinator.getOOBView().addTreeSelectionListener(new OOBTreeSelectionListener());
 
         //Add change listeners to entities
-        mainController.getEngine().addPropertyChangeListener(this);
+        engine.addPropertyChangeListener(this);
+    }
+
+    public Scenario getScenario() {
+        return scenario;
+    }
+
+    public void setScenario(Scenario scenario) {
+        this.scenario = scenario;
+                // obtain the scenario model with the active userRole
+        ScenarioModel scenarioModel = scenario.getModel();
+        coordinator.getMiniMapView().setProfile(0);
+        coordinator.getMiniMapView().loadScenario(scenarioModel);
+        coordinator.getBoardView().setProfile(GraphicsModel.INSTANCE.getActiveProfile());
+        coordinator.getBoardView().loadScenario(scenarioModel);
+        coordinator.getOOBView().loadScenario(scenarioModel);
+        coordinator.getInfoView().updateScenarioInfo(Clock.INSTANCE.getNow());
     }
 
     private class ZoomInActionListener implements ActionListener {
 
         @Override
-        public void actionPerformed(ActionEvent e) { 
-            boardView.setProfile(GraphicsModel.INSTANCE.nextActiveProfile());
-            boardView.loadScenario(mainController.getScenario().getModel(mainController.getUserRole()));
+        public void actionPerformed(ActionEvent e) {
+            coordinator.getBoardView().setProfile(GraphicsModel.INSTANCE.nextActiveProfile());
+            coordinator.getBoardView().loadScenario(scenario.getModel());
         }
     }
 
@@ -108,8 +105,8 @@ public final class BoardController extends AbstractSecondaryController implement
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            boardView.setProfile(GraphicsModel.INSTANCE.previousActiveProfile());
-            boardView.loadScenario(mainController.getScenario().getModel(mainController.getUserRole()));
+            coordinator.getBoardView().setProfile(GraphicsModel.INSTANCE.previousActiveProfile());
+            coordinator.getBoardView().loadScenario(scenario.getModel());
         }
     }
 
@@ -117,7 +114,7 @@ public final class BoardController extends AbstractSecondaryController implement
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            boardView.setLayerVisible(BoardViewer.GRID, !boardView.isLayerVisible(BoardViewer.GRID));
+            coordinator.getBoardView().switchLayerVisible(BoardViewer.GRID);
         }
     }
 
@@ -125,7 +122,7 @@ public final class BoardController extends AbstractSecondaryController implement
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            boardView.setLayerVisible(BoardViewer.UNITS, !boardView.isLayerVisible(BoardViewer.UNITS));
+            coordinator.getBoardView().switchLayerVisible(BoardViewer.UNITS);
         }
     }
 
@@ -154,19 +151,19 @@ public final class BoardController extends AbstractSecondaryController implement
                 selectedTile = selectedUnit.getLocation();
                 interactionMode = InteractionMode.UNIT_ORDERS;
                 LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, "New unit selected");
-                UserRole role = mainController.getUserRole();
+                UserRole role = scenario.getUserRole();
                 TileModel tileModel = selectedTile.getModel(role);
-                infoView.updateTileInfo(tileModel);
-                boardView.updateUnitStack(tileModel);
+                coordinator.getInfoView().updateTileInfo(tileModel);
+                coordinator.getBoardView().updateUnitStack(tileModel);
 //                if (selectedUnit != null) {
                 if (interactionMode == InteractionMode.UNIT_ORDERS) {
                     UnitModel unitModel = selectedUnit.getModel(role);
                     FormationModel formationModel = selectedUnit.getFormation().getModel(role);
                     ForceModel forceModel = selectedUnit.getForce().getModel(role);
-                    boardView.updateSelectedUnit(unitModel, formationModel, forceModel);
-                    boardView.centerViewOn(unitModel, formationModel);
-                    boardView.updateLastOrders(null);
-                    boardView.updateCurrentOrders(null);
+                    coordinator.getBoardView().updateSelectedUnit(unitModel, formationModel, forceModel);
+                    coordinator.getBoardView().centerViewOn(unitModel, formationModel);
+                    coordinator.getBoardView().updateLastOrders(null);
+                    coordinator.getBoardView().updateCurrentOrders(null);
                 }
             }
         }
@@ -194,24 +191,24 @@ public final class BoardController extends AbstractSecondaryController implement
 
     private void changeSelectedTile(Tile tile) {
         selectedTile = tile;
-        UserRole role = mainController.getUserRole();
+        UserRole role = scenario.getUserRole();
         TileModel tileModel = selectedTile.getModel(role);
-        infoView.updateTileInfo(tileModel);
+        coordinator.getInfoView().updateTileInfo(tileModel);
     }
 
     private void changeSelectedUnit(Unit unit) {
         selectedUnit = unit;
-        UserRole role = mainController.getUserRole();
+        UserRole role = scenario.getUserRole();
         TileModel tileModel = selectedTile.getModel(role);
-        boardView.updateUnitStack(tileModel);
+        coordinator.getBoardView().updateUnitStack(tileModel);
         if (selectedUnit != null) {
             UnitModel unitModel = selectedUnit.getModel(role);
             FormationModel formationModel = selectedUnit.getFormation().getModel(role);
             ForceModel forceModel = selectedUnit.getForce().getModel(role);
-            boardView.updateCurrentOrders(null);
-            boardView.updateSelectedUnit(unitModel, formationModel, forceModel);
-            oobView.select(selectedUnit);
-            infoView.updateUnitInfo(unitModel);
+            coordinator.getBoardView().updateCurrentOrders(null);
+            coordinator.getBoardView().updateSelectedUnit(unitModel, formationModel, forceModel);
+            coordinator.getOOBView().select(selectedUnit);
+            coordinator.getInfoView().updateUnitInfo(unitModel);
         }
     }
 
@@ -222,7 +219,7 @@ public final class BoardController extends AbstractSecondaryController implement
             if (!GraphicsModel.INSTANCE.validCoordinates(tilePoint.x, tilePoint.y)) {
                 return;
             }
-            Tile tile = mainController.getScenario().getBoard().getTile(tilePoint.x, tilePoint.y);
+            Tile tile = scenario.getBoard().getTile(tilePoint.x, tilePoint.y);
             UnitsStack stack = tile.getUnitsStack();
 
             if (!tile.equals(selectedTile)) {
@@ -253,10 +250,10 @@ public final class BoardController extends AbstractSecondaryController implement
             selectedTile = null;
             selectedUnit = null;
             interactionMode = InteractionMode.FREE;
-            infoView.clear();
-            boardView.updateCurrentOrders(null);
+            coordinator.getInfoView().clear();
+            coordinator.getBoardView().updateCurrentOrders(null);
             // the order matters here, updateSelectedUnit must be done after updateCurrentOrders, or updateCurrentOrders will have no effect
-            boardView.updateSelectedUnit(null, null, null);
+            coordinator.getBoardView().updateSelectedUnit(null, null, null);
         }
     }
 
@@ -267,12 +264,11 @@ public final class BoardController extends AbstractSecondaryController implement
             if (!GraphicsModel.INSTANCE.validCoordinates(tilePoint.x, tilePoint.y)) {
                 return;
             }
-            Scenario scenario = mainController.getScenario();
             Tile tile = scenario.getBoard().getTile(tilePoint.x, tilePoint.y);
             TacticalMission mission = TacticalMissionType.OCCUPY.getNewTacticalMission(selectedUnit, tile, pathFinder);
             selectedUnit.setMission(mission);
             selectedUnit.schedule();
-            boardView.updateLastOrders(mission.getPath());
+            coordinator.getBoardView().updateLastOrders(mission.getPath());
 //            boardView.updateLastPathSearch(null, null);
         }
     }
@@ -281,9 +277,9 @@ public final class BoardController extends AbstractSecondaryController implement
 
         @Override
         public void mouseMoved(MouseEvent me) {
-            if (interactionMode == InteractionMode.UNIT_ORDERS && !mainController.getEngine().isRunning()) {
+//            if (interactionMode == InteractionMode.UNIT_ORDERS && !wegoController.getEngine().isRunning()) {
+            if (interactionMode == InteractionMode.UNIT_ORDERS) {
                 int profile = GraphicsModel.INSTANCE.getActiveProfile();
-                Scenario scenario = mainController.getScenario();
                 Point pixel = new Point(me.getX(), me.getY());
                 if (GraphicsModel.INSTANCE.isWithinImageRange(pixel, profile)) {
                     Point tilePoint = GraphicsModel.INSTANCE.pixelToTileAccurate(pixel, profile);
@@ -295,7 +291,7 @@ public final class BoardController extends AbstractSecondaryController implement
                     if (path == null) {
                         return;
                     }
-                    boardView.updateCurrentOrders(path);
+                    coordinator.getBoardView().updateCurrentOrders(path);
                 }
             }
         }
@@ -304,16 +300,25 @@ public final class BoardController extends AbstractSecondaryController implement
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         if (RealTimeEngine.CLOCK_EVENT_PROPERTY.equals(evt.getPropertyName())) {
+            coordinator.getBoardView().updateScenario(scenario.getModel());
+            coordinator.getInfoView().updateScenarioInfo(Clock.INSTANCE.getNow());
             if (selectedUnit != null) {
-                UserRole role = mainController.getUserRole();
+                UserRole role = scenario.getUserRole();
                 UnitModel unitModel = selectedUnit.getModel(role);
                 FormationModel formationModel = selectedUnit.getFormation().getModel(role);
                 ForceModel forceModel = selectedUnit.getForce().getModel(role);
 //                boardView.updateCurrentOrders(null);
-                boardView.updateSelectedUnit(unitModel, formationModel, forceModel);
-                infoView.updateTileInfo(unitModel.getLocation());
-                infoView.updateUnitInfo(unitModel);
+                coordinator.getBoardView().updateSelectedUnit(unitModel, formationModel, forceModel);
+                coordinator.getInfoView().updateTileInfo(unitModel.getLocation());
+                coordinator.getInfoView().updateUnitInfo(unitModel);
             }
         }
+    }
+
+    private enum InteractionMode {
+
+        FREE,
+        UNIT_ORDERS,
+        FORMATION_ORDERS
     }
 }

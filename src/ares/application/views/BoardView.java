@@ -1,5 +1,6 @@
 package ares.application.views;
 
+import ares.application.models.board.TileModel;
 import ares.application.gui.profiles.GraphicsModel;
 import ares.application.boundaries.view.BoardViewer;
 import ares.application.gui.layers.ImageLayer;
@@ -10,14 +11,13 @@ import ares.application.gui.layers.TerrainLayer;
 import ares.application.gui.layers.PathSearchLayer;
 import ares.application.gui.layers.UnitsLayer;
 import ares.application.models.ScenarioModel;
-import ares.application.models.board.*;
 import ares.application.models.forces.ForceModel;
 import ares.application.models.forces.FormationModel;
 import ares.application.models.forces.UnitModel;
-import ares.engine.algorithms.pathfinding.Path;
-import ares.engine.command.tactical.TacticalMission;
+import ares.platform.engine.algorithms.pathfinding.Path;
+import ares.platform.engine.command.tactical.TacticalMission;
 import ares.platform.view.AbstractView;
-import ares.scenario.board.Tile;
+import ares.platform.scenario.board.Tile;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
@@ -263,5 +263,11 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
             imageLayer.setProfile(profile);
             imageLayer.initialize();
         }
+    }
+
+    @Override
+    public void switchLayerVisible(int layer) {
+        ImageLayer imageLayer = allLayers[layer];
+        imageLayer.setVisible(!imageLayer.isVisible());
     }
 }

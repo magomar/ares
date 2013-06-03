@@ -1,18 +1,29 @@
 package ares.application.controllers;
 
-import ares.application.boundaries.view.*;
-import ares.application.AresPlayerGUI;
+import ares.application.gui.ComponentFactory;
+import ares.application.boundaries.view.ActionBarViewer;
+import ares.application.boundaries.view.InfoViewer;
+import ares.application.boundaries.view.OOBViewer;
+import ares.application.boundaries.view.MiniMapViewer;
+import ares.application.boundaries.view.BoardViewer;
+import ares.application.boundaries.view.MessagesViewer;
 import ares.application.gui.profiles.GraphicsModel;
-import ares.scenario.forces.UnitsColor;
+import ares.platform.scenario.forces.UnitsColor;
 import ares.application.gui.providers.AresMiscTerrainGraphics;
-import ares.engine.RealTimeEngine;
-import ares.platform.application.*;
-import ares.platform.model.UserRole;
-import ares.scenario.Scenario;
-import ares.scenario.board.Terrain;
+import ares.application.models.ScenarioModel;
+import ares.application.boundaries.interactor.EngineInteractor;
+import ares.application.boundaries.interactor.MessagesInteractor;
+import ares.application.boundaries.interactor.PlayerBoardInteractor;
+import ares.application.boundaries.interactor.ScenarioInteractor;
+import ares.application.boundaries.view.PlayerViewer;
+import ares.platform.engine.time.Clock;
+import ares.platform.scenario.Scenario;
+import ares.platform.scenario.board.Terrain;
+import java.awt.Container;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.logging.*;
+import javax.swing.Action;
 import javax.swing.JButton;
 import javax.swing.JMenu;
 
@@ -21,59 +32,48 @@ import javax.swing.JMenu;
  * @author Mario Gomez <margomez at dsic.upv.es>
  * @author Heine <heisncfr@inf.upv.es>
  */
-public class WeGoPlayerController {
+public class WeGoPlayerController implements EngineInteractor, ScenarioInteractor, MessagesInteractor, PlayerBoardInteractor {
 
     // Views
-    private final AbstractAresApplication mainView;
+    private final PlayerViewer playerView;
     private final BoardViewer boardView;
     private final InfoViewer infoView;
     private final OOBViewer oobView;
     private final ActionBarViewer<JMenu> menuView;
     private final MessagesViewer messagesView;
-    private final ActionBarViewer<JButton> welcomeScreenView;
+    private final ActionBarViewer<JButton> mainMenuView;
     private final ActionBarViewer<JButton> toolBarView;
     private final MiniMapViewer miniMapView;
     //Secondary controllers
     private final BoardController boardController;
-    private final EngineController engineController;
+    private final RealTimeEngineController engineController;
     private final MessagesController messagesController;
-    private final ScenarioIOController scenarioController;
+    private final ScenarioController scenarioController;
     // Entities (bussines logic), they interact with the model providers and provide models to the views
-    private final RealTimeEngine engine;
-    private UserRole userRole;
     private Scenario scenario;
     // Other fields
     private final ExecutorService executor;
-    private static final Logger LOG = Logger.getLogger(WeGoPlayerController.class.getName());
 
-    public WeGoPlayerController(AbstractAresApplication mainView, BoardViewer boardView, InfoViewer unitView, 
-            OOBViewer oobView, ActionBarViewer<JMenu> menuView, MessagesViewer messagesView, 
-            ActionBarViewer<JButton> welcomeScreenV, ActionBarViewer<JButton> toolBarView, MiniMapViewer miniMapView) {
-        //        executor = Executors.newCachedThreadPool();
-        executor = Executors.newSingleThreadExecutor();
-        this.engine = new RealTimeEngine();
+    public WeGoPlayerController(PlayerViewer playerView) {
+        executor = Executors.newCachedThreadPool();
+//        executor = Executors.newSingleThreadExecutor();
+        this.playerView = playerView;
+        boardView = playerView.getBoardView();
+        infoView = playerView.getInfoView();
+        oobView = playerView.getOobView();
+        menuView = playerView.getMenuView();
+        messagesView = playerView.getMessagesView();
+        mainMenuView = playerView.getMainMenuView();
+        toolBarView = playerView.getToolBarView();
+        miniMapView = playerView.getMiniMapView();
 
-        this.mainView = mainView;
-        this.welcomeScreenView = welcomeScreenV;
-        this.boardView = boardView;
-        this.infoView = unitView;
-        this.oobView = oobView;
-        this.menuView = menuView;
-        this.messagesView = messagesView;
-        this.toolBarView = toolBarView;
-        this.miniMapView = miniMapView;
-
-        this.scenarioController = new ScenarioIOController(this);
-        this.boardController = new BoardController(this);
-        this.engineController = new EngineController(this);
+        this.scenarioController = new ScenarioController(this);
+        this.engineController = new RealTimeEngineController(this);
         this.messagesController = new MessagesController(this);
-
-        LOG.addHandler(messagesView.getHandler());
-
-        //add buttons and menu elements fro here to have them in proper order
+        this.boardController = new BoardController(this, engineController.getEngine());
 
         //sets the main menu as the mainView
-        mainView.switchCard(AresPlayerGUI.MAIN_MENU_CARD);
+        playerView.switchPerspective(PlayerViewer.MAIN_MENU_PERSPECTIVE);
 
     }
 
@@ -81,67 +81,96 @@ public class WeGoPlayerController {
         return executor;
     }
 
-    void setUserRole(UserRole userRole) {
-        this.userRole = userRole;
-    }
-
-    UserRole getUserRole() {
-        return userRole;
-    }
-
-    Scenario getScenario() {
-        return scenario;
-    }
-
-    void setScenario(Scenario scenario) {
-        this.scenario = scenario;
-        engine.setScenario(scenario);
-        // Initialize GraphicsModel
-        if (scenario != null) {
-            GraphicsModel.INSTANCE.initialize(scenario.getBoard());
-            GraphicsModel.INSTANCE.addAllGraphics(Terrain.values());
-            GraphicsModel.INSTANCE.addAllGraphics(AresMiscTerrainGraphics.values());
-            GraphicsModel.INSTANCE.addAllGraphics(UnitsColor.values());
+    @Override
+    public void setRunning(boolean running) {
+        if (running) {
+            messagesView.clear();
+            boardView.updateCurrentOrders(null);
+        } else {
         }
     }
 
-    public AbstractAresApplication getMainView() {
-        return mainView;
+    @Override
+    public void newScenario(Scenario scenario) {
+        this.scenario = scenario;
+        // Initialize GraphicsModel
+        GraphicsModel.INSTANCE.initialize(scenario.getBoard());
+        GraphicsModel.INSTANCE.addAllGraphics(Terrain.values());
+        GraphicsModel.INSTANCE.addAllGraphics(AresMiscTerrainGraphics.values());
+        GraphicsModel.INSTANCE.addAllGraphics(UnitsColor.values());
+        // pass the scenario to the engine controller
+        engineController.setScenario(scenario);
+        boardController.setScenario(scenario);
+       // change the GUI to show the scenario
+        playerView.switchPerspective(PlayerViewer.PLAYER_PERSPECTIVE);
+ 
+        System.gc();
     }
 
+    @Override
+    public void forgetScenario() {
+        boardView.flush();
+        miniMapView.flush();
+        oobView.flush();
+        playerView.switchPerspective(PlayerViewer.MAIN_MENU_PERSPECTIVE);
+        System.gc();
+    }
+
+    @Override
+    public void registerLogger(Logger logger) {
+        logger.addHandler(messagesView.getHandler());
+    }
+
+    @Override
+    public void addMenu(String name, String text, Integer mnemonic, Action[] actions) {
+        menuView.addActionButton(ComponentFactory.menu(name, text, mnemonic, actions));
+    }
+
+    @Override
+    public void addMainActions(Action[] actions) {
+        for (Action action : actions) {
+            mainMenuView.addActionButton(ComponentFactory.translucidButton(action));
+        }
+    }
+
+    @Override
+    public void addActions(Action[] actions) {
+        for (Action action : actions) {
+            toolBarView.addActionButton(ComponentFactory.button(action));
+        }
+    }
+
+    @Override
+    public Container getGUIContainer() {
+        if (scenario == null) {
+            return mainMenuView.getContentPane();
+        } else {
+            return menuView.getContentPane();
+        }
+    }
+
+    @Override
     public BoardViewer getBoardView() {
         return boardView;
     }
 
-    public InfoViewer getInfoView() {
-        return infoView;
-    }
-
-    public ActionBarViewer<JButton> getToolBarView() {
-        return toolBarView;
-    }
-
-    public ActionBarViewer<JMenu> getMenuView() {
-        return menuView;
-    }
-
+    @Override
     public MessagesViewer getMessagesView() {
         return messagesView;
     }
 
-    public OOBViewer getOobView() {
+    @Override
+    public InfoViewer getInfoView() {
+        return infoView;
+    }
+
+    @Override
+    public OOBViewer getOOBView() {
         return oobView;
     }
 
+    @Override
     public MiniMapViewer getMiniMapView() {
         return miniMapView;
-    }
-
-    public ActionBarViewer<JButton> getWelcomeScreenView() {
-        return welcomeScreenView;
-    }
-
-    public RealTimeEngine getEngine() {
-        return engine;
     }
 }

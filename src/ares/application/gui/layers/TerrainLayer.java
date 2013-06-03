@@ -1,11 +1,13 @@
 package ares.application.gui.layers;
 
+import ares.platform.scenario.board.Feature;
+import ares.platform.scenario.board.Terrain;
+import ares.platform.scenario.board.Directions;
+import ares.application.models.board.TileModel;
 import ares.application.gui.profiles.GraphicsModel;
 import ares.application.gui.providers.AresMiscTerrainGraphics;
 import ares.application.models.ScenarioModel;
-import ares.application.models.board.*;
-import ares.engine.knowledge.KnowledgeCategory;
-import ares.scenario.board.*;
+import ares.platform.engine.knowledge.KnowledgeCategory;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.*;

@@ -2,7 +2,7 @@ package ares.application.gui.layers;
 
 import ares.application.gui.profiles.GraphicsModel;
 import ares.application.gui.providers.AresMiscTerrainGraphics;
-import ares.scenario.board.Tile;
+import ares.platform.scenario.board.Tile;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.image.BufferedImage;

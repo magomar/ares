@@ -1,6 +1,6 @@
 package ares.test;
 
-import ares.engine.algorithms.pathfinding.heuristics.DistanceCalculator;
+import ares.platform.engine.algorithms.pathfinding.heuristics.DistanceCalculator;
 import java.awt.Point;
 import java.lang.reflect.*;
 import java.util.*;

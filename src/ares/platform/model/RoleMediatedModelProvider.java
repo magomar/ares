@@ -1,6 +1,6 @@
 package ares.platform.model;
 
-import ares.scenario.forces.Force;
+import ares.platform.scenario.forces.Force;
 
 /**
  *

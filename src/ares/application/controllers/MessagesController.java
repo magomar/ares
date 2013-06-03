@@ -1,7 +1,6 @@
 package ares.application.controllers;
 
-import ares.application.boundaries.view.MessagesViewer;
-import ares.platform.controllers.AbstractSecondaryController;
+import ares.application.boundaries.interactor.MessagesInteractor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JCheckBox;
@@ -10,16 +9,15 @@ import javax.swing.JCheckBox;
  *
  * @author Heine <heisncfr@inf.upv.es>
  */
-public final class MessagesController extends AbstractSecondaryController {
+public final class MessagesController {
 
-    private final MessagesViewer messagesView;
+    private final MessagesInteractor coordinator;
 
-    public MessagesController(WeGoPlayerController mainController) {
-        super(mainController);
-        this.messagesView = mainController.getMessagesView();
+    public MessagesController(MessagesInteractor coordinator) {
+        this.coordinator = coordinator;
 
         // Add listeners to MessagesView check boxes
-        messagesView.setLogCheckBoxes(new LogCheckBoxListener());
+        coordinator.getMessagesView().setLogCheckBoxes(new LogCheckBoxListener());
     }
 
     private class LogCheckBoxListener implements ActionListener {
@@ -31,10 +29,10 @@ public final class MessagesController extends AbstractSecondaryController {
                 JCheckBox jcb = (JCheckBox) o;
                 if (jcb.isSelected()) {
                     // Show logs with this level
-                    messagesView.getHandler().enableLogLevel(jcb.getText());
+                    coordinator.getMessagesView().getHandler().enableLogLevel(jcb.getText());
                 } else {
                     // hide logs with this level
-                    messagesView.getHandler().disableLogLevel(jcb.getText());
+                    coordinator.getMessagesView().getHandler().disableLogLevel(jcb.getText());
                 }
             }
 

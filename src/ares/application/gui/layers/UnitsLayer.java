@@ -1,11 +1,12 @@
 package ares.application.gui.layers;
 
+import ares.application.models.board.TileModel;
+import ares.application.models.forces.ForceModel;
+import ares.application.models.forces.UnitModel;
 import ares.application.gui.profiles.GraphicsModel;
 import ares.application.gui.decorators.ImageDecorators;
 import ares.application.gui.profiles.GraphicProperties;
 import ares.application.models.ScenarioModel;
-import ares.application.models.board.*;
-import ares.application.models.forces.*;
 import ares.application.gui.profiles.ProfiledGraphicProperty;
 import java.awt.*;
 import java.awt.image.BufferedImage;

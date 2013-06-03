@@ -1,7 +1,7 @@
 package ares.application.boundaries.view;
 
 import ares.application.views.MessagesHandler;
-import ares.engine.messages.EngineMessage;
+import ares.platform.engine.messages.EngineMessage;
 import ares.platform.view.View;
 import java.awt.event.ActionListener;
 

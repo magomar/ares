@@ -5,8 +5,8 @@ import ares.application.models.board.BoardModel;
 import ares.application.models.forces.ForceModel;
 import ares.platform.model.RoleMediatedModel;
 import ares.platform.model.UserRole;
-import ares.scenario.Scenario;
-import ares.scenario.forces.Force;
+import ares.platform.scenario.Scenario;
+import ares.platform.scenario.forces.Force;
 
 /**
  *

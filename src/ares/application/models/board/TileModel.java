@@ -1,11 +1,15 @@
 package ares.application.models.board;
 
+import ares.platform.scenario.board.Direction;
+import ares.platform.scenario.board.Tile;
+import ares.platform.scenario.board.Feature;
+import ares.platform.scenario.board.Terrain;
+import ares.platform.scenario.board.Directions;
 import ares.application.models.forces.UnitModel;
-import ares.engine.knowledge.KnowledgeCategory;
-import ares.engine.movement.MovementCost;
+import ares.platform.engine.knowledge.KnowledgeCategory;
+import ares.platform.engine.movement.MovementCost;
 import ares.platform.model.KnowledgeMediatedModel;
-import ares.scenario.board.*;
-import ares.scenario.forces.SurfaceUnit;
+import ares.platform.scenario.forces.SurfaceUnit;
 import java.awt.Point;
 import java.util.*;
 

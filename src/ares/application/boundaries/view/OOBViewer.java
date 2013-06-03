@@ -1,7 +1,7 @@
 package ares.application.boundaries.view;
 
 import ares.application.models.ScenarioModel;
-import ares.scenario.forces.Unit;
+import ares.platform.scenario.forces.Unit;
 import javax.swing.event.TreeSelectionListener;
 
 /**

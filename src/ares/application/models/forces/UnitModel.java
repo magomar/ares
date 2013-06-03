@@ -1,13 +1,13 @@
 package ares.application.models.forces;
 
-import ares.scenario.forces.UnitsColor;
+import ares.platform.scenario.forces.UnitsColor;
 import ares.application.models.board.TileModel;
-import ares.engine.command.tactical.TacticalMission;
-import ares.engine.knowledge.KnowledgeCategory;
-import ares.engine.movement.MovementType;
+import ares.platform.engine.command.tactical.TacticalMission;
+import ares.platform.engine.knowledge.KnowledgeCategory;
+import ares.platform.engine.movement.MovementType;
 import ares.platform.model.KnowledgeMediatedModel;
 import ares.platform.model.UserRole;
-import ares.scenario.forces.Unit;
+import ares.platform.scenario.forces.Unit;
 
 /**
  *

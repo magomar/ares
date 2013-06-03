@@ -1,7 +1,8 @@
 package ares.application.views;
 
+import ares.platform.engine.messages.EngineMessageLogger;
+import ares.platform.engine.messages.EngineMessage;
 import ares.application.boundaries.view.MessagesViewer;
-import ares.engine.messages.*;
 import ares.platform.view.AbstractView;
 import java.awt.*;
 import java.awt.event.ActionListener;

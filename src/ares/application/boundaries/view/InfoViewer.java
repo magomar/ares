@@ -15,7 +15,7 @@ public interface InfoViewer extends View {
 
     void updateTileInfo(TileModel tile);
 
-    void updateScenarioInfo(String text, Calendar calendar);
+    void updateScenarioInfo(Calendar calendar);
 
     void clear();
 }

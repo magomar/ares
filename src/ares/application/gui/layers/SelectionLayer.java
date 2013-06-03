@@ -1,8 +1,8 @@
 package ares.application.gui.layers;
 
+import ares.application.models.board.TileModel;
 import ares.application.gui.profiles.GraphicsModel;
 import ares.application.gui.providers.AresMiscTerrainGraphics;
-import ares.application.models.board.*;
 import ares.application.models.forces.FormationModel;
 import ares.application.models.forces.UnitModel;
 import java.awt.*;

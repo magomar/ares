@@ -1,9 +1,9 @@
 package ares.application.models.board;
 
 import ares.application.models.forces.UnitModel;
-import ares.engine.knowledge.KnowledgeCategory;
-import ares.scenario.board.Tile;
-import ares.scenario.forces.SurfaceUnit;
+import ares.platform.engine.knowledge.KnowledgeCategory;
+import ares.platform.scenario.board.Tile;
+import ares.platform.scenario.forces.SurfaceUnit;
 import java.util.*;
 
 /**

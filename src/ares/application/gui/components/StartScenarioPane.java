@@ -1,9 +1,9 @@
 package ares.application.gui.components;
 
-import ares.application.io.AresFileType;
+import ares.platform.io.AresFileType;
 import ares.platform.model.UserRole;
-import ares.scenario.Scenario;
-import ares.scenario.forces.Force;
+import ares.platform.scenario.Scenario;
+import ares.platform.scenario.forces.Force;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.io.File;

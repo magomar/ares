@@ -2,8 +2,8 @@ package ares.application.models.forces;
 
 import ares.platform.model.RoleMediatedModel;
 import ares.platform.model.UserRole;
-import ares.scenario.forces.Formation;
-import ares.scenario.forces.Unit;
+import ares.platform.scenario.forces.Formation;
+import ares.platform.scenario.forces.Unit;
 import java.util.ArrayList;
 import java.util.List;
 

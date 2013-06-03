@@ -5,9 +5,9 @@ import ares.application.models.board.TileModel;
 import ares.application.models.forces.ForceModel;
 import ares.application.models.forces.FormationModel;
 import ares.application.models.forces.UnitModel;
-import ares.engine.algorithms.pathfinding.Path;
+import ares.platform.engine.algorithms.pathfinding.Path;
 import ares.platform.view.View;
-import ares.scenario.board.Tile;
+import ares.platform.scenario.board.Tile;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.Collection;
@@ -50,6 +50,8 @@ public interface BoardViewer extends View {
     void setLayerVisible(int layer, boolean visible);
 
     boolean isLayerVisible(int layer);
+    
+    void switchLayerVisible(int layer);
     
     void setProfile(int profile);
 }

@@ -2,7 +2,7 @@ package ares.application.views;
 
 import ares.application.boundaries.view.ActionBarViewer;
 import ares.platform.view.AbstractView;
-import ares.platform.view.ComponentFactory;
+import ares.application.gui.ComponentFactory;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 

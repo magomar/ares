@@ -4,7 +4,7 @@ import ares.application.gui.decorators.ImageDecorators;
 import ares.application.gui.layers.AbstractImageLayer;
 import ares.application.gui.providers.ImageProviderFactory;
 import ares.application.gui.providers.ImageProvider;
-import ares.scenario.board.Board;
+import ares.platform.scenario.board.Board;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Arrays;

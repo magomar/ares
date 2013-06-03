@@ -1,0 +1,111 @@
+package ares.application.controllers;
+
+import ares.application.commands.EngineCommands;
+import ares.application.commands.AresCommandGroup;
+import ares.application.views.MessagesHandler;
+import ares.platform.engine.time.ClockEvent;
+import ares.platform.engine.time.ClockEventType;
+import ares.platform.engine.RealTimeEngine;
+import ares.platform.commands.CommandAction;
+import ares.platform.commands.CommandGroup;
+import ares.application.gui.ComponentFactory;
+import ares.platform.util.Observable;
+import ares.application.boundaries.interactor.EngineInteractor;
+import ares.platform.scenario.Scenario;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.util.logging.Logger;
+import javax.swing.Action;
+
+/**
+ *
+ * @author Mario Gomez <margomez at dsic.upv.es>
+ * @author Heine <heisncfr@inf.upv.es>
+ */
+public final class RealTimeEngineController implements PropertyChangeListener {
+
+    public static final String RUNNING = "Scenario";
+    private static final Logger LOG = Logger.getLogger(RealTimeEngineController.class.getName());
+    // Entities (bussines logic), they interact with the model providers and provide models to the views
+    private final RealTimeEngine engine;
+    private final EngineInteractor coordinator;
+    private Action pause = new CommandAction(EngineCommands.ENGINE_PAUSE, new PauseActionListener(), false);
+    private Action turn = new CommandAction(EngineCommands.ENGINE_NEXT_TURN, new NextTurnActionListener());
+    private Action step = new CommandAction(EngineCommands.ENGINE_NEXT_STEP, new NextStepActionListener());
+
+    public RealTimeEngineController(EngineInteractor coordinator) {
+        this.coordinator = coordinator;
+        coordinator.registerLogger(LOG);
+
+        //Add actions to the views
+
+        Action[] actions = {pause, turn, step};
+        CommandGroup group = AresCommandGroup.ENGINE;
+        coordinator.addActions(actions);
+        coordinator.addMenu(group.getName(), group.getText(), group.getMnemonic(), actions);
+
+        //Add change listeners to entities
+        engine = new RealTimeEngine();
+        engine.addPropertyChangeListener(this);
+    }
+
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        if (RealTimeEngine.CLOCK_EVENT_PROPERTY.equals(evt.getPropertyName())) {
+            ClockEvent clockEvent = (ClockEvent) evt.getNewValue();
+            if (clockEvent.getEventTypes().contains(ClockEventType.TURN)) {
+                pause.setEnabled(false);
+                turn.setEnabled(true);
+                step.setEnabled(true);
+            }
+        }
+    }
+
+    private class PauseActionListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            LOG.log(MessagesHandler.MessageLevel.ENGINE, e.toString());
+            pause.setEnabled(false);
+            turn.setEnabled(true);
+            step.setEnabled(true);
+            coordinator.setRunning(false);
+            engine.pause();
+        }
+    }
+
+    private class NextTurnActionListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            LOG.log(MessagesHandler.MessageLevel.ENGINE, e.toString());
+            pause.setEnabled(true);
+            turn.setEnabled(false);
+            step.setEnabled(false);
+            coordinator.setRunning(true);
+            engine.resume();
+        }
+    }
+
+    private class NextStepActionListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            LOG.log(MessagesHandler.MessageLevel.ENGINE, e.toString());
+            coordinator.setRunning(true);
+            engine.step();
+            coordinator.setRunning(false);
+        }
+    }
+
+    public RealTimeEngine getEngine() {
+        return engine;
+    }
+
+    public void setScenario(Scenario scenario) {
+        engine.setScenario(scenario);
+        engine.activate();
+    }
+}

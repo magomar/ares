@@ -42,8 +42,7 @@ public class InfoView extends AbstractView<JPanel> implements InfoViewer {
     }
 
     @Override
-    public void updateScenarioInfo(String text, Calendar calendar) {
-//        scenInfo.setText(text);
+    public void updateScenarioInfo(Calendar calendar) {
         scenInfo.update(calendar);
     }
 

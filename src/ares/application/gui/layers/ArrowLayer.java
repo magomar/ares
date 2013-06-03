@@ -1,13 +1,13 @@
 package ares.application.gui.layers;
 
 import ares.application.gui.decorators.ImageDecorators;
-import ares.engine.algorithms.pathfinding.Path;
-import ares.engine.algorithms.pathfinding.Node;
+import ares.platform.engine.algorithms.pathfinding.Path;
+import ares.platform.engine.algorithms.pathfinding.Node;
 import ares.application.gui.profiles.GraphicsModel;
 import ares.application.gui.providers.AresMiscTerrainGraphics;
-import ares.scenario.board.Direction;
-import ares.scenario.board.Directions;
-import ares.scenario.board.Tile;
+import ares.platform.scenario.board.Direction;
+import ares.platform.scenario.board.Directions;
+import ares.platform.scenario.board.Tile;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.*;

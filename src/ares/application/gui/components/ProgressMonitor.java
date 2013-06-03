@@ -1,7 +1,7 @@
 package ares.application.gui.components;
 
-import ares.platform.view.ComponentFactory;
-import ares.platform.view.WindowUtil;
+import ares.application.gui.ComponentFactory;
+import ares.application.gui.WindowUtil;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
