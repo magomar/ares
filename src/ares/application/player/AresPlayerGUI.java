@@ -73,14 +73,12 @@ public final class AresPlayerGUI extends AbstractView<JFrame> implements PlayerV
         mainFrame.setSize(preferredSize);
         mainFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         mainFrame.setUndecorated(true);
-//        menuV.getContentPane().setVisible(false);
-//        toolBarV.getContentPane().setVisible(false);
-        Container container = mainFrame.getContentPane();
-        boardV.getContentPane().setPreferredSize(getBoardPaneDimension(container));
-        infoV.getContentPane().setPreferredSize(getInfoPaneDimension(container));
-        oobV.getContentPane().setPreferredSize(getOOBPaneDimension(container));
-        miniMapV.getContentPane().setPreferredSize(getMiniMapPaneDimension(container));
-        messagesV.getContentPane().setPreferredSize(getMessagesPaneDimension(container));
+
+        boardV.setPreferredSize(getBoardPaneDimension(preferredSize));
+        infoV.setPreferredSize(getInfoPaneDimension(preferredSize));
+        oobV.setPreferredSize(getOOBPaneDimension(preferredSize));
+        miniMapV.setPreferredSize(getMiniMapPaneDimension());
+        messagesV.setPreferredSize(getMessagesPaneDimension(preferredSize));
 
         splitVert = ComponentFactory.verticalSplitPane(true, boardV.getContentPane(), messagesV.getContentPane(), 1);
         splitVert2 = ComponentFactory.verticalSplitPane(true, miniMapV.getContentPane(), oobV.getContentPane(), 0);
@@ -116,25 +114,25 @@ public final class AresPlayerGUI extends AbstractView<JFrame> implements PlayerV
         }
     }
 
-    private Dimension getMiniMapPaneDimension(Container container) {
+    private Dimension getMiniMapPaneDimension() {
         return new Dimension(OOB_VIEW_WIDTH, MINIMAP_VIEW_HEIGHT);
     }
 
-    private Dimension getOOBPaneDimension(Container container) {
-        return new Dimension(OOB_VIEW_WIDTH, container.getHeight() - MINIMAP_VIEW_HEIGHT - ComponentFactory.SPLIT_DIVIDER_SIZE);
+    private Dimension getOOBPaneDimension(Dimension containerSize) {
+        return new Dimension(OOB_VIEW_WIDTH, containerSize.height - MINIMAP_VIEW_HEIGHT - ComponentFactory.SPLIT_DIVIDER_SIZE);
     }
 
-    private Dimension getInfoPaneDimension(Container container) {
-        return new Dimension(INFO_VIEW_WIDTH, container.getHeight());
+    private Dimension getInfoPaneDimension(Dimension containerSize) {
+        return new Dimension(INFO_VIEW_WIDTH, containerSize.height);
     }
 
-    private Dimension getBoardPaneDimension(Container container) {
-        return new Dimension(container.getWidth() - INFO_VIEW_WIDTH - OOB_VIEW_WIDTH - ComponentFactory.SPLIT_DIVIDER_SIZE,
-                container.getHeight() - MESSAGES_WIEW_HEIGHT - ComponentFactory.SPLIT_DIVIDER_SIZE);
+    private Dimension getBoardPaneDimension(Dimension containerSize) {
+        return new Dimension(containerSize.width - INFO_VIEW_WIDTH - OOB_VIEW_WIDTH - ComponentFactory.SPLIT_DIVIDER_SIZE,
+                containerSize.height - MESSAGES_WIEW_HEIGHT - ComponentFactory.SPLIT_DIVIDER_SIZE);
     }
 
-    private Dimension getMessagesPaneDimension(Container container) {
-        return new Dimension(container.getWidth() - INFO_VIEW_WIDTH - ComponentFactory.SPLIT_DIVIDER_SIZE, MESSAGES_WIEW_HEIGHT);
+    private Dimension getMessagesPaneDimension(Dimension containerSize) {
+        return new Dimension(containerSize.width - INFO_VIEW_WIDTH - ComponentFactory.SPLIT_DIVIDER_SIZE, MESSAGES_WIEW_HEIGHT);
     }
     
     public static void main(String[] args) {

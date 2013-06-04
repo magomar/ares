@@ -41,8 +41,6 @@ public final class ScenarioController implements ActionController {
 
     public ScenarioController(ScenarioInteractor interactor) {
         this.interactor = interactor;
-        // register controller logger into application logging handlers
-        interactor.registerLogger(LOG);
         // create action groups
         close.setEnabled(false);
         Action[] fileActions = new Action[]{open, load, close, settings, exit};

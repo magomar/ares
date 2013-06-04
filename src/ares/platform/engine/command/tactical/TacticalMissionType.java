@@ -1,6 +1,6 @@
 package ares.platform.engine.command.tactical;
 
-import ares.platform.engine.algorithms.pathfinding.PathFinder;
+import ares.platform.engine.algorithms.pathfinding.Pathfinder;
 import ares.platform.engine.command.tactical.missions.AttackByFire;
 import ares.platform.engine.command.tactical.missions.Occupy;
 import ares.platform.scenario.board.Tile;
@@ -15,7 +15,7 @@ public enum TacticalMissionType  {
     //    ASSAULT(TacticalMissionAssault.class),
     ATTACK_BY_FIRE {
         @Override
-        public TacticalMission getNewTacticalMission(Unit unit, Tile target, PathFinder pathFinder) {
+        public TacticalMission getNewTacticalMission(Unit unit, Tile target, Pathfinder pathFinder) {
             TacticalMission mission = new AttackByFire(this, unit, target);
             mission.plan(pathFinder);
             return mission;
@@ -35,7 +35,7 @@ public enum TacticalMissionType  {
     //    LINKUP(TacticalMissionExample.class),
     OCCUPY {
         @Override
-        public TacticalMission getNewTacticalMission(Unit unit, Tile target, PathFinder pathFinder) {
+        public TacticalMission getNewTacticalMission(Unit unit, Tile target, Pathfinder pathFinder) {
             TacticalMission mission = new Occupy(this, unit, target);
             mission.plan(pathFinder);
             return mission;
@@ -62,5 +62,5 @@ public enum TacticalMissionType  {
     //    TURN(TacticalMissionExample.class)
     ;
     
-    public abstract TacticalMission getNewTacticalMission(Unit unit, Tile target, PathFinder pathFinder);
+    public abstract TacticalMission getNewTacticalMission(Unit unit, Tile target, Pathfinder pathFinder);
 }

@@ -10,4 +10,5 @@ import ares.platform.scenario.forces.Unit;
 public interface Heuristic {
 
     double getCost(Tile origin, Tile destination, Unit unit);
+    
 }

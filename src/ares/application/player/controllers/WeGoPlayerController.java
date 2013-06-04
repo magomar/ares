@@ -14,6 +14,7 @@ import ares.application.shared.boundaries.interactors.EngineInteractor;
 import ares.application.shared.boundaries.interactors.MessagesInteractor;
 import ares.application.player.boundaries.interactors.PlayerBoardInteractor;
 import ares.application.shared.boundaries.interactors.ScenarioInteractor;
+import ares.application.shared.controllers.BoardController;
 import ares.application.shared.controllers.MessagesController;
 import ares.application.shared.controllers.ScenarioController;
 import ares.platform.scenario.Scenario;
@@ -30,7 +31,7 @@ import javax.swing.JMenu;
  * @author Mario Gomez <margomez at dsic.upv.es>
  * @author Heine <heisncfr@inf.upv.es>
  */
-public class WeGoPlayerController implements EngineInteractor, ScenarioInteractor, MessagesInteractor, PlayerBoardInteractor {
+public class WeGoPlayerController implements EngineInteractor, ScenarioInteractor, PlayerBoardInteractor, MessagesInteractor {
 
     // Views
     private final PlayerViewer mainView;
@@ -66,10 +67,15 @@ public class WeGoPlayerController implements EngineInteractor, ScenarioInteracto
         miniMapView = mainView.getMiniMapView();
 
         // instantiate controllers
-        this.scenarioController = new ScenarioController(this);
-        this.engineController = new RealTimeEngineController(this);
-        this.messagesController = new MessagesController(this);
-        this.boardController = new PlayerBoardController(this, engineController.getEngine());
+        scenarioController = new ScenarioController(this);
+        engineController = new RealTimeEngineController(this);
+        messagesController = new MessagesController(this);
+        boardController = new PlayerBoardController(this, engineController.getEngine());
+        
+        //register logger handlers
+        registerLogger(ScenarioController.class);
+        registerLogger(RealTimeEngineController.class);
+        registerLogger(PlayerBoardController.class);
         
         // populate menus and tool bars
         mainMenuView.addActionButtons(scenarioController.getActionGroup().createMainMenuButtons());
@@ -124,12 +130,7 @@ public class WeGoPlayerController implements EngineInteractor, ScenarioInteracto
         mainView.switchPerspective(PlayerViewer.MAIN_MENU_PERSPECTIVE);
         System.gc();
     }
-
-    @Override
-    public void registerLogger(Logger logger) {
-        logger.addHandler(messagesView.getHandler());
-    }
-
+    
     @Override
     public Container getGUIContainer() {
         return mainView.getContentPane();
@@ -158,5 +159,9 @@ public class WeGoPlayerController implements EngineInteractor, ScenarioInteracto
     @Override
     public MiniMapViewer getMiniMapView() {
         return miniMapView;
+    }
+    
+    private void registerLogger(Class<?> aClass) {
+        Logger.getLogger(aClass.getName()).addHandler(messagesView.getHandler());
     }
 }

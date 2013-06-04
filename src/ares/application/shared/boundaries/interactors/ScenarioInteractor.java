@@ -1,6 +1,5 @@
 package ares.application.shared.boundaries.interactors;
 
-import ares.application.shared.boundaries.Interactor;
 import ares.platform.scenario.Scenario;
 
 /**

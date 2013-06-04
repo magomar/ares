@@ -12,11 +12,13 @@ import java.util.*;
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public class AStar extends AbstractPathFinder {
+public class AStar extends AbstractPathfinder {
 
+    public AStar() {
+    }
+    
     public AStar(Heuristic heuristic, CostFunction costFunction) {
         super(heuristic, costFunction);
-
     }
 
     @Override
@@ -71,6 +73,16 @@ public class AStar extends AbstractPathFinder {
             }
         }
         return null;
+    }
+
+    @Override
+    public CostFunction getCostFunction() {
+        return costFunction;
+    }
+
+    @Override
+    public Heuristic getHeuristic() {
+        return heuristic;
     }
 
     @Override

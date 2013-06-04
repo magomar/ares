@@ -7,7 +7,7 @@ import ares.platform.engine.time.ClockEvent;
 import static ares.platform.engine.RealTimeEngine.CLOCK_EVENT_PROPERTY;
 import ares.platform.engine.action.ActionSpace;
 import ares.platform.engine.algorithms.pathfinding.AStar;
-import ares.platform.engine.algorithms.pathfinding.PathFinder;
+import ares.platform.engine.algorithms.pathfinding.Pathfinder;
 import ares.platform.engine.algorithms.pathfinding.costfunctions.CostFunctions;
 import ares.platform.engine.algorithms.pathfinding.heuristics.DistanceCalculator;
 import ares.platform.engine.algorithms.pathfinding.heuristics.MinimunDistance;
@@ -52,7 +52,7 @@ public class RealTimeEngine extends AbstractBean {
     /**
      * Pathfinder algorithm
      */
-    private PathFinder pathFinder;
+    private Pathfinder pathFinder;
 //    /**
 //     * Executor service to perform tasks concurrently (eg. planning)
 //     */
@@ -84,7 +84,7 @@ public class RealTimeEngine extends AbstractBean {
         Clock.INSTANCE.setEngine(this);
         this.scenario = scenario;
         if (scenario != null) {
-            pathFinder = new AStar(new MinimunDistance(DistanceCalculator.DELTA), CostFunctions.FASTEST);
+            pathFinder = new AStar(MinimunDistance.create(DistanceCalculator.DELTA), CostFunctions.FASTEST);
             for (Force force : scenario.getForces()) {
                 for (Formation formation : force.getFormations()) {
                     formations.add(formation);
@@ -217,7 +217,7 @@ public class RealTimeEngine extends AbstractBean {
         }
     }
 
-    public PathFinder getPathFinder() {
+    public Pathfinder getPathFinder() {
         return pathFinder;
     }
 

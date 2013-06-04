@@ -1,8 +1,8 @@
 package ares.application.shared.views;
 
-import ares.application.shared.boundaries.View;
 import java.awt.Component;
 import java.awt.Container;
+import java.awt.Dimension;
 
 /**
  *
@@ -54,4 +54,10 @@ public abstract class AbstractView<C extends Container> implements View {
         }
         return found;
     }
+
+    @Override
+    public void setPreferredSize(Dimension size) {
+        contentPane.setPreferredSize(size);
+    }
+    
 }

@@ -6,6 +6,6 @@ import ares.platform.action.ActionGroup;
  *
  * @author Mario Gómez Martínez <magomar@gmail.com>
  */
-public interface ActionController {
+public interface ActionController  {
     ActionGroup getActionGroup();
 }

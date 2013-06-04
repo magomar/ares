@@ -2,13 +2,11 @@ package ares.platform.engine.algorithms.pathfinding;
 
 
 import ares.platform.engine.algorithms.pathfinding.costfunctions.CostFunction;
-import ares.platform.engine.algorithms.pathfinding.costfunctions.CostFunctions;
 import ares.platform.engine.algorithms.pathfinding.heuristics.Heuristic;
 import ares.platform.engine.movement.MovementCost;
 import ares.platform.scenario.board.Direction;
 import ares.platform.scenario.board.Tile;
 import ares.platform.scenario.forces.Unit;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
@@ -19,11 +17,13 @@ import java.util.Queue;
  * 
  * @author Saúl Esteban <saesmar1@ei.upv.es>
  */
-public class BeamSearch extends AbstractPathFinder {
+public class BeamSearch extends AbstractPathfinder {
+
+    public BeamSearch() {
+    }
 
     public BeamSearch(Heuristic heuristic, CostFunction costFunction) {
         super(heuristic, costFunction);
-
     }
     
     @Override
@@ -136,7 +136,18 @@ public class BeamSearch extends AbstractPathFinder {
         return null;
     }
 
-    class OpenSet {
+    @Override
+    public Heuristic getHeuristic() {
+        return heuristic;
+    }
+
+    @Override
+    public CostFunction getCostFunction() {
+        return costFunction;
+    }
+
+    
+    private class OpenSet {
 
         int nodeLimit;
         Queue<Node> list;

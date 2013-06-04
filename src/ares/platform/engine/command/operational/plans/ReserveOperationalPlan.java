@@ -2,7 +2,7 @@ package ares.platform.engine.command.operational.plans;
 
 import ares.data.jaxb.Emphasis;
 import ares.data.jaxb.SupportScope;
-import ares.platform.engine.algorithms.pathfinding.PathFinder;
+import ares.platform.engine.algorithms.pathfinding.Pathfinder;
 import ares.platform.engine.command.Objective;
 import ares.platform.engine.command.tactical.TacticalMission;
 import ares.platform.engine.command.tactical.TacticalMissionType;
@@ -21,7 +21,7 @@ class ReserveOperationalPlan extends OperationalPlan {
     }
 
     @Override
-    public void plan(PathFinder pathFinder) {
+    public void plan(Pathfinder pathFinder) {
         for (Unit unit : formation.getAvailableUnits()) {
             TacticalMission mission = TacticalMissionType.OCCUPY.getNewTacticalMission(unit, unit.getLocation(), pathFinder);
             unit.setMission(mission);

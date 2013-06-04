@@ -8,7 +8,7 @@ import ares.platform.engine.action.actions.MoveAction;
 import ares.platform.engine.action.actions.RestAction;
 import ares.platform.engine.action.actions.WaitAction;
 import ares.platform.engine.algorithms.pathfinding.Path;
-import ares.platform.engine.algorithms.pathfinding.PathFinder;
+import ares.platform.engine.algorithms.pathfinding.Pathfinder;
 import ares.platform.scenario.board.Tile;
 import ares.platform.scenario.forces.Unit;
 import java.util.Deque;
@@ -69,7 +69,7 @@ public abstract class TacticalMission {
         this.type = type;
     }
 
-    public abstract void plan(PathFinder pathFinder);
+    public abstract void plan(Pathfinder pathFinder);
 
     public void commit(ActionSpace actionSpace) {
         currentAction.commit();

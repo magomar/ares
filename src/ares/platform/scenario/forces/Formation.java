@@ -1,7 +1,7 @@
 package ares.platform.scenario.forces;
 
 import ares.application.shared.models.forces.FormationModel;
-import ares.platform.engine.algorithms.pathfinding.PathFinder;
+import ares.platform.engine.algorithms.pathfinding.Pathfinder;
 import ares.platform.engine.command.ProgrammedOpponent;
 import ares.platform.engine.command.operational.plans.OperationalPlan;
 import ares.platform.engine.time.Clock;
@@ -224,7 +224,7 @@ public class Formation implements ModelProvider<FormationModel> {
     }
 
     // TODO each turn check for reinforcements and put them into the right unit collection
-    public void plan(PathFinder pathFinder) {
+    public void plan(Pathfinder pathFinder) {
         operationalPlan.updateObjectives();
         operationalPlan.plan(pathFinder);
     }

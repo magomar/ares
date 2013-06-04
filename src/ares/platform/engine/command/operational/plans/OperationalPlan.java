@@ -3,7 +3,7 @@ package ares.platform.engine.command.operational.plans;
 import ares.data.jaxb.Emphasis;
 import ares.data.jaxb.SupportScope;
 import ares.platform.engine.command.operational.Operation;
-import ares.platform.engine.algorithms.pathfinding.PathFinder;
+import ares.platform.engine.algorithms.pathfinding.Pathfinder;
 import ares.platform.engine.command.Objective;
 import ares.platform.scenario.forces.Formation;
 import java.util.Collection;
@@ -41,7 +41,7 @@ public abstract class OperationalPlan {
         achieved = false;
     }
 
-    public abstract void plan(PathFinder pathFinder);
+    public abstract void plan(Pathfinder pathFinder);
 
     public void updateObjectives() {
         for (Objective objective : objectives) {

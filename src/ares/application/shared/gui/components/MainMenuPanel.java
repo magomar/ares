@@ -14,15 +14,15 @@ import javax.swing.*;
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public final class WelcomeScreen extends JPanel {
+public final class MainMenuPanel extends JPanel {
 
     /**
      * Background image to be loaded
      */
     private SoftReference<BufferedImage> backgroundImage = new SoftReference<>(null);
 
-    public WelcomeScreen() {
-        BoxLayout bl = new BoxLayout(this, BoxLayout.PAGE_AXIS);
+    public MainMenuPanel() {
+        BoxLayout bl = new BoxLayout(this, BoxLayout.Y_AXIS);
         setLayout(bl);
         add(Box.createRigidArea(new Dimension(0, 300)));
         updateBackgroundImage();

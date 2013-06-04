@@ -3,7 +3,7 @@ package ares.application.shared.boundaries.viewers;
 import ares.application.shared.models.ScenarioModel;
 import ares.application.shared.models.forces.FormationModel;
 import ares.application.shared.models.forces.UnitModel;
-import ares.application.shared.boundaries.View;
+import ares.application.shared.views.View;
 import java.awt.event.MouseListener;
 
 /**

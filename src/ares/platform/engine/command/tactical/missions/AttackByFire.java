@@ -1,6 +1,6 @@
 package ares.platform.engine.command.tactical.missions;
 
-import ares.platform.engine.algorithms.pathfinding.PathFinder;
+import ares.platform.engine.algorithms.pathfinding.Pathfinder;
 import ares.platform.engine.command.tactical.TacticalMission;
 import ares.platform.engine.command.tactical.TacticalMissionType;
 import ares.platform.scenario.board.Tile;
@@ -18,7 +18,7 @@ public class AttackByFire extends TacticalMission {
 
 
     @Override
-    public void plan(PathFinder pathFinder) {
+    public void plan(Pathfinder pathFinder) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

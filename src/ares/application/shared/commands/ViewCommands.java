@@ -2,8 +2,6 @@ package ares.application.shared.commands;
 
 import ares.platform.action.Command;
 import ares.platform.io.ResourcePath;
-import java.io.File;
-import java.nio.file.FileSystems;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.KeyStroke;

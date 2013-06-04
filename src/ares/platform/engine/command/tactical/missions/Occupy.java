@@ -6,7 +6,7 @@ import ares.platform.engine.action.actions.MoveAction;
 import ares.platform.engine.action.actions.SurfaceMoveAction;
 import ares.platform.engine.action.actions.WaitAction;
 import ares.platform.engine.algorithms.pathfinding.Path;
-import ares.platform.engine.algorithms.pathfinding.PathFinder;
+import ares.platform.engine.algorithms.pathfinding.Pathfinder;
 import ares.platform.engine.command.tactical.TacticalMission;
 import ares.platform.engine.command.tactical.TacticalMissionType;
 import ares.platform.scenario.board.Tile;
@@ -24,7 +24,7 @@ public class Occupy extends TacticalMission {
     }
 
     @Override
-    public void plan(PathFinder pathFinder) {
+    public void plan(Pathfinder pathFinder) {
         currentAction = null;
         pendingActions.clear();
         if (unit.getLocation().equals(targetTile)) {

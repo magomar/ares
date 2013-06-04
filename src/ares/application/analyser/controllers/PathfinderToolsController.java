@@ -1,15 +1,12 @@
 package ares.application.analyser.controllers;
 
-import ares.application.analyser.boundaries.interactors.AnalyserInteractor;
-import ares.application.analyser.boundaries.viewers.AnalyserViewer;
-import ares.application.shared.boundaries.viewers.BoardViewer;
+import ares.application.analyser.boundaries.interactors.PathfinderAnalyserInteractor;
+import ares.application.analyser.boundaries.viewers.PathfinderToolsViewer;
 import ares.application.player.boundaries.viewers.PlayerViewer;
-import ares.application.analyser.boundaries.interactors.DoubleBoardInteractor;
-import ares.application.shared.boundaries.interactors.MessagesInteractor;
+import ares.application.analyser.boundaries.interactors.PathfinderComparatorInteractor;
+import ares.application.analyser.boundaries.viewers.PathfinderComparatorViewer;
 import ares.application.shared.boundaries.interactors.ScenarioInteractor;
 import ares.application.shared.boundaries.viewers.ActionBarViewer;
-import ares.application.shared.boundaries.viewers.MessagesViewer;
-import ares.application.shared.controllers.MessagesController;
 import ares.application.shared.controllers.ScenarioController;
 import ares.application.shared.gui.profiles.GraphicsModel;
 import ares.application.shared.gui.providers.AresMiscTerrainGraphics;
@@ -17,7 +14,6 @@ import ares.platform.scenario.Scenario;
 import ares.platform.scenario.board.Terrain;
 import ares.platform.scenario.forces.UnitsColor;
 import java.awt.Container;
-import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JMenu;
 
@@ -25,34 +21,28 @@ import javax.swing.JMenu;
  *
  * @author Mario Gómez Martínez <magomar@gmail.com>
  */
-public class PathfindingAnalyserController implements ScenarioInteractor, MessagesInteractor, DoubleBoardInteractor, AnalyserInteractor {
+public class PathfinderToolsController implements ScenarioInteractor, PathfinderComparatorInteractor, PathfinderAnalyserInteractor {
 
-    private final AnalyserViewer mainView;
+    private final PathfinderToolsViewer mainView;
     private final ActionBarViewer<JMenu> menuView;
-    private final MessagesViewer messagesView;
     private final ActionBarViewer<JButton> mainMenuView;
     private final ActionBarViewer<JButton> toolBarView;
-    private final BoardViewer leftBoardView;
-    private final BoardViewer rightBoardView;
+    private final PathfinderComparatorViewer comparatorView;
     private final ScenarioController scenarioController;
-    private final ComparatorController comparatorController;
-    private final AnalyserController analyserController;
-    private final MessagesController messagesController;
+    private final PathfinderComparatorController comparatorController;
+    private final PathfinderAnalyserController analyserController;
 
-    public PathfindingAnalyserController(AnalyserViewer mainView) {
+    public PathfinderToolsController(PathfinderToolsViewer mainView) {
         this.mainView = mainView;
         menuView = mainView.getMenuView();
-        messagesView = mainView.getMessagesView();
         mainMenuView = mainView.getMainMenuView();
         toolBarView = mainView.getToolBarView();
-        leftBoardView = mainView.getLeftBoardView();
-        rightBoardView = mainView.getRightBoardView();
+        comparatorView = mainView.getComparatorView();
 
         // instantiate controllers
         this.scenarioController = new ScenarioController(this);
-        this.comparatorController = new ComparatorController(this);
-        this.analyserController = new AnalyserController(this);
-        this.messagesController = new MessagesController(this);
+        this.comparatorController = new PathfinderComparatorController(this);
+        this.analyserController = new PathfinderAnalyserController(this);
 
         // populate menus and tool bars
         mainMenuView.addActionButtons(scenarioController.getActionGroup().createMainMenuButtons());
@@ -61,20 +51,18 @@ public class PathfindingAnalyserController implements ScenarioInteractor, Messag
 //        toolBarView.addActionButtons(analyserController.getActionGroup().createToolBarButtons());
         JMenu[] menus = {
             scenarioController.getActionGroup().createMenu(),
-            comparatorController.getActionGroup().createMenu(),
-//            analyserController.getActionGroup().createMenu()
+            comparatorController.getActionGroup().createMenu(), //            analyserController.getActionGroup().createMenu()
         };
         menuView.addActionButtons(menus);
 
         //sets the initial perspective
-        mainView.switchPerspective(PlayerViewer.MAIN_MENU_PERSPECTIVE);
+        mainView.switchPerspective(PathfinderToolsViewer.COMPARATOR_PERSPECTIVE);
     }
 
     @Override
     public void forgetScenario() {
-        leftBoardView.flush();
-        rightBoardView.flush();
-        mainView.switchPerspective(AnalyserViewer.MAIN_MENU_PERSPECTIVE);
+        comparatorView.flush();
+//        mainView.switchPerspective(PathfinderToolsViewer.MAIN_MENU_PERSPECTIVE);
         System.gc();
     }
 
@@ -88,13 +76,8 @@ public class PathfindingAnalyserController implements ScenarioInteractor, Messag
         // pass the scenario to the engine controller
         comparatorController.setScenario(scenario);
         // change the GUI to show the pathfinding comparison perspective
-        mainView.switchPerspective(AnalyserViewer.COMPARATOR_PERSPECTIVE);
+        mainView.switchPerspective(PathfinderToolsViewer.COMPARATOR_PERSPECTIVE);
         System.gc();
-    }
-
-    @Override
-    public void registerLogger(Logger logger) {
-        logger.addHandler(messagesView.getHandler());
     }
 
     @Override
@@ -103,17 +86,7 @@ public class PathfindingAnalyserController implements ScenarioInteractor, Messag
     }
 
     @Override
-    public MessagesViewer getMessagesView() {
-        return messagesView;
-    }
-
-    @Override
-    public BoardViewer getSecondBoardView() {
-        return rightBoardView;
-    }
-
-    @Override
-    public BoardViewer getBoardView() {
-        return leftBoardView;
+    public PathfinderComparatorViewer getPathfinderComparatorView() {
+        return comparatorView;
     }
 }

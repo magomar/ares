@@ -1,7 +1,7 @@
 package ares.application.shared.views;
 
 import ares.application.shared.boundaries.viewers.ActionBarViewer;
-import ares.application.shared.gui.components.WelcomeScreen;
+import ares.application.shared.gui.components.MainMenuPanel;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -13,7 +13,7 @@ public class MainMenuView extends AbstractView<JPanel> implements ActionBarViewe
 
     @Override
     protected JPanel layout() {
-        JPanel buttonsPanel = new WelcomeScreen();
+        JPanel buttonsPanel = new MainMenuPanel();
         return buttonsPanel;
     }
 

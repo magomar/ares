@@ -30,16 +30,15 @@ public final class RealTimeEngineController implements ActionController, Propert
     private static final Logger LOG = Logger.getLogger(RealTimeEngineController.class.getName());
     // Entities (bussines logic), they interact with the model providers and provide models to the views
     private final RealTimeEngine engine;
-    private final EngineInteractor coordinator;
+    private final EngineInteractor interactor;
     private Action pause = new CommandAction(EngineCommands.ENGINE_PAUSE, new PauseActionListener(), false);
     private Action turn = new CommandAction(EngineCommands.ENGINE_NEXT_TURN, new NextTurnActionListener());
     private Action step = new CommandAction(EngineCommands.ENGINE_NEXT_STEP, new NextStepActionListener());
     private final ActionGroup actions;
 
-    public RealTimeEngineController(EngineInteractor coordinator) {
-        this.coordinator = coordinator;
-        coordinator.registerLogger(LOG);
-// create action groups
+    public RealTimeEngineController(EngineInteractor interactor) {
+        this.interactor = interactor;
+        // create action groups
         Action[] engineActions = {pause, turn, step};
         CommandGroup group = AresCommandGroup.ENGINE;
         actions = new ActionGroup(group.getName(), group.getText(), group.getMnemonic(), engineActions);
@@ -73,7 +72,7 @@ public final class RealTimeEngineController implements ActionController, Propert
             pause.setEnabled(false);
             turn.setEnabled(true);
             step.setEnabled(true);
-            coordinator.setRunning(false);
+            interactor.setRunning(false);
             engine.pause();
         }
     }
@@ -86,7 +85,7 @@ public final class RealTimeEngineController implements ActionController, Propert
             pause.setEnabled(true);
             turn.setEnabled(false);
             step.setEnabled(false);
-            coordinator.setRunning(true);
+            interactor.setRunning(true);
             engine.resume();
         }
     }
@@ -96,9 +95,9 @@ public final class RealTimeEngineController implements ActionController, Propert
         @Override
         public void actionPerformed(ActionEvent e) {
             LOG.log(MessagesHandler.MessageLevel.ENGINE, e.toString());
-            coordinator.setRunning(true);
+            interactor.setRunning(true);
             engine.step();
-            coordinator.setRunning(false);
+            interactor.setRunning(false);
         }
     }
 
