@@ -1,4 +1,4 @@
-package ares.application.shared.gui.layers;
+package ares.application.shared.gui.components.layers;
 
 import ares.application.shared.gui.decorators.ImageDecorators;
 import ares.platform.engine.algorithms.pathfinding.Path;

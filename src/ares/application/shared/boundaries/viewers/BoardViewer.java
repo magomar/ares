@@ -6,7 +6,7 @@ import ares.application.shared.models.forces.ForceModel;
 import ares.application.shared.models.forces.FormationModel;
 import ares.application.shared.models.forces.UnitModel;
 import ares.platform.engine.algorithms.pathfinding.Path;
-import ares.application.shared.views.View;
+import ares.application.shared.gui.views.View;
 import ares.platform.engine.algorithms.pathfinding.Node;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;

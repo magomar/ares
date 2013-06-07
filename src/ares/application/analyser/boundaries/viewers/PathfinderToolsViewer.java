@@ -1,7 +1,7 @@
 package ares.application.analyser.boundaries.viewers;
 
 import ares.application.analyser.views.PathfinderComparatorView;
-import ares.application.shared.views.View;
+import ares.application.shared.gui.views.View;
 import ares.application.shared.boundaries.viewers.ActionBarViewer;
 import ares.application.shared.boundaries.viewers.MessagesViewer;
 import javax.swing.JButton;

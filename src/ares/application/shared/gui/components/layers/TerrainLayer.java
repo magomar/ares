@@ -1,4 +1,4 @@
-package ares.application.shared.gui.layers;
+package ares.application.shared.gui.components.layers;
 
 import ares.platform.scenario.board.Feature;
 import ares.platform.scenario.board.Terrain;

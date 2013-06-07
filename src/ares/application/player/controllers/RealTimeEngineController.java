@@ -3,7 +3,7 @@ package ares.application.player.controllers;
 import ares.application.shared.controllers.ActionController;
 import ares.application.shared.commands.EngineCommands;
 import ares.application.shared.commands.AresCommandGroup;
-import ares.application.shared.views.MessagesHandler;
+import ares.application.shared.gui.views.MessagesHandler;
 import ares.platform.engine.time.ClockEvent;
 import ares.platform.engine.time.ClockEventType;
 import ares.platform.engine.RealTimeEngine;

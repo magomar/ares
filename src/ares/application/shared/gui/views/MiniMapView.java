@@ -1,9 +1,9 @@
-package ares.application.shared.views;
+package ares.application.shared.gui.views;
 
 import ares.application.shared.boundaries.viewers.MiniMapViewer;
-import ares.application.shared.gui.layers.ImageLayer;
-import ares.application.shared.gui.layers.TerrainLayer;
-import ares.application.shared.gui.layers.UnitsLayer;
+import ares.application.shared.gui.components.layers.ImageLayer;
+import ares.application.shared.gui.components.layers.TerrainLayer;
+import ares.application.shared.gui.components.layers.UnitsLayer;
 import ares.application.shared.gui.profiles.GraphicsModel;
 import ares.application.shared.models.ScenarioModel;
 import ares.application.shared.models.forces.FormationModel;

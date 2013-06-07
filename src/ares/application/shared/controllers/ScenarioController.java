@@ -3,7 +3,7 @@ package ares.application.shared.controllers;
 import ares.application.shared.commands.FileCommands;
 import ares.application.shared.commands.AresCommandGroup;
 import ares.application.shared.gui.components.StartScenarioPane;
-import ares.application.shared.views.MessagesHandler;
+import ares.application.shared.gui.views.MessagesHandler;
 import ares.data.jaxb.EquipmentDB;
 import ares.platform.io.AresFileType;
 import ares.platform.io.ResourcePath;

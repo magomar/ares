@@ -1,4 +1,4 @@
-package ares.application.shared.views;
+package ares.application.shared.gui.views;
 
 import ares.application.shared.boundaries.viewers.MessagesViewer;
 import java.util.*;

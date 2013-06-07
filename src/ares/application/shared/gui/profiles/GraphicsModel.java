@@ -1,7 +1,7 @@
 package ares.application.shared.gui.profiles;
 
 import ares.application.shared.gui.decorators.ImageDecorators;
-import ares.application.shared.gui.layers.AbstractImageLayer;
+import ares.application.shared.gui.components.layers.AbstractImageLayer;
 import ares.application.shared.gui.providers.ImageProviderFactory;
 import ares.application.shared.gui.providers.ImageProvider;
 import ares.platform.scenario.board.Board;

@@ -1,15 +1,15 @@
-package ares.application.shared.views;
+package ares.application.shared.gui.views;
 
 import ares.application.shared.models.board.TileModel;
 import ares.application.shared.gui.profiles.GraphicsModel;
 import ares.application.shared.boundaries.viewers.BoardViewer;
-import ares.application.shared.gui.layers.ImageLayer;
-import ares.application.shared.gui.layers.ArrowLayer;
-import ares.application.shared.gui.layers.GridLayer;
-import ares.application.shared.gui.layers.SelectionLayer;
-import ares.application.shared.gui.layers.TerrainLayer;
-import ares.application.shared.gui.layers.PathSearchLayer;
-import ares.application.shared.gui.layers.UnitsLayer;
+import ares.application.shared.gui.components.layers.ImageLayer;
+import ares.application.shared.gui.components.layers.ArrowLayer;
+import ares.application.shared.gui.components.layers.GridLayer;
+import ares.application.shared.gui.components.layers.SelectionLayer;
+import ares.application.shared.gui.components.layers.TerrainLayer;
+import ares.application.shared.gui.components.layers.PathSearchLayer;
+import ares.application.shared.gui.components.layers.UnitsLayer;
 import ares.application.shared.models.ScenarioModel;
 import ares.application.shared.models.forces.ForceModel;
 import ares.application.shared.models.forces.FormationModel;
@@ -45,27 +45,7 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
     private ArrowLayer arrowLayer;
     private PathSearchLayer pathSearchLayer;
     private final ImageLayer[] allLayers = {terrainLayer, gridLayer, selectionLayer, arrowLayer, pathSearchLayer, unitsLayer};
-//    private final static int LOW = 1;
-//    private final static int MID = 2;
-//    private final static int HIGH = 3;
 
-    /**
-     * This matrix has all the layers sorted by depth and priority.
-     *
-     * First level (index 0) is the array with all the existing layers Next indexes are set in such way that the bigger
-     * it is the "closer" is to the user. Layers are processed in index order (from left to right)
-     */
-//    private final ImageLayer[][] imageLayersMatrix = {
-//        // Low level
-//        {terrainLayer},
-//        // Mid level
-//        {gridLayer, selectionLayer, arrowLayer, pathSearchLayer},
-//        // High level
-//        {unitsLayer}};
-//    private final Thread[] layerThreads;
-//    public BoardView() {
-//        layerThreads = new Thread[imageLayers.length];
-//    }
     @Override
     protected JScrollPane layout() {
         JScrollPane scrollPane = new JScrollPane();
@@ -115,28 +95,6 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
             imageLayer.initialize();
         }
 
-//        layeredPane.setSize(imageSize);
-        // Prepare each layer's thread
-//        for (int depth = 0; depth < imageLayers.length; depth++) {
-//            final int depthLevel = depth;
-//            layerThreads[depth] = new Thread(new Runnable() {
-//                @Override
-//                public void run() {
-//                    for (int priority = 0; priority < imageLayers[depthLevel].length; priority++) {
-//                        imageLayers[depthLevel][priority].initialize();
-//                    }
-//                }
-//            });
-//        }
-        // Setup layer sizes and the start threads
-//        for (int depthLevel = 0; depthLevel < imageLayersMatrix.length; depthLevel++) {
-//            for (int priority = 0; priority < imageLayersMatrix[depthLevel].length; priority++) {
-//                imageLayersMatrix[depthLevel][priority].setPreferredSize(imageSize);
-//                imageLayersMatrix[depthLevel][priority].setSize(imageSize);
-//                imageLayersMatrix[depthLevel][priority].initialize();
-//            }
-//            layerThreads[depthLevel].start();
-//        }
         // Render board: paint terrain and units
         terrainLayer.paintTerrain(scenario);
         unitsLayer.paintAllUnits(scenario);

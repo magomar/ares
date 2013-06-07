@@ -11,7 +11,7 @@ import ares.application.shared.models.board.TileModel;
 import ares.application.shared.models.forces.ForceModel;
 import ares.application.shared.models.forces.FormationModel;
 import ares.application.shared.models.forces.UnitModel;
-import ares.application.shared.views.MessagesHandler;
+import ares.application.shared.gui.views.MessagesHandler;
 import ares.platform.engine.RealTimeEngine;
 import ares.platform.engine.algorithms.pathfinding.heuristics.DistanceCalculator;
 import ares.platform.engine.algorithms.pathfinding.heuristics.MinimunDistance;

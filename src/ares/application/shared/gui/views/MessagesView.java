@@ -1,4 +1,4 @@
-package ares.application.shared.views;
+package ares.application.shared.gui.views;
 
 import ares.platform.engine.messages.EngineMessageLogger;
 import ares.platform.engine.messages.EngineMessage;

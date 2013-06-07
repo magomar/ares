@@ -1,4 +1,4 @@
-package ares.application.shared.views;
+package ares.application.shared.gui.views;
 
 import java.awt.Container;
 import java.awt.Dimension;

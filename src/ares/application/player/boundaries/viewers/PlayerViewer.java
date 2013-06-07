@@ -1,6 +1,6 @@
 package ares.application.player.boundaries.viewers;
 
-import ares.application.shared.views.View;
+import ares.application.shared.gui.views.View;
 import ares.application.shared.boundaries.viewers.BoardViewer;
 import ares.application.shared.boundaries.viewers.ActionBarViewer;
 import ares.application.shared.boundaries.viewers.InfoViewer;

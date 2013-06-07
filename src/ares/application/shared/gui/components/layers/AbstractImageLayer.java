@@ -1,4 +1,4 @@
-package ares.application.shared.gui.layers;
+package ares.application.shared.gui.components.layers;
 
 import ares.application.shared.gui.profiles.GraphicsModel;
 import java.awt.*;

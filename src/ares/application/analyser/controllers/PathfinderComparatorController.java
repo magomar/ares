@@ -8,7 +8,7 @@ import ares.application.shared.commands.ViewCommands;
 import ares.application.shared.controllers.ActionController;
 import ares.application.shared.gui.profiles.GraphicsModel;
 import ares.application.shared.models.ScenarioModel;
-import ares.application.shared.views.MessagesHandler;
+import ares.application.shared.gui.views.MessagesHandler;
 import ares.platform.action.ActionGroup;
 import ares.platform.action.CommandAction;
 import ares.platform.action.CommandGroup;

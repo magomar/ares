@@ -1,7 +1,7 @@
 package ares.application.analyser.views;
 
 import ares.application.shared.boundaries.viewers.PathfinderConfigurationViewer;
-import ares.application.shared.views.AbstractView;
+import ares.application.shared.gui.views.AbstractView;
 import ares.platform.engine.algorithms.pathfinding.Pathfinder;
 import ares.platform.engine.algorithms.pathfinding.costfunctions.CostFunction;
 import ares.platform.engine.algorithms.pathfinding.heuristics.Heuristic;

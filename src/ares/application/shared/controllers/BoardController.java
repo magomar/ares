@@ -6,7 +6,7 @@ import ares.application.shared.commands.AresCommandGroup;
 import ares.application.shared.commands.ViewCommands;
 import ares.application.shared.gui.profiles.GraphicsModel;
 import ares.application.shared.models.ScenarioModel;
-import ares.application.shared.views.BoardView;
+import ares.application.shared.gui.views.BoardView;
 import ares.platform.action.ActionGroup;
 import ares.platform.action.CommandAction;
 import ares.platform.action.CommandGroup;
