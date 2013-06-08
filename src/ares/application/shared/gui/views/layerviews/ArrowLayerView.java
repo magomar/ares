@@ -1,5 +1,6 @@
-package ares.application.shared.gui.components.layers;
+package ares.application.shared.gui.views.layerviews;
 
+import ares.application.shared.boundaries.viewers.layerviewers.ArrowLayerViewer;
 import ares.application.shared.gui.decorators.ImageDecorators;
 import ares.platform.engine.algorithms.pathfinding.Path;
 import ares.platform.engine.algorithms.pathfinding.Node;
@@ -11,7 +12,6 @@ import ares.platform.scenario.board.Tile;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.*;
-import javax.swing.JViewport;
 
 /**
  * Draws the movement arrows on a BufferedImage
@@ -19,16 +19,12 @@ import javax.swing.JViewport;
  * @author Heine <heisncfr@inf.upv.es>
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
-public class ArrowLayer extends AbstractImageLayer {
+public class ArrowLayerView extends AbstractImageLayerView implements ArrowLayerViewer {
 
     private Path activePath;
     private Path selectedUnitPath;
     private Collection<Path> formationPaths;
     private Collection<Path> forcePaths;
-
-    public ArrowLayer(JViewport viewport, AbstractImageLayer parentLayer) {
-        super(viewport, parentLayer);
-    }
 
     @Override
     public void updateLayer() {
@@ -58,27 +54,31 @@ public class ArrowLayer extends AbstractImageLayer {
      *
      * @param activePath
      */
-    public void paintActiveOrders(Path activePath) {
+    @Override
+    public void updateCurrentOrders(Path activePath) {
         this.activePath = activePath;
         updateLayer();
     }
 
     /**
-     * Paints complete arrow for the {@code path} passed as argument
+     * Paint the last orders arrows for the {@code path} passed as argument
      *
      * @param activePath
      */
-    public void paintLastOrders(Path lastPath) {
+    @Override
+    public void updateLastOrders(Path lastPath) {
         this.selectedUnitPath = lastPath;
         updateLayer();
     }
 
     /**
-     * Paints complete arrows for the {@code plannedPaths} passed as argument
+     * Paint arrows for planned orders of all units in the same force as the selected unit, as described by the {@code selectedUnitPath},
+     * {@code formationPaths} and {@code forcePaths}
      *
      * @param path
      */
-    public void paintPlannedOrders(Path selectedUnitPath, Collection<Path> formationPaths, Collection<Path> forcePaths) {
+    @Override
+    public void updatePlannedOrders(Path selectedUnitPath, Collection<Path> formationPaths, Collection<Path> forcePaths) {
         this.selectedUnitPath = selectedUnitPath;
         this.formationPaths = formationPaths;
         this.forcePaths = forcePaths;
@@ -134,8 +134,8 @@ public class ArrowLayer extends AbstractImageLayer {
         BufferedImage arrowImage = GraphicsModel.INSTANCE.getImageProvider(type.getProvider(), profile).getImage(coordinates);
         Tile tile = node.getTile();
         Point pos = GraphicsModel.INSTANCE.tileToPixel(tile.getCoordinates(), profile);
-        g2.drawImage(arrowImage, pos.x, pos.y, this);
-        repaint(pos.x, pos.y, arrowImage.getWidth(), arrowImage.getHeight());
+        g2.drawImage(arrowImage, pos.x, pos.y, contentPane);
+        contentPane.repaint(pos.x, pos.y, arrowImage.getWidth(), arrowImage.getHeight());
     }
 
     /**
@@ -151,7 +151,7 @@ public class ArrowLayer extends AbstractImageLayer {
         BufferedImage arrowImage = GraphicsModel.INSTANCE.getImageProvider(type.getProvider(), profile).getImage(coordinates);
         Tile tile = node.getTile();
         Point pos = GraphicsModel.INSTANCE.tileToPixel(tile.getCoordinates(), profile);
-        g2.drawImage(arrowImage, pos.x, pos.y, this);
+        g2.drawImage(arrowImage, pos.x, pos.y, contentPane);
         BufferedImage subImage = globalImage.getSubimage(pos.x, pos.y, arrowImage.getWidth(), arrowImage.getHeight());
         Graphics2D arrowG2 = subImage.createGraphics();
         arrowG2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
@@ -159,7 +159,7 @@ public class ArrowLayer extends AbstractImageLayer {
         int cost = (int) node.getG();
         decorator.paintArrowCost(arrowG2, cost);
         arrowG2.dispose();
-        repaint(pos.x, pos.y, arrowImage.getWidth(), arrowImage.getHeight());
+        contentPane.repaint(pos.x, pos.y, arrowImage.getWidth(), arrowImage.getHeight());
     }
 
     /**
@@ -175,8 +175,8 @@ public class ArrowLayer extends AbstractImageLayer {
         BufferedImage arrowImage = GraphicsModel.INSTANCE.getImageProvider(type.getProvider(), profile).getImage(coordinates);
         Tile tile = node.getTile();
         Point pos = GraphicsModel.INSTANCE.tileToPixel(tile.getCoordinates(), profile);
-        g2.drawImage(arrowImage, pos.x, pos.y, this);
-        repaint(pos.x, pos.y, arrowImage.getWidth(), arrowImage.getHeight());
+        g2.drawImage(arrowImage, pos.x, pos.y, contentPane);
+        contentPane.repaint(pos.x, pos.y, arrowImage.getWidth(), arrowImage.getHeight());
     }
 
     /**
@@ -190,7 +190,7 @@ public class ArrowLayer extends AbstractImageLayer {
         BufferedImage arrowImage = GraphicsModel.INSTANCE.getImageProvider(type.getProvider(), profile).getImage(coordinates);
         Tile tile = node.getTile();
         Point pos = GraphicsModel.INSTANCE.tileToPixel(tile.getCoordinates(), profile);
-        g2.drawImage(arrowImage, pos.x, pos.y, this);
+        g2.drawImage(arrowImage, pos.x, pos.y, contentPane);
         BufferedImage subImage = globalImage.getSubimage(pos.x, pos.y, arrowImage.getWidth(), arrowImage.getHeight());
         Graphics2D arrowG2 = subImage.createGraphics();
         arrowG2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
@@ -198,10 +198,10 @@ public class ArrowLayer extends AbstractImageLayer {
         int cost = (int) node.getG();
         decorator.paintArrowCost(arrowG2, cost);
         arrowG2.dispose();
-        repaint(pos.x, pos.y, arrowImage.getWidth(), arrowImage.getHeight());
+        contentPane.repaint(pos.x, pos.y, arrowImage.getWidth(), arrowImage.getHeight());
     }
 
-    private enum ArrowType {
+    enum ArrowType {
 
         ACTIVE(AresMiscTerrainGraphics.RED_ARROWS),
         UNIT(AresMiscTerrainGraphics.PURPLE_ARROWS),

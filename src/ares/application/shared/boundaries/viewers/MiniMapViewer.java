@@ -5,12 +5,13 @@ import ares.application.shared.models.forces.FormationModel;
 import ares.application.shared.models.forces.UnitModel;
 import ares.application.shared.gui.views.View;
 import java.awt.event.MouseListener;
+import javax.swing.JScrollPane;
 
 /**
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public interface MiniMapViewer extends View {
+public interface MiniMapViewer extends View<JScrollPane> {
 
     void loadScenario(ScenarioModel scenario);
 

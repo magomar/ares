@@ -1,5 +1,6 @@
-package ares.application.shared.gui.components.layers;
+package ares.application.shared.gui.views.layerviews;
 
+import ares.application.shared.boundaries.viewers.layerviewers.TerrainLayerViewer;
 import ares.platform.scenario.board.Feature;
 import ares.platform.scenario.board.Terrain;
 import ares.platform.scenario.board.Directions;
@@ -11,20 +12,15 @@ import ares.platform.engine.knowledge.KnowledgeCategory;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.*;
-import javax.swing.JViewport;
 
 /**
  *
  * @author Heine <heisncfr@inf.upv.es>
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
-public class TerrainLayer extends AbstractImageLayer {
+public class TerrainLayerView extends AbstractImageLayerView implements TerrainLayerViewer{
 
     private ScenarioModel scenario;
-
-    public TerrainLayer(JViewport viewport) {
-        super(viewport);
-    }
 
     @Override
     public void updateLayer() {
@@ -41,7 +37,8 @@ public class TerrainLayer extends AbstractImageLayer {
         g2.dispose();
     }
 
-    public void paintTerrain(ScenarioModel scenario) {
+    @Override
+    public void updateScenario(ScenarioModel scenario) {
         this.scenario = scenario;
         updateLayer();
     }
@@ -66,7 +63,7 @@ public class TerrainLayer extends AbstractImageLayer {
         // First paints the open terrain, any other terrain will be rendered upon it
         BufferedImage terrainImage = GraphicsModel.INSTANCE.getImageProvider(AresMiscTerrainGraphics.TERRAIN_MISCELANEOUS, profile).getImage(Feature.OPEN.getCoordinates());
         
-        g2.drawImage(terrainImage, pos.x, pos.y, this);
+        g2.drawImage(terrainImage, pos.x, pos.y, contentPane);
 
         Map<Terrain, Directions> m = tile.getTerrain();
         for (Map.Entry<Terrain, Directions> entry : m.entrySet()) {
@@ -75,13 +72,14 @@ public class TerrainLayer extends AbstractImageLayer {
             Point imageCoordinates = directions.getCoordinates();
             terrainImage = GraphicsModel.INSTANCE.getImageProvider(terrain, profile).getImage(imageCoordinates);
             // Paint terrain image
-            g2.drawImage(terrainImage, pos.x, pos.y, this);
+            g2.drawImage(terrainImage, pos.x, pos.y, contentPane);
         }
         // Paint features 
         for (Feature feature : tile.getTerrainFeatures()) {
             terrainImage = GraphicsModel.INSTANCE.getImageProvider(AresMiscTerrainGraphics.TERRAIN_MISCELANEOUS, profile).getImage(feature.getCoordinates());
-            g2.drawImage(terrainImage, pos.x, pos.y, this);
+            g2.drawImage(terrainImage, pos.x, pos.y, contentPane);
         }
-        repaint(pos.x, pos.y, terrainImage.getWidth(), terrainImage.getHeight());
+        contentPane.repaint(pos.x, pos.y, terrainImage.getWidth(), terrainImage.getHeight());
     }
+
 }

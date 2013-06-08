@@ -1,5 +1,6 @@
-package ares.application.shared.gui.components.layers;
+package ares.application.shared.gui.views.layerviews;
 
+import ares.application.shared.boundaries.viewers.layerviewers.UnitsLayerViewer;
 import ares.application.shared.models.board.TileModel;
 import ares.application.shared.models.forces.ForceModel;
 import ares.application.shared.models.forces.UnitModel;
@@ -11,20 +12,15 @@ import ares.application.shared.gui.profiles.ProfiledGraphicProperty;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.*;
-import javax.swing.JViewport;
 
 /**
  *
  * @author Heine <heisncfr@inf.upv.es>
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public class UnitsLayer extends AbstractImageLayer {
+public class UnitsLayerView extends AbstractImageLayerView implements UnitsLayerViewer {
 
     private ScenarioModel scenario;
-
-    public UnitsLayer(JViewport viewport) {
-        super(viewport);
-    }
 
     @Override
     public void updateLayer() {
@@ -44,11 +40,12 @@ public class UnitsLayer extends AbstractImageLayer {
     }
 
     /**
-     * Paints all the units visible in the {@code scenario}
+     * Paints all the units visible in the {@code scenario} passed as a parameter
      *
      * @param scenario
      */
-    public void paintAllUnits(ScenarioModel scenario) {
+    @Override
+    public void updateScenario(ScenarioModel scenario) {
         this.scenario = scenario;
         updateLayer();
     }
@@ -59,7 +56,8 @@ public class UnitsLayer extends AbstractImageLayer {
      *
      * @param scenario
      */
-    public void paintUnitStack(TileModel tile) {
+    @Override
+    public void updateUnitStack(TileModel tile) {
         Graphics2D g2 = globalImage.createGraphics();
         paintUnitStack(g2, tile);
         g2.dispose();
@@ -93,7 +91,7 @@ public class UnitsLayer extends AbstractImageLayer {
 
             //Paint the same top unit
             for (int d = maxStackOffset; d >= 0; d -= stackOffset) {
-                g2.drawImage(unitImage, pos.x + d, pos.y + d, this);
+                g2.drawImage(unitImage, pos.x + d, pos.y + d, contentPane);
             }
             BufferedImage subImage = globalImage.getSubimage(pos.x, pos.y, unitImage.getWidth(), unitImage.getHeight());
 
@@ -106,8 +104,9 @@ public class UnitsLayer extends AbstractImageLayer {
             unitsProfile.paintUnitAttributes(unitG2, unit);
 //            unitsProfile.paintUnitAttributes(g2, unit);
             unitG2.dispose();
-            repaint(pos.x, pos.y, unitImage.getWidth() + maxStackOffset, unitImage.getHeight() + maxStackOffset);
+            contentPane.repaint(pos.x, pos.y, unitImage.getWidth() + maxStackOffset, unitImage.getHeight() + maxStackOffset);
         }
 
     }
+
 }

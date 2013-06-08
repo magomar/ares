@@ -9,7 +9,7 @@ import javax.swing.JToolBar;
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public class ToolBarView extends AbstractView<JToolBar> implements ActionBarViewer<JButton> {
+public class ToolBarView extends AbstractView<JToolBar> implements ActionBarViewer<JToolBar, JButton> {
 
     @Override
     protected JToolBar layout() {

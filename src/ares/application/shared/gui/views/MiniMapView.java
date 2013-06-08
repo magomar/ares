@@ -1,9 +1,9 @@
 package ares.application.shared.gui.views;
 
 import ares.application.shared.boundaries.viewers.MiniMapViewer;
-import ares.application.shared.gui.components.layers.ImageLayer;
-import ares.application.shared.gui.components.layers.TerrainLayer;
-import ares.application.shared.gui.components.layers.UnitsLayer;
+import ares.application.shared.boundaries.viewers.layerviewers.ImageLayerViewer;
+import ares.application.shared.gui.views.layerviews.TerrainLayerView;
+import ares.application.shared.gui.views.layerviews.UnitsLayerView;
 import ares.application.shared.gui.profiles.GraphicsModel;
 import ares.application.shared.models.ScenarioModel;
 import ares.application.shared.models.forces.FormationModel;
@@ -23,9 +23,9 @@ public class MiniMapView extends AbstractView<JScrollPane> implements MiniMapVie
 
     private int profile;
     private JLayeredPane layeredPane;
-    private TerrainLayer terrainLayer;
-    private UnitsLayer unitsLayer;
-    private final ImageLayer[] allLayers = {terrainLayer, unitsLayer};
+    private TerrainLayerView terrainLayer;
+    private UnitsLayerView unitsLayer;
+    private final ImageLayerViewer[] allLayers = {terrainLayer, unitsLayer};
 
     @Override
     protected JScrollPane layout() {
@@ -36,8 +36,8 @@ public class MiniMapView extends AbstractView<JScrollPane> implements MiniMapVie
         layeredPane.setBackground(Color.BLACK);
         // Create layers
         JViewport viewport = scrollPane.getViewport();
-        terrainLayer = new TerrainLayer(viewport);
-        unitsLayer = new UnitsLayer(viewport);
+        terrainLayer = new TerrainLayerView(viewport);
+        unitsLayer = new UnitsLayerView(viewport);
 
         // Add the last layer from each level to the layered pane
         layeredPane.add(terrainLayer, JLayeredPane.DEFAULT_LAYER);
@@ -60,7 +60,7 @@ public class MiniMapView extends AbstractView<JScrollPane> implements MiniMapVie
         layeredPane.setPreferredSize(imageSize);
         layeredPane.setSize(imageSize);
         for (int i = 0; i < allLayers.length; i++) {
-            ImageLayer imageLayer = allLayers[i];
+            ImageLayerViewer imageLayer = allLayers[i];
             imageLayer.setProfile(profile);
             imageLayer.initialize();
         }
@@ -71,7 +71,7 @@ public class MiniMapView extends AbstractView<JScrollPane> implements MiniMapVie
     @Override
     public void flush() {
         for (int i = 0; i < allLayers.length; i++) {
-            ImageLayer imageLayer = allLayers[i];
+            ImageLayerViewer imageLayer = allLayers[i];
             imageLayer.flush();
         }
 
@@ -99,7 +99,7 @@ public class MiniMapView extends AbstractView<JScrollPane> implements MiniMapVie
         layeredPane.setPreferredSize(imageSize);
         layeredPane.setSize(imageSize);
         for (int i = 0; i < allLayers.length; i++) {
-            ImageLayer imageLayer = allLayers[i];
+            ImageLayerViewer imageLayer = allLayers[i];
             imageLayer.setProfile(profile);
             imageLayer.initialize();
         }

@@ -99,7 +99,7 @@ public class PathfinderComparatorView extends AbstractView<JPanel> implements Pa
 
     @Override
     public void flush() {
-        leftBoardV.flush();
-        rightBoardV.flush();
+        leftBoardV.forgetScenario();
+        rightBoardV.forgetScenario();
     }
 }

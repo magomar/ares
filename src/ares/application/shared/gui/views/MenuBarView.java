@@ -2,7 +2,6 @@ package ares.application.shared.gui.views;
 
 import ares.application.shared.boundaries.viewers.ActionBarViewer;
 import ares.application.shared.gui.ComponentFactory;
-import javax.swing.JButton;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 
@@ -10,7 +9,7 @@ import javax.swing.JMenuBar;
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public class MenuBarView extends AbstractView<JMenuBar> implements ActionBarViewer<JMenu> {
+public class MenuBarView extends AbstractView<JMenuBar> implements ActionBarViewer<JMenuBar, JMenu> {
 
     @Override
     protected JMenuBar layout() {

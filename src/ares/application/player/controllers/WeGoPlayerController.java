@@ -124,7 +124,7 @@ public class WeGoPlayerController implements EngineInteractor, ScenarioInteracto
 
     @Override
     public void forgetScenario() {
-        boardView.flush();
+        boardView.forgetScenario();
         miniMapView.flush();
         oobView.flush();
         mainView.switchPerspective(PlayerViewer.MAIN_MENU_PERSPECTIVE);

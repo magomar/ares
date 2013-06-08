@@ -9,7 +9,7 @@ import javax.swing.JPanel;
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public class MainMenuView extends AbstractView<JPanel> implements ActionBarViewer<JButton> {
+public class MainMenuView extends AbstractView<JPanel> implements ActionBarViewer<JPanel, JButton> {
 
     @Override
     protected JPanel layout() {

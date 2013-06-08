@@ -3,13 +3,13 @@ package ares.application.shared.gui.views;
 import ares.application.shared.models.board.TileModel;
 import ares.application.shared.gui.profiles.GraphicsModel;
 import ares.application.shared.boundaries.viewers.BoardViewer;
-import ares.application.shared.gui.components.layers.ImageLayer;
-import ares.application.shared.gui.components.layers.ArrowLayer;
-import ares.application.shared.gui.components.layers.GridLayer;
-import ares.application.shared.gui.components.layers.SelectionLayer;
-import ares.application.shared.gui.components.layers.TerrainLayer;
-import ares.application.shared.gui.components.layers.PathSearchLayer;
-import ares.application.shared.gui.components.layers.UnitsLayer;
+import ares.application.shared.boundaries.viewers.layerviewers.ImageLayerViewer;
+import ares.application.shared.gui.views.layerviews.ArrowLayerView;
+import ares.application.shared.gui.views.layerviews.GridLayerView;
+import ares.application.shared.gui.views.layerviews.SelectionLayerView;
+import ares.application.shared.gui.views.layerviews.TerrainLayerView;
+import ares.application.shared.gui.views.layerviews.PathSearchLayer;
+import ares.application.shared.gui.views.layerviews.UnitsLayerView;
 import ares.application.shared.models.ScenarioModel;
 import ares.application.shared.models.forces.ForceModel;
 import ares.application.shared.models.forces.FormationModel;
@@ -38,13 +38,13 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
 
     private int profile;
     private JLayeredPane layeredPane;
-    private TerrainLayer terrainLayer;
-    private UnitsLayer unitsLayer;
-    private GridLayer gridLayer;
-    private SelectionLayer selectionLayer;
-    private ArrowLayer arrowLayer;
+    private TerrainLayerView terrainLayer;
+    private UnitsLayerView unitsLayer;
+    private GridLayerView gridLayer;
+    private SelectionLayerView selectionLayer;
+    private ArrowLayerView arrowLayer;
     private PathSearchLayer pathSearchLayer;
-    private final ImageLayer[] allLayers = {terrainLayer, gridLayer, selectionLayer, arrowLayer, pathSearchLayer, unitsLayer};
+    private final ImageLayerViewer[] allLayers = {terrainLayer, gridLayer, selectionLayer, arrowLayer, pathSearchLayer, unitsLayer};
 
     @Override
     protected JScrollPane layout() {
@@ -55,12 +55,12 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
         layeredPane.setBackground(Color.BLACK);
         // Create layers
         JViewport viewport = scrollPane.getViewport();
-        terrainLayer = new TerrainLayer(viewport);
-        unitsLayer = new UnitsLayer(viewport);
-        gridLayer = new GridLayer(viewport);
-        selectionLayer = new SelectionLayer(viewport);
+        terrainLayer = new TerrainLayerView(viewport);
+        unitsLayer = new UnitsLayerView(viewport);
+        gridLayer = new GridLayerView(viewport);
+        selectionLayer = new SelectionLayerView(viewport);
         //Shares image with selection layer
-        arrowLayer = new ArrowLayer(viewport, selectionLayer);
+        arrowLayer = new ArrowLayerView(viewport, selectionLayer);
         pathSearchLayer = new PathSearchLayer(viewport, selectionLayer);
 
         // Add the last layer from each level to the layered pane
@@ -90,7 +90,7 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
         Dimension imageSize = new Dimension(GraphicsModel.INSTANCE.getBoardWidth(profile), GraphicsModel.INSTANCE.getBoardHeight(profile));
         layeredPane.setPreferredSize(imageSize);
         for (int i = 0; i < allLayers.length; i++) {
-            ImageLayer imageLayer = allLayers[i];
+            ImageLayerViewer imageLayer = allLayers[i];
             imageLayer.setProfile(profile);
             imageLayer.initialize();
         }
@@ -98,21 +98,23 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
         // Render board: paint terrain and units
         terrainLayer.paintTerrain(scenario);
         unitsLayer.paintAllUnits(scenario);
-        gridLayer.paintGrid(scenario);
+        gridLayer.update(scenario);
     }
 
+        @Override
+    public void forgetScenario() {
+        for (int i = 0; i < allLayers.length; i++) {
+            ImageLayerViewer imageLayer = allLayers[i];
+            imageLayer.flush();
+        }
+    }
+    
     @Override
     public void updateScenario(ScenarioModel scenario) {
         unitsLayer.paintAllUnits(scenario);
     }
 
-    @Override
-    public void flush() {
-        for (int i = 0; i < allLayers.length; i++) {
-            ImageLayer imageLayer = allLayers[i];
-            imageLayer.flush();
-        }
-    }
+
 
     @Override
     public void addMouseListener(MouseListener listener) {
@@ -136,7 +138,7 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
 
     @Override
     public void updateLastPathSearch(Collection<Node> openSet, Collection<Node> closedSet) {
-        pathSearchLayer.paintPathfindingProcess(openSet, closedSet);
+        pathSearchLayer.updatePathSearch(openSet, closedSet);
     }
 
     @Override
@@ -205,7 +207,7 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
         return allLayers[layer].isVisible();
     }
 
-    public ImageLayer[] getAllLayers() {
+    public ImageLayerViewer[] getAllLayers() {
         return allLayers;
     }
 
@@ -216,7 +218,7 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
         layeredPane.setPreferredSize(imageSize);
         layeredPane.setSize(imageSize);
         for (int i = 0; i < allLayers.length; i++) {
-            ImageLayer imageLayer = allLayers[i];
+            ImageLayerViewer imageLayer = allLayers[i];
             imageLayer.setProfile(profile);
             imageLayer.initialize();
         }
@@ -224,7 +226,7 @@ public class BoardView extends AbstractView<JScrollPane> implements BoardViewer 
 
     @Override
     public void switchLayerVisible(int layer) {
-        ImageLayer imageLayer = allLayers[layer];
+        ImageLayerViewer imageLayer = allLayers[layer];
         imageLayer.setVisible(!imageLayer.isVisible());
     }
 }

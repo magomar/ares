@@ -1,7 +1,7 @@
 package ares.application.shared.gui.profiles;
 
 import ares.application.shared.gui.decorators.ImageDecorators;
-import ares.application.shared.gui.components.layers.AbstractImageLayer;
+import ares.application.shared.gui.views.layerviews.AbstractImageLayerView;
 import ares.application.shared.gui.providers.ImageProviderFactory;
 import ares.application.shared.gui.providers.ImageProvider;
 import ares.platform.scenario.board.Board;
@@ -158,7 +158,7 @@ public class GraphicsModel {
      * @param tile position to be converted
      * @return the pixel at the upper left corner of the square circumscribed about the hexagon
      * @see AresGraphicsModel
-     * @see AbstractImageLayer
+     * @see AbstractImageLayerView
      */
     public Point tileToPixel(Point tile, int profile) {
         return tileToPixel(tile.x, tile.y, profile);

@@ -1,15 +1,21 @@
 package ares.application.shared.gui.views;
 
-import java.awt.Container;
 import java.awt.Dimension;
+import javax.swing.JComponent;
 
 /**
  *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
-public interface View {
+public interface View<C extends JComponent> {
 
     void setVisible(boolean visible);
-    Container getContentPane();
-    void setPreferredSize(Dimension size); 
+
+    boolean isVisible();
+    
+    boolean isFocusable();
+
+    C getContentPane();
+
+    void setPreferredSize(Dimension size);
 }

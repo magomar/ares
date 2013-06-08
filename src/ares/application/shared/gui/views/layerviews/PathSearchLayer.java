@@ -1,72 +1,68 @@
-package ares.application.shared.gui.components.layers;
+package ares.application.shared.gui.views.layerviews;
 
+import ares.application.shared.boundaries.viewers.layerviewers.PathSearchLayerViewer;
 import ares.application.shared.gui.profiles.GraphicsModel;
 import ares.application.shared.gui.providers.AresMiscTerrainGraphics;
 import ares.platform.engine.algorithms.pathfinding.Node;
-import ares.platform.scenario.board.Tile;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.util.Collection;
-import javax.swing.JViewport;
 
 /**
  * Draws the pathfinding process on a BufferedImage
  *
  * @author Saúl Esteban <saesmar1@ei.upv.es>
  */
-public class PathSearchLayer extends AbstractImageLayer {
+public class PathSearchLayer extends AbstractImageLayerView implements PathSearchLayerViewer {
 
     private Collection<Node> openSet;
     private Collection<Node> closedSet;
-    private Graphics2D g2;
-
-    public PathSearchLayer(JViewport viewport, AbstractImageLayer parentLayer) {
-        super(viewport, parentLayer);
-    }
 
     @Override
     public void updateLayer() {
         initialize();
-        g2 = globalImage.createGraphics();
+        Graphics2D g2 = globalImage.createGraphics();
 
-        paintOpenSet();
-        paintClosedSet();
+        paintOpenSet(g2);
+        paintClosedSet(g2);
 
         g2.dispose();
     }
 
     /**
-     * Paints complete process for the {@code openSet} and {@code closedSet} passed as argument
+     * Paints the space searched to compute a path, as described by the {@code openSet} and {@code closedSet} collection
+     * of nodes passed as argument
      *
      * @param openSet
      * @param closedSet
      */
-    public void paintPathfindingProcess(Collection<Node> openSet, Collection<Node> closedSet) {
+    @Override
+    public void updatePathSearch(Collection<Node> openSet, Collection<Node> closedSet) {
         this.openSet = openSet;
         this.closedSet = closedSet;
         updateLayer();
     }
 
-    private void paintOpenSet() {
+    private void paintOpenSet(Graphics2D g2) {
         for (Node node : openSet) {
-            paintTile(node, TileType.OPEN_SET);
+            paintTile(g2, node, TileType.OPEN_SET);
         }
     }
 
-    private void paintClosedSet() {
+    private void paintClosedSet(Graphics2D g2) {
         for (Node node : closedSet) {
-            paintTile(node, TileType.CLOSED_SET);
+            paintTile(g2, node, TileType.CLOSED_SET);
         }
     }
 
-    private void paintTile(Node node, TileType type) {
-        BufferedImage tileImage = GraphicsModel.INSTANCE.getImageProvider(type.getProvider(), profile).getImage(0,0);
+    private void paintTile(Graphics2D g2, Node node, TileType type) {
+        BufferedImage tileImage = GraphicsModel.INSTANCE.getImageProvider(type.getProvider(), profile).getImage(0, 0);
         Point pos = GraphicsModel.INSTANCE.tileToPixel(node.getTile().getCoordinates(), profile);
-        g2.drawImage(tileImage, pos.x, pos.y, this);
+        g2.drawImage(tileImage, pos.x, pos.y, contentPane);
         int cost = (int) node.getG();
         g2.drawString(Integer.toString(cost), pos.x + tileImage.getWidth() / 2, pos.y + tileImage.getHeight() / 2);
-        repaint(pos.x, pos.y, tileImage.getWidth(), tileImage.getHeight());
+        contentPane.repaint(pos.x, pos.y, tileImage.getWidth(), tileImage.getHeight());
     }
 
     private enum TileType {
