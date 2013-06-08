@@ -11,9 +11,9 @@ import javax.swing.JViewport;
  */
 public interface ImageLayerViewer extends View<JComponent> {
 
-    void setViewport(JViewport viewport);
+    ImageLayerViewer setViewport(JViewport viewport);
 
-    void setParenLayer(ImageLayerViewer parentLayer);
+    ImageLayerViewer setParenLayer(ImageLayerViewer parentLayer);
 
     void initialize();
 
@@ -26,4 +26,6 @@ public interface ImageLayerViewer extends View<JComponent> {
     BufferedImage getGlobalImage();
 
     void setProfile(int profile);
+    
+    String name();
 }

@@ -27,6 +27,11 @@ public class ArrowLayerView extends AbstractImageLayerView implements ArrowLayer
     private Collection<Path> forcePaths;
 
     @Override
+    public String name() {
+        return ArrowLayerViewer.NAME;
+    }
+
+    @Override
     public void updateLayer() {
         initialize();
         Graphics2D g2 = globalImage.createGraphics();
@@ -201,7 +206,7 @@ public class ArrowLayerView extends AbstractImageLayerView implements ArrowLayer
         contentPane.repaint(pos.x, pos.y, arrowImage.getWidth(), arrowImage.getHeight());
     }
 
-    enum ArrowType {
+    private enum ArrowType {
 
         ACTIVE(AresMiscTerrainGraphics.RED_ARROWS),
         UNIT(AresMiscTerrainGraphics.PURPLE_ARROWS),

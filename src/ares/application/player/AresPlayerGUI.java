@@ -3,7 +3,7 @@ package ares.application.player;
 import ares.application.shared.boundaries.viewers.BoardViewer;
 import ares.application.player.boundaries.viewers.PlayerViewer;
 import ares.application.player.controllers.WeGoPlayerController;
-import ares.application.shared.gui.views.BoardView;
+import ares.application.player.views.PlayerBoardView;
 import ares.application.shared.gui.views.MessagesView;
 import ares.application.shared.gui.views.OOBView;
 import ares.application.shared.gui.views.MainMenuView;
@@ -14,11 +14,12 @@ import ares.application.shared.gui.views.MiniMapView;
 import ares.application.shared.gui.ComponentFactory;
 import ares.application.shared.gui.WindowUtil;
 import ares.application.shared.gui.views.AbstractView;
-import ares.application.shared.boundaries.viewers.ActionBarViewer;
 import ares.application.shared.boundaries.viewers.InfoViewer;
+import ares.application.shared.boundaries.viewers.MenuBarViewer;
 import ares.application.shared.boundaries.viewers.MessagesViewer;
-import ares.application.shared.boundaries.viewers.MiniMapViewer;
 import ares.application.shared.boundaries.viewers.OOBViewer;
+import ares.application.shared.boundaries.viewers.PanelMenuViewer;
+import ares.application.shared.boundaries.viewers.ToolBarViewer;
 import java.awt.*;
 import javax.swing.*;
 
@@ -37,26 +38,26 @@ public final class AresPlayerGUI extends AbstractView<JFrame> implements PlayerV
     private JSplitPane splitHoriz2;
     private JSplitPane splitVert2;
     private JPanel cards;
-    private MainMenuView mainMenuV;
-    private MenuBarView menuV;
-    private InfoView infoV;
-    private OOBView oobV;
-    private BoardView boardV;
-    private MessagesView messagesV;
-    private ToolBarView toolBarV;
-    private MiniMapView miniMapV;
+    private MainMenuView mainMenuView;
+    private MenuBarView menuView;
+    private InfoView infoView;
+    private OOBView oobView;
+    private PlayerBoardView boardView;
+    private MessagesView messagesView;
+    private ToolBarView toolBarView;
+    private MiniMapView miniMapView;
 
     @Override
     protected JFrame layout() {
-        mainMenuV = new MainMenuView();
-        menuV = new MenuBarView();
-        infoV = new InfoView();
-        oobV = new OOBView();
-        boardV = new BoardView();
-        messagesV = new MessagesView();
-        toolBarV = new ToolBarView();
-        miniMapV = new MiniMapView();
-        JFrame mainFrame = ComponentFactory.frame("Ares Player", menuV.getContentPane(), toolBarV.getContentPane());
+        mainMenuView = new MainMenuView();
+        menuView = new MenuBarView();
+        infoView = new InfoView();
+        oobView = new OOBView();
+        boardView = new PlayerBoardView();
+        messagesView = new MessagesView();
+        toolBarView = new ToolBarView();
+        miniMapView = new MiniMapView();
+        JFrame mainFrame = ComponentFactory.frame("Ares Player", menuView.getContentPane(), toolBarView.getContentPane());
         // These dimensions are necessary when the frame is not fullscreen
         Dimension maxSize = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().getSize();
         Dimension defaultSize = new Dimension(1440, 900);
@@ -74,20 +75,20 @@ public final class AresPlayerGUI extends AbstractView<JFrame> implements PlayerV
         mainFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         mainFrame.setUndecorated(true);
 
-        boardV.setPreferredSize(getBoardPaneDimension(preferredSize));
-        infoV.setPreferredSize(getInfoPaneDimension(preferredSize));
-        oobV.setPreferredSize(getOOBPaneDimension(preferredSize));
-        miniMapV.setPreferredSize(getMiniMapPaneDimension());
-        messagesV.setPreferredSize(getMessagesPaneDimension(preferredSize));
+        boardView.setPreferredSize(getBoardPaneDimension(preferredSize));
+        infoView.setPreferredSize(getInfoPaneDimension(preferredSize));
+        oobView.setPreferredSize(getOOBPaneDimension(preferredSize));
+        miniMapView.setPreferredSize(getMiniMapPaneDimension());
+        messagesView.setPreferredSize(getMessagesPaneDimension(preferredSize));
 
-        splitVert = ComponentFactory.verticalSplitPane(true, boardV.getContentPane(), messagesV.getContentPane(), 1);
-        splitVert2 = ComponentFactory.verticalSplitPane(true, miniMapV.getContentPane(), oobV.getContentPane(), 0);
-        splitHoriz = ComponentFactory.horizontalSplitPane(true, infoV.getContentPane(), splitVert, 0);
+        splitVert = ComponentFactory.verticalSplitPane(true, boardView.getContentPane(), messagesView.getContentPane(), 1);
+        splitVert2 = ComponentFactory.verticalSplitPane(true, miniMapView.getContentPane(), oobView.getContentPane(), 0);
+        splitHoriz = ComponentFactory.horizontalSplitPane(true, infoView.getContentPane(), splitVert, 0);
         splitHoriz2 = ComponentFactory.horizontalSplitPane(true, splitHoriz, splitVert2, 1);
 
 
         cards = new JPanel(new CardLayout());
-        cards.add(mainMenuV.getContentPane(), PlayerViewer.MAIN_MENU_PERSPECTIVE);
+        cards.add(mainMenuView.getContentPane(), PlayerViewer.MAIN_MENU_PERSPECTIVE);
         cards.add(splitHoriz2, PlayerViewer.PLAYER_PERSPECTIVE);
         mainFrame.add(cards);
         switchPerspective(PlayerViewer.MAIN_MENU_PERSPECTIVE);
@@ -104,12 +105,12 @@ public final class AresPlayerGUI extends AbstractView<JFrame> implements PlayerV
         cl.show(cards, perspective);
         switch (perspective) {
             case PlayerViewer.MAIN_MENU_PERSPECTIVE:
-                menuV.setVisible(false);
-                toolBarV.setVisible(false);
+                menuView.setVisible(false);
+                toolBarView.setVisible(false);
                 break;
             case PlayerViewer.PLAYER_PERSPECTIVE:
-                menuV.setVisible(true);
-                toolBarV.setVisible(true);
+                menuView.setVisible(true);
+                toolBarView.setVisible(true);
                 break;
         }
     }
@@ -134,7 +135,7 @@ public final class AresPlayerGUI extends AbstractView<JFrame> implements PlayerV
     private Dimension getMessagesPaneDimension(Dimension containerSize) {
         return new Dimension(containerSize.width - INFO_VIEW_WIDTH - ComponentFactory.SPLIT_DIVIDER_SIZE, MESSAGES_WIEW_HEIGHT);
     }
-    
+
     public static void main(String[] args) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -158,41 +159,41 @@ public final class AresPlayerGUI extends AbstractView<JFrame> implements PlayerV
 
     @Override
     public BoardViewer getBoardView() {
-        return boardV;
+        return boardView;
     }
 
     @Override
     public InfoViewer getInfoView() {
-        return infoV;
+        return infoView;
     }
 
     @Override
-    public ActionBarViewer<JButton> getToolBarView() {
-        return toolBarV;
+    public ToolBarViewer getToolBarView() {
+        return toolBarView;
     }
 
     @Override
-    public ActionBarViewer<JMenu> getMenuView() {
-        return menuV;
+    public MenuBarViewer getMenuView() {
+        return menuView;
     }
 
     @Override
     public MessagesViewer getMessagesView() {
-        return messagesV;
+        return messagesView;
     }
 
     @Override
     public OOBViewer getOobView() {
-        return oobV;
+        return oobView;
     }
 
     @Override
-    public MiniMapViewer getMiniMapView() {
-        return miniMapV;
+    public BoardViewer getMiniMapView() {
+        return miniMapView;
     }
 
     @Override
-    public ActionBarViewer<JButton> getMainMenuView() {
-        return mainMenuV;
+    public PanelMenuViewer getMainMenuView() {
+        return mainMenuView;
     }
 }

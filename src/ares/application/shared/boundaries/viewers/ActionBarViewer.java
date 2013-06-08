@@ -10,7 +10,6 @@ import javax.swing.JComponent;
  */
 public interface ActionBarViewer<C extends JComponent, T extends AbstractButton> extends View<C> {
 
-//    void setActionEnabled(String actionName, boolean enabled);
     void addActionButton(T actionButton);
 
     void addActionButtons(T[] actionButton);

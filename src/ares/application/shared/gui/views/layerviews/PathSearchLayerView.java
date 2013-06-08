@@ -14,10 +14,15 @@ import java.util.Collection;
  *
  * @author Saúl Esteban <saesmar1@ei.upv.es>
  */
-public class PathSearchLayer extends AbstractImageLayerView implements PathSearchLayerViewer {
+public class PathSearchLayerView extends AbstractImageLayerView implements PathSearchLayerViewer {
 
     private Collection<Node> openSet;
     private Collection<Node> closedSet;
+
+    @Override
+    public String name() {
+        return PathSearchLayerViewer.NAME;
+    }
 
     @Override
     public void updateLayer() {

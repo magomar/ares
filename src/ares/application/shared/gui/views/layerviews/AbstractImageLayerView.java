@@ -67,8 +67,9 @@ public abstract class AbstractImageLayerView extends AbstractView<JComponent> im
      * @param viewport
      */
     @Override
-    public void setViewport(JViewport viewport) {
+    public ImageLayerViewer setViewport(JViewport viewport) {
         this.viewport = viewport;
+        return this;
     }
 
     /**
@@ -76,8 +77,9 @@ public abstract class AbstractImageLayerView extends AbstractView<JComponent> im
      * @param layer the {@link tImageLayer} this layer shares its {@link #globalImage} with
      */
     @Override
-    public void setParenLayer(ImageLayerViewer parentLayer) {
+    public ImageLayerViewer setParenLayer(ImageLayerViewer parentLayer) {
         this.parentLayer = parentLayer;
+        return this;
     }
 
     @Override

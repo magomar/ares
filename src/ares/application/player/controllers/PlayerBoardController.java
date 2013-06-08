@@ -1,5 +1,6 @@
 package ares.application.player.controllers;
 
+import ares.application.player.boundaries.interactors.PlayerBoardInteractor;
 import ares.platform.scenario.board.UnitsStack;
 import ares.platform.scenario.board.Tile;
 import ares.platform.engine.algorithms.pathfinding.Pathfinder;
@@ -18,11 +19,14 @@ import ares.platform.engine.algorithms.pathfinding.heuristics.MinimunDistance;
 import ares.platform.engine.command.tactical.TacticalMission;
 import ares.platform.engine.command.tactical.TacticalMissionType;
 import ares.platform.model.UserRole;
-import ares.application.player.boundaries.interactors.PlayerBoardInteractor;
 import ares.application.shared.boundaries.viewers.BoardViewer;
 import ares.application.shared.boundaries.viewers.InfoViewer;
-import ares.application.shared.boundaries.viewers.MiniMapViewer;
 import ares.application.shared.boundaries.viewers.OOBViewer;
+import ares.application.shared.boundaries.viewers.layerviewers.ArrowLayerViewer;
+import ares.application.shared.boundaries.viewers.layerviewers.GridLayerViewer;
+import ares.application.shared.boundaries.viewers.layerviewers.SelectionLayerViewer;
+import ares.application.shared.boundaries.viewers.layerviewers.TerrainLayerViewer;
+import ares.application.shared.boundaries.viewers.layerviewers.UnitsLayerViewer;
 import ares.application.shared.controllers.BoardController;
 import ares.application.shared.models.ScenarioModel;
 import ares.platform.action.ActionGroup;
@@ -35,6 +39,7 @@ import java.awt.Point;
 import java.awt.event.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.swing.JTree;
@@ -52,8 +57,13 @@ public final class PlayerBoardController implements ActionController, PropertyCh
     private final Pathfinder pathFinder;
     private final BoardViewer boardView;
     private final OOBViewer oobView;
-    private final MiniMapViewer miniMapView;
+    private final BoardViewer miniMapView;
     private final InfoViewer infoView;
+    private final TerrainLayerViewer terrainLayerView;
+    private final UnitsLayerViewer unitsLayerView;
+    private final GridLayerViewer gridLayerView;
+    private final ArrowLayerViewer arrowLayerView;
+    private final SelectionLayerViewer selectionLayerView;
     private Tile selectedTile;
     private Unit selectedUnit;
     private Scenario scenario;
@@ -66,6 +76,11 @@ public final class PlayerBoardController implements ActionController, PropertyCh
         oobView = interactor.getOOBView();
         miniMapView = interactor.getMiniMapView();
         infoView = interactor.getInfoView();
+        terrainLayerView = (TerrainLayerViewer) boardView.getLayerView(TerrainLayerViewer.NAME);
+        unitsLayerView = (UnitsLayerViewer) boardView.getLayerView(UnitsLayerViewer.NAME);
+        gridLayerView = (GridLayerViewer) boardView.getLayerView(GridLayerViewer.NAME);
+        arrowLayerView = (ArrowLayerViewer) boardView.getLayerView(ArrowLayerViewer.NAME);
+        selectionLayerView = (SelectionLayerViewer) boardView.getLayerView(SelectionLayerViewer.NAME);
         // create action groups
         boardController = new BoardController(interactor);
 
@@ -90,6 +105,7 @@ public final class PlayerBoardController implements ActionController, PropertyCh
         oobView.loadScenario(scenarioModel);
         infoView.updateScenarioInfo(Clock.INSTANCE.getNow());
         boardController.setScenario(scenario);
+        gridLayerView.updateScenario(scenarioModel);
     }
 
     @Override
@@ -125,16 +141,16 @@ public final class PlayerBoardController implements ActionController, PropertyCh
                 UserRole role = scenario.getUserRole();
                 TileModel tileModel = selectedTile.getModel(role);
                 infoView.updateTileInfo(tileModel);
-                boardView.updateUnitStack(tileModel);
+                unitsLayerView.updateUnitStack(tileModel);
 //                if (selectedUnit != null) {
                 if (interactionMode == InteractionMode.UNIT_ORDERS) {
                     UnitModel unitModel = selectedUnit.getModel(role);
                     FormationModel formationModel = selectedUnit.getFormation().getModel(role);
                     ForceModel forceModel = selectedUnit.getForce().getModel(role);
-                    boardView.updateSelectedUnit(unitModel, formationModel, forceModel);
-                    boardView.centerViewOn(unitModel, formationModel);
-                    boardView.updateLastOrders(null);
-                    boardView.updateCurrentOrders(null);
+                    updateSelectedUnit(unitModel, formationModel, forceModel);
+                    boardView.centerViewOn(unitModel);
+                    arrowLayerView.updateLastOrders(null);
+                    arrowLayerView.updateCurrentOrders(null);
                 }
             }
         }
@@ -171,13 +187,13 @@ public final class PlayerBoardController implements ActionController, PropertyCh
         selectedUnit = unit;
         UserRole role = scenario.getUserRole();
         TileModel tileModel = selectedTile.getModel(role);
-        boardView.updateUnitStack(tileModel);
+        unitsLayerView.updateUnitStack(tileModel);
         if (selectedUnit != null) {
             UnitModel unitModel = selectedUnit.getModel(role);
             FormationModel formationModel = selectedUnit.getFormation().getModel(role);
             ForceModel forceModel = selectedUnit.getForce().getModel(role);
-            boardView.updateCurrentOrders(null);
-            boardView.updateSelectedUnit(unitModel, formationModel, forceModel);
+            arrowLayerView.updateCurrentOrders(null);
+            updateSelectedUnit(unitModel, formationModel, forceModel);
             oobView.select(selectedUnit);
             infoView.updateUnitInfo(unitModel);
         }
@@ -222,9 +238,9 @@ public final class PlayerBoardController implements ActionController, PropertyCh
             selectedUnit = null;
             interactionMode = InteractionMode.FREE;
             infoView.clear();
-            boardView.updateCurrentOrders(null);
+            arrowLayerView.updateCurrentOrders(null);
             // the order matters here, updateSelectedUnit must be done after updateCurrentOrders, or updateCurrentOrders will have no effect
-            boardView.updateSelectedUnit(null, null, null);
+            updateSelectedUnit(null, null, null);
         }
     }
 
@@ -239,7 +255,7 @@ public final class PlayerBoardController implements ActionController, PropertyCh
             TacticalMission mission = TacticalMissionType.OCCUPY.getNewTacticalMission(selectedUnit, tile, pathFinder);
             selectedUnit.setMission(mission);
             selectedUnit.schedule();
-            boardView.updateLastOrders(mission.getPath());
+            arrowLayerView.updateLastOrders(mission.getPath());
 //            boardView.updateLastPathSearch(null, null);
         }
     }
@@ -262,7 +278,7 @@ public final class PlayerBoardController implements ActionController, PropertyCh
                     if (path == null) {
                         return;
                     }
-                    boardView.updateCurrentOrders(path);
+                    arrowLayerView.updateCurrentOrders(path);
                 }
             }
         }
@@ -271,7 +287,7 @@ public final class PlayerBoardController implements ActionController, PropertyCh
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         if (RealTimeEngine.CLOCK_EVENT_PROPERTY.equals(evt.getPropertyName())) {
-            boardView.updateScenario(scenario.getModel());
+            unitsLayerView.updateScenario(scenario.getModel());
             infoView.updateScenarioInfo(Clock.INSTANCE.getNow());
             if (selectedUnit != null) {
                 UserRole role = scenario.getUserRole();
@@ -279,11 +295,47 @@ public final class PlayerBoardController implements ActionController, PropertyCh
                 FormationModel formationModel = selectedUnit.getFormation().getModel(role);
                 ForceModel forceModel = selectedUnit.getForce().getModel(role);
 //                boardView.updateCurrentOrders(null);
-                boardView.updateSelectedUnit(unitModel, formationModel, forceModel);
+                updateSelectedUnit(unitModel, formationModel, forceModel);
                 infoView.updateTileInfo(unitModel.getLocation());
                 infoView.updateUnitInfo(unitModel);
             }
         }
+    }
+
+    private void updateSelectedUnit(UnitModel selectedUnit, FormationModel selectedFormation, ForceModel selectedForce) {
+        selectionLayerView.updateSelectedUnit(selectedUnit, selectedFormation);
+        if (selectedUnit == null) {
+            arrowLayerView.updatePlannedOrders(null, null, null);
+            return;
+        }
+        List<Path> forcePaths = new ArrayList<>();
+        for (FormationModel fModel : selectedForce.getFormationModels()) {
+            if (!fModel.equals(selectedFormation)) {
+                for (UnitModel uModel : fModel.getUnitModels()) {
+                    TacticalMission mission = uModel.getTacticalMission();
+                    Path path = mission.getPath();
+                    if (path != null) {
+                        forcePaths.add(path.subPath(uModel.getLocation()));
+                    }
+                }
+            }
+        }
+        List<Path> formationPaths = new ArrayList<>();
+        for (UnitModel uModel : selectedFormation.getUnitModels()) {
+            if (!uModel.equals(selectedUnit)) {
+                TacticalMission mission = uModel.getTacticalMission();
+                Path path = mission.getPath();
+                if (path != null) {
+                    formationPaths.add(path.subPath(uModel.getLocation()));
+                }
+            }
+        }
+        Path path = selectedUnit.getTacticalMission().getPath();
+        Path selectedUnitPath = null;
+        if (path != null) {
+            selectedUnitPath = path.subPath(selectedUnit.getLocation());
+        }
+        arrowLayerView.updatePlannedOrders(selectedUnitPath, formationPaths, forcePaths);
     }
 
     private enum InteractionMode {

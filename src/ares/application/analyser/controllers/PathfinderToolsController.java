@@ -2,11 +2,12 @@ package ares.application.analyser.controllers;
 
 import ares.application.analyser.boundaries.interactors.PathfinderAnalyserInteractor;
 import ares.application.analyser.boundaries.viewers.PathfinderToolsViewer;
-import ares.application.player.boundaries.viewers.PlayerViewer;
 import ares.application.analyser.boundaries.interactors.PathfinderComparatorInteractor;
 import ares.application.analyser.boundaries.viewers.PathfinderComparatorViewer;
 import ares.application.shared.boundaries.interactors.ScenarioInteractor;
-import ares.application.shared.boundaries.viewers.ActionBarViewer;
+import ares.application.shared.boundaries.viewers.MenuBarViewer;
+import ares.application.shared.boundaries.viewers.PanelMenuViewer;
+import ares.application.shared.boundaries.viewers.ToolBarViewer;
 import ares.application.shared.controllers.ScenarioController;
 import ares.application.shared.gui.profiles.GraphicsModel;
 import ares.application.shared.gui.providers.AresMiscTerrainGraphics;
@@ -14,7 +15,6 @@ import ares.platform.scenario.Scenario;
 import ares.platform.scenario.board.Terrain;
 import ares.platform.scenario.forces.UnitsColor;
 import java.awt.Container;
-import javax.swing.JButton;
 import javax.swing.JMenu;
 
 /**
@@ -24,9 +24,9 @@ import javax.swing.JMenu;
 public class PathfinderToolsController implements ScenarioInteractor, PathfinderComparatorInteractor, PathfinderAnalyserInteractor {
 
     private final PathfinderToolsViewer mainView;
-    private final ActionBarViewer<JMenu> menuView;
-    private final ActionBarViewer<JButton> mainMenuView;
-    private final ActionBarViewer<JButton> toolBarView;
+    private final MenuBarViewer menuView;
+    private final PanelMenuViewer mainMenuView;
+    private final ToolBarViewer toolBarView;
     private final PathfinderComparatorViewer comparatorView;
     private final ScenarioController scenarioController;
     private final PathfinderComparatorController comparatorController;

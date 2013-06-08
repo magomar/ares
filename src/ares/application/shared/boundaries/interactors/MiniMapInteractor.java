@@ -1,11 +1,11 @@
 package ares.application.shared.boundaries.interactors;
 
-import ares.application.shared.boundaries.viewers.MiniMapViewer;
+import ares.application.shared.boundaries.viewers.BoardViewer;
 
 /**
  *
  * @author Mario Gómez Martínez <magomar@gmail.com>
  */
 public interface MiniMapInteractor {
-    MiniMapViewer getMiniMapView();
+    BoardViewer getMiniMapView();
 }

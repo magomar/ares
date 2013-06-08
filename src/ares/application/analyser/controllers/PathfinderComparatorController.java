@@ -2,7 +2,8 @@ package ares.application.analyser.controllers;
 
 import ares.application.analyser.boundaries.interactors.PathfinderComparatorInteractor;
 import ares.application.analyser.boundaries.viewers.PathfinderComparatorViewer;
-import ares.application.shared.boundaries.viewers.BoardViewer;
+import ares.application.shared.boundaries.viewers.layerviewers.GridLayerViewer;
+import ares.application.shared.boundaries.viewers.layerviewers.UnitsLayerViewer;
 import ares.application.shared.commands.AresCommandGroup;
 import ares.application.shared.commands.ViewCommands;
 import ares.application.shared.controllers.ActionController;
@@ -146,8 +147,8 @@ public class PathfinderComparatorController implements ActionController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            comparatorView.getLeftBoardView().switchLayerVisible(BoardViewer.GRID);
-            comparatorView.getRightBoardView().switchLayerVisible(BoardViewer.GRID);
+            comparatorView.getLeftBoardView().switchLayerVisible(GridLayerViewer.NAME);
+            comparatorView.getRightBoardView().switchLayerVisible(GridLayerViewer.NAME);
         }
     }
 
@@ -155,8 +156,8 @@ public class PathfinderComparatorController implements ActionController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            comparatorView.getLeftBoardView().switchLayerVisible(BoardViewer.UNITS);
-            comparatorView.getRightBoardView().switchLayerVisible(BoardViewer.UNITS);
+            comparatorView.getLeftBoardView().switchLayerVisible(UnitsLayerViewer.NAME);
+            comparatorView.getRightBoardView().switchLayerVisible(UnitsLayerViewer.NAME);
         }
     }
 

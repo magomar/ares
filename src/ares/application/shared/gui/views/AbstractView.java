@@ -1,13 +1,13 @@
 package ares.application.shared.gui.views;
 
+import java.awt.Component;
 import java.awt.Dimension;
-import javax.swing.JComponent;
 
 /**
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public abstract class AbstractView<C extends JComponent> implements View<C> {
+public abstract class AbstractView<C extends Component> implements View<C> {
 
     protected final C contentPane;
 

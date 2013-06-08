@@ -6,12 +6,13 @@ import ares.platform.engine.algorithms.pathfinding.costfunctions.CostFunction;
 import ares.platform.engine.algorithms.pathfinding.heuristics.Heuristic;
 import java.awt.event.ActionListener;
 import javax.swing.ComboBoxModel;
+import javax.swing.JPanel;
 
 /**
  *
  * @author Mario Gómez Martínez <magomar@gmail.com>
  */
-public interface PathfinderConfigurationViewer extends View {
+public interface PathfinderConfigurationViewer extends View<JPanel> {
 
     void setPathfinderComboModel(ComboBoxModel<Pathfinder> comboModel, ActionListener listener);
 

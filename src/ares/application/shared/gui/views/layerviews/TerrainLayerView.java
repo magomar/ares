@@ -18,9 +18,14 @@ import java.util.*;
  * @author Heine <heisncfr@inf.upv.es>
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
-public class TerrainLayerView extends AbstractImageLayerView implements TerrainLayerViewer{
+public class TerrainLayerView extends AbstractImageLayerView implements TerrainLayerViewer {
 
     private ScenarioModel scenario;
+
+    @Override
+    public String name() {
+        return TerrainLayerViewer.NAME;
+    }
 
     @Override
     public void updateLayer() {
@@ -62,7 +67,7 @@ public class TerrainLayerView extends AbstractImageLayerView implements TerrainL
 
         // First paints the open terrain, any other terrain will be rendered upon it
         BufferedImage terrainImage = GraphicsModel.INSTANCE.getImageProvider(AresMiscTerrainGraphics.TERRAIN_MISCELANEOUS, profile).getImage(Feature.OPEN.getCoordinates());
-        
+
         g2.drawImage(terrainImage, pos.x, pos.y, contentPane);
 
         Map<Terrain, Directions> m = tile.getTerrain();
@@ -81,5 +86,4 @@ public class TerrainLayerView extends AbstractImageLayerView implements TerrainL
         }
         contentPane.repaint(pos.x, pos.y, terrainImage.getWidth(), terrainImage.getHeight());
     }
-
 }

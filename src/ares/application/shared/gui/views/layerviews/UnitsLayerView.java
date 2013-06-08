@@ -23,6 +23,11 @@ public class UnitsLayerView extends AbstractImageLayerView implements UnitsLayer
     private ScenarioModel scenario;
 
     @Override
+    public String name() {
+        return UnitsLayerViewer.NAME;
+    }
+
+    @Override
     public void updateLayer() {
         initialize();
         Graphics2D g2 = globalImage.createGraphics();
@@ -108,5 +113,4 @@ public class UnitsLayerView extends AbstractImageLayerView implements UnitsLayer
         }
 
     }
-
 }

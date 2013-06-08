@@ -6,9 +6,9 @@ import ares.application.shared.models.ScenarioModel;
  *
  * @author Mario Gómez Martínez <magomar@gmail.com>
  */
-public interface TerrainLayerViewer extends ImageLayerViewer {
+public interface GridLayerViewer extends ImageLayerViewer {
 
-    public static final String NAME = "TERRAIN_LAYER";
+    public static final String NAME = "GRID_LAYER";
 
-    void updateScenario(ScenarioModel scenario);
+    public void updateScenario(ScenarioModel scenarioModel);
 }

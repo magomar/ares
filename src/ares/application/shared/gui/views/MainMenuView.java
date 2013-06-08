@@ -1,6 +1,6 @@
 package ares.application.shared.gui.views;
 
-import ares.application.shared.boundaries.viewers.ActionBarViewer;
+import ares.application.shared.boundaries.viewers.PanelMenuViewer;
 import ares.application.shared.gui.components.MainMenuPanel;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -9,7 +9,7 @@ import javax.swing.JPanel;
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public class MainMenuView extends AbstractView<JPanel> implements ActionBarViewer<JPanel, JButton> {
+public class MainMenuView extends AbstractView<JPanel> implements PanelMenuViewer {
 
     @Override
     protected JPanel layout() {
@@ -28,5 +28,4 @@ public class MainMenuView extends AbstractView<JPanel> implements ActionBarViewe
             contentPane.add(jButton);
         }
     }
-  
 }

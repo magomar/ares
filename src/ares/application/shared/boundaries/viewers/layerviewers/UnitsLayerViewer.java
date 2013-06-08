@@ -9,6 +9,8 @@ import ares.application.shared.models.board.TileModel;
  */
 public interface UnitsLayerViewer extends ImageLayerViewer {
 
+    public static final String NAME = "UNITS_LAYER";
+
     void updateScenario(ScenarioModel scenario);
 
     void updateUnitStack(TileModel tile);

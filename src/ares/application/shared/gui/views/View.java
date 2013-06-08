@@ -1,13 +1,13 @@
 package ares.application.shared.gui.views;
 
+import java.awt.Component;
 import java.awt.Dimension;
-import javax.swing.JComponent;
 
 /**
  *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
-public interface View<C extends JComponent> {
+public interface View<C extends Component> {
 
     void setVisible(boolean visible);
 

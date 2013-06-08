@@ -2,16 +2,16 @@ package ares.application.analyser.boundaries.viewers;
 
 import ares.application.analyser.views.PathfinderComparatorView;
 import ares.application.shared.gui.views.View;
-import ares.application.shared.boundaries.viewers.ActionBarViewer;
-import ares.application.shared.boundaries.viewers.MessagesViewer;
-import javax.swing.JButton;
-import javax.swing.JMenu;
+import ares.application.shared.boundaries.viewers.MenuBarViewer;
+import ares.application.shared.boundaries.viewers.PanelMenuViewer;
+import ares.application.shared.boundaries.viewers.ToolBarViewer;
+import javax.swing.JFrame;
 
 /**
  *
  * @author Mario Gómez Martínez <magomar@gmail.com>
  */
-public interface PathfinderToolsViewer extends View {
+public interface PathfinderToolsViewer extends View<JFrame> {
     // Perspectives
     static final String MAIN_MENU_PERSPECTIVE = "Main";
     static final String COMPARATOR_PERSPECTIVE = "Comparator";
@@ -22,9 +22,9 @@ public interface PathfinderToolsViewer extends View {
 
     PathfinderComparatorView getComparatorView();
     
-    ActionBarViewer<JButton> getToolBarView();
+    ToolBarViewer getToolBarView();
 
-    ActionBarViewer<JMenu> getMenuView();
+    MenuBarViewer getMenuView();
 
-    ActionBarViewer<JButton> getMainMenuView();
+    PanelMenuViewer getMainMenuView();
 }

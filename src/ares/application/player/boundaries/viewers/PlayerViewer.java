@@ -1,20 +1,20 @@
 package ares.application.player.boundaries.viewers;
 
-import ares.application.shared.gui.views.View;
 import ares.application.shared.boundaries.viewers.BoardViewer;
-import ares.application.shared.boundaries.viewers.ActionBarViewer;
+import ares.application.shared.gui.views.View;
 import ares.application.shared.boundaries.viewers.InfoViewer;
+import ares.application.shared.boundaries.viewers.MenuBarViewer;
 import ares.application.shared.boundaries.viewers.MessagesViewer;
-import ares.application.shared.boundaries.viewers.MiniMapViewer;
 import ares.application.shared.boundaries.viewers.OOBViewer;
-import javax.swing.JButton;
-import javax.swing.JMenu;
+import ares.application.shared.boundaries.viewers.PanelMenuViewer;
+import ares.application.shared.boundaries.viewers.ToolBarViewer;
+import javax.swing.JFrame;
 
 /**
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public interface PlayerViewer extends View {
+public interface PlayerViewer extends View<JFrame> {
 
     // Perspectives
     static final String MAIN_MENU_PERSPECTIVE = "Main";
@@ -30,15 +30,15 @@ public interface PlayerViewer extends View {
 
     InfoViewer getInfoView();
 
-    ActionBarViewer<JButton> getToolBarView();
+    ToolBarViewer getToolBarView();
 
-    ActionBarViewer<JMenu> getMenuView();
+    MenuBarViewer getMenuView();
 
     MessagesViewer getMessagesView();
 
     OOBViewer getOobView();
 
-    MiniMapViewer getMiniMapView();
+    BoardViewer getMiniMapView();
 
-    ActionBarViewer<JButton> getMainMenuView();
+    PanelMenuViewer getMainMenuView();
 }

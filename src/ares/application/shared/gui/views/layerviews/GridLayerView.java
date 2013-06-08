@@ -1,5 +1,6 @@
 package ares.application.shared.gui.views.layerviews;
 
+import ares.application.shared.boundaries.viewers.layerviewers.GridLayerViewer;
 import ares.application.shared.gui.providers.AresMiscTerrainGraphics;
 import ares.application.shared.gui.profiles.GraphicsModel;
 import ares.application.shared.models.ScenarioModel;
@@ -12,9 +13,14 @@ import java.awt.image.BufferedImage;
  *
  * @author Heine <heisncfr@inf.upv.es>
  */
-public class GridLayerView extends AbstractImageLayerView {
+public class GridLayerView extends AbstractImageLayerView implements GridLayerViewer {
 
     private ScenarioModel scenario;
+
+    @Override
+    public String name() {
+        return GridLayerViewer.NAME;
+    }
 
     @Override
     public void updateLayer() {
@@ -25,7 +31,7 @@ public class GridLayerView extends AbstractImageLayerView {
         int w = GraphicsModel.INSTANCE.getBoardColumns();
         int y = GraphicsModel.INSTANCE.getBoardRows();
         Graphics2D g2 = globalImage.createGraphics();
-        BufferedImage bi = GraphicsModel.INSTANCE.getImageProvider(AresMiscTerrainGraphics.GRID, profile).getImage(0,0);
+        BufferedImage bi = GraphicsModel.INSTANCE.getImageProvider(AresMiscTerrainGraphics.GRID, profile).getImage(0, 0);
         TileModel[][] tiles = scenario.getBoardModel().getMapModel();
         for (int i = 0; i < w; i++) {
             TileModel[] tileColumn = tiles[i];
@@ -41,7 +47,8 @@ public class GridLayerView extends AbstractImageLayerView {
         g2.dispose();
     }
 
-    public void update(ScenarioModel scenario) {
+    @Override
+    public void updateScenario(ScenarioModel scenario) {
         this.scenario = scenario;
         updateLayer();
     }

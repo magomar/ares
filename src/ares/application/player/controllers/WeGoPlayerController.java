@@ -1,20 +1,19 @@
 package ares.application.player.controllers;
 
+import ares.application.player.boundaries.interactors.PlayerBoardInteractor;
 import ares.application.shared.boundaries.viewers.BoardViewer;
 import ares.application.player.boundaries.viewers.PlayerViewer;
 import ares.application.shared.boundaries.viewers.ActionBarViewer;
 import ares.application.shared.boundaries.viewers.InfoViewer;
 import ares.application.shared.boundaries.viewers.OOBViewer;
-import ares.application.shared.boundaries.viewers.MiniMapViewer;
 import ares.application.shared.boundaries.viewers.MessagesViewer;
 import ares.application.shared.gui.profiles.GraphicsModel;
 import ares.platform.scenario.forces.UnitsColor;
 import ares.application.shared.gui.providers.AresMiscTerrainGraphics;
 import ares.application.shared.boundaries.interactors.EngineInteractor;
 import ares.application.shared.boundaries.interactors.MessagesInteractor;
-import ares.application.player.boundaries.interactors.PlayerBoardInteractor;
 import ares.application.shared.boundaries.interactors.ScenarioInteractor;
-import ares.application.shared.controllers.BoardController;
+import ares.application.shared.boundaries.viewers.layerviewers.ArrowLayerViewer;
 import ares.application.shared.controllers.MessagesController;
 import ares.application.shared.controllers.ScenarioController;
 import ares.platform.scenario.Scenario;
@@ -25,6 +24,9 @@ import java.util.concurrent.Executors;
 import java.util.logging.*;
 import javax.swing.JButton;
 import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JPanel;
+import javax.swing.JToolBar;
 
 /**
  *
@@ -38,17 +40,16 @@ public class WeGoPlayerController implements EngineInteractor, ScenarioInteracto
     private final BoardViewer boardView;
     private final InfoViewer infoView;
     private final OOBViewer oobView;
-    private final ActionBarViewer<JMenu> menuView;
+    private final ActionBarViewer<JMenuBar, JMenu> menuView;
     private final MessagesViewer messagesView;
-    private final ActionBarViewer<JButton> mainMenuView;
-    private final ActionBarViewer<JButton> toolBarView;
-    private final MiniMapViewer miniMapView;
+    private final ActionBarViewer<JPanel, JButton> mainMenuView;
+    private final ActionBarViewer<JToolBar, JButton> toolBarView;
+    private final BoardViewer miniMapView;
     //Secondary controllers
     private final PlayerBoardController boardController;
     private final RealTimeEngineController engineController;
     private final MessagesController messagesController;
     private final ScenarioController scenarioController;
-
     // Other fields
     private final ExecutorService executor;
 
@@ -71,21 +72,21 @@ public class WeGoPlayerController implements EngineInteractor, ScenarioInteracto
         engineController = new RealTimeEngineController(this);
         messagesController = new MessagesController(this);
         boardController = new PlayerBoardController(this, engineController.getEngine());
-        
+
         //register logger handlers
         registerLogger(ScenarioController.class);
         registerLogger(RealTimeEngineController.class);
         registerLogger(PlayerBoardController.class);
-        
+
         // populate menus and tool bars
         mainMenuView.addActionButtons(scenarioController.getActionGroup().createMainMenuButtons());
         toolBarView.addActionButtons(scenarioController.getActionGroup().createToolBarButtons());
         toolBarView.addActionButtons(boardController.getActionGroup().createToolBarButtons());
         toolBarView.addActionButtons(engineController.getActionGroup().createToolBarButtons());
         JMenu[] menus = {
-          scenarioController.getActionGroup().createMenu(),
-          boardController.getActionGroup().createMenu(),
-          engineController.getActionGroup().createMenu()
+            scenarioController.getActionGroup().createMenu(),
+            boardController.getActionGroup().createMenu(),
+            engineController.getActionGroup().createMenu()
         };
         menuView.addActionButtons(menus);
 
@@ -102,7 +103,7 @@ public class WeGoPlayerController implements EngineInteractor, ScenarioInteracto
     public void setRunning(boolean running) {
         if (running) {
             messagesView.clear();
-            boardView.updateCurrentOrders(null);
+            ((ArrowLayerViewer) boardView.getLayerView(ArrowLayerViewer.NAME)).updateCurrentOrders(null);
         } else {
         }
     }
@@ -117,7 +118,7 @@ public class WeGoPlayerController implements EngineInteractor, ScenarioInteracto
         // pass the scenario to the engine controller
         engineController.setScenario(scenario);
         boardController.setScenario(scenario);
-       // change the GUI to show the playing perspective
+        // change the GUI to show the playing perspective
         mainView.switchPerspective(PlayerViewer.PLAYER_PERSPECTIVE);
         System.gc();
     }
@@ -130,7 +131,7 @@ public class WeGoPlayerController implements EngineInteractor, ScenarioInteracto
         mainView.switchPerspective(PlayerViewer.MAIN_MENU_PERSPECTIVE);
         System.gc();
     }
-    
+
     @Override
     public Container getGUIContainer() {
         return mainView.getContentPane();
@@ -157,10 +158,10 @@ public class WeGoPlayerController implements EngineInteractor, ScenarioInteracto
     }
 
     @Override
-    public MiniMapViewer getMiniMapView() {
+    public BoardViewer getMiniMapView() {
         return miniMapView;
     }
-    
+
     private void registerLogger(Class<?> aClass) {
         Logger.getLogger(aClass.getName()).addHandler(messagesView.getHandler());
     }

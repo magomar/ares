@@ -4,20 +4,19 @@ import ares.application.analyser.controllers.PathfinderToolsController;
 import ares.application.analyser.boundaries.viewers.PathfinderToolsViewer;
 import ares.application.analyser.views.PathfinderComparatorView;
 import ares.application.player.AresPlayerGUI;
+import ares.application.shared.boundaries.viewers.MenuBarViewer;
 import ares.application.shared.gui.ComponentFactory;
 import ares.application.shared.gui.WindowUtil;
 import ares.application.shared.gui.views.MainMenuView;
 import ares.application.shared.gui.views.MenuBarView;
 import ares.application.shared.gui.views.ToolBarView;
 import ares.application.shared.gui.views.AbstractView;
-import ares.application.shared.boundaries.viewers.ActionBarViewer;
+import ares.application.shared.boundaries.viewers.PanelMenuViewer;
+import ares.application.shared.boundaries.viewers.ToolBarViewer;
 import java.awt.CardLayout;
-import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JMenu;
 import javax.swing.JPanel;
 
 /**
@@ -116,17 +115,17 @@ public class PathfinderToolsGUI extends AbstractView<JFrame> implements Pathfind
 
 
     @Override
-    public ActionBarViewer<JButton> getToolBarView() {
+    public ToolBarViewer getToolBarView() {
         return toolBarV;
     }
 
     @Override
-    public ActionBarViewer<JMenu> getMenuView() {
+    public MenuBarViewer getMenuView() {
         return menuV;
     }
 
     @Override
-    public ActionBarViewer<JButton> getMainMenuView() {
+    public PanelMenuViewer getMainMenuView() {
         return mainMenuV;
     }
 

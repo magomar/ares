@@ -20,6 +20,11 @@ public class SelectionLayerView extends AbstractImageLayerView implements Select
     private FormationModel formation;
 
     @Override
+    public String name() {
+        return SelectionLayerViewer.NAME;
+    }
+
+    @Override
     public void updateLayer() {
         initialize();
         if (selectedUnit == null) {
@@ -54,6 +59,4 @@ public class SelectionLayerView extends AbstractImageLayerView implements Select
         this.formation = formation;
         updateLayer();
     }
-
-   
 }

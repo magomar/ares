@@ -9,6 +9,5 @@ import ares.application.shared.boundaries.interactors.Interactor;
  */
 public interface PathfinderComparatorInteractor extends Interactor {
 
-      PathfinderComparatorViewer getPathfinderComparatorView();
-     
+    PathfinderComparatorViewer getPathfinderComparatorView();
 }
