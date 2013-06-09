@@ -24,9 +24,6 @@ public abstract class AbstractBoardView extends AbstractLayeredImageView impleme
             layerView.setProfile(profile);
             layerView.initialize();
         }
-//        // Assuming every BoardView has at least a TerrainLayerViewer and a UnitsLayerViewer
-//        getLayerView(TerrainLayerViewer.class).updateScenario(scenario);// This is done by the controller
-//        getLayerView(UnitsLayerViewer.class).updateScenario(scenario);// This is done by the controller
     }
 
     @Override

@@ -28,6 +28,7 @@ import ares.application.shared.boundaries.viewers.layerviewers.SelectionLayerVie
 import ares.application.shared.boundaries.viewers.layerviewers.TerrainLayerViewer;
 import ares.application.shared.boundaries.viewers.layerviewers.UnitsLayerViewer;
 import ares.application.shared.controllers.BoardController;
+import ares.application.shared.controllers.MiniMapController;
 import ares.application.shared.models.ScenarioModel;
 import ares.platform.action.ActionGroup;
 import ares.platform.engine.algorithms.pathfinding.costfunctions.CostFunctions;
@@ -69,6 +70,7 @@ public final class PlayerBoardController implements ActionController, PropertyCh
     private Scenario scenario;
     private InteractionMode interactionMode = InteractionMode.FREE;
     private final BoardController boardController;
+    private final MiniMapController miniMapController;
 
     public PlayerBoardController(PlayerBoardInteractor interactor, RealTimeEngine engine) {
         pathFinder = new AStar(MinimunDistance.create(DistanceCalculator.DELTA), CostFunctions.FASTEST);
@@ -83,6 +85,7 @@ public final class PlayerBoardController implements ActionController, PropertyCh
         selectionLayerView = (SelectionLayerViewer) boardView.getLayerView(SelectionLayerViewer.NAME);
         // create action groups
         boardController = new BoardController(interactor);
+        miniMapController = new MiniMapController(interactor);
 
         // Adds various component listeners
         interactor.getBoardView().addMouseListener(new BoardMouseListener());
@@ -100,11 +103,10 @@ public final class PlayerBoardController implements ActionController, PropertyCh
     public void setScenario(Scenario scenario) {
         this.scenario = scenario;
         ScenarioModel scenarioModel = scenario.getModel();
-        miniMapView.setProfile(0);
-        miniMapView.loadScenario(scenarioModel);
         oobView.loadScenario(scenarioModel);
         infoView.updateScenarioInfo(Clock.INSTANCE.getNow());
-        boardController.setScenario(scenario);
+        boardController.setScenario(scenario, GraphicsModel.INSTANCE.getActiveProfile());
+        miniMapController.setScenario(scenario,0);
         gridLayerView.updateScenario(scenarioModel);
     }
 

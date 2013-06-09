@@ -1,7 +1,8 @@
 package ares.application.shared.controllers;
 
-import ares.application.shared.boundaries.viewers.BoardViewer;
 import ares.application.shared.boundaries.interactors.BoardInteractor;
+import ares.application.shared.boundaries.interactors.MiniMapInteractor;
+import ares.application.shared.boundaries.viewers.BoardViewer;
 import ares.application.shared.boundaries.viewers.layerviewers.GridLayerViewer;
 import ares.application.shared.boundaries.viewers.layerviewers.TerrainLayerViewer;
 import ares.application.shared.boundaries.viewers.layerviewers.UnitsLayerViewer;
@@ -21,32 +22,30 @@ import javax.swing.Action;
  *
  * @author Mario Gómez Martínez <magomar@gmail.com>
  */
-public class BoardController implements ActionController {
+public class MiniMapController implements ActionController {
 
-    private final Action viewGrid = new CommandAction(ViewCommands.VIEW_GRID, new ViewGridActionListener());
-    private final Action viewUnits = new CommandAction(ViewCommands.VIEW_UNITS, new ViewUnitsActionListener());
     private final Action zoomIn = new CommandAction(ViewCommands.VIEW_ZOOM_IN, new ZoomInActionListener());
     private final Action zoomOut = new CommandAction(ViewCommands.VIEW_ZOOM_OUT, new ZoomOutActionListener());
     private final ActionGroup actions;
-    private final BoardViewer boardView;
+    private final BoardViewer miniMapView;
     private Scenario scenario;
 
-    public BoardController(BoardInteractor interactor) {
-        this.boardView = interactor.getBoardView();
+    public MiniMapController(MiniMapInteractor interactor) {
+        this.miniMapView = interactor.getMiniMapView();
         // create action groups
-        Action[] viewActions = {viewGrid, viewUnits, zoomIn, zoomOut};
+        Action[] viewActions = {zoomIn, zoomOut};
         CommandGroup group = AresCommandGroup.VIEW;
         actions = new ActionGroup(group.getName(), group.getText(), group.getMnemonic(), viewActions);
     }
 
     public void setScenario(Scenario scenario, int profile) {
         this.scenario = scenario;
-        boardView.setProfile(profile);
+        miniMapView.setProfile(profile);
         ScenarioModel scenarioModel = scenario.getModel();
-        boardView.loadScenario(scenarioModel);
+        miniMapView.loadScenario(scenarioModel);
         // Render board: paint terrain and units
-        ((TerrainLayerViewer) boardView.getLayerView(TerrainLayerViewer.NAME)).updateScenario(scenarioModel);
-        ((UnitsLayerViewer) boardView.getLayerView(UnitsLayerViewer.NAME)).updateScenario(scenarioModel);
+        ((TerrainLayerViewer) miniMapView.getLayerView(TerrainLayerViewer.NAME)).updateScenario(scenarioModel);
+        ((UnitsLayerViewer) miniMapView.getLayerView(UnitsLayerViewer.NAME)).updateScenario(scenarioModel);
     }
 
     @Override
@@ -58,8 +57,8 @@ public class BoardController implements ActionController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            boardView.setProfile(GraphicsModel.INSTANCE.nextActiveProfile());
-            boardView.loadScenario(scenario.getModel());
+            miniMapView.setProfile(GraphicsModel.INSTANCE.nextActiveProfile());
+            miniMapView.loadScenario(scenario.getModel());
         }
     }
 
@@ -67,8 +66,8 @@ public class BoardController implements ActionController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            boardView.setProfile(GraphicsModel.INSTANCE.previousActiveProfile());
-            boardView.loadScenario(scenario.getModel());
+            miniMapView.setProfile(GraphicsModel.INSTANCE.previousActiveProfile());
+            miniMapView.loadScenario(scenario.getModel());
         }
     }
 
@@ -76,7 +75,7 @@ public class BoardController implements ActionController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            boardView.switchLayerVisible(GridLayerViewer.NAME);
+            miniMapView.switchLayerVisible(GridLayerViewer.NAME);
         }
     }
 
@@ -84,7 +83,7 @@ public class BoardController implements ActionController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            boardView.switchLayerVisible(UnitsLayerViewer.NAME);
+            miniMapView.switchLayerVisible(UnitsLayerViewer.NAME);
         }
     }
 }

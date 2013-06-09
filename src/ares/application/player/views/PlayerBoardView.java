@@ -36,17 +36,11 @@ public class PlayerBoardView extends AbstractBoardView  {
         unitsLayer = (UnitsLayerViewer) new UnitsLayerView().setViewport(v);
         gridLayer = (GridLayerViewer) new GridLayerView().setViewport(v);
         selectionLayer = (SelectionLayerViewer) new SelectionLayerView().setViewport(v);
-        //Shares image with selection layer
         arrowLayer = (ArrowLayerView) new ArrowLayerView().setViewport(v).setParenLayer(selectionLayer);
 
         // Add independent layers pane
         addLayerView(terrainLayer).addLayerView(gridLayer).addLayerView(selectionLayer).addLayerView(arrowLayer).addLayerView(unitsLayer);
         return scrollPane;
     }
-//
-//    public JLayeredPane getLayeredPane() {
-//        return layeredPane;
-//    }
-
 
 }
