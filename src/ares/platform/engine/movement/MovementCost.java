@@ -210,6 +210,58 @@ public class MovementCost {
         return MathUtils.addBounded(cost, penalty, maxCost);
     }
 
+    public int getEstimatedCost(MovementType moveType) {
+        // Check for enemies. Enemies prevent movement
+        if (!tile.isPlayable() && moveType != MovementType.AIRCRAFT) {
+            return IMPASSABLE;
+        }
+
+        // COMPUTE ON-ROAD MOVEMENT
+        // If road movement is possible then compute on-road movement taking into account traffic density
+        int onRoadCost = IMPASSABLE;
+        if (MovementType.ANY_LAND_OR_AMPH_MOVEMENT.contains(moveType) && hasRoad) {
+//            int density = Scale.INSTANCE.getCriticalDensity();
+//            int numHorsesAndVehicles = 0;
+//            for (SurfaceUnit surfaceUnit : tile.getSurfaceUnits()) {
+//                if (MovementType.ANY_LAND_OR_AMPH_MOVEMENT.contains(surfaceUnit.getMovement())) {
+//                    numHorsesAndVehicles += ((LandUnit) surfaceUnit).getNumVehiclesAndHorses();
+//                }
+//            }
+//            int minCost = moveType.getMinOnRoadCost();
+//            int maxCost = moveType.getMaxOnRoadCost();
+//            onRoadCost = MathUtils.setBounds(numHorsesAndVehicles / density, minCost, maxCost);
+            onRoadCost = moveType.getMinOnRoadCost();
+        }
+        // COMPUTE OFF-ROAD MOVEMENT
+        int offRoadcost = movementCost.get(moveType);
+        if (offRoadcost < IMPASSABLE) {
+            Set<Feature> features = tile.getFeatures();
+            if (features.contains(Feature.SNOWY)) {
+                offRoadcost = MathUtils.addBounded(offRoadcost, SNOW_PENALTY, moveType.getMaxOffRoadCost());
+            }
+            if (features.contains(Feature.MUDDY)) {
+                offRoadcost = MathUtils.addBounded(offRoadcost, MUD_PENALTY, moveType.getMaxOffRoadCost());
+            }
+        }
+        // Chose minimun of on-road and off-road movement costs
+        int maxCost;
+        int cost;
+        if (offRoadcost < onRoadCost) {
+            cost = offRoadcost;
+            maxCost = moveType.getMaxOffRoadCost();
+        } else {
+            cost = onRoadCost;
+            maxCost = moveType.getMaxOnRoadCost();
+        }
+
+        if (cost == IMPASSABLE) {
+            return IMPASSABLE;
+        }
+
+        return Math.min(cost, maxCost);
+    }
+    
+    
 //    public int getEstimatedCost(Unit unit) {
 //        MovementType moveType = unit.getMovement();
 //        int cost;

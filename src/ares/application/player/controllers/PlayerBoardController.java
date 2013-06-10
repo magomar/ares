@@ -24,9 +24,7 @@ import ares.application.shared.boundaries.viewers.BoardViewer;
 import ares.application.shared.boundaries.viewers.InfoViewer;
 import ares.application.shared.boundaries.viewers.OOBViewer;
 import ares.application.shared.boundaries.viewers.layerviewers.ArrowLayerViewer;
-import ares.application.shared.boundaries.viewers.layerviewers.GridLayerViewer;
 import ares.application.shared.boundaries.viewers.layerviewers.SelectionLayerViewer;
-import ares.application.shared.boundaries.viewers.layerviewers.TerrainLayerViewer;
 import ares.application.shared.boundaries.viewers.layerviewers.UnitsLayerViewer;
 import ares.application.shared.controllers.BoardController;
 import ares.application.shared.controllers.MiniMapController;
@@ -118,6 +116,7 @@ public final class PlayerBoardController implements ActionController, PropertyCh
         engine.addPropertyChangeListener(this);
     }
 
+    
     public Scenario getScenario() {
         return scenario;
     }

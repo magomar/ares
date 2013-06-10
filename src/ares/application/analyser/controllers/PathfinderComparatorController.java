@@ -2,9 +2,12 @@ package ares.application.analyser.controllers;
 
 import ares.application.analyser.boundaries.interactors.PathfinderComparatorInteractor;
 import ares.application.analyser.boundaries.viewers.PathfinderComparatorViewer;
-import ares.application.shared.boundaries.interactors.BoardInteractor;
 import ares.application.shared.boundaries.viewers.BoardViewer;
+import ares.application.shared.boundaries.viewers.PathfinderConfigurationViewer;
+import ares.application.shared.boundaries.viewers.layerviewers.ArrowLayerViewer;
 import ares.application.shared.boundaries.viewers.layerviewers.GridLayerViewer;
+import ares.application.shared.boundaries.viewers.layerviewers.PathSearchLayerViewer;
+import ares.application.shared.boundaries.viewers.layerviewers.TerrainLayerViewer;
 import ares.application.shared.boundaries.viewers.layerviewers.UnitsLayerViewer;
 import ares.application.shared.commands.AresCommandGroup;
 import ares.application.shared.commands.ViewCommands;
@@ -17,9 +20,10 @@ import ares.platform.action.CommandAction;
 import ares.platform.action.CommandGroup;
 import ares.platform.engine.algorithms.pathfinding.AStar;
 import ares.platform.engine.algorithms.pathfinding.BeamSearch;
+import ares.platform.engine.algorithms.pathfinding.ExtendedPath;
 import ares.platform.engine.algorithms.pathfinding.Pathfinder;
 import ares.platform.engine.algorithms.pathfinding.costfunctions.CostFunction;
-import ares.platform.engine.algorithms.pathfinding.costfunctions.CostFunctions;
+import ares.platform.engine.algorithms.pathfinding.costfunctions.EstimatedCostFunctions;
 import ares.platform.engine.algorithms.pathfinding.heuristics.DistanceCalculator;
 import ares.platform.engine.algorithms.pathfinding.heuristics.EnhancedMinimunDistance;
 import ares.platform.engine.algorithms.pathfinding.heuristics.Heuristic;
@@ -27,9 +31,15 @@ import ares.platform.engine.algorithms.pathfinding.heuristics.MinimunDistance;
 import ares.platform.engine.movement.MovementType;
 import ares.platform.scenario.Scenario;
 import ares.platform.scenario.board.Tile;
-import java.awt.Container;
+import ares.platform.scenario.forces.Unit;
+import ares.platform.scenario.forces.UnitFactory;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Action;
 import javax.swing.ComboBoxModel;
@@ -43,23 +53,20 @@ import javax.swing.JComboBox;
 public class PathfinderComparatorController implements ActionController {
 
     private static final Logger LOG = Logger.getLogger(ChangePathfinderActionListener.class.getName());
+    private static final int LEFT = 0;
+    private static final int RIGHT = 1;
     private final PathfinderComparatorViewer comparatorView;
     private final Action viewGrid = new CommandAction(ViewCommands.VIEW_GRID, new ViewGridActionListener());
     private final Action viewUnits = new CommandAction(ViewCommands.VIEW_UNITS, new ViewUnitsActionListener());
     private final Action zoomIn = new CommandAction(ViewCommands.VIEW_ZOOM_IN, new ZoomInActionListener());
     private final Action zoomOut = new CommandAction(ViewCommands.VIEW_ZOOM_OUT, new ZoomOutActionListener());
     private final ActionGroup actions;
-    private final ComboBoxModel<Pathfinder> leftPathfinderComboModel;
-    private final ComboBoxModel<Pathfinder> rightPathfinderComboModel;
-    private final ComboBoxModel<Heuristic> leftHeuristicComboModel;
-    private final ComboBoxModel<Heuristic> rightHeuristicComboModel;
-    private final ComboBoxModel<CostFunction> leftCostFunctionComboModel;
-    private final ComboBoxModel<CostFunction> rightCostFunctionComboModel;
-    private final PathSearchBoardController leftBoardController;
-    private final PathSearchBoardController rightBoardController;
+    private final PathfinderConfiguration[] configuration;
     private Tile selectedTile;
-    private MovementType moveType;
     private Scenario scenario;
+    private Unit testUnit;
+    private final BoardViewer[] boardView;
+    private InteractionMode interactionMode = InteractionMode.FREE;
 
     public PathfinderComparatorController(PathfinderComparatorInteractor interactor) {
         comparatorView = interactor.getPathfinderComparatorView();
@@ -69,68 +76,142 @@ public class PathfinderComparatorController implements ActionController {
         CommandGroup group = AresCommandGroup.VIEW;
         actions = new ActionGroup(group.getName(), group.getText(), group.getMnemonic(), viewActions);
 
+
         // create combo box models, pass them to the view and add action listeners
         Pathfinder leftPathfinder = new AStar();
         Pathfinder rightPathfinder = new BeamSearch();
         Pathfinder[] pathfinders = {leftPathfinder, rightPathfinder};
-        leftPathfinderComboModel = new DefaultComboBoxModel<>(pathfinders);
-        rightPathfinderComboModel = new DefaultComboBoxModel<>(new Pathfinder[]{new AStar(), rightPathfinder});
-
         Heuristic[] heuristics = {MinimunDistance.create(DistanceCalculator.DELTA), EnhancedMinimunDistance.create(DistanceCalculator.DELTA)};
-        leftHeuristicComboModel = new DefaultComboBoxModel<>(heuristics);
-        rightHeuristicComboModel = new DefaultComboBoxModel<>(heuristics);
+        CostFunction[] costFunctions = EstimatedCostFunctions.values();
 
-        CostFunction[] costFunctions = CostFunctions.values();
-        leftCostFunctionComboModel = new DefaultComboBoxModel<>(costFunctions);
-        rightCostFunctionComboModel = new DefaultComboBoxModel<>(costFunctions);
+        configuration = new PathfinderConfiguration[2];
+        configuration[LEFT] = new PathfinderConfiguration(comparatorView.getLefConfigurationView(), pathfinders, heuristics, costFunctions).initialize(leftPathfinder);
+        configuration[RIGHT] = new PathfinderConfiguration(comparatorView.getRightConfigurationView(), pathfinders, heuristics, costFunctions).initialize(rightPathfinder);
 
-        leftPathfinderComboModel.setSelectedItem(leftPathfinder);
-        rightPathfinderComboModel.setSelectedItem(rightPathfinder);
-        leftHeuristicComboModel.setSelectedItem(leftPathfinder.getHeuristic());
-        rightHeuristicComboModel.setSelectedItem(rightPathfinder.getHeuristic());
-        leftCostFunctionComboModel.setSelectedItem(leftPathfinder.getCostFunction());
-        rightCostFunctionComboModel.setSelectedItem(rightPathfinder.getCostFunction());
+        boardView = new BoardViewer[2];
+        boardView[LEFT] = comparatorView.getLeftBoardView();
+        boardView[RIGHT] = comparatorView.getRightBoardView();
 
-        comparatorView.getLefConfigurationView().setPathfinderComboModel(leftPathfinderComboModel,
-                new ChangePathfinderActionListener(leftHeuristicComboModel, leftCostFunctionComboModel));
-        comparatorView.getRightConfigurationView().setPathfinderComboModel(rightPathfinderComboModel,
-                new ChangePathfinderActionListener(rightHeuristicComboModel, rightCostFunctionComboModel));
-
-        comparatorView.getLefConfigurationView().setHeuristicComboModel(leftHeuristicComboModel, new ChangeHeuristicActionListener(leftPathfinderComboModel));
-        comparatorView.getRightConfigurationView().setHeuristicComboModel(rightHeuristicComboModel, new ChangeHeuristicActionListener(rightPathfinderComboModel));
-
-
-        comparatorView.getLefConfigurationView().setCostFunctionComboModel(leftCostFunctionComboModel, new ChangeCostFunctionActionListener(leftPathfinderComboModel));
-        comparatorView.getRightConfigurationView().setCostFunctionComboModel(rightCostFunctionComboModel, new ChangeCostFunctionActionListener(rightPathfinderComboModel));
-
-        leftBoardController = new PathSearchBoardController(new BoardInteractor() {
-            @Override
-            public BoardViewer getBoardView() {
-                return comparatorView.getLeftBoardView();
-            }
-
-            @Override
-            public Container getGUIContainer() {
-                return comparatorView.getContentPane();
-            }
-        });
-        rightBoardController = new PathSearchBoardController(new BoardInteractor() {
-            @Override
-            public BoardViewer getBoardView() {
-                return comparatorView.getRightBoardView();
-            }
-
-            @Override
-            public Container getGUIContainer() {
-                return comparatorView.getContentPane();
-            }
-        });
+        // Adds various component listeners
+        boardView[LEFT].addMouseListener(new BoardMouseListener(boardView[LEFT], configuration[LEFT]));
+        boardView[RIGHT].addMouseListener(new BoardMouseListener(boardView[RIGHT], configuration[RIGHT]));
+        boardView[LEFT].addMouseMotionListener(new BoardMouseMotionListener(boardView[LEFT], configuration[LEFT]));
+        boardView[RIGHT].addMouseMotionListener(new BoardMouseMotionListener(boardView[RIGHT], configuration[RIGHT]));
     }
 
     public void setScenario(Scenario scenario) {
         this.scenario = scenario;
-        leftBoardController.setScenario(scenario, GraphicsModel.INSTANCE.getActiveProfile());
-        rightBoardController.setScenario(scenario, GraphicsModel.INSTANCE.getActiveProfile());
+        testUnit = UnitFactory.createTestUnit(MovementType.MOTORIZED);
+        ScenarioModel scenarioModel = scenario.getModel();
+        initializeBoardView(boardView[LEFT], scenarioModel, GraphicsModel.INSTANCE.getActiveProfile());
+        initializeBoardView(boardView[RIGHT], scenarioModel, GraphicsModel.INSTANCE.getActiveProfile());
+    }
+
+    private static void initializeBoardView(BoardViewer boardView, ScenarioModel scenarioModel, int profile) {
+        boardView.setProfile(profile);
+        ((TerrainLayerViewer) boardView.getLayerView(TerrainLayerViewer.NAME)).updateScenario(scenarioModel);
+        ((GridLayerViewer) boardView.getLayerView(GridLayerViewer.NAME)).updateScenario(scenarioModel);
+    }
+
+    private void select(BoardViewer boardView, int x, int y) {
+        int profile = GraphicsModel.INSTANCE.getActiveProfile();
+        if (GraphicsModel.INSTANCE.isWithinImageRange(x, y, profile)) {
+            Point tilePoint = GraphicsModel.INSTANCE.pixelToTileAccurate(x, y, profile);
+            if (!GraphicsModel.INSTANCE.validCoordinates(tilePoint.x, tilePoint.y)) {
+                return;
+            }
+            Tile tile = scenario.getBoard().getTile(tilePoint.x, tilePoint.y);
+            if (!tile.equals(selectedTile)) {
+                selectedTile = tile;
+                LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, "New tile selected");
+            }
+        }
+    }
+
+    private void deselect(BoardViewer boardView) {
+        if (selectedTile != null) {
+            LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, "Deselecting");
+            selectedTile = null;
+            interactionMode = InteractionMode.FREE;
+            ((ArrowLayerViewer) boardView.getLayerView(ArrowLayerViewer.NAME)).updateCurrentOrders(null);
+            ((PathSearchLayerViewer) boardView.getLayerView(PathSearchLayerViewer.NAME)).updatePathSearch(null, null);
+        }
+    }
+
+    private void command(BoardViewer boardView, Pathfinder pathfinder, int x, int y) {
+        int profile = GraphicsModel.INSTANCE.getActiveProfile();
+        if (interactionMode == InteractionMode.UNIT_ORDERS && GraphicsModel.INSTANCE.isWithinImageRange(x, y, profile)) {
+            Point tilePoint = GraphicsModel.INSTANCE.pixelToTileAccurate(x, y, profile);
+            if (!GraphicsModel.INSTANCE.validCoordinates(tilePoint.x, tilePoint.y)) {
+                return;
+            }
+            Tile destination = scenario.getBoard().getTile(tilePoint.x, tilePoint.y);
+            ExtendedPath path = pathfinder.getExtendedPath(selectedTile, destination, testUnit);
+            if (path == null) {
+                LOG.log(Level.WARNING, "No path found using {0}", pathfinder);
+                return;
+            }
+            ((PathSearchLayerViewer) boardView.getLayerView(PathSearchLayerViewer.NAME)).updatePathSearch(path.getOpenSetNodes(), path.getClosedSetNodes());
+            ((ArrowLayerViewer) boardView.getLayerView(ArrowLayerViewer.NAME)).updateCurrentOrders(path);
+        }
+    }
+
+    private class BoardMouseListener extends MouseAdapter {
+
+        private final BoardViewer boardView;
+        private final PathfinderConfiguration configuration;
+
+        public BoardMouseListener(BoardViewer boardView, PathfinderConfiguration configuration) {
+            this.boardView = boardView;
+            this.configuration = configuration;
+        }
+
+        @Override
+        public void mouseClicked(MouseEvent me) {
+            LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, "Mouse clicked {0} from {1}", new Object[]{me.getButton(), me.getSource()});
+            switch (me.getButton()) {
+                case MouseEvent.BUTTON1:
+                    select(boardView, me.getX(), me.getY());
+                    break;
+                case MouseEvent.BUTTON2:
+                    deselect(boardView);
+                    break;
+                case MouseEvent.BUTTON3:
+                    command(boardView, configuration.getPathfinder(), me.getX(), me.getY());
+                    break;
+            }
+        }
+    }
+
+    private class BoardMouseMotionListener extends MouseMotionAdapter {
+
+        private final BoardViewer boardView;
+        private final PathfinderConfiguration configuration;
+
+        public BoardMouseMotionListener(BoardViewer boardView, PathfinderConfiguration configuration) {
+            this.boardView = boardView;
+            this.configuration = configuration;
+        }
+
+        @Override
+        public void mouseMoved(MouseEvent me) {
+            if (interactionMode == InteractionMode.UNIT_ORDERS) {
+                Point pixel = new Point(me.getX(), me.getY());
+                int profile = GraphicsModel.INSTANCE.getActiveProfile();
+                if (GraphicsModel.INSTANCE.isWithinImageRange(pixel, profile)) {
+                    Point tilePoint = GraphicsModel.INSTANCE.pixelToTileAccurate(pixel, profile);
+                    if (!GraphicsModel.INSTANCE.validCoordinates(tilePoint.x, tilePoint.y)) {
+                        return;
+                    }
+                    Tile tile = scenario.getBoard().getTile(tilePoint.x, tilePoint.y);
+                    ExtendedPath path = configuration.getPathfinder().getExtendedPath(selectedTile, tile, testUnit);
+                    if (path == null) {
+                        return;
+                    }
+                    ((ArrowLayerViewer) boardView.getLayerView(ArrowLayerViewer.NAME)).updateCurrentOrders(path);
+                }
+            }
+        }
     }
 
     @Override
@@ -138,21 +219,14 @@ public class PathfinderComparatorController implements ActionController {
         return actions;
     }
 
-    public Pathfinder getLeftPathfinder() {
-        return (Pathfinder) leftPathfinderComboModel.getSelectedItem();
-    }
-
-    public Pathfinder getRightPathfinder() {
-        return (Pathfinder) rightPathfinderComboModel.getSelectedItem();
-    }
-
     private class ZoomInActionListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
             int nextProfile = GraphicsModel.INSTANCE.nextActiveProfile();
-            leftBoardController.changeProfile(nextProfile);
-            rightBoardController.changeProfile(nextProfile);
+            ScenarioModel scenarioModel = scenario.getModel();
+            initializeBoardView(boardView[LEFT], scenarioModel, nextProfile);
+            initializeBoardView(boardView[RIGHT], scenarioModel, nextProfile);
         }
     }
 
@@ -161,8 +235,9 @@ public class PathfinderComparatorController implements ActionController {
         @Override
         public void actionPerformed(ActionEvent e) {
             int previousProfile = GraphicsModel.INSTANCE.previousActiveProfile();
-            leftBoardController.changeProfile(previousProfile);
-            rightBoardController.changeProfile(previousProfile);
+            ScenarioModel scenarioModel = scenario.getModel();
+            initializeBoardView(boardView[LEFT], scenarioModel, previousProfile);
+            initializeBoardView(boardView[RIGHT], scenarioModel, previousProfile);
         }
     }
 
@@ -170,8 +245,8 @@ public class PathfinderComparatorController implements ActionController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            comparatorView.getLeftBoardView().switchLayerVisible(GridLayerViewer.NAME);
-            comparatorView.getRightBoardView().switchLayerVisible(GridLayerViewer.NAME);
+            boardView[LEFT].switchLayerVisible(GridLayerViewer.NAME);
+            boardView[RIGHT].switchLayerVisible(GridLayerViewer.NAME);
         }
     }
 
@@ -179,8 +254,8 @@ public class PathfinderComparatorController implements ActionController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            comparatorView.getLeftBoardView().switchLayerVisible(UnitsLayerViewer.NAME);
-            comparatorView.getRightBoardView().switchLayerVisible(UnitsLayerViewer.NAME);
+            boardView[LEFT].switchLayerVisible(UnitsLayerViewer.NAME);
+            boardView[RIGHT].switchLayerVisible(UnitsLayerViewer.NAME);
         }
     }
 
@@ -238,5 +313,69 @@ public class PathfinderComparatorController implements ActionController {
             Pathfinder pathfinder = (Pathfinder) pathfinderComboModel.getSelectedItem();
             pathfinder.setCostFunction(costFunction);
         }
+    }
+
+    private class PathfinderConfiguration {
+
+        private final ComboBoxModel<Pathfinder> pathfinderComboModel;
+        private final ComboBoxModel<Heuristic> heuristicComboModel;
+        private final ComboBoxModel<CostFunction> costFunctionComboModel;
+        private final PathfinderConfigurationViewer configurationView;
+
+        PathfinderConfiguration(PathfinderConfigurationViewer configurationView, Pathfinder[] pathfinders, Heuristic[] heuristics, CostFunction[] costFunctions) {
+            this.configurationView = configurationView;
+            pathfinderComboModel = new DefaultComboBoxModel<>(pathfinders);
+            heuristicComboModel = new DefaultComboBoxModel<>(heuristics);
+            costFunctionComboModel = new DefaultComboBoxModel<>(costFunctions);
+        }
+
+        PathfinderConfiguration initialize(Pathfinder defaultPathfinder) {
+            setPathfinder(defaultPathfinder);
+            setHeuristic(defaultPathfinder.getHeuristic());
+            setCostFunction(defaultPathfinder.getCostFunction());
+            configurationView.setPathfinderComboModel(pathfinderComboModel,
+                    new ChangePathfinderActionListener(heuristicComboModel, costFunctionComboModel));
+            configurationView.setHeuristicComboModel(heuristicComboModel, new ChangeHeuristicActionListener(pathfinderComboModel));
+            configurationView.setCostFunctionComboModel(costFunctionComboModel, new ChangeCostFunctionActionListener(pathfinderComboModel));
+            return this;
+        }
+
+        void updateConfigurationView() {
+        }
+
+        void setPathfinder(Pathfinder pathfinder) {
+            pathfinderComboModel.setSelectedItem(pathfinder);
+        }
+
+        void setHeuristic(Heuristic heuristic) {
+            heuristicComboModel.setSelectedItem(heuristic);
+        }
+
+        void setCostFunction(CostFunction costFunction) {
+            costFunctionComboModel.setSelectedItem(costFunction);
+        }
+
+        Pathfinder getPathfinder() {
+            return (Pathfinder) pathfinderComboModel.getSelectedItem();
+        }
+
+        ComboBoxModel<Pathfinder> getPathfinderComboModel() {
+            return pathfinderComboModel;
+        }
+
+        ComboBoxModel<Heuristic> getHeuristicComboModel() {
+            return heuristicComboModel;
+        }
+
+        ComboBoxModel<CostFunction> getCostFunctionComboModel() {
+            return costFunctionComboModel;
+        }
+    }
+
+    private enum InteractionMode {
+
+        FREE,
+        UNIT_ORDERS,
+        FORMATION_ORDERS
     }
 }

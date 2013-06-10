@@ -233,6 +233,10 @@ public abstract class Unit implements ModelProvider<UnitModel> {
      */
     protected boolean active;
 
+    protected Unit() {
+        models = new HashMap<>();
+    }
+
     protected Unit(ares.data.jaxb.Unit unit, Formation formation, Force force, Scenario scenario) {
         id = unit.getId();
         name = unit.getName();
@@ -492,11 +496,11 @@ public abstract class Unit implements ModelProvider<UnitModel> {
     }
 
     public double getAttackStrength() {
-        return efficacy * (double) (antiTank + antiPersonnel) / (Scale.INSTANCE.getArea()*1.25);
+        return efficacy * (double) (antiTank + antiPersonnel) / (Scale.INSTANCE.getArea() * 1.25);
     }
 
     public double getDefenseStrength() {
-        return efficacy * (double) defense / (Scale.INSTANCE.getArea()*1.25);
+        return efficacy * (double) defense / (Scale.INSTANCE.getArea() * 1.25);
     }
 
     public int getEfficacy() {
@@ -753,5 +757,9 @@ public abstract class Unit implements ModelProvider<UnitModel> {
 
     public boolean isAircraft() {
         return movement == MovementType.AIRCRAFT;
+    }
+
+    public void setMovement(MovementType movement) {
+        this.movement = movement;
     }
 }

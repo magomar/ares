@@ -27,7 +27,7 @@ public abstract class AbstractLayeredImageView extends AbstractView<JScrollPane>
     public LayeredImageViewer addLayerView(ImageLayerViewer imageLayerView) {
         layeredPane.add(imageLayerView.getContentPane(), new Integer(layeredPane.getComponentCount()));
         layerViews.put(imageLayerView.name(), imageLayerView);
-        ImageLayerViewer parent = imageLayerView.getParentLayer();
+//        ImageLayerViewer parent = imageLayerView.getParentLayer();
 //        if (parent != null) {
 //            layeredPane.remove(parent.getContentPane());
 //        }
@@ -63,7 +63,6 @@ public abstract class AbstractLayeredImageView extends AbstractView<JScrollPane>
         this.profile = profile;
         Dimension imageSize = new Dimension(GraphicsModel.INSTANCE.getBoardWidth(profile), GraphicsModel.INSTANCE.getBoardHeight(profile));
         layeredPane.setPreferredSize(imageSize);
-//        layeredPane.setSize(imageSize);
         for (ImageLayerViewer layerView : layerViews.values()) {
             layerView.setProfile(profile);
             layerView.initialize();

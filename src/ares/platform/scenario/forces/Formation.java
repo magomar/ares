@@ -59,7 +59,7 @@ public class Formation implements ModelProvider<FormationModel> {
         subordinates = new ArrayList<>();
         Map<Integer, Unit> allUnits = new HashMap<>();
         for (ares.data.jaxb.Unit unit : formation.getUnit()) {
-            Unit u = UnitFactory.getUnit(unit, this, force, scenario);
+            Unit u = UnitFactory.createUnit(unit, this, force, scenario);
             allUnits.put(unit.getId(), u);
             switch (u.getAvailability()) {
                 case DIVIDED: // divided units are not added to list of units

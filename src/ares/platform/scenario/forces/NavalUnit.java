@@ -11,6 +11,9 @@ import ares.platform.engine.movement.MovementType;
  */
 public class NavalUnit extends SurfaceUnit {
 
+    protected NavalUnit() {
+    }
+
     public NavalUnit(ares.data.jaxb.Unit unit, Formation formation, Force force, Scenario scenario) {
         super(unit, formation, force, scenario);
         movement = MovementType.NAVAL;

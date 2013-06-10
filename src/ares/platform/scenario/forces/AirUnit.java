@@ -1,17 +1,18 @@
 package ares.platform.scenario.forces;
 
-import ares.application.shared.models.forces.UnitModel;
 import ares.platform.engine.movement.MovementType;
 import ares.platform.scenario.assets.Asset;
 import ares.platform.scenario.assets.AssetType;
 import ares.platform.scenario.Scenario;
-import ares.platform.engine.knowledge.KnowledgeCategory;
 
 /**
  *
  * @author Mario Gomez <margomez antiTank dsic.upv.es>
  */
 public class AirUnit extends Unit {
+
+    protected AirUnit() {
+    }
 
     public AirUnit(ares.data.jaxb.Unit unit, Formation formation, Force force, Scenario scenario) {
         super(unit, formation, force, scenario);

@@ -26,7 +26,10 @@ public final class LandUnit extends SurfaceUnit {
     protected int logistics;
     protected int command;
     protected int railRepair;
-
+    
+    protected LandUnit() { 
+    }
+    
     public LandUnit(ares.data.jaxb.Unit unit, Formation formation, Force force, Scenario scenario) {
         super(unit, formation, force, scenario);
         int transportSpeed = Integer.MAX_VALUE;
