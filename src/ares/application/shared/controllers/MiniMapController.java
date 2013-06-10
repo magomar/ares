@@ -1,7 +1,6 @@
 package ares.application.shared.controllers;
 
 import ares.application.shared.boundaries.interactors.BoardInteractor;
-import ares.application.shared.boundaries.interactors.MiniMapInteractor;
 import ares.application.shared.boundaries.viewers.BoardViewer;
 import ares.application.shared.boundaries.viewers.layerviewers.GridLayerViewer;
 import ares.application.shared.boundaries.viewers.layerviewers.TerrainLayerViewer;
@@ -28,10 +27,14 @@ public class MiniMapController implements ActionController {
     private final Action zoomOut = new CommandAction(ViewCommands.VIEW_ZOOM_OUT, new ZoomOutActionListener());
     private final ActionGroup actions;
     private final BoardViewer miniMapView;
-    private Scenario scenario;
+    private final TerrainLayerViewer terrainLayer;
+    private final UnitsLayerViewer unitsLayer;
+    private ScenarioModel scenarioModel;
 
-    public MiniMapController(MiniMapInteractor interactor) {
-        this.miniMapView = interactor.getMiniMapView();
+    public MiniMapController(BoardInteractor interactor) {
+        this.miniMapView = interactor.getBoardView();
+        terrainLayer = (TerrainLayerViewer) miniMapView.getLayerView(TerrainLayerViewer.NAME);
+        unitsLayer = (UnitsLayerViewer) miniMapView.getLayerView(UnitsLayerViewer.NAME);
         // create action groups
         Action[] viewActions = {zoomIn, zoomOut};
         CommandGroup group = AresCommandGroup.VIEW;
@@ -39,10 +42,11 @@ public class MiniMapController implements ActionController {
     }
 
     public void setScenario(Scenario scenario, int profile) {
-        this.scenario = scenario;
+        this.scenarioModel = scenario.getModel();
         miniMapView.setProfile(profile);
-        ScenarioModel scenarioModel = scenario.getModel();
-        miniMapView.loadScenario(scenarioModel);
+        // Render board: paint terrain and units
+        terrainLayer.updateScenario(scenarioModel);
+        unitsLayer.updateScenario(scenarioModel);
     }
 
     @Override
@@ -55,7 +59,8 @@ public class MiniMapController implements ActionController {
         @Override
         public void actionPerformed(ActionEvent e) {
             miniMapView.setProfile(GraphicsModel.INSTANCE.nextActiveProfile());
-            miniMapView.loadScenario(scenario.getModel());
+            terrainLayer.updateScenario(scenarioModel);
+            unitsLayer.updateScenario(scenarioModel);
         }
     }
 
@@ -64,7 +69,8 @@ public class MiniMapController implements ActionController {
         @Override
         public void actionPerformed(ActionEvent e) {
             miniMapView.setProfile(GraphicsModel.INSTANCE.previousActiveProfile());
-            miniMapView.loadScenario(scenario.getModel());
+            terrainLayer.updateScenario(scenarioModel);
+            unitsLayer.updateScenario(scenarioModel);
         }
     }
 

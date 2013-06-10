@@ -2,6 +2,8 @@ package ares.application.analyser.controllers;
 
 import ares.application.analyser.boundaries.interactors.PathfinderComparatorInteractor;
 import ares.application.analyser.boundaries.viewers.PathfinderComparatorViewer;
+import ares.application.shared.boundaries.interactors.BoardInteractor;
+import ares.application.shared.boundaries.viewers.BoardViewer;
 import ares.application.shared.boundaries.viewers.layerviewers.GridLayerViewer;
 import ares.application.shared.boundaries.viewers.layerviewers.UnitsLayerViewer;
 import ares.application.shared.commands.AresCommandGroup;
@@ -22,7 +24,10 @@ import ares.platform.engine.algorithms.pathfinding.heuristics.DistanceCalculator
 import ares.platform.engine.algorithms.pathfinding.heuristics.EnhancedMinimunDistance;
 import ares.platform.engine.algorithms.pathfinding.heuristics.Heuristic;
 import ares.platform.engine.algorithms.pathfinding.heuristics.MinimunDistance;
+import ares.platform.engine.movement.MovementType;
 import ares.platform.scenario.Scenario;
+import ares.platform.scenario.board.Tile;
+import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.logging.Logger;
@@ -38,19 +43,23 @@ import javax.swing.JComboBox;
 public class PathfinderComparatorController implements ActionController {
 
     private static final Logger LOG = Logger.getLogger(ChangePathfinderActionListener.class.getName());
-    private Scenario scenario;
     private final PathfinderComparatorViewer comparatorView;
     private final Action viewGrid = new CommandAction(ViewCommands.VIEW_GRID, new ViewGridActionListener());
     private final Action viewUnits = new CommandAction(ViewCommands.VIEW_UNITS, new ViewUnitsActionListener());
     private final Action zoomIn = new CommandAction(ViewCommands.VIEW_ZOOM_IN, new ZoomInActionListener());
     private final Action zoomOut = new CommandAction(ViewCommands.VIEW_ZOOM_OUT, new ZoomOutActionListener());
     private final ActionGroup actions;
-    private ComboBoxModel<Pathfinder> leftPathfinderComboModel;
-    private ComboBoxModel<Pathfinder> rightPathfinderComboModel;
-    private ComboBoxModel<Heuristic> leftHeuristicComboModel;
-    private ComboBoxModel<Heuristic> rightHeuristicComboModel;
-    private ComboBoxModel<CostFunction> leftCostFunctionComboModel;
-    private ComboBoxModel<CostFunction> rightCostFunctionComboModel;
+    private final ComboBoxModel<Pathfinder> leftPathfinderComboModel;
+    private final ComboBoxModel<Pathfinder> rightPathfinderComboModel;
+    private final ComboBoxModel<Heuristic> leftHeuristicComboModel;
+    private final ComboBoxModel<Heuristic> rightHeuristicComboModel;
+    private final ComboBoxModel<CostFunction> leftCostFunctionComboModel;
+    private final ComboBoxModel<CostFunction> rightCostFunctionComboModel;
+    private final PathSearchBoardController leftBoardController;
+    private final PathSearchBoardController rightBoardController;
+    private Tile selectedTile;
+    private MovementType moveType;
+    private Scenario scenario;
 
     public PathfinderComparatorController(PathfinderComparatorInteractor interactor) {
         comparatorView = interactor.getPathfinderComparatorView();
@@ -66,11 +75,11 @@ public class PathfinderComparatorController implements ActionController {
         Pathfinder[] pathfinders = {leftPathfinder, rightPathfinder};
         leftPathfinderComboModel = new DefaultComboBoxModel<>(pathfinders);
         rightPathfinderComboModel = new DefaultComboBoxModel<>(new Pathfinder[]{new AStar(), rightPathfinder});
-        
+
         Heuristic[] heuristics = {MinimunDistance.create(DistanceCalculator.DELTA), EnhancedMinimunDistance.create(DistanceCalculator.DELTA)};
         leftHeuristicComboModel = new DefaultComboBoxModel<>(heuristics);
         rightHeuristicComboModel = new DefaultComboBoxModel<>(heuristics);
-        
+
         CostFunction[] costFunctions = CostFunctions.values();
         leftCostFunctionComboModel = new DefaultComboBoxModel<>(costFunctions);
         rightCostFunctionComboModel = new DefaultComboBoxModel<>(costFunctions);
@@ -81,8 +90,8 @@ public class PathfinderComparatorController implements ActionController {
         rightHeuristicComboModel.setSelectedItem(rightPathfinder.getHeuristic());
         leftCostFunctionComboModel.setSelectedItem(leftPathfinder.getCostFunction());
         rightCostFunctionComboModel.setSelectedItem(rightPathfinder.getCostFunction());
-        
-                comparatorView.getLefConfigurationView().setPathfinderComboModel(leftPathfinderComboModel,
+
+        comparatorView.getLefConfigurationView().setPathfinderComboModel(leftPathfinderComboModel,
                 new ChangePathfinderActionListener(leftHeuristicComboModel, leftCostFunctionComboModel));
         comparatorView.getRightConfigurationView().setPathfinderComboModel(rightPathfinderComboModel,
                 new ChangePathfinderActionListener(rightHeuristicComboModel, rightCostFunctionComboModel));
@@ -93,15 +102,35 @@ public class PathfinderComparatorController implements ActionController {
 
         comparatorView.getLefConfigurationView().setCostFunctionComboModel(leftCostFunctionComboModel, new ChangeCostFunctionActionListener(leftPathfinderComboModel));
         comparatorView.getRightConfigurationView().setCostFunctionComboModel(rightCostFunctionComboModel, new ChangeCostFunctionActionListener(rightPathfinderComboModel));
+
+        leftBoardController = new PathSearchBoardController(new BoardInteractor() {
+            @Override
+            public BoardViewer getBoardView() {
+                return comparatorView.getLeftBoardView();
+            }
+
+            @Override
+            public Container getGUIContainer() {
+                return comparatorView.getContentPane();
+            }
+        });
+        rightBoardController = new PathSearchBoardController(new BoardInteractor() {
+            @Override
+            public BoardViewer getBoardView() {
+                return comparatorView.getRightBoardView();
+            }
+
+            @Override
+            public Container getGUIContainer() {
+                return comparatorView.getContentPane();
+            }
+        });
     }
 
     public void setScenario(Scenario scenario) {
         this.scenario = scenario;
-        ScenarioModel scenarioModel = scenario.getModel();
-        comparatorView.getLeftBoardView().setProfile(GraphicsModel.INSTANCE.getActiveProfile());
-        comparatorView.getLeftBoardView().loadScenario(scenarioModel);
-        comparatorView.getRightBoardView().setProfile(GraphicsModel.INSTANCE.getActiveProfile());
-        comparatorView.getRightBoardView().loadScenario(scenarioModel);
+        leftBoardController.setScenario(scenario, GraphicsModel.INSTANCE.getActiveProfile());
+        rightBoardController.setScenario(scenario, GraphicsModel.INSTANCE.getActiveProfile());
     }
 
     @Override
@@ -122,11 +151,8 @@ public class PathfinderComparatorController implements ActionController {
         @Override
         public void actionPerformed(ActionEvent e) {
             int nextProfile = GraphicsModel.INSTANCE.nextActiveProfile();
-            ScenarioModel scenarioModel = scenario.getModel();
-            comparatorView.getLeftBoardView().setProfile(nextProfile);
-            comparatorView.getLeftBoardView().loadScenario(scenarioModel);
-            comparatorView.getRightBoardView().setProfile(nextProfile);
-            comparatorView.getRightBoardView().loadScenario(scenarioModel);
+            leftBoardController.changeProfile(nextProfile);
+            rightBoardController.changeProfile(nextProfile);
         }
     }
 
@@ -135,11 +161,8 @@ public class PathfinderComparatorController implements ActionController {
         @Override
         public void actionPerformed(ActionEvent e) {
             int previousProfile = GraphicsModel.INSTANCE.previousActiveProfile();
-            ScenarioModel scenarioModel = scenario.getModel();
-            comparatorView.getLeftBoardView().setProfile(previousProfile);
-            comparatorView.getLeftBoardView().loadScenario(scenarioModel);
-            comparatorView.getRightBoardView().setProfile(previousProfile);
-            comparatorView.getRightBoardView().loadScenario(scenarioModel);
+            leftBoardController.changeProfile(previousProfile);
+            rightBoardController.changeProfile(previousProfile);
         }
     }
 

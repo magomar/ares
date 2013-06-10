@@ -1,8 +1,9 @@
-package ares.application.shared.gui.views.layerviews;
+package ares.application.analyser.views;
 
 import ares.application.shared.boundaries.viewers.layerviewers.PathSearchLayerViewer;
 import ares.application.shared.gui.profiles.GraphicsModel;
 import ares.application.shared.gui.providers.AresMiscTerrainGraphics;
+import ares.application.shared.gui.views.layerviews.AbstractImageLayerView;
 import ares.platform.engine.algorithms.pathfinding.Node;
 import java.awt.Graphics2D;
 import java.awt.Point;

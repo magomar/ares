@@ -9,5 +9,4 @@ import ares.application.shared.boundaries.viewers.MessagesViewer;
 public interface MessagesInteractor extends Interactor {
 
     MessagesViewer getMessagesView();
-
 }

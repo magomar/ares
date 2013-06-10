@@ -19,7 +19,6 @@ public interface PathfinderComparatorViewer extends View<JPanel>{
     PathfinderConfigurationViewer getLefConfigurationView();
     
     PathfinderConfigurationViewer getRightConfigurationView();
-
-    void flush();
+    
 
 }

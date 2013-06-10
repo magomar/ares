@@ -1,32 +1,34 @@
 package ares.application.player.controllers;
 
 import ares.application.player.boundaries.interactors.PlayerBoardInteractor;
-import ares.application.shared.boundaries.viewers.BoardViewer;
 import ares.application.player.boundaries.viewers.PlayerViewer;
-import ares.application.shared.boundaries.viewers.ActionBarViewer;
-import ares.application.shared.boundaries.viewers.InfoViewer;
-import ares.application.shared.boundaries.viewers.OOBViewer;
-import ares.application.shared.boundaries.viewers.MessagesViewer;
-import ares.application.shared.gui.profiles.GraphicsModel;
-import ares.platform.scenario.forces.UnitsColor;
-import ares.application.shared.gui.providers.AresMiscTerrainGraphics;
 import ares.application.shared.boundaries.interactors.EngineInteractor;
 import ares.application.shared.boundaries.interactors.MessagesInteractor;
 import ares.application.shared.boundaries.interactors.ScenarioInteractor;
+import ares.application.shared.boundaries.viewers.ActionBarViewer;
+import ares.application.shared.boundaries.viewers.BoardViewer;
+import ares.application.shared.boundaries.viewers.InfoViewer;
+import ares.application.shared.boundaries.viewers.MessagesViewer;
+import ares.application.shared.boundaries.viewers.OOBViewer;
 import ares.application.shared.boundaries.viewers.layerviewers.ArrowLayerViewer;
 import ares.application.shared.controllers.MessagesController;
 import ares.application.shared.controllers.ScenarioController;
+import ares.application.shared.gui.profiles.GraphicsModel;
+import ares.application.shared.gui.providers.AresMiscTerrainGraphics;
 import ares.platform.scenario.Scenario;
 import ares.platform.scenario.board.Terrain;
+import ares.platform.scenario.forces.UnitsColor;
 import java.awt.Container;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.logging.*;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.JToolBar;
+
+
 
 /**
  *
@@ -125,7 +127,7 @@ public class WeGoPlayerController implements EngineInteractor, ScenarioInteracto
 
     @Override
     public void forgetScenario() {
-        boardView.forgetScenario();
+        boardView.flush();
         miniMapView.flush();
         oobView.flush();
         mainView.switchPerspective(PlayerViewer.MAIN_MENU_PERSPECTIVE);
@@ -165,4 +167,10 @@ public class WeGoPlayerController implements EngineInteractor, ScenarioInteracto
     private void registerLogger(Class<?> aClass) {
         Logger.getLogger(aClass.getName()).addHandler(messagesView.getHandler());
     }
+
+    @Override
+    public PlayerViewer getPlayerView() {
+        return mainView;
+    }
+
 }

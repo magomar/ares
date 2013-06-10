@@ -17,8 +17,8 @@ import javax.swing.JSplitPane;
  */
 public class PathfinderComparatorView extends AbstractView<JPanel> implements PathfinderComparatorViewer {
 
-    private static final int PATHFINDER_CONFIGURATION_HEIGHT = 150;
-    private static final int PATHFINDER_STATS_HEIGHT = 150;
+//    private static final int PATHFINDER_CONFIGURATION_HEIGHT = 150;
+//    private static final int PATHFINDER_STATS_HEIGHT = 150;
     private JSplitPane splitHoriz;
     private JPanel configurationPanel;
     private JPanel statsPanel;
@@ -69,9 +69,4 @@ public class PathfinderComparatorView extends AbstractView<JPanel> implements Pa
         return rightConfigurationView;
     }
 
-    @Override
-    public void flush() {
-        leftBoardView.forgetScenario();
-        rightBoardView.forgetScenario();
-    }
 }

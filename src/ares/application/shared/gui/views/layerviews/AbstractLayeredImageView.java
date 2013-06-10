@@ -25,10 +25,12 @@ public abstract class AbstractLayeredImageView extends AbstractView<JScrollPane>
 
     @Override
     public LayeredImageViewer addLayerView(ImageLayerViewer imageLayerView) {
-        if (imageLayerView.getParentLayer() == null) {
-            layeredPane.add(imageLayerView.getContentPane(), new Integer(layeredPane.getComponentCount()));
-        }
+        layeredPane.add(imageLayerView.getContentPane(), new Integer(layeredPane.getComponentCount()));
         layerViews.put(imageLayerView.name(), imageLayerView);
+        ImageLayerViewer parent = imageLayerView.getParentLayer();
+//        if (parent != null) {
+//            layeredPane.remove(parent.getContentPane());
+//        }
 //        imageLayerView.setProfile(profile);
         return this;
     }

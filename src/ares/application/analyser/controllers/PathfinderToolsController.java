@@ -51,7 +51,8 @@ public class PathfinderToolsController implements ScenarioInteractor, Pathfinder
 //        toolBarView.addActionButtons(analyserController.getActionGroup().createToolBarButtons());
         JMenu[] menus = {
             scenarioController.getActionGroup().createMenu(),
-            comparatorController.getActionGroup().createMenu(), //            analyserController.getActionGroup().createMenu()
+            comparatorController.getActionGroup().createMenu(), 
+            //   analyserController.getActionGroup().createMenu()
         };
         menuView.addActionButtons(menus);
 
@@ -61,8 +62,8 @@ public class PathfinderToolsController implements ScenarioInteractor, Pathfinder
 
     @Override
     public void forgetScenario() {
-        comparatorView.flush();
-//        mainView.switchPerspective(PathfinderToolsViewer.MAIN_MENU_PERSPECTIVE);
+        comparatorView.getLeftBoardView().flush();
+//        mainView.switchPerspective(PlayerViewer.MAIN_MENU_PERSPECTIVE);
         System.gc();
     }
 

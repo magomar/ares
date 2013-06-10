@@ -1,6 +1,7 @@
 package ares.application.player.controllers;
 
 import ares.application.player.boundaries.interactors.PlayerBoardInteractor;
+import ares.application.shared.boundaries.interactors.BoardInteractor;
 import ares.platform.scenario.board.UnitsStack;
 import ares.platform.scenario.board.Tile;
 import ares.platform.engine.algorithms.pathfinding.Pathfinder;
@@ -36,6 +37,7 @@ import ares.platform.engine.time.Clock;
 import ares.platform.scenario.Scenario;
 import ares.platform.scenario.forces.Formation;
 import ares.platform.scenario.forces.Unit;
+import java.awt.Container;
 import java.awt.Point;
 import java.awt.event.*;
 import java.beans.PropertyChangeEvent;
@@ -60,9 +62,9 @@ public final class PlayerBoardController implements ActionController, PropertyCh
     private final OOBViewer oobView;
     private final BoardViewer miniMapView;
     private final InfoViewer infoView;
-    private final TerrainLayerViewer terrainLayerView;
+//    private final TerrainLayerViewer terrainLayerView;
     private final UnitsLayerViewer unitsLayerView;
-    private final GridLayerViewer gridLayerView;
+//    private final GridLayerViewer gridLayerView;
     private final ArrowLayerViewer arrowLayerView;
     private final SelectionLayerViewer selectionLayerView;
     private Tile selectedTile;
@@ -72,20 +74,40 @@ public final class PlayerBoardController implements ActionController, PropertyCh
     private final BoardController boardController;
     private final MiniMapController miniMapController;
 
-    public PlayerBoardController(PlayerBoardInteractor interactor, RealTimeEngine engine) {
+    public PlayerBoardController(final PlayerBoardInteractor interactor, RealTimeEngine engine) {
         pathFinder = new AStar(MinimunDistance.create(DistanceCalculator.DELTA), CostFunctions.FASTEST);
         boardView = interactor.getBoardView();
         oobView = interactor.getOOBView();
         miniMapView = interactor.getMiniMapView();
         infoView = interactor.getInfoView();
-        terrainLayerView = (TerrainLayerViewer) boardView.getLayerView(TerrainLayerViewer.NAME);
+//        terrainLayerView = (TerrainLayerViewer) boardView.getLayerView(TerrainLayerViewer.NAME);
         unitsLayerView = (UnitsLayerViewer) boardView.getLayerView(UnitsLayerViewer.NAME);
-        gridLayerView = (GridLayerViewer) boardView.getLayerView(GridLayerViewer.NAME);
+//        gridLayerView = (GridLayerViewer) boardView.getLayerView(GridLayerViewer.NAME);
         arrowLayerView = (ArrowLayerViewer) boardView.getLayerView(ArrowLayerViewer.NAME);
         selectionLayerView = (SelectionLayerViewer) boardView.getLayerView(SelectionLayerViewer.NAME);
         // create action groups
-        boardController = new BoardController(interactor);
-        miniMapController = new MiniMapController(interactor);
+        boardController = new BoardController(new BoardInteractor() {
+            @Override
+            public BoardViewer getBoardView() {
+                return boardView;
+            }
+
+            @Override
+            public Container getGUIContainer() {
+                return interactor.getGUIContainer();
+            }
+        });
+        miniMapController = new MiniMapController(new BoardInteractor() {
+            @Override
+            public BoardViewer getBoardView() {
+                return miniMapView;
+            }
+
+            @Override
+            public Container getGUIContainer() {
+                return interactor.getGUIContainer();
+            }
+        });
 
         // Adds various component listeners
         interactor.getBoardView().addMouseListener(new BoardMouseListener());
@@ -106,8 +128,7 @@ public final class PlayerBoardController implements ActionController, PropertyCh
         oobView.loadScenario(scenarioModel);
         infoView.updateScenarioInfo(Clock.INSTANCE.getNow());
         boardController.setScenario(scenario, GraphicsModel.INSTANCE.getActiveProfile());
-        miniMapController.setScenario(scenario,0);
-        gridLayerView.updateScenario(scenarioModel);
+        miniMapController.setScenario(scenario, 0);
     }
 
     @Override

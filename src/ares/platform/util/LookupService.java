@@ -24,8 +24,8 @@ public class LookupService<T> {
         classMap.remove(key);
     }
 
-    public <C extends T> C get(Class<C> key) {
-        return (C) classMap.get(key);
+    public T get(Class<? extends T> key) {
+        return classMap.get(key);
     }
 
     public Set<Class<? extends T>> keySet() {

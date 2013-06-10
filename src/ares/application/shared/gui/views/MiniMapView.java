@@ -4,7 +4,6 @@ import ares.application.shared.boundaries.viewers.layerviewers.TerrainLayerViewe
 import ares.application.shared.boundaries.viewers.layerviewers.UnitsLayerViewer;
 import ares.application.shared.gui.views.layerviews.TerrainLayerView;
 import ares.application.shared.gui.views.layerviews.UnitsLayerView;
-import ares.application.shared.models.ScenarioModel;
 import javax.swing.JScrollPane;
 import javax.swing.JViewport;
 
@@ -26,12 +25,5 @@ public class MiniMapView extends AbstractBoardView {
         // Add independent layers pane
         addLayerView(terrainLayer).addLayerView(unitsLayer);
         return scrollPane;
-    }
-    
-        @Override
-    public void loadScenario(ScenarioModel scenarioModel) {
-        // Render board: paint terrain and units
-        terrainLayer.updateScenario(scenarioModel);
-        unitsLayer.updateScenario(scenarioModel);
     }
 }

@@ -1,10 +1,8 @@
 package ares.application.shared.gui.views;
 
 import ares.application.shared.boundaries.viewers.BoardViewer;
-import ares.application.shared.boundaries.viewers.layerviewers.ImageLayerViewer;
 import ares.application.shared.gui.profiles.GraphicsModel;
 import ares.application.shared.gui.views.layerviews.AbstractLayeredImageView;
-import ares.application.shared.models.ScenarioModel;
 import ares.application.shared.models.forces.UnitModel;
 import java.awt.Dimension;
 import java.awt.Point;
@@ -15,16 +13,6 @@ import javax.swing.JScrollBar;
  * @author Mario Gómez Martínez <magomar@gmail.com>
  */
 public abstract class AbstractBoardView extends AbstractLayeredImageView implements BoardViewer {
-
-    @Override
-    public abstract void loadScenario(ScenarioModel scenario);
-
-    @Override
-    public void forgetScenario() {
-        for (ImageLayerViewer layerView : layerViews.values()) {
-            layerView.flush();
-        }
-    }
 
     @Override
     public void centerViewOn(UnitModel selectedUnit) {

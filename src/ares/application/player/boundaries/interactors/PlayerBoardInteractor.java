@@ -1,10 +1,9 @@
 package ares.application.player.boundaries.interactors;
 
+import ares.application.player.boundaries.viewers.PlayerViewer;
 import ares.application.shared.boundaries.interactors.BoardInfoInteractor;
 import ares.application.shared.boundaries.interactors.BoardInteractor;
-import ares.application.shared.boundaries.interactors.MiniMapInteractor;
 import ares.application.shared.boundaries.interactors.OOBInteractor;
-
 
 /**
  *
@@ -12,4 +11,5 @@ import ares.application.shared.boundaries.interactors.OOBInteractor;
  */
 public interface PlayerBoardInteractor extends BoardInteractor, BoardInfoInteractor, OOBInteractor, MiniMapInteractor {
 
+    PlayerViewer getPlayerView();
 }
