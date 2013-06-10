@@ -17,14 +17,7 @@ import javax.swing.JScrollBar;
 public abstract class AbstractBoardView extends AbstractLayeredImageView implements BoardViewer {
 
     @Override
-    public void loadScenario(ScenarioModel scenario) {
-        Dimension imageSize = new Dimension(GraphicsModel.INSTANCE.getBoardWidth(profile), GraphicsModel.INSTANCE.getBoardHeight(profile));
-        layeredPane.setPreferredSize(imageSize);
-        for (ImageLayerViewer layerView : layerViews.values()) {
-            layerView.setProfile(profile);
-            layerView.initialize();
-        }
-    }
+    public abstract void loadScenario(ScenarioModel scenario);
 
     @Override
     public void forgetScenario() {

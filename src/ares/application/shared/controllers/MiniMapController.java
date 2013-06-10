@@ -43,9 +43,6 @@ public class MiniMapController implements ActionController {
         miniMapView.setProfile(profile);
         ScenarioModel scenarioModel = scenario.getModel();
         miniMapView.loadScenario(scenarioModel);
-        // Render board: paint terrain and units
-        ((TerrainLayerViewer) miniMapView.getLayerView(TerrainLayerViewer.NAME)).updateScenario(scenarioModel);
-        ((UnitsLayerViewer) miniMapView.getLayerView(UnitsLayerViewer.NAME)).updateScenario(scenarioModel);
     }
 
     @Override

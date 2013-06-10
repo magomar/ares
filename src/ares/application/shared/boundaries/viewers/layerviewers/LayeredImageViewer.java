@@ -17,8 +17,6 @@ public interface LayeredImageViewer extends View<JScrollPane> {
 
     void setProfile(int profile);
 
-    void initialize();
-
     public void flush();
 
     void setLayerVisible(String layerName, boolean visible);

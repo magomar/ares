@@ -61,15 +61,7 @@ public abstract class AbstractLayeredImageView extends AbstractView<JScrollPane>
         this.profile = profile;
         Dimension imageSize = new Dimension(GraphicsModel.INSTANCE.getBoardWidth(profile), GraphicsModel.INSTANCE.getBoardHeight(profile));
         layeredPane.setPreferredSize(imageSize);
-        layeredPane.setSize(imageSize);
-        for (ImageLayerViewer layerView : layerViews.values()) {
-            layerView.setProfile(profile);
-            layerView.initialize();
-        }
-    }
-
-    @Override
-    public void initialize() {
+//        layeredPane.setSize(imageSize);
         for (ImageLayerViewer layerView : layerViews.values()) {
             layerView.setProfile(profile);
             layerView.initialize();

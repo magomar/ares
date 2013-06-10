@@ -3,7 +3,6 @@ package ares.application.shared.controllers;
 import ares.application.shared.boundaries.viewers.BoardViewer;
 import ares.application.shared.boundaries.interactors.BoardInteractor;
 import ares.application.shared.boundaries.viewers.layerviewers.GridLayerViewer;
-import ares.application.shared.boundaries.viewers.layerviewers.TerrainLayerViewer;
 import ares.application.shared.boundaries.viewers.layerviewers.UnitsLayerViewer;
 import ares.application.shared.commands.AresCommandGroup;
 import ares.application.shared.commands.ViewCommands;
@@ -44,9 +43,6 @@ public class BoardController implements ActionController {
         boardView.setProfile(profile);
         ScenarioModel scenarioModel = scenario.getModel();
         boardView.loadScenario(scenarioModel);
-        // Render board: paint terrain and units
-        ((TerrainLayerViewer) boardView.getLayerView(TerrainLayerViewer.NAME)).updateScenario(scenarioModel);
-        ((UnitsLayerViewer) boardView.getLayerView(UnitsLayerViewer.NAME)).updateScenario(scenarioModel);
     }
 
     @Override

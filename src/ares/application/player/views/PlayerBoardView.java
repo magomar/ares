@@ -11,6 +11,7 @@ import ares.application.shared.gui.views.layerviews.GridLayerView;
 import ares.application.shared.gui.views.layerviews.SelectionLayerView;
 import ares.application.shared.gui.views.layerviews.TerrainLayerView;
 import ares.application.shared.gui.views.layerviews.UnitsLayerView;
+import ares.application.shared.models.ScenarioModel;
 import javax.swing.JScrollPane;
 import javax.swing.JViewport;
 
@@ -18,15 +19,13 @@ import javax.swing.JViewport;
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public class PlayerBoardView extends AbstractBoardView  {
+public class PlayerBoardView extends AbstractBoardView {
 
     private TerrainLayerViewer terrainLayer;
     private UnitsLayerViewer unitsLayer;
     private GridLayerViewer gridLayer;
     private SelectionLayerViewer selectionLayer;
     private ArrowLayerViewer arrowLayer;
-    
-    
 
     @Override
     protected JScrollPane layout() {
@@ -43,4 +42,11 @@ public class PlayerBoardView extends AbstractBoardView  {
         return scrollPane;
     }
 
+    @Override
+    public void loadScenario(ScenarioModel scenarioModel) {
+        // Render board: paint terrain and units
+        terrainLayer.updateScenario(scenarioModel);
+        unitsLayer.updateScenario(scenarioModel);
+        gridLayer.updateScenario(scenarioModel);
+    }
 }
