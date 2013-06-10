@@ -7,7 +7,6 @@ import ares.application.shared.boundaries.viewers.layerviewers.UnitsLayerViewer;
 import ares.application.shared.commands.AresCommandGroup;
 import ares.application.shared.commands.ViewCommands;
 import ares.application.shared.gui.profiles.GraphicsModel;
-import ares.application.shared.models.ScenarioModel;
 import ares.platform.action.ActionGroup;
 import ares.platform.action.CommandAction;
 import ares.platform.action.CommandGroup;
@@ -20,29 +19,20 @@ import javax.swing.Action;
  *
  * @author Mario Gómez Martínez <magomar@gmail.com>
  */
-public class BoardController implements ActionController {
+public class BoardController extends AbstractBoardController implements ActionController {
 
     private final Action viewGrid = new CommandAction(ViewCommands.VIEW_GRID, new ViewGridActionListener());
     private final Action viewUnits = new CommandAction(ViewCommands.VIEW_UNITS, new ViewUnitsActionListener());
     private final Action zoomIn = new CommandAction(ViewCommands.VIEW_ZOOM_IN, new ZoomInActionListener());
     private final Action zoomOut = new CommandAction(ViewCommands.VIEW_ZOOM_OUT, new ZoomOutActionListener());
     private final ActionGroup actions;
-    private final BoardViewer boardView;
-    private Scenario scenario;
 
     public BoardController(BoardInteractor interactor) {
-        this.boardView = interactor.getBoardView();
+        super(interactor);
         // create action groups
         Action[] viewActions = {viewGrid, viewUnits, zoomIn, zoomOut};
         CommandGroup group = AresCommandGroup.VIEW;
         actions = new ActionGroup(group.getName(), group.getText(), group.getMnemonic(), viewActions);
-    }
-
-    public void setScenario(Scenario scenario, int profile) {
-        this.scenario = scenario;
-        boardView.setProfile(profile);
-        ScenarioModel scenarioModel = scenario.getModel();
-        boardView.loadScenario(scenarioModel);
     }
 
     @Override
