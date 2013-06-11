@@ -117,6 +117,4 @@ public abstract class AbstractImageLayerView extends AbstractView<JComponent> im
         contentPane.setPreferredSize(imageSize);
         contentPane.setSize(imageSize);
     }
-
-
 }

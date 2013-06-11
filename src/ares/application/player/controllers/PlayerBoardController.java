@@ -1,5 +1,6 @@
 package ares.application.player.controllers;
 
+import ares.application.player.boundaries.interactors.MiniMapInteractor;
 import ares.application.player.boundaries.interactors.PlayerBoardInteractor;
 import ares.application.shared.boundaries.interactors.BoardInteractor;
 import ares.platform.scenario.board.UnitsStack;
@@ -44,6 +45,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.swing.JTree;
+import javax.swing.JViewport;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -52,7 +54,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
  * @author Mario Gomez <margomez at dsic.upv.es>
  * @author Heine <heisncfr@inf.upv.es>
  */
-public final class PlayerBoardController implements ActionController, PropertyChangeListener {
+public final class PlayerBoardController implements BoardInteractor, MiniMapInteractor, ActionController, PropertyChangeListener {
 
     private static final Logger LOG = Logger.getLogger(PlayerBoardController.class.getName());
     private final Pathfinder pathFinder;
@@ -71,8 +73,10 @@ public final class PlayerBoardController implements ActionController, PropertyCh
     private InteractionMode interactionMode = InteractionMode.FREE;
     private final BoardController boardController;
     private final MiniMapController miniMapController;
+    private final PlayerBoardInteractor interactor;
 
     public PlayerBoardController(final PlayerBoardInteractor interactor, RealTimeEngine engine) {
+        this.interactor = interactor;
         pathFinder = new AStar(MinimunDistance.create(DistanceCalculator.DELTA), CostFunctions.FASTEST);
         boardView = interactor.getBoardView();
         oobView = interactor.getOOBView();
@@ -84,28 +88,9 @@ public final class PlayerBoardController implements ActionController, PropertyCh
         arrowLayerView = (ArrowLayerViewer) boardView.getLayerView(ArrowLayerViewer.NAME);
         selectionLayerView = (SelectionLayerViewer) boardView.getLayerView(SelectionLayerViewer.NAME);
         // create action groups
-        boardController = new BoardController(new BoardInteractor() {
-            @Override
-            public BoardViewer getBoardView() {
-                return boardView;
-            }
 
-            @Override
-            public Container getGUIContainer() {
-                return interactor.getGUIContainer();
-            }
-        });
-        miniMapController = new MiniMapController(new BoardInteractor() {
-            @Override
-            public BoardViewer getBoardView() {
-                return miniMapView;
-            }
-
-            @Override
-            public Container getGUIContainer() {
-                return interactor.getGUIContainer();
-            }
-        });
+        boardController = new BoardController(this);
+        miniMapController = new MiniMapController(this, this);
 
         // Adds various component listeners
         interactor.getBoardView().addMouseListener(new BoardMouseListener());
@@ -116,7 +101,6 @@ public final class PlayerBoardController implements ActionController, PropertyCh
         engine.addPropertyChangeListener(this);
     }
 
-    
     public Scenario getScenario() {
         return scenario;
     }
@@ -133,6 +117,11 @@ public final class PlayerBoardController implements ActionController, PropertyCh
     @Override
     public ActionGroup getActionGroup() {
         return boardController.getActionGroup();
+    }
+
+    @Override
+    public void changeBoardViewport(JViewport viewport) {
+        miniMapController.changeBoardViewport(viewport);
     }
 
     private class OOBTreeSelectionListener implements TreeSelectionListener {
@@ -358,6 +347,21 @@ public final class PlayerBoardController implements ActionController, PropertyCh
             selectedUnitPath = path.subPath(selectedUnit.getLocation());
         }
         arrowLayerView.updatePlannedOrders(selectedUnitPath, formationPaths, forcePaths);
+    }
+
+    @Override
+    public BoardViewer getBoardView() {
+        return boardView;
+    }
+
+    @Override
+    public Container getGUIContainer() {
+        return interactor.getGUIContainer();
+    }
+
+    @Override
+    public BoardViewer getMiniMapView() {
+        return miniMapView;
     }
 
     private enum InteractionMode {

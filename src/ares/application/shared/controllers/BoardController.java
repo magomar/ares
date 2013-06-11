@@ -16,6 +16,9 @@ import ares.platform.scenario.Scenario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Action;
+import javax.swing.JViewport;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 /**
  *
@@ -32,10 +35,12 @@ public class BoardController implements ActionController {
     private final TerrainLayerViewer terrainLayer;
     private final UnitsLayerViewer unitsLayer;
     private final GridLayerViewer gridLayer;
+    private final BoardInteractor interactor;
     private ScenarioModel scenarioModel;
 
     public BoardController(BoardInteractor interactor) {
         this.boardView = interactor.getBoardView();
+        this.interactor = interactor;
         terrainLayer = (TerrainLayerViewer) boardView.getLayerView(TerrainLayerViewer.NAME);
         unitsLayer = (UnitsLayerViewer) boardView.getLayerView(UnitsLayerViewer.NAME);
         gridLayer = (GridLayerViewer) boardView.getLayerView(GridLayerViewer.NAME);
@@ -53,6 +58,8 @@ public class BoardController implements ActionController {
         terrainLayer.updateScenario(scenarioModel);
         unitsLayer.updateScenario(scenarioModel);
         gridLayer.updateScenario(scenarioModel);
+        // Add ChangeListener to board viewport
+        boardView.getContentPane().getViewport().addChangeListener(new ChangeViewportListener());
     }
 
     @Override
@@ -68,6 +75,7 @@ public class BoardController implements ActionController {
             terrainLayer.updateScenario(scenarioModel);
             unitsLayer.updateScenario(scenarioModel);
             gridLayer.updateScenario(scenarioModel);
+            interactor.changeBoardViewport(boardView.getContentPane().getViewport());
         }
     }
 
@@ -79,6 +87,7 @@ public class BoardController implements ActionController {
             terrainLayer.updateScenario(scenarioModel);
             unitsLayer.updateScenario(scenarioModel);
             gridLayer.updateScenario(scenarioModel);
+            interactor.changeBoardViewport(boardView.getContentPane().getViewport());
         }
     }
 
@@ -95,6 +104,14 @@ public class BoardController implements ActionController {
         @Override
         public void actionPerformed(ActionEvent e) {
             boardView.switchLayerVisible(UnitsLayerViewer.NAME);
+        }
+    }
+
+    private class ChangeViewportListener implements ChangeListener {
+
+        @Override
+        public void stateChanged(ChangeEvent e) {
+            interactor.changeBoardViewport((JViewport) e.getSource());
         }
     }
 }
