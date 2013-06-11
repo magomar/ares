@@ -4,7 +4,6 @@ import ares.application.analyser.boundaries.viewers.PathfinderComparatorViewer;
 import ares.application.shared.boundaries.viewers.PathfinderConfigurationViewer;
 import ares.application.shared.gui.ComponentFactory;
 import ares.application.shared.gui.views.AbstractView;
-import ares.application.player.views.PlayerBoardView;
 import ares.application.shared.boundaries.viewers.BoardViewer;
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
@@ -22,15 +21,15 @@ public class PathfinderComparatorView extends AbstractView<JPanel> implements Pa
     private JSplitPane splitHoriz;
     private JPanel configurationPanel;
     private JPanel statsPanel;
-    private PlayerBoardView leftBoardView;
-    private PlayerBoardView rightBoardView;
+    private PathSearchBoardView leftBoardView;
+    private PathSearchBoardView rightBoardView;
     private PathfinderConfigurationView leftConfigurationView;
     private PathfinderConfigurationView rightConfigurationView;
 
     @Override
     protected JPanel layout() {
-        leftBoardView = new PlayerBoardView();
-        rightBoardView = new PlayerBoardView();
+        leftBoardView = new PathSearchBoardView();
+        rightBoardView = new PathSearchBoardView();
         leftConfigurationView = new PathfinderConfigurationView();
         rightConfigurationView = new PathfinderConfigurationView();
         JPanel container = new JPanel();

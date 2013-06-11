@@ -29,10 +29,12 @@ public class PathSearchLayerView extends AbstractImageLayerView implements PathS
     public void updateLayer() {
         initialize();
         Graphics2D g2 = globalImage.createGraphics();
-
-        paintOpenSet(g2);
-        paintClosedSet(g2);
-
+        if (openSet != null) {
+            paintOpenSet(g2);
+        }
+        if (closedSet != null) {
+            paintClosedSet(g2);
+        }
         g2.dispose();
     }
 

@@ -52,7 +52,7 @@ import javax.swing.JComboBox;
  */
 public class PathfinderComparatorController implements ActionController {
 
-    private static final Logger LOG = Logger.getLogger(ChangePathfinderActionListener.class.getName());
+    private static final Logger LOG = Logger.getLogger(PathfinderComparatorController.class.getName());
     private static final int LEFT = 0;
     private static final int RIGHT = 1;
     private final PathfinderComparatorViewer comparatorView;
@@ -123,8 +123,10 @@ public class PathfinderComparatorController implements ActionController {
             Tile tile = scenario.getBoard().getTile(tilePoint.x, tilePoint.y);
             if (!tile.equals(selectedTile)) {
                 selectedTile = tile;
+                interactionMode = InteractionMode.UNIT_ORDERS;
                 LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, "New tile selected");
             }
+            // TODO mark the selected tile in the board view, one option is to use SelectionLayerView
         }
     }
 
@@ -145,12 +147,14 @@ public class PathfinderComparatorController implements ActionController {
             if (!GraphicsModel.INSTANCE.validCoordinates(tilePoint.x, tilePoint.y)) {
                 return;
             }
+            LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, "Destination selected, computing path...");
             Tile destination = scenario.getBoard().getTile(tilePoint.x, tilePoint.y);
             ExtendedPath path = pathfinder.getExtendedPath(selectedTile, destination, testUnit);
             if (path == null) {
                 LOG.log(Level.WARNING, "No path found using {0}", pathfinder);
                 return;
             }
+            LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, "Path obtained {0}", path);
             ((PathSearchLayerViewer) boardView.getLayerView(PathSearchLayerViewer.NAME)).updatePathSearch(path.getOpenSetNodes(), path.getClosedSetNodes());
             ((ArrowLayerViewer) boardView.getLayerView(ArrowLayerViewer.NAME)).updateCurrentOrders(path);
         }
