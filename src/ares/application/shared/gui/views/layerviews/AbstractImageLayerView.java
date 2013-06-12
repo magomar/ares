@@ -49,12 +49,18 @@ public abstract class AbstractImageLayerView extends AbstractView<JComponent> im
                 }
                 Graphics2D g2 = (Graphics2D) g;
                 if (globalImage != null) {
-                    Rectangle rect = viewport.getViewRect();
-                    int visibleImageWidth = Math.min(rect.width, globalImage.getWidth());
-                    int visibleImageHeight = Math.min(rect.height, globalImage.getHeight());
-                    BufferedImage viewImage = globalImage.getSubimage(rect.x, rect.y, visibleImageWidth, visibleImageHeight);
+                    Rectangle viewRectangle = viewport.getViewRect();
+                    int visibleImageWidth = Math.min(viewRectangle.width, globalImage.getWidth() - viewRectangle.x);
+                    int visibleImageHeight = Math.min(viewRectangle.height, globalImage.getHeight() - viewRectangle.y);
+                    try {
+                        BufferedImage visibleImage = globalImage.getSubimage(viewRectangle.x, viewRectangle.y, visibleImageWidth, visibleImageHeight);
+                        g2.drawImage(visibleImage, viewRectangle.x, viewRectangle.y, this);
+                    } catch (Exception e) {
+                        System.out.println(e);
+                        BufferedImage visibleImage = globalImage;
+                        g2.drawImage(visibleImage, viewRectangle.x, viewRectangle.y, this);
+                    }
 //            BufferedImage viewImage = globalImage.getSubimage(rect.x, rect.y, rect.width, rect.height);
-                    g2.drawImage(viewImage, rect.x, rect.y, this);
                 }
             }
         };

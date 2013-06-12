@@ -6,6 +6,8 @@ import ares.application.shared.gui.profiles.GraphicsModel;
 import ares.application.shared.gui.views.AbstractView;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.HashMap;
@@ -53,8 +55,8 @@ public abstract class AbstractLayeredImageView extends AbstractView<JScrollPane>
         scrollPane.setBackground(Color.BLACK);
         scrollPane.setVisible(true);
         scrollPane.setOpaque(true);
-        scrollPane.getVerticalScrollBar().setUnitIncrement(50);
-        scrollPane.getHorizontalScrollBar().setUnitIncrement(50);
+//        scrollPane.getVerticalScrollBar().setUnitIncrement(1);
+//        scrollPane.getHorizontalScrollBar().setUnitIncrement(1);
         return scrollPane;
     }
 
@@ -63,10 +65,14 @@ public abstract class AbstractLayeredImageView extends AbstractView<JScrollPane>
         this.profile = profile;
         Dimension imageSize = new Dimension(GraphicsModel.INSTANCE.getBoardWidth(profile), GraphicsModel.INSTANCE.getBoardHeight(profile));
         layeredPane.setPreferredSize(imageSize);
+        layeredPane.setSize(imageSize);
         for (ImageLayerViewer layerView : layerViews.values()) {
             layerView.setProfile(profile);
             layerView.initialize();
         }
+        layeredPane.revalidate(); // in theory this would make viewport aware of the change in its client (the content, that is the layered pane)
+        contentPane.getVerticalScrollBar().setUnitIncrement(imageSize.height/GraphicsModel.INSTANCE.getBoardRows());
+        contentPane.getHorizontalScrollBar().setUnitIncrement(imageSize.width / GraphicsModel.INSTANCE.getBoardColumns());
     }
 
     @Override
