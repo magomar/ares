@@ -8,7 +8,7 @@ import javax.swing.JViewport;
  */
 public interface MiniMapNavigationLayerViewer extends ImageLayerViewer {
 
-    public static final String NAME = "MINI_MAP_NAVIGATION_LAYER";
+    static final String NAME = "MINI_MAP_NAVIGATION_LAYER";
 
-    public void update(JViewport boardViewport);
+    void update(JViewport boardViewport, int boardProfile);
 }

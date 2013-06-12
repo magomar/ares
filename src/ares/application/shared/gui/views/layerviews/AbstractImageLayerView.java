@@ -32,6 +32,10 @@ public abstract class AbstractImageLayerView extends AbstractView<JComponent> im
      * Viewport where this layer is placed
      */
     protected JViewport viewport;
+    /**
+     * Layer index of this image layer inside the layered image view.
+     */
+    protected Integer layer;
 
     @Override
     protected JComponent layout() {
@@ -50,17 +54,11 @@ public abstract class AbstractImageLayerView extends AbstractView<JComponent> im
                 Graphics2D g2 = (Graphics2D) g;
                 if (globalImage != null) {
                     Rectangle viewRectangle = viewport.getViewRect();
-                    int visibleImageWidth = Math.min(viewRectangle.width, globalImage.getWidth() - viewRectangle.x);
-                    int visibleImageHeight = Math.min(viewRectangle.height, globalImage.getHeight() - viewRectangle.y);
-                    try {
-                        BufferedImage visibleImage = globalImage.getSubimage(viewRectangle.x, viewRectangle.y, visibleImageWidth, visibleImageHeight);
-                        g2.drawImage(visibleImage, viewRectangle.x, viewRectangle.y, this);
-                    } catch (Exception e) {
-                        System.out.println(e);
-                        BufferedImage visibleImage = globalImage;
-                        g2.drawImage(visibleImage, viewRectangle.x, viewRectangle.y, this);
-                    }
-//            BufferedImage viewImage = globalImage.getSubimage(rect.x, rect.y, rect.width, rect.height);
+                    int visibleImageWidth = Math.min(viewRectangle.width, globalImage.getWidth());
+                    int visibleImageHeight = Math.min(viewRectangle.height, globalImage.getHeight());
+                    BufferedImage visibleImage = globalImage.getSubimage(viewRectangle.x, viewRectangle.y, visibleImageWidth, visibleImageHeight);
+//                    BufferedImage viewImage = globalImage.getSubimage(rect.x, rect.y, rect.width, rect.height);
+                    g2.drawImage(visibleImage, viewRectangle.x, viewRectangle.y, this);
                 }
             }
         };
@@ -76,6 +74,11 @@ public abstract class AbstractImageLayerView extends AbstractView<JComponent> im
     public ImageLayerViewer setViewport(JViewport viewport) {
         this.viewport = viewport;
         return this;
+    }
+
+    @Override
+    public boolean hasParentLayer() {
+        return (parentLayer != null);
     }
 
     /**
@@ -122,5 +125,6 @@ public abstract class AbstractImageLayerView extends AbstractView<JComponent> im
         Dimension imageSize = new Dimension(GraphicsModel.INSTANCE.getBoardWidth(profile), GraphicsModel.INSTANCE.getBoardHeight(profile));
         contentPane.setPreferredSize(imageSize);
         contentPane.setSize(imageSize);
+//        contentPane.setBounds(new Rectangle(imageSize));
     }
 }

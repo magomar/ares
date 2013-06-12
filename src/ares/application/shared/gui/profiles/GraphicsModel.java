@@ -351,31 +351,10 @@ public class GraphicsModel {
         return j >= 0 && j < boardRows;
     }
 
-    public Rectangle getViewportTiles(JViewport viewport, int profile) {
-        Point upperleft = pixelToTile(viewport.getX(), viewport.getY(), profile);
-        Point bottomright = pixelToTile(viewport.getX() + viewport.getWidth(), viewport.getY() + viewport.getHeight(), profile);
-        upperleft.x = (columnIsWithinBoard(upperleft.x) ? upperleft.x : 0);
-        upperleft.y = (rowIsWithinBoard(upperleft.y) ? upperleft.y : 0);
-        bottomright.x = (columnIsWithinBoard(bottomright.x) ? bottomright.x : boardColumns - 1);
-        bottomright.y = (rowIsWithinBoard(bottomright.y) ? bottomright.y : boardRows - 1);
-        return new Rectangle(upperleft.x, upperleft.y, bottomright.x - upperleft.x, bottomright.y - upperleft.y);
-    }
-
-    public Rectangle getViewportBounds(JViewport viewport, int profile) {
-//        int miniMapImageWidth = boardWidth[profile];
-//        int miniMapImageHeight = boardHeight[profile];
-//        Rectangle visibleBoardTiles = GraphicsModel.INSTANCE.getViewportTiles(viewport, profile);
-//        Point corner = GraphicsModel.INSTANCE.tileToPixel(visibleBoardTiles.x, visibleBoardTiles.y, profile);
-//        int width = (int) (miniMapImageWidth * ((double) visibleBoardTiles.width / miniMapImageWidth));
-//        int height = (int) (miniMapImageHeight * ((double) visibleBoardTiles.height / miniMapImageHeight));
-//        if (corner.x + width > miniMapImageWidth) {
-//            width = miniMapImageWidth - corner.x;
-//        }
-//        if (corner.y + height > miniMapImageHeight) {
-//            height = miniMapImageHeight - corner.y;
-//        }
-        Point upperleft = pixelToTile(viewport.getX(), viewport.getY(), profile);
-        Point bottomright = pixelToTile(viewport.getX() + viewport.getWidth(), viewport.getY() + viewport.getHeight(), profile);
+    public Rectangle getVisibleTiles(JViewport viewport, int profile) {
+        Rectangle viewRect = viewport.getViewRect();
+        Point upperleft = pixelToTile(viewRect.x, viewRect.y, profile);
+        Point bottomright = pixelToTile(viewRect.x + viewRect.width, viewRect.y + viewRect.height, profile);
         upperleft.x = (columnIsWithinBoard(upperleft.x) ? upperleft.x : 0);
         upperleft.y = (rowIsWithinBoard(upperleft.y) ? upperleft.y : 0);
         bottomright.x = (columnIsWithinBoard(bottomright.x) ? bottomright.x : boardColumns - 1);

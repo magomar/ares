@@ -20,6 +20,8 @@ public interface ImageLayerViewer extends View<JComponent> {
     void updateLayer();
 
     void flush();
+    
+    boolean hasParentLayer();
 
     ImageLayerViewer getParentLayer();
 

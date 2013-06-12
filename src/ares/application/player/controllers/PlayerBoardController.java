@@ -45,7 +45,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.swing.JTree;
-import javax.swing.JViewport;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -90,7 +89,7 @@ public final class PlayerBoardController implements BoardInteractor, MiniMapInte
         // create action groups
 
         boardController = new BoardController(this);
-        miniMapController = new MiniMapController(this, this);
+        miniMapController = new MiniMapController(this);
 
         // Adds various component listeners
         interactor.getBoardView().addMouseListener(new BoardMouseListener());
@@ -120,8 +119,8 @@ public final class PlayerBoardController implements BoardInteractor, MiniMapInte
     }
 
     @Override
-    public void changeBoardViewport(JViewport viewport) {
-        miniMapController.changeBoardViewport(viewport);
+    public void changeBoardViewport() {
+        miniMapController.changeBoardViewport();
     }
 
     private class OOBTreeSelectionListener implements TreeSelectionListener {

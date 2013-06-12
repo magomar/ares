@@ -1,7 +1,6 @@
 package ares.application.shared.boundaries.interactors;
 
 import ares.application.shared.boundaries.viewers.BoardViewer;
-import javax.swing.JViewport;
 
 /**
  *
@@ -11,5 +10,5 @@ public interface BoardInteractor extends Interactor {
 
     BoardViewer getBoardView();
 
-    void changeBoardViewport(JViewport viewport);
+    public void changeBoardViewport();
 }

@@ -4,9 +4,9 @@ import ares.application.shared.boundaries.viewers.layerviewers.LayeredImageViewe
 import ares.application.shared.boundaries.viewers.layerviewers.ImageLayerViewer;
 import ares.application.shared.gui.profiles.GraphicsModel;
 import ares.application.shared.gui.views.AbstractView;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -29,17 +29,11 @@ public abstract class AbstractLayeredImageView extends AbstractView<JScrollPane>
     public LayeredImageViewer addLayerView(ImageLayerViewer imageLayerView) {
         layeredPane.add(imageLayerView.getContentPane(), new Integer(layeredPane.getComponentCount()));
         layerViews.put(imageLayerView.name(), imageLayerView);
-//        ImageLayerViewer parent = imageLayerView.getParentLayer();
-//        if (parent != null) {
-//            layeredPane.remove(parent.getContentPane());
+//        if (imageLayerView.hasParentLayer()) {
+//            layeredPane.remove(imageLayerView.getParentLayer().getContentPane());
 //        }
-//        imageLayerView.setProfile(profile);
+//        layeredPane.revalidate();
         return this;
-    }
-
-    @Override
-    public ImageLayerViewer getLayerView(String layerViewName) {
-        return layerViews.get(layerViewName);
     }
 
     @Override
@@ -49,14 +43,11 @@ public abstract class AbstractLayeredImageView extends AbstractView<JScrollPane>
         layeredPane = new JLayeredPane();
         layeredPane.setOpaque(true);
         layeredPane.setBackground(Color.BLACK);
-
         // Create and set up scroll pane as the content pane
         JScrollPane scrollPane = new JScrollPane(layeredPane);
         scrollPane.setBackground(Color.BLACK);
         scrollPane.setVisible(true);
         scrollPane.setOpaque(true);
-//        scrollPane.getVerticalScrollBar().setUnitIncrement(1);
-//        scrollPane.getHorizontalScrollBar().setUnitIncrement(1);
         return scrollPane;
     }
 
@@ -66,20 +57,40 @@ public abstract class AbstractLayeredImageView extends AbstractView<JScrollPane>
         Dimension imageSize = new Dimension(GraphicsModel.INSTANCE.getBoardWidth(profile), GraphicsModel.INSTANCE.getBoardHeight(profile));
         layeredPane.setPreferredSize(imageSize);
         layeredPane.setSize(imageSize);
+//        contentPane.setBounds(new Rectangle(imageSize));
         for (ImageLayerViewer layerView : layerViews.values()) {
             layerView.setProfile(profile);
             layerView.initialize();
         }
         layeredPane.revalidate(); // in theory this would make viewport aware of the change in its client (the content, that is the layered pane)
-        contentPane.getVerticalScrollBar().setUnitIncrement(imageSize.height/GraphicsModel.INSTANCE.getBoardRows());
+        contentPane.getVerticalScrollBar().setUnitIncrement(imageSize.height / GraphicsModel.INSTANCE.getBoardRows());
         contentPane.getHorizontalScrollBar().setUnitIncrement(imageSize.width / GraphicsModel.INSTANCE.getBoardColumns());
+        Rectangle viewRectangle = contentPane.getViewport().getViewRect();
+        int visibleImageWidth = Math.min(viewRectangle.width, GraphicsModel.INSTANCE.getBoardWidth(profile));
+        int visibleImageHeight = Math.min(viewRectangle.height, GraphicsModel.INSTANCE.getBoardHeight(profile));
+        System.out.println(" *** Change Profile *** ");
+        System.out.println("Image Size = " + GraphicsModel.INSTANCE.getBoardWidth(profile) + ", " + GraphicsModel.INSTANCE.getBoardHeight(profile) + " (Prof. " + profile + ")");
+        System.out.println("View Point = " + viewRectangle.x + ", " + viewRectangle.y);
+        System.out.println("View Rect = " + viewRectangle.width + ", " + viewRectangle.height);
+        System.out.println("Visible image = " + (visibleImageWidth) + ", " + (visibleImageHeight));
+        System.out.println(" ***************** ");
     }
 
+    @Override
+    public int getProfile() {
+        return profile;
+    }
+    
     @Override
     public void flush() {
         for (ImageLayerViewer layerView : layerViews.values()) {
             layerView.flush();
         }
+    }
+
+    @Override
+    public ImageLayerViewer getLayerView(String layerViewName) {
+        return layerViews.get(layerViewName);
     }
 
     @Override

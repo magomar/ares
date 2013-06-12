@@ -1,9 +1,7 @@
 package ares.application.shared.controllers;
 
 import ares.application.player.boundaries.interactors.MiniMapInteractor;
-import ares.application.shared.boundaries.interactors.BoardInteractor;
 import ares.application.shared.boundaries.viewers.BoardViewer;
-import ares.application.shared.boundaries.viewers.layerviewers.GridLayerViewer;
 import ares.application.shared.boundaries.viewers.layerviewers.MiniMapNavigationLayerViewer;
 import ares.application.shared.boundaries.viewers.layerviewers.TerrainLayerViewer;
 import ares.application.shared.boundaries.viewers.layerviewers.UnitsLayerViewer;
@@ -20,6 +18,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Action;
 import javax.swing.JViewport;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 /**
  *
@@ -36,10 +36,11 @@ public class MiniMapController implements ActionController {
     private final UnitsLayerViewer unitsLayer;
     private final MiniMapNavigationLayerViewer navigationLayer;
     private ScenarioModel scenarioModel;
+    private ChangeListener changeViewportListener;
 
-    public MiniMapController(MiniMapInteractor miniMapInteractor, BoardInteractor boardInteractor) {
+    public MiniMapController(MiniMapInteractor miniMapInteractor) {
         miniMapView = miniMapInteractor.getMiniMapView();
-        boardView = boardInteractor.getBoardView();
+        boardView = miniMapInteractor.getBoardView();
         terrainLayer = (TerrainLayerViewer) miniMapView.getLayerView(TerrainLayerViewer.NAME);
         unitsLayer = (UnitsLayerViewer) miniMapView.getLayerView(UnitsLayerViewer.NAME);
         navigationLayer = (MiniMapNavigationLayerViewer) miniMapView.getLayerView(MiniMapNavigationLayerView.NAME);
@@ -47,21 +48,27 @@ public class MiniMapController implements ActionController {
         Action[] viewActions = {zoomIn, zoomOut};
         CommandGroup group = AresCommandGroup.VIEW;
         actions = new ActionGroup(group.getName(), group.getText(), group.getMnemonic(), viewActions);
+        changeViewportListener = new ChangeViewportListener();
+
     }
 
     public void setScenario(Scenario scenario, int profile) {
+        boardView.getContentPane().getViewport().removeChangeListener(changeViewportListener);
         this.scenarioModel = scenario.getModel();
         miniMapView.setProfile(profile);
         // Render board: paint terrain and units
         terrainLayer.updateScenario(scenarioModel);
         unitsLayer.updateScenario(scenarioModel);
-        navigationLayer.update(boardView.getContentPane().getViewport());
+        navigationLayer.update(boardView.getContentPane().getViewport(), boardView.getProfile());
+        // Add ChangeListener to board viewport
+        boardView.getContentPane().getViewport().addChangeListener(changeViewportListener);
+
     }
-    
-    public void changeBoardViewport(JViewport viewport) {
-        navigationLayer.update(boardView.getContentPane().getViewport());
+
+    public void changeBoardViewport() {
+        navigationLayer.update(boardView.getContentPane().getViewport(), boardView.getProfile());
     }
-    
+
     @Override
     public ActionGroup getActionGroup() {
         return actions;
@@ -87,19 +94,11 @@ public class MiniMapController implements ActionController {
         }
     }
 
-    private class ViewGridActionListener implements ActionListener {
+    private class ChangeViewportListener implements ChangeListener {
 
         @Override
-        public void actionPerformed(ActionEvent e) {
-            miniMapView.switchLayerVisible(GridLayerViewer.NAME);
-        }
-    }
-
-    private class ViewUnitsActionListener implements ActionListener {
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            miniMapView.switchLayerVisible(UnitsLayerViewer.NAME);
+        public void stateChanged(ChangeEvent e) {
+            changeBoardViewport();
         }
     }
 }
