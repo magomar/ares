@@ -36,7 +36,6 @@ public class MiniMapController implements ActionController {
     private final UnitsLayerViewer unitsLayer;
     private final MiniMapNavigationLayerViewer navigationLayer;
     private ScenarioModel scenarioModel;
-    private ChangeListener changeViewportListener;
 
     public MiniMapController(MiniMapInteractor miniMapInteractor) {
         miniMapView = miniMapInteractor.getMiniMapView();
@@ -48,21 +47,15 @@ public class MiniMapController implements ActionController {
         Action[] viewActions = {zoomIn, zoomOut};
         CommandGroup group = AresCommandGroup.VIEW;
         actions = new ActionGroup(group.getName(), group.getText(), group.getMnemonic(), viewActions);
-        changeViewportListener = new ChangeViewportListener();
-
     }
 
     public void setScenario(Scenario scenario, int profile) {
-        boardView.getContentPane().getViewport().removeChangeListener(changeViewportListener);
         this.scenarioModel = scenario.getModel();
         miniMapView.setProfile(profile);
         // Render board: paint terrain and units
         terrainLayer.updateScenario(scenarioModel);
         unitsLayer.updateScenario(scenarioModel);
         navigationLayer.update(boardView.getContentPane().getViewport(), boardView.getProfile());
-        // Add ChangeListener to board viewport
-        boardView.getContentPane().getViewport().addChangeListener(changeViewportListener);
-
     }
 
     public void changeBoardViewport() {
@@ -94,11 +87,4 @@ public class MiniMapController implements ActionController {
         }
     }
 
-    private class ChangeViewportListener implements ChangeListener {
-
-        @Override
-        public void stateChanged(ChangeEvent e) {
-            changeBoardViewport();
-        }
-    }
 }

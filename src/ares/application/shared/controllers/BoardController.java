@@ -23,24 +23,24 @@ import javax.swing.Action;
  */
 public class BoardController implements ActionController {
 
-    private final Action viewGrid = new CommandAction(ViewCommands.VIEW_GRID, new ViewGridActionListener());
-    private final Action viewUnits = new CommandAction(ViewCommands.VIEW_UNITS, new ViewUnitsActionListener());
-    private final Action zoomIn = new CommandAction(ViewCommands.VIEW_ZOOM_IN, new ZoomInActionListener());
-    private final Action zoomOut = new CommandAction(ViewCommands.VIEW_ZOOM_OUT, new ZoomOutActionListener());
-    private final ActionGroup actions;
-    private final BoardViewer boardView;
-    private final TerrainLayerViewer terrainLayer;
-    private final UnitsLayerViewer unitsLayer;
-    private final GridLayerViewer gridLayer;
-    private final BoardInteractor interactor;
-    private ScenarioModel scenarioModel;
+    protected final Action viewGrid = new CommandAction(ViewCommands.VIEW_GRID, new ViewGridActionListener());
+    protected final Action viewUnits = new CommandAction(ViewCommands.VIEW_UNITS, new ViewUnitsActionListener());
+    protected final Action zoomIn = new CommandAction(ViewCommands.VIEW_ZOOM_IN, new ZoomInActionListener());
+    protected final Action zoomOut = new CommandAction(ViewCommands.VIEW_ZOOM_OUT, new ZoomOutActionListener());
+    protected final ActionGroup actions;
+    protected final BoardViewer boardView;
+    protected final TerrainLayerViewer terrainLayerView;
+    protected final UnitsLayerViewer unitsLayerView;
+    protected final GridLayerViewer gridLayerView;
+    protected final BoardInteractor interactorView;
+    protected ScenarioModel scenarioModel;
 
     public BoardController(BoardInteractor interactor) {
         this.boardView = interactor.getBoardView();
-        this.interactor = interactor;
-        terrainLayer = (TerrainLayerViewer) boardView.getLayerView(TerrainLayerViewer.NAME);
-        unitsLayer = (UnitsLayerViewer) boardView.getLayerView(UnitsLayerViewer.NAME);
-        gridLayer = (GridLayerViewer) boardView.getLayerView(GridLayerViewer.NAME);
+        this.interactorView = interactor;
+        terrainLayerView = (TerrainLayerViewer) boardView.getLayerView(TerrainLayerViewer.NAME);
+        unitsLayerView = (UnitsLayerViewer) boardView.getLayerView(UnitsLayerViewer.NAME);
+        gridLayerView = (GridLayerViewer) boardView.getLayerView(GridLayerViewer.NAME);
         // create action groups
         Action[] viewActions = {viewGrid, viewUnits, zoomIn, zoomOut};
         CommandGroup group = AresCommandGroup.VIEW;
@@ -52,9 +52,9 @@ public class BoardController implements ActionController {
         this.scenarioModel = scenario.getModel();
         boardView.setProfile(profile);
         // Render board: paint terrain and units
-        terrainLayer.updateScenario(scenarioModel);
-        unitsLayer.updateScenario(scenarioModel);
-        gridLayer.updateScenario(scenarioModel);
+        terrainLayerView.updateScenario(scenarioModel);
+        unitsLayerView.updateScenario(scenarioModel);
+        gridLayerView.updateScenario(scenarioModel);
     }
 
     @Override
@@ -67,10 +67,9 @@ public class BoardController implements ActionController {
         @Override
         public void actionPerformed(ActionEvent e) {
             boardView.setProfile(GraphicsModel.INSTANCE.nextActiveProfile());
-            terrainLayer.updateScenario(scenarioModel);
-            unitsLayer.updateScenario(scenarioModel);
-            gridLayer.updateScenario(scenarioModel);
-            interactor.changeBoardViewport();
+            terrainLayerView.updateScenario(scenarioModel);
+            unitsLayerView.updateScenario(scenarioModel);
+            gridLayerView.updateScenario(scenarioModel);
         }
     }
 
@@ -79,10 +78,9 @@ public class BoardController implements ActionController {
         @Override
         public void actionPerformed(ActionEvent e) {
             boardView.setProfile(GraphicsModel.INSTANCE.previousActiveProfile());
-            terrainLayer.updateScenario(scenarioModel);
-            unitsLayer.updateScenario(scenarioModel);
-            gridLayer.updateScenario(scenarioModel);
-            interactor.changeBoardViewport();
+            terrainLayerView.updateScenario(scenarioModel);
+            unitsLayerView.updateScenario(scenarioModel);
+            gridLayerView.updateScenario(scenarioModel);
         }
     }
 

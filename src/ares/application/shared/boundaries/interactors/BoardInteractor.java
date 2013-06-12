@@ -10,5 +10,4 @@ public interface BoardInteractor extends Interactor {
 
     BoardViewer getBoardView();
 
-    public void changeBoardViewport();
 }

@@ -27,7 +27,6 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.JToolBar;
-import javax.swing.JViewport;
 
 
 
@@ -172,11 +171,6 @@ public class WeGoPlayerController implements EngineInteractor, ScenarioInteracto
     @Override
     public PlayerViewer getPlayerView() {
         return mainView;
-    }
-
-    @Override
-    public void changeBoardViewport() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

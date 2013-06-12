@@ -11,5 +11,4 @@ public interface MiniMapInteractor extends BoardInteractor {
 
     BoardViewer getMiniMapView();
 
-    void changeBoardViewport();
 }
