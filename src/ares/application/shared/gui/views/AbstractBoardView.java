@@ -3,7 +3,6 @@ package ares.application.shared.gui.views;
 import ares.application.shared.boundaries.viewers.BoardViewer;
 import ares.application.shared.gui.profiles.GraphicsModel;
 import ares.application.shared.gui.views.layerviews.AbstractLayeredImageView;
-import ares.application.shared.models.forces.UnitModel;
 import java.awt.Dimension;
 import java.awt.Point;
 import javax.swing.JScrollBar;
@@ -15,10 +14,10 @@ import javax.swing.JScrollBar;
 public abstract class AbstractBoardView extends AbstractLayeredImageView implements BoardViewer {
 
     @Override
-    public void centerViewOn(UnitModel selectedUnit) {
+    public void centerViewOn(Point location) {
         JScrollBar verticalScrollBar = contentPane.getVerticalScrollBar();
         JScrollBar horizontalScrollBar = contentPane.getHorizontalScrollBar();
-        Point pos = GraphicsModel.INSTANCE.tileToPixel(selectedUnit.getLocation().getCoordinates(), profile);
+        Point pos = GraphicsModel.INSTANCE.tileToPixel(location, profile);
         Dimension viewportSize = contentPane.getViewport().getSize();
         Dimension boardSize = layeredPane.getSize();
         int x = pos.x - Math.min(viewportSize.width / 2, boardSize.width - pos.x);

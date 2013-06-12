@@ -18,17 +18,17 @@
     "maxY" : 28,
     "cell" : [ {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 0,
       "y" : 0
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 0,
       "y" : 1
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 0,
       "y" : 2
     }, {
@@ -36,7 +36,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 0,
       "y" : 3
     }, {
@@ -44,7 +44,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 0,
       "y" : 4
     }, {
@@ -52,7 +52,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 0,
       "y" : 5
     }, {
@@ -60,7 +60,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 0,
       "y" : 6
     }, {
@@ -68,7 +68,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 0,
       "y" : 7
     }, {
@@ -76,7 +76,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 0,
       "y" : 8
     }, {
@@ -84,7 +84,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 0,
       "y" : 9
     }, {
@@ -92,7 +92,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 0,
       "y" : 10
     }, {
@@ -100,7 +100,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 0,
       "y" : 11
     }, {
@@ -108,7 +108,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 0,
       "y" : 12
     }, {
@@ -116,7 +116,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 0,
       "y" : 13
     }, {
@@ -124,7 +124,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 0,
       "y" : 14
     }, {
@@ -132,7 +132,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 0,
       "y" : 15
     }, {
@@ -140,7 +140,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 0,
       "y" : 16
     }, {
@@ -148,7 +148,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 0,
       "y" : 17
     }, {
@@ -156,7 +156,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 0,
       "y" : 18
     }, {
@@ -164,7 +164,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 0,
       "y" : 19
     }, {
@@ -172,7 +172,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 0,
       "y" : 20
     }, {
@@ -180,7 +180,7 @@
         "type" : "DEEP_WATER_DECORATOR",
         "dir" : "NE_SE_S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 0,
       "y" : 21
     }, {
@@ -188,7 +188,7 @@
         "type" : "ROAD",
         "dir" : "SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 0,
       "y" : 22
     }, {
@@ -196,7 +196,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "SE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 0,
       "y" : 23
     }, {
@@ -207,41 +207,41 @@
         "type" : "RAIL",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 0,
       "y" : 24
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 0,
       "y" : 25
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 0,
       "y" : 26
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 0,
       "y" : 27
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 0,
       "y" : 28
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 1,
       "y" : 0
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 1,
       "y" : 1
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 1,
       "y" : 2
     }, {
@@ -249,7 +249,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 1,
       "y" : 3
     }, {
@@ -257,7 +257,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 1,
       "y" : 4
     }, {
@@ -265,7 +265,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 1,
       "y" : 5
     }, {
@@ -273,7 +273,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 1,
       "y" : 6
     }, {
@@ -281,7 +281,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 1,
       "y" : 7
     }, {
@@ -289,7 +289,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 1,
       "y" : 8
     }, {
@@ -297,7 +297,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 1,
       "y" : 9
     }, {
@@ -305,7 +305,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 1,
       "y" : 10
     }, {
@@ -313,7 +313,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 1,
       "y" : 11
     }, {
@@ -321,7 +321,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 1,
       "y" : 12
     }, {
@@ -329,7 +329,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 1,
       "y" : 13
     }, {
@@ -337,7 +337,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 1,
       "y" : 14
     }, {
@@ -345,7 +345,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 1,
       "y" : 15
     }, {
@@ -353,7 +353,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 1,
       "y" : 16
     }, {
@@ -361,7 +361,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 1,
       "y" : 17
     }, {
@@ -369,7 +369,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 1,
       "y" : 18
     }, {
@@ -377,7 +377,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 1,
       "y" : 19
     }, {
@@ -385,7 +385,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 1,
       "y" : 20
     }, {
@@ -393,11 +393,11 @@
         "type" : "DEEP_WATER_DECORATOR",
         "dir" : "NE_SE_S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 1,
       "y" : 21
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 1,
       "y" : 22
     }, {
@@ -405,7 +405,7 @@
         "type" : "ROAD",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 1,
       "y" : 23
     }, {
@@ -416,7 +416,7 @@
         "type" : "RAIL",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 1,
       "y" : 24
     }, {
@@ -424,37 +424,37 @@
         "type" : "CROPLANDS",
         "dir" : "NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 1,
       "y" : 25
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 1,
       "y" : 26
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 1,
       "y" : 27
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 1,
       "y" : 28
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 2,
       "y" : 0
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 2,
       "y" : 1
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 2,
       "y" : 2
     }, {
@@ -462,7 +462,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 2,
       "y" : 3
     }, {
@@ -470,7 +470,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 2,
       "y" : 4
     }, {
@@ -484,7 +484,7 @@
         "type" : "DEEP_WATER_DECORATOR",
         "dir" : "NE_SE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 2,
       "y" : 5
     }, {
@@ -492,7 +492,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 2,
       "y" : 6
     }, {
@@ -500,7 +500,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 2,
       "y" : 7
     }, {
@@ -508,7 +508,7 @@
         "type" : "DEEP_WATER_DECORATOR",
         "dir" : "NE_SE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 2,
       "y" : 8
     }, {
@@ -519,7 +519,7 @@
         "type" : "DEEP_WATER_DECORATOR",
         "dir" : "N_NE_SE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 2,
       "y" : 9
     }, {
@@ -536,7 +536,7 @@
         "type" : "DEEP_WATER_DECORATOR",
         "dir" : "N_NE_SE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 2,
       "y" : 10
     }, {
@@ -547,7 +547,7 @@
         "type" : "DEEP_WATER_DECORATOR",
         "dir" : "N_NE_SE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 2,
       "y" : 11
     }, {
@@ -555,7 +555,7 @@
         "type" : "DEEP_WATER_DECORATOR",
         "dir" : "N_NE_SE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 2,
       "y" : 12
     }, {
@@ -563,7 +563,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 2,
       "y" : 13
     }, {
@@ -571,7 +571,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 2,
       "y" : 14
     }, {
@@ -579,7 +579,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 2,
       "y" : 15
     }, {
@@ -587,7 +587,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 2,
       "y" : 16
     }, {
@@ -595,7 +595,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 2,
       "y" : 17
     }, {
@@ -603,7 +603,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 2,
       "y" : 18
     }, {
@@ -611,7 +611,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 2,
       "y" : 19
     }, {
@@ -622,11 +622,11 @@
         "type" : "DEEP_WATER_DECORATOR",
         "dir" : "SE_S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 2,
       "y" : 20
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 2,
       "y" : 21
     }, {
@@ -634,7 +634,7 @@
         "type" : "CROPLANDS",
         "dir" : "S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 2,
       "y" : 22
     }, {
@@ -648,7 +648,7 @@
         "type" : "RAIL",
         "dir" : "SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 2,
       "y" : 23
     }, {
@@ -662,7 +662,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "SE_S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 2,
       "y" : 24
     }, {
@@ -679,37 +679,37 @@
         "type" : "ROAD",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 2,
       "y" : 25
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 2,
       "y" : 26
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 2,
       "y" : 27
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 2,
       "y" : 28
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 3,
       "y" : 0
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 3,
       "y" : 1
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 3,
       "y" : 2
     }, {
@@ -720,7 +720,7 @@
         "type" : "DEEP_WATER_DECORATOR",
         "dir" : "N_NE_SE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 3,
       "y" : 3
     }, {
@@ -731,7 +731,7 @@
         "type" : "DEEP_WATER_DECORATOR",
         "dir" : "N_NE_SE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 3,
       "y" : 4
     }, {
@@ -752,7 +752,7 @@
         "dir" : "N_NE_SE_S_SW"
       } ],
       "entrenchment" : 36,
-      "owner" : 1,
+      "owner" : 0,
       "x" : 3,
       "y" : 5
     }, {
@@ -773,7 +773,7 @@
         "dir" : "N_NE_SE_S_NW"
       } ],
       "entrenchment" : 15,
-      "owner" : 1,
+      "owner" : 0,
       "x" : 3,
       "y" : 6
     }, {
@@ -790,7 +790,7 @@
         "type" : "DEEP_WATER_DECORATOR",
         "dir" : "N_NE_SE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 3,
       "y" : 7
     }, {
@@ -808,7 +808,7 @@
         "dir" : "N_NE_SE_S_SW"
       } ],
       "entrenchment" : 12,
-      "owner" : 1,
+      "owner" : 0,
       "x" : 3,
       "y" : 8
     }, {
@@ -819,7 +819,7 @@
         "type" : "RAIL",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 3,
       "y" : 9
     }, {
@@ -833,7 +833,7 @@
         "type" : "RAIL",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 3,
       "y" : 10
     }, {
@@ -841,7 +841,7 @@
         "type" : "RAIL",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 3,
       "y" : 11
     }, {
@@ -849,7 +849,7 @@
         "type" : "RAIL",
         "dir" : "N_SE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 3,
       "y" : 12
     }, {
@@ -863,7 +863,7 @@
         "type" : "DEEP_WATER_DECORATOR",
         "dir" : "N_NE_SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 3,
       "y" : 13
     }, {
@@ -871,7 +871,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 3,
       "y" : 14
     }, {
@@ -879,7 +879,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 3,
       "y" : 15
     }, {
@@ -887,7 +887,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 3,
       "y" : 16
     }, {
@@ -895,7 +895,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 3,
       "y" : 17
     }, {
@@ -903,7 +903,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 3,
       "y" : 18
     }, {
@@ -911,7 +911,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 3,
       "y" : 19
     }, {
@@ -919,7 +919,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 3,
       "y" : 20
     }, {
@@ -930,7 +930,7 @@
         "type" : "DEEP_WATER_DECORATOR",
         "dir" : "NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 3,
       "y" : 21
     }, {
@@ -938,7 +938,7 @@
         "type" : "RIVER",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 3,
       "y" : 22
     }, {
@@ -946,7 +946,7 @@
         "type" : "RIVER",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 3,
       "y" : 23
     }, {
@@ -963,7 +963,7 @@
         "type" : "RAIL",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 3,
       "y" : 24
     }, {
@@ -977,37 +977,37 @@
         "type" : "ROAD",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 3,
       "y" : 25
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 3,
       "y" : 26
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 3,
       "y" : 27
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 3,
       "y" : 28
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 4,
       "y" : 0
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 4,
       "y" : 1
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 4,
       "y" : 2
     }, {
@@ -1021,7 +1021,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 4,
       "y" : 3
     }, {
@@ -1032,7 +1032,7 @@
         "type" : "RAIL",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 4,
       "y" : 4
     }, {
@@ -1040,7 +1040,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 4,
       "y" : 5
     }, {
@@ -1058,7 +1058,7 @@
         "dir" : "SE_NW"
       } ],
       "entrenchment" : 24,
-      "owner" : 1,
+      "owner" : 0,
       "x" : 4,
       "y" : 6
     }, {
@@ -1072,7 +1072,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 4,
       "y" : 7
     }, {
@@ -1086,7 +1086,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 4,
       "y" : 8
     }, {
@@ -1097,7 +1097,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 4,
       "y" : 9
     }, {
@@ -1111,7 +1111,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "N_SE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 4,
       "y" : 10
     }, {
@@ -1119,7 +1119,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "SE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 4,
       "y" : 11
     }, {
@@ -1133,7 +1133,7 @@
         "type" : "RAIL",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 4,
       "y" : 12
     }, {
@@ -1144,7 +1144,7 @@
         "type" : "DEEP_WATER_DECORATOR",
         "dir" : "N_NE_SE_S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 4,
       "y" : 13
     }, {
@@ -1155,7 +1155,7 @@
         "type" : "DEEP_WATER_DECORATOR",
         "dir" : "N_NE_SE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 4,
       "y" : 14
     }, {
@@ -1166,7 +1166,7 @@
         "type" : "DEEP_WATER_DECORATOR",
         "dir" : "N_NE_SE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 4,
       "y" : 15
     }, {
@@ -1174,7 +1174,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 4,
       "y" : 16
     }, {
@@ -1182,7 +1182,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 4,
       "y" : 17
     }, {
@@ -1190,7 +1190,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 4,
       "y" : 18
     }, {
@@ -1198,7 +1198,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 4,
       "y" : 19
     }, {
@@ -1206,19 +1206,19 @@
         "type" : "DEEP_WATER_DECORATOR",
         "dir" : "SE_S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 4,
       "y" : 20
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 4,
       "y" : 21
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 4,
       "y" : 22
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 4,
       "y" : 23
     }, {
@@ -1235,7 +1235,7 @@
         "type" : "RAIL",
         "dir" : "NE_S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 4,
       "y" : 24
     }, {
@@ -1249,37 +1249,37 @@
         "type" : "RAIL",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 4,
       "y" : 25
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 4,
       "y" : 26
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 4,
       "y" : 27
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 4,
       "y" : 28
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 5,
       "y" : 0
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 5,
       "y" : 1
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 5,
       "y" : 2
     }, {
@@ -1290,7 +1290,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "N_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 5,
       "y" : 3
     }, {
@@ -1304,7 +1304,7 @@
         "type" : "RAIL",
         "dir" : "SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 5,
       "y" : 4
     }, {
@@ -1312,7 +1312,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 5,
       "y" : 5
     }, {
@@ -1320,7 +1320,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 5,
       "y" : 6
     }, {
@@ -1331,7 +1331,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 5,
       "y" : 7
     }, {
@@ -1342,7 +1342,7 @@
         "type" : "FOREST",
         "dir" : "NE_SE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 5,
       "y" : 8
     }, {
@@ -1353,7 +1353,7 @@
         "type" : "RIVER",
         "dir" : "SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 5,
       "y" : 9
     }, {
@@ -1364,7 +1364,7 @@
         "type" : "RIVER",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 5,
       "y" : 10
     }, {
@@ -1378,7 +1378,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 5,
       "y" : 11
     }, {
@@ -1386,7 +1386,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 5,
       "y" : 12
     }, {
@@ -1400,7 +1400,7 @@
         "type" : "RAIL",
         "dir" : "S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 5,
       "y" : 13
     }, {
@@ -1411,7 +1411,7 @@
         "type" : "RAIL",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 5,
       "y" : 14
     }, {
@@ -1419,7 +1419,7 @@
         "type" : "RAIL",
         "dir" : "N_SE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 5,
       "y" : 15
     }, {
@@ -1433,7 +1433,7 @@
         "type" : "DEEP_WATER_DECORATOR",
         "dir" : "N_NE_SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 5,
       "y" : 16
     }, {
@@ -1441,7 +1441,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 5,
       "y" : 17
     }, {
@@ -1449,7 +1449,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 5,
       "y" : 18
     }, {
@@ -1457,7 +1457,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 5,
       "y" : 19
     }, {
@@ -1465,7 +1465,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 5,
       "y" : 20
     }, {
@@ -1476,15 +1476,15 @@
         "type" : "DEEP_WATER_DECORATOR",
         "dir" : "NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 5,
       "y" : 21
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 5,
       "y" : 22
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 5,
       "y" : 23
     }, {
@@ -1498,7 +1498,7 @@
         "type" : "RAIL",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 5,
       "y" : 24
     }, {
@@ -1512,27 +1512,27 @@
         "type" : "ROAD",
         "dir" : "S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 5,
       "y" : 25
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 5,
       "y" : 26
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 5,
       "y" : 27
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 5,
       "y" : 28
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 6,
       "y" : 0
     }, {
@@ -1543,12 +1543,12 @@
       "feature" : [ "AIRFIELD" ],
       "entrenchment" : 70,
       "distance" : 100,
-      "owner" : 1,
+      "owner" : 0,
       "x" : 6,
       "y" : 1
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 6,
       "y" : 2
     }, {
@@ -1556,7 +1556,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 6,
       "y" : 3
     }, {
@@ -1567,7 +1567,7 @@
         "type" : "RAIL",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 6,
       "y" : 4
     }, {
@@ -1575,7 +1575,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 6,
       "y" : 5
     }, {
@@ -1587,7 +1587,7 @@
         "dir" : "SE_SW"
       } ],
       "entrenchment" : 36,
-      "owner" : 1,
+      "owner" : 0,
       "x" : 6,
       "y" : 6
     }, {
@@ -1598,7 +1598,7 @@
         "type" : "FOREST",
         "dir" : "S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 6,
       "y" : 7
     }, {
@@ -1609,7 +1609,7 @@
         "type" : "FOREST",
         "dir" : "N_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 6,
       "y" : 8
     }, {
@@ -1620,7 +1620,7 @@
         "type" : "RIVER",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 6,
       "y" : 9
     }, {
@@ -1628,7 +1628,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 6,
       "y" : 10
     }, {
@@ -1642,7 +1642,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 6,
       "y" : 11
     }, {
@@ -1653,7 +1653,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "SE_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 6,
       "y" : 12
     }, {
@@ -1661,11 +1661,11 @@
         "type" : "RIVER",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 6,
       "y" : 13
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 6,
       "y" : 14
     }, {
@@ -1676,7 +1676,7 @@
         "type" : "RAIL",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 6,
       "y" : 15
     }, {
@@ -1687,7 +1687,7 @@
         "type" : "DEEP_WATER_DECORATOR",
         "dir" : "N_NE_SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 6,
       "y" : 16
     }, {
@@ -1698,7 +1698,7 @@
         "type" : "DEEP_WATER_DECORATOR",
         "dir" : "N_NE_SE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 6,
       "y" : 17
     }, {
@@ -1706,7 +1706,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 6,
       "y" : 18
     }, {
@@ -1714,7 +1714,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 6,
       "y" : 19
     }, {
@@ -1722,7 +1722,7 @@
         "type" : "DEEP_WATER_DECORATOR",
         "dir" : "NE_SE_S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 6,
       "y" : 20
     }, {
@@ -1730,7 +1730,7 @@
         "type" : "RIVER",
         "dir" : "SE_S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 6,
       "y" : 21
     }, {
@@ -1738,7 +1738,7 @@
         "type" : "RIVER",
         "dir" : "N_SE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 6,
       "y" : 22
     }, {
@@ -1749,11 +1749,11 @@
         "type" : "RAIL",
         "dir" : "SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 6,
       "y" : 23
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 6,
       "y" : 24
     }, {
@@ -1764,27 +1764,27 @@
         "type" : "LIGHT_WOODS",
         "dir" : "NE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 6,
       "y" : 25
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 6,
       "y" : 26
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 6,
       "y" : 27
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 6,
       "y" : 28
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 7,
       "y" : 0
     }, {
@@ -1795,12 +1795,12 @@
       "feature" : [ "AIRFIELD" ],
       "entrenchment" : 70,
       "distance" : 100,
-      "owner" : 1,
+      "owner" : 0,
       "x" : 7,
       "y" : 1
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 7,
       "y" : 2
     }, {
@@ -1811,7 +1811,7 @@
         "type" : "RIVER",
         "dir" : "N_SE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 7,
       "y" : 3
     }, {
@@ -1822,7 +1822,7 @@
         "type" : "RIVER",
         "dir" : "N_SE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 7,
       "y" : 4
     }, {
@@ -1833,7 +1833,7 @@
         "type" : "RAIL",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 7,
       "y" : 5
     }, {
@@ -1841,7 +1841,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 7,
       "y" : 6
     }, {
@@ -1852,7 +1852,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 7,
       "y" : 7
     }, {
@@ -1863,7 +1863,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 7,
       "y" : 8
     }, {
@@ -1874,7 +1874,7 @@
         "type" : "RIVER",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 7,
       "y" : 9
     }, {
@@ -1885,7 +1885,7 @@
         "type" : "FOREST",
         "dir" : "NE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 7,
       "y" : 10
     }, {
@@ -1896,7 +1896,7 @@
         "type" : "RIVER",
         "dir" : "NE_SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 7,
       "y" : 11
     }, {
@@ -1907,7 +1907,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 7,
       "y" : 12
     }, {
@@ -1921,7 +1921,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "NE_S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 7,
       "y" : 13
     }, {
@@ -1935,7 +1935,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "N"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 7,
       "y" : 14
     }, {
@@ -1943,7 +1943,7 @@
         "type" : "RIVER",
         "dir" : "N_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 7,
       "y" : 15
     }, {
@@ -1951,7 +1951,7 @@
         "type" : "RAIL",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 7,
       "y" : 16
     }, {
@@ -1965,7 +1965,7 @@
         "type" : "DEEP_WATER_DECORATOR",
         "dir" : "N_NE_SE_S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 7,
       "y" : 17
     }, {
@@ -1976,7 +1976,7 @@
         "type" : "DEEP_WATER_DECORATOR",
         "dir" : "N_NE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 7,
       "y" : 18
     }, {
@@ -1984,7 +1984,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 7,
       "y" : 19
     }, {
@@ -1992,7 +1992,7 @@
         "type" : "DEEP_WATER_DECORATOR",
         "dir" : "NE_SE_S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 7,
       "y" : 20
     }, {
@@ -2000,7 +2000,7 @@
         "type" : "CROPLANDS",
         "dir" : "NE_SE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 7,
       "y" : 21
     }, {
@@ -2011,7 +2011,7 @@
         "type" : "RIVER",
         "dir" : "NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 7,
       "y" : 22
     }, {
@@ -2022,7 +2022,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 7,
       "y" : 23
     }, {
@@ -2033,7 +2033,7 @@
         "type" : "RAIL",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 7,
       "y" : 24
     }, {
@@ -2041,27 +2041,27 @@
         "type" : "LIGHT_WOODS",
         "dir" : "N_SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 7,
       "y" : 25
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 7,
       "y" : 26
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 7,
       "y" : 27
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 7,
       "y" : 28
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 8,
       "y" : 0
     }, {
@@ -2072,12 +2072,12 @@
       "feature" : [ "AIRFIELD" ],
       "entrenchment" : 70,
       "distance" : 100,
-      "owner" : 1,
+      "owner" : 0,
       "x" : 8,
       "y" : 1
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 8,
       "y" : 2
     }, {
@@ -2091,7 +2091,7 @@
         "type" : "ROAD",
         "dir" : "N_SE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 8,
       "y" : 3
     }, {
@@ -2099,7 +2099,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_SE_S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 8,
       "y" : 4
     }, {
@@ -2110,7 +2110,7 @@
         "type" : "RAIL",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 8,
       "y" : 5
     }, {
@@ -2124,7 +2124,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 8,
       "y" : 6
     }, {
@@ -2135,7 +2135,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 8,
       "y" : 7
     }, {
@@ -2149,7 +2149,7 @@
         "type" : "RIVER",
         "dir" : "NE_SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 8,
       "y" : 8
     }, {
@@ -2160,7 +2160,7 @@
         "type" : "FOREST",
         "dir" : "SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 8,
       "y" : 9
     }, {
@@ -2171,7 +2171,7 @@
         "type" : "RIVER",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 8,
       "y" : 10
     }, {
@@ -2182,7 +2182,7 @@
         "type" : "RIVER",
         "dir" : "NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 8,
       "y" : 11
     }, {
@@ -2196,7 +2196,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 8,
       "y" : 12
     }, {
@@ -2204,7 +2204,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "N_SE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 8,
       "y" : 13
     }, {
@@ -2212,7 +2212,7 @@
         "type" : "HILLS",
         "dir" : "NE_SE_S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 8,
       "y" : 14
     }, {
@@ -2223,7 +2223,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "NE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 8,
       "y" : 15
     }, {
@@ -2234,7 +2234,7 @@
         "type" : "RAIL",
         "dir" : "NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 8,
       "y" : 16
     }, {
@@ -2242,7 +2242,7 @@
         "type" : "DEEP_WATER_DECORATOR",
         "dir" : "N_NE_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 8,
       "y" : 17
     }, {
@@ -2250,7 +2250,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 8,
       "y" : 18
     }, {
@@ -2258,7 +2258,7 @@
         "type" : "DEEP_WATER_DECORATOR",
         "dir" : "NE_SE_S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 8,
       "y" : 19
     }, {
@@ -2266,7 +2266,7 @@
         "type" : "CROPLANDS",
         "dir" : "SE_S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 8,
       "y" : 20
     }, {
@@ -2277,7 +2277,7 @@
         "type" : "RIVER",
         "dir" : "SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 8,
       "y" : 21
     }, {
@@ -2291,7 +2291,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 8,
       "y" : 22
     }, {
@@ -2299,7 +2299,7 @@
         "type" : "RIVER",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 8,
       "y" : 23
     }, {
@@ -2310,7 +2310,7 @@
         "type" : "RAIL",
         "dir" : "NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 8,
       "y" : 24
     }, {
@@ -2324,27 +2324,27 @@
         "type" : "LIGHT_WOODS",
         "dir" : "NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 8,
       "y" : 25
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 8,
       "y" : 26
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 8,
       "y" : 27
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 8,
       "y" : 28
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 9,
       "y" : 0
     }, {
@@ -2355,12 +2355,12 @@
       "feature" : [ "AIRFIELD" ],
       "entrenchment" : 70,
       "distance" : 100,
-      "owner" : 1,
+      "owner" : 0,
       "x" : 9,
       "y" : 1
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 9,
       "y" : 2
     }, {
@@ -2374,7 +2374,7 @@
         "type" : "RAIL",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 9,
       "y" : 3
     }, {
@@ -2388,7 +2388,7 @@
         "type" : "RAIL",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 9,
       "y" : 4
     }, {
@@ -2402,7 +2402,7 @@
         "type" : "RAIL",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 9,
       "y" : 5
     }, {
@@ -2416,7 +2416,7 @@
         "type" : "RAIL",
         "dir" : "N_SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 9,
       "y" : 6
     }, {
@@ -2430,7 +2430,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "N_NE_SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 9,
       "y" : 7
     }, {
@@ -2444,7 +2444,7 @@
         "type" : "RIVER",
         "dir" : "SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 9,
       "y" : 8
     }, {
@@ -2458,7 +2458,7 @@
         "type" : "RIVER",
         "dir" : "NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 9,
       "y" : 9
     }, {
@@ -2472,7 +2472,7 @@
         "type" : "RIVER",
         "dir" : "SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 9,
       "y" : 10
     }, {
@@ -2480,15 +2480,15 @@
         "type" : "HILLS",
         "dir" : "N_NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 9,
       "y" : 11
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 9,
       "y" : 12
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 9,
       "y" : 13
     }, {
@@ -2502,7 +2502,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 9,
       "y" : 14
     }, {
@@ -2516,7 +2516,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "N_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 9,
       "y" : 15
     }, {
@@ -2530,7 +2530,7 @@
         "type" : "RAIL",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 9,
       "y" : 16
     }, {
@@ -2544,7 +2544,7 @@
         "type" : "DEEP_WATER_DECORATOR",
         "dir" : "N_NE_SE_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 9,
       "y" : 17
     }, {
@@ -2552,7 +2552,7 @@
         "type" : "DEEP_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 9,
       "y" : 18
     }, {
@@ -2563,11 +2563,11 @@
         "type" : "DEEP_WATER_DECORATOR",
         "dir" : "NE_SE_S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 9,
       "y" : 19
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 9,
       "y" : 20
     }, {
@@ -2575,7 +2575,7 @@
         "type" : "CROPLANDS",
         "dir" : "NE_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 9,
       "y" : 21
     }, {
@@ -2586,7 +2586,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 9,
       "y" : 22
     }, {
@@ -2597,7 +2597,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "SE_S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 9,
       "y" : 23
     }, {
@@ -2614,7 +2614,7 @@
         "type" : "RAIL",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 9,
       "y" : 24
     }, {
@@ -2628,27 +2628,27 @@
         "type" : "LIGHT_WOODS",
         "dir" : "N_NE_SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 9,
       "y" : 25
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 9,
       "y" : 26
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 9,
       "y" : 27
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 9,
       "y" : 28
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 10,
       "y" : 0
     }, {
@@ -2659,12 +2659,12 @@
       "feature" : [ "AIRFIELD" ],
       "entrenchment" : 45,
       "distance" : 100,
-      "owner" : 1,
+      "owner" : 0,
       "x" : 10,
       "y" : 1
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 10,
       "y" : 2
     }, {
@@ -2675,7 +2675,7 @@
         "type" : "RIVER",
         "dir" : "NE_SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 10,
       "y" : 3
     }, {
@@ -2683,7 +2683,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 10,
       "y" : 4
     }, {
@@ -2694,7 +2694,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 10,
       "y" : 5
     }, {
@@ -2711,7 +2711,7 @@
         "type" : "RAIL",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 10,
       "y" : 6
     }, {
@@ -2725,7 +2725,7 @@
         "type" : "ROAD",
         "dir" : "S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 10,
       "y" : 7
     }, {
@@ -2745,7 +2745,7 @@
         "type" : "ROAD",
         "dir" : "N_NE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 10,
       "y" : 8
     }, {
@@ -2756,7 +2756,7 @@
         "type" : "ROAD",
         "dir" : "N_SE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 10,
       "y" : 9
     }, {
@@ -2767,7 +2767,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 10,
       "y" : 10
     }, {
@@ -2775,7 +2775,7 @@
         "type" : "RIVER",
         "dir" : "NE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 10,
       "y" : 11
     }, {
@@ -2783,7 +2783,7 @@
         "type" : "RIVER",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 10,
       "y" : 12
     }, {
@@ -2791,7 +2791,7 @@
         "type" : "RIVER",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 10,
       "y" : 13
     }, {
@@ -2802,7 +2802,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 10,
       "y" : 14
     }, {
@@ -2822,7 +2822,7 @@
         "type" : "RAIL",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 10,
       "y" : 15
     }, {
@@ -2833,7 +2833,7 @@
         "type" : "SUPER_RIVER",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 10,
       "y" : 16
     }, {
@@ -2847,7 +2847,7 @@
         "type" : "DEEP_WATER_DECORATOR",
         "dir" : "N_NE_SE_S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 10,
       "y" : 17
     }, {
@@ -2858,7 +2858,7 @@
         "type" : "DEEP_WATER_DECORATOR",
         "dir" : "N_NE_SE_S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 10,
       "y" : 18
     }, {
@@ -2866,7 +2866,7 @@
         "type" : "RIVER",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 10,
       "y" : 19
     }, {
@@ -2874,7 +2874,7 @@
         "type" : "CROPLANDS",
         "dir" : "NE_SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 10,
       "y" : 20
     }, {
@@ -2882,7 +2882,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 10,
       "y" : 21
     }, {
@@ -2890,7 +2890,7 @@
         "type" : "RIVER",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 10,
       "y" : 22
     }, {
@@ -2904,7 +2904,7 @@
         "type" : "RAIL",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 10,
       "y" : 23
     }, {
@@ -2918,7 +2918,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 10,
       "y" : 24
     }, {
@@ -2932,27 +2932,27 @@
         "type" : "LIGHT_WOODS",
         "dir" : "N_NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 10,
       "y" : 25
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 10,
       "y" : 26
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 10,
       "y" : 27
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 10,
       "y" : 28
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 11,
       "y" : 0
     }, {
@@ -2963,12 +2963,12 @@
       "feature" : [ "AIRFIELD" ],
       "entrenchment" : 70,
       "distance" : 100,
-      "owner" : 1,
+      "owner" : 0,
       "x" : 11,
       "y" : 1
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 11,
       "y" : 2
     }, {
@@ -2982,7 +2982,7 @@
         "type" : "ROAD",
         "dir" : "NE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 11,
       "y" : 3
     }, {
@@ -2996,7 +2996,7 @@
         "type" : "ROAD",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 11,
       "y" : 4
     }, {
@@ -3010,7 +3010,7 @@
         "type" : "ROAD",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 11,
       "y" : 5
     }, {
@@ -3027,7 +3027,7 @@
         "type" : "ROAD",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 11,
       "y" : 6
     }, {
@@ -3047,7 +3047,7 @@
         "type" : "RAIL",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 11,
       "y" : 7
     }, {
@@ -3058,7 +3058,7 @@
         "type" : "ROAD",
         "dir" : "N_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 11,
       "y" : 8
     }, {
@@ -3066,7 +3066,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 11,
       "y" : 9
     }, {
@@ -3080,7 +3080,7 @@
         "type" : "ROAD",
         "dir" : "S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 11,
       "y" : 10
     }, {
@@ -3094,19 +3094,19 @@
         "type" : "ROAD",
         "dir" : "N_SE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 11,
       "y" : 11
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 11,
       "y" : 12
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 11,
       "y" : 13
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 11,
       "y" : 14
     }, {
@@ -3117,7 +3117,7 @@
         "type" : "RAIL",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 11,
       "y" : 15
     }, {
@@ -3131,7 +3131,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "NE_SE_S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 11,
       "y" : 16
     }, {
@@ -3146,7 +3146,7 @@
         "dir" : "N_NE"
       } ],
       "entrenchment" : 15,
-      "owner" : 1,
+      "owner" : 0,
       "vp" : 35,
       "x" : 11,
       "y" : 17
@@ -3158,7 +3158,7 @@
         "type" : "URBAN",
         "dir" : "N"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 11,
       "y" : 18
     }, {
@@ -3166,7 +3166,7 @@
         "type" : "SUPER_RIVER",
         "dir" : "NE_SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 11,
       "y" : 19
     }, {
@@ -3180,7 +3180,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "SE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 11,
       "y" : 20
     }, {
@@ -3191,7 +3191,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 11,
       "y" : 21
     }, {
@@ -3199,7 +3199,7 @@
         "type" : "HILLS",
         "dir" : "S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 11,
       "y" : 22
     }, {
@@ -3219,7 +3219,7 @@
         "type" : "RAIL",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 11,
       "y" : 23
     }, {
@@ -3233,7 +3233,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 11,
       "y" : 24
     }, {
@@ -3244,27 +3244,27 @@
         "type" : "LIGHT_WOODS",
         "dir" : "N_NE_SE_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 11,
       "y" : 25
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 11,
       "y" : 26
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 11,
       "y" : 27
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 11,
       "y" : 28
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 12,
       "y" : 0
     }, {
@@ -3275,12 +3275,12 @@
       "feature" : [ "AIRFIELD" ],
       "entrenchment" : 45,
       "distance" : 100,
-      "owner" : 1,
+      "owner" : 0,
       "x" : 12,
       "y" : 1
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 12,
       "y" : 2
     }, {
@@ -3288,7 +3288,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 12,
       "y" : 3
     }, {
@@ -3299,7 +3299,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 12,
       "y" : 4
     }, {
@@ -3310,7 +3310,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 12,
       "y" : 5
     }, {
@@ -3321,7 +3321,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 12,
       "y" : 6
     }, {
@@ -3335,7 +3335,7 @@
         "type" : "RAIL",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 12,
       "y" : 7
     }, {
@@ -3343,7 +3343,7 @@
         "type" : "HILLS",
         "dir" : "N_NE_SE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 12,
       "y" : 8
     }, {
@@ -3354,7 +3354,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 12,
       "y" : 9
     }, {
@@ -3365,7 +3365,7 @@
         "type" : "RIVER",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 12,
       "y" : 10
     }, {
@@ -3373,7 +3373,7 @@
         "type" : "ROAD",
         "dir" : "S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 12,
       "y" : 11
     }, {
@@ -3381,7 +3381,7 @@
         "type" : "ROAD",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 12,
       "y" : 12
     }, {
@@ -3389,7 +3389,7 @@
         "type" : "ROAD",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 12,
       "y" : 13
     }, {
@@ -3403,7 +3403,7 @@
         "type" : "RAIL",
         "dir" : "NE_S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 12,
       "y" : 14
     }, {
@@ -3420,7 +3420,7 @@
         "type" : "RAIL",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 12,
       "y" : 15
     }, {
@@ -3434,7 +3434,7 @@
         "type" : "RAIL",
         "dir" : "N_SE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 12,
       "y" : 16
     }, {
@@ -3445,7 +3445,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 12,
       "y" : 17
     }, {
@@ -3456,7 +3456,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 12,
       "y" : 18
     }, {
@@ -3470,7 +3470,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 12,
       "y" : 19
     }, {
@@ -3487,7 +3487,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "N_SE_S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 12,
       "y" : 20
     }, {
@@ -3501,7 +3501,7 @@
         "type" : "ROAD",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 12,
       "y" : 21
     }, {
@@ -3515,7 +3515,7 @@
         "type" : "RAIL",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 12,
       "y" : 22
     }, {
@@ -3529,7 +3529,7 @@
         "type" : "ROAD",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 12,
       "y" : 23
     }, {
@@ -3543,7 +3543,7 @@
         "type" : "ROAD",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 12,
       "y" : 24
     }, {
@@ -3557,27 +3557,27 @@
         "type" : "ROAD",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 12,
       "y" : 25
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 12,
       "y" : 26
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 12,
       "y" : 27
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 12,
       "y" : 28
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 13,
       "y" : 0
     }, {
@@ -3588,12 +3588,12 @@
       "feature" : [ "AIRFIELD" ],
       "entrenchment" : 45,
       "distance" : 100,
-      "owner" : 1,
+      "owner" : 0,
       "x" : 13,
       "y" : 1
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 13,
       "y" : 2
     }, {
@@ -3601,7 +3601,7 @@
         "type" : "FOREST",
         "dir" : "NE_SE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 13,
       "y" : 3
     }, {
@@ -3609,7 +3609,7 @@
         "type" : "FOREST",
         "dir" : "N_NE_SE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 13,
       "y" : 4
     }, {
@@ -3617,7 +3617,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 13,
       "y" : 5
     }, {
@@ -3628,7 +3628,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 13,
       "y" : 6
     }, {
@@ -3642,7 +3642,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 13,
       "y" : 7
     }, {
@@ -3656,7 +3656,7 @@
         "type" : "RAIL",
         "dir" : "SE_S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 13,
       "y" : 8
     }, {
@@ -3670,7 +3670,7 @@
         "type" : "RAIL",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 13,
       "y" : 9
     }, {
@@ -3684,7 +3684,7 @@
         "type" : "RAIL",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 13,
       "y" : 10
     }, {
@@ -3692,7 +3692,7 @@
         "type" : "RAIL",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 13,
       "y" : 11
     }, {
@@ -3700,7 +3700,7 @@
         "type" : "RAIL",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 13,
       "y" : 12
     }, {
@@ -3708,7 +3708,7 @@
         "type" : "RAIL",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 13,
       "y" : 13
     }, {
@@ -3719,7 +3719,7 @@
         "type" : "RAIL",
         "dir" : "N_S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 13,
       "y" : 14
     }, {
@@ -3733,7 +3733,7 @@
         "type" : "RAIL",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 13,
       "y" : 15
     }, {
@@ -3747,7 +3747,7 @@
         "type" : "RAIL",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 13,
       "y" : 16
     }, {
@@ -3764,7 +3764,7 @@
         "type" : "RAIL",
         "dir" : "N_SE_S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 13,
       "y" : 17
     }, {
@@ -3778,7 +3778,7 @@
         "type" : "RAIL",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 13,
       "y" : 18
     }, {
@@ -3789,7 +3789,7 @@
         "type" : "RAIL",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 13,
       "y" : 19
     }, {
@@ -3803,7 +3803,7 @@
         "type" : "RAIL",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 13,
       "y" : 20
     }, {
@@ -3820,7 +3820,7 @@
         "type" : "RAIL",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 13,
       "y" : 21
     }, {
@@ -3834,7 +3834,7 @@
         "type" : "RAIL",
         "dir" : "N_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 13,
       "y" : 22
     }, {
@@ -3848,7 +3848,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "N_S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 13,
       "y" : 23
     }, {
@@ -3859,7 +3859,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "N_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 13,
       "y" : 24
     }, {
@@ -3870,27 +3870,27 @@
         "type" : "LIGHT_WOODS",
         "dir" : "N_NE_SE_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 13,
       "y" : 25
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 13,
       "y" : 26
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 13,
       "y" : 27
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 13,
       "y" : 28
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 14,
       "y" : 0
     }, {
@@ -3901,12 +3901,12 @@
       "feature" : [ "AIRFIELD" ],
       "entrenchment" : 70,
       "distance" : 100,
-      "owner" : 1,
+      "owner" : 0,
       "x" : 14,
       "y" : 1
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 14,
       "y" : 2
     }, {
@@ -3914,7 +3914,7 @@
         "type" : "FOREST",
         "dir" : "N_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 14,
       "y" : 3
     }, {
@@ -3922,7 +3922,7 @@
         "type" : "FOREST",
         "dir" : "N_NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 14,
       "y" : 4
     }, {
@@ -3933,7 +3933,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 14,
       "y" : 5
     }, {
@@ -3947,7 +3947,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 14,
       "y" : 6
     }, {
@@ -3958,7 +3958,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 14,
       "y" : 7
     }, {
@@ -3972,7 +3972,7 @@
         "type" : "RAIL",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 14,
       "y" : 8
     }, {
@@ -3986,7 +3986,7 @@
         "type" : "RIVER",
         "dir" : "SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 14,
       "y" : 9
     }, {
@@ -3994,11 +3994,11 @@
         "type" : "HILLS",
         "dir" : "N_NE_SE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 14,
       "y" : 10
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 14,
       "y" : 11
     }, {
@@ -4009,7 +4009,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "NE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 14,
       "y" : 12
     }, {
@@ -4023,11 +4023,11 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 14,
       "y" : 13
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 14,
       "y" : 14
     }, {
@@ -4038,7 +4038,7 @@
         "type" : "ROAD",
         "dir" : "NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 14,
       "y" : 15
     }, {
@@ -4046,7 +4046,7 @@
         "type" : "FOREST",
         "dir" : "NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 14,
       "y" : 16
     }, {
@@ -4063,7 +4063,7 @@
         "type" : "RAIL",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 14,
       "y" : 17
     }, {
@@ -4074,11 +4074,11 @@
         "type" : "CROPLANDS",
         "dir" : "SE_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 14,
       "y" : 18
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 14,
       "y" : 19
     }, {
@@ -4086,7 +4086,7 @@
         "type" : "RIVER",
         "dir" : "NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 14,
       "y" : 20
     }, {
@@ -4094,7 +4094,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 14,
       "y" : 21
     }, {
@@ -4105,7 +4105,7 @@
         "type" : "FOREST",
         "dir" : "SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 14,
       "y" : 22
     }, {
@@ -4113,7 +4113,7 @@
         "type" : "RIVER",
         "dir" : "NE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 14,
       "y" : 23
     }, {
@@ -4127,7 +4127,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 14,
       "y" : 24
     }, {
@@ -4141,27 +4141,27 @@
         "type" : "LIGHT_WOODS",
         "dir" : "N_NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 14,
       "y" : 25
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 14,
       "y" : 26
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 14,
       "y" : 27
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 14,
       "y" : 28
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 15,
       "y" : 0
     }, {
@@ -4172,12 +4172,12 @@
       "feature" : [ "AIRFIELD" ],
       "entrenchment" : 70,
       "distance" : 100,
-      "owner" : 1,
+      "owner" : 0,
       "x" : 15,
       "y" : 1
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 15,
       "y" : 2
     }, {
@@ -4191,7 +4191,7 @@
         "type" : "ROAD",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 15,
       "y" : 3
     }, {
@@ -4199,7 +4199,7 @@
         "type" : "FOREST",
         "dir" : "SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 15,
       "y" : 4
     }, {
@@ -4207,7 +4207,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "NE_SE_S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 15,
       "y" : 5
     }, {
@@ -4215,7 +4215,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 15,
       "y" : 6
     }, {
@@ -4226,7 +4226,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 15,
       "y" : 7
     }, {
@@ -4234,7 +4234,7 @@
         "type" : "HILLS",
         "dir" : "SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 15,
       "y" : 8
     }, {
@@ -4248,7 +4248,7 @@
         "type" : "RAIL",
         "dir" : "NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 15,
       "y" : 9
     }, {
@@ -4256,7 +4256,7 @@
         "type" : "HILLS",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 15,
       "y" : 10
     }, {
@@ -4270,7 +4270,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "NE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 15,
       "y" : 11
     }, {
@@ -4287,7 +4287,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "NE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 15,
       "y" : 12
     }, {
@@ -4295,7 +4295,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "N_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 15,
       "y" : 13
     }, {
@@ -4309,7 +4309,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 15,
       "y" : 14
     }, {
@@ -4320,7 +4320,7 @@
         "type" : "ROAD",
         "dir" : "SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 15,
       "y" : 15
     }, {
@@ -4328,7 +4328,7 @@
         "type" : "RIVER",
         "dir" : "NE_SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 15,
       "y" : 16
     }, {
@@ -4336,7 +4336,7 @@
         "type" : "ROAD",
         "dir" : "SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 15,
       "y" : 17
     }, {
@@ -4347,7 +4347,7 @@
         "type" : "RAIL",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 15,
       "y" : 18
     }, {
@@ -4355,7 +4355,7 @@
         "type" : "CROPLANDS",
         "dir" : "NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 15,
       "y" : 19
     }, {
@@ -4363,11 +4363,11 @@
         "type" : "RIVER",
         "dir" : "SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 15,
       "y" : 20
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 15,
       "y" : 21
     }, {
@@ -4378,7 +4378,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 15,
       "y" : 22
     }, {
@@ -4386,7 +4386,7 @@
         "type" : "RIVER",
         "dir" : "N_SE_S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 15,
       "y" : 23
     }, {
@@ -4400,7 +4400,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "SE_S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 15,
       "y" : 24
     }, {
@@ -4414,27 +4414,27 @@
         "type" : "LIGHT_WOODS",
         "dir" : "N_NE_SE_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 15,
       "y" : 25
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 15,
       "y" : 26
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 15,
       "y" : 27
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 15,
       "y" : 28
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 16,
       "y" : 0
     }, {
@@ -4445,12 +4445,12 @@
       "feature" : [ "AIRFIELD" ],
       "entrenchment" : 70,
       "distance" : 100,
-      "owner" : 1,
+      "owner" : 0,
       "x" : 16,
       "y" : 1
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 16,
       "y" : 2
     }, {
@@ -4464,7 +4464,7 @@
         "type" : "ROAD",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 16,
       "y" : 3
     }, {
@@ -4475,7 +4475,7 @@
         "type" : "RIVER",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 16,
       "y" : 4
     }, {
@@ -4486,7 +4486,7 @@
         "type" : "RIVER",
         "dir" : "N_SE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 16,
       "y" : 5
     }, {
@@ -4497,7 +4497,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 16,
       "y" : 6
     }, {
@@ -4505,7 +4505,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 16,
       "y" : 7
     }, {
@@ -4519,7 +4519,7 @@
         "type" : "RAIL",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 16,
       "y" : 8
     }, {
@@ -4533,7 +4533,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 16,
       "y" : 9
     }, {
@@ -4547,7 +4547,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "NE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 16,
       "y" : 10
     }, {
@@ -4561,7 +4561,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "N_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 16,
       "y" : 11
     }, {
@@ -4569,7 +4569,7 @@
         "type" : "RIVER",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 16,
       "y" : 12
     }, {
@@ -4577,7 +4577,7 @@
         "type" : "RIVER",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 16,
       "y" : 13
     }, {
@@ -4585,7 +4585,7 @@
         "type" : "RIVER",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 16,
       "y" : 14
     }, {
@@ -4599,7 +4599,7 @@
         "type" : "ROAD",
         "dir" : "NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 16,
       "y" : 15
     }, {
@@ -4610,7 +4610,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "N_NE_SE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 16,
       "y" : 16
     }, {
@@ -4624,7 +4624,7 @@
         "type" : "ROAD",
         "dir" : "NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 16,
       "y" : 17
     }, {
@@ -4635,7 +4635,7 @@
         "type" : "RAIL",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 16,
       "y" : 18
     }, {
@@ -4643,7 +4643,7 @@
         "type" : "RIVER",
         "dir" : "NE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 16,
       "y" : 19
     }, {
@@ -4651,7 +4651,7 @@
         "type" : "RIVER",
         "dir" : "N_S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 16,
       "y" : 20
     }, {
@@ -4662,7 +4662,7 @@
         "type" : "RIVER",
         "dir" : "N_SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 16,
       "y" : 21
     }, {
@@ -4676,7 +4676,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 16,
       "y" : 22
     }, {
@@ -4687,7 +4687,7 @@
         "type" : "RIVER",
         "dir" : "S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 16,
       "y" : 23
     }, {
@@ -4701,7 +4701,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 16,
       "y" : 24
     }, {
@@ -4715,37 +4715,37 @@
         "type" : "LIGHT_WOODS",
         "dir" : "N_NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 16,
       "y" : 25
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 16,
       "y" : 26
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 16,
       "y" : 27
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 16,
       "y" : 28
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 17,
       "y" : 0
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 17,
       "y" : 1
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 17,
       "y" : 2
     }, {
@@ -4756,7 +4756,7 @@
         "type" : "ROAD",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 17,
       "y" : 3
     }, {
@@ -4767,7 +4767,7 @@
         "type" : "ROAD",
         "dir" : "N_S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 17,
       "y" : 4
     }, {
@@ -4778,7 +4778,7 @@
         "type" : "ROAD",
         "dir" : "N_SE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 17,
       "y" : 5
     }, {
@@ -4789,7 +4789,7 @@
         "type" : "RIVER",
         "dir" : "S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 17,
       "y" : 6
     }, {
@@ -4803,7 +4803,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 17,
       "y" : 7
     }, {
@@ -4817,7 +4817,7 @@
         "type" : "RAIL",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 17,
       "y" : 8
     }, {
@@ -4831,7 +4831,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "NE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 17,
       "y" : 9
     }, {
@@ -4845,7 +4845,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "N_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 17,
       "y" : 10
     }, {
@@ -4859,7 +4859,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 17,
       "y" : 11
     }, {
@@ -4870,7 +4870,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "N_SE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 17,
       "y" : 12
     }, {
@@ -4881,7 +4881,7 @@
         "type" : "RIVER",
         "dir" : "NE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 17,
       "y" : 13
     }, {
@@ -4889,7 +4889,7 @@
         "type" : "RIVER",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 17,
       "y" : 14
     }, {
@@ -4900,7 +4900,7 @@
         "type" : "ROAD",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 17,
       "y" : 15
     }, {
@@ -4914,7 +4914,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 17,
       "y" : 16
     }, {
@@ -4931,7 +4931,7 @@
         "type" : "ROAD",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 17,
       "y" : 17
     }, {
@@ -4942,7 +4942,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "N_NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 17,
       "y" : 18
     }, {
@@ -4956,7 +4956,7 @@
         "type" : "RAIL",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 17,
       "y" : 19
     }, {
@@ -4967,7 +4967,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "SE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 17,
       "y" : 20
     }, {
@@ -4975,7 +4975,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "N_NE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 17,
       "y" : 21
     }, {
@@ -4986,7 +4986,7 @@
         "type" : "RIVER",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 17,
       "y" : 22
     }, {
@@ -5000,7 +5000,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 17,
       "y" : 23
     }, {
@@ -5011,7 +5011,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "N_SE_S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 17,
       "y" : 24
     }, {
@@ -5025,37 +5025,37 @@
         "type" : "LIGHT_WOODS",
         "dir" : "N_NE_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 17,
       "y" : 25
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 17,
       "y" : 26
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 17,
       "y" : 27
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 17,
       "y" : 28
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 18,
       "y" : 0
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 18,
       "y" : 1
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 18,
       "y" : 2
     }, {
@@ -5066,7 +5066,7 @@
         "type" : "FOREST",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 18,
       "y" : 3
     }, {
@@ -5077,7 +5077,7 @@
         "type" : "FOREST",
         "dir" : "N"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 18,
       "y" : 4
     }, {
@@ -5088,7 +5088,7 @@
         "type" : "ROAD",
         "dir" : "S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 18,
       "y" : 5
     }, {
@@ -5099,7 +5099,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "N_SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 18,
       "y" : 6
     }, {
@@ -5113,7 +5113,7 @@
         "type" : "RAIL",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 18,
       "y" : 7
     }, {
@@ -5127,7 +5127,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "N_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 18,
       "y" : 8
     }, {
@@ -5141,7 +5141,7 @@
         "type" : "RIVER",
         "dir" : "N_SE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 18,
       "y" : 9
     }, {
@@ -5152,7 +5152,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 18,
       "y" : 10
     }, {
@@ -5160,7 +5160,7 @@
         "type" : "HILLS",
         "dir" : "N_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 18,
       "y" : 11
     }, {
@@ -5174,7 +5174,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 18,
       "y" : 12
     }, {
@@ -5182,7 +5182,7 @@
         "type" : "HILLS",
         "dir" : "N_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 18,
       "y" : 13
     }, {
@@ -5190,7 +5190,7 @@
         "type" : "ROAD",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 18,
       "y" : 14
     }, {
@@ -5201,7 +5201,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 18,
       "y" : 15
     }, {
@@ -5218,7 +5218,7 @@
         "type" : "ROAD",
         "dir" : "SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 18,
       "y" : 16
     }, {
@@ -5232,11 +5232,11 @@
         "type" : "LIGHT_WOODS",
         "dir" : "N_SE_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 18,
       "y" : 17
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 18,
       "y" : 18
     }, {
@@ -5247,7 +5247,7 @@
         "type" : "RAIL",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 18,
       "y" : 19
     }, {
@@ -5258,7 +5258,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "NE_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 18,
       "y" : 20
     }, {
@@ -5269,7 +5269,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "NE_SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 18,
       "y" : 21
     }, {
@@ -5280,7 +5280,7 @@
         "type" : "RIVER",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 18,
       "y" : 22
     }, {
@@ -5288,7 +5288,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 18,
       "y" : 23
     }, {
@@ -5302,7 +5302,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "NE_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 18,
       "y" : 24
     }, {
@@ -5313,37 +5313,37 @@
         "type" : "FOREST",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 18,
       "y" : 25
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 18,
       "y" : 26
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 18,
       "y" : 27
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 18,
       "y" : 28
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 19,
       "y" : 0
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 19,
       "y" : 1
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 19,
       "y" : 2
     }, {
@@ -5351,7 +5351,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 19,
       "y" : 3
     }, {
@@ -5362,7 +5362,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 19,
       "y" : 4
     }, {
@@ -5373,7 +5373,7 @@
         "type" : "ROAD",
         "dir" : "NE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 19,
       "y" : 5
     }, {
@@ -5387,7 +5387,7 @@
         "type" : "ROAD",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 19,
       "y" : 6
     }, {
@@ -5404,7 +5404,7 @@
         "type" : "RAIL",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 19,
       "y" : 7
     }, {
@@ -5412,7 +5412,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 19,
       "y" : 8
     }, {
@@ -5423,7 +5423,7 @@
         "type" : "RIVER",
         "dir" : "NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 19,
       "y" : 9
     }, {
@@ -5434,7 +5434,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 19,
       "y" : 10
     }, {
@@ -5445,7 +5445,7 @@
         "type" : "RIVER",
         "dir" : "NE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 19,
       "y" : 11
     }, {
@@ -5453,7 +5453,7 @@
         "type" : "RIVER",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 19,
       "y" : 12
     }, {
@@ -5464,7 +5464,7 @@
         "type" : "RIVER",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 19,
       "y" : 13
     }, {
@@ -5475,7 +5475,7 @@
         "type" : "ROAD",
         "dir" : "SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 19,
       "y" : 14
     }, {
@@ -5483,7 +5483,7 @@
         "type" : "RIVER",
         "dir" : "N_SE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 19,
       "y" : 15
     }, {
@@ -5491,7 +5491,7 @@
         "type" : "RIVER",
         "dir" : "NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 19,
       "y" : 16
     }, {
@@ -5502,7 +5502,7 @@
         "type" : "ROAD",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 19,
       "y" : 17
     }, {
@@ -5513,7 +5513,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "SE_S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 19,
       "y" : 18
     }, {
@@ -5521,7 +5521,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "N_NE_SE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 19,
       "y" : 19
     }, {
@@ -5538,7 +5538,7 @@
         "type" : "RAIL",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 19,
       "y" : 20
     }, {
@@ -5549,7 +5549,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "NE_SE_S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 19,
       "y" : 21
     }, {
@@ -5560,7 +5560,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 19,
       "y" : 22
     }, {
@@ -5574,7 +5574,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 19,
       "y" : 23
     }, {
@@ -5588,7 +5588,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 19,
       "y" : 24
     }, {
@@ -5599,37 +5599,37 @@
         "type" : "FOREST",
         "dir" : "SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 19,
       "y" : 25
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 19,
       "y" : 26
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 19,
       "y" : 27
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 19,
       "y" : 28
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 20,
       "y" : 0
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 20,
       "y" : 1
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 20,
       "y" : 2
     }, {
@@ -5640,7 +5640,7 @@
         "type" : "ROAD",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 20,
       "y" : 3
     }, {
@@ -5654,7 +5654,7 @@
         "type" : "ROAD",
         "dir" : "N_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 20,
       "y" : 4
     }, {
@@ -5668,7 +5668,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "NE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 20,
       "y" : 5
     }, {
@@ -5685,7 +5685,7 @@
         "type" : "RAIL",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 20,
       "y" : 6
     }, {
@@ -5696,7 +5696,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "NE_S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 20,
       "y" : 7
     }, {
@@ -5710,7 +5710,7 @@
         "type" : "ROAD",
         "dir" : "N_SE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 20,
       "y" : 8
     }, {
@@ -5724,7 +5724,7 @@
         "type" : "ROAD",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 20,
       "y" : 9
     }, {
@@ -5738,7 +5738,7 @@
         "type" : "ROAD",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 20,
       "y" : 10
     }, {
@@ -5752,7 +5752,7 @@
         "type" : "ROAD",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 20,
       "y" : 11
     }, {
@@ -5763,7 +5763,7 @@
         "type" : "ROAD",
         "dir" : "N_SE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 20,
       "y" : 12
     }, {
@@ -5771,7 +5771,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 20,
       "y" : 13
     }, {
@@ -5782,7 +5782,7 @@
         "type" : "ROAD",
         "dir" : "NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 20,
       "y" : 14
     }, {
@@ -5790,7 +5790,7 @@
         "type" : "RIVER",
         "dir" : "NE_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 20,
       "y" : 15
     }, {
@@ -5801,7 +5801,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "NE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 20,
       "y" : 16
     }, {
@@ -5809,7 +5809,7 @@
         "type" : "ROAD",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 20,
       "y" : 17
     }, {
@@ -5820,7 +5820,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 20,
       "y" : 18
     }, {
@@ -5834,7 +5834,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "N_NE_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 20,
       "y" : 19
     }, {
@@ -5848,7 +5848,7 @@
         "type" : "RAIL",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 20,
       "y" : 20
     }, {
@@ -5859,7 +5859,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 20,
       "y" : 21
     }, {
@@ -5870,7 +5870,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 20,
       "y" : 22
     }, {
@@ -5881,7 +5881,7 @@
         "type" : "RIVER",
         "dir" : "NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 20,
       "y" : 23
     }, {
@@ -5895,7 +5895,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 20,
       "y" : 24
     }, {
@@ -5909,37 +5909,37 @@
         "type" : "LIGHT_WOODS",
         "dir" : "N"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 20,
       "y" : 25
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 20,
       "y" : 26
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 20,
       "y" : 27
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 20,
       "y" : 28
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 21,
       "y" : 0
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 21,
       "y" : 1
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 21,
       "y" : 2
     }, {
@@ -5947,7 +5947,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 21,
       "y" : 3
     }, {
@@ -5955,7 +5955,7 @@
         "type" : "HILLS",
         "dir" : "SE_S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 21,
       "y" : 4
     }, {
@@ -5969,7 +5969,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 21,
       "y" : 5
     }, {
@@ -5980,7 +5980,7 @@
         "type" : "RAIL",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 21,
       "y" : 6
     }, {
@@ -5994,7 +5994,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 21,
       "y" : 7
     }, {
@@ -6005,7 +6005,7 @@
         "type" : "RIVER",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 21,
       "y" : 8
     }, {
@@ -6022,7 +6022,7 @@
         "type" : "ROAD",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 21,
       "y" : 9
     }, {
@@ -6036,7 +6036,7 @@
         "type" : "RIVER",
         "dir" : "N_SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 21,
       "y" : 10
     }, {
@@ -6047,7 +6047,7 @@
         "type" : "FOREST",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 21,
       "y" : 11
     }, {
@@ -6055,7 +6055,7 @@
         "type" : "HILLS",
         "dir" : "N_NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 21,
       "y" : 12
     }, {
@@ -6066,7 +6066,7 @@
         "type" : "ROAD",
         "dir" : "S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 21,
       "y" : 13
     }, {
@@ -6080,7 +6080,7 @@
         "type" : "ROAD",
         "dir" : "N_NE_SE_S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "vp" : 5,
       "x" : 21,
       "y" : 14
@@ -6095,7 +6095,7 @@
         "type" : "ROAD",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 21,
       "y" : 15
     }, {
@@ -6109,11 +6109,11 @@
         "type" : "ROAD",
         "dir" : "N_SE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 21,
       "y" : 16
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 21,
       "y" : 17
     }, {
@@ -6121,7 +6121,7 @@
         "type" : "ROAD",
         "dir" : "NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 21,
       "y" : 18
     }, {
@@ -6132,7 +6132,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "NE_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 21,
       "y" : 19
     }, {
@@ -6146,7 +6146,7 @@
         "type" : "RIVER",
         "dir" : "NE_SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 21,
       "y" : 20
     }, {
@@ -6160,7 +6160,7 @@
         "type" : "RAIL",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 21,
       "y" : 21
     }, {
@@ -6171,7 +6171,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 21,
       "y" : 22
     }, {
@@ -6182,7 +6182,7 @@
         "type" : "RIVER",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 21,
       "y" : 23
     }, {
@@ -6196,7 +6196,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 21,
       "y" : 24
     }, {
@@ -6207,37 +6207,37 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 21,
       "y" : 25
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 21,
       "y" : 26
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 21,
       "y" : 27
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 21,
       "y" : 28
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 22,
       "y" : 0
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 22,
       "y" : 1
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 22,
       "y" : 2
     }, {
@@ -6245,7 +6245,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 22,
       "y" : 3
     }, {
@@ -6259,7 +6259,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 22,
       "y" : 4
     }, {
@@ -6273,7 +6273,7 @@
         "type" : "RAIL",
         "dir" : "SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 22,
       "y" : 5
     }, {
@@ -6287,7 +6287,7 @@
         "type" : "RIVER",
         "dir" : "S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 22,
       "y" : 6
     }, {
@@ -6304,7 +6304,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 22,
       "y" : 7
     }, {
@@ -6315,7 +6315,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 22,
       "y" : 8
     }, {
@@ -6329,7 +6329,7 @@
         "type" : "ROAD",
         "dir" : "S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 22,
       "y" : 9
     }, {
@@ -6346,7 +6346,7 @@
         "type" : "ROAD",
         "dir" : "N_NE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 22,
       "y" : 10
     }, {
@@ -6360,7 +6360,7 @@
         "type" : "RIVER",
         "dir" : "NE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 22,
       "y" : 11
     }, {
@@ -6371,7 +6371,7 @@
         "type" : "RIVER",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 22,
       "y" : 12
     }, {
@@ -6385,7 +6385,7 @@
         "type" : "ROAD",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 22,
       "y" : 13
     }, {
@@ -6399,7 +6399,7 @@
         "type" : "ROAD",
         "dir" : "NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 22,
       "y" : 14
     }, {
@@ -6410,7 +6410,7 @@
         "type" : "RIVER",
         "dir" : "N_NE_SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 22,
       "y" : 15
     }, {
@@ -6427,7 +6427,7 @@
         "type" : "ROAD",
         "dir" : "S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 22,
       "y" : 16
     }, {
@@ -6441,7 +6441,7 @@
         "type" : "ROAD",
         "dir" : "N_SE_S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "vp" : 5,
       "x" : 22,
       "y" : 17
@@ -6456,7 +6456,7 @@
         "type" : "ROAD",
         "dir" : "N_SE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 22,
       "y" : 18
     }, {
@@ -6473,7 +6473,7 @@
         "type" : "ROAD",
         "dir" : "NE_SE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 22,
       "y" : 19
     }, {
@@ -6487,7 +6487,7 @@
         "type" : "RIVER",
         "dir" : "S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 22,
       "y" : 20
     }, {
@@ -6501,7 +6501,7 @@
         "type" : "RAIL",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 22,
       "y" : 21
     }, {
@@ -6512,7 +6512,7 @@
         "type" : "RIVER",
         "dir" : "SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 22,
       "y" : 22
     }, {
@@ -6520,7 +6520,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 22,
       "y" : 23
     }, {
@@ -6531,7 +6531,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 22,
       "y" : 24
     }, {
@@ -6545,37 +6545,37 @@
         "type" : "ROAD",
         "dir" : "NE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 22,
       "y" : 25
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 22,
       "y" : 26
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 22,
       "y" : 27
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 22,
       "y" : 28
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 23,
       "y" : 0
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 23,
       "y" : 1
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 23,
       "y" : 2
     }, {
@@ -6583,7 +6583,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 23,
       "y" : 3
     }, {
@@ -6594,7 +6594,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 23,
       "y" : 4
     }, {
@@ -6605,7 +6605,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 23,
       "y" : 5
     }, {
@@ -6619,7 +6619,7 @@
         "type" : "RAIL",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 23,
       "y" : 6
     }, {
@@ -6633,7 +6633,7 @@
         "type" : "RIVER",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 23,
       "y" : 7
     }, {
@@ -6647,7 +6647,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 23,
       "y" : 8
     }, {
@@ -6658,7 +6658,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 23,
       "y" : 9
     }, {
@@ -6672,7 +6672,7 @@
         "type" : "ROAD",
         "dir" : "SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 23,
       "y" : 10
     }, {
@@ -6686,7 +6686,7 @@
         "type" : "RIVER",
         "dir" : "SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 23,
       "y" : 11
     }, {
@@ -6697,7 +6697,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 23,
       "y" : 12
     }, {
@@ -6708,7 +6708,7 @@
         "type" : "ROAD",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 23,
       "y" : 13
     }, {
@@ -6719,7 +6719,7 @@
         "type" : "ROAD",
         "dir" : "SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 23,
       "y" : 14
     }, {
@@ -6730,7 +6730,7 @@
         "type" : "RIVER",
         "dir" : "NE_SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 23,
       "y" : 15
     }, {
@@ -6741,7 +6741,7 @@
         "type" : "RIVER",
         "dir" : "S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 23,
       "y" : 16
     }, {
@@ -6758,7 +6758,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "NE_SE_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 23,
       "y" : 17
     }, {
@@ -6769,7 +6769,7 @@
         "type" : "ROAD",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 23,
       "y" : 18
     }, {
@@ -6783,7 +6783,7 @@
         "type" : "ROAD",
         "dir" : "SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 23,
       "y" : 19
     }, {
@@ -6795,7 +6795,7 @@
         "dir" : "S_NW"
       } ],
       "entrenchment" : 43,
-      "owner" : 1,
+      "owner" : 0,
       "x" : 23,
       "y" : 20
     }, {
@@ -6809,7 +6809,7 @@
         "type" : "ROAD",
         "dir" : "N_SE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 23,
       "y" : 21
     }, {
@@ -6823,7 +6823,7 @@
         "type" : "RAIL",
         "dir" : "S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 23,
       "y" : 22
     }, {
@@ -6837,7 +6837,7 @@
         "type" : "RAIL",
         "dir" : "N_SE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 23,
       "y" : 23
     }, {
@@ -6848,7 +6848,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 23,
       "y" : 24
     }, {
@@ -6859,37 +6859,37 @@
         "type" : "ROAD",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 23,
       "y" : 25
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 23,
       "y" : 26
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 23,
       "y" : 27
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 23,
       "y" : 28
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 24,
       "y" : 0
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 24,
       "y" : 1
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 24,
       "y" : 2
     }, {
@@ -6900,7 +6900,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 24,
       "y" : 3
     }, {
@@ -6911,7 +6911,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 24,
       "y" : 4
     }, {
@@ -6922,7 +6922,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 24,
       "y" : 5
     }, {
@@ -6939,7 +6939,7 @@
         "type" : "RAIL",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 24,
       "y" : 6
     }, {
@@ -6953,7 +6953,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 24,
       "y" : 7
     }, {
@@ -6964,7 +6964,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 24,
       "y" : 8
     }, {
@@ -6975,7 +6975,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 24,
       "y" : 9
     }, {
@@ -6989,7 +6989,7 @@
         "type" : "ROAD",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 24,
       "y" : 10
     }, {
@@ -6997,7 +6997,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 24,
       "y" : 11
     }, {
@@ -7008,7 +7008,7 @@
         "type" : "ROAD",
         "dir" : "SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 24,
       "y" : 12
     }, {
@@ -7019,7 +7019,7 @@
         "type" : "RIVER",
         "dir" : "NE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 24,
       "y" : 13
     }, {
@@ -7034,7 +7034,7 @@
         "dir" : "SE_NW"
       } ],
       "entrenchment" : 32,
-      "owner" : 1,
+      "owner" : 0,
       "x" : 24,
       "y" : 14
     }, {
@@ -7048,7 +7048,7 @@
         "type" : "RIVER",
         "dir" : "S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 24,
       "y" : 15
     }, {
@@ -7062,7 +7062,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 24,
       "y" : 16
     }, {
@@ -7076,7 +7076,7 @@
         "type" : "ROAD",
         "dir" : "SE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 24,
       "y" : 17
     }, {
@@ -7090,7 +7090,7 @@
         "type" : "ROAD",
         "dir" : "N_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 24,
       "y" : 18
     }, {
@@ -7101,7 +7101,7 @@
         "type" : "FOREST",
         "dir" : "NE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 24,
       "y" : 19
     }, {
@@ -7115,7 +7115,7 @@
         "type" : "RIVER",
         "dir" : "S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 24,
       "y" : 20
     }, {
@@ -7129,7 +7129,7 @@
         "type" : "ROAD",
         "dir" : "S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 24,
       "y" : 21
     }, {
@@ -7143,7 +7143,7 @@
         "type" : "ROAD",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 24,
       "y" : 22
     }, {
@@ -7160,7 +7160,7 @@
         "type" : "RAIL",
         "dir" : "NE_S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 24,
       "y" : 23
     }, {
@@ -7175,7 +7175,7 @@
         "dir" : "N_S"
       } ],
       "entrenchment" : 29,
-      "owner" : 1,
+      "owner" : 0,
       "vp" : 5,
       "x" : 24,
       "y" : 24
@@ -7187,37 +7187,37 @@
         "type" : "RAIL",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 24,
       "y" : 25
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 24,
       "y" : 26
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 24,
       "y" : 27
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 24,
       "y" : 28
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 25,
       "y" : 0
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 25,
       "y" : 1
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 25,
       "y" : 2
     }, {
@@ -7228,7 +7228,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 25,
       "y" : 3
     }, {
@@ -7239,7 +7239,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 25,
       "y" : 4
     }, {
@@ -7253,7 +7253,7 @@
         "type" : "RIVER",
         "dir" : "NE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 25,
       "y" : 5
     }, {
@@ -7264,7 +7264,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 25,
       "y" : 6
     }, {
@@ -7281,7 +7281,7 @@
         "type" : "RAIL",
         "dir" : "NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 25,
       "y" : 7
     }, {
@@ -7295,7 +7295,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 25,
       "y" : 8
     }, {
@@ -7306,7 +7306,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 25,
       "y" : 9
     }, {
@@ -7317,7 +7317,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 25,
       "y" : 10
     }, {
@@ -7331,7 +7331,7 @@
         "type" : "ROAD",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 25,
       "y" : 11
     }, {
@@ -7342,7 +7342,7 @@
         "type" : "RIVER",
         "dir" : "NE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 25,
       "y" : 12
     }, {
@@ -7356,7 +7356,7 @@
         "type" : "ROAD",
         "dir" : "NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 25,
       "y" : 13
     }, {
@@ -7364,7 +7364,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 25,
       "y" : 14
     }, {
@@ -7378,7 +7378,7 @@
         "type" : "ROAD",
         "dir" : "NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 25,
       "y" : 15
     }, {
@@ -7386,7 +7386,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 25,
       "y" : 16
     }, {
@@ -7397,7 +7397,7 @@
         "type" : "FOREST",
         "dir" : "NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 25,
       "y" : 17
     }, {
@@ -7411,7 +7411,7 @@
         "type" : "ROAD",
         "dir" : "NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 25,
       "y" : 18
     }, {
@@ -7422,7 +7422,7 @@
         "type" : "FOREST",
         "dir" : "SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 25,
       "y" : 19
     }, {
@@ -7433,7 +7433,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "NE_SE_S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 25,
       "y" : 20
     }, {
@@ -7444,7 +7444,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 25,
       "y" : 21
     }, {
@@ -7452,7 +7452,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 25,
       "y" : 22
     }, {
@@ -7466,7 +7466,7 @@
         "type" : "RAIL",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 25,
       "y" : 23
     }, {
@@ -7480,7 +7480,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 25,
       "y" : 24
     }, {
@@ -7497,37 +7497,37 @@
         "type" : "ROAD",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 25,
       "y" : 25
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 25,
       "y" : 26
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 25,
       "y" : 27
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 25,
       "y" : 28
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 26,
       "y" : 0
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 26,
       "y" : 1
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 26,
       "y" : 2
     }, {
@@ -7538,7 +7538,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 26,
       "y" : 3
     }, {
@@ -7552,7 +7552,7 @@
         "type" : "RIVER",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 26,
       "y" : 4
     }, {
@@ -7563,7 +7563,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 26,
       "y" : 5
     }, {
@@ -7580,7 +7580,7 @@
         "type" : "RAIL",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 26,
       "y" : 6
     }, {
@@ -7594,7 +7594,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 26,
       "y" : 7
     }, {
@@ -7605,7 +7605,7 @@
         "type" : "FOREST",
         "dir" : "N_NE_SE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 26,
       "y" : 8
     }, {
@@ -7616,7 +7616,7 @@
         "type" : "FOREST",
         "dir" : "N_NE_SE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 26,
       "y" : 9
     }, {
@@ -7627,7 +7627,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 26,
       "y" : 10
     }, {
@@ -7641,7 +7641,7 @@
         "type" : "ROAD",
         "dir" : "S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 26,
       "y" : 11
     }, {
@@ -7652,7 +7652,7 @@
         "type" : "ROAD",
         "dir" : "N_SE_S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 26,
       "y" : 12
     }, {
@@ -7666,7 +7666,7 @@
         "type" : "ROAD",
         "dir" : "N_SE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 26,
       "y" : 13
     }, {
@@ -7677,7 +7677,7 @@
         "type" : "ROAD",
         "dir" : "S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 26,
       "y" : 14
     }, {
@@ -7691,7 +7691,7 @@
         "type" : "ROAD",
         "dir" : "N_NE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 26,
       "y" : 15
     }, {
@@ -7705,7 +7705,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "SE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 26,
       "y" : 16
     }, {
@@ -7716,7 +7716,7 @@
         "type" : "ROAD",
         "dir" : "SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 26,
       "y" : 17
     }, {
@@ -7727,7 +7727,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 26,
       "y" : 18
     }, {
@@ -7738,7 +7738,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 26,
       "y" : 19
     }, {
@@ -7749,7 +7749,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 26,
       "y" : 20
     }, {
@@ -7760,7 +7760,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 26,
       "y" : 21
     }, {
@@ -7771,7 +7771,7 @@
         "type" : "RAIL",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 26,
       "y" : 22
     }, {
@@ -7785,7 +7785,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 26,
       "y" : 23
     }, {
@@ -7796,7 +7796,7 @@
         "type" : "RIVER",
         "dir" : "NE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 26,
       "y" : 24
     }, {
@@ -7810,37 +7810,37 @@
         "type" : "ROAD",
         "dir" : "S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 26,
       "y" : 25
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 26,
       "y" : 26
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 26,
       "y" : 27
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 26,
       "y" : 28
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 27,
       "y" : 0
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 27,
       "y" : 1
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 27,
       "y" : 2
     }, {
@@ -7854,7 +7854,7 @@
         "type" : "RAIL",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 27,
       "y" : 3
     }, {
@@ -7868,7 +7868,7 @@
         "type" : "RAIL",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 27,
       "y" : 4
     }, {
@@ -7882,7 +7882,7 @@
         "type" : "RAIL",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 27,
       "y" : 5
     }, {
@@ -7899,7 +7899,7 @@
         "type" : "RAIL",
         "dir" : "N_SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 27,
       "y" : 6
     }, {
@@ -7916,7 +7916,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 27,
       "y" : 7
     }, {
@@ -7930,7 +7930,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "N_NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 27,
       "y" : 8
     }, {
@@ -7941,7 +7941,7 @@
         "type" : "FOREST",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 27,
       "y" : 9
     }, {
@@ -7952,7 +7952,7 @@
         "type" : "FOREST",
         "dir" : "N_NE_SE_S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 27,
       "y" : 10
     }, {
@@ -7966,7 +7966,7 @@
         "type" : "FOREST",
         "dir" : "N_NE_SE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 27,
       "y" : 11
     }, {
@@ -7978,7 +7978,7 @@
         "dir" : "SE_SW_NW"
       } ],
       "entrenchment" : 43,
-      "owner" : 1,
+      "owner" : 0,
       "x" : 27,
       "y" : 12
     }, {
@@ -7990,7 +7990,7 @@
         "dir" : "NE_NW"
       } ],
       "entrenchment" : 32,
-      "owner" : 1,
+      "owner" : 0,
       "x" : 27,
       "y" : 13
     }, {
@@ -8004,7 +8004,7 @@
         "type" : "ROAD",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 27,
       "y" : 14
     }, {
@@ -8015,7 +8015,7 @@
         "type" : "ROAD",
         "dir" : "SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 27,
       "y" : 15
     }, {
@@ -8026,7 +8026,7 @@
         "type" : "RIVER",
         "dir" : "NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 27,
       "y" : 16
     }, {
@@ -8037,7 +8037,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 27,
       "y" : 17
     }, {
@@ -8048,7 +8048,7 @@
         "type" : "ROAD",
         "dir" : "NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 27,
       "y" : 18
     }, {
@@ -8059,7 +8059,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "NE_SE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 27,
       "y" : 19
     }, {
@@ -8070,7 +8070,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "N_NE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 27,
       "y" : 20
     }, {
@@ -8081,7 +8081,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 27,
       "y" : 21
     }, {
@@ -8092,7 +8092,7 @@
         "type" : "RAIL",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 27,
       "y" : 22
     }, {
@@ -8106,7 +8106,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 27,
       "y" : 23
     }, {
@@ -8117,7 +8117,7 @@
         "type" : "RIVER",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 27,
       "y" : 24
     }, {
@@ -8128,37 +8128,37 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 27,
       "y" : 25
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 27,
       "y" : 26
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 27,
       "y" : 27
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 27,
       "y" : 28
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 28,
       "y" : 0
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 28,
       "y" : 1
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 28,
       "y" : 2
     }, {
@@ -8169,7 +8169,7 @@
         "type" : "RIVER",
         "dir" : "N_SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 28,
       "y" : 3
     }, {
@@ -8180,7 +8180,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 28,
       "y" : 4
     }, {
@@ -8191,7 +8191,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 28,
       "y" : 5
     }, {
@@ -8208,7 +8208,7 @@
         "type" : "RAIL",
         "dir" : "NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 28,
       "y" : 6
     }, {
@@ -8228,7 +8228,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 28,
       "y" : 7
     }, {
@@ -8239,7 +8239,7 @@
         "type" : "FOREST",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 28,
       "y" : 8
     }, {
@@ -8250,7 +8250,7 @@
         "type" : "FOREST",
         "dir" : "N_NE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 28,
       "y" : 9
     }, {
@@ -8264,7 +8264,7 @@
         "type" : "FOREST",
         "dir" : "N_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 28,
       "y" : 10
     }, {
@@ -8275,7 +8275,7 @@
         "type" : "FOREST",
         "dir" : "N_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 28,
       "y" : 11
     }, {
@@ -8289,7 +8289,7 @@
         "type" : "ROAD",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 28,
       "y" : 12
     }, {
@@ -8300,7 +8300,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 28,
       "y" : 13
     }, {
@@ -8314,7 +8314,7 @@
         "type" : "ROAD",
         "dir" : "S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 28,
       "y" : 14
     }, {
@@ -8328,7 +8328,7 @@
         "type" : "ROAD",
         "dir" : "N_SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 28,
       "y" : 15
     }, {
@@ -8339,7 +8339,7 @@
         "type" : "FOREST",
         "dir" : "SE_S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 28,
       "y" : 16
     }, {
@@ -8353,7 +8353,7 @@
         "type" : "ROAD",
         "dir" : "SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 28,
       "y" : 17
     }, {
@@ -8365,7 +8365,7 @@
         "dir" : "S_SW"
       } ],
       "entrenchment" : 75,
-      "owner" : 1,
+      "owner" : 0,
       "x" : 28,
       "y" : 18
     }, {
@@ -8376,7 +8376,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "N_SE_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 28,
       "y" : 19
     }, {
@@ -8387,7 +8387,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_SE_S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 28,
       "y" : 20
     }, {
@@ -8398,7 +8398,7 @@
         "type" : "RAIL",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 28,
       "y" : 21
     }, {
@@ -8412,7 +8412,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 28,
       "y" : 22
     }, {
@@ -8423,7 +8423,7 @@
         "type" : "RIVER",
         "dir" : "NE_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 28,
       "y" : 23
     }, {
@@ -8434,7 +8434,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 28,
       "y" : 24
     }, {
@@ -8445,37 +8445,37 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 28,
       "y" : 25
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 28,
       "y" : 26
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 28,
       "y" : 27
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 28,
       "y" : 28
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 29,
       "y" : 0
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 29,
       "y" : 1
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 29,
       "y" : 2
     }, {
@@ -8486,7 +8486,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 29,
       "y" : 3
     }, {
@@ -8500,7 +8500,7 @@
         "type" : "RIVER",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 29,
       "y" : 4
     }, {
@@ -8511,7 +8511,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 29,
       "y" : 5
     }, {
@@ -8525,7 +8525,7 @@
         "type" : "RAIL",
         "dir" : "SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 29,
       "y" : 6
     }, {
@@ -8539,7 +8539,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 29,
       "y" : 7
     }, {
@@ -8550,7 +8550,7 @@
         "type" : "FOREST",
         "dir" : "SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 29,
       "y" : 8
     }, {
@@ -8561,7 +8561,7 @@
         "type" : "FOREST",
         "dir" : "N_NE_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 29,
       "y" : 9
     }, {
@@ -8575,7 +8575,7 @@
         "type" : "RIVER",
         "dir" : "SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 29,
       "y" : 10
     }, {
@@ -8589,7 +8589,7 @@
         "type" : "ROAD",
         "dir" : "NE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 29,
       "y" : 11
     }, {
@@ -8603,7 +8603,7 @@
         "type" : "ROAD",
         "dir" : "N_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 29,
       "y" : 12
     }, {
@@ -8614,7 +8614,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 29,
       "y" : 13
     }, {
@@ -8625,7 +8625,7 @@
         "type" : "FOREST",
         "dir" : "SE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 29,
       "y" : 14
     }, {
@@ -8639,7 +8639,7 @@
         "type" : "ROAD",
         "dir" : "NE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 29,
       "y" : 15
     }, {
@@ -8656,7 +8656,7 @@
         "type" : "ROAD",
         "dir" : "N_NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 29,
       "y" : 16
     }, {
@@ -8670,7 +8670,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "NE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 29,
       "y" : 17
     }, {
@@ -8682,7 +8682,7 @@
         "dir" : "NE_NW"
       } ],
       "entrenchment" : 64,
-      "owner" : 1,
+      "owner" : 0,
       "x" : 29,
       "y" : 18
     }, {
@@ -8693,7 +8693,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 29,
       "y" : 19
     }, {
@@ -8704,7 +8704,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 29,
       "y" : 20
     }, {
@@ -8718,7 +8718,7 @@
         "type" : "RAIL",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 29,
       "y" : 21
     }, {
@@ -8735,7 +8735,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 29,
       "y" : 22
     }, {
@@ -8749,7 +8749,7 @@
         "type" : "RIVER",
         "dir" : "SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 29,
       "y" : 23
     }, {
@@ -8760,7 +8760,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 29,
       "y" : 24
     }, {
@@ -8771,37 +8771,37 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 29,
       "y" : 25
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 29,
       "y" : 26
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 29,
       "y" : 27
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 29,
       "y" : 28
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 30,
       "y" : 0
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 30,
       "y" : 1
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 30,
       "y" : 2
     }, {
@@ -8815,7 +8815,7 @@
         "type" : "ROAD",
         "dir" : "N_SE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 30,
       "y" : 3
     }, {
@@ -8829,7 +8829,7 @@
         "type" : "RIVER",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 30,
       "y" : 4
     }, {
@@ -8840,7 +8840,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 30,
       "y" : 5
     }, {
@@ -8854,7 +8854,7 @@
         "type" : "RAIL",
         "dir" : "NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 30,
       "y" : 6
     }, {
@@ -8869,7 +8869,7 @@
         "dir" : "NE_NW"
       } ],
       "entrenchment" : 32,
-      "owner" : 1,
+      "owner" : 0,
       "x" : 30,
       "y" : 7
     }, {
@@ -8880,7 +8880,7 @@
         "type" : "FOREST",
         "dir" : "SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 30,
       "y" : 8
     }, {
@@ -8894,7 +8894,7 @@
         "type" : "ROAD",
         "dir" : "NE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 30,
       "y" : 9
     }, {
@@ -8908,7 +8908,7 @@
         "type" : "ROAD",
         "dir" : "N_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 30,
       "y" : 10
     }, {
@@ -8920,7 +8920,7 @@
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "entrenchment" : 46,
-      "owner" : 0,
+      "owner" : 1,
       "x" : 30,
       "y" : 11
     }, {
@@ -8932,7 +8932,7 @@
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "entrenchment" : 46,
-      "owner" : 0,
+      "owner" : 1,
       "x" : 30,
       "y" : 12
     }, {
@@ -8944,7 +8944,7 @@
         "dir" : "N_NE_NW"
       } ],
       "entrenchment" : 46,
-      "owner" : 0,
+      "owner" : 1,
       "x" : 30,
       "y" : 13
     }, {
@@ -8959,7 +8959,7 @@
         "dir" : "NE_SW"
       } ],
       "entrenchment" : 46,
-      "owner" : 0,
+      "owner" : 1,
       "x" : 30,
       "y" : 14
     }, {
@@ -8973,7 +8973,7 @@
         "type" : "ROAD",
         "dir" : "S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 30,
       "y" : 15
     }, {
@@ -8990,7 +8990,7 @@
         "type" : "ROAD",
         "dir" : "N_SE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 30,
       "y" : 16
     }, {
@@ -9005,7 +9005,7 @@
         "dir" : "SE_SW"
       } ],
       "entrenchment" : 64,
-      "owner" : 1,
+      "owner" : 0,
       "x" : 30,
       "y" : 17
     }, {
@@ -9016,7 +9016,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 30,
       "y" : 18
     }, {
@@ -9028,7 +9028,7 @@
         "dir" : "NE_SW"
       } ],
       "entrenchment" : 64,
-      "owner" : 1,
+      "owner" : 0,
       "x" : 30,
       "y" : 19
     }, {
@@ -9042,7 +9042,7 @@
         "type" : "RAIL",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 30,
       "y" : 20
     }, {
@@ -9060,7 +9060,7 @@
         "dir" : "NE_SW"
       } ],
       "entrenchment" : 48,
-      "owner" : 1,
+      "owner" : 0,
       "x" : 30,
       "y" : 21
     }, {
@@ -9074,7 +9074,7 @@
         "type" : "RIVER",
         "dir" : "NE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 30,
       "y" : 22
     }, {
@@ -9088,7 +9088,7 @@
         "type" : "RIVER",
         "dir" : "N_S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 30,
       "y" : 23
     }, {
@@ -9102,7 +9102,7 @@
         "type" : "RIVER",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 30,
       "y" : 24
     }, {
@@ -9116,37 +9116,37 @@
         "type" : "RIVER",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 30,
       "y" : 25
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 30,
       "y" : 26
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 30,
       "y" : 27
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 30,
       "y" : 28
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 31,
       "y" : 0
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 31,
       "y" : 1
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 31,
       "y" : 2
     }, {
@@ -9157,7 +9157,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 31,
       "y" : 3
     }, {
@@ -9171,7 +9171,7 @@
         "type" : "ROAD",
         "dir" : "S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 31,
       "y" : 4
     }, {
@@ -9188,7 +9188,7 @@
         "type" : "ROAD",
         "dir" : "N_SE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 31,
       "y" : 5
     }, {
@@ -9202,7 +9202,7 @@
         "type" : "RAIL",
         "dir" : "SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 31,
       "y" : 6
     }, {
@@ -9217,7 +9217,7 @@
         "dir" : "SE_SW"
       } ],
       "entrenchment" : 43,
-      "owner" : 1,
+      "owner" : 0,
       "x" : 31,
       "y" : 7
     }, {
@@ -9228,7 +9228,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 31,
       "y" : 8
     }, {
@@ -9242,7 +9242,7 @@
         "type" : "ROAD",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 31,
       "y" : 9
     }, {
@@ -9253,7 +9253,7 @@
         "type" : "FOREST",
         "dir" : "SE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 31,
       "y" : 10
     }, {
@@ -9265,7 +9265,7 @@
         "dir" : "SE_S_SW_NW"
       } ],
       "entrenchment" : 46,
-      "owner" : 0,
+      "owner" : 1,
       "x" : 31,
       "y" : 11
     }, {
@@ -9276,7 +9276,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 31,
       "y" : 12
     }, {
@@ -9287,7 +9287,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 31,
       "y" : 13
     }, {
@@ -9301,7 +9301,7 @@
         "type" : "ROAD",
         "dir" : "S_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 31,
       "y" : 14
     }, {
@@ -9319,7 +9319,7 @@
         "dir" : "N_NE"
       } ],
       "entrenchment" : 46,
-      "owner" : 0,
+      "owner" : 1,
       "x" : 31,
       "y" : 15
     }, {
@@ -9333,7 +9333,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "N_NE_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 31,
       "y" : 16
     }, {
@@ -9350,7 +9350,7 @@
         "type" : "ROAD",
         "dir" : "SE_S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 31,
       "y" : 17
     }, {
@@ -9364,7 +9364,7 @@
         "type" : "ROAD",
         "dir" : "N_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 31,
       "y" : 18
     }, {
@@ -9375,7 +9375,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 31,
       "y" : 19
     }, {
@@ -9389,7 +9389,7 @@
         "type" : "RAIL",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 31,
       "y" : 20
     }, {
@@ -9406,7 +9406,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 31,
       "y" : 21
     }, {
@@ -9417,7 +9417,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 31,
       "y" : 22
     }, {
@@ -9428,7 +9428,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 31,
       "y" : 23
     }, {
@@ -9439,7 +9439,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 31,
       "y" : 24
     }, {
@@ -9450,37 +9450,37 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 31,
       "y" : 25
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 31,
       "y" : 26
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 31,
       "y" : 27
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 31,
       "y" : 28
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 32,
       "y" : 0
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 32,
       "y" : 1
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 32,
       "y" : 2
     }, {
@@ -9491,7 +9491,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 32,
       "y" : 3
     }, {
@@ -9502,7 +9502,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 32,
       "y" : 4
     }, {
@@ -9516,7 +9516,7 @@
         "type" : "ROAD",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 32,
       "y" : 5
     }, {
@@ -9527,7 +9527,7 @@
         "type" : "RAIL",
         "dir" : "NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 32,
       "y" : 6
     }, {
@@ -9538,7 +9538,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 32,
       "y" : 7
     }, {
@@ -9552,7 +9552,7 @@
         "type" : "ROAD",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 32,
       "y" : 8
     }, {
@@ -9566,7 +9566,7 @@
         "type" : "RIVER",
         "dir" : "N_NE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 32,
       "y" : 9
     }, {
@@ -9578,7 +9578,7 @@
         "dir" : "SE_NW"
       } ],
       "entrenchment" : 20,
-      "owner" : 0,
+      "owner" : 1,
       "x" : 32,
       "y" : 10
     }, {
@@ -9589,7 +9589,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "SE_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 32,
       "y" : 11
     }, {
@@ -9600,7 +9600,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 32,
       "y" : 12
     }, {
@@ -9611,7 +9611,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 32,
       "y" : 13
     }, {
@@ -9625,7 +9625,7 @@
         "type" : "ROAD",
         "dir" : "SE_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 32,
       "y" : 14
     }, {
@@ -9636,7 +9636,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 32,
       "y" : 15
     }, {
@@ -9650,7 +9650,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "NE_SE"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 32,
       "y" : 16
     }, {
@@ -9661,7 +9661,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "NE_S_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 32,
       "y" : 17
     }, {
@@ -9675,7 +9675,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "N_S"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 32,
       "y" : 18
     }, {
@@ -9692,7 +9692,7 @@
         "type" : "RAIL",
         "dir" : "NE_SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 32,
       "y" : 19
     }, {
@@ -9709,7 +9709,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "N_SE_S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "vp" : 25,
       "x" : 32,
       "y" : 20
@@ -9727,7 +9727,7 @@
         "type" : "ROAD",
         "dir" : "N_S"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 32,
       "y" : 21
     }, {
@@ -9741,7 +9741,7 @@
         "type" : "ROAD",
         "dir" : "N_S"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 32,
       "y" : 22
     }, {
@@ -9758,7 +9758,7 @@
         "type" : "ROAD",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 32,
       "y" : 23
     }, {
@@ -9775,7 +9775,7 @@
         "type" : "ROAD",
         "dir" : "N_SE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 32,
       "y" : 24
     }, {
@@ -9789,37 +9789,37 @@
         "type" : "ROAD",
         "dir" : "NE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 32,
       "y" : 25
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 32,
       "y" : 26
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 32,
       "y" : 27
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 32,
       "y" : 28
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 33,
       "y" : 0
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 33,
       "y" : 1
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 33,
       "y" : 2
     }, {
@@ -9830,7 +9830,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 33,
       "y" : 3
     }, {
@@ -9841,7 +9841,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 33,
       "y" : 4
     }, {
@@ -9849,7 +9849,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 33,
       "y" : 5
     }, {
@@ -9866,7 +9866,7 @@
         "type" : "RAIL",
         "dir" : "SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 33,
       "y" : 6
     }, {
@@ -9880,7 +9880,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 33,
       "y" : 7
     }, {
@@ -9894,7 +9894,7 @@
         "type" : "ROAD",
         "dir" : "SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 33,
       "y" : 8
     }, {
@@ -9909,7 +9909,7 @@
         "dir" : "N_SE_S_SW"
       } ],
       "entrenchment" : 20,
-      "owner" : 0,
+      "owner" : 1,
       "x" : 33,
       "y" : 9
     }, {
@@ -9924,7 +9924,7 @@
         "dir" : "N_S"
       } ],
       "entrenchment" : 29,
-      "owner" : 0,
+      "owner" : 1,
       "x" : 33,
       "y" : 10
     }, {
@@ -9938,7 +9938,7 @@
         "type" : "FOREST",
         "dir" : "NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 33,
       "y" : 11
     }, {
@@ -9949,7 +9949,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "NE_SE_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 33,
       "y" : 12
     }, {
@@ -9960,7 +9960,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 33,
       "y" : 13
     }, {
@@ -9971,7 +9971,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 33,
       "y" : 14
     }, {
@@ -9985,7 +9985,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "NE_S_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 33,
       "y" : 15
     }, {
@@ -9999,7 +9999,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "N_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 33,
       "y" : 16
     }, {
@@ -10013,7 +10013,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 33,
       "y" : 17
     }, {
@@ -10024,7 +10024,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "N"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 33,
       "y" : 18
     }, {
@@ -10041,7 +10041,7 @@
         "type" : "RAIL",
         "dir" : "NE_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 33,
       "y" : 19
     }, {
@@ -10056,7 +10056,7 @@
         "dir" : "SE_NW"
       } ],
       "entrenchment" : 64,
-      "owner" : 1,
+      "owner" : 0,
       "x" : 33,
       "y" : 20
     }, {
@@ -10073,7 +10073,7 @@
         "type" : "ROAD",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 33,
       "y" : 21
     }, {
@@ -10084,7 +10084,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "SE_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 33,
       "y" : 22
     }, {
@@ -10098,7 +10098,7 @@
         "type" : "RIVER",
         "dir" : "NE_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 33,
       "y" : 23
     }, {
@@ -10109,7 +10109,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 33,
       "y" : 24
     }, {
@@ -10123,37 +10123,37 @@
         "type" : "ROAD",
         "dir" : "NE_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 33,
       "y" : 25
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 33,
       "y" : 26
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 33,
       "y" : 27
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 33,
       "y" : 28
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 34,
       "y" : 0
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 34,
       "y" : 1
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 34,
       "y" : 2
     }, {
@@ -10161,7 +10161,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 34,
       "y" : 3
     }, {
@@ -10172,7 +10172,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 34,
       "y" : 4
     }, {
@@ -10186,7 +10186,7 @@
         "type" : "ROAD",
         "dir" : "S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 34,
       "y" : 5
     }, {
@@ -10200,7 +10200,7 @@
         "type" : "RAIL",
         "dir" : "NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 34,
       "y" : 6
     }, {
@@ -10212,7 +10212,7 @@
         "dir" : "NE_NW"
       } ],
       "entrenchment" : 64,
-      "owner" : 1,
+      "owner" : 0,
       "x" : 34,
       "y" : 7
     }, {
@@ -10227,7 +10227,7 @@
         "dir" : "NE_NW"
       } ],
       "entrenchment" : 22,
-      "owner" : 0,
+      "owner" : 1,
       "x" : 34,
       "y" : 8
     }, {
@@ -10239,7 +10239,7 @@
         "dir" : "SE_S_NW"
       } ],
       "entrenchment" : 9,
-      "owner" : 0,
+      "owner" : 1,
       "x" : 34,
       "y" : 9
     }, {
@@ -10253,7 +10253,7 @@
         "type" : "RIVER",
         "dir" : "N"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 34,
       "y" : 10
     }, {
@@ -10267,7 +10267,7 @@
         "type" : "RIVER",
         "dir" : "S_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 34,
       "y" : 11
     }, {
@@ -10281,7 +10281,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "NE_S"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 34,
       "y" : 12
     }, {
@@ -10295,7 +10295,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "N_S"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 34,
       "y" : 13
     }, {
@@ -10312,7 +10312,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "N_NE_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 34,
       "y" : 14
     }, {
@@ -10323,7 +10323,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 34,
       "y" : 15
     }, {
@@ -10334,7 +10334,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 34,
       "y" : 16
     }, {
@@ -10345,7 +10345,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "NE_SE_S_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 34,
       "y" : 17
     }, {
@@ -10359,7 +10359,7 @@
         "type" : "RAIL",
         "dir" : "NE_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 34,
       "y" : 18
     }, {
@@ -10373,7 +10373,7 @@
         "type" : "ROAD",
         "dir" : "NE_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 34,
       "y" : 19
     }, {
@@ -10387,7 +10387,7 @@
         "type" : "RAIL",
         "dir" : "SE_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 34,
       "y" : 20
     }, {
@@ -10401,7 +10401,7 @@
         "type" : "ROAD",
         "dir" : "NE_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 34,
       "y" : 21
     }, {
@@ -10415,7 +10415,7 @@
         "type" : "RIVER",
         "dir" : "SE_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 34,
       "y" : 22
     }, {
@@ -10426,7 +10426,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 34,
       "y" : 23
     }, {
@@ -10440,7 +10440,7 @@
         "type" : "ROAD",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 34,
       "y" : 24
     }, {
@@ -10451,12 +10451,12 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 34,
       "y" : 25
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 34,
       "y" : 26
     }, {
@@ -10467,27 +10467,27 @@
       "feature" : [ "AIRFIELD" ],
       "entrenchment" : 12,
       "distance" : 100,
-      "owner" : 0,
+      "owner" : 1,
       "x" : 34,
       "y" : 27
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 34,
       "y" : 28
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 35,
       "y" : 0
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 35,
       "y" : 1
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 35,
       "y" : 2
     }, {
@@ -10501,7 +10501,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 35,
       "y" : 3
     }, {
@@ -10512,7 +10512,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "N_SE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 35,
       "y" : 4
     }, {
@@ -10523,7 +10523,7 @@
         "type" : "RIVER",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 35,
       "y" : 5
     }, {
@@ -10535,7 +10535,7 @@
         "dir" : "S_SW"
       } ],
       "entrenchment" : 75,
-      "owner" : 1,
+      "owner" : 0,
       "x" : 35,
       "y" : 6
     }, {
@@ -10553,7 +10553,7 @@
         "dir" : "N_SE"
       } ],
       "entrenchment" : 64,
-      "owner" : 1,
+      "owner" : 0,
       "x" : 35,
       "y" : 7
     }, {
@@ -10568,7 +10568,7 @@
         "dir" : "N_NE_S_SW"
       } ],
       "entrenchment" : 48,
-      "owner" : 0,
+      "owner" : 1,
       "vp" : 25,
       "x" : 35,
       "y" : 8
@@ -10583,7 +10583,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "N_S"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 35,
       "y" : 9
     }, {
@@ -10598,7 +10598,7 @@
         "dir" : "N_SE_S"
       } ],
       "entrenchment" : 43,
-      "owner" : 0,
+      "owner" : 1,
       "x" : 35,
       "y" : 10
     }, {
@@ -10612,7 +10612,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "N_S"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 35,
       "y" : 11
     }, {
@@ -10629,7 +10629,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "N_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 35,
       "y" : 12
     }, {
@@ -10644,7 +10644,7 @@
         "dir" : "N_S"
       } ],
       "entrenchment" : 43,
-      "owner" : 0,
+      "owner" : 1,
       "x" : 35,
       "y" : 13
     }, {
@@ -10661,7 +10661,7 @@
         "type" : "ROAD",
         "dir" : "NE_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 35,
       "y" : 14
     }, {
@@ -10672,7 +10672,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 35,
       "y" : 15
     }, {
@@ -10683,7 +10683,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 35,
       "y" : 16
     }, {
@@ -10694,7 +10694,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 35,
       "y" : 17
     }, {
@@ -10708,7 +10708,7 @@
         "type" : "RAIL",
         "dir" : "NE_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 35,
       "y" : 18
     }, {
@@ -10722,7 +10722,7 @@
         "type" : "ROAD",
         "dir" : "NE_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 35,
       "y" : 19
     }, {
@@ -10733,7 +10733,7 @@
         "type" : "FOREST",
         "dir" : "NE_SE_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 35,
       "y" : 20
     }, {
@@ -10750,7 +10750,7 @@
         "type" : "RAIL",
         "dir" : "SE_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 35,
       "y" : 21
     }, {
@@ -10761,7 +10761,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "NE_SE_S_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 35,
       "y" : 22
     }, {
@@ -10775,7 +10775,7 @@
         "type" : "RIVER",
         "dir" : "NE_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 35,
       "y" : 23
     }, {
@@ -10789,7 +10789,7 @@
         "type" : "ROAD",
         "dir" : "SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 35,
       "y" : 24
     }, {
@@ -10800,12 +10800,12 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 35,
       "y" : 25
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 35,
       "y" : 26
     }, {
@@ -10816,27 +10816,27 @@
       "feature" : [ "AIRFIELD" ],
       "entrenchment" : 25,
       "distance" : 100,
-      "owner" : 0,
+      "owner" : 1,
       "x" : 35,
       "y" : 27
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 35,
       "y" : 28
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 36,
       "y" : 0
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 36,
       "y" : 1
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 36,
       "y" : 2
     }, {
@@ -10847,7 +10847,7 @@
         "type" : "RIVER",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 36,
       "y" : 3
     }, {
@@ -10861,7 +10861,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 36,
       "y" : 4
     }, {
@@ -10872,7 +10872,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "N_NE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 36,
       "y" : 5
     }, {
@@ -10883,7 +10883,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "N_NE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 36,
       "y" : 6
     }, {
@@ -10898,7 +10898,7 @@
         "dir" : "NE_S_NW"
       } ],
       "entrenchment" : 64,
-      "owner" : 1,
+      "owner" : 0,
       "x" : 36,
       "y" : 7
     }, {
@@ -10913,7 +10913,7 @@
         "dir" : "N_SE"
       } ],
       "entrenchment" : 46,
-      "owner" : 0,
+      "owner" : 1,
       "x" : 36,
       "y" : 8
     }, {
@@ -10924,7 +10924,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "N_NE"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 36,
       "y" : 9
     }, {
@@ -10939,7 +10939,7 @@
         "dir" : "SE_NW"
       } ],
       "entrenchment" : 9,
-      "owner" : 0,
+      "owner" : 1,
       "x" : 36,
       "y" : 10
     }, {
@@ -10950,7 +10950,7 @@
         "type" : "RIVER",
         "dir" : "N_S_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 36,
       "y" : 11
     }, {
@@ -10964,7 +10964,7 @@
         "type" : "RIVER",
         "dir" : "N"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 36,
       "y" : 12
     }, {
@@ -10979,7 +10979,7 @@
         "dir" : "NE_SW"
       } ],
       "entrenchment" : 43,
-      "owner" : 0,
+      "owner" : 1,
       "x" : 36,
       "y" : 13
     }, {
@@ -10990,7 +10990,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 36,
       "y" : 14
     }, {
@@ -10998,7 +10998,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_SE_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 36,
       "y" : 15
     }, {
@@ -11006,7 +11006,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 36,
       "y" : 16
     }, {
@@ -11017,7 +11017,7 @@
         "type" : "RAIL",
         "dir" : "NE_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 36,
       "y" : 17
     }, {
@@ -11031,7 +11031,7 @@
         "type" : "ROAD",
         "dir" : "SE_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 36,
       "y" : 18
     }, {
@@ -11042,7 +11042,7 @@
         "type" : "FOREST",
         "dir" : "NE_SE_S_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 36,
       "y" : 19
     }, {
@@ -11054,7 +11054,7 @@
         "dir" : "N_NE_SW_NW"
       } ],
       "entrenchment" : 24,
-      "owner" : 0,
+      "owner" : 1,
       "x" : 36,
       "y" : 20
     }, {
@@ -11071,7 +11071,7 @@
         "type" : "RAIL",
         "dir" : "SE_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 36,
       "y" : 21
     }, {
@@ -11085,7 +11085,7 @@
         "type" : "RIVER",
         "dir" : "SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 36,
       "y" : 22
     }, {
@@ -11096,7 +11096,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 36,
       "y" : 23
     }, {
@@ -11110,7 +11110,7 @@
         "type" : "ROAD",
         "dir" : "NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 36,
       "y" : 24
     }, {
@@ -11121,12 +11121,12 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 36,
       "y" : 25
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 36,
       "y" : 26
     }, {
@@ -11137,27 +11137,27 @@
       "feature" : [ "AIRFIELD" ],
       "entrenchment" : 25,
       "distance" : 100,
-      "owner" : 0,
+      "owner" : 1,
       "x" : 36,
       "y" : 27
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 36,
       "y" : 28
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 37,
       "y" : 0
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 37,
       "y" : 1
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 37,
       "y" : 2
     }, {
@@ -11168,7 +11168,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 37,
       "y" : 3
     }, {
@@ -11179,7 +11179,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "C"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 37,
       "y" : 4
     }, {
@@ -11194,7 +11194,7 @@
         "dir" : "NE_SW"
       } ],
       "entrenchment" : 64,
-      "owner" : 1,
+      "owner" : 0,
       "x" : 37,
       "y" : 5
     }, {
@@ -11206,7 +11206,7 @@
         "dir" : "NE_SW"
       } ],
       "entrenchment" : 64,
-      "owner" : 1,
+      "owner" : 0,
       "x" : 37,
       "y" : 6
     }, {
@@ -11221,7 +11221,7 @@
         "dir" : "NE_SW"
       } ],
       "entrenchment" : 64,
-      "owner" : 1,
+      "owner" : 0,
       "x" : 37,
       "y" : 7
     }, {
@@ -11239,7 +11239,7 @@
         "dir" : "NE_NW"
       } ],
       "entrenchment" : 46,
-      "owner" : 0,
+      "owner" : 1,
       "x" : 37,
       "y" : 8
     }, {
@@ -11253,7 +11253,7 @@
         "type" : "RAIL",
         "dir" : "SE_S_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 37,
       "y" : 9
     }, {
@@ -11267,7 +11267,7 @@
         "type" : "RAIL",
         "dir" : "N_S"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 37,
       "y" : 10
     }, {
@@ -11284,7 +11284,7 @@
         "type" : "RAIL",
         "dir" : "N_S"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 37,
       "y" : 11
     }, {
@@ -11298,7 +11298,7 @@
         "type" : "RAIL",
         "dir" : "N_S"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 37,
       "y" : 12
     }, {
@@ -11312,7 +11312,7 @@
         "type" : "RAIL",
         "dir" : "N_S"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 37,
       "y" : 13
     }, {
@@ -11326,7 +11326,7 @@
         "type" : "RAIL",
         "dir" : "N_S"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 37,
       "y" : 14
     }, {
@@ -11340,7 +11340,7 @@
         "type" : "RAIL",
         "dir" : "N_S"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 37,
       "y" : 15
     }, {
@@ -11351,7 +11351,7 @@
         "type" : "RAIL",
         "dir" : "N_S"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 37,
       "y" : 16
     }, {
@@ -11362,7 +11362,7 @@
         "type" : "RAIL",
         "dir" : "N_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 37,
       "y" : 17
     }, {
@@ -11370,7 +11370,7 @@
         "type" : "HILLS",
         "dir" : "SE_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 37,
       "y" : 18
     }, {
@@ -11381,7 +11381,7 @@
         "type" : "ROAD",
         "dir" : "NE_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 37,
       "y" : 19
     }, {
@@ -11393,7 +11393,7 @@
         "dir" : "N_NE_SE_SW_NW"
       } ],
       "entrenchment" : 12,
-      "owner" : 0,
+      "owner" : 1,
       "x" : 37,
       "y" : 20
     }, {
@@ -11407,7 +11407,7 @@
         "type" : "ROAD",
         "dir" : "SE_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 37,
       "y" : 21
     }, {
@@ -11421,7 +11421,7 @@
         "type" : "RAIL",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 37,
       "y" : 22
     }, {
@@ -11436,7 +11436,7 @@
         "dir" : "SE_NW"
       } ],
       "entrenchment" : 64,
-      "owner" : 1,
+      "owner" : 0,
       "x" : 37,
       "y" : 23
     }, {
@@ -11450,7 +11450,7 @@
         "type" : "ROAD",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 37,
       "y" : 24
     }, {
@@ -11461,12 +11461,12 @@
         "type" : "LIGHT_WOODS",
         "dir" : "NE_SE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 37,
       "y" : 25
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 37,
       "y" : 26
     }, {
@@ -11477,27 +11477,27 @@
       "feature" : [ "AIRFIELD" ],
       "entrenchment" : 25,
       "distance" : 100,
-      "owner" : 0,
+      "owner" : 1,
       "x" : 37,
       "y" : 27
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 37,
       "y" : 28
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 38,
       "y" : 0
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 38,
       "y" : 1
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 38,
       "y" : 2
     }, {
@@ -11511,7 +11511,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "NE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 38,
       "y" : 3
     }, {
@@ -11523,7 +11523,7 @@
         "dir" : "N_SW"
       } ],
       "entrenchment" : 48,
-      "owner" : 1,
+      "owner" : 0,
       "x" : 38,
       "y" : 4
     }, {
@@ -11537,7 +11537,7 @@
         "type" : "ROAD",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 38,
       "y" : 5
     }, {
@@ -11548,7 +11548,7 @@
         "type" : "RAIL",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 38,
       "y" : 6
     }, {
@@ -11563,7 +11563,7 @@
         "dir" : "SE_SW"
       } ],
       "entrenchment" : 46,
-      "owner" : 0,
+      "owner" : 1,
       "x" : 38,
       "y" : 7
     }, {
@@ -11574,7 +11574,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 38,
       "y" : 8
     }, {
@@ -11589,7 +11589,7 @@
         "dir" : "SE_NW"
       } ],
       "entrenchment" : 9,
-      "owner" : 0,
+      "owner" : 1,
       "x" : 38,
       "y" : 9
     }, {
@@ -11600,7 +11600,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 38,
       "y" : 10
     }, {
@@ -11614,7 +11614,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "SE_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 38,
       "y" : 11
     }, {
@@ -11622,7 +11622,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 38,
       "y" : 12
     }, {
@@ -11637,7 +11637,7 @@
         "dir" : "NE_NW"
       } ],
       "entrenchment" : 9,
-      "owner" : 0,
+      "owner" : 1,
       "x" : 38,
       "y" : 13
     }, {
@@ -11648,7 +11648,7 @@
         "type" : "FOREST",
         "dir" : "N_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 38,
       "y" : 14
     }, {
@@ -11656,7 +11656,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "NE_SE_S_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 38,
       "y" : 15
     }, {
@@ -11665,7 +11665,7 @@
         "dir" : "N_NE_S_SW_NW"
       } ],
       "entrenchment" : 43,
-      "owner" : 0,
+      "owner" : 1,
       "x" : 38,
       "y" : 16
     }, {
@@ -11673,7 +11673,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 38,
       "y" : 17
     }, {
@@ -11687,7 +11687,7 @@
         "type" : "ROAD",
         "dir" : "NE_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 38,
       "y" : 18
     }, {
@@ -11698,7 +11698,7 @@
         "type" : "FOREST",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 38,
       "y" : 19
     }, {
@@ -11710,7 +11710,7 @@
         "dir" : "N_NE_SE_NW"
       } ],
       "entrenchment" : 24,
-      "owner" : 0,
+      "owner" : 1,
       "x" : 38,
       "y" : 20
     }, {
@@ -11724,7 +11724,7 @@
         "type" : "ROAD",
         "dir" : "SE_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 38,
       "y" : 21
     }, {
@@ -11741,7 +11741,7 @@
         "type" : "RAIL",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 38,
       "y" : 22
     }, {
@@ -11755,7 +11755,7 @@
         "type" : "ROAD",
         "dir" : "N_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 38,
       "y" : 23
     }, {
@@ -11766,7 +11766,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 38,
       "y" : 24
     }, {
@@ -11777,12 +11777,12 @@
         "type" : "LIGHT_WOODS",
         "dir" : "N_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 38,
       "y" : 25
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 38,
       "y" : 26
     }, {
@@ -11793,27 +11793,27 @@
       "feature" : [ "AIRFIELD" ],
       "entrenchment" : 25,
       "distance" : 100,
-      "owner" : 0,
+      "owner" : 1,
       "x" : 38,
       "y" : 27
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 38,
       "y" : 28
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 39,
       "y" : 0
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 39,
       "y" : 1
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 39,
       "y" : 2
     }, {
@@ -11827,7 +11827,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "N_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 39,
       "y" : 3
     }, {
@@ -11835,7 +11835,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 39,
       "y" : 4
     }, {
@@ -11849,7 +11849,7 @@
         "type" : "ROAD",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 39,
       "y" : 5
     }, {
@@ -11863,7 +11863,7 @@
         "type" : "RAIL",
         "dir" : "NE_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 39,
       "y" : 6
     }, {
@@ -11875,7 +11875,7 @@
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "entrenchment" : 46,
-      "owner" : 0,
+      "owner" : 1,
       "x" : 39,
       "y" : 7
     }, {
@@ -11890,7 +11890,7 @@
         "dir" : "NE_NW"
       } ],
       "entrenchment" : 9,
-      "owner" : 0,
+      "owner" : 1,
       "x" : 39,
       "y" : 8
     }, {
@@ -11899,7 +11899,7 @@
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "entrenchment" : 43,
-      "owner" : 0,
+      "owner" : 1,
       "x" : 39,
       "y" : 9
     }, {
@@ -11914,7 +11914,7 @@
         "dir" : "SE_NW"
       } ],
       "entrenchment" : 9,
-      "owner" : 0,
+      "owner" : 1,
       "x" : 39,
       "y" : 10
     }, {
@@ -11925,7 +11925,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 39,
       "y" : 11
     }, {
@@ -11939,7 +11939,7 @@
         "type" : "IMPROVED_ROAD",
         "dir" : "SE_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 39,
       "y" : 12
     }, {
@@ -11954,7 +11954,7 @@
         "dir" : "NE_SW"
       } ],
       "entrenchment" : 9,
-      "owner" : 0,
+      "owner" : 1,
       "x" : 39,
       "y" : 13
     }, {
@@ -11965,7 +11965,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 39,
       "y" : 14
     }, {
@@ -11976,7 +11976,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_S_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 39,
       "y" : 15
     }, {
@@ -11984,7 +11984,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 39,
       "y" : 16
     }, {
@@ -11995,7 +11995,7 @@
         "type" : "FOREST",
         "dir" : "NE_SE"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 39,
       "y" : 17
     }, {
@@ -12006,7 +12006,7 @@
         "type" : "ROAD",
         "dir" : "NE_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 39,
       "y" : 18
     }, {
@@ -12017,7 +12017,7 @@
         "type" : "FOREST",
         "dir" : "SE_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 39,
       "y" : 19
     }, {
@@ -12029,7 +12029,7 @@
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "entrenchment" : 12,
-      "owner" : 0,
+      "owner" : 1,
       "x" : 39,
       "y" : 20
     }, {
@@ -12041,7 +12041,7 @@
         "dir" : "S"
       } ],
       "entrenchment" : 46,
-      "owner" : 0,
+      "owner" : 1,
       "x" : 39,
       "y" : 21
     }, {
@@ -12056,7 +12056,7 @@
         "dir" : "NE_SE_SW_NW"
       } ],
       "entrenchment" : 24,
-      "owner" : 0,
+      "owner" : 1,
       "x" : 39,
       "y" : 22
     }, {
@@ -12070,7 +12070,7 @@
         "type" : "RAIL",
         "dir" : "NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 39,
       "y" : 23
     }, {
@@ -12081,7 +12081,7 @@
         "type" : "RIVER",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 39,
       "y" : 24
     }, {
@@ -12092,37 +12092,37 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 39,
       "y" : 25
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 39,
       "y" : 26
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 39,
       "y" : 27
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 39,
       "y" : 28
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 40,
       "y" : 0
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 40,
       "y" : 1
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 40,
       "y" : 2
     }, {
@@ -12136,7 +12136,7 @@
         "type" : "RAIL",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 40,
       "y" : 3
     }, {
@@ -12150,7 +12150,7 @@
         "type" : "RAIL",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 40,
       "y" : 4
     }, {
@@ -12164,7 +12164,7 @@
         "type" : "RAIL",
         "dir" : "N_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 40,
       "y" : 5
     }, {
@@ -12176,7 +12176,7 @@
         "dir" : "N_NE_S_SW_NW"
       } ],
       "entrenchment" : 46,
-      "owner" : 0,
+      "owner" : 1,
       "x" : 40,
       "y" : 6
     }, {
@@ -12190,7 +12190,7 @@
         "type" : "ROAD",
         "dir" : "SE_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 40,
       "y" : 7
     }, {
@@ -12202,7 +12202,7 @@
         "dir" : "N_NE_SE_S_NW"
       } ],
       "entrenchment" : 9,
-      "owner" : 0,
+      "owner" : 1,
       "x" : 40,
       "y" : 8
     }, {
@@ -12213,7 +12213,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 40,
       "y" : 9
     }, {
@@ -12227,7 +12227,7 @@
         "type" : "RAIL",
         "dir" : "SE_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 40,
       "y" : 10
     }, {
@@ -12235,7 +12235,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 40,
       "y" : 11
     }, {
@@ -12247,7 +12247,7 @@
         "dir" : "SE_SW_NW"
       } ],
       "entrenchment" : 9,
-      "owner" : 0,
+      "owner" : 1,
       "x" : 40,
       "y" : 12
     }, {
@@ -12255,7 +12255,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 40,
       "y" : 13
     }, {
@@ -12266,7 +12266,7 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 40,
       "y" : 14
     }, {
@@ -12277,7 +12277,7 @@
         "type" : "FOREST",
         "dir" : "SE_S"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 40,
       "y" : 15
     }, {
@@ -12288,7 +12288,7 @@
         "type" : "FOREST",
         "dir" : "N_NE_SE_S_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 40,
       "y" : 16
     }, {
@@ -12302,7 +12302,7 @@
         "type" : "ROAD",
         "dir" : "SE_S_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 40,
       "y" : 17
     }, {
@@ -12316,7 +12316,7 @@
         "type" : "ROAD",
         "dir" : "N_S"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 40,
       "y" : 18
     }, {
@@ -12330,7 +12330,7 @@
         "type" : "ROAD",
         "dir" : "N_S"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 40,
       "y" : 19
     }, {
@@ -12345,7 +12345,7 @@
         "dir" : "N_S"
       } ],
       "entrenchment" : 12,
-      "owner" : 0,
+      "owner" : 1,
       "x" : 40,
       "y" : 20
     }, {
@@ -12360,7 +12360,7 @@
         "dir" : "N_SW"
       } ],
       "entrenchment" : 12,
-      "owner" : 0,
+      "owner" : 1,
       "x" : 40,
       "y" : 21
     }, {
@@ -12378,7 +12378,7 @@
         "dir" : "NE_SW"
       } ],
       "entrenchment" : 29,
-      "owner" : 0,
+      "owner" : 1,
       "x" : 40,
       "y" : 22
     }, {
@@ -12386,7 +12386,7 @@
         "type" : "HILLS",
         "dir" : "N_NE_SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 40,
       "y" : 23
     }, {
@@ -12397,7 +12397,7 @@
         "type" : "RIVER",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 40,
       "y" : 24
     }, {
@@ -12408,22 +12408,22 @@
         "type" : "BOCAGE_HEDGEROW",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 40,
       "y" : 25
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 40,
       "y" : 26
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 40,
       "y" : 27
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 40,
       "y" : 28
     } ],

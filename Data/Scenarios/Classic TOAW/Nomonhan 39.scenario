@@ -18,37 +18,37 @@
     "maxY" : 19,
     "cell" : [ {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 0,
       "y" : 0
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 0,
       "y" : 1
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 0,
       "y" : 2
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 0,
       "y" : 3
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 0,
       "y" : 4
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 0,
       "y" : 5
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 0,
       "y" : 6
     }, {
@@ -58,7 +58,7 @@
       } ],
       "feature" : [ "AIRFIELD" ],
       "distance" : 60,
-      "owner" : 0,
+      "owner" : 1,
       "x" : 0,
       "y" : 7
     }, {
@@ -68,7 +68,7 @@
       } ],
       "feature" : [ "AIRFIELD" ],
       "distance" : 60,
-      "owner" : 0,
+      "owner" : 1,
       "x" : 0,
       "y" : 8
     }, {
@@ -78,7 +78,7 @@
       } ],
       "feature" : [ "AIRFIELD" ],
       "distance" : 60,
-      "owner" : 0,
+      "owner" : 1,
       "x" : 0,
       "y" : 9
     }, {
@@ -87,7 +87,7 @@
         "dir" : "NE_SE_S_SW_NW"
       } ],
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 0,
       "y" : 10
     }, {
@@ -95,7 +95,7 @@
         "type" : "ARID",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 0,
       "y" : 11
     }, {
@@ -103,7 +103,7 @@
         "type" : "ARID",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 0,
       "y" : 12
     }, {
@@ -111,7 +111,7 @@
         "type" : "ARID",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 0,
       "y" : 13
     }, {
@@ -119,7 +119,7 @@
         "type" : "ARID",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 0,
       "y" : 14
     }, {
@@ -127,7 +127,7 @@
         "type" : "ARID",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 0,
       "y" : 15
     }, {
@@ -135,11 +135,11 @@
         "type" : "ARID",
         "dir" : "N_NE_SE_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 0,
       "y" : 16
     }, {
-      "owner" : 0,
+      "owner" : 1,
       "x" : 0,
       "y" : 17
     }, {
@@ -147,61 +147,61 @@
         "type" : "ROAD",
         "dir" : "NE_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 0,
       "y" : 18
     }, {
-      "owner" : 0,
+      "owner" : 1,
       "x" : 0,
       "y" : 19
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 1,
       "y" : 0
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 1,
       "y" : 1
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 1,
       "y" : 2
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 1,
       "y" : 3
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 1,
       "y" : 4
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 1,
       "y" : 5
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 1,
       "y" : 6
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 1,
       "y" : 7
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 1,
       "y" : 8
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 1,
       "y" : 9
     }, {
@@ -210,7 +210,7 @@
         "dir" : "NE_SE_S_SW"
       } ],
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 1,
       "y" : 10
     }, {
@@ -218,7 +218,7 @@
         "type" : "ARID",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 1,
       "y" : 11
     }, {
@@ -229,7 +229,7 @@
         "type" : "HILLS",
         "dir" : "NE"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 1,
       "y" : 12
     }, {
@@ -237,7 +237,7 @@
         "type" : "ARID",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 1,
       "y" : 13
     }, {
@@ -245,7 +245,7 @@
         "type" : "ARID",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 1,
       "y" : 14
     }, {
@@ -256,7 +256,7 @@
         "type" : "ROAD",
         "dir" : "NE_S"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 1,
       "y" : 15
     }, {
@@ -267,7 +267,7 @@
         "type" : "ROAD",
         "dir" : "N_S"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 1,
       "y" : 16
     }, {
@@ -278,7 +278,7 @@
         "type" : "ROAD",
         "dir" : "N_S"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 1,
       "y" : 17
     }, {
@@ -286,15 +286,15 @@
         "type" : "ROAD",
         "dir" : "N_NE_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 1,
       "y" : 18
     }, {
-      "owner" : 0,
+      "owner" : 1,
       "x" : 1,
       "y" : 19
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 2,
       "y" : 0
     }, {
@@ -302,7 +302,7 @@
         "type" : "SAND",
         "dir" : "S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 2,
       "y" : 1
     }, {
@@ -310,7 +310,7 @@
         "type" : "SAND",
         "dir" : "N_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 2,
       "y" : 2
     }, {
@@ -318,7 +318,7 @@
         "type" : "SAND",
         "dir" : "N_NE_SE_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 2,
       "y" : 3
     }, {
@@ -326,7 +326,7 @@
         "type" : "SUPER_RIVER",
         "dir" : "SE_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 2,
       "y" : 4
     }, {
@@ -334,7 +334,7 @@
         "type" : "SAND",
         "dir" : "SE_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 2,
       "y" : 5
     }, {
@@ -345,7 +345,7 @@
         "type" : "SAND",
         "dir" : "N_NE_SE_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 2,
       "y" : 6
     }, {
@@ -353,7 +353,7 @@
         "type" : "ARID",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 2,
       "y" : 7
     }, {
@@ -361,7 +361,7 @@
         "type" : "ARID",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 2,
       "y" : 8
     }, {
@@ -369,7 +369,7 @@
         "type" : "ARID",
         "dir" : "N_NE_SE_S_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 2,
       "y" : 9
     }, {
@@ -377,7 +377,7 @@
         "type" : "ARID",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 2,
       "y" : 10
     }, {
@@ -392,7 +392,7 @@
         "dir" : "SE_S"
       } ],
       "feature" : [ "PEAK" ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 2,
       "y" : 11
     }, {
@@ -400,7 +400,7 @@
         "type" : "ARID",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 2,
       "y" : 12
     }, {
@@ -411,7 +411,7 @@
         "type" : "ROAD",
         "dir" : "NE_S"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 2,
       "y" : 13
     }, {
@@ -422,7 +422,7 @@
         "type" : "ROAD",
         "dir" : "N_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 2,
       "y" : 14
     }, {
@@ -430,7 +430,7 @@
         "type" : "ARID",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 2,
       "y" : 15
     }, {
@@ -441,7 +441,7 @@
         "type" : "HILLS",
         "dir" : "NE_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 2,
       "y" : 16
     }, {
@@ -449,11 +449,11 @@
         "type" : "ROAD",
         "dir" : "NE_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 2,
       "y" : 17
     }, {
-      "owner" : 0,
+      "owner" : 1,
       "x" : 2,
       "y" : 18
     }, {
@@ -461,19 +461,19 @@
         "type" : "ARID",
         "dir" : "NE_SE_S_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 2,
       "y" : 19
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 3,
       "y" : 0
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 3,
       "y" : 1
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 3,
       "y" : 2
     }, {
@@ -481,7 +481,7 @@
         "type" : "SAND",
         "dir" : "S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 3,
       "y" : 3
     }, {
@@ -489,7 +489,7 @@
         "type" : "SAND",
         "dir" : "N_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 3,
       "y" : 4
     }, {
@@ -503,7 +503,7 @@
         "type" : "ROAD",
         "dir" : "NE"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 3,
       "y" : 5
     }, {
@@ -511,7 +511,7 @@
         "type" : "SAND",
         "dir" : "S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 3,
       "y" : 6
     }, {
@@ -522,7 +522,7 @@
         "type" : "SAND",
         "dir" : "N_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 3,
       "y" : 7
     }, {
@@ -533,7 +533,7 @@
         "type" : "ESCARPMENT",
         "dir" : "SE"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 3,
       "y" : 8
     }, {
@@ -544,7 +544,7 @@
         "type" : "ESCARPMENT",
         "dir" : "NE_SE"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 3,
       "y" : 9
     }, {
@@ -555,7 +555,7 @@
         "type" : "ESCARPMENT",
         "dir" : "NE_SE"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 3,
       "y" : 10
     }, {
@@ -566,7 +566,7 @@
         "type" : "ESCARPMENT",
         "dir" : "NE"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 3,
       "y" : 11
     }, {
@@ -574,7 +574,7 @@
         "type" : "ARID",
         "dir" : "N_SE_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 3,
       "y" : 12
     }, {
@@ -585,7 +585,7 @@
         "type" : "ROAD",
         "dir" : "NE_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 3,
       "y" : 13
     }, {
@@ -593,7 +593,7 @@
         "type" : "ARID",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 3,
       "y" : 14
     }, {
@@ -604,7 +604,7 @@
         "type" : "HILLS",
         "dir" : "SE_S"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 3,
       "y" : 15
     }, {
@@ -615,7 +615,7 @@
         "type" : "HILLS",
         "dir" : "N_NE_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 3,
       "y" : 16
     }, {
@@ -623,7 +623,7 @@
         "type" : "ROAD",
         "dir" : "NE_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 3,
       "y" : 17
     }, {
@@ -631,7 +631,7 @@
         "type" : "ARID",
         "dir" : "NE_SE_S"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 3,
       "y" : 18
     }, {
@@ -639,7 +639,7 @@
         "type" : "ARID",
         "dir" : "N_NE_SE_S_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 3,
       "y" : 19
     }, {
@@ -647,15 +647,15 @@
         "type" : "BORDER",
         "dir" : "NE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 4,
       "y" : 0
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 4,
       "y" : 1
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 4,
       "y" : 2
     }, {
@@ -663,7 +663,7 @@
         "type" : "HILLS",
         "dir" : "SE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 4,
       "y" : 3
     }, {
@@ -671,7 +671,7 @@
         "type" : "ROAD",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 4,
       "y" : 4
     }, {
@@ -682,7 +682,7 @@
         "type" : "SUPER_RIVER",
         "dir" : "SE_S_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 4,
       "y" : 5
     }, {
@@ -690,11 +690,11 @@
         "type" : "RIVER",
         "dir" : "N_SE"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 4,
       "y" : 6
     }, {
-      "owner" : 0,
+      "owner" : 1,
       "x" : 4,
       "y" : 7
     }, {
@@ -702,7 +702,7 @@
         "type" : "SAND",
         "dir" : "S"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 4,
       "y" : 8
     }, {
@@ -710,7 +710,7 @@
         "type" : "SAND",
         "dir" : "N_S"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 4,
       "y" : 9
     }, {
@@ -721,7 +721,7 @@
         "type" : "ROAD",
         "dir" : "S"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 4,
       "y" : 10
     }, {
@@ -732,7 +732,7 @@
         "type" : "ROAD",
         "dir" : "N_S"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 4,
       "y" : 11
     }, {
@@ -743,7 +743,7 @@
         "type" : "ROAD",
         "dir" : "N_NE_SE_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 4,
       "y" : 12
     }, {
@@ -751,7 +751,7 @@
         "type" : "ARID",
         "dir" : "N_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 4,
       "y" : 13
     }, {
@@ -759,7 +759,7 @@
         "type" : "ARID",
         "dir" : "N_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 4,
       "y" : 14
     }, {
@@ -770,7 +770,7 @@
         "type" : "HILLS",
         "dir" : "SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 4,
       "y" : 15
     }, {
@@ -778,7 +778,7 @@
         "type" : "ROAD",
         "dir" : "NE_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 4,
       "y" : 16
     }, {
@@ -789,7 +789,7 @@
         "type" : "HILLS",
         "dir" : "NE_SE_S"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 4,
       "y" : 17
     }, {
@@ -800,7 +800,7 @@
         "type" : "HILLS",
         "dir" : "N_NE_SE"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 4,
       "y" : 18
     }, {
@@ -808,7 +808,7 @@
         "type" : "ARID",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 4,
       "y" : 19
     }, {
@@ -816,7 +816,7 @@
         "type" : "BORDER",
         "dir" : "S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 5,
       "y" : 0
     }, {
@@ -824,7 +824,7 @@
         "type" : "BORDER",
         "dir" : "N_NE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 5,
       "y" : 1
     }, {
@@ -832,11 +832,11 @@
         "type" : "HILLS",
         "dir" : "C"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 5,
       "y" : 2
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 5,
       "y" : 3
     }, {
@@ -847,7 +847,7 @@
         "type" : "ROAD",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 5,
       "y" : 4
     }, {
@@ -855,7 +855,7 @@
         "type" : "SAND",
         "dir" : "C"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 5,
       "y" : 5
     }, {
@@ -866,7 +866,7 @@
         "type" : "SUPER_RIVER",
         "dir" : "SE_S_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 5,
       "y" : 6
     }, {
@@ -877,7 +877,7 @@
         "type" : "SUPER_RIVER",
         "dir" : "N_S_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 5,
       "y" : 7
     }, {
@@ -888,7 +888,7 @@
         "type" : "SUPER_RIVER",
         "dir" : "N_NE_S"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 5,
       "y" : 8
     }, {
@@ -899,7 +899,7 @@
         "type" : "SUPER_RIVER",
         "dir" : "N_S"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 5,
       "y" : 9
     }, {
@@ -910,7 +910,7 @@
         "type" : "RIVER",
         "dir" : "N_S"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "vp" : 1,
       "x" : 5,
       "y" : 10
@@ -919,7 +919,7 @@
         "type" : "SUPER_RIVER",
         "dir" : "N_SE"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 5,
       "y" : 11
     }, {
@@ -930,7 +930,7 @@
         "type" : "ROAD",
         "dir" : "NE_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 5,
       "y" : 12
     }, {
@@ -938,15 +938,15 @@
         "type" : "ROAD",
         "dir" : "SE_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 5,
       "y" : 13
     }, {
-      "owner" : 0,
+      "owner" : 1,
       "x" : 5,
       "y" : 14
     }, {
-      "owner" : 0,
+      "owner" : 1,
       "x" : 5,
       "y" : 15
     }, {
@@ -957,7 +957,7 @@
         "type" : "ROAD",
         "dir" : "SE_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 5,
       "y" : 16
     }, {
@@ -968,7 +968,7 @@
         "type" : "HILLS",
         "dir" : "S_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 5,
       "y" : 17
     }, {
@@ -980,7 +980,7 @@
         "dir" : "N_S_SW_NW"
       } ],
       "feature" : [ "PEAK" ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 5,
       "y" : 18
     }, {
@@ -991,7 +991,7 @@
         "type" : "HILLS",
         "dir" : "N_SE_S_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 5,
       "y" : 19
     }, {
@@ -999,7 +999,7 @@
         "type" : "BORDER",
         "dir" : "S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 6,
       "y" : 0
     }, {
@@ -1007,7 +1007,7 @@
         "type" : "BORDER",
         "dir" : "N_NE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 6,
       "y" : 1
     }, {
@@ -1015,7 +1015,7 @@
         "type" : "ROAD",
         "dir" : "NE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 6,
       "y" : 2
     }, {
@@ -1023,11 +1023,11 @@
         "type" : "ROAD",
         "dir" : "N_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 6,
       "y" : 3
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 6,
       "y" : 4
     }, {
@@ -1035,7 +1035,7 @@
         "type" : "HILLS",
         "dir" : "NE"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 6,
       "y" : 5
     }, {
@@ -1046,7 +1046,7 @@
         "type" : "RIVER",
         "dir" : "S_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 6,
       "y" : 6
     }, {
@@ -1057,7 +1057,7 @@
         "type" : "RIVER",
         "dir" : "N_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 6,
       "y" : 7
     }, {
@@ -1065,11 +1065,11 @@
         "type" : "SAND",
         "dir" : "NE_SE"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 6,
       "y" : 8
     }, {
-      "owner" : 0,
+      "owner" : 1,
       "x" : 6,
       "y" : 9
     }, {
@@ -1077,7 +1077,7 @@
         "type" : "SAND",
         "dir" : "NE_SE"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 6,
       "y" : 10
     }, {
@@ -1085,7 +1085,7 @@
         "type" : "RIVER",
         "dir" : "S_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "vp" : 1,
       "x" : 6,
       "y" : 11
@@ -1097,7 +1097,7 @@
         "type" : "SUPER_RIVER",
         "dir" : "N_SE_S"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 6,
       "y" : 12
     }, {
@@ -1108,7 +1108,7 @@
         "type" : "RIVER",
         "dir" : "N_S"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "vp" : 3,
       "x" : 6,
       "y" : 13
@@ -1120,7 +1120,7 @@
         "type" : "SUPER_RIVER",
         "dir" : "N_S"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 6,
       "y" : 14
     }, {
@@ -1131,7 +1131,7 @@
         "type" : "SUPER_RIVER",
         "dir" : "N_SE"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 6,
       "y" : 15
     }, {
@@ -1142,7 +1142,7 @@
         "type" : "ROAD",
         "dir" : "NE_S_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 6,
       "y" : 16
     }, {
@@ -1153,7 +1153,7 @@
         "type" : "ROAD",
         "dir" : "N_SE"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 6,
       "y" : 17
     }, {
@@ -1164,7 +1164,7 @@
         "type" : "SAND",
         "dir" : "N_NE_SE"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 6,
       "y" : 18
     }, {
@@ -1175,11 +1175,11 @@
         "type" : "HILLS",
         "dir" : "SE_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 6,
       "y" : 19
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 7,
       "y" : 0
     }, {
@@ -1190,7 +1190,7 @@
         "type" : "BORDER",
         "dir" : "S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 7,
       "y" : 1
     }, {
@@ -1201,15 +1201,15 @@
         "type" : "BORDER",
         "dir" : "N_NE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 7,
       "y" : 2
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 7,
       "y" : 3
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 7,
       "y" : 4
     }, {
@@ -1217,7 +1217,7 @@
         "type" : "HILLS",
         "dir" : "SE_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 7,
       "y" : 5
     }, {
@@ -1225,7 +1225,7 @@
         "type" : "SAND",
         "dir" : "S"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 7,
       "y" : 6
     }, {
@@ -1233,7 +1233,7 @@
         "type" : "SAND",
         "dir" : "N_SE_S"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 7,
       "y" : 7
     }, {
@@ -1242,7 +1242,7 @@
         "dir" : "N_NE_SE_S_SW"
       } ],
       "entrenchment" : 41,
-      "owner" : 0,
+      "owner" : 1,
       "x" : 7,
       "y" : 8
     }, {
@@ -1253,7 +1253,7 @@
         "type" : "HILLS",
         "dir" : "NE_S"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 7,
       "y" : 9
     }, {
@@ -1264,7 +1264,7 @@
         "type" : "HILLS",
         "dir" : "N_S"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 7,
       "y" : 10
     }, {
@@ -1275,7 +1275,7 @@
         "type" : "HILLS",
         "dir" : "N_SE"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 7,
       "y" : 11
     }, {
@@ -1283,7 +1283,7 @@
         "type" : "SAND",
         "dir" : "N_NE_SE"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 7,
       "y" : 12
     }, {
@@ -1294,7 +1294,7 @@
         "type" : "ROAD",
         "dir" : "NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "vp" : 2,
       "x" : 7,
       "y" : 13
@@ -1303,7 +1303,7 @@
         "type" : "SAND",
         "dir" : "SE_S"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 7,
       "y" : 14
     }, {
@@ -1311,7 +1311,7 @@
         "type" : "SAND",
         "dir" : "N_NE_SE"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 7,
       "y" : 15
     }, {
@@ -1322,7 +1322,7 @@
         "type" : "RIVER",
         "dir" : "S_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "vp" : 2,
       "x" : 7,
       "y" : 16
@@ -1334,7 +1334,7 @@
         "type" : "SUPER_RIVER",
         "dir" : "N_SE"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 7,
       "y" : 17
     }, {
@@ -1345,7 +1345,7 @@
         "type" : "ROAD",
         "dir" : "SE_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 7,
       "y" : 18
     }, {
@@ -1356,7 +1356,7 @@
         "type" : "SAND",
         "dir" : "N_NE_SE_S_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 7,
       "y" : 19
     }, {
@@ -1364,7 +1364,7 @@
         "type" : "ROAD",
         "dir" : "N_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 8,
       "y" : 0
     }, {
@@ -1372,7 +1372,7 @@
         "type" : "BORDER",
         "dir" : "S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 8,
       "y" : 1
     }, {
@@ -1380,7 +1380,7 @@
         "type" : "BORDER",
         "dir" : "N_NE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 8,
       "y" : 2
     }, {
@@ -1388,11 +1388,11 @@
         "type" : "MARSH",
         "dir" : "C"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 8,
       "y" : 3
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 8,
       "y" : 4
     }, {
@@ -1400,7 +1400,7 @@
         "type" : "HILLS",
         "dir" : "SE_S_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 8,
       "y" : 5
     }, {
@@ -1408,7 +1408,7 @@
         "type" : "HILLS",
         "dir" : "N_NE_S"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 8,
       "y" : 6
     }, {
@@ -1419,7 +1419,7 @@
         "type" : "HILLS",
         "dir" : "N_S"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 8,
       "y" : 7
     }, {
@@ -1431,7 +1431,7 @@
         "dir" : "N_SE_SW"
       } ],
       "entrenchment" : 41,
-      "owner" : 0,
+      "owner" : 1,
       "x" : 8,
       "y" : 8
     }, {
@@ -1439,7 +1439,7 @@
         "type" : "SAND",
         "dir" : "N_SE_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 8,
       "y" : 9
     }, {
@@ -1447,7 +1447,7 @@
         "type" : "SAND",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 8,
       "y" : 10
     }, {
@@ -1458,7 +1458,7 @@
         "type" : "HILLS",
         "dir" : "SE_S_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 8,
       "y" : 11
     }, {
@@ -1472,7 +1472,7 @@
         "type" : "ESCARPMENT",
         "dir" : "S_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 8,
       "y" : 12
     }, {
@@ -1480,7 +1480,7 @@
         "type" : "RIVER",
         "dir" : "NE_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 8,
       "y" : 13
     }, {
@@ -1488,7 +1488,7 @@
         "type" : "SAND",
         "dir" : "NE_SE_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 8,
       "y" : 14
     }, {
@@ -1496,7 +1496,7 @@
         "type" : "SAND",
         "dir" : "N_NE_SE_S_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 8,
       "y" : 15
     }, {
@@ -1504,7 +1504,7 @@
         "type" : "SAND",
         "dir" : "N_NE_SE"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 8,
       "y" : 16
     }, {
@@ -1515,7 +1515,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "SE"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 8,
       "y" : 17
     }, {
@@ -1526,7 +1526,7 @@
         "type" : "ROAD",
         "dir" : "NE_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 8,
       "y" : 18
     }, {
@@ -1537,15 +1537,15 @@
         "type" : "SAND",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 8,
       "y" : 19
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 9,
       "y" : 0
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 9,
       "y" : 1
     }, {
@@ -1553,7 +1553,7 @@
         "type" : "BORDER",
         "dir" : "S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 9,
       "y" : 2
     }, {
@@ -1561,15 +1561,15 @@
         "type" : "BORDER",
         "dir" : "N_NE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 9,
       "y" : 3
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 9,
       "y" : 4
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 9,
       "y" : 5
     }, {
@@ -1577,15 +1577,15 @@
         "type" : "HILLS",
         "dir" : "SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 9,
       "y" : 6
     }, {
-      "owner" : 0,
+      "owner" : 1,
       "x" : 9,
       "y" : 7
     }, {
-      "owner" : 0,
+      "owner" : 1,
       "x" : 9,
       "y" : 8
     }, {
@@ -1594,7 +1594,7 @@
         "dir" : "S_NW"
       } ],
       "entrenchment" : 40,
-      "owner" : 0,
+      "owner" : 1,
       "x" : 9,
       "y" : 9
     }, {
@@ -1606,7 +1606,7 @@
         "dir" : "N"
       } ],
       "entrenchment" : 21,
-      "owner" : 0,
+      "owner" : 1,
       "x" : 9,
       "y" : 10
     }, {
@@ -1615,7 +1615,7 @@
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
       "entrenchment" : 19,
-      "owner" : 0,
+      "owner" : 1,
       "x" : 9,
       "y" : 11
     }, {
@@ -1627,7 +1627,7 @@
         "dir" : "SE_SW_NW"
       } ],
       "entrenchment" : 20,
-      "owner" : 0,
+      "owner" : 1,
       "x" : 9,
       "y" : 12
     }, {
@@ -1635,7 +1635,7 @@
         "type" : "RIVER",
         "dir" : "SE_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 9,
       "y" : 13
     }, {
@@ -1643,7 +1643,7 @@
         "type" : "SAND",
         "dir" : "SE_S_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 9,
       "y" : 14
     }, {
@@ -1651,7 +1651,7 @@
         "type" : "SAND",
         "dir" : "N_NE_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 9,
       "y" : 15
     }, {
@@ -1662,7 +1662,7 @@
         "type" : "HILLS",
         "dir" : "NE_SE"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 9,
       "y" : 16
     }, {
@@ -1670,7 +1670,7 @@
         "type" : "SAND",
         "dir" : "N_SE_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 9,
       "y" : 17
     }, {
@@ -1681,7 +1681,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "SE_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 9,
       "y" : 18
     }, {
@@ -1689,15 +1689,15 @@
         "type" : "SAND",
         "dir" : "SE_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 9,
       "y" : 19
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 10,
       "y" : 0
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 10,
       "y" : 1
     }, {
@@ -1705,7 +1705,7 @@
         "type" : "BORDER",
         "dir" : "S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 10,
       "y" : 2
     }, {
@@ -1713,19 +1713,19 @@
         "type" : "BORDER",
         "dir" : "N_NE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 10,
       "y" : 3
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 10,
       "y" : 4
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 10,
       "y" : 5
     }, {
-      "owner" : 0,
+      "owner" : 1,
       "x" : 10,
       "y" : 6
     }, {
@@ -1733,11 +1733,11 @@
         "type" : "ROAD",
         "dir" : "NE"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 10,
       "y" : 7
     }, {
-      "owner" : 0,
+      "owner" : 1,
       "x" : 10,
       "y" : 8
     }, {
@@ -1745,7 +1745,7 @@
         "type" : "MARSH",
         "dir" : "C"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 10,
       "y" : 9
     }, {
@@ -1753,7 +1753,7 @@
         "type" : "SAND",
         "dir" : "SE_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 10,
       "y" : 10
     }, {
@@ -1761,7 +1761,7 @@
         "type" : "SAND",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 10,
       "y" : 11
     }, {
@@ -1775,7 +1775,7 @@
         "type" : "ESCARPMENT",
         "dir" : "SE_S"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 10,
       "y" : 12
     }, {
@@ -1783,7 +1783,7 @@
         "type" : "RIVER",
         "dir" : "NE_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 10,
       "y" : 13
     }, {
@@ -1791,7 +1791,7 @@
         "type" : "SAND",
         "dir" : "SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 10,
       "y" : 14
     }, {
@@ -1799,7 +1799,7 @@
         "type" : "HILLS",
         "dir" : "S_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 10,
       "y" : 15
     }, {
@@ -1807,7 +1807,7 @@
         "type" : "HILLS",
         "dir" : "N_SE_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 10,
       "y" : 16
     }, {
@@ -1815,7 +1815,7 @@
         "type" : "SAND",
         "dir" : "NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 10,
       "y" : 17
     }, {
@@ -1826,7 +1826,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 10,
       "y" : 18
     }, {
@@ -1834,7 +1834,7 @@
         "type" : "SAND",
         "dir" : "NE_SE_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 10,
       "y" : 19
     }, {
@@ -1842,15 +1842,15 @@
         "type" : "ROAD",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 11,
       "y" : 0
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 11,
       "y" : 1
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 11,
       "y" : 2
     }, {
@@ -1858,7 +1858,7 @@
         "type" : "BORDER",
         "dir" : "S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 11,
       "y" : 3
     }, {
@@ -1869,7 +1869,7 @@
         "type" : "BORDER",
         "dir" : "N_NE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 11,
       "y" : 4
     }, {
@@ -1877,7 +1877,7 @@
         "type" : "ROAD",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 11,
       "y" : 5
     }, {
@@ -1885,7 +1885,7 @@
         "type" : "ROAD",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 11,
       "y" : 6
     }, {
@@ -1893,7 +1893,7 @@
         "type" : "ROAD",
         "dir" : "N_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 11,
       "y" : 7
     }, {
@@ -1901,7 +1901,7 @@
         "type" : "SHALLOW_WATER_DECORATOR",
         "dir" : "N_NE_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 11,
       "y" : 8
     }, {
@@ -1909,11 +1909,11 @@
         "type" : "SHALLOW_WATER_DECORATOR",
         "dir" : "N_SE_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 11,
       "y" : 9
     }, {
-      "owner" : 0,
+      "owner" : 1,
       "x" : 11,
       "y" : 10
     }, {
@@ -1921,7 +1921,7 @@
         "type" : "SAND",
         "dir" : "NE_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 11,
       "y" : 11
     }, {
@@ -1932,7 +1932,7 @@
         "type" : "HILLS",
         "dir" : "NE_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 11,
       "y" : 12
     }, {
@@ -1940,19 +1940,19 @@
         "type" : "RIVER",
         "dir" : "NE_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 11,
       "y" : 13
     }, {
-      "owner" : 0,
+      "owner" : 1,
       "x" : 11,
       "y" : 14
     }, {
-      "owner" : 0,
+      "owner" : 1,
       "x" : 11,
       "y" : 15
     }, {
-      "owner" : 0,
+      "owner" : 1,
       "x" : 11,
       "y" : 16
     }, {
@@ -1960,7 +1960,7 @@
         "type" : "HILLS",
         "dir" : "SE_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 11,
       "y" : 17
     }, {
@@ -1971,7 +1971,7 @@
         "type" : "SUPER_RIVER",
         "dir" : "SE_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 11,
       "y" : 18
     }, {
@@ -1979,7 +1979,7 @@
         "type" : "SAND",
         "dir" : "S_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 11,
       "y" : 19
     }, {
@@ -1990,7 +1990,7 @@
         "type" : "SHALLOW_WATER_DECORATOR",
         "dir" : "N_NE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 12,
       "y" : 0
     }, {
@@ -2001,7 +2001,7 @@
         "type" : "SHALLOW_WATER_DECORATOR",
         "dir" : "N_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 12,
       "y" : 1
     }, {
@@ -2009,7 +2009,7 @@
         "type" : "ROAD",
         "dir" : "N_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 12,
       "y" : 2
     }, {
@@ -2020,7 +2020,7 @@
         "type" : "BORDER",
         "dir" : "S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 12,
       "y" : 3
     }, {
@@ -2028,15 +2028,15 @@
         "type" : "BORDER",
         "dir" : "N_NE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 12,
       "y" : 4
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 12,
       "y" : 5
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 12,
       "y" : 6
     }, {
@@ -2044,7 +2044,7 @@
         "type" : "SHALLOW_WATER_DECORATOR",
         "dir" : "N_NE_SE_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 12,
       "y" : 7
     }, {
@@ -2052,7 +2052,7 @@
         "type" : "SHALLOW_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 12,
       "y" : 8
     }, {
@@ -2060,7 +2060,7 @@
         "type" : "SHALLOW_WATER_DECORATOR",
         "dir" : "NE_SE_S_SW_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 12,
       "y" : 9
     }, {
@@ -2068,7 +2068,7 @@
         "type" : "SAND",
         "dir" : "SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 12,
       "y" : 10
     }, {
@@ -2076,7 +2076,7 @@
         "type" : "HILLS",
         "dir" : "NE_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 12,
       "y" : 11
     }, {
@@ -2084,11 +2084,11 @@
         "type" : "RIVER",
         "dir" : "NE_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 12,
       "y" : 12
     }, {
-      "owner" : 0,
+      "owner" : 1,
       "x" : 12,
       "y" : 13
     }, {
@@ -2096,15 +2096,15 @@
         "type" : "HILLS",
         "dir" : "C"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 12,
       "y" : 14
     }, {
-      "owner" : 0,
+      "owner" : 1,
       "x" : 12,
       "y" : 15
     }, {
-      "owner" : 0,
+      "owner" : 1,
       "x" : 12,
       "y" : 16
     }, {
@@ -2112,7 +2112,7 @@
         "type" : "HILLS",
         "dir" : "SE_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 12,
       "y" : 17
     }, {
@@ -2123,11 +2123,11 @@
         "type" : "LIGHT_WOODS",
         "dir" : "SE"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 12,
       "y" : 18
     }, {
-      "owner" : 0,
+      "owner" : 1,
       "x" : 12,
       "y" : 19
     }, {
@@ -2138,7 +2138,7 @@
         "type" : "SHALLOW_WATER_DECORATOR",
         "dir" : "N_NE_SE_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 13,
       "y" : 0
     }, {
@@ -2146,7 +2146,7 @@
         "type" : "SHALLOW_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 13,
       "y" : 1
     }, {
@@ -2154,11 +2154,11 @@
         "type" : "SHALLOW_WATER_DECORATOR",
         "dir" : "NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 13,
       "y" : 2
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 13,
       "y" : 3
     }, {
@@ -2169,7 +2169,7 @@
         "type" : "BORDER",
         "dir" : "S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 13,
       "y" : 4
     }, {
@@ -2177,7 +2177,7 @@
         "type" : "BORDER",
         "dir" : "N_NE_SE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 13,
       "y" : 5
     }, {
@@ -2185,11 +2185,11 @@
         "type" : "BORDER",
         "dir" : "NE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 13,
       "y" : 6
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 13,
       "y" : 7
     }, {
@@ -2197,7 +2197,7 @@
         "type" : "SHALLOW_WATER_DECORATOR",
         "dir" : "N_NE_SE_S_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 13,
       "y" : 8
     }, {
@@ -2205,7 +2205,7 @@
         "type" : "SHALLOW_WATER_DECORATOR",
         "dir" : "N_NE_SE_S_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 13,
       "y" : 9
     }, {
@@ -2213,7 +2213,7 @@
         "type" : "MARSH",
         "dir" : "SE"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 13,
       "y" : 10
     }, {
@@ -2221,7 +2221,7 @@
         "type" : "HILLS",
         "dir" : "SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 13,
       "y" : 11
     }, {
@@ -2232,27 +2232,27 @@
         "type" : "RIVER",
         "dir" : "NE_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 13,
       "y" : 12
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 13,
       "y" : 13
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 13,
       "y" : 14
     }, {
-      "owner" : 0,
+      "owner" : 1,
       "x" : 13,
       "y" : 15
     }, {
-      "owner" : 0,
+      "owner" : 1,
       "x" : 13,
       "y" : 16
     }, {
-      "owner" : 0,
+      "owner" : 1,
       "x" : 13,
       "y" : 17
     }, {
@@ -2260,7 +2260,7 @@
         "type" : "HILLS",
         "dir" : "NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 13,
       "y" : 18
     }, {
@@ -2271,7 +2271,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "S_NW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 13,
       "y" : 19
     }, {
@@ -2279,7 +2279,7 @@
         "type" : "SHALLOW_WATER_DECORATOR",
         "dir" : "N_NE_SE_S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 14,
       "y" : 0
     }, {
@@ -2287,15 +2287,15 @@
         "type" : "SHALLOW_WATER_DECORATOR",
         "dir" : "N_NE_SE_S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 14,
       "y" : 1
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 14,
       "y" : 2
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 14,
       "y" : 3
     }, {
@@ -2306,7 +2306,7 @@
         "type" : "BORDER",
         "dir" : "SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 14,
       "y" : 4
     }, {
@@ -2317,7 +2317,7 @@
         "type" : "BORDER",
         "dir" : "S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 14,
       "y" : 5
     }, {
@@ -2325,7 +2325,7 @@
         "type" : "BORDER",
         "dir" : "N_NE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 14,
       "y" : 6
     }, {
@@ -2333,11 +2333,11 @@
         "type" : "HILLS",
         "dir" : "C"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 14,
       "y" : 7
     }, {
-      "owner" : 0,
+      "owner" : 1,
       "x" : 14,
       "y" : 8
     }, {
@@ -2348,7 +2348,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "NE_S"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 14,
       "y" : 9
     }, {
@@ -2359,7 +2359,7 @@
         "type" : "LIGHT_WOODS",
         "dir" : "N"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 14,
       "y" : 10
     }, {
@@ -2370,11 +2370,11 @@
         "type" : "RIVER",
         "dir" : "N_SW"
       } ],
-      "owner" : 0,
+      "owner" : 1,
       "x" : 14,
       "y" : 11
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 14,
       "y" : 12
     }, {
@@ -2382,7 +2382,7 @@
         "type" : "SAND",
         "dir" : "NE_SE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 14,
       "y" : 13
     }, {
@@ -2390,11 +2390,11 @@
         "type" : "LIGHT_WOODS",
         "dir" : "SE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 14,
       "y" : 14
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 14,
       "y" : 15
     }, {
@@ -2402,43 +2402,43 @@
         "type" : "HILLS",
         "dir" : "C"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 14,
       "y" : 16
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 14,
       "y" : 17
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 14,
       "y" : 18
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 14,
       "y" : 19
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 15,
       "y" : 0
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 15,
       "y" : 1
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 15,
       "y" : 2
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 15,
       "y" : 3
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 15,
       "y" : 4
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 15,
       "y" : 5
     }, {
@@ -2449,7 +2449,7 @@
         "type" : "BORDER",
         "dir" : "S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 15,
       "y" : 6
     }, {
@@ -2463,7 +2463,7 @@
         "type" : "BORDER",
         "dir" : "N_NE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "vp" : 2,
       "x" : 15,
       "y" : 7
@@ -2472,7 +2472,7 @@
         "type" : "WADY",
         "dir" : "S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 15,
       "y" : 8
     }, {
@@ -2483,19 +2483,19 @@
         "type" : "LIGHT_WOODS",
         "dir" : "SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 15,
       "y" : 9
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 15,
       "y" : 10
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 15,
       "y" : 11
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 15,
       "y" : 12
     }, {
@@ -2503,7 +2503,7 @@
         "type" : "SAND",
         "dir" : "SE_S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 15,
       "y" : 13
     }, {
@@ -2511,7 +2511,7 @@
         "type" : "SAND",
         "dir" : "N_NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 15,
       "y" : 14
     }, {
@@ -2522,35 +2522,35 @@
         "type" : "LIGHT_WOODS",
         "dir" : "NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 15,
       "y" : 15
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 15,
       "y" : 16
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 15,
       "y" : 17
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 15,
       "y" : 18
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 15,
       "y" : 19
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 16,
       "y" : 0
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 16,
       "y" : 1
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 16,
       "y" : 2
     }, {
@@ -2558,7 +2558,7 @@
         "type" : "HILLS",
         "dir" : "NE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 16,
       "y" : 3
     }, {
@@ -2566,7 +2566,7 @@
         "type" : "SHALLOW_WATER_DECORATOR",
         "dir" : "N_NE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 16,
       "y" : 4
     }, {
@@ -2574,7 +2574,7 @@
         "type" : "SHALLOW_WATER_DECORATOR",
         "dir" : "N_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 16,
       "y" : 5
     }, {
@@ -2582,7 +2582,7 @@
         "type" : "BORDER",
         "dir" : "S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 16,
       "y" : 6
     }, {
@@ -2590,11 +2590,11 @@
         "type" : "BORDER",
         "dir" : "N_NE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 16,
       "y" : 7
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 16,
       "y" : 8
     }, {
@@ -2602,7 +2602,7 @@
         "type" : "HILLS",
         "dir" : "S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 16,
       "y" : 9
     }, {
@@ -2610,15 +2610,15 @@
         "type" : "HILLS",
         "dir" : "N_SE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 16,
       "y" : 10
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 16,
       "y" : 11
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 16,
       "y" : 12
     }, {
@@ -2626,7 +2626,7 @@
         "type" : "SAND",
         "dir" : "SE_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 16,
       "y" : 13
     }, {
@@ -2637,27 +2637,27 @@
         "type" : "LIGHT_WOODS",
         "dir" : "SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 16,
       "y" : 14
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 16,
       "y" : 15
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 16,
       "y" : 16
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 16,
       "y" : 17
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 16,
       "y" : 18
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 16,
       "y" : 19
     }, {
@@ -2665,15 +2665,15 @@
         "type" : "ROAD",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 17,
       "y" : 0
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 17,
       "y" : 1
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 17,
       "y" : 2
     }, {
@@ -2681,7 +2681,7 @@
         "type" : "HILLS",
         "dir" : "SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 17,
       "y" : 3
     }, {
@@ -2689,7 +2689,7 @@
         "type" : "SHALLOW_WATER_DECORATOR",
         "dir" : "N_NE_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 17,
       "y" : 4
     }, {
@@ -2697,7 +2697,7 @@
         "type" : "SHALLOW_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 17,
       "y" : 5
     }, {
@@ -2705,7 +2705,7 @@
         "type" : "SHALLOW_WATER_DECORATOR",
         "dir" : "SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 17,
       "y" : 6
     }, {
@@ -2713,7 +2713,7 @@
         "type" : "BORDER",
         "dir" : "S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 17,
       "y" : 7
     }, {
@@ -2724,15 +2724,15 @@
         "type" : "BORDER",
         "dir" : "N_NE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 17,
       "y" : 8
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 17,
       "y" : 9
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 17,
       "y" : 10
     }, {
@@ -2740,15 +2740,15 @@
         "type" : "HILLS",
         "dir" : "SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 17,
       "y" : 11
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 17,
       "y" : 12
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 17,
       "y" : 13
     }, {
@@ -2756,7 +2756,7 @@
         "type" : "SAND",
         "dir" : "NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 17,
       "y" : 14
     }, {
@@ -2764,23 +2764,23 @@
         "type" : "LIGHT_WOODS",
         "dir" : "NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 17,
       "y" : 15
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 17,
       "y" : 16
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 17,
       "y" : 17
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 17,
       "y" : 18
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 17,
       "y" : 19
     }, {
@@ -2788,15 +2788,15 @@
         "type" : "ROAD",
         "dir" : "NE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 18,
       "y" : 0
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 18,
       "y" : 1
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 18,
       "y" : 2
     }, {
@@ -2804,7 +2804,7 @@
         "type" : "SHALLOW_WATER_DECORATOR",
         "dir" : "N_NE_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 18,
       "y" : 3
     }, {
@@ -2812,7 +2812,7 @@
         "type" : "SHALLOW_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 18,
       "y" : 4
     }, {
@@ -2820,7 +2820,7 @@
         "type" : "SHALLOW_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 18,
       "y" : 5
     }, {
@@ -2828,7 +2828,7 @@
         "type" : "SHALLOW_WATER_DECORATOR",
         "dir" : "NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 18,
       "y" : 6
     }, {
@@ -2836,7 +2836,7 @@
         "type" : "BORDER",
         "dir" : "S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 18,
       "y" : 7
     }, {
@@ -2844,15 +2844,15 @@
         "type" : "BORDER",
         "dir" : "N_NE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 18,
       "y" : 8
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 18,
       "y" : 9
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 18,
       "y" : 10
     }, {
@@ -2860,39 +2860,39 @@
         "type" : "HILLS",
         "dir" : "NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 18,
       "y" : 11
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 18,
       "y" : 12
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 18,
       "y" : 13
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 18,
       "y" : 14
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 18,
       "y" : 15
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 18,
       "y" : 16
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 18,
       "y" : 17
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 18,
       "y" : 18
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 18,
       "y" : 19
     }, {
@@ -2900,15 +2900,15 @@
         "type" : "ROAD",
         "dir" : "SE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 19,
       "y" : 0
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 19,
       "y" : 1
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 19,
       "y" : 2
     }, {
@@ -2916,7 +2916,7 @@
         "type" : "SHALLOW_WATER_DECORATOR",
         "dir" : "N_NE_SE_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 19,
       "y" : 3
     }, {
@@ -2927,7 +2927,7 @@
         "type" : "SHALLOW_WATER_DECORATOR",
         "dir" : "N_NE_SE_S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 19,
       "y" : 4
     }, {
@@ -2935,7 +2935,7 @@
         "type" : "SHALLOW_WATER_DECORATOR",
         "dir" : "NE_SE_S"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 19,
       "y" : 5
     }, {
@@ -2943,11 +2943,11 @@
         "type" : "SHALLOW_WATER_DECORATOR",
         "dir" : "N_NE_SE_S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 19,
       "y" : 6
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 19,
       "y" : 7
     }, {
@@ -2955,7 +2955,7 @@
         "type" : "BORDER",
         "dir" : "S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 19,
       "y" : 8
     }, {
@@ -2963,47 +2963,47 @@
         "type" : "BORDER",
         "dir" : "N_NE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 19,
       "y" : 9
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 19,
       "y" : 10
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 19,
       "y" : 11
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 19,
       "y" : 12
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 19,
       "y" : 13
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 19,
       "y" : 14
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 19,
       "y" : 15
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 19,
       "y" : 16
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 19,
       "y" : 17
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 19,
       "y" : 18
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 19,
       "y" : 19
     }, {
@@ -3014,15 +3014,15 @@
         "type" : "ROAD",
         "dir" : "N_NE_SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 20,
       "y" : 0
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 20,
       "y" : 1
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 20,
       "y" : 2
     }, {
@@ -3030,7 +3030,7 @@
         "type" : "SHALLOW_WATER_DECORATOR",
         "dir" : "N_NE_SE_S_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 20,
       "y" : 3
     }, {
@@ -3038,15 +3038,15 @@
         "type" : "SHALLOW_WATER_DECORATOR",
         "dir" : "N_NE_SE_S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 20,
       "y" : 4
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 20,
       "y" : 5
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 20,
       "y" : 6
     }, {
@@ -3054,7 +3054,7 @@
         "type" : "SHALLOW_WATER_DECORATOR",
         "dir" : "N_NE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 20,
       "y" : 7
     }, {
@@ -3065,7 +3065,7 @@
         "type" : "BORDER",
         "dir" : "S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 20,
       "y" : 8
     }, {
@@ -3073,47 +3073,47 @@
         "type" : "BORDER",
         "dir" : "N_NE"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 20,
       "y" : 9
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 20,
       "y" : 10
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 20,
       "y" : 11
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 20,
       "y" : 12
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 20,
       "y" : 13
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 20,
       "y" : 14
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 20,
       "y" : 15
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 20,
       "y" : 16
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 20,
       "y" : 17
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 20,
       "y" : 18
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 20,
       "y" : 19
     }, {
@@ -3121,7 +3121,7 @@
         "type" : "ROAD",
         "dir" : "NE_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 21,
       "y" : 0
     }, {
@@ -3129,27 +3129,27 @@
         "type" : "ROAD",
         "dir" : "NE_SE_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 21,
       "y" : 1
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 21,
       "y" : 2
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 21,
       "y" : 3
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 21,
       "y" : 4
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 21,
       "y" : 5
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 21,
       "y" : 6
     }, {
@@ -3157,7 +3157,7 @@
         "type" : "SHALLOW_WATER_DECORATOR",
         "dir" : "N_NE_SE_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 21,
       "y" : 7
     }, {
@@ -3165,7 +3165,7 @@
         "type" : "SHALLOW_WATER",
         "dir" : "N_NE_SE_S_SW_NW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 21,
       "y" : 8
     }, {
@@ -3176,7 +3176,7 @@
         "type" : "BORDER",
         "dir" : "S_SW"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 21,
       "y" : 9
     }, {
@@ -3184,78 +3184,78 @@
         "type" : "BORDER",
         "dir" : "N"
       } ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 21,
       "y" : 10
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 21,
       "y" : 11
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 21,
       "y" : 12
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 21,
       "y" : 13
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 21,
       "y" : 14
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 21,
       "y" : 15
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 21,
       "y" : 16
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 21,
       "y" : 17
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 21,
       "y" : 18
     }, {
-      "owner" : 1,
+      "owner" : 0,
       "x" : 21,
       "y" : 19
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 22,
       "y" : 0
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 22,
       "y" : 1
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 22,
       "y" : 2
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 22,
       "y" : 3
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 22,
       "y" : 4
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 22,
       "y" : 5
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 22,
       "y" : 6
     }, {
@@ -3264,7 +3264,7 @@
         "dir" : "N_NE_SE_S_NW"
       } ],
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 22,
       "y" : 7
     }, {
@@ -3273,107 +3273,107 @@
         "dir" : "N_NE_SE_S_SW"
       } ],
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 22,
       "y" : 8
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 22,
       "y" : 9
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 22,
       "y" : 10
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 22,
       "y" : 11
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 22,
       "y" : 12
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 22,
       "y" : 13
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 22,
       "y" : 14
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 22,
       "y" : 15
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 22,
       "y" : 16
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 22,
       "y" : 17
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 22,
       "y" : 18
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 22,
       "y" : 19
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 23,
       "y" : 0
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 23,
       "y" : 1
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 23,
       "y" : 2
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 23,
       "y" : 3
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 23,
       "y" : 4
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 23,
       "y" : 5
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 23,
       "y" : 6
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 23,
       "y" : 7
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 23,
       "y" : 8
     }, {
@@ -3383,7 +3383,7 @@
       } ],
       "feature" : [ "AIRFIELD" ],
       "distance" : 60,
-      "owner" : 1,
+      "owner" : 0,
       "x" : 23,
       "y" : 9
     }, {
@@ -3393,7 +3393,7 @@
       } ],
       "feature" : [ "AIRFIELD" ],
       "distance" : 60,
-      "owner" : 1,
+      "owner" : 0,
       "x" : 23,
       "y" : 10
     }, {
@@ -3403,47 +3403,47 @@
       } ],
       "feature" : [ "AIRFIELD" ],
       "distance" : 40,
-      "owner" : 1,
+      "owner" : 0,
       "x" : 23,
       "y" : 11
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 23,
       "y" : 12
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 23,
       "y" : 13
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 23,
       "y" : 14
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 23,
       "y" : 15
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 23,
       "y" : 16
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 23,
       "y" : 17
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 23,
       "y" : 18
     }, {
       "feature" : [ "NON_PLAYABLE" ],
-      "owner" : 1,
+      "owner" : 0,
       "x" : 23,
       "y" : 19
     } ],

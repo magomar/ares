@@ -6,11 +6,13 @@ import ares.application.shared.gui.providers.ImageProviderFactory;
 import ares.application.shared.gui.providers.ImageProvider;
 import ares.platform.scenario.board.Board;
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.swing.JViewport;
 
 /**
  * This class provides information on the graphics being used for a particular scenario
@@ -66,10 +68,10 @@ public class GraphicsModel {
         boardColumns = board.getWidth();
         boardRows = board.getHeight();
         for (int i = 0; i < numProfiles; i++) {
-            boardWidth[i] = (int) (GraphicProperties.getProperty(ProfiledGraphicProperty.TILE_WIDTH, i)+ (boardColumns - 1) * GraphicProperties.getRealProperty(ProfiledGraphicProperty.TILE_OFFSET, i));
-            int hexHeight = GraphicProperties.getProperty(ProfiledGraphicProperty.TILE_HEIGHT,i);
+            boardWidth[i] = (int) (GraphicProperties.getProperty(ProfiledGraphicProperty.TILE_WIDTH, i) + (boardColumns - 1) * GraphicProperties.getRealProperty(ProfiledGraphicProperty.TILE_OFFSET, i));
+            int hexHeight = GraphicProperties.getProperty(ProfiledGraphicProperty.TILE_HEIGHT, i);
             boardHeight[i] = boardRows * hexHeight + hexHeight / 2;
-            System.out.println(Double.toString((double)boardWidth[i]/boardHeight[i]));
+            System.out.println(Double.toString((double) boardWidth[i] / boardHeight[i]));
         }
         System.out.println("Widths= " + Arrays.toString(boardWidth));
         System.out.println("Heights= " + Arrays.toString(boardHeight));
@@ -139,7 +141,6 @@ public class GraphicsModel {
     public int getBoardHeight(int profile) {
         return boardHeight[profile];
     }
-
 
     /**
      * Check valid coordinates
@@ -330,4 +331,34 @@ public class GraphicsModel {
 //    public int getActiveProfilerProperty(ProfiledGraphicProperty property) {
 //        return GraphicProperties.getProperty(property, activeProfileIndex);
 //    }
+
+    /**
+     * Check valid coordinates
+     *
+     * @param i as row
+     * @param j as column
+     * @return true if (i,j) is within the board range
+     */
+    public boolean tileIsWithinBoard(int i, int j) {
+        return columnIsWithinBoard(i) && rowIsWithinBoard(j);
+    }
+
+    public boolean columnIsWithinBoard(int i) {
+        return i >= 0 && i < boardColumns;
+    }
+
+    public boolean rowIsWithinBoard(int j) {
+        return j >= 0 && j < boardRows;
+    }
+
+    public Rectangle getVisibleTiles(JViewport viewport, int profile) {
+        Rectangle viewRect = viewport.getViewRect();
+        Point upperleft = pixelToTile(viewRect.x, viewRect.y, profile);
+        Point bottomright = pixelToTile(viewRect.x + viewRect.width, viewRect.y + viewRect.height, profile);
+        upperleft.x = (columnIsWithinBoard(upperleft.x) ? upperleft.x : 0);
+        upperleft.y = (rowIsWithinBoard(upperleft.y) ? upperleft.y : 0);
+        bottomright.x = (columnIsWithinBoard(bottomright.x) ? bottomright.x : boardColumns - 1);
+        bottomright.y = (rowIsWithinBoard(bottomright.y) ? bottomright.y : boardRows - 1);
+        return new Rectangle(upperleft.x, upperleft.y, bottomright.x - upperleft.x, bottomright.y - upperleft.y);
+    }
 }

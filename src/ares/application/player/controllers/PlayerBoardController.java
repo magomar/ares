@@ -1,5 +1,6 @@
 package ares.application.player.controllers;
 
+import ares.application.player.boundaries.interactors.MiniMapInteractor;
 import ares.application.player.boundaries.interactors.PlayerBoardInteractor;
 import ares.application.shared.boundaries.interactors.BoardInteractor;
 import ares.platform.scenario.board.UnitsStack;
@@ -25,11 +26,8 @@ import ares.application.shared.boundaries.viewers.InfoViewer;
 import ares.application.shared.boundaries.viewers.OOBViewer;
 import ares.application.shared.boundaries.viewers.layerviewers.ArrowLayerViewer;
 import ares.application.shared.boundaries.viewers.layerviewers.SelectionLayerViewer;
-import ares.application.shared.boundaries.viewers.layerviewers.UnitsLayerViewer;
 import ares.application.shared.controllers.BoardController;
 import ares.application.shared.controllers.MiniMapController;
-import ares.application.shared.models.ScenarioModel;
-import ares.platform.action.ActionGroup;
 import ares.platform.engine.algorithms.pathfinding.costfunctions.CostFunctions;
 import ares.platform.engine.time.Clock;
 import ares.platform.scenario.Scenario;
@@ -44,6 +42,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.swing.JTree;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -52,87 +52,62 @@ import javax.swing.tree.DefaultMutableTreeNode;
  * @author Mario Gomez <margomez at dsic.upv.es>
  * @author Heine <heisncfr@inf.upv.es>
  */
-public final class PlayerBoardController implements ActionController, PropertyChangeListener {
+public final class PlayerBoardController extends BoardController implements BoardInteractor, MiniMapInteractor, ActionController, PropertyChangeListener {
 
     private static final Logger LOG = Logger.getLogger(PlayerBoardController.class.getName());
     private final Pathfinder pathFinder;
-    private final BoardViewer boardView;
     private final OOBViewer oobView;
     private final BoardViewer miniMapView;
     private final InfoViewer infoView;
-//    private final TerrainLayerViewer terrainLayerView;
-    private final UnitsLayerViewer unitsLayerView;
-//    private final GridLayerViewer gridLayerView;
     private final ArrowLayerViewer arrowLayerView;
     private final SelectionLayerViewer selectionLayerView;
     private Tile selectedTile;
     private Unit selectedUnit;
     private Scenario scenario;
     private InteractionMode interactionMode = InteractionMode.FREE;
-    private final BoardController boardController;
     private final MiniMapController miniMapController;
+    private final PlayerBoardInteractor interactor;
+    private ChangeListener changeViewportListener;
 
     public PlayerBoardController(final PlayerBoardInteractor interactor, RealTimeEngine engine) {
+        super(interactor);
+        this.interactor = interactor;
         pathFinder = new AStar(MinimunDistance.create(DistanceCalculator.DELTA), CostFunctions.FASTEST);
-        boardView = interactor.getBoardView();
         oobView = interactor.getOOBView();
         miniMapView = interactor.getMiniMapView();
         infoView = interactor.getInfoView();
-//        terrainLayerView = (TerrainLayerViewer) boardView.getLayerView(TerrainLayerViewer.NAME);
-        unitsLayerView = (UnitsLayerViewer) boardView.getLayerView(UnitsLayerViewer.NAME);
-//        gridLayerView = (GridLayerViewer) boardView.getLayerView(GridLayerViewer.NAME);
         arrowLayerView = (ArrowLayerViewer) boardView.getLayerView(ArrowLayerViewer.NAME);
         selectionLayerView = (SelectionLayerViewer) boardView.getLayerView(SelectionLayerViewer.NAME);
         // create action groups
-        boardController = new BoardController(new BoardInteractor() {
-            @Override
-            public BoardViewer getBoardView() {
-                return boardView;
-            }
 
-            @Override
-            public Container getGUIContainer() {
-                return interactor.getGUIContainer();
-            }
-        });
-        miniMapController = new MiniMapController(new BoardInteractor() {
-            @Override
-            public BoardViewer getBoardView() {
-                return miniMapView;
-            }
-
-            @Override
-            public Container getGUIContainer() {
-                return interactor.getGUIContainer();
-            }
-        });
+        miniMapController = new MiniMapController(this);
 
         // Adds various component listeners
-        interactor.getBoardView().addMouseListener(new BoardMouseListener());
-        interactor.getBoardView().addMouseMotionListener(new BoardMouseMotionListener());
-        interactor.getOOBView().addTreeSelectionListener(new OOBTreeSelectionListener());
+        boardView.addMouseListener(new BoardMouseListener());
+        boardView.addMouseMotionListener(new BoardMouseMotionListener());
+        oobView.addTreeSelectionListener(new OOBTreeSelectionListener());
+        changeViewportListener = new ChangeViewportListener();
 
         //Add change listeners to entities
         engine.addPropertyChangeListener(this);
     }
 
-    
     public Scenario getScenario() {
         return scenario;
     }
 
     public void setScenario(Scenario scenario) {
+        boardView.getContentPane().getViewport().removeChangeListener(changeViewportListener);
+        super.setScenario(scenario, GraphicsModel.INSTANCE.getActiveProfile());
         this.scenario = scenario;
-        ScenarioModel scenarioModel = scenario.getModel();
         oobView.loadScenario(scenarioModel);
         infoView.updateScenarioInfo(Clock.INSTANCE.getNow());
-        boardController.setScenario(scenario, GraphicsModel.INSTANCE.getActiveProfile());
         miniMapController.setScenario(scenario, 0);
+        boardView.getContentPane().getViewport().addChangeListener(changeViewportListener);
     }
 
-    @Override
-    public ActionGroup getActionGroup() {
-        return boardController.getActionGroup();
+    public void changeBoardViewport() {
+        miniMapController.changeBoardViewport();
     }
 
     private class OOBTreeSelectionListener implements TreeSelectionListener {
@@ -170,7 +145,7 @@ public final class PlayerBoardController implements ActionController, PropertyCh
                     FormationModel formationModel = selectedUnit.getFormation().getModel(role);
                     ForceModel forceModel = selectedUnit.getForce().getModel(role);
                     updateSelectedUnit(unitModel, formationModel, forceModel);
-                    boardView.centerViewOn(unitModel);
+                    boardView.centerViewOn(selectedUnit.getLocation().getCoordinates());
                     arrowLayerView.updateLastOrders(null);
                     arrowLayerView.updateCurrentOrders(null);
                 }
@@ -360,10 +335,33 @@ public final class PlayerBoardController implements ActionController, PropertyCh
         arrowLayerView.updatePlannedOrders(selectedUnitPath, formationPaths, forcePaths);
     }
 
+    @Override
+    public BoardViewer getBoardView() {
+        return boardView;
+    }
+
+    @Override
+    public Container getGUIContainer() {
+        return interactor.getGUIContainer();
+    }
+
+    @Override
+    public BoardViewer getMiniMapView() {
+        return miniMapView;
+    }
+
     private enum InteractionMode {
 
         FREE,
         UNIT_ORDERS,
         FORMATION_ORDERS
+    }
+
+    private class ChangeViewportListener implements ChangeListener {
+
+        @Override
+        public void stateChanged(ChangeEvent e) {
+            changeBoardViewport();
+        }
     }
 }

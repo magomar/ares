@@ -9,4 +9,5 @@ import ares.application.shared.boundaries.viewers.BoardViewer;
 public interface BoardInteractor extends Interactor {
 
     BoardViewer getBoardView();
+
 }

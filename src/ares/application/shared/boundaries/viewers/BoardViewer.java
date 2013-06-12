@@ -1,7 +1,7 @@
 package ares.application.shared.boundaries.viewers;
 
 import ares.application.shared.boundaries.viewers.layerviewers.LayeredImageViewer;
-import ares.application.shared.models.forces.UnitModel;
+import java.awt.Point;
 
 /**
  *
@@ -9,5 +9,5 @@ import ares.application.shared.models.forces.UnitModel;
  */
 public interface BoardViewer extends LayeredImageViewer {
 
-    public void centerViewOn(UnitModel selectedUnit);
+    public void centerViewOn(Point location);
 }

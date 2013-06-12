@@ -12,4 +12,5 @@ import ares.application.shared.boundaries.interactors.OOBInteractor;
 public interface PlayerBoardInteractor extends BoardInteractor, BoardInfoInteractor, OOBInteractor, MiniMapInteractor {
 
     PlayerViewer getPlayerView();
+    
 }
