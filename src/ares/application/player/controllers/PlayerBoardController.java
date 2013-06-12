@@ -28,8 +28,6 @@ import ares.application.shared.boundaries.viewers.layerviewers.ArrowLayerViewer;
 import ares.application.shared.boundaries.viewers.layerviewers.SelectionLayerViewer;
 import ares.application.shared.controllers.BoardController;
 import ares.application.shared.controllers.MiniMapController;
-import ares.application.shared.models.ScenarioModel;
-import ares.platform.action.ActionGroup;
 import ares.platform.engine.algorithms.pathfinding.costfunctions.CostFunctions;
 import ares.platform.engine.time.Clock;
 import ares.platform.scenario.Scenario;
@@ -99,6 +97,7 @@ public final class PlayerBoardController extends BoardController implements Boar
     }
 
     public void setScenario(Scenario scenario) {
+        boardView.getContentPane().getViewport().removeChangeListener(changeViewportListener);
         super.setScenario(scenario, GraphicsModel.INSTANCE.getActiveProfile());
         this.scenario = scenario;
         oobView.loadScenario(scenarioModel);
@@ -146,7 +145,7 @@ public final class PlayerBoardController extends BoardController implements Boar
                     FormationModel formationModel = selectedUnit.getFormation().getModel(role);
                     ForceModel forceModel = selectedUnit.getForce().getModel(role);
                     updateSelectedUnit(unitModel, formationModel, forceModel);
-                    boardView.centerViewOn(unitModel);
+                    boardView.centerViewOn(selectedUnit.getLocation().getCoordinates());
                     arrowLayerView.updateLastOrders(null);
                     arrowLayerView.updateCurrentOrders(null);
                 }

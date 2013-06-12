@@ -41,6 +41,7 @@ public class BoardController implements ActionController {
         terrainLayerView = (TerrainLayerViewer) boardView.getLayerView(TerrainLayerViewer.NAME);
         unitsLayerView = (UnitsLayerViewer) boardView.getLayerView(UnitsLayerViewer.NAME);
         gridLayerView = (GridLayerViewer) boardView.getLayerView(GridLayerViewer.NAME);
+        gridLayerView.setVisible(false);
         // create action groups
         Action[] viewActions = {viewGrid, viewUnits, zoomIn, zoomOut};
         CommandGroup group = AresCommandGroup.VIEW;
