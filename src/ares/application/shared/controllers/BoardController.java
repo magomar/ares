@@ -1,0 +1,103 @@
+package ares.application.shared.controllers;
+
+import ares.application.shared.boundaries.viewers.BoardViewer;
+import ares.application.shared.boundaries.interactors.BoardInteractor;
+import ares.application.shared.boundaries.viewers.layerviewers.GridLayerViewer;
+import ares.application.shared.boundaries.viewers.layerviewers.TerrainLayerViewer;
+import ares.application.shared.boundaries.viewers.layerviewers.UnitsLayerViewer;
+import ares.application.shared.commands.AresCommandGroup;
+import ares.application.shared.commands.ViewCommands;
+import ares.application.shared.gui.profiles.GraphicsModel;
+import ares.application.shared.models.ScenarioModel;
+import ares.platform.action.ActionGroup;
+import ares.platform.action.CommandAction;
+import ares.platform.action.CommandGroup;
+import ares.platform.scenario.Scenario;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.Action;
+
+/**
+ *
+ * @author Mario Gómez Martínez <magomar@gmail.com>
+ */
+public class BoardController implements ActionController {
+
+    protected final Action viewGrid = new CommandAction(ViewCommands.VIEW_GRID, new ViewGridActionListener());
+    protected final Action viewUnits = new CommandAction(ViewCommands.VIEW_UNITS, new ViewUnitsActionListener());
+    protected final Action zoomIn = new CommandAction(ViewCommands.VIEW_ZOOM_IN, new ZoomInActionListener());
+    protected final Action zoomOut = new CommandAction(ViewCommands.VIEW_ZOOM_OUT, new ZoomOutActionListener());
+    protected final ActionGroup actions;
+    protected final BoardViewer boardView;
+    protected final TerrainLayerViewer terrainLayerView;
+    protected final UnitsLayerViewer unitsLayerView;
+    protected final GridLayerViewer gridLayerView;
+    protected final BoardInteractor interactorView;
+    protected ScenarioModel scenarioModel;
+
+    public BoardController(BoardInteractor interactor) {
+        this.boardView = interactor.getBoardView();
+        this.interactorView = interactor;
+        terrainLayerView = (TerrainLayerViewer) boardView.getLayerView(TerrainLayerViewer.NAME);
+        unitsLayerView = (UnitsLayerViewer) boardView.getLayerView(UnitsLayerViewer.NAME);
+        gridLayerView = (GridLayerViewer) boardView.getLayerView(GridLayerViewer.NAME);
+        gridLayerView.setVisible(false);
+        // create action groups
+        Action[] viewActions = {viewGrid, viewUnits, zoomIn, zoomOut};
+        CommandGroup group = AresCommandGroup.VIEW;
+        actions = new ActionGroup(group.getName(), group.getText(), group.getMnemonic(), viewActions);
+
+    }
+
+    public void setScenario(Scenario scenario, int profile) {
+        this.scenarioModel = scenario.getModel();
+        boardView.setProfile(profile);
+        // Render board: paint terrain and units
+        terrainLayerView.updateScenario(scenarioModel);
+        unitsLayerView.updateScenario(scenarioModel);
+        gridLayerView.updateScenario(scenarioModel);
+    }
+
+    @Override
+    public ActionGroup getActionGroup() {
+        return actions;
+    }
+
+    private class ZoomInActionListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            boardView.setProfile(GraphicsModel.INSTANCE.nextActiveProfile());
+            terrainLayerView.updateScenario(scenarioModel);
+            unitsLayerView.updateScenario(scenarioModel);
+            gridLayerView.updateScenario(scenarioModel);
+        }
+    }
+
+    private class ZoomOutActionListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            boardView.setProfile(GraphicsModel.INSTANCE.previousActiveProfile());
+            terrainLayerView.updateScenario(scenarioModel);
+            unitsLayerView.updateScenario(scenarioModel);
+            gridLayerView.updateScenario(scenarioModel);
+        }
+    }
+
+    private class ViewGridActionListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            boardView.switchLayerVisible(GridLayerViewer.NAME);
+        }
+    }
+
+    private class ViewUnitsActionListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            boardView.switchLayerVisible(UnitsLayerViewer.NAME);
+        }
+    }
+}

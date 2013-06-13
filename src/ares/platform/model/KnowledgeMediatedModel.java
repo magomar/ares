@@ -1,6 +1,6 @@
 package ares.platform.model;
 
-import ares.engine.knowledge.KnowledgeCategory;
+import ares.platform.engine.knowledge.KnowledgeCategory;
 
 /**
  *
