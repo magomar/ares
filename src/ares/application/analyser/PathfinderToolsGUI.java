@@ -13,6 +13,7 @@ import ares.application.shared.gui.views.ToolBarView;
 import ares.application.shared.gui.views.AbstractView;
 import ares.application.shared.boundaries.viewers.PanelMenuViewer;
 import ares.application.shared.boundaries.viewers.ToolBarViewer;
+import ares.application.shared.laf.LookAndFeelThemes;
 import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
@@ -92,6 +93,7 @@ public class PathfinderToolsGUI extends AbstractView<JFrame> implements Pathfind
     }
 
     public static void main(String[] args) {
+        LookAndFeelThemes.loadDarkTheme();
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -112,8 +114,6 @@ public class PathfinderToolsGUI extends AbstractView<JFrame> implements Pathfind
         });
     }
 
-
-
     @Override
     public ToolBarViewer getToolBarView() {
         return toolBarV;
@@ -133,5 +133,4 @@ public class PathfinderToolsGUI extends AbstractView<JFrame> implements Pathfind
     public PathfinderComparatorView getComparatorView() {
         return comparatorV;
     }
-
 }

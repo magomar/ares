@@ -20,6 +20,7 @@ import ares.application.shared.boundaries.viewers.MessagesViewer;
 import ares.application.shared.boundaries.viewers.OOBViewer;
 import ares.application.shared.boundaries.viewers.PanelMenuViewer;
 import ares.application.shared.boundaries.viewers.ToolBarViewer;
+import ares.application.shared.laf.LookAndFeelThemes;
 import java.awt.*;
 import javax.swing.*;
 
@@ -137,6 +138,7 @@ public final class AresPlayerGUI extends AbstractView<JFrame> implements PlayerV
     }
 
     public static void main(String[] args) {
+        LookAndFeelThemes.loadDarkTheme();
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
