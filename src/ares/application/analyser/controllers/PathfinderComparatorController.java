@@ -29,6 +29,7 @@ import ares.platform.engine.algorithms.pathfinding.heuristics.EnhancedMinimunDis
 import ares.platform.engine.algorithms.pathfinding.heuristics.Heuristic;
 import ares.platform.engine.algorithms.pathfinding.heuristics.MinimunDistance;
 import ares.platform.engine.movement.MovementType;
+import ares.platform.model.UserRole;
 import ares.platform.scenario.Scenario;
 import ares.platform.scenario.board.Tile;
 import ares.platform.scenario.forces.Unit;
@@ -102,7 +103,7 @@ public class PathfinderComparatorController implements ActionController {
     public void setScenario(Scenario scenario) {
         this.scenario = scenario;
         testUnit = UnitFactory.createTestUnit(MovementType.MOTORIZED);
-        ScenarioModel scenarioModel = scenario.getModel();
+        ScenarioModel scenarioModel = scenario.getModel(UserRole.GOD);
         initializeBoardView(boardView[LEFT], scenarioModel, GraphicsModel.INSTANCE.getActiveProfile());
         initializeBoardView(boardView[RIGHT], scenarioModel, GraphicsModel.INSTANCE.getActiveProfile());
     }
@@ -228,7 +229,7 @@ public class PathfinderComparatorController implements ActionController {
         @Override
         public void actionPerformed(ActionEvent e) {
             int nextProfile = GraphicsModel.INSTANCE.nextActiveProfile();
-            ScenarioModel scenarioModel = scenario.getModel();
+            ScenarioModel scenarioModel = scenario.getModel(UserRole.GOD);
             initializeBoardView(boardView[LEFT], scenarioModel, nextProfile);
             initializeBoardView(boardView[RIGHT], scenarioModel, nextProfile);
         }
@@ -239,7 +240,7 @@ public class PathfinderComparatorController implements ActionController {
         @Override
         public void actionPerformed(ActionEvent e) {
             int previousProfile = GraphicsModel.INSTANCE.previousActiveProfile();
-            ScenarioModel scenarioModel = scenario.getModel();
+            ScenarioModel scenarioModel = scenario.getModel(UserRole.GOD);
             initializeBoardView(boardView[LEFT], scenarioModel, previousProfile);
             initializeBoardView(boardView[RIGHT], scenarioModel, previousProfile);
         }

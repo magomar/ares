@@ -11,6 +11,7 @@ import ares.application.shared.boundaries.viewers.ToolBarViewer;
 import ares.application.shared.controllers.ScenarioController;
 import ares.application.shared.gui.profiles.GraphicsModel;
 import ares.application.shared.gui.providers.AresMiscTerrainGraphics;
+import ares.platform.model.UserRole;
 import ares.platform.scenario.Scenario;
 import ares.platform.scenario.board.Terrain;
 import ares.platform.scenario.forces.UnitsColor;
@@ -40,7 +41,7 @@ public class PathfinderToolsController implements ScenarioInteractor, Pathfinder
         comparatorView = mainView.getComparatorView();
 
         // instantiate controllers
-        this.scenarioController = new ScenarioController(this);
+        this.scenarioController = new ScenarioController(this, false);
         this.comparatorController = new PathfinderComparatorController(this);
         this.analyserController = new PathfinderAnalyserController(this);
 
@@ -68,7 +69,7 @@ public class PathfinderToolsController implements ScenarioInteractor, Pathfinder
     }
 
     @Override
-    public void newScenario(Scenario scenario) {
+    public void newScenario(Scenario scenario, UserRole userRole) {
         // Initialize GraphicsModel
         GraphicsModel.INSTANCE.initialize(scenario.getBoard());
         GraphicsModel.INSTANCE.addAllGraphics(Terrain.values());

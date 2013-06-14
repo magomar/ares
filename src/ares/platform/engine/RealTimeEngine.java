@@ -13,6 +13,7 @@ import ares.platform.engine.algorithms.pathfinding.heuristics.DistanceCalculator
 import ares.platform.engine.algorithms.pathfinding.heuristics.MinimunDistance;
 import ares.platform.model.AbstractBean;
 import ares.platform.engine.time.Clock;
+import ares.platform.model.UserRole;
 import ares.platform.scenario.Scenario;
 import ares.platform.scenario.board.Tile;
 import ares.platform.scenario.forces.Force;

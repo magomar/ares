@@ -11,6 +11,7 @@ import ares.platform.action.CommandAction;
 import ares.platform.action.CommandGroup;
 import ares.application.shared.boundaries.interactors.EngineInteractor;
 import ares.platform.action.ActionGroup;
+import ares.platform.model.UserRole;
 import ares.platform.scenario.Scenario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

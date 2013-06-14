@@ -15,6 +15,7 @@ import ares.application.shared.controllers.MessagesController;
 import ares.application.shared.controllers.ScenarioController;
 import ares.application.shared.gui.profiles.GraphicsModel;
 import ares.application.shared.gui.providers.AresMiscTerrainGraphics;
+import ares.platform.model.UserRole;
 import ares.platform.scenario.Scenario;
 import ares.platform.scenario.board.Terrain;
 import ares.platform.scenario.forces.UnitsColor;
@@ -70,7 +71,7 @@ public class WeGoPlayerController implements EngineInteractor, ScenarioInteracto
         miniMapView = mainView.getMiniMapView();
 
         // instantiate controllers
-        scenarioController = new ScenarioController(this);
+        scenarioController = new ScenarioController(this, true);
         engineController = new RealTimeEngineController(this);
         messagesController = new MessagesController(this);
         boardController = new PlayerBoardController(this, engineController.getEngine());
@@ -111,7 +112,7 @@ public class WeGoPlayerController implements EngineInteractor, ScenarioInteracto
     }
 
     @Override
-    public void newScenario(Scenario scenario) {
+    public void newScenario(Scenario scenario, UserRole userRole) {
         // Initialize GraphicsModel
         GraphicsModel.INSTANCE.initialize(scenario.getBoard());
         GraphicsModel.INSTANCE.addAllGraphics(Terrain.values());
@@ -119,7 +120,7 @@ public class WeGoPlayerController implements EngineInteractor, ScenarioInteracto
         GraphicsModel.INSTANCE.addAllGraphics(UnitsColor.values());
         // pass the scenario to the engine controller
         engineController.setScenario(scenario);
-        boardController.setScenario(scenario);
+        boardController.setScenario(scenario, userRole);
         // change the GUI to show the playing perspective
         mainView.switchPerspective(PlayerViewer.PLAYER_PERSPECTIVE);
         System.gc();

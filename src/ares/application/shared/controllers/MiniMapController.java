@@ -8,6 +8,7 @@ import ares.application.shared.boundaries.viewers.layerviewers.UnitsLayerViewer;
 import ares.application.shared.gui.profiles.GraphicsModel;
 import ares.application.shared.gui.views.layerviews.MiniMapNavigationLayerView;
 import ares.application.shared.models.ScenarioModel;
+import ares.platform.model.UserRole;
 import ares.platform.scenario.Scenario;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
@@ -24,7 +25,8 @@ public class MiniMapController {
     private final TerrainLayerViewer terrainLayer;
     private final UnitsLayerViewer unitsLayer;
     private final MiniMapNavigationLayerViewer navigationLayer;
-    private ScenarioModel scenarioModel;
+    private Scenario scenario;
+    protected UserRole userRole;
 
     public MiniMapController(MiniMapInteractor miniMapInteractor) {
         miniMapView = miniMapInteractor.getMiniMapView();
@@ -35,10 +37,12 @@ public class MiniMapController {
         miniMapView.addMouseListener(new MiniMapMouseListener());
     }
 
-    public void setScenario(Scenario scenario, int profile) {
-        this.scenarioModel = scenario.getModel();
+    public void setScenario(Scenario scenario, UserRole userRole, int profile) {
+        this.scenario = scenario;
+        this.userRole = userRole;
         miniMapView.setProfile(profile);
         // Render board: paint terrain and units
+        ScenarioModel scenarioModel = scenario.getModel(userRole);
         terrainLayer.updateScenario(scenarioModel);
         unitsLayer.updateScenario(scenarioModel);
         navigationLayer.update(boardView.getContentPane().getViewport(), boardView.getProfile());
