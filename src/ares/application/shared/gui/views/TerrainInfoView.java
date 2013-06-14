@@ -1,9 +1,8 @@
 package ares.application.shared.gui.views;
 
 import ares.application.shared.boundaries.viewers.TerrainInfoViewer;
-import ares.application.shared.gui.profiles.GraphicProperties;
+import ares.application.shared.gui.ComponentFactory;
 import ares.application.shared.gui.profiles.GraphicsModel;
-import ares.application.shared.gui.profiles.NonProfiledGraphicProperty;
 import ares.application.shared.gui.providers.TerrainInfo;
 import ares.application.shared.models.board.TileModel;
 import ares.platform.engine.knowledge.KnowledgeCategory;
@@ -15,6 +14,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.util.Map;
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 /**
@@ -27,7 +27,7 @@ public class TerrainInfoView extends AbstractView<JPanel> implements TerrainInfo
     /**
      * Image to be rendered on this layer
      */
-    protected BufferedImage globalImage;
+    private BufferedImage globalImage;
 
     @Override
     public void updateTile(TileModel tileModel) {
@@ -94,6 +94,7 @@ public class TerrainInfoView extends AbstractView<JPanel> implements TerrainInfo
                 }
             }
         };
+        content.setBorder(ComponentFactory.DEFAULT_BORDER);
         return content;
     }
 
@@ -103,7 +104,6 @@ public class TerrainInfoView extends AbstractView<JPanel> implements TerrainInfo
 //                GraphicProperties.getProperty(NonProfiledGraphicProperty.TERRAIN_INFO_HEIGHT), BufferedImage.TYPE_INT_ARGB);
         Dimension imageSize = GraphicsModel.INSTANCE.getNonProfiledImageProvider(TerrainInfo.OPEN).getFullImageDimension();
         globalImage = new BufferedImage(imageSize.width, imageSize.height, BufferedImage.TYPE_INT_ARGB);
-        contentPane.setPreferredSize(imageSize);
         contentPane.repaint();
     }
 

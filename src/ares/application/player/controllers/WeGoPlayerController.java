@@ -116,10 +116,6 @@ public class WeGoPlayerController implements EngineInteractor, ScenarioInteracto
     public void newScenario(Scenario scenario, UserRole userRole) {
         // Initialize GraphicsModel
         GraphicsModel.INSTANCE.initialize(scenario.getBoard());
-        GraphicsModel.INSTANCE.addProfiledImageProviders(Terrain.values());
-        GraphicsModel.INSTANCE.addProfiledImageProviders(AresMiscTerrainGraphics.values());
-        GraphicsModel.INSTANCE.addProfiledImageProviders(UnitsColor.values());
-        GraphicsModel.INSTANCE.addNonProfiledImageProviders(TerrainInfo.values());
         // pass the scenario to the engine controller
         engineController.setScenario(scenario);
         boardController.setScenario(scenario, userRole);
