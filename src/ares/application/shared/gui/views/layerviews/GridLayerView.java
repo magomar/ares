@@ -31,7 +31,7 @@ public class GridLayerView extends AbstractImageLayerView implements GridLayerVi
         int w = GraphicsModel.INSTANCE.getBoardColumns();
         int y = GraphicsModel.INSTANCE.getBoardRows();
         Graphics2D g2 = globalImage.createGraphics();
-        BufferedImage gridImage = GraphicsModel.INSTANCE.getImageProvider(AresMiscTerrainGraphics.GRID, profile).getImage(0, 0);
+        BufferedImage gridImage = GraphicsModel.INSTANCE.getProfiledImageProvider(AresMiscTerrainGraphics.GRID, profile).getImage(0, 0);
         TileModel[][] tiles = scenario.getBoardModel().getMapModel();
         for (int i = 0; i < w; i++) {
             TileModel[] tileColumn = tiles[i];

@@ -27,7 +27,14 @@ public abstract class ComponentFactory {
      * Size of split dividers
      */
     public static final int SPLIT_DIVIDER_SIZE = 5;
-
+    /**
+     * Size of borders (used in border layouts for panels)
+     */
+    public static final int BORDER_THICKNESS = 2;
+    /**
+     * Default border to be used by panels
+     */
+    public static final Border DEFAULT_BORDER = BorderFactory.createEmptyBorder(BORDER_THICKNESS,BORDER_THICKNESS,BORDER_THICKNESS,BORDER_THICKNESS);
     //------------------------------------------------
     // Factories for frames
     //--------------------------------------------------
@@ -50,7 +57,6 @@ public abstract class ComponentFactory {
             frame.setJMenuBar(menuBar);
         }
         if (toolBar != null) {
-//            frame.getContentPane().add(toolBar, BorderLayout.PAGE_START);
             frame.add(toolBar, BorderLayout.NORTH);
         }
         return frame;
@@ -76,13 +82,25 @@ public abstract class ComponentFactory {
     //------------------------------------------------
     // Factories for panels
     //--------------------------------------------------
-    public static JPanel panel(LayoutManager layoutManager, String title) {
+    public static JPanel panel() {
+        return panel(null, null);
+    }
+
+    public static JPanel panel(LayoutManager layoutManager) {
+        return panel(layoutManager, null);
+    }
+
+    public static JPanel panel(Border border) {
+        return panel(null, border);
+    }
+
+    public static JPanel panel(LayoutManager layoutManager, Border border) {
         JPanel panel = new JPanel();
         if (layoutManager != null) {
             panel.setLayout(layoutManager);
         }
-        if (title != null) {
-            panel.setBorder(new TitledBorder(title));
+        if (border != null) {
+            panel.setBorder(border);
         }
         return panel;
     }

@@ -15,6 +15,7 @@ import ares.application.shared.controllers.MessagesController;
 import ares.application.shared.controllers.ScenarioController;
 import ares.application.shared.gui.profiles.GraphicsModel;
 import ares.application.shared.gui.providers.AresMiscTerrainGraphics;
+import ares.application.shared.gui.providers.TerrainInfo;
 import ares.platform.model.UserRole;
 import ares.platform.scenario.Scenario;
 import ares.platform.scenario.board.Terrain;
@@ -115,9 +116,6 @@ public class WeGoPlayerController implements EngineInteractor, ScenarioInteracto
     public void newScenario(Scenario scenario, UserRole userRole) {
         // Initialize GraphicsModel
         GraphicsModel.INSTANCE.initialize(scenario.getBoard());
-        GraphicsModel.INSTANCE.addAllGraphics(Terrain.values());
-        GraphicsModel.INSTANCE.addAllGraphics(AresMiscTerrainGraphics.values());
-        GraphicsModel.INSTANCE.addAllGraphics(UnitsColor.values());
         // pass the scenario to the engine controller
         engineController.setScenario(scenario);
         boardController.setScenario(scenario, userRole);

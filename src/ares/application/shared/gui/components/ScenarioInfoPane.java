@@ -1,5 +1,6 @@
 package ares.application.shared.gui.components;
 
+import ares.application.shared.gui.ComponentFactory;
 import ares.platform.io.FileIO;
 import ares.platform.io.ResourcePath;
 import java.awt.Dimension;
@@ -20,14 +21,15 @@ public class ScenarioInfoPane extends JTexturedPanel {
     public ScenarioInfoPane() {
         ((FlowLayout) getLayout()).setAlignment(FlowLayout.LEADING);
         clock = new AnalogClockDayNight();
-        clock.setPreferredSize(new Dimension(75, 75));
+        clock.setMinimumSize(new Dimension(75, 75));
         add(clock);
         
         calendarPane = new WallCalendar();
-        calendarPane.setPreferredSize(new Dimension(75, 75));
+        calendarPane.setMinimumSize(new Dimension(75, 75));
         add(calendarPane);
         backImage = FileIO.loadImage(ResourcePath.OTHER.getFile("wood.png"));
         setTextureImage(backImage);
+        setBorder(ComponentFactory.DEFAULT_BORDER);
 
     }
 

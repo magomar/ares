@@ -63,7 +63,7 @@ public final class ForceModel extends RoleMediatedModel {
             Unit hq = formation.getHq();
             MutableTreeNode formationNode;
             if (hq != null) {
-                ImageProvider unitImageProvider = GraphicsModel.INSTANCE.getImageProviders(2).get(hq.getColor());
+                ImageProvider unitImageProvider = GraphicsModel.INSTANCE.getProfiledImageProvider(hq.getColor(), 2);
                 ImageIcon treeNodeIcon = new ImageIcon(unitImageProvider.getImage(hq.getIconId()));
                 formationNode = new OOBTreeNode(formation, treeNodeIcon);
             } else {
@@ -76,7 +76,7 @@ public final class ForceModel extends RoleMediatedModel {
         MutableTreeNode root = formationNodes.get(top);
         DefaultTreeModel treeModel = new DefaultTreeModel(root);
         for (Unit unit : force.getActiveUnits()) {
-            ImageProvider unitImageProvider = GraphicsModel.INSTANCE.getImageProviders(2).get(unit.getColor());
+            ImageProvider unitImageProvider = GraphicsModel.INSTANCE.getProfiledImageProvider(unit.getColor(), 2);
             ImageIcon treeNodeIcon = new ImageIcon(unitImageProvider.getImage(unit.getIconId()));
             MutableTreeNode unitNode = new OOBTreeNode(unit, treeNodeIcon);
             MutableTreeNode parent = formationNodes.get(unit.getFormation());

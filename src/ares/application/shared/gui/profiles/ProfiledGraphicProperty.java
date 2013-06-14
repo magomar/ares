@@ -38,6 +38,8 @@ package ares.application.shared.gui.profiles;
  */
 public enum ProfiledGraphicProperty implements GraphicProperty {
 
+    PROFILE_PREFIX,
+    PATHS,
     TILES_WIDTH,
     TILES_HEIGHT,
     TILE_WIDTH,

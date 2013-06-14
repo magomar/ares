@@ -14,7 +14,6 @@ import ares.application.shared.gui.providers.AresMiscTerrainGraphics;
 import ares.platform.model.UserRole;
 import ares.platform.scenario.Scenario;
 import ares.platform.scenario.board.Terrain;
-import ares.platform.scenario.forces.UnitsColor;
 import java.awt.Container;
 import javax.swing.JMenu;
 
@@ -52,8 +51,7 @@ public class PathfinderToolsController implements ScenarioInteractor, Pathfinder
 //        toolBarView.addActionButtons(analyserController.getActionGroup().createToolBarButtons());
         JMenu[] menus = {
             scenarioController.getActionGroup().createMenu(),
-            comparatorController.getActionGroup().createMenu(), 
-            //   analyserController.getActionGroup().createMenu()
+            comparatorController.getActionGroup().createMenu(), //   analyserController.getActionGroup().createMenu()
         };
         menuView.addActionButtons(menus);
 
@@ -72,9 +70,6 @@ public class PathfinderToolsController implements ScenarioInteractor, Pathfinder
     public void newScenario(Scenario scenario, UserRole userRole) {
         // Initialize GraphicsModel
         GraphicsModel.INSTANCE.initialize(scenario.getBoard());
-        GraphicsModel.INSTANCE.addAllGraphics(Terrain.values());
-        GraphicsModel.INSTANCE.addAllGraphics(AresMiscTerrainGraphics.values());
-        GraphicsModel.INSTANCE.addAllGraphics(UnitsColor.values());
         // pass the scenario to the engine controller
         comparatorController.setScenario(scenario);
         // change the GUI to show the pathfinding comparison perspective
