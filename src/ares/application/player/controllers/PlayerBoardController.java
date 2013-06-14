@@ -279,7 +279,8 @@ public final class PlayerBoardController extends BoardController implements Boar
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         if (RealTimeEngine.CLOCK_EVENT_PROPERTY.equals(evt.getPropertyName())) {
-            unitsLayerView.updateScenario(scenario.getModel(userRole));
+            updateScenario();
+            miniMapController.updateScenario();
             infoView.updateScenarioInfo(Clock.INSTANCE.getNow());
             if (selectedUnit != null) {
                 UnitModel unitModel = selectedUnit.getModel(userRole);

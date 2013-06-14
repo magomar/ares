@@ -62,6 +62,12 @@ public class BoardController implements ActionController {
         gridLayerView.updateScenario(scenarioModel);
     }
 
+    public void updateScenario() {
+        // Render board: paint terrain and units
+        ScenarioModel scenarioModel = scenario.getModel(userRole);
+        unitsLayerView.updateScenario(scenarioModel);
+    }
+
     @Override
     public ActionGroup getActionGroup() {
         return actions;

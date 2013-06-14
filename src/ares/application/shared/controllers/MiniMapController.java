@@ -22,18 +22,18 @@ public class MiniMapController {
 
     private final BoardViewer miniMapView;
     private final BoardViewer boardView;
-    private final TerrainLayerViewer terrainLayer;
-    private final UnitsLayerViewer unitsLayer;
-    private final MiniMapNavigationLayerViewer navigationLayer;
+    private final TerrainLayerViewer terrainLayerView;
+    private final UnitsLayerViewer unitsLayerView;
+    private final MiniMapNavigationLayerViewer navigationLayerView;
     private Scenario scenario;
     protected UserRole userRole;
 
     public MiniMapController(MiniMapInteractor miniMapInteractor) {
         miniMapView = miniMapInteractor.getMiniMapView();
         boardView = miniMapInteractor.getBoardView();
-        terrainLayer = (TerrainLayerViewer) miniMapView.getLayerView(TerrainLayerViewer.NAME);
-        unitsLayer = (UnitsLayerViewer) miniMapView.getLayerView(UnitsLayerViewer.NAME);
-        navigationLayer = (MiniMapNavigationLayerViewer) miniMapView.getLayerView(MiniMapNavigationLayerView.NAME);
+        terrainLayerView = (TerrainLayerViewer) miniMapView.getLayerView(TerrainLayerViewer.NAME);
+        unitsLayerView = (UnitsLayerViewer) miniMapView.getLayerView(UnitsLayerViewer.NAME);
+        navigationLayerView = (MiniMapNavigationLayerViewer) miniMapView.getLayerView(MiniMapNavigationLayerView.NAME);
         miniMapView.addMouseListener(new MiniMapMouseListener());
     }
 
@@ -43,13 +43,19 @@ public class MiniMapController {
         miniMapView.setProfile(profile);
         // Render board: paint terrain and units
         ScenarioModel scenarioModel = scenario.getModel(userRole);
-        terrainLayer.updateScenario(scenarioModel);
-        unitsLayer.updateScenario(scenarioModel);
-        navigationLayer.update(boardView.getContentPane().getViewport(), boardView.getProfile());
+        terrainLayerView.updateScenario(scenarioModel);
+        unitsLayerView.updateScenario(scenarioModel);
+        navigationLayerView.update(boardView.getContentPane().getViewport(), boardView.getProfile());
+    }
+
+    public void updateScenario() {
+        // Render board: paint terrain and units
+        ScenarioModel scenarioModel = scenario.getModel(userRole);
+        unitsLayerView.updateScenario(scenarioModel);
     }
 
     public void changeBoardViewport() {
-        navigationLayer.update(boardView.getContentPane().getViewport(), boardView.getProfile());
+        navigationLayerView.update(boardView.getContentPane().getViewport(), boardView.getProfile());
     }
 
     private class MiniMapMouseListener extends MouseAdapter {
