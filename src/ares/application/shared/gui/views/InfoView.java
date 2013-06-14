@@ -19,6 +19,7 @@ public class InfoView extends AbstractView<JPanel> implements InfoViewer {
     private JTextArea unitInfo;
     private JTextArea tileInfo;
     private ScenarioInfoPane scenInfo;
+    private TerrainInfoView terrainInfoView;
     
     @Override
     protected JPanel layout() {
@@ -29,7 +30,9 @@ public class InfoView extends AbstractView<JPanel> implements InfoViewer {
         unitInfo = new JTextArea();
         tileInfo.setEditable(false);
         unitInfo.setEditable(false);
+        terrainInfoView = new TerrainInfoView();
         panel.add(scenInfo);
+        panel.add(terrainInfoView.getContentPane());
         panel.add(tileInfo);
         panel.add(unitInfo);
         return panel;
@@ -38,6 +41,7 @@ public class InfoView extends AbstractView<JPanel> implements InfoViewer {
     @Override
     public void updateTileInfo(TileModel tile) {
         tileInfo.setText(tile.getDescription());
+        terrainInfoView.updateTile(tile);
     }
 
     @Override
@@ -49,6 +53,7 @@ public class InfoView extends AbstractView<JPanel> implements InfoViewer {
     public void clear() {
         tileInfo.setText("");
         unitInfo.setText("");
+        terrainInfoView.updateTile(null);
     }
 
     @Override

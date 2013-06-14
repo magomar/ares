@@ -28,17 +28,25 @@ public class GraphicProperties {
     }
 
     public static int getNumProfiles() {
-        return Integer.parseInt(GRAPHICS.getProperty("num_profiles"));
+        return Integer.parseInt(GRAPHICS.getProperty(NonProfiledGraphicProperty.NUM_PROFILES.getName()));
     }
 
     public static String getProfilePath(int profile) {
-        String[] values = GRAPHICS.getProperty("paths").split(",");
+        String[] values = GRAPHICS.getProperty(ProfiledGraphicProperty.PATHS.getName()).split(",");
         return values[profile];
     }
 
     public static String getProfilePrefix(int profile) {
-        String[] values = GRAPHICS.getProperty("filename_prefix").split(",");
+        String[] values = GRAPHICS.getProperty(ProfiledGraphicProperty.PROFILE_PREFIX.getName()).split(",");
         return values[profile];
+    }
+
+    public static String getTerrainInfoPath() {
+        return GRAPHICS.getProperty(NonProfiledGraphicProperty.TERRAIN_INFO_PATH.getName());
+    }
+
+    public static String getTerrainInfoPrefix() {
+        return GRAPHICS.getProperty(NonProfiledGraphicProperty.TERRAIN_INFO_PREFIX.getName());
     }
 
     public static int getProperty(GraphicProperty property) {

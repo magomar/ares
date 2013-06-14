@@ -34,10 +34,10 @@ public class SelectionLayerView extends AbstractImageLayerView implements Select
         for (UnitModel u : formation.getUnitModels()) {
             if (!u.equals(selectedUnit)) {
                 TileModel t = u.getLocation();
-                paintCursor(g2, u.getLocation(), GraphicsModel.INSTANCE.getImageProvider(AresMiscTerrainGraphics.STEEL_CURSOR, profile).getImage(0, 0));
+                paintCursor(g2, u.getLocation(), GraphicsModel.INSTANCE.getProfiledImageProvider(AresMiscTerrainGraphics.STEEL_CURSOR, profile).getImage(0, 0));
             }
         }
-        paintCursor(g2, selectedUnit.getLocation(), GraphicsModel.INSTANCE.getImageProvider(AresMiscTerrainGraphics.BRASS_CURSOR, profile).getImage(0, 0));
+        paintCursor(g2, selectedUnit.getLocation(), GraphicsModel.INSTANCE.getProfiledImageProvider(AresMiscTerrainGraphics.BRASS_CURSOR, profile).getImage(0, 0));
         g2.dispose();
     }
 

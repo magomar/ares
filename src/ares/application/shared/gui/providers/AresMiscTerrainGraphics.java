@@ -7,7 +7,7 @@ import ares.application.shared.gui.profiles.ProfiledGraphicProperty;
  *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
-public enum AresMiscTerrainGraphics implements ImageProviderFactory {
+public enum AresMiscTerrainGraphics implements ProfiledImageProviderFactory {
 
     TERRAIN_MISCELANEOUS(8, 8, true),
     TERRAIN_BORDER(8, 8, false),

@@ -52,8 +52,7 @@ public class PathfinderToolsController implements ScenarioInteractor, Pathfinder
 //        toolBarView.addActionButtons(analyserController.getActionGroup().createToolBarButtons());
         JMenu[] menus = {
             scenarioController.getActionGroup().createMenu(),
-            comparatorController.getActionGroup().createMenu(), 
-            //   analyserController.getActionGroup().createMenu()
+            comparatorController.getActionGroup().createMenu(), //   analyserController.getActionGroup().createMenu()
         };
         menuView.addActionButtons(menus);
 
@@ -72,9 +71,9 @@ public class PathfinderToolsController implements ScenarioInteractor, Pathfinder
     public void newScenario(Scenario scenario, UserRole userRole) {
         // Initialize GraphicsModel
         GraphicsModel.INSTANCE.initialize(scenario.getBoard());
-        GraphicsModel.INSTANCE.addAllGraphics(Terrain.values());
-        GraphicsModel.INSTANCE.addAllGraphics(AresMiscTerrainGraphics.values());
-        GraphicsModel.INSTANCE.addAllGraphics(UnitsColor.values());
+        GraphicsModel.INSTANCE.addProfiledImageProviders(Terrain.values());
+        GraphicsModel.INSTANCE.addProfiledImageProviders(AresMiscTerrainGraphics.values());
+//        GraphicsModel.INSTANCE.addNonProfiledImageProviders(UnitsColor.values()); // Units are not used, so these grahpics are not necessary
         // pass the scenario to the engine controller
         comparatorController.setScenario(scenario);
         // change the GUI to show the pathfinding comparison perspective

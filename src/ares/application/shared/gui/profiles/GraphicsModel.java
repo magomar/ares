@@ -2,8 +2,9 @@ package ares.application.shared.gui.profiles;
 
 import ares.application.shared.gui.decorators.ImageDecorators;
 import ares.application.shared.gui.views.layerviews.AbstractImageLayerView;
-import ares.application.shared.gui.providers.ImageProviderFactory;
+import ares.application.shared.gui.providers.ProfiledImageProviderFactory;
 import ares.application.shared.gui.providers.ImageProvider;
+import ares.application.shared.gui.providers.NonProfiledImageProviderFactory;
 import ares.platform.scenario.board.Board;
 import java.awt.Point;
 import java.awt.Rectangle;
@@ -40,21 +41,33 @@ public class GraphicsModel {
      */
     private int[] boardHeight;
     /**
+     * Number of graphical profiles. A profile may correspond to a different size or an alternative image
+     */
+    private final int numProfiles;
+    /**
      * Graphics profile currently in use. Typically a profile corresponds to a different zoom level (although profiles
      * could possibly be used to use alternate graphics)
      */
     private int activeProfile;
-    private final int numProfiles;
-    private List<Map<ImageProviderFactory, ImageProvider>> providers;
+    /**
+     * Image providers that depend on a specific graphic profile. For the same Each profile is associated to a different
+     * image
+     */
+    private List<Map<ProfiledImageProviderFactory, ImageProvider>> profiledProviders;
+    /**
+     * Non profiled providers (size does not depend on a profile, it is fixed)
+     */
+    private Map<NonProfiledImageProviderFactory, ImageProvider> providers;
     private static final double hexRise = GraphicProperties.getRealProperty(NonProfiledGraphicProperty.TILE_RISE);
     private ImageDecorators[] imageDecorators;
 
     private GraphicsModel() {
         this.numProfiles = GraphicProperties.getNumProfiles();
-        providers = new ArrayList<>();
+        providers = new HashMap<>();
+        profiledProviders = new ArrayList<>();
         imageDecorators = new ImageDecorators[numProfiles];
         for (int i = 0; i < numProfiles; i++) {
-            providers.add(new HashMap<ImageProviderFactory, ImageProvider>());
+            profiledProviders.add(new HashMap<ProfiledImageProviderFactory, ImageProvider>());
         }
         for (int i = 0; i < numProfiles; i++) {
             imageDecorators[i] = new ImageDecorators(i);
@@ -78,26 +91,32 @@ public class GraphicsModel {
         System.out.print("");
     }
 
-    public void addGraphics(ImageProviderFactory factory) {
-        for (int i = 0; i < numProfiles; i++) {
-            providers.get(i).put(factory, factory.createImageProvider(i));
+//    public void addGraphics(ProfiledImageProviderFactory factory) {
+//        for (int i = 0; i < numProfiles; i++) {
+//            profiledProviders.get(i).put(factory, factory.createImageProvider(i));
+//        }
+//    }
+    public void addNonProfiledImageProviders(NonProfiledImageProviderFactory[] factories) {
+        for (NonProfiledImageProviderFactory factory : factories) {
+            providers.put(factory, factory.createImageProvider());
         }
     }
 
-    public void addAllGraphics(ImageProviderFactory[] factories) {
+    public void addProfiledImageProviders(ProfiledImageProviderFactory[] factories) {
         for (int i = 0; i < numProfiles; i++) {
-            Map<ImageProviderFactory, ImageProvider> providersMap = providers.get(i);
-            for (ImageProviderFactory factory : factories) {
+            Map<ProfiledImageProviderFactory, ImageProvider> providersMap = profiledProviders.get(i);
+            for (ProfiledImageProviderFactory factory : factories) {
                 providersMap.put(factory, factory.createImageProvider(i));
             }
         }
     }
 
-//    public ImageProvider getActiveProvider(ImageProviderFactory factory) {
-//        return activeProviders.get(factory);
-//    }
-    public ImageProvider getImageProvider(ImageProviderFactory factory, int profile) {
-        return providers.get(profile).get(factory);
+    public ImageProvider getNonProfiledImageProvider(NonProfiledImageProviderFactory factory) {
+        return providers.get(factory);
+    }
+
+    public ImageProvider getProfiledImageProvider(ProfiledImageProviderFactory factory, int profile) {
+        return profiledProviders.get(profile).get(factory);
     }
 
     public int getActiveProfile() {
@@ -321,16 +340,9 @@ public class GraphicsModel {
         return numProfiles;
     }
 
-    public Map<ImageProviderFactory, ImageProvider> getImageProviders(int profile) {
-        return providers.get(profile);
-    }
-
     public ImageDecorators getImageDecorators(int profile) {
         return imageDecorators[profile];
     }
-//    public int getActiveProfilerProperty(ProfiledGraphicProperty property) {
-//        return GraphicProperties.getProperty(property, activeProfileIndex);
-//    }
 
     /**
      * Check valid coordinates

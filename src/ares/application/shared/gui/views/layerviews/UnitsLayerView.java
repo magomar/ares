@@ -81,7 +81,7 @@ public class UnitsLayerView extends AbstractImageLayerView implements UnitsLayer
             Point pos = GraphicsModel.INSTANCE.tileToPixel(tile.getCoordinates(), profile);
             //Retrieve the single unit image
             UnitModel unit = tile.getTopUnit();
-            BufferedImage unitImage = GraphicsModel.INSTANCE.getImageProvider(unit.getColor(), profile).getImage(unit.getIconId());
+            BufferedImage unitImage = GraphicsModel.INSTANCE.getProfiledImageProvider(unit.getColor(), profile).getImage(unit.getIconId());
 
             // Offset from the upper left corner of the tile
             int imageOffset = GraphicProperties.getProperty(ProfiledGraphicProperty.UNIT_OFFSET, profile);

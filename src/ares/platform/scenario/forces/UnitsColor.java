@@ -2,7 +2,7 @@ package ares.platform.scenario.forces;
 
 import ares.application.shared.gui.profiles.GraphicProperties;
 import ares.application.shared.gui.providers.ImageProvider;
-import ares.application.shared.gui.providers.ImageProviderFactory;
+import ares.application.shared.gui.providers.ProfiledImageProviderFactory;
 import ares.application.shared.gui.profiles.NonProfiledGraphicProperty;
 import ares.application.shared.gui.profiles.ProfiledGraphicProperty;
 import ares.application.shared.gui.providers.MatrixImageProvider;
@@ -13,7 +13,7 @@ import java.awt.Point;
  *
  * @author Sergio Musoles
  */
-public enum UnitsColor implements ImageProviderFactory {
+public enum UnitsColor implements ProfiledImageProviderFactory {
 
     UNITS_BLUE_0(Color.WHITE, "blue", "0"),
     UNITS_BLUE_1(Color.WHITE, "blue", "1"),

@@ -2,7 +2,7 @@ package ares.platform.scenario.board;
 
 import ares.application.shared.gui.profiles.GraphicProperties;
 import ares.application.shared.gui.providers.ImageProvider;
-import ares.application.shared.gui.providers.ImageProviderFactory;
+import ares.application.shared.gui.providers.ProfiledImageProviderFactory;
 import ares.application.shared.gui.profiles.NonProfiledGraphicProperty;
 import ares.application.shared.gui.profiles.ProfiledGraphicProperty;
 import ares.application.shared.gui.providers.MatrixImageProvider;
@@ -13,10 +13,9 @@ import java.util.Set;
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public enum Terrain implements ImageProviderFactory {
+public enum Terrain implements ProfiledImageProviderFactory {
 //motor, amph, mixed, foot, AT, AP, vehicles, infantry, stationary, vision, directional, microProfile
-//    OPEN(0, 0, 0, 0, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, false, true),
-
+    OPEN(0, 0, 0, 0, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, false, true),
     ARID(0, 0, 0, 0, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, false, true),
     SAND(1, 1, 1, 1, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, false, true),
     DUNES(9999, 9999, 9999, 3, 1.0, 1.0, 1.0, 3.0, 2.0, Vision.NORMAL, false, true),

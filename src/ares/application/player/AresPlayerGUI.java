@@ -20,6 +20,7 @@ import ares.application.shared.boundaries.viewers.MessagesViewer;
 import ares.application.shared.boundaries.viewers.OOBViewer;
 import ares.application.shared.boundaries.viewers.PanelMenuViewer;
 import ares.application.shared.boundaries.viewers.ToolBarViewer;
+import ares.application.shared.gui.views.TerrainInfoView;
 import java.awt.*;
 import javax.swing.*;
 

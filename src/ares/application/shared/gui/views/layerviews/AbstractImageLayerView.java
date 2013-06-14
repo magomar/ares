@@ -43,7 +43,7 @@ public abstract class AbstractImageLayerView extends AbstractView<JComponent> im
             /**
              * Paints the globalImage if it's not null
              *
-             * @param g graphics object associated to this {@link JComponent}
+             * @param g
              */
             @Override
             public void paintComponent(Graphics g) {
@@ -110,6 +110,15 @@ public abstract class AbstractImageLayerView extends AbstractView<JComponent> im
     }
 
     @Override
+    public void setProfile(int profile) {
+        this.profile = profile;
+        Dimension imageSize = new Dimension(GraphicsModel.INSTANCE.getBoardWidth(profile), GraphicsModel.INSTANCE.getBoardHeight(profile));
+        contentPane.setPreferredSize(imageSize);
+        contentPane.setSize(imageSize);
+//        contentPane.setBounds(new Rectangle(imageSize));
+    }
+
+    @Override
     public ImageLayerViewer getParentLayer() {
         return parentLayer;
     }
@@ -117,14 +126,5 @@ public abstract class AbstractImageLayerView extends AbstractView<JComponent> im
     @Override
     public BufferedImage getGlobalImage() {
         return globalImage;
-    }
-
-    @Override
-    public void setProfile(int profile) {
-        this.profile = profile;
-        Dimension imageSize = new Dimension(GraphicsModel.INSTANCE.getBoardWidth(profile), GraphicsModel.INSTANCE.getBoardHeight(profile));
-        contentPane.setPreferredSize(imageSize);
-        contentPane.setSize(imageSize);
-//        contentPane.setBounds(new Rectangle(imageSize));
     }
 }
