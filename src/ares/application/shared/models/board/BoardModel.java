@@ -1,9 +1,11 @@
 package ares.application.shared.models.board;
 
+import ares.data.jaxb.Place;
 import ares.platform.model.RoleMediatedModel;
 import ares.platform.model.UserRole;
 import ares.platform.scenario.board.Board;
 import ares.platform.scenario.board.Tile;
+import java.util.List;
 
 /**
  *
@@ -36,5 +38,9 @@ public class BoardModel extends RoleMediatedModel {
 
     public int getHeight() {
         return board.getHeight();
+    }
+    
+    public List<Place> getPlaces() {
+        return board.getPlaces();
     }
 }
