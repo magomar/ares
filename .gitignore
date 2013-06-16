@@ -7,7 +7,6 @@
 # folder/
 # folder/subfolder/
 
-
 # Ignore files by extension or name:
 # *.css
 # *.txt
@@ -16,7 +15,6 @@
 # If slash "/" is at the beginning of the regexp, it will
 # match only folder or files at the root directory
 ##########################################################
-
 
 
 # Java compiled sources #
@@ -28,10 +26,18 @@
 # Netbeans folders #
 ####################
 
-build/
-dist/
-nbproject/private/
+/build/
+/dist/
+/nbproject/private/
 
+#Intellij IDEA folders and files #
+##################################
+
+/out/
+/.idea/
+!/.idea/workspace.xml
+!/.idea/tasks.xml
+!*.iml
 
 # OS files #
 ############
