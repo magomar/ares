@@ -1,6 +1,6 @@
 package ares.application.shared.commands;
 
-import ares.platform.action.Command;
+import ares.application.shared.action.Command;
 import ares.platform.io.ResourcePath;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;

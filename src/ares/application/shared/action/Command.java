@@ -1,4 +1,4 @@
-package ares.platform.action;
+package ares.application.shared.action;
 
 import javax.swing.Icon;
 import javax.swing.KeyStroke;

@@ -1,4 +1,4 @@
-package ares.platform.action;
+package ares.application.shared.action;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

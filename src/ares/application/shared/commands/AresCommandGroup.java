@@ -1,7 +1,7 @@
 package ares.application.shared.commands;
 
-import ares.platform.action.Command;
-import ares.platform.action.CommandGroup;
+import ares.application.shared.action.Command;
+import ares.application.shared.action.CommandGroup;
 
 /**
  *
