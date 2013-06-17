@@ -1,4 +1,4 @@
-package ares.platform.action;
+package ares.application.shared.action;
 
 import ares.application.shared.gui.ComponentFactory;
 import ares.application.shared.gui.components.TranslucidButton;

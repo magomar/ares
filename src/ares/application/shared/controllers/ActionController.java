@@ -1,6 +1,6 @@
 package ares.application.shared.controllers;
 
-import ares.platform.action.ActionGroup;
+import ares.application.shared.action.ActionGroup;
 
 /**
  *
