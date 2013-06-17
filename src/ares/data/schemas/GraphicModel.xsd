@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<schema version="1.0"
+        xmlns="http://www.w3.org/2001/XMLSchema"
+        elementFormDefault="qualified"
+        xmlns:gr="graphics">
+    <element name="GraphicModel">
+        <complexType>
+            <sequence>
+                <element name="NumProfiles" type="int"/>
+                <element name="TilesRows" type="gr:Tiles"/>
+                <element name="TilesColumns" type="gr:Tiles"/>
+                <element name="UnitsRows" type="gr:Units"/>
+                <element name="UnitsColumns" type="gr:Units"/>
+                <element name="FlagsRows" type="gr:Flags"/>
+                <element name="FlagsColumns" type="gr:Flags"/>
+                <element name="TerrainInfo" type="gr:TerrainInfo"/>
+                <element name="TileRise" type="double"/>
+                <element name="Profile" type="gr:GraphicProfile"  maxOccurs = "unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    
+    <element name="GraphicProfile">
+        <complexType>
+            <sequence>
+                <element name="TilesWidth" type="int" maxOccurs = "unbounded"/>
+                <element name="TilesHeight" type="int" maxOccurs = "unbounded"/>
+                <element name="TileWidth" type="int" maxOccurs = "unbounded"/>
+                <element name="TileHeight" type="int" maxOccurs = "unbounded"/>
+                <element name="TileSide" type="int" maxOccurs = "unbounded"/>
+                <element name="TileOffset" type="int" maxOccurs = "unbounded"/>
+                <element name="UnitsWidth" type="int" maxOccurs = "unbounded"/>
+                <element name="UnitsHeight" type="int" maxOccurs = "unbounded"/>
+                <element name="UnitWidth" type="int" maxOccurs = "unbounded"/>
+                <element name="UnitHeight" type="int" maxOccurs = "unbounded"/>
+                <element name="UnitOffset" type="int" maxOccurs = "unbounded"/>
+                <element name="UnitStackOffset" type="int" maxOccurs = "unbounded"/>
+                <element name="UnitsMaxStack" type="int" maxOccurs = "unbounded"/>
+            </sequence>
+            <attribute name="id" type="int"/>
+        </complexType>
+    </element>
+    
+
+
+
+
+    
+    <element name="Flags" type="gr:GraphicsType"/>
+   
+</schema>
