@@ -56,17 +56,19 @@ public class GridLayerView extends AbstractImageLayerView implements GridLayerVi
         ImageDecorators imageDec = GraphicsModel.INSTANCE.getImageDecorators(profile);
         Font placeFont = imageDec.getPlaceFont();
         g2.setFont(placeFont);
-        g2.setColor(Color.CYAN);
+        g2.setColor(Color.black);
         FontMetrics fm = g2.getFontMetrics(placeFont);
         for (Place place : scenario.getBoardModel().getPlaces()) {
             Point pos = GraphicsModel.INSTANCE.tileToPixel(place.getX(), place.getY(), profile);
             String label = place.getName();
             int labelWidth = fm.stringWidth(label);
-            int x = pos.x;
+            int x = pos.x - (labelWidth - gridImage.getWidth()) / 2;
+            if (x + labelWidth > globalImage.getWidth()) {
+                x = globalImage.getWidth() - labelWidth;
+            }
             int y = pos.y;
-            int diff = labelWidth - gridImage.getWidth();
-            if (diff > 0) {
-                x -= diff;
+            if (y - placeFont.getSize() < 0) {
+                y = placeFont.getSize();
             }
             g2.drawString(label, x, y);
         }

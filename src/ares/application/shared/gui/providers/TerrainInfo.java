@@ -43,7 +43,9 @@ public enum TerrainInfo implements NonProfiledImageProviderFactory {
     ROAD,
     IMPROVED_ROAD,
     RAIL,
-    BROKEN_RAIL;
+    BROKEN_RAIL,
+    UNKNOWN,
+    FRAME;
     private final String filename;
 
     private TerrainInfo() {

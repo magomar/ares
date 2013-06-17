@@ -8,13 +8,11 @@ import ares.application.shared.models.board.TileModel;
 import ares.platform.engine.knowledge.KnowledgeCategory;
 import ares.platform.scenario.board.Directions;
 import ares.platform.scenario.board.Terrain;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.util.Map;
-import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 /**
@@ -34,11 +32,20 @@ public class TerrainInfoView extends AbstractView<JPanel> implements TerrainInfo
         this.tile = tileModel;
         initialize();
         Graphics2D g2 = globalImage.createGraphics();
-        // Paint it black!
-        g2.setColor(Color.BLACK);
-        g2.fillRect(0, 0, globalImage.getWidth(), globalImage.getHeight());
-        paintTile(g2, tile);
+        if (tile != null) {
+            paintTile(g2, tile);
+        } else {
+            paintFrame(g2);
+        }
         g2.dispose();
+    }
+
+    private void paintFrame(Graphics2D g2) {
+        BufferedImage image = GraphicsModel.INSTANCE.getNonProfiledImageProvider(TerrainInfo.UNKNOWN).getFullImage();
+        g2.drawImage(image, 0, 0, contentPane);
+//        image = GraphicsModel.INSTANCE.getNonProfiledImageProvider(TerrainInfo.FRAME).getFullImage();
+//        g2.drawImage(image, 0, 0, contentPane);
+        contentPane.repaint(0, 0, image.getWidth(), image.getHeight());
     }
 
     /**
@@ -71,9 +78,9 @@ public class TerrainInfoView extends AbstractView<JPanel> implements TerrainInfo
                 g2.drawImage(terrainImage, 0, 0, contentPane);
             } catch (java.lang.IllegalArgumentException e) {
             }
-
         }
-
+//        BufferedImage image = GraphicsModel.INSTANCE.getNonProfiledImageProvider(TerrainInfo.FRAME).getFullImage();
+//        g2.drawImage(image, 0, 0, contentPane);
         contentPane.repaint(0, 0, terrainImage.getWidth(), terrainImage.getHeight());
     }
 

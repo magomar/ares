@@ -19,13 +19,14 @@ public class ScenarioInfoPane extends JTexturedPanel {
     private BufferedImage backImage;
 
     public ScenarioInfoPane() {
-        ((FlowLayout) getLayout()).setAlignment(FlowLayout.LEADING);
+        ((FlowLayout) getLayout()).setAlignment(FlowLayout.LEFT);
+        Dimension componentSize = new Dimension(75, 75);
         clock = new AnalogClockDayNight();
-        clock.setMinimumSize(new Dimension(75, 75));
+        clock.setPreferredSize(componentSize);
         add(clock);
         
         calendarPane = new WallCalendar();
-        calendarPane.setMinimumSize(new Dimension(75, 75));
+        calendarPane.setPreferredSize(componentSize);
         add(calendarPane);
         backImage = FileIO.loadImage(ResourcePath.OTHER.getFile("wood.png"));
         setTextureImage(backImage);

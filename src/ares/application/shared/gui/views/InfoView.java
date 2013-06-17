@@ -3,7 +3,9 @@ package ares.application.shared.gui.views;
 import ares.application.shared.boundaries.viewers.InfoViewer;
 import ares.application.shared.gui.ComponentFactory;
 import ares.application.shared.gui.components.ScenarioInfoPane;
+import ares.application.shared.gui.profiles.GraphicProperties;
 import ares.application.shared.gui.profiles.GraphicsModel;
+import ares.application.shared.gui.profiles.NonProfiledGraphicProperty;
 import ares.application.shared.gui.providers.TerrainInfo;
 import ares.application.shared.models.board.TileModel;
 import ares.application.shared.models.forces.UnitModel;
@@ -45,11 +47,12 @@ public class InfoView extends AbstractView<JPanel> implements InfoViewer {
     @Override
     public void setPreferredSize(Dimension size) {
         super.setPreferredSize(size);
-        Dimension imageSize = GraphicsModel.INSTANCE.getNonProfiledImageProvider(TerrainInfo.OPEN).getFullImageDimension();
-        Dimension componentSize = new Dimension(imageSize.width, 75 + ComponentFactory.BORDER_THICKNESS * 2);
+//        Dimension imageSize = GraphicsModel.INSTANCE.getNonProfiledImageProvider(TerrainInfo.OPEN).getFullImageDimension();
+        int imageHeight = GraphicProperties.getProperty(NonProfiledGraphicProperty.TERRAIN_INFO_HEIGHT);
+        Dimension componentSize = new Dimension(size.width, 75 + ComponentFactory.BORDER_THICKNESS * 4);
         scenInfo.setMinimumSize(componentSize);
         scenInfo.setPreferredSize(componentSize);
-        componentSize = new Dimension(size.width, imageSize.height + ComponentFactory.BORDER_THICKNESS * 2);
+        componentSize = new Dimension(size.width, imageHeight + ComponentFactory.BORDER_THICKNESS * 4);
         terrainInfoView.contentPane.setMinimumSize(componentSize);
         terrainInfoView.setPreferredSize(componentSize);
     }
@@ -63,6 +66,7 @@ public class InfoView extends AbstractView<JPanel> implements InfoViewer {
     @Override
     public void updateScenarioInfo(Calendar calendar) {
         scenInfo.update(calendar);
+        terrainInfoView.updateTile(null);
     }
 
     @Override

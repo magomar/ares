@@ -67,8 +67,8 @@ public class ImageDecorators {
         arrowFont = new Font(GraphicProperties.FONT_NAME, GraphicProperties.FONT_STYLE, arrowFontSize);
         int tileWidth = GraphicProperties.getProperty(ProfiledGraphicProperty.TILE_WIDTH, profile);
         int tileHeight = GraphicProperties.getProperty(ProfiledGraphicProperty.TILE_HEIGHT, profile);
-        arrowCostPos = new Point(tileWidth / 3, 2* tileHeight / 3);
-        placeFont = new Font(GraphicProperties.FONT_NAME, GraphicProperties.FONT_STYLE, fontSize * 2);
+        arrowCostPos = new Point(tileWidth / 3, 2 * tileHeight / 3);
+        placeFont = new Font(GraphicProperties.FONT_NAME, Font.BOLD, fontSize * 3 / 2);
     }
 
     public void paintUnitAttributes(Graphics2D g2, UnitModel unit) {
@@ -202,7 +202,7 @@ public class ImageDecorators {
         g2.setFont(arrowFont);
         g2.drawString(Integer.toString(cost), arrowCostPos.x, arrowCostPos.y);
     }
-    
+
     public Font getPlaceFont() {
         return placeFont;
     }
