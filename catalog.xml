@@ -8,4 +8,6 @@
     <system systemId="file:/C:/Users/mario/workspace/java/AresProjects/AresPlatform/src/ares/data/schemas/AresEquipment.xsd" uri="xml-resources/jaxb/Ares/AresEquipment.xsd"/>
     <system systemId="file:/C:/Users/mario/workspace/java/AresProjects/AresPlatform/src/ares/data/schemas/AresScenario.xsd" uri="xml-resources/jaxb/Ares/AresScenario.xsd"/>
     <system systemId="file:/C:/Users/mario/workspace/java/AresProjects/AresPlatform/src/ares/data/schemas/xjcSerializableBinding.xml" uri="xml-resources/jaxb/Ares/xjcSerializableBinding.xml"/>
+    <system systemId="file:/D:/Users/Mario.THOR/workspace/java/AresProjects/AresPlatform/src/ares/data/schemas/Graphics.xsd" uri="xml-resources/jaxb/Graphics/Graphics.xsd"/>
+    <system systemId="file:/D:/Users/Mario.THOR/workspace/java/AresProjects/AresPlatform/src/ares/data/schemas/xjcSerializableBinding.xml" uri="xml-resources/jaxb/Graphics/xjcSerializableBinding.xml"/>
 </catalog>

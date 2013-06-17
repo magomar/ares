@@ -27,5 +27,20 @@
         <copy todir="${build.generated.sources.dir}/jaxb">
             <fileset dir="build/generated/jaxbCache/Ares"/>
         </copy>
+        <mkdir dir="build/generated/jaxbCache/Graphics"/>
+        <xjc package="ares.data.jaxb.graphics" destdir="build/generated/jaxbCache/Graphics" catalog="catalog.xml">
+            <classpath>
+                <pathelement location="${src.dir}"/>
+                <pathelement path="${jaxbwiz.xjcrun.classpath}"/>
+            </classpath>
+            <arg value="-xmlschema"/>
+            <schema file="xml-resources/jaxb/Graphics/Graphics.xsd"/>
+            <binding file="xml-resources/jaxb/Graphics/xjcSerializableBinding.xml"/>
+            <depends file="xml-resources/jaxb/Graphics/Graphics.xsd"/>
+            <produces dir="build/generated/jaxbCache/Graphics"/>
+        </xjc>
+        <copy todir="${build.generated.sources.dir}/jaxb">
+            <fileset dir="build/generated/jaxbCache/Graphics"/>
+        </copy>
     </target>
 </project>

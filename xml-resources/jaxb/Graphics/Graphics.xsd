@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<schema version="1.0"
+        xmlns="http://www.w3.org/2001/XMLSchema"
+        elementFormDefault="qualified"
+        targetNamespace="graphics"
+        xmlns:gr="graphics">
+    <include schemaLocation="Graphics.xsd"/>
+    <element name="Graphics">
+        <complexType>
+            <sequence>
+                <element name="NumProfiles" type="int"/>
+                <element name="TilesRows" type="int"/>
+                <element name="TilesColumns" type="int"/>
+                <element name="UnitsRows" type="int"/>
+                <element name="UnitsColumns" type="int"/>
+                <element name="FlagsRows" type="int"/>
+                <element name="FlagsColumns" type="int"/>
+                <element name="TileRise" type="double"/>
+                <element name="Profile" maxOccurs="unbounded">
+                    <complexType>
+                        <sequence>
+                            <element name="TilesWidth" type="int"/>
+                            <element name="TilesHeight" type="int"/>
+                            <element name="TileWidth" type="int"/>
+                            <element name="TileHeight" type="int"/>
+                            <element name="TileSide" type="int"/>
+                            <element name="TileOffset" type="int"/>
+                            <element name="UnitsWidth" type="int"/>
+                            <element name="UnitsHeight" type="int"/>
+                            <element name="UnitWidth" type="int"/>
+                            <element name="UnitHeight" type="int"/>
+                            <element name="UnitOffset" type="int"/>
+                            <element name="UnitStackOffset" type="int"/>
+                            <element name="UnitsMaxStack" type="int"/>
+                            <element name="FlagsWidth" type="int"/>
+                            <element name="FlagsHeight" type="int"/>
+                            <element name="UnitFontSize" type="int"/>
+                            <element name="UnitLedLength" type="int"/>
+                            <element name="UnitBarLength" type="int"/>
+                            <element name="ArrowFontSize" type="int"/>
+                        </sequence>
+                        <attribute name="id" type="int"/>
+                    </complexType>
+                </element>
+            </sequence>
+        </complexType>
+    </element>
+
+</schema>
