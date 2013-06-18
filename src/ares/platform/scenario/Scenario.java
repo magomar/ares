@@ -29,7 +29,6 @@ public final class Scenario implements ModelProvider<ScenarioModel> {
     private Force[] forces;
     private Map<UserRole, ScenarioModel> models;
     private String description;
-    private UserRole userRole;
 
     public Scenario(ares.data.jaxb.Scenario scenario, EquipmentDB eqpDB) {
         name = scenario.getHeader().getName();
@@ -88,15 +87,4 @@ public final class Scenario implements ModelProvider<ScenarioModel> {
         return models.get(role);
     }
 
-    public UserRole getUserRole() {
-        return userRole;
-    }
-
-    public void setUserRole(UserRole userRole) {
-        this.userRole = userRole;
-    }
-    
-    public ScenarioModel getModel() {
-        return models.get(this.userRole);
-    }
 }

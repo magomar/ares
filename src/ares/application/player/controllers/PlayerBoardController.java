@@ -63,7 +63,6 @@ public final class PlayerBoardController extends BoardController implements Boar
     private final SelectionLayerViewer selectionLayerView;
     private Tile selectedTile;
     private Unit selectedUnit;
-    private Scenario scenario;
     private InteractionMode interactionMode = InteractionMode.FREE;
     private final MiniMapController miniMapController;
     private final PlayerBoardInteractor interactor;
@@ -96,13 +95,12 @@ public final class PlayerBoardController extends BoardController implements Boar
         return scenario;
     }
 
-    public void setScenario(Scenario scenario) {
+    public void setScenario(Scenario scenario, UserRole userRole) {
+        super.setScenario(scenario, userRole, GraphicsModel.INSTANCE.getActiveProfile());
         boardView.getContentPane().getViewport().removeChangeListener(changeViewportListener);
-        super.setScenario(scenario, GraphicsModel.INSTANCE.getActiveProfile());
-        this.scenario = scenario;
-        oobView.loadScenario(scenarioModel);
+        oobView.loadScenario(scenario.getModel(userRole));
         infoView.updateScenarioInfo(Clock.INSTANCE.getNow());
-        miniMapController.setScenario(scenario, 0);
+        miniMapController.setScenario(scenario, userRole, 0);
         boardView.getContentPane().getViewport().addChangeListener(changeViewportListener);
     }
 
@@ -135,15 +133,14 @@ public final class PlayerBoardController extends BoardController implements Boar
                 selectedTile = selectedUnit.getLocation();
                 interactionMode = InteractionMode.UNIT_ORDERS;
                 LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, "New unit selected");
-                UserRole role = scenario.getUserRole();
-                TileModel tileModel = selectedTile.getModel(role);
+                TileModel tileModel = selectedTile.getModel(userRole);
                 infoView.updateTileInfo(tileModel);
                 unitsLayerView.updateUnitStack(tileModel);
 //                if (selectedUnit != null) {
                 if (interactionMode == InteractionMode.UNIT_ORDERS) {
-                    UnitModel unitModel = selectedUnit.getModel(role);
-                    FormationModel formationModel = selectedUnit.getFormation().getModel(role);
-                    ForceModel forceModel = selectedUnit.getForce().getModel(role);
+                    UnitModel unitModel = selectedUnit.getModel(userRole);
+                    FormationModel formationModel = selectedUnit.getFormation().getModel(userRole);
+                    ForceModel forceModel = selectedUnit.getForce().getModel(userRole);
                     updateSelectedUnit(unitModel, formationModel, forceModel);
                     boardView.centerViewOn(selectedUnit.getLocation().getCoordinates());
                     arrowLayerView.updateLastOrders(null);
@@ -175,20 +172,18 @@ public final class PlayerBoardController extends BoardController implements Boar
 
     private void changeSelectedTile(Tile tile) {
         selectedTile = tile;
-        UserRole role = scenario.getUserRole();
-        TileModel tileModel = selectedTile.getModel(role);
+        TileModel tileModel = selectedTile.getModel(userRole);
         infoView.updateTileInfo(tileModel);
     }
 
     private void changeSelectedUnit(Unit unit) {
         selectedUnit = unit;
-        UserRole role = scenario.getUserRole();
-        TileModel tileModel = selectedTile.getModel(role);
+        TileModel tileModel = selectedTile.getModel(userRole);
         unitsLayerView.updateUnitStack(tileModel);
         if (selectedUnit != null) {
-            UnitModel unitModel = selectedUnit.getModel(role);
-            FormationModel formationModel = selectedUnit.getFormation().getModel(role);
-            ForceModel forceModel = selectedUnit.getForce().getModel(role);
+            UnitModel unitModel = selectedUnit.getModel(userRole);
+            FormationModel formationModel = selectedUnit.getFormation().getModel(userRole);
+            ForceModel forceModel = selectedUnit.getForce().getModel(userRole);
             arrowLayerView.updateCurrentOrders(null);
             updateSelectedUnit(unitModel, formationModel, forceModel);
             oobView.select(selectedUnit);
@@ -284,13 +279,13 @@ public final class PlayerBoardController extends BoardController implements Boar
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         if (RealTimeEngine.CLOCK_EVENT_PROPERTY.equals(evt.getPropertyName())) {
-            unitsLayerView.updateScenario(scenario.getModel());
+            updateScenario();
+            miniMapController.updateScenario();
             infoView.updateScenarioInfo(Clock.INSTANCE.getNow());
             if (selectedUnit != null) {
-                UserRole role = scenario.getUserRole();
-                UnitModel unitModel = selectedUnit.getModel(role);
-                FormationModel formationModel = selectedUnit.getFormation().getModel(role);
-                ForceModel forceModel = selectedUnit.getForce().getModel(role);
+                UnitModel unitModel = selectedUnit.getModel(userRole);
+                FormationModel formationModel = selectedUnit.getFormation().getModel(userRole);
+                ForceModel forceModel = selectedUnit.getForce().getModel(userRole);
 //                boardView.updateCurrentOrders(null);
                 updateSelectedUnit(unitModel, formationModel, forceModel);
                 infoView.updateTileInfo(unitModel.getLocation());

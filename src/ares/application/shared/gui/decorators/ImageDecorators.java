@@ -45,6 +45,7 @@ public class ImageDecorators {
     private final Font infoFont;
     private final Font arrowFont;
     private final Point arrowCostPos;
+    private final Font placeFont;
 
     public ImageDecorators(int profile) {
         // compute attribute relative locations in pixels
@@ -66,7 +67,8 @@ public class ImageDecorators {
         arrowFont = new Font(GraphicProperties.FONT_NAME, GraphicProperties.FONT_STYLE, arrowFontSize);
         int tileWidth = GraphicProperties.getProperty(ProfiledGraphicProperty.TILE_WIDTH, profile);
         int tileHeight = GraphicProperties.getProperty(ProfiledGraphicProperty.TILE_HEIGHT, profile);
-        arrowCostPos = new Point(tileWidth / 3, 2* tileHeight / 3);
+        arrowCostPos = new Point(tileWidth / 3, 2 * tileHeight / 3);
+        placeFont = new Font(GraphicProperties.FONT_NAME, Font.BOLD, fontSize * 3 / 2);
     }
 
     public void paintUnitAttributes(Graphics2D g2, UnitModel unit) {
@@ -199,5 +201,9 @@ public class ImageDecorators {
     public void paintArrowCost(Graphics2D g2, int cost) {
         g2.setFont(arrowFont);
         g2.drawString(Integer.toString(cost), arrowCostPos.x, arrowCostPos.y);
+    }
+
+    public Font getPlaceFont() {
+        return placeFont;
     }
 }

@@ -1,5 +1,6 @@
 package ares.application.shared.boundaries.interactors;
 
+import ares.platform.model.UserRole;
 import ares.platform.scenario.Scenario;
 
 /**
@@ -8,7 +9,7 @@ import ares.platform.scenario.Scenario;
  */
 public interface ScenarioInteractor extends Interactor {
 
-    void newScenario(Scenario scenario);
+    void newScenario(Scenario scenario, UserRole userRole);
 
     void forgetScenario();
 }

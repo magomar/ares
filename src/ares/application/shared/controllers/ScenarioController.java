@@ -31,16 +31,46 @@ import javax.swing.JFileChooser;
 public final class ScenarioController implements ActionController {
 
     private static final Logger LOG = Logger.getLogger(ScenarioController.class.getName());
+    /**
+     * Action to start a new scenario
+     */
     private final Action open = new CommandAction(FileCommands.GAME_NEW, new OpenScenarioActionListener());
+    /**
+     * Action to load a saved scenario
+     */
     private final Action load = new CommandAction(FileCommands.GAME_LOAD, new LoadScenarioActionListener());
+    /**
+     * Action to close the current scenario
+     */
     private final Action close = new CommandAction(FileCommands.GAME_CLOSE, new CloseScenarioActionListener(), false);
+    /**
+     * Action to exit the system
+     */
     private final Action exit = new CommandAction(FileCommands.EXIT, new ExitActionListener());
+    /**
+     * Action to configure settings and preferences
+     */
     private final Action settings = new CommandAction(FileCommands.SETTINGS, new SettingsActionListener());
+    /**
+     * Provides
+     */
     private final ScenarioInteractor interactor;
     private final ActionGroup actions;
+    /**
+     * if true, then the scenario models will depend on selected user role
+     */
+    private final boolean roleBasedModels;
 
-    public ScenarioController(ScenarioInteractor interactor) {
+    /**
+     *
+     * @param interactor
+     * @param roleBasedModels
+     *
+     * @see UserRole
+     */
+    public ScenarioController(ScenarioInteractor interactor, boolean roleBasedModels) {
         this.interactor = interactor;
+        this.roleBasedModels = roleBasedModels;
         // create action groups
         close.setEnabled(false);
         Action[] fileActions = new Action[]{open, load, close, settings, exit};
@@ -72,17 +102,21 @@ public final class ScenarioController implements ActionController {
                 EquipmentDB eqp = FileIO.unmarshallJson(equipmentFile, EquipmentDB.class);
                 Scenario scenario = new Scenario(scen, eqp);
                 container.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-                StartScenarioPane startScenarioPane = new StartScenarioPane(scenario, file);
-                UserRole userRole = startScenarioPane.showOptionDialog(container);
-                if (userRole == null) {
-                    return;
+                UserRole userRole;
+                if (roleBasedModels) {
+                    StartScenarioPane startScenarioPane = new StartScenarioPane(scenario, file);
+                    userRole = startScenarioPane.showOptionDialog(container);
+                    if (userRole == null) {
+                        return;
+                    }
+                } else {
+                    userRole = UserRole.GOD;
                 }
-                scenario.setUserRole(userRole);
                 close.setEnabled(true);
 //                Container container = boardView.getContentPane();
                 container.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
                 // tell listeners new scenario has been loaded
-                interactor.newScenario(scenario);
+                interactor.newScenario(scenario, userRole);
             }
         }
     }

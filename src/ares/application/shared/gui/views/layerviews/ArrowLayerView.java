@@ -136,7 +136,7 @@ public class ArrowLayerView extends AbstractImageLayerView implements ArrowLayer
      */
     private void paintFinalArrowSegment(Graphics2D g2, Node node, Direction direction, ArrowType type) {
         Point coordinates = Directions.getDirections(direction.ordinal() + 25).getCoordinates();
-        BufferedImage arrowImage = GraphicsModel.INSTANCE.getImageProvider(type.getProvider(), profile).getImage(coordinates);
+        BufferedImage arrowImage = GraphicsModel.INSTANCE.getProfiledImageProvider(type.getProvider(), profile).getImage(coordinates);
         Tile tile = node.getTile();
         Point pos = GraphicsModel.INSTANCE.tileToPixel(tile.getCoordinates(), profile);
         g2.drawImage(arrowImage, pos.x, pos.y, contentPane);
@@ -153,7 +153,7 @@ public class ArrowLayerView extends AbstractImageLayerView implements ArrowLayer
      */
     private void paintFinalArrowSegmentWithCost(Graphics2D g2, Node node, Direction direction, ArrowType type) {
         Point coordinates = Directions.getDirections(direction.ordinal() + 25).getCoordinates();
-        BufferedImage arrowImage = GraphicsModel.INSTANCE.getImageProvider(type.getProvider(), profile).getImage(coordinates);
+        BufferedImage arrowImage = GraphicsModel.INSTANCE.getProfiledImageProvider(type.getProvider(), profile).getImage(coordinates);
         Tile tile = node.getTile();
         Point pos = GraphicsModel.INSTANCE.tileToPixel(tile.getCoordinates(), profile);
         g2.drawImage(arrowImage, pos.x, pos.y, contentPane);
@@ -177,7 +177,7 @@ public class ArrowLayerView extends AbstractImageLayerView implements ArrowLayer
      */
     private void paintArrowSegment(Graphics2D g2, Node node, Set<Direction> directions, ArrowType type) {
         Point coordinates = Directions.getDirections(Direction.getBitmask(directions)).getCoordinates();
-        BufferedImage arrowImage = GraphicsModel.INSTANCE.getImageProvider(type.getProvider(), profile).getImage(coordinates);
+        BufferedImage arrowImage = GraphicsModel.INSTANCE.getProfiledImageProvider(type.getProvider(), profile).getImage(coordinates);
         Tile tile = node.getTile();
         Point pos = GraphicsModel.INSTANCE.tileToPixel(tile.getCoordinates(), profile);
         g2.drawImage(arrowImage, pos.x, pos.y, contentPane);
@@ -192,7 +192,7 @@ public class ArrowLayerView extends AbstractImageLayerView implements ArrowLayer
      */
     private void paintArrowSegmentWithCost(Graphics2D g2, Node node, Set<Direction> directions, ArrowType type) {
         Point coordinates = Directions.getDirections(Direction.getBitmask(directions)).getCoordinates();
-        BufferedImage arrowImage = GraphicsModel.INSTANCE.getImageProvider(type.getProvider(), profile).getImage(coordinates);
+        BufferedImage arrowImage = GraphicsModel.INSTANCE.getProfiledImageProvider(type.getProvider(), profile).getImage(coordinates);
         Tile tile = node.getTile();
         Point pos = GraphicsModel.INSTANCE.tileToPixel(tile.getCoordinates(), profile);
         g2.drawImage(arrowImage, pos.x, pos.y, contentPane);

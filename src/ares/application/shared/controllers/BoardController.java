@@ -12,6 +12,7 @@ import ares.application.shared.models.ScenarioModel;
 import ares.platform.action.ActionGroup;
 import ares.platform.action.CommandAction;
 import ares.platform.action.CommandGroup;
+import ares.platform.model.UserRole;
 import ares.platform.scenario.Scenario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -33,7 +34,8 @@ public class BoardController implements ActionController {
     protected final UnitsLayerViewer unitsLayerView;
     protected final GridLayerViewer gridLayerView;
     protected final BoardInteractor interactorView;
-    protected ScenarioModel scenarioModel;
+    protected Scenario scenario;
+    protected UserRole userRole;
 
     public BoardController(BoardInteractor interactor) {
         this.boardView = interactor.getBoardView();
@@ -49,13 +51,21 @@ public class BoardController implements ActionController {
 
     }
 
-    public void setScenario(Scenario scenario, int profile) {
-        this.scenarioModel = scenario.getModel();
+    public void setScenario(Scenario scenario, UserRole userRole, int profile) {
+        this.scenario = scenario;
+        this.userRole = userRole;
         boardView.setProfile(profile);
         // Render board: paint terrain and units
+        ScenarioModel scenarioModel = scenario.getModel(userRole);
         terrainLayerView.updateScenario(scenarioModel);
         unitsLayerView.updateScenario(scenarioModel);
         gridLayerView.updateScenario(scenarioModel);
+    }
+
+    public void updateScenario() {
+        // Render board: paint terrain and units
+        ScenarioModel scenarioModel = scenario.getModel(userRole);
+        unitsLayerView.updateScenario(scenarioModel);
     }
 
     @Override
@@ -68,6 +78,7 @@ public class BoardController implements ActionController {
         @Override
         public void actionPerformed(ActionEvent e) {
             boardView.setProfile(GraphicsModel.INSTANCE.nextActiveProfile());
+            ScenarioModel scenarioModel = scenario.getModel(userRole);
             terrainLayerView.updateScenario(scenarioModel);
             unitsLayerView.updateScenario(scenarioModel);
             gridLayerView.updateScenario(scenarioModel);
@@ -79,6 +90,7 @@ public class BoardController implements ActionController {
         @Override
         public void actionPerformed(ActionEvent e) {
             boardView.setProfile(GraphicsModel.INSTANCE.previousActiveProfile());
+            ScenarioModel scenarioModel = scenario.getModel(userRole);
             terrainLayerView.updateScenario(scenarioModel);
             unitsLayerView.updateScenario(scenarioModel);
             gridLayerView.updateScenario(scenarioModel);

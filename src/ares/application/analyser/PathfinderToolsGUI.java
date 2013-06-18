@@ -13,7 +13,9 @@ import ares.application.shared.gui.views.ToolBarView;
 import ares.application.shared.gui.views.AbstractView;
 import ares.application.shared.boundaries.viewers.PanelMenuViewer;
 import ares.application.shared.boundaries.viewers.ToolBarViewer;
-import ares.application.shared.laf.LookAndFeelThemes;
+import ares.application.shared.gui.profiles.GraphicsModel;
+import ares.application.shared.gui.providers.AresMiscTerrainGraphics;
+import ares.platform.scenario.board.Terrain;
 import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
@@ -34,6 +36,9 @@ public class PathfinderToolsGUI extends AbstractView<JFrame> implements Pathfind
 
     @Override
     protected JFrame layout() {
+        GraphicsModel.INSTANCE.addProfiledImageProviders(Terrain.values());
+        GraphicsModel.INSTANCE.addProfiledImageProviders(AresMiscTerrainGraphics.values());
+
         mainMenuV = new MainMenuView();
         menuV = new MenuBarView();
         toolBarV = new ToolBarView();

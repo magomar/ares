@@ -20,7 +20,12 @@ import ares.application.shared.boundaries.viewers.MessagesViewer;
 import ares.application.shared.boundaries.viewers.OOBViewer;
 import ares.application.shared.boundaries.viewers.PanelMenuViewer;
 import ares.application.shared.boundaries.viewers.ToolBarViewer;
-import ares.application.shared.laf.LookAndFeelThemes;
+import ares.application.shared.gui.profiles.GraphicsModel;
+import ares.application.shared.gui.providers.AresMiscTerrainGraphics;
+import ares.application.shared.gui.providers.TerrainInfo;
+import ares.application.shared.gui.views.TerrainInfoView;
+import ares.platform.scenario.board.Terrain;
+import ares.platform.scenario.forces.UnitsColor;
 import java.awt.*;
 import javax.swing.*;
 
@@ -50,6 +55,11 @@ public final class AresPlayerGUI extends AbstractView<JFrame> implements PlayerV
 
     @Override
     protected JFrame layout() {
+        GraphicsModel.INSTANCE.addProfiledImageProviders(Terrain.values());
+        GraphicsModel.INSTANCE.addProfiledImageProviders(AresMiscTerrainGraphics.values());
+        GraphicsModel.INSTANCE.addProfiledImageProviders(UnitsColor.values());
+        GraphicsModel.INSTANCE.addNonProfiledImageProviders(TerrainInfo.values());
+
         mainMenuView = new MainMenuView();
         menuView = new MenuBarView();
         infoView = new InfoView();
@@ -85,6 +95,7 @@ public final class AresPlayerGUI extends AbstractView<JFrame> implements PlayerV
         splitVert = ComponentFactory.verticalSplitPane(true, boardView.getContentPane(), messagesView.getContentPane(), 1);
         splitVert2 = ComponentFactory.verticalSplitPane(true, miniMapView.getContentPane(), oobView.getContentPane(), 0);
         splitHoriz = ComponentFactory.horizontalSplitPane(true, infoView.getContentPane(), splitVert, 0);
+        splitHoriz.setEnabled(false);
         splitHoriz2 = ComponentFactory.horizontalSplitPane(true, splitHoriz, splitVert2, 1);
 
 
