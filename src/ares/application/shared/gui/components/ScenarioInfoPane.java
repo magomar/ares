@@ -7,16 +7,17 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.image.BufferedImage;
 import java.util.Calendar;
+import javax.swing.JPanel;
 
 /**
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public class ScenarioInfoPane extends JTexturedPanel {
+public class ScenarioInfoPane extends JPanel {
 
     private AnalogClockDayNight clock;
     private WallCalendar calendarPane;
-    private BufferedImage backImage;
+//    private BufferedImage backImage;
 
     public ScenarioInfoPane() {
         ((FlowLayout) getLayout()).setAlignment(FlowLayout.LEFT);
@@ -28,8 +29,8 @@ public class ScenarioInfoPane extends JTexturedPanel {
         calendarPane = new WallCalendar();
         calendarPane.setPreferredSize(componentSize);
         add(calendarPane);
-        backImage = FileIO.loadImage(ResourcePath.OTHER.getFile("wood.png"));
-        setTextureImage(backImage);
+//        backImage = FileIO.loadImage(ResourcePath.OTHER.getFile("wood.png"));
+//        setTextureImage(backImage);
         setBorder(ComponentFactory.DEFAULT_BORDER);
 
     }
