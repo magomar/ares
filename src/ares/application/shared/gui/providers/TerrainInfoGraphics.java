@@ -7,7 +7,7 @@ import ares.application.shared.gui.profiles.NonProfiledGraphicProperty;
  *
  * @author Mario Gómez Martínez <magomar@gmail.com>
  */
-public enum TerrainInfo implements NonProfiledImageProviderFactory {
+public enum TerrainInfoGraphics implements NonProfiledImageProviderFactory {
 
     OPEN,
     ARID,
@@ -48,7 +48,7 @@ public enum TerrainInfo implements NonProfiledImageProviderFactory {
     FRAME;
     private final String filename;
 
-    private TerrainInfo() {
+    private TerrainInfoGraphics() {
         this.filename = name().toLowerCase() + ".png";
     }
 
