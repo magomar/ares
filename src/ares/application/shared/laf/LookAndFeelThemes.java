@@ -1,5 +1,8 @@
 package ares.application.shared.laf;
 
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Graphics2D;
 import javax.swing.*;
 import javax.swing.plaf.*;
 
@@ -48,5 +51,35 @@ public class LookAndFeelThemes {
         UIManager.put("textHighlight", new ColorUIResource(0xbbbbbb));
         UIManager.put("textHighlightText", new ColorUIResource(0x222222));
         UIManager.put("textInactiveText", new ColorUIResource(0xcccccc));
+
+    }
+
+    public static void finalizeDarkTheme() {
+        UIManager.getLookAndFeelDefaults().put("MenuBar[Enabled].backgroundPainter", new FillPainter(new Color(0, 0, 0)));
+        UIManager.getLookAndFeelDefaults().put("MenuBar.background", new ColorUIResource(0x0));
+        UIManager.getLookAndFeelDefaults().put("MenuBar.foreground", new ColorUIResource(0xffffff));
+        UIManager.getLookAndFeelDefaults().put("ToolBar[Enabled].handleIconPainter", new FillPainter(new Color(0, 0, 0)));
+        UIManager.getLookAndFeelDefaults().put("ToolBar.background", new ColorUIResource(0x0));
+        UIManager.getLookAndFeelDefaults().put("ToolBar.foreground", new ColorUIResource(0xffffff));
+//        UIManager.getLookAndFeelDefaults().put("Menu.background", new ColorUIResource(0x0));
+//        UIManager.getLookAndFeelDefaults().put("Menu.disabled", new ColorUIResource(0x999999));
+//        UIManager.getLookAndFeelDefaults().put("Menu.disabledText", new ColorUIResource(0xaaaaaa));
+        UIManager.getLookAndFeelDefaults().put("MenuItem[Enabled].textForeground", new ColorUIResource(0xffffff));
+        UIManager.getLookAndFeelDefaults().put("MenuItem[Disabled].textForeground", new ColorUIResource(0xaaaaaa));
+    }
+
+    static class FillPainter implements Painter<JComponent> {
+
+        private final Color color;
+
+        FillPainter(final Color c) {
+            color = c;
+        }
+
+        @Override
+        public void paint(Graphics2D g, JComponent object, int width, int height) {
+            g.setColor(color);
+            g.fillRect(0, 0, width - 1, height - 1);
+        }
     }
 }

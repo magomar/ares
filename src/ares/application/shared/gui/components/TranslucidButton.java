@@ -1,6 +1,7 @@
 package ares.application.shared.gui.components;
 
 import java.awt.AlphaComposite;
+import java.awt.Color;
 import static java.awt.Component.CENTER_ALIGNMENT;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -20,7 +21,8 @@ public class TranslucidButton extends JButton {
     public TranslucidButton(Action action) {
         super(action);
         setOpaque(false);
-        setFont(getFont().deriveFont(Font.BOLD));
+        setForeground(Color.BLACK);
+        setFont(getFont().deriveFont(Font.BOLD, 16));
         setAlignmentX(CENTER_ALIGNMENT);
         setSize(BUTTON_DIMENSION);
         setMaximumSize(BUTTON_DIMENSION);
@@ -30,7 +32,6 @@ public class TranslucidButton extends JButton {
 //    public TranslucidButton() {
 //        this(null);
 //    }
-
     @Override
     public void paint(Graphics g) {
         Graphics2D g2 = (Graphics2D) g.create();
