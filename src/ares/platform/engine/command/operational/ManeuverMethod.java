@@ -1,7 +1,6 @@
 package ares.platform.engine.command.operational;
 
 /**
- *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
 public enum ManeuverMethod {

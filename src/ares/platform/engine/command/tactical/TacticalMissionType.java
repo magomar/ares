@@ -7,10 +7,9 @@ import ares.platform.scenario.board.Tile;
 import ares.platform.scenario.forces.Unit;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public enum TacticalMissionType  {
+public enum TacticalMissionType {
 
     //    ASSAULT(TacticalMissionAssault.class),
     ATTACK_BY_FIRE {
@@ -61,6 +60,6 @@ public enum TacticalMissionType  {
     //    SUPRESS(TacticalMissionExample.class),
     //    TURN(TacticalMissionExample.class)
     ;
-    
+
     public abstract TacticalMission getNewTacticalMission(Unit unit, Tile target, Pathfinder pathFinder);
 }

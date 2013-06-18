@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class UnitsStack {
@@ -59,7 +58,7 @@ public class UnitsStack {
         return airUnits;
     }
 
-//    public Ring<Unit> getAllUnits() {
+    //    public Ring<Unit> getAllUnits() {
 //        return allUnits;
 //    }
     public void addSurfaceUnit(SurfaceUnit surfaceUnit) {

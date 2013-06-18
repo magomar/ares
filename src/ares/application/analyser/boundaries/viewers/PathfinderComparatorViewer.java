@@ -7,19 +7,18 @@ import ares.application.shared.gui.views.View;
 import javax.swing.*;
 
 /**
- *
  * @author Mario Gómez Martínez <magomar@gmail.com>
  */
-public interface PathfinderComparatorViewer extends View<JPanel>{
-    
+public interface PathfinderComparatorViewer extends View<JPanel> {
+
 
     BoardViewer getLeftBoardView();
 
     BoardViewer getRightBoardView();
-    
+
     PathfinderConfigurationViewer getLefConfigurationView();
-    
+
     PathfinderConfigurationViewer getRightConfigurationView();
-    
+
 
 }

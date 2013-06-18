@@ -6,7 +6,6 @@ import ares.application.shared.gui.views.View;
 import javax.swing.*;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public interface PlayerViewer extends View<JFrame> {

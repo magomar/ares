@@ -30,12 +30,11 @@ import java.util.*;
 import java.util.Map.Entry;
 
 /**
- *
  * @author Mario Gomez <margomez antiTank dsic.upv.es>
  */
 public abstract class Unit implements ModelProvider<UnitModel> {
 
-//    public static final Comparator<Unit> UNIT_ACTION_FINISH_COMPARATOR = new UnitActionFinishComparator();
+    //    public static final Comparator<Unit> UNIT_ACTION_FINISH_COMPARATOR = new UnitActionFinishComparator();
     public static final Comparator<Unit> UNIT_ENTRY_COMPARATOR = new Unit.UnitEntryComparator();
     public static final int MAX_ENDURANCE = 18 * 60 * 60;
     /**
@@ -188,7 +187,6 @@ public abstract class Unit implements ModelProvider<UnitModel> {
     protected int speed;
     /**
      * The actual ability to perform actions, taking into account readiness and proficiency.
-     *
      */
     protected int quality;
     /**
@@ -411,8 +409,8 @@ public abstract class Unit implements ModelProvider<UnitModel> {
      * Sets the operational state of the unit. This indicates the way the unit is deployed and/or which kind of activity
      * is performing
      *
-     * @see OpState
      * @param opState
+     * @see OpState
      */
     public void setOpState(OpState opState) {
         if (opState != null) {
@@ -605,7 +603,7 @@ public abstract class Unit implements ModelProvider<UnitModel> {
         }
     }
 
-//    protected static class UnitActionFinishComparator implements Comparator<Unit> {
+    //    protected static class UnitActionFinishComparator implements Comparator<Unit> {
 //
 //        @Override
 //        public int compare(Unit u1, Unit u2) {

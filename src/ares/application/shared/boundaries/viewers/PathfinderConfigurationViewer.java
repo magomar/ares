@@ -9,7 +9,6 @@ import javax.swing.*;
 import java.awt.event.ActionListener;
 
 /**
- *
  * @author Mario Gómez Martínez <magomar@gmail.com>
  */
 public interface PathfinderConfigurationViewer extends View<JPanel> {

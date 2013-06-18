@@ -15,7 +15,6 @@ import java.util.List;
 import java.util.Map;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public final class Board implements ModelProvider<BoardModel> {
@@ -80,7 +79,6 @@ public final class Board implements ModelProvider<BoardModel> {
     }
 
     /**
-     *
      * @param from
      * @return a list of all adjacent neighbors
      */
@@ -109,13 +107,13 @@ public final class Board implements ModelProvider<BoardModel> {
         int incY = to.getCoordinates().y - from.getCoordinates().y;
         if (from.getCoordinates().x % 2 == 0) {
             for (Direction dir : Direction.values()) {
-                if (dir.getIncColumn()== incX && dir.getIncRowEven() == incY) {
+                if (dir.getIncColumn() == incX && dir.getIncRowEven() == incY) {
                     return dir;
                 }
             }
         } else {
             for (Direction dir : Direction.values()) {
-                if (dir.getIncColumn()== incX && dir.getIncRowOdd() == incY) {
+                if (dir.getIncColumn() == incX && dir.getIncRowOdd() == incY) {
                     return dir;
                 }
             }

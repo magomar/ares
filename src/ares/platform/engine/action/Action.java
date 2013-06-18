@@ -3,7 +3,6 @@ package ares.platform.engine.action;
 import ares.platform.scenario.forces.Unit;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public interface Action {
@@ -21,7 +20,6 @@ public interface Action {
     /**
      * Starts executing the action. Actions to be executed have to invoke this method before executing for the first
      * time.
-     *
      */
     void start();
 

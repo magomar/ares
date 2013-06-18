@@ -3,7 +3,6 @@ package ares.platform.engine.time;
 import ares.platform.engine.RealTimeEngine;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public enum Phase {
@@ -20,13 +19,12 @@ public enum Phase {
             engine.schedule();
         }
     },
-    ACT
-    {
+    ACT {
         @Override
         public void run
-        (RealTimeEngine engine
-        
-            ) {
+                (RealTimeEngine engine
+
+                ) {
             engine.act();
 
         }

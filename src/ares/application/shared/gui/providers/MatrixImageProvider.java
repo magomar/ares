@@ -12,7 +12,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
 public class MatrixImageProvider implements ImageProvider {

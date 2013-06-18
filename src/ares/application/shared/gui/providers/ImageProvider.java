@@ -4,7 +4,6 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 /**
- *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
 public interface ImageProvider {

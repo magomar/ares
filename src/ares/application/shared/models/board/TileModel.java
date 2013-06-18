@@ -11,7 +11,6 @@ import java.awt.*;
 import java.util.*;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public abstract class TileModel extends KnowledgeMediatedModel {
@@ -53,7 +52,7 @@ public abstract class TileModel extends KnowledgeMediatedModel {
 //        return tf.contains(Feature.NON_PLAYABLE);
         return tile.isPlayable();
     }
-    
+
     public abstract UnitModel getTopUnit();
 
     public abstract String getOwner();

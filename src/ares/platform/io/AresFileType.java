@@ -1,7 +1,6 @@
 package ares.platform.io;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public enum AresFileType implements FileType {

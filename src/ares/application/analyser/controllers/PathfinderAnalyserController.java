@@ -5,10 +5,9 @@ import ares.application.analyser.boundaries.interactors.PathfinderAnalyserIntera
 import java.util.logging.Logger;
 
 /**
- *
  * @author Mario Gómez Martínez <magomar@gmail.com>
  */
-public class PathfinderAnalyserController  {
+public class PathfinderAnalyserController {
 
     private final PathfinderAnalyserInteractor interactor;
     private static final Logger LOG = Logger.getLogger(PathfinderAnalyserController.class.getName());

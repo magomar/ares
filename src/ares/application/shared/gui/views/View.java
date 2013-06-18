@@ -3,7 +3,6 @@ package ares.application.shared.gui.views;
 import java.awt.*;
 
 /**
- *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
 public interface View<C extends Component> {
@@ -11,7 +10,7 @@ public interface View<C extends Component> {
     void setVisible(boolean visible);
 
     boolean isVisible();
-    
+
     boolean isFocusable();
 
     C getContentPane();

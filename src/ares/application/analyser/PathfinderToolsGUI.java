@@ -24,7 +24,6 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- *
  * @author Mario Gómez Martínez <magomar@gmail.com>
  */
 public class PathfinderToolsGUI extends AbstractView<JFrame> implements PathfinderToolsViewer {

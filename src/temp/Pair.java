@@ -4,7 +4,7 @@ import java.util.Objects;
 
 /**
  * Pair class.
- *
+ * <p/>
  * Someone explain me why Java doesn't have this basic class in the STL.
  *
  * @author Heine <heisncfr@inf.upv.es>

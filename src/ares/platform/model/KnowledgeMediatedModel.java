@@ -3,7 +3,6 @@ package ares.platform.model;
 import ares.platform.engine.knowledge.KnowledgeCategory;
 
 /**
- *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
 public abstract class KnowledgeMediatedModel<T> {

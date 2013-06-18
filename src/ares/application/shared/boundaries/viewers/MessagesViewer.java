@@ -8,7 +8,6 @@ import javax.swing.*;
 import java.awt.event.ActionListener;
 
 /**
- *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
 public interface MessagesViewer extends View<JPanel> {

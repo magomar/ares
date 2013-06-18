@@ -20,9 +20,7 @@ import java.util.concurrent.Executors;
 import java.util.logging.Logger;
 
 
-
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  * @author Heine <heisncfr@inf.upv.es>
  */
@@ -77,9 +75,9 @@ public class WeGoPlayerController implements EngineInteractor, ScenarioInteracto
         toolBarView.addActionButtons(boardController.getActionGroup().createToolBarButtons());
         toolBarView.addActionButtons(engineController.getActionGroup().createToolBarButtons());
         JMenu[] menus = {
-            scenarioController.getActionGroup().createMenu(),
-            boardController.getActionGroup().createMenu(),
-            engineController.getActionGroup().createMenu()
+                scenarioController.getActionGroup().createMenu(),
+                boardController.getActionGroup().createMenu(),
+                engineController.getActionGroup().createMenu()
         };
         menuView.addActionButtons(menus);
 

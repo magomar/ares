@@ -190,7 +190,7 @@ public class ArrowLayerView extends AbstractImageLayerView implements ArrowLayer
     /**
      * Paints a single arrow segment together with the accumulated movement cost
      *
-     * @param tile the tile where to paint an Arrow
+     * @param tile  the tile where to paint an Arrow
      * @param index the position of the arrow segment within the array of arrow images
      */
     private void paintArrowSegmentWithCost(Graphics2D g2, Node node, Set<Direction> directions, ArrowType type) {

@@ -9,7 +9,6 @@ import java.util.Collection;
 import java.util.HashSet;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class Combat {

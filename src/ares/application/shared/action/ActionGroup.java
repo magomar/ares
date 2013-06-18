@@ -66,7 +66,7 @@ public class ActionGroup {
                 newButton.setMaximumSize(MAIN_MENU_BUTTON_SIZE);
                 newButton.setFont(newButton.getFont().deriveFont(Font.BOLD, 16));
                 newButton.setForeground(Color.BLACK);
-                newButton.setBorder( new RoundedBorder(10));
+                newButton.setBorder(new RoundedBorder(10));
                 buttons.add(newButton);
             }
         }

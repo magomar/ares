@@ -10,7 +10,6 @@ import ares.application.shared.gui.providers.ProfiledImageProviderFactory;
 import java.awt.*;
 
 /**
- *
  * @author Sergio Musoles
  */
 public enum UnitsColor implements ProfiledImageProviderFactory {
@@ -165,7 +164,7 @@ public enum UnitsColor implements ProfiledImageProviderFactory {
         int columns = GraphicProperties.getProperty(NonProfiledGraphicProperty.UNITS_COLUMNS);
         int fullImageWidth = GraphicProperties.getProperty(ProfiledGraphicProperty.UNITS_WIDTH, profile);
         int fullImageHeight = GraphicProperties.getProperty(ProfiledGraphicProperty.UNITS_HEIGHT, profile);
-        return new MatrixImageProvider(GraphicProperties.getProfilePath(profile), getFilename(profile), 
+        return new MatrixImageProvider(GraphicProperties.getProfilePath(profile), getFilename(profile),
                 rows, columns, fullImageWidth, fullImageHeight);
     }
 

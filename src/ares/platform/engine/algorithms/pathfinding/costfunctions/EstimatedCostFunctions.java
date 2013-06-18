@@ -6,7 +6,6 @@ import ares.platform.scenario.board.Tile;
 import ares.platform.scenario.forces.Unit;
 
 /**
- *
  * @author Mario Gómez Martínez <magomar@gmail.com>
  */
 public enum EstimatedCostFunctions implements CostFunction {

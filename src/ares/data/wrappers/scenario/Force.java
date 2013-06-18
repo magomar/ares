@@ -8,9 +8,9 @@ import java.util.List;
 
 /**
  * <p>Java class for Force complex type.
- * 
+ * <p/>
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p/>
  * <pre>
  * &lt;complexType name="Force">
  *   &lt;complexContent>
@@ -27,16 +27,14 @@ import java.util.List;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Force", namespace = "ares", propOrder = {
-    "name",
-    "proficiency",
-    "supply",
-    "flag",
-    "formation"
+        "name",
+        "proficiency",
+        "supply",
+        "flag",
+        "formation"
 })
 public class Force {
 
@@ -55,11 +53,9 @@ public class Force {
 
     /**
      * Gets the value of the name property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     *         {@link String }
      */
     public String getName() {
         return name;
@@ -67,11 +63,9 @@ public class Force {
 
     /**
      * Sets the value of the name property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setName(String value) {
         this.name = value;
@@ -79,7 +73,6 @@ public class Force {
 
     /**
      * Gets the value of the proficiency property.
-     * 
      */
     public int getProficiency() {
         return proficiency;
@@ -87,7 +80,6 @@ public class Force {
 
     /**
      * Sets the value of the proficiency property.
-     * 
      */
     public void setProficiency(int value) {
         this.proficiency = value;
@@ -95,7 +87,6 @@ public class Force {
 
     /**
      * Gets the value of the supply property.
-     * 
      */
     public int getSupply() {
         return supply;
@@ -103,7 +94,6 @@ public class Force {
 
     /**
      * Sets the value of the supply property.
-     * 
      */
     public void setSupply(int value) {
         this.supply = value;
@@ -111,7 +101,6 @@ public class Force {
 
     /**
      * Gets the value of the flag property.
-     * 
      */
     public int getFlag() {
         return flag;
@@ -119,7 +108,6 @@ public class Force {
 
     /**
      * Sets the value of the flag property.
-     * 
      */
     public void setFlag(int value) {
         this.flag = value;
@@ -127,25 +115,23 @@ public class Force {
 
     /**
      * Gets the value of the formation property.
-     * 
-     * <p>
+     * <p/>
+     * <p/>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the formation property.
-     * 
-     * <p>
+     * <p/>
+     * <p/>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getFormation().add(newItem);
      * </pre>
-     * 
-     * 
-     * <p>
+     * <p/>
+     * <p/>
+     * <p/>
      * Objects of the following type(s) are allowed in the list
      * {@link Formation }
-     * 
-     * 
      */
     public List<Formation> getFormation() {
         if (formation == null) {
@@ -156,7 +142,6 @@ public class Force {
 
     /**
      * Gets the value of the id property.
-     * 
      */
     public int getId() {
         return id;
@@ -164,7 +149,6 @@ public class Force {
 
     /**
      * Sets the value of the id property.
-     * 
      */
     public void setId(int value) {
         this.id = value;

@@ -13,7 +13,6 @@ import ares.platform.scenario.board.Tile;
 import ares.platform.scenario.forces.Unit;
 
 /**
- *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
 public class Occupy extends TacticalMission {
@@ -43,5 +42,5 @@ public class Occupy extends TacticalMission {
             addFirstAction(new ChangeDeploymentAction(unit, ActionType.ASSEMBLE));
         }
     }
-    
+
 }

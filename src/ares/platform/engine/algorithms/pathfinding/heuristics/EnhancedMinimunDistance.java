@@ -7,7 +7,6 @@ import java.util.EnumMap;
 import java.util.Map;
 
 /**
- *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
 public class EnhancedMinimunDistance implements Heuristic {
@@ -23,6 +22,7 @@ public class EnhancedMinimunDistance implements Heuristic {
             return newInstance;
         }
     }
+
     protected final DistanceCalculator distanceCalculator;
 
     private EnhancedMinimunDistance(DistanceCalculator distanceCalculator) {

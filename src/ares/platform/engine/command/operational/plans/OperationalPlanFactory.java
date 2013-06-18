@@ -8,7 +8,6 @@ import ares.platform.scenario.forces.Formation;
 import java.util.List;
 
 /**
- *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
 public interface OperationalPlanFactory {

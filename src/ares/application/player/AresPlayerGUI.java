@@ -20,7 +20,6 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
 public final class AresPlayerGUI extends AbstractView<JFrame> implements PlayerViewer {

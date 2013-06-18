@@ -2,22 +2,22 @@
 package ares.data.wrappers.scenario;
 
 import ares.data.wrappers.equipment.EquipmentDB;
+
 import javax.xml.bind.annotation.XmlRegistry;
 
 
 /**
- * This object contains factory methods for each 
- * Java content interface and Java element interface 
- * generated in the ares.data.jaxb package. 
- * <p>An ObjectFactory allows you to programatically 
- * construct new instances of the Java representation 
- * for XML content. The Java representation of XML 
- * content can consist of schema derived interfaces 
- * and classes representing the binding of schema 
- * type definitions, element declarations and model 
- * groups.  Factory methods for each of these are 
+ * This object contains factory methods for each
+ * Java content interface and Java element interface
+ * generated in the ares.data.jaxb package.
+ * <p>An ObjectFactory allows you to programatically
+ * construct new instances of the Java representation
+ * for XML content. The Java representation of XML
+ * content can consist of schema derived interfaces
+ * and classes representing the binding of schema
+ * type definitions, element declarations and model
+ * groups.  Factory methods for each of these are
  * provided in this class.
- * 
  */
 @XmlRegistry
 public class ObjectFactory {
@@ -25,14 +25,12 @@ public class ObjectFactory {
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: ares.data.jaxb
-     * 
      */
     public ObjectFactory() {
     }
 
     /**
      * Create an instance of {@link EquipmentDB }
-     * 
      */
     public EquipmentDB createEquipmentDB() {
         return new EquipmentDB();
@@ -40,7 +38,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Unit }
-     * 
      */
     public Unit createUnit() {
         return new Unit();
@@ -48,7 +45,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link EquipmentDB.EquipmentCategory }
-     * 
      */
     public EquipmentDB.EquipmentCategory createEquipmentDBEquipmentCategory() {
         return new EquipmentDB.EquipmentCategory();
@@ -56,7 +52,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Replacements }
-     * 
      */
     public Replacements createReplacements() {
         return new Replacements();
@@ -64,7 +59,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Replacements.Force }
-     * 
      */
     public Replacements.Force createReplacementsForce() {
         return new Replacements.Force();
@@ -72,7 +66,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Supplies }
-     * 
      */
     public Supplies createSupplies() {
         return new Supplies();
@@ -80,7 +73,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Supplies.Force }
-     * 
      */
     public Supplies.Force createSuppliesForce() {
         return new Supplies.Force();
@@ -88,7 +80,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Events }
-     * 
      */
     public Events createEvents() {
         return new Events();
@@ -96,7 +87,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link ForceVariables }
-     * 
      */
     public ForceVariables createForceVariables() {
         return new ForceVariables();
@@ -104,7 +94,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Environment }
-     * 
      */
     public Environment createEnvironment() {
         return new Environment();
@@ -112,7 +101,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Scenario }
-     * 
      */
     public Scenario createScenario() {
         return new Scenario();
@@ -120,7 +108,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Header }
-     * 
      */
     public Header createHeader() {
         return new Header();
@@ -128,7 +115,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Calendar }
-     * 
      */
     public Calendar createCalendar() {
         return new Calendar();
@@ -136,7 +122,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Variables }
-     * 
      */
     public Variables createVariables() {
         return new Variables();
@@ -144,7 +129,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Map }
-     * 
      */
     public Map createMap() {
         return new Map();
@@ -152,7 +136,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link OOB }
-     * 
      */
     public OOB createOOB() {
         return new OOB();
@@ -160,7 +143,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Cell }
-     * 
      */
     public Cell createCell() {
         return new Cell();
@@ -168,7 +150,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Formation }
-     * 
      */
     public Formation createFormation() {
         return new Formation();
@@ -176,7 +157,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Orders }
-     * 
      */
     public Orders createOrders() {
         return new Orders();
@@ -184,7 +164,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Place }
-     * 
      */
     public Place createPlace() {
         return new Place();
@@ -192,7 +171,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Track }
-     * 
      */
     public Track createTrack() {
         return new Track();
@@ -200,7 +178,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link ares.data.jaxb.Force }
-     * 
      */
     public ares.data.wrappers.scenario.Force createForce() {
         return new ares.data.wrappers.scenario.Force();
@@ -208,7 +185,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Terrain }
-     * 
      */
     public Terrain createTerrain() {
         return new Terrain();
@@ -216,7 +192,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Objective }
-     * 
      */
     public Objective createObjective() {
         return new Objective();
@@ -224,7 +199,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Unit.Equipment }
-     * 
      */
     public Unit.Equipment createUnitEquipment() {
         return new Unit.Equipment();
@@ -232,7 +206,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link EquipmentDB.EquipmentCategory.Item }
-     * 
      */
     public EquipmentDB.EquipmentCategory.Item createEquipmentDBEquipmentCategoryItem() {
         return new EquipmentDB.EquipmentCategory.Item();
@@ -240,7 +213,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Replacements.Force.Node }
-     * 
      */
     public Replacements.Force.Node createReplacementsForceNode() {
         return new Replacements.Force.Node();
@@ -248,7 +220,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Supplies.Force.Node }
-     * 
      */
     public Supplies.Force.Node createSuppliesForceNode() {
         return new Supplies.Force.Node();
@@ -256,7 +227,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Events.Event }
-     * 
      */
     public Events.Event createEventsEvent() {
         return new Events.Event();
@@ -264,7 +234,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link ForceVariables.Force }
-     * 
      */
     public ForceVariables.Force createForceVariablesForce() {
         return new ForceVariables.Force();
@@ -272,7 +241,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Environment.Zone }
-     * 
      */
     public Environment.Zone createEnvironmentZone() {
         return new Environment.Zone();

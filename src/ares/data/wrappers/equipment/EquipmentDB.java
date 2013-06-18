@@ -2,6 +2,7 @@
 package ares.data.wrappers.equipment;
 
 import ares.data.wrappers.scenario.Trait;
+
 import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,9 +10,9 @@ import java.util.List;
 
 /**
  * <p>Java class for anonymous complex type.
- * 
+ * <p/>
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p/>
  * <pre>
  * &lt;complexType>
  *   &lt;complexContent>
@@ -64,12 +65,10 @@ import java.util.List;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "equipmentCategory"
+        "equipmentCategory"
 })
 @XmlRootElement(name = "EquipmentDB", namespace = "ares")
 public class EquipmentDB {
@@ -79,25 +78,23 @@ public class EquipmentDB {
 
     /**
      * Gets the value of the equipmentCategory property.
-     * 
-     * <p>
+     * <p/>
+     * <p/>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the equipmentCategory property.
-     * 
-     * <p>
+     * <p/>
+     * <p/>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getEquipmentCategory().add(newItem);
      * </pre>
-     * 
-     * 
-     * <p>
+     * <p/>
+     * <p/>
+     * <p/>
      * Objects of the following type(s) are allowed in the list
      * {@link EquipmentDB.EquipmentCategory }
-     * 
-     * 
      */
     public List<EquipmentDB.EquipmentCategory> getEquipmentCategory() {
         if (equipmentCategory == null) {
@@ -109,9 +106,9 @@ public class EquipmentDB {
 
     /**
      * <p>Java class for anonymous complex type.
-     * 
+     * <p/>
      * <p>The following schema fragment specifies the expected content contained within this class.
-     * 
+     * <p/>
      * <pre>
      * &lt;complexType>
      *   &lt;complexContent>
@@ -154,14 +151,12 @@ public class EquipmentDB {
      *   &lt;/complexContent>
      * &lt;/complexType>
      * </pre>
-     * 
-     * 
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
-        "name",
-        "country",
-        "item"
+            "name",
+            "country",
+            "item"
     })
     public static class EquipmentCategory {
 
@@ -176,11 +171,9 @@ public class EquipmentDB {
 
         /**
          * Gets the value of the name property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link String }
-         *     
+         *
+         * @return possible object is
+         *         {@link String }
          */
         public String getName() {
             return name;
@@ -188,11 +181,9 @@ public class EquipmentDB {
 
         /**
          * Sets the value of the name property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link String }
-         *     
+         *
+         * @param value allowed object is
+         *              {@link String }
          */
         public void setName(String value) {
             this.name = value;
@@ -200,11 +191,9 @@ public class EquipmentDB {
 
         /**
          * Gets the value of the country property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link String }
-         *     
+         *
+         * @return possible object is
+         *         {@link String }
          */
         public String getCountry() {
             return country;
@@ -212,11 +201,9 @@ public class EquipmentDB {
 
         /**
          * Sets the value of the country property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link String }
-         *     
+         *
+         * @param value allowed object is
+         *              {@link String }
          */
         public void setCountry(String value) {
             this.country = value;
@@ -224,25 +211,23 @@ public class EquipmentDB {
 
         /**
          * Gets the value of the item property.
-         * 
-         * <p>
+         * <p/>
+         * <p/>
          * This accessor method returns a reference to the live list,
          * not a snapshot. Therefore any modification you make to the
          * returned list will be present inside the JAXB object.
          * This is why there is not a <CODE>set</CODE> method for the item property.
-         * 
-         * <p>
+         * <p/>
+         * <p/>
          * For example, to add a new item, do as follows:
          * <pre>
          *    getItem().add(newItem);
          * </pre>
-         * 
-         * 
-         * <p>
+         * <p/>
+         * <p/>
+         * <p/>
          * Objects of the following type(s) are allowed in the list
          * {@link EquipmentDB.EquipmentCategory.Item }
-         * 
-         * 
          */
         public List<EquipmentDB.EquipmentCategory.Item> getItem() {
             if (item == null) {
@@ -253,7 +238,6 @@ public class EquipmentDB {
 
         /**
          * Gets the value of the id property.
-         * 
          */
         public int getId() {
             return id;
@@ -261,7 +245,6 @@ public class EquipmentDB {
 
         /**
          * Sets the value of the id property.
-         * 
          */
         public void setId(int value) {
             this.id = value;
@@ -270,9 +253,9 @@ public class EquipmentDB {
 
         /**
          * <p>Java class for anonymous complex type.
-         * 
+         * <p/>
          * <p>The following schema fragment specifies the expected content contained within this class.
-         * 
+         * <p/>
          * <pre>
          * &lt;complexType>
          *   &lt;complexContent>
@@ -302,29 +285,27 @@ public class EquipmentDB {
          *   &lt;/complexContent>
          * &lt;/complexType>
          * </pre>
-         * 
-         * 
          */
         @XmlAccessorType(XmlAccessType.FIELD)
         @XmlType(name = "", propOrder = {
-            "name",
-            "country",
-            "icon",
-            "at",
-            "ap",
-            "aa",
-            "df",
-            "personnel",
-            "crew",
-            "artyRange",
-            "earlyRange",
-            "samRange",
-            "nuke",
-            "volume",
-            "weight",
-            "shellWeight",
-            "armor",
-            "trait"
+                "name",
+                "country",
+                "icon",
+                "at",
+                "ap",
+                "aa",
+                "df",
+                "personnel",
+                "crew",
+                "artyRange",
+                "earlyRange",
+                "samRange",
+                "nuke",
+                "volume",
+                "weight",
+                "shellWeight",
+                "armor",
+                "trait"
         })
         public static class Item {
 
@@ -369,11 +350,9 @@ public class EquipmentDB {
 
             /**
              * Gets the value of the name property.
-             * 
-             * @return
-             *     possible object is
-             *     {@link String }
-             *     
+             *
+             * @return possible object is
+             *         {@link String }
              */
             public String getName() {
                 return name;
@@ -381,11 +360,9 @@ public class EquipmentDB {
 
             /**
              * Sets the value of the name property.
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link String }
-             *     
+             *
+             * @param value allowed object is
+             *              {@link String }
              */
             public void setName(String value) {
                 this.name = value;
@@ -393,11 +370,9 @@ public class EquipmentDB {
 
             /**
              * Gets the value of the country property.
-             * 
-             * @return
-             *     possible object is
-             *     {@link String }
-             *     
+             *
+             * @return possible object is
+             *         {@link String }
              */
             public String getCountry() {
                 return country;
@@ -405,11 +380,9 @@ public class EquipmentDB {
 
             /**
              * Sets the value of the country property.
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link String }
-             *     
+             *
+             * @param value allowed object is
+             *              {@link String }
              */
             public void setCountry(String value) {
                 this.country = value;
@@ -417,7 +390,6 @@ public class EquipmentDB {
 
             /**
              * Gets the value of the icon property.
-             * 
              */
             public int getIcon() {
                 return icon;
@@ -425,7 +397,6 @@ public class EquipmentDB {
 
             /**
              * Sets the value of the icon property.
-             * 
              */
             public void setIcon(int value) {
                 this.icon = value;
@@ -433,7 +404,6 @@ public class EquipmentDB {
 
             /**
              * Gets the value of the at property.
-             * 
              */
             public int getAT() {
                 return at;
@@ -441,7 +411,6 @@ public class EquipmentDB {
 
             /**
              * Sets the value of the at property.
-             * 
              */
             public void setAT(int value) {
                 this.at = value;
@@ -449,7 +418,6 @@ public class EquipmentDB {
 
             /**
              * Gets the value of the ap property.
-             * 
              */
             public int getAP() {
                 return ap;
@@ -457,7 +425,6 @@ public class EquipmentDB {
 
             /**
              * Sets the value of the ap property.
-             * 
              */
             public void setAP(int value) {
                 this.ap = value;
@@ -465,7 +432,6 @@ public class EquipmentDB {
 
             /**
              * Gets the value of the aa property.
-             * 
              */
             public int getAA() {
                 return aa;
@@ -473,7 +439,6 @@ public class EquipmentDB {
 
             /**
              * Sets the value of the aa property.
-             * 
              */
             public void setAA(int value) {
                 this.aa = value;
@@ -481,7 +446,6 @@ public class EquipmentDB {
 
             /**
              * Gets the value of the df property.
-             * 
              */
             public int getDF() {
                 return df;
@@ -489,7 +453,6 @@ public class EquipmentDB {
 
             /**
              * Sets the value of the df property.
-             * 
              */
             public void setDF(int value) {
                 this.df = value;
@@ -497,7 +460,6 @@ public class EquipmentDB {
 
             /**
              * Gets the value of the personnel property.
-             * 
              */
             public int getPersonnel() {
                 return personnel;
@@ -505,7 +467,6 @@ public class EquipmentDB {
 
             /**
              * Sets the value of the personnel property.
-             * 
              */
             public void setPersonnel(int value) {
                 this.personnel = value;
@@ -513,7 +474,6 @@ public class EquipmentDB {
 
             /**
              * Gets the value of the crew property.
-             * 
              */
             public int getCrew() {
                 return crew;
@@ -521,7 +481,6 @@ public class EquipmentDB {
 
             /**
              * Sets the value of the crew property.
-             * 
              */
             public void setCrew(int value) {
                 this.crew = value;
@@ -529,7 +488,6 @@ public class EquipmentDB {
 
             /**
              * Gets the value of the artyRange property.
-             * 
              */
             public int getArtyRange() {
                 return artyRange;
@@ -537,7 +495,6 @@ public class EquipmentDB {
 
             /**
              * Sets the value of the artyRange property.
-             * 
              */
             public void setArtyRange(int value) {
                 this.artyRange = value;
@@ -545,7 +502,6 @@ public class EquipmentDB {
 
             /**
              * Gets the value of the earlyRange property.
-             * 
              */
             public int getEarlyRange() {
                 return earlyRange;
@@ -553,7 +509,6 @@ public class EquipmentDB {
 
             /**
              * Sets the value of the earlyRange property.
-             * 
              */
             public void setEarlyRange(int value) {
                 this.earlyRange = value;
@@ -561,7 +516,6 @@ public class EquipmentDB {
 
             /**
              * Gets the value of the samRange property.
-             * 
              */
             public int getSAMRange() {
                 return samRange;
@@ -569,7 +523,6 @@ public class EquipmentDB {
 
             /**
              * Sets the value of the samRange property.
-             * 
              */
             public void setSAMRange(int value) {
                 this.samRange = value;
@@ -577,7 +530,6 @@ public class EquipmentDB {
 
             /**
              * Gets the value of the nuke property.
-             * 
              */
             public int getNuke() {
                 return nuke;
@@ -585,7 +537,6 @@ public class EquipmentDB {
 
             /**
              * Sets the value of the nuke property.
-             * 
              */
             public void setNuke(int value) {
                 this.nuke = value;
@@ -593,7 +544,6 @@ public class EquipmentDB {
 
             /**
              * Gets the value of the volume property.
-             * 
              */
             public int getVolume() {
                 return volume;
@@ -601,7 +551,6 @@ public class EquipmentDB {
 
             /**
              * Sets the value of the volume property.
-             * 
              */
             public void setVolume(int value) {
                 this.volume = value;
@@ -609,7 +558,6 @@ public class EquipmentDB {
 
             /**
              * Gets the value of the weight property.
-             * 
              */
             public int getWeight() {
                 return weight;
@@ -617,7 +565,6 @@ public class EquipmentDB {
 
             /**
              * Sets the value of the weight property.
-             * 
              */
             public void setWeight(int value) {
                 this.weight = value;
@@ -625,7 +572,6 @@ public class EquipmentDB {
 
             /**
              * Gets the value of the shellWeight property.
-             * 
              */
             public int getShellWeight() {
                 return shellWeight;
@@ -633,7 +579,6 @@ public class EquipmentDB {
 
             /**
              * Sets the value of the shellWeight property.
-             * 
              */
             public void setShellWeight(int value) {
                 this.shellWeight = value;
@@ -641,7 +586,6 @@ public class EquipmentDB {
 
             /**
              * Gets the value of the armor property.
-             * 
              */
             public int getArmor() {
                 return armor;
@@ -649,7 +593,6 @@ public class EquipmentDB {
 
             /**
              * Sets the value of the armor property.
-             * 
              */
             public void setArmor(int value) {
                 this.armor = value;
@@ -657,25 +600,23 @@ public class EquipmentDB {
 
             /**
              * Gets the value of the trait property.
-             * 
-             * <p>
+             * <p/>
+             * <p/>
              * This accessor method returns a reference to the live list,
              * not a snapshot. Therefore any modification you make to the
              * returned list will be present inside the JAXB object.
              * This is why there is not a <CODE>set</CODE> method for the trait property.
-             * 
-             * <p>
+             * <p/>
+             * <p/>
              * For example, to add a new item, do as follows:
              * <pre>
              *    getTrait().add(newItem);
              * </pre>
-             * 
-             * 
-             * <p>
+             * <p/>
+             * <p/>
+             * <p/>
              * Objects of the following type(s) are allowed in the list
              * {@link Trait }
-             * 
-             * 
              */
             public List<Trait> getTrait() {
                 if (trait == null) {
@@ -686,7 +627,6 @@ public class EquipmentDB {
 
             /**
              * Gets the value of the id property.
-             * 
              */
             public int getId() {
                 return id;
@@ -694,7 +634,6 @@ public class EquipmentDB {
 
             /**
              * Sets the value of the id property.
-             * 
              */
             public void setId(int value) {
                 this.id = value;

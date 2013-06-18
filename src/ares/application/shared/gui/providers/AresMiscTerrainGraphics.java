@@ -4,7 +4,6 @@ import ares.application.shared.gui.profiles.GraphicProperties;
 import ares.application.shared.gui.profiles.ProfiledGraphicProperty;
 
 /**
- *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
 public enum AresMiscTerrainGraphics implements ProfiledImageProviderFactory {

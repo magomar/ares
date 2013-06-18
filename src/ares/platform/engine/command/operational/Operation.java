@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Map;
 
 /**
- *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
 public abstract class Operation {
@@ -28,7 +27,7 @@ public abstract class Operation {
         this.goal = goal;
         missions = new HashMap<>();
     }
-    
+
     public abstract void plan();
 
     public OperationType getType() {

@@ -3,7 +3,6 @@ package ares.application.shared.gui.views;
 import java.awt.*;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public abstract class AbstractView<C extends Component> implements View<C> {

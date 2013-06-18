@@ -5,7 +5,6 @@ import ares.platform.scenario.forces.OpState;
 import ares.platform.scenario.forces.Unit;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public abstract class AbstractAction implements Action {
@@ -32,7 +31,6 @@ public abstract class AbstractAction implements Action {
      * Before starting the action, this attribute holds the estimated time to start performing the action, specified in
      * time ticks passed since the beginning of the scenario. Thereafter it holds the actual starting time. If (start ==
      * AS_SOON_AS_POSSIBLE) then the action will be executed as soon as possible
-     *
      */
     protected int start;
     /**
@@ -83,7 +81,6 @@ public abstract class AbstractAction implements Action {
      * Determines if the action can be executed by checking all the necessary conditions: if the action was already
      * started then it performs two checks: {@link #checkEndurance()} and {@link #isFeasible()}, otherwise it performs
      * the two former checks plus {@link #checkStartTime()} and {@link #checkPreconditions()}.
-     *
      *
      * @return true if the action can be executed
      */

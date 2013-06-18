@@ -8,7 +8,6 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- *
  * @author Mario Gómez Martínez <magomar@gmail.com>
  */
 public abstract class AbstractBoardView extends AbstractLayeredImageView implements BoardViewer {

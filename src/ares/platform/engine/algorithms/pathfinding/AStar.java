@@ -13,14 +13,13 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class AStar extends AbstractPathfinder {
 
     public AStar() {
     }
-    
+
     public AStar(Heuristic heuristic, CostFunction costFunction) {
         super(heuristic, costFunction);
     }

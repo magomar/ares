@@ -16,7 +16,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 /**
- *
  * @author Mario Gómez Martínez <magomar@gmail.com>
  */
 public class MiniMapController {

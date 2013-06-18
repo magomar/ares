@@ -3,7 +3,6 @@ package ares.platform.engine.algorithms.pathfinding;
 import java.util.Collection;
 
 /**
- *
  * @author Mario Gómez Martínez <magomar@gmail.com>
  */
 public class ExtendedPath extends Path {
@@ -16,11 +15,11 @@ public class ExtendedPath extends Path {
         this.openSetNodes = openSetNodes;
         this.closedSetNodes = closedSetNodes;
     }
-    
+
     public Collection<Node> getOpenSetNodes() {
         return openSetNodes;
     }
-    
+
     public Collection<Node> getClosedSetNodes() {
         return closedSetNodes;
     }

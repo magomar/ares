@@ -9,7 +9,6 @@ import ares.platform.scenario.assets.AssetType;
 import java.util.Set;
 
 /**
- *
  * @author Mario Gomez <margomez antiTank dsic.upv.es>
  */
 public final class LandUnit extends SurfaceUnit {
@@ -27,10 +26,10 @@ public final class LandUnit extends SurfaceUnit {
     protected int logistics;
     protected int command;
     protected int railRepair;
-    
-    protected LandUnit() { 
+
+    protected LandUnit() {
     }
-    
+
     public LandUnit(ares.data.wrappers.scenario.Unit unit, Formation formation, Force force, Scenario scenario) {
         super(unit, formation, force, scenario);
         int transportSpeed = Integer.MAX_VALUE;

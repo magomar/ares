@@ -7,7 +7,6 @@ import javax.swing.*;
 import java.awt.event.KeyEvent;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public enum UnitCommands implements Command {
@@ -48,7 +47,7 @@ public enum UnitCommands implements Command {
         this.iconFilename = name().toLowerCase() + ".png";
     }
 
- @Override
+    @Override
     public String getText() {
         return text;
     }
@@ -62,10 +61,12 @@ public enum UnitCommands implements Command {
     public Integer getMnemonic() {
         return mnemonic;
     }
+
     @Override
     public KeyStroke getAccelerator() {
         return accelerator;
     }
+
     @Override
     public String getName() {
         return name();

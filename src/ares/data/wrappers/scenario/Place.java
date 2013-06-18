@@ -6,9 +6,9 @@ import javax.xml.bind.annotation.*;
 
 /**
  * <p>Java class for Place complex type.
- * 
+ * <p/>
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p/>
  * <pre>
  * &lt;complexType name="Place">
  *   &lt;complexContent>
@@ -23,14 +23,12 @@ import javax.xml.bind.annotation.*;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Place", namespace = "ares", propOrder = {
-    "x",
-    "y",
-    "name"
+        "x",
+        "y",
+        "name"
 })
 public class Place {
 
@@ -45,7 +43,6 @@ public class Place {
 
     /**
      * Gets the value of the x property.
-     * 
      */
     public int getX() {
         return x;
@@ -53,7 +50,6 @@ public class Place {
 
     /**
      * Sets the value of the x property.
-     * 
      */
     public void setX(int value) {
         this.x = value;
@@ -61,7 +57,6 @@ public class Place {
 
     /**
      * Gets the value of the y property.
-     * 
      */
     public int getY() {
         return y;
@@ -69,7 +64,6 @@ public class Place {
 
     /**
      * Sets the value of the y property.
-     * 
      */
     public void setY(int value) {
         this.y = value;
@@ -77,11 +71,9 @@ public class Place {
 
     /**
      * Gets the value of the name property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     *         {@link String }
      */
     public String getName() {
         return name;
@@ -89,11 +81,9 @@ public class Place {
 
     /**
      * Sets the value of the name property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setName(String value) {
         this.name = value;
@@ -101,7 +91,6 @@ public class Place {
 
     /**
      * Gets the value of the id property.
-     * 
      */
     public int getId() {
         return id;
@@ -109,7 +98,6 @@ public class Place {
 
     /**
      * Sets the value of the id property.
-     * 
      */
     public void setId(int value) {
         this.id = value;

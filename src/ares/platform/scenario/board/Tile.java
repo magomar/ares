@@ -59,7 +59,7 @@ public final class Tile implements ModelProvider<TileModel> {
      */
     private Point coordinates;
     /**
-     * Unique identifier obtained from coordinates: {@code index(x,y) = x * board.width + y}
+     * Unique identifier obtained from coordinates: {@code index(x, y) = x * board.width + y}
      */
     private int index;
     /**
@@ -404,7 +404,7 @@ public final class Tile implements ModelProvider<TileModel> {
         }
         return minimunCosts;
     }
-    
+
     public boolean isPlayable() {
         return !features.contains(Feature.NON_PLAYABLE);
     }

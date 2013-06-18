@@ -4,7 +4,6 @@ import java.util.EnumSet;
 import java.util.Set;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public enum Direction {

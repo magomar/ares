@@ -5,10 +5,9 @@ import ares.platform.scenario.forces.Echelon;
 import ares.platform.scenario.forces.Unit;
 
 /**
- *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
-public class IdentifiedUnitModel extends DetectedUnitModel  {
+public class IdentifiedUnitModel extends DetectedUnitModel {
 
     public IdentifiedUnitModel(Unit unit) {
         super(unit, KnowledgeCategory.GOOD);

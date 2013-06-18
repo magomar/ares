@@ -3,7 +3,6 @@ package temp;
 import java.util.*;
 
 /**
- *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
 public final class MultiValuedLookupService<T> {

@@ -14,7 +14,6 @@ import javax.swing.tree.TreePath;
 import java.util.Enumeration;
 
 /**
- *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
 public class OOBView extends AbstractView<JScrollPane> implements OOBViewer {
@@ -84,6 +83,6 @@ public class OOBView extends AbstractView<JScrollPane> implements OOBViewer {
 
     @Override
     public void flush() {
-       tabbedPane.removeAll();
+        tabbedPane.removeAll();
     }
 }

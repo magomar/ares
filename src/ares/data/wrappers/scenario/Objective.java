@@ -6,9 +6,9 @@ import javax.xml.bind.annotation.*;
 
 /**
  * <p>Java class for Objective complex type.
- * 
+ * <p/>
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p/>
  * <pre>
  * &lt;complexType name="Objective">
  *   &lt;complexContent>
@@ -22,13 +22,11 @@ import javax.xml.bind.annotation.*;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Objective", namespace = "ares", propOrder = {
-    "x",
-    "y"
+        "x",
+        "y"
 })
 public class Objective {
 
@@ -41,7 +39,6 @@ public class Objective {
 
     /**
      * Gets the value of the x property.
-     * 
      */
     public int getX() {
         return x;
@@ -49,7 +46,6 @@ public class Objective {
 
     /**
      * Sets the value of the x property.
-     * 
      */
     public void setX(int value) {
         this.x = value;
@@ -57,7 +53,6 @@ public class Objective {
 
     /**
      * Gets the value of the y property.
-     * 
      */
     public int getY() {
         return y;
@@ -65,7 +60,6 @@ public class Objective {
 
     /**
      * Sets the value of the y property.
-     * 
      */
     public void setY(int value) {
         this.y = value;
@@ -73,7 +67,6 @@ public class Objective {
 
     /**
      * Gets the value of the id property.
-     * 
      */
     public int getId() {
         return id;
@@ -81,7 +74,6 @@ public class Objective {
 
     /**
      * Sets the value of the id property.
-     * 
      */
     public void setId(int value) {
         this.id = value;

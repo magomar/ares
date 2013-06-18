@@ -5,7 +5,6 @@ import ares.application.shared.boundaries.viewers.layerviewers.LayeredImageViewe
 import java.awt.*;
 
 /**
- *
  * @author Mario Gómez Martínez <magomar@gmail.com>
  */
 public interface BoardViewer extends LayeredImageViewer {

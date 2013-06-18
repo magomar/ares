@@ -7,7 +7,6 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- *
  * @author Mario Gómez Martínez <magomar@gmail.com>
  */
 public class MiniMapNavigationLayerView extends AbstractImageLayerView implements MiniMapNavigationLayerViewer {

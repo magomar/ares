@@ -3,7 +3,6 @@ package ares.platform.engine.action;
 import ares.platform.scenario.forces.OpState;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public enum ActionType {
@@ -45,7 +44,7 @@ public enum ActionType {
     private final OpState effectAfter;
 
     private ActionType(final double wearRate, final double speedModifier, final OpState precondition,
-            final OpState effectWhile, final OpState effectAfter) {
+                       final OpState effectWhile, final OpState effectAfter) {
         this.wearRate = (int) (wearRate * 60);
         this.speedModifier = speedModifier;
         this.precondition = precondition;
@@ -74,7 +73,6 @@ public enum ActionType {
     }
 
     /**
-     *
      * @param duration in minutes
      * @return the endurance required to execute this action type for the given {@link duration}
      */

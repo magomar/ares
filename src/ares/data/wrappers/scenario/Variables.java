@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for Variables complex type.
- * 
+ * <p/>
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p/>
  * <pre>
  * &lt;complexType name="Variables">
  *   &lt;complexContent>
@@ -35,24 +35,22 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Variables", namespace = "ares", propOrder = {
-    "scenarioIsOver",
-    "ceaseFire",
-    "eventEngineVariable",
-    "riversAlongEdges",
-    "attritionDivider",
-    "maxRoundsPerBattle",
-    "aaaLethalityRate",
-    "engineeringRate",
-    "hexConversionRate",
-    "entrenchmentRate",
-    "combatDensityRate",
-    "supplyMovementRate",
-    "supplyReadinessRate"
+        "scenarioIsOver",
+        "ceaseFire",
+        "eventEngineVariable",
+        "riversAlongEdges",
+        "attritionDivider",
+        "maxRoundsPerBattle",
+        "aaaLethalityRate",
+        "engineeringRate",
+        "hexConversionRate",
+        "entrenchmentRate",
+        "combatDensityRate",
+        "supplyMovementRate",
+        "supplyReadinessRate"
 })
 public class Variables {
 
@@ -85,7 +83,6 @@ public class Variables {
 
     /**
      * Gets the value of the scenarioIsOver property.
-     * 
      */
     public int getScenarioIsOver() {
         return scenarioIsOver;
@@ -93,7 +90,6 @@ public class Variables {
 
     /**
      * Sets the value of the scenarioIsOver property.
-     * 
      */
     public void setScenarioIsOver(int value) {
         this.scenarioIsOver = value;
@@ -101,7 +97,6 @@ public class Variables {
 
     /**
      * Gets the value of the ceaseFire property.
-     * 
      */
     public int getCeaseFire() {
         return ceaseFire;
@@ -109,7 +104,6 @@ public class Variables {
 
     /**
      * Sets the value of the ceaseFire property.
-     * 
      */
     public void setCeaseFire(int value) {
         this.ceaseFire = value;
@@ -117,7 +111,6 @@ public class Variables {
 
     /**
      * Gets the value of the eventEngineVariable property.
-     * 
      */
     public int getEventEngineVariable() {
         return eventEngineVariable;
@@ -125,7 +118,6 @@ public class Variables {
 
     /**
      * Sets the value of the eventEngineVariable property.
-     * 
      */
     public void setEventEngineVariable(int value) {
         this.eventEngineVariable = value;
@@ -133,7 +125,6 @@ public class Variables {
 
     /**
      * Gets the value of the riversAlongEdges property.
-     * 
      */
     public int getRiversAlongEdges() {
         return riversAlongEdges;
@@ -141,7 +132,6 @@ public class Variables {
 
     /**
      * Sets the value of the riversAlongEdges property.
-     * 
      */
     public void setRiversAlongEdges(int value) {
         this.riversAlongEdges = value;
@@ -149,7 +139,6 @@ public class Variables {
 
     /**
      * Gets the value of the attritionDivider property.
-     * 
      */
     public int getAttritionDivider() {
         return attritionDivider;
@@ -157,7 +146,6 @@ public class Variables {
 
     /**
      * Sets the value of the attritionDivider property.
-     * 
      */
     public void setAttritionDivider(int value) {
         this.attritionDivider = value;
@@ -165,7 +153,6 @@ public class Variables {
 
     /**
      * Gets the value of the maxRoundsPerBattle property.
-     * 
      */
     public int getMaxRoundsPerBattle() {
         return maxRoundsPerBattle;
@@ -173,7 +160,6 @@ public class Variables {
 
     /**
      * Sets the value of the maxRoundsPerBattle property.
-     * 
      */
     public void setMaxRoundsPerBattle(int value) {
         this.maxRoundsPerBattle = value;
@@ -181,7 +167,6 @@ public class Variables {
 
     /**
      * Gets the value of the aaaLethalityRate property.
-     * 
      */
     public int getAAALethalityRate() {
         return aaaLethalityRate;
@@ -189,7 +174,6 @@ public class Variables {
 
     /**
      * Sets the value of the aaaLethalityRate property.
-     * 
      */
     public void setAAALethalityRate(int value) {
         this.aaaLethalityRate = value;
@@ -197,7 +181,6 @@ public class Variables {
 
     /**
      * Gets the value of the engineeringRate property.
-     * 
      */
     public int getEngineeringRate() {
         return engineeringRate;
@@ -205,7 +188,6 @@ public class Variables {
 
     /**
      * Sets the value of the engineeringRate property.
-     * 
      */
     public void setEngineeringRate(int value) {
         this.engineeringRate = value;
@@ -213,7 +195,6 @@ public class Variables {
 
     /**
      * Gets the value of the hexConversionRate property.
-     * 
      */
     public int getHexConversionRate() {
         return hexConversionRate;
@@ -221,7 +202,6 @@ public class Variables {
 
     /**
      * Sets the value of the hexConversionRate property.
-     * 
      */
     public void setHexConversionRate(int value) {
         this.hexConversionRate = value;
@@ -229,7 +209,6 @@ public class Variables {
 
     /**
      * Gets the value of the entrenchmentRate property.
-     * 
      */
     public int getEntrenchmentRate() {
         return entrenchmentRate;
@@ -237,7 +216,6 @@ public class Variables {
 
     /**
      * Sets the value of the entrenchmentRate property.
-     * 
      */
     public void setEntrenchmentRate(int value) {
         this.entrenchmentRate = value;
@@ -245,7 +223,6 @@ public class Variables {
 
     /**
      * Gets the value of the combatDensityRate property.
-     * 
      */
     public int getCombatDensityRate() {
         return combatDensityRate;
@@ -253,7 +230,6 @@ public class Variables {
 
     /**
      * Sets the value of the combatDensityRate property.
-     * 
      */
     public void setCombatDensityRate(int value) {
         this.combatDensityRate = value;
@@ -261,7 +237,6 @@ public class Variables {
 
     /**
      * Gets the value of the supplyMovementRate property.
-     * 
      */
     public int getSupplyMovementRate() {
         return supplyMovementRate;
@@ -269,7 +244,6 @@ public class Variables {
 
     /**
      * Sets the value of the supplyMovementRate property.
-     * 
      */
     public void setSupplyMovementRate(int value) {
         this.supplyMovementRate = value;
@@ -277,7 +251,6 @@ public class Variables {
 
     /**
      * Gets the value of the supplyReadinessRate property.
-     * 
      */
     public int getSupplyReadinessRate() {
         return supplyReadinessRate;
@@ -285,7 +258,6 @@ public class Variables {
 
     /**
      * Sets the value of the supplyReadinessRate property.
-     * 
      */
     public void setSupplyReadinessRate(int value) {
         this.supplyReadinessRate = value;

@@ -12,7 +12,6 @@ import java.awt.*;
 import java.awt.event.MouseListener;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public abstract class ComponentFactory {
@@ -37,7 +36,8 @@ public abstract class ComponentFactory {
     /**
      * Default border to be used by panels
      */
-    public static final Border DEFAULT_BORDER = BorderFactory.createEmptyBorder(BORDER_THICKNESS,BORDER_THICKNESS,BORDER_THICKNESS,BORDER_THICKNESS);
+    public static final Border DEFAULT_BORDER = BorderFactory.createEmptyBorder(BORDER_THICKNESS, BORDER_THICKNESS, BORDER_THICKNESS, BORDER_THICKNESS);
+
     //------------------------------------------------
     // Factories for frames
     //--------------------------------------------------
@@ -208,9 +208,9 @@ public abstract class ComponentFactory {
         JPanel panel = panel();
         for (JButton button : buttons) {
             panel.add(button);
-            panel.add(Box.createRigidArea(new Dimension(5,0)));
+            panel.add(Box.createRigidArea(new Dimension(5, 0)));
         }
-        panel.setLayout(new BoxLayout(panel,axis));
+        panel.setLayout(new BoxLayout(panel, axis));
         return panel;
     }
 
@@ -311,6 +311,7 @@ public abstract class ComponentFactory {
 //----------------------------------------------------------------------------
 //  Factories for consistent GUI objects
 //----------------------------------------------------------------------------
+
     /**
      * Builds a standard modal input dialog, with content and buttons to accept or cancel that content.
      */

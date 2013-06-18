@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Map;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class ActionSpace {
@@ -48,7 +47,8 @@ public class ActionSpace {
 
     public void resolveInteractions() {
         for (Action action : scActions) {
-            if (action.getState()== ActionState.CREATED){}
+            if (action.getState() == ActionState.CREATED) {
+            }
         }
         for (Map.Entry<Tile, List<Action>> entry : actionMap.entrySet()) {
             Tile tile = entry.getKey();

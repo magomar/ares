@@ -8,9 +8,9 @@ import java.util.List;
 
 /**
  * <p>Java class for Replacements complex type.
- * 
+ * <p/>
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p/>
  * <pre>
  * &lt;complexType name="Replacements">
  *   &lt;complexContent>
@@ -48,12 +48,10 @@ import java.util.List;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Replacements", namespace = "ares", propOrder = {
-    "force"
+        "force"
 })
 public class Replacements {
 
@@ -62,25 +60,23 @@ public class Replacements {
 
     /**
      * Gets the value of the force property.
-     * 
-     * <p>
+     * <p/>
+     * <p/>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the force property.
-     * 
-     * <p>
+     * <p/>
+     * <p/>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getForce().add(newItem);
      * </pre>
-     * 
-     * 
-     * <p>
+     * <p/>
+     * <p/>
+     * <p/>
      * Objects of the following type(s) are allowed in the list
      * {@link Replacements.Force }
-     * 
-     * 
      */
     public List<Replacements.Force> getForce() {
         if (force == null) {
@@ -92,9 +88,9 @@ public class Replacements {
 
     /**
      * <p>Java class for anonymous complex type.
-     * 
+     * <p/>
      * <p>The following schema fragment specifies the expected content contained within this class.
-     * 
+     * <p/>
      * <pre>
      * &lt;complexType>
      *   &lt;complexContent>
@@ -122,12 +118,10 @@ public class Replacements {
      *   &lt;/complexContent>
      * &lt;/complexType>
      * </pre>
-     * 
-     * 
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
-        "node"
+            "node"
     })
     public static class Force {
 
@@ -138,25 +132,23 @@ public class Replacements {
 
         /**
          * Gets the value of the node property.
-         * 
-         * <p>
+         * <p/>
+         * <p/>
          * This accessor method returns a reference to the live list,
          * not a snapshot. Therefore any modification you make to the
          * returned list will be present inside the JAXB object.
          * This is why there is not a <CODE>set</CODE> method for the node property.
-         * 
-         * <p>
+         * <p/>
+         * <p/>
          * For example, to add a new item, do as follows:
          * <pre>
          *    getNode().add(newItem);
          * </pre>
-         * 
-         * 
-         * <p>
+         * <p/>
+         * <p/>
+         * <p/>
          * Objects of the following type(s) are allowed in the list
          * {@link Replacements.Force.Node }
-         * 
-         * 
          */
         public List<Replacements.Force.Node> getNode() {
             if (node == null) {
@@ -167,7 +159,6 @@ public class Replacements {
 
         /**
          * Gets the value of the id property.
-         * 
          */
         public int getId() {
             return id;
@@ -175,7 +166,6 @@ public class Replacements {
 
         /**
          * Sets the value of the id property.
-         * 
          */
         public void setId(int value) {
             this.id = value;
@@ -184,9 +174,9 @@ public class Replacements {
 
         /**
          * <p>Java class for anonymous complex type.
-         * 
+         * <p/>
          * <p>The following schema fragment specifies the expected content contained within this class.
-         * 
+         * <p/>
          * <pre>
          * &lt;complexType>
          *   &lt;complexContent>
@@ -203,16 +193,14 @@ public class Replacements {
          *   &lt;/complexContent>
          * &lt;/complexType>
          * </pre>
-         * 
-         * 
          */
         @XmlAccessorType(XmlAccessType.FIELD)
         @XmlType(name = "", propOrder = {
-            "available",
-            "rate",
-            "start",
-            "end",
-            "inventory"
+                "available",
+                "rate",
+                "start",
+                "end",
+                "inventory"
         })
         public static class Node {
 
@@ -231,7 +219,6 @@ public class Replacements {
 
             /**
              * Gets the value of the available property.
-             * 
              */
             public int getAvailable() {
                 return available;
@@ -239,7 +226,6 @@ public class Replacements {
 
             /**
              * Sets the value of the available property.
-             * 
              */
             public void setAvailable(int value) {
                 this.available = value;
@@ -247,7 +233,6 @@ public class Replacements {
 
             /**
              * Gets the value of the rate property.
-             * 
              */
             public int getRate() {
                 return rate;
@@ -255,7 +240,6 @@ public class Replacements {
 
             /**
              * Sets the value of the rate property.
-             * 
              */
             public void setRate(int value) {
                 this.rate = value;
@@ -263,7 +247,6 @@ public class Replacements {
 
             /**
              * Gets the value of the start property.
-             * 
              */
             public int getStart() {
                 return start;
@@ -271,7 +254,6 @@ public class Replacements {
 
             /**
              * Sets the value of the start property.
-             * 
              */
             public void setStart(int value) {
                 this.start = value;
@@ -279,7 +261,6 @@ public class Replacements {
 
             /**
              * Gets the value of the end property.
-             * 
              */
             public int getEnd() {
                 return end;
@@ -287,7 +268,6 @@ public class Replacements {
 
             /**
              * Sets the value of the end property.
-             * 
              */
             public void setEnd(int value) {
                 this.end = value;
@@ -295,7 +275,6 @@ public class Replacements {
 
             /**
              * Gets the value of the inventory property.
-             * 
              */
             public int getInventory() {
                 return inventory;
@@ -303,7 +282,6 @@ public class Replacements {
 
             /**
              * Sets the value of the inventory property.
-             * 
              */
             public void setInventory(int value) {
                 this.inventory = value;
@@ -311,7 +289,6 @@ public class Replacements {
 
             /**
              * Gets the value of the id property.
-             * 
              */
             public int getId() {
                 return id;
@@ -319,7 +296,6 @@ public class Replacements {
 
             /**
              * Sets the value of the id property.
-             * 
              */
             public void setId(int value) {
                 this.id = value;

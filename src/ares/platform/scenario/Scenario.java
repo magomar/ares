@@ -17,7 +17,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
  * Class containing all the state of a scenario
  *
  * @author Mario Gomez <margomez at dsic.upv.es>

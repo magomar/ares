@@ -11,11 +11,10 @@ import java.util.EnumSet;
 import java.util.Set;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public enum Terrain implements ProfiledImageProviderFactory {
-//motor, amph, mixed, foot, AT, AP, vehicles, infantry, stationary, vision, directional, microProfile
+    //motor, amph, mixed, foot, AT, AP, vehicles, infantry, stationary, vision, directional, microProfile
     OPEN(0, 0, 0, 0, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, false, true),
     ARID(0, 0, 0, 0, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, false, true),
     SAND(1, 1, 1, 1, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, false, true),
@@ -72,9 +71,9 @@ public enum Terrain implements ProfiledImageProviderFactory {
     public static final Set<Terrain> ANY_ROAD = EnumSet.of(ROAD, IMPROVED_ROAD);
 
     private Terrain(final int motor, final int amph, final int mixed, final int foot,
-            final double antiTank, final double antiPersonnel,
-            final double vehicles, final double infantry, final double stationary,
-            final Vision vision, final boolean directional, final boolean microProfile) {
+                    final double antiTank, final double antiPersonnel,
+                    final double vehicles, final double infantry, final double stationary,
+                    final Vision vision, final boolean directional, final boolean microProfile) {
         this.motorized = motor;
         this.amphibious = amph;
         this.mixed = mixed;
@@ -142,9 +141,9 @@ public enum Terrain implements ProfiledImageProviderFactory {
      * absence of any direction is not represented (it is assumed bitMask is never 0), so we actually have 64 values,
      * numbered from 1 to 64.
      *
-     * @see Direction
      * @param bitMask
      * @return
+     * @see Direction
      */
     public static int getImageIndex(int bitMask) {
         return bitMask - 1;
@@ -154,7 +153,7 @@ public enum Terrain implements ProfiledImageProviderFactory {
     public String getFilename(int profile) {
         String prefix = GraphicProperties.getProfilePrefix(profile);
         if (profile == 0 && !microProfile) {
-            return prefix +"_terrain_null.png";
+            return prefix + "_terrain_null.png";
         } else {
             return prefix + "_" + filename;
         }

@@ -8,7 +8,6 @@ import ares.platform.scenario.Scenario;
 import ares.platform.scenario.forces.Force;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public final class ScenarioModel extends RoleMediatedModel {

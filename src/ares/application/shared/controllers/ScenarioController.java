@@ -23,7 +23,6 @@ import java.io.File;
 import java.util.logging.Logger;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  * @author Heine <heisncfr@inf.upv.es>
  */
@@ -61,10 +60,8 @@ public final class ScenarioController implements ActionController {
     private final boolean roleBasedModels;
 
     /**
-     *
      * @param interactor
      * @param roleBasedModels
-     *
      * @see UserRole
      */
     public ScenarioController(ScenarioInteractor interactor, boolean roleBasedModels) {

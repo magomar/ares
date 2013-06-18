@@ -6,7 +6,6 @@ import ares.platform.scenario.board.Tile;
 import java.awt.*;
 
 /**
- *
  * @author Heine <heisncfr@inf.upv.es>
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
@@ -82,12 +81,14 @@ public enum DistanceCalculator {
     private static int Ceil2(int val) {
         return ((val + 1) >> 1);
     }
+
     /**
      * This is an exact method for computing minimum distance between two hexes in an hexagonal map.
-     * This method is slower than other methods due because it requires to iterate through some hexes 
+     * This method is slower than other methods due because it requires to iterate through some hexes
+     *
      * @param orig
      * @param dest
-     * @return 
+     * @return
      */
     private static int heinianDistance(Point orig, Point dest) {
         int cost = 0;
@@ -140,6 +141,6 @@ public enum DistanceCalculator {
             }
         }
     }
-    
+
     abstract int getCost(Tile origin, Tile destination);
 }

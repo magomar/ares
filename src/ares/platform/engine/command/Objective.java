@@ -6,7 +6,6 @@ import ares.platform.scenario.forces.Formation;
 import ares.platform.scenario.forces.Unit;
 
 /**
- *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
 public class Objective implements Comparable {
@@ -14,7 +13,7 @@ public class Objective implements Comparable {
     private Tile location;
     private int priority;
     private boolean achieved = false;
-    
+
     public Objective(ares.data.wrappers.scenario.Objective obj, Board board) {
         location = board.getTile(obj.getX(), obj.getY());
         priority = obj.getId();

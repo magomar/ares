@@ -16,7 +16,6 @@ import java.util.Collection;
 import java.util.HashSet;
 
 /**
- *
  * @author Heine <heisncfr@inf.upv.es>
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
@@ -73,7 +72,7 @@ public class UnitsLayerView extends AbstractImageLayerView implements UnitsLayer
     /**
      * Paints all the units in a single tile. Method used to paint all the units in an scenario
      *
-     * @param tile TileModel where the units are
+     * @param tile     TileModel where the units are
      * @param maxStack maximum units in the stack to be painted
      */
     private void paintUnitStack(Graphics2D g2, TileModel tile) {

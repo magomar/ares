@@ -7,7 +7,6 @@ import ares.platform.scenario.forces.Unit;
 import java.util.List;
 
 /**
- *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
 public class DefendArea extends Operation {

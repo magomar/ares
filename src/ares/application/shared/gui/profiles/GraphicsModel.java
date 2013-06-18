@@ -88,7 +88,7 @@ public class GraphicsModel {
         System.out.print("");
     }
 
-//    public void addGraphics(ProfiledImageProviderFactory factory) {
+    //    public void addGraphics(ProfiledImageProviderFactory factory) {
 //        for (int i = 0; i < numProfiles; i++) {
 //            profiledProviders.get(i).put(factory, factory.createImageProvider(i));
 //        }
@@ -143,7 +143,6 @@ public class GraphicsModel {
     }
 
     /**
-     *
      * @return the board image width in pixesl
      */
     public int getBoardWidth(int profile) {
@@ -151,7 +150,6 @@ public class GraphicsModel {
     }
 
     /**
-     *
      * @return the board image height in pixels
      */
     public int getBoardHeight(int profile) {
@@ -226,14 +224,14 @@ public class GraphicsModel {
 
     /**
      * Accurately converts pixel coordinates into tile coordinates
-     *
+     * <p/>
      * Adapted from article in <a
      * href="http://www.gamedev.net/page/resources/_/technical/game-programming/coordinates-in-hexagon-based-tile-maps-r1800">gamedev.net</a>
-     *
+     * <p/>
      * The map is composed of sections which can be of two types: A or B, each one with 3 areas.
-     *
+     * <p/>
      * A sections are in odd columns. They have NW and SW neighbors, and the rest is the tile we want
-     *
+     * <p/>
      * B sections are in even columns. areas: puff... easier done than explained.
      *
      * @param x

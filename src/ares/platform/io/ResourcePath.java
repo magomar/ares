@@ -5,7 +5,6 @@ import java.nio.file.FileSystems;
 import java.nio.file.Path;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public enum ResourcePath {
@@ -47,7 +46,7 @@ public enum ResourcePath {
     public String getRelativePath() {
         return relativePath;
     }
-    
+
     public Path getSubPath(String... subPath) {
         return FileSystems.getDefault().getPath(folderPath.toString(), subPath);
     }

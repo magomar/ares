@@ -17,7 +17,6 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- *
  * @author Mario Gómez Martínez <magomar@gmail.com>
  */
 public class PathfinderToolsController implements ScenarioInteractor, PathfinderComparatorInteractor, PathfinderAnalyserInteractor {
@@ -49,8 +48,8 @@ public class PathfinderToolsController implements ScenarioInteractor, Pathfinder
         toolBarView.addActionButtons(comparatorController.getActionGroup().createToolBarButtons());
 //        toolBarView.addActionButtons(analyserController.getActionGroup().createToolBarButtons());
         JMenu[] menus = {
-            scenarioController.getActionGroup().createMenu(),
-            comparatorController.getActionGroup().createMenu(), //   analyserController.getActionGroup().createMenu()
+                scenarioController.getActionGroup().createMenu(),
+                comparatorController.getActionGroup().createMenu(), //   analyserController.getActionGroup().createMenu()
         };
         menuView.addActionButtons(menus);
 

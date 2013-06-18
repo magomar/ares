@@ -8,7 +8,6 @@ import ares.platform.scenario.forces.UnitType;
 import ares.platform.scenario.forces.UnitsColor;
 
 /**
- *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
 public class DetectedUnitModel extends UnitModel {

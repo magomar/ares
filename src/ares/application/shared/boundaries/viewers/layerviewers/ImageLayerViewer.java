@@ -6,7 +6,6 @@ import javax.swing.*;
 import java.awt.image.BufferedImage;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public interface ImageLayerViewer extends View<JComponent> {
@@ -20,7 +19,7 @@ public interface ImageLayerViewer extends View<JComponent> {
     void updateLayer();
 
     void flush();
-    
+
     boolean hasParentLayer();
 
     ImageLayerViewer getParentLayer();
@@ -28,6 +27,6 @@ public interface ImageLayerViewer extends View<JComponent> {
     BufferedImage getGlobalImage();
 
     void setProfile(int profile);
-    
+
     String name();
 }

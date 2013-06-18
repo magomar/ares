@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for Terrain complex type.
- * 
+ * <p/>
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p/>
  * <pre>
  * &lt;complexType name="Terrain">
  *   &lt;complexContent>
@@ -22,8 +22,6 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Terrain", namespace = "ares")
@@ -36,11 +34,9 @@ public class Terrain {
 
     /**
      * Gets the value of the type property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TerrainType }
-     *     
+     *
+     * @return possible object is
+     *         {@link TerrainType }
      */
     public TerrainType getType() {
         return type;
@@ -48,11 +44,9 @@ public class Terrain {
 
     /**
      * Sets the value of the type property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TerrainType }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link TerrainType }
      */
     public void setType(TerrainType value) {
         this.type = value;
@@ -60,11 +54,9 @@ public class Terrain {
 
     /**
      * Gets the value of the dir property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link MultiDirection }
-     *     
+     *
+     * @return possible object is
+     *         {@link MultiDirection }
      */
     public MultiDirection getDir() {
         return dir;
@@ -72,11 +64,9 @@ public class Terrain {
 
     /**
      * Sets the value of the dir property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link MultiDirection }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link MultiDirection }
      */
     public void setDir(MultiDirection value) {
         this.dir = value;

@@ -8,9 +8,9 @@ import java.util.List;
 
 /**
  * <p>Java class for Formation complex type.
- * 
+ * <p/>
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p/>
  * <pre>
  * &lt;complexType name="Formation">
  *   &lt;complexContent>
@@ -32,21 +32,19 @@ import java.util.List;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Formation", namespace = "ares", propOrder = {
-    "name",
-    "echelon",
-    "parent",
-    "color",
-    "commander",
-    "details",
-    "proficiency",
-    "supply",
-    "orders",
-    "unit"
+        "name",
+        "echelon",
+        "parent",
+        "color",
+        "commander",
+        "details",
+        "proficiency",
+        "supply",
+        "orders",
+        "unit"
 })
 public class Formation {
 
@@ -75,11 +73,9 @@ public class Formation {
 
     /**
      * Gets the value of the name property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     *         {@link String }
      */
     public String getName() {
         return name;
@@ -87,11 +83,9 @@ public class Formation {
 
     /**
      * Sets the value of the name property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setName(String value) {
         this.name = value;
@@ -99,11 +93,9 @@ public class Formation {
 
     /**
      * Gets the value of the echelon property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Echelon }
-     *     
+     *
+     * @return possible object is
+     *         {@link Echelon }
      */
     public Echelon getEchelon() {
         return echelon;
@@ -111,11 +103,9 @@ public class Formation {
 
     /**
      * Sets the value of the echelon property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Echelon }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Echelon }
      */
     public void setEchelon(Echelon value) {
         this.echelon = value;
@@ -123,7 +113,6 @@ public class Formation {
 
     /**
      * Gets the value of the parent property.
-     * 
      */
     public int getParent() {
         return parent;
@@ -131,7 +120,6 @@ public class Formation {
 
     /**
      * Sets the value of the parent property.
-     * 
      */
     public void setParent(int value) {
         this.parent = value;
@@ -139,7 +127,6 @@ public class Formation {
 
     /**
      * Gets the value of the color property.
-     * 
      */
     public int getColor() {
         return color;
@@ -147,7 +134,6 @@ public class Formation {
 
     /**
      * Sets the value of the color property.
-     * 
      */
     public void setColor(int value) {
         this.color = value;
@@ -155,11 +141,9 @@ public class Formation {
 
     /**
      * Gets the value of the commander property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     *         {@link String }
      */
     public String getCommander() {
         return commander;
@@ -167,11 +151,9 @@ public class Formation {
 
     /**
      * Sets the value of the commander property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setCommander(String value) {
         this.commander = value;
@@ -179,11 +161,9 @@ public class Formation {
 
     /**
      * Gets the value of the details property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     *         {@link String }
      */
     public String getDetails() {
         return details;
@@ -191,11 +171,9 @@ public class Formation {
 
     /**
      * Sets the value of the details property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setDetails(String value) {
         this.details = value;
@@ -203,7 +181,6 @@ public class Formation {
 
     /**
      * Gets the value of the proficiency property.
-     * 
      */
     public int getProficiency() {
         return proficiency;
@@ -211,7 +188,6 @@ public class Formation {
 
     /**
      * Sets the value of the proficiency property.
-     * 
      */
     public void setProficiency(int value) {
         this.proficiency = value;
@@ -219,7 +195,6 @@ public class Formation {
 
     /**
      * Gets the value of the supply property.
-     * 
      */
     public int getSupply() {
         return supply;
@@ -227,7 +202,6 @@ public class Formation {
 
     /**
      * Sets the value of the supply property.
-     * 
      */
     public void setSupply(int value) {
         this.supply = value;
@@ -235,11 +209,9 @@ public class Formation {
 
     /**
      * Gets the value of the orders property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Orders }
-     *     
+     *
+     * @return possible object is
+     *         {@link Orders }
      */
     public Orders getOrders() {
         return orders;
@@ -247,11 +219,9 @@ public class Formation {
 
     /**
      * Sets the value of the orders property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Orders }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Orders }
      */
     public void setOrders(Orders value) {
         this.orders = value;
@@ -259,25 +229,23 @@ public class Formation {
 
     /**
      * Gets the value of the unit property.
-     * 
-     * <p>
+     * <p/>
+     * <p/>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the unit property.
-     * 
-     * <p>
+     * <p/>
+     * <p/>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getUnit().add(newItem);
      * </pre>
-     * 
-     * 
-     * <p>
+     * <p/>
+     * <p/>
+     * <p/>
      * Objects of the following type(s) are allowed in the list
      * {@link Unit }
-     * 
-     * 
      */
     public List<Unit> getUnit() {
         if (unit == null) {
@@ -288,7 +256,6 @@ public class Formation {
 
     /**
      * Gets the value of the id property.
-     * 
      */
     public int getId() {
         return id;
@@ -296,7 +263,6 @@ public class Formation {
 
     /**
      * Sets the value of the id property.
-     * 
      */
     public void setId(int value) {
         this.id = value;

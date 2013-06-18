@@ -11,7 +11,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
  * Simple class made for method testing purposes
  *
  * @author Heine <heisncfr@inf.upv.es>

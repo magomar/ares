@@ -6,7 +6,6 @@ import ares.application.shared.gui.views.layerviews.*;
 import javax.swing.*;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class PlayerBoardView extends AbstractBoardView {

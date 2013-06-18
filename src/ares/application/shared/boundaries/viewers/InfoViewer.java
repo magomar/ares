@@ -8,7 +8,6 @@ import javax.swing.*;
 import java.util.Calendar;
 
 /**
- *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
 public interface InfoViewer extends View<JPanel> {

@@ -1,7 +1,6 @@
 package ares.platform.scenario.forces;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public enum OpState {

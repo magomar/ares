@@ -8,9 +8,9 @@ import java.util.List;
 
 /**
  * <p>Java class for ForceVariables complex type.
- * 
+ * <p/>
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p/>
  * <pre>
  * &lt;complexType name="ForceVariables">
  *   &lt;complexContent>
@@ -74,12 +74,10 @@ import java.util.List;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ForceVariables", namespace = "ares", propOrder = {
-    "force"
+        "force"
 })
 public class ForceVariables {
 
@@ -88,25 +86,23 @@ public class ForceVariables {
 
     /**
      * Gets the value of the force property.
-     * 
-     * <p>
+     * <p/>
+     * <p/>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the force property.
-     * 
-     * <p>
+     * <p/>
+     * <p/>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getForce().add(newItem);
      * </pre>
-     * 
-     * 
-     * <p>
+     * <p/>
+     * <p/>
+     * <p/>
      * Objects of the following type(s) are allowed in the list
      * {@link ForceVariables.Force }
-     * 
-     * 
      */
     public List<ForceVariables.Force> getForce() {
         if (force == null) {
@@ -118,9 +114,9 @@ public class ForceVariables {
 
     /**
      * <p>Java class for anonymous complex type.
-     * 
+     * <p/>
      * <p>The following schema fragment specifies the expected content contained within this class.
-     * 
+     * <p/>
      * <pre>
      * &lt;complexType>
      *   &lt;complexContent>
@@ -174,53 +170,51 @@ public class ForceVariables {
      *   &lt;/complexContent>
      * &lt;/complexType>
      * </pre>
-     * 
-     * 
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
-        "microUnitIcon",
-        "iconTints",
-        "chemicalsUsed",
-        "chemicalsAvailable",
-        "nukesUsed",
-        "nukesAvailableInitial",
-        "nukesAvailableCurrent",
-        "globalRecce",
-        "globalGuerillas",
-        "globalRailcapInitial",
-        "globalRailcapCurrent",
-        "globalRailcapLast",
-        "globalAircapInitial",
-        "globalAircapCurrent",
-        "globalAircapLast",
-        "globalSeacapInitial",
-        "globalSeacapCurrent",
-        "globalSeacapLast",
-        "newReinforcements",
-        "interdiction",
-        "victoryModifications",
-        "globalHandicap",
-        "globalRailRepair",
-        "globalRailDestruction",
-        "reconstitutionPointX",
-        "reconstitutionPointY",
-        "reconstitutionPointValue",
-        "roadSupplyRadius",
-        "globalAirHandicap",
-        "forceNBCReadiness",
-        "forcePGWMultiplier",
-        "forceElectronicSupport",
-        "forceAirRefuel",
-        "forceNightProficiency",
-        "externalPOBias",
-        "currentTrack",
-        "forceMoveBias",
-        "forcePestilence",
-        "forceCommunication",
-        "forceLossIntolerance",
-        "zocCost",
-        "recentAirLosses"
+            "microUnitIcon",
+            "iconTints",
+            "chemicalsUsed",
+            "chemicalsAvailable",
+            "nukesUsed",
+            "nukesAvailableInitial",
+            "nukesAvailableCurrent",
+            "globalRecce",
+            "globalGuerillas",
+            "globalRailcapInitial",
+            "globalRailcapCurrent",
+            "globalRailcapLast",
+            "globalAircapInitial",
+            "globalAircapCurrent",
+            "globalAircapLast",
+            "globalSeacapInitial",
+            "globalSeacapCurrent",
+            "globalSeacapLast",
+            "newReinforcements",
+            "interdiction",
+            "victoryModifications",
+            "globalHandicap",
+            "globalRailRepair",
+            "globalRailDestruction",
+            "reconstitutionPointX",
+            "reconstitutionPointY",
+            "reconstitutionPointValue",
+            "roadSupplyRadius",
+            "globalAirHandicap",
+            "forceNBCReadiness",
+            "forcePGWMultiplier",
+            "forceElectronicSupport",
+            "forceAirRefuel",
+            "forceNightProficiency",
+            "externalPOBias",
+            "currentTrack",
+            "forceMoveBias",
+            "forcePestilence",
+            "forceCommunication",
+            "forceLossIntolerance",
+            "zocCost",
+            "recentAirLosses"
     })
     public static class Force {
 
@@ -313,7 +307,6 @@ public class ForceVariables {
 
         /**
          * Gets the value of the microUnitIcon property.
-         * 
          */
         public int getMicroUnitIcon() {
             return microUnitIcon;
@@ -321,7 +314,6 @@ public class ForceVariables {
 
         /**
          * Sets the value of the microUnitIcon property.
-         * 
          */
         public void setMicroUnitIcon(int value) {
             this.microUnitIcon = value;
@@ -329,7 +321,6 @@ public class ForceVariables {
 
         /**
          * Gets the value of the iconTints property.
-         * 
          */
         public int getIconTints() {
             return iconTints;
@@ -337,7 +328,6 @@ public class ForceVariables {
 
         /**
          * Sets the value of the iconTints property.
-         * 
          */
         public void setIconTints(int value) {
             this.iconTints = value;
@@ -345,7 +335,6 @@ public class ForceVariables {
 
         /**
          * Gets the value of the chemicalsUsed property.
-         * 
          */
         public int getChemicalsUsed() {
             return chemicalsUsed;
@@ -353,7 +342,6 @@ public class ForceVariables {
 
         /**
          * Sets the value of the chemicalsUsed property.
-         * 
          */
         public void setChemicalsUsed(int value) {
             this.chemicalsUsed = value;
@@ -361,7 +349,6 @@ public class ForceVariables {
 
         /**
          * Gets the value of the chemicalsAvailable property.
-         * 
          */
         public int getChemicalsAvailable() {
             return chemicalsAvailable;
@@ -369,7 +356,6 @@ public class ForceVariables {
 
         /**
          * Sets the value of the chemicalsAvailable property.
-         * 
          */
         public void setChemicalsAvailable(int value) {
             this.chemicalsAvailable = value;
@@ -377,7 +363,6 @@ public class ForceVariables {
 
         /**
          * Gets the value of the nukesUsed property.
-         * 
          */
         public int getNukesUsed() {
             return nukesUsed;
@@ -385,7 +370,6 @@ public class ForceVariables {
 
         /**
          * Sets the value of the nukesUsed property.
-         * 
          */
         public void setNukesUsed(int value) {
             this.nukesUsed = value;
@@ -393,7 +377,6 @@ public class ForceVariables {
 
         /**
          * Gets the value of the nukesAvailableInitial property.
-         * 
          */
         public int getNukesAvailableInitial() {
             return nukesAvailableInitial;
@@ -401,7 +384,6 @@ public class ForceVariables {
 
         /**
          * Sets the value of the nukesAvailableInitial property.
-         * 
          */
         public void setNukesAvailableInitial(int value) {
             this.nukesAvailableInitial = value;
@@ -409,7 +391,6 @@ public class ForceVariables {
 
         /**
          * Gets the value of the nukesAvailableCurrent property.
-         * 
          */
         public int getNukesAvailableCurrent() {
             return nukesAvailableCurrent;
@@ -417,7 +398,6 @@ public class ForceVariables {
 
         /**
          * Sets the value of the nukesAvailableCurrent property.
-         * 
          */
         public void setNukesAvailableCurrent(int value) {
             this.nukesAvailableCurrent = value;
@@ -425,7 +405,6 @@ public class ForceVariables {
 
         /**
          * Gets the value of the globalRecce property.
-         * 
          */
         public int getGlobalRecce() {
             return globalRecce;
@@ -433,7 +412,6 @@ public class ForceVariables {
 
         /**
          * Sets the value of the globalRecce property.
-         * 
          */
         public void setGlobalRecce(int value) {
             this.globalRecce = value;
@@ -441,7 +419,6 @@ public class ForceVariables {
 
         /**
          * Gets the value of the globalGuerillas property.
-         * 
          */
         public int getGlobalGuerillas() {
             return globalGuerillas;
@@ -449,7 +426,6 @@ public class ForceVariables {
 
         /**
          * Sets the value of the globalGuerillas property.
-         * 
          */
         public void setGlobalGuerillas(int value) {
             this.globalGuerillas = value;
@@ -457,7 +433,6 @@ public class ForceVariables {
 
         /**
          * Gets the value of the globalRailcapInitial property.
-         * 
          */
         public int getGlobalRailcapInitial() {
             return globalRailcapInitial;
@@ -465,7 +440,6 @@ public class ForceVariables {
 
         /**
          * Sets the value of the globalRailcapInitial property.
-         * 
          */
         public void setGlobalRailcapInitial(int value) {
             this.globalRailcapInitial = value;
@@ -473,7 +447,6 @@ public class ForceVariables {
 
         /**
          * Gets the value of the globalRailcapCurrent property.
-         * 
          */
         public int getGlobalRailcapCurrent() {
             return globalRailcapCurrent;
@@ -481,7 +454,6 @@ public class ForceVariables {
 
         /**
          * Sets the value of the globalRailcapCurrent property.
-         * 
          */
         public void setGlobalRailcapCurrent(int value) {
             this.globalRailcapCurrent = value;
@@ -489,7 +461,6 @@ public class ForceVariables {
 
         /**
          * Gets the value of the globalRailcapLast property.
-         * 
          */
         public int getGlobalRailcapLast() {
             return globalRailcapLast;
@@ -497,7 +468,6 @@ public class ForceVariables {
 
         /**
          * Sets the value of the globalRailcapLast property.
-         * 
          */
         public void setGlobalRailcapLast(int value) {
             this.globalRailcapLast = value;
@@ -505,7 +475,6 @@ public class ForceVariables {
 
         /**
          * Gets the value of the globalAircapInitial property.
-         * 
          */
         public int getGlobalAircapInitial() {
             return globalAircapInitial;
@@ -513,7 +482,6 @@ public class ForceVariables {
 
         /**
          * Sets the value of the globalAircapInitial property.
-         * 
          */
         public void setGlobalAircapInitial(int value) {
             this.globalAircapInitial = value;
@@ -521,7 +489,6 @@ public class ForceVariables {
 
         /**
          * Gets the value of the globalAircapCurrent property.
-         * 
          */
         public int getGlobalAircapCurrent() {
             return globalAircapCurrent;
@@ -529,7 +496,6 @@ public class ForceVariables {
 
         /**
          * Sets the value of the globalAircapCurrent property.
-         * 
          */
         public void setGlobalAircapCurrent(int value) {
             this.globalAircapCurrent = value;
@@ -537,7 +503,6 @@ public class ForceVariables {
 
         /**
          * Gets the value of the globalAircapLast property.
-         * 
          */
         public int getGlobalAircapLast() {
             return globalAircapLast;
@@ -545,7 +510,6 @@ public class ForceVariables {
 
         /**
          * Sets the value of the globalAircapLast property.
-         * 
          */
         public void setGlobalAircapLast(int value) {
             this.globalAircapLast = value;
@@ -553,7 +517,6 @@ public class ForceVariables {
 
         /**
          * Gets the value of the globalSeacapInitial property.
-         * 
          */
         public int getGlobalSeacapInitial() {
             return globalSeacapInitial;
@@ -561,7 +524,6 @@ public class ForceVariables {
 
         /**
          * Sets the value of the globalSeacapInitial property.
-         * 
          */
         public void setGlobalSeacapInitial(int value) {
             this.globalSeacapInitial = value;
@@ -569,7 +531,6 @@ public class ForceVariables {
 
         /**
          * Gets the value of the globalSeacapCurrent property.
-         * 
          */
         public int getGlobalSeacapCurrent() {
             return globalSeacapCurrent;
@@ -577,7 +538,6 @@ public class ForceVariables {
 
         /**
          * Sets the value of the globalSeacapCurrent property.
-         * 
          */
         public void setGlobalSeacapCurrent(int value) {
             this.globalSeacapCurrent = value;
@@ -585,7 +545,6 @@ public class ForceVariables {
 
         /**
          * Gets the value of the globalSeacapLast property.
-         * 
          */
         public int getGlobalSeacapLast() {
             return globalSeacapLast;
@@ -593,7 +552,6 @@ public class ForceVariables {
 
         /**
          * Sets the value of the globalSeacapLast property.
-         * 
          */
         public void setGlobalSeacapLast(int value) {
             this.globalSeacapLast = value;
@@ -601,7 +559,6 @@ public class ForceVariables {
 
         /**
          * Gets the value of the newReinforcements property.
-         * 
          */
         public int getNewReinforcements() {
             return newReinforcements;
@@ -609,7 +566,6 @@ public class ForceVariables {
 
         /**
          * Sets the value of the newReinforcements property.
-         * 
          */
         public void setNewReinforcements(int value) {
             this.newReinforcements = value;
@@ -617,7 +573,6 @@ public class ForceVariables {
 
         /**
          * Gets the value of the interdiction property.
-         * 
          */
         public int getInterdiction() {
             return interdiction;
@@ -625,7 +580,6 @@ public class ForceVariables {
 
         /**
          * Sets the value of the interdiction property.
-         * 
          */
         public void setInterdiction(int value) {
             this.interdiction = value;
@@ -633,7 +587,6 @@ public class ForceVariables {
 
         /**
          * Gets the value of the victoryModifications property.
-         * 
          */
         public int getVictoryModifications() {
             return victoryModifications;
@@ -641,7 +594,6 @@ public class ForceVariables {
 
         /**
          * Sets the value of the victoryModifications property.
-         * 
          */
         public void setVictoryModifications(int value) {
             this.victoryModifications = value;
@@ -649,7 +601,6 @@ public class ForceVariables {
 
         /**
          * Gets the value of the globalHandicap property.
-         * 
          */
         public int getGlobalHandicap() {
             return globalHandicap;
@@ -657,7 +608,6 @@ public class ForceVariables {
 
         /**
          * Sets the value of the globalHandicap property.
-         * 
          */
         public void setGlobalHandicap(int value) {
             this.globalHandicap = value;
@@ -665,7 +615,6 @@ public class ForceVariables {
 
         /**
          * Gets the value of the globalRailRepair property.
-         * 
          */
         public int getGlobalRailRepair() {
             return globalRailRepair;
@@ -673,7 +622,6 @@ public class ForceVariables {
 
         /**
          * Sets the value of the globalRailRepair property.
-         * 
          */
         public void setGlobalRailRepair(int value) {
             this.globalRailRepair = value;
@@ -681,7 +629,6 @@ public class ForceVariables {
 
         /**
          * Gets the value of the globalRailDestruction property.
-         * 
          */
         public int getGlobalRailDestruction() {
             return globalRailDestruction;
@@ -689,7 +636,6 @@ public class ForceVariables {
 
         /**
          * Sets the value of the globalRailDestruction property.
-         * 
          */
         public void setGlobalRailDestruction(int value) {
             this.globalRailDestruction = value;
@@ -697,7 +643,6 @@ public class ForceVariables {
 
         /**
          * Gets the value of the reconstitutionPointX property.
-         * 
          */
         public int getReconstitutionPointX() {
             return reconstitutionPointX;
@@ -705,7 +650,6 @@ public class ForceVariables {
 
         /**
          * Sets the value of the reconstitutionPointX property.
-         * 
          */
         public void setReconstitutionPointX(int value) {
             this.reconstitutionPointX = value;
@@ -713,7 +657,6 @@ public class ForceVariables {
 
         /**
          * Gets the value of the reconstitutionPointY property.
-         * 
          */
         public int getReconstitutionPointY() {
             return reconstitutionPointY;
@@ -721,7 +664,6 @@ public class ForceVariables {
 
         /**
          * Sets the value of the reconstitutionPointY property.
-         * 
          */
         public void setReconstitutionPointY(int value) {
             this.reconstitutionPointY = value;
@@ -729,7 +671,6 @@ public class ForceVariables {
 
         /**
          * Gets the value of the reconstitutionPointValue property.
-         * 
          */
         public int getReconstitutionPointValue() {
             return reconstitutionPointValue;
@@ -737,7 +678,6 @@ public class ForceVariables {
 
         /**
          * Sets the value of the reconstitutionPointValue property.
-         * 
          */
         public void setReconstitutionPointValue(int value) {
             this.reconstitutionPointValue = value;
@@ -745,7 +685,6 @@ public class ForceVariables {
 
         /**
          * Gets the value of the roadSupplyRadius property.
-         * 
          */
         public int getRoadSupplyRadius() {
             return roadSupplyRadius;
@@ -753,7 +692,6 @@ public class ForceVariables {
 
         /**
          * Sets the value of the roadSupplyRadius property.
-         * 
          */
         public void setRoadSupplyRadius(int value) {
             this.roadSupplyRadius = value;
@@ -761,7 +699,6 @@ public class ForceVariables {
 
         /**
          * Gets the value of the globalAirHandicap property.
-         * 
          */
         public int getGlobalAirHandicap() {
             return globalAirHandicap;
@@ -769,7 +706,6 @@ public class ForceVariables {
 
         /**
          * Sets the value of the globalAirHandicap property.
-         * 
          */
         public void setGlobalAirHandicap(int value) {
             this.globalAirHandicap = value;
@@ -777,7 +713,6 @@ public class ForceVariables {
 
         /**
          * Gets the value of the forceNBCReadiness property.
-         * 
          */
         public int getForceNBCReadiness() {
             return forceNBCReadiness;
@@ -785,7 +720,6 @@ public class ForceVariables {
 
         /**
          * Sets the value of the forceNBCReadiness property.
-         * 
          */
         public void setForceNBCReadiness(int value) {
             this.forceNBCReadiness = value;
@@ -793,7 +727,6 @@ public class ForceVariables {
 
         /**
          * Gets the value of the forcePGWMultiplier property.
-         * 
          */
         public int getForcePGWMultiplier() {
             return forcePGWMultiplier;
@@ -801,7 +734,6 @@ public class ForceVariables {
 
         /**
          * Sets the value of the forcePGWMultiplier property.
-         * 
          */
         public void setForcePGWMultiplier(int value) {
             this.forcePGWMultiplier = value;
@@ -809,7 +741,6 @@ public class ForceVariables {
 
         /**
          * Gets the value of the forceElectronicSupport property.
-         * 
          */
         public int getForceElectronicSupport() {
             return forceElectronicSupport;
@@ -817,7 +748,6 @@ public class ForceVariables {
 
         /**
          * Sets the value of the forceElectronicSupport property.
-         * 
          */
         public void setForceElectronicSupport(int value) {
             this.forceElectronicSupport = value;
@@ -825,7 +755,6 @@ public class ForceVariables {
 
         /**
          * Gets the value of the forceAirRefuel property.
-         * 
          */
         public int getForceAirRefuel() {
             return forceAirRefuel;
@@ -833,7 +762,6 @@ public class ForceVariables {
 
         /**
          * Sets the value of the forceAirRefuel property.
-         * 
          */
         public void setForceAirRefuel(int value) {
             this.forceAirRefuel = value;
@@ -841,7 +769,6 @@ public class ForceVariables {
 
         /**
          * Gets the value of the forceNightProficiency property.
-         * 
          */
         public int getForceNightProficiency() {
             return forceNightProficiency;
@@ -849,7 +776,6 @@ public class ForceVariables {
 
         /**
          * Sets the value of the forceNightProficiency property.
-         * 
          */
         public void setForceNightProficiency(int value) {
             this.forceNightProficiency = value;
@@ -857,7 +783,6 @@ public class ForceVariables {
 
         /**
          * Gets the value of the externalPOBias property.
-         * 
          */
         public int getExternalPOBias() {
             return externalPOBias;
@@ -865,7 +790,6 @@ public class ForceVariables {
 
         /**
          * Sets the value of the externalPOBias property.
-         * 
          */
         public void setExternalPOBias(int value) {
             this.externalPOBias = value;
@@ -873,7 +797,6 @@ public class ForceVariables {
 
         /**
          * Gets the value of the currentTrack property.
-         * 
          */
         public int getCurrentTrack() {
             return currentTrack;
@@ -881,7 +804,6 @@ public class ForceVariables {
 
         /**
          * Sets the value of the currentTrack property.
-         * 
          */
         public void setCurrentTrack(int value) {
             this.currentTrack = value;
@@ -889,7 +811,6 @@ public class ForceVariables {
 
         /**
          * Gets the value of the forceMoveBias property.
-         * 
          */
         public int getForceMoveBias() {
             return forceMoveBias;
@@ -897,7 +818,6 @@ public class ForceVariables {
 
         /**
          * Sets the value of the forceMoveBias property.
-         * 
          */
         public void setForceMoveBias(int value) {
             this.forceMoveBias = value;
@@ -905,7 +825,6 @@ public class ForceVariables {
 
         /**
          * Gets the value of the forcePestilence property.
-         * 
          */
         public int getForcePestilence() {
             return forcePestilence;
@@ -913,7 +832,6 @@ public class ForceVariables {
 
         /**
          * Sets the value of the forcePestilence property.
-         * 
          */
         public void setForcePestilence(int value) {
             this.forcePestilence = value;
@@ -921,7 +839,6 @@ public class ForceVariables {
 
         /**
          * Gets the value of the forceCommunication property.
-         * 
          */
         public int getForceCommunication() {
             return forceCommunication;
@@ -929,7 +846,6 @@ public class ForceVariables {
 
         /**
          * Sets the value of the forceCommunication property.
-         * 
          */
         public void setForceCommunication(int value) {
             this.forceCommunication = value;
@@ -937,7 +853,6 @@ public class ForceVariables {
 
         /**
          * Gets the value of the forceLossIntolerance property.
-         * 
          */
         public int getForceLossIntolerance() {
             return forceLossIntolerance;
@@ -945,7 +860,6 @@ public class ForceVariables {
 
         /**
          * Sets the value of the forceLossIntolerance property.
-         * 
          */
         public void setForceLossIntolerance(int value) {
             this.forceLossIntolerance = value;
@@ -953,7 +867,6 @@ public class ForceVariables {
 
         /**
          * Gets the value of the zocCost property.
-         * 
          */
         public int getZOCCost() {
             return zocCost;
@@ -961,7 +874,6 @@ public class ForceVariables {
 
         /**
          * Sets the value of the zocCost property.
-         * 
          */
         public void setZOCCost(int value) {
             this.zocCost = value;
@@ -969,7 +881,6 @@ public class ForceVariables {
 
         /**
          * Gets the value of the recentAirLosses property.
-         * 
          */
         public int getRecentAirLosses() {
             return recentAirLosses;
@@ -977,7 +888,6 @@ public class ForceVariables {
 
         /**
          * Sets the value of the recentAirLosses property.
-         * 
          */
         public void setRecentAirLosses(int value) {
             this.recentAirLosses = value;
@@ -985,7 +895,6 @@ public class ForceVariables {
 
         /**
          * Gets the value of the id property.
-         * 
          */
         public int getId() {
             return id;
@@ -993,7 +902,6 @@ public class ForceVariables {
 
         /**
          * Sets the value of the id property.
-         * 
          */
         public void setId(int value) {
             this.id = value;

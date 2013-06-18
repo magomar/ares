@@ -21,7 +21,6 @@ import java.beans.PropertyChangeListener;
 import java.util.logging.Logger;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  * @author Heine <heisncfr@inf.upv.es>
  */

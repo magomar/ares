@@ -21,9 +21,8 @@ import java.util.Set;
  * contains. On-road movement cost is not precomputed, instead it is computed dynamically to take into account the
  * density of vehicle and horses in a tile at the moment.
  *
- * @see Tile#moveCosts
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
+ * @see Tile#moveCosts
  */
 public class MovementCost {
 
@@ -202,8 +201,7 @@ public class MovementCost {
         int penalty = 0;
         if (tile.hasEnemiesNearby(force)) { // Enemy ZOC
             penalty += 2;
-        } 
-        else if (tile.isAlliedTerritory(force)) { // Controlled territory
+        } else if (tile.isAlliedTerritory(force)) { // Controlled territory
             penalty++;
         }
 
@@ -260,8 +258,8 @@ public class MovementCost {
 
         return Math.min(cost, maxCost);
     }
-    
-    
+
+
 //    public int getEstimatedCost(Unit unit) {
 //        MovementType moveType = unit.getMovement();
 //        int cost;
@@ -274,7 +272,7 @@ public class MovementCost {
 //        return cost + penalty;
 //    }
 
-    
+
     /**
      * Gets the precomputed movement cost for a single {@code movementType}
      *
@@ -288,8 +286,8 @@ public class MovementCost {
     /**
      * Gets the precomputed costs for all the movement types
      *
-     * @see MovementType
      * @return
+     * @see MovementType
      */
     public Map<MovementType, Integer> getMovementCost() {
         return movementCost;

@@ -1,7 +1,6 @@
 package ares.platform.engine.knowledge;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class KnowledgeLevel implements Comparable {
@@ -12,7 +11,7 @@ public class KnowledgeLevel implements Comparable {
     private double value;
     private KnowledgeCategory category;
 
-//    public KnowledgeLevel(double knowledge) {
+    //    public KnowledgeLevel(double knowledge) {
 //        this.value = knowledge;
 //        this.category = KnowledgeCategory.getCategory(value);
 //    }
@@ -49,7 +48,7 @@ public class KnowledgeLevel implements Comparable {
 
     @Override
     public int compareTo(Object knowledgeLevel) {
-        KnowledgeLevel kLevel =(KnowledgeLevel) knowledgeLevel;
+        KnowledgeLevel kLevel = (KnowledgeLevel) knowledgeLevel;
         if (this.value == kLevel.value) {
             return 0;
         } else if ((this.value) > kLevel.value) {

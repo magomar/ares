@@ -13,12 +13,11 @@ import java.awt.*;
 import java.util.Calendar;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class InfoView extends AbstractView<JPanel> implements InfoViewer {
 
-//    private JTextArea scenInfo;
+    //    private JTextArea scenInfo;
     private JTextArea unitInfo;
     private JTextArea tileInfo;
     private ScenarioInfoPane scenInfo;

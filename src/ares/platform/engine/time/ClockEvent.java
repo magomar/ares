@@ -3,7 +3,6 @@ package ares.platform.engine.time;
 import java.util.Set;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class ClockEvent {

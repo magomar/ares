@@ -8,9 +8,9 @@ import java.util.List;
 
 /**
  * <p>Java class for Events complex type.
- * 
+ * <p/>
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p/>
  * <pre>
  * &lt;complexType name="Events">
  *   &lt;complexContent>
@@ -43,12 +43,10 @@ import java.util.List;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Events", namespace = "ares", propOrder = {
-    "event"
+        "event"
 })
 public class Events {
 
@@ -57,25 +55,23 @@ public class Events {
 
     /**
      * Gets the value of the event property.
-     * 
-     * <p>
+     * <p/>
+     * <p/>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the event property.
-     * 
-     * <p>
+     * <p/>
+     * <p/>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getEvent().add(newItem);
      * </pre>
-     * 
-     * 
-     * <p>
+     * <p/>
+     * <p/>
+     * <p/>
      * Objects of the following type(s) are allowed in the list
      * {@link Events.Event }
-     * 
-     * 
      */
     public List<Events.Event> getEvent() {
         if (event == null) {
@@ -87,9 +83,9 @@ public class Events {
 
     /**
      * <p>Java class for anonymous complex type.
-     * 
+     * <p/>
      * <p>The following schema fragment specifies the expected content contained within this class.
-     * 
+     * <p/>
      * <pre>
      * &lt;complexType>
      *   &lt;complexContent>
@@ -110,20 +106,18 @@ public class Events {
      *   &lt;/complexContent>
      * &lt;/complexType>
      * </pre>
-     * 
-     * 
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
-        "trigger",
-        "contingency",
-        "effect",
-        "x",
-        "y",
-        "value",
-        "turn",
-        "news",
-        "variable"
+            "trigger",
+            "contingency",
+            "effect",
+            "x",
+            "y",
+            "value",
+            "turn",
+            "news",
+            "variable"
     })
     public static class Event {
 
@@ -150,11 +144,9 @@ public class Events {
 
         /**
          * Gets the value of the trigger property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link String }
-         *     
+         *
+         * @return possible object is
+         *         {@link String }
          */
         public String getTrigger() {
             return trigger;
@@ -162,11 +154,9 @@ public class Events {
 
         /**
          * Sets the value of the trigger property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link String }
-         *     
+         *
+         * @param value allowed object is
+         *              {@link String }
          */
         public void setTrigger(String value) {
             this.trigger = value;
@@ -174,11 +164,9 @@ public class Events {
 
         /**
          * Gets the value of the contingency property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link Integer }
-         *     
+         *
+         * @return possible object is
+         *         {@link Integer }
          */
         public Integer getContingency() {
             return contingency;
@@ -186,11 +174,9 @@ public class Events {
 
         /**
          * Sets the value of the contingency property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link Integer }
-         *     
+         *
+         * @param value allowed object is
+         *              {@link Integer }
          */
         public void setContingency(Integer value) {
             this.contingency = value;
@@ -198,11 +184,9 @@ public class Events {
 
         /**
          * Gets the value of the effect property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link String }
-         *     
+         *
+         * @return possible object is
+         *         {@link String }
          */
         public String getEffect() {
             return effect;
@@ -210,11 +194,9 @@ public class Events {
 
         /**
          * Sets the value of the effect property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link String }
-         *     
+         *
+         * @param value allowed object is
+         *              {@link String }
          */
         public void setEffect(String value) {
             this.effect = value;
@@ -222,11 +204,9 @@ public class Events {
 
         /**
          * Gets the value of the x property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link Integer }
-         *     
+         *
+         * @return possible object is
+         *         {@link Integer }
          */
         public Integer getX() {
             return x;
@@ -234,11 +214,9 @@ public class Events {
 
         /**
          * Sets the value of the x property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link Integer }
-         *     
+         *
+         * @param value allowed object is
+         *              {@link Integer }
          */
         public void setX(Integer value) {
             this.x = value;
@@ -246,11 +224,9 @@ public class Events {
 
         /**
          * Gets the value of the y property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link Integer }
-         *     
+         *
+         * @return possible object is
+         *         {@link Integer }
          */
         public Integer getY() {
             return y;
@@ -258,11 +234,9 @@ public class Events {
 
         /**
          * Sets the value of the y property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link Integer }
-         *     
+         *
+         * @param value allowed object is
+         *              {@link Integer }
          */
         public void setY(Integer value) {
             this.y = value;
@@ -270,11 +244,9 @@ public class Events {
 
         /**
          * Gets the value of the value property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link Integer }
-         *     
+         *
+         * @return possible object is
+         *         {@link Integer }
          */
         public Integer getValue() {
             return value;
@@ -282,11 +254,9 @@ public class Events {
 
         /**
          * Sets the value of the value property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link Integer }
-         *     
+         *
+         * @param value allowed object is
+         *              {@link Integer }
          */
         public void setValue(Integer value) {
             this.value = value;
@@ -294,11 +264,9 @@ public class Events {
 
         /**
          * Gets the value of the turn property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link Integer }
-         *     
+         *
+         * @return possible object is
+         *         {@link Integer }
          */
         public Integer getTurn() {
             return turn;
@@ -306,11 +274,9 @@ public class Events {
 
         /**
          * Sets the value of the turn property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link Integer }
-         *     
+         *
+         * @param value allowed object is
+         *              {@link Integer }
          */
         public void setTurn(Integer value) {
             this.turn = value;
@@ -318,11 +284,9 @@ public class Events {
 
         /**
          * Gets the value of the news property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link String }
-         *     
+         *
+         * @return possible object is
+         *         {@link String }
          */
         public String getNews() {
             return news;
@@ -330,11 +294,9 @@ public class Events {
 
         /**
          * Sets the value of the news property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link String }
-         *     
+         *
+         * @param value allowed object is
+         *              {@link String }
          */
         public void setNews(String value) {
             this.news = value;
@@ -342,11 +304,9 @@ public class Events {
 
         /**
          * Gets the value of the variable property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link Integer }
-         *     
+         *
+         * @return possible object is
+         *         {@link Integer }
          */
         public Integer getVariable() {
             return variable;
@@ -354,11 +314,9 @@ public class Events {
 
         /**
          * Sets the value of the variable property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link Integer }
-         *     
+         *
+         * @param value allowed object is
+         *              {@link Integer }
          */
         public void setVariable(Integer value) {
             this.variable = value;
@@ -366,7 +324,6 @@ public class Events {
 
         /**
          * Gets the value of the id property.
-         * 
          */
         public int getId() {
             return id;
@@ -374,7 +331,6 @@ public class Events {
 
         /**
          * Sets the value of the id property.
-         * 
          */
         public void setId(int value) {
             this.id = value;

@@ -10,7 +10,6 @@ import java.util.Collection;
 import java.util.NoSuchElementException;
 
 /**
- *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
 public final class ObservedTileModel extends NonObservedTileModel {

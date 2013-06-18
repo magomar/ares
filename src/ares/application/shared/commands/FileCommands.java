@@ -6,7 +6,6 @@ import ares.platform.io.ResourcePath;
 import javax.swing.*;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public enum FileCommands implements Command {

@@ -5,7 +5,6 @@ import ares.platform.engine.action.ActionType;
 import ares.platform.scenario.forces.Unit;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class WaitAction extends AbstractAction {
@@ -15,7 +14,6 @@ public class WaitAction extends AbstractAction {
     }
 
     /**
-     *
      * @param unit
      * @param duration in time ticks
      */

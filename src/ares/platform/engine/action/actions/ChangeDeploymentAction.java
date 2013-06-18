@@ -9,9 +9,9 @@ import ares.platform.scenario.forces.Unit;
 /**
  * Action to alternate between static (deployed) and mobile status. Actually, there are two types of action in
  * this category:
- *
+ * <p/>
  * {@link ActionType.ASSEMBLE} changes operational state to null {@link OpState.MOBILE}
- *
+ * <p/>
  * {@link ActionType.DEPLOY} changes operational state to {@link OpState.DEPLOYED}
  *
  * @author Mario Gomez <margomez at dsic.upv.es>

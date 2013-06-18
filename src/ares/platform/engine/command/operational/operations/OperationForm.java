@@ -3,7 +3,6 @@ package ares.platform.engine.command.operational.operations;
 import ares.platform.engine.command.operational.plans.OperationalStance;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public enum OperationForm {
@@ -52,6 +51,6 @@ public enum OperationForm {
     public OperationalStance getStance() {
         return stance;
     }
-    
-    
+
+
 }

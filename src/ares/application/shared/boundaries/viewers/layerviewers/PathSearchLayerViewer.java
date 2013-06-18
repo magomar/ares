@@ -5,7 +5,6 @@ import ares.platform.engine.algorithms.pathfinding.Node;
 import java.util.Collection;
 
 /**
- *
  * @author Mario Gómez Martínez <magomar@gmail.com>
  */
 public interface PathSearchLayerViewer extends ImageLayerViewer {

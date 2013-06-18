@@ -6,7 +6,6 @@ import ares.platform.engine.time.Clock;
 import ares.platform.scenario.forces.Unit;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class RestAction extends AbstractAction {

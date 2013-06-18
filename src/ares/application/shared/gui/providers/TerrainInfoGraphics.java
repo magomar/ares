@@ -4,7 +4,6 @@ import ares.application.shared.gui.profiles.GraphicProperties;
 import ares.application.shared.gui.profiles.NonProfiledGraphicProperty;
 
 /**
- *
  * @author Mario Gómez Martínez <magomar@gmail.com>
  */
 public enum TerrainInfoGraphics implements NonProfiledImageProviderFactory {

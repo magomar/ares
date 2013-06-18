@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Map;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class EngineMessageLogger extends AbstractBean {

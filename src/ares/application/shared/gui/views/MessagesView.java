@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  * @author Heine <heisncfr@inf.upv.es>
  */

@@ -6,7 +6,6 @@ import ares.platform.scenario.Scenario;
 import java.util.Set;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class UnitFactory {
@@ -22,7 +21,7 @@ public class UnitFactory {
         }
         return new LandUnit(unit, formation, force, scenario);
     }
-    
+
     public static Unit createTestUnit(MovementType type) {
         Unit unit;
         switch (type) {
@@ -38,7 +37,7 @@ public class UnitFactory {
         unit.setMovement(type);
         return unit;
     }
-    
+
     //    private ares.data.jaxb.Orders createTestOrders() {
 //        ares.data.jaxb.Orders orders = new Orders();
 //        orders.setActivates(0);

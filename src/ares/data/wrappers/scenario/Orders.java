@@ -11,9 +11,9 @@ import java.util.List;
 
 /**
  * <p>Java class for Orders complex type.
- * 
+ * <p/>
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p/>
  * <pre>
  * &lt;complexType name="Orders">
  *   &lt;complexContent>
@@ -31,18 +31,16 @@ import java.util.List;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Orders", namespace = "ares", propOrder = {
-    "operationalStance",
-    "activates",
-    "frontage",
-    "onlyPO",
-    "emphasis",
-    "supportscope",
-    "track"
+        "operationalStance",
+        "activates",
+        "frontage",
+        "onlyPO",
+        "emphasis",
+        "supportscope",
+        "track"
 })
 public class Orders {
 
@@ -63,11 +61,9 @@ public class Orders {
 
     /**
      * Gets the value of the operationalStance property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link OperationalStance }
-     *     
+     *
+     * @return possible object is
+     *         {@link OperationalStance }
      */
     public OperationalStance getOperationalStance() {
         return operationalStance;
@@ -75,11 +71,9 @@ public class Orders {
 
     /**
      * Sets the value of the operationalStance property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link OperationalStance }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link OperationalStance }
      */
     public void setOperationalStance(OperationalStance value) {
         this.operationalStance = value;
@@ -87,7 +81,6 @@ public class Orders {
 
     /**
      * Gets the value of the activates property.
-     * 
      */
     public int getActivates() {
         return activates;
@@ -95,7 +88,6 @@ public class Orders {
 
     /**
      * Sets the value of the activates property.
-     * 
      */
     public void setActivates(int value) {
         this.activates = value;
@@ -103,11 +95,9 @@ public class Orders {
 
     /**
      * Gets the value of the frontage property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Frontage }
-     *     
+     *
+     * @return possible object is
+     *         {@link Frontage }
      */
     public Frontage getFrontage() {
         return frontage;
@@ -115,11 +105,9 @@ public class Orders {
 
     /**
      * Sets the value of the frontage property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Frontage }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Frontage }
      */
     public void setFrontage(Frontage value) {
         this.frontage = value;
@@ -127,7 +115,6 @@ public class Orders {
 
     /**
      * Gets the value of the onlyPO property.
-     * 
      */
     public boolean isOnlyPO() {
         return onlyPO;
@@ -135,7 +122,6 @@ public class Orders {
 
     /**
      * Sets the value of the onlyPO property.
-     * 
      */
     public void setOnlyPO(boolean value) {
         this.onlyPO = value;
@@ -143,11 +129,9 @@ public class Orders {
 
     /**
      * Gets the value of the emphasis property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Emphasis }
-     *     
+     *
+     * @return possible object is
+     *         {@link Emphasis }
      */
     public Emphasis getEmphasis() {
         return emphasis;
@@ -155,11 +139,9 @@ public class Orders {
 
     /**
      * Sets the value of the emphasis property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Emphasis }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Emphasis }
      */
     public void setEmphasis(Emphasis value) {
         this.emphasis = value;
@@ -167,11 +149,9 @@ public class Orders {
 
     /**
      * Gets the value of the supportscope property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link SupportScope }
-     *     
+     *
+     * @return possible object is
+     *         {@link SupportScope }
      */
     public SupportScope getSupportscope() {
         return supportscope;
@@ -179,11 +159,9 @@ public class Orders {
 
     /**
      * Sets the value of the supportscope property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link SupportScope }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link SupportScope }
      */
     public void setSupportscope(SupportScope value) {
         this.supportscope = value;
@@ -191,25 +169,23 @@ public class Orders {
 
     /**
      * Gets the value of the track property.
-     * 
-     * <p>
+     * <p/>
+     * <p/>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the track property.
-     * 
-     * <p>
+     * <p/>
+     * <p/>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getTrack().add(newItem);
      * </pre>
-     * 
-     * 
-     * <p>
+     * <p/>
+     * <p/>
+     * <p/>
      * Objects of the following type(s) are allowed in the list
      * {@link Track }
-     * 
-     * 
      */
     public List<Track> getTrack() {
         if (track == null) {

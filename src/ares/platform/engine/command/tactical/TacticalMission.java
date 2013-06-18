@@ -63,7 +63,7 @@ public abstract class TacticalMission {
         this.targetTile = targetTile;
     }
 
-//    public void setTargetUnit(Unit targetUnit) {
+    //    public void setTargetUnit(Unit targetUnit) {
 //        this.targetUnit = targetUnit;
 //    }
     public void setType(TacticalMissionType type) {
@@ -148,7 +148,7 @@ public abstract class TacticalMission {
         return type;
     }
 
-//    public void clearActions() {
+    //    public void clearActions() {
 //        pendingActions.clear();
 //    }
     public Action getCurrentAction() {
@@ -195,9 +195,7 @@ public abstract class TacticalMission {
         Action action = currentAction;
         if (action instanceof MoveAction) {
             path = ((MoveAction) action).getPath();
-        } 
-        
-        else {
+        } else {
             Action nextAction = pendingActions.peek();
             if (nextAction instanceof MoveAction) {
                 path = ((MoveAction) nextAction).getPath();

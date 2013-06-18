@@ -6,7 +6,6 @@ import ares.application.shared.gui.views.AbstractView;
 import javax.swing.*;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class InternalFrameView<V extends AbstractView<? extends JComponent>> extends AbstractView<JInternalFrame> {

@@ -6,7 +6,6 @@ import ares.platform.scenario.board.Tile;
 import java.util.Objects;
 
 /**
- *
  * @author Saúl Esteban
  * @author Mario Gomez <margomez at dsic.upv.es>
  */

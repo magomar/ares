@@ -8,9 +8,9 @@ import java.util.List;
 
 /**
  * <p>Java class for Supplies complex type.
- * 
+ * <p/>
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p/>
  * <pre>
  * &lt;complexType name="Supplies">
  *   &lt;complexContent>
@@ -46,12 +46,10 @@ import java.util.List;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Supplies", namespace = "ares", propOrder = {
-    "force"
+        "force"
 })
 public class Supplies {
 
@@ -60,25 +58,23 @@ public class Supplies {
 
     /**
      * Gets the value of the force property.
-     * 
-     * <p>
+     * <p/>
+     * <p/>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the force property.
-     * 
-     * <p>
+     * <p/>
+     * <p/>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getForce().add(newItem);
      * </pre>
-     * 
-     * 
-     * <p>
+     * <p/>
+     * <p/>
+     * <p/>
      * Objects of the following type(s) are allowed in the list
      * {@link Supplies.Force }
-     * 
-     * 
      */
     public List<Supplies.Force> getForce() {
         if (force == null) {
@@ -90,9 +86,9 @@ public class Supplies {
 
     /**
      * <p>Java class for anonymous complex type.
-     * 
+     * <p/>
      * <p>The following schema fragment specifies the expected content contained within this class.
-     * 
+     * <p/>
      * <pre>
      * &lt;complexType>
      *   &lt;complexContent>
@@ -118,12 +114,10 @@ public class Supplies {
      *   &lt;/complexContent>
      * &lt;/complexType>
      * </pre>
-     * 
-     * 
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
-        "node"
+            "node"
     })
     public static class Force {
 
@@ -134,25 +128,23 @@ public class Supplies {
 
         /**
          * Gets the value of the node property.
-         * 
-         * <p>
+         * <p/>
+         * <p/>
          * This accessor method returns a reference to the live list,
          * not a snapshot. Therefore any modification you make to the
          * returned list will be present inside the JAXB object.
          * This is why there is not a <CODE>set</CODE> method for the node property.
-         * 
-         * <p>
+         * <p/>
+         * <p/>
          * For example, to add a new item, do as follows:
          * <pre>
          *    getNode().add(newItem);
          * </pre>
-         * 
-         * 
-         * <p>
+         * <p/>
+         * <p/>
+         * <p/>
          * Objects of the following type(s) are allowed in the list
          * {@link Supplies.Force.Node }
-         * 
-         * 
          */
         public List<Supplies.Force.Node> getNode() {
             if (node == null) {
@@ -163,7 +155,6 @@ public class Supplies {
 
         /**
          * Gets the value of the id property.
-         * 
          */
         public int getId() {
             return id;
@@ -171,7 +162,6 @@ public class Supplies {
 
         /**
          * Sets the value of the id property.
-         * 
          */
         public void setId(int value) {
             this.id = value;
@@ -180,9 +170,9 @@ public class Supplies {
 
         /**
          * <p>Java class for anonymous complex type.
-         * 
+         * <p/>
          * <p>The following schema fragment specifies the expected content contained within this class.
-         * 
+         * <p/>
          * <pre>
          * &lt;complexType>
          *   &lt;complexContent>
@@ -197,14 +187,12 @@ public class Supplies {
          *   &lt;/complexContent>
          * &lt;/complexType>
          * </pre>
-         * 
-         * 
          */
         @XmlAccessorType(XmlAccessType.FIELD)
         @XmlType(name = "", propOrder = {
-            "x",
-            "y",
-            "supply"
+                "x",
+                "y",
+                "supply"
         })
         public static class Node {
 
@@ -219,7 +207,6 @@ public class Supplies {
 
             /**
              * Gets the value of the x property.
-             * 
              */
             public int getX() {
                 return x;
@@ -227,7 +214,6 @@ public class Supplies {
 
             /**
              * Sets the value of the x property.
-             * 
              */
             public void setX(int value) {
                 this.x = value;
@@ -235,7 +221,6 @@ public class Supplies {
 
             /**
              * Gets the value of the y property.
-             * 
              */
             public int getY() {
                 return y;
@@ -243,7 +228,6 @@ public class Supplies {
 
             /**
              * Sets the value of the y property.
-             * 
              */
             public void setY(int value) {
                 this.y = value;
@@ -251,7 +235,6 @@ public class Supplies {
 
             /**
              * Gets the value of the supply property.
-             * 
              */
             public int getSupply() {
                 return supply;
@@ -259,7 +242,6 @@ public class Supplies {
 
             /**
              * Sets the value of the supply property.
-             * 
              */
             public void setSupply(int value) {
                 this.supply = value;
@@ -267,7 +249,6 @@ public class Supplies {
 
             /**
              * Gets the value of the id property.
-             * 
              */
             public int getId() {
                 return id;
@@ -275,7 +256,6 @@ public class Supplies {
 
             /**
              * Sets the value of the id property.
-             * 
              */
             public void setId(int value) {
                 this.id = value;

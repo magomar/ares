@@ -7,7 +7,6 @@ import ares.application.shared.gui.views.layerviews.UnitsLayerView;
 import javax.swing.*;
 
 /**
- *
  * @author Mario Gómez Martínez <magomar@gmail.com>
  */
 public class MiniMapView extends AbstractBoardView {

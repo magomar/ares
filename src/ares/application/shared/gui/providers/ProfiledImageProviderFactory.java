@@ -10,13 +10,11 @@ package ares.application.shared.gui.providers;
 public interface ProfiledImageProviderFactory {
 
     /**
-     *
      * @return the filename, which can later be used to build diferent filenames for diferent graphic profiles.
      */
     String getFilename(int profile);
 
     /**
-     *
      * @return an image provider
      */
     ImageProvider createImageProvider(int profile);

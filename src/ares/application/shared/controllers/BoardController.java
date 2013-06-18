@@ -20,7 +20,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- *
  * @author Mario Gómez Martínez <magomar@gmail.com>
  */
 public class BoardController implements ActionController {

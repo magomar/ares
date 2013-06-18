@@ -7,7 +7,6 @@ import java.nio.file.FileSystems;
 import java.nio.file.Path;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class FileTypeFilter extends FileFilter implements java.io.FileFilter, FilenameFilter {

@@ -1,7 +1,6 @@
 package ares.application.shared.action;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public interface CommandGroup {
@@ -11,6 +10,6 @@ public interface CommandGroup {
     String getName();
 
     String getText();
-    
+
     Command[] getCommands();
 }

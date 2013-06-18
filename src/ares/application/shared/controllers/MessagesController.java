@@ -7,7 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- *
  * @author Heine <heisncfr@inf.upv.es>
  */
 public final class MessagesController {

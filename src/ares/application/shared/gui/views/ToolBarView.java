@@ -6,7 +6,6 @@ import ares.application.shared.gui.ComponentFactory;
 import javax.swing.*;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class ToolBarView extends AbstractView<JToolBar> implements ToolBarViewer {

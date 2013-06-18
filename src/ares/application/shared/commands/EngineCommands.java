@@ -6,7 +6,6 @@ import ares.platform.io.ResourcePath;
 import javax.swing.*;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public enum EngineCommands implements Command {
@@ -26,7 +25,7 @@ public enum EngineCommands implements Command {
         this.desc = desc;
         this.mnemonic = new Integer(keyChar);
         this.accelerator = KeyStroke.getKeyStroke(keyChar);
-        this.iconFilename = name().toLowerCase()+".png";
+        this.iconFilename = name().toLowerCase() + ".png";
     }
 
     @Override

@@ -38,7 +38,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
  * @author Mario Gómez Martínez <magomar@gmail.com>
  */
 public class PathfinderComparatorController implements ActionController {

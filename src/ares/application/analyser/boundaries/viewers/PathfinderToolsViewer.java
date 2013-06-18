@@ -9,7 +9,6 @@ import ares.application.shared.gui.views.View;
 import javax.swing.*;
 
 /**
- *
  * @author Mario Gómez Martínez <magomar@gmail.com>
  */
 public interface PathfinderToolsViewer extends View<JFrame> {
@@ -22,7 +21,7 @@ public interface PathfinderToolsViewer extends View<JFrame> {
     void switchPerspective(String perspective);
 
     PathfinderComparatorView getComparatorView();
-    
+
     ToolBarViewer getToolBarView();
 
     MenuBarViewer getMenuView();

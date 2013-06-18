@@ -12,7 +12,6 @@ import ares.platform.scenario.forces.Unit;
 import java.util.List;
 
 /**
- *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
 class DefensiveOperationalPlan extends OperationalPlan {

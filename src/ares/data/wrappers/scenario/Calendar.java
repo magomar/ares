@@ -7,9 +7,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 /**
  * <p>Java class for Calendar complex type.
- * 
+ * <p/>
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p/>
  * <pre>
  * &lt;complexType name="Calendar">
  *   &lt;complexContent>
@@ -25,16 +25,14 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Calendar", namespace = "ares", propOrder = {
-    "turnLength",
-    "startQuarterDay",
-    "startDate",
-    "currentTurn",
-    "finalTurn"
+        "turnLength",
+        "startQuarterDay",
+        "startDate",
+        "currentTurn",
+        "finalTurn"
 })
 public class Calendar {
 
@@ -52,11 +50,9 @@ public class Calendar {
 
     /**
      * Gets the value of the turnLength property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TurnLength }
-     *     
+     *
+     * @return possible object is
+     *         {@link TurnLength }
      */
     public TurnLength getTurnLength() {
         return turnLength;
@@ -64,11 +60,9 @@ public class Calendar {
 
     /**
      * Sets the value of the turnLength property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TurnLength }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link TurnLength }
      */
     public void setTurnLength(TurnLength value) {
         this.turnLength = value;
@@ -76,7 +70,6 @@ public class Calendar {
 
     /**
      * Gets the value of the startQuarterDay property.
-     * 
      */
     public int getStartQuarterDay() {
         return startQuarterDay;
@@ -84,7 +77,6 @@ public class Calendar {
 
     /**
      * Sets the value of the startQuarterDay property.
-     * 
      */
     public void setStartQuarterDay(int value) {
         this.startQuarterDay = value;
@@ -92,11 +84,9 @@ public class Calendar {
 
     /**
      * Gets the value of the startDate property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     *
+     * @return possible object is
+     *         {@link XMLGregorianCalendar }
      */
     public XMLGregorianCalendar getStartDate() {
         return startDate;
@@ -104,11 +94,9 @@ public class Calendar {
 
     /**
      * Sets the value of the startDate property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link XMLGregorianCalendar }
      */
     public void setStartDate(XMLGregorianCalendar value) {
         this.startDate = value;
@@ -116,7 +104,6 @@ public class Calendar {
 
     /**
      * Gets the value of the currentTurn property.
-     * 
      */
     public int getCurrentTurn() {
         return currentTurn;
@@ -124,7 +111,6 @@ public class Calendar {
 
     /**
      * Sets the value of the currentTurn property.
-     * 
      */
     public void setCurrentTurn(int value) {
         this.currentTurn = value;
@@ -132,7 +118,6 @@ public class Calendar {
 
     /**
      * Gets the value of the finalTurn property.
-     * 
      */
     public int getFinalTurn() {
         return finalTurn;
@@ -140,7 +125,6 @@ public class Calendar {
 
     /**
      * Sets the value of the finalTurn property.
-     * 
      */
     public void setFinalTurn(int value) {
         this.finalTurn = value;

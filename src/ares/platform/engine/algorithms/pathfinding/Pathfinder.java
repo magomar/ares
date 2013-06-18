@@ -6,7 +6,6 @@ import ares.platform.scenario.board.Tile;
 import ares.platform.scenario.forces.Unit;
 
 /**
- *
  * @author Heine <heisncfr@inf.upv.es>
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
@@ -19,8 +18,8 @@ public interface Pathfinder {
     void setHeuristic(Heuristic heuristic);
 
     void setCostFunction(CostFunction costFunction);
-    
+
     Heuristic getHeuristic();
-    
+
     CostFunction getCostFunction();
 }

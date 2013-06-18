@@ -6,7 +6,6 @@ import ares.platform.scenario.assets.Asset;
 import ares.platform.scenario.assets.AssetType;
 
 /**
- *
  * @author Mario Gomez <margomez antiTank dsic.upv.es>
  */
 public class NavalUnit extends SurfaceUnit {

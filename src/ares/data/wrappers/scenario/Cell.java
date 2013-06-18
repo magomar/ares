@@ -8,9 +8,9 @@ import java.util.List;
 
 /**
  * <p>Java class for Cell complex type.
- * 
+ * <p/>
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p/>
  * <pre>
  * &lt;complexType name="Cell">
  *   &lt;complexContent>
@@ -29,17 +29,15 @@ import java.util.List;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Cell", namespace = "ares", propOrder = {
-    "terrain",
-    "feature",
-    "entrenchment",
-    "distance",
-    "owner",
-    "vp"
+        "terrain",
+        "feature",
+        "entrenchment",
+        "distance",
+        "owner",
+        "vp"
 })
 public class Cell {
 
@@ -62,25 +60,23 @@ public class Cell {
 
     /**
      * Gets the value of the terrain property.
-     * 
-     * <p>
+     * <p/>
+     * <p/>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the terrain property.
-     * 
-     * <p>
+     * <p/>
+     * <p/>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getTerrain().add(newItem);
      * </pre>
-     * 
-     * 
-     * <p>
+     * <p/>
+     * <p/>
+     * <p/>
      * Objects of the following type(s) are allowed in the list
      * {@link Terrain }
-     * 
-     * 
      */
     public List<Terrain> getTerrain() {
         if (terrain == null) {
@@ -91,25 +87,23 @@ public class Cell {
 
     /**
      * Gets the value of the feature property.
-     * 
-     * <p>
+     * <p/>
+     * <p/>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the feature property.
-     * 
-     * <p>
+     * <p/>
+     * <p/>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getFeature().add(newItem);
      * </pre>
-     * 
-     * 
-     * <p>
+     * <p/>
+     * <p/>
+     * <p/>
      * Objects of the following type(s) are allowed in the list
      * {@link TerrainFeature }
-     * 
-     * 
      */
     public List<TerrainFeature> getFeature() {
         if (feature == null) {
@@ -120,11 +114,9 @@ public class Cell {
 
     /**
      * Gets the value of the entrenchment property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
+     *
+     * @return possible object is
+     *         {@link Integer }
      */
     public Integer getEntrenchment() {
         return entrenchment;
@@ -132,11 +124,9 @@ public class Cell {
 
     /**
      * Sets the value of the entrenchment property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Integer }
      */
     public void setEntrenchment(Integer value) {
         this.entrenchment = value;
@@ -144,11 +134,9 @@ public class Cell {
 
     /**
      * Gets the value of the distance property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
+     *
+     * @return possible object is
+     *         {@link Integer }
      */
     public Integer getDistance() {
         return distance;
@@ -156,11 +144,9 @@ public class Cell {
 
     /**
      * Sets the value of the distance property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Integer }
      */
     public void setDistance(Integer value) {
         this.distance = value;
@@ -168,7 +154,6 @@ public class Cell {
 
     /**
      * Gets the value of the owner property.
-     * 
      */
     public int getOwner() {
         return owner;
@@ -176,7 +161,6 @@ public class Cell {
 
     /**
      * Sets the value of the owner property.
-     * 
      */
     public void setOwner(int value) {
         this.owner = value;
@@ -184,11 +168,9 @@ public class Cell {
 
     /**
      * Gets the value of the vp property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
+     *
+     * @return possible object is
+     *         {@link Integer }
      */
     public Integer getVP() {
         return vp;
@@ -196,11 +178,9 @@ public class Cell {
 
     /**
      * Sets the value of the vp property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Integer }
      */
     public void setVP(Integer value) {
         this.vp = value;
@@ -208,11 +188,9 @@ public class Cell {
 
     /**
      * Gets the value of the x property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
+     *
+     * @return possible object is
+     *         {@link Integer }
      */
     public Integer getX() {
         return x;
@@ -220,11 +198,9 @@ public class Cell {
 
     /**
      * Sets the value of the x property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Integer }
      */
     public void setX(Integer value) {
         this.x = value;
@@ -232,11 +208,9 @@ public class Cell {
 
     /**
      * Gets the value of the y property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
+     *
+     * @return possible object is
+     *         {@link Integer }
      */
     public Integer getY() {
         return y;
@@ -244,11 +218,9 @@ public class Cell {
 
     /**
      * Sets the value of the y property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Integer }
      */
     public void setY(Integer value) {
         this.y = value;

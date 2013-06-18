@@ -1,7 +1,6 @@
 package ares.platform.scenario.forces;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public enum CombatClass {
@@ -31,7 +30,6 @@ public enum CombatClass {
     /**
      * Units belonging to this class are not fit for combat. These are intended to provide non combat services, such as loggistics,
      * communication, politics & moral support (including religion).
-     *
      */
     SERVICE_SUPPORT,
     OTHER,

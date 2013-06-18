@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 /**
- *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
 public class NonObservedTileModel extends TileModel {

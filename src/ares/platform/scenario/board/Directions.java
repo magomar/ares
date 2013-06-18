@@ -4,7 +4,6 @@ import java.awt.*;
 import java.util.Set;
 
 /**
- *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
 public enum Directions {

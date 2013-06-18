@@ -13,18 +13,17 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public abstract class OperationalPlan {
 
     protected final OperationalStance stance;
-//    protected OperationType type;
+    //    protected OperationType type;
 //    protected OperationForm form;
     protected final Formation formation;
     protected final List<Objective> objectives;
     protected final SortedSet<Objective> goals;
-//    protected final Map<Unit, TacticalMission> missions;
+    //    protected final Map<Unit, TacticalMission> missions;
     protected final Collection<Operation> operations;
     private Emphasis emphasis;
     private SupportScope supportScope;

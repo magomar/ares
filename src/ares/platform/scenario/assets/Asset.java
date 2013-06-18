@@ -1,7 +1,6 @@
 package ares.platform.scenario.assets;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public final class Asset {

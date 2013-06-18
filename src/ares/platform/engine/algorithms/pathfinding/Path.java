@@ -3,7 +3,6 @@ package ares.platform.engine.algorithms.pathfinding;
 import ares.application.shared.models.board.TileModel;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class Path {

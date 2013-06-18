@@ -10,7 +10,6 @@ import ares.platform.scenario.forces.Unit;
 import ares.platform.scenario.forces.UnitsColor;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public abstract class UnitModel extends KnowledgeMediatedModel {
@@ -50,6 +49,6 @@ public abstract class UnitModel extends KnowledgeMediatedModel {
     public String toString() {
         return getName();
     }
-    
-    
+
+
 }

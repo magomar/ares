@@ -10,7 +10,6 @@ import java.util.GregorianCalendar;
 import java.util.Set;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class Clock {
@@ -122,9 +121,9 @@ public class Clock {
     public String toString() {
         return FULL_DATE_FORMAT.format(now.getTime());
     }
-    
-    
-    public static int[] getTemporalData(int startTime, int duration) { 
+
+
+    public static int[] getTemporalData(int startTime, int duration) {
         return new int[3];
     }
 
@@ -153,5 +152,5 @@ public class Clock {
             getEngine().update(new ClockEvent(eventTypes));
         }
     }
-    
+
 }

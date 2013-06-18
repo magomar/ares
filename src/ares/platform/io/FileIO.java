@@ -23,7 +23,6 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class FileIO {
@@ -52,7 +51,7 @@ public class FileIO {
      * Marshalls Java object into JSON file
      *
      * @param object object to be marshalled
-     * @param file file to save the marshalled object
+     * @param file   file to save the marshalled object
      * @return
      */
     public static File marshallJson(Object object, File file) {
@@ -97,8 +96,8 @@ public class FileIO {
             LOG.log(Level.SEVERE, null, ex);
         }
     }
-    
-    
+
+
     /**
      * Unmarshalls XML element from file into java object
      *
@@ -152,7 +151,7 @@ public class FileIO {
     /**
      * Marshalls Java object into XML file
      *
-     * @param object object to be marshalled
+     * @param object  object to be marshalled
      * @param xmlFile file to save the marshalled object
      * @return
      */
@@ -175,7 +174,7 @@ public class FileIO {
      * Marshalls Java object in a zipped XMl file
      *
      * @param object object to be marshalled
-     * @param file non zip file to save the marshalled object
+     * @param file   non zip file to save the marshalled object
      * @return
      */
     public static File marshallZipped(Object object, File file, Marshaller marshaller) {
@@ -206,7 +205,7 @@ public class FileIO {
      * Marshalls Java object in a gzipped XMl file
      *
      * @param object object to be marshalled
-     * @param file file to save the marshalled object
+     * @param file   file to save the marshalled object
      * @return
      */
     public static File marshallGzipped(Object object, File file, Marshaller marshaller) {
@@ -232,5 +231,5 @@ public class FileIO {
         return null;
     }
 
-    
+
 }

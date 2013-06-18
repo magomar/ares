@@ -20,7 +20,6 @@ import java.util.List;
 import java.util.Map;
 
 /**
- *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
 public final class ForceModel extends RoleMediatedModel {

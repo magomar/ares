@@ -13,7 +13,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- *
  * @author Mario Gómez Martínez <magomar@gmail.com>
  */
 public abstract class AbstractLayeredImageView extends AbstractView<JScrollPane> implements LayeredImageViewer {
@@ -77,7 +76,7 @@ public abstract class AbstractLayeredImageView extends AbstractView<JScrollPane>
     public int getProfile() {
         return profile;
     }
-    
+
     @Override
     public void flush() {
         for (ImageLayerViewer layerView : layerViews.values()) {

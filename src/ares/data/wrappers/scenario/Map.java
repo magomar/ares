@@ -8,9 +8,9 @@ import java.util.List;
 
 /**
  * <p>Java class for Map complex type.
- * 
+ * <p/>
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p/>
  * <pre>
  * &lt;complexType name="Map">
  *   &lt;complexContent>
@@ -26,15 +26,13 @@ import java.util.List;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Map", namespace = "ares", propOrder = {
-    "maxX",
-    "maxY",
-    "cell",
-    "place"
+        "maxX",
+        "maxY",
+        "cell",
+        "place"
 })
 public class Map {
 
@@ -51,7 +49,6 @@ public class Map {
 
     /**
      * Gets the value of the maxX property.
-     * 
      */
     public int getMaxX() {
         return maxX;
@@ -59,7 +56,6 @@ public class Map {
 
     /**
      * Sets the value of the maxX property.
-     * 
      */
     public void setMaxX(int value) {
         this.maxX = value;
@@ -67,7 +63,6 @@ public class Map {
 
     /**
      * Gets the value of the maxY property.
-     * 
      */
     public int getMaxY() {
         return maxY;
@@ -75,7 +70,6 @@ public class Map {
 
     /**
      * Sets the value of the maxY property.
-     * 
      */
     public void setMaxY(int value) {
         this.maxY = value;
@@ -83,25 +77,23 @@ public class Map {
 
     /**
      * Gets the value of the cell property.
-     * 
-     * <p>
+     * <p/>
+     * <p/>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the cell property.
-     * 
-     * <p>
+     * <p/>
+     * <p/>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getCell().add(newItem);
      * </pre>
-     * 
-     * 
-     * <p>
+     * <p/>
+     * <p/>
+     * <p/>
      * Objects of the following type(s) are allowed in the list
      * {@link Cell }
-     * 
-     * 
      */
     public List<Cell> getCell() {
         if (cell == null) {
@@ -112,25 +104,23 @@ public class Map {
 
     /**
      * Gets the value of the place property.
-     * 
-     * <p>
+     * <p/>
+     * <p/>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the place property.
-     * 
-     * <p>
+     * <p/>
+     * <p/>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getPlace().add(newItem);
      * </pre>
-     * 
-     * 
-     * <p>
+     * <p/>
+     * <p/>
+     * <p/>
      * Objects of the following type(s) are allowed in the list
      * {@link Place }
-     * 
-     * 
      */
     public List<Place> getPlace() {
         if (place == null) {
@@ -141,11 +131,9 @@ public class Map {
 
     /**
      * Gets the value of the version property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     *         {@link String }
      */
     public String getVersion() {
         return version;
@@ -153,11 +141,9 @@ public class Map {
 
     /**
      * Sets the value of the version property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setVersion(String value) {
         this.version = value;

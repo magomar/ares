@@ -12,7 +12,6 @@ import ares.platform.scenario.Scenario;
 import java.util.*;
 
 /**
- *
  * @author Mario Gomez <margomez antiTank dsic.upv.es>
  */
 public class Formation implements ModelProvider<FormationModel> {

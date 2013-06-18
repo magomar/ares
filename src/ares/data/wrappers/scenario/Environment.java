@@ -8,9 +8,9 @@ import java.util.List;
 
 /**
  * <p>Java class for Environment complex type.
- * 
+ * <p/>
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p/>
  * <pre>
  * &lt;complexType name="Environment">
  *   &lt;complexContent>
@@ -42,13 +42,11 @@ import java.util.List;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Environment", namespace = "ares", propOrder = {
-    "scale",
-    "zone"
+        "scale",
+        "zone"
 })
 public class Environment {
 
@@ -59,7 +57,6 @@ public class Environment {
 
     /**
      * Gets the value of the scale property.
-     * 
      */
     public double getScale() {
         return scale;
@@ -67,7 +64,6 @@ public class Environment {
 
     /**
      * Sets the value of the scale property.
-     * 
      */
     public void setScale(double value) {
         this.scale = value;
@@ -75,25 +71,23 @@ public class Environment {
 
     /**
      * Gets the value of the zone property.
-     * 
-     * <p>
+     * <p/>
+     * <p/>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the zone property.
-     * 
-     * <p>
+     * <p/>
+     * <p/>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getZone().add(newItem);
      * </pre>
-     * 
-     * 
-     * <p>
+     * <p/>
+     * <p/>
+     * <p/>
      * Objects of the following type(s) are allowed in the list
      * {@link Environment.Zone }
-     * 
-     * 
      */
     public List<Environment.Zone> getZone() {
         if (zone == null) {
@@ -105,9 +99,9 @@ public class Environment {
 
     /**
      * <p>Java class for anonymous complex type.
-     * 
+     * <p/>
      * <p>The following schema fragment specifies the expected content contained within this class.
-     * 
+     * <p/>
      * <pre>
      * &lt;complexType>
      *   &lt;complexContent>
@@ -128,20 +122,18 @@ public class Environment {
      *   &lt;/complexContent>
      * &lt;/complexType>
      * </pre>
-     * 
-     * 
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
-        "boundary",
-        "precipitation",
-        "temperature",
-        "visibility",
-        "deltaT",
-        "direction",
-        "olddeltaT",
-        "olddirection",
-        "nextClouds"
+            "boundary",
+            "precipitation",
+            "temperature",
+            "visibility",
+            "deltaT",
+            "direction",
+            "olddeltaT",
+            "olddirection",
+            "nextClouds"
     })
     public static class Zone {
 
@@ -168,7 +160,6 @@ public class Environment {
 
         /**
          * Gets the value of the boundary property.
-         * 
          */
         public int getBoundary() {
             return boundary;
@@ -176,7 +167,6 @@ public class Environment {
 
         /**
          * Sets the value of the boundary property.
-         * 
          */
         public void setBoundary(int value) {
             this.boundary = value;
@@ -184,7 +174,6 @@ public class Environment {
 
         /**
          * Gets the value of the precipitation property.
-         * 
          */
         public int getPrecipitation() {
             return precipitation;
@@ -192,7 +181,6 @@ public class Environment {
 
         /**
          * Sets the value of the precipitation property.
-         * 
          */
         public void setPrecipitation(int value) {
             this.precipitation = value;
@@ -200,7 +188,6 @@ public class Environment {
 
         /**
          * Gets the value of the temperature property.
-         * 
          */
         public int getTemperature() {
             return temperature;
@@ -208,7 +195,6 @@ public class Environment {
 
         /**
          * Sets the value of the temperature property.
-         * 
          */
         public void setTemperature(int value) {
             this.temperature = value;
@@ -216,7 +202,6 @@ public class Environment {
 
         /**
          * Gets the value of the visibility property.
-         * 
          */
         public int getVisibility() {
             return visibility;
@@ -224,7 +209,6 @@ public class Environment {
 
         /**
          * Sets the value of the visibility property.
-         * 
          */
         public void setVisibility(int value) {
             this.visibility = value;
@@ -232,7 +216,6 @@ public class Environment {
 
         /**
          * Gets the value of the deltaT property.
-         * 
          */
         public int getDeltaT() {
             return deltaT;
@@ -240,7 +223,6 @@ public class Environment {
 
         /**
          * Sets the value of the deltaT property.
-         * 
          */
         public void setDeltaT(int value) {
             this.deltaT = value;
@@ -248,7 +230,6 @@ public class Environment {
 
         /**
          * Gets the value of the direction property.
-         * 
          */
         public int getDirection() {
             return direction;
@@ -256,7 +237,6 @@ public class Environment {
 
         /**
          * Sets the value of the direction property.
-         * 
          */
         public void setDirection(int value) {
             this.direction = value;
@@ -264,7 +244,6 @@ public class Environment {
 
         /**
          * Gets the value of the olddeltaT property.
-         * 
          */
         public int getOlddeltaT() {
             return olddeltaT;
@@ -272,7 +251,6 @@ public class Environment {
 
         /**
          * Sets the value of the olddeltaT property.
-         * 
          */
         public void setOlddeltaT(int value) {
             this.olddeltaT = value;
@@ -280,7 +258,6 @@ public class Environment {
 
         /**
          * Gets the value of the olddirection property.
-         * 
          */
         public int getOlddirection() {
             return olddirection;
@@ -288,7 +265,6 @@ public class Environment {
 
         /**
          * Sets the value of the olddirection property.
-         * 
          */
         public void setOlddirection(int value) {
             this.olddirection = value;
@@ -296,7 +272,6 @@ public class Environment {
 
         /**
          * Gets the value of the nextClouds property.
-         * 
          */
         public int getNextClouds() {
             return nextClouds;
@@ -304,7 +279,6 @@ public class Environment {
 
         /**
          * Sets the value of the nextClouds property.
-         * 
          */
         public void setNextClouds(int value) {
             this.nextClouds = value;
@@ -312,7 +286,6 @@ public class Environment {
 
         /**
          * Gets the value of the id property.
-         * 
          */
         public int getId() {
             return id;
@@ -320,7 +293,6 @@ public class Environment {
 
         /**
          * Sets the value of the id property.
-         * 
          */
         public void setId(int value) {
             this.id = value;

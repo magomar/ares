@@ -114,7 +114,7 @@ public class ImageDecorators {
     private void paintUnitAttributes(Graphics2D g2, DetectedUnitModel unitModel) {
     }
 
-//    private void paintName(String name) {
+    //    private void paintName(String name) {
 //        g2.drawString(name.substring(0, 4), 3, 6);
 //    }
     private void paintEchelon(Graphics2D g2, Color color, Echelon echelon) {
@@ -173,13 +173,14 @@ public class ImageDecorators {
 //        int r = (255 * (100 - percentage)) / 100;
 //        return new Color(r, g, 0);
 //    }
+
     /**
      * Converts a percentage into a color using a scale between two pure RGB colors
      *
-     * @see java.awt.color.ICC_ProfileRGB
      * @param percentage
      * @param component
      * @return
+     * @see java.awt.color.ICC_ProfileRGB
      */
     private Color colorLevel(int percentage, int bottomRGBComponent, int topRGBComponent) {
         int[] rgb = new int[3];

@@ -8,9 +8,9 @@ import java.util.List;
 
 /**
  * <p>Java class for Unit complex type.
- * 
+ * <p/>
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p/>
  * <pre>
  * &lt;complexType name="Unit">
  *   &lt;complexContent>
@@ -53,29 +53,27 @@ import java.util.List;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Unit", namespace = "ares", propOrder = {
-    "name",
-    "type",
-    "iconId",
-    "color",
-    "size",
-    "experience",
-    "proficiency",
-    "readiness",
-    "supply",
-    "x",
-    "y",
-    "emphasis",
-    "availability",
-    "opState",
-    "replacementPriority",
-    "entry",
-    "parent",
-    "equipment"
+        "name",
+        "type",
+        "iconId",
+        "color",
+        "size",
+        "experience",
+        "proficiency",
+        "readiness",
+        "supply",
+        "x",
+        "y",
+        "emphasis",
+        "availability",
+        "opState",
+        "replacementPriority",
+        "entry",
+        "parent",
+        "equipment"
 })
 public class Unit {
 
@@ -120,11 +118,9 @@ public class Unit {
 
     /**
      * Gets the value of the name property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     *         {@link String }
      */
     public String getName() {
         return name;
@@ -132,11 +128,9 @@ public class Unit {
 
     /**
      * Sets the value of the name property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setName(String value) {
         this.name = value;
@@ -144,11 +138,9 @@ public class Unit {
 
     /**
      * Gets the value of the type property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link UnitType }
-     *     
+     *
+     * @return possible object is
+     *         {@link UnitType }
      */
     public UnitType getType() {
         return type;
@@ -156,11 +148,9 @@ public class Unit {
 
     /**
      * Sets the value of the type property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link UnitType }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link UnitType }
      */
     public void setType(UnitType value) {
         this.type = value;
@@ -168,7 +158,6 @@ public class Unit {
 
     /**
      * Gets the value of the iconId property.
-     * 
      */
     public int getIconId() {
         return iconId;
@@ -176,7 +165,6 @@ public class Unit {
 
     /**
      * Sets the value of the iconId property.
-     * 
      */
     public void setIconId(int value) {
         this.iconId = value;
@@ -184,7 +172,6 @@ public class Unit {
 
     /**
      * Gets the value of the color property.
-     * 
      */
     public int getColor() {
         return color;
@@ -192,7 +179,6 @@ public class Unit {
 
     /**
      * Sets the value of the color property.
-     * 
      */
     public void setColor(int value) {
         this.color = value;
@@ -200,11 +186,9 @@ public class Unit {
 
     /**
      * Gets the value of the size property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Echelon }
-     *     
+     *
+     * @return possible object is
+     *         {@link Echelon }
      */
     public Echelon getSize() {
         return size;
@@ -212,11 +196,9 @@ public class Unit {
 
     /**
      * Sets the value of the size property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Echelon }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Echelon }
      */
     public void setSize(Echelon value) {
         this.size = value;
@@ -224,11 +206,9 @@ public class Unit {
 
     /**
      * Gets the value of the experience property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Experience }
-     *     
+     *
+     * @return possible object is
+     *         {@link Experience }
      */
     public Experience getExperience() {
         return experience;
@@ -236,11 +216,9 @@ public class Unit {
 
     /**
      * Sets the value of the experience property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Experience }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Experience }
      */
     public void setExperience(Experience value) {
         this.experience = value;
@@ -248,7 +226,6 @@ public class Unit {
 
     /**
      * Gets the value of the proficiency property.
-     * 
      */
     public int getProficiency() {
         return proficiency;
@@ -256,7 +233,6 @@ public class Unit {
 
     /**
      * Sets the value of the proficiency property.
-     * 
      */
     public void setProficiency(int value) {
         this.proficiency = value;
@@ -264,7 +240,6 @@ public class Unit {
 
     /**
      * Gets the value of the readiness property.
-     * 
      */
     public int getReadiness() {
         return readiness;
@@ -272,7 +247,6 @@ public class Unit {
 
     /**
      * Sets the value of the readiness property.
-     * 
      */
     public void setReadiness(int value) {
         this.readiness = value;
@@ -280,7 +254,6 @@ public class Unit {
 
     /**
      * Gets the value of the supply property.
-     * 
      */
     public int getSupply() {
         return supply;
@@ -288,7 +261,6 @@ public class Unit {
 
     /**
      * Sets the value of the supply property.
-     * 
      */
     public void setSupply(int value) {
         this.supply = value;
@@ -296,7 +268,6 @@ public class Unit {
 
     /**
      * Gets the value of the x property.
-     * 
      */
     public int getX() {
         return x;
@@ -304,7 +275,6 @@ public class Unit {
 
     /**
      * Sets the value of the x property.
-     * 
      */
     public void setX(int value) {
         this.x = value;
@@ -312,7 +282,6 @@ public class Unit {
 
     /**
      * Gets the value of the y property.
-     * 
      */
     public int getY() {
         return y;
@@ -320,7 +289,6 @@ public class Unit {
 
     /**
      * Sets the value of the y property.
-     * 
      */
     public void setY(int value) {
         this.y = value;
@@ -328,11 +296,9 @@ public class Unit {
 
     /**
      * Gets the value of the emphasis property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Emphasis }
-     *     
+     *
+     * @return possible object is
+     *         {@link Emphasis }
      */
     public Emphasis getEmphasis() {
         return emphasis;
@@ -340,11 +306,9 @@ public class Unit {
 
     /**
      * Sets the value of the emphasis property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Emphasis }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Emphasis }
      */
     public void setEmphasis(Emphasis value) {
         this.emphasis = value;
@@ -352,11 +316,9 @@ public class Unit {
 
     /**
      * Gets the value of the availability property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Availability }
-     *     
+     *
+     * @return possible object is
+     *         {@link Availability }
      */
     public Availability getAvailability() {
         return availability;
@@ -364,11 +326,9 @@ public class Unit {
 
     /**
      * Sets the value of the availability property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Availability }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Availability }
      */
     public void setAvailability(Availability value) {
         this.availability = value;
@@ -376,11 +336,9 @@ public class Unit {
 
     /**
      * Gets the value of the opState property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link OpState }
-     *     
+     *
+     * @return possible object is
+     *         {@link OpState }
      */
     public OpState getOpState() {
         return opState;
@@ -388,11 +346,9 @@ public class Unit {
 
     /**
      * Sets the value of the opState property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link OpState }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link OpState }
      */
     public void setOpState(OpState value) {
         this.opState = value;
@@ -400,7 +356,6 @@ public class Unit {
 
     /**
      * Gets the value of the replacementPriority property.
-     * 
      */
     public int getReplacementPriority() {
         return replacementPriority;
@@ -408,7 +363,6 @@ public class Unit {
 
     /**
      * Sets the value of the replacementPriority property.
-     * 
      */
     public void setReplacementPriority(int value) {
         this.replacementPriority = value;
@@ -416,11 +370,9 @@ public class Unit {
 
     /**
      * Gets the value of the entry property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
+     *
+     * @return possible object is
+     *         {@link Integer }
      */
     public Integer getEntry() {
         return entry;
@@ -428,11 +380,9 @@ public class Unit {
 
     /**
      * Sets the value of the entry property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Integer }
      */
     public void setEntry(Integer value) {
         this.entry = value;
@@ -440,11 +390,9 @@ public class Unit {
 
     /**
      * Gets the value of the parent property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
+     *
+     * @return possible object is
+     *         {@link Integer }
      */
     public Integer getParent() {
         return parent;
@@ -452,11 +400,9 @@ public class Unit {
 
     /**
      * Sets the value of the parent property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Integer }
      */
     public void setParent(Integer value) {
         this.parent = value;
@@ -464,25 +410,23 @@ public class Unit {
 
     /**
      * Gets the value of the equipment property.
-     * 
-     * <p>
+     * <p/>
+     * <p/>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the equipment property.
-     * 
-     * <p>
+     * <p/>
+     * <p/>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getEquipment().add(newItem);
      * </pre>
-     * 
-     * 
-     * <p>
+     * <p/>
+     * <p/>
+     * <p/>
      * Objects of the following type(s) are allowed in the list
      * {@link Unit.Equipment }
-     * 
-     * 
      */
     public List<Unit.Equipment> getEquipment() {
         if (equipment == null) {
@@ -493,7 +437,6 @@ public class Unit {
 
     /**
      * Gets the value of the id property.
-     * 
      */
     public int getId() {
         return id;
@@ -501,7 +444,6 @@ public class Unit {
 
     /**
      * Sets the value of the id property.
-     * 
      */
     public void setId(int value) {
         this.id = value;
@@ -510,9 +452,9 @@ public class Unit {
 
     /**
      * <p>Java class for anonymous complex type.
-     * 
+     * <p/>
      * <p>The following schema fragment specifies the expected content contained within this class.
-     * 
+     * <p/>
      * <pre>
      * &lt;complexType>
      *   &lt;complexContent>
@@ -527,14 +469,12 @@ public class Unit {
      *   &lt;/complexContent>
      * &lt;/complexType>
      * </pre>
-     * 
-     * 
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
-        "name",
-        "number",
-        "max"
+            "name",
+            "number",
+            "max"
     })
     public static class Equipment {
 
@@ -549,11 +489,9 @@ public class Unit {
 
         /**
          * Gets the value of the name property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link String }
-         *     
+         *
+         * @return possible object is
+         *         {@link String }
          */
         public String getName() {
             return name;
@@ -561,11 +499,9 @@ public class Unit {
 
         /**
          * Sets the value of the name property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link String }
-         *     
+         *
+         * @param value allowed object is
+         *              {@link String }
          */
         public void setName(String value) {
             this.name = value;
@@ -573,7 +509,6 @@ public class Unit {
 
         /**
          * Gets the value of the number property.
-         * 
          */
         public int getNumber() {
             return number;
@@ -581,7 +516,6 @@ public class Unit {
 
         /**
          * Sets the value of the number property.
-         * 
          */
         public void setNumber(int value) {
             this.number = value;
@@ -589,7 +523,6 @@ public class Unit {
 
         /**
          * Gets the value of the max property.
-         * 
          */
         public int getMax() {
             return max;
@@ -597,7 +530,6 @@ public class Unit {
 
         /**
          * Sets the value of the max property.
-         * 
          */
         public void setMax(int value) {
             this.max = value;
@@ -605,7 +537,6 @@ public class Unit {
 
         /**
          * Gets the value of the id property.
-         * 
          */
         public int getId() {
             return id;
@@ -613,7 +544,6 @@ public class Unit {
 
         /**
          * Sets the value of the id property.
-         * 
          */
         public void setId(int value) {
             this.id = value;

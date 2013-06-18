@@ -8,7 +8,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public abstract class AbstractController implements PropertyChangeListener {
@@ -22,7 +21,7 @@ public abstract class AbstractController implements PropertyChangeListener {
      * in question. If it isn't, a NoSuchMethodException is thrown, which the method ignores.
      *
      * @param propertyName = The name of the property.
-     * @param newValue = An object that represents the new value of the property.
+     * @param newValue     = An object that represents the new value of the property.
      */
     protected final void setEntityProperty(String propertyName, Object newValue) {
 
@@ -30,7 +29,7 @@ public abstract class AbstractController implements PropertyChangeListener {
             try {
                 Method method = model.getClass().
                         getMethod("set" + propertyName, new Class[]{
-                            newValue.getClass()
+                                newValue.getClass()
                         });
                 method.invoke(model, newValue);
 

@@ -15,7 +15,6 @@ import java.awt.image.BufferedImage;
 import java.util.Map;
 
 /**
- *
  * @author Heine <heisncfr@inf.upv.es>
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */

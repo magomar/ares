@@ -7,7 +7,6 @@ import java.util.EnumMap;
 import java.util.Map;
 
 /**
- *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
 public class MinimunDistance implements Heuristic {
@@ -23,6 +22,7 @@ public class MinimunDistance implements Heuristic {
             return newInstance;
         }
     }
+
     protected final DistanceCalculator distanceCalculator;
 
     private MinimunDistance(DistanceCalculator distanceCalculator) {
@@ -38,5 +38,5 @@ public class MinimunDistance implements Heuristic {
     public String toString() {
         return getClass().getSimpleName();
     }
-    
+
 }

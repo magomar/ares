@@ -6,9 +6,9 @@ import javax.xml.bind.annotation.*;
 
 /**
  * <p>Java class for anonymous complex type.
- * 
+ * <p/>
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p/>
  * <pre>
  * &lt;complexType>
  *   &lt;complexContent>
@@ -29,21 +29,19 @@ import javax.xml.bind.annotation.*;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "header",
-    "calendar",
-    "environment",
-    "forceVariables",
-    "variables",
-    "map",
-    "oob",
-    "events",
-    "supplies",
-    "replacements"
+        "header",
+        "calendar",
+        "environment",
+        "forceVariables",
+        "variables",
+        "map",
+        "oob",
+        "events",
+        "supplies",
+        "replacements"
 })
 @XmlRootElement(name = "Scenario", namespace = "ares")
 public class Scenario {
@@ -71,11 +69,9 @@ public class Scenario {
 
     /**
      * Gets the value of the header property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Header }
-     *     
+     *
+     * @return possible object is
+     *         {@link Header }
      */
     public Header getHeader() {
         return header;
@@ -83,11 +79,9 @@ public class Scenario {
 
     /**
      * Sets the value of the header property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Header }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Header }
      */
     public void setHeader(Header value) {
         this.header = value;
@@ -95,11 +89,9 @@ public class Scenario {
 
     /**
      * Gets the value of the calendar property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Calendar }
-     *     
+     *
+     * @return possible object is
+     *         {@link Calendar }
      */
     public Calendar getCalendar() {
         return calendar;
@@ -107,11 +99,9 @@ public class Scenario {
 
     /**
      * Sets the value of the calendar property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Calendar }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Calendar }
      */
     public void setCalendar(Calendar value) {
         this.calendar = value;
@@ -119,11 +109,9 @@ public class Scenario {
 
     /**
      * Gets the value of the environment property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Environment }
-     *     
+     *
+     * @return possible object is
+     *         {@link Environment }
      */
     public Environment getEnvironment() {
         return environment;
@@ -131,11 +119,9 @@ public class Scenario {
 
     /**
      * Sets the value of the environment property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Environment }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Environment }
      */
     public void setEnvironment(Environment value) {
         this.environment = value;
@@ -143,11 +129,9 @@ public class Scenario {
 
     /**
      * Gets the value of the forceVariables property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ForceVariables }
-     *     
+     *
+     * @return possible object is
+     *         {@link ForceVariables }
      */
     public ForceVariables getForceVariables() {
         return forceVariables;
@@ -155,11 +139,9 @@ public class Scenario {
 
     /**
      * Sets the value of the forceVariables property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ForceVariables }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link ForceVariables }
      */
     public void setForceVariables(ForceVariables value) {
         this.forceVariables = value;
@@ -167,11 +149,9 @@ public class Scenario {
 
     /**
      * Gets the value of the variables property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Variables }
-     *     
+     *
+     * @return possible object is
+     *         {@link Variables }
      */
     public Variables getVariables() {
         return variables;
@@ -179,11 +159,9 @@ public class Scenario {
 
     /**
      * Sets the value of the variables property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Variables }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Variables }
      */
     public void setVariables(Variables value) {
         this.variables = value;
@@ -191,11 +169,9 @@ public class Scenario {
 
     /**
      * Gets the value of the map property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Map }
-     *     
+     *
+     * @return possible object is
+     *         {@link Map }
      */
     public Map getMap() {
         return map;
@@ -203,11 +179,9 @@ public class Scenario {
 
     /**
      * Sets the value of the map property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Map }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Map }
      */
     public void setMap(Map value) {
         this.map = value;
@@ -215,11 +189,9 @@ public class Scenario {
 
     /**
      * Gets the value of the oob property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link OOB }
-     *     
+     *
+     * @return possible object is
+     *         {@link OOB }
      */
     public OOB getOOB() {
         return oob;
@@ -227,11 +199,9 @@ public class Scenario {
 
     /**
      * Sets the value of the oob property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link OOB }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link OOB }
      */
     public void setOOB(OOB value) {
         this.oob = value;
@@ -239,11 +209,9 @@ public class Scenario {
 
     /**
      * Gets the value of the events property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Events }
-     *     
+     *
+     * @return possible object is
+     *         {@link Events }
      */
     public Events getEvents() {
         return events;
@@ -251,11 +219,9 @@ public class Scenario {
 
     /**
      * Sets the value of the events property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Events }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Events }
      */
     public void setEvents(Events value) {
         this.events = value;
@@ -263,11 +229,9 @@ public class Scenario {
 
     /**
      * Gets the value of the supplies property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Supplies }
-     *     
+     *
+     * @return possible object is
+     *         {@link Supplies }
      */
     public Supplies getSupplies() {
         return supplies;
@@ -275,11 +239,9 @@ public class Scenario {
 
     /**
      * Sets the value of the supplies property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Supplies }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Supplies }
      */
     public void setSupplies(Supplies value) {
         this.supplies = value;
@@ -287,11 +249,9 @@ public class Scenario {
 
     /**
      * Gets the value of the replacements property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Replacements }
-     *     
+     *
+     * @return possible object is
+     *         {@link Replacements }
      */
     public Replacements getReplacements() {
         return replacements;
@@ -299,11 +259,9 @@ public class Scenario {
 
     /**
      * Sets the value of the replacements property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Replacements }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Replacements }
      */
     public void setReplacements(Replacements value) {
         this.replacements = value;

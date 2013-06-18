@@ -3,7 +3,6 @@ package ares.application.shared.boundaries.viewers.layerviewers;
 import javax.swing.*;
 
 /**
- *
  * @author Mario Gómez Martínez <magomar@gmail.com>
  */
 public interface MiniMapNavigationLayerViewer extends ImageLayerViewer {

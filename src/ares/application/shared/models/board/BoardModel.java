@@ -9,7 +9,6 @@ import ares.platform.scenario.board.Tile;
 import java.util.List;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class BoardModel extends RoleMediatedModel {
@@ -40,7 +39,7 @@ public class BoardModel extends RoleMediatedModel {
     public int getHeight() {
         return board.getHeight();
     }
-    
+
     public List<Place> getPlaces() {
         return board.getPlaces();
     }

@@ -9,13 +9,11 @@ package ares.application.shared.gui.providers;
 public interface NonProfiledImageProviderFactory {
 
     /**
-     *
      * @return the filename, which can later be used to build diferent filenames for diferent graphic profiles.
      */
     String getFilename();
 
     /**
-     * 
      * @return an image provider
      */
     ImageProvider createImageProvider();

@@ -8,7 +8,6 @@ import ares.application.shared.gui.views.layerviews.TerrainLayerView;
 import javax.swing.*;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class PathSearchBoardView extends AbstractBoardView {

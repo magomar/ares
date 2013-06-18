@@ -24,7 +24,6 @@ import javax.swing.*;
  * least the {@link #performOperation} method, which is executed on the operation thread. This method may return a
  * single object, or throw any exception type. Depending on how it completes (return/throw), one of
  * {@link #onSuccess}, {@link #onFailure} will then be executed on the event thread.
- *
  */
 public abstract class AsynchronousOperation<T>
         implements Runnable {
