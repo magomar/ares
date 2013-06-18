@@ -2,7 +2,8 @@ package ares.platform.engine.algorithms.pathfinding.heuristics;
 
 import ares.platform.scenario.board.Direction;
 import ares.platform.scenario.board.Tile;
-import java.awt.Point;
+
+import java.awt.*;
 
 /**
  *

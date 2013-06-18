@@ -2,10 +2,9 @@ package ares.application.shared.commands;
 
 import ares.application.shared.action.Command;
 import ares.platform.io.ResourcePath;
+
+import javax.swing.*;
 import java.awt.event.KeyEvent;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.KeyStroke;
 
 /**
  *

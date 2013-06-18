@@ -1,6 +1,7 @@
 package ares.application.analyser.controllers;
 
 import ares.application.analyser.boundaries.interactors.PathfinderAnalyserInteractor;
+
 import java.util.logging.Logger;
 
 /**

@@ -3,8 +3,8 @@ package ares.application.shared.gui.views;
 import ares.application.shared.gui.views.layerviews.MiniMapNavigationLayerView;
 import ares.application.shared.gui.views.layerviews.TerrainLayerView;
 import ares.application.shared.gui.views.layerviews.UnitsLayerView;
-import javax.swing.JScrollPane;
-import javax.swing.JViewport;
+
+import javax.swing.*;
 
 /**
  *

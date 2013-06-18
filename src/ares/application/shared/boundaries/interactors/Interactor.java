@@ -1,6 +1,6 @@
 package ares.application.shared.boundaries.interactors;
 
-import java.awt.Container;
+import java.awt.*;
 
 /**
  *

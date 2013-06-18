@@ -1,11 +1,12 @@
 package ares.platform.scenario.board;
 
+import ares.platform.scenario.Scale;
 import ares.platform.scenario.forces.AirUnit;
 import ares.platform.scenario.forces.LandUnit;
 import ares.platform.scenario.forces.SurfaceUnit;
 import ares.platform.scenario.forces.Unit;
-import ares.platform.scenario.Scale;
 import ares.platform.util.Ring;
+
 import java.util.ArrayList;
 import java.util.Collection;
 

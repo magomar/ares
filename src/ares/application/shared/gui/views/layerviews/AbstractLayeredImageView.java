@@ -1,19 +1,16 @@
 package ares.application.shared.gui.views.layerviews;
 
-import ares.application.shared.boundaries.viewers.layerviewers.LayeredImageViewer;
 import ares.application.shared.boundaries.viewers.layerviewers.ImageLayerViewer;
+import ares.application.shared.boundaries.viewers.layerviewers.LayeredImageViewer;
 import ares.application.shared.gui.profiles.GraphicsModel;
 import ares.application.shared.gui.views.AbstractView;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Rectangle;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.HashMap;
 import java.util.Map;
-import javax.swing.JLayeredPane;
-import javax.swing.JScrollPane;
 
 /**
  *

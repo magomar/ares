@@ -1,14 +1,15 @@
 package ares.platform.scenario;
 
-import ares.platform.engine.time.Clock;
 import ares.application.shared.models.ScenarioModel;
 import ares.data.jaxb.EquipmentDB;
 import ares.data.jaxb.OOB;
+import ares.platform.engine.time.Clock;
 import ares.platform.model.ModelProvider;
 import ares.platform.model.UserRole;
 import ares.platform.scenario.assets.AssetTypes;
 import ares.platform.scenario.board.Board;
 import ares.platform.scenario.forces.Force;
+
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;

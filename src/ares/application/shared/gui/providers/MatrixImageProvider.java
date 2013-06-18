@@ -2,8 +2,8 @@ package ares.application.shared.gui.providers;
 
 import ares.platform.io.FileIO;
 import ares.platform.io.ResourcePath;
-import java.awt.Dimension;
-import java.awt.Point;
+
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.lang.ref.SoftReference;

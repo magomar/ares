@@ -1,18 +1,17 @@
 package ares.application.shared.gui.views;
 
 import ares.application.shared.boundaries.viewers.OOBViewer;
+import ares.application.shared.gui.ComponentFactory;
 import ares.application.shared.gui.components.OOBTreeCellRenderer;
 import ares.application.shared.models.ScenarioModel;
 import ares.application.shared.models.forces.ForceModel;
-import ares.application.shared.gui.ComponentFactory;
 import ares.platform.scenario.forces.Unit;
-import java.util.Enumeration;
-import javax.swing.JScrollPane;
-import javax.swing.JTabbedPane;
-import javax.swing.JTree;
+
+import javax.swing.*;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreePath;
+import java.util.Enumeration;
 
 /**
  *

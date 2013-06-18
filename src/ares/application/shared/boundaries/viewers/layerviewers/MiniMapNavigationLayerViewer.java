@@ -1,6 +1,6 @@
 package ares.application.shared.boundaries.viewers.layerviewers;
 
-import javax.swing.JViewport;
+import javax.swing.*;
 
 /**
  *

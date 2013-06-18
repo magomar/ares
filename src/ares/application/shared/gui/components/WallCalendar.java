@@ -2,17 +2,14 @@ package ares.application.shared.gui.components;
 
 import ares.platform.io.FileIO;
 import ares.platform.io.ResourcePath;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Calendar;
 import java.util.Locale;
-import javax.swing.JComponent;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class WallCalendar extends JComponent {

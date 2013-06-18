@@ -6,6 +6,7 @@ package ares.platform.scenario.assets;
 
 import ares.data.jaxb.EquipmentDB.EquipmentCategory.Item;
 import ares.data.jaxb.Trait;
+
 import java.util.EnumSet;
 import java.util.Set;
 import java.util.logging.Level;

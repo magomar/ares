@@ -1,31 +1,12 @@
 package ares.application.shared.gui.components;
 
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.GraphicsConfiguration;
-import java.awt.GraphicsEnvironment;
-import java.awt.LinearGradientPaint;
-import java.awt.RadialGradientPaint;
-import java.awt.RenderingHints;
-import java.awt.Stroke;
-import java.awt.Transparency;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Arc2D;
-import java.awt.geom.Area;
-import java.awt.geom.Ellipse2D;
-import java.awt.geom.GeneralPath;
-import java.awt.geom.Line2D;
-import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.geom.*;
 import java.awt.image.BufferedImage;
 import java.util.Calendar;
-import javax.swing.JComponent;
 
 /**
- *
  * @author hansolo
  */
 public final class AnalogClockDayNight extends JComponent {
@@ -40,7 +21,7 @@ public final class AnalogClockDayNight extends JComponent {
     private Ellipse2D centerKnob;
     private Rectangle2D smallTick;
     private Rectangle2D bigTick;
-//    private final Color SECOND_COLOR = new Color(0xF00000);
+    //    private final Color SECOND_COLOR = new Color(0xF00000);
     private final Color SHADOW_COLOR = new Color(0.0f, 0.0f, 0.0f, 0.65f);
     private BufferedImage backgroundImage = null;
     private BufferedImage nightDayImage = null;
@@ -101,24 +82,24 @@ public final class AnalogClockDayNight extends JComponent {
             case LIGHT:
                 this.currentForegroundColor = Color.BLACK;
                 this.currentBackgroundColor = new Color[]{
-                    new Color(0xF7F7F7),
-                    new Color(0xF0F0F0)
+                        new Color(0xF7F7F7),
+                        new Color(0xF0F0F0)
                 };
                 break;
 
             case DARK:
                 this.currentForegroundColor = Color.WHITE;
                 this.currentBackgroundColor = new Color[]{
-                    new Color(0x3E3B32),
-                    new Color(0x232520)
+                        new Color(0x3E3B32),
+                        new Color(0x232520)
                 };
                 break;
 
             default:
                 this.currentForegroundColor = Color.WHITE;
                 this.currentBackgroundColor = new Color[]{
-                    new Color(0x3E3B32),
-                    new Color(0x232520)
+                        new Color(0x3E3B32),
+                        new Color(0x232520)
                 };
                 break;
         }
@@ -238,12 +219,12 @@ public final class AnalogClockDayNight extends JComponent {
         final Point2D LIGHT_START = new Point2D.Float(0, 0);
         final Point2D LIGHT_STOP = new Point2D.Float(0, getWidth());
         final float[] LIGHT_FRACTIONS = {
-            0.0f,
-            1.0f
+                0.0f,
+                1.0f
         };
         final Color[] LIGHT_COLORS = {
-            new Color(0x000000),
-            new Color(0x645E54)
+                new Color(0x000000),
+                new Color(0x645E54)
         };
         final LinearGradientPaint LIGHT_GRADIENT = new LinearGradientPaint(LIGHT_START, LIGHT_STOP, LIGHT_FRACTIONS, LIGHT_COLORS);
         g2.setPaint(LIGHT_GRADIENT);
@@ -252,8 +233,8 @@ public final class AnalogClockDayNight extends JComponent {
         final Point2D BACKGROUND_START = new Point2D.Float(0, 1);
         final Point2D BACKGROUND_STOP = new Point2D.Float(0, getWidth() - 2);
         final float[] BACKGROUND_FRACTIONS = {
-            0.0f,
-            1.0f
+                0.0f,
+                1.0f
         };
         final Color[] BACKGROUND_COLORS = currentBackgroundColor;
         final LinearGradientPaint BACKGROUND_GRADIENT = new LinearGradientPaint(BACKGROUND_START, BACKGROUND_STOP, BACKGROUND_FRACTIONS, BACKGROUND_COLORS);
@@ -264,22 +245,22 @@ public final class AnalogClockDayNight extends JComponent {
         final Point2D WINDOW_START = new Point2D.Double(0, IMAGE.getHeight() * 0.21021);
         final Point2D WINDOW_STOP = new Point2D.Double(0, IMAGE.getHeight() * 0.38438);
         final float[] WINDOW_FRACTIONS = {
-            0.0f,
-            0.8f,
-            1.0f
+                0.0f,
+                0.8f,
+                1.0f
         };
         final Color[] WINDOW_COLORS;
         if (type == TYPE.DARK) {
             WINDOW_COLORS = new Color[]{
-                new Color(0x000000),
-                new Color(0x333333),
-                new Color(0xCCCCCC)
+                    new Color(0x000000),
+                    new Color(0x333333),
+                    new Color(0xCCCCCC)
             };
         } else {
             WINDOW_COLORS = new Color[]{
-                new Color(0x333333),
-                new Color(0x666666),
-                new Color(0xAAAAAA)
+                    new Color(0x333333),
+                    new Color(0x666666),
+                    new Color(0xAAAAAA)
             };
         }
         final LinearGradientPaint WINDOW_GRADIENT = new LinearGradientPaint(WINDOW_START, WINDOW_STOP, WINDOW_FRACTIONS, WINDOW_COLORS);
@@ -327,29 +308,29 @@ public final class AnalogClockDayNight extends JComponent {
 
         // Draw conical gradient for day-night-background
         final float[] FRACTIONS = {
-            0.0f,
-            0.10f,
-            0.14f,
-            0.18f,
-            0.32f,
-            0.68f,
-            0.82f,
-            0.86f,
-            0.90f,
-            1.0f
+                0.0f,
+                0.10f,
+                0.14f,
+                0.18f,
+                0.32f,
+                0.68f,
+                0.82f,
+                0.86f,
+                0.90f,
+                1.0f
         };
 
         final Color[] COLORS = {
-            new Color(0x000000),
-            new Color(0x000000),
-            new Color(0x332200),
-            new Color(0x664411),
-            new Color(0x85A4C3),
-            new Color(0x85A4C3),
-            new Color(0x004466),
-            new Color(0x002233),
-            new Color(0x000000),
-            new Color(0x000000)
+                new Color(0x000000),
+                new Color(0x000000),
+                new Color(0x332200),
+                new Color(0x664411),
+                new Color(0x85A4C3),
+                new Color(0x85A4C3),
+                new Color(0x004466),
+                new Color(0x002233),
+                new Color(0x000000),
+                new Color(0x000000)
         };
 
         final ConicalGradientPaint CONICAL_GRADIENT_PAINT = new ConicalGradientPaint(CENTER, FRACTIONS, COLORS);
@@ -371,31 +352,31 @@ public final class AnalogClockDayNight extends JComponent {
         final Point2D STOP_SUN = new Point2D.Double(0, IMAGE.getHeight() * 0.96551);
 
         final float[] FRACTIONS_SUN = {
-            0.0f,
-            0.4f,
-            0.8f,
-            1.0f
+                0.0f,
+                0.4f,
+                0.8f,
+                1.0f
         };
         final Color[] COLORS_SUN = {
-            new Color(0xEE891A),
-            new Color(0xF6B31B),
-            new Color(0xFEE438),
-            new Color(0xFDF589)
+                new Color(0xEE891A),
+                new Color(0xF6B31B),
+                new Color(0xFEE438),
+                new Color(0xFDF589)
         };
         final LinearGradientPaint GRADIENT_SUN = new LinearGradientPaint(START_SUN, STOP_SUN, FRACTIONS_SUN, COLORS_SUN);
 
         final Point2D CENTER_SUN = new Point2D.Double(IMAGE.getWidth() * 0.5, IMAGE.getHeight() * 0.86206);
         final float[] FRACTIONS_INNERSHADOW = {
-            0.0f,
-            0.6f,
-            0.8f,
-            1.0f
+                0.0f,
+                0.6f,
+                0.8f,
+                1.0f
         };
         final Color[] COLORS_INNERSHADOW = {
-            new Color(0.5f, 0.5f, 0.5f, 0.0f),
-            new Color(0.5f, 0.5f, 0.5f, 0.0f),
-            new Color(0.0f, 0.0f, 0.0f, 0.1f),
-            new Color(0.0f, 0.0f, 0.0f, 0.5f),};
+                new Color(0.5f, 0.5f, 0.5f, 0.0f),
+                new Color(0.5f, 0.5f, 0.5f, 0.0f),
+                new Color(0.0f, 0.0f, 0.0f, 0.1f),
+                new Color(0.0f, 0.0f, 0.0f, 0.5f),};
         final RadialGradientPaint GRADIENT_SUN_INNERSHADOW = new RadialGradientPaint(CENTER_SUN, IMAGE.getWidth() * 0.103445f, FRACTIONS_INNERSHADOW, COLORS_INNERSHADOW);
 
         final Ellipse2D SUN = new Ellipse2D.Double(IMAGE.getWidth() * 0.39316, IMAGE.getHeight() * 0.75862, IMAGE.getWidth() * 0.20512, IMAGE.getHeight() * 0.20512);
@@ -430,12 +411,12 @@ public final class AnalogClockDayNight extends JComponent {
         final Point2D START_MOON = new Point2D.Double(0, IMAGE.getHeight() * 0.01709);
         final Point2D STOP_MOON = new Point2D.Double(0, IMAGE.getHeight() * 0.24137);
         final float[] FRACTIONS_MOON = {
-            0.0f,
-            1.0f
+                0.0f,
+                1.0f
         };
         final Color[] COLORS_MOON = {
-            new Color(0xFFFFFF),
-            new Color(0xAAAAAA)
+                new Color(0xFFFFFF),
+                new Color(0xAAAAAA)
         };
         final Point2D MOON_CENTER = new Point2D.Double(IMAGE.getWidth() * 0.5, IMAGE.getHeight() * 0.13793);
 
@@ -604,5 +585,7 @@ public final class AnalogClockDayNight extends JComponent {
 
         LIGHT,
         DARK
-    };
+    }
+
+    ;
 }

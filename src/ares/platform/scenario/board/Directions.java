@@ -1,6 +1,6 @@
 package ares.platform.scenario.board;
 
-import java.awt.Point;
+import java.awt.*;
 import java.util.Set;
 
 /**

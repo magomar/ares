@@ -5,8 +5,8 @@ import ares.application.shared.gui.profiles.GraphicsModel;
 import ares.application.shared.gui.providers.AresMiscTerrainGraphics;
 import ares.application.shared.gui.views.layerviews.AbstractImageLayerView;
 import ares.platform.engine.algorithms.pathfinding.Node;
-import java.awt.Graphics2D;
-import java.awt.Point;
+
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Collection;
 

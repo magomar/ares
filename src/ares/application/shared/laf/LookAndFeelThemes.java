@@ -1,10 +1,8 @@
 package ares.application.shared.laf;
 
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Graphics2D;
 import javax.swing.*;
-import javax.swing.plaf.*;
+import javax.swing.plaf.ColorUIResource;
+import java.awt.*;
 
 public class LookAndFeelThemes {
 

@@ -13,7 +13,7 @@
 // limitations under the License.
 package ares.platform.util;
 
-import javax.swing.SwingUtilities;
+import javax.swing.*;
 
 /**
  * A base class for implementing operations that need to run on their own thread and report back to the event thread.

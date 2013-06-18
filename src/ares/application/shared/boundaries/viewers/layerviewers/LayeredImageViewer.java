@@ -1,9 +1,10 @@
 package ares.application.shared.boundaries.viewers.layerviewers;
 
 import ares.application.shared.gui.views.View;
+
+import javax.swing.*;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-import javax.swing.JScrollPane;
 
 /**
  *

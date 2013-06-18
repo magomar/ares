@@ -8,24 +8,16 @@ import ares.platform.engine.knowledge.KnowledgeCategory;
 import ares.platform.engine.knowledge.KnowledgeLevel;
 import ares.platform.engine.movement.MovementCost;
 import ares.platform.engine.movement.MovementType;
+import ares.platform.engine.time.Clock;
 import ares.platform.model.ModelProvider;
 import ares.platform.model.UserRole;
-import ares.platform.engine.time.Clock;
 import ares.platform.scenario.Scenario;
 import ares.platform.scenario.assets.AssetTrait;
-import ares.platform.scenario.forces.AirUnit;
-import ares.platform.scenario.forces.Capability;
-import ares.platform.scenario.forces.Force;
-import ares.platform.scenario.forces.SurfaceUnit;
-import ares.platform.scenario.forces.Unit;
-import java.awt.Point;
-import java.util.Collection;
-import java.util.EnumMap;
-import java.util.EnumSet;
-import java.util.HashMap;
-import java.util.Map;
+import ares.platform.scenario.forces.*;
+
+import java.awt.*;
+import java.util.*;
 import java.util.Map.Entry;
-import java.util.Set;
 
 /**
  * This class holds the state of a single tile in the board, and it is uniquely identified by coordinates X and Y.

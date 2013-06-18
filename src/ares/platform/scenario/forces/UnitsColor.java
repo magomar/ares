@@ -1,13 +1,13 @@
 package ares.platform.scenario.forces;
 
 import ares.application.shared.gui.profiles.GraphicProperties;
-import ares.application.shared.gui.providers.ImageProvider;
-import ares.application.shared.gui.providers.ProfiledImageProviderFactory;
 import ares.application.shared.gui.profiles.NonProfiledGraphicProperty;
 import ares.application.shared.gui.profiles.ProfiledGraphicProperty;
+import ares.application.shared.gui.providers.ImageProvider;
 import ares.application.shared.gui.providers.MatrixImageProvider;
-import java.awt.Color;
-import java.awt.Point;
+import ares.application.shared.gui.providers.ProfiledImageProviderFactory;
+
+import java.awt.*;
 
 /**
  *

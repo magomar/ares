@@ -1,10 +1,14 @@
 package ares.test;
 
 import ares.platform.engine.algorithms.pathfinding.heuristics.DistanceCalculator;
-import java.awt.Point;
-import java.lang.reflect.*;
-import java.util.*;
-import java.util.logging.*;
+
+import java.awt.*;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.Collection;
+import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *

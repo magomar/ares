@@ -7,6 +7,7 @@ import ares.platform.engine.movement.MovementCost;
 import ares.platform.scenario.board.Direction;
 import ares.platform.scenario.board.Tile;
 import ares.platform.scenario.forces.Unit;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;

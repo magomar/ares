@@ -1,13 +1,9 @@
 package ares.application.player.views;
 
 import ares.application.shared.gui.views.AbstractBoardView;
-import ares.application.shared.gui.views.layerviews.ArrowLayerView;
-import ares.application.shared.gui.views.layerviews.GridLayerView;
-import ares.application.shared.gui.views.layerviews.SelectionLayerView;
-import ares.application.shared.gui.views.layerviews.TerrainLayerView;
-import ares.application.shared.gui.views.layerviews.UnitsLayerView;
-import javax.swing.JScrollPane;
-import javax.swing.JViewport;
+import ares.application.shared.gui.views.layerviews.*;
+
+import javax.swing.*;
 
 /**
  *

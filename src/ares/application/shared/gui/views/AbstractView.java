@@ -1,7 +1,6 @@
 package ares.application.shared.gui.views;
 
-import java.awt.Component;
-import java.awt.Dimension;
+import java.awt.*;
 
 /**
  *

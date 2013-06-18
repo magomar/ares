@@ -1,7 +1,6 @@
 package ares.application.shared.gui.providers;
 
-import java.awt.Dimension;
-import java.awt.Point;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 
 /**

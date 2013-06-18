@@ -12,10 +12,9 @@ import ares.platform.engine.action.ActionType;
 import ares.platform.engine.command.tactical.TacticalMission;
 import ares.platform.engine.knowledge.KnowledgeCategory;
 import ares.platform.engine.movement.MovementType;
+import ares.platform.engine.time.Clock;
 import ares.platform.model.ModelProvider;
 import ares.platform.model.UserRole;
-import ares.platform.util.MathUtils;
-import ares.platform.engine.time.Clock;
 import ares.platform.scenario.Scale;
 import ares.platform.scenario.Scenario;
 import ares.platform.scenario.assets.Asset;
@@ -25,6 +24,8 @@ import ares.platform.scenario.assets.AssetTypes;
 import ares.platform.scenario.board.Board;
 import ares.platform.scenario.board.Direction;
 import ares.platform.scenario.board.Tile;
+import ares.platform.util.MathUtils;
+
 import java.util.*;
 import java.util.Map.Entry;
 

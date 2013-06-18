@@ -4,6 +4,7 @@ import ares.platform.model.RoleMediatedModel;
 import ares.platform.model.UserRole;
 import ares.platform.scenario.forces.Formation;
 import ares.platform.scenario.forces.Unit;
+
 import java.util.ArrayList;
 import java.util.List;
 

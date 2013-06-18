@@ -1,33 +1,27 @@
 package ares.application.analyser;
 
-import ares.application.analyser.controllers.PathfinderToolsController;
 import ares.application.analyser.boundaries.viewers.PathfinderToolsViewer;
+import ares.application.analyser.controllers.PathfinderToolsController;
 import ares.application.analyser.views.PathfinderComparatorView;
 import ares.application.player.AresPlayerGUI;
 import ares.application.shared.boundaries.viewers.MenuBarViewer;
+import ares.application.shared.boundaries.viewers.PanelMenuViewer;
+import ares.application.shared.boundaries.viewers.ToolBarViewer;
 import ares.application.shared.gui.ComponentFactory;
 import ares.application.shared.gui.WindowUtil;
+import ares.application.shared.gui.profiles.GraphicsModel;
+import ares.application.shared.gui.providers.AresMiscTerrainGraphics;
+import ares.application.shared.gui.views.AbstractView;
 import ares.application.shared.gui.views.MainMenuView;
 import ares.application.shared.gui.views.MenuBarView;
 import ares.application.shared.gui.views.ToolBarView;
-import ares.application.shared.gui.views.AbstractView;
-import ares.application.shared.boundaries.viewers.PanelMenuViewer;
-import ares.application.shared.boundaries.viewers.ToolBarViewer;
-import ares.application.shared.gui.profiles.GraphicsModel;
-import ares.application.shared.gui.providers.AresMiscTerrainGraphics;
 import ares.platform.scenario.board.Terrain;
 import de.muntjak.tinylookandfeel.Theme;
 import de.muntjak.tinylookandfeel.ThemeDescription;
 import de.muntjak.tinylookandfeel.TinyLookAndFeel;
-import java.awt.CardLayout;
-import java.awt.Dimension;
-import java.awt.GraphicsEnvironment;
-import java.awt.Toolkit;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
+
+import javax.swing.*;
+import java.awt.*;
 
 /**
  *

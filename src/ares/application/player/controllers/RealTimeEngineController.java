@@ -1,23 +1,24 @@
 package ares.application.player.controllers;
 
-import ares.application.shared.controllers.ActionController;
-import ares.application.shared.commands.EngineCommands;
-import ares.application.shared.commands.AresCommandGroup;
-import ares.application.shared.gui.views.MessagesHandler;
-import ares.platform.engine.time.ClockEvent;
-import ares.platform.engine.time.ClockEventType;
-import ares.platform.engine.RealTimeEngine;
+import ares.application.shared.action.ActionGroup;
 import ares.application.shared.action.CommandAction;
 import ares.application.shared.action.CommandGroup;
 import ares.application.shared.boundaries.interactors.EngineInteractor;
-import ares.application.shared.action.ActionGroup;
+import ares.application.shared.commands.AresCommandGroup;
+import ares.application.shared.commands.EngineCommands;
+import ares.application.shared.controllers.ActionController;
+import ares.application.shared.gui.views.MessagesHandler;
+import ares.platform.engine.RealTimeEngine;
+import ares.platform.engine.time.ClockEvent;
+import ares.platform.engine.time.ClockEventType;
 import ares.platform.scenario.Scenario;
+
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.logging.Logger;
-import javax.swing.Action;
 
 /**
  *

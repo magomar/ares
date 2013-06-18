@@ -1,12 +1,15 @@
 package ares.application.shared.gui;
 
 import ares.application.shared.gui.components.TranslucidButton;
-import java.awt.*;
-import java.awt.event.*;
+import ares.application.shared.gui.components.TransparentButton;
+
 import javax.swing.*;
-import javax.swing.border.*;
+import javax.swing.border.Border;
 import javax.swing.table.TableModel;
-import javax.swing.tree.*;
+import javax.swing.tree.TreeModel;
+import javax.swing.tree.TreeSelectionModel;
+import java.awt.*;
+import java.awt.event.MouseListener;
 
 /**
  *
@@ -178,8 +181,15 @@ public abstract class ComponentFactory {
     //------------------------------------------------
     // Factories for buttons and tool bars
     //--------------------------------------------------
-    public static JButton translucidButton(Action action) {
-        JButton button = new TranslucidButton(action);
+    public static JButton translucidButton(Action action, float alpha) {
+        JButton button = new TranslucidButton(action, alpha);
+        button.setName((String) action.getValue(Action.ACTION_COMMAND_KEY));
+        button.setIcon((Icon) action.getValue(Action.LARGE_ICON_KEY));
+        return button;
+    }
+
+    public static JButton transparentButton(Action action, float alpha) {
+        JButton button = new TransparentButton(action, alpha);
         button.setName((String) action.getValue(Action.ACTION_COMMAND_KEY));
         button.setIcon((Icon) action.getValue(Action.LARGE_ICON_KEY));
         return button;
@@ -194,13 +204,16 @@ public abstract class ComponentFactory {
         return button;
     }
 
-//    public static JPanel buttonsPanel(JButton... buttons) {
-//        JPanel panel = panel(new FlowLayout(), null);
-//        for (JButton button : buttons) {
-//            panel.add(button);
-//        }
-//        return panel;
-//    }
+    public static JPanel buttonsPanel(int axis, JButton... buttons) {
+        JPanel panel = panel();
+        for (JButton button : buttons) {
+            panel.add(button);
+            panel.add(Box.createRigidArea(new Dimension(5,0)));
+        }
+        panel.setLayout(new BoxLayout(panel,axis));
+        return panel;
+    }
+
     public static JToolBar toolBar(String name, JButton... buttons) {
         return toolBar(name, SwingConstants.HORIZONTAL, buttons);
     }

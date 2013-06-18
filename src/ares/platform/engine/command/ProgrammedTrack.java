@@ -1,6 +1,7 @@
 package ares.platform.engine.command;
 
 import ares.platform.scenario.board.Board;
+
 import java.util.ArrayList;
 import java.util.List;
 

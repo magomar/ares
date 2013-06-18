@@ -1,7 +1,10 @@
 package ares.application.shared.controllers;
 
-import ares.application.shared.boundaries.viewers.BoardViewer;
+import ares.application.shared.action.ActionGroup;
+import ares.application.shared.action.CommandAction;
+import ares.application.shared.action.CommandGroup;
 import ares.application.shared.boundaries.interactors.BoardInteractor;
+import ares.application.shared.boundaries.viewers.BoardViewer;
 import ares.application.shared.boundaries.viewers.layerviewers.GridLayerViewer;
 import ares.application.shared.boundaries.viewers.layerviewers.TerrainLayerViewer;
 import ares.application.shared.boundaries.viewers.layerviewers.UnitsLayerViewer;
@@ -9,14 +12,12 @@ import ares.application.shared.commands.AresCommandGroup;
 import ares.application.shared.commands.ViewCommands;
 import ares.application.shared.gui.profiles.GraphicsModel;
 import ares.application.shared.models.ScenarioModel;
-import ares.application.shared.action.ActionGroup;
-import ares.application.shared.action.CommandAction;
-import ares.application.shared.action.CommandGroup;
 import ares.platform.model.UserRole;
 import ares.platform.scenario.Scenario;
+
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.Action;
 
 /**
  *

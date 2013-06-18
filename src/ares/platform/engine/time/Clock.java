@@ -2,11 +2,12 @@ package ares.platform.engine.time;
 
 import ares.platform.engine.RealTimeEngine;
 import ares.platform.scenario.TurnLength;
+
+import javax.swing.*;
 import java.text.SimpleDateFormat;
 import java.util.EnumSet;
 import java.util.GregorianCalendar;
 import java.util.Set;
-import javax.swing.SwingUtilities;
 
 /**
  *

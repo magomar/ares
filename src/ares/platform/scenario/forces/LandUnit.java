@@ -5,6 +5,7 @@ import ares.platform.scenario.Scenario;
 import ares.platform.scenario.assets.Asset;
 import ares.platform.scenario.assets.AssetTrait;
 import ares.platform.scenario.assets.AssetType;
+
 import java.util.Set;
 
 /**

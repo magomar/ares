@@ -1,8 +1,8 @@
 package ares.application.shared.models.forces;
 
+import ares.platform.engine.knowledge.KnowledgeCategory;
 import ares.platform.scenario.forces.Echelon;
 import ares.platform.scenario.forces.Unit;
-import ares.platform.engine.knowledge.KnowledgeCategory;
 
 /**
  *

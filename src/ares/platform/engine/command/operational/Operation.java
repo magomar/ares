@@ -1,10 +1,11 @@
 package ares.platform.engine.command.operational;
 
+import ares.platform.engine.command.Objective;
 import ares.platform.engine.command.operational.operations.OperationForm;
 import ares.platform.engine.command.operational.operations.OperationType;
-import ares.platform.engine.command.Objective;
 import ares.platform.engine.command.tactical.TacticalMission;
 import ares.platform.scenario.forces.Unit;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

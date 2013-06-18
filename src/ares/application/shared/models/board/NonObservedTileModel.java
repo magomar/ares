@@ -4,7 +4,9 @@ import ares.application.shared.models.forces.UnitModel;
 import ares.platform.engine.knowledge.KnowledgeCategory;
 import ares.platform.scenario.board.Tile;
 import ares.platform.scenario.forces.SurfaceUnit;
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  *

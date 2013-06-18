@@ -1,6 +1,7 @@
 package ares.application.shared.boundaries.viewers.layerviewers;
 
 import ares.platform.engine.algorithms.pathfinding.Path;
+
 import java.util.Collection;
 
 /**

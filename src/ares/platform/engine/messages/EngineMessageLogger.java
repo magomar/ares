@@ -1,6 +1,7 @@
 package ares.platform.engine.messages;
 
 import ares.platform.model.AbstractBean;
+
 import java.util.EnumMap;
 import java.util.LinkedList;
 import java.util.List;

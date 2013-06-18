@@ -2,24 +2,11 @@ package ares.application.shared.gui.components;
 
 import ares.application.shared.gui.ComponentFactory;
 import ares.application.shared.gui.WindowUtil;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Frame;
+
+import javax.swing.*;
+import java.awt.*;
 import java.util.Arrays;
 import java.util.EnumSet;
-import javax.swing.Action;
-import javax.swing.BorderFactory;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JProgressBar;
-import javax.swing.SwingUtilities;
 
 /**
  * Creates and manages a standardized progress dialog. Any of the public methods on this class (including the
@@ -59,7 +46,8 @@ public class ProgressMonitor {
          */
         SHOW_PERCENT_COMPLETE
     }
-//----------------------------------------------------------------------------
+
+    //----------------------------------------------------------------------------
 //  Instance Data and Constructors
 //----------------------------------------------------------------------------
     private Frame owner;
@@ -78,17 +66,17 @@ public class ProgressMonitor {
      * Base constructor, allowing customization of the dialog's appearance and behavior. Note that the actual dialog is
      * constructed on the first call to {@link #show}.
      *
-     * @param owner The dialog owner; may be <code>null</code>, in which case Swing will generate a hidden owner frame.
-     * @param title Text to display in the dialog window's title area; may be <code>null</code>, in which case the title
-     * is left empty.
-     * @param text Text to display in the body of the dialog; usually gives an overall description of what's happening.
-     * May be <code>null</code>.
-     * @param action If not <code>null</code>, the dialog will display a single button that invokes this action
-     * (normally used for a cancel button).
+     * @param owner   The dialog owner; may be <code>null</code>, in which case Swing will generate a hidden owner frame.
+     * @param title   Text to display in the dialog window's title area; may be <code>null</code>, in which case the title
+     *                is left empty.
+     * @param text    Text to display in the body of the dialog; usually gives an overall description of what's happening.
+     *                May be <code>null</code>.
+     * @param action  If not <code>null</code>, the dialog will display a single button that invokes this action
+     *                (normally used for a cancel button).
      * @param options Zero or more options controlling the dialog's appearance and behavior.
      */
     public ProgressMonitor(JFrame owner, String title, String text,
-            Action action, Options... options) {
+                           Action action, Options... options) {
         this.owner = owner;
         this.title = (title != null) ? title : "";
         this.text = text;
@@ -99,11 +87,11 @@ public class ProgressMonitor {
     /**
      * Convenience constructor for a dialog that does not have an action button.
      *
-     * @param owner The dialog owner; may be <code>null</code>, in which case Swing will generate a hidden owner frame.
-     * @param title Text to display in the dialog window's title area; may be <code>null</code>, in which case the title
-     * is left empty.
-     * @param text Text to display in the body of the dialog; usually gives an overall description of what's happening.
-     * May be <code>null</code>.
+     * @param owner   The dialog owner; may be <code>null</code>, in which case Swing will generate a hidden owner frame.
+     * @param title   Text to display in the dialog window's title area; may be <code>null</code>, in which case the title
+     *                is left empty.
+     * @param text    Text to display in the body of the dialog; usually gives an overall description of what's happening.
+     *                May be <code>null</code>.
      * @param options Zero or more options controlling the dialog's appearance and behavior.
      */
     public ProgressMonitor(JFrame owner, String title, String text, Options... options) {
@@ -113,6 +101,7 @@ public class ProgressMonitor {
 //----------------------------------------------------------------------------
 //  Public Methods
 //----------------------------------------------------------------------------
+
     /**
      * Displays the dialog, constructing it if necessary. The dialog initially displays in indeterminate mode, unless
      * {@link #setProgress} was called prior to this method.
@@ -167,10 +156,9 @@ public class ProgressMonitor {
      * Sets the dialog's progress indicator to the given values. If the dialog was previously in indeterminate mode,
      * this will switch it to determinate mode.
      *
-     * @param min The minimum progress value.
+     * @param min     The minimum progress value.
      * @param current The current progress value; this sets the position of the dialog's indicator.
-     * @param max The maximum progress value.
-     *
+     * @param max     The maximum progress value.
      * @returns The controller itself, as a convenience for construct-and-show or set-and-show usage.
      */
     public void setProgress(int min, int current, int max) {
@@ -225,7 +213,7 @@ public class ProgressMonitor {
         });
     }
 
-//----------------------------------------------------------------------------
+    //----------------------------------------------------------------------------
 //  Internals -- all invoked on the event dispatch thread
 //----------------------------------------------------------------------------
     private void constructDialog() {

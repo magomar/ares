@@ -1,8 +1,9 @@
 package ares.platform.engine.command.operational.operations;
 
-import ares.platform.engine.command.operational.Operation;
 import ares.platform.engine.command.Objective;
+import ares.platform.engine.command.operational.Operation;
 import ares.platform.scenario.forces.Unit;
+
 import java.util.List;
 
 /**

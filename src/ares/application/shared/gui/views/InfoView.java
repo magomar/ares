@@ -4,16 +4,13 @@ import ares.application.shared.boundaries.viewers.InfoViewer;
 import ares.application.shared.gui.ComponentFactory;
 import ares.application.shared.gui.components.ScenarioInfoPane;
 import ares.application.shared.gui.profiles.GraphicProperties;
-import ares.application.shared.gui.profiles.GraphicsModel;
 import ares.application.shared.gui.profiles.NonProfiledGraphicProperty;
-import ares.application.shared.gui.providers.TerrainInfo;
 import ares.application.shared.models.board.TileModel;
 import ares.application.shared.models.forces.UnitModel;
-import java.awt.Dimension;
+
+import javax.swing.*;
+import java.awt.*;
 import java.util.Calendar;
-import javax.swing.BoxLayout;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
 
 /**
  *
@@ -47,7 +44,7 @@ public class InfoView extends AbstractView<JPanel> implements InfoViewer {
     @Override
     public void setPreferredSize(Dimension size) {
         super.setPreferredSize(size);
-//        Dimension imageSize = GraphicsModel.INSTANCE.getNonProfiledImageProvider(TerrainInfo.OPEN).getFullImageDimension();
+//        Dimension imageSize = GraphicsModel.INSTANCE.getNonProfiledImageProvider(TerrainInfoGraphics.OPEN).getFullImageDimension();
         int imageHeight = GraphicProperties.getProperty(NonProfiledGraphicProperty.TERRAIN_INFO_HEIGHT);
         Dimension componentSize = new Dimension(size.width, 75 + ComponentFactory.BORDER_THICKNESS * 4);
         scenInfo.setMinimumSize(componentSize);

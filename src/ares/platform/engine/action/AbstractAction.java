@@ -1,8 +1,8 @@
 package ares.platform.engine.action;
 
-import ares.platform.scenario.forces.Unit;
 import ares.platform.engine.time.Clock;
 import ares.platform.scenario.forces.OpState;
+import ares.platform.scenario.forces.Unit;
 
 /**
  *

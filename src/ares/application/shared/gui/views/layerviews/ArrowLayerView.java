@@ -2,16 +2,19 @@ package ares.application.shared.gui.views.layerviews;
 
 import ares.application.shared.boundaries.viewers.layerviewers.ArrowLayerViewer;
 import ares.application.shared.gui.decorators.ImageDecorators;
-import ares.platform.engine.algorithms.pathfinding.Path;
-import ares.platform.engine.algorithms.pathfinding.Node;
 import ares.application.shared.gui.profiles.GraphicsModel;
 import ares.application.shared.gui.providers.AresMiscTerrainGraphics;
+import ares.platform.engine.algorithms.pathfinding.Node;
+import ares.platform.engine.algorithms.pathfinding.Path;
 import ares.platform.scenario.board.Direction;
 import ares.platform.scenario.board.Directions;
 import ares.platform.scenario.board.Tile;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.util.*;
+import java.util.Collection;
+import java.util.EnumSet;
+import java.util.Set;
 
 /**
  * Draws the movement arrows on a BufferedImage

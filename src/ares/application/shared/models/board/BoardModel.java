@@ -5,6 +5,7 @@ import ares.platform.model.RoleMediatedModel;
 import ares.platform.model.UserRole;
 import ares.platform.scenario.board.Board;
 import ares.platform.scenario.board.Tile;
+
 import java.util.List;
 
 /**

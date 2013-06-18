@@ -4,6 +4,7 @@ import ares.platform.scenario.board.Direction;
 import ares.platform.scenario.board.Directions;
 import ares.platform.scenario.board.Terrain;
 import ares.platform.scenario.board.Tile;
+
 import java.util.Map;
 import java.util.Set;
 

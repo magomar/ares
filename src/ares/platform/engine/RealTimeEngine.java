@@ -1,26 +1,27 @@
 package ares.platform.engine;
 
 import ares.application.shared.gui.components.ProgressMonitor;
-import ares.platform.engine.time.Phase;
-import ares.platform.engine.time.ClockEventType;
-import ares.platform.engine.time.ClockEvent;
-import static ares.platform.engine.RealTimeEngine.CLOCK_EVENT_PROPERTY;
 import ares.platform.engine.action.ActionSpace;
 import ares.platform.engine.algorithms.pathfinding.AStar;
 import ares.platform.engine.algorithms.pathfinding.Pathfinder;
 import ares.platform.engine.algorithms.pathfinding.costfunctions.CostFunctions;
 import ares.platform.engine.algorithms.pathfinding.heuristics.DistanceCalculator;
 import ares.platform.engine.algorithms.pathfinding.heuristics.MinimunDistance;
-import ares.platform.model.AbstractBean;
 import ares.platform.engine.time.Clock;
-import ares.platform.model.UserRole;
+import ares.platform.engine.time.ClockEvent;
+import ares.platform.engine.time.ClockEventType;
+import ares.platform.engine.time.Phase;
+import ares.platform.model.AbstractBean;
 import ares.platform.scenario.Scenario;
 import ares.platform.scenario.board.Tile;
 import ares.platform.scenario.forces.Force;
 import ares.platform.scenario.forces.Formation;
 import ares.platform.scenario.forces.Unit;
 import ares.test.Stopwatch;
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

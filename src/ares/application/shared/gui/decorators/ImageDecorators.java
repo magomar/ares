@@ -1,17 +1,14 @@
 package ares.application.shared.gui.decorators;
 
-import ares.application.shared.models.forces.IdentifiedUnitModel;
-import ares.application.shared.models.forces.KnownUnitModel;
-import ares.application.shared.models.forces.DetectedUnitModel;
-import ares.application.shared.models.forces.UnitModel;
 import ares.application.shared.gui.profiles.GraphicProperties;
 import ares.application.shared.gui.profiles.ProfiledGraphicProperty;
+import ares.application.shared.models.forces.DetectedUnitModel;
+import ares.application.shared.models.forces.IdentifiedUnitModel;
+import ares.application.shared.models.forces.KnownUnitModel;
+import ares.application.shared.models.forces.UnitModel;
 import ares.platform.engine.knowledge.KnowledgeCategory;
-import static ares.platform.engine.knowledge.KnowledgeCategory.COMPLETE;
-import static ares.platform.engine.knowledge.KnowledgeCategory.GOOD;
-import static ares.platform.engine.knowledge.KnowledgeCategory.NONE;
-import static ares.platform.engine.knowledge.KnowledgeCategory.POOR;
 import ares.platform.scenario.forces.Echelon;
+
 import java.awt.*;
 import java.awt.color.ICC_ProfileRGB;
 

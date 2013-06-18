@@ -4,8 +4,8 @@ import ares.application.shared.gui.views.AbstractBoardView;
 import ares.application.shared.gui.views.layerviews.ArrowLayerView;
 import ares.application.shared.gui.views.layerviews.GridLayerView;
 import ares.application.shared.gui.views.layerviews.TerrainLayerView;
-import javax.swing.JScrollPane;
-import javax.swing.JViewport;
+
+import javax.swing.*;
 
 /**
  *

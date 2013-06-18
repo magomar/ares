@@ -2,10 +2,11 @@ package ares.platform.engine.command.operational.plans;
 
 import ares.data.jaxb.Emphasis;
 import ares.data.jaxb.SupportScope;
-import ares.platform.engine.command.operational.Operation;
 import ares.platform.engine.algorithms.pathfinding.Pathfinder;
 import ares.platform.engine.command.Objective;
+import ares.platform.engine.command.operational.Operation;
 import ares.platform.scenario.forces.Formation;
+
 import java.util.Collection;
 import java.util.List;
 import java.util.SortedSet;

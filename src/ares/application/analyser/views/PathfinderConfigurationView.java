@@ -5,13 +5,10 @@ import ares.application.shared.gui.views.AbstractView;
 import ares.platform.engine.algorithms.pathfinding.Pathfinder;
 import ares.platform.engine.algorithms.pathfinding.costfunctions.CostFunction;
 import ares.platform.engine.algorithms.pathfinding.heuristics.Heuristic;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionListener;
-import javax.swing.ComboBoxModel;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 /**
  *

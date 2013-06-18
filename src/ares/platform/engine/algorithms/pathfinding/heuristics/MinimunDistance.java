@@ -2,6 +2,7 @@ package ares.platform.engine.algorithms.pathfinding.heuristics;
 
 import ares.platform.scenario.board.Tile;
 import ares.platform.scenario.forces.Unit;
+
 import java.util.EnumMap;
 import java.util.Map;
 

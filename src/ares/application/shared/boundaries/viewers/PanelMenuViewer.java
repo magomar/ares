@@ -1,7 +1,6 @@
 package ares.application.shared.boundaries.viewers;
 
-import javax.swing.JButton;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 /**
  *

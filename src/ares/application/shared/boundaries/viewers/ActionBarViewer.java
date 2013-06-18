@@ -1,8 +1,8 @@
 package ares.application.shared.boundaries.viewers;
 
 import ares.application.shared.gui.views.View;
-import javax.swing.AbstractButton;
-import javax.swing.JComponent;
+
+import javax.swing.*;
 
 /**
  *

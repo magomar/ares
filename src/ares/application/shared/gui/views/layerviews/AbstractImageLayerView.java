@@ -3,13 +3,12 @@ package ares.application.shared.gui.views.layerviews;
 import ares.application.shared.boundaries.viewers.layerviewers.ImageLayerViewer;
 import ares.application.shared.gui.profiles.GraphicsModel;
 import ares.application.shared.gui.views.AbstractView;
+
+import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import javax.swing.JComponent;
-import javax.swing.JViewport;
 
 /**
- *
  * @author Heine <heisncfr@inf.upv.es>
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
@@ -66,7 +65,7 @@ public abstract class AbstractImageLayerView extends AbstractView<JComponent> im
     }
 
     /**
-     * the viewport where this image layer is shown
+     * the {@link JViewport} where this image layer is shown through
      *
      * @param viewport
      */
@@ -82,8 +81,7 @@ public abstract class AbstractImageLayerView extends AbstractView<JComponent> im
     }
 
     /**
-     *
-     * @param layer the {@link tImageLayer} this layer shares its {@link #globalImage} with
+     * @param parentLayer the {@link ImageLayerViewer} this layer shares its {@link #globalImage} with
      */
     @Override
     public ImageLayerViewer setParenLayer(ImageLayerViewer parentLayer) {

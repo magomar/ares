@@ -5,6 +5,7 @@ import ares.platform.engine.knowledge.KnowledgeCategory;
 import ares.platform.scenario.board.Tile;
 import ares.platform.scenario.board.UnitsStack;
 import ares.platform.scenario.forces.SurfaceUnit;
+
 import java.util.Collection;
 import java.util.NoSuchElementException;
 

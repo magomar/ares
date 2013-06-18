@@ -10,7 +10,8 @@ import ares.application.shared.gui.views.layerviews.MiniMapNavigationLayerView;
 import ares.application.shared.models.ScenarioModel;
 import ares.platform.model.UserRole;
 import ares.platform.scenario.Scenario;
-import java.awt.Point;
+
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 

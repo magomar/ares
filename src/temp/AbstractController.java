@@ -1,7 +1,8 @@
 package temp;
 
-import ares.platform.util.LookupService;
 import ares.platform.model.AbstractBean;
+import ares.platform.util.LookupService;
+
 import java.beans.PropertyChangeListener;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

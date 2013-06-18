@@ -1,9 +1,9 @@
 package ares.application.shared.boundaries.viewers.layerviewers;
 
 import ares.application.shared.gui.views.View;
+
+import javax.swing.*;
 import java.awt.image.BufferedImage;
-import javax.swing.JComponent;
-import javax.swing.JViewport;
 
 /**
  *

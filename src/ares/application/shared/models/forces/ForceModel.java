@@ -1,22 +1,23 @@
 package ares.application.shared.models.forces;
 
-import ares.application.shared.gui.profiles.GraphicsModel;
 import ares.application.shared.gui.components.OOBTreeNode;
+import ares.application.shared.gui.profiles.GraphicsModel;
 import ares.application.shared.gui.providers.ImageProvider;
 import ares.platform.model.RoleMediatedModel;
 import ares.platform.model.UserRole;
 import ares.platform.scenario.forces.Force;
 import ares.platform.scenario.forces.Formation;
 import ares.platform.scenario.forces.Unit;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import javax.swing.ImageIcon;
+
+import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.MutableTreeNode;
 import javax.swing.tree.TreeModel;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  *

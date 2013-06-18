@@ -1,42 +1,43 @@
 package ares.application.shared.gui.components;
 
-import java.awt.AlphaComposite;
-import java.awt.Color;
-import static java.awt.Component.CENTER_ALIGNMENT;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import javax.swing.Action;
-import javax.swing.JButton;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class TranslucidButton extends JButton {
 
-    private final static Dimension BUTTON_DIMENSION = new Dimension(250, 50);
+    private BufferedImage buttonImage;
+    private float alpha;
 
-    public TranslucidButton(Action action) {
+    public TranslucidButton(Action action, float alpha) {
         super(action);
+        this.alpha = alpha;
         setOpaque(false);
-        setForeground(Color.BLACK);
-        setFont(getFont().deriveFont(Font.BOLD, 16));
-        setAlignmentX(CENTER_ALIGNMENT);
-        setSize(BUTTON_DIMENSION);
-        setMaximumSize(BUTTON_DIMENSION);
-        setMinimumSize(BUTTON_DIMENSION);
     }
 
-//    public TranslucidButton() {
-//        this(null);
-//    }
     @Override
     public void paint(Graphics g) {
-        Graphics2D g2 = (Graphics2D) g.create();
-        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.5f));
-        super.paint(g2);
-        g2.dispose();
+        // Create an image for the button graphics if necessary
+        if (buttonImage == null || buttonImage.getWidth() != getWidth()
+                || buttonImage.getHeight() != getHeight()) {
+            buttonImage = getGraphicsConfiguration().createCompatibleImage(getWidth(), getHeight());
+        }
+        Graphics gButton = buttonImage.getGraphics();
+        gButton.setClip(g.getClip());
+
+        // Have the superclass render the button for us
+        super.paint(gButton);
+
+        // Make the graphics object sent to this paint() method translucent
+        Graphics2D g2d = (Graphics2D) g;
+        AlphaComposite newComposite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha);
+        g2d.setComposite(newComposite);
+
+        // Copy the button's image to the destination graphics, translucently
+        g2d.drawImage(buttonImage, 0, 0, null);
     }
 }

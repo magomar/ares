@@ -3,9 +3,9 @@ package ares.application.shared.gui.views;
 import ares.application.shared.boundaries.viewers.BoardViewer;
 import ares.application.shared.gui.profiles.GraphicsModel;
 import ares.application.shared.gui.views.layerviews.AbstractLayeredImageView;
-import java.awt.Dimension;
-import java.awt.Point;
-import javax.swing.JScrollBar;
+
+import javax.swing.*;
+import java.awt.*;
 
 /**
  *

@@ -1,17 +1,19 @@
 package ares.application.shared.gui.views.layerviews;
 
 import ares.application.shared.boundaries.viewers.layerviewers.UnitsLayerViewer;
+import ares.application.shared.gui.decorators.ImageDecorators;
+import ares.application.shared.gui.profiles.GraphicProperties;
+import ares.application.shared.gui.profiles.GraphicsModel;
+import ares.application.shared.gui.profiles.ProfiledGraphicProperty;
+import ares.application.shared.models.ScenarioModel;
 import ares.application.shared.models.board.TileModel;
 import ares.application.shared.models.forces.ForceModel;
 import ares.application.shared.models.forces.UnitModel;
-import ares.application.shared.gui.profiles.GraphicsModel;
-import ares.application.shared.gui.decorators.ImageDecorators;
-import ares.application.shared.gui.profiles.GraphicProperties;
-import ares.application.shared.models.ScenarioModel;
-import ares.application.shared.gui.profiles.ProfiledGraphicProperty;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.util.*;
+import java.util.Collection;
+import java.util.HashSet;
 
 /**
  *

@@ -1,14 +1,11 @@
 package ares.platform.engine.command;
 
-import ares.data.jaxb.Emphasis;
-import ares.data.jaxb.Frontage;
-import ares.data.jaxb.Orders;
-import ares.data.jaxb.SupportScope;
-import ares.data.jaxb.Track;
+import ares.data.jaxb.*;
 import ares.platform.engine.command.operational.plans.OperationalPlan;
 import ares.platform.engine.command.operational.plans.OperationalStance;
 import ares.platform.scenario.board.Board;
 import ares.platform.scenario.forces.Formation;
+
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,11 +1,12 @@
 package ares.platform.scenario.board;
 
 import ares.application.shared.gui.profiles.GraphicProperties;
-import ares.application.shared.gui.providers.ImageProvider;
-import ares.application.shared.gui.providers.ProfiledImageProviderFactory;
 import ares.application.shared.gui.profiles.NonProfiledGraphicProperty;
 import ares.application.shared.gui.profiles.ProfiledGraphicProperty;
+import ares.application.shared.gui.providers.ImageProvider;
 import ares.application.shared.gui.providers.MatrixImageProvider;
+import ares.application.shared.gui.providers.ProfiledImageProviderFactory;
+
 import java.util.EnumSet;
 import java.util.Set;
 

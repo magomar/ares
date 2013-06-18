@@ -1,16 +1,12 @@
 package ares.application.shared.gui.components;
 
 import ares.application.shared.gui.ComponentFactory;
-import ares.platform.io.FileIO;
-import ares.platform.io.ResourcePath;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.image.BufferedImage;
+
+import javax.swing.*;
+import java.awt.*;
 import java.util.Calendar;
-import javax.swing.JPanel;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class ScenarioInfoPane extends JPanel {
@@ -25,7 +21,7 @@ public class ScenarioInfoPane extends JPanel {
         clock = new AnalogClockDayNight();
         clock.setPreferredSize(componentSize);
         add(clock);
-        
+
         calendarPane = new WallCalendar();
         calendarPane.setPreferredSize(componentSize);
         add(calendarPane);

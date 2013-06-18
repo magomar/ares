@@ -1,7 +1,8 @@
 package ares.application.shared.boundaries.viewers;
 
 import ares.application.shared.boundaries.viewers.layerviewers.LayeredImageViewer;
-import java.awt.Point;
+
+import java.awt.*;
 
 /**
  *

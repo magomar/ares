@@ -4,18 +4,12 @@ import ares.platform.io.AresFileType;
 import ares.platform.model.UserRole;
 import ares.platform.scenario.Scenario;
 import ares.platform.scenario.forces.Force;
-import java.awt.Component;
-import java.awt.Dimension;
+
+import javax.swing.*;
+import java.awt.*;
 import java.io.File;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JDialog;
-import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
-import javax.swing.JTextPane;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class StartScenarioPane extends JOptionPane {

@@ -2,22 +2,18 @@ package ares.application.analyser.controllers;
 
 import ares.application.analyser.boundaries.interactors.PathfinderComparatorInteractor;
 import ares.application.analyser.boundaries.viewers.PathfinderComparatorViewer;
+import ares.application.shared.action.ActionGroup;
+import ares.application.shared.action.CommandAction;
+import ares.application.shared.action.CommandGroup;
 import ares.application.shared.boundaries.viewers.BoardViewer;
 import ares.application.shared.boundaries.viewers.PathfinderConfigurationViewer;
-import ares.application.shared.boundaries.viewers.layerviewers.ArrowLayerViewer;
-import ares.application.shared.boundaries.viewers.layerviewers.GridLayerViewer;
-import ares.application.shared.boundaries.viewers.layerviewers.PathSearchLayerViewer;
-import ares.application.shared.boundaries.viewers.layerviewers.TerrainLayerViewer;
-import ares.application.shared.boundaries.viewers.layerviewers.UnitsLayerViewer;
+import ares.application.shared.boundaries.viewers.layerviewers.*;
 import ares.application.shared.commands.AresCommandGroup;
 import ares.application.shared.commands.ViewCommands;
 import ares.application.shared.controllers.ActionController;
 import ares.application.shared.gui.profiles.GraphicsModel;
-import ares.application.shared.models.ScenarioModel;
 import ares.application.shared.gui.views.MessagesHandler;
-import ares.application.shared.action.ActionGroup;
-import ares.application.shared.action.CommandAction;
-import ares.application.shared.action.CommandGroup;
+import ares.application.shared.models.ScenarioModel;
 import ares.platform.engine.algorithms.pathfinding.AStar;
 import ares.platform.engine.algorithms.pathfinding.BeamSearch;
 import ares.platform.engine.algorithms.pathfinding.ExtendedPath;
@@ -34,18 +30,12 @@ import ares.platform.scenario.Scenario;
 import ares.platform.scenario.board.Tile;
 import ares.platform.scenario.forces.Unit;
 import ares.platform.scenario.forces.UnitFactory;
-import java.awt.Point;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionAdapter;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.Action;
-import javax.swing.ComboBoxModel;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JComboBox;
 
 /**
  *

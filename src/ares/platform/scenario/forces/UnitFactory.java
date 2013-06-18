@@ -1,9 +1,8 @@
 package ares.platform.scenario.forces;
 
 import ares.platform.engine.movement.MovementType;
-import static ares.platform.engine.movement.MovementType.AIRCRAFT;
-import static ares.platform.engine.movement.MovementType.NAVAL;
 import ares.platform.scenario.Scenario;
+
 import java.util.Set;
 
 /**

@@ -1,19 +1,19 @@
 package ares.application.shared.action;
 
 import ares.application.shared.gui.ComponentFactory;
-import ares.application.shared.gui.components.TranslucidButton;
+import ares.application.shared.gui.components.RoundedBorder;
+import ares.application.shared.gui.components.TransparentButton;
+
+import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.Action;
-import javax.swing.JButton;
-import javax.swing.JMenu;
 
 /**
- *
  * @author Mario Gómez Martínez <magomar@gmail.com>
  */
 public class ActionGroup {
-
+    private final static Dimension MAIN_MENU_BUTTON_SIZE = new Dimension(250, 50);
     private final String name;
     private final String text;
     private final Integer mnemonic;
@@ -58,9 +58,19 @@ public class ActionGroup {
         List<JButton> buttons = new ArrayList<>();
         for (int i = 0; i < actions.length; i++) {
             Action action = actions[i];
-            if (action.isEnabled())
-            buttons.add(ComponentFactory.translucidButton(action));
+            if (action.isEnabled()) {
+                JButton newButton = ComponentFactory.transparentButton(action, 0.75f);
+                newButton.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+                newButton.setSize(MAIN_MENU_BUTTON_SIZE);
+                newButton.setMinimumSize(MAIN_MENU_BUTTON_SIZE);
+                newButton.setMaximumSize(MAIN_MENU_BUTTON_SIZE);
+                newButton.setFont(newButton.getFont().deriveFont(Font.BOLD, 16));
+                newButton.setForeground(Color.BLACK);
+                newButton.setBorder( new RoundedBorder(10));
+                buttons.add(newButton);
+            }
         }
-        return buttons.toArray(new TranslucidButton[buttons.size()]);
+        return buttons.toArray(new TransparentButton[buttons.size()]);
     }
+
 }

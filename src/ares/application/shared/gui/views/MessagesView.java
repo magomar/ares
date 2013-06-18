@@ -1,13 +1,14 @@
 package ares.application.shared.gui.views;
 
-import ares.platform.engine.messages.EngineMessageLogger;
-import ares.platform.engine.messages.EngineMessage;
 import ares.application.shared.boundaries.viewers.MessagesViewer;
+import ares.platform.engine.messages.EngineMessage;
+import ares.platform.engine.messages.EngineMessageLogger;
+
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.util.*;
+import java.util.ArrayList;
 import java.util.logging.Level;
-import javax.swing.*;
 
 /**
  *

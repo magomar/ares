@@ -1,19 +1,16 @@
 package ares.application.shared.gui.profiles;
 
 import ares.application.shared.gui.decorators.ImageDecorators;
-import ares.application.shared.gui.views.layerviews.AbstractImageLayerView;
-import ares.application.shared.gui.providers.ProfiledImageProviderFactory;
 import ares.application.shared.gui.providers.ImageProvider;
 import ares.application.shared.gui.providers.NonProfiledImageProviderFactory;
+import ares.application.shared.gui.providers.ProfiledImageProviderFactory;
+import ares.application.shared.gui.views.layerviews.AbstractImageLayerView;
 import ares.platform.scenario.board.Board;
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
+
+import javax.swing.*;
+import java.awt.*;
+import java.util.*;
 import java.util.List;
-import java.util.Map;
-import javax.swing.JViewport;
 
 /**
  * This class provides information on the graphics being used for a particular scenario

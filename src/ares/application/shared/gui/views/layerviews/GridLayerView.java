@@ -2,20 +2,14 @@ package ares.application.shared.gui.views.layerviews;
 
 import ares.application.shared.boundaries.viewers.layerviewers.GridLayerViewer;
 import ares.application.shared.gui.decorators.ImageDecorators;
-import ares.application.shared.gui.providers.AresMiscTerrainGraphics;
 import ares.application.shared.gui.profiles.GraphicsModel;
+import ares.application.shared.gui.providers.AresMiscTerrainGraphics;
 import ares.application.shared.models.ScenarioModel;
 import ares.application.shared.models.board.TileModel;
 import ares.data.jaxb.Place;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.FontMetrics;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Point;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.util.List;
 
 /**
  * Grid image layer

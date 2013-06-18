@@ -1,6 +1,6 @@
 package ares.application.shared.gui.profiles;
 
-import java.awt.Font;
+import java.awt.*;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;

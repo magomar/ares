@@ -2,6 +2,7 @@ package ares.platform.engine.algorithms.pathfinding;
 
 import ares.platform.scenario.board.Direction;
 import ares.platform.scenario.board.Tile;
+
 import java.util.Objects;
 
 /**

@@ -1,9 +1,8 @@
 package ares.application.shared.action;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.AbstractAction;
-import javax.swing.Action;
 
 /**
  *

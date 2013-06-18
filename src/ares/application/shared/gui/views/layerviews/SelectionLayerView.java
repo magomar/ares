@@ -1,11 +1,12 @@
 package ares.application.shared.gui.views.layerviews;
 
 import ares.application.shared.boundaries.viewers.layerviewers.SelectionLayerViewer;
-import ares.application.shared.models.board.TileModel;
 import ares.application.shared.gui.profiles.GraphicsModel;
 import ares.application.shared.gui.providers.AresMiscTerrainGraphics;
+import ares.application.shared.models.board.TileModel;
 import ares.application.shared.models.forces.FormationModel;
 import ares.application.shared.models.forces.UnitModel;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 

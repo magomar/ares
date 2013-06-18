@@ -3,7 +3,8 @@ package ares.application.analyser.boundaries.viewers;
 import ares.application.shared.boundaries.viewers.BoardViewer;
 import ares.application.shared.boundaries.viewers.PathfinderConfigurationViewer;
 import ares.application.shared.gui.views.View;
-import javax.swing.JPanel;
+
+import javax.swing.*;
 
 /**
  *

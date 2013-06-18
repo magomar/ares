@@ -1,6 +1,7 @@
 package ares.platform.model;
 
 import ares.platform.scenario.forces.Force;
+
 import java.util.HashMap;
 import java.util.Map;
 

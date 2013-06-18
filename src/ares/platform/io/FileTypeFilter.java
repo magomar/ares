@@ -1,10 +1,10 @@
 package ares.platform.io;
 
+import javax.swing.filechooser.FileFilter;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
-import javax.swing.filechooser.FileFilter;
 
 /**
  *

@@ -1,13 +1,10 @@
 package ares.application.shared.gui.views.layerviews;
 
-import ares.application.shared.boundaries.viewers.BoardViewer;
 import ares.application.shared.boundaries.viewers.layerviewers.MiniMapNavigationLayerViewer;
 import ares.application.shared.gui.profiles.GraphicsModel;
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.Point;
-import java.awt.Rectangle;
-import javax.swing.JViewport;
+
+import javax.swing.*;
+import java.awt.*;
 
 /**
  *

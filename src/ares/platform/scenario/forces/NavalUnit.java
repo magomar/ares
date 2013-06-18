@@ -1,9 +1,9 @@
 package ares.platform.scenario.forces;
 
+import ares.platform.engine.movement.MovementType;
+import ares.platform.scenario.Scenario;
 import ares.platform.scenario.assets.Asset;
 import ares.platform.scenario.assets.AssetType;
-import ares.platform.scenario.Scenario;
-import ares.platform.engine.movement.MovementType;
 
 /**
  *

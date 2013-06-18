@@ -1,10 +1,9 @@
 package ares.application.shared.gui.components;
 
-import javax.swing.ImageIcon;
+import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class OOBTreeNode extends DefaultMutableTreeNode {

@@ -1,19 +1,19 @@
 package ares.platform.engine.movement;
 
-import ares.platform.scenario.forces.Force;
-import ares.platform.scenario.forces.SurfaceUnit;
-import ares.platform.scenario.board.Direction;
-import ares.platform.scenario.forces.LandUnit;
-import ares.platform.scenario.board.Tile;
-import ares.platform.scenario.board.Feature;
-import ares.platform.scenario.board.Terrain;
-import ares.platform.scenario.forces.Unit;
-import ares.platform.scenario.board.Directions;
 import ares.data.jaxb.TerrainType;
+import ares.platform.scenario.Scale;
+import ares.platform.scenario.board.*;
+import ares.platform.scenario.forces.Force;
+import ares.platform.scenario.forces.LandUnit;
+import ares.platform.scenario.forces.SurfaceUnit;
+import ares.platform.scenario.forces.Unit;
 import ares.platform.util.EnumSetOperations;
 import ares.platform.util.MathUtils;
-import ares.platform.scenario.Scale;
-import java.util.*;
+
+import java.util.EnumMap;
+import java.util.EnumSet;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * MovementCost objects contain the precomputed off-road movement costs for all movement types and a single tile and

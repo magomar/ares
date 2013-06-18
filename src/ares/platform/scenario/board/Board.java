@@ -7,7 +7,8 @@ import ares.platform.model.ModelProvider;
 import ares.platform.model.UserRole;
 import ares.platform.scenario.Scenario;
 import ares.platform.scenario.forces.Force;
-import java.awt.Point;
+
+import java.awt.*;
 import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.List;

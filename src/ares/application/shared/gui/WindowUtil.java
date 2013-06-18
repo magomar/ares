@@ -1,9 +1,6 @@
 package ares.application.shared.gui;
 
-import java.awt.Dimension;
-import java.awt.Rectangle;
-import java.awt.Toolkit;
-import java.awt.Window;
+import java.awt.*;
 
 /**
  *

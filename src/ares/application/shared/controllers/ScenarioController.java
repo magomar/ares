@@ -1,27 +1,26 @@
 package ares.application.shared.controllers;
 
-import ares.application.shared.commands.FileCommands;
+import ares.application.shared.action.ActionGroup;
+import ares.application.shared.action.CommandAction;
+import ares.application.shared.action.CommandGroup;
+import ares.application.shared.boundaries.interactors.ScenarioInteractor;
 import ares.application.shared.commands.AresCommandGroup;
+import ares.application.shared.commands.FileCommands;
 import ares.application.shared.gui.components.StartScenarioPane;
 import ares.application.shared.gui.views.MessagesHandler;
 import ares.data.jaxb.EquipmentDB;
 import ares.platform.io.AresFileType;
+import ares.platform.io.FileIO;
 import ares.platform.io.ResourcePath;
 import ares.platform.model.UserRole;
-import ares.application.shared.action.CommandAction;
-import ares.application.shared.action.CommandGroup;
-import ares.platform.io.FileIO;
-import ares.application.shared.boundaries.interactors.ScenarioInteractor;
-import ares.application.shared.action.ActionGroup;
 import ares.platform.scenario.Scenario;
-import java.awt.Container;
-import java.awt.Cursor;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.logging.Logger;
-import javax.swing.Action;
-import javax.swing.JFileChooser;
 
 /**
  *

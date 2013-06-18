@@ -1,8 +1,12 @@
 package ares.application.shared.gui.views;
 
 import ares.application.shared.boundaries.viewers.MessagesViewer;
-import java.util.*;
-import java.util.logging.*;
+
+import java.util.LinkedList;
+import java.util.logging.Handler;
+import java.util.logging.Level;
+import java.util.logging.LogRecord;
+import java.util.logging.SimpleFormatter;
 
 /**
  * Manages messages to be displayed on the message viewer.

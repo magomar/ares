@@ -1,17 +1,18 @@
 package ares.application.shared.gui.views.layerviews;
 
 import ares.application.shared.boundaries.viewers.layerviewers.TerrainLayerViewer;
-import ares.platform.scenario.board.Feature;
-import ares.platform.scenario.board.Terrain;
-import ares.platform.scenario.board.Directions;
-import ares.application.shared.models.board.TileModel;
 import ares.application.shared.gui.profiles.GraphicsModel;
 import ares.application.shared.gui.providers.AresMiscTerrainGraphics;
 import ares.application.shared.models.ScenarioModel;
+import ares.application.shared.models.board.TileModel;
 import ares.platform.engine.knowledge.KnowledgeCategory;
+import ares.platform.scenario.board.Directions;
+import ares.platform.scenario.board.Feature;
+import ares.platform.scenario.board.Terrain;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.util.*;
+import java.util.Map;
 
 /**
  *
