@@ -18,8 +18,7 @@ public class PlayerBoardView extends AbstractBoardView {
         UnitsLayerView unitsLayer = (UnitsLayerView) new UnitsLayerView().setViewport(v);
         GridLayerView gridLayer = (GridLayerView) new GridLayerView().setViewport(v);
         SelectionLayerView selectionLayer = (SelectionLayerView) new SelectionLayerView().setViewport(v);
-        ArrowLayerView arrowLayer = (ArrowLayerView) new ArrowLayerView().setViewport(v);
-//                .setParenLayer(selectionLayer);
+        ArrowLayerView arrowLayer = (ArrowLayerView) new ArrowLayerView().setViewport(v).setParenLayer(selectionLayer);
 
         // Add independent layers pane
         addLayerView(terrainLayer).addLayerView(gridLayer).addLayerView(selectionLayer).addLayerView(arrowLayer).addLayerView(unitsLayer);

@@ -25,10 +25,11 @@ public abstract class AbstractLayeredImageView extends AbstractView<JScrollPane>
     public LayeredImageViewer addLayerView(ImageLayerViewer imageLayerView) {
         layeredPane.add(imageLayerView.getContentPane(), new Integer(layeredPane.getComponentCount()));
         layerViews.put(imageLayerView.name(), imageLayerView);
-//        if (imageLayerView.hasParentLayer()) {
-//            layeredPane.remove(imageLayerView.getParentLayer().getContentPane());
-//        }
-//        layeredPane.revalidate();
+        if (imageLayerView.hasParentLayer()) {
+            ImageLayerViewer parent = imageLayerView.getParentLayer();
+            layeredPane.remove(parent.getContentPane());
+        }
+        layeredPane.revalidate();
         return this;
     }
 
@@ -53,10 +54,11 @@ public abstract class AbstractLayeredImageView extends AbstractView<JScrollPane>
         Dimension imageSize = new Dimension(GraphicsModel.INSTANCE.getBoardWidth(profile), GraphicsModel.INSTANCE.getBoardHeight(profile));
         layeredPane.setPreferredSize(imageSize);
         layeredPane.setSize(imageSize);
-//        contentPane.setBounds(new Rectangle(imageSize));
         for (ImageLayerViewer layerView : layerViews.values()) {
-            layerView.setProfile(profile);
-            layerView.initialize();
+            if (!layerView.hasParentLayer()) {
+                layerView.setProfile(profile);
+                layerView.initialize();
+            }
         }
         layeredPane.revalidate(); // in theory this would make viewport aware of the change in its client (the content, that is the layered pane)
         contentPane.getVerticalScrollBar().setUnitIncrement(imageSize.height / GraphicsModel.INSTANCE.getBoardRows());
@@ -80,6 +82,7 @@ public abstract class AbstractLayeredImageView extends AbstractView<JScrollPane>
     @Override
     public void flush() {
         for (ImageLayerViewer layerView : layerViews.values()) {
+            if (!layerView.hasParentLayer())
             layerView.flush();
         }
     }
