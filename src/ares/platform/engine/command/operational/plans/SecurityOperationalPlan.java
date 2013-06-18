@@ -4,8 +4,8 @@
  */
 package ares.platform.engine.command.operational.plans;
 
-import ares.data.jaxb.Emphasis;
-import ares.data.jaxb.SupportScope;
+import ares.data.wrappers.scenario.Emphasis;
+import ares.data.wrappers.scenario.SupportScope;
 import ares.platform.engine.algorithms.pathfinding.Pathfinder;
 import ares.platform.engine.command.Objective;
 import ares.platform.engine.command.tactical.TacticalMission;

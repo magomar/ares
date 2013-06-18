@@ -4,8 +4,8 @@
  */
 package ares.platform.scenario.assets;
 
-import ares.data.jaxb.EquipmentDB.EquipmentCategory.Item;
-import ares.data.jaxb.Trait;
+import ares.data.wrappers.equipment.EquipmentDB.EquipmentCategory.Item;
+import ares.data.wrappers.scenario.Trait;
 
 import java.util.EnumSet;
 import java.util.Set;

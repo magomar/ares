@@ -15,7 +15,7 @@ public class Objective implements Comparable {
     private int priority;
     private boolean achieved = false;
     
-    public Objective(ares.data.jaxb.Objective obj, Board board) {
+    public Objective(ares.data.wrappers.scenario.Objective obj, Board board) {
         location = board.getTile(obj.getX(), obj.getY());
         priority = obj.getId();
     }

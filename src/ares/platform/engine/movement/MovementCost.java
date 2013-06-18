@@ -1,6 +1,6 @@
 package ares.platform.engine.movement;
 
-import ares.data.jaxb.TerrainType;
+import ares.data.wrappers.scenario.TerrainType;
 import ares.platform.scenario.Scale;
 import ares.platform.scenario.board.*;
 import ares.platform.scenario.forces.Force;

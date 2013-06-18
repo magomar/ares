@@ -1,6 +1,10 @@
 package ares.platform.engine.command;
 
-import ares.data.jaxb.*;
+import ares.data.wrappers.scenario.Track;
+import ares.data.wrappers.scenario.Emphasis;
+import ares.data.wrappers.scenario.SupportScope;
+import ares.data.wrappers.scenario.Frontage;
+import ares.data.wrappers.scenario.Orders;
 import ares.platform.engine.command.operational.plans.OperationalPlan;
 import ares.platform.engine.command.operational.plans.OperationalStance;
 import ares.platform.scenario.board.Board;

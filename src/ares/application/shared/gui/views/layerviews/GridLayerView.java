@@ -6,7 +6,7 @@ import ares.application.shared.gui.profiles.GraphicsModel;
 import ares.application.shared.gui.providers.AresMiscTerrainGraphics;
 import ares.application.shared.models.ScenarioModel;
 import ares.application.shared.models.board.TileModel;
-import ares.data.jaxb.Place;
+import ares.data.wrappers.scenario.Place;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

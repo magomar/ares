@@ -37,7 +37,7 @@ public class Clock {
     private Clock() {
     }
 
-    public void initialize(ares.data.jaxb.Calendar calendar) {
+    public void initialize(ares.data.wrappers.scenario.Calendar calendar) {
         turnLength = TurnLength.valueOf(calendar.getTurnLength().name());
         MINUTES_PER_TICK = turnLength.getMinutesPerTick();
         MINUTES_PER_TURN = turnLength.getMinutesPerTurn();

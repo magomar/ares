@@ -45,7 +45,7 @@ public class Formation implements ModelProvider<FormationModel> {
     private boolean active;
     private Unit hq;
 
-    public Formation(ares.data.jaxb.Formation formation, Force force, Scenario scenario) {
+    public Formation(ares.data.wrappers.scenario.Formation formation, Force force, Scenario scenario) {
         id = formation.getId();
         name = formation.getName();
         echelon = Echelon.valueOf(formation.getEchelon().name());
@@ -59,7 +59,7 @@ public class Formation implements ModelProvider<FormationModel> {
         conditionalReinforcements = new ArrayList<>();
         subordinates = new ArrayList<>();
         Map<Integer, Unit> allUnits = new HashMap<>();
-        for (ares.data.jaxb.Unit unit : formation.getUnit()) {
+        for (ares.data.wrappers.scenario.Unit unit : formation.getUnit()) {
             Unit u = UnitFactory.createUnit(unit, this, force, scenario);
             allUnits.put(unit.getId(), u);
             switch (u.getAvailability()) {
@@ -79,7 +79,7 @@ public class Formation implements ModelProvider<FormationModel> {
             }
         }
         // Set parents for units resulting of division
-        for (ares.data.jaxb.Unit unit : formation.getUnit()) {
+        for (ares.data.wrappers.scenario.Unit unit : formation.getUnit()) {
             if (unit.getParent() != null) {
                 allUnits.get(unit.getId()).setParent(allUnits.get(unit.getParent()));
             }

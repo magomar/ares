@@ -12,7 +12,7 @@ public abstract class SurfaceUnit extends Unit {
         super();
     }
 
-    public SurfaceUnit(ares.data.jaxb.Unit unit, Formation formation, Force force, Scenario scenario) {
+    public SurfaceUnit(ares.data.wrappers.scenario.Unit unit, Formation formation, Force force, Scenario scenario) {
         super(unit, formation, force, scenario);
     }
 }

@@ -14,7 +14,7 @@ public class AirUnit extends Unit {
     protected AirUnit() {
     }
 
-    public AirUnit(ares.data.jaxb.Unit unit, Formation formation, Force force, Scenario scenario) {
+    public AirUnit(ares.data.wrappers.scenario.Unit unit, Formation formation, Force force, Scenario scenario) {
         super(unit, formation, force, scenario);
         movement = MovementType.AIRCRAFT;
         speed = Integer.MAX_VALUE;

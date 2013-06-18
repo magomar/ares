@@ -11,7 +11,7 @@ import java.util.Set;
  */
 public class UnitFactory {
 
-    public static Unit createUnit(ares.data.jaxb.Unit unit, Formation formation, Force force, Scenario scenario) {
+    public static Unit createUnit(ares.data.wrappers.scenario.Unit unit, Formation formation, Force force, Scenario scenario) {
         UnitType type = UnitType.valueOf(unit.getType().name());
         Set<Capability> capabilities = type.getCapabilities();
         if (capabilities.contains(Capability.AIRCRAFT)) {

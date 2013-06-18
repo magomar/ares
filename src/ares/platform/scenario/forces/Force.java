@@ -24,7 +24,7 @@ public class Force implements ModelProvider<ForceModel> {
     private List<Formation> formations;
     private final Map<UserRole, ForceModel> models;
 
-    public Force(ares.data.jaxb.Force force, Scenario scenario) {
+    public Force(ares.data.wrappers.scenario.Force force, Scenario scenario) {
         id = force.getId();
         name = force.getName();
         formations = new ArrayList<>();
@@ -32,11 +32,11 @@ public class Force implements ModelProvider<ForceModel> {
         supply = force.getSupply();
         flag = force.getFlag();
         Map<Integer, Formation> formMap = new HashMap<>(force.getFormation().size());
-        for (ares.data.jaxb.Formation formation : force.getFormation()) {
+        for (ares.data.wrappers.scenario.Formation formation : force.getFormation()) {
             Formation f = new Formation(formation, this, scenario);
             formMap.put(f.getId(), f);
         }
-        for (ares.data.jaxb.Formation formation : force.getFormation()) {
+        for (ares.data.wrappers.scenario.Formation formation : force.getFormation()) {
             Formation child = formMap.get(formation.getId());
             Formation parent = formMap.get(formation.getParent());
             child.setSuperior(parent);

@@ -1,8 +1,8 @@
 package ares.platform.scenario.board;
 
 import ares.application.shared.models.board.BoardModel;
-import ares.data.jaxb.Cell;
-import ares.data.jaxb.Place;
+import ares.data.wrappers.scenario.Cell;
+import ares.data.wrappers.scenario.Place;
 import ares.platform.model.ModelProvider;
 import ares.platform.model.UserRole;
 import ares.platform.scenario.Scenario;
@@ -35,8 +35,8 @@ public final class Board implements ModelProvider<BoardModel> {
     private Map<UserRole, BoardModel> models;
     private List<Place> places;
 
-    public Board(ares.data.jaxb.Scenario scenario) {
-        ares.data.jaxb.Map sourceMap = scenario.getMap();
+    public Board(ares.data.wrappers.scenario.Scenario scenario) {
+        ares.data.wrappers.scenario.Map sourceMap = scenario.getMap();
         width = sourceMap.getMaxX() + 1;
         height = sourceMap.getMaxY() + 1;
 
@@ -47,9 +47,9 @@ public final class Board implements ModelProvider<BoardModel> {
         places = sourceMap.getPlace();
     }
 
-    public void initialize(ares.data.jaxb.Scenario scenarioXML, Scenario scenario, Force[] forces) {
+    public void initialize(ares.data.wrappers.scenario.Scenario scenarioXML, Scenario scenario, Force[] forces) {
 
-        ares.data.jaxb.Map sourceMap = scenarioXML.getMap();
+        ares.data.wrappers.scenario.Map sourceMap = scenarioXML.getMap();
         for (Cell cell : sourceMap.getCell()) {
             int x = cell.getX();
             int y = cell.getY();

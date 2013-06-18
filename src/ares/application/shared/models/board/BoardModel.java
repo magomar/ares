@@ -1,6 +1,6 @@
 package ares.application.shared.models.board;
 
-import ares.data.jaxb.Place;
+import ares.data.wrappers.scenario.Place;
 import ares.platform.model.RoleMediatedModel;
 import ares.platform.model.UserRole;
 import ares.platform.scenario.board.Board;

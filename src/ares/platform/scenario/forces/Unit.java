@@ -4,8 +4,8 @@ import ares.application.shared.models.forces.DetectedUnitModel;
 import ares.application.shared.models.forces.IdentifiedUnitModel;
 import ares.application.shared.models.forces.KnownUnitModel;
 import ares.application.shared.models.forces.UnitModel;
-import ares.data.jaxb.Availability;
-import ares.data.jaxb.Emphasis;
+import ares.data.wrappers.scenario.Availability;
+import ares.data.wrappers.scenario.Emphasis;
 import ares.platform.engine.action.Action;
 import ares.platform.engine.action.ActionSpace;
 import ares.platform.engine.action.ActionType;
@@ -238,7 +238,7 @@ public abstract class Unit implements ModelProvider<UnitModel> {
         models = new HashMap<>();
     }
 
-    protected Unit(ares.data.jaxb.Unit unit, Formation formation, Force force, Scenario scenario) {
+    protected Unit(ares.data.wrappers.scenario.Unit unit, Formation formation, Force force, Scenario scenario) {
         id = unit.getId();
         name = unit.getName();
         type = UnitType.valueOf(unit.getType().name());
@@ -263,7 +263,7 @@ public abstract class Unit implements ModelProvider<UnitModel> {
         traits = new EnumMap<>(AssetTrait.class);
         boolean providesIndirectFireSupport = type.getCapabilities().contains(Capability.BOMBARDMENT);
         AssetTypes assetTypes = scenario.getAssetTypes();
-        for (ares.data.jaxb.Unit.Equipment equip : unit.getEquipment()) {
+        for (ares.data.wrappers.scenario.Unit.Equipment equip : unit.getEquipment()) {
             Asset asset = new Asset(equip, assetTypes);
             AssetType assetType = asset.getType();
             assets.put(assetType, asset);

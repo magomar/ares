@@ -96,7 +96,7 @@ public final class Tile implements ModelProvider<TileModel> {
      */
     private final Map<KnowledgeCategory, TileModel> models;
 
-    public Tile(ares.data.jaxb.Cell c) {
+    public Tile(ares.data.wrappers.scenario.Cell c) {
 //        x = c.getX();
 //        y = c.getY();
         coordinates = new Point(c.getX(), c.getY());
@@ -111,8 +111,8 @@ public final class Tile implements ModelProvider<TileModel> {
         // Initialize terrain information
         terrain = new EnumMap<>(Terrain.class);
         visibility = Vision.OPEN;
-        for (ares.data.jaxb.Terrain ct : c.getTerrain()) {
-            ares.data.jaxb.TerrainType type = ct.getType();
+        for (ares.data.wrappers.scenario.Terrain ct : c.getTerrain()) {
+            ares.data.wrappers.scenario.TerrainType type = ct.getType();
             Terrain terr = Terrain.valueOf(type.name());
             Directions multiDir = Directions.valueOf(ct.getDir().name());
             terrain.put(terr, multiDir);
@@ -123,7 +123,7 @@ public final class Tile implements ModelProvider<TileModel> {
         }
         features = EnumSet.noneOf(Feature.class);
         // Initialize terrain features
-        for (ares.data.jaxb.TerrainFeature feature : c.getFeature()) {
+        for (ares.data.wrappers.scenario.TerrainFeature feature : c.getFeature()) {
             features.add(Enum.valueOf(Feature.class, feature.name()));
         }
 
