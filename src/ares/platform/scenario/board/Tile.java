@@ -145,7 +145,9 @@ public final class Tile implements ModelProvider<TileModel> {
      * neighbors. It also computes the movement costs induced by the terrain when moving from this tile to another tile,
      * and the combat modifiers for units located in this tile.
      *
-     * @param board
+     * @param neighbors
+     * @param owner
+     * @param scenario
      */
     public void initialize(Map<Direction, Tile> neighbors, Force owner, Scenario scenario) {
         this.owner = owner;
@@ -366,20 +368,30 @@ public final class Tile implements ModelProvider<TileModel> {
     }
 
     public String toStringMultiline() {
-        StringBuilder sb = new StringBuilder("Location: " + toString() + '\n');
-        if (!terrain.isEmpty()) {
-            sb.append("Terrain").append(terrain.keySet()).append('\n');
+        StringBuilder sb = new StringBuilder(toString() + '\n');
+
+        for (Entry<UserRole, KnowledgeLevel> entry : knowledgeLevels.entrySet()) {
+            if (UserRole.GOD != entry.getKey()) {
+                sb.append(entry.getKey()).append(entry.getValue()).append('\n');
+            }
         }
+
+        for (Terrain t : terrain.keySet()) {
+            sb.append(t).append('\n');
+        }
+//        if (!terrain.isEmpty()) {
+//            sb.append(terrain.keySet()).append('\n');
+//        }
 //        if (!tileTerrain.isEmpty()) {
 //            sb.append("Terrain: ").append(tileTerrain).append('\n');
 //        }
-        if (!features.isEmpty()) {
-            sb.append("Features: ").append(features).append('\n');
+        for (Feature f : features) {
+            sb.append(f).append('\n');
         }
-        sb.append("Owner: ").append(owner).append('\n');
-        for (Entry<UserRole, KnowledgeLevel> entry : knowledgeLevels.entrySet()) {
-            sb.append(entry.getKey()).append(" -> ").append(entry.getValue()).append('\n');
-        }
+//        if (!features.isEmpty()) {
+//            sb.append(features).append('\n');
+//        }
+//        sb.append(owner).append('\n');
 
         return sb.toString();
     }

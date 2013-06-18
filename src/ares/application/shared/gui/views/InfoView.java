@@ -19,7 +19,6 @@ public class InfoView extends AbstractView<JPanel> implements InfoViewer {
 
     //    private JTextArea scenInfo;
     private JTextArea unitInfo;
-    private JTextArea tileInfo;
     private ScenarioInfoPane scenInfo;
     private TerrainInfoView terrainInfoView;
 
@@ -28,14 +27,11 @@ public class InfoView extends AbstractView<JPanel> implements InfoViewer {
         JPanel panel = ComponentFactory.panel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         scenInfo = new ScenarioInfoPane();
-        tileInfo = new JTextArea();
         unitInfo = new JTextArea();
-        tileInfo.setEditable(false);
         unitInfo.setEditable(false);
         terrainInfoView = new TerrainInfoView();
         panel.add(scenInfo);
         panel.add(terrainInfoView.getContentPane());
-        panel.add(tileInfo);
         panel.add(unitInfo);
         return panel;
     }
@@ -43,7 +39,6 @@ public class InfoView extends AbstractView<JPanel> implements InfoViewer {
     @Override
     public void setPreferredSize(Dimension size) {
         super.setPreferredSize(size);
-//        Dimension imageSize = GraphicsModel.INSTANCE.getNonProfiledImageProvider(TerrainInfoGraphics.OPEN).getFullImageDimension();
         int imageHeight = GraphicProperties.getProperty(NonProfiledGraphicProperty.TERRAIN_INFO_HEIGHT);
         Dimension componentSize = new Dimension(size.width, 75 + ComponentFactory.BORDER_THICKNESS * 4);
         scenInfo.setMinimumSize(componentSize);
@@ -55,7 +50,6 @@ public class InfoView extends AbstractView<JPanel> implements InfoViewer {
 
     @Override
     public void updateTileInfo(TileModel tile) {
-        tileInfo.setText(tile.getDescription());
         terrainInfoView.updateTile(tile);
     }
 
@@ -67,7 +61,6 @@ public class InfoView extends AbstractView<JPanel> implements InfoViewer {
 
     @Override
     public void clear() {
-        tileInfo.setText("");
         unitInfo.setText("");
         terrainInfoView.updateTile(null);
     }

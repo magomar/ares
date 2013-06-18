@@ -13,4 +13,6 @@ public interface TerrainInfoViewer extends View<JPanel> {
     void flush();
 
     void updateTile(TileModel tileModel);
+
+    void clear();
 }
