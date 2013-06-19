@@ -59,10 +59,21 @@ public abstract class AbstractImageLayerView extends AbstractView<JComponent> im
         return component;
     }
 
+    @Override
+    public final void initialize() {
+        if (parentLayer == null) {
+            globalImage = new BufferedImage(GraphicsModel.INSTANCE.getBoardWidth(profile),
+                    GraphicsModel.INSTANCE.getBoardHeight(profile), BufferedImage.TYPE_INT_ARGB);
+//            globalImage = new BufferedImage(this.getWidth(), this.getHeight(), BufferedImage.TYPE_INT_ARGB);
+        } else {
+            globalImage = parentLayer.getGlobalImage();
+        }
+        contentPane.repaint();
+    }
+
+
     /**
-     * the {@link JViewport} where this image layer is shown through
-     *
-     * @param viewport
+     * @param viewport the {@link JViewport} where this image layer is shown through
      */
     @Override
     public ImageLayerViewer setViewport(JViewport viewport) {
@@ -82,18 +93,6 @@ public abstract class AbstractImageLayerView extends AbstractView<JComponent> im
     public ImageLayerViewer setParenLayer(ImageLayerViewer parentLayer) {
         this.parentLayer = parentLayer;
         return this;
-    }
-
-    @Override
-    public final void initialize() {
-        if (parentLayer == null) {
-            globalImage = new BufferedImage(GraphicsModel.INSTANCE.getBoardWidth(profile),
-                    GraphicsModel.INSTANCE.getBoardHeight(profile), BufferedImage.TYPE_INT_ARGB);
-//            globalImage = new BufferedImage(this.getWidth(), this.getHeight(), BufferedImage.TYPE_INT_ARGB);
-        } else {
-            globalImage = parentLayer.getGlobalImage();
-        }
-        contentPane.repaint();
     }
 
     @Override

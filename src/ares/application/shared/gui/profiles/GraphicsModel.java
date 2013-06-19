@@ -71,7 +71,7 @@ public class GraphicsModel {
         }
         boardWidth = new int[numProfiles];
         boardHeight = new int[numProfiles];
-        activeProfile = GraphicProperties.getNumProfiles() / 2;
+        activeProfile = GraphicProperties.getNumProfiles() / 2 + 1;
     }
 
     public void initialize(Board board) {

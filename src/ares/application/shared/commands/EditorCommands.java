@@ -1,6 +1,5 @@
 package ares.application.shared.commands;
 
-import ares.application.shared.action.Command;
 import ares.platform.io.ResourcePath;
 
 import javax.swing.*;

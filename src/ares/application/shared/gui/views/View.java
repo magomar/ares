@@ -11,9 +11,12 @@ public interface View<C extends Component> {
 
     boolean isVisible();
 
+    void switchVisible();
+
     boolean isFocusable();
 
     C getContentPane();
 
     void setPreferredSize(Dimension size);
+
 }

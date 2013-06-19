@@ -1,5 +1,6 @@
 package ares.application.shared.gui.views;
 
+import ares.application.shared.gui.views.layerviews.AbstractBoardView;
 import ares.application.shared.gui.views.layerviews.MiniMapNavigationLayerView;
 import ares.application.shared.gui.views.layerviews.TerrainLayerView;
 import ares.application.shared.gui.views.layerviews.UnitsLayerView;

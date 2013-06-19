@@ -28,6 +28,7 @@ public class SelectionLayerView extends AbstractImageLayerView implements Select
     @Override
     public void updateLayer() {
         initialize();
+        if (!isVisible()) return;
         if (selectedUnit == null) {
             return;
         }

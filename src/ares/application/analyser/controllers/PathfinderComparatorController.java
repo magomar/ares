@@ -2,9 +2,9 @@ package ares.application.analyser.controllers;
 
 import ares.application.analyser.boundaries.interactors.PathfinderComparatorInteractor;
 import ares.application.analyser.boundaries.viewers.PathfinderComparatorViewer;
-import ares.application.shared.action.ActionGroup;
-import ares.application.shared.action.CommandAction;
-import ares.application.shared.action.CommandGroup;
+import ares.application.shared.commands.ActionGroup;
+import ares.application.shared.commands.CommandAction;
+import ares.application.shared.commands.CommandGroup;
 import ares.application.shared.boundaries.viewers.BoardViewer;
 import ares.application.shared.boundaries.viewers.PathfinderConfigurationViewer;
 import ares.application.shared.boundaries.viewers.layerviewers.*;

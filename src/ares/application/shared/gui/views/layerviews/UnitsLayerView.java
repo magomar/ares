@@ -31,6 +31,7 @@ public class UnitsLayerView extends AbstractImageLayerView implements UnitsLayer
     @Override
     public void updateLayer() {
         initialize();
+        if (!isVisible()) return;
         Graphics2D g2 = globalImage.createGraphics();
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         Collection<TileModel> tileModels = new HashSet<>();

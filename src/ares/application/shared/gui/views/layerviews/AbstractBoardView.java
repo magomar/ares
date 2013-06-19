@@ -1,4 +1,4 @@
-package ares.application.shared.gui.views;
+package ares.application.shared.gui.views.layerviews;
 
 import ares.application.shared.boundaries.viewers.BoardViewer;
 import ares.application.shared.gui.profiles.GraphicsModel;

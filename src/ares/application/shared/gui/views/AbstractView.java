@@ -31,6 +31,11 @@ public abstract class AbstractView<C extends Component> implements View<C> {
     }
 
     @Override
+    public void switchVisible() {
+        setVisible(!isVisible());
+    }
+
+    @Override
     public boolean isFocusable() {
         return contentPane.isFocusable() && contentPane.isDisplayable() && contentPane.isVisible() && contentPane.isEnabled();
     }

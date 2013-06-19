@@ -24,6 +24,7 @@ public class MiniMapNavigationLayerView extends AbstractImageLayerView implement
     @Override
     public void updateLayer() {
         initialize();
+        if (!isVisible()) return;
         if (boardViewport == null) {
             return;
         }

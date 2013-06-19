@@ -1,4 +1,4 @@
-package ares.application.shared.action;
+package ares.application.shared.commands;
 
 import javax.swing.*;
 

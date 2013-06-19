@@ -1,4 +1,4 @@
-package ares.application.shared.action;
+package ares.application.shared.commands;
 
 import ares.application.shared.gui.ComponentFactory;
 import ares.application.shared.gui.components.RoundedBorder;

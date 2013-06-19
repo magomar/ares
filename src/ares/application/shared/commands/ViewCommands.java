@@ -1,6 +1,5 @@
 package ares.application.shared.commands;
 
-import ares.application.shared.action.Command;
 import ares.platform.io.ResourcePath;
 
 import javax.swing.*;
@@ -11,7 +10,8 @@ import javax.swing.*;
 public enum ViewCommands implements Command {
 
     VIEW_GRID("Show Grid", "Show/Hide the hexagonal grid", 'G'),
-    VIEW_UNITS("Show Units", "Show all the units", 'U'),
+    VIEW_UNITS("Show Units", "Show/Hide all the units", 'U'),
+    VIEW_PLACES("Show Places", "Show/Hide place labels",'L'),
     VIEW_ZOOM_IN("Zoom In", "Zoom in the board view", 'Z'),
     VIEW_ZOOM_OUT("Zoom Out", "Zoom out the board view", 'X');
     private final String text;
