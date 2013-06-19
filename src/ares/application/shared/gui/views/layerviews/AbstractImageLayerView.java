@@ -27,6 +27,8 @@ public abstract class AbstractImageLayerView extends AbstractView<JComponent> im
      * {@link #globalImage}
      */
     protected ImageLayerViewer parentLayer;
+
+    protected boolean sharingGlobalImage;
     /**
      * Viewport where this layer is placed
      */
@@ -71,6 +73,15 @@ public abstract class AbstractImageLayerView extends AbstractView<JComponent> im
         contentPane.repaint();
     }
 
+    @Override
+    public boolean isSharingGlobalImage() {
+        return sharingGlobalImage;
+    }
+
+    @Override
+    public void setSharingGlobalImage(boolean sharingGlobalImage) {
+        this.sharingGlobalImage = sharingGlobalImage;
+    }
 
     /**
      * @param viewport the {@link JViewport} where this image layer is shown through
@@ -92,6 +103,7 @@ public abstract class AbstractImageLayerView extends AbstractView<JComponent> im
     @Override
     public ImageLayerViewer setParenLayer(ImageLayerViewer parentLayer) {
         this.parentLayer = parentLayer;
+        parentLayer.setSharingGlobalImage(true);
         return this;
     }
 

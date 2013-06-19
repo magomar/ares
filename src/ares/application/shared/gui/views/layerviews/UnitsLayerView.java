@@ -61,7 +61,7 @@ public class UnitsLayerView extends AbstractImageLayerView implements UnitsLayer
      * Paints all the units visible in a single {@code tile}. Method used to update just one stack (typically the one
      * selected by the user)
      *
-     * @param scenario
+     * @param tile
      */
     @Override
     public void updateUnitStack(TileModel tile) {
@@ -73,8 +73,8 @@ public class UnitsLayerView extends AbstractImageLayerView implements UnitsLayer
     /**
      * Paints all the units in a single tile. Method used to paint all the units in an scenario
      *
+     * @param g2
      * @param tile     TileModel where the units are
-     * @param maxStack maximum units in the stack to be painted
      */
     private void paintUnitStack(Graphics2D g2, TileModel tile) {
 

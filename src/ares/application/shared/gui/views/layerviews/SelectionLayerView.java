@@ -35,7 +35,6 @@ public class SelectionLayerView extends AbstractImageLayerView implements Select
         Graphics2D g2 = globalImage.createGraphics();
         for (UnitModel u : formation.getUnitModels()) {
             if (!u.equals(selectedUnit)) {
-                TileModel t = u.getLocation();
                 paintCursor(g2, u.getLocation(), GraphicsModel.INSTANCE.getProfiledImageProvider(AresMiscTerrainGraphics.STEEL_CURSOR, profile).getImage(0, 0));
             }
         }

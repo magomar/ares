@@ -26,14 +26,11 @@ public abstract class AbstractLayeredImageView extends AbstractView<JScrollPane>
 
     @Override
     public LayeredImageViewer addLayerView(ImageLayerViewer imageLayerView) {
-        layeredPane.add(imageLayerView.getContentPane(), new Integer(layeredPane.getComponentCount()));
+        if (!imageLayerView.isSharingGlobalImage()) {
+            layeredPane.add(imageLayerView.getContentPane(), new Integer(layeredPane.getComponentCount()));
+        }
         layerViews.put(imageLayerView.name(), imageLayerView);
         sortedLayerViews.add(imageLayerView);
-//        if (imageLayerView.hasParentLayer()) {
-//            ImageLayerViewer parent = imageLayerView.getParentLayer();
-//            layeredPane.remove(parent.getContentPane());
-//        }
-//        layeredPane.revalidate();
         return this;
     }
 
@@ -110,9 +107,14 @@ public abstract class AbstractLayeredImageView extends AbstractView<JScrollPane>
     public void switchLayerVisible(String layerName) {
         ImageLayerViewer layer = layerViews.get(layerName);
         layer.switchVisible();
-        if (layer.isVisible()) {
-            layerViews.get(layerName).updateLayer();
-        }
+        layer.updateLayer();
+        if (layer.isSharingGlobalImage())
+            for (ImageLayerViewer layerView : sortedLayerViews) {
+                if (layer.equals(layerView.getParentLayer())) {
+                    layerView.updateLayer();
+                    break;
+                }
+            }
     }
 
     @Override
