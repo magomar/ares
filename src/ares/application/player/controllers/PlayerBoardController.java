@@ -69,6 +69,7 @@ public final class PlayerBoardController extends BoardController implements Boar
     private final MiniMapController miniMapController;
     private final PlayerBoardInteractor interactor;
     private ChangeListener changeViewportListener;
+    private boolean dragging = false;
 
     public PlayerBoardController(final PlayerBoardInteractor interactor, RealTimeEngine engine) {
         super(interactor);
@@ -91,10 +92,6 @@ public final class PlayerBoardController extends BoardController implements Boar
 
         //Add change listeners to entities
         engine.addPropertyChangeListener(this);
-    }
-
-    public Scenario getScenario() {
-        return scenario;
     }
 
     public void setScenario(Scenario scenario, UserRole userRole) {
@@ -138,16 +135,13 @@ public final class PlayerBoardController extends BoardController implements Boar
                 TileModel tileModel = selectedTile.getModel(userRole);
                 infoView.updateTileInfo(tileModel);
                 unitsLayerView.updateUnitStack(tileModel);
-//                if (selectedUnit != null) {
-                if (interactionMode == InteractionMode.UNIT_ORDERS) {
-                    UnitModel unitModel = selectedUnit.getModel(userRole);
-                    FormationModel formationModel = selectedUnit.getFormation().getModel(userRole);
-                    ForceModel forceModel = selectedUnit.getForce().getModel(userRole);
-                    updateSelectedUnit(unitModel, formationModel, forceModel);
-                    boardView.centerViewOn(selectedUnit.getLocation().getCoordinates());
-                    arrowLayerView.updateLastOrders(null);
-                    arrowLayerView.updateCurrentOrders(null);
-                }
+                UnitModel unitModel = selectedUnit.getModel(userRole);
+                FormationModel formationModel = selectedUnit.getFormation().getModel(userRole);
+                ForceModel forceModel = selectedUnit.getForce().getModel(userRole);
+                updateSelectedUnit(unitModel, formationModel, forceModel);
+                boardView.centerViewOn(selectedUnit.getLocation().getCoordinates());
+                arrowLayerView.updateLastOrders(null);
+                arrowLayerView.updateCurrentOrders(null);
             }
         }
     }
@@ -168,7 +162,14 @@ public final class PlayerBoardController extends BoardController implements Boar
                     command(me.getX(), me.getY());
                     break;
             }
+        }
 
+        @Override
+        public void mouseReleased(MouseEvent e) {
+            if (dragging) {
+                dragging = false;
+                interactor.getGUIContainer().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+            }
         }
     }
 
@@ -275,12 +276,30 @@ public final class PlayerBoardController extends BoardController implements Boar
                     arrowLayerView.updateCurrentOrders(path);
                 }
             }
+            if (!dragging) {
+                int profile = GraphicsModel.INSTANCE.getActiveProfile();
+                Point pixel = new Point(me.getX(), me.getY());
+                if (GraphicsModel.INSTANCE.isWithinImageRange(pixel, profile)) {
+                    Point coords = GraphicsModel.INSTANCE.pixelToTileAccurate(pixel, profile);
+                    if (!GraphicsModel.INSTANCE.validCoordinates(coords.x, coords.y)) {
+                        return;
+                    }
+                    Tile tile = scenario.getBoard().getTile(coords.x, coords.y);
+                    if (!tile.getUnitsStack().isEmpty())  {
+                        interactor.getGUIContainer().setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                    } else {
+                        interactor.getGUIContainer().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+                    }
+                }
+            }
         }
 
         @Override
         public void mouseDragged(MouseEvent me) {
 //            Rectangle r = new Rectangle(e.getX(), e.getY(), 1, 1);
 //            boardView.getContentPane().getViewport().scrollRectToVisible(r);
+            interactor.getGUIContainer().setCursor(Cursor.getPredefinedCursor(Cursor.MOVE_CURSOR));
+            dragging = true;
             int profile = GraphicsModel.INSTANCE.getActiveProfile();
             Point pixel = new Point(me.getX(), me.getY());
             Point coords = GraphicsModel.INSTANCE.pixelToTileAccurate(pixel, profile);
