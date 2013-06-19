@@ -1,6 +1,7 @@
 package ares.application.player.views;
 
-import ares.application.shared.gui.views.AbstractBoardView;
+import ares.application.shared.boundaries.viewers.layerviewers.ImageLayerViewer;
+import ares.application.shared.gui.views.layerviews.AbstractBoardView;
 import ares.application.shared.gui.views.layerviews.*;
 
 import javax.swing.*;
@@ -14,14 +15,15 @@ public class PlayerBoardView extends AbstractBoardView {
     protected JScrollPane layout() {
         JScrollPane scrollPane = super.layout();
         JViewport v = scrollPane.getViewport();
-        TerrainLayerView terrainLayer = (TerrainLayerView) new TerrainLayerView().setViewport(v);
-        UnitsLayerView unitsLayer = (UnitsLayerView) new UnitsLayerView().setViewport(v);
-        GridLayerView gridLayer = (GridLayerView) new GridLayerView().setViewport(v);
-        SelectionLayerView selectionLayer = (SelectionLayerView) new SelectionLayerView().setViewport(v);
-        ArrowLayerView arrowLayer = (ArrowLayerView) new ArrowLayerView().setViewport(v).setParenLayer(selectionLayer);
+        ImageLayerViewer terrainLayer = new TerrainLayerView().setViewport(v);
+        ImageLayerViewer unitsLayer = new UnitsLayerView().setViewport(v);
+        ImageLayerViewer gridLayer =  new GridLayerView().setViewport(v);
+        ImageLayerViewer placesLayer =  new PlacesLayerView().setViewport(v).setParenLayer(gridLayer);
+        ImageLayerViewer selectionLayer = new SelectionLayerView().setViewport(v);
+        ImageLayerViewer arrowLayer = new ArrowLayerView().setViewport(v).setParenLayer(selectionLayer);
 
         // Add independent layers pane
-        addLayerView(terrainLayer).addLayerView(gridLayer).addLayerView(selectionLayer).addLayerView(arrowLayer).addLayerView(unitsLayer);
+        addLayerView(terrainLayer).addLayerView(gridLayer).addLayerView(placesLayer).addLayerView(selectionLayer).addLayerView(arrowLayer).addLayerView(unitsLayer);
         return scrollPane;
     }
 

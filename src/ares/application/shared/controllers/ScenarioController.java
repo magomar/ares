@@ -1,8 +1,8 @@
 package ares.application.shared.controllers;
 
-import ares.application.shared.action.ActionGroup;
-import ares.application.shared.action.CommandAction;
-import ares.application.shared.action.CommandGroup;
+import ares.application.shared.commands.ActionGroup;
+import ares.application.shared.commands.CommandAction;
+import ares.application.shared.commands.CommandGroup;
 import ares.application.shared.boundaries.interactors.ScenarioInteractor;
 import ares.application.shared.commands.AresCommandGroup;
 import ares.application.shared.commands.FileCommands;

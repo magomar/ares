@@ -29,4 +29,9 @@ public interface ImageLayerViewer extends View<JComponent> {
     void setProfile(int profile);
 
     String name();
+
+    void setSharingGlobalImage(boolean sharesGlobalImage);
+
+    boolean isSharingGlobalImage();
+
 }

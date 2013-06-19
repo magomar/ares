@@ -1,12 +1,10 @@
 package ares.application.shared.gui.views.layerviews;
 
 import ares.application.shared.boundaries.viewers.layerviewers.GridLayerViewer;
-import ares.application.shared.gui.decorators.ImageDecorators;
 import ares.application.shared.gui.profiles.GraphicsModel;
 import ares.application.shared.gui.providers.AresMiscTerrainGraphics;
 import ares.application.shared.models.ScenarioModel;
 import ares.application.shared.models.board.TileModel;
-import ares.data.wrappers.scenario.Place;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -28,6 +26,7 @@ public class GridLayerView extends AbstractImageLayerView implements GridLayerVi
     @Override
     public void updateLayer() {
         initialize();
+        if (!isVisible()) return;
         if (scenario == null) {
             return;
         }
@@ -46,25 +45,6 @@ public class GridLayerView extends AbstractImageLayerView implements GridLayerVi
                     contentPane.repaint(pos.x, pos.y, gridImage.getWidth(), gridImage.getHeight());
                 }
             }
-        }
-        ImageDecorators imageDec = GraphicsModel.INSTANCE.getImageDecorators(profile);
-        Font placeFont = imageDec.getPlaceFont();
-        g2.setFont(placeFont);
-        g2.setColor(Color.black);
-        FontMetrics fm = g2.getFontMetrics(placeFont);
-        for (Place place : scenario.getBoardModel().getPlaces()) {
-            Point pos = GraphicsModel.INSTANCE.tileToPixel(place.getX(), place.getY(), profile);
-            String label = place.getName();
-            int labelWidth = fm.stringWidth(label);
-            int x = pos.x - (labelWidth - gridImage.getWidth()) / 2;
-            if (x + labelWidth > globalImage.getWidth()) {
-                x = globalImage.getWidth() - labelWidth;
-            }
-            int y = pos.y;
-            if (y - placeFont.getSize() < 0) {
-                y = placeFont.getSize();
-            }
-            g2.drawString(label, x, y);
         }
         g2.dispose();
     }

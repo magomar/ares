@@ -1,6 +1,6 @@
 package ares.application.analyser.views;
 
-import ares.application.shared.gui.views.AbstractBoardView;
+import ares.application.shared.gui.views.layerviews.AbstractBoardView;
 import ares.application.shared.gui.views.layerviews.ArrowLayerView;
 import ares.application.shared.gui.views.layerviews.GridLayerView;
 import ares.application.shared.gui.views.layerviews.TerrainLayerView;

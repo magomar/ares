@@ -27,6 +27,8 @@ public abstract class AbstractImageLayerView extends AbstractView<JComponent> im
      * {@link #globalImage}
      */
     protected ImageLayerViewer parentLayer;
+
+    protected boolean sharingGlobalImage;
     /**
      * Viewport where this layer is placed
      */
@@ -59,10 +61,30 @@ public abstract class AbstractImageLayerView extends AbstractView<JComponent> im
         return component;
     }
 
+    @Override
+    public final void initialize() {
+        if (parentLayer == null) {
+            globalImage = new BufferedImage(GraphicsModel.INSTANCE.getBoardWidth(profile),
+                    GraphicsModel.INSTANCE.getBoardHeight(profile), BufferedImage.TYPE_INT_ARGB);
+//            globalImage = new BufferedImage(this.getWidth(), this.getHeight(), BufferedImage.TYPE_INT_ARGB);
+        } else {
+            globalImage = parentLayer.getGlobalImage();
+        }
+        contentPane.repaint();
+    }
+
+    @Override
+    public boolean isSharingGlobalImage() {
+        return sharingGlobalImage;
+    }
+
+    @Override
+    public void setSharingGlobalImage(boolean sharingGlobalImage) {
+        this.sharingGlobalImage = sharingGlobalImage;
+    }
+
     /**
-     * the {@link JViewport} where this image layer is shown through
-     *
-     * @param viewport
+     * @param viewport the {@link JViewport} where this image layer is shown through
      */
     @Override
     public ImageLayerViewer setViewport(JViewport viewport) {
@@ -81,19 +103,8 @@ public abstract class AbstractImageLayerView extends AbstractView<JComponent> im
     @Override
     public ImageLayerViewer setParenLayer(ImageLayerViewer parentLayer) {
         this.parentLayer = parentLayer;
+        parentLayer.setSharingGlobalImage(true);
         return this;
-    }
-
-    @Override
-    public final void initialize() {
-        if (parentLayer == null) {
-            globalImage = new BufferedImage(GraphicsModel.INSTANCE.getBoardWidth(profile),
-                    GraphicsModel.INSTANCE.getBoardHeight(profile), BufferedImage.TYPE_INT_ARGB);
-//            globalImage = new BufferedImage(this.getWidth(), this.getHeight(), BufferedImage.TYPE_INT_ARGB);
-        } else {
-            globalImage = parentLayer.getGlobalImage();
-        }
-        contentPane.repaint();
     }
 
     @Override

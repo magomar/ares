@@ -263,11 +263,11 @@ public final class PlayerBoardController extends BoardController implements Boar
                 int profile = GraphicsModel.INSTANCE.getActiveProfile();
                 Point pixel = new Point(me.getX(), me.getY());
                 if (GraphicsModel.INSTANCE.isWithinImageRange(pixel, profile)) {
-                    Point tilePoint = GraphicsModel.INSTANCE.pixelToTileAccurate(pixel, profile);
-                    if (!GraphicsModel.INSTANCE.validCoordinates(tilePoint.x, tilePoint.y)) {
+                    Point coords = GraphicsModel.INSTANCE.pixelToTileAccurate(pixel, profile);
+                    if (!GraphicsModel.INSTANCE.validCoordinates(coords.x, coords.y)) {
                         return;
                     }
-                    Tile tile = scenario.getBoard().getTile(tilePoint.x, tilePoint.y);
+                    Tile tile = scenario.getBoard().getTile(coords.x, coords.y);
                     Path path = pathFinder.getPath(selectedUnit.getLocation(), tile, selectedUnit);
                     if (path == null) {
                         return;
@@ -275,6 +275,19 @@ public final class PlayerBoardController extends BoardController implements Boar
                     arrowLayerView.updateCurrentOrders(path);
                 }
             }
+        }
+
+        @Override
+        public void mouseDragged(MouseEvent me) {
+//            Rectangle r = new Rectangle(e.getX(), e.getY(), 1, 1);
+//            boardView.getContentPane().getViewport().scrollRectToVisible(r);
+            int profile = GraphicsModel.INSTANCE.getActiveProfile();
+            Point pixel = new Point(me.getX(), me.getY());
+            Point coords = GraphicsModel.INSTANCE.pixelToTileAccurate(pixel, profile);
+            if (!GraphicsModel.INSTANCE.validCoordinates(coords.x, coords.y)) {
+                return;
+            }
+            boardView.centerViewOn(coords);
         }
     }
 

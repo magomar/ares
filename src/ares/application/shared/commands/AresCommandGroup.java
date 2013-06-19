@@ -1,8 +1,5 @@
 package ares.application.shared.commands;
 
-import ares.application.shared.action.Command;
-import ares.application.shared.action.CommandGroup;
-
 /**
  * @author Mario Gomez <margomez at dsic.upv.es>
  */

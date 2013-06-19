@@ -37,6 +37,7 @@ public class ArrowLayerView extends AbstractImageLayerView implements ArrowLayer
     @Override
     public void updateLayer() {
         initialize();
+        if (!isVisible()) return;
         Graphics2D g2 = globalImage.createGraphics();
         if (forcePaths != null) {
             for (Path path : forcePaths) {

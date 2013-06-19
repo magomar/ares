@@ -30,6 +30,7 @@ public class TerrainLayerView extends AbstractImageLayerView implements TerrainL
     @Override
     public void updateLayer() {
         initialize();
+        if (!isVisible()) return;
         Graphics2D g2 = globalImage.createGraphics();
         // Paint it black!
         g2.setColor(Color.BLACK);

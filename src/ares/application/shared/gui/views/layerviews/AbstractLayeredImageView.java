@@ -9,7 +9,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -20,22 +22,22 @@ public abstract class AbstractLayeredImageView extends AbstractView<JScrollPane>
     protected int profile;
     protected JLayeredPane layeredPane;
     protected Map<String, ImageLayerViewer> layerViews;
+    protected List<ImageLayerViewer> sortedLayerViews;
 
     @Override
     public LayeredImageViewer addLayerView(ImageLayerViewer imageLayerView) {
-        layeredPane.add(imageLayerView.getContentPane(), new Integer(layeredPane.getComponentCount()));
-        layerViews.put(imageLayerView.name(), imageLayerView);
-        if (imageLayerView.hasParentLayer()) {
-            ImageLayerViewer parent = imageLayerView.getParentLayer();
-            layeredPane.remove(parent.getContentPane());
+        if (!imageLayerView.isSharingGlobalImage()) {
+            layeredPane.add(imageLayerView.getContentPane(), new Integer(layeredPane.getComponentCount()));
         }
-        layeredPane.revalidate();
+        layerViews.put(imageLayerView.name(), imageLayerView);
+        sortedLayerViews.add(imageLayerView);
         return this;
     }
 
     @Override
     protected JScrollPane layout() {
         layerViews = new HashMap<>();
+        sortedLayerViews = new ArrayList<>();
         //Create layered pane to hold all the layers
         layeredPane = new JLayeredPane();
         layeredPane.setOpaque(true);
@@ -45,6 +47,7 @@ public abstract class AbstractLayeredImageView extends AbstractView<JScrollPane>
         scrollPane.setBackground(Color.BLACK);
         scrollPane.setVisible(true);
         scrollPane.setOpaque(true);
+        scrollPane.setAutoscrolls(true);
         return scrollPane;
     }
 
@@ -54,11 +57,10 @@ public abstract class AbstractLayeredImageView extends AbstractView<JScrollPane>
         Dimension imageSize = new Dimension(GraphicsModel.INSTANCE.getBoardWidth(profile), GraphicsModel.INSTANCE.getBoardHeight(profile));
         layeredPane.setPreferredSize(imageSize);
         layeredPane.setSize(imageSize);
-        for (ImageLayerViewer layerView : layerViews.values()) {
-            if (!layerView.hasParentLayer()) {
-                layerView.setProfile(profile);
-                layerView.initialize();
-            }
+        // Set the profiles and initialize layers in strict "depth" order (to avoid problems with image sharing layers)
+        for (ImageLayerViewer layerView : sortedLayerViews) {
+            layerView.setProfile(profile);
+            layerView.initialize();
         }
         layeredPane.revalidate(); // in theory this would make viewport aware of the change in its client (the content, that is the layered pane)
         contentPane.getVerticalScrollBar().setUnitIncrement(imageSize.height / GraphicsModel.INSTANCE.getBoardRows());
@@ -83,7 +85,7 @@ public abstract class AbstractLayeredImageView extends AbstractView<JScrollPane>
     public void flush() {
         for (ImageLayerViewer layerView : layerViews.values()) {
             if (!layerView.hasParentLayer())
-            layerView.flush();
+                layerView.flush();
         }
     }
 
@@ -104,8 +106,16 @@ public abstract class AbstractLayeredImageView extends AbstractView<JScrollPane>
 
     @Override
     public void switchLayerVisible(String layerName) {
-        ImageLayerViewer imageLayer = layerViews.get(layerName);
-        imageLayer.setVisible(!imageLayer.isVisible());
+        ImageLayerViewer layer = layerViews.get(layerName);
+        layer.switchVisible();
+        layer.updateLayer();
+        if (layer.isSharingGlobalImage())
+            for (ImageLayerViewer layerView : sortedLayerViews) {
+                if (layer.equals(layerView.getParentLayer())) {
+                    layerView.updateLayer();
+                    break;
+                }
+            }
     }
 
     @Override
