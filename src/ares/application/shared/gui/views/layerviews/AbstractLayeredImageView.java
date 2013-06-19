@@ -47,6 +47,7 @@ public abstract class AbstractLayeredImageView extends AbstractView<JScrollPane>
         scrollPane.setBackground(Color.BLACK);
         scrollPane.setVisible(true);
         scrollPane.setOpaque(true);
+        scrollPane.setAutoscrolls(true);
         return scrollPane;
     }
 
