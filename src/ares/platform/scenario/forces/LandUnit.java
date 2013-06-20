@@ -119,11 +119,11 @@ public final class LandUnit extends SurfaceUnit {
             }
         }
         transportNeeds = numSlow + numStatic;
-        if (type.getCapabilities().contains(Capability.COASTAL_DEFENSE)) {
+        if (unitType.getCapabilities().contains(Capability.COASTAL_DEFENSE)) {
             movement = MovementType.FIXED;
             speed = 0;
         } else if (movement == null) {
-            if (type.getCapabilities().contains(Capability.AMPHIBIOUS)) {
+            if (unitType.getCapabilities().contains(Capability.AMPHIBIOUS)) {
                 movement = MovementType.AMPHIBIOUS;
                 speed = Math.min(transportSpeed, nonTransportSpeed);
             } else if (transportNeeds == 0) {

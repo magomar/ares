@@ -28,10 +28,6 @@ public final class AresPlayerGUI extends AbstractView<JFrame> implements PlayerV
     private static final int OOB_VIEW_WIDTH = 200;
     private static final int MINIMAP_VIEW_HEIGHT = 150;
     private static final int MESSAGES_WIEW_HEIGHT = 150;
-    private JSplitPane splitHoriz;
-    private JSplitPane splitVert;
-    private JSplitPane splitHoriz2;
-    private JSplitPane splitVert2;
     private JPanel cards;
     private MainMenuView mainMenuView;
     private MenuBarView menuView;
@@ -81,11 +77,11 @@ public final class AresPlayerGUI extends AbstractView<JFrame> implements PlayerV
         miniMapView.setPreferredSize(getMiniMapPaneDimension());
         messagesView.setPreferredSize(getMessagesPaneDimension(preferredSize));
 
-        splitVert = ComponentFactory.verticalSplitPane(true, boardView.getContentPane(), messagesView.getContentPane(), 1);
-        splitVert2 = ComponentFactory.verticalSplitPane(true, miniMapView.getContentPane(), oobView.getContentPane(), 0);
-        splitHoriz = ComponentFactory.horizontalSplitPane(true, infoView.getContentPane(), splitVert, 0);
+        JSplitPane splitVert = ComponentFactory.verticalSplitPane(true, boardView.getContentPane(), messagesView.getContentPane(), 1);
+        JSplitPane splitVert2 = ComponentFactory.verticalSplitPane(true, miniMapView.getContentPane(), oobView.getContentPane(), 0);
+        JSplitPane splitHoriz = ComponentFactory.horizontalSplitPane(true, infoView.getContentPane(), splitVert, 0);
         splitHoriz.setEnabled(false);
-        splitHoriz2 = ComponentFactory.horizontalSplitPane(true, splitHoriz, splitVert2, 1);
+        JSplitPane splitHoriz2 = ComponentFactory.horizontalSplitPane(true, splitHoriz, splitVert2, 1);
 
 
         cards = new JPanel(new CardLayout());

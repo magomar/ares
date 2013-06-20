@@ -144,8 +144,8 @@ public class AStar extends AbstractPathfinder {
 
     class OpenSet {
 
-        Queue<Node> list;
-        Map<Integer, Node> map;
+        final Queue<Node> list;
+        final Map<Integer, Node> map;
 
         OpenSet() {
             list = new PriorityQueue<>();

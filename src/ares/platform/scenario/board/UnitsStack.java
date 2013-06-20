@@ -18,16 +18,16 @@ public class UnitsStack {
     /**
      * Surface (Land and Naval) Units found in this location.
      */
-    private Collection<SurfaceUnit> surfaceUnits;
+    private final Collection<SurfaceUnit> surfaceUnits;
     /**
      * Air Units found in this location.
      */
-    private Collection<AirUnit> airUnits;
+    private final Collection<AirUnit> airUnits;
     /**
      * All units in the location. This uses a Ring, a circular linked list which allows cycling over all the units. This
      * is used by the GUI. We need this structure to remember the currently visible unit across turns.
      */
-    private Ring<Unit> allUnits;
+    private final Ring<Unit> allUnits;
 
     public UnitsStack(Tile location) {
         surfaceUnits = new ArrayList<>();

@@ -6,7 +6,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Java class for Calendar complex type.
+ * <p>Java class for Calendar complex unitType.
  * <p/>
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p/>
@@ -15,11 +15,11 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="TurnLength" type="{ares}TurnLength"/>
- *         &lt;element name="StartQuarterDay" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="StartDate" type="{http://www.w3.org/2001/XMLSchema}date"/>
- *         &lt;element name="CurrentTurn" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="FinalTurn" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="TurnLength" unitType="{ares}TurnLength"/>
+ *         &lt;element name="StartQuarterDay" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="StartDate" unitType="{http://www.w3.org/2001/XMLSchema}date"/>
+ *         &lt;element name="CurrentTurn" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="FinalTurn" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>

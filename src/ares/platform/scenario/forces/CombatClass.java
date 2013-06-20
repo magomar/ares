@@ -42,7 +42,7 @@ public enum CombatClass {
 //        headquarters = new ArrayList<>();
 //        otherUnits = new ArrayList<>();
 //        for (Unit unit : formation.getActiveUnits()) {
-//            switch (unit.getType().getCombatClass()) {
+//            switch (unit.getUnitType().getCombatClass()) {
 //                case LINE:
 //                    lineUnits.add(unit);
 //                    break;
@@ -59,6 +59,6 @@ public enum CombatClass {
 //                    serviceUnits.add(unit);
 //                    break;
 //                default:
-//                    Logger.getLogger(OperationalPlan.class.getName()).log(Level.SEVERE, "Formation " + formation + "has unit of OTHER type: ", unit);
+//                    Logger.getLogger(OperationalPlan.class.getName()).log(Level.SEVERE, "Formation " + formation + "has unit of OTHER unitType: ", unit);
 //            }
 //        }

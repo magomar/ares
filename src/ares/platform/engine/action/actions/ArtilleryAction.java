@@ -10,7 +10,7 @@ import ares.platform.scenario.forces.Unit;
  */
 public class ArtilleryAction extends AbstractAction {
 
-    private Tile target;
+    private final Tile target;
 
     public ArtilleryAction(Unit unit, int start, ActionType type, int duration, Tile target) {
         super(unit, start, type, duration);

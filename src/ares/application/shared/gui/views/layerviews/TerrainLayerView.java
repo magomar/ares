@@ -52,6 +52,7 @@ public class TerrainLayerView extends AbstractImageLayerView implements TerrainL
     /**
      * Paints the terrain of a single tile
      *
+     * @param g2
      * @param tile
      */
     private void paintTile(Graphics2D g2, TileModel tile) {

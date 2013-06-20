@@ -68,7 +68,7 @@ public final class PlayerBoardController extends BoardController implements Boar
     private InteractionMode interactionMode = InteractionMode.FREE;
     private final MiniMapController miniMapController;
     private final PlayerBoardInteractor interactor;
-    private ChangeListener changeViewportListener;
+    private final ChangeListener changeViewportListener;
     private boolean dragging = false;
 
     public PlayerBoardController(final PlayerBoardInteractor interactor, RealTimeEngine engine) {

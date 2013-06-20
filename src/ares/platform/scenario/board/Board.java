@@ -30,9 +30,9 @@ public final class Board implements ModelProvider<BoardModel> {
     /**
      * All the tiles of map, represented as a bidimensional array of size width * height
      */
-    private Tile[][] map;
+    private final Tile[][] map;
     private Map<UserRole, BoardModel> models;
-    private List<Place> places;
+    private final List<Place> places;
 
     public Board(ares.data.wrappers.scenario.Scenario scenario) {
         ares.data.wrappers.scenario.Map sourceMap = scenario.getMap();
@@ -63,14 +63,16 @@ public final class Board implements ModelProvider<BoardModel> {
     }
 
     /**
-     * @param from
-     * @param dir
-     * @return neighbor tile in a given dir
+     * Gets the tile that is adjacent to (neighbor of) the given {@code tile}, in the given {@code direction}
+     *
+     * @param tile
+     * @param direction
+     * @return
      */
-    public Tile getNeighbor(Tile from, Direction dir) {
-        Point coord = from.getCoordinates();
-        int x = coord.x + dir.getIncColumn();
-        int y = coord.y + (coord.x % 2 == 0 ? dir.getIncRowEven() : dir.getIncRowOdd());
+    public Tile getNeighbor(Tile tile, Direction direction) {
+        Point coord = tile.getCoordinates();
+        int x = coord.x + direction.getIncColumn();
+        int y = coord.y + (coord.x % 2 == 0 ? direction.getIncRowEven() : direction.getIncRowOdd());
         if (x >= 0 && x < width && y >= 0 && y < height) {
             return map[x][y];
         } else {
@@ -79,12 +81,14 @@ public final class Board implements ModelProvider<BoardModel> {
     }
 
     /**
-     * @param from
-     * @return a list of all adjacent neighbors
+     * Gets all the tiles that are adjacent to (neighbor of) the given {@code tile}
+     *
+     * @param tile
+     * @return all neighbors of the {@code tile} tile
      */
-    public Map<Direction, Tile> getNeighbors(Tile from) {
+    public Map<Direction, Tile> getNeighbors(Tile tile) {
         Map<Direction, Tile> neighbors = new EnumMap<>(Direction.class);
-        Point coord = from.getCoordinates();
+        Point coord = tile.getCoordinates();
         for (Direction dir : Direction.DIRECTIONS) {
             int x = coord.x + dir.getIncColumn();
             int y = coord.y + (coord.x % 2 == 0 ? dir.getIncRowEven() : dir.getIncRowOdd());
@@ -96,11 +100,11 @@ public final class Board implements ModelProvider<BoardModel> {
     }
 
     /**
-     * Direction between to neighbor tiles
+     * Get the direction between two neighbor tiles
      *
      * @param from
      * @param to
-     * @return
+     * @return the direction
      */
     public static Direction getDirBetween(Tile from, Tile to) {
         int incX = to.getCoordinates().x - from.getCoordinates().x;
@@ -121,22 +125,48 @@ public final class Board implements ModelProvider<BoardModel> {
         return null;
     }
 
+    /**
+     * Gets the height of this board in tiles (number of rows)
+     *
+     * @return the number of rows
+     */
     public int getHeight() {
         return height;
     }
 
-    public Tile[][] getMap() {
-        return map;
-    }
-
-    public Tile getTile(int x, int y) {
-        return map[x][y];
-    }
-
+    /**
+     * Gets the width of this board in tiles (number of columns)
+     *
+     * @return the number of columns
+     */
     public int getWidth() {
         return width;
     }
 
+    /**
+     * Gets the entire map as an array of tiles
+     *
+     * @return
+     */
+    public Tile[][] getMap() {
+        return map;
+    }
+
+    /**
+     * Gets the tile in a particular location identified by its column and row
+     *
+     * @param x the column
+     * @param y the row
+     * @return
+     */
+    public Tile getTile(int x, int y) {
+        return map[x][y];
+    }
+
+    /**
+     * Gets all the places in the map
+     * @return
+     */
     public List<Place> getPlaces() {
         return places;
     }

@@ -7,7 +7,7 @@ import java.util.List;
 
 
 /**
- * <p>Java class for ForceVariables complex type.
+ * <p>Java class for ForceVariables complex unitType.
  * <p/>
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p/>
@@ -21,50 +21,50 @@ import java.util.List;
  *             &lt;complexContent>
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *                 &lt;sequence>
- *                   &lt;element name="microUnitIcon" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                   &lt;element name="iconTints" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                   &lt;element name="chemicalsUsed" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                   &lt;element name="chemicalsAvailable" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                   &lt;element name="nukesUsed" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                   &lt;element name="nukesAvailableInitial" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                   &lt;element name="nukesAvailableCurrent" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                   &lt;element name="globalRecce" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                   &lt;element name="globalGuerillas" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                   &lt;element name="globalRailcapInitial" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                   &lt;element name="globalRailcapCurrent" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                   &lt;element name="globalRailcapLast" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                   &lt;element name="globalAircapInitial" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                   &lt;element name="globalAircapCurrent" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                   &lt;element name="globalAircapLast" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                   &lt;element name="globalSeacapInitial" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                   &lt;element name="globalSeacapCurrent" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                   &lt;element name="globalSeacapLast" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                   &lt;element name="newReinforcements" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                   &lt;element name="interdiction" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                   &lt;element name="victoryModifications" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                   &lt;element name="globalHandicap" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                   &lt;element name="globalRailRepair" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                   &lt;element name="globalRailDestruction" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                   &lt;element name="reconstitutionPointX" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                   &lt;element name="reconstitutionPointY" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                   &lt;element name="reconstitutionPointValue" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                   &lt;element name="roadSupplyRadius" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                   &lt;element name="globalAirHandicap" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                   &lt;element name="forceNBCReadiness" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                   &lt;element name="forcePGWMultiplier" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                   &lt;element name="forceElectronicSupport" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                   &lt;element name="forceAirRefuel" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                   &lt;element name="forceNightProficiency" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                   &lt;element name="externalPOBias" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                   &lt;element name="currentTrack" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                   &lt;element name="forceMoveBias" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                   &lt;element name="forcePestilence" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                   &lt;element name="forceCommunication" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                   &lt;element name="forceLossIntolerance" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                   &lt;element name="ZOCCost" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                   &lt;element name="recentAirLosses" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="microUnitIcon" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="iconTints" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="chemicalsUsed" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="chemicalsAvailable" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="nukesUsed" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="nukesAvailableInitial" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="nukesAvailableCurrent" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="globalRecce" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="globalGuerillas" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="globalRailcapInitial" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="globalRailcapCurrent" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="globalRailcapLast" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="globalAircapInitial" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="globalAircapCurrent" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="globalAircapLast" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="globalSeacapInitial" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="globalSeacapCurrent" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="globalSeacapLast" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="newReinforcements" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="interdiction" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="victoryModifications" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="globalHandicap" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="globalRailRepair" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="globalRailDestruction" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="reconstitutionPointX" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="reconstitutionPointY" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="reconstitutionPointValue" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="roadSupplyRadius" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="globalAirHandicap" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="forceNBCReadiness" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="forcePGWMultiplier" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="forceElectronicSupport" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="forceAirRefuel" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="forceNightProficiency" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="externalPOBias" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="currentTrack" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="forceMoveBias" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="forcePestilence" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="forceCommunication" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="forceLossIntolerance" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="ZOCCost" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="recentAirLosses" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
  *                 &lt;/sequence>
- *                 &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
+ *                 &lt;attribute name="id" use="required" unitType="{http://www.w3.org/2001/XMLSchema}int" />
  *               &lt;/restriction>
  *             &lt;/complexContent>
  *           &lt;/complexType>
@@ -101,7 +101,7 @@ public class ForceVariables {
      * <p/>
      * <p/>
      * <p/>
-     * Objects of the following type(s) are allowed in the list
+     * Objects of the following unitType(s) are allowed in the list
      * {@link ForceVariables.Force }
      */
     public List<ForceVariables.Force> getForce() {
@@ -113,7 +113,7 @@ public class ForceVariables {
 
 
     /**
-     * <p>Java class for anonymous complex type.
+     * <p>Java class for anonymous complex unitType.
      * <p/>
      * <p>The following schema fragment specifies the expected content contained within this class.
      * <p/>
@@ -122,50 +122,50 @@ public class ForceVariables {
      *   &lt;complexContent>
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
      *       &lt;sequence>
-     *         &lt;element name="microUnitIcon" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *         &lt;element name="iconTints" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *         &lt;element name="chemicalsUsed" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *         &lt;element name="chemicalsAvailable" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *         &lt;element name="nukesUsed" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *         &lt;element name="nukesAvailableInitial" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *         &lt;element name="nukesAvailableCurrent" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *         &lt;element name="globalRecce" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *         &lt;element name="globalGuerillas" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *         &lt;element name="globalRailcapInitial" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *         &lt;element name="globalRailcapCurrent" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *         &lt;element name="globalRailcapLast" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *         &lt;element name="globalAircapInitial" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *         &lt;element name="globalAircapCurrent" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *         &lt;element name="globalAircapLast" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *         &lt;element name="globalSeacapInitial" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *         &lt;element name="globalSeacapCurrent" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *         &lt;element name="globalSeacapLast" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *         &lt;element name="newReinforcements" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *         &lt;element name="interdiction" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *         &lt;element name="victoryModifications" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *         &lt;element name="globalHandicap" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *         &lt;element name="globalRailRepair" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *         &lt;element name="globalRailDestruction" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *         &lt;element name="reconstitutionPointX" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *         &lt;element name="reconstitutionPointY" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *         &lt;element name="reconstitutionPointValue" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *         &lt;element name="roadSupplyRadius" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *         &lt;element name="globalAirHandicap" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *         &lt;element name="forceNBCReadiness" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *         &lt;element name="forcePGWMultiplier" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *         &lt;element name="forceElectronicSupport" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *         &lt;element name="forceAirRefuel" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *         &lt;element name="forceNightProficiency" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *         &lt;element name="externalPOBias" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *         &lt;element name="currentTrack" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *         &lt;element name="forceMoveBias" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *         &lt;element name="forcePestilence" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *         &lt;element name="forceCommunication" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *         &lt;element name="forceLossIntolerance" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *         &lt;element name="ZOCCost" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *         &lt;element name="recentAirLosses" type="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="microUnitIcon" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="iconTints" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="chemicalsUsed" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="chemicalsAvailable" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="nukesUsed" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="nukesAvailableInitial" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="nukesAvailableCurrent" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="globalRecce" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="globalGuerillas" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="globalRailcapInitial" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="globalRailcapCurrent" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="globalRailcapLast" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="globalAircapInitial" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="globalAircapCurrent" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="globalAircapLast" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="globalSeacapInitial" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="globalSeacapCurrent" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="globalSeacapLast" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="newReinforcements" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="interdiction" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="victoryModifications" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="globalHandicap" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="globalRailRepair" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="globalRailDestruction" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="reconstitutionPointX" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="reconstitutionPointY" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="reconstitutionPointValue" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="roadSupplyRadius" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="globalAirHandicap" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="forceNBCReadiness" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="forcePGWMultiplier" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="forceElectronicSupport" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="forceAirRefuel" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="forceNightProficiency" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="externalPOBias" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="currentTrack" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="forceMoveBias" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="forcePestilence" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="forceCommunication" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="forceLossIntolerance" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="ZOCCost" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="recentAirLosses" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
      *       &lt;/sequence>
-     *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
+     *       &lt;attribute name="id" use="required" unitType="{http://www.w3.org/2001/XMLSchema}int" />
      *     &lt;/restriction>
      *   &lt;/complexContent>
      * &lt;/complexType>

@@ -7,7 +7,7 @@ import java.util.List;
 
 
 /**
- * <p>Java class for Formation complex type.
+ * <p>Java class for Formation complex unitType.
  * <p/>
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p/>
@@ -16,18 +16,18 @@ import java.util.List;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Name" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="Echelon" type="{ares}Echelon"/>
- *         &lt;element name="Parent" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="Color" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="Commander" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="Details" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="Proficiency" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="Supply" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="Orders" type="{ares}Orders"/>
- *         &lt;element name="Unit" type="{ares}Unit" maxOccurs="unbounded"/>
+ *         &lt;element name="Name" unitType="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="Echelon" unitType="{ares}Echelon"/>
+ *         &lt;element name="Parent" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="Color" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="Commander" unitType="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="Details" unitType="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="Proficiency" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="Supply" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="Orders" unitType="{ares}Orders"/>
+ *         &lt;element name="Unit" unitType="{ares}Unit" maxOccurs="unbounded"/>
  *       &lt;/sequence>
- *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
+ *       &lt;attribute name="id" use="required" unitType="{http://www.w3.org/2001/XMLSchema}int" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -244,7 +244,7 @@ public class Formation {
      * <p/>
      * <p/>
      * <p/>
-     * Objects of the following type(s) are allowed in the list
+     * Objects of the following unitType(s) are allowed in the list
      * {@link Unit }
      */
     public List<Unit> getUnit() {

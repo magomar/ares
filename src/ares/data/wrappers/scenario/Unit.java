@@ -7,7 +7,7 @@ import java.util.List;
 
 
 /**
- * <p>Java class for Unit complex type.
+ * <p>Java class for Unit complex unitType.
  * <p/>
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p/>
@@ -16,39 +16,39 @@ import java.util.List;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Name" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="Type" type="{ares}UnitType"/>
- *         &lt;element name="IconId" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="Color" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="Size" type="{ares}Echelon"/>
- *         &lt;element name="Experience" type="{ares}Experience"/>
- *         &lt;element name="Proficiency" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="Readiness" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="Supply" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="X" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="Y" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="Emphasis" type="{ares}Emphasis"/>
- *         &lt;element name="Availability" type="{ares}Availability"/>
- *         &lt;element name="OpState" type="{ares}OpState"/>
- *         &lt;element name="ReplacementPriority" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="Entry" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
- *         &lt;element name="Parent" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="Name" unitType="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="Type" unitType="{ares}UnitType"/>
+ *         &lt;element name="IconId" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="Color" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="Size" unitType="{ares}Echelon"/>
+ *         &lt;element name="Experience" unitType="{ares}Experience"/>
+ *         &lt;element name="Proficiency" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="Readiness" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="Supply" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="X" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="Y" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="Emphasis" unitType="{ares}Emphasis"/>
+ *         &lt;element name="Availability" unitType="{ares}Availability"/>
+ *         &lt;element name="OpState" unitType="{ares}OpState"/>
+ *         &lt;element name="ReplacementPriority" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="Entry" unitType="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="Parent" unitType="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="Equipment" maxOccurs="unbounded">
  *           &lt;complexType>
  *             &lt;complexContent>
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *                 &lt;sequence>
- *                   &lt;element name="Name" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *                   &lt;element name="Number" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                   &lt;element name="Max" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="Name" unitType="{http://www.w3.org/2001/XMLSchema}string"/>
+ *                   &lt;element name="Number" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="Max" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
  *                 &lt;/sequence>
- *                 &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
+ *                 &lt;attribute name="id" use="required" unitType="{http://www.w3.org/2001/XMLSchema}int" />
  *               &lt;/restriction>
  *             &lt;/complexContent>
  *           &lt;/complexType>
  *         &lt;/element>
  *       &lt;/sequence>
- *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
+ *       &lt;attribute name="id" use="required" unitType="{http://www.w3.org/2001/XMLSchema}int" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -137,7 +137,7 @@ public class Unit {
     }
 
     /**
-     * Gets the value of the type property.
+     * Gets the value of the unitType property.
      *
      * @return possible object is
      *         {@link UnitType }
@@ -147,7 +147,7 @@ public class Unit {
     }
 
     /**
-     * Sets the value of the type property.
+     * Sets the value of the unitType property.
      *
      * @param value allowed object is
      *              {@link UnitType }
@@ -425,7 +425,7 @@ public class Unit {
      * <p/>
      * <p/>
      * <p/>
-     * Objects of the following type(s) are allowed in the list
+     * Objects of the following unitType(s) are allowed in the list
      * {@link Unit.Equipment }
      */
     public List<Unit.Equipment> getEquipment() {
@@ -451,7 +451,7 @@ public class Unit {
 
 
     /**
-     * <p>Java class for anonymous complex type.
+     * <p>Java class for anonymous complex unitType.
      * <p/>
      * <p>The following schema fragment specifies the expected content contained within this class.
      * <p/>
@@ -460,11 +460,11 @@ public class Unit {
      *   &lt;complexContent>
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
      *       &lt;sequence>
-     *         &lt;element name="Name" type="{http://www.w3.org/2001/XMLSchema}string"/>
-     *         &lt;element name="Number" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *         &lt;element name="Max" type="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="Name" unitType="{http://www.w3.org/2001/XMLSchema}string"/>
+     *         &lt;element name="Number" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="Max" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
      *       &lt;/sequence>
-     *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
+     *       &lt;attribute name="id" use="required" unitType="{http://www.w3.org/2001/XMLSchema}int" />
      *     &lt;/restriction>
      *   &lt;/complexContent>
      * &lt;/complexType>

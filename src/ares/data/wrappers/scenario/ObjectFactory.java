@@ -15,7 +15,7 @@ import javax.xml.bind.annotation.XmlRegistry;
  * for XML content. The Java representation of XML
  * content can consist of schema derived interfaces
  * and classes representing the binding of schema
- * type definitions, element declarations and model
+ * unitType definitions, element declarations and model
  * groups.  Factory methods for each of these are
  * provided in this class.
  */
@@ -177,7 +177,7 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ares.data.jaxb.Force }
+     * Create an instance of {@link Force }
      */
     public ares.data.wrappers.scenario.Force createForce() {
         return new ares.data.wrappers.scenario.Force();

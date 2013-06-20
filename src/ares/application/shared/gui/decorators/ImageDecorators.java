@@ -143,7 +143,7 @@ public class ImageDecorators {
         //+90% : 10px, +50% : 5px, 2px otherwise
 //        int diff = (s > 90 ? 10 : (s > 50 ? 5 : 2));
 //        int length = (int) (0.25 * barSize.height + 0.0075 * barSize.height * stamina);
-        int length = (int) barSize.height * stamina / 100;
+        int length = barSize.height * stamina / 100;
 //        g2.fillRect(26, 20 - diff, 2, diff);
         g2.setColor(Color.GREEN);
         g2.fillRect(rightBarPos.x, rightBarPos.y, barSize.width, length);
@@ -175,11 +175,15 @@ public class ImageDecorators {
 //    }
 
     /**
-     * Converts a percentage into a color using a scale between two pure RGB colors
+     * Converts a percentage into a color using a scale between two pure RGB colors, identified as follows:
+     * Red = 0
+     * Green = 1
+     * Blue = 2
      *
-     * @param percentage
-     * @param component
-     * @return
+     * @param percentage    indicating the color level between the top and bottom colors
+     * @param bottomRGBComponent  an int between 0 and 2 identifying the bottom color (R, G or B)
+     * @param topRGBComponent     an int between 0 and 2 identifying the top color (R, G or B)
+     * @return a color between bottom and top colors, correspoding to the {@code percentage} parameter
      * @see java.awt.color.ICC_ProfileRGB
      */
     private Color colorLevel(int percentage, int bottomRGBComponent, int topRGBComponent) {

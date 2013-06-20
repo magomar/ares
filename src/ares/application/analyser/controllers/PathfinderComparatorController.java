@@ -255,8 +255,8 @@ public class PathfinderComparatorController implements ActionController {
 
     private class ChangePathfinderActionListener implements ActionListener {
 
-        private ComboBoxModel<Heuristic> heuristicComboModel;
-        private ComboBoxModel<CostFunction> costFunctionComboModel;
+        private final ComboBoxModel<Heuristic> heuristicComboModel;
+        private final ComboBoxModel<CostFunction> costFunctionComboModel;
 
         public ChangePathfinderActionListener(ComboBoxModel<Heuristic> heuristicComboModel, ComboBoxModel<CostFunction> costFunctionComboModel) {
             this.heuristicComboModel = heuristicComboModel;

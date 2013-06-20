@@ -5,9 +5,9 @@ package ares.platform.scenario.assets;
  */
 public final class Asset {
 
-    private int number;
-    private int max;
-    private AssetType type;
+    private final int number;
+    private final int max;
+    private final AssetType type;
 
     public Asset(ares.data.wrappers.scenario.Unit.Equipment e, AssetTypes assetTypes) {
         type = assetTypes.getAssetType(e.getName());

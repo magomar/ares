@@ -94,7 +94,6 @@ public enum Directions {
      * <b>"N NE" -> 000011
      * <b>"S SE" -> 001100
      *
-     * @param directions
      * @return
      */
     public int getBitmask() {

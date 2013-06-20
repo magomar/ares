@@ -7,7 +7,7 @@ import java.awt.*;
  * Author: Mario Gómez Martínez <magomar@gmail.com>
  */
 public class TransparentButton extends JButton {
-    private float alpha;
+    private final float alpha;
 
     public TransparentButton(Action action, float alpha) {
         super(action);

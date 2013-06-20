@@ -21,7 +21,7 @@ public class DetectedUnitModel extends UnitModel {
     }
 
     public UnitType getUnitType() {
-        return unit.getType();
+        return unit.getUnitType();
     }
 
     @Override
@@ -56,7 +56,7 @@ public class DetectedUnitModel extends UnitModel {
 
     @Override
     public String getDescription() {
-        return unit.getType().name();
+        return unit.getUnitType().name();
     }
 
     @Override

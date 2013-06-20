@@ -22,7 +22,7 @@ import javax.swing.*;
  * </code> class, this object does not spawn its own thread. Instead, it must be passed to a program-created thread, or
  * better, a threadpool. <p> To use, subclass and pass an instance to your operation thread. <p> You must implement at
  * least the {@link #performOperation} method, which is executed on the operation thread. This method may return a
- * single object, or throw any exception type. Depending on how it completes (return/throw), one of
+ * single object, or throw any exception unitType. Depending on how it completes (return/throw), one of
  * {@link #onSuccess}, {@link #onFailure} will then be executed on the event thread.
  */
 public abstract class AsynchronousOperation<T>
@@ -53,7 +53,7 @@ public abstract class AsynchronousOperation<T>
     /**
      * The concrete class implements this method, which is executed on the non-event thread. It is permitted to return a
      * value that is then passed to the code running on the event thread. It is also permitted to throw any exception
-     * type.
+     * unitType.
      */
     protected abstract T performOperation()
             throws Exception;

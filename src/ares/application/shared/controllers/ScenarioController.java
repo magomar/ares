@@ -59,11 +59,7 @@ public final class ScenarioController implements ActionController {
      */
     private final boolean roleBasedModels;
 
-    /**
-     * @param interactor
-     * @param roleBasedModels
-     * @see UserRole
-     */
+
     public ScenarioController(ScenarioInteractor interactor, boolean roleBasedModels) {
         this.interactor = interactor;
         this.roleBasedModels = roleBasedModels;

@@ -14,7 +14,7 @@ import java.util.NoSuchElementException;
  */
 public final class ObservedTileModel extends NonObservedTileModel {
 
-    private UnitsStack stack;
+    private final UnitsStack stack;
 
     public ObservedTileModel(Tile tile, KnowledgeCategory kLevel) {
         super(tile, kLevel);

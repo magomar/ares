@@ -31,9 +31,9 @@ public final class RealTimeEngineController implements ActionController, Propert
     // Entities (bussines logic), they interact with the model providers and provide models to the views
     private final RealTimeEngine engine;
     private final EngineInteractor interactor;
-    private Action pause = new CommandAction(EngineCommands.ENGINE_PAUSE, new PauseActionListener(), false);
-    private Action turn = new CommandAction(EngineCommands.ENGINE_NEXT_TURN, new NextTurnActionListener());
-    private Action step = new CommandAction(EngineCommands.ENGINE_NEXT_STEP, new NextStepActionListener());
+    private final Action pause = new CommandAction(EngineCommands.ENGINE_PAUSE, new PauseActionListener(), false);
+    private final Action turn = new CommandAction(EngineCommands.ENGINE_NEXT_TURN, new NextTurnActionListener());
+    private final Action step = new CommandAction(EngineCommands.ENGINE_NEXT_STEP, new NextStepActionListener());
     private final ActionGroup actions;
 
     public RealTimeEngineController(EngineInteractor interactor) {

@@ -23,9 +23,9 @@ public class KnowledgeLevel implements Comparable {
 
     /**
      * Modifies the knowledge level. Depending on the sign of the modifier it can either increase or decrease the level
-     * of knowledge, both quantitatively (#knowledge) and qualitatively (#type)
+     * of knowledge, both quantitatively (#knowledge) and qualitatively (#unitType)
      *
-     * @param modifier
+     * @param modifier    amount of modification to apply
      */
     public void modify(double modifier) {
         value += modifier;
@@ -38,10 +38,18 @@ public class KnowledgeLevel implements Comparable {
         }
     }
 
+    /**
+     *
+     * @return the precise value of the knowledge level
+     */
     public double getValue() {
         return value;
     }
 
+    /**
+     *
+     * @return the category associated to the current value of the knowledge level
+     */
     public KnowledgeCategory getCategory() {
         return category;
     }

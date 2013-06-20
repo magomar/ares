@@ -7,7 +7,7 @@ import java.util.List;
 
 
 /**
- * <p>Java class for Replacements complex type.
+ * <p>Java class for Replacements complex unitType.
  * <p/>
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p/>
@@ -26,19 +26,19 @@ import java.util.List;
  *                       &lt;complexContent>
  *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *                           &lt;sequence>
- *                             &lt;element name="Available" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                             &lt;element name="Rate" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                             &lt;element name="Start" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                             &lt;element name="End" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                             &lt;element name="Inventory" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                             &lt;element name="Available" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                             &lt;element name="Rate" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                             &lt;element name="Start" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                             &lt;element name="End" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                             &lt;element name="Inventory" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
  *                           &lt;/sequence>
- *                           &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
+ *                           &lt;attribute name="id" use="required" unitType="{http://www.w3.org/2001/XMLSchema}int" />
  *                         &lt;/restriction>
  *                       &lt;/complexContent>
  *                     &lt;/complexType>
  *                   &lt;/element>
  *                 &lt;/sequence>
- *                 &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
+ *                 &lt;attribute name="id" use="required" unitType="{http://www.w3.org/2001/XMLSchema}int" />
  *               &lt;/restriction>
  *             &lt;/complexContent>
  *           &lt;/complexType>
@@ -75,7 +75,7 @@ public class Replacements {
      * <p/>
      * <p/>
      * <p/>
-     * Objects of the following type(s) are allowed in the list
+     * Objects of the following unitType(s) are allowed in the list
      * {@link Replacements.Force }
      */
     public List<Replacements.Force> getForce() {
@@ -87,7 +87,7 @@ public class Replacements {
 
 
     /**
-     * <p>Java class for anonymous complex type.
+     * <p>Java class for anonymous complex unitType.
      * <p/>
      * <p>The following schema fragment specifies the expected content contained within this class.
      * <p/>
@@ -101,19 +101,19 @@ public class Replacements {
      *             &lt;complexContent>
      *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
      *                 &lt;sequence>
-     *                   &lt;element name="Available" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *                   &lt;element name="Rate" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *                   &lt;element name="Start" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *                   &lt;element name="End" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *                   &lt;element name="Inventory" type="{http://www.w3.org/2001/XMLSchema}int"/>
+     *                   &lt;element name="Available" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *                   &lt;element name="Rate" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *                   &lt;element name="Start" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *                   &lt;element name="End" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *                   &lt;element name="Inventory" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
      *                 &lt;/sequence>
-     *                 &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
+     *                 &lt;attribute name="id" use="required" unitType="{http://www.w3.org/2001/XMLSchema}int" />
      *               &lt;/restriction>
      *             &lt;/complexContent>
      *           &lt;/complexType>
      *         &lt;/element>
      *       &lt;/sequence>
-     *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
+     *       &lt;attribute name="id" use="required" unitType="{http://www.w3.org/2001/XMLSchema}int" />
      *     &lt;/restriction>
      *   &lt;/complexContent>
      * &lt;/complexType>
@@ -147,7 +147,7 @@ public class Replacements {
          * <p/>
          * <p/>
          * <p/>
-         * Objects of the following type(s) are allowed in the list
+         * Objects of the following unitType(s) are allowed in the list
          * {@link Replacements.Force.Node }
          */
         public List<Replacements.Force.Node> getNode() {
@@ -173,7 +173,7 @@ public class Replacements {
 
 
         /**
-         * <p>Java class for anonymous complex type.
+         * <p>Java class for anonymous complex unitType.
          * <p/>
          * <p>The following schema fragment specifies the expected content contained within this class.
          * <p/>
@@ -182,13 +182,13 @@ public class Replacements {
          *   &lt;complexContent>
          *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
          *       &lt;sequence>
-         *         &lt;element name="Available" type="{http://www.w3.org/2001/XMLSchema}int"/>
-         *         &lt;element name="Rate" type="{http://www.w3.org/2001/XMLSchema}int"/>
-         *         &lt;element name="Start" type="{http://www.w3.org/2001/XMLSchema}int"/>
-         *         &lt;element name="End" type="{http://www.w3.org/2001/XMLSchema}int"/>
-         *         &lt;element name="Inventory" type="{http://www.w3.org/2001/XMLSchema}int"/>
+         *         &lt;element name="Available" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+         *         &lt;element name="Rate" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+         *         &lt;element name="Start" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+         *         &lt;element name="End" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+         *         &lt;element name="Inventory" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
          *       &lt;/sequence>
-         *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
+         *       &lt;attribute name="id" use="required" unitType="{http://www.w3.org/2001/XMLSchema}int" />
          *     &lt;/restriction>
          *   &lt;/complexContent>
          * &lt;/complexType>

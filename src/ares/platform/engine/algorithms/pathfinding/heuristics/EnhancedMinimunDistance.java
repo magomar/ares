@@ -11,7 +11,7 @@ import java.util.Map;
  */
 public class EnhancedMinimunDistance implements Heuristic {
 
-    private static Map<DistanceCalculator, EnhancedMinimunDistance> instances = new EnumMap<>(DistanceCalculator.class);
+    private static final Map<DistanceCalculator, EnhancedMinimunDistance> instances = new EnumMap<>(DistanceCalculator.class);
 
     public static EnhancedMinimunDistance create(DistanceCalculator distanceCalculator) {
         if (instances.containsKey(distanceCalculator)) {

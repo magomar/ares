@@ -33,7 +33,7 @@ public final class Tile implements ModelProvider<TileModel> {
     /**
      * Terrain features
      */
-    private Set<Feature> features;
+    private final Set<Feature> features;
     /**
      * Entrenchment (fortification) level, expressed as a percentage
      */
@@ -43,11 +43,11 @@ public final class Tile implements ModelProvider<TileModel> {
      * playing area by some Non-playable tiles, which is typically used to represent remote units and facilities which
      * can impact the scenario, for example an airport and some air units or airborne-capable units.
      */
-    private int distance;
+    private final int distance;
     /**
      * Victory points, represented by a positive integer
      */
-    private int victoryPoints;
+    private final int victoryPoints;
     /**
      * Force in possesion of this tile
      */
@@ -57,7 +57,7 @@ public final class Tile implements ModelProvider<TileModel> {
      * {@link Point#y} holds the row (vertical coordinate). The origin of coordinates corresponds to the Top-Left corner
      * of the board.
      */
-    private Point coordinates;
+    private final Point coordinates;
     /**
      * Unique identifier obtained from coordinates: {@code index(x, y) = x * board.width + y}
      */
@@ -69,19 +69,19 @@ public final class Tile implements ModelProvider<TileModel> {
     /*
      * Data structure containing all units in the location.
      */
-    private UnitsStack units;
+    private final UnitsStack units;
     /**
      * Precomputed movement costs to enter the tile from every possible direction.
      */
-    private Map<Direction, MovementCost> enterCost;
+    private final Map<Direction, MovementCost> enterCost;
     /**
-     * Minimun movement cost per each movement type
+     * Minimun movement cost per each movement unitType
      */
     private Map<MovementType, Integer> minExitCost;
     /**
      * Modifiers to combat due to terrain. This modifier applies to the unit defending this location
      */
-    private Map<Direction, CombatModifier> combatModifiers;
+    private final Map<Direction, CombatModifier> combatModifiers;
     /**
      * Neighbor tiles in all valid directions. If there is no neighbor in one direction (which happens at the edges of
      * the board), then there would be no entry for that direction.
@@ -145,9 +145,9 @@ public final class Tile implements ModelProvider<TileModel> {
      * neighbors. It also computes the movement costs induced by the terrain when moving from this tile to another tile,
      * and the combat modifiers for units located in this tile.
      *
-     * @param neighbors
-     * @param owner
-     * @param scenario
+     * @param neighbors the tiles adjacent to this tile
+     * @param owner     the force owning this tile
+     * @param scenario  the scenario
      */
     public void initialize(Map<Direction, Tile> neighbors, Force owner, Scenario scenario) {
         this.owner = owner;
@@ -191,7 +191,7 @@ public final class Tile implements ModelProvider<TileModel> {
     }
 
     public boolean remove(Unit unit) {
-        Set<Capability> capabilities = unit.getType().getCapabilities();
+        Set<Capability> capabilities = unit.getUnitType().getCapabilities();
         if (capabilities.contains(Capability.AIRCRAFT)) {
             return units.removeAirUnit((AirUnit) unit);
         } else {

@@ -7,7 +7,7 @@ import java.util.List;
 
 
 /**
- * <p>Java class for Map complex type.
+ * <p>Java class for Map complex unitType.
  * <p/>
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p/>
@@ -16,12 +16,12 @@ import java.util.List;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="MaxX" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="MaxY" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="Cell" type="{ares}Cell" maxOccurs="unbounded"/>
- *         &lt;element name="Place" type="{ares}Place" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="MaxX" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="MaxY" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="Cell" unitType="{ares}Cell" maxOccurs="unbounded"/>
+ *         &lt;element name="Place" unitType="{ares}Place" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
- *       &lt;attribute name="version" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *       &lt;attribute name="version" unitType="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -92,7 +92,7 @@ public class Map {
      * <p/>
      * <p/>
      * <p/>
-     * Objects of the following type(s) are allowed in the list
+     * Objects of the following unitType(s) are allowed in the list
      * {@link Cell }
      */
     public List<Cell> getCell() {
@@ -119,7 +119,7 @@ public class Map {
      * <p/>
      * <p/>
      * <p/>
-     * Objects of the following type(s) are allowed in the list
+     * Objects of the following unitType(s) are allowed in the list
      * {@link Place }
      */
     public List<Place> getPlace() {
