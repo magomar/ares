@@ -2,22 +2,18 @@ package ares.application.analyser.controllers;
 
 import ares.application.analyser.boundaries.interactors.PathfinderComparatorInteractor;
 import ares.application.analyser.boundaries.viewers.PathfinderComparatorViewer;
+import ares.application.shared.commands.ActionGroup;
+import ares.application.shared.commands.CommandAction;
+import ares.application.shared.commands.CommandGroup;
 import ares.application.shared.boundaries.viewers.BoardViewer;
 import ares.application.shared.boundaries.viewers.PathfinderConfigurationViewer;
-import ares.application.shared.boundaries.viewers.layerviewers.ArrowLayerViewer;
-import ares.application.shared.boundaries.viewers.layerviewers.GridLayerViewer;
-import ares.application.shared.boundaries.viewers.layerviewers.PathSearchLayerViewer;
-import ares.application.shared.boundaries.viewers.layerviewers.TerrainLayerViewer;
-import ares.application.shared.boundaries.viewers.layerviewers.UnitsLayerViewer;
+import ares.application.shared.boundaries.viewers.layerviewers.*;
 import ares.application.shared.commands.AresCommandGroup;
 import ares.application.shared.commands.ViewCommands;
 import ares.application.shared.controllers.ActionController;
 import ares.application.shared.gui.profiles.GraphicsModel;
-import ares.application.shared.models.ScenarioModel;
 import ares.application.shared.gui.views.MessagesHandler;
-import ares.platform.action.ActionGroup;
-import ares.platform.action.CommandAction;
-import ares.platform.action.CommandGroup;
+import ares.application.shared.models.ScenarioModel;
 import ares.platform.engine.algorithms.pathfinding.AStar;
 import ares.platform.engine.algorithms.pathfinding.BeamSearch;
 import ares.platform.engine.algorithms.pathfinding.ExtendedPath;
@@ -29,25 +25,19 @@ import ares.platform.engine.algorithms.pathfinding.heuristics.EnhancedMinimunDis
 import ares.platform.engine.algorithms.pathfinding.heuristics.Heuristic;
 import ares.platform.engine.algorithms.pathfinding.heuristics.MinimunDistance;
 import ares.platform.engine.movement.MovementType;
+import ares.platform.model.UserRole;
 import ares.platform.scenario.Scenario;
 import ares.platform.scenario.board.Tile;
 import ares.platform.scenario.forces.Unit;
 import ares.platform.scenario.forces.UnitFactory;
-import java.awt.Point;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionAdapter;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.Action;
-import javax.swing.ComboBoxModel;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JComboBox;
 
 /**
- *
  * @author Mario Gómez Martínez <magomar@gmail.com>
  */
 public class PathfinderComparatorController implements ActionController {
@@ -102,7 +92,7 @@ public class PathfinderComparatorController implements ActionController {
     public void setScenario(Scenario scenario) {
         this.scenario = scenario;
         testUnit = UnitFactory.createTestUnit(MovementType.MOTORIZED);
-        ScenarioModel scenarioModel = scenario.getModel();
+        ScenarioModel scenarioModel = scenario.getModel(UserRole.GOD);
         initializeBoardView(boardView[LEFT], scenarioModel, GraphicsModel.INSTANCE.getActiveProfile());
         initializeBoardView(boardView[RIGHT], scenarioModel, GraphicsModel.INSTANCE.getActiveProfile());
     }
@@ -228,7 +218,7 @@ public class PathfinderComparatorController implements ActionController {
         @Override
         public void actionPerformed(ActionEvent e) {
             int nextProfile = GraphicsModel.INSTANCE.nextActiveProfile();
-            ScenarioModel scenarioModel = scenario.getModel();
+            ScenarioModel scenarioModel = scenario.getModel(UserRole.GOD);
             initializeBoardView(boardView[LEFT], scenarioModel, nextProfile);
             initializeBoardView(boardView[RIGHT], scenarioModel, nextProfile);
         }
@@ -239,7 +229,7 @@ public class PathfinderComparatorController implements ActionController {
         @Override
         public void actionPerformed(ActionEvent e) {
             int previousProfile = GraphicsModel.INSTANCE.previousActiveProfile();
-            ScenarioModel scenarioModel = scenario.getModel();
+            ScenarioModel scenarioModel = scenario.getModel(UserRole.GOD);
             initializeBoardView(boardView[LEFT], scenarioModel, previousProfile);
             initializeBoardView(boardView[RIGHT], scenarioModel, previousProfile);
         }
@@ -265,8 +255,8 @@ public class PathfinderComparatorController implements ActionController {
 
     private class ChangePathfinderActionListener implements ActionListener {
 
-        private ComboBoxModel<Heuristic> heuristicComboModel;
-        private ComboBoxModel<CostFunction> costFunctionComboModel;
+        private final ComboBoxModel<Heuristic> heuristicComboModel;
+        private final ComboBoxModel<CostFunction> costFunctionComboModel;
 
         public ChangePathfinderActionListener(ComboBoxModel<Heuristic> heuristicComboModel, ComboBoxModel<CostFunction> costFunctionComboModel) {
             this.heuristicComboModel = heuristicComboModel;

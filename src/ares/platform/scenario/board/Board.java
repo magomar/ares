@@ -1,18 +1,20 @@
 package ares.platform.scenario.board;
 
 import ares.application.shared.models.board.BoardModel;
-import ares.data.jaxb.Cell;
+import ares.data.wrappers.scenario.Cell;
+import ares.data.wrappers.scenario.Place;
 import ares.platform.model.ModelProvider;
 import ares.platform.model.UserRole;
 import ares.platform.scenario.Scenario;
 import ares.platform.scenario.forces.Force;
-import java.awt.Point;
+
+import java.awt.*;
 import java.util.EnumMap;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public final class Board implements ModelProvider<BoardModel> {
@@ -28,11 +30,12 @@ public final class Board implements ModelProvider<BoardModel> {
     /**
      * All the tiles of map, represented as a bidimensional array of size width * height
      */
-    private Tile[][] map;
+    private final Tile[][] map;
     private Map<UserRole, BoardModel> models;
+    private final List<Place> places;
 
-    public Board(ares.data.jaxb.Scenario scenario) {
-        ares.data.jaxb.Map sourceMap = scenario.getMap();
+    public Board(ares.data.wrappers.scenario.Scenario scenario) {
+        ares.data.wrappers.scenario.Map sourceMap = scenario.getMap();
         width = sourceMap.getMaxX() + 1;
         height = sourceMap.getMaxY() + 1;
 
@@ -40,12 +43,12 @@ public final class Board implements ModelProvider<BoardModel> {
         for (Cell cell : sourceMap.getCell()) {
             map[cell.getX()][cell.getY()] = new Tile(cell);
         }
-
+        places = sourceMap.getPlace();
     }
 
-    public void initialize(ares.data.jaxb.Scenario scenarioXML, Scenario scenario, Force[] forces) {
+    public void initialize(ares.data.wrappers.scenario.Scenario scenarioXML, Scenario scenario, Force[] forces) {
 
-        ares.data.jaxb.Map sourceMap = scenarioXML.getMap();
+        ares.data.wrappers.scenario.Map sourceMap = scenarioXML.getMap();
         for (Cell cell : sourceMap.getCell()) {
             int x = cell.getX();
             int y = cell.getY();
@@ -60,14 +63,16 @@ public final class Board implements ModelProvider<BoardModel> {
     }
 
     /**
-     * @param from
-     * @param dir
-     * @return neighbor tile in a given dir
+     * Gets the tile that is adjacent to (neighbor of) the given {@code tile}, in the given {@code direction}
+     *
+     * @param tile
+     * @param direction
+     * @return
      */
-    public Tile getNeighbor(Tile from, Direction dir) {
-        Point coord = from.getCoordinates();
-        int x = coord.x + dir.getIncColumn();
-        int y = coord.y + (coord.x % 2 == 0 ? dir.getIncRowEven() : dir.getIncRowOdd());
+    public Tile getNeighbor(Tile tile, Direction direction) {
+        Point coord = tile.getCoordinates();
+        int x = coord.x + direction.getIncColumn();
+        int y = coord.y + (coord.x % 2 == 0 ? direction.getIncRowEven() : direction.getIncRowOdd());
         if (x >= 0 && x < width && y >= 0 && y < height) {
             return map[x][y];
         } else {
@@ -76,13 +81,14 @@ public final class Board implements ModelProvider<BoardModel> {
     }
 
     /**
+     * Gets all the tiles that are adjacent to (neighbor of) the given {@code tile}
      *
-     * @param from
-     * @return a list of all adjacent neighbors
+     * @param tile
+     * @return all neighbors of the {@code tile} tile
      */
-    public Map<Direction, Tile> getNeighbors(Tile from) {
+    public Map<Direction, Tile> getNeighbors(Tile tile) {
         Map<Direction, Tile> neighbors = new EnumMap<>(Direction.class);
-        Point coord = from.getCoordinates();
+        Point coord = tile.getCoordinates();
         for (Direction dir : Direction.DIRECTIONS) {
             int x = coord.x + dir.getIncColumn();
             int y = coord.y + (coord.x % 2 == 0 ? dir.getIncRowEven() : dir.getIncRowOdd());
@@ -94,24 +100,24 @@ public final class Board implements ModelProvider<BoardModel> {
     }
 
     /**
-     * Direction between to neighbor tiles
+     * Get the direction between two neighbor tiles
      *
      * @param from
      * @param to
-     * @return
+     * @return the direction
      */
     public static Direction getDirBetween(Tile from, Tile to) {
         int incX = to.getCoordinates().x - from.getCoordinates().x;
         int incY = to.getCoordinates().y - from.getCoordinates().y;
         if (from.getCoordinates().x % 2 == 0) {
             for (Direction dir : Direction.values()) {
-                if (dir.getIncColumn()== incX && dir.getIncRowEven() == incY) {
+                if (dir.getIncColumn() == incX && dir.getIncRowEven() == incY) {
                     return dir;
                 }
             }
         } else {
             for (Direction dir : Direction.values()) {
-                if (dir.getIncColumn()== incX && dir.getIncRowOdd() == incY) {
+                if (dir.getIncColumn() == incX && dir.getIncRowOdd() == incY) {
                     return dir;
                 }
             }
@@ -119,20 +125,50 @@ public final class Board implements ModelProvider<BoardModel> {
         return null;
     }
 
+    /**
+     * Gets the height of this board in tiles (number of rows)
+     *
+     * @return the number of rows
+     */
     public int getHeight() {
         return height;
     }
 
+    /**
+     * Gets the width of this board in tiles (number of columns)
+     *
+     * @return the number of columns
+     */
+    public int getWidth() {
+        return width;
+    }
+
+    /**
+     * Gets the entire map as an array of tiles
+     *
+     * @return
+     */
     public Tile[][] getMap() {
         return map;
     }
 
+    /**
+     * Gets the tile in a particular location identified by its column and row
+     *
+     * @param x the column
+     * @param y the row
+     * @return
+     */
     public Tile getTile(int x, int y) {
         return map[x][y];
     }
 
-    public int getWidth() {
-        return width;
+    /**
+     * Gets all the places in the map
+     * @return
+     */
+    public List<Place> getPlaces() {
+        return places;
     }
 
     @Override

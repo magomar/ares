@@ -3,13 +3,12 @@ package ares.application.shared.gui.views.layerviews;
 import ares.application.shared.boundaries.viewers.layerviewers.ImageLayerViewer;
 import ares.application.shared.gui.profiles.GraphicsModel;
 import ares.application.shared.gui.views.AbstractView;
+
+import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import javax.swing.JComponent;
-import javax.swing.JViewport;
 
 /**
- *
  * @author Heine <heisncfr@inf.upv.es>
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
@@ -29,13 +28,13 @@ public abstract class AbstractImageLayerView extends AbstractView<JComponent> im
      */
     protected ImageLayerViewer parentLayer;
     /**
+     * Whether this image layer is sharing its global image with other layers
+     */
+    protected boolean sharingGlobalImage;
+    /**
      * Viewport where this layer is placed
      */
     protected JViewport viewport;
-    /**
-     * Layer index of this image layer inside the layered image view.
-     */
-    protected Integer layer;
 
     @Override
     protected JComponent layout() {
@@ -43,7 +42,7 @@ public abstract class AbstractImageLayerView extends AbstractView<JComponent> im
             /**
              * Paints the globalImage if it's not null
              *
-             * @param g graphics object associated to this {@link JComponent}
+             * @param g      graphics of this component
              */
             @Override
             public void paintComponent(Graphics g) {
@@ -57,7 +56,6 @@ public abstract class AbstractImageLayerView extends AbstractView<JComponent> im
                     int visibleImageWidth = Math.min(viewRectangle.width, globalImage.getWidth());
                     int visibleImageHeight = Math.min(viewRectangle.height, globalImage.getHeight());
                     BufferedImage visibleImage = globalImage.getSubimage(viewRectangle.x, viewRectangle.y, visibleImageWidth, visibleImageHeight);
-//                    BufferedImage viewImage = globalImage.getSubimage(rect.x, rect.y, rect.width, rect.height);
                     g2.drawImage(visibleImage, viewRectangle.x, viewRectangle.y, this);
                 }
             }
@@ -66,31 +64,8 @@ public abstract class AbstractImageLayerView extends AbstractView<JComponent> im
     }
 
     /**
-     * the viewport where this image layer is shown
-     *
-     * @param viewport
+     * Initializes the global image of this image layer
      */
-    @Override
-    public ImageLayerViewer setViewport(JViewport viewport) {
-        this.viewport = viewport;
-        return this;
-    }
-
-    @Override
-    public boolean hasParentLayer() {
-        return (parentLayer != null);
-    }
-
-    /**
-     *
-     * @param layer the {@link tImageLayer} this layer shares its {@link #globalImage} with
-     */
-    @Override
-    public ImageLayerViewer setParenLayer(ImageLayerViewer parentLayer) {
-        this.parentLayer = parentLayer;
-        return this;
-    }
-
     @Override
     public final void initialize() {
         if (parentLayer == null) {
@@ -104,9 +79,58 @@ public abstract class AbstractImageLayerView extends AbstractView<JComponent> im
     }
 
     @Override
+    public boolean isSharingGlobalImage() {
+        return sharingGlobalImage;
+    }
+
+    @Override
+    public void setSharingGlobalImage(boolean sharingGlobalImage) {
+        this.sharingGlobalImage = sharingGlobalImage;
+    }
+
+    /**
+     * @param viewport the {@link JViewport} where this image layer is shown through
+     */
+    @Override
+    public ImageLayerViewer setViewport(JViewport viewport) {
+        this.viewport = viewport;
+        return this;
+    }
+
+    @Override
+    public boolean hasParentLayer() {
+        return (parentLayer != null);
+    }
+
+    /**
+     * @param parentLayer the {@link ImageLayerViewer} this layer shares its {@link #globalImage} with
+     */
+    @Override
+    public ImageLayerViewer setParenLayer(ImageLayerViewer parentLayer) {
+        this.parentLayer = parentLayer;
+        parentLayer.setSharingGlobalImage(true);
+        return this;
+    }
+
+    /**
+     * Frees memory resources
+     */
+    @Override
     public final void flush() {
         globalImage.flush();
         globalImage = null;
+    }
+
+    /**
+     * Set the profile and change the size of the {@code #contentPane} accordingly
+     * @param profile
+     */
+    @Override
+    public void setProfile(int profile) {
+        this.profile = profile;
+        Dimension imageSize = new Dimension(GraphicsModel.INSTANCE.getBoardWidth(profile), GraphicsModel.INSTANCE.getBoardHeight(profile));
+        contentPane.setPreferredSize(imageSize);
+        contentPane.setSize(imageSize);
     }
 
     @Override
@@ -117,14 +141,5 @@ public abstract class AbstractImageLayerView extends AbstractView<JComponent> im
     @Override
     public BufferedImage getGlobalImage() {
         return globalImage;
-    }
-
-    @Override
-    public void setProfile(int profile) {
-        this.profile = profile;
-        Dimension imageSize = new Dimension(GraphicsModel.INSTANCE.getBoardWidth(profile), GraphicsModel.INSTANCE.getBoardHeight(profile));
-        contentPane.setPreferredSize(imageSize);
-        contentPane.setSize(imageSize);
-//        contentPane.setBounds(new Rectangle(imageSize));
     }
 }

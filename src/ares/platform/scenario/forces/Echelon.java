@@ -1,11 +1,10 @@
 package ares.platform.scenario.forces;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public enum Echelon {
-    TEAM("    0",0,0),
+    TEAM("    0", 0, 0),
     SQUAD("    .", 0, 0),
     SECTION("  ..", 0, 0),
     PLATOON(" ...", 1, 1),
@@ -40,7 +39,7 @@ public enum Echelon {
      */
     private final double commandModifier;
 
-    private Echelon(final String symbol,final int logistics, final int command) {
+    private Echelon(final String symbol, final int logistics, final int command) {
         this.symbol = symbol;
         this.logistics = logistics;
         this.command = command;
@@ -70,7 +69,7 @@ public enum Echelon {
     public double getSpeedModifier() {
         return speedModifier;
     }
-    
+
     public double getModifiedTime(int time) {
         return time * speedModifier;
     }

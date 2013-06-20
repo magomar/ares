@@ -2,16 +2,16 @@ package ares.platform.engine.algorithms.pathfinding;
 
 import ares.platform.scenario.board.Direction;
 import ares.platform.scenario.board.Tile;
+
 import java.util.Objects;
 
 /**
- *
  * @author Saúl Esteban
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class Node implements Comparable<Node> {
 
-    private Tile tile;
+    private final Tile tile;
     private Node prev;
     private Node next;
 

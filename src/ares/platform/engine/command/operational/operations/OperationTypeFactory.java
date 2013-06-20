@@ -6,7 +6,6 @@ import ares.platform.engine.command.operational.Operation;
 import ares.platform.scenario.forces.Formation;
 
 /**
- *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
 public interface OperationTypeFactory {

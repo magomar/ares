@@ -1,12 +1,12 @@
 package ares.application.shared.controllers;
 
 import ares.application.shared.boundaries.interactors.MessagesInteractor;
+
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JCheckBox;
 
 /**
- *
  * @author Heine <heisncfr@inf.upv.es>
  */
 public final class MessagesController {

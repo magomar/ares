@@ -1,7 +1,6 @@
 package ares.platform.engine.combat;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public enum CombatType {

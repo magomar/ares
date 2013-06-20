@@ -2,11 +2,10 @@ package ares.application.shared.gui.views;
 
 import ares.application.shared.boundaries.viewers.MenuBarViewer;
 import ares.application.shared.gui.ComponentFactory;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
+
+import javax.swing.*;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class MenuBarView extends AbstractView<JMenuBar> implements MenuBarViewer {

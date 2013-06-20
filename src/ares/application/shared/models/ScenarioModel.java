@@ -1,6 +1,5 @@
 package ares.application.shared.models;
 
-import ares.application.shared.gui.profiles.GraphicsModel;
 import ares.application.shared.models.board.BoardModel;
 import ares.application.shared.models.forces.ForceModel;
 import ares.platform.model.RoleMediatedModel;
@@ -9,7 +8,6 @@ import ares.platform.scenario.Scenario;
 import ares.platform.scenario.forces.Force;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public final class ScenarioModel extends RoleMediatedModel {

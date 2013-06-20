@@ -1,17 +1,14 @@
 package ares.application.shared.gui.decorators;
 
-import ares.application.shared.models.forces.IdentifiedUnitModel;
-import ares.application.shared.models.forces.KnownUnitModel;
-import ares.application.shared.models.forces.DetectedUnitModel;
-import ares.application.shared.models.forces.UnitModel;
 import ares.application.shared.gui.profiles.GraphicProperties;
 import ares.application.shared.gui.profiles.ProfiledGraphicProperty;
+import ares.application.shared.models.forces.DetectedUnitModel;
+import ares.application.shared.models.forces.IdentifiedUnitModel;
+import ares.application.shared.models.forces.KnownUnitModel;
+import ares.application.shared.models.forces.UnitModel;
 import ares.platform.engine.knowledge.KnowledgeCategory;
-import static ares.platform.engine.knowledge.KnowledgeCategory.COMPLETE;
-import static ares.platform.engine.knowledge.KnowledgeCategory.GOOD;
-import static ares.platform.engine.knowledge.KnowledgeCategory.NONE;
-import static ares.platform.engine.knowledge.KnowledgeCategory.POOR;
 import ares.platform.scenario.forces.Echelon;
+
 import java.awt.*;
 import java.awt.color.ICC_ProfileRGB;
 
@@ -45,6 +42,7 @@ public class ImageDecorators {
     private final Font infoFont;
     private final Font arrowFont;
     private final Point arrowCostPos;
+    private final Font placeFont;
 
     public ImageDecorators(int profile) {
         // compute attribute relative locations in pixels
@@ -66,7 +64,8 @@ public class ImageDecorators {
         arrowFont = new Font(GraphicProperties.FONT_NAME, GraphicProperties.FONT_STYLE, arrowFontSize);
         int tileWidth = GraphicProperties.getProperty(ProfiledGraphicProperty.TILE_WIDTH, profile);
         int tileHeight = GraphicProperties.getProperty(ProfiledGraphicProperty.TILE_HEIGHT, profile);
-        arrowCostPos = new Point(tileWidth / 3, 2* tileHeight / 3);
+        arrowCostPos = new Point(tileWidth / 3, 2 * tileHeight / 3);
+        placeFont = new Font(GraphicProperties.FONT_NAME, Font.BOLD, fontSize * 3 / 2);
     }
 
     public void paintUnitAttributes(Graphics2D g2, UnitModel unit) {
@@ -115,7 +114,7 @@ public class ImageDecorators {
     private void paintUnitAttributes(Graphics2D g2, DetectedUnitModel unitModel) {
     }
 
-//    private void paintName(String name) {
+    //    private void paintName(String name) {
 //        g2.drawString(name.substring(0, 4), 3, 6);
 //    }
     private void paintEchelon(Graphics2D g2, Color color, Echelon echelon) {
@@ -144,7 +143,7 @@ public class ImageDecorators {
         //+90% : 10px, +50% : 5px, 2px otherwise
 //        int diff = (s > 90 ? 10 : (s > 50 ? 5 : 2));
 //        int length = (int) (0.25 * barSize.height + 0.0075 * barSize.height * stamina);
-        int length = (int) barSize.height * stamina / 100;
+        int length = barSize.height * stamina / 100;
 //        g2.fillRect(26, 20 - diff, 2, diff);
         g2.setColor(Color.GREEN);
         g2.fillRect(rightBarPos.x, rightBarPos.y, barSize.width, length);
@@ -174,13 +173,18 @@ public class ImageDecorators {
 //        int r = (255 * (100 - percentage)) / 100;
 //        return new Color(r, g, 0);
 //    }
+
     /**
-     * Converts a percentage into a color using a scale between two pure RGB colors
+     * Converts a percentage into a color using a scale between two pure RGB colors, identified as follows:
+     * Red = 0
+     * Green = 1
+     * Blue = 2
      *
+     * @param percentage    indicating the color level between the top and bottom colors
+     * @param bottomRGBComponent  an int between 0 and 2 identifying the bottom color (R, G or B)
+     * @param topRGBComponent     an int between 0 and 2 identifying the top color (R, G or B)
+     * @return a color between bottom and top colors, correspoding to the {@code percentage} parameter
      * @see java.awt.color.ICC_ProfileRGB
-     * @param percentage
-     * @param component
-     * @return
      */
     private Color colorLevel(int percentage, int bottomRGBComponent, int topRGBComponent) {
         int[] rgb = new int[3];
@@ -199,5 +203,9 @@ public class ImageDecorators {
     public void paintArrowCost(Graphics2D g2, int cost) {
         g2.setFont(arrowFont);
         g2.drawString(Integer.toString(cost), arrowCostPos.x, arrowCostPos.y);
+    }
+
+    public Font getPlaceFont() {
+        return placeFont;
     }
 }

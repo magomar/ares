@@ -7,7 +7,6 @@ import ares.platform.scenario.board.Tile;
 import ares.platform.scenario.forces.Unit;
 
 /**
- *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
 public class AttackByFire extends TacticalMission {
@@ -21,6 +20,6 @@ public class AttackByFire extends TacticalMission {
     public void plan(Pathfinder pathFinder) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
+
+
 }

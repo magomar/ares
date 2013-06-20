@@ -1,22 +1,20 @@
 package ares.application.analyser.views;
 
 import ares.application.analyser.boundaries.viewers.PathfinderComparatorViewer;
+import ares.application.shared.boundaries.viewers.BoardViewer;
 import ares.application.shared.boundaries.viewers.PathfinderConfigurationViewer;
 import ares.application.shared.gui.ComponentFactory;
 import ares.application.shared.gui.views.AbstractView;
-import ares.application.shared.boundaries.viewers.BoardViewer;
-import java.awt.BorderLayout;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JSplitPane;
+
+import javax.swing.*;
+import java.awt.*;
 
 /**
- *
  * @author Mario Gómez Martínez <magomar@gmail.com>
  */
 public class PathfinderComparatorView extends AbstractView<JPanel> implements PathfinderComparatorViewer {
 
-//    private static final int PATHFINDER_CONFIGURATION_HEIGHT = 150;
+    //    private static final int PATHFINDER_CONFIGURATION_HEIGHT = 150;
 //    private static final int PATHFINDER_STATS_HEIGHT = 150;
     private JSplitPane splitHoriz;
     private JPanel configurationPanel;

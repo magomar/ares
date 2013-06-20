@@ -2,8 +2,8 @@ package ares.application.shared.gui.providers;
 
 import ares.platform.io.FileIO;
 import ares.platform.io.ResourcePath;
-import java.awt.Dimension;
-import java.awt.Point;
+
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.lang.ref.SoftReference;
@@ -12,7 +12,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
 public class MatrixImageProvider implements ImageProvider {
@@ -63,6 +62,7 @@ public class MatrixImageProvider implements ImageProvider {
             bi = image.get();
         }
         try {
+            assert bi != null;
             BufferedImage result = bi.getSubimage(column * imageDimension.width, row * imageDimension.height,
                     imageDimension.width, imageDimension.height);
             return result;
@@ -96,12 +96,12 @@ public class MatrixImageProvider implements ImageProvider {
     }
 
     @Override
-    public Dimension getImageDimension() {
+    public Dimension getImageSize() {
         return imageDimension;
     }
 
     @Override
-    public Dimension getFullImageDimension() {
+    public Dimension getFullImageSize() {
         return fullImageDimension;
     }
 

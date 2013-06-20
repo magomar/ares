@@ -1,13 +1,11 @@
 package ares.platform.engine.algorithms.pathfinding.costfunctions;
 
 import ares.platform.engine.movement.MovementCost;
-import ares.platform.engine.movement.MovementType;
 import ares.platform.scenario.board.Direction;
 import ares.platform.scenario.board.Tile;
 import ares.platform.scenario.forces.Unit;
 
 /**
- *
  * @author Mario Gómez Martínez <magomar@gmail.com>
  */
 public enum EstimatedCostFunctions implements CostFunction {

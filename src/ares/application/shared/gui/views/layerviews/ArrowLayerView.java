@@ -2,16 +2,19 @@ package ares.application.shared.gui.views.layerviews;
 
 import ares.application.shared.boundaries.viewers.layerviewers.ArrowLayerViewer;
 import ares.application.shared.gui.decorators.ImageDecorators;
-import ares.platform.engine.algorithms.pathfinding.Path;
-import ares.platform.engine.algorithms.pathfinding.Node;
 import ares.application.shared.gui.profiles.GraphicsModel;
 import ares.application.shared.gui.providers.AresMiscTerrainGraphics;
+import ares.platform.engine.algorithms.pathfinding.Node;
+import ares.platform.engine.algorithms.pathfinding.Path;
 import ares.platform.scenario.board.Direction;
 import ares.platform.scenario.board.Directions;
 import ares.platform.scenario.board.Tile;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.util.*;
+import java.util.Collection;
+import java.util.EnumSet;
+import java.util.Set;
 
 /**
  * Draws the movement arrows on a BufferedImage
@@ -34,6 +37,7 @@ public class ArrowLayerView extends AbstractImageLayerView implements ArrowLayer
     @Override
     public void updateLayer() {
         initialize();
+        if (!isVisible()) return;
         Graphics2D g2 = globalImage.createGraphics();
         if (forcePaths != null) {
             for (Path path : forcePaths) {
@@ -57,7 +61,7 @@ public class ArrowLayerView extends AbstractImageLayerView implements ArrowLayer
     /**
      * Paints complete arrow for the {@code activePath} passed as argument
      *
-     * @param activePath
+     * @param activePath the path from the selected unit to the location pointed by the mouse
      */
     @Override
     public void updateCurrentOrders(Path activePath) {
@@ -68,7 +72,7 @@ public class ArrowLayerView extends AbstractImageLayerView implements ArrowLayer
     /**
      * Paint the last orders arrows for the {@code path} passed as argument
      *
-     * @param activePath
+     * @param lastPath the path of the last order given to the selected unit
      */
     @Override
     public void updateLastOrders(Path lastPath) {
@@ -80,7 +84,9 @@ public class ArrowLayerView extends AbstractImageLayerView implements ArrowLayer
      * Paint arrows for planned orders of all units in the same force as the selected unit, as described by the {@code selectedUnitPath},
      * {@code formationPaths} and {@code forcePaths}
      *
-     * @param path
+     * @param selectedUnitPath path of the orders for the selected unit
+     * @param formationPaths   paths of the orders of other units in the same formation as the selected unit
+     * @param forcePaths       paths of the orders of the rest of the units in the same force as the selected unit
      */
     @Override
     public void updatePlannedOrders(Path selectedUnitPath, Collection<Path> formationPaths, Collection<Path> forcePaths) {
@@ -136,7 +142,7 @@ public class ArrowLayerView extends AbstractImageLayerView implements ArrowLayer
      */
     private void paintFinalArrowSegment(Graphics2D g2, Node node, Direction direction, ArrowType type) {
         Point coordinates = Directions.getDirections(direction.ordinal() + 25).getCoordinates();
-        BufferedImage arrowImage = GraphicsModel.INSTANCE.getImageProvider(type.getProvider(), profile).getImage(coordinates);
+        BufferedImage arrowImage = GraphicsModel.INSTANCE.getProfiledImageProvider(type.getProvider(), profile).getImage(coordinates);
         Tile tile = node.getTile();
         Point pos = GraphicsModel.INSTANCE.tileToPixel(tile.getCoordinates(), profile);
         g2.drawImage(arrowImage, pos.x, pos.y, contentPane);
@@ -153,7 +159,7 @@ public class ArrowLayerView extends AbstractImageLayerView implements ArrowLayer
      */
     private void paintFinalArrowSegmentWithCost(Graphics2D g2, Node node, Direction direction, ArrowType type) {
         Point coordinates = Directions.getDirections(direction.ordinal() + 25).getCoordinates();
-        BufferedImage arrowImage = GraphicsModel.INSTANCE.getImageProvider(type.getProvider(), profile).getImage(coordinates);
+        BufferedImage arrowImage = GraphicsModel.INSTANCE.getProfiledImageProvider(type.getProvider(), profile).getImage(coordinates);
         Tile tile = node.getTile();
         Point pos = GraphicsModel.INSTANCE.tileToPixel(tile.getCoordinates(), profile);
         g2.drawImage(arrowImage, pos.x, pos.y, contentPane);
@@ -177,7 +183,7 @@ public class ArrowLayerView extends AbstractImageLayerView implements ArrowLayer
      */
     private void paintArrowSegment(Graphics2D g2, Node node, Set<Direction> directions, ArrowType type) {
         Point coordinates = Directions.getDirections(Direction.getBitmask(directions)).getCoordinates();
-        BufferedImage arrowImage = GraphicsModel.INSTANCE.getImageProvider(type.getProvider(), profile).getImage(coordinates);
+        BufferedImage arrowImage = GraphicsModel.INSTANCE.getProfiledImageProvider(type.getProvider(), profile).getImage(coordinates);
         Tile tile = node.getTile();
         Point pos = GraphicsModel.INSTANCE.tileToPixel(tile.getCoordinates(), profile);
         g2.drawImage(arrowImage, pos.x, pos.y, contentPane);
@@ -187,12 +193,14 @@ public class ArrowLayerView extends AbstractImageLayerView implements ArrowLayer
     /**
      * Paints a single arrow segment together with the accumulated movement cost
      *
-     * @param tile the tile where to paint an Arrow
-     * @param index the position of the arrow segment within the array of arrow images
+     * @param g2
+     * @param node
+     * @param directions
+     * @param type
      */
     private void paintArrowSegmentWithCost(Graphics2D g2, Node node, Set<Direction> directions, ArrowType type) {
         Point coordinates = Directions.getDirections(Direction.getBitmask(directions)).getCoordinates();
-        BufferedImage arrowImage = GraphicsModel.INSTANCE.getImageProvider(type.getProvider(), profile).getImage(coordinates);
+        BufferedImage arrowImage = GraphicsModel.INSTANCE.getProfiledImageProvider(type.getProvider(), profile).getImage(coordinates);
         Tile tile = node.getTile();
         Point pos = GraphicsModel.INSTANCE.tileToPixel(tile.getCoordinates(), profile);
         g2.drawImage(arrowImage, pos.x, pos.y, contentPane);

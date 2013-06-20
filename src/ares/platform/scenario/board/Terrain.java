@@ -1,22 +1,21 @@
 package ares.platform.scenario.board;
 
 import ares.application.shared.gui.profiles.GraphicProperties;
-import ares.application.shared.gui.providers.ImageProvider;
-import ares.application.shared.gui.providers.ImageProviderFactory;
 import ares.application.shared.gui.profiles.NonProfiledGraphicProperty;
 import ares.application.shared.gui.profiles.ProfiledGraphicProperty;
+import ares.application.shared.gui.providers.ImageProvider;
 import ares.application.shared.gui.providers.MatrixImageProvider;
+import ares.application.shared.gui.providers.ProfiledImageProviderFactory;
+
 import java.util.EnumSet;
 import java.util.Set;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public enum Terrain implements ImageProviderFactory {
-//motor, amph, mixed, foot, AT, AP, vehicles, infantry, stationary, vision, directional, microProfile
-//    OPEN(0, 0, 0, 0, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, false, true),
-
+public enum Terrain implements ProfiledImageProviderFactory {
+    //motor, amph, mixed, foot, AT, AP, vehicles, infantry, stationary, vision, directional, microProfile
+    OPEN(0, 0, 0, 0, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, false, true),
     ARID(0, 0, 0, 0, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, false, true),
     SAND(1, 1, 1, 1, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, false, true),
     DUNES(9999, 9999, 9999, 3, 1.0, 1.0, 1.0, 3.0, 2.0, Vision.NORMAL, false, true),
@@ -72,9 +71,9 @@ public enum Terrain implements ImageProviderFactory {
     public static final Set<Terrain> ANY_ROAD = EnumSet.of(ROAD, IMPROVED_ROAD);
 
     private Terrain(final int motor, final int amph, final int mixed, final int foot,
-            final double antiTank, final double antiPersonnel,
-            final double vehicles, final double infantry, final double stationary,
-            final Vision vision, final boolean directional, final boolean microProfile) {
+                    final double antiTank, final double antiPersonnel,
+                    final double vehicles, final double infantry, final double stationary,
+                    final Vision vision, final boolean directional, final boolean microProfile) {
         this.motorized = motor;
         this.amphibious = amph;
         this.mixed = mixed;
@@ -142,7 +141,6 @@ public enum Terrain implements ImageProviderFactory {
      * absence of any direction is not represented (it is assumed bitMask is never 0), so we actually have 64 values,
      * numbered from 1 to 64.
      *
-     * @see Direction
      * @param bitMask
      * @return
      */
@@ -154,7 +152,7 @@ public enum Terrain implements ImageProviderFactory {
     public String getFilename(int profile) {
         String prefix = GraphicProperties.getProfilePrefix(profile);
         if (profile == 0 && !microProfile) {
-            return prefix +"_terrain_null.png";
+            return prefix + "_terrain_null.png";
         } else {
             return prefix + "_" + filename;
         }

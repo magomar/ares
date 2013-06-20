@@ -7,14 +7,13 @@ import ares.platform.engine.movement.MovementCost;
 import ares.platform.scenario.board.Direction;
 import ares.platform.scenario.board.Tile;
 import ares.platform.scenario.forces.Unit;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
 /**
- *
- * 
  * @author Saúl Esteban <saesmar1@ei.upv.es>
  */
 public class BeamSearch extends AbstractPathfinder {
@@ -25,7 +24,7 @@ public class BeamSearch extends AbstractPathfinder {
     public BeamSearch(Heuristic heuristic, CostFunction costFunction) {
         super(heuristic, costFunction);
     }
-    
+
     @Override
     public Path getPath(Tile origin, Tile destination, Unit unit) {
         if (origin.equals(destination)) {
@@ -35,7 +34,7 @@ public class BeamSearch extends AbstractPathfinder {
         Map<Integer, Node> closedSet = new HashMap<>();
         BeamSearch.OpenSet openSet = new BeamSearch.OpenSet(20);
         Node firstNode = new Node(origin, Direction.C, null, 0, heuristic.getCost(origin, destination, unit));
-        
+
         openSet.add(firstNode);
 
         while (!openSet.isEmpty()) {
@@ -83,14 +82,14 @@ public class BeamSearch extends AbstractPathfinder {
 
     @Override
     public ExtendedPath getExtendedPath(Tile origin, Tile destination, Unit unit) {
-          if (origin.equals(destination)) {
+        if (origin.equals(destination)) {
             return null;
         }
         // Create data structures
         Map<Integer, Node> closedSet = new HashMap<>();
         BeamSearch.OpenSet openSet = new BeamSearch.OpenSet(20);
         Node firstNode = new Node(origin, Direction.C, null, 0, heuristic.getCost(origin, destination, unit));
-        
+
         openSet.add(firstNode);
 
         while (!openSet.isEmpty()) {
@@ -146,12 +145,12 @@ public class BeamSearch extends AbstractPathfinder {
         return costFunction;
     }
 
-    
+
     private class OpenSet {
 
-        int nodeLimit;
+        final int nodeLimit;
         Queue<Node> list;
-        Map<Integer, Node> map;
+        final Map<Integer, Node> map;
 
         OpenSet(int nodeLimit) {
             this.nodeLimit = nodeLimit;
@@ -162,15 +161,13 @@ public class BeamSearch extends AbstractPathfinder {
         void add(Node node) {
             if (list.size() == nodeLimit) {
                 Node lastNode = pollLast();
-                
+
                 if (node.compareTo(lastNode) < 0) {
                     list.add(node);
-                }
-                else {
+                } else {
                     list.add(lastNode);
                 }
-            }
-            else {
+            } else {
                 list.add(node);
                 map.put(node.getIndex(), node);
             }
@@ -179,20 +176,20 @@ public class BeamSearch extends AbstractPathfinder {
         Node poll() {
             return list.poll();
         }
-        
+
         Node pollLast() {
             int queueSize = list.size();
             Node lastNode;
             PriorityQueue<Node> newQueue = new PriorityQueue<>();
-            
-            for (int i=0; i<queueSize-1; i++) {
+
+            for (int i = 0; i < queueSize - 1; i++) {
                 newQueue.add(list.poll());
             }
-            
+
             lastNode = list.poll();
-            
+
             list = newQueue;
-            
+
             return lastNode;
         }
 

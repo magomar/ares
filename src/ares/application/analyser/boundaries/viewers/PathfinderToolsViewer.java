@@ -1,14 +1,14 @@
 package ares.application.analyser.boundaries.viewers;
 
 import ares.application.analyser.views.PathfinderComparatorView;
-import ares.application.shared.gui.views.View;
 import ares.application.shared.boundaries.viewers.MenuBarViewer;
 import ares.application.shared.boundaries.viewers.PanelMenuViewer;
 import ares.application.shared.boundaries.viewers.ToolBarViewer;
-import javax.swing.JFrame;
+import ares.application.shared.gui.views.View;
+
+import javax.swing.*;
 
 /**
- *
  * @author Mario Gómez Martínez <magomar@gmail.com>
  */
 public interface PathfinderToolsViewer extends View<JFrame> {
@@ -21,7 +21,7 @@ public interface PathfinderToolsViewer extends View<JFrame> {
     void switchPerspective(String perspective);
 
     PathfinderComparatorView getComparatorView();
-    
+
     ToolBarViewer getToolBarView();
 
     MenuBarViewer getMenuView();

@@ -1,12 +1,14 @@
 package ares.application.shared.models.board;
 
+import ares.data.wrappers.scenario.Place;
 import ares.platform.model.RoleMediatedModel;
 import ares.platform.model.UserRole;
 import ares.platform.scenario.board.Board;
 import ares.platform.scenario.board.Tile;
 
+import java.util.List;
+
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class BoardModel extends RoleMediatedModel {
@@ -30,11 +32,27 @@ public class BoardModel extends RoleMediatedModel {
         return mapModel;
     }
 
+    /**
+     * Gets the width of the board
+     * @return                    the number of columns
+     */
     public int getWidth() {
         return board.getWidth();
     }
 
+    /**
+     *  Gets the height of the board
+     * @return the number of rows
+     */
     public int getHeight() {
         return board.getHeight();
+    }
+
+    /**
+     * Gets all the places of the board
+     * @return
+     */
+    public List<Place> getPlaces() {
+        return board.getPlaces();
     }
 }

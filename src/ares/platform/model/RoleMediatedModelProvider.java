@@ -3,7 +3,6 @@ package ares.platform.model;
 import ares.platform.scenario.forces.Force;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public abstract class RoleMediatedModelProvider<T> implements ModelProvider<T> {

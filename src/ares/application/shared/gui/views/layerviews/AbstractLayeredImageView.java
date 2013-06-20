@@ -1,22 +1,20 @@
 package ares.application.shared.gui.views.layerviews;
 
-import ares.application.shared.boundaries.viewers.layerviewers.LayeredImageViewer;
 import ares.application.shared.boundaries.viewers.layerviewers.ImageLayerViewer;
+import ares.application.shared.boundaries.viewers.layerviewers.LayeredImageViewer;
 import ares.application.shared.gui.profiles.GraphicsModel;
 import ares.application.shared.gui.views.AbstractView;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Rectangle;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import javax.swing.JLayeredPane;
-import javax.swing.JScrollPane;
 
 /**
- *
  * @author Mario Gómez Martínez <magomar@gmail.com>
  */
 public abstract class AbstractLayeredImageView extends AbstractView<JScrollPane> implements LayeredImageViewer {
@@ -24,21 +22,22 @@ public abstract class AbstractLayeredImageView extends AbstractView<JScrollPane>
     protected int profile;
     protected JLayeredPane layeredPane;
     protected Map<String, ImageLayerViewer> layerViews;
+    protected List<ImageLayerViewer> sortedLayerViews;
 
     @Override
     public LayeredImageViewer addLayerView(ImageLayerViewer imageLayerView) {
-        layeredPane.add(imageLayerView.getContentPane(), new Integer(layeredPane.getComponentCount()));
+        if (!imageLayerView.isSharingGlobalImage()) {
+            layeredPane.add(imageLayerView.getContentPane(), new Integer(layeredPane.getComponentCount()));
+        }
         layerViews.put(imageLayerView.name(), imageLayerView);
-//        if (imageLayerView.hasParentLayer()) {
-//            layeredPane.remove(imageLayerView.getParentLayer().getContentPane());
-//        }
-//        layeredPane.revalidate();
+        sortedLayerViews.add(imageLayerView);
         return this;
     }
 
     @Override
     protected JScrollPane layout() {
         layerViews = new HashMap<>();
+        sortedLayerViews = new ArrayList<>();
         //Create layered pane to hold all the layers
         layeredPane = new JLayeredPane();
         layeredPane.setOpaque(true);
@@ -48,6 +47,7 @@ public abstract class AbstractLayeredImageView extends AbstractView<JScrollPane>
         scrollPane.setBackground(Color.BLACK);
         scrollPane.setVisible(true);
         scrollPane.setOpaque(true);
+        scrollPane.setAutoscrolls(true);
         return scrollPane;
     }
 
@@ -57,8 +57,8 @@ public abstract class AbstractLayeredImageView extends AbstractView<JScrollPane>
         Dimension imageSize = new Dimension(GraphicsModel.INSTANCE.getBoardWidth(profile), GraphicsModel.INSTANCE.getBoardHeight(profile));
         layeredPane.setPreferredSize(imageSize);
         layeredPane.setSize(imageSize);
-//        contentPane.setBounds(new Rectangle(imageSize));
-        for (ImageLayerViewer layerView : layerViews.values()) {
+        // Set the profiles and initialize layers in strict "depth" order (to avoid problems with image sharing layers)
+        for (ImageLayerViewer layerView : sortedLayerViews) {
             layerView.setProfile(profile);
             layerView.initialize();
         }
@@ -80,11 +80,12 @@ public abstract class AbstractLayeredImageView extends AbstractView<JScrollPane>
     public int getProfile() {
         return profile;
     }
-    
+
     @Override
     public void flush() {
         for (ImageLayerViewer layerView : layerViews.values()) {
-            layerView.flush();
+            if (!layerView.hasParentLayer())
+                layerView.flush();
         }
     }
 
@@ -105,8 +106,16 @@ public abstract class AbstractLayeredImageView extends AbstractView<JScrollPane>
 
     @Override
     public void switchLayerVisible(String layerName) {
-        ImageLayerViewer imageLayer = layerViews.get(layerName);
-        imageLayer.setVisible(!imageLayer.isVisible());
+        ImageLayerViewer layer = layerViews.get(layerName);
+        layer.switchVisible();
+        layer.updateLayer();
+        if (layer.isSharingGlobalImage())
+            for (ImageLayerViewer layerView : sortedLayerViews) {
+                if (layer.equals(layerView.getParentLayer())) {
+                    layerView.updateLayer();
+                    break;
+                }
+            }
     }
 
     @Override

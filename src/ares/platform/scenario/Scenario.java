@@ -1,14 +1,15 @@
 package ares.platform.scenario;
 
-import ares.platform.engine.time.Clock;
 import ares.application.shared.models.ScenarioModel;
-import ares.data.jaxb.EquipmentDB;
-import ares.data.jaxb.OOB;
+import ares.data.wrappers.equipment.EquipmentDB;
+import ares.data.wrappers.scenario.OOB;
+import ares.platform.engine.time.Clock;
 import ares.platform.model.ModelProvider;
 import ares.platform.model.UserRole;
 import ares.platform.scenario.assets.AssetTypes;
 import ares.platform.scenario.board.Board;
 import ares.platform.scenario.forces.Force;
+
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -16,7 +17,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
  * Class containing all the state of a scenario
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
@@ -24,14 +24,13 @@ import java.util.logging.Logger;
 public final class Scenario implements ModelProvider<ScenarioModel> {
 
     private AssetTypes assetTypes;
-    private String name;
-    private Board board;
-    private Force[] forces;
-    private Map<UserRole, ScenarioModel> models;
-    private String description;
-    private UserRole userRole;
+    private final String name;
+    private final Board board;
+    private final Force[] forces;
+    private final Map<UserRole, ScenarioModel> models;
+    private final String description;
 
-    public Scenario(ares.data.jaxb.Scenario scenario, EquipmentDB eqpDB) {
+    public Scenario(ares.data.wrappers.scenario.Scenario scenario, EquipmentDB eqpDB) {
         name = scenario.getHeader().getName();
         description = scenario.getHeader().getDescription();
         Scale.INSTANCE.initialize((int) (scenario.getEnvironment().getScale() * 1000));
@@ -39,9 +38,9 @@ public final class Scenario implements ModelProvider<ScenarioModel> {
         assetTypes = new AssetTypes(eqpDB);
         board = new Board(scenario);
         OOB oob = scenario.getOOB();
-        Collection<ares.data.jaxb.Force> scenForces = oob.getForce();
+        Collection<ares.data.wrappers.scenario.Force> scenForces = oob.getForce();
         forces = new Force[scenForces.size()];
-        for (ares.data.jaxb.Force force : oob.getForce()) {
+        for (ares.data.wrappers.scenario.Force force : oob.getForce()) {
             forces[force.getId()] = new Force(force, this);
         }
         for (Force force : forces) {
@@ -88,15 +87,4 @@ public final class Scenario implements ModelProvider<ScenarioModel> {
         return models.get(role);
     }
 
-    public UserRole getUserRole() {
-        return userRole;
-    }
-
-    public void setUserRole(UserRole userRole) {
-        this.userRole = userRole;
-    }
-    
-    public ScenarioModel getModel() {
-        return models.get(this.userRole);
-    }
 }

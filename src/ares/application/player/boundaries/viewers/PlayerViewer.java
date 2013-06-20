@@ -1,17 +1,11 @@
 package ares.application.player.boundaries.viewers;
 
-import ares.application.shared.boundaries.viewers.BoardViewer;
+import ares.application.shared.boundaries.viewers.*;
 import ares.application.shared.gui.views.View;
-import ares.application.shared.boundaries.viewers.InfoViewer;
-import ares.application.shared.boundaries.viewers.MenuBarViewer;
-import ares.application.shared.boundaries.viewers.MessagesViewer;
-import ares.application.shared.boundaries.viewers.OOBViewer;
-import ares.application.shared.boundaries.viewers.PanelMenuViewer;
-import ares.application.shared.boundaries.viewers.ToolBarViewer;
-import javax.swing.JFrame;
+
+import javax.swing.*;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public interface PlayerViewer extends View<JFrame> {

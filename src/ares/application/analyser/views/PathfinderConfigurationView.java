@@ -5,16 +5,12 @@ import ares.application.shared.gui.views.AbstractView;
 import ares.platform.engine.algorithms.pathfinding.Pathfinder;
 import ares.platform.engine.algorithms.pathfinding.costfunctions.CostFunction;
 import ares.platform.engine.algorithms.pathfinding.heuristics.Heuristic;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionListener;
-import javax.swing.ComboBoxModel;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 /**
- *
  * @author Mario Gómez Martínez <magomar@gmail.com>
  */
 public class PathfinderConfigurationView extends AbstractView<JPanel> implements PathfinderConfigurationViewer {
@@ -36,22 +32,22 @@ public class PathfinderConfigurationView extends AbstractView<JPanel> implements
 //        c.anchor = GridBagConstraints.LINE_START;
         c.gridx = 0;
         c.gridy = 0;
-        panel.add(new JLabel("Select Pathfinder:"),c);
+        panel.add(new JLabel("Select Pathfinder:"), c);
         c.gridx = 1;
         c.gridy = 0;
-        panel.add(pathfinderComboBox,c);
+        panel.add(pathfinderComboBox, c);
         c.gridx = 0;
         c.gridy = 1;
-        panel.add(new JLabel("Select Heuristic:"),c);
+        panel.add(new JLabel("Select Heuristic:"), c);
         c.gridx = 1;
         c.gridy = 1;
-        panel.add(heuristicComboBox,c);
+        panel.add(heuristicComboBox, c);
         c.gridx = 0;
         c.gridy = 2;
-        panel.add(new JLabel("Select Cost Function:"),c);
+        panel.add(new JLabel("Select Cost Function:"), c);
         c.gridx = 1;
         c.gridy = 2;
-        panel.add(costFunctionComboBox,c);
+        panel.add(costFunctionComboBox, c);
         return panel;
     }
 

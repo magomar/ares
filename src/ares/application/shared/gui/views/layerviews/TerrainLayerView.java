@@ -1,20 +1,20 @@
 package ares.application.shared.gui.views.layerviews;
 
 import ares.application.shared.boundaries.viewers.layerviewers.TerrainLayerViewer;
-import ares.platform.scenario.board.Feature;
-import ares.platform.scenario.board.Terrain;
-import ares.platform.scenario.board.Directions;
-import ares.application.shared.models.board.TileModel;
 import ares.application.shared.gui.profiles.GraphicsModel;
 import ares.application.shared.gui.providers.AresMiscTerrainGraphics;
 import ares.application.shared.models.ScenarioModel;
+import ares.application.shared.models.board.TileModel;
 import ares.platform.engine.knowledge.KnowledgeCategory;
+import ares.platform.scenario.board.Directions;
+import ares.platform.scenario.board.Feature;
+import ares.platform.scenario.board.Terrain;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.util.*;
+import java.util.Map;
 
 /**
- *
  * @author Heine <heisncfr@inf.upv.es>
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
@@ -30,6 +30,7 @@ public class TerrainLayerView extends AbstractImageLayerView implements TerrainL
     @Override
     public void updateLayer() {
         initialize();
+        if (!isVisible()) return;
         Graphics2D g2 = globalImage.createGraphics();
         // Paint it black!
         g2.setColor(Color.BLACK);
@@ -51,6 +52,7 @@ public class TerrainLayerView extends AbstractImageLayerView implements TerrainL
     /**
      * Paints the terrain of a single tile
      *
+     * @param g2
      * @param tile
      */
     private void paintTile(Graphics2D g2, TileModel tile) {
@@ -66,7 +68,7 @@ public class TerrainLayerView extends AbstractImageLayerView implements TerrainL
         Point pos = GraphicsModel.INSTANCE.tileToPixel(tile.getCoordinates(), profile);
 
         // First paints the open terrain, any other terrain will be rendered upon it
-        BufferedImage terrainImage = GraphicsModel.INSTANCE.getImageProvider(AresMiscTerrainGraphics.TERRAIN_MISCELANEOUS, profile).getImage(Feature.OPEN.getCoordinates());
+        BufferedImage terrainImage = GraphicsModel.INSTANCE.getProfiledImageProvider(AresMiscTerrainGraphics.TERRAIN_MISCELANEOUS, profile).getImage(Feature.OPEN.getCoordinates());
 
         g2.drawImage(terrainImage, pos.x, pos.y, contentPane);
 
@@ -75,13 +77,13 @@ public class TerrainLayerView extends AbstractImageLayerView implements TerrainL
             Terrain terrain = entry.getKey();
             Directions directions = entry.getValue();
             Point imageCoordinates = directions.getCoordinates();
-            terrainImage = GraphicsModel.INSTANCE.getImageProvider(terrain, profile).getImage(imageCoordinates);
+            terrainImage = GraphicsModel.INSTANCE.getProfiledImageProvider(terrain, profile).getImage(imageCoordinates);
             // Paint terrain image
             g2.drawImage(terrainImage, pos.x, pos.y, contentPane);
         }
         // Paint features 
         for (Feature feature : tile.getTerrainFeatures()) {
-            terrainImage = GraphicsModel.INSTANCE.getImageProvider(AresMiscTerrainGraphics.TERRAIN_MISCELANEOUS, profile).getImage(feature.getCoordinates());
+            terrainImage = GraphicsModel.INSTANCE.getProfiledImageProvider(AresMiscTerrainGraphics.TERRAIN_MISCELANEOUS, profile).getImage(feature.getCoordinates());
             g2.drawImage(terrainImage, pos.x, pos.y, contentPane);
         }
         contentPane.repaint(pos.x, pos.y, terrainImage.getWidth(), terrainImage.getHeight());

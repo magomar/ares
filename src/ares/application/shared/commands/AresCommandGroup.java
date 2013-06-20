@@ -1,29 +1,28 @@
 package ares.application.shared.commands;
 
-import ares.platform.action.Command;
-import ares.platform.action.CommandGroup;
-
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public enum AresCommandGroup implements CommandGroup {
 
-    FILE("File", 'F'){
-    @Override
-    public Command[] getCommands() {
-        return FileCommands.values();
-    }},
-    VIEW("View", 'V'){
-    @Override
-    public Command[] getCommands() {
-        return ViewCommands.values();
-    }},
-    ENGINE("Engine", 'E'){
-    @Override
-    public Command[] getCommands() {
-        return EngineCommands.values();
-    }};
+    FILE("File", 'F') {
+        @Override
+        public Command[] getCommands() {
+            return FileCommands.values();
+        }
+    },
+    VIEW("View", 'V') {
+        @Override
+        public Command[] getCommands() {
+            return ViewCommands.values();
+        }
+    },
+    ENGINE("Engine", 'E') {
+        @Override
+        public Command[] getCommands() {
+            return EngineCommands.values();
+        }
+    };
     private final Integer mnemonic;
     private final String text;
 
@@ -47,5 +46,5 @@ public enum AresCommandGroup implements CommandGroup {
         return name();
     }
 
-    
+
 }

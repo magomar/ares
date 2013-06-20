@@ -3,7 +3,6 @@ package ares.platform.engine.messages;
 import java.util.logging.Level;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public enum EngineMessageType {

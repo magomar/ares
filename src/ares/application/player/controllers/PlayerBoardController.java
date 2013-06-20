@@ -3,50 +3,52 @@ package ares.application.player.controllers;
 import ares.application.player.boundaries.interactors.MiniMapInteractor;
 import ares.application.player.boundaries.interactors.PlayerBoardInteractor;
 import ares.application.shared.boundaries.interactors.BoardInteractor;
-import ares.platform.scenario.board.UnitsStack;
-import ares.platform.scenario.board.Tile;
-import ares.platform.engine.algorithms.pathfinding.Pathfinder;
-import ares.platform.engine.algorithms.pathfinding.Path;
-import ares.platform.engine.algorithms.pathfinding.AStar;
-import ares.application.shared.controllers.ActionController;
-import ares.application.shared.gui.profiles.GraphicsModel;
-import ares.application.shared.models.board.TileModel;
-import ares.application.shared.models.forces.ForceModel;
-import ares.application.shared.models.forces.FormationModel;
-import ares.application.shared.models.forces.UnitModel;
-import ares.application.shared.gui.views.MessagesHandler;
-import ares.platform.engine.RealTimeEngine;
-import ares.platform.engine.algorithms.pathfinding.heuristics.DistanceCalculator;
-import ares.platform.engine.algorithms.pathfinding.heuristics.MinimunDistance;
-import ares.platform.engine.command.tactical.TacticalMission;
-import ares.platform.engine.command.tactical.TacticalMissionType;
-import ares.platform.model.UserRole;
 import ares.application.shared.boundaries.viewers.BoardViewer;
 import ares.application.shared.boundaries.viewers.InfoViewer;
 import ares.application.shared.boundaries.viewers.OOBViewer;
 import ares.application.shared.boundaries.viewers.layerviewers.ArrowLayerViewer;
 import ares.application.shared.boundaries.viewers.layerviewers.SelectionLayerViewer;
+import ares.application.shared.controllers.ActionController;
 import ares.application.shared.controllers.BoardController;
 import ares.application.shared.controllers.MiniMapController;
+import ares.application.shared.gui.profiles.GraphicsModel;
+import ares.application.shared.gui.views.MessagesHandler;
+import ares.application.shared.models.board.TileModel;
+import ares.application.shared.models.forces.ForceModel;
+import ares.application.shared.models.forces.FormationModel;
+import ares.application.shared.models.forces.UnitModel;
+import ares.platform.engine.RealTimeEngine;
+import ares.platform.engine.algorithms.pathfinding.AStar;
+import ares.platform.engine.algorithms.pathfinding.Path;
+import ares.platform.engine.algorithms.pathfinding.Pathfinder;
 import ares.platform.engine.algorithms.pathfinding.costfunctions.CostFunctions;
+import ares.platform.engine.algorithms.pathfinding.heuristics.DistanceCalculator;
+import ares.platform.engine.algorithms.pathfinding.heuristics.MinimunDistance;
+import ares.platform.engine.command.tactical.TacticalMission;
+import ares.platform.engine.command.tactical.TacticalMissionType;
 import ares.platform.engine.time.Clock;
+import ares.platform.model.UserRole;
 import ares.platform.scenario.Scenario;
+import ares.platform.scenario.board.Tile;
+import ares.platform.scenario.board.UnitsStack;
 import ares.platform.scenario.forces.Formation;
 import ares.platform.scenario.forces.Unit;
-import java.awt.Container;
-import java.awt.Point;
-import java.awt.event.*;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Logger;
-import javax.swing.JTree;
+
+import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Logger;
 
 /**
  * @author Mario Gomez <margomez at dsic.upv.es>
@@ -63,11 +65,11 @@ public final class PlayerBoardController extends BoardController implements Boar
     private final SelectionLayerViewer selectionLayerView;
     private Tile selectedTile;
     private Unit selectedUnit;
-    private Scenario scenario;
     private InteractionMode interactionMode = InteractionMode.FREE;
     private final MiniMapController miniMapController;
     private final PlayerBoardInteractor interactor;
-    private ChangeListener changeViewportListener;
+    private final ChangeListener changeViewportListener;
+    private boolean dragging = false;
 
     public PlayerBoardController(final PlayerBoardInteractor interactor, RealTimeEngine engine) {
         super(interactor);
@@ -92,17 +94,12 @@ public final class PlayerBoardController extends BoardController implements Boar
         engine.addPropertyChangeListener(this);
     }
 
-    public Scenario getScenario() {
-        return scenario;
-    }
-
-    public void setScenario(Scenario scenario) {
+    public void setScenario(Scenario scenario, UserRole userRole) {
+        super.setScenario(scenario, userRole, GraphicsModel.INSTANCE.getActiveProfile());
         boardView.getContentPane().getViewport().removeChangeListener(changeViewportListener);
-        super.setScenario(scenario, GraphicsModel.INSTANCE.getActiveProfile());
-        this.scenario = scenario;
-        oobView.loadScenario(scenarioModel);
+        oobView.loadScenario(scenario.getModel(userRole));
         infoView.updateScenarioInfo(Clock.INSTANCE.getNow());
-        miniMapController.setScenario(scenario, 0);
+        miniMapController.setScenario(scenario, userRole, 0);
         boardView.getContentPane().getViewport().addChangeListener(changeViewportListener);
     }
 
@@ -135,20 +132,16 @@ public final class PlayerBoardController extends BoardController implements Boar
                 selectedTile = selectedUnit.getLocation();
                 interactionMode = InteractionMode.UNIT_ORDERS;
                 LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, "New unit selected");
-                UserRole role = scenario.getUserRole();
-                TileModel tileModel = selectedTile.getModel(role);
+                TileModel tileModel = selectedTile.getModel(userRole);
                 infoView.updateTileInfo(tileModel);
                 unitsLayerView.updateUnitStack(tileModel);
-//                if (selectedUnit != null) {
-                if (interactionMode == InteractionMode.UNIT_ORDERS) {
-                    UnitModel unitModel = selectedUnit.getModel(role);
-                    FormationModel formationModel = selectedUnit.getFormation().getModel(role);
-                    ForceModel forceModel = selectedUnit.getForce().getModel(role);
-                    updateSelectedUnit(unitModel, formationModel, forceModel);
-                    boardView.centerViewOn(selectedUnit.getLocation().getCoordinates());
-                    arrowLayerView.updateLastOrders(null);
-                    arrowLayerView.updateCurrentOrders(null);
-                }
+                UnitModel unitModel = selectedUnit.getModel(userRole);
+                FormationModel formationModel = selectedUnit.getFormation().getModel(userRole);
+                ForceModel forceModel = selectedUnit.getForce().getModel(userRole);
+                updateSelectedUnit(unitModel, formationModel, forceModel);
+                boardView.centerViewOn(selectedUnit.getLocation().getCoordinates());
+                arrowLayerView.updateLastOrders(null);
+                arrowLayerView.updateCurrentOrders(null);
             }
         }
     }
@@ -169,26 +162,31 @@ public final class PlayerBoardController extends BoardController implements Boar
                     command(me.getX(), me.getY());
                     break;
             }
+        }
 
+        @Override
+        public void mouseReleased(MouseEvent e) {
+            if (dragging) {
+                dragging = false;
+                interactor.getGUIContainer().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+            }
         }
     }
 
     private void changeSelectedTile(Tile tile) {
         selectedTile = tile;
-        UserRole role = scenario.getUserRole();
-        TileModel tileModel = selectedTile.getModel(role);
+        TileModel tileModel = selectedTile.getModel(userRole);
         infoView.updateTileInfo(tileModel);
     }
 
     private void changeSelectedUnit(Unit unit) {
         selectedUnit = unit;
-        UserRole role = scenario.getUserRole();
-        TileModel tileModel = selectedTile.getModel(role);
+        TileModel tileModel = selectedTile.getModel(userRole);
         unitsLayerView.updateUnitStack(tileModel);
         if (selectedUnit != null) {
-            UnitModel unitModel = selectedUnit.getModel(role);
-            FormationModel formationModel = selectedUnit.getFormation().getModel(role);
-            ForceModel forceModel = selectedUnit.getForce().getModel(role);
+            UnitModel unitModel = selectedUnit.getModel(userRole);
+            FormationModel formationModel = selectedUnit.getFormation().getModel(userRole);
+            ForceModel forceModel = selectedUnit.getForce().getModel(userRole);
             arrowLayerView.updateCurrentOrders(null);
             updateSelectedUnit(unitModel, formationModel, forceModel);
             oobView.select(selectedUnit);
@@ -266,11 +264,11 @@ public final class PlayerBoardController extends BoardController implements Boar
                 int profile = GraphicsModel.INSTANCE.getActiveProfile();
                 Point pixel = new Point(me.getX(), me.getY());
                 if (GraphicsModel.INSTANCE.isWithinImageRange(pixel, profile)) {
-                    Point tilePoint = GraphicsModel.INSTANCE.pixelToTileAccurate(pixel, profile);
-                    if (!GraphicsModel.INSTANCE.validCoordinates(tilePoint.x, tilePoint.y)) {
+                    Point coords = GraphicsModel.INSTANCE.pixelToTileAccurate(pixel, profile);
+                    if (!GraphicsModel.INSTANCE.validCoordinates(coords.x, coords.y)) {
                         return;
                     }
-                    Tile tile = scenario.getBoard().getTile(tilePoint.x, tilePoint.y);
+                    Tile tile = scenario.getBoard().getTile(coords.x, coords.y);
                     Path path = pathFinder.getPath(selectedUnit.getLocation(), tile, selectedUnit);
                     if (path == null) {
                         return;
@@ -278,19 +276,50 @@ public final class PlayerBoardController extends BoardController implements Boar
                     arrowLayerView.updateCurrentOrders(path);
                 }
             }
+            if (!dragging) {
+                int profile = GraphicsModel.INSTANCE.getActiveProfile();
+                Point pixel = new Point(me.getX(), me.getY());
+                if (GraphicsModel.INSTANCE.isWithinImageRange(pixel, profile)) {
+                    Point coords = GraphicsModel.INSTANCE.pixelToTileAccurate(pixel, profile);
+                    if (!GraphicsModel.INSTANCE.validCoordinates(coords.x, coords.y)) {
+                        return;
+                    }
+                    Tile tile = scenario.getBoard().getTile(coords.x, coords.y);
+                    if (!tile.getUnitsStack().isEmpty())  {
+                        interactor.getGUIContainer().setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                    } else {
+                        interactor.getGUIContainer().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+                    }
+                }
+            }
+        }
+
+        @Override
+        public void mouseDragged(MouseEvent me) {
+//            Rectangle r = new Rectangle(e.getX(), e.getY(), 1, 1);
+//            boardView.getContentPane().getViewport().scrollRectToVisible(r);
+            interactor.getGUIContainer().setCursor(Cursor.getPredefinedCursor(Cursor.MOVE_CURSOR));
+            dragging = true;
+            int profile = GraphicsModel.INSTANCE.getActiveProfile();
+            Point pixel = new Point(me.getX(), me.getY());
+            Point coords = GraphicsModel.INSTANCE.pixelToTileAccurate(pixel, profile);
+            if (!GraphicsModel.INSTANCE.validCoordinates(coords.x, coords.y)) {
+                return;
+            }
+            boardView.centerViewOn(coords);
         }
     }
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         if (RealTimeEngine.CLOCK_EVENT_PROPERTY.equals(evt.getPropertyName())) {
-            unitsLayerView.updateScenario(scenario.getModel());
+            updateScenario();
+            miniMapController.updateScenario();
             infoView.updateScenarioInfo(Clock.INSTANCE.getNow());
             if (selectedUnit != null) {
-                UserRole role = scenario.getUserRole();
-                UnitModel unitModel = selectedUnit.getModel(role);
-                FormationModel formationModel = selectedUnit.getFormation().getModel(role);
-                ForceModel forceModel = selectedUnit.getForce().getModel(role);
+                UnitModel unitModel = selectedUnit.getModel(userRole);
+                FormationModel formationModel = selectedUnit.getFormation().getModel(userRole);
+                ForceModel forceModel = selectedUnit.getForce().getModel(userRole);
 //                boardView.updateCurrentOrders(null);
                 updateSelectedUnit(unitModel, formationModel, forceModel);
                 infoView.updateTileInfo(unitModel.getLocation());

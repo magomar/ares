@@ -1,6 +1,5 @@
 package ares.application.shared.models.forces;
 
-import ares.platform.scenario.forces.UnitsColor;
 import ares.application.shared.models.board.TileModel;
 import ares.platform.engine.command.tactical.TacticalMission;
 import ares.platform.engine.knowledge.KnowledgeCategory;
@@ -8,9 +7,9 @@ import ares.platform.engine.movement.MovementType;
 import ares.platform.model.KnowledgeMediatedModel;
 import ares.platform.model.UserRole;
 import ares.platform.scenario.forces.Unit;
+import ares.platform.scenario.forces.UnitsColor;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public abstract class UnitModel extends KnowledgeMediatedModel {
@@ -50,6 +49,6 @@ public abstract class UnitModel extends KnowledgeMediatedModel {
     public String toString() {
         return getName();
     }
-    
-    
+
+
 }

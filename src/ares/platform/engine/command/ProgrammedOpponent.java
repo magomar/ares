@@ -1,30 +1,26 @@
 package ares.platform.engine.command;
 
-import ares.data.jaxb.Emphasis;
-import ares.data.jaxb.Frontage;
-import ares.data.jaxb.Orders;
-import ares.data.jaxb.SupportScope;
-import ares.data.jaxb.Track;
+import ares.data.wrappers.scenario.*;
 import ares.platform.engine.command.operational.plans.OperationalPlan;
 import ares.platform.engine.command.operational.plans.OperationalStance;
 import ares.platform.scenario.board.Board;
 import ares.platform.scenario.forces.Formation;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
 public class ProgrammedOpponent {
 
-    private OperationalStance operationalStance;
-    private int activates;
-    private Frontage frontage;
-    private boolean onlyPO;
-    private Emphasis emphasis;
-    private SupportScope supportscope;
-    private List<ProgrammedTrack> tracks;
+    private final OperationalStance operationalStance;
+    private final int activates;
+    private final Frontage frontage;
+    private final boolean onlyPO;
+    private final Emphasis emphasis;
+    private final SupportScope supportscope;
+    private final List<ProgrammedTrack> tracks;
     private boolean active;
 
     public ProgrammedOpponent(Orders orders, Board board) {
@@ -88,6 +84,6 @@ public class ProgrammedOpponent {
     public String toString() {
         return "ProgrammedOpponent{" + "operationalStance=" + operationalStance + ", activates=" + activates + ", frontage=" + frontage + ", onlyPO=" + onlyPO + ", emphasis=" + emphasis + ", supportscope=" + supportscope + ", tracks=" + tracks + ", active=" + active + '}';
     }
-    
-    
+
+
 }

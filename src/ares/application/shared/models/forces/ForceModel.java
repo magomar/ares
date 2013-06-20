@@ -1,25 +1,25 @@
 package ares.application.shared.models.forces;
 
-import ares.application.shared.gui.profiles.GraphicsModel;
 import ares.application.shared.gui.components.OOBTreeNode;
+import ares.application.shared.gui.profiles.GraphicsModel;
 import ares.application.shared.gui.providers.ImageProvider;
 import ares.platform.model.RoleMediatedModel;
 import ares.platform.model.UserRole;
 import ares.platform.scenario.forces.Force;
 import ares.platform.scenario.forces.Formation;
 import ares.platform.scenario.forces.Unit;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import javax.swing.ImageIcon;
+
+import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.MutableTreeNode;
 import javax.swing.tree.TreeModel;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
- *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
 public final class ForceModel extends RoleMediatedModel {
@@ -63,7 +63,7 @@ public final class ForceModel extends RoleMediatedModel {
             Unit hq = formation.getHq();
             MutableTreeNode formationNode;
             if (hq != null) {
-                ImageProvider unitImageProvider = GraphicsModel.INSTANCE.getImageProviders(2).get(hq.getColor());
+                ImageProvider unitImageProvider = GraphicsModel.INSTANCE.getProfiledImageProvider(hq.getColor(), 2);
                 ImageIcon treeNodeIcon = new ImageIcon(unitImageProvider.getImage(hq.getIconId()));
                 formationNode = new OOBTreeNode(formation, treeNodeIcon);
             } else {
@@ -76,7 +76,7 @@ public final class ForceModel extends RoleMediatedModel {
         MutableTreeNode root = formationNodes.get(top);
         DefaultTreeModel treeModel = new DefaultTreeModel(root);
         for (Unit unit : force.getActiveUnits()) {
-            ImageProvider unitImageProvider = GraphicsModel.INSTANCE.getImageProviders(2).get(unit.getColor());
+            ImageProvider unitImageProvider = GraphicsModel.INSTANCE.getProfiledImageProvider(unit.getColor(), 2);
             ImageIcon treeNodeIcon = new ImageIcon(unitImageProvider.getImage(unit.getIconId()));
             MutableTreeNode unitNode = new OOBTreeNode(unit, treeNodeIcon);
             MutableTreeNode parent = formationNodes.get(unit.getFormation());

@@ -11,12 +11,13 @@ import ares.platform.engine.algorithms.pathfinding.Path;
 import ares.platform.engine.algorithms.pathfinding.Pathfinder;
 import ares.platform.scenario.board.Tile;
 import ares.platform.scenario.forces.Unit;
+
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Queue;
 
 /**
- * Holds the details of a tactical mission assigned to a unit: mission type, current plan of action Includes the engine
+ * Holds the details of a tactical mission assigned to a unit: mission unitType, current plan of action Includes the engine
  * to manage the live cycle of actions: create, start, executeAction
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
@@ -24,11 +25,11 @@ import java.util.Queue;
 public abstract class TacticalMission {
 
     /**
-     * The unit assined to this tactical misssion
+     * The unit assigned to this tactical mission
      */
     protected final Unit unit;
     /**
-     * The type of the mission (assault, support by fire, etc.)
+     * The unitType of the mission (assault, support by fire, etc.)
      *
      * @see TacticalMissionType
      */
@@ -49,7 +50,7 @@ public abstract class TacticalMission {
      *
      * @see Action
      */
-    protected Deque<Action> pendingActions;
+    protected final Deque<Action> pendingActions;
 
     public TacticalMission(TacticalMissionType type, Unit unit, Tile target) {
         this.type = type;
@@ -62,7 +63,7 @@ public abstract class TacticalMission {
         this.targetTile = targetTile;
     }
 
-//    public void setTargetUnit(Unit targetUnit) {
+    //    public void setTargetUnit(Unit targetUnit) {
 //        this.targetUnit = targetUnit;
 //    }
     public void setType(TacticalMissionType type) {
@@ -76,9 +77,7 @@ public abstract class TacticalMission {
     }
 
     /**
-     * Executes {@link #currentAction}
-     *
-     * @param event
+     * Executes {@link #currentAction} for a time tick
      */
     public void executeAction() {
         currentAction.execute();
@@ -147,7 +146,7 @@ public abstract class TacticalMission {
         return type;
     }
 
-//    public void clearActions() {
+    //    public void clearActions() {
 //        pendingActions.clear();
 //    }
     public Action getCurrentAction() {
@@ -159,18 +158,18 @@ public abstract class TacticalMission {
     }
 
     /**
-     * Adds the given action to the head of {@link pendingActions}
+     * Adds the given action to the head of {@link #pendingActions}
      *
-     * @param action
+     * @param action to add
      */
     public void addFirstAction(Action action) {
         pendingActions.addFirst(action);
     }
 
     /**
-     * Adds the given action to the tail of {@link pendingActions}
+     * Adds the given action to the tail of {@link #pendingActions}
      *
-     * @param action
+     * @param action to add
      */
     public void addLastAction(Action action) {
         pendingActions.addLast(action);
@@ -194,9 +193,7 @@ public abstract class TacticalMission {
         Action action = currentAction;
         if (action instanceof MoveAction) {
             path = ((MoveAction) action).getPath();
-        } 
-        
-        else {
+        } else {
             Action nextAction = pendingActions.peek();
             if (nextAction instanceof MoveAction) {
                 path = ((MoveAction) nextAction).getPath();

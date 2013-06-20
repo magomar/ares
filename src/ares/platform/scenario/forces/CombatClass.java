@@ -1,7 +1,6 @@
 package ares.platform.scenario.forces;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public enum CombatClass {
@@ -31,7 +30,6 @@ public enum CombatClass {
     /**
      * Units belonging to this class are not fit for combat. These are intended to provide non combat services, such as loggistics,
      * communication, politics & moral support (including religion).
-     *
      */
     SERVICE_SUPPORT,
     OTHER,
@@ -44,7 +42,7 @@ public enum CombatClass {
 //        headquarters = new ArrayList<>();
 //        otherUnits = new ArrayList<>();
 //        for (Unit unit : formation.getActiveUnits()) {
-//            switch (unit.getType().getCombatClass()) {
+//            switch (unit.getUnitType().getCombatClass()) {
 //                case LINE:
 //                    lineUnits.add(unit);
 //                    break;
@@ -61,6 +59,6 @@ public enum CombatClass {
 //                    serviceUnits.add(unit);
 //                    break;
 //                default:
-//                    Logger.getLogger(OperationalPlan.class.getName()).log(Level.SEVERE, "Formation " + formation + "has unit of OTHER type: ", unit);
+//                    Logger.getLogger(OperationalPlan.class.getName()).log(Level.SEVERE, "Formation " + formation + "has unit of OTHER unitType: ", unit);
 //            }
 //        }

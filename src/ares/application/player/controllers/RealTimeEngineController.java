@@ -1,26 +1,26 @@
 package ares.application.player.controllers;
 
-import ares.application.shared.controllers.ActionController;
-import ares.application.shared.commands.EngineCommands;
+import ares.application.shared.commands.ActionGroup;
+import ares.application.shared.commands.CommandAction;
+import ares.application.shared.commands.CommandGroup;
+import ares.application.shared.boundaries.interactors.EngineInteractor;
 import ares.application.shared.commands.AresCommandGroup;
+import ares.application.shared.commands.EngineCommands;
+import ares.application.shared.controllers.ActionController;
 import ares.application.shared.gui.views.MessagesHandler;
+import ares.platform.engine.RealTimeEngine;
 import ares.platform.engine.time.ClockEvent;
 import ares.platform.engine.time.ClockEventType;
-import ares.platform.engine.RealTimeEngine;
-import ares.platform.action.CommandAction;
-import ares.platform.action.CommandGroup;
-import ares.application.shared.boundaries.interactors.EngineInteractor;
-import ares.platform.action.ActionGroup;
 import ares.platform.scenario.Scenario;
+
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.logging.Logger;
-import javax.swing.Action;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  * @author Heine <heisncfr@inf.upv.es>
  */
@@ -31,9 +31,9 @@ public final class RealTimeEngineController implements ActionController, Propert
     // Entities (bussines logic), they interact with the model providers and provide models to the views
     private final RealTimeEngine engine;
     private final EngineInteractor interactor;
-    private Action pause = new CommandAction(EngineCommands.ENGINE_PAUSE, new PauseActionListener(), false);
-    private Action turn = new CommandAction(EngineCommands.ENGINE_NEXT_TURN, new NextTurnActionListener());
-    private Action step = new CommandAction(EngineCommands.ENGINE_NEXT_STEP, new NextStepActionListener());
+    private final Action pause = new CommandAction(EngineCommands.ENGINE_PAUSE, new PauseActionListener(), false);
+    private final Action turn = new CommandAction(EngineCommands.ENGINE_NEXT_TURN, new NextTurnActionListener());
+    private final Action step = new CommandAction(EngineCommands.ENGINE_NEXT_STEP, new NextStepActionListener());
     private final ActionGroup actions;
 
     public RealTimeEngineController(EngineInteractor interactor) {

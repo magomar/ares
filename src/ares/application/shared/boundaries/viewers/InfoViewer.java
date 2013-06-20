@@ -1,13 +1,13 @@
 package ares.application.shared.boundaries.viewers;
 
+import ares.application.shared.gui.views.View;
 import ares.application.shared.models.board.TileModel;
 import ares.application.shared.models.forces.UnitModel;
-import ares.application.shared.gui.views.View;
+
+import javax.swing.*;
 import java.util.Calendar;
-import javax.swing.JPanel;
 
 /**
- *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
 public interface InfoViewer extends View<JPanel> {

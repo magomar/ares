@@ -1,10 +1,6 @@
 package ares.platform.io;
 
-import ares.platform.io.FileTypeFilter;
-import ares.platform.io.FileType;
-
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public enum AresFileType implements FileType {

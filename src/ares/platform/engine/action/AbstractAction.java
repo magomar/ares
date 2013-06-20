@@ -1,11 +1,10 @@
 package ares.platform.engine.action;
 
-import ares.platform.scenario.forces.Unit;
 import ares.platform.engine.time.Clock;
 import ares.platform.scenario.forces.OpState;
+import ares.platform.scenario.forces.Unit;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public abstract class AbstractAction implements Action {
@@ -21,18 +20,17 @@ public abstract class AbstractAction implements Action {
     /**
      * The unit to perform this action
      */
-    protected Unit unit;
+    protected final Unit unit;
     /**
-     * The type of the action
+     * The unitType of the action
      *
-     * @See ActionType
+     * @see ActionType
      */
-    protected ActionType type;
+    protected final ActionType type;
     /**
      * Before starting the action, this attribute holds the estimated time to start performing the action, specified in
      * time ticks passed since the beginning of the scenario. Thereafter it holds the actual starting time. If (start ==
      * AS_SOON_AS_POSSIBLE) then the action will be executed as soon as possible
-     *
      */
     protected int start;
     /**
@@ -48,10 +46,10 @@ public abstract class AbstractAction implements Action {
     /**
      * The current state of the action
      *
-     * @See ActionState
+     * @see ActionState
      */
     protected ActionState state;
-    protected int id;
+    protected final int id;
 
     public AbstractAction(Unit unit, ActionType type) {
         this(unit, AS_SOON_AS_POSSIBLE, type, TIME_UNKNOWN);
@@ -83,7 +81,6 @@ public abstract class AbstractAction implements Action {
      * Determines if the action can be executed by checking all the necessary conditions: if the action was already
      * started then it performs two checks: {@link #checkEndurance()} and {@link #isFeasible()}, otherwise it performs
      * the two former checks plus {@link #checkStartTime()} and {@link #checkPreconditions()}.
-     *
      *
      * @return true if the action can be executed
      */
@@ -120,8 +117,8 @@ public abstract class AbstractAction implements Action {
     }
 
     /**
-     * Completes the action. Changes the status of the action to {@link ActionState.COMPLETED}, determines the actual
-     * {@link finish} time, which may differ from the estimated finish time, and applies completion effects on the
+     * Completes the action. Changes the status of the action to {@link ActionState#COMPLETED}, determines the actual
+     * {@link #finish} time, which may differ from the estimated finish time, and applies completion effects on the
      * operational state of the {@link #unit}
      */
     @Override
@@ -153,35 +150,38 @@ public abstract class AbstractAction implements Action {
     }
 
     /**
-     * Aborts the action. Changes the status of the action to {@link ActionState#ABORTED}.
+     * Aborts the action. Changes the status of the action to {@link ActionState#ABORTED}.  Sets the finish time to the current time
      */
     @Override
     public final void abort() {
         state = ActionState.ABORTED;
         wear();
-//        unit.setOpState(type.getPrecondition());
+//        unit.setOpState(unitType.getPrecondition());
         finish = Clock.INSTANCE.getTick();
     }
 
+    /**
+     * Apply effects of a delay on the unit's {@link Unit#opState}
+     *
+     * @see OpState
+     */
     @Override
     public void delay() {
         unit.setOpState(type.getPrecondition());
     }
 
     /**
-     * Checks if the planned start time has been reached or surpassed.<p>
-     * This way, an action would never start before the planned start time.
-     *
-     * @return
+     * Checks whether the planned start time of the action has been reached
+     * @return true if start time has been reached, false otherwise
      */
     private boolean checkStartTime() {
         return start <= Clock.INSTANCE.getTick();
     }
 
     /**
-     * Checks if the acting unit has the right operational state to start this action ({@link OpState})
-     *
-     * @return
+     * Checks whether the acting unit is in the right operational state
+     * @return true if the operational state is right, false otherwise
+     * @see OpState
      */
     public boolean checkPreconditions() {
         // TODO try to make this method protected...
@@ -191,14 +191,15 @@ public abstract class AbstractAction implements Action {
     }
 
     /**
-     * Checks if the remaining endurance is enough to execute the action during the next time tick
-     *
-     * @return
+     * @return whether the unit's remaining endurance is enough to execute the action during the next time tick
      */
     private boolean checkEndurance() {
         return unit.canEndure(type);
     }
 
+    /**
+     * Apply wear resulting of executing the action for one time tick, which reduces the endurance of the unit
+     */
     private void wear() {
         unit.changeEndurance(-type.getRequiredEndurace(Clock.INSTANCE.getMINUTES_PER_TICK()));
     }
@@ -210,9 +211,9 @@ public abstract class AbstractAction implements Action {
     protected abstract void applyOngoingEffects();
 
     /**
-     * Checks if the actions satisfies the requirements of this action's type.
+     * Checks if the actions satisfies the specific requirements of this action's unitType.
      *
-     * @return
+     * @return  true if the requirements are satisfied
      */
     protected abstract boolean isFeasible();
 

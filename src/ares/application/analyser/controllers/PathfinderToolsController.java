@@ -1,24 +1,22 @@
 package ares.application.analyser.controllers;
 
 import ares.application.analyser.boundaries.interactors.PathfinderAnalyserInteractor;
-import ares.application.analyser.boundaries.viewers.PathfinderToolsViewer;
 import ares.application.analyser.boundaries.interactors.PathfinderComparatorInteractor;
 import ares.application.analyser.boundaries.viewers.PathfinderComparatorViewer;
+import ares.application.analyser.boundaries.viewers.PathfinderToolsViewer;
 import ares.application.shared.boundaries.interactors.ScenarioInteractor;
 import ares.application.shared.boundaries.viewers.MenuBarViewer;
 import ares.application.shared.boundaries.viewers.PanelMenuViewer;
 import ares.application.shared.boundaries.viewers.ToolBarViewer;
 import ares.application.shared.controllers.ScenarioController;
 import ares.application.shared.gui.profiles.GraphicsModel;
-import ares.application.shared.gui.providers.AresMiscTerrainGraphics;
+import ares.platform.model.UserRole;
 import ares.platform.scenario.Scenario;
-import ares.platform.scenario.board.Terrain;
-import ares.platform.scenario.forces.UnitsColor;
-import java.awt.Container;
-import javax.swing.JMenu;
+
+import javax.swing.*;
+import java.awt.*;
 
 /**
- *
  * @author Mario Gómez Martínez <magomar@gmail.com>
  */
 public class PathfinderToolsController implements ScenarioInteractor, PathfinderComparatorInteractor, PathfinderAnalyserInteractor {
@@ -40,7 +38,7 @@ public class PathfinderToolsController implements ScenarioInteractor, Pathfinder
         comparatorView = mainView.getComparatorView();
 
         // instantiate controllers
-        this.scenarioController = new ScenarioController(this);
+        this.scenarioController = new ScenarioController(this, false);
         this.comparatorController = new PathfinderComparatorController(this);
         this.analyserController = new PathfinderAnalyserController(this);
 
@@ -50,9 +48,8 @@ public class PathfinderToolsController implements ScenarioInteractor, Pathfinder
         toolBarView.addActionButtons(comparatorController.getActionGroup().createToolBarButtons());
 //        toolBarView.addActionButtons(analyserController.getActionGroup().createToolBarButtons());
         JMenu[] menus = {
-            scenarioController.getActionGroup().createMenu(),
-            comparatorController.getActionGroup().createMenu(), 
-            //   analyserController.getActionGroup().createMenu()
+                scenarioController.getActionGroup().createMenu(),
+                comparatorController.getActionGroup().createMenu(), //   analyserController.getActionGroup().createMenu()
         };
         menuView.addActionButtons(menus);
 
@@ -68,12 +65,9 @@ public class PathfinderToolsController implements ScenarioInteractor, Pathfinder
     }
 
     @Override
-    public void newScenario(Scenario scenario) {
+    public void newScenario(Scenario scenario, UserRole userRole) {
         // Initialize GraphicsModel
         GraphicsModel.INSTANCE.initialize(scenario.getBoard());
-        GraphicsModel.INSTANCE.addAllGraphics(Terrain.values());
-        GraphicsModel.INSTANCE.addAllGraphics(AresMiscTerrainGraphics.values());
-        GraphicsModel.INSTANCE.addAllGraphics(UnitsColor.values());
         // pass the scenario to the engine controller
         comparatorController.setScenario(scenario);
         // change the GUI to show the pathfinding comparison perspective

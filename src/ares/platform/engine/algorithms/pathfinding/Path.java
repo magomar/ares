@@ -3,7 +3,6 @@ package ares.platform.engine.algorithms.pathfinding;
 import ares.application.shared.models.board.TileModel;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class Path {
@@ -16,8 +15,8 @@ public class Path {
      * Creates a path connecting the {@code first} to the
      * {@code last}  {@link Node}}.
      *
-     * @param first
-     * @param last
+     * @param first the first node in the path
+     * @param last  the last node in the path
      */
     public Path(Node first, Node last) {
         this.last = last;
@@ -63,16 +62,33 @@ public class Path {
         return last == null;
     }
 
+    /**
+     * Gets the number of nodes (or tiles) in this path
+     *
+     * @return
+     */
     public int size() {
         return size;
     }
 
+    /**
+     * Gets a subpath of the this path from the given {@code node}
+     *
+     * @param node
+     * @return
+     */
     public Path subPath(Node node) {
         return new Path(node, last);
     }
 
-    public Path subPath(TileModel from) {
-        int tileIndex = from.getIndex();
+    /**
+     * Gets a subpath of the this path from the given {@code tile}
+     *
+     * @param tile
+     * @return
+     */
+    public Path subPath(TileModel tile) {
+        int tileIndex = tile.getIndex();
         Node n;
         for (n = first; n != null; n = n.getNext()) {
             if (n.getTile().getIndex() == tileIndex) {

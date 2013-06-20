@@ -1,15 +1,10 @@
 package ares.application.shared.commands;
 
-import ares.platform.action.Command;
 import ares.platform.io.ResourcePath;
-import java.io.File;
-import java.nio.file.FileSystems;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.KeyStroke;
+
+import javax.swing.*;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public enum EngineCommands implements Command {
@@ -29,7 +24,7 @@ public enum EngineCommands implements Command {
         this.desc = desc;
         this.mnemonic = new Integer(keyChar);
         this.accelerator = KeyStroke.getKeyStroke(keyChar);
-        this.iconFilename = name().toLowerCase()+".png";
+        this.iconFilename = name().toLowerCase() + ".png";
     }
 
     @Override

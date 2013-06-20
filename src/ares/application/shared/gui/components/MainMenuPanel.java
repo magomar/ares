@@ -1,13 +1,14 @@
 package ares.application.shared.gui.components;
 
-import ares.platform.io.ResourcePath;
 import ares.platform.io.FileIO;
+import ares.platform.io.ResourcePath;
+
+import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.lang.ref.SoftReference;
-import java.util.*;
-import javax.swing.*;
+import java.util.Random;
 
 /**
  * Main menu and welcome screen. Sets a background picture and handles the main menu buttons.

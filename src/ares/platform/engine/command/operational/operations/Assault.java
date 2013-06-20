@@ -1,12 +1,12 @@
 package ares.platform.engine.command.operational.operations;
 
-import ares.platform.engine.command.operational.Operation;
 import ares.platform.engine.command.Objective;
+import ares.platform.engine.command.operational.Operation;
 import ares.platform.scenario.forces.Unit;
+
 import java.util.List;
 
 /**
- *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
 public class Assault extends Operation {

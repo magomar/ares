@@ -1,13 +1,13 @@
 package ares.platform.engine.messages;
 
 import ares.platform.model.AbstractBean;
+
 import java.util.EnumMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class EngineMessageLogger extends AbstractBean {

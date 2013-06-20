@@ -1,13 +1,11 @@
 package temp;
 
-import ares.application.shared.gui.views.AbstractView;
 import ares.application.shared.gui.ComponentFactory;
-import javax.swing.JComponent;
-import javax.swing.JDesktopPane;
-import javax.swing.JInternalFrame;
+import ares.application.shared.gui.views.AbstractView;
+
+import javax.swing.*;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class InternalFrameView<V extends AbstractView<? extends JComponent>> extends AbstractView<JInternalFrame> {

@@ -4,18 +4,17 @@ import ares.application.shared.models.forces.DetectedUnitModel;
 import ares.application.shared.models.forces.IdentifiedUnitModel;
 import ares.application.shared.models.forces.KnownUnitModel;
 import ares.application.shared.models.forces.UnitModel;
-import ares.data.jaxb.Availability;
-import ares.data.jaxb.Emphasis;
+import ares.data.wrappers.scenario.Availability;
+import ares.data.wrappers.scenario.Emphasis;
 import ares.platform.engine.action.Action;
 import ares.platform.engine.action.ActionSpace;
 import ares.platform.engine.action.ActionType;
 import ares.platform.engine.command.tactical.TacticalMission;
 import ares.platform.engine.knowledge.KnowledgeCategory;
 import ares.platform.engine.movement.MovementType;
+import ares.platform.engine.time.Clock;
 import ares.platform.model.ModelProvider;
 import ares.platform.model.UserRole;
-import ares.platform.util.MathUtils;
-import ares.platform.engine.time.Clock;
 import ares.platform.scenario.Scale;
 import ares.platform.scenario.Scenario;
 import ares.platform.scenario.assets.Asset;
@@ -25,16 +24,17 @@ import ares.platform.scenario.assets.AssetTypes;
 import ares.platform.scenario.board.Board;
 import ares.platform.scenario.board.Direction;
 import ares.platform.scenario.board.Tile;
+import ares.platform.util.MathUtils;
+
 import java.util.*;
 import java.util.Map.Entry;
 
 /**
- *
  * @author Mario Gomez <margomez antiTank dsic.upv.es>
  */
 public abstract class Unit implements ModelProvider<UnitModel> {
 
-//    public static final Comparator<Unit> UNIT_ACTION_FINISH_COMPARATOR = new UnitActionFinishComparator();
+    //    public static final Comparator<Unit> UNIT_ACTION_FINISH_COMPARATOR = new UnitActionFinishComparator();
     public static final Comparator<Unit> UNIT_ENTRY_COMPARATOR = new Unit.UnitEntryComparator();
     public static final int MAX_ENDURANCE = 18 * 60 * 60;
     /**
@@ -46,23 +46,19 @@ public abstract class Unit implements ModelProvider<UnitModel> {
      */
     protected String name;
     /**
-     * Identifies a graphic icon depicting the type of unit {@link type}
+     * Identifies a graphic icon depicting the {@link #unitType}
      */
     protected int iconId;
     /**
-     * Identifies the combination of colors of the graphical icon {@link iconId}
+     * Identifies the combination of colors of the graphical icon
      */
     protected UnitsColor color;
     /**
-     * The type of unit (infantry, mechanized infantry, artillery, etc.)
-     *
-     * @see UnitType
+     * The type of unit (infantry, motorized infantry, armor, artillery, etc.)
      */
-    protected UnitType type;
+    protected UnitType unitType;
     /**
-     * The rank of a unit in its force OOB (battalion, division, etc.)
-     *
-     * @see Echelon;
+     * The echelon of the unit in its military organization (battalion, division, etc.)
      */
     protected Echelon echelon;
     /**
@@ -70,7 +66,7 @@ public abstract class Unit implements ModelProvider<UnitModel> {
      */
     protected Formation formation;
     /**
-     * The formation the unit belongs to
+     * The force the unit belongs to
      */
     protected Force force;
 //    protected Experience experience;
@@ -81,7 +77,7 @@ public abstract class Unit implements ModelProvider<UnitModel> {
      */
     protected int proficiency;
     /**
-     * Represents the pshysical condition of a unit due to the changeEndurance and tear of its personnel and equipment,
+     * Represents the physical condition of a unit due to the changeEndurance and tear of its personnel and equipment,
      * as well as its organization and cohesion state. It is specified as a percentage, where 100% is the ideal
      * condition, with the equipment in perfect conditions, all the personnel fit and rested
      */
@@ -126,45 +122,41 @@ public abstract class Unit implements ModelProvider<UnitModel> {
      */
     protected Unit parent;
     /**
-     * Collection of assets available in the unit. An asset includes information concerning the type of equipment, the
+     * Collection of assets available in the unit. An asset includes information concerning the unitType of equipment, the
      * current amount of that equipment, and the maximum amount (the ideal condition). Assets are stored in a
-     * <code>Map</code> having
-     * <code>AssetaType</code> objects as keys, and
-     * <code>Asset</code> objects as values.
+     * {@code Map} having {@link AssetType} objects as keys, and {@link Asset} objects as values.
      */
     protected Map<AssetType, Asset> assets;
     // ************ COMPUTED ATTRIBUTES ****************
     /**
      * Represents the special capabilities of a unit. It is specified as a map that links asset types to the number of
-     * assets possesing each asset trait. Stored as a map Assets are stored in a
-     * <code>Map</code> having
-     * <code>AssetaTrait</code> objects as keys, and the amount of that trait as values (
-     * <code>Integer</code>)
+     * assets possessing each asset trait. Stored as a map Assets are stored in a  {@code Map} having {@link AssetType}
+     * objects as keys, and the amount of that trait as values (and {@link Integer})
      */
     protected Map<AssetTrait, Integer> traits;
     /**
-     * Fighting strenght against armored vehicles such as tanks, armored personnel carriers, etc. (hard targets)
+     * Fighting strength against armored vehicles such as tanks, armored personnel carriers, etc. (hard targets)
      */
     protected int antiTank;
     /**
-     * Fighting strenght against personnel, animals and non-armored equipment (soft targets)
+     * Fighting strength against personnel, animals and non-armored equipment (soft targets)
      */
     protected int antiPersonnel;
     /**
-     * Fighting strenght against aircrafts flying at high altitude
+     * Fighting strength against aircrafts flying at high altitude
      */
     protected int highAntiAir;
     /**
-     * Fighting strenght against aircrafts flying at low/medium altitude
+     * Fighting strength against aircrafts flying at low/medium altitude
      */
     protected int lowAntiAir;
     /**
-     * Strenght that represents the capacity to sustain loses. In general defense is computed as the sum of personnel
+     * Strength that represents the capacity to sustain loses. In general defense is computed as the sum of personnel
      * and vehicles
      */
     protected int defense;
     /**
-     * Fighting strenght against soft targets (people, animals, non-armored equipment) using long-range indirect-fires
+     * Fighting strength against soft targets (people, animals, non-armored equipment) using long-range indirect-fires
      * (Bombardment) (soft targets)
      */
     protected int artillery;
@@ -177,17 +169,16 @@ public abstract class Unit implements ModelProvider<UnitModel> {
      */
     protected int weight;
     /**
-     * Movement type depends on the type of assets in the unit (air, naval, foot, motorized, etc.)
+     * Movement unitType depends on the unitType of assets in the unit (air, naval, foot, motorized, etc.)
      */
     protected MovementType movement;
     /**
-     * Standard average moving speed in ideal conditions, specified in meters per minute. Depends on the type of assets
+     * Standard average moving speed in ideal conditions, specified in meters per minute. Depends on the unitType of assets
      * in the unit
      */
     protected int speed;
     /**
      * The actual ability to perform actions, taking into account readiness and proficiency.
-     *
      */
     protected int quality;
     /**
@@ -199,13 +190,13 @@ public abstract class Unit implements ModelProvider<UnitModel> {
      */
     protected int reconnaissance;
     /**
-     * Represents the remaining physical resistence of a unit before becoming exhausted, expressed in action points
+     * Represents the remaining physical resistance of a unit before becoming exhausted, expressed in action points
      * (seconds of low-intensity activity). The execution of actions consumes endurance, but it can be replenished by
      * resting.
      */
     protected int endurance;
     /**
-     * Represents the maximun physical resistence of a unit when fully rested, given the actual readiness and supplies.
+     * Represents the maximum physical resistance of a unit when fully rested, given the actual readiness and supplies.
      *
      * @see #endurance
      */
@@ -237,12 +228,12 @@ public abstract class Unit implements ModelProvider<UnitModel> {
         models = new HashMap<>();
     }
 
-    protected Unit(ares.data.jaxb.Unit unit, Formation formation, Force force, Scenario scenario) {
+    protected Unit(ares.data.wrappers.scenario.Unit unit, Formation formation, Force force, Scenario scenario) {
         id = unit.getId();
         name = unit.getName();
-        type = UnitType.valueOf(unit.getType().name());
-        if (type.ordinal() > 114) {
-            System.err.println(unit.getName() + " *** " + type);
+        unitType = UnitType.valueOf(unit.getType().name());
+        if (unitType.ordinal() > 114) {
+            System.err.println(unit.getName() + " *** " + unitType);
         }
         iconId = unit.getIconId();
         color = UnitsColor.values()[unit.getColor()];
@@ -260,9 +251,9 @@ public abstract class Unit implements ModelProvider<UnitModel> {
         artilleryRange = 0;
         assets = new HashMap<>();
         traits = new EnumMap<>(AssetTrait.class);
-        boolean providesIndirectFireSupport = type.getCapabilities().contains(Capability.BOMBARDMENT);
+        boolean providesIndirectFireSupport = unitType.getCapabilities().contains(Capability.BOMBARDMENT);
         AssetTypes assetTypes = scenario.getAssetTypes();
-        for (ares.data.jaxb.Unit.Equipment equip : unit.getEquipment()) {
+        for (ares.data.wrappers.scenario.Unit.Equipment equip : unit.getEquipment()) {
             Asset asset = new Asset(equip, assetTypes);
             AssetType assetType = asset.getType();
             assets.put(assetType, asset);
@@ -324,8 +315,7 @@ public abstract class Unit implements ModelProvider<UnitModel> {
     }
 
     /**
-     * Changes the readiness of the unit by the specified
-     * <code>amount</code>
+     * Changes the readiness of the unit by the specified {@code amount}
      *
      * @param amount
      */
@@ -336,8 +326,7 @@ public abstract class Unit implements ModelProvider<UnitModel> {
     }
 
     /**
-     * Changes the supply levels of the unit by the specified
-     * <code>amount</code>
+     * Changes the supply levels of the unit by the specified {@code amount}
      *
      * @param amount
      */
@@ -348,9 +337,7 @@ public abstract class Unit implements ModelProvider<UnitModel> {
     }
 
     /**
-     * Updates derived attributes (
-     * <code>quality</code> and
-     * <code>efficacy</code>)
+     * Updates derived attributes ({@code quality} {@code efficacy})
      */
     protected void updateDerivedValues() {
         quality = (2 * proficiency + readiness) / 3;
@@ -358,11 +345,9 @@ public abstract class Unit implements ModelProvider<UnitModel> {
     }
 
     /**
-     * Updates the maximum values permitted for endurance (
-     * <code>maxEndurance</code> and
-     * <code>maxRange</code>. This feature simmulates a loss of recovery capacity (which occurs for example after
-     * incurring in excesive fatigue). A unit whis these values reduced are not able to recover 100% performance after
-     * resting.
+     * Updates the maximum values permitted for endurance ({@code maxEndurance} and {@code maxRange}). This feature
+     * simulates a loss of recovery capacity (which occurs for example after incurring in excessive fatigue). Units
+     * with these values reduced are not able to recover 100% performance after resting.
      */
     public void updateMaxValues() {
         maxEndurance = MAX_ENDURANCE * (200 + readiness + Math.min(100, supply)) / 400;
@@ -370,9 +355,7 @@ public abstract class Unit implements ModelProvider<UnitModel> {
     }
 
     /**
-     * Changes the
-     * <code>endurance</code> of the unit by the specified
-     * <code>amount</code>
+     * Changes the {@code endurance} of the unit by the specified {@code amount}
      *
      * @param amount
      */
@@ -398,7 +381,7 @@ public abstract class Unit implements ModelProvider<UnitModel> {
      * Moves the unit one tile in the indicated {@code direction}. This method simply changes the location of the unit,
      * and updates the board accordingly (removes unit from previous location and adds it to the new location)
      *
-     * @param direction Direction of the movement relative to the origin of the movement
+     * @param direction direction of the movement relative to the origin of the movement
      */
     public void move(Direction direction) {
         location.remove(this);
@@ -410,7 +393,6 @@ public abstract class Unit implements ModelProvider<UnitModel> {
      * Sets the operational state of the unit. This indicates the way the unit is deployed and/or which kind of activity
      * is performing
      *
-     * @see OpState
      * @param opState
      */
     public void setOpState(OpState opState) {
@@ -432,8 +414,8 @@ public abstract class Unit implements ModelProvider<UnitModel> {
     }
 
     public int getTraitValue(AssetTrait trait) {
-        if (traits.containsKey(trait)) {
-            return traits.get(trait);
+        if (traits.containsKey(AssetTrait.RECON)) {
+            return traits.get(AssetTrait.RECON);
         } else {
             return 0;
         }
@@ -496,11 +478,11 @@ public abstract class Unit implements ModelProvider<UnitModel> {
     }
 
     public double getAttackStrength() {
-        return efficacy * (double) (antiTank + antiPersonnel) / (Scale.INSTANCE.getArea() * 1.25);
+        return efficacy * (double) (antiTank + antiPersonnel) / (Scale.INSTANCE.getArea() * 1.5);
     }
 
     public double getDefenseStrength() {
-        return efficacy * (double) defense / (Scale.INSTANCE.getArea() * 1.25);
+        return efficacy * (double) defense / (Scale.INSTANCE.getArea() * 1.5);
     }
 
     public int getEfficacy() {
@@ -563,8 +545,8 @@ public abstract class Unit implements ModelProvider<UnitModel> {
         return supply;
     }
 
-    public UnitType getType() {
-        return type;
+    public UnitType getUnitType() {
+        return unitType;
     }
 
     public int getWeight() {
@@ -604,7 +586,7 @@ public abstract class Unit implements ModelProvider<UnitModel> {
         }
     }
 
-//    protected static class UnitActionFinishComparator implements Comparator<Unit> {
+    //    protected static class UnitActionFinishComparator implements Comparator<Unit> {
 //
 //        @Override
 //        public int compare(Unit u1, Unit u2) {
@@ -655,14 +637,14 @@ public abstract class Unit implements ModelProvider<UnitModel> {
     }
 
     public String toStringVerbose() {
-        return name + "(" + type.name() + ")." + movement + "." + opState + " @ " + location;
+        return name + "(" + unitType.name() + ")." + movement + "." + opState + " @ " + location;
     }
 
     public String toStringMultiline() {
         StringBuilder sb = new StringBuilder();
         sb.append(name).append(" (").append(echelon).append(')').append('\n');
         sb.append("Belongs to ").append(formation).append(" (").append(force).append(")\n");
-        sb.append("Unit type: ").append(type).append('\n');
+        sb.append("Unit unitType: ").append(unitType).append('\n');
         sb.append("Location: ").append(location).append('\n');
         sb.append("Movement: ").append(movement).append(" (").append(speed * 60.0 / 1000).append(" Km/h)\n");
         sb.append("OpState: ").append(opState).append('\n');
@@ -685,9 +667,9 @@ public abstract class Unit implements ModelProvider<UnitModel> {
         if (artillery != 0) {
             sb.append("Art: ").append(efficacy * artillery).append(" (Range ").append(range).append(" Km.)\n");
         }
-        if (!type.getCapabilities().isEmpty()) {
+        if (!unitType.getCapabilities().isEmpty()) {
             sb.append("\n___Capabilities___\n");
-            for (Capability capability : type.getCapabilities()) {
+            for (Capability capability : unitType.getCapabilities()) {
                 sb.append(capability).append('\n');
             }
         }
@@ -719,7 +701,7 @@ public abstract class Unit implements ModelProvider<UnitModel> {
     }
 
     /**
-     * Returns true if the {@link #unit} has enough endurance to perform the action. The answer depends on the current
+     * Returns true if the  has enough endurance to perform the action. The answer depends on the current
      * {@link #endurance} of the unit as well as the {@link ActionType} passed as a parameter provided
      *
      * @param type

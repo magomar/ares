@@ -1,14 +1,13 @@
 package ares.application.shared.models.forces;
 
+import ares.platform.engine.knowledge.KnowledgeCategory;
 import ares.platform.scenario.forces.Echelon;
 import ares.platform.scenario.forces.Unit;
-import ares.platform.engine.knowledge.KnowledgeCategory;
 
 /**
- *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
-public class IdentifiedUnitModel extends DetectedUnitModel  {
+public class IdentifiedUnitModel extends DetectedUnitModel {
 
     public IdentifiedUnitModel(Unit unit) {
         super(unit, KnowledgeCategory.GOOD);
@@ -32,7 +31,7 @@ public class IdentifiedUnitModel extends DetectedUnitModel  {
     }
 
     public int getHealth() {
-        return (int) (unit.getEfficacy() - 1 / 20);
+        return unit.getEfficacy() - 1 / 20;
     }
 
     public Echelon getEchelon() {

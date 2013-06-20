@@ -1,16 +1,16 @@
 package ares.platform.scenario.board;
 
+import ares.platform.scenario.Scale;
 import ares.platform.scenario.forces.AirUnit;
 import ares.platform.scenario.forces.LandUnit;
 import ares.platform.scenario.forces.SurfaceUnit;
 import ares.platform.scenario.forces.Unit;
-import ares.platform.scenario.Scale;
 import ares.platform.util.Ring;
+
 import java.util.ArrayList;
 import java.util.Collection;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class UnitsStack {
@@ -18,16 +18,16 @@ public class UnitsStack {
     /**
      * Surface (Land and Naval) Units found in this location.
      */
-    private Collection<SurfaceUnit> surfaceUnits;
+    private final Collection<SurfaceUnit> surfaceUnits;
     /**
      * Air Units found in this location.
      */
-    private Collection<AirUnit> airUnits;
+    private final Collection<AirUnit> airUnits;
     /**
      * All units in the location. This uses a Ring, a circular linked list which allows cycling over all the units. This
      * is used by the GUI. We need this structure to remember the currently visible unit across turns.
      */
-    private Ring<Unit> allUnits;
+    private final Ring<Unit> allUnits;
 
     public UnitsStack(Tile location) {
         surfaceUnits = new ArrayList<>();
@@ -58,7 +58,7 @@ public class UnitsStack {
         return airUnits;
     }
 
-//    public Ring<Unit> getAllUnits() {
+    //    public Ring<Unit> getAllUnits() {
 //        return allUnits;
 //    }
     public void addSurfaceUnit(SurfaceUnit surfaceUnit) {

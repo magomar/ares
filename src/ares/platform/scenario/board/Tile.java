@@ -8,25 +8,16 @@ import ares.platform.engine.knowledge.KnowledgeCategory;
 import ares.platform.engine.knowledge.KnowledgeLevel;
 import ares.platform.engine.movement.MovementCost;
 import ares.platform.engine.movement.MovementType;
+import ares.platform.engine.time.Clock;
 import ares.platform.model.ModelProvider;
 import ares.platform.model.UserRole;
-import ares.platform.engine.time.Clock;
 import ares.platform.scenario.Scenario;
 import ares.platform.scenario.assets.AssetTrait;
-import ares.platform.scenario.forces.AirUnit;
-import ares.platform.scenario.forces.Capability;
-import ares.platform.scenario.forces.Force;
-import ares.platform.scenario.forces.SurfaceUnit;
-import ares.platform.scenario.forces.Unit;
-import java.awt.Point;
-import java.util.Collection;
-import java.util.EnumMap;
-import java.util.EnumSet;
-import java.util.HashMap;
-import java.util.Map;
+import ares.platform.scenario.forces.*;
+
+import java.awt.*;
+import java.util.*;
 import java.util.Map.Entry;
-import java.util.Objects;
-import java.util.Set;
 
 /**
  * This class holds the state of a single tile in the board, and it is uniquely identified by coordinates X and Y.
@@ -42,7 +33,7 @@ public final class Tile implements ModelProvider<TileModel> {
     /**
      * Terrain features
      */
-    private Set<Feature> features;
+    private final Set<Feature> features;
     /**
      * Entrenchment (fortification) level, expressed as a percentage
      */
@@ -52,11 +43,11 @@ public final class Tile implements ModelProvider<TileModel> {
      * playing area by some Non-playable tiles, which is typically used to represent remote units and facilities which
      * can impact the scenario, for example an airport and some air units or airborne-capable units.
      */
-    private int distance;
+    private final int distance;
     /**
      * Victory points, represented by a positive integer
      */
-    private int victoryPoints;
+    private final int victoryPoints;
     /**
      * Force in possesion of this tile
      */
@@ -66,9 +57,9 @@ public final class Tile implements ModelProvider<TileModel> {
      * {@link Point#y} holds the row (vertical coordinate). The origin of coordinates corresponds to the Top-Left corner
      * of the board.
      */
-    private Point coordinates;
+    private final Point coordinates;
     /**
-     * Unique identifier obtained from coordinates: {@code index(x,y) = x * board.width + y}
+     * Unique identifier obtained from coordinates: {@code index(x, y) = x * board.width + y}
      */
     private int index;
     /**
@@ -78,19 +69,19 @@ public final class Tile implements ModelProvider<TileModel> {
     /*
      * Data structure containing all units in the location.
      */
-    private UnitsStack units;
+    private final UnitsStack units;
     /**
      * Precomputed movement costs to enter the tile from every possible direction.
      */
-    private Map<Direction, MovementCost> enterCost;
+    private final Map<Direction, MovementCost> enterCost;
     /**
-     * Minimun movement cost per each movement type
+     * Minimun movement cost per each movement unitType
      */
     private Map<MovementType, Integer> minExitCost;
     /**
      * Modifiers to combat due to terrain. This modifier applies to the unit defending this location
      */
-    private Map<Direction, CombatModifier> combatModifiers;
+    private final Map<Direction, CombatModifier> combatModifiers;
     /**
      * Neighbor tiles in all valid directions. If there is no neighbor in one direction (which happens at the edges of
      * the board), then there would be no entry for that direction.
@@ -105,7 +96,7 @@ public final class Tile implements ModelProvider<TileModel> {
      */
     private final Map<KnowledgeCategory, TileModel> models;
 
-    public Tile(ares.data.jaxb.Cell c) {
+    public Tile(ares.data.wrappers.scenario.Cell c) {
 //        x = c.getX();
 //        y = c.getY();
         coordinates = new Point(c.getX(), c.getY());
@@ -120,8 +111,8 @@ public final class Tile implements ModelProvider<TileModel> {
         // Initialize terrain information
         terrain = new EnumMap<>(Terrain.class);
         visibility = Vision.OPEN;
-        for (ares.data.jaxb.Terrain ct : c.getTerrain()) {
-            ares.data.jaxb.TerrainType type = ct.getType();
+        for (ares.data.wrappers.scenario.Terrain ct : c.getTerrain()) {
+            ares.data.wrappers.scenario.TerrainType type = ct.getType();
             Terrain terr = Terrain.valueOf(type.name());
             Directions multiDir = Directions.valueOf(ct.getDir().name());
             terrain.put(terr, multiDir);
@@ -132,7 +123,7 @@ public final class Tile implements ModelProvider<TileModel> {
         }
         features = EnumSet.noneOf(Feature.class);
         // Initialize terrain features
-        for (ares.data.jaxb.TerrainFeature feature : c.getFeature()) {
+        for (ares.data.wrappers.scenario.TerrainFeature feature : c.getFeature()) {
             features.add(Enum.valueOf(Feature.class, feature.name()));
         }
 
@@ -154,7 +145,9 @@ public final class Tile implements ModelProvider<TileModel> {
      * neighbors. It also computes the movement costs induced by the terrain when moving from this tile to another tile,
      * and the combat modifiers for units located in this tile.
      *
-     * @param board
+     * @param neighbors the tiles adjacent to this tile
+     * @param owner     the force owning this tile
+     * @param scenario  the scenario
      */
     public void initialize(Map<Direction, Tile> neighbors, Force owner, Scenario scenario) {
         this.owner = owner;
@@ -198,7 +191,7 @@ public final class Tile implements ModelProvider<TileModel> {
     }
 
     public boolean remove(Unit unit) {
-        Set<Capability> capabilities = unit.getType().getCapabilities();
+        Set<Capability> capabilities = unit.getUnitType().getCapabilities();
         if (capabilities.contains(Capability.AIRCRAFT)) {
             return units.removeAirUnit((AirUnit) unit);
         } else {
@@ -375,20 +368,30 @@ public final class Tile implements ModelProvider<TileModel> {
     }
 
     public String toStringMultiline() {
-        StringBuilder sb = new StringBuilder("Location: " + toString() + '\n');
-        if (!terrain.isEmpty()) {
-            sb.append("Terrain").append(terrain.keySet()).append('\n');
+        StringBuilder sb = new StringBuilder(toString() + '\n');
+
+        for (Entry<UserRole, KnowledgeLevel> entry : knowledgeLevels.entrySet()) {
+            if (UserRole.GOD != entry.getKey()) {
+                sb.append(entry.getKey()).append(entry.getValue()).append('\n');
+            }
         }
+
+        for (Terrain t : terrain.keySet()) {
+            sb.append(t).append('\n');
+        }
+//        if (!terrain.isEmpty()) {
+//            sb.append(terrain.keySet()).append('\n');
+//        }
 //        if (!tileTerrain.isEmpty()) {
 //            sb.append("Terrain: ").append(tileTerrain).append('\n');
 //        }
-        if (!features.isEmpty()) {
-            sb.append("Features: ").append(features).append('\n');
+        for (Feature f : features) {
+            sb.append(f).append('\n');
         }
-        sb.append("Owner: ").append(owner).append('\n');
-        for (Entry<UserRole, KnowledgeLevel> entry : knowledgeLevels.entrySet()) {
-            sb.append(entry.getKey()).append(" -> ").append(entry.getValue()).append('\n');
-        }
+//        if (!features.isEmpty()) {
+//            sb.append(features).append('\n');
+//        }
+//        sb.append(owner).append('\n');
 
         return sb.toString();
     }
@@ -413,7 +416,7 @@ public final class Tile implements ModelProvider<TileModel> {
         }
         return minimunCosts;
     }
-    
+
     public boolean isPlayable() {
         return !features.contains(Feature.NON_PLAYABLE);
     }

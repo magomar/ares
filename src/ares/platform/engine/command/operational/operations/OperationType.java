@@ -3,10 +3,9 @@ package ares.platform.engine.command.operational.operations;
 import ares.platform.engine.command.operational.plans.OperationalStance;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public enum OperationType  {
+public enum OperationType {
 
     MOVE_TO_CONTACT(OperationalStance.OFFENSIVE),
     ATTACK(OperationalStance.OFFENSIVE),

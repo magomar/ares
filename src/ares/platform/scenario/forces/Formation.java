@@ -8,43 +8,43 @@ import ares.platform.engine.time.Clock;
 import ares.platform.model.ModelProvider;
 import ares.platform.model.UserRole;
 import ares.platform.scenario.Scenario;
+
 import java.util.*;
 
 /**
- *
  * @author Mario Gomez <margomez antiTank dsic.upv.es>
  */
 public class Formation implements ModelProvider<FormationModel> {
 
-    private int id;
-    private String name;
-    private Echelon echelon;
-    private Force force;
-    private String commander;
-    private String details;
-    private int proficiency;
-    private int supply;
+    private final int id;
+    private final String name;
+    private final Echelon echelon;
+    private final Force force;
+    private final String commander;
+    private final String details;
+    private final int proficiency;
+    private final int supply;
     /**
      * List of available (on-board) units. This collection excludes reinforcements, destroyed/withdrawed units and
      * divided units.
      */
-    private List<Unit> availableUnits;
+    private final List<Unit> availableUnits;
     /**
      * List of scheduled reinforcement units, stored in a queue
      */
-    private Queue<Unit> scheduledReinforcements;
+    private final Queue<Unit> scheduledReinforcements;
     /**
      * List of units that could be received as reinforcements, conditioned to certain events
      */
-    private List<Unit> conditionalReinforcements;
+    private final List<Unit> conditionalReinforcements;
     private Formation superior;
     private List<Formation> subordinates;
     private OperationalPlan operationalPlan;
-    private ProgrammedOpponent po;
+    private final ProgrammedOpponent po;
     private boolean active;
     private Unit hq;
 
-    public Formation(ares.data.jaxb.Formation formation, Force force, Scenario scenario) {
+    public Formation(ares.data.wrappers.scenario.Formation formation, Force force, Scenario scenario) {
         id = formation.getId();
         name = formation.getName();
         echelon = Echelon.valueOf(formation.getEchelon().name());
@@ -58,7 +58,7 @@ public class Formation implements ModelProvider<FormationModel> {
         conditionalReinforcements = new ArrayList<>();
         subordinates = new ArrayList<>();
         Map<Integer, Unit> allUnits = new HashMap<>();
-        for (ares.data.jaxb.Unit unit : formation.getUnit()) {
+        for (ares.data.wrappers.scenario.Unit unit : formation.getUnit()) {
             Unit u = UnitFactory.createUnit(unit, this, force, scenario);
             allUnits.put(unit.getId(), u);
             switch (u.getAvailability()) {
@@ -73,12 +73,12 @@ public class Formation implements ModelProvider<FormationModel> {
                 default:
                     availableUnits.add(u);
             }
-            if (u.getType() == UnitType.HEADQUARTERS) {
+            if (u.getUnitType() == UnitType.HEADQUARTERS) {
                 hq = u;
             }
         }
         // Set parents for units resulting of division
-        for (ares.data.jaxb.Unit unit : formation.getUnit()) {
+        for (ares.data.wrappers.scenario.Unit unit : formation.getUnit()) {
             if (unit.getParent() != null) {
                 allUnits.get(unit.getId()).setParent(allUnits.get(unit.getParent()));
             }

@@ -1,19 +1,18 @@
 package ares.platform.io;
 
+import javax.swing.filechooser.FileFilter;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
-import javax.swing.filechooser.FileFilter;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class FileTypeFilter extends FileFilter implements java.io.FileFilter, FilenameFilter {
 
-    private String description;
-    private String extensions[];
+    private final String description;
+    private final String[] extensions;
 
     public FileTypeFilter(String description, String extension) {
         this(description, new String[]{extension});
@@ -25,7 +24,7 @@ public class FileTypeFilter extends FileFilter implements java.io.FileFilter, Fi
         } else {
             this.description = description;
         }
-        this.extensions = (String[]) extensions.clone();
+        this.extensions = extensions.clone();
         toLower(this.extensions);
     }
 

@@ -1,12 +1,8 @@
 package ares.application.shared.gui;
 
-import java.awt.Dimension;
-import java.awt.Rectangle;
-import java.awt.Toolkit;
-import java.awt.Window;
+import java.awt.*;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class WindowUtil {
@@ -30,6 +26,7 @@ public class WindowUtil {
 //        frame.setLocation((screenSize.width - frameSize.width) / 2, (screenSize.height - frameSize.height) / 2);
 //        return frame;
 //    }
+
     /**
      * Centers the passed window (dialog or frame) on the screen and makes it visible. This is typically used to display
      * the main window for an application.

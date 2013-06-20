@@ -4,42 +4,42 @@
  */
 package ares.platform.scenario.assets;
 
-import ares.data.jaxb.EquipmentDB.EquipmentCategory.Item;
-import ares.data.jaxb.Trait;
+import ares.data.wrappers.equipment.EquipmentDB.EquipmentCategory.Item;
+import ares.data.wrappers.scenario.Trait;
+
 import java.util.EnumSet;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public final class AssetType {
 
     private static final Logger LOG = Logger.getLogger(AssetType.class.getName());
-    private int id;
-    private String name;
-    private String country;
-    private int icon;
-    private int at;
-    private int ap;
+    private final int id;
+    private final String name;
+    private final String country;
+    private final int icon;
+    private final int at;
+    private final int ap;
     private int aal;
     private int aah;
-    private int df;
-    private int artyRange;
-    private int earlyRange;
-    private int samRange;
-    private int nuke;
-    private int volume;
-    private int weight;
-    private int shellWeight;
-    private int armor;
+    private final int df;
+    private final int artyRange;
+    private final int earlyRange;
+    private final int samRange;
+    private final int nuke;
+    private final int volume;
+    private final int weight;
+    private final int shellWeight;
+    private final int armor;
     /**
      * Speed in meters per minute
      */
     private int speed;
-    private Set<AssetTrait> traits;
+    private final Set<AssetTrait> traits;
 
     public AssetType(Item i) {
         traits = EnumSet.noneOf(AssetTrait.class);

@@ -1,14 +1,13 @@
 package ares.application.shared.models.forces;
 
-import ares.platform.scenario.forces.UnitType;
-import ares.platform.scenario.forces.Unit;
-import ares.platform.scenario.forces.UnitsColor;
 import ares.application.shared.models.board.TileModel;
 import ares.platform.engine.command.tactical.TacticalMission;
 import ares.platform.engine.knowledge.KnowledgeCategory;
+import ares.platform.scenario.forces.Unit;
+import ares.platform.scenario.forces.UnitType;
+import ares.platform.scenario.forces.UnitsColor;
 
 /**
- *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
 public class DetectedUnitModel extends UnitModel {
@@ -22,7 +21,7 @@ public class DetectedUnitModel extends UnitModel {
     }
 
     public UnitType getUnitType() {
-        return unit.getType();
+        return unit.getUnitType();
     }
 
     @Override
@@ -57,7 +56,7 @@ public class DetectedUnitModel extends UnitModel {
 
     @Override
     public String getDescription() {
-        return unit.getType().name();
+        return unit.getUnitType().name();
     }
 
     @Override

@@ -1,11 +1,11 @@
 package ares.platform.scenario.assets;
 
-import ares.data.jaxb.EquipmentDB;
+import ares.data.wrappers.equipment.EquipmentDB;
+
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class AssetTypes {

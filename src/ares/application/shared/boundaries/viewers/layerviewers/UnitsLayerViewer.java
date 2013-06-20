@@ -4,7 +4,6 @@ import ares.application.shared.models.ScenarioModel;
 import ares.application.shared.models.board.TileModel;
 
 /**
- *
  * @author Mario Gómez Martínez <magomar@gmail.com>
  */
 public interface UnitsLayerViewer extends ImageLayerViewer {

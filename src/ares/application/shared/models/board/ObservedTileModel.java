@@ -5,16 +5,16 @@ import ares.platform.engine.knowledge.KnowledgeCategory;
 import ares.platform.scenario.board.Tile;
 import ares.platform.scenario.board.UnitsStack;
 import ares.platform.scenario.forces.SurfaceUnit;
+
 import java.util.Collection;
 import java.util.NoSuchElementException;
 
 /**
- *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
 public final class ObservedTileModel extends NonObservedTileModel {
 
-    private UnitsStack stack;
+    private final UnitsStack stack;
 
     public ObservedTileModel(Tile tile, KnowledgeCategory kLevel) {
         super(tile, kLevel);

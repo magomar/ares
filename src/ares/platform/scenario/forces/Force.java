@@ -4,23 +4,26 @@ import ares.application.shared.models.forces.ForceModel;
 import ares.platform.model.ModelProvider;
 import ares.platform.model.UserRole;
 import ares.platform.scenario.Scenario;
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class Force implements ModelProvider<ForceModel> {
 
-    private int id;
-    private String name;
-    private int proficiency;
-    private int supply;
-    private int flag;
-    private List<Formation> formations;
+    private final int id;
+    private final String name;
+    private final int proficiency;
+    private final int supply;
+    private final int flag;
+    private final List<Formation> formations;
     private final Map<UserRole, ForceModel> models;
 
-    public Force(ares.data.jaxb.Force force, Scenario scenario) {
+    public Force(ares.data.wrappers.scenario.Force force, Scenario scenario) {
         id = force.getId();
         name = force.getName();
         formations = new ArrayList<>();
@@ -28,11 +31,11 @@ public class Force implements ModelProvider<ForceModel> {
         supply = force.getSupply();
         flag = force.getFlag();
         Map<Integer, Formation> formMap = new HashMap<>(force.getFormation().size());
-        for (ares.data.jaxb.Formation formation : force.getFormation()) {
+        for (ares.data.wrappers.scenario.Formation formation : force.getFormation()) {
             Formation f = new Formation(formation, this, scenario);
             formMap.put(f.getId(), f);
         }
-        for (ares.data.jaxb.Formation formation : force.getFormation()) {
+        for (ares.data.wrappers.scenario.Formation formation : force.getFormation()) {
             Formation child = formMap.get(formation.getId());
             Formation parent = formMap.get(formation.getParent());
             child.setSuperior(parent);

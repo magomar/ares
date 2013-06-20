@@ -273,7 +273,7 @@ public class Ring<E> extends AbstractSequentialList<E>
 
     /**
      * Appends the specified element to the end of this list.
-     *
+     * <p/>
      * <p>This method is equivalent to {@link #add}.
      *
      * @param e the element to add
@@ -308,7 +308,7 @@ public class Ring<E> extends AbstractSequentialList<E>
 
     /**
      * Appends the specified element to the end of this list.
-     *
+     * <p/>
      * <p>This method is equivalent to {@link #addLast}.
      *
      * @param e element to be appended to this list
@@ -372,10 +372,10 @@ public class Ring<E> extends AbstractSequentialList<E>
      * collection's iterator.
      *
      * @param index index at which to insert the first element from the specified collection
-     * @param c collection containing elements to be added to this list
+     * @param c     collection containing elements to be added to this list
      * @return {@code true} if this list changed as a result of the call
      * @throws IndexOutOfBoundsException {@inheritDoc}
-     * @throws NullPointerException if the specified collection is null
+     * @throws NullPointerException      if the specified collection is null
      */
     @Override
     public boolean addAll(int index, Collection<? extends E> c) {
@@ -430,7 +430,7 @@ public class Ring<E> extends AbstractSequentialList<E>
         // - helps a generational GC if the discarded nodes inhabit
         //   more than one generation
         // - is sure to free memory even if there is a reachable Iterator
-        for (LinkedNode<E> x = first; x != null;) {
+        for (LinkedNode<E> x = first; x != null; ) {
             LinkedNode<E> next = x.next;
             x.item = null;
             x.next = null;
@@ -443,6 +443,7 @@ public class Ring<E> extends AbstractSequentialList<E>
     }
 
     // Positional Access Operations
+
     /**
      * Returns the element at the specified position in this list.
      *
@@ -459,7 +460,7 @@ public class Ring<E> extends AbstractSequentialList<E>
     /**
      * Replaces the element at the specified position in this list with the specified element.
      *
-     * @param index index of the element to replace
+     * @param index   index of the element to replace
      * @param element element to be stored at the specified position
      * @return the element previously at the specified position
      * @throws IndexOutOfBoundsException {@inheritDoc}
@@ -477,7 +478,7 @@ public class Ring<E> extends AbstractSequentialList<E>
      * Inserts the specified element at the specified position in this list. Shifts the element currently at that
      * position (if any) and any subsequent elements to the right (adds one to their indices).
      *
-     * @param index index at which the specified element is to be inserted
+     * @param index   index at which the specified element is to be inserted
      * @param element element to be inserted
      * @throws IndexOutOfBoundsException {@inheritDoc}
      */
@@ -562,6 +563,7 @@ public class Ring<E> extends AbstractSequentialList<E>
     }
 
     // Search Operations
+
     /**
      * Returns the index of the first occurrence of the specified element in this list, or -1 if this list does not
      * contain the element. More formally, returns the lowest index {@code i} such that
@@ -569,7 +571,7 @@ public class Ring<E> extends AbstractSequentialList<E>
      *
      * @param o element to search for
      * @return the index of the first occurrence of the specified element in this list, or -1 if this list does not
-     * contain the element
+     *         contain the element
      */
     @Override
     public int indexOf(Object o) {
@@ -599,7 +601,7 @@ public class Ring<E> extends AbstractSequentialList<E>
      *
      * @param o element to search for
      * @return the index of the last occurrence of the specified element in this list, or -1 if this list does not
-     * contain the element
+     *         contain the element
      */
     @Override
     public int lastIndexOf(Object o) {
@@ -623,6 +625,7 @@ public class Ring<E> extends AbstractSequentialList<E>
     }
 
     // Queue operations.
+
     /**
      * Retrieves, but does not remove, the head (first element) of this list.
      *
@@ -684,6 +687,7 @@ public class Ring<E> extends AbstractSequentialList<E>
     }
 
     // Deque operations
+
     /**
      * Inserts the specified element at the front of this list.
      *
@@ -761,7 +765,7 @@ public class Ring<E> extends AbstractSequentialList<E>
     /**
      * Pushes an element onto the stack represented by this list. In other words, inserts the element at the front of
      * this list.
-     *
+     * <p/>
      * <p>This method is equivalent to {@link #addFirst}.
      *
      * @param e the element to push
@@ -775,7 +779,7 @@ public class Ring<E> extends AbstractSequentialList<E>
     /**
      * Pops an element from the stack represented by this list. In other words, removes and returns the first element of
      * this list.
-     *
+     * <p/>
      * <p>This method is equivalent to {@link #removeFirst()}.
      *
      * @return the element at the front of this list (which is the top of the stack represented by this list)
@@ -798,7 +802,7 @@ public class Ring<E> extends AbstractSequentialList<E>
     @SuppressWarnings("unchecked")
     @Override
     public boolean removeFirstOccurrence(Object o) {
-        return remove((E) o);
+        return remove(o);
     }
 
     /**
@@ -832,7 +836,7 @@ public class Ring<E> extends AbstractSequentialList<E>
     /**
      * Returns a list-iterator of the elements in this list (in proper sequence), starting at the specified position in
      * the list. Obeys the general contract of {@code List.listIterator(int)}.<p>
-     *
+     * <p/>
      * The list-iterator is <i>fail-fast</i>: if the list is structurally modified at any time after the Iterator is
      * created, in any way except through the list-iterator's own {@code remove} or {@code add} methods, the
      * list-iterator will throw a {@code ConcurrentModificationException}. Thus, in the face of concurrent modification,
@@ -841,7 +845,7 @@ public class Ring<E> extends AbstractSequentialList<E>
      *
      * @param index index of the first element to be returned from the list-iterator (by a call to {@code next})
      * @return a ListIterator of the elements in this list (in proper sequence), starting at the specified position in
-     * the list
+     *         the list
      * @throws IndexOutOfBoundsException {@inheritDoc}
      * @see List#listIterator(int)
      */
@@ -1023,10 +1027,10 @@ public class Ring<E> extends AbstractSequentialList<E>
 
     /**
      * Returns an array containing all of the elements in this list in proper sequence (from first to last element).
-     *
+     * <p/>
      * <p>The returned array will be "safe" in that no references to it are maintained by this list. (In other words,
      * this method must allocate a new array). The caller is thus free to modify the returned array.
-     *
+     * <p/>
      * <p>This method acts as bridge between array-based and collection-based APIs.
      *
      * @return an array containing all of the elements in this list in proper sequence
@@ -1043,32 +1047,32 @@ public class Ring<E> extends AbstractSequentialList<E>
 
     /**
      * Returns an array containing all of the elements in this list in proper sequence (from first to last element); the
-     * runtime type of the returned array is that of the specified array. If the list fits in the specified array, it is
-     * returned therein. Otherwise, a new array is allocated with the runtime type of the specified array and the size
+     * runtime unitType of the returned array is that of the specified array. If the list fits in the specified array, it is
+     * returned therein. Otherwise, a new array is allocated with the runtime unitType of the specified array and the size
      * of this list.
-     *
+     * <p/>
      * <p>If the list fits in the specified array with room to spare (i.e., the array has more elements than the list),
      * the element in the array immediately following the end of the list is set to {@code null}. (This is useful in
      * determining the length of the list <i>only</i> if the caller knows that the list does not contain any null
      * elements.)
-     *
+     * <p/>
      * <p>Like the {@link #toArray()} method, this method acts as bridge between array-based and collection-based APIs.
-     * Further, this method allows precise control over the runtime type of the output array, and may, under certain
+     * Further, this method allows precise control over the runtime unitType of the output array, and may, under certain
      * circumstances, be used to save allocation costs.
-     *
+     * <p/>
      * <p>Suppose {@code x} is a list known to contain only strings. The following code can be used to dump the list
      * into a newly allocated array of {@code String}:
-     *
+     * <p/>
      * <pre>
      *     String[] y = x.toArray(new String[0]);</pre>
      *
      * Note that {@code toArray(new Object[0])} is identical in function to {@code toArray()}.
      *
      * @param a the array into which the elements of the list are to be stored, if it is big enough; otherwise, a new
-     * array of the same runtime type is allocated for this purpose.
+     *          array of the same runtime unitType is allocated for this purpose.
      * @return an array containing the elements of the list
-     * @throws ArrayStoreException if the runtime type of the specified array is not a supertype of the runtime type of
-     * every element in this list
+     * @throws ArrayStoreException  if the runtime unitType of the specified array is not a supertype of the runtime unitType of
+     *                              every element in this list
      * @throws NullPointerException if the specified array is null
      */
     @SuppressWarnings("unchecked")
@@ -1090,6 +1094,7 @@ public class Ring<E> extends AbstractSequentialList<E>
 
         return a;
     }
+
     private static final long serialVersionUID = 876323262645176354L;
 
     /**

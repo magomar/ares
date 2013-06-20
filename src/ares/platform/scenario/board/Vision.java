@@ -5,7 +5,6 @@
 package ares.platform.scenario.board;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public enum Vision {

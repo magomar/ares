@@ -1,10 +1,9 @@
 package ares.platform.scenario.board;
 
-import java.awt.Point;
+import java.awt.*;
 import java.util.Set;
 
 /**
- *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
 public enum Directions {
@@ -95,7 +94,6 @@ public enum Directions {
      * <b>"N NE" -> 000011
      * <b>"S SE" -> 001100
      *
-     * @param directions
      * @return
      */
     public int getBitmask() {

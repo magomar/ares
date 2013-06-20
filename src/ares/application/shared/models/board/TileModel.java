@@ -1,20 +1,16 @@
 package ares.application.shared.models.board;
 
-import ares.platform.scenario.board.Direction;
-import ares.platform.scenario.board.Tile;
-import ares.platform.scenario.board.Feature;
-import ares.platform.scenario.board.Terrain;
-import ares.platform.scenario.board.Directions;
 import ares.application.shared.models.forces.UnitModel;
 import ares.platform.engine.knowledge.KnowledgeCategory;
 import ares.platform.engine.movement.MovementCost;
 import ares.platform.model.KnowledgeMediatedModel;
+import ares.platform.scenario.board.*;
 import ares.platform.scenario.forces.SurfaceUnit;
-import java.awt.Point;
+
+import java.awt.*;
 import java.util.*;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public abstract class TileModel extends KnowledgeMediatedModel {
@@ -56,7 +52,7 @@ public abstract class TileModel extends KnowledgeMediatedModel {
 //        return tf.contains(Feature.NON_PLAYABLE);
         return tile.isPlayable();
     }
-    
+
     public abstract UnitModel getTopUnit();
 
     public abstract String getOwner();

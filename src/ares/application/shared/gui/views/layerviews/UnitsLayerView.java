@@ -1,20 +1,21 @@
 package ares.application.shared.gui.views.layerviews;
 
 import ares.application.shared.boundaries.viewers.layerviewers.UnitsLayerViewer;
+import ares.application.shared.gui.decorators.ImageDecorators;
+import ares.application.shared.gui.profiles.GraphicProperties;
+import ares.application.shared.gui.profiles.GraphicsModel;
+import ares.application.shared.gui.profiles.ProfiledGraphicProperty;
+import ares.application.shared.models.ScenarioModel;
 import ares.application.shared.models.board.TileModel;
 import ares.application.shared.models.forces.ForceModel;
 import ares.application.shared.models.forces.UnitModel;
-import ares.application.shared.gui.profiles.GraphicsModel;
-import ares.application.shared.gui.decorators.ImageDecorators;
-import ares.application.shared.gui.profiles.GraphicProperties;
-import ares.application.shared.models.ScenarioModel;
-import ares.application.shared.gui.profiles.ProfiledGraphicProperty;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.util.*;
+import java.util.Collection;
+import java.util.HashSet;
 
 /**
- *
  * @author Heine <heisncfr@inf.upv.es>
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
@@ -30,6 +31,7 @@ public class UnitsLayerView extends AbstractImageLayerView implements UnitsLayer
     @Override
     public void updateLayer() {
         initialize();
+        if (!isVisible()) return;
         Graphics2D g2 = globalImage.createGraphics();
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         Collection<TileModel> tileModels = new HashSet<>();
@@ -59,7 +61,7 @@ public class UnitsLayerView extends AbstractImageLayerView implements UnitsLayer
      * Paints all the units visible in a single {@code tile}. Method used to update just one stack (typically the one
      * selected by the user)
      *
-     * @param scenario
+     * @param tile
      */
     @Override
     public void updateUnitStack(TileModel tile) {
@@ -71,8 +73,8 @@ public class UnitsLayerView extends AbstractImageLayerView implements UnitsLayer
     /**
      * Paints all the units in a single tile. Method used to paint all the units in an scenario
      *
+     * @param g2   the graphics
      * @param tile TileModel where the units are
-     * @param maxStack maximum units in the stack to be painted
      */
     private void paintUnitStack(Graphics2D g2, TileModel tile) {
 
@@ -81,7 +83,7 @@ public class UnitsLayerView extends AbstractImageLayerView implements UnitsLayer
             Point pos = GraphicsModel.INSTANCE.tileToPixel(tile.getCoordinates(), profile);
             //Retrieve the single unit image
             UnitModel unit = tile.getTopUnit();
-            BufferedImage unitImage = GraphicsModel.INSTANCE.getImageProvider(unit.getColor(), profile).getImage(unit.getIconId());
+            BufferedImage unitImage = GraphicsModel.INSTANCE.getProfiledImageProvider(unit.getColor(), profile).getImage(unit.getIconId());
 
             // Offset from the upper left corner of the tile
             int imageOffset = GraphicProperties.getProperty(ProfiledGraphicProperty.UNIT_OFFSET, profile);

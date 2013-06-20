@@ -1,12 +1,11 @@
 package ares.application.shared.boundaries.viewers.layerviewers;
 
 import ares.application.shared.gui.views.View;
+
+import javax.swing.*;
 import java.awt.image.BufferedImage;
-import javax.swing.JComponent;
-import javax.swing.JViewport;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public interface ImageLayerViewer extends View<JComponent> {
@@ -20,7 +19,7 @@ public interface ImageLayerViewer extends View<JComponent> {
     void updateLayer();
 
     void flush();
-    
+
     boolean hasParentLayer();
 
     ImageLayerViewer getParentLayer();
@@ -28,6 +27,11 @@ public interface ImageLayerViewer extends View<JComponent> {
     BufferedImage getGlobalImage();
 
     void setProfile(int profile);
-    
+
     String name();
+
+    void setSharingGlobalImage(boolean sharesGlobalImage);
+
+    boolean isSharingGlobalImage();
+
 }

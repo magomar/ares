@@ -3,7 +3,6 @@ package ares.platform.engine.action;
 import ares.platform.scenario.forces.OpState;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public enum ActionType {
@@ -31,7 +30,7 @@ public enum ActionType {
     ASSEMBLE(1.5, 0, OpState.DEPLOYED, OpState.ASSEMBLING, OpState.MOBILE);
     /**
      * Measures the intensity of an action, the speed or rate at which the endurance of a unit is consumed when carrying
-     * this type of action. It is specified in terms of endurance, that is, amount of seconds of low intensity activity
+     * this unitType of action. It is specified in terms of endurance, that is, amount of seconds of low intensity activity
      * per minute The intensity of low intensity actions is 60, since 1 minute = 60 seconds. A intensity of 120 means
      * the action induces twice the fatigue induced by a low intensity action, and so on.
      */
@@ -45,7 +44,7 @@ public enum ActionType {
     private final OpState effectAfter;
 
     private ActionType(final double wearRate, final double speedModifier, final OpState precondition,
-            final OpState effectWhile, final OpState effectAfter) {
+                       final OpState effectWhile, final OpState effectAfter) {
         this.wearRate = (int) (wearRate * 60);
         this.speedModifier = speedModifier;
         this.precondition = precondition;
@@ -74,9 +73,8 @@ public enum ActionType {
     }
 
     /**
-     *
      * @param duration in minutes
-     * @return the endurance required to execute this action type for the given {@link duration}
+     * @return the endurance required to execute this action unitType for the given {@code duration}
      */
     public int getRequiredEndurace(int duration) {
         return wearRate * duration;

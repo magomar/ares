@@ -1,16 +1,11 @@
 package ares.application.shared.commands;
 
-import ares.platform.action.Command;
 import ares.platform.io.ResourcePath;
+
+import javax.swing.*;
 import java.awt.event.KeyEvent;
-import java.io.File;
-import java.nio.file.FileSystems;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.KeyStroke;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public enum UnitCommands implements Command {
@@ -51,7 +46,7 @@ public enum UnitCommands implements Command {
         this.iconFilename = name().toLowerCase() + ".png";
     }
 
- @Override
+    @Override
     public String getText() {
         return text;
     }
@@ -65,10 +60,12 @@ public enum UnitCommands implements Command {
     public Integer getMnemonic() {
         return mnemonic;
     }
+
     @Override
     public KeyStroke getAccelerator() {
         return accelerator;
     }
+
     @Override
     public String getName() {
         return name();

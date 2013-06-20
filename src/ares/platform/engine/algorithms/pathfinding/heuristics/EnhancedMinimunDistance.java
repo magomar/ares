@@ -2,16 +2,16 @@ package ares.platform.engine.algorithms.pathfinding.heuristics;
 
 import ares.platform.scenario.board.Tile;
 import ares.platform.scenario.forces.Unit;
+
 import java.util.EnumMap;
 import java.util.Map;
 
 /**
- *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
 public class EnhancedMinimunDistance implements Heuristic {
 
-    private static Map<DistanceCalculator, EnhancedMinimunDistance> instances = new EnumMap<>(DistanceCalculator.class);
+    private static final Map<DistanceCalculator, EnhancedMinimunDistance> instances = new EnumMap<>(DistanceCalculator.class);
 
     public static EnhancedMinimunDistance create(DistanceCalculator distanceCalculator) {
         if (instances.containsKey(distanceCalculator)) {
@@ -22,6 +22,7 @@ public class EnhancedMinimunDistance implements Heuristic {
             return newInstance;
         }
     }
+
     protected final DistanceCalculator distanceCalculator;
 
     private EnhancedMinimunDistance(DistanceCalculator distanceCalculator) {

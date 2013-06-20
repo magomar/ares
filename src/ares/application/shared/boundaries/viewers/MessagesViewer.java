@@ -1,13 +1,13 @@
 package ares.application.shared.boundaries.viewers;
 
 import ares.application.shared.gui.views.MessagesHandler;
-import ares.platform.engine.messages.EngineMessage;
 import ares.application.shared.gui.views.View;
+import ares.platform.engine.messages.EngineMessage;
+
+import javax.swing.*;
 import java.awt.event.ActionListener;
-import javax.swing.JPanel;
 
 /**
- *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
 public interface MessagesViewer extends View<JPanel> {

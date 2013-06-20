@@ -2,14 +2,14 @@ package ares.platform.engine.time;
 
 import ares.platform.engine.RealTimeEngine;
 import ares.platform.scenario.TurnLength;
+
+import javax.swing.*;
 import java.text.SimpleDateFormat;
 import java.util.EnumSet;
 import java.util.GregorianCalendar;
 import java.util.Set;
-import javax.swing.SwingUtilities;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class Clock {
@@ -36,7 +36,7 @@ public class Clock {
     private Clock() {
     }
 
-    public void initialize(ares.data.jaxb.Calendar calendar) {
+    public void initialize(ares.data.wrappers.scenario.Calendar calendar) {
         turnLength = TurnLength.valueOf(calendar.getTurnLength().name());
         MINUTES_PER_TICK = turnLength.getMinutesPerTick();
         MINUTES_PER_TURN = turnLength.getMinutesPerTurn();
@@ -121,9 +121,9 @@ public class Clock {
     public String toString() {
         return FULL_DATE_FORMAT.format(now.getTime());
     }
-    
-    
-    public static int[] getTemporalData(int startTime, int duration) { 
+
+
+    public static int[] getTemporalData(int startTime, int duration) {
         return new int[3];
     }
 
@@ -152,5 +152,5 @@ public class Clock {
             getEngine().update(new ClockEvent(eventTypes));
         }
     }
-    
+
 }

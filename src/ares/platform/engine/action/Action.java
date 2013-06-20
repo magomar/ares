@@ -3,7 +3,6 @@ package ares.platform.engine.action;
 import ares.platform.scenario.forces.Unit;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public interface Action {
@@ -21,7 +20,6 @@ public interface Action {
     /**
      * Starts executing the action. Actions to be executed have to invoke this method before executing for the first
      * time.
-     *
      */
     void start();
 
@@ -43,7 +41,7 @@ public interface Action {
     /**
      * Changes the state of the action to the {@code state} passed as parameter.
      *
-     * @param state
+     * @param state    state of the action
      */
     void setState(ActionState state);
 
@@ -71,5 +69,9 @@ public interface Action {
 
     ActionState getState();
 
+    /**
+     * Get the time remaining to complete the action
+     * @return  the remaining time
+     */
     int getTimeToComplete();
 }

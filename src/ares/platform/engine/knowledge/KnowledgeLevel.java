@@ -1,7 +1,6 @@
 package ares.platform.engine.knowledge;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class KnowledgeLevel implements Comparable {
@@ -12,7 +11,7 @@ public class KnowledgeLevel implements Comparable {
     private double value;
     private KnowledgeCategory category;
 
-//    public KnowledgeLevel(double knowledge) {
+    //    public KnowledgeLevel(double knowledge) {
 //        this.value = knowledge;
 //        this.category = KnowledgeCategory.getCategory(value);
 //    }
@@ -24,9 +23,9 @@ public class KnowledgeLevel implements Comparable {
 
     /**
      * Modifies the knowledge level. Depending on the sign of the modifier it can either increase or decrease the level
-     * of knowledge, both quantitatively (#knowledge) and qualitatively (#type)
+     * of knowledge, both quantitatively (#knowledge) and qualitatively (#unitType)
      *
-     * @param modifier
+     * @param modifier    amount of modification to apply
      */
     public void modify(double modifier) {
         value += modifier;
@@ -39,17 +38,25 @@ public class KnowledgeLevel implements Comparable {
         }
     }
 
+    /**
+     *
+     * @return the precise value of the knowledge level
+     */
     public double getValue() {
         return value;
     }
 
+    /**
+     *
+     * @return the category associated to the current value of the knowledge level
+     */
     public KnowledgeCategory getCategory() {
         return category;
     }
 
     @Override
     public int compareTo(Object knowledgeLevel) {
-        KnowledgeLevel kLevel =(KnowledgeLevel) knowledgeLevel;
+        KnowledgeLevel kLevel = (KnowledgeLevel) knowledgeLevel;
         if (this.value == kLevel.value) {
             return 0;
         } else if ((this.value) > kLevel.value) {
@@ -83,6 +90,7 @@ public class KnowledgeLevel implements Comparable {
 
     @Override
     public String toString() {
-        return String.format("K = %.2f (%s)", value, category);
+//        return String.format("K = %.2f (%s)", value, category);
+        return String.format("(%.2f)", value);
     }
 }

@@ -1,30 +1,25 @@
 package ares.application.player;
 
-import ares.application.shared.boundaries.viewers.BoardViewer;
 import ares.application.player.boundaries.viewers.PlayerViewer;
 import ares.application.player.controllers.WeGoPlayerController;
 import ares.application.player.views.PlayerBoardView;
-import ares.application.shared.gui.views.MessagesView;
-import ares.application.shared.gui.views.OOBView;
-import ares.application.shared.gui.views.MainMenuView;
-import ares.application.shared.gui.views.ToolBarView;
-import ares.application.shared.gui.views.InfoView;
-import ares.application.shared.gui.views.MenuBarView;
-import ares.application.shared.gui.views.MiniMapView;
+import ares.application.shared.boundaries.viewers.*;
 import ares.application.shared.gui.ComponentFactory;
 import ares.application.shared.gui.WindowUtil;
-import ares.application.shared.gui.views.AbstractView;
-import ares.application.shared.boundaries.viewers.InfoViewer;
-import ares.application.shared.boundaries.viewers.MenuBarViewer;
-import ares.application.shared.boundaries.viewers.MessagesViewer;
-import ares.application.shared.boundaries.viewers.OOBViewer;
-import ares.application.shared.boundaries.viewers.PanelMenuViewer;
-import ares.application.shared.boundaries.viewers.ToolBarViewer;
-import java.awt.*;
+import ares.application.shared.gui.profiles.GraphicsModel;
+import ares.application.shared.gui.providers.AresMiscTerrainGraphics;
+import ares.application.shared.gui.providers.TerrainInfoGraphics;
+import ares.application.shared.gui.views.*;
+import ares.platform.scenario.board.Terrain;
+import ares.platform.scenario.forces.UnitsColor;
+import de.muntjak.tinylookandfeel.Theme;
+import de.muntjak.tinylookandfeel.ThemeDescription;
+import de.muntjak.tinylookandfeel.TinyLookAndFeel;
+
 import javax.swing.*;
+import java.awt.*;
 
 /**
- *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
 public final class AresPlayerGUI extends AbstractView<JFrame> implements PlayerViewer {
@@ -33,10 +28,6 @@ public final class AresPlayerGUI extends AbstractView<JFrame> implements PlayerV
     private static final int OOB_VIEW_WIDTH = 200;
     private static final int MINIMAP_VIEW_HEIGHT = 150;
     private static final int MESSAGES_WIEW_HEIGHT = 150;
-    private JSplitPane splitHoriz;
-    private JSplitPane splitVert;
-    private JSplitPane splitHoriz2;
-    private JSplitPane splitVert2;
     private JPanel cards;
     private MainMenuView mainMenuView;
     private MenuBarView menuView;
@@ -49,6 +40,11 @@ public final class AresPlayerGUI extends AbstractView<JFrame> implements PlayerV
 
     @Override
     protected JFrame layout() {
+        GraphicsModel.INSTANCE.addProfiledImageProviders(Terrain.values());
+        GraphicsModel.INSTANCE.addProfiledImageProviders(AresMiscTerrainGraphics.values());
+        GraphicsModel.INSTANCE.addProfiledImageProviders(UnitsColor.values());
+        GraphicsModel.INSTANCE.addNonProfiledImageProviders(TerrainInfoGraphics.values());
+
         mainMenuView = new MainMenuView();
         menuView = new MenuBarView();
         infoView = new InfoView();
@@ -81,10 +77,11 @@ public final class AresPlayerGUI extends AbstractView<JFrame> implements PlayerV
         miniMapView.setPreferredSize(getMiniMapPaneDimension());
         messagesView.setPreferredSize(getMessagesPaneDimension(preferredSize));
 
-        splitVert = ComponentFactory.verticalSplitPane(true, boardView.getContentPane(), messagesView.getContentPane(), 1);
-        splitVert2 = ComponentFactory.verticalSplitPane(true, miniMapView.getContentPane(), oobView.getContentPane(), 0);
-        splitHoriz = ComponentFactory.horizontalSplitPane(true, infoView.getContentPane(), splitVert, 0);
-        splitHoriz2 = ComponentFactory.horizontalSplitPane(true, splitHoriz, splitVert2, 1);
+        JSplitPane splitVert = ComponentFactory.verticalSplitPane(true, boardView.getContentPane(), messagesView.getContentPane(), 1);
+        JSplitPane splitVert2 = ComponentFactory.verticalSplitPane(true, miniMapView.getContentPane(), oobView.getContentPane(), 0);
+        JSplitPane splitHoriz = ComponentFactory.horizontalSplitPane(true, infoView.getContentPane(), splitVert, 0);
+        splitHoriz.setEnabled(false);
+        JSplitPane splitHoriz2 = ComponentFactory.horizontalSplitPane(true, splitHoriz, splitVert2, 1);
 
 
         cards = new JPanel(new CardLayout());
@@ -137,13 +134,23 @@ public final class AresPlayerGUI extends AbstractView<JFrame> implements PlayerV
     }
 
     public static void main(String[] args) {
+        Toolkit.getDefaultToolkit().setDynamicLayout(true);
+        System.setProperty("sun.awt.noerasebackground", "true");
+//        JFrame.setDefaultLookAndFeelDecorated(true);
+        JDialog.setDefaultLookAndFeelDecorated(true);
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    LookAndFeelThemes.loadDarkTheme();
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    LookAndFeelThemes.finalizeDarkTheme();
+//                    break;
+//                }
+//            }
+            UIManager.setLookAndFeel("de.muntjak.tinylookandfeel.TinyLookAndFeel");
+            ThemeDescription td = Theme.getAvailableThemes()[3];
+            Theme.loadTheme(td);
+            UIManager.setLookAndFeel(new TinyLookAndFeel());
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(AresPlayerGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }

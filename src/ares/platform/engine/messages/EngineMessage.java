@@ -3,7 +3,6 @@ package ares.platform.engine.messages;
 import java.util.Date;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class EngineMessage {

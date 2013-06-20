@@ -4,11 +4,11 @@ import ares.platform.model.RoleMediatedModel;
 import ares.platform.model.UserRole;
 import ares.platform.scenario.forces.Formation;
 import ares.platform.scenario.forces.Unit;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
 public class FormationModel extends RoleMediatedModel {

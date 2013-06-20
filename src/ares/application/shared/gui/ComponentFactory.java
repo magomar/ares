@@ -1,15 +1,17 @@
 package ares.application.shared.gui;
 
 import ares.application.shared.gui.components.TranslucidButton;
-import java.awt.*;
-import java.awt.event.*;
+import ares.application.shared.gui.components.TransparentButton;
+
 import javax.swing.*;
-import javax.swing.border.*;
+import javax.swing.border.Border;
 import javax.swing.table.TableModel;
-import javax.swing.tree.*;
+import javax.swing.tree.TreeModel;
+import javax.swing.tree.TreeSelectionModel;
+import java.awt.*;
+import java.awt.event.MouseListener;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public abstract class ComponentFactory {
@@ -27,13 +29,21 @@ public abstract class ComponentFactory {
      * Size of split dividers
      */
     public static final int SPLIT_DIVIDER_SIZE = 5;
+    /**
+     * Size of borders (used in border layouts for panels)
+     */
+    public static final int BORDER_THICKNESS = 2;
+    /**
+     * Default border to be used by panels
+     */
+    public static final Border DEFAULT_BORDER = BorderFactory.createEmptyBorder(BORDER_THICKNESS, BORDER_THICKNESS, BORDER_THICKNESS, BORDER_THICKNESS);
 
     //------------------------------------------------
     // Factories for frames
     //--------------------------------------------------
     public static JFrame frame(String title, JComponent contentPane, JMenuBar menuBar, JToolBar toolBar) {
         JFrame frame = new JFrame();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         if (contentPane != null) {
             frame.setContentPane(contentPane);
         }
@@ -42,7 +52,7 @@ public abstract class ComponentFactory {
 
     public static JFrame frame(String title, JMenuBar menuBar, JToolBar toolBar) {
         JFrame frame = new JFrame();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         if (title != null) {
             frame.setTitle(title);
         }
@@ -50,7 +60,6 @@ public abstract class ComponentFactory {
             frame.setJMenuBar(menuBar);
         }
         if (toolBar != null) {
-//            frame.getContentPane().add(toolBar, BorderLayout.PAGE_START);
             frame.add(toolBar, BorderLayout.NORTH);
         }
         return frame;
@@ -76,13 +85,25 @@ public abstract class ComponentFactory {
     //------------------------------------------------
     // Factories for panels
     //--------------------------------------------------
-    public static JPanel panel(LayoutManager layoutManager, String title) {
+    public static JPanel panel() {
+        return panel(null, null);
+    }
+
+    public static JPanel panel(LayoutManager layoutManager) {
+        return panel(layoutManager, null);
+    }
+
+    public static JPanel panel(Border border) {
+        return panel(null, border);
+    }
+
+    public static JPanel panel(LayoutManager layoutManager, Border border) {
         JPanel panel = new JPanel();
         if (layoutManager != null) {
             panel.setLayout(layoutManager);
         }
-        if (title != null) {
-            panel.setBorder(new TitledBorder(title));
+        if (border != null) {
+            panel.setBorder(border);
         }
         return panel;
     }
@@ -160,8 +181,15 @@ public abstract class ComponentFactory {
     //------------------------------------------------
     // Factories for buttons and tool bars
     //--------------------------------------------------
-    public static JButton translucidButton(Action action) {
-        JButton button = new TranslucidButton(action);
+    public static JButton translucidButton(Action action, float alpha) {
+        JButton button = new TranslucidButton(action, alpha);
+        button.setName((String) action.getValue(Action.ACTION_COMMAND_KEY));
+        button.setIcon((Icon) action.getValue(Action.LARGE_ICON_KEY));
+        return button;
+    }
+
+    public static JButton transparentButton(Action action, float alpha) {
+        JButton button = new TransparentButton(action, alpha);
         button.setName((String) action.getValue(Action.ACTION_COMMAND_KEY));
         button.setIcon((Icon) action.getValue(Action.LARGE_ICON_KEY));
         return button;
@@ -176,13 +204,16 @@ public abstract class ComponentFactory {
         return button;
     }
 
-//    public static JPanel buttonsPanel(JButton... buttons) {
-//        JPanel panel = panel(new FlowLayout(), null);
-//        for (JButton button : buttons) {
-//            panel.add(button);
-//        }
-//        return panel;
-//    }
+    public static JPanel buttonsPanel(int axis, JButton... buttons) {
+        JPanel panel = panel();
+        for (JButton button : buttons) {
+            panel.add(button);
+            panel.add(Box.createRigidArea(new Dimension(5, 0)));
+        }
+        panel.setLayout(new BoxLayout(panel, axis));
+        return panel;
+    }
+
     public static JToolBar toolBar(String name, JButton... buttons) {
         return toolBar(name, SwingConstants.HORIZONTAL, buttons);
     }
@@ -280,6 +311,7 @@ public abstract class ComponentFactory {
 //----------------------------------------------------------------------------
 //  Factories for consistent GUI objects
 //----------------------------------------------------------------------------
+
     /**
      * Builds a standard modal input dialog, with content and buttons to accept or cancel that content.
      */

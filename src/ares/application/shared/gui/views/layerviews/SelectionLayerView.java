@@ -1,11 +1,12 @@
 package ares.application.shared.gui.views.layerviews;
 
 import ares.application.shared.boundaries.viewers.layerviewers.SelectionLayerViewer;
-import ares.application.shared.models.board.TileModel;
 import ares.application.shared.gui.profiles.GraphicsModel;
 import ares.application.shared.gui.providers.AresMiscTerrainGraphics;
+import ares.application.shared.models.board.TileModel;
 import ares.application.shared.models.forces.FormationModel;
 import ares.application.shared.models.forces.UnitModel;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
@@ -27,17 +28,17 @@ public class SelectionLayerView extends AbstractImageLayerView implements Select
     @Override
     public void updateLayer() {
         initialize();
+        if (!isVisible()) return;
         if (selectedUnit == null) {
             return;
         }
         Graphics2D g2 = globalImage.createGraphics();
         for (UnitModel u : formation.getUnitModels()) {
             if (!u.equals(selectedUnit)) {
-                TileModel t = u.getLocation();
-                paintCursor(g2, u.getLocation(), GraphicsModel.INSTANCE.getImageProvider(AresMiscTerrainGraphics.STEEL_CURSOR, profile).getImage(0, 0));
+                paintCursor(g2, u.getLocation(), GraphicsModel.INSTANCE.getProfiledImageProvider(AresMiscTerrainGraphics.STEEL_CURSOR, profile).getImage(0, 0));
             }
         }
-        paintCursor(g2, selectedUnit.getLocation(), GraphicsModel.INSTANCE.getImageProvider(AresMiscTerrainGraphics.BRASS_CURSOR, profile).getImage(0, 0));
+        paintCursor(g2, selectedUnit.getLocation(), GraphicsModel.INSTANCE.getProfiledImageProvider(AresMiscTerrainGraphics.BRASS_CURSOR, profile).getImage(0, 0));
         g2.dispose();
     }
 

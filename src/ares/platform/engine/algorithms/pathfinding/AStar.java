@@ -6,17 +6,20 @@ import ares.platform.engine.movement.MovementCost;
 import ares.platform.scenario.board.Direction;
 import ares.platform.scenario.board.Tile;
 import ares.platform.scenario.forces.Unit;
-import java.util.*;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class AStar extends AbstractPathfinder {
 
     public AStar() {
     }
-    
+
     public AStar(Heuristic heuristic, CostFunction costFunction) {
         super(heuristic, costFunction);
     }
@@ -141,8 +144,8 @@ public class AStar extends AbstractPathfinder {
 
     class OpenSet {
 
-        Queue<Node> list;
-        Map<Integer, Node> map;
+        final Queue<Node> list;
+        final Map<Integer, Node> map;
 
         OpenSet() {
             list = new PriorityQueue<>();

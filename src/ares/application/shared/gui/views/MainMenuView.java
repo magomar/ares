@@ -2,11 +2,11 @@ package ares.application.shared.gui.views;
 
 import ares.application.shared.boundaries.viewers.PanelMenuViewer;
 import ares.application.shared.gui.components.MainMenuPanel;
-import javax.swing.JButton;
-import javax.swing.JPanel;
+
+import javax.swing.*;
+import java.awt.*;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class MainMenuView extends AbstractView<JPanel> implements PanelMenuViewer {
@@ -23,9 +23,10 @@ public class MainMenuView extends AbstractView<JPanel> implements PanelMenuViewe
     }
 
     @Override
-    public void addActionButtons(JButton[] actionButton) {
-        for (JButton jButton : actionButton) {
+    public void addActionButtons(JButton[] actionButtons) {
+        for (JButton jButton : actionButtons) {
             contentPane.add(jButton);
+            contentPane.add(Box.createRigidArea(new Dimension(0, 5)));
         }
     }
 }

@@ -5,10 +5,10 @@ import ares.platform.scenario.Scenario;
 import ares.platform.scenario.assets.Asset;
 import ares.platform.scenario.assets.AssetTrait;
 import ares.platform.scenario.assets.AssetType;
+
 import java.util.Set;
 
 /**
- *
  * @author Mario Gomez <margomez antiTank dsic.upv.es>
  */
 public final class LandUnit extends SurfaceUnit {
@@ -26,11 +26,11 @@ public final class LandUnit extends SurfaceUnit {
     protected int logistics;
     protected int command;
     protected int railRepair;
-    
-    protected LandUnit() { 
+
+    protected LandUnit() {
     }
-    
-    public LandUnit(ares.data.jaxb.Unit unit, Formation formation, Force force, Scenario scenario) {
+
+    public LandUnit(ares.data.wrappers.scenario.Unit unit, Formation formation, Force force, Scenario scenario) {
         super(unit, formation, force, scenario);
         int transportSpeed = Integer.MAX_VALUE;
         int nonTransportSpeed = Integer.MAX_VALUE;
@@ -119,11 +119,11 @@ public final class LandUnit extends SurfaceUnit {
             }
         }
         transportNeeds = numSlow + numStatic;
-        if (type.getCapabilities().contains(Capability.COASTAL_DEFENSE)) {
+        if (unitType.getCapabilities().contains(Capability.COASTAL_DEFENSE)) {
             movement = MovementType.FIXED;
             speed = 0;
         } else if (movement == null) {
-            if (type.getCapabilities().contains(Capability.AMPHIBIOUS)) {
+            if (unitType.getCapabilities().contains(Capability.AMPHIBIOUS)) {
                 movement = MovementType.AMPHIBIOUS;
                 speed = Math.min(transportSpeed, nonTransportSpeed);
             } else if (transportNeeds == 0) {

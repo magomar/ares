@@ -1,11 +1,10 @@
 package ares.application.shared.gui.components;
 
-import java.awt.Component;
-import javax.swing.JTree;
+import javax.swing.*;
 import javax.swing.tree.DefaultTreeCellRenderer;
+import java.awt.*;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class OOBTreeCellRenderer extends DefaultTreeCellRenderer {

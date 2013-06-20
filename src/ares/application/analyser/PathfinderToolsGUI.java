@@ -1,26 +1,29 @@
 package ares.application.analyser;
 
-import ares.application.analyser.controllers.PathfinderToolsController;
 import ares.application.analyser.boundaries.viewers.PathfinderToolsViewer;
+import ares.application.analyser.controllers.PathfinderToolsController;
 import ares.application.analyser.views.PathfinderComparatorView;
 import ares.application.player.AresPlayerGUI;
 import ares.application.shared.boundaries.viewers.MenuBarViewer;
+import ares.application.shared.boundaries.viewers.PanelMenuViewer;
+import ares.application.shared.boundaries.viewers.ToolBarViewer;
 import ares.application.shared.gui.ComponentFactory;
 import ares.application.shared.gui.WindowUtil;
+import ares.application.shared.gui.profiles.GraphicsModel;
+import ares.application.shared.gui.providers.AresMiscTerrainGraphics;
+import ares.application.shared.gui.views.AbstractView;
 import ares.application.shared.gui.views.MainMenuView;
 import ares.application.shared.gui.views.MenuBarView;
 import ares.application.shared.gui.views.ToolBarView;
-import ares.application.shared.gui.views.AbstractView;
-import ares.application.shared.boundaries.viewers.PanelMenuViewer;
-import ares.application.shared.boundaries.viewers.ToolBarViewer;
-import java.awt.CardLayout;
-import java.awt.Dimension;
-import java.awt.GraphicsEnvironment;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import ares.platform.scenario.board.Terrain;
+import de.muntjak.tinylookandfeel.Theme;
+import de.muntjak.tinylookandfeel.ThemeDescription;
+import de.muntjak.tinylookandfeel.TinyLookAndFeel;
+
+import javax.swing.*;
+import java.awt.*;
 
 /**
- *
  * @author Mario Gómez Martínez <magomar@gmail.com>
  */
 public class PathfinderToolsGUI extends AbstractView<JFrame> implements PathfinderToolsViewer {
@@ -33,6 +36,9 @@ public class PathfinderToolsGUI extends AbstractView<JFrame> implements Pathfind
 
     @Override
     protected JFrame layout() {
+        GraphicsModel.INSTANCE.addProfiledImageProviders(Terrain.values());
+        GraphicsModel.INSTANCE.addProfiledImageProviders(AresMiscTerrainGraphics.values());
+
         mainMenuV = new MainMenuView();
         menuV = new MenuBarView();
         toolBarV = new ToolBarView();
@@ -92,13 +98,24 @@ public class PathfinderToolsGUI extends AbstractView<JFrame> implements Pathfind
     }
 
     public static void main(String[] args) {
+
+        Toolkit.getDefaultToolkit().setDynamicLayout(true);
+        System.setProperty("sun.awt.noerasebackground", "true");
+        JFrame.setDefaultLookAndFeelDecorated(true);
+        JDialog.setDefaultLookAndFeelDecorated(true);
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    LookAndFeelThemes.loadDarkTheme();
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    LookAndFeelThemes.finalizeDarkTheme();
+//                    break;
+//                }
+//            }
+            UIManager.setLookAndFeel("de.muntjak.tinylookandfeel.TinyLookAndFeel");
+            ThemeDescription td = Theme.getAvailableThemes()[3];
+            Theme.loadTheme(td);
+            UIManager.setLookAndFeel(new TinyLookAndFeel());
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(AresPlayerGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
@@ -106,13 +123,12 @@ public class PathfinderToolsGUI extends AbstractView<JFrame> implements Pathfind
             @Override
             public void run() {
                 PathfinderToolsGUI mainView = new PathfinderToolsGUI();
+                SwingUtilities.updateComponentTreeUI(mainView.contentPane);
                 PathfinderToolsController mainController = new PathfinderToolsController(mainView);
                 mainView.show();
             }
         });
     }
-
-
 
     @Override
     public ToolBarViewer getToolBarView() {
@@ -133,5 +149,4 @@ public class PathfinderToolsGUI extends AbstractView<JFrame> implements Pathfind
     public PathfinderComparatorView getComparatorView() {
         return comparatorV;
     }
-
 }

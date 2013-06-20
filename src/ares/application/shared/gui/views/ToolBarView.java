@@ -2,11 +2,10 @@ package ares.application.shared.gui.views;
 
 import ares.application.shared.boundaries.viewers.ToolBarViewer;
 import ares.application.shared.gui.ComponentFactory;
-import javax.swing.JButton;
-import javax.swing.JToolBar;
+
+import javax.swing.*;
 
 /**
- *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class ToolBarView extends AbstractView<JToolBar> implements ToolBarViewer {
