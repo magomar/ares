@@ -27,7 +27,7 @@ public class MethodShowdown {
         String message;
 
         // Time variables
-        double startTime, averageTime, totalTime = 0, instanceTime, maxInstanceTime, minInstanceTime;
+        double startTime, averageTime, totalTime, instanceTime, maxInstanceTime, minInstanceTime;
 
         // Methods to be tested
         LinkedList<Method> methods = new LinkedList<>();

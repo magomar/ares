@@ -32,14 +32,26 @@ public class BoardModel extends RoleMediatedModel {
         return mapModel;
     }
 
+    /**
+     * Gets the width of the board
+     * @return                    the number of columns
+     */
     public int getWidth() {
         return board.getWidth();
     }
 
+    /**
+     *  Gets the height of the board
+     * @return the number of rows
+     */
     public int getHeight() {
         return board.getHeight();
     }
 
+    /**
+     * Gets all the places of the board
+     * @return
+     */
     public List<Place> getPlaces() {
         return board.getPlaces();
     }

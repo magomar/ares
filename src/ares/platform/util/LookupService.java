@@ -10,7 +10,7 @@ import java.util.Set;
  */
 public class LookupService<T> {
 
-    Map<Class<? extends T>, T> classMap = new HashMap<>();
+    final Map<Class<? extends T>, T> classMap = new HashMap<>();
 
     public void put(Class<? extends T> key, T value) {
         classMap.put(key, value);

@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class ProgrammedTrack {
 
-    private List<Objective> objectives;
+    private final List<Objective> objectives;
 
     public ProgrammedTrack(ares.data.wrappers.scenario.Track track, Board board) {
         objectives = new ArrayList<>();

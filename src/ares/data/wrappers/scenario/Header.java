@@ -7,7 +7,7 @@ import java.util.List;
 
 
 /**
- * <p>Java class for Header complex type.
+ * <p>Java class for Header complex unitType.
  * <p/>
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p/>
@@ -16,16 +16,16 @@ import java.util.List;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Name" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="Description" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="ForceName" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded"/>
- *         &lt;element name="OutcomesWin" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded"/>
- *         &lt;element name="OutcomesLose" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded"/>
- *         &lt;element name="OutcomesDraw" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded"/>
+ *         &lt;element name="Name" unitType="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="Description" unitType="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="ForceName" unitType="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded"/>
+ *         &lt;element name="OutcomesWin" unitType="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded"/>
+ *         &lt;element name="OutcomesLose" unitType="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded"/>
+ *         &lt;element name="OutcomesDraw" unitType="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded"/>
  *       &lt;/sequence>
- *       &lt;attribute name="version" type="{http://www.w3.org/2001/XMLSchema}int" />
- *       &lt;attribute name="fileType" type="{http://www.w3.org/2001/XMLSchema}int" />
- *       &lt;attribute name="firstPlayer" type="{http://www.w3.org/2001/XMLSchema}int" />
+ *       &lt;attribute name="version" unitType="{http://www.w3.org/2001/XMLSchema}int" />
+ *       &lt;attribute name="fileType" unitType="{http://www.w3.org/2001/XMLSchema}int" />
+ *       &lt;attribute name="firstPlayer" unitType="{http://www.w3.org/2001/XMLSchema}int" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -118,7 +118,7 @@ public class Header {
      * <p/>
      * <p/>
      * <p/>
-     * Objects of the following type(s) are allowed in the list
+     * Objects of the following unitType(s) are allowed in the list
      * {@link String }
      */
     public List<String> getForceName() {
@@ -145,7 +145,7 @@ public class Header {
      * <p/>
      * <p/>
      * <p/>
-     * Objects of the following type(s) are allowed in the list
+     * Objects of the following unitType(s) are allowed in the list
      * {@link String }
      */
     public List<String> getOutcomesWin() {
@@ -172,7 +172,7 @@ public class Header {
      * <p/>
      * <p/>
      * <p/>
-     * Objects of the following type(s) are allowed in the list
+     * Objects of the following unitType(s) are allowed in the list
      * {@link String }
      */
     public List<String> getOutcomesLose() {
@@ -199,7 +199,7 @@ public class Header {
      * <p/>
      * <p/>
      * <p/>
-     * Objects of the following type(s) are allowed in the list
+     * Objects of the following unitType(s) are allowed in the list
      * {@link String }
      */
     public List<String> getOutcomesDraw() {

@@ -31,7 +31,7 @@ public class IdentifiedUnitModel extends DetectedUnitModel {
     }
 
     public int getHealth() {
-        return (int) (unit.getEfficacy() - 1 / 20);
+        return unit.getEfficacy() - 1 / 20;
     }
 
     public Echelon getEchelon() {

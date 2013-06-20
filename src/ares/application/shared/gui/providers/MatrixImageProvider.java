@@ -62,6 +62,7 @@ public class MatrixImageProvider implements ImageProvider {
             bi = image.get();
         }
         try {
+            assert bi != null;
             BufferedImage result = bi.getSubimage(column * imageDimension.width, row * imageDimension.height,
                     imageDimension.width, imageDimension.height);
             return result;
@@ -95,12 +96,12 @@ public class MatrixImageProvider implements ImageProvider {
     }
 
     @Override
-    public Dimension getImageDimension() {
+    public Dimension getImageSize() {
         return imageDimension;
     }
 
     @Override
-    public Dimension getFullImageDimension() {
+    public Dimension getFullImageSize() {
         return fullImageDimension;
     }
 

@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * This class represents the type of user interacting with the system. Actually, the user role may be either GOD, which
+ * This class represents the unitType of user interacting with the system. Actually, the user role may be either GOD, which
  * has full access to the applicatio models, or FORCE, in which case the role has to be identified by the Force which is
  * being assigned to the user.
  *

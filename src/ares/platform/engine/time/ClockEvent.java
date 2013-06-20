@@ -7,7 +7,7 @@ import java.util.Set;
  */
 public class ClockEvent {
 
-    private Set<ClockEventType> eventTypes;
+    private final Set<ClockEventType> eventTypes;
 
     public ClockEvent(Set<ClockEventType> eventTypes) {
         this.eventTypes = eventTypes;

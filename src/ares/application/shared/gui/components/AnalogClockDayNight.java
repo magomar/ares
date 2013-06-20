@@ -36,8 +36,6 @@ public final class AnalogClockDayNight extends JComponent {
     private Point2D center;
     private int timeZoneOffsetHour = 0;
     private int timeZoneOffsetMinute = 0;
-    private int hour;
-    private int minute;
     boolean am = (Calendar.getInstance().get(Calendar.AM_PM) == Calendar.AM);
     // Flags
     private boolean autoType = true;
@@ -498,7 +496,7 @@ public final class AnalogClockDayNight extends JComponent {
 
     public void update(Calendar calendar) {
         // Hours
-        hour = calendar.get(Calendar.HOUR) - this.timeZoneOffsetHour;
+        int hour = calendar.get(Calendar.HOUR) - this.timeZoneOffsetHour;
         if (hour > 12) {
             hour -= 12;
         }
@@ -507,7 +505,7 @@ public final class AnalogClockDayNight extends JComponent {
         }
 
         // Minutes
-        minute = calendar.get(Calendar.MINUTE) + this.timeZoneOffsetMinute;
+        int minute = calendar.get(Calendar.MINUTE) + this.timeZoneOffsetMinute;
         if (minute > 60) {
             minute -= 60;
             hour++;

@@ -16,7 +16,6 @@ import java.util.Map;
  * Author: Mario Gómez Martínez <magomar@gmail.com>
  */
 public class TerrainInfo extends JComponent {
-    private TileModel tile;
     /**
      * Image to be rendered on this component
      */
@@ -26,13 +25,13 @@ public class TerrainInfo extends JComponent {
     public final void initialize() {
 //        globalImage = new BufferedImage(GraphicProperties.getProperty(NonProfiledGraphicProperty.TERRAIN_INFO_WIDTH),
 //                GraphicProperties.getProperty(NonProfiledGraphicProperty.TERRAIN_INFO_HEIGHT), BufferedImage.TYPE_INT_ARGB);
-        Dimension imageSize = GraphicsModel.INSTANCE.getNonProfiledImageProvider(TerrainInfoGraphics.OPEN).getFullImageDimension();
+        Dimension imageSize = GraphicsModel.INSTANCE.getNonProfiledImageProvider(TerrainInfoGraphics.OPEN).getFullImageSize();
         globalImage = new BufferedImage(imageSize.width, imageSize.height, BufferedImage.TYPE_INT_ARGB);
         repaint();
     }
 
     public void updateTile(TileModel tileModel) {
-        this.tile = tileModel;
+        TileModel tile = tileModel;
         initialize();
         Graphics2D g2 = globalImage.createGraphics();
         if (tile != null) {
@@ -54,6 +53,7 @@ public class TerrainInfo extends JComponent {
     /**
      * Paints the terrain of a single tile
      *
+     * @param g2
      * @param tile
      */
     private void paintTile(Graphics2D g2, TileModel tile) {

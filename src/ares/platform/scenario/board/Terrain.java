@@ -143,7 +143,6 @@ public enum Terrain implements ProfiledImageProviderFactory {
      *
      * @param bitMask
      * @return
-     * @see Direction
      */
     public static int getImageIndex(int bitMask) {
         return bitMask - 1;

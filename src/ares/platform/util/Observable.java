@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * A generic implementation of an Observable object as defined by the Observer pattern.
- * As a type parameter the interface for the Observer needs to be specified.
+ * As a unitType parameter the interface for the Observer needs to be specified.
  *
  * @param <T> The interface which should be implemented by the observers.
  * @author Steven Jeuris
@@ -24,12 +24,12 @@ public class Observable<T> {
     protected T getEventDispatcher() {
         // Only create one instance of the dispatcher.
         if (m_eventDispatcher == null) {
-            // Use reflection to get the generic parameter type.
+            // Use reflection to get the generic parameter unitType.
             Type superClass = this.getClass().getGenericSuperclass();
             if (superClass instanceof Class<?>) {
-                throw new RuntimeException("Observable requires a parameter type!");
+                throw new RuntimeException("Observable requires a parameter unitType!");
             } else {
-                // Get the parameter type.
+                // Get the parameter unitType.
                 ParameterizedType genericType = (ParameterizedType) superClass;
                 Type[] typeArguments = genericType.getActualTypeArguments();
 
@@ -70,7 +70,7 @@ public class Observable<T> {
  */
 class ObserverPool<T> implements InvocationHandler {
 
-    private List<T> m_pool = new ArrayList<>();
+    private final List<T> m_pool = new ArrayList<>();
 
 
     /**

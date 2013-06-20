@@ -11,7 +11,7 @@ import java.awt.image.BufferedImage;
 public class TranslucidButton extends JButton {
 
     private BufferedImage buttonImage;
-    private float alpha;
+    private final float alpha;
 
     public TranslucidButton(Action action, float alpha) {
         super(action);

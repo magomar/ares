@@ -5,7 +5,7 @@ import javax.xml.bind.annotation.*;
 
 
 /**
- * <p>Java class for anonymous complex type.
+ * <p>Java class for anonymous complex unitType.
  * <p/>
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p/>
@@ -14,16 +14,16 @@ import javax.xml.bind.annotation.*;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Header" type="{ares}Header"/>
- *         &lt;element name="Calendar" type="{ares}Calendar"/>
- *         &lt;element name="Environment" type="{ares}Environment"/>
- *         &lt;element name="ForceVariables" type="{ares}ForceVariables"/>
- *         &lt;element name="Variables" type="{ares}Variables"/>
- *         &lt;element name="Map" type="{ares}Map"/>
- *         &lt;element name="OOB" type="{ares}OOB"/>
- *         &lt;element name="Events" type="{ares}Events"/>
- *         &lt;element name="Supplies" type="{ares}Supplies"/>
- *         &lt;element name="Replacements" type="{ares}Replacements"/>
+ *         &lt;element name="Header" unitType="{ares}Header"/>
+ *         &lt;element name="Calendar" unitType="{ares}Calendar"/>
+ *         &lt;element name="Environment" unitType="{ares}Environment"/>
+ *         &lt;element name="ForceVariables" unitType="{ares}ForceVariables"/>
+ *         &lt;element name="Variables" unitType="{ares}Variables"/>
+ *         &lt;element name="Map" unitType="{ares}Map"/>
+ *         &lt;element name="OOB" unitType="{ares}OOB"/>
+ *         &lt;element name="Events" unitType="{ares}Events"/>
+ *         &lt;element name="Supplies" unitType="{ares}Supplies"/>
+ *         &lt;element name="Replacements" unitType="{ares}Replacements"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>

@@ -7,7 +7,7 @@ import java.util.List;
 
 
 /**
- * <p>Java class for Supplies complex type.
+ * <p>Java class for Supplies complex unitType.
  * <p/>
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p/>
@@ -26,17 +26,17 @@ import java.util.List;
  *                       &lt;complexContent>
  *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *                           &lt;sequence>
- *                             &lt;element name="x" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                             &lt;element name="y" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                             &lt;element name="supply" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                             &lt;element name="x" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                             &lt;element name="y" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                             &lt;element name="supply" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
  *                           &lt;/sequence>
- *                           &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
+ *                           &lt;attribute name="id" use="required" unitType="{http://www.w3.org/2001/XMLSchema}int" />
  *                         &lt;/restriction>
  *                       &lt;/complexContent>
  *                     &lt;/complexType>
  *                   &lt;/element>
  *                 &lt;/sequence>
- *                 &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
+ *                 &lt;attribute name="id" use="required" unitType="{http://www.w3.org/2001/XMLSchema}int" />
  *               &lt;/restriction>
  *             &lt;/complexContent>
  *           &lt;/complexType>
@@ -73,7 +73,7 @@ public class Supplies {
      * <p/>
      * <p/>
      * <p/>
-     * Objects of the following type(s) are allowed in the list
+     * Objects of the following unitType(s) are allowed in the list
      * {@link Supplies.Force }
      */
     public List<Supplies.Force> getForce() {
@@ -85,7 +85,7 @@ public class Supplies {
 
 
     /**
-     * <p>Java class for anonymous complex type.
+     * <p>Java class for anonymous complex unitType.
      * <p/>
      * <p>The following schema fragment specifies the expected content contained within this class.
      * <p/>
@@ -99,17 +99,17 @@ public class Supplies {
      *             &lt;complexContent>
      *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
      *                 &lt;sequence>
-     *                   &lt;element name="x" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *                   &lt;element name="y" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *                   &lt;element name="supply" type="{http://www.w3.org/2001/XMLSchema}int"/>
+     *                   &lt;element name="x" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *                   &lt;element name="y" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *                   &lt;element name="supply" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
      *                 &lt;/sequence>
-     *                 &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
+     *                 &lt;attribute name="id" use="required" unitType="{http://www.w3.org/2001/XMLSchema}int" />
      *               &lt;/restriction>
      *             &lt;/complexContent>
      *           &lt;/complexType>
      *         &lt;/element>
      *       &lt;/sequence>
-     *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
+     *       &lt;attribute name="id" use="required" unitType="{http://www.w3.org/2001/XMLSchema}int" />
      *     &lt;/restriction>
      *   &lt;/complexContent>
      * &lt;/complexType>
@@ -143,7 +143,7 @@ public class Supplies {
          * <p/>
          * <p/>
          * <p/>
-         * Objects of the following type(s) are allowed in the list
+         * Objects of the following unitType(s) are allowed in the list
          * {@link Supplies.Force.Node }
          */
         public List<Supplies.Force.Node> getNode() {
@@ -169,7 +169,7 @@ public class Supplies {
 
 
         /**
-         * <p>Java class for anonymous complex type.
+         * <p>Java class for anonymous complex unitType.
          * <p/>
          * <p>The following schema fragment specifies the expected content contained within this class.
          * <p/>
@@ -178,11 +178,11 @@ public class Supplies {
          *   &lt;complexContent>
          *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
          *       &lt;sequence>
-         *         &lt;element name="x" type="{http://www.w3.org/2001/XMLSchema}int"/>
-         *         &lt;element name="y" type="{http://www.w3.org/2001/XMLSchema}int"/>
-         *         &lt;element name="supply" type="{http://www.w3.org/2001/XMLSchema}int"/>
+         *         &lt;element name="x" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+         *         &lt;element name="y" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+         *         &lt;element name="supply" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
          *       &lt;/sequence>
-         *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
+         *       &lt;attribute name="id" use="required" unitType="{http://www.w3.org/2001/XMLSchema}int" />
          *     &lt;/restriction>
          *   &lt;/complexContent>
          * &lt;/complexType>

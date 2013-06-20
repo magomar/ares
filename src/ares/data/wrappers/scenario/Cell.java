@@ -7,7 +7,7 @@ import java.util.List;
 
 
 /**
- * <p>Java class for Cell complex type.
+ * <p>Java class for Cell complex unitType.
  * <p/>
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p/>
@@ -16,15 +16,15 @@ import java.util.List;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Terrain" type="{ares}Terrain" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="Feature" type="{ares}TerrainFeature" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="Entrenchment" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
- *         &lt;element name="Distance" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
- *         &lt;element name="Owner" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="VP" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="Terrain" unitType="{ares}Terrain" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="Feature" unitType="{ares}TerrainFeature" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="Entrenchment" unitType="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="Distance" unitType="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="Owner" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="VP" unitType="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *       &lt;/sequence>
- *       &lt;attribute name="x" type="{http://www.w3.org/2001/XMLSchema}int" />
- *       &lt;attribute name="y" type="{http://www.w3.org/2001/XMLSchema}int" />
+ *       &lt;attribute name="x" unitType="{http://www.w3.org/2001/XMLSchema}int" />
+ *       &lt;attribute name="y" unitType="{http://www.w3.org/2001/XMLSchema}int" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -75,7 +75,7 @@ public class Cell {
      * <p/>
      * <p/>
      * <p/>
-     * Objects of the following type(s) are allowed in the list
+     * Objects of the following unitType(s) are allowed in the list
      * {@link Terrain }
      */
     public List<Terrain> getTerrain() {
@@ -102,7 +102,7 @@ public class Cell {
      * <p/>
      * <p/>
      * <p/>
-     * Objects of the following type(s) are allowed in the list
+     * Objects of the following unitType(s) are allowed in the list
      * {@link TerrainFeature }
      */
     public List<TerrainFeature> getFeature() {

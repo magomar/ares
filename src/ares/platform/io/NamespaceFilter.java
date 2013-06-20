@@ -11,8 +11,8 @@ import org.xml.sax.helpers.XMLFilterImpl;
 
 public class NamespaceFilter extends XMLFilterImpl {
 
-    private String usedNamespaceUri;
-    private boolean addNamespace;
+    private final String usedNamespaceUri;
+    private final boolean addNamespace;
     //State variable
     private boolean addedNamespace = false;
 

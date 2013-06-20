@@ -7,7 +7,7 @@ import java.util.List;
 
 
 /**
- * <p>Java class for Events complex type.
+ * <p>Java class for Events complex unitType.
  * <p/>
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p/>
@@ -22,17 +22,17 @@ import java.util.List;
  *               &lt;complexContent>
  *                 &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *                   &lt;sequence>
- *                     &lt;element name="Trigger" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *                     &lt;element name="Contingency" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
- *                     &lt;element name="Effect" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *                     &lt;element name="X" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
- *                     &lt;element name="Y" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
- *                     &lt;element name="Value" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
- *                     &lt;element name="Turn" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
- *                     &lt;element name="News" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *                     &lt;element name="Variable" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *                     &lt;element name="Trigger" unitType="{http://www.w3.org/2001/XMLSchema}string"/>
+ *                     &lt;element name="Contingency" unitType="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *                     &lt;element name="Effect" unitType="{http://www.w3.org/2001/XMLSchema}string"/>
+ *                     &lt;element name="X" unitType="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *                     &lt;element name="Y" unitType="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *                     &lt;element name="Value" unitType="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *                     &lt;element name="Turn" unitType="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *                     &lt;element name="News" unitType="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *                     &lt;element name="Variable" unitType="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *                   &lt;/sequence>
- *                   &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
+ *                   &lt;attribute name="id" use="required" unitType="{http://www.w3.org/2001/XMLSchema}int" />
  *                 &lt;/restriction>
  *               &lt;/complexContent>
  *             &lt;/complexType>
@@ -70,7 +70,7 @@ public class Events {
      * <p/>
      * <p/>
      * <p/>
-     * Objects of the following type(s) are allowed in the list
+     * Objects of the following unitType(s) are allowed in the list
      * {@link Events.Event }
      */
     public List<Events.Event> getEvent() {
@@ -82,7 +82,7 @@ public class Events {
 
 
     /**
-     * <p>Java class for anonymous complex type.
+     * <p>Java class for anonymous complex unitType.
      * <p/>
      * <p>The following schema fragment specifies the expected content contained within this class.
      * <p/>
@@ -91,17 +91,17 @@ public class Events {
      *   &lt;complexContent>
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
      *       &lt;sequence>
-     *         &lt;element name="Trigger" type="{http://www.w3.org/2001/XMLSchema}string"/>
-     *         &lt;element name="Contingency" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
-     *         &lt;element name="Effect" type="{http://www.w3.org/2001/XMLSchema}string"/>
-     *         &lt;element name="X" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
-     *         &lt;element name="Y" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
-     *         &lt;element name="Value" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
-     *         &lt;element name="Turn" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
-     *         &lt;element name="News" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
-     *         &lt;element name="Variable" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+     *         &lt;element name="Trigger" unitType="{http://www.w3.org/2001/XMLSchema}string"/>
+     *         &lt;element name="Contingency" unitType="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+     *         &lt;element name="Effect" unitType="{http://www.w3.org/2001/XMLSchema}string"/>
+     *         &lt;element name="X" unitType="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+     *         &lt;element name="Y" unitType="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+     *         &lt;element name="Value" unitType="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+     *         &lt;element name="Turn" unitType="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+     *         &lt;element name="News" unitType="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+     *         &lt;element name="Variable" unitType="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
      *       &lt;/sequence>
-     *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
+     *       &lt;attribute name="id" use="required" unitType="{http://www.w3.org/2001/XMLSchema}int" />
      *     &lt;/restriction>
      *   &lt;/complexContent>
      * &lt;/complexType>

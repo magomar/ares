@@ -802,7 +802,7 @@ public class Ring<E> extends AbstractSequentialList<E>
     @SuppressWarnings("unchecked")
     @Override
     public boolean removeFirstOccurrence(Object o) {
-        return remove((E) o);
+        return remove(o);
     }
 
     /**
@@ -1047,8 +1047,8 @@ public class Ring<E> extends AbstractSequentialList<E>
 
     /**
      * Returns an array containing all of the elements in this list in proper sequence (from first to last element); the
-     * runtime type of the returned array is that of the specified array. If the list fits in the specified array, it is
-     * returned therein. Otherwise, a new array is allocated with the runtime type of the specified array and the size
+     * runtime unitType of the returned array is that of the specified array. If the list fits in the specified array, it is
+     * returned therein. Otherwise, a new array is allocated with the runtime unitType of the specified array and the size
      * of this list.
      * <p/>
      * <p>If the list fits in the specified array with room to spare (i.e., the array has more elements than the list),
@@ -1057,7 +1057,7 @@ public class Ring<E> extends AbstractSequentialList<E>
      * elements.)
      * <p/>
      * <p>Like the {@link #toArray()} method, this method acts as bridge between array-based and collection-based APIs.
-     * Further, this method allows precise control over the runtime type of the output array, and may, under certain
+     * Further, this method allows precise control over the runtime unitType of the output array, and may, under certain
      * circumstances, be used to save allocation costs.
      * <p/>
      * <p>Suppose {@code x} is a list known to contain only strings. The following code can be used to dump the list
@@ -1069,9 +1069,9 @@ public class Ring<E> extends AbstractSequentialList<E>
      * Note that {@code toArray(new Object[0])} is identical in function to {@code toArray()}.
      *
      * @param a the array into which the elements of the list are to be stored, if it is big enough; otherwise, a new
-     *          array of the same runtime type is allocated for this purpose.
+     *          array of the same runtime unitType is allocated for this purpose.
      * @return an array containing the elements of the list
-     * @throws ArrayStoreException  if the runtime type of the specified array is not a supertype of the runtime type of
+     * @throws ArrayStoreException  if the runtime unitType of the specified array is not a supertype of the runtime unitType of
      *                              every element in this list
      * @throws NullPointerException if the specified array is null
      */

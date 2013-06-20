@@ -10,8 +10,8 @@ import ares.platform.scenario.forces.Unit;
  */
 public class Objective implements Comparable {
 
-    private Tile location;
-    private int priority;
+    private final Tile location;
+    private final int priority;
     private boolean achieved = false;
 
     public Objective(ares.data.wrappers.scenario.Objective obj, Board board) {

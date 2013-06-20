@@ -5,7 +5,7 @@ import javax.xml.bind.annotation.*;
 
 
 /**
- * <p>Java class for Place complex type.
+ * <p>Java class for Place complex unitType.
  * <p/>
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p/>
@@ -14,11 +14,11 @@ import javax.xml.bind.annotation.*;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="X" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="Y" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="Name" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="X" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="Y" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="Name" unitType="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
- *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
+ *       &lt;attribute name="id" use="required" unitType="{http://www.w3.org/2001/XMLSchema}int" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>

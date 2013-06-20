@@ -10,7 +10,7 @@ import java.util.List;
 
 
 /**
- * <p>Java class for Orders complex type.
+ * <p>Java class for Orders complex unitType.
  * <p/>
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p/>
@@ -19,13 +19,13 @@ import java.util.List;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="OperationalStance" type="{ares}OperationalStance"/>
- *         &lt;element name="Activates" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="Frontage" type="{ares}Frontage"/>
- *         &lt;element name="OnlyPO" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
- *         &lt;element name="Emphasis" type="{ares}Emphasis"/>
- *         &lt;element name="Supportscope" type="{ares}SupportScope"/>
- *         &lt;element name="Track" type="{ares}Track" maxOccurs="unbounded"/>
+ *         &lt;element name="OperationalStance" unitType="{ares}OperationalStance"/>
+ *         &lt;element name="Activates" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="Frontage" unitType="{ares}Frontage"/>
+ *         &lt;element name="OnlyPO" unitType="{http://www.w3.org/2001/XMLSchema}boolean"/>
+ *         &lt;element name="Emphasis" unitType="{ares}Emphasis"/>
+ *         &lt;element name="Supportscope" unitType="{ares}SupportScope"/>
+ *         &lt;element name="Track" unitType="{ares}Track" maxOccurs="unbounded"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -184,7 +184,7 @@ public class Orders {
      * <p/>
      * <p/>
      * <p/>
-     * Objects of the following type(s) are allowed in the list
+     * Objects of the following unitType(s) are allowed in the list
      * {@link Track }
      */
     public List<Track> getTrack() {

@@ -43,7 +43,7 @@ public abstract class ComponentFactory {
     //--------------------------------------------------
     public static JFrame frame(String title, JComponent contentPane, JMenuBar menuBar, JToolBar toolBar) {
         JFrame frame = new JFrame();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         if (contentPane != null) {
             frame.setContentPane(contentPane);
         }
@@ -52,7 +52,7 @@ public abstract class ComponentFactory {
 
     public static JFrame frame(String title, JMenuBar menuBar, JToolBar toolBar) {
         JFrame frame = new JFrame();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         if (title != null) {
             frame.setTitle(title);
         }
