@@ -1,4 +1,4 @@
-package ares.application.shared.laf;
+package ares.application.shared.gui.laf;
 
 import javax.swing.*;
 import javax.swing.plaf.ColorUIResource;

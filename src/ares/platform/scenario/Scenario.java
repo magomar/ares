@@ -79,7 +79,7 @@ public final class Scenario implements ModelProvider<ScenarioModel> {
 
     @Override
     public String toString() {
-        return "Scenario{" + "Scale=" + Scale.INSTANCE + ", calendar=" + Clock.INSTANCE + '}';
+        return name + '(' + "Scale=" + Scale.INSTANCE + ", Calendar=" + Clock.INSTANCE + ')';
     }
 
     @Override
