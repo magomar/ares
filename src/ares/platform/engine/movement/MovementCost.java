@@ -28,7 +28,9 @@ public class MovementCost {
 
     public static final int IMPASSABLE = Integer.MAX_VALUE;
     public static final int UNITARY_MOVEMENT_COST = 1;
-    private static final int ENEMIES_PENALTY = 4;
+    private static final int ENEMY_OCCUPIED_PENALTY = 10;
+    private static final int ENEMY_ZOC_PENALTY = 2;
+    private static final int ENEMY_OWNED_PENALTY = 1;
     private static final int SNOW_PENALTY = 2;
     private static final int MUD_PENALTY = 2;
     /**
@@ -98,7 +100,7 @@ public class MovementCost {
         } else {
             movementCost.put(MovementType.RAIL, IMPASSABLE);
         }
-        // Check wether on-road movement is possible (road and no bridge destroyed)
+        // Check whether on-road movement is possible (road and no bridge destroyed)
         hasRoad = (containsSomeTerrainInDirection(terrainMap, Terrain.ANY_ROAD, direction) && !destroyedBridge ? true : false);
         // Set remaining movement types
         int amphibiousCost = MovementType.AMPHIBIOUS.getMinOffRoadCost();
@@ -139,7 +141,7 @@ public class MovementCost {
     }
 
     /**
-     * Return the actual movement cost, having into account both the precomputed cost and dinamic conditions such as the
+     * Return the actual movement cost, having into account both the precomputed cost and dynamic conditions such as the
      * traffic density in case of using roads, the presence of near enemy units, or the presence of dynamic terrain
      * features such as mud and snow
      *
@@ -149,7 +151,7 @@ public class MovementCost {
     public int getActualCost(Unit unit) {
         Force force = unit.getForce();
         // Check for enemies. Enemies prevent movement
-        if (tile.hasEnemies(force) || (!tile.isPlayable() && !unit.isAircraft())) {
+        if (!tile.isPlayable() && !unit.isAircraft()) {
             return IMPASSABLE;
         }
 
@@ -180,7 +182,7 @@ public class MovementCost {
                 offRoadcost = MathUtils.addBounded(offRoadcost, MUD_PENALTY, moveType.getMaxOffRoadCost());
             }
         }
-        // Chose minimun of on-road and off-road movement costs
+        // Chose minimum of on-road and off-road movement costs
         int maxCost;
         int cost;
         if (offRoadcost < onRoadCost) {
@@ -197,10 +199,12 @@ public class MovementCost {
 
         // APPLY PENALTIES
         int penalty = 0;
-        if (tile.hasEnemiesNearby(force)) { // Enemy ZOC
-            penalty += 2;
-        } else if (tile.isAlliedTerritory(force)) { // Controlled territory
-            penalty++;
+        if (tile.hasEnemies(force)) { // Occupied by enemy
+            penalty += ENEMY_OCCUPIED_PENALTY;
+        } else if (tile.hasEnemiesNearby(force)) { // Enemy ZOC
+            penalty += ENEMY_ZOC_PENALTY;
+        } else if (!tile.isAlliedTerritory(force)) { // Owned by enemy
+            penalty +=ENEMY_OWNED_PENALTY;
         }
 
         return MathUtils.addBounded(cost, penalty, maxCost);
