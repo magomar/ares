@@ -6,6 +6,9 @@ import ares.platform.scenario.board.Tile;
 import ares.platform.scenario.forces.Unit;
 
 /**
+ *
+ * Movement action for surface units
+ *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class SurfaceMoveAction extends MoveAction {

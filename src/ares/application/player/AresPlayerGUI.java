@@ -102,16 +102,14 @@ public final class AresPlayerGUI extends AbstractView<JFrame> implements PlayerV
         cl.show(cards, perspective);
         switch (perspective) {
             case PlayerViewer.MAIN_MENU_PERSPECTIVE:
+                contentPane.getRootPane().setWindowDecorationStyle(JRootPane.NONE);
                 menuView.setVisible(false);
                 toolBarView.setVisible(false);
-//                JFrame.setDefaultLookAndFeelDecorated(false);
-//                contentPane.setUndecorated(true);
                 break;
             case PlayerViewer.PLAYER_PERSPECTIVE:
+                contentPane.getRootPane().setWindowDecorationStyle(JRootPane.FRAME);
                 menuView.setVisible(true);
                 toolBarView.setVisible(true);
-//                JFrame.setDefaultLookAndFeelDecorated(true);
-//                contentPane.setUndecorated(false);
                 break;
         }
     }
@@ -138,8 +136,8 @@ public final class AresPlayerGUI extends AbstractView<JFrame> implements PlayerV
     }
 
     public static void main(String[] args) {
-        JFrame.setDefaultLookAndFeelDecorated(false);
-        JDialog.setDefaultLookAndFeelDecorated(true);
+//        JFrame.setDefaultLookAndFeelDecorated(false);
+//        JDialog.setDefaultLookAndFeelDecorated(true);
         Toolkit.getDefaultToolkit().setDynamicLayout(true);
         System.setProperty("sun.awt.noerasebackground", "true");
         try {

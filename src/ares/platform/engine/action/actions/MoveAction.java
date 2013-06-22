@@ -12,20 +12,31 @@ import ares.platform.scenario.board.Tile;
 import ares.platform.scenario.forces.Unit;
 
 /**
+ * Generic movement action.
+ * A single movement action may comprise movement along a sequence of adjacent tiles. The sequence of movements is
+ * represented by a {@link Path} object.
+ *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
+
 public abstract class MoveAction extends AbstractAction {
 
+    /**
+     * Path to follow while performing this action. A path contains a sequence of tiles in the map
+     */
     protected final Path path;
+    /**
+     * Current node in the {@link #path} of this action. A node references a tile in the map.
+     */
     protected Node currentNode;
     /**
      * Time to complete next partial move
      */
     protected int timeToNextMovement;
     /**
-     * Actual speed for this particular action, having into account not just the base speed and movement costs
-     * occasioned by the terrain, which are all precomputed for every unit and tile respectively, but also the dinamic
-     * aspects of the scenario, such as the traffic density (a function of the number of horses and vehicles) and the
+     * Actual speed for this movement, having into account not just the base speed and movement costs
+     * occasioned by the terrain, which are all precomputed for every unit and tile respectively, but also dynamic
+     * aspects such as the traffic density (a function of the number of horses and vehicles) and the
      * presence of enemy units in the vicinity
      */
     protected int speed;
@@ -48,9 +59,9 @@ public abstract class MoveAction extends AbstractAction {
      * reference to currentNode to the next node (if there is a next node). If there are no more nodes the movement has
      * ended, so {@link #timeToNextMovement} is set to 0. Otherwise {@link #timeToNextMovement} has to be computed
      * again. Once computed, it is adjusted to reflect the part of the time tick not really necessary to complete a
-     * partial move, that is, the amount of time left is substracted from the new {@link #timeToNextMovement}. This
-     * adjustment avoids the precission error (due to the conversion between minutes and ticks) being accumulated per
-     * each partial movement (the precission error only happens once for the entire movement)
+     * partial move, that is, the amount of time left is subtracted from the new {@link #timeToNextMovement}. This
+     * adjustment avoids the precision error (due to the conversion between minutes and ticks) being accumulated per
+     * each partial movement (the maximum precision error will be bounded by a single time tick for the entire movement action)
      */
     protected void completePartialMove() {
         unit.move(currentNode.getDirection().getOpposite());

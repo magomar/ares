@@ -79,7 +79,7 @@ public final class Scenario implements ModelProvider<ScenarioModel> {
 
     @Override
     public String toString() {
-        return name + '(' + "Scale=" + Scale.INSTANCE + ", Calendar=" + Clock.INSTANCE + ')';
+        return name + String.format("[Scale: %.2f Km./hex, Time: ", (double) Scale.INSTANCE.getTileSize() / 1000) + Clock.INSTANCE.toStringBeginsAndEnds() + ']';
     }
 
     @Override
