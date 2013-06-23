@@ -62,6 +62,8 @@ public abstract class MoveAction extends AbstractAction {
      * partial move, that is, the amount of time left is subtracted from the new {@link #timeToNextMovement}. This
      * adjustment avoids the precision error (due to the conversion between minutes and ticks) being accumulated per
      * each partial movement (the maximum precision error will be bounded by a single time tick for the entire movement action)
+     *
+     * @see #applyOngoingEffects()
      */
     protected void completePartialMove() {
         unit.move(currentNode.getDirection().getOpposite());

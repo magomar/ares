@@ -1,8 +1,9 @@
 package ares.platform.engine.command.tactical.missions;
 
+import ares.platform.engine.action.Action;
 import ares.platform.engine.action.ActionType;
 import ares.platform.engine.action.actions.ChangeDeploymentAction;
-import ares.platform.engine.action.actions.MoveAction;
+import ares.platform.engine.action.actions.CombatAction;
 import ares.platform.engine.action.actions.SurfaceMoveAction;
 import ares.platform.engine.action.actions.WaitAction;
 import ares.platform.engine.algorithms.pathfinding.Path;
@@ -36,11 +37,25 @@ public class Occupy extends TacticalMission {
             return;
         }
 //        LOG.log(Level.INFO, "New path for {0}: {1}", new Object[]{unit.toString(), path.toString()});
-        MoveAction move = new SurfaceMoveAction(unit, ActionType.TACTICAL_MARCH, path);
-        addFirstAction(move);
-        if (!move.checkPreconditions()) {
-            addFirstAction(new ChangeDeploymentAction(unit, ActionType.ASSEMBLE));
+        Action move = null;
+        if (targetTile.hasEnemies(unit.getForce())) {
+            Action attack = new CombatAction(unit, ActionType.ASSAULT, path.subPathFrom(path.getLast().getPrev()));
+            addFirstAction(attack);
+            if (path.size() > 2) {
+                move = new SurfaceMoveAction(unit, ActionType.TACTICAL_MARCH, path.subPathTo(path.getLast().getPrev()));
+                addFirstAction(move);
+                if (!move.checkPreconditions()) {
+                    addFirstAction(new ChangeDeploymentAction(unit, ActionType.ASSEMBLE));
+                }
+            }
+        } else {
+            move = new SurfaceMoveAction(unit, ActionType.TACTICAL_MARCH, path);
+            addFirstAction(move);
+            if (!move.checkPreconditions()) {
+                addFirstAction(new ChangeDeploymentAction(unit, ActionType.ASSEMBLE));
+            }
         }
+
     }
 
 }

@@ -49,6 +49,11 @@ public abstract class AbstractAction implements Action {
      * @see ActionState
      */
     protected ActionState state;
+    /**
+     * Unique identifier for this action. Since actions are created dynamically, the identifier can be obtained by
+     * automatic generation. For that purpose, the class {@link ActionCounter} includes a static method
+     * ({@link ares.platform.engine.action.ActionCounter#count()}) that return successive integer values when invoked.
+     */
     protected final int id;
 
     public AbstractAction(Unit unit, ActionType type) {
@@ -183,6 +188,7 @@ public abstract class AbstractAction implements Action {
      * @return true if the operational state is right, false otherwise
      * @see OpState
      */
+    @Override
     public boolean checkPreconditions() {
         // TODO try to make this method protected...
         OpState precondition = type.getPrecondition();

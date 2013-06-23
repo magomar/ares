@@ -59,6 +59,18 @@ public interface Action {
      */
     boolean canBeExecuted();
 
+    /**
+     * Get the time remaining to complete the action
+     * @return  the remaining time
+     */
+    int getTimeToComplete();
+    /**
+     * Checks whether the acting unit is in the right operational state
+     * @return true if the operational state is right, false otherwise
+     * @see ares.platform.scenario.forces.OpState
+     */
+    boolean checkPreconditions();
+
     Unit getUnit();
 
     ActionType getType();
@@ -68,10 +80,4 @@ public interface Action {
     int getFinish();
 
     ActionState getState();
-
-    /**
-     * Get the time remaining to complete the action
-     * @return  the remaining time
-     */
-    int getTimeToComplete();
 }

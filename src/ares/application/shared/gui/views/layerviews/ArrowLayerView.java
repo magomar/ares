@@ -132,14 +132,7 @@ public class ArrowLayerView extends AbstractImageLayerView implements ArrowLayer
         paintFinalArrowSegmentWithCost(g2, last, last.getDirection(), type);
     }
 
-    /**
-     * Paints a final arrow segment
-     *
-     * @param g2
-     * @param node
-     * @param direction
-     * @param type
-     */
+
     private void paintFinalArrowSegment(Graphics2D g2, Node node, Direction direction, ArrowType type) {
         Point coordinates = Directions.getDirections(direction.ordinal() + 25).getCoordinates();
         BufferedImage arrowImage = GraphicsModel.INSTANCE.getProfiledImageProvider(type.getProvider(), profile).getImage(coordinates);
@@ -149,14 +142,7 @@ public class ArrowLayerView extends AbstractImageLayerView implements ArrowLayer
         contentPane.repaint(pos.x, pos.y, arrowImage.getWidth(), arrowImage.getHeight());
     }
 
-    /**
-     * Paints a final arrow segment together with the final movement cost
-     *
-     * @param g2
-     * @param node
-     * @param direction
-     * @param type
-     */
+
     private void paintFinalArrowSegmentWithCost(Graphics2D g2, Node node, Direction direction, ArrowType type) {
         Point coordinates = Directions.getDirections(direction.ordinal() + 25).getCoordinates();
         BufferedImage arrowImage = GraphicsModel.INSTANCE.getProfiledImageProvider(type.getProvider(), profile).getImage(coordinates);
@@ -173,14 +159,7 @@ public class ArrowLayerView extends AbstractImageLayerView implements ArrowLayer
         contentPane.repaint(pos.x, pos.y, arrowImage.getWidth(), arrowImage.getHeight());
     }
 
-    /**
-     * Paints a single arrow segment
-     *
-     * @param g2
-     * @param node
-     * @param directions
-     * @param type
-     */
+
     private void paintArrowSegment(Graphics2D g2, Node node, Set<Direction> directions, ArrowType type) {
         Point coordinates = Directions.getDirections(Direction.getBitmask(directions)).getCoordinates();
         BufferedImage arrowImage = GraphicsModel.INSTANCE.getProfiledImageProvider(type.getProvider(), profile).getImage(coordinates);
@@ -190,14 +169,7 @@ public class ArrowLayerView extends AbstractImageLayerView implements ArrowLayer
         contentPane.repaint(pos.x, pos.y, arrowImage.getWidth(), arrowImage.getHeight());
     }
 
-    /**
-     * Paints a single arrow segment together with the accumulated movement cost
-     *
-     * @param g2
-     * @param node
-     * @param directions
-     * @param type
-     */
+
     private void paintArrowSegmentWithCost(Graphics2D g2, Node node, Set<Direction> directions, ArrowType type) {
         Point coordinates = Directions.getDirections(Direction.getBitmask(directions)).getCoordinates();
         BufferedImage arrowImage = GraphicsModel.INSTANCE.getProfiledImageProvider(type.getProvider(), profile).getImage(coordinates);

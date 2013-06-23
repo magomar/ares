@@ -335,13 +335,13 @@ public final class PlayerBoardController extends BoardController implements Boar
             return;
         }
         List<Path> forcePaths = new ArrayList<>();
-        for (FormationModel fModel : selectedForce.getFormationModels()) {
-            if (!fModel.equals(selectedFormation)) {
-                for (UnitModel uModel : fModel.getUnitModels()) {
-                    TacticalMission mission = uModel.getTacticalMission();
+        for (FormationModel force : selectedForce.getFormationModels()) {
+            if (!force.equals(selectedFormation)) {
+                for (UnitModel unit : force.getUnitModels()) {
+                    TacticalMission mission = unit.getTacticalMission();
                     Path path = mission.getPath();
                     if (path != null) {
-                        forcePaths.add(path.subPath(uModel.getLocation()));
+                        forcePaths.add(path.subPath(unit.getLocation()));
                     }
                 }
             }

@@ -2,15 +2,61 @@ package ares.platform.engine.action.actions;
 
 import ares.platform.engine.action.ActionType;
 import ares.platform.engine.algorithms.pathfinding.Path;
+import ares.platform.engine.movement.MovementCost;
+import ares.platform.engine.time.Clock;
+import ares.platform.scenario.Scale;
+import ares.platform.scenario.board.Tile;
 import ares.platform.scenario.forces.Unit;
 
 /**
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class CombatAction extends MoveAction {
+    protected boolean engaging;
 
     public CombatAction(Unit unit, ActionType type, Path path) {
         super(unit, type, path);
+        engaging = false;
+
+    }
+
+    /**
+     * Change the location of the acting unit to the location of the currentNode in the movement path and moves the
+     * reference to currentNode to the next node (if there is a next node). If there are no more nodes the movement has
+     * ended, so {@link #timeToNextMovement} is set to 0. Otherwise {@link #timeToNextMovement} has to be computed
+     * again. Once computed, it is adjusted to reflect the part of the time tick not really necessary to complete a
+     * partial move, that is, the amount of time left is subtracted from the new {@link #timeToNextMovement}. This
+     * adjustment avoids the precision error (due to the conversion between minutes and ticks) being accumulated per
+     * each partial movement (the maximum precision error will be bounded by a single time tick for the entire movement action)
+     */
+    protected void completePartialMove() {
+        Tile tile = currentNode.getTile();
+        if (tile.hasEnemies(unit.getForce())) {
+            engaging = true;
+            System.out.println("Engaging !");
+            return;
+        }
+
+        unit.move(currentNode.getDirection().getOpposite());
+        // start moving to the next node
+        currentNode = currentNode.getNext();
+        if (currentNode != null) {
+            Tile destination = currentNode.getTile();
+            MovementCost moveCost = destination.getEnterCost(currentNode.getDirection());
+            int cost = moveCost.getActualCost(unit);
+            speed = unit.getSpeed() / cost;
+            // timeToNextMovement <= 0. If it is negative we can add it to the new timeToNextMovement as a way to not propagate the precision error each movement segment
+            timeToNextMovement = (speed > 0 ? Scale.INSTANCE.getTileSize() / speed + timeToNextMovement : Integer.MAX_VALUE);
+        }
+    }
+
+    @Override
+    protected void applyOngoingEffects() {
+        if (timeToNextMovement <= 0) {
+            completePartialMove();
+        } else {
+            timeToNextMovement -= Clock.INSTANCE.getMINUTES_PER_TICK();
+        }
     }
 
     @Override
