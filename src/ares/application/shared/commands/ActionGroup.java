@@ -1,7 +1,7 @@
 package ares.application.shared.commands;
 
 import ares.application.shared.gui.ComponentFactory;
-import temp.NebraskaButton;
+import ares.application.shared.gui.components.NebraskaButton;
 
 import javax.swing.*;
 import java.awt.*;
