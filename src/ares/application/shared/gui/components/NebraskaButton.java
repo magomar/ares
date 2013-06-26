@@ -1,7 +1,7 @@
 package ares.application.shared.gui.components;
 
-import temp.ColorPalette;
-import temp.ColorUtil;
+import ares.application.shared.gui.laf.ColorPalette;
+import ares.application.shared.gui.laf.ColorUtil;
 
 import javax.swing.*;
 import java.awt.*;
