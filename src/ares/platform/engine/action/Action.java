@@ -31,7 +31,7 @@ public interface Action {
     /**
      * Completes the action. Actions have to execute this method after completion.
      */
-    void complete();
+    void finish();
 
     /**
      * Delays the actions. Actions already started that can not be executed have to execute this method.
@@ -60,7 +60,7 @@ public interface Action {
     boolean canBeExecuted();
 
     /**
-     * Get the time remaining to complete the action
+     * Get the time remaining to finish the action
      * @return  the remaining time
      */
     int getTimeToComplete();

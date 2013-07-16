@@ -30,14 +30,14 @@ public abstract class MoveAction extends AbstractAction {
      */
     protected Node currentNode;
     /**
-     * Time to complete next partial move
+     * Time to finish next partial move, in minutes
      */
     protected int timeToNextMovement;
     /**
      * Actual speed for this movement, having into account not just the base speed and movement costs
      * occasioned by the terrain, which are all precomputed for every unit and tile respectively, but also dynamic
      * aspects such as the traffic density (a function of the number of horses and vehicles) and the
-     * presence of enemy units in the vicinity
+     * presence of enemy units in the vicinity.
      */
     protected int speed;
 
@@ -58,7 +58,7 @@ public abstract class MoveAction extends AbstractAction {
      * Change the location of the acting unit to the location of the currentNode in the movement path and moves the
      * reference to currentNode to the next node (if there is a next node). If there are no more nodes the movement has
      * ended, so {@link #timeToNextMovement} is set to 0. Otherwise {@link #timeToNextMovement} has to be computed
-     * again. Once computed, it is adjusted to reflect the part of the time tick not really necessary to complete a
+     * again. Once computed, it is adjusted to reflect the part of the time tick not really necessary to finish a
      * partial move, that is, the amount of time left is subtracted from the new {@link #timeToNextMovement}. This
      * adjustment avoids the precision error (due to the conversion between minutes and ticks) being accumulated per
      * each partial movement (the maximum precision error will be bounded by a single time tick for the entire movement action)
@@ -74,22 +74,22 @@ public abstract class MoveAction extends AbstractAction {
             MovementCost moveCost = destination.getEnterCost(currentNode.getDirection());
             int cost = moveCost.getActualCost(unit);
             speed = unit.getSpeed() / cost;
-            // timeToNextMovement <= 0. If it is negative we can add it to the new timeToNextMovement as a way to not propagate the precision error each movement segment
+            // If remaining timeToNextMovement <= 0 we add it to the new timeToNextMovement (actually it is subtracted)
+            // as a way to not propagate the precision error for each partial movement
             timeToNextMovement = (speed > 0 ? Scale.INSTANCE.getTileSize() / speed + timeToNextMovement : Integer.MAX_VALUE);
         }
     }
 
     @Override
     public boolean isComplete() {
-        return (currentNode.getNext() == null && timeToNextMovement <= Clock.INSTANCE.getMINUTES_PER_TICK());
+        return (currentNode == null && timeToNextMovement <= 0);
     }
 
     @Override
     protected void applyOngoingEffects() {
+        timeToNextMovement -= Clock.INSTANCE.getMINUTES_PER_TICK();
         if (timeToNextMovement <= 0) {
             completePartialMove();
-        } else {
-            timeToNextMovement -= Clock.INSTANCE.getMINUTES_PER_TICK();
         }
     }
 

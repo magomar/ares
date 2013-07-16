@@ -14,7 +14,7 @@ public abstract class AbstractAction implements Action {
      */
     public static final int AS_SOON_AS_POSSIBLE = 0;
     /**
-     * Value indicating that the duration or time to complete an action is unknown
+     * Value indicating that the duration or time to finish an action is unknown
      */
     public static final int TIME_UNKNOWN = Integer.MAX_VALUE;
     /**
@@ -39,7 +39,7 @@ public abstract class AbstractAction implements Action {
      */
     protected int finish;
     /**
-     * Estimated remaining time to complete the action in time ticks. If (timeToComplete == TIME_UNKNOWN) then the
+     * Estimated remaining time to finish the action in time ticks. If (timeToComplete == TIME_UNKNOWN) then the
      * action will be executed indefinitely, until it is aborted or terminated because of some event
      */
     protected int timeToComplete;
@@ -127,7 +127,7 @@ public abstract class AbstractAction implements Action {
      * operational state of the {@link #unit}
      */
     @Override
-    public final void complete() {
+    public final void finish() {
         state = ActionState.COMPLETED;
         finish = Clock.INSTANCE.getTick();
         unit.setOpState(type.getEffectAfter());
@@ -142,15 +142,15 @@ public abstract class AbstractAction implements Action {
     }
 
     /**
-     * Executes the action for the current time tick. If the the action is completed then complete it.
+     * Executes the action for the current time tick. If the the action is completed then finish it.
      */
     @Override
     public final void execute() {
-        timeToComplete -= 1;
+        timeToComplete -= Clock.INSTANCE.getMINUTES_PER_TICK();
         wear();
         applyOngoingEffects();
         if (isComplete()) {
-            complete();
+            finish();
         }
     }
 

@@ -11,7 +11,7 @@ import ares.platform.scenario.forces.Unit;
 /**
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public class CombatAction extends MoveAction {
+public class CombatAction extends SurfaceMoveAction {
     protected boolean engaging;
 
     public CombatAction(Unit unit, ActionType type, Path path) {
@@ -24,7 +24,7 @@ public class CombatAction extends MoveAction {
      * Change the location of the acting unit to the location of the currentNode in the movement path and moves the
      * reference to currentNode to the next node (if there is a next node). If there are no more nodes the movement has
      * ended, so {@link #timeToNextMovement} is set to 0. Otherwise {@link #timeToNextMovement} has to be computed
-     * again. Once computed, it is adjusted to reflect the part of the time tick not really necessary to complete a
+     * again. Once computed, it is adjusted to reflect the part of the time tick not really necessary to finish a
      * partial move, that is, the amount of time left is subtracted from the new {@link #timeToNextMovement}. This
      * adjustment avoids the precision error (due to the conversion between minutes and ticks) being accumulated per
      * each partial movement (the maximum precision error will be bounded by a single time tick for the entire movement action)

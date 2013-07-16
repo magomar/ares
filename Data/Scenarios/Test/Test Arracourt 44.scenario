@@ -3598,7 +3598,7 @@
             "id" : 1
           } ]
         },
-        "unit" : [ {
+        "unit" : [{
           "name" : "111 Pz Brig HQ",
           "type" : "HEADQUARTERS",
           "iconId" : 0,
@@ -3671,105 +3671,7 @@
             "id" : 11
           } ],
           "id" : 1
-        }, {
-          "name" : "111 Recon",
-          "type" : "ARMORED_CAVALRY",
-          "iconId" : 40,
-          "color" : 10,
-          "size" : "COMPANY",
-          "experience" : "UNTRIED",
-          "proficiency" : 70,
-          "readiness" : 60,
-          "supply" : 60,
-          "x" : 20,
-          "y" : 12,
-          "emphasis" : "LIMIT_LOSSES",
-          "availability" : "AVAILABLE",
-          "opState" : "MOBILE",
-          "replacementPriority" : 0,
-          "equipment" : [ {
-            "name" : "SdKfz 234/2",
-            "number" : 4,
-            "max" : 6,
-            "id" : 1
-          }, {
-            "name" : "SdKfz 251/9",
-            "number" : 2,
-            "max" : 2,
-            "id" : 2
-          }, {
-            "name" : "SdKfz 251/10",
-            "number" : 2,
-            "max" : 2,
-            "id" : 3
-          }, {
-            "name" : "SMG AT- Squad",
-            "number" : 3,
-            "max" : 4,
-            "id" : 4
-          }, {
-            "name" : "Medium Scout Car",
-            "number" : 2,
-            "max" : 3,
-            "id" : 5
-          }, {
-            "name" : "SdKfz 10/4 SPAAG",
-            "number" : 2,
-            "max" : 2,
-            "id" : 6
-          }, {
-            "name" : "Rifle AT- Squad",
-            "number" : 2,
-            "max" : 2,
-            "id" : 7
-          }, {
-            "name" : "Motorcycle Squad",
-            "number" : 3,
-            "max" : 4,
-            "id" : 8
-          }, {
-            "name" : "Engineer Squad",
-            "number" : 2,
-            "max" : 2,
-            "id" : 9
-          }, {
-            "name" : "SdKfz 251/1",
-            "number" : 17,
-            "max" : 26,
-            "id" : 10
-          }, {
-            "name" : "Medium MG",
-            "number" : 10,
-            "max" : 16,
-            "id" : 11
-          }, {
-            "name" : "50mm AT Gun",
-            "number" : 2,
-            "max" : 2,
-            "id" : 12
-          }, {
-            "name" : "Heavy MG",
-            "number" : 2,
-            "max" : 2,
-            "id" : 13
-          }, {
-            "name" : "81mm Mortar",
-            "number" : 2,
-            "max" : 3,
-            "id" : 14
-          }, {
-            "name" : "Truck",
-            "number" : 4,
-            "max" : 6,
-            "id" : 15
-          }, {
-            "name" : "75mm AT Gun",
-            "number" : 1,
-            "max" : 1,
-            "id" : 16
-          } ],
-          "id" : 2
-        } ],
+        }],
         "id" : 1
       } ],
       "id" : 0

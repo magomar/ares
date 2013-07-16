@@ -59,7 +59,7 @@ public class ArrowLayerView extends AbstractImageLayerView implements ArrowLayer
     }
 
     /**
-     * Paints complete arrow for the {@code activePath} passed as argument
+     * Paints finish arrow for the {@code activePath} passed as argument
      *
      * @param activePath the path from the selected unit to the location pointed by the mouse
      */
