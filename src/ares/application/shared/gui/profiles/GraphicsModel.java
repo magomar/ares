@@ -377,12 +377,12 @@ public class GraphicsModel {
 
     public Rectangle getVisibleTiles(JViewport viewport, int profile) {
         Rectangle viewRect = viewport.getViewRect();
-        Point upperleft = pixelToTile(viewRect.x, viewRect.y, profile);
-        Point bottomright = pixelToTile(viewRect.x + viewRect.width, viewRect.y + viewRect.height, profile);
-        upperleft.x = (columnIsWithinBoard(upperleft.x) ? upperleft.x : 0);
-        upperleft.y = (rowIsWithinBoard(upperleft.y) ? upperleft.y : 0);
-        bottomright.x = (columnIsWithinBoard(bottomright.x) ? bottomright.x : boardColumns - 1);
-        bottomright.y = (rowIsWithinBoard(bottomright.y) ? bottomright.y : boardRows - 1);
-        return new Rectangle(upperleft.x, upperleft.y, bottomright.x - upperleft.x, bottomright.y - upperleft.y);
+        Point upperLeft = pixelToTile(viewRect.x, viewRect.y, profile);
+        Point bottomRight = pixelToTile(viewRect.x + viewRect.width, viewRect.y + viewRect.height, profile);
+        upperLeft.x = (columnIsWithinBoard(upperLeft.x) ? upperLeft.x : 0);
+        upperLeft.y = (rowIsWithinBoard(upperLeft.y) ? upperLeft.y : 0);
+        bottomRight.x = (columnIsWithinBoard(bottomRight.x) ? bottomRight.x : boardColumns - 1);
+        bottomRight.y = (rowIsWithinBoard(bottomRight.y) ? bottomRight.y : boardRows - 1);
+        return new Rectangle(upperLeft.x, upperLeft.y, bottomRight.x - upperLeft.x, bottomRight.y - upperLeft.y);
     }
 }

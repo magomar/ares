@@ -51,15 +51,6 @@ public class CombatAction extends SurfaceMoveAction {
     }
 
     @Override
-    protected void applyOngoingEffects() {
-        if (timeToNextMovement <= 0) {
-            completePartialMove();
-        } else {
-            timeToNextMovement -= Clock.INSTANCE.getMINUTES_PER_TICK();
-        }
-    }
-
-    @Override
     public boolean isFeasible() {
         return true;
     }
