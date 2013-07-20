@@ -27,6 +27,8 @@ import ares.platform.engine.algorithms.pathfinding.heuristics.MinimunDistance;
 import ares.platform.engine.command.tactical.TacticalMission;
 import ares.platform.engine.command.tactical.TacticalMissionType;
 import ares.platform.engine.time.Clock;
+import ares.platform.io.FileIO;
+import ares.platform.io.ResourcePath;
 import ares.platform.model.UserRole;
 import ares.platform.scenario.Scenario;
 import ares.platform.scenario.board.Tile;
@@ -70,6 +72,7 @@ public final class PlayerBoardController extends BoardController implements Boar
     private final PlayerBoardInteractor interactor;
     private final ChangeListener changeViewportListener;
     private boolean dragging = false;
+    private Cursor onTargetCursor;
 
     public PlayerBoardController(final PlayerBoardInteractor interactor, RealTimeEngine engine) {
         super(interactor);
@@ -92,6 +95,11 @@ public final class PlayerBoardController extends BoardController implements Boar
 
         //Add change listeners to entities
         engine.addPropertyChangeListener(this);
+
+        //Create Custom cursor
+        Toolkit toolkit = Toolkit.getDefaultToolkit();
+        Image onTargetImage = FileIO.loadImage(ResourcePath.OTHER.getFile("on-target.png"));
+        onTargetCursor = toolkit.createCustomCursor(onTargetImage, new Point(0,0), "OnTarget");
     }
 
     public void setScenario(Scenario scenario, UserRole userRole) {
@@ -259,34 +267,29 @@ public final class PlayerBoardController extends BoardController implements Boar
 
         @Override
         public void mouseMoved(MouseEvent me) {
-//            if (interactionMode == InteractionMode.UNIT_ORDERS && !wegoController.getEngine().isRunning()) {
-            if (interactionMode == InteractionMode.UNIT_ORDERS) {
-                int profile = GraphicsModel.INSTANCE.getActiveProfile();
-                Point pixel = new Point(me.getX(), me.getY());
-                if (GraphicsModel.INSTANCE.isWithinImageRange(pixel, profile)) {
-                    Point coords = GraphicsModel.INSTANCE.pixelToTileAccurate(pixel, profile);
-                    if (!GraphicsModel.INSTANCE.validCoordinates(coords.x, coords.y)) {
-                        return;
-                    }
-                    Tile tile = scenario.getBoard().getTile(coords.x, coords.y);
+            int profile = GraphicsModel.INSTANCE.getActiveProfile();
+            Point pixel = new Point(me.getX(), me.getY());
+            if (GraphicsModel.INSTANCE.isWithinImageRange(pixel, profile)) {
+                Point coordinates = GraphicsModel.INSTANCE.pixelToTileAccurate(pixel, profile);
+                if (!GraphicsModel.INSTANCE.validCoordinates(coordinates.x, coordinates.y)) {
+                    return;
+                }
+                Tile tile = scenario.getBoard().getTile(coordinates.x, coordinates.y);
+                if (interactionMode == InteractionMode.UNIT_ORDERS) {
                     Path path = pathFinder.getPath(selectedUnit.getLocation(), tile, selectedUnit);
                     if (path == null) {
                         return;
                     }
                     arrowLayerView.updateCurrentOrders(path);
                 }
-            }
-            if (!dragging) {
-                int profile = GraphicsModel.INSTANCE.getActiveProfile();
-                Point pixel = new Point(me.getX(), me.getY());
-                if (GraphicsModel.INSTANCE.isWithinImageRange(pixel, profile)) {
-                    Point coords = GraphicsModel.INSTANCE.pixelToTileAccurate(pixel, profile);
-                    if (!GraphicsModel.INSTANCE.validCoordinates(coords.x, coords.y)) {
-                        return;
-                    }
-                    Tile tile = scenario.getBoard().getTile(coords.x, coords.y);
-                    if (!tile.getUnitsStack().isEmpty())  {
-                        interactor.getGUIContainer().setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                if (!dragging) {
+                    if (!tile.getUnitsStack().isEmpty()) {
+                        if (selectedUnit!=null && tile.hasEnemies(selectedUnit.getForce())) {
+
+                            interactor.getGUIContainer().setCursor(onTargetCursor);
+                        }   else {
+                            interactor.getGUIContainer().setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                        }
                     } else {
                         interactor.getGUIContainer().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
                     }
@@ -302,11 +305,11 @@ public final class PlayerBoardController extends BoardController implements Boar
             dragging = true;
             int profile = GraphicsModel.INSTANCE.getActiveProfile();
             Point pixel = new Point(me.getX(), me.getY());
-            Point coords = GraphicsModel.INSTANCE.pixelToTileAccurate(pixel, profile);
-            if (!GraphicsModel.INSTANCE.validCoordinates(coords.x, coords.y)) {
+            Point coordinates = GraphicsModel.INSTANCE.pixelToTileAccurate(pixel, profile);
+            if (!GraphicsModel.INSTANCE.validCoordinates(coordinates.x, coordinates.y)) {
                 return;
             }
-            boardView.centerViewOn(coords);
+            boardView.centerViewOn(coordinates);
         }
     }
 
