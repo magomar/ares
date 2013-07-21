@@ -1,7 +1,6 @@
 package ares.platform.engine.action.actions;
 
 import ares.platform.engine.action.AbstractAction;
-import ares.platform.engine.action.ActionSpace;
 import ares.platform.engine.action.ActionType;
 import ares.platform.engine.time.Clock;
 import ares.platform.scenario.forces.Unit;
@@ -16,8 +15,8 @@ public class RestAction extends AbstractAction {
      */
     public static final int SLEEP_TIME = 8 * 60 / Clock.INSTANCE.getMINUTES_PER_TICK();
 
-    public RestAction(Unit unit, ActionSpace actionSpace) {
-        super(ActionType.REST, unit, AS_SOON_AS_POSSIBLE, SLEEP_TIME, actionSpace);
+    public RestAction(Unit unit) {
+        super(ActionType.REST, unit, AS_SOON_AS_POSSIBLE, SLEEP_TIME);
     }
 
     @Override

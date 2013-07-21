@@ -2,7 +2,6 @@ package ares.platform.engine.command.operational.plans;
 
 import ares.data.wrappers.scenario.Emphasis;
 import ares.data.wrappers.scenario.SupportScope;
-import ares.platform.engine.action.ActionSpace;
 import ares.platform.engine.algorithms.pathfinding.Pathfinder;
 import ares.platform.engine.command.Objective;
 import ares.platform.engine.command.operational.Operation;
@@ -26,18 +25,16 @@ public abstract class OperationalPlan {
     protected final SortedSet<Objective> goals;
     //    protected final Map<Unit, TacticalMission> missions;
     protected final Collection<Operation> operations;
-    protected final ActionSpace actionSpace;
     private Emphasis emphasis;
     private SupportScope supportScope;
     private final boolean achieved;
 
-    public OperationalPlan(OperationalStance stance, Formation formation, List<Objective> objectives, Emphasis emphasis, SupportScope supportScope, ActionSpace actionSpace) {
+    public OperationalPlan(OperationalStance stance, Formation formation, List<Objective> objectives, Emphasis emphasis, SupportScope supportScope) {
         this.stance = stance;
         this.formation = formation;
         this.objectives = objectives;
         this.emphasis = emphasis;
         this.supportScope = supportScope;
-        this.actionSpace = actionSpace;
         goals = new TreeSet<>();
         goals.addAll(objectives);
         operations = new TreeSet<>();

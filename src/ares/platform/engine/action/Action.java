@@ -18,7 +18,7 @@ public interface Action {
     /**
      * Executes the action for the current time tick.
      */
-    void execute();
+    void execute(ActionSpace actionSpace);
 
     /**
      * Starts executing the action. Actions to be executed have to invoke this method before executing for the first

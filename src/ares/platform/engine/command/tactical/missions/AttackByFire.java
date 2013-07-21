@@ -1,6 +1,5 @@
 package ares.platform.engine.command.tactical.missions;
 
-import ares.platform.engine.action.ActionSpace;
 import ares.platform.engine.algorithms.pathfinding.Pathfinder;
 import ares.platform.engine.command.tactical.TacticalMission;
 import ares.platform.engine.command.tactical.TacticalMissionType;
@@ -12,8 +11,8 @@ import ares.platform.scenario.forces.Unit;
  */
 public class AttackByFire extends TacticalMission {
 
-    public AttackByFire(TacticalMissionType type, Unit unit, Tile target, ActionSpace actionSpace) {
-        super(type, unit, target, actionSpace);
+    public AttackByFire(TacticalMissionType type, Unit unit, Tile target) {
+        super(type, unit, target);
     }
 
 

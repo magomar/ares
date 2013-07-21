@@ -17,14 +17,14 @@ import java.util.List;
  */
 class FixedOperationalPlan extends OperationalPlan {
 
-    public FixedOperationalPlan(Formation formation, List<Objective> objectives, Emphasis emphasis, SupportScope supportScope, ActionSpace actionSpace) {
-        super(OperationalStance.FIXED, formation, objectives, emphasis, supportScope, actionSpace);
+    public FixedOperationalPlan(Formation formation, List<Objective> objectives, Emphasis emphasis, SupportScope supportScope) {
+        super(OperationalStance.FIXED, formation, objectives, emphasis, supportScope);
     }
 
     @Override
     public void plan(Pathfinder pathFinder) {
         for (Unit unit : formation.getAvailableUnits()) {
-            TacticalMission mission = TacticalMissionType.OCCUPY.buildTacticalMission(unit, unit.getLocation(), pathFinder, actionSpace);
+            TacticalMission mission = TacticalMissionType.OCCUPY.buildTacticalMission(unit, unit.getLocation(), pathFinder);
             unit.setMission(mission);
         }
     }

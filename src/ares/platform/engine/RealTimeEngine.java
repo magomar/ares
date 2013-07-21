@@ -126,7 +126,7 @@ public class RealTimeEngine extends AbstractBean {
         // Check for activation
         for (Formation formation : formations) {
             if (!formation.isActive() && formation.mustBeActivated()) {
-                formation.activate(actionSpace);
+                formation.activate();
                 formation.plan(pathFinder);
             }
             monitor.setProgress(0, formationsChecked++, formations.size());
@@ -190,7 +190,7 @@ public class RealTimeEngine extends AbstractBean {
 //        LOG.log(Level.INFO, "Act");
         actionSpace.resolveInteractions();
         for (Unit unit : units) {
-            unit.act();
+            unit.act(actionSpace);
         }
     }
 

@@ -51,16 +51,11 @@ public abstract class TacticalMission {
      * @see Action
      */
     protected final Deque<Action> pendingActions;
-    /**
-     * Global action space; it is used to handle action interactions among multiple actors (eg. combat)
-     */
-    protected final ActionSpace actionSpace;
 
-    public TacticalMission(TacticalMissionType type, Unit unit, Tile target, ActionSpace actionSpace) {
+    public TacticalMission(TacticalMissionType type, Unit unit, Tile target) {
         this.type = type;
         this.unit = unit;
         this.targetTile = target;
-        this.actionSpace = actionSpace;
         this.pendingActions = new LinkedList<>();
     }
 
@@ -80,8 +75,8 @@ public abstract class TacticalMission {
     /**
      * Executes {@link #currentAction} for a time tick
      */
-    public void executeAction() {
-        currentAction.execute();
+    public void executeAction(ActionSpace actionSpace) {
+        currentAction.execute(actionSpace);
     }
 
     /**
@@ -121,9 +116,9 @@ public abstract class TacticalMission {
                 currentAction = scheduleNextAction();
             } else {
                 if (unit.canEndure(ActionType.WAIT)) {
-                    currentAction = new WaitAction(unit, actionSpace);
+                    currentAction = new WaitAction(unit);
                 } else {
-                    currentAction = new RestAction(unit, actionSpace);
+                    currentAction = new RestAction(unit);
                 }
             }
         }

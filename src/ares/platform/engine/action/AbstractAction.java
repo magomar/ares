@@ -47,10 +47,10 @@ public abstract class AbstractAction implements Action {
      * @see ActionState
      */
     protected ActionState state;
-    /**
-     * Global action space; it is used to handle action interactions among multiple actors (eg. combat)
-     */
-    protected final ActionSpace actionSpace;
+//    /**
+//     * Global action space; it is used to handle action interactions among multiple actors (eg. combat)
+//     */
+//    protected final ActionSpace actionSpace;
 
 //    public AbstractAction(ActionType actionType, Unit unit, ActionSpace actionSpace) {
 //        this(actionType, unit, AS_SOON_AS_POSSIBLE, TIME_UNKNOWN, actionSpace);
@@ -60,10 +60,9 @@ public abstract class AbstractAction implements Action {
 //        this(actionType, unit, start, TIME_UNKNOWN, actionSpace);
 //    }
 
-    public AbstractAction(ActionType actionType, Unit unit, int start, int duration, ActionSpace actionSpace) {
+    public AbstractAction(ActionType actionType, Unit unit, int start, int duration) {
         id = ActionCounter.count();
         this.actionType = actionType;
-        this.actionSpace = actionSpace;
         this.unit = unit;
         this.start = start;
         this.timeToComplete = duration;
@@ -130,7 +129,7 @@ public abstract class AbstractAction implements Action {
      * Executes the action for the current time tick. If the the action is completed then finish it.
      */
     @Override
-    public final void execute() {
+    public final void execute(ActionSpace actionSpace) {
         timeToComplete -= Clock.INSTANCE.getMINUTES_PER_TICK();
         wear();
         applyOngoingEffects();

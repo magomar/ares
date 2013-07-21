@@ -1,7 +1,6 @@
 package ares.platform.engine.action.actions;
 
 import ares.platform.engine.action.AbstractAction;
-import ares.platform.engine.action.ActionSpace;
 import ares.platform.engine.action.ActionType;
 import ares.platform.engine.algorithms.pathfinding.Node;
 import ares.platform.engine.algorithms.pathfinding.Path;
@@ -42,15 +41,15 @@ public abstract class MoveAction extends AbstractAction {
      */
     protected int speed;
 
-    public MoveAction(ActionType actionType, Unit unit, Path path, ActionSpace actionSpace) {
-        this(actionType, unit, AS_SOON_AS_POSSIBLE, path, actionSpace);
+    public MoveAction(ActionType actionType, Unit unit, Path path) {
+        this(actionType, unit, AS_SOON_AS_POSSIBLE, path);
     }
 
-    public MoveAction(ActionType actionType, Unit unit, int start, Path path, ActionSpace actionSpace) {
-        this(actionType, unit, start, TIME_UNKNOWN, path, actionSpace);
+    public MoveAction(ActionType actionType, Unit unit, int start, Path path) {
+        this(actionType, unit, start, TIME_UNKNOWN, path);
     }
-    public MoveAction(ActionType actionType, Unit unit, int start, int duration, Path path, ActionSpace actionSpace) {
-        super(actionType, unit, start, duration, actionSpace);
+    public MoveAction(ActionType actionType, Unit unit, int start, int duration, Path path) {
+        super(actionType, unit, start, duration);
         this.path = path;
         currentNode = path.getFirst().getNext();
         Tile destination = currentNode.getTile();

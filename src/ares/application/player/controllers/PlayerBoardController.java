@@ -258,7 +258,7 @@ public final class PlayerBoardController extends BoardController implements Boar
                 return;
             }
             Tile tile = scenario.getBoard().getTile(tilePoint.x, tilePoint.y);
-            TacticalMission mission = TacticalMissionType.OCCUPY.buildTacticalMission(selectedUnit, tile, pathFinder, actionSpace);
+            TacticalMission mission = TacticalMissionType.OCCUPY.buildTacticalMission(selectedUnit, tile, pathFinder);
             selectedUnit.setMission(mission);
             selectedUnit.schedule();
             arrowLayerView.updateLastOrders(mission.getPath());
