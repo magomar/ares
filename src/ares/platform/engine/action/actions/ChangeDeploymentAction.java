@@ -1,8 +1,8 @@
 package ares.platform.engine.action.actions;
 
 import ares.platform.engine.action.AbstractAction;
+import ares.platform.engine.action.ActionSpace;
 import ares.platform.engine.action.ActionType;
-import ares.platform.engine.time.Clock;
 import ares.platform.scenario.TurnLength;
 import ares.platform.scenario.forces.Unit;
 
@@ -20,12 +20,12 @@ public class ChangeDeploymentAction extends AbstractAction {
 
     public static final int CHANGE_DEPLOYMENT_TIME = TurnLength.FULL_WEEK.getMinutesPerTick(); // Base deployment time
 
-    public ChangeDeploymentAction(Unit unit, ActionType type) {
-        super(unit, type, (int) (unit.getEchelon().getModifiedTime(CHANGE_DEPLOYMENT_TIME) / Clock.INSTANCE.getMINUTES_PER_TICK()));
+    public ChangeDeploymentAction(ActionType actionType, Unit unit, ActionSpace actionSpace) {
+        this(actionType, unit, AS_SOON_AS_POSSIBLE, actionSpace);
     }
 
-    public ChangeDeploymentAction(Unit unit, int start, ActionType type) {
-        super(unit, start, type, (int) (unit.getEchelon().getModifiedTime(CHANGE_DEPLOYMENT_TIME) / Clock.INSTANCE.getMINUTES_PER_TICK()));
+    public ChangeDeploymentAction(ActionType actionType, Unit unit, int start, ActionSpace actionSpace) {
+        super(actionType, unit, start, (int) unit.getEchelon().getModifiedTime(CHANGE_DEPLOYMENT_TIME), actionSpace);
     }
 
     @Override

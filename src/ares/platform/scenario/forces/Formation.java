@@ -1,6 +1,7 @@
 package ares.platform.scenario.forces;
 
 import ares.application.shared.models.forces.FormationModel;
+import ares.platform.engine.action.ActionSpace;
 import ares.platform.engine.algorithms.pathfinding.Pathfinder;
 import ares.platform.engine.command.ProgrammedOpponent;
 import ares.platform.engine.command.operational.plans.OperationalPlan;
@@ -98,13 +99,13 @@ public class Formation implements ModelProvider<FormationModel> {
         return po.getActivates() <= Clock.INSTANCE.getTurn();
     }
 
-    public void activate() {
+    public void activate(ActionSpace actionSpace) {
         for (Unit unit : availableUnits) {
             unit.activate();
         }
         active = true;
+        po.activate(actionSpace);
         operationalPlan = po.obtainOperationalPlan(this);
-        po.activate();
     }
 
     public boolean isActive() {

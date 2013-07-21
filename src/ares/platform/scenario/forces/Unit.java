@@ -7,7 +7,6 @@ import ares.application.shared.models.forces.UnitModel;
 import ares.data.wrappers.scenario.Availability;
 import ares.data.wrappers.scenario.Emphasis;
 import ares.platform.engine.action.Action;
-import ares.platform.engine.action.ActionSpace;
 import ares.platform.engine.action.ActionType;
 import ares.platform.engine.command.tactical.TacticalMission;
 import ares.platform.engine.knowledge.KnowledgeCategory;
@@ -721,10 +720,6 @@ public abstract class Unit implements ModelProvider<UnitModel> {
 
     public Action schedule() {
         return mission.scheduleAction();
-    }
-
-    public void commit(ActionSpace actionSpace) {
-        mission.commit(actionSpace);
     }
 
     /**

@@ -1,9 +1,9 @@
 package ares.platform.engine.action.actions;
 
+import ares.platform.engine.action.ActionSpace;
 import ares.platform.engine.action.ActionType;
 import ares.platform.engine.algorithms.pathfinding.Path;
 import ares.platform.engine.movement.MovementCost;
-import ares.platform.engine.time.Clock;
 import ares.platform.scenario.Scale;
 import ares.platform.scenario.board.Tile;
 import ares.platform.scenario.forces.Unit;
@@ -12,12 +12,18 @@ import ares.platform.scenario.forces.Unit;
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class CombatAction extends SurfaceMoveAction {
-    protected boolean engaging;
+    protected boolean engaging = false;
 
-    public CombatAction(Unit unit, ActionType type, Path path) {
-        super(unit, type, path);
-        engaging = false;
+    public CombatAction(ActionType actionType, Unit unit, Path path, ActionSpace actionSpace) {
+        this(actionType, unit, AS_SOON_AS_POSSIBLE, path, actionSpace);
+    }
 
+    public CombatAction(ActionType actionType, Unit unit, int start, Path path, ActionSpace actionSpace) {
+        this(actionType, unit, start, TIME_UNKNOWN, path, actionSpace);
+    }
+
+    public CombatAction(ActionType actionType, Unit unit, int start, int combatDuration, Path path, ActionSpace actionSpace) {
+        super(actionType, unit, start, combatDuration, path, actionSpace);
     }
 
     /**

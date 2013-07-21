@@ -51,11 +51,16 @@ public abstract class TacticalMission {
      * @see Action
      */
     protected final Deque<Action> pendingActions;
+    /**
+     * Global action space; it is used to handle action interactions among multiple actors (eg. combat)
+     */
+    protected final ActionSpace actionSpace;
 
-    public TacticalMission(TacticalMissionType type, Unit unit, Tile target) {
+    public TacticalMission(TacticalMissionType type, Unit unit, Tile target, ActionSpace actionSpace) {
         this.type = type;
         this.unit = unit;
         this.targetTile = target;
+        this.actionSpace = actionSpace;
         this.pendingActions = new LinkedList<>();
     }
 
@@ -71,10 +76,6 @@ public abstract class TacticalMission {
     }
 
     public abstract void plan(Pathfinder pathFinder);
-
-    public void commit(ActionSpace actionSpace) {
-        currentAction.commit();
-    }
 
     /**
      * Executes {@link #currentAction} for a time tick
@@ -100,7 +101,7 @@ public abstract class TacticalMission {
                     break;
                 default:
                     if (!currentAction.canBeExecuted()) {
-                        if (currentAction.getType() != ActionType.WAIT) {
+                        if (currentAction.getActionType() != ActionType.WAIT) {
                             // if current action is not wait and cannot be executed, then delay it
                             currentAction.delay();
                             pendingActions.addFirst(currentAction);
@@ -108,7 +109,7 @@ public abstract class TacticalMission {
                         currentAction = null;
                         break;
                     }
-                    if (currentAction.getType() == ActionType.WAIT && hasExecutablePendingAction()) {
+                    if (currentAction.getActionType() == ActionType.WAIT && hasExecutablePendingAction()) {
                         // Wait actions are abandoned and replaced by pending actions if possible
                         currentAction = scheduleNextAction();
                         break;
@@ -120,9 +121,9 @@ public abstract class TacticalMission {
                 currentAction = scheduleNextAction();
             } else {
                 if (unit.canEndure(ActionType.WAIT)) {
-                    currentAction = new WaitAction(unit);
+                    currentAction = new WaitAction(unit, actionSpace);
                 } else {
-                    currentAction = new RestAction(unit);
+                    currentAction = new RestAction(unit, actionSpace);
                 }
             }
         }

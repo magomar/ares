@@ -1,6 +1,7 @@
 package ares.platform.engine.command.tactical.missions;
 
 import ares.platform.engine.action.Action;
+import ares.platform.engine.action.ActionSpace;
 import ares.platform.engine.action.ActionType;
 import ares.platform.engine.action.actions.ChangeDeploymentAction;
 import ares.platform.engine.action.actions.CombatAction;
@@ -19,8 +20,8 @@ import ares.platform.scenario.forces.Unit;
 public class Occupy extends TacticalMission {
 //    private static final Logger LOG = Logger.getLogger(Occupy.class.getName());
 
-    public Occupy(TacticalMissionType type, Unit unit, Tile target) {
-        super(type, unit, target);
+    public Occupy(TacticalMissionType type, Unit unit, Tile target, ActionSpace actionSpace) {
+        super(type, unit, target, actionSpace);
     }
 
     @Override
@@ -28,7 +29,7 @@ public class Occupy extends TacticalMission {
         currentAction = null;
         pendingActions.clear();
         if (unit.getLocation().equals(targetTile)) {
-            addFirstAction(new WaitAction(unit));
+            addFirstAction(new WaitAction(unit, actionSpace));
             return;
         }
         Path path = pathFinder.getPath(unit.getLocation(), targetTile, unit);
@@ -39,20 +40,20 @@ public class Occupy extends TacticalMission {
 //        LOG.log(Level.INFO, "New path for {0}: {1}", new Object[]{unit.toString(), path.toString()});
         Action move = null;
         if (targetTile.hasEnemies(unit.getForce())) {
-            Action attack = new CombatAction(unit, ActionType.ASSAULT, path.subPathFrom(path.getLast().getPrev()));
+            Action attack = new CombatAction(ActionType.ASSAULT, unit, path.subPathFrom(path.getLast().getPrev()), actionSpace);
             addFirstAction(attack);
             if (path.size() > 2) {
-                move = new SurfaceMoveAction(unit, ActionType.TACTICAL_MARCH, path.subPathTo(path.getLast().getPrev()));
+                move = new SurfaceMoveAction(ActionType.TACTICAL_MARCH, unit, path.subPathTo(path.getLast().getPrev()), actionSpace);
                 addFirstAction(move);
                 if (!move.checkPreconditions()) {
-                    addFirstAction(new ChangeDeploymentAction(unit, ActionType.ASSEMBLE));
+                    addFirstAction(new ChangeDeploymentAction(ActionType.ASSEMBLE, unit, actionSpace));
                 }
             }
         } else {
-            move = new SurfaceMoveAction(unit, ActionType.TACTICAL_MARCH, path);
+            move = new SurfaceMoveAction(ActionType.TACTICAL_MARCH, unit, path, actionSpace);
             addFirstAction(move);
             if (!move.checkPreconditions()) {
-                addFirstAction(new ChangeDeploymentAction(unit, ActionType.ASSEMBLE));
+                addFirstAction(new ChangeDeploymentAction(ActionType.ASSEMBLE, unit, actionSpace));
             }
         }
 

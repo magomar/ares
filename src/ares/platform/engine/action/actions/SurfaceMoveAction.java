@@ -1,5 +1,6 @@
 package ares.platform.engine.action.actions;
 
+import ares.platform.engine.action.ActionSpace;
 import ares.platform.engine.action.ActionType;
 import ares.platform.engine.algorithms.pathfinding.Path;
 import ares.platform.scenario.board.Tile;
@@ -13,8 +14,16 @@ import ares.platform.scenario.forces.Unit;
  */
 public class SurfaceMoveAction extends MoveAction {
 
-    public SurfaceMoveAction(Unit unit, ActionType type, Path path) {
-        super(unit, type, path);
+    public SurfaceMoveAction(ActionType actionType, Unit unit, Path path, ActionSpace actionSpace) {
+        this(actionType, unit, AS_SOON_AS_POSSIBLE, path, actionSpace);
+    }
+
+    public SurfaceMoveAction(ActionType actionType, Unit unit, int start, Path path, ActionSpace actionSpace) {
+        this(actionType, unit, start, TIME_UNKNOWN, path, actionSpace);
+    }
+
+    public SurfaceMoveAction(ActionType actionType, Unit unit, int start, int duration, Path path, ActionSpace actionSpace) {
+        super(actionType, unit, start, duration, path, actionSpace);
     }
 
     @Override

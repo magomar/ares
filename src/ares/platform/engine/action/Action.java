@@ -6,11 +6,14 @@ import ares.platform.scenario.forces.Unit;
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public interface Action {
-
     /**
-     * Commits the action for execution
+     * Start time value indicating that an action shall be started as soon as possible
      */
-    void commit();
+    static final int AS_SOON_AS_POSSIBLE = 0;
+    /**
+     * Value indicating that the duration or time to finish an action is unknown
+     */
+    static final int TIME_UNKNOWN = Integer.MAX_VALUE;
 
     /**
      * Executes the action for the current time tick.
@@ -73,7 +76,7 @@ public interface Action {
 
     Unit getUnit();
 
-    ActionType getType();
+    ActionType getActionType();
 
     int getStart();
 

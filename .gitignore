@@ -44,6 +44,8 @@ $RECYCLE.BIN/
 # Project Folders #
 ###################
 
-Graphics/Background/
-Temp/
+
+/Graphics/Background/
+/Temp/
+/doc/
 

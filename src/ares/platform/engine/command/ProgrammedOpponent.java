@@ -1,6 +1,7 @@
 package ares.platform.engine.command;
 
 import ares.data.wrappers.scenario.*;
+import ares.platform.engine.action.ActionSpace;
 import ares.platform.engine.command.operational.plans.OperationalPlan;
 import ares.platform.engine.command.operational.plans.OperationalStance;
 import ares.platform.scenario.board.Board;
@@ -21,6 +22,7 @@ public class ProgrammedOpponent {
     private final Emphasis emphasis;
     private final SupportScope supportscope;
     private final List<ProgrammedTrack> tracks;
+    private ActionSpace actionSpace;
     private boolean active;
 
     public ProgrammedOpponent(Orders orders, Board board) {
@@ -31,6 +33,7 @@ public class ProgrammedOpponent {
         emphasis = orders.getEmphasis();
         supportscope = orders.getSupportscope();
         tracks = new ArrayList<>();
+        this.actionSpace = actionSpace;
         for (Track track : orders.getTrack()) {
             tracks.add(new ProgrammedTrack(track, board));
         }
@@ -40,12 +43,13 @@ public class ProgrammedOpponent {
         List<Objective> objectives;
         if (tracks.isEmpty()) objectives = new ArrayList<>();
         else objectives = tracks.get(0).getObjectives();
-        OperationalPlan opPlan = operationalStance.getNewOperationalPlan(formation, objectives, emphasis, supportscope);
+        OperationalPlan opPlan = operationalStance.buildOperationalPlan(formation, objectives, emphasis, supportscope, actionSpace);
         return opPlan;
     }
 
-    public void activate() {
+    public void activate(ActionSpace actionSpace) {
         active = true;
+        this.actionSpace = actionSpace;
     }
 
     public int getActivates() {

@@ -18,6 +18,7 @@ import ares.application.shared.models.forces.ForceModel;
 import ares.application.shared.models.forces.FormationModel;
 import ares.application.shared.models.forces.UnitModel;
 import ares.platform.engine.RealTimeEngine;
+import ares.platform.engine.action.ActionSpace;
 import ares.platform.engine.algorithms.pathfinding.AStar;
 import ares.platform.engine.algorithms.pathfinding.Path;
 import ares.platform.engine.algorithms.pathfinding.Pathfinder;
@@ -59,6 +60,7 @@ import java.util.logging.Logger;
 public final class PlayerBoardController extends BoardController implements BoardInteractor, MiniMapInteractor, ActionController, PropertyChangeListener {
 
     private static final Logger LOG = Logger.getLogger(PlayerBoardController.class.getName());
+    private final ActionSpace actionSpace;
     private final Pathfinder pathFinder;
     private final OOBViewer oobView;
     private final BoardViewer miniMapView;
@@ -78,6 +80,7 @@ public final class PlayerBoardController extends BoardController implements Boar
         super(interactor);
         this.interactor = interactor;
         pathFinder = new AStar(MinimunDistance.create(DistanceCalculator.DELTA), CostFunctions.FASTEST);
+        actionSpace = engine.getActionSpace();
         oobView = interactor.getOOBView();
         miniMapView = interactor.getMiniMapView();
         infoView = interactor.getInfoView();
@@ -255,7 +258,7 @@ public final class PlayerBoardController extends BoardController implements Boar
                 return;
             }
             Tile tile = scenario.getBoard().getTile(tilePoint.x, tilePoint.y);
-            TacticalMission mission = TacticalMissionType.OCCUPY.getNewTacticalMission(selectedUnit, tile, pathFinder);
+            TacticalMission mission = TacticalMissionType.OCCUPY.buildTacticalMission(selectedUnit, tile, pathFinder, actionSpace);
             selectedUnit.setMission(mission);
             selectedUnit.schedule();
             arrowLayerView.updateLastOrders(mission.getPath());

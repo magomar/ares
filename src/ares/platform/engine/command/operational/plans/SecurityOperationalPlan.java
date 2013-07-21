@@ -6,6 +6,7 @@ package ares.platform.engine.command.operational.plans;
 
 import ares.data.wrappers.scenario.Emphasis;
 import ares.data.wrappers.scenario.SupportScope;
+import ares.platform.engine.action.ActionSpace;
 import ares.platform.engine.algorithms.pathfinding.Pathfinder;
 import ares.platform.engine.command.Objective;
 import ares.platform.engine.command.tactical.TacticalMission;
@@ -20,8 +21,8 @@ import java.util.List;
  */
 class SecurityOperationalPlan extends OperationalPlan {
 
-    public SecurityOperationalPlan(Formation formation, List<Objective> objectives, Emphasis emphasis, SupportScope supportScope) {
-        super(OperationalStance.SECURITY, formation, objectives, emphasis, supportScope);
+    public SecurityOperationalPlan(Formation formation, List<Objective> objectives, Emphasis emphasis, SupportScope supportScope, ActionSpace actionSpace) {
+        super(OperationalStance.SECURITY, formation, objectives, emphasis, supportScope, actionSpace);
     }
 
     @Override
@@ -29,12 +30,12 @@ class SecurityOperationalPlan extends OperationalPlan {
         if (!goals.isEmpty()) {
             Objective objective = goals.first();
             for (Unit unit : formation.getAvailableUnits()) {
-                TacticalMission mission = TacticalMissionType.OCCUPY.getNewTacticalMission(unit, objective.getLocation(), pathFinder);
+                TacticalMission mission = TacticalMissionType.OCCUPY.buildTacticalMission(unit, objective.getLocation(), pathFinder, actionSpace);
                 unit.setMission(mission);
             }
         } else {
             for (Unit unit : formation.getAvailableUnits()) {
-                TacticalMission mission = TacticalMissionType.OCCUPY.getNewTacticalMission(unit, unit.getLocation(), pathFinder);
+                TacticalMission mission = TacticalMissionType.OCCUPY.buildTacticalMission(unit, unit.getLocation(), pathFinder, actionSpace);
                 unit.setMission(mission);
             }
         }
