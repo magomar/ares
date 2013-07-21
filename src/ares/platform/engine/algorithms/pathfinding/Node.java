@@ -13,24 +13,24 @@ public class Node implements Comparable<Node> {
 
     private Tile tile;
     private Node prev;
-    private Node next;
+    protected Node next;
 
     /**
      * Direction used to reach this node from previous node (ie. relative to this node)
      */
-    private Direction direction;
+    protected Direction direction;
     /**
      * Cost from the start to this node
      */
-    private double g;
+    protected double g;
     /**
      * Estimated cost from this node to the goal
      */
-    private double h;
+    protected double h;
     /**
      * Estimated cost from start to the goal (g + h)
      */
-    private double f;
+    protected double f;
 
     public Node(Tile tile) {
         this.tile = tile;

@@ -16,6 +16,7 @@ import ares.application.shared.gui.views.MessagesHandler;
 import ares.application.shared.models.ScenarioModel;
 import ares.platform.engine.algorithms.pathfinding.AStar;
 import ares.platform.engine.algorithms.pathfinding.BeamSearch;
+import ares.platform.engine.algorithms.pathfinding.BidirectionalSearch;
 import ares.platform.engine.algorithms.pathfinding.ExtendedPath;
 import ares.platform.engine.algorithms.pathfinding.Pathfinder;
 import ares.platform.engine.algorithms.pathfinding.costfunctions.CostFunction;
@@ -70,7 +71,7 @@ public class PathfinderComparatorController implements ActionController {
         // create combo box models, pass them to the view and add action listeners
         Pathfinder leftPathfinder = new AStar();
         Pathfinder rightPathfinder = new BeamSearch();
-        Pathfinder[] pathfinders = {leftPathfinder, rightPathfinder};
+        Pathfinder[] pathfinders = {leftPathfinder, rightPathfinder, new BidirectionalSearch()};
         Heuristic[] heuristics = {MinimunDistance.create(DistanceCalculator.DELTA), EnhancedMinimunDistance.create(DistanceCalculator.DELTA)};
         CostFunction[] costFunctions = EstimatedCostFunctions.values();
 
