@@ -153,14 +153,21 @@ public class GraphicsModel {
     /**
      * Check valid coordinates
      *
-     * @param i as row
-     * @param j as column
-     * @return true if location (i,j) is within the board range
+     * @param column the column to validate
+     * @param row the row to validate
+     * @return true if location (column,row) is within the board range
      */
-    public boolean validCoordinates(int i, int j) {
-        return i >= 0 && i < boardColumns && j >= 0 && j < boardRows;
+    public boolean validCoordinates(int column, int row) {
+        return isValidColumn(column) && isValidRow(row);
     }
 
+    private boolean isValidColumn(int column) {
+        return column >= 0 && column < boardColumns;
+    }
+
+    private boolean isValidRow(int row) {
+        return row >= 0 && row < boardRows;
+    }
     /**
      * Converts a tile location to its corresponding pixel on the global image
      *
@@ -292,7 +299,7 @@ public class GraphicsModel {
      * @param x       horizontal coordinate of the pixel to be converted
      * @param y       vertical coordinate of the pixel to be converted
      * @param profile the graphic profile
-     * @return
+     * @return     the upper left pixel of the rectangle encompassing the tile with the coordinates passed as parameter
      */
     public Point pixelToTileAccurate(int x, int y, int profile) {
 
@@ -311,7 +318,7 @@ public class GraphicsModel {
                 section.x--;
                 section.y--;
             } else if (pixelInSection.x * hexRise + dy < pixelInSection.y) {
-                //Pixel is in the SE neighbout tile
+                //Pixel is in the SE neighbor tile
                 section.x--;
             } else {
                 //pixel is in our tile
@@ -356,33 +363,14 @@ public class GraphicsModel {
         return imageDecorators[profile];
     }
 
-    /**
-     * Check valid coordinates
-     *
-     * @param i as row
-     * @param j as column
-     * @return true if (i,j) is within the board range
-     */
-    public boolean tileIsWithinBoard(int i, int j) {
-        return columnIsWithinBoard(i) && rowIsWithinBoard(j);
-    }
-
-    public boolean columnIsWithinBoard(int i) {
-        return i >= 0 && i < boardColumns;
-    }
-
-    public boolean rowIsWithinBoard(int j) {
-        return j >= 0 && j < boardRows;
-    }
-
     public Rectangle getVisibleTiles(JViewport viewport, int profile) {
         Rectangle viewRect = viewport.getViewRect();
         Point upperLeft = pixelToTile(viewRect.x, viewRect.y, profile);
         Point bottomRight = pixelToTile(viewRect.x + viewRect.width, viewRect.y + viewRect.height, profile);
-        upperLeft.x = (columnIsWithinBoard(upperLeft.x) ? upperLeft.x : 0);
-        upperLeft.y = (rowIsWithinBoard(upperLeft.y) ? upperLeft.y : 0);
-        bottomRight.x = (columnIsWithinBoard(bottomRight.x) ? bottomRight.x : boardColumns - 1);
-        bottomRight.y = (rowIsWithinBoard(bottomRight.y) ? bottomRight.y : boardRows - 1);
+        upperLeft.x = (isValidColumn(upperLeft.x) ? upperLeft.x : 0);
+        upperLeft.y = (isValidRow(upperLeft.y) ? upperLeft.y : 0);
+        bottomRight.x = (isValidColumn(bottomRight.x) ? bottomRight.x : boardColumns - 1);
+        bottomRight.y = (isValidRow(bottomRight.y) ? bottomRight.y : boardRows - 1);
         return new Rectangle(upperLeft.x, upperLeft.y, bottomRight.x - upperLeft.x, bottomRight.y - upperLeft.y);
     }
 }

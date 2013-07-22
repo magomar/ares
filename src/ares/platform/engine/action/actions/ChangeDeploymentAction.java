@@ -1,6 +1,7 @@
 package ares.platform.engine.action.actions;
 
 import ares.platform.engine.action.AbstractAction;
+import ares.platform.engine.action.ActionSpace;
 import ares.platform.engine.action.ActionType;
 import ares.platform.scenario.TurnLength;
 import ares.platform.scenario.forces.Unit;
@@ -28,7 +29,7 @@ public class ChangeDeploymentAction extends AbstractAction {
     }
 
     @Override
-    protected void applyOngoingEffects() {
+    protected void applyOngoingEffects(ActionSpace actionSpace) {
     }
 
     @Override

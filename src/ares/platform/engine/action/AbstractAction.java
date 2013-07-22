@@ -130,9 +130,9 @@ public abstract class AbstractAction implements Action {
      */
     @Override
     public final void execute(ActionSpace actionSpace) {
-        timeToComplete -= Clock.INSTANCE.getMINUTES_PER_TICK();
+        if (timeToComplete < TIME_UNKNOWN)  timeToComplete -= Clock.INSTANCE.getMINUTES_PER_TICK();
+        applyOngoingEffects(actionSpace);
         wear();
-        applyOngoingEffects();
         if (isComplete()) {
             finish();
         }
@@ -200,7 +200,7 @@ public abstract class AbstractAction implements Action {
      * Apply the effects of an action while it is being executed. Derived classes can overwrite this method to add
      * specific effects
      */
-    protected abstract void applyOngoingEffects();
+    protected abstract void applyOngoingEffects(ActionSpace actionSpace);
 
     /**
      * Checks if this action satisfies its specific requirements, which may depend on the action's type ({@link #actionType})

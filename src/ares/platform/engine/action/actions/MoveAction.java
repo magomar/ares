@@ -1,6 +1,7 @@
 package ares.platform.engine.action.actions;
 
 import ares.platform.engine.action.AbstractAction;
+import ares.platform.engine.action.ActionSpace;
 import ares.platform.engine.action.ActionType;
 import ares.platform.engine.algorithms.pathfinding.Node;
 import ares.platform.engine.algorithms.pathfinding.Path;
@@ -93,7 +94,7 @@ public abstract class MoveAction extends AbstractAction {
     }
 
     @Override
-    protected void applyOngoingEffects() {
+    protected void applyOngoingEffects(ActionSpace actionSpace) {
         timeToNextMovement -= Clock.INSTANCE.getMINUTES_PER_TICK();
         if (timeToNextMovement <= 0) {
             completePartialMove();

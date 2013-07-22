@@ -1,6 +1,7 @@
 package ares.platform.engine.action.actions;
 
 import ares.platform.engine.action.AbstractAction;
+import ares.platform.engine.action.ActionSpace;
 import ares.platform.engine.action.ActionType;
 import ares.platform.scenario.board.Tile;
 import ares.platform.scenario.forces.Unit;
@@ -22,7 +23,7 @@ public class ArtilleryAction extends AbstractAction {
     }
 
     @Override
-    protected void applyOngoingEffects() {
+    protected void applyOngoingEffects(ActionSpace actionSpace) {
     }
 
     @Override
