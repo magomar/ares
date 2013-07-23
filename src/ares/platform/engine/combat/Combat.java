@@ -1,17 +1,17 @@
 package ares.platform.engine.combat;
 
+import ares.platform.engine.action.AbstractInteraction;
 import ares.platform.engine.action.Action;
-import ares.platform.engine.action.actions.CombatAction;
 import ares.platform.scenario.board.Tile;
 import ares.platform.scenario.forces.Unit;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 
 /**
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public class Combat {
+public class Combat extends AbstractInteraction {
 
     protected static final double ASSAULT_KILLING_RATIO = 1.0;
     protected static final double ATTACK_KILLING_RATIO = 0.66;
@@ -21,9 +21,17 @@ public class Combat {
     protected final Collection<Unit> defenders;
     protected Tile location;
 
-    public Combat(CombatAction action) {
-        this.attackers = new HashSet<>();
-        this.defenders = new HashSet<>();
+
+    public Combat(Action action) {
+        super(action);
+        this.attackers = new ArrayList<>();
+        this.defenders = new ArrayList<>();
+    }
+
+    @Override
+    public void addAction(Action action) {
+        super.addAction(action);
+        attackers.add(action.getUnit());
     }
 
     public void addUnit(Unit unit) {
@@ -43,7 +51,10 @@ public class Combat {
 //        }
     }
 
+    @Override
     public void execute() {
-
+        for (Action action : actions) {
+            Unit unit = action.getUnit();
+        }
     }
 }
