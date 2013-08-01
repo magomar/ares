@@ -1,6 +1,7 @@
 package ares.application.analyser.boundaries.viewers;
 
 import ares.application.shared.boundaries.viewers.BoardViewer;
+import ares.application.shared.boundaries.viewers.MutualPathfindersConfigurationViewer;
 import ares.application.shared.boundaries.viewers.PathfinderConfigurationViewer;
 import ares.application.shared.gui.views.View;
 
@@ -19,6 +20,8 @@ public interface PathfinderComparatorViewer extends View<JPanel> {
     PathfinderConfigurationViewer getLefConfigurationView();
 
     PathfinderConfigurationViewer getRightConfigurationView();
+    
+    MutualPathfindersConfigurationViewer getMutualConfigurationView();
 
 
 }

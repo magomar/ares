@@ -6,6 +6,7 @@ import ares.application.shared.commands.ActionGroup;
 import ares.application.shared.commands.CommandAction;
 import ares.application.shared.commands.CommandGroup;
 import ares.application.shared.boundaries.viewers.BoardViewer;
+import ares.application.shared.boundaries.viewers.MutualPathfindersConfigurationViewer;
 import ares.application.shared.boundaries.viewers.PathfinderConfigurationViewer;
 import ares.application.shared.boundaries.viewers.layerviewers.*;
 import ares.application.shared.commands.AresCommandGroup;
@@ -53,6 +54,7 @@ public class PathfinderComparatorController implements ActionController {
     private final Action zoomOut = new CommandAction(ViewCommands.VIEW_ZOOM_OUT, new ZoomOutActionListener());
     private final ActionGroup actions;
     private final PathfinderConfiguration[] configuration;
+    private final MutualPathfindersConfiguration mutualConfiguration;
     private Tile selectedTile;
     private Scenario scenario;
     private Unit testUnit;
@@ -78,6 +80,8 @@ public class PathfinderComparatorController implements ActionController {
         configuration = new PathfinderConfiguration[2];
         configuration[LEFT] = new PathfinderConfiguration(comparatorView.getLefConfigurationView(), pathfinders, heuristics, costFunctions).initialize(leftPathfinder);
         configuration[RIGHT] = new PathfinderConfiguration(comparatorView.getRightConfigurationView(), pathfinders, heuristics, costFunctions).initialize(rightPathfinder);
+        
+        mutualConfiguration = new MutualPathfindersConfiguration(comparatorView.getMutualConfigurationView(), MovementType.values()).initialize(MovementType.MOTORIZED);
 
         boardView = new BoardViewer[2];
         boardView[LEFT] = comparatorView.getLeftBoardView();
@@ -309,6 +313,19 @@ public class PathfinderComparatorController implements ActionController {
             pathfinder.setCostFunction(costFunction);
         }
     }
+    
+    private class ChangeMovementTypeActionListener implements ActionListener {
+
+        public ChangeMovementTypeActionListener() {
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, e.toString());
+            JComboBox source = (JComboBox) e.getSource();
+            testUnit = UnitFactory.createTestUnit((MovementType) source.getSelectedItem());
+        }
+    }
 
     private class PathfinderConfiguration {
 
@@ -364,6 +381,34 @@ public class PathfinderComparatorController implements ActionController {
 
         ComboBoxModel<CostFunction> getCostFunctionComboModel() {
             return costFunctionComboModel;
+        }
+    }
+    
+    private class MutualPathfindersConfiguration {
+
+        private final ComboBoxModel<MovementType> movementTypeComboModel;
+        private final MutualPathfindersConfigurationViewer configurationView;
+
+        MutualPathfindersConfiguration(MutualPathfindersConfigurationViewer configurationView, MovementType[] movementTypes) {
+            this.configurationView = configurationView;
+            movementTypeComboModel = new DefaultComboBoxModel<>(movementTypes);
+        }
+
+        MutualPathfindersConfiguration initialize(MovementType defaultMovementType) {
+            setMovementType(defaultMovementType);
+            configurationView.setMovementTypeComboModel(movementTypeComboModel, new ChangeMovementTypeActionListener());
+            return this;
+        }
+
+        void updateConfigurationView() {
+        }
+
+        void setMovementType(MovementType movementType) {
+            movementTypeComboModel.setSelectedItem(movementType);
+        }
+
+        ComboBoxModel<MovementType> getMovementTypeComboModel() {
+            return movementTypeComboModel;
         }
     }
 

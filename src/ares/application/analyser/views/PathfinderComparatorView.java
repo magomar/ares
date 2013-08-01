@@ -2,6 +2,7 @@ package ares.application.analyser.views;
 
 import ares.application.analyser.boundaries.viewers.PathfinderComparatorViewer;
 import ares.application.shared.boundaries.viewers.BoardViewer;
+import ares.application.shared.boundaries.viewers.MutualPathfindersConfigurationViewer;
 import ares.application.shared.boundaries.viewers.PathfinderConfigurationViewer;
 import ares.application.shared.gui.ComponentFactory;
 import ares.application.shared.gui.views.AbstractView;
@@ -23,6 +24,7 @@ public class PathfinderComparatorView extends AbstractView<JPanel> implements Pa
     private PathSearchBoardView rightBoardView;
     private PathfinderConfigurationView leftConfigurationView;
     private PathfinderConfigurationView rightConfigurationView;
+    private MutualPathfindersConfigurationView mutualConfigurationView;
 
     @Override
     protected JPanel layout() {
@@ -30,11 +32,23 @@ public class PathfinderComparatorView extends AbstractView<JPanel> implements Pa
         rightBoardView = new PathSearchBoardView();
         leftConfigurationView = new PathfinderConfigurationView();
         rightConfigurationView = new PathfinderConfigurationView();
+        mutualConfigurationView = new MutualPathfindersConfigurationView();
         JPanel container = new JPanel();
         container.setLayout(new BorderLayout());
         configurationPanel = new JPanel();
-        configurationPanel.add(leftConfigurationView.getContentPane());
-        configurationPanel.add(rightConfigurationView.getContentPane());
+        configurationPanel.setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.gridx = 0;
+        c.gridy = 0;
+        configurationPanel.add(leftConfigurationView.getContentPane(), c);
+        c.gridx = 1;
+        c.gridy = 0;
+        configurationPanel.add(rightConfigurationView.getContentPane(), c);
+        c.gridwidth = 2;
+        c.gridx = 0;
+        c.gridy = 1;
+        configurationPanel.add(mutualConfigurationView.getContentPane(), c);
         statsPanel = new JPanel();
         statsPanel.add(new JLabel("Left stats"));
         statsPanel.add(new JLabel("Right stats"));
@@ -64,6 +78,11 @@ public class PathfinderComparatorView extends AbstractView<JPanel> implements Pa
     @Override
     public PathfinderConfigurationViewer getRightConfigurationView() {
         return rightConfigurationView;
+    }
+
+    @Override
+    public MutualPathfindersConfigurationViewer getMutualConfigurationView() {
+        return mutualConfigurationView;
     }
 
 }
