@@ -69,7 +69,7 @@ public class PathSearchLayerView extends AbstractImageLayerView implements PathS
         Point pos = GraphicsModel.INSTANCE.tileToPixel(node.getTile().getCoordinates(), profile);
         g2.drawImage(tileImage, pos.x, pos.y, contentPane);
         int cost = (int) node.getF();
-        g2.drawString(Integer.toString(cost), pos.x + tileImage.getWidth() / 2, pos.y + tileImage.getHeight() / 2);
+        //g2.drawString(Integer.toString(cost), pos.x + tileImage.getWidth() / 2, pos.y + tileImage.getHeight() / 2);
         contentPane.repaint(pos.x, pos.y, tileImage.getWidth(), tileImage.getHeight());
     }
 

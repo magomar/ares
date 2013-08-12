@@ -84,5 +84,10 @@ public class PathfinderComparatorView extends AbstractView<JPanel> implements Pa
     public MutualPathfindersConfigurationViewer getMutualConfigurationView() {
         return mutualConfigurationView;
     }
+    
+    @Override
+    public JPanel getStatsPanel() {
+        return statsPanel;
+    }
 
 }

@@ -55,6 +55,7 @@ public class PathfinderComparatorController implements ActionController {
     private final ActionGroup actions;
     private final PathfinderConfiguration[] configuration;
     private final MutualPathfindersConfiguration mutualConfiguration;
+    private final JPanel statsPanel;
     private Tile selectedTile;
     private Scenario scenario;
     private Unit testUnit;
@@ -83,6 +84,10 @@ public class PathfinderComparatorController implements ActionController {
         
         mutualConfiguration = new MutualPathfindersConfiguration(comparatorView.getMutualConfigurationView(), MovementType.values()).initialize(MovementType.MOTORIZED);
 
+        statsPanel = comparatorView.getStatsPanel();
+        ((JLabel)statsPanel.getComponent(LEFT)).setText("Nodes analysed: 0");
+        ((JLabel)statsPanel.getComponent(RIGHT)).setText("Nodes analysed: 0");
+        
         boardView = new BoardViewer[2];
         boardView[LEFT] = comparatorView.getLeftBoardView();
         boardView[RIGHT] = comparatorView.getRightBoardView();
@@ -119,6 +124,14 @@ public class PathfinderComparatorController implements ActionController {
             if (!tile.equals(selectedTile)) {
                 selectedTile = tile;
                 interactionMode = InteractionMode.UNIT_ORDERS;
+                ((PathSearchLayerViewer) this.boardView[LEFT].getLayerView(PathSearchLayerViewer.NAME)).updatePathSearch(null, null);
+                ((PathSearchLayerViewer) this.boardView[RIGHT].getLayerView(PathSearchLayerViewer.NAME)).updatePathSearch(null, null);
+                ((ArrowLayerViewer) this.boardView[LEFT].getLayerView(ArrowLayerViewer.NAME)).updateLastOrders(null);
+                ((ArrowLayerViewer) this.boardView[RIGHT].getLayerView(ArrowLayerViewer.NAME)).updateLastOrders(null);
+                ((ArrowLayerViewer) this.boardView[LEFT].getLayerView(ArrowLayerViewer.NAME)).updateCurrentOrders(null);
+                ((ArrowLayerViewer) this.boardView[RIGHT].getLayerView(ArrowLayerViewer.NAME)).updateCurrentOrders(null);
+                ((JLabel)statsPanel.getComponent(LEFT)).setText("Nodes analysed: 0");
+                ((JLabel)statsPanel.getComponent(RIGHT)).setText("Nodes analysed: 0");
                 LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, "New tile selected");
             }
             // TODO mark the selected tile in the board view, one option is to use SelectionLayerView
@@ -130,13 +143,14 @@ public class PathfinderComparatorController implements ActionController {
             LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, "Deselecting");
             selectedTile = null;
             interactionMode = InteractionMode.FREE;
-            ((ArrowLayerViewer) boardView.getLayerView(ArrowLayerViewer.NAME)).updateCurrentOrders(null);
-            ((PathSearchLayerViewer) boardView.getLayerView(PathSearchLayerViewer.NAME)).updatePathSearch(null, null);
+            ((ArrowLayerViewer) this.boardView[LEFT].getLayerView(ArrowLayerViewer.NAME)).updateCurrentOrders(null);
+            ((ArrowLayerViewer) this.boardView[RIGHT].getLayerView(ArrowLayerViewer.NAME)).updateCurrentOrders(null);
         }
     }
 
     private void command(BoardViewer boardView, Pathfinder pathfinder, int x, int y) {
         int profile = GraphicsModel.INSTANCE.getActiveProfile();
+        
         if (interactionMode == InteractionMode.UNIT_ORDERS && GraphicsModel.INSTANCE.isWithinImageRange(x, y, profile)) {
             Point tilePoint = GraphicsModel.INSTANCE.pixelToTileAccurate(x, y, profile);
             if (!GraphicsModel.INSTANCE.validCoordinates(tilePoint.x, tilePoint.y)) {
@@ -150,8 +164,19 @@ public class PathfinderComparatorController implements ActionController {
                 return;
             }
             LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, "Path obtained {0}", path);
+            ((ArrowLayerViewer) boardView.getLayerView(ArrowLayerViewer.NAME)).updateLastOrders(path);
             ((PathSearchLayerViewer) boardView.getLayerView(PathSearchLayerViewer.NAME)).updatePathSearch(path.getOpenSetNodes(), path.getClosedSetNodes());
-            ((ArrowLayerViewer) boardView.getLayerView(ArrowLayerViewer.NAME)).updateCurrentOrders(path);
+            //((SearchCostsLayerViewer) boardView.getLayerView(SearchCostsLayerViewer.NAME)).updateSearchCosts(path.getOpenSetNodes(), path.getClosedSetNodes());
+            ((ArrowLayerViewer) boardView.getLayerView(ArrowLayerViewer.NAME)).updateCurrentOrders(null);
+            
+            if (boardView.equals(this.boardView[LEFT])) {
+                ((JLabel)statsPanel.getComponent(LEFT)).setText("Nodes analysed: "+path.getClosedSetNodes().size()+
+                        " Path nodes: "+path.size()+" Path cost: "+(int)path.getLast().getG());
+            }
+            else {
+                ((JLabel)statsPanel.getComponent(RIGHT)).setText("Nodes analysed: "+path.getClosedSetNodes().size()+
+                        " Path nodes: "+path.size()+" Path cost: "+(int)path.getLast().getG());
+            }
         }
     }
 
@@ -412,7 +437,7 @@ public class PathfinderComparatorController implements ActionController {
         }
     }
 
-    private enum InteractionMode {
+    public enum InteractionMode {
 
         FREE,
         UNIT_ORDERS,

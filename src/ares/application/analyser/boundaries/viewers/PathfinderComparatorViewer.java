@@ -22,6 +22,8 @@ public interface PathfinderComparatorViewer extends View<JPanel> {
     PathfinderConfigurationViewer getRightConfigurationView();
     
     MutualPathfindersConfigurationViewer getMutualConfigurationView();
+    
+    JPanel getStatsPanel();
 
 
 }
