@@ -15,17 +15,14 @@ import java.awt.*;
  */
 public class TerrainInfoView extends AbstractView<JPanel> implements TerrainInfoViewer {
 
-    private TileModel tile;
-
     private TerrainInfo terrainInfo;
     private JTextArea tileInfo;
 
     @Override
     public void updateTile(TileModel tileModel) {
-        this.tile = tileModel;
         terrainInfo.updateTile(tileModel);
-        if (tile != null)
-            tileInfo.setText(tile.getDescription());
+        if (tileModel != null)
+            tileInfo.setText(tileModel.getDescription());
         else tileInfo.setText("");
 
     }

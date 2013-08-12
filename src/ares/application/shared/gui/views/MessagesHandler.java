@@ -15,7 +15,7 @@ import java.util.logging.SimpleFormatter;
  */
 public class MessagesHandler extends Handler {
 
-    private MessagesViewer mv;
+    private final MessagesViewer mv;
     // This turn's records by level
     private LinkedList<LogRecord> turnRecords;
 

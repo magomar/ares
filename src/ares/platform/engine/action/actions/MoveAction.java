@@ -16,7 +16,7 @@ import ares.platform.scenario.forces.Unit;
  */
 public abstract class MoveAction extends AbstractAction {
 
-    protected Path path;
+    protected final Path path;
     protected Node currentNode;
     /**
      * Time to complete next partial move
@@ -62,7 +62,7 @@ public abstract class MoveAction extends AbstractAction {
             int cost = moveCost.getActualCost(unit);
             speed = unit.getSpeed() / cost;
             // timeToNextMovement <= 0. If it is negative we can add it to the new timeToNextMovement as a way to not propagate the precision error each movement segment
-            timeToNextMovement = (speed > 0 ? (int) (Scale.INSTANCE.getTileSize() / speed) + timeToNextMovement : Integer.MAX_VALUE);
+            timeToNextMovement = (speed > 0 ? Scale.INSTANCE.getTileSize() / speed + timeToNextMovement : Integer.MAX_VALUE);
         }
     }
 

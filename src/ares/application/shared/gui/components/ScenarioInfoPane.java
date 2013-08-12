@@ -11,8 +11,8 @@ import java.util.Calendar;
  */
 public class ScenarioInfoPane extends JPanel {
 
-    private AnalogClockDayNight clock;
-    private WallCalendar calendarPane;
+    private final AnalogClockDayNight clock;
+    private final WallCalendar calendarPane;
 //    private BufferedImage backImage;
 
     public ScenarioInfoPane() {

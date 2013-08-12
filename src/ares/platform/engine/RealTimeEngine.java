@@ -37,11 +37,11 @@ public class RealTimeEngine extends AbstractBean {
     /**
      * List of available (on-board) units *
      */
-    private List<Unit> units;
+    private final List<Unit> units;
     /**
      * List of active formations
      */
-    private List<Formation> formations;
+    private final List<Formation> formations;
     /**
      * The last clock event received
      */
@@ -62,8 +62,8 @@ public class RealTimeEngine extends AbstractBean {
      * Action space is used to co-locate actions to find and solve interactions, eg. when several units participate in a
      * single combat.
      */
-    private ActionSpace actionSpace;
-    ProgressMonitor monitor;
+    private final ActionSpace actionSpace;
+    final ProgressMonitor monitor;
 
     public RealTimeEngine() {
         units = new ArrayList<>();

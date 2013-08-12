@@ -9,7 +9,7 @@ import java.util.List;
 
 
 /**
- * <p>Java class for anonymous complex type.
+ * <p>Java class for anonymous complex unitType.
  * <p/>
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p/>
@@ -23,39 +23,39 @@ import java.util.List;
  *             &lt;complexContent>
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *                 &lt;sequence>
- *                   &lt;element name="Name" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *                   &lt;element name="Country" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *                   &lt;element name="Name" unitType="{http://www.w3.org/2001/XMLSchema}string"/>
+ *                   &lt;element name="Country" unitType="{http://www.w3.org/2001/XMLSchema}string"/>
  *                   &lt;element name="Item" maxOccurs="unbounded">
  *                     &lt;complexType>
  *                       &lt;complexContent>
  *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *                           &lt;sequence>
- *                             &lt;element name="Name" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *                             &lt;element name="Country" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *                             &lt;element name="Icon" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                             &lt;element name="AT" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                             &lt;element name="AP" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                             &lt;element name="AA" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                             &lt;element name="DF" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                             &lt;element name="Personnel" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                             &lt;element name="Crew" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                             &lt;element name="ArtyRange" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                             &lt;element name="EarlyRange" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                             &lt;element name="SAMRange" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                             &lt;element name="Nuke" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                             &lt;element name="Volume" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                             &lt;element name="Weight" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                             &lt;element name="ShellWeight" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                             &lt;element name="Armor" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                             &lt;element name="Trait" type="{ares}Trait" maxOccurs="unbounded"/>
+ *                             &lt;element name="Name" unitType="{http://www.w3.org/2001/XMLSchema}string"/>
+ *                             &lt;element name="Country" unitType="{http://www.w3.org/2001/XMLSchema}string"/>
+ *                             &lt;element name="Icon" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                             &lt;element name="AT" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                             &lt;element name="AP" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                             &lt;element name="AA" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                             &lt;element name="DF" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                             &lt;element name="Personnel" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                             &lt;element name="Crew" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                             &lt;element name="ArtyRange" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                             &lt;element name="EarlyRange" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                             &lt;element name="SAMRange" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                             &lt;element name="Nuke" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                             &lt;element name="Volume" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                             &lt;element name="Weight" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                             &lt;element name="ShellWeight" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                             &lt;element name="Armor" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                             &lt;element name="Trait" unitType="{ares}Trait" maxOccurs="unbounded"/>
  *                           &lt;/sequence>
- *                           &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
+ *                           &lt;attribute name="id" use="required" unitType="{http://www.w3.org/2001/XMLSchema}int" />
  *                         &lt;/restriction>
  *                       &lt;/complexContent>
  *                     &lt;/complexType>
  *                   &lt;/element>
  *                 &lt;/sequence>
- *                 &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
+ *                 &lt;attribute name="id" use="required" unitType="{http://www.w3.org/2001/XMLSchema}int" />
  *               &lt;/restriction>
  *             &lt;/complexContent>
  *           &lt;/complexType>
@@ -93,7 +93,7 @@ public class EquipmentDB {
      * <p/>
      * <p/>
      * <p/>
-     * Objects of the following type(s) are allowed in the list
+     * Objects of the following unitType(s) are allowed in the list
      * {@link EquipmentDB.EquipmentCategory }
      */
     public List<EquipmentDB.EquipmentCategory> getEquipmentCategory() {
@@ -105,7 +105,7 @@ public class EquipmentDB {
 
 
     /**
-     * <p>Java class for anonymous complex type.
+     * <p>Java class for anonymous complex unitType.
      * <p/>
      * <p>The following schema fragment specifies the expected content contained within this class.
      * <p/>
@@ -114,39 +114,39 @@ public class EquipmentDB {
      *   &lt;complexContent>
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
      *       &lt;sequence>
-     *         &lt;element name="Name" type="{http://www.w3.org/2001/XMLSchema}string"/>
-     *         &lt;element name="Country" type="{http://www.w3.org/2001/XMLSchema}string"/>
+     *         &lt;element name="Name" unitType="{http://www.w3.org/2001/XMLSchema}string"/>
+     *         &lt;element name="Country" unitType="{http://www.w3.org/2001/XMLSchema}string"/>
      *         &lt;element name="Item" maxOccurs="unbounded">
      *           &lt;complexType>
      *             &lt;complexContent>
      *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
      *                 &lt;sequence>
-     *                   &lt;element name="Name" type="{http://www.w3.org/2001/XMLSchema}string"/>
-     *                   &lt;element name="Country" type="{http://www.w3.org/2001/XMLSchema}string"/>
-     *                   &lt;element name="Icon" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *                   &lt;element name="AT" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *                   &lt;element name="AP" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *                   &lt;element name="AA" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *                   &lt;element name="DF" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *                   &lt;element name="Personnel" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *                   &lt;element name="Crew" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *                   &lt;element name="ArtyRange" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *                   &lt;element name="EarlyRange" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *                   &lt;element name="SAMRange" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *                   &lt;element name="Nuke" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *                   &lt;element name="Volume" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *                   &lt;element name="Weight" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *                   &lt;element name="ShellWeight" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *                   &lt;element name="Armor" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *                   &lt;element name="Trait" type="{ares}Trait" maxOccurs="unbounded"/>
+     *                   &lt;element name="Name" unitType="{http://www.w3.org/2001/XMLSchema}string"/>
+     *                   &lt;element name="Country" unitType="{http://www.w3.org/2001/XMLSchema}string"/>
+     *                   &lt;element name="Icon" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *                   &lt;element name="AT" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *                   &lt;element name="AP" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *                   &lt;element name="AA" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *                   &lt;element name="DF" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *                   &lt;element name="Personnel" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *                   &lt;element name="Crew" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *                   &lt;element name="ArtyRange" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *                   &lt;element name="EarlyRange" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *                   &lt;element name="SAMRange" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *                   &lt;element name="Nuke" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *                   &lt;element name="Volume" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *                   &lt;element name="Weight" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *                   &lt;element name="ShellWeight" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *                   &lt;element name="Armor" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *                   &lt;element name="Trait" unitType="{ares}Trait" maxOccurs="unbounded"/>
      *                 &lt;/sequence>
-     *                 &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
+     *                 &lt;attribute name="id" use="required" unitType="{http://www.w3.org/2001/XMLSchema}int" />
      *               &lt;/restriction>
      *             &lt;/complexContent>
      *           &lt;/complexType>
      *         &lt;/element>
      *       &lt;/sequence>
-     *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
+     *       &lt;attribute name="id" use="required" unitType="{http://www.w3.org/2001/XMLSchema}int" />
      *     &lt;/restriction>
      *   &lt;/complexContent>
      * &lt;/complexType>
@@ -226,7 +226,7 @@ public class EquipmentDB {
          * <p/>
          * <p/>
          * <p/>
-         * Objects of the following type(s) are allowed in the list
+         * Objects of the following unitType(s) are allowed in the list
          * {@link EquipmentDB.EquipmentCategory.Item }
          */
         public List<EquipmentDB.EquipmentCategory.Item> getItem() {
@@ -252,7 +252,7 @@ public class EquipmentDB {
 
 
         /**
-         * <p>Java class for anonymous complex type.
+         * <p>Java class for anonymous complex unitType.
          * <p/>
          * <p>The following schema fragment specifies the expected content contained within this class.
          * <p/>
@@ -261,26 +261,26 @@ public class EquipmentDB {
          *   &lt;complexContent>
          *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
          *       &lt;sequence>
-         *         &lt;element name="Name" type="{http://www.w3.org/2001/XMLSchema}string"/>
-         *         &lt;element name="Country" type="{http://www.w3.org/2001/XMLSchema}string"/>
-         *         &lt;element name="Icon" type="{http://www.w3.org/2001/XMLSchema}int"/>
-         *         &lt;element name="AT" type="{http://www.w3.org/2001/XMLSchema}int"/>
-         *         &lt;element name="AP" type="{http://www.w3.org/2001/XMLSchema}int"/>
-         *         &lt;element name="AA" type="{http://www.w3.org/2001/XMLSchema}int"/>
-         *         &lt;element name="DF" type="{http://www.w3.org/2001/XMLSchema}int"/>
-         *         &lt;element name="Personnel" type="{http://www.w3.org/2001/XMLSchema}int"/>
-         *         &lt;element name="Crew" type="{http://www.w3.org/2001/XMLSchema}int"/>
-         *         &lt;element name="ArtyRange" type="{http://www.w3.org/2001/XMLSchema}int"/>
-         *         &lt;element name="EarlyRange" type="{http://www.w3.org/2001/XMLSchema}int"/>
-         *         &lt;element name="SAMRange" type="{http://www.w3.org/2001/XMLSchema}int"/>
-         *         &lt;element name="Nuke" type="{http://www.w3.org/2001/XMLSchema}int"/>
-         *         &lt;element name="Volume" type="{http://www.w3.org/2001/XMLSchema}int"/>
-         *         &lt;element name="Weight" type="{http://www.w3.org/2001/XMLSchema}int"/>
-         *         &lt;element name="ShellWeight" type="{http://www.w3.org/2001/XMLSchema}int"/>
-         *         &lt;element name="Armor" type="{http://www.w3.org/2001/XMLSchema}int"/>
-         *         &lt;element name="Trait" type="{ares}Trait" maxOccurs="unbounded"/>
+         *         &lt;element name="Name" unitType="{http://www.w3.org/2001/XMLSchema}string"/>
+         *         &lt;element name="Country" unitType="{http://www.w3.org/2001/XMLSchema}string"/>
+         *         &lt;element name="Icon" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+         *         &lt;element name="AT" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+         *         &lt;element name="AP" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+         *         &lt;element name="AA" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+         *         &lt;element name="DF" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+         *         &lt;element name="Personnel" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+         *         &lt;element name="Crew" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+         *         &lt;element name="ArtyRange" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+         *         &lt;element name="EarlyRange" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+         *         &lt;element name="SAMRange" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+         *         &lt;element name="Nuke" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+         *         &lt;element name="Volume" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+         *         &lt;element name="Weight" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+         *         &lt;element name="ShellWeight" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+         *         &lt;element name="Armor" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+         *         &lt;element name="Trait" unitType="{ares}Trait" maxOccurs="unbounded"/>
          *       &lt;/sequence>
-         *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
+         *       &lt;attribute name="id" use="required" unitType="{http://www.w3.org/2001/XMLSchema}int" />
          *     &lt;/restriction>
          *   &lt;/complexContent>
          * &lt;/complexType>
@@ -615,7 +615,7 @@ public class EquipmentDB {
              * <p/>
              * <p/>
              * <p/>
-             * Objects of the following type(s) are allowed in the list
+             * Objects of the following unitType(s) are allowed in the list
              * {@link Trait }
              */
             public List<Trait> getTrait() {

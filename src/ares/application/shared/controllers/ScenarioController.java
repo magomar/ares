@@ -1,11 +1,7 @@
 package ares.application.shared.controllers;
 
-import ares.application.shared.commands.ActionGroup;
-import ares.application.shared.commands.CommandAction;
-import ares.application.shared.commands.CommandGroup;
 import ares.application.shared.boundaries.interactors.ScenarioInteractor;
-import ares.application.shared.commands.AresCommandGroup;
-import ares.application.shared.commands.FileCommands;
+import ares.application.shared.commands.*;
 import ares.application.shared.gui.components.StartScenarioPane;
 import ares.application.shared.gui.views.MessagesHandler;
 import ares.data.wrappers.equipment.EquipmentDB;
@@ -59,11 +55,7 @@ public final class ScenarioController implements ActionController {
      */
     private final boolean roleBasedModels;
 
-    /**
-     * @param interactor
-     * @param roleBasedModels
-     * @see UserRole
-     */
+
     public ScenarioController(ScenarioInteractor interactor, boolean roleBasedModels) {
         this.interactor = interactor;
         this.roleBasedModels = roleBasedModels;

@@ -50,11 +50,11 @@ public class ProgressMonitor {
     //----------------------------------------------------------------------------
 //  Instance Data and Constructors
 //----------------------------------------------------------------------------
-    private Frame owner;
-    private String title;
-    private String text;
-    private Action action;
-    private EnumSet<Options> options = EnumSet.noneOf(Options.class);
+    private final Frame owner;
+    private final String title;
+    private final String text;
+    private final Action action;
+    private final EnumSet<Options> options = EnumSet.noneOf(Options.class);
     private JDialog dialog;
     private JProgressBar progressBar;
     private JLabel status;
@@ -106,7 +106,7 @@ public class ProgressMonitor {
      * Displays the dialog, constructing it if necessary. The dialog initially displays in indeterminate mode, unless
      * {@link #setProgress} was called prior to this method.
      *
-     * @returns The controller itself, as a convenience for construct-and-show usage (but still assigning to a
+     * @return The controller itself, as a convenience for construct-and-show usage (but still assigning to a
      * variable).
      */
     public ProgressMonitor show() {
@@ -159,7 +159,7 @@ public class ProgressMonitor {
      * @param min     The minimum progress value.
      * @param current The current progress value; this sets the position of the dialog's indicator.
      * @param max     The maximum progress value.
-     * @returns The controller itself, as a convenience for construct-and-show or set-and-show usage.
+     * @return The controller itself, as a convenience for construct-and-show or set-and-show usage.
      */
     public void setProgress(int min, int current, int max) {
         this.min = Integer.valueOf(min);
@@ -197,7 +197,7 @@ public class ProgressMonitor {
     /**
      * Switches the dialog to indeterminate mode.
      *
-     * @returns The controller itself, as a convenience for construct-and-show or set-and-show usage.
+     * @return The controller itself, as a convenience for construct-and-show or set-and-show usage.
      */
     public void clearProgress() {
         SwingUtilities.invokeLater(new Runnable() {

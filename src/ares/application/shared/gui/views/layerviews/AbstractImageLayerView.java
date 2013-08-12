@@ -27,7 +27,9 @@ public abstract class AbstractImageLayerView extends AbstractView<JComponent> im
      * {@link #globalImage}
      */
     protected ImageLayerViewer parentLayer;
-
+    /**
+     * Whether this image layer is sharing its global image with other layers
+     */
     protected boolean sharingGlobalImage;
     /**
      * Viewport where this layer is placed
@@ -40,7 +42,7 @@ public abstract class AbstractImageLayerView extends AbstractView<JComponent> im
             /**
              * Paints the globalImage if it's not null
              *
-             * @param g
+             * @param g      graphics of this component
              */
             @Override
             public void paintComponent(Graphics g) {
@@ -61,6 +63,9 @@ public abstract class AbstractImageLayerView extends AbstractView<JComponent> im
         return component;
     }
 
+    /**
+     * Initializes the global image of this image layer
+     */
     @Override
     public final void initialize() {
         if (parentLayer == null) {
@@ -107,12 +112,19 @@ public abstract class AbstractImageLayerView extends AbstractView<JComponent> im
         return this;
     }
 
+    /**
+     * Frees memory resources
+     */
     @Override
     public final void flush() {
         globalImage.flush();
         globalImage = null;
     }
 
+    /**
+     * Set the profile and change the size of the {@code #contentPane} accordingly
+     * @param profile
+     */
     @Override
     public void setProfile(int profile) {
         this.profile = profile;

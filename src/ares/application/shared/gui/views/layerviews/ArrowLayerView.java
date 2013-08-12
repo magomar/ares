@@ -61,7 +61,7 @@ public class ArrowLayerView extends AbstractImageLayerView implements ArrowLayer
     /**
      * Paints complete arrow for the {@code activePath} passed as argument
      *
-     * @param activePath
+     * @param activePath the path from the selected unit to the location pointed by the mouse
      */
     @Override
     public void updateCurrentOrders(Path activePath) {
@@ -72,7 +72,7 @@ public class ArrowLayerView extends AbstractImageLayerView implements ArrowLayer
     /**
      * Paint the last orders arrows for the {@code path} passed as argument
      *
-     * @param activePath
+     * @param lastPath the path of the last order given to the selected unit
      */
     @Override
     public void updateLastOrders(Path lastPath) {
@@ -84,7 +84,9 @@ public class ArrowLayerView extends AbstractImageLayerView implements ArrowLayer
      * Paint arrows for planned orders of all units in the same force as the selected unit, as described by the {@code selectedUnitPath},
      * {@code formationPaths} and {@code forcePaths}
      *
-     * @param path
+     * @param selectedUnitPath path of the orders for the selected unit
+     * @param formationPaths   paths of the orders of other units in the same formation as the selected unit
+     * @param forcePaths       paths of the orders of the rest of the units in the same force as the selected unit
      */
     @Override
     public void updatePlannedOrders(Path selectedUnitPath, Collection<Path> formationPaths, Collection<Path> forcePaths) {
@@ -191,8 +193,10 @@ public class ArrowLayerView extends AbstractImageLayerView implements ArrowLayer
     /**
      * Paints a single arrow segment together with the accumulated movement cost
      *
-     * @param tile  the tile where to paint an Arrow
-     * @param index the position of the arrow segment within the array of arrow images
+     * @param g2
+     * @param node
+     * @param directions
+     * @param type
      */
     private void paintArrowSegmentWithCost(Graphics2D g2, Node node, Set<Direction> directions, ArrowType type) {
         Point coordinates = Directions.getDirections(Direction.getBitmask(directions)).getCoordinates();

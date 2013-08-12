@@ -14,13 +14,13 @@ import java.util.List;
  */
 public class ProgrammedOpponent {
 
-    private OperationalStance operationalStance;
-    private int activates;
-    private Frontage frontage;
-    private boolean onlyPO;
-    private Emphasis emphasis;
-    private SupportScope supportscope;
-    private List<ProgrammedTrack> tracks;
+    private final OperationalStance operationalStance;
+    private final int activates;
+    private final Frontage frontage;
+    private final boolean onlyPO;
+    private final Emphasis emphasis;
+    private final SupportScope supportscope;
+    private final List<ProgrammedTrack> tracks;
     private boolean active;
 
     public ProgrammedOpponent(Orders orders, Board board) {

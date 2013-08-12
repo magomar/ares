@@ -148,9 +148,9 @@ public class BeamSearch extends AbstractPathfinder {
 
     private class OpenSet {
 
-        int nodeLimit;
+        final int nodeLimit;
         Queue<Node> list;
-        Map<Integer, Node> map;
+        final Map<Integer, Node> map;
 
         OpenSet(int nodeLimit) {
             this.nodeLimit = nodeLimit;

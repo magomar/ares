@@ -1,4 +1,4 @@
-package temp;
+package ares.application.shared.gui.views;
 
 import ares.application.shared.gui.ComponentFactory;
 import ares.application.shared.gui.views.AbstractView;

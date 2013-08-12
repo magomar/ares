@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Variables complex type.
+ * <p>Java class for Variables complex unitType.
  * <p/>
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p/>
@@ -17,19 +17,19 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="scenarioIsOver" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="ceaseFire" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="eventEngineVariable" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="riversAlongEdges" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="attritionDivider" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="maxRoundsPerBattle" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="AAALethalityRate" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="engineeringRate" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="hexConversionRate" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="entrenchmentRate" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="combatDensityRate" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="supplyMovementRate" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="supplyReadinessRate" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="scenarioIsOver" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="ceaseFire" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="eventEngineVariable" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="riversAlongEdges" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="attritionDivider" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="maxRoundsPerBattle" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="AAALethalityRate" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="engineeringRate" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="hexConversionRate" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="entrenchmentRate" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="combatDensityRate" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="supplyMovementRate" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="supplyReadinessRate" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>

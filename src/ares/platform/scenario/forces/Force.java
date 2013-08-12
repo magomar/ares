@@ -15,12 +15,12 @@ import java.util.Map;
  */
 public class Force implements ModelProvider<ForceModel> {
 
-    private int id;
-    private String name;
-    private int proficiency;
-    private int supply;
-    private int flag;
-    private List<Formation> formations;
+    private final int id;
+    private final String name;
+    private final int proficiency;
+    private final int supply;
+    private final int flag;
+    private final List<Formation> formations;
     private final Map<UserRole, ForceModel> models;
 
     public Force(ares.data.wrappers.scenario.Force force, Scenario scenario) {

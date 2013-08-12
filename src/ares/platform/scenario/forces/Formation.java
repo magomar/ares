@@ -16,31 +16,31 @@ import java.util.*;
  */
 public class Formation implements ModelProvider<FormationModel> {
 
-    private int id;
-    private String name;
-    private Echelon echelon;
-    private Force force;
-    private String commander;
-    private String details;
-    private int proficiency;
-    private int supply;
+    private final int id;
+    private final String name;
+    private final Echelon echelon;
+    private final Force force;
+    private final String commander;
+    private final String details;
+    private final int proficiency;
+    private final int supply;
     /**
      * List of available (on-board) units. This collection excludes reinforcements, destroyed/withdrawed units and
      * divided units.
      */
-    private List<Unit> availableUnits;
+    private final List<Unit> availableUnits;
     /**
      * List of scheduled reinforcement units, stored in a queue
      */
-    private Queue<Unit> scheduledReinforcements;
+    private final Queue<Unit> scheduledReinforcements;
     /**
      * List of units that could be received as reinforcements, conditioned to certain events
      */
-    private List<Unit> conditionalReinforcements;
+    private final List<Unit> conditionalReinforcements;
     private Formation superior;
     private List<Formation> subordinates;
     private OperationalPlan operationalPlan;
-    private ProgrammedOpponent po;
+    private final ProgrammedOpponent po;
     private boolean active;
     private Unit hq;
 
@@ -73,7 +73,7 @@ public class Formation implements ModelProvider<FormationModel> {
                 default:
                     availableUnits.add(u);
             }
-            if (u.getType() == UnitType.HEADQUARTERS) {
+            if (u.getUnitType() == UnitType.HEADQUARTERS) {
                 hq = u;
             }
         }

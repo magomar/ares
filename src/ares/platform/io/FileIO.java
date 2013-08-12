@@ -30,10 +30,11 @@ public class FileIO {
     private static final Logger LOG = Logger.getLogger(FileIO.class.getName());
 
     /**
-     * Unmarshalls Json element from file into java object
+     * Unmarshalls Json element of type {@code c} from the {@code file}.
      *
-     * @param xmlFile the XML file to be unmarshalled
-     * @return
+     * @param c    the class of object to be unmarshalled
+     * @param file the Json file containing the marshalled object
+     * @return the object of type {@code T} from the {@code file}
      */
     public static <T> T unmarshallJson(File file, Class<T> c) {
         ObjectMapper mapper = new ObjectMapper();
@@ -48,7 +49,7 @@ public class FileIO {
     }
 
     /**
-     * Marshalls Java object into JSON file
+     * Marshalls Java object into a Json file
      *
      * @param object object to be marshalled
      * @param file   file to save the marshalled object
@@ -101,29 +102,33 @@ public class FileIO {
     /**
      * Unmarshalls XML element from file into java object
      *
-     * @param xmlFile the XML file to be unmarshalled
-     * @return
+     * @param file         the XML file to be unmarshalled
+     * @param unmarshaller an unmarshalled
+     * @param namespace    the namespace of the XML elements in the file
+     * @return the object unmarshalled from the {@code file}
      */
-    public static Object unmarshallXML(File xmlFile, Unmarshaller unmarshaller, String namespace) {
-        Object object = null;
+    public static Object unmarshallXML(File file, Unmarshaller unmarshaller, String namespace) {
+        Object object;
 //        try {
-//            StreamSource source = new StreamSource(xmlFile);
+//            StreamSource source = new StreamSource(file);
 //            object = unmarshaller.unmarshal(source);
 //        } catch (JAXBException ex) {
 //            LOG.log(Level.SEVERE, null, ex);
-//            object = unmarshallAddingNamespace(xmlFile);
+//            object = unmarshallAddingNamespace(file);
 //        }
-        object = unmarshallXMLAddingNamespace(xmlFile, unmarshaller, namespace);
+        object = unmarshallXMLAddingNamespace(file, unmarshaller, namespace);
         return object;
     }
 
     /**
      * Unmarshalls XML element from file into java object using a SAX filter to insert namespace in case it is missing
      *
-     * @param xmlFile the XML file to be unmarshalled
-     * @return
+     * @param file         the XML file to be unmarshalled
+     * @param unmarshaller an unmarshalled
+     * @param namespace    the namespace of the XML elements in the file
+     * @return the object unmarshalled from the {@code file}
      */
-    private static Object unmarshallXMLAddingNamespace(File xmlFile, Unmarshaller unmarshaller, String namespace) {
+    private static Object unmarshallXMLAddingNamespace(File file, Unmarshaller unmarshaller, String namespace) {
         Object object = null;
         try {
             XMLReader reader;
@@ -133,7 +138,7 @@ public class FileIO {
                 inFilter.setParent(reader);
                 InputSource is;
                 try {
-                    is = new InputSource(new FileInputStream(xmlFile));
+                    is = new InputSource(new FileInputStream(file));
                     SAXSource source = new SAXSource(inFilter, is);
                     object = unmarshaller.unmarshal(source);
                 } catch (FileNotFoundException ex) {
@@ -151,16 +156,17 @@ public class FileIO {
     /**
      * Marshalls Java object into XML file
      *
-     * @param object  object to be marshalled
-     * @param xmlFile file to save the marshalled object
-     * @return
+     * @param object     object to be marshalled
+     * @param file       file to save the marshalled object
+     * @param marshaller a marshaller
+     * @return       the XML file
      */
-    public static File marshallXML(Object object, File xmlFile, Marshaller marshaller) {
+    public static File marshallXML(Object object, File file, Marshaller marshaller) {
         try {
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-            try (FileOutputStream fos = new FileOutputStream(xmlFile)) {
+            try (FileOutputStream fos = new FileOutputStream(file)) {
                 marshaller.marshal(object, fos);
-                return xmlFile;
+                return file;
             } catch (IOException ex) {
                 LOG.log(Level.SEVERE, null, ex);
             }
@@ -175,7 +181,8 @@ public class FileIO {
      *
      * @param object object to be marshalled
      * @param file   non zip file to save the marshalled object
-     * @return
+     * @param marshaller a marshaller
+     * @return         the ZIP file
      */
     public static File marshallZipped(Object object, File file, Marshaller marshaller) {
         File zipFile = new File(file.getAbsolutePath() + ".zip");
@@ -206,7 +213,8 @@ public class FileIO {
      *
      * @param object object to be marshalled
      * @param file   file to save the marshalled object
-     * @return
+     * @param marshaller a marshaller
+     * @return         the Gzip file
      */
     public static File marshallGzipped(Object object, File file, Marshaller marshaller) {
         File gzFile = new File(file.getAbsolutePath() + ".gz");

@@ -17,12 +17,12 @@ import java.util.Set;
 
 /**
  * MovementCost objects contain the precomputed off-road movement costs for all movement types and a single tile and
- * direction. Each movement type has a cost to enter a {@link Tile}, which depends on the {@link TerrainType} it
+ * direction. Each movement unitType has a cost to enter a {@link Tile}, which depends on the {@link TerrainType} and {@link Feature} it
  * contains. On-road movement cost is not precomputed, instead it is computed dynamically to take into account the
  * density of vehicle and horses in a tile at the moment.
  *
  * @author Mario Gomez <margomez at dsic.upv.es>
- * @see Tile#moveCosts
+ * @see Tile#enterCost
  */
 public class MovementCost {
 
@@ -144,9 +144,7 @@ public class MovementCost {
      * features such as mud and snow
      *
      * @param unit
-     * @param destination
-     * @param direction
-     * @return
+     * @return the cost
      */
     public int getActualCost(Unit unit) {
         Force force = unit.getForce();
@@ -208,6 +206,12 @@ public class MovementCost {
         return MathUtils.addBounded(cost, penalty, maxCost);
     }
 
+    /**
+     * Gets the estimated movement cost for a particular {@code moveType}
+     *
+     * @param moveType the type of movement
+     * @return the cost
+     */
     public int getEstimatedCost(MovementType moveType) {
         // Check for enemies. Enemies prevent movement
         if (!tile.isPlayable() && moveType != MovementType.AIRCRAFT) {
@@ -276,8 +280,8 @@ public class MovementCost {
     /**
      * Gets the precomputed movement cost for a single {@code movementType}
      *
-     * @param movementType
-     * @return
+     * @param movementType  the type of movement
+     * @return the movement cost
      */
     public int getMovementCost(MovementType movementType) {
         return movementCost.get(movementType);
@@ -286,7 +290,7 @@ public class MovementCost {
     /**
      * Gets the precomputed costs for all the movement types
      *
-     * @return
+     * @return the collection of movement costs for all the movement types
      * @see MovementType
      */
     public Map<MovementType, Integer> getMovementCost() {

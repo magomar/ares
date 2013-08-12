@@ -1,8 +1,7 @@
 package ares.application.shared.commands;
 
 import ares.application.shared.gui.ComponentFactory;
-import ares.application.shared.gui.components.RoundedBorder;
-import ares.application.shared.gui.components.TransparentButton;
+import ares.application.shared.gui.components.NebraskaButton;
 
 import javax.swing.*;
 import java.awt.*;
@@ -59,18 +58,19 @@ public class ActionGroup {
         for (int i = 0; i < actions.length; i++) {
             Action action = actions[i];
             if (action.isEnabled()) {
-                JButton newButton = ComponentFactory.transparentButton(action, 0.75f);
+//                JButton newButton = ComponentFactory.transparentButton(action, 0.75f);
+                JButton newButton = new NebraskaButton(action, 0.6f);
                 newButton.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
                 newButton.setSize(MAIN_MENU_BUTTON_SIZE);
                 newButton.setMinimumSize(MAIN_MENU_BUTTON_SIZE);
                 newButton.setMaximumSize(MAIN_MENU_BUTTON_SIZE);
-                newButton.setFont(newButton.getFont().deriveFont(Font.BOLD, 16));
-                newButton.setForeground(Color.BLACK);
-                newButton.setBorder(new RoundedBorder(10));
+//                newButton.setFont(newButton.getFont().deriveFont(Font.BOLD, 16));
+//                newButton.setForeground(Color.BLACK);
+//                newButton.setBorder(new RoundedBorder(10));
                 buttons.add(newButton);
             }
         }
-        return buttons.toArray(new TransparentButton[buttons.size()]);
+        return buttons.toArray(new NebraskaButton[buttons.size()]);
     }
 
 }

@@ -7,7 +7,7 @@ import java.util.Random;
  */
 public class RandomGenerator extends Random {
 
-    private static RandomGenerator INSTANCE = new RandomGenerator();
+    private static final RandomGenerator INSTANCE = new RandomGenerator();
 
     private RandomGenerator() {
         super(System.currentTimeMillis());

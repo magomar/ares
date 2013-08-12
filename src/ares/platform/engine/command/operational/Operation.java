@@ -15,8 +15,8 @@ import java.util.Map;
  */
 public abstract class Operation {
     protected final Objective goal;
-    protected OperationType type;
-    protected OperationForm form;
+    protected final OperationType type;
+    protected final OperationForm form;
     protected final List<Unit> units;
     protected final Map<Unit, TacticalMission> missions;
 

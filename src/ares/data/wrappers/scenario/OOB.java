@@ -10,7 +10,7 @@ import java.util.List;
 
 
 /**
- * <p>Java class for OOB complex type.
+ * <p>Java class for OOB complex unitType.
  * <p/>
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p/>
@@ -19,7 +19,7 @@ import java.util.List;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Force" type="{ares}Force" maxOccurs="unbounded"/>
+ *         &lt;element name="Force" unitType="{ares}Force" maxOccurs="unbounded"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -52,7 +52,7 @@ public class OOB {
      * <p/>
      * <p/>
      * <p/>
-     * Objects of the following type(s) are allowed in the list
+     * Objects of the following unitType(s) are allowed in the list
      * {@link Force }
      */
     public List<Force> getForce() {

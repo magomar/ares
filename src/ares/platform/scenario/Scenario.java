@@ -24,11 +24,11 @@ import java.util.logging.Logger;
 public final class Scenario implements ModelProvider<ScenarioModel> {
 
     private AssetTypes assetTypes;
-    private String name;
-    private Board board;
-    private Force[] forces;
-    private Map<UserRole, ScenarioModel> models;
-    private String description;
+    private final String name;
+    private final Board board;
+    private final Force[] forces;
+    private final Map<UserRole, ScenarioModel> models;
+    private final String description;
 
     public Scenario(ares.data.wrappers.scenario.Scenario scenario, EquipmentDB eqpDB) {
         name = scenario.getHeader().getName();
@@ -79,7 +79,7 @@ public final class Scenario implements ModelProvider<ScenarioModel> {
 
     @Override
     public String toString() {
-        return "Scenario{" + "Scale=" + Scale.INSTANCE + ", calendar=" + Clock.INSTANCE + '}';
+        return name + '(' + "Scale=" + Scale.INSTANCE + ", Calendar=" + Clock.INSTANCE + ')';
     }
 
     @Override

@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 public class Node implements Comparable<Node> {
 
-    private Tile tile;
+    private final Tile tile;
     private Node prev;
     protected Node next;
 

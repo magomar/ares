@@ -177,7 +177,7 @@
     <complexType name="Terrain">
         <attribute name="Type" type="ar:TerrainType"/>
         <attribute name="Dir" type="ar:MultiDirection" use="optional"/>
-        <!--<attribute name="graphic" type="int" use="required" />-->
+        <!--<attribute name="graphic" unitType="int" use="required" />-->
     </complexType>
 
 
@@ -320,9 +320,9 @@
             <element name="OpState" type="ar:OpState"/>
             <element name="ReplacementPriority" type="int"/>
             <element name="Entry" type="int" minOccurs="0"/>
-            <!--<element name="Next" type="int" minOccurs="0" />-->
+            <!--<element name="Next" unitType="int" minOccurs="0" />-->
             <element name="Parent" type="int" minOccurs="0"/>
-            <!--<element name="Characteristics" type="string" minOccurs="0" />-->
+            <!--<element name="Characteristics" unitType="string" minOccurs="0" />-->
             <element name="Equipment" maxOccurs="unbounded">
                 <complexType>
                     <sequence>
@@ -358,7 +358,7 @@
 
     <complexType name="Objective">
         <sequence>
-            <!--<element name="Description" type="string" />-->
+            <!--<element name="Description" unitType="string" />-->
             <element name="X" type="int"/>
             <element name="Y" type="int"/>
         </sequence>

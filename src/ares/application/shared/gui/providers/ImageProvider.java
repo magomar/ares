@@ -11,57 +11,54 @@ public interface ImageProvider {
     /**
      * Returns filename of a graphics image file
      *
-     * @return
+     * @return the filename
      */
     String getFilename();
 
     /**
-     * Gets the number of columns in the graphics image. This is the number of sprites per row
+     * Gets the number of columns in the graphics image. This is the number of images per row
      *
-     * @return
+     * @return the number of columns
      */
     int getColumns();
 
     /**
-     * Gets the number of rows in the graphics image. This is the number of sprites per column
+     * Gets the number of rows in the graphics image. This is the number of images per column
      *
-     * @return
+     * @return the number of rows
      */
     int getRows();
 
     /**
-     * Gets the sprite located in given {@code coordinates} of the graphics of this provider
+     * Gets the image located in the indicated {@code coordinates} of the graphics of this provider
      *
-     * @param column
-     * @param row
-     * @return
+     * @param coordinates
+     * @return the sprite image
      */
     BufferedImage getImage(Point coordinates);
 
     /**
-     * Gets the sprite located in given {@code row} and {@code column} of the graphics of this provider
+     * Gets the image located in given {@code row} and {@code column} of the graphics of this provider
      *
      * @param column
      * @param row
-     * @return
+     * @return the sprite image
      */
     public BufferedImage getImage(int column, int row);
 
     /**
-     * Gets the sprite in coordinates encoded by a single {@code index}
-     * <p> {@code column = index / rows}
-     * <p> {@code row = index % rows}
+     * Gets the image in coordinates encoded by a single {@code index}
+     * <p>{@code column = index / rows}
+     * <p>{@code row = index % rows}
      *
-     * @param profile
      * @param index
-     * @return
+     * @return the image
      */
     BufferedImage getImage(int index);
 
     /**
      * Gets the complete image containing all the graphics for this provider
      *
-     * @param profile
      * @return
      */
     BufferedImage getFullImage();
@@ -69,15 +66,15 @@ public interface ImageProvider {
     /**
      * Gets the dimension of the image containing the graphics of this provider
      *
-     * @return
+     * @return the size of the full image
      */
-    Dimension getFullImageDimension();
+    Dimension getFullImageSize();
 
     /**
-     * Gets the dimension of the sprite contained in the graphics of this provider
-     * <p>Graphics are stored in files that may contain a matrix of sprites
+     * Gets the dimension of the single images contained in the graphics of this provider. Graphics are stored in image files
+     * that may contain multiple images distributed in an array
      *
-     * @return
+     * @return the size of the individual images
      */
-    Dimension getImageDimension();
+    Dimension getImageSize();
 }

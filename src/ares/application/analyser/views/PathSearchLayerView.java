@@ -16,8 +16,13 @@ import java.util.Collection;
  * @author Saúl Esteban <saesmar1@ei.upv.es>
  */
 public class PathSearchLayerView extends AbstractImageLayerView implements PathSearchLayerViewer {
-
+    /**
+     * Collection of open nodes
+     */
     private Collection<Node> openSet;
+    /**
+     * Collection of closed nodes
+     */
     private Collection<Node> closedSet;
 
     @Override

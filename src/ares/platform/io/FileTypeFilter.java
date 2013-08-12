@@ -11,8 +11,8 @@ import java.nio.file.Path;
  */
 public class FileTypeFilter extends FileFilter implements java.io.FileFilter, FilenameFilter {
 
-    private String description;
-    private String extensions[];
+    private final String description;
+    private final String[] extensions;
 
     public FileTypeFilter(String description, String extension) {
         this(description, new String[]{extension});
@@ -24,7 +24,7 @@ public class FileTypeFilter extends FileFilter implements java.io.FileFilter, Fi
         } else {
             this.description = description;
         }
-        this.extensions = (String[]) extensions.clone();
+        this.extensions = extensions.clone();
         toLower(this.extensions);
     }
 

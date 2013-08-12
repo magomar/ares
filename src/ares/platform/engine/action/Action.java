@@ -41,7 +41,7 @@ public interface Action {
     /**
      * Changes the state of the action to the {@code state} passed as parameter.
      *
-     * @param state
+     * @param state    state of the action
      */
     void setState(ActionState state);
 
@@ -69,5 +69,9 @@ public interface Action {
 
     ActionState getState();
 
+    /**
+     * Get the time remaining to complete the action
+     * @return  the remaining time
+     */
     int getTimeToComplete();
 }

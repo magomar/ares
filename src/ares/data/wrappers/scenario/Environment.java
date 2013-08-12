@@ -7,7 +7,7 @@ import java.util.List;
 
 
 /**
- * <p>Java class for Environment complex type.
+ * <p>Java class for Environment complex unitType.
  * <p/>
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p/>
@@ -16,23 +16,23 @@ import java.util.List;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Scale" type="{http://www.w3.org/2001/XMLSchema}double"/>
+ *         &lt;element name="Scale" unitType="{http://www.w3.org/2001/XMLSchema}double"/>
  *         &lt;element name="Zone" maxOccurs="unbounded">
  *           &lt;complexType>
  *             &lt;complexContent>
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *                 &lt;sequence>
- *                   &lt;element name="Boundary" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                   &lt;element name="Precipitation" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                   &lt;element name="Temperature" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                   &lt;element name="Visibility" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                   &lt;element name="DeltaT" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                   &lt;element name="Direction" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                   &lt;element name="OlddeltaT" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                   &lt;element name="Olddirection" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                   &lt;element name="NextClouds" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="Boundary" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="Precipitation" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="Temperature" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="Visibility" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="DeltaT" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="Direction" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="OlddeltaT" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="Olddirection" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+ *                   &lt;element name="NextClouds" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
  *                 &lt;/sequence>
- *                 &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
+ *                 &lt;attribute name="id" use="required" unitType="{http://www.w3.org/2001/XMLSchema}int" />
  *               &lt;/restriction>
  *             &lt;/complexContent>
  *           &lt;/complexType>
@@ -86,7 +86,7 @@ public class Environment {
      * <p/>
      * <p/>
      * <p/>
-     * Objects of the following type(s) are allowed in the list
+     * Objects of the following unitType(s) are allowed in the list
      * {@link Environment.Zone }
      */
     public List<Environment.Zone> getZone() {
@@ -98,7 +98,7 @@ public class Environment {
 
 
     /**
-     * <p>Java class for anonymous complex type.
+     * <p>Java class for anonymous complex unitType.
      * <p/>
      * <p>The following schema fragment specifies the expected content contained within this class.
      * <p/>
@@ -107,17 +107,17 @@ public class Environment {
      *   &lt;complexContent>
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
      *       &lt;sequence>
-     *         &lt;element name="Boundary" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *         &lt;element name="Precipitation" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *         &lt;element name="Temperature" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *         &lt;element name="Visibility" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *         &lt;element name="DeltaT" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *         &lt;element name="Direction" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *         &lt;element name="OlddeltaT" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *         &lt;element name="Olddirection" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *         &lt;element name="NextClouds" type="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="Boundary" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="Precipitation" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="Temperature" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="Visibility" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="DeltaT" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="Direction" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="OlddeltaT" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="Olddirection" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
+     *         &lt;element name="NextClouds" unitType="{http://www.w3.org/2001/XMLSchema}int"/>
      *       &lt;/sequence>
-     *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
+     *       &lt;attribute name="id" use="required" unitType="{http://www.w3.org/2001/XMLSchema}int" />
      *     &lt;/restriction>
      *   &lt;/complexContent>
      * &lt;/complexType>

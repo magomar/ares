@@ -73,8 +73,8 @@ public class UnitsLayerView extends AbstractImageLayerView implements UnitsLayer
     /**
      * Paints all the units in a single tile. Method used to paint all the units in an scenario
      *
-     * @param g2
-     * @param tile     TileModel where the units are
+     * @param g2   the graphics
+     * @param tile TileModel where the units are
      */
     private void paintUnitStack(Graphics2D g2, TileModel tile) {
 
