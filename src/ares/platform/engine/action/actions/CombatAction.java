@@ -1,5 +1,6 @@
 package ares.platform.engine.action.actions;
 
+import ares.platform.engine.action.ActionSpace;
 import ares.platform.engine.action.ActionType;
 import ares.platform.engine.algorithms.pathfinding.Path;
 import ares.platform.engine.movement.MovementCost;
@@ -34,11 +35,12 @@ public class CombatAction extends SurfaceMoveAction {
      * adjustment avoids the precision error (due to the conversion between minutes and ticks) being accumulated per
      * each partial movement (the maximum precision error will be bounded by a single time tick for the entire movement action)
      */
-    protected void completePartialMove() {
+    protected void completePartialMove(ActionSpace actionSpace) {
         Tile tile = currentNode.getTile();
         if (tile.hasEnemies(unit.getForce())) {
             engaging = true;
             System.out.println("Engaging !");
+            actionSpace.putAction(tile, this);
             return;
         }
 

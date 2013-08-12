@@ -30,10 +30,10 @@ public class ActionSpace {
     }
 
     public void resolveInteractions() {
-//        for (Map.Entry<Tile, List<Action>> entry : interactions.entrySet()) {
-//            Tile tile = entry.getKey();
-//            List<Action> list = entry.getValue();
-//
-//        }
+        for (Map.Entry<Tile, Interaction> entry : interactions.entrySet()) {
+            Tile tile = entry.getKey();
+            Interaction interaction= entry.getValue();
+            interaction.execute();
+        }
     }
 }
