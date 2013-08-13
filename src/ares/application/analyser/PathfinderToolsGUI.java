@@ -113,8 +113,10 @@ public class PathfinderToolsGUI extends AbstractView<JFrame> implements Pathfind
 //                }
 //            }
             UIManager.setLookAndFeel("de.muntjak.tinylookandfeel.TinyLookAndFeel");
-            ThemeDescription td = Theme.getAvailableThemes()[3];
-            Theme.loadTheme(td);
+            ThemeDescription[] themes = Theme.getAvailableThemes();
+            for (ThemeDescription theme: themes) {
+                if ("DarkOlive".equals(theme.getName())) Theme.loadTheme(theme);
+            }
             UIManager.setLookAndFeel(new TinyLookAndFeel());
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(AresPlayerGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
