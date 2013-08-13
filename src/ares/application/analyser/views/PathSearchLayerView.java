@@ -73,8 +73,12 @@ public class PathSearchLayerView extends AbstractImageLayerView implements PathS
         BufferedImage tileImage = GraphicsModel.INSTANCE.getProfiledImageProvider(type.getProvider(), profile).getImage(0, 0);
         Point pos = GraphicsModel.INSTANCE.tileToPixel(node.getTile().getCoordinates(), profile);
         g2.drawImage(tileImage, pos.x, pos.y, contentPane);
-        int cost = (int) node.getF();
-        //g2.drawString(Integer.toString(cost), pos.x + tileImage.getWidth() / 2, pos.y + tileImage.getHeight() / 2);
+        int gCost = (int) node.getG();
+        int fCost = (int) node.getF();
+        int tileWidth = tileImage.getWidth();
+        int tileHeight = tileImage.getHeight();
+        g2.drawString(Integer.toString(gCost), pos.x + tileWidth/2, pos.y + tileHeight/2);
+        g2.drawString(Integer.toString(fCost), pos.x + tileWidth/2, pos.y + tileHeight);
         contentPane.repaint(pos.x, pos.y, tileImage.getWidth(), tileImage.getHeight());
     }
 

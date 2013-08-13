@@ -19,11 +19,11 @@ public class PathSearchBoardView extends AbstractBoardView {
         TerrainLayerView terrainLayer = (TerrainLayerView) new TerrainLayerView().setViewport(v);
         GridLayerView gridLayer = (GridLayerView) new GridLayerView().setViewport(v);
         PathSearchLayerView pathSearchLayer = (PathSearchLayerView) new PathSearchLayerView().setViewport(v);
-        ArrowLayerView arrowLayer = (ArrowLayerView) new ArrowLayerView().setViewport(v).setParenLayer(pathSearchLayer);
-        SearchCostsLayerView costsLayerView = (SearchCostsLayerView) new SearchCostsLayerView().setViewport(v);
+        ArrowLayerView arrowLayer = (ArrowLayerView) new ArrowLayerView().setViewport(v);
+//        SearchCostsLayerView costsLayerView = (SearchCostsLayerView) new SearchCostsLayerView().setViewport(v);
 
         // Add independent layers pane
-        addLayerView(terrainLayer).addLayerView(gridLayer).addLayerView(pathSearchLayer).addLayerView(arrowLayer).addLayerView(costsLayerView);
+        addLayerView(terrainLayer).addLayerView(gridLayer).addLayerView(pathSearchLayer).addLayerView(arrowLayer);
         return scrollPane;
     }
 }

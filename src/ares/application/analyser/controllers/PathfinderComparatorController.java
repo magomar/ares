@@ -166,7 +166,7 @@ public class PathfinderComparatorController implements ActionController {
             LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, "Path obtained {0}", path);
             ((ArrowLayerViewer) boardView.getLayerView(ArrowLayerViewer.NAME)).updateLastOrders(path);
             ((PathSearchLayerViewer) boardView.getLayerView(PathSearchLayerViewer.NAME)).updatePathSearch(path.getOpenSetNodes(), path.getClosedSetNodes());
-            //((SearchCostsLayerViewer) boardView.getLayerView(SearchCostsLayerViewer.NAME)).updateSearchCosts(path.getOpenSetNodes(), path.getClosedSetNodes());
+            ((SearchCostsLayerViewer) boardView.getLayerView(SearchCostsLayerViewer.NAME)).updateSearchCosts(path.getOpenSetNodes(), path.getClosedSetNodes());
             ((ArrowLayerViewer) boardView.getLayerView(ArrowLayerViewer.NAME)).updateCurrentOrders(null);
             
             if (boardView.equals(this.boardView[LEFT])) {

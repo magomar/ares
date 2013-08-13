@@ -44,7 +44,7 @@ public class PathfinderToolsGUI extends AbstractView<JFrame> implements Pathfind
         toolBarV = new ToolBarView();
         comparatorV = new PathfinderComparatorView();
 
-        JFrame mainFrame = ComponentFactory.frame("Ares Player", menuV.getContentPane(), toolBarV.getContentPane());
+        JFrame mainFrame = ComponentFactory.frame("Ares Pathfinder Analyser", menuV.getContentPane(), toolBarV.getContentPane());
         // These dimensions are necessary when the frame is not fullscreen
         Dimension maxSize = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().getSize();
         Dimension defaultSize = new Dimension(1440, 900);
