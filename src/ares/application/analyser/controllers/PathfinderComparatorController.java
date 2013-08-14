@@ -1,13 +1,14 @@
 package ares.application.analyser.controllers;
 
 import ares.application.analyser.boundaries.interactors.PathfinderComparatorInteractor;
+import ares.application.analyser.boundaries.viewers.PathSearchLayerViewer;
 import ares.application.analyser.boundaries.viewers.PathfinderComparatorViewer;
 import ares.application.shared.commands.ActionGroup;
 import ares.application.shared.commands.CommandAction;
 import ares.application.shared.commands.CommandGroup;
 import ares.application.shared.boundaries.viewers.BoardViewer;
-import ares.application.shared.boundaries.viewers.MutualPathfindersConfigurationViewer;
-import ares.application.shared.boundaries.viewers.PathfinderConfigurationViewer;
+import ares.application.analyser.boundaries.viewers.MutualPathfindersConfigurationViewer;
+import ares.application.analyser.boundaries.viewers.PathfinderConfigurationViewer;
 import ares.application.shared.boundaries.viewers.layerviewers.*;
 import ares.application.shared.commands.AresCommandGroup;
 import ares.application.shared.commands.ViewCommands;
@@ -124,8 +125,8 @@ public class PathfinderComparatorController implements ActionController {
             if (!tile.equals(selectedTile)) {
                 selectedTile = tile;
                 interactionMode = InteractionMode.UNIT_ORDERS;
-                ((PathSearchLayerViewer) this.boardView[LEFT].getLayerView(PathSearchLayerViewer.NAME)).updatePathSearch(null, null);
-                ((PathSearchLayerViewer) this.boardView[RIGHT].getLayerView(PathSearchLayerViewer.NAME)).updatePathSearch(null, null);
+                ((PathSearchLayerViewer) this.boardView[LEFT].getLayerView(PathSearchLayerViewer.NAME)).updatePathSearch(null, null,0);
+                ((PathSearchLayerViewer) this.boardView[RIGHT].getLayerView(PathSearchLayerViewer.NAME)).updatePathSearch(null, null,0);
                 ((ArrowLayerViewer) this.boardView[LEFT].getLayerView(ArrowLayerViewer.NAME)).updateLastOrders(null);
                 ((ArrowLayerViewer) this.boardView[RIGHT].getLayerView(ArrowLayerViewer.NAME)).updateLastOrders(null);
                 ((ArrowLayerViewer) this.boardView[LEFT].getLayerView(ArrowLayerViewer.NAME)).updateCurrentOrders(null);
@@ -165,8 +166,7 @@ public class PathfinderComparatorController implements ActionController {
             }
             LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, "Path obtained {0}", path);
             ((ArrowLayerViewer) boardView.getLayerView(ArrowLayerViewer.NAME)).updateLastOrders(path);
-            ((PathSearchLayerViewer) boardView.getLayerView(PathSearchLayerViewer.NAME)).updatePathSearch(path.getOpenSetNodes(), path.getClosedSetNodes());
-            ((SearchCostsLayerViewer) boardView.getLayerView(SearchCostsLayerViewer.NAME)).updateSearchCosts(path.getOpenSetNodes(), path.getClosedSetNodes());
+            ((PathSearchLayerViewer) boardView.getLayerView(PathSearchLayerViewer.NAME)).updatePathSearch(path.getOpenSetNodes(), path.getClosedSetNodes(),PathSearchLayerViewer.SHOW_G_COST);
             ((ArrowLayerViewer) boardView.getLayerView(ArrowLayerViewer.NAME)).updateCurrentOrders(null);
             
             if (boardView.equals(this.boardView[LEFT])) {

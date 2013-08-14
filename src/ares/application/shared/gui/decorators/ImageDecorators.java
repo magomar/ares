@@ -186,7 +186,7 @@ public class ImageDecorators {
      * @return a color between bottom and top colors, correspoding to the {@code percentage} parameter
      * @see java.awt.color.ICC_ProfileRGB
      */
-    private Color colorLevel(int percentage, int bottomRGBComponent, int topRGBComponent) {
+    public static Color colorLevel(int percentage, int bottomRGBComponent, int topRGBComponent) {
         int[] rgb = new int[3];
         for (int i = 0; i < rgb.length; i++) {
             if (i == bottomRGBComponent) {

@@ -2,8 +2,8 @@ package ares.application.analyser.views;
 
 import ares.application.analyser.boundaries.viewers.PathfinderComparatorViewer;
 import ares.application.shared.boundaries.viewers.BoardViewer;
-import ares.application.shared.boundaries.viewers.MutualPathfindersConfigurationViewer;
-import ares.application.shared.boundaries.viewers.PathfinderConfigurationViewer;
+import ares.application.analyser.boundaries.viewers.MutualPathfindersConfigurationViewer;
+import ares.application.analyser.boundaries.viewers.PathfinderConfigurationViewer;
 import ares.application.shared.gui.ComponentFactory;
 import ares.application.shared.gui.views.AbstractView;
 

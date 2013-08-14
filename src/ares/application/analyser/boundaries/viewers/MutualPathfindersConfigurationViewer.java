@@ -1,4 +1,4 @@
-package ares.application.shared.boundaries.viewers;
+package ares.application.analyser.boundaries.viewers;
 
 import ares.application.shared.gui.views.View;
 import ares.platform.engine.movement.MovementType;

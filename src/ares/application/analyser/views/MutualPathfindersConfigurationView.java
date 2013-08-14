@@ -4,10 +4,10 @@
  */
 package ares.application.analyser.views;
 
-import ares.application.shared.boundaries.viewers.MutualPathfindersConfigurationViewer;
+import ares.application.analyser.boundaries.viewers.MutualPathfindersConfigurationViewer;
 import ares.application.shared.gui.views.AbstractView;
 import ares.platform.engine.movement.MovementType;
-import ares.platform.scenario.forces.Unit;
+
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionListener;
