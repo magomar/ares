@@ -15,6 +15,21 @@ public interface PathSearchLayerViewer extends ImageLayerViewer {
     static final int SHOW_G_COST = 0;
     static final int SHOW_H_COST = 1;
     static final int SHOW_F_COST = 2;
+    
+    public enum ShowCostType {
+        SHOW_G_COST(0),
+        SHOW_H_COST(1),
+        SHOW_F_COST(2);
+        private final int value;
+        
+        private ShowCostType(int value) {
+            this.value = value;
+        }
+        
+        public int getValue() {
+            return value;
+        }
+    }
 
     /**
      * Shows the result of a path search process visually in terms of the costs associated to open and closed nodes

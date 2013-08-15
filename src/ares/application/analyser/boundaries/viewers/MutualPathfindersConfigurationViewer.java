@@ -12,4 +12,5 @@ import javax.swing.JPanel;
  */
 public interface MutualPathfindersConfigurationViewer extends View<JPanel> {
     void setMovementTypeComboModel(ComboBoxModel<MovementType> comboModel, ActionListener listener);
+    void setShowCostTypeComboModel(ComboBoxModel<PathSearchLayerViewer.ShowCostType> comboModel, ActionListener listener);
 }

@@ -5,6 +5,7 @@
 package ares.application.analyser.views;
 
 import ares.application.analyser.boundaries.viewers.MutualPathfindersConfigurationViewer;
+import ares.application.analyser.boundaries.viewers.PathSearchLayerViewer;
 import ares.application.shared.gui.views.AbstractView;
 import ares.platform.engine.movement.MovementType;
 
@@ -23,10 +24,12 @@ import javax.swing.JPanel;
 public class MutualPathfindersConfigurationView extends AbstractView<JPanel> implements MutualPathfindersConfigurationViewer {
     
     private JComboBox<MovementType> movementTypeComboBox;
+    private JComboBox<PathSearchLayerViewer.ShowCostType> showCostTypeComboBox;
 
     @Override
     protected JPanel layout() {
         movementTypeComboBox = new JComboBox<>();
+        showCostTypeComboBox = new JComboBox<>();
 
         JPanel panel = new JPanel();
         panel.setLayout(new GridBagLayout());
@@ -38,6 +41,12 @@ public class MutualPathfindersConfigurationView extends AbstractView<JPanel> imp
         c.gridx = 1;
         c.gridy = 0;
         panel.add(movementTypeComboBox, c);
+        c.gridx = 2;
+        c.gridy = 0;
+        panel.add(new JLabel("Select Cost Shown Type:"), c);
+        c.gridx = 3;
+        c.gridy = 0;
+        panel.add(showCostTypeComboBox, c);
         return panel;
     }
 
@@ -45,5 +54,11 @@ public class MutualPathfindersConfigurationView extends AbstractView<JPanel> imp
     public void setMovementTypeComboModel(ComboBoxModel<MovementType> comboModel, ActionListener listener) {
         movementTypeComboBox.setModel(comboModel);
         movementTypeComboBox.addActionListener(listener);
+    }
+
+    @Override
+    public void setShowCostTypeComboModel(ComboBoxModel<PathSearchLayerViewer.ShowCostType> comboModel, ActionListener listener) {
+        showCostTypeComboBox.setModel(comboModel);
+        showCostTypeComboBox.addActionListener(listener);
     }
 }
