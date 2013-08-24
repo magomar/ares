@@ -2,6 +2,7 @@ package ares.application.analyser;
 
 import ares.application.analyser.boundaries.viewers.PathfinderToolsViewer;
 import ares.application.analyser.controllers.PathfinderToolsController;
+import ares.application.analyser.views.PathfinderBenchmarkView;
 import ares.application.analyser.views.PathfinderComparatorView;
 import ares.application.player.AresPlayerGUI;
 import ares.application.shared.boundaries.viewers.MenuBarViewer;
@@ -33,6 +34,7 @@ public class PathfinderToolsGUI extends AbstractView<JFrame> implements Pathfind
     private MenuBarView menuV;
     private ToolBarView toolBarV;
     private PathfinderComparatorView comparatorV;
+    private PathfinderBenchmarkView benchmarkV;
 
     @Override
     protected JFrame layout() {
@@ -43,6 +45,7 @@ public class PathfinderToolsGUI extends AbstractView<JFrame> implements Pathfind
         menuV = new MenuBarView();
         toolBarV = new ToolBarView();
         comparatorV = new PathfinderComparatorView();
+        benchmarkV = new PathfinderBenchmarkView();
 
         JFrame mainFrame = ComponentFactory.frame("Ares Pathfinder Analyser", menuV.getContentPane(), toolBarV.getContentPane());
         // These dimensions are necessary when the frame is not fullscreen
@@ -67,6 +70,7 @@ public class PathfinderToolsGUI extends AbstractView<JFrame> implements Pathfind
         cards = new JPanel(new CardLayout());
         cards.add(mainMenuV.getContentPane(), PathfinderToolsViewer.MAIN_MENU_PERSPECTIVE);
         cards.add(comparatorV.getContentPane(), PathfinderToolsViewer.COMPARATOR_PERSPECTIVE);
+        cards.add(benchmarkV.getContentPane(), PathfinderToolsViewer.BENCHMARK_PERSPECTIVE);
         mainFrame.add(cards);
 //        switchPerspective(PathfinderToolsViewer.MAIN_MENU_PERSPECTIVE);
         switchPerspective(PathfinderToolsViewer.COMPARATOR_PERSPECTIVE);
@@ -90,7 +94,7 @@ public class PathfinderToolsGUI extends AbstractView<JFrame> implements Pathfind
                 menuV.setVisible(true);
                 toolBarV.setVisible(true);
                 break;
-            case PathfinderToolsViewer.ANALYSER_PERSPECTIVE:
+            case PathfinderToolsViewer.BENCHMARK_PERSPECTIVE:
                 menuV.setVisible(true);
                 toolBarV.setVisible(true);
                 break;
@@ -150,5 +154,10 @@ public class PathfinderToolsGUI extends AbstractView<JFrame> implements Pathfind
     @Override
     public PathfinderComparatorView getComparatorView() {
         return comparatorV;
+    }
+    
+    @Override
+    public PathfinderBenchmarkView getBenchmarkView() {
+        return benchmarkV;
     }
 }
