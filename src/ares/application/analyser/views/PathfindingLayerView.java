@@ -1,6 +1,6 @@
 package ares.application.analyser.views;
 
-import ares.application.analyser.boundaries.viewers.PathSearchLayerViewer;
+import ares.application.analyser.boundaries.viewers.PathfindingLayerViewer;
 import ares.application.shared.gui.decorators.ImageDecorators;
 import ares.application.shared.gui.profiles.GraphicProperties;
 import ares.application.shared.gui.profiles.GraphicsModel;
@@ -19,7 +19,7 @@ import java.util.Collection;
  *
  * @author Saúl Esteban <saesmar1@ei.upv.es>
  */
-public class PathSearchLayerView extends AbstractImageLayerView implements PathSearchLayerViewer {
+public class PathfindingLayerView extends AbstractImageLayerView implements PathfindingLayerViewer {
     /**
      * Collection of open nodes
      */
@@ -35,7 +35,7 @@ public class PathSearchLayerView extends AbstractImageLayerView implements PathS
 
     @Override
     public String name() {
-        return PathSearchLayerViewer.NAME;
+        return PathfindingLayerViewer.NAME;
     }
 
     @Override
@@ -108,17 +108,17 @@ public class PathSearchLayerView extends AbstractImageLayerView implements PathS
     private int getNodeCost(Node node) {
         int cost;
         switch (costToShow) {
-            case PathSearchLayerViewer.SHOW_G_COST:
+            case PathfindingLayerViewer.SHOW_G_COST:
                 cost = (int) node.getG();
                 break;
-            case PathSearchLayerViewer.SHOW_H_COST:
+            case PathfindingLayerViewer.SHOW_H_COST:
                 cost = (int) node.getH();
                 break;
-            case PathSearchLayerViewer.SHOW_F_COST:
+            case PathfindingLayerViewer.SHOW_F_COST:
                 cost = (int) node.getF();
                 break;
             default:
-                cost = PathSearchLayerViewer.SHOW_G_COST;
+                cost = PathfindingLayerViewer.SHOW_G_COST;
         }
         return cost;
     }

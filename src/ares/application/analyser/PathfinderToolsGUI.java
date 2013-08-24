@@ -2,8 +2,8 @@ package ares.application.analyser;
 
 import ares.application.analyser.boundaries.viewers.PathfinderToolsViewer;
 import ares.application.analyser.controllers.PathfinderToolsController;
-import ares.application.analyser.views.PathfinderBenchmarkView;
-import ares.application.analyser.views.PathfinderComparatorView;
+import ares.application.analyser.views.BenchmarkView;
+import ares.application.analyser.views.ComparatorView;
 import ares.application.player.AresPlayerGUI;
 import ares.application.shared.boundaries.viewers.MenuBarViewer;
 import ares.application.shared.boundaries.viewers.PanelMenuViewer;
@@ -33,8 +33,8 @@ public class PathfinderToolsGUI extends AbstractView<JFrame> implements Pathfind
     private MainMenuView mainMenuV;
     private MenuBarView menuV;
     private ToolBarView toolBarV;
-    private PathfinderComparatorView comparatorV;
-    private PathfinderBenchmarkView benchmarkV;
+    private ComparatorView comparatorV;
+    private BenchmarkView benchmarkV;
 
     @Override
     protected JFrame layout() {
@@ -44,8 +44,8 @@ public class PathfinderToolsGUI extends AbstractView<JFrame> implements Pathfind
         mainMenuV = new MainMenuView();
         menuV = new MenuBarView();
         toolBarV = new ToolBarView();
-        comparatorV = new PathfinderComparatorView();
-        benchmarkV = new PathfinderBenchmarkView();
+        comparatorV = new ComparatorView();
+        benchmarkV = new BenchmarkView();
 
         JFrame mainFrame = ComponentFactory.frame("Ares Pathfinder Analyser", menuV.getContentPane(), toolBarV.getContentPane());
         // These dimensions are necessary when the frame is not fullscreen
@@ -152,12 +152,12 @@ public class PathfinderToolsGUI extends AbstractView<JFrame> implements Pathfind
     }
 
     @Override
-    public PathfinderComparatorView getComparatorView() {
+    public ComparatorView getComparatorView() {
         return comparatorV;
     }
     
     @Override
-    public PathfinderBenchmarkView getBenchmarkView() {
+    public BenchmarkView getBenchmarkView() {
         return benchmarkV;
     }
 }

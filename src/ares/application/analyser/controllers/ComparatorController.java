@@ -1,26 +1,20 @@
 package ares.application.analyser.controllers;
 
-import ares.application.analyser.boundaries.interactors.PathfinderComparatorInteractor;
-import ares.application.analyser.boundaries.viewers.PathSearchLayerViewer;
-import ares.application.analyser.boundaries.viewers.PathfinderComparatorViewer;
-import ares.application.shared.commands.ActionGroup;
-import ares.application.shared.commands.CommandAction;
-import ares.application.shared.commands.CommandGroup;
+import ares.application.analyser.boundaries.interactors.ComparatorInteractor;
+import ares.application.analyser.boundaries.viewers.AlgorithmConfigurationViewer;
+import ares.application.analyser.boundaries.viewers.ComparatorViewer;
+import ares.application.analyser.boundaries.viewers.PathfindingLayerViewer;
 import ares.application.shared.boundaries.viewers.BoardViewer;
-import ares.application.analyser.boundaries.viewers.MutualPathfindersConfigurationViewer;
-import ares.application.analyser.boundaries.viewers.PathfinderConfigurationViewer;
-import ares.application.shared.boundaries.viewers.layerviewers.*;
-import ares.application.shared.commands.AresCommandGroup;
-import ares.application.shared.commands.ViewCommands;
+import ares.application.shared.boundaries.viewers.layerviewers.ArrowLayerViewer;
+import ares.application.shared.boundaries.viewers.layerviewers.GridLayerViewer;
+import ares.application.shared.boundaries.viewers.layerviewers.TerrainLayerViewer;
+import ares.application.shared.boundaries.viewers.layerviewers.UnitsLayerViewer;
+import ares.application.shared.commands.*;
 import ares.application.shared.controllers.ActionController;
 import ares.application.shared.gui.profiles.GraphicsModel;
 import ares.application.shared.gui.views.MessagesHandler;
 import ares.application.shared.models.ScenarioModel;
-import ares.platform.engine.algorithms.pathfinding.AStar;
-import ares.platform.engine.algorithms.pathfinding.BeamSearch;
-import ares.platform.engine.algorithms.pathfinding.BidirectionalSearch;
-import ares.platform.engine.algorithms.pathfinding.ExtendedPath;
-import ares.platform.engine.algorithms.pathfinding.Pathfinder;
+import ares.platform.engine.algorithms.pathfinding.*;
 import ares.platform.engine.algorithms.pathfinding.costfunctions.CostFunction;
 import ares.platform.engine.algorithms.pathfinding.costfunctions.EstimatedCostFunctions;
 import ares.platform.engine.algorithms.pathfinding.heuristics.DistanceCalculator;
@@ -43,28 +37,28 @@ import java.util.logging.Logger;
 /**
  * @author Mario Gómez Martínez <magomar@gmail.com>
  */
-public class PathfinderComparatorController implements ActionController {
+public class ComparatorController implements ActionController {
 
-    private static final Logger LOG = Logger.getLogger(PathfinderComparatorController.class.getName());
+    private static final Logger LOG = Logger.getLogger(ComparatorController.class.getName());
     private static final int LEFT = 0;
     private static final int RIGHT = 1;
-    private final PathfinderComparatorViewer comparatorView;
+    private final ComparatorViewer comparatorView;
     private final Action viewGrid = new CommandAction(ViewCommands.VIEW_GRID, new ViewGridActionListener());
     private final Action viewUnits = new CommandAction(ViewCommands.VIEW_UNITS, new ViewUnitsActionListener());
     private final Action zoomIn = new CommandAction(ViewCommands.VIEW_ZOOM_IN, new ZoomInActionListener());
     private final Action zoomOut = new CommandAction(ViewCommands.VIEW_ZOOM_OUT, new ZoomOutActionListener());
     private final ActionGroup actions;
-    private final PathfinderConfiguration[] configuration;
-    private final MutualPathfindersConfiguration mutualConfiguration;
+    private final AlgorithmConfiguration[] configuration;
+    private final CommonConfiguration commonConfiguration;
     private final JPanel statsPanel;
     private Tile selectedTile;
     private Scenario scenario;
     private Unit testUnit;
-    private PathSearchLayerViewer.ShowCostType showCostType;
+    private PathfindingLayerViewer.ShowCostType showCostType;
     private final BoardViewer[] boardView;
     private InteractionMode interactionMode = InteractionMode.FREE;
 
-    public PathfinderComparatorController(PathfinderComparatorInteractor interactor) {
+    public ComparatorController(ComparatorInteractor interactor) {
         comparatorView = interactor.getPathfinderComparatorView();
 
         // create action groups
@@ -80,12 +74,12 @@ public class PathfinderComparatorController implements ActionController {
         Heuristic[] heuristics = {MinimunDistance.create(DistanceCalculator.DELTA), EnhancedMinimunDistance.create(DistanceCalculator.DELTA)};
         CostFunction[] costFunctions = EstimatedCostFunctions.values();
 
-        configuration = new PathfinderConfiguration[2];
-        configuration[LEFT] = new PathfinderConfiguration(comparatorView.getLefConfigurationView(), pathfinders, heuristics, costFunctions).initialize(leftPathfinder);
-        configuration[RIGHT] = new PathfinderConfiguration(comparatorView.getRightConfigurationView(), pathfinders, heuristics, costFunctions).initialize(rightPathfinder);
+        configuration = new AlgorithmConfiguration[2];
+        configuration[LEFT] = new AlgorithmConfiguration(comparatorView.getLefConfigurationView(), pathfinders, heuristics, costFunctions).initialize(leftPathfinder);
+        configuration[RIGHT] = new AlgorithmConfiguration(comparatorView.getRightConfigurationView(), pathfinders, heuristics, costFunctions).initialize(rightPathfinder);
         
-        mutualConfiguration = new MutualPathfindersConfiguration(comparatorView.getMutualConfigurationView(), MovementType.values(), PathSearchLayerViewer.ShowCostType.values())
-                .initialize(MovementType.MOTORIZED, PathSearchLayerViewer.ShowCostType.SHOW_G_COST);
+        commonConfiguration = new CommonConfiguration(comparatorView, MovementType.values(), PathfindingLayerViewer.ShowCostType.values())
+                .initialize(MovementType.MOTORIZED, PathfindingLayerViewer.ShowCostType.SHOW_G_COST);
 
         statsPanel = comparatorView.getStatsPanel();
         ((JLabel)statsPanel.getComponent(LEFT)).setText("Nodes analysed: 0");
@@ -105,7 +99,7 @@ public class PathfinderComparatorController implements ActionController {
     public void setScenario(Scenario scenario) {
         this.scenario = scenario;
         testUnit = UnitFactory.createTestUnit(MovementType.MOTORIZED);
-        showCostType = PathSearchLayerViewer.ShowCostType.SHOW_G_COST;
+        showCostType = PathfindingLayerViewer.ShowCostType.SHOW_G_COST;
         ScenarioModel scenarioModel = scenario.getModel(UserRole.GOD);
         initializeBoardView(boardView[LEFT], scenarioModel, GraphicsModel.INSTANCE.getActiveProfile());
         initializeBoardView(boardView[RIGHT], scenarioModel, GraphicsModel.INSTANCE.getActiveProfile());
@@ -128,8 +122,8 @@ public class PathfinderComparatorController implements ActionController {
             if (!tile.equals(selectedTile)) {
                 selectedTile = tile;
                 interactionMode = InteractionMode.UNIT_ORDERS;
-                ((PathSearchLayerViewer) this.boardView[LEFT].getLayerView(PathSearchLayerViewer.NAME)).updatePathSearch(null, null,0);
-                ((PathSearchLayerViewer) this.boardView[RIGHT].getLayerView(PathSearchLayerViewer.NAME)).updatePathSearch(null, null,0);
+                ((PathfindingLayerViewer) this.boardView[LEFT].getLayerView(PathfindingLayerViewer.NAME)).updatePathSearch(null, null,0);
+                ((PathfindingLayerViewer) this.boardView[RIGHT].getLayerView(PathfindingLayerViewer.NAME)).updatePathSearch(null, null,0);
                 ((ArrowLayerViewer) this.boardView[LEFT].getLayerView(ArrowLayerViewer.NAME)).updateLastOrders(null);
                 ((ArrowLayerViewer) this.boardView[RIGHT].getLayerView(ArrowLayerViewer.NAME)).updateLastOrders(null);
                 ((ArrowLayerViewer) this.boardView[LEFT].getLayerView(ArrowLayerViewer.NAME)).updateCurrentOrders(null);
@@ -169,7 +163,7 @@ public class PathfinderComparatorController implements ActionController {
             }
             LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, "Path obtained {0}", path);
             ((ArrowLayerViewer) this.boardView[LEFT].getLayerView(ArrowLayerViewer.NAME)).updateLastOrders(path);
-            ((PathSearchLayerViewer) this.boardView[LEFT].getLayerView(PathSearchLayerViewer.NAME)).updatePathSearch(path.getOpenSetNodes(), path.getClosedSetNodes(), showCostType.getValue());
+            ((PathfindingLayerViewer) this.boardView[LEFT].getLayerView(PathfindingLayerViewer.NAME)).updatePathSearch(path.getOpenSetNodes(), path.getClosedSetNodes(), showCostType.getValue());
             ((ArrowLayerViewer) this.boardView[LEFT].getLayerView(ArrowLayerViewer.NAME)).updateCurrentOrders(null);
             ((JLabel)statsPanel.getComponent(LEFT)).setText("Nodes analysed: "+path.getClosedSetNodes().size()+
                         " Path nodes: "+path.size()+" Path cost: "+(int)path.getLast().getG());
@@ -180,7 +174,7 @@ public class PathfinderComparatorController implements ActionController {
             }
             LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, "Path obtained {0}", path);
             ((ArrowLayerViewer) this.boardView[RIGHT].getLayerView(ArrowLayerViewer.NAME)).updateLastOrders(path);
-            ((PathSearchLayerViewer) this.boardView[RIGHT].getLayerView(PathSearchLayerViewer.NAME)).updatePathSearch(path.getOpenSetNodes(), path.getClosedSetNodes(), showCostType.getValue());
+            ((PathfindingLayerViewer) this.boardView[RIGHT].getLayerView(PathfindingLayerViewer.NAME)).updatePathSearch(path.getOpenSetNodes(), path.getClosedSetNodes(), showCostType.getValue());
             ((ArrowLayerViewer) this.boardView[RIGHT].getLayerView(ArrowLayerViewer.NAME)).updateCurrentOrders(null);
             ((JLabel)statsPanel.getComponent(RIGHT)).setText("Nodes analysed: "+path.getClosedSetNodes().size()+
                         " Path nodes: "+path.size()+" Path cost: "+(int)path.getLast().getG());
@@ -190,9 +184,9 @@ public class PathfinderComparatorController implements ActionController {
     private class BoardMouseListener extends MouseAdapter {
 
         private final BoardViewer boardView;
-        private final PathfinderConfiguration configuration;
+        private final AlgorithmConfiguration configuration;
 
-        public BoardMouseListener(BoardViewer boardView, PathfinderConfiguration configuration) {
+        public BoardMouseListener(BoardViewer boardView, AlgorithmConfiguration configuration) {
             this.boardView = boardView;
             this.configuration = configuration;
         }
@@ -217,9 +211,9 @@ public class PathfinderComparatorController implements ActionController {
     private class BoardMouseMotionListener extends MouseMotionAdapter {
 
         private final BoardViewer boardView;
-        private final PathfinderConfiguration configuration;
+        private final AlgorithmConfiguration configuration;
 
-        public BoardMouseMotionListener(BoardViewer boardView, PathfinderConfiguration configuration) {
+        public BoardMouseMotionListener(BoardViewer boardView, AlgorithmConfiguration configuration) {
             this.boardView = boardView;
             this.configuration = configuration;
         }
@@ -235,16 +229,16 @@ public class PathfinderComparatorController implements ActionController {
                         return;
                     }
                     Tile tile = scenario.getBoard().getTile(tilePoint.x, tilePoint.y);
-                    ExtendedPath path = PathfinderComparatorController.this.configuration[LEFT].getPathfinder().getExtendedPath(selectedTile, tile, testUnit);
+                    ExtendedPath path = ComparatorController.this.configuration[LEFT].getPathfinder().getExtendedPath(selectedTile, tile, testUnit);
                     if (path == null) {
                         return;
                     }
-                    ((ArrowLayerViewer) PathfinderComparatorController.this.boardView[LEFT].getLayerView(ArrowLayerViewer.NAME)).updateCurrentOrders(path);
-                    path = PathfinderComparatorController.this.configuration[RIGHT].getPathfinder().getExtendedPath(selectedTile, tile, testUnit);
+                    ((ArrowLayerViewer) ComparatorController.this.boardView[LEFT].getLayerView(ArrowLayerViewer.NAME)).updateCurrentOrders(path);
+                    path = ComparatorController.this.configuration[RIGHT].getPathfinder().getExtendedPath(selectedTile, tile, testUnit);
                     if (path == null) {
                         return;
                     }
-                    ((ArrowLayerViewer) PathfinderComparatorController.this.boardView[RIGHT].getLayerView(ArrowLayerViewer.NAME)).updateCurrentOrders(path);
+                    ((ArrowLayerViewer) ComparatorController.this.boardView[RIGHT].getLayerView(ArrowLayerViewer.NAME)).updateCurrentOrders(path);
                 }
             }
         }
@@ -373,25 +367,25 @@ public class PathfinderComparatorController implements ActionController {
         public void actionPerformed(ActionEvent e) {
             LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, e.toString());
             JComboBox source = (JComboBox) e.getSource();
-            showCostType = (PathSearchLayerViewer.ShowCostType)source.getSelectedItem();
+            showCostType = (PathfindingLayerViewer.ShowCostType)source.getSelectedItem();
         }
     }
 
-    private class PathfinderConfiguration {
+    private class AlgorithmConfiguration {
 
         private final ComboBoxModel<Pathfinder> pathfinderComboModel;
         private final ComboBoxModel<Heuristic> heuristicComboModel;
         private final ComboBoxModel<CostFunction> costFunctionComboModel;
-        private final PathfinderConfigurationViewer configurationView;
+        private final AlgorithmConfigurationViewer configurationView;
 
-        PathfinderConfiguration(PathfinderConfigurationViewer configurationView, Pathfinder[] pathfinders, Heuristic[] heuristics, CostFunction[] costFunctions) {
+        AlgorithmConfiguration(AlgorithmConfigurationViewer configurationView, Pathfinder[] pathfinders, Heuristic[] heuristics, CostFunction[] costFunctions) {
             this.configurationView = configurationView;
             pathfinderComboModel = new DefaultComboBoxModel<>(pathfinders);
             heuristicComboModel = new DefaultComboBoxModel<>(heuristics);
             costFunctionComboModel = new DefaultComboBoxModel<>(costFunctions);
         }
 
-        PathfinderConfiguration initialize(Pathfinder defaultPathfinder) {
+        AlgorithmConfiguration initialize(Pathfinder defaultPathfinder) {
             setPathfinder(defaultPathfinder);
             setHeuristic(defaultPathfinder.getHeuristic());
             setCostFunction(defaultPathfinder.getCostFunction());
@@ -434,23 +428,23 @@ public class PathfinderComparatorController implements ActionController {
         }
     }
     
-    private class MutualPathfindersConfiguration {
+    private class CommonConfiguration {
 
         private final ComboBoxModel<MovementType> movementTypeComboModel;
-        private final ComboBoxModel<PathSearchLayerViewer.ShowCostType> showCostTypeComboBoxModel;
-        private final MutualPathfindersConfigurationViewer configurationView;
+        private final ComboBoxModel<PathfindingLayerViewer.ShowCostType> showCostTypeComboBoxModel;
+        private final ComparatorViewer comparatorView;
 
-        MutualPathfindersConfiguration(MutualPathfindersConfigurationViewer configurationView, MovementType[] movementTypes, PathSearchLayerViewer.ShowCostType[] showCostTypes) {
-            this.configurationView = configurationView;
+        CommonConfiguration(ComparatorViewer configurationView, MovementType[] movementTypes, PathfindingLayerViewer.ShowCostType[] showCostTypes) {
+            this.comparatorView = configurationView;
             movementTypeComboModel = new DefaultComboBoxModel<>(movementTypes);
             showCostTypeComboBoxModel = new DefaultComboBoxModel<>(showCostTypes);
         }
 
-        MutualPathfindersConfiguration initialize(MovementType defaultMovementType, PathSearchLayerViewer.ShowCostType defaultShowCostType) {
+        CommonConfiguration initialize(MovementType defaultMovementType, PathfindingLayerViewer.ShowCostType defaultShowCostType) {
             setMovementType(defaultMovementType);
-            configurationView.setMovementTypeComboModel(movementTypeComboModel, new ChangeMovementTypeActionListener());
+            comparatorView.setMovementTypeComboModel(movementTypeComboModel, new ChangeMovementTypeActionListener());
             setShownCostType(defaultShowCostType);
-            configurationView.setShowCostTypeComboModel(showCostTypeComboBoxModel, new ChangeShowCostTypeActionListener());
+            comparatorView.setShowCostTypeComboModel(showCostTypeComboBoxModel, new ChangeShowCostTypeActionListener());
             return this;
         }
 
@@ -465,11 +459,11 @@ public class PathfinderComparatorController implements ActionController {
             return movementTypeComboModel;
         }
         
-        void setShownCostType(PathSearchLayerViewer.ShowCostType showCostType) {
+        void setShownCostType(PathfindingLayerViewer.ShowCostType showCostType) {
             showCostTypeComboBoxModel.setSelectedItem(showCostType);
         }
 
-        ComboBoxModel<PathSearchLayerViewer.ShowCostType> getShowCostTypeComboModel() {
+        ComboBoxModel<PathfindingLayerViewer.ShowCostType> getShowCostTypeComboModel() {
             return showCostTypeComboBoxModel;
         }
     }
@@ -477,7 +471,6 @@ public class PathfinderComparatorController implements ActionController {
     public enum InteractionMode {
 
         FREE,
-        UNIT_ORDERS,
-        FORMATION_ORDERS
+        UNIT_ORDERS;
     }
 }

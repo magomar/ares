@@ -1,6 +1,6 @@
 package ares.application.analyser.boundaries.interactors;
 
-import ares.application.analyser.boundaries.viewers.PathfinderBenchmarkViewer;
+import ares.application.analyser.boundaries.viewers.BenchmarkViewer;
 import ares.application.shared.boundaries.interactors.Interactor;
 
 /**
@@ -8,5 +8,5 @@ import ares.application.shared.boundaries.interactors.Interactor;
  */
 public interface PathfinderBenchmarkInteractor extends Interactor {
     
-    PathfinderBenchmarkViewer getPathfinderBenchmarkView();
+    BenchmarkViewer getPathfinderBenchmarkView();
 }

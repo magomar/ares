@@ -1,14 +1,16 @@
 package ares.application.analyser.controllers;
 
+import ares.application.analyser.boundaries.interactors.ComparatorInteractor;
 import ares.application.analyser.boundaries.interactors.PathfinderBenchmarkInteractor;
-import ares.application.analyser.boundaries.interactors.PathfinderComparatorInteractor;
-import ares.application.analyser.boundaries.viewers.PathfinderBenchmarkViewer;
-import ares.application.analyser.boundaries.viewers.PathfinderComparatorViewer;
+import ares.application.analyser.boundaries.viewers.BenchmarkViewer;
+import ares.application.analyser.boundaries.viewers.ComparatorViewer;
 import ares.application.analyser.boundaries.viewers.PathfinderToolsViewer;
 import ares.application.shared.boundaries.interactors.ScenarioInteractor;
 import ares.application.shared.boundaries.viewers.MenuBarViewer;
 import ares.application.shared.boundaries.viewers.PanelMenuViewer;
 import ares.application.shared.boundaries.viewers.ToolBarViewer;
+import ares.application.shared.commands.*;
+import ares.application.shared.controllers.ActionController;
 import ares.application.shared.controllers.ScenarioController;
 import ares.application.shared.gui.profiles.GraphicsModel;
 import ares.platform.model.UserRole;
@@ -16,21 +18,26 @@ import ares.platform.scenario.Scenario;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * @author Mario Gómez Martínez <magomar@gmail.com>
  */
-public class PathfinderToolsController implements ScenarioInteractor, PathfinderComparatorInteractor, PathfinderBenchmarkInteractor {
+public class PathfinderToolsController implements ActionController, ScenarioInteractor, ComparatorInteractor, PathfinderBenchmarkInteractor {
 
     private final PathfinderToolsViewer mainView;
     private final MenuBarViewer menuView;
     private final PanelMenuViewer mainMenuView;
     private final ToolBarViewer toolBarView;
-    private final PathfinderComparatorViewer comparatorView;
-    private final PathfinderBenchmarkViewer benchmarkView;
+    private final ComparatorViewer comparatorView;
+    private final BenchmarkViewer benchmarkView;
     private final ScenarioController scenarioController;
-    private final PathfinderComparatorController comparatorController;
+    private final ComparatorController comparatorController;
     private final PathfinderBenchmarkController benchmarkController;
+    private final Action showComparator = new CommandAction(PathfinderToolsCommands.COMPARATOR_PERSPECTIVE, new ComparatorPerspectiveActionListener());
+    private final Action showBenchmark = new CommandAction(PathfinderToolsCommands.BENCHMARK_PERSPECTIVE, new BenchmarkPerspectiveActionListener());
+    private final ActionGroup actions;
 
     public PathfinderToolsController(PathfinderToolsViewer mainView) {
         this.mainView = mainView;
@@ -40,20 +47,23 @@ public class PathfinderToolsController implements ScenarioInteractor, Pathfinder
         comparatorView = mainView.getComparatorView();
         benchmarkView = mainView.getBenchmarkView();
 
+        Action[] viewActions = {showComparator, showBenchmark};
+        CommandGroup group = AresCommandGroup.PATHFINDER_TOOLS;
+        actions = new ActionGroup(group.getName(), group.getText(), group.getMnemonic(), viewActions);
+
         // instantiate controllers
         this.scenarioController = new ScenarioController(this, false);
-        this.comparatorController = new PathfinderComparatorController(this);
+        this.comparatorController = new ComparatorController(this);
         this.benchmarkController = new PathfinderBenchmarkController(this, mainView);
 
         // populate menus and tool bars
         mainMenuView.addActionButtons(scenarioController.getActionGroup().createMainMenuButtons());
         toolBarView.addActionButtons(scenarioController.getActionGroup().createToolBarButtons());
         toolBarView.addActionButtons(comparatorController.getActionGroup().createToolBarButtons());
-        toolBarView.addActionButtons(benchmarkController.getActionGroup().createToolBarButtons());
         JMenu[] menus = {
                 scenarioController.getActionGroup().createMenu(),
                 comparatorController.getActionGroup().createMenu(), //   analyserController.getActionGroup().createMenu()
-                benchmarkController.getActionGroup().createMenu()
+                getActionGroup().createMenu()
         };
         menuView.addActionButtons(menus);
 
@@ -85,12 +95,33 @@ public class PathfinderToolsController implements ScenarioInteractor, Pathfinder
     }
 
     @Override
-    public PathfinderComparatorViewer getPathfinderComparatorView() {
+    public ComparatorViewer getPathfinderComparatorView() {
         return comparatorView;
     }
     
     @Override
-    public PathfinderBenchmarkViewer getPathfinderBenchmarkView() {
+    public BenchmarkViewer getPathfinderBenchmarkView() {
         return benchmarkView;
+    }
+
+    @Override
+    public ActionGroup getActionGroup() {
+        return actions;
+    }
+
+    private class ComparatorPerspectiveActionListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            mainView.switchPerspective(PathfinderToolsViewer.COMPARATOR_PERSPECTIVE);
+        }
+    }
+
+    private class BenchmarkPerspectiveActionListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            mainView.switchPerspective(PathfinderToolsViewer.BENCHMARK_PERSPECTIVE);
+        }
     }
 }

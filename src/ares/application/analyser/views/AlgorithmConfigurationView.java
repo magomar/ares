@@ -1,6 +1,6 @@
 package ares.application.analyser.views;
 
-import ares.application.analyser.boundaries.viewers.PathfinderConfigurationViewer;
+import ares.application.analyser.boundaries.viewers.AlgorithmConfigurationViewer;
 import ares.application.shared.gui.views.AbstractView;
 import ares.platform.engine.algorithms.pathfinding.Pathfinder;
 import ares.platform.engine.algorithms.pathfinding.costfunctions.CostFunction;
@@ -13,7 +13,7 @@ import java.awt.event.ActionListener;
 /**
  * @author Mario Gómez Martínez <magomar@gmail.com>
  */
-public class PathfinderConfigurationView extends AbstractView<JPanel> implements PathfinderConfigurationViewer {
+public class AlgorithmConfigurationView extends AbstractView<JPanel> implements AlgorithmConfigurationViewer {
 
     private JComboBox<Pathfinder> pathfinderComboBox;
     private JComboBox<Heuristic> heuristicComboBox;

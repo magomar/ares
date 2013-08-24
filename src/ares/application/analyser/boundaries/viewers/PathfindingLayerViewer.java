@@ -8,7 +8,7 @@ import java.util.Collection;
 /**
  * @author Mario Gómez Martínez <magomar@gmail.com>
  */
-public interface PathSearchLayerViewer extends ImageLayerViewer {
+public interface PathfindingLayerViewer extends ImageLayerViewer {
 
     static final String NAME = "PATH_SEARCH_LAYER";
 

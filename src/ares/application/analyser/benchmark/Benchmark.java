@@ -9,7 +9,8 @@ import java.util.List;
  */
 public class Benchmark {
     private List<MovementType> movementTypes;
-    private List<AlgorithmConfiguration> configurations;
+    private List<AlgorithmConfiguration> algorithms;
+    private List<PathfinderProblem> problems;
     private PathfinderProblemGenerator pathfinderProblemGenerator;
 
     public void runBenchmark(){
