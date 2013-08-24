@@ -1,4 +1,4 @@
-package ares.test;
+package ares.platform.util;
 
 /**
  * @author Mario Gomez

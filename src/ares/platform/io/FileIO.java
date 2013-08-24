@@ -1,5 +1,7 @@
 package ares.platform.io;
 
+import ares.data.wrappers.equipment.EquipmentDB;
+import ares.platform.scenario.Scenario;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
@@ -28,6 +30,13 @@ import java.util.zip.ZipOutputStream;
 public class FileIO {
 
     private static final Logger LOG = Logger.getLogger(FileIO.class.getName());
+
+    public static Scenario loadScenario(File file) {
+        ares.data.wrappers.scenario.Scenario scen = FileIO.unmarshallJson(file, ares.data.wrappers.scenario.Scenario.class);
+        File equipmentFile = ResourcePath.EQUIPMENT.getFile("ToawEquipment" + AresFileType.EQUIPMENT.getFileExtension());
+        EquipmentDB eqp = FileIO.unmarshallJson(equipmentFile, EquipmentDB.class);
+        return new Scenario(scen, eqp);
+    }
 
     /**
      * Unmarshalls Json element of type {@code c} from the {@code file}.
