@@ -50,7 +50,8 @@ public class ComparatorController implements ActionController {
     private final AlgorithmConfigurationController[] algorithmConfigurationControllers;
     private final ComboBoxModel<Pathfinder> leftPathfinderComboBoxModel;
     private final ComboBoxModel<Pathfinder> rightPathfinderComboBoxModel;
-    private final CommonConfiguration commonConfiguration;
+    private final ComboBoxModel<MovementType> movementTypeComboModel;
+    private final ComboBoxModel<PathfindingLayerViewer.ShowCostType> showCostTypeComboBoxModel;
     private final JPanel statsPanel;
     private Tile selectedTile;
     private Scenario scenario;
@@ -76,8 +77,12 @@ public class ComparatorController implements ActionController {
         algorithmConfigurationControllers[LEFT] = new AlgorithmConfigurationController(comparatorView.getLefConfigurationView(), allPathfinders, allHeuristics, allCostFunctions, allPathfinders[0]);
         algorithmConfigurationControllers[RIGHT] = new AlgorithmConfigurationController(comparatorView.getRightConfigurationView(), allPathfinders, allHeuristics, allCostFunctions, allPathfinders[1]);
 
-        commonConfiguration = new CommonConfiguration(comparatorView, MovementType.values(), PathfindingLayerViewer.ShowCostType.values())
-                .initialize(MovementType.MOTORIZED, PathfindingLayerViewer.ShowCostType.SHOW_G_COST);
+        movementTypeComboModel = new DefaultComboBoxModel<>(MovementType.values());
+        showCostTypeComboBoxModel = new DefaultComboBoxModel<>(PathfindingLayerViewer.ShowCostType.values());
+        movementTypeComboModel.setSelectedItem(MovementType.MOTORIZED);
+        comparatorView.setMovementTypeComboModel(movementTypeComboModel, new ChangeMovementTypeActionListener());
+        showCostTypeComboBoxModel.setSelectedItem(PathfindingLayerViewer.ShowCostType.SHOW_G_COST);
+        comparatorView.setShowCostTypeComboModel(showCostTypeComboBoxModel, new ChangeShowCostTypeActionListener());
 
         statsPanel = comparatorView.getStatsPanel();
         ((JLabel) statsPanel.getComponent(LEFT)).setText("Nodes analysed: 0");
@@ -88,7 +93,6 @@ public class ComparatorController implements ActionController {
         boardView[RIGHT] = comparatorView.getRightBoardView();
 
         // Adds various component listeners
-
         leftPathfinderComboBoxModel = comparatorView.getLefConfigurationView().getPathfinderComboModel();
         rightPathfinderComboBoxModel = comparatorView.getRightConfigurationView().getPathfinderComboModel();
         boardView[LEFT].addMouseListener(new BoardMouseListener(boardView[LEFT], leftPathfinderComboBoxModel));
@@ -318,45 +322,6 @@ public class ComparatorController implements ActionController {
             LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, e.toString());
             JComboBox source = (JComboBox) e.getSource();
             showCostType = (PathfindingLayerViewer.ShowCostType) source.getSelectedItem();
-        }
-    }
-
-//
-
-    private class CommonConfiguration {
-
-        private final ComboBoxModel<MovementType> movementTypeComboModel;
-        private final ComboBoxModel<PathfindingLayerViewer.ShowCostType> showCostTypeComboBoxModel;
-        private final ComparatorViewer comparatorView;
-
-        CommonConfiguration(ComparatorViewer configurationView, MovementType[] movementTypes, PathfindingLayerViewer.ShowCostType[] showCostTypes) {
-            this.comparatorView = configurationView;
-            movementTypeComboModel = new DefaultComboBoxModel<>(movementTypes);
-            showCostTypeComboBoxModel = new DefaultComboBoxModel<>(showCostTypes);
-        }
-
-        CommonConfiguration initialize(MovementType defaultMovementType, PathfindingLayerViewer.ShowCostType defaultShowCostType) {
-            setMovementType(defaultMovementType);
-            comparatorView.setMovementTypeComboModel(movementTypeComboModel, new ChangeMovementTypeActionListener());
-            setShownCostType(defaultShowCostType);
-            comparatorView.setShowCostTypeComboModel(showCostTypeComboBoxModel, new ChangeShowCostTypeActionListener());
-            return this;
-        }
-
-        void setMovementType(MovementType movementType) {
-            movementTypeComboModel.setSelectedItem(movementType);
-        }
-
-        ComboBoxModel<MovementType> getMovementTypeComboModel() {
-            return movementTypeComboModel;
-        }
-
-        void setShownCostType(PathfindingLayerViewer.ShowCostType showCostType) {
-            showCostTypeComboBoxModel.setSelectedItem(showCostType);
-        }
-
-        ComboBoxModel<PathfindingLayerViewer.ShowCostType> getShowCostTypeComboModel() {
-            return showCostTypeComboBoxModel;
         }
     }
 

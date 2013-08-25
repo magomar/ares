@@ -34,7 +34,7 @@ public class PathfinderToolsController implements ActionController, ScenarioInte
     private final BenchmarkViewer benchmarkView;
     private final ScenarioController scenarioController;
     private final ComparatorController comparatorController;
-    private final PathfinderBenchmarkController benchmarkController;
+    private final BenchmarkController benchmarkController;
     private final Action showComparator = new CommandAction(PathfinderToolsCommands.COMPARATOR_PERSPECTIVE, new ComparatorPerspectiveActionListener());
     private final Action showBenchmark = new CommandAction(PathfinderToolsCommands.BENCHMARK_PERSPECTIVE, new BenchmarkPerspectiveActionListener());
     private final ActionGroup actions;
@@ -54,7 +54,7 @@ public class PathfinderToolsController implements ActionController, ScenarioInte
         // instantiate controllers
         this.scenarioController = new ScenarioController(this, false);
         this.comparatorController = new ComparatorController(this);
-        this.benchmarkController = new PathfinderBenchmarkController(this, mainView);
+        this.benchmarkController = new BenchmarkController(this, mainView);
 
         // populate menus and tool bars
         mainMenuView.addActionButtons(scenarioController.getActionGroup().createMainMenuButtons());

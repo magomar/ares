@@ -9,13 +9,13 @@ import java.util.logging.Logger;
 /**
  * @author Mario Gómez Martínez <magomar@gmail.com>
  */
-public class PathfinderBenchmarkController {
+public class BenchmarkController {
 
-    private static final Logger LOG = Logger.getLogger(PathfinderBenchmarkController.class.getName());
+    private static final Logger LOG = Logger.getLogger(BenchmarkController.class.getName());
     private final BenchmarkViewer benchmarkView;
 
     
-    public PathfinderBenchmarkController(PathfinderBenchmarkInteractor interactor, PathfinderToolsViewer mainView) {
+    public BenchmarkController(PathfinderBenchmarkInteractor interactor, PathfinderToolsViewer mainView) {
         benchmarkView = interactor.getPathfinderBenchmarkView();
     }
 
