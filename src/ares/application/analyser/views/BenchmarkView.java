@@ -17,7 +17,6 @@ public class BenchmarkView extends AbstractView<JPanel> implements BenchmarkView
     private JPanel configurationPanel;
     private JPanel problemGeneratorPanel;
     private JPanel resultsPanel;
-    private BenchmarkAlgorithmConfigurationView algorithmConfigurationView;
     private ProblemGeneratorView benchmarkConfigurationView;
     private JSplitPane splitVert;
     private JList<MovementType> movementTypeList;
@@ -25,16 +24,14 @@ public class BenchmarkView extends AbstractView<JPanel> implements BenchmarkView
     
     @Override
     protected JPanel layout() {
-        algorithmConfigurationView = new BenchmarkAlgorithmConfigurationView();
-        benchmarkConfigurationView = new ProblemGeneratorView();
-
         JPanel container = new JPanel();
         container.setLayout(new BorderLayout());
         configurationPanel = new JPanel();
-        configurationPanel.add(algorithmConfigurationView.getContentPane());
-        configurationPanel.add(benchmarkConfigurationView.getContentPane())  ;
-        container.add(configurationPanel);
-        
+        problemGeneratorPanel = new JPanel();
+        resultsPanel = new JPanel();
+        container.add(configurationPanel, BorderLayout.NORTH);
+        container.add(problemGeneratorPanel, BorderLayout.CENTER);
+        container.add(resultsPanel, BorderLayout.SOUTH);
         return container;
     }
 

@@ -29,7 +29,6 @@ public class AlgorithmConfigurationView extends AbstractView<JPanel> implements 
         panel.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         c.fill = GridBagConstraints.HORIZONTAL;
-//        c.anchor = GridBagConstraints.LINE_START;
         c.gridx = 0;
         c.gridy = 0;
         panel.add(new JLabel("Select Pathfinder:"), c);
@@ -67,5 +66,20 @@ public class AlgorithmConfigurationView extends AbstractView<JPanel> implements 
     public void setCostFunctionComboModel(ComboBoxModel<CostFunction> comboModel, ActionListener listener) {
         costFunctionComboBox.setModel(comboModel);
         costFunctionComboBox.addActionListener(listener);
+    }
+
+    @Override
+    public ComboBoxModel<Pathfinder> getPathfinderComboModel() {
+        return pathfinderComboBox.getModel();
+    }
+
+    @Override
+    public ComboBoxModel<Heuristic> getHeuristicComboModel() {
+        return heuristicComboBox.getModel();
+    }
+
+    @Override
+    public ComboBoxModel<CostFunction> getCostFunctionComboModel() {
+        return costFunctionComboBox.getModel();
     }
 }

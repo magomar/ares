@@ -1,7 +1,6 @@
 package ares.application.analyser.controllers;
 
 import ares.application.analyser.boundaries.interactors.ComparatorInteractor;
-import ares.application.analyser.boundaries.viewers.AlgorithmConfigurationViewer;
 import ares.application.analyser.boundaries.viewers.ComparatorViewer;
 import ares.application.analyser.boundaries.viewers.PathfindingLayerViewer;
 import ares.application.shared.boundaries.viewers.BoardViewer;
@@ -48,7 +47,9 @@ public class ComparatorController implements ActionController {
     private final Action zoomIn = new CommandAction(ViewCommands.VIEW_ZOOM_IN, new ZoomInActionListener());
     private final Action zoomOut = new CommandAction(ViewCommands.VIEW_ZOOM_OUT, new ZoomOutActionListener());
     private final ActionGroup actions;
-    private final AlgorithmConfiguration[] configuration;
+    private final AlgorithmConfigurationController[] algorithmConfigurationControllers;
+    private final ComboBoxModel<Pathfinder> leftPathfinderComboBoxModel;
+    private final ComboBoxModel<Pathfinder> rightPathfinderComboBoxModel;
     private final CommonConfiguration commonConfiguration;
     private final JPanel statsPanel;
     private Tile selectedTile;
@@ -66,35 +67,36 @@ public class ComparatorController implements ActionController {
         CommandGroup group = AresCommandGroup.VIEW;
         actions = new ActionGroup(group.getName(), group.getText(), group.getMnemonic(), viewActions);
 
-
         // create combo box models, pass them to the view and add action listeners
-        Pathfinder leftPathfinder = new AStar();
-        Pathfinder rightPathfinder = new BeamSearch();
-        Pathfinder[] pathfinders = {leftPathfinder, rightPathfinder, new BidirectionalSearch()};
-        Heuristic[] heuristics = {MinimunDistance.create(DistanceCalculator.DELTA), EnhancedMinimunDistance.create(DistanceCalculator.DELTA)};
-        CostFunction[] costFunctions = EstimatedCostFunctions.values();
+        Pathfinder[] allPathfinders = {new AStar(), new BeamSearch(), new BidirectionalSearch()};
+        Heuristic[] allHeuristics = {MinimunDistance.create(DistanceCalculator.DELTA), EnhancedMinimunDistance.create(DistanceCalculator.DELTA)};
+        CostFunction[] allCostFunctions = EstimatedCostFunctions.values();
 
-        configuration = new AlgorithmConfiguration[2];
-        configuration[LEFT] = new AlgorithmConfiguration(comparatorView.getLefConfigurationView(), pathfinders, heuristics, costFunctions).initialize(leftPathfinder);
-        configuration[RIGHT] = new AlgorithmConfiguration(comparatorView.getRightConfigurationView(), pathfinders, heuristics, costFunctions).initialize(rightPathfinder);
-        
+        algorithmConfigurationControllers = new AlgorithmConfigurationController[2];
+        algorithmConfigurationControllers[LEFT] = new AlgorithmConfigurationController(comparatorView.getLefConfigurationView(), allPathfinders, allHeuristics, allCostFunctions, allPathfinders[0]);
+        algorithmConfigurationControllers[RIGHT] = new AlgorithmConfigurationController(comparatorView.getRightConfigurationView(), allPathfinders, allHeuristics, allCostFunctions, allPathfinders[1]);
+
         commonConfiguration = new CommonConfiguration(comparatorView, MovementType.values(), PathfindingLayerViewer.ShowCostType.values())
                 .initialize(MovementType.MOTORIZED, PathfindingLayerViewer.ShowCostType.SHOW_G_COST);
 
         statsPanel = comparatorView.getStatsPanel();
-        ((JLabel)statsPanel.getComponent(LEFT)).setText("Nodes analysed: 0");
-        ((JLabel)statsPanel.getComponent(RIGHT)).setText("Nodes analysed: 0");
-        
+        ((JLabel) statsPanel.getComponent(LEFT)).setText("Nodes analysed: 0");
+        ((JLabel) statsPanel.getComponent(RIGHT)).setText("Nodes analysed: 0");
+
         boardView = new BoardViewer[2];
         boardView[LEFT] = comparatorView.getLeftBoardView();
         boardView[RIGHT] = comparatorView.getRightBoardView();
 
         // Adds various component listeners
-        boardView[LEFT].addMouseListener(new BoardMouseListener(boardView[LEFT], configuration[LEFT]));
-        boardView[RIGHT].addMouseListener(new BoardMouseListener(boardView[RIGHT], configuration[RIGHT]));
-        boardView[LEFT].addMouseMotionListener(new BoardMouseMotionListener(boardView[LEFT], configuration[LEFT]));
-        boardView[RIGHT].addMouseMotionListener(new BoardMouseMotionListener(boardView[RIGHT], configuration[RIGHT]));
+
+        leftPathfinderComboBoxModel = comparatorView.getLefConfigurationView().getPathfinderComboModel();
+        rightPathfinderComboBoxModel = comparatorView.getRightConfigurationView().getPathfinderComboModel();
+        boardView[LEFT].addMouseListener(new BoardMouseListener(boardView[LEFT], leftPathfinderComboBoxModel));
+        boardView[RIGHT].addMouseListener(new BoardMouseListener(boardView[RIGHT], rightPathfinderComboBoxModel));
+        boardView[LEFT].addMouseMotionListener(new BoardMouseMotionListener(boardView[LEFT],boardView[RIGHT], leftPathfinderComboBoxModel,rightPathfinderComboBoxModel));
+        boardView[RIGHT].addMouseMotionListener(new BoardMouseMotionListener(boardView[RIGHT], boardView[LEFT], rightPathfinderComboBoxModel,leftPathfinderComboBoxModel));
     }
+
 
     public void setScenario(Scenario scenario) {
         this.scenario = scenario;
@@ -122,14 +124,14 @@ public class ComparatorController implements ActionController {
             if (!tile.equals(selectedTile)) {
                 selectedTile = tile;
                 interactionMode = InteractionMode.UNIT_ORDERS;
-                ((PathfindingLayerViewer) this.boardView[LEFT].getLayerView(PathfindingLayerViewer.NAME)).updatePathSearch(null, null,0);
-                ((PathfindingLayerViewer) this.boardView[RIGHT].getLayerView(PathfindingLayerViewer.NAME)).updatePathSearch(null, null,0);
+                ((PathfindingLayerViewer) this.boardView[LEFT].getLayerView(PathfindingLayerViewer.NAME)).updatePathSearch(null, null, 0);
+                ((PathfindingLayerViewer) this.boardView[RIGHT].getLayerView(PathfindingLayerViewer.NAME)).updatePathSearch(null, null, 0);
                 ((ArrowLayerViewer) this.boardView[LEFT].getLayerView(ArrowLayerViewer.NAME)).updateLastOrders(null);
                 ((ArrowLayerViewer) this.boardView[RIGHT].getLayerView(ArrowLayerViewer.NAME)).updateLastOrders(null);
                 ((ArrowLayerViewer) this.boardView[LEFT].getLayerView(ArrowLayerViewer.NAME)).updateCurrentOrders(null);
                 ((ArrowLayerViewer) this.boardView[RIGHT].getLayerView(ArrowLayerViewer.NAME)).updateCurrentOrders(null);
-                ((JLabel)statsPanel.getComponent(LEFT)).setText("Nodes analysed: 0");
-                ((JLabel)statsPanel.getComponent(RIGHT)).setText("Nodes analysed: 0");
+                ((JLabel) statsPanel.getComponent(LEFT)).setText("Nodes analysed: 0");
+                ((JLabel) statsPanel.getComponent(RIGHT)).setText("Nodes analysed: 0");
                 LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, "New tile selected");
             }
             // TODO mark the selected tile in the board view, one option is to use SelectionLayerView
@@ -148,7 +150,7 @@ public class ComparatorController implements ActionController {
 
     private void command(BoardViewer boardView, Pathfinder pathfinder, int x, int y) {
         int profile = GraphicsModel.INSTANCE.getActiveProfile();
-        
+
         if (interactionMode == InteractionMode.UNIT_ORDERS && GraphicsModel.INSTANCE.isWithinImageRange(x, y, profile)) {
             Point tilePoint = GraphicsModel.INSTANCE.pixelToTileAccurate(x, y, profile);
             if (!GraphicsModel.INSTANCE.validCoordinates(tilePoint.x, tilePoint.y)) {
@@ -156,7 +158,7 @@ public class ComparatorController implements ActionController {
             }
             LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, "Destination selected, computing path...");
             Tile destination = scenario.getBoard().getTile(tilePoint.x, tilePoint.y);
-            ExtendedPath path = configuration[LEFT].getPathfinder().getExtendedPath(selectedTile, destination, testUnit);
+            ExtendedPath path = ((Pathfinder)leftPathfinderComboBoxModel.getSelectedItem()).getExtendedPath(selectedTile, destination, testUnit);
             if (path == null) {
                 LOG.log(Level.WARNING, "No path found using {0}", pathfinder);
                 return;
@@ -165,9 +167,9 @@ public class ComparatorController implements ActionController {
             ((ArrowLayerViewer) this.boardView[LEFT].getLayerView(ArrowLayerViewer.NAME)).updateLastOrders(path);
             ((PathfindingLayerViewer) this.boardView[LEFT].getLayerView(PathfindingLayerViewer.NAME)).updatePathSearch(path.getOpenSetNodes(), path.getClosedSetNodes(), showCostType.getValue());
             ((ArrowLayerViewer) this.boardView[LEFT].getLayerView(ArrowLayerViewer.NAME)).updateCurrentOrders(null);
-            ((JLabel)statsPanel.getComponent(LEFT)).setText("Nodes analysed: "+path.getClosedSetNodes().size()+
-                        " Path nodes: "+path.size()+" Path cost: "+(int)path.getLast().getG());
-            path = configuration[RIGHT].getPathfinder().getExtendedPath(selectedTile, destination, testUnit);
+            ((JLabel) statsPanel.getComponent(LEFT)).setText("Nodes analysed: " + path.getClosedSetNodes().size() +
+                    " Path nodes: " + path.size() + " Path cost: " + (int) path.getLast().getG());
+            path =  ((Pathfinder)rightPathfinderComboBoxModel.getSelectedItem()).getExtendedPath(selectedTile, destination, testUnit);
             if (path == null) {
                 LOG.log(Level.WARNING, "No path found using {0}", pathfinder);
                 return;
@@ -176,19 +178,19 @@ public class ComparatorController implements ActionController {
             ((ArrowLayerViewer) this.boardView[RIGHT].getLayerView(ArrowLayerViewer.NAME)).updateLastOrders(path);
             ((PathfindingLayerViewer) this.boardView[RIGHT].getLayerView(PathfindingLayerViewer.NAME)).updatePathSearch(path.getOpenSetNodes(), path.getClosedSetNodes(), showCostType.getValue());
             ((ArrowLayerViewer) this.boardView[RIGHT].getLayerView(ArrowLayerViewer.NAME)).updateCurrentOrders(null);
-            ((JLabel)statsPanel.getComponent(RIGHT)).setText("Nodes analysed: "+path.getClosedSetNodes().size()+
-                        " Path nodes: "+path.size()+" Path cost: "+(int)path.getLast().getG());
+            ((JLabel) statsPanel.getComponent(RIGHT)).setText("Nodes analysed: " + path.getClosedSetNodes().size() +
+                    " Path nodes: " + path.size() + " Path cost: " + (int) path.getLast().getG());
         }
     }
 
     private class BoardMouseListener extends MouseAdapter {
 
         private final BoardViewer boardView;
-        private final AlgorithmConfiguration configuration;
+        private final ComboBoxModel<Pathfinder> pathfinderComboBoxModel;
 
-        public BoardMouseListener(BoardViewer boardView, AlgorithmConfiguration configuration) {
+        public BoardMouseListener(BoardViewer boardView, ComboBoxModel<Pathfinder> configuration) {
             this.boardView = boardView;
-            this.configuration = configuration;
+            this.pathfinderComboBoxModel = configuration;
         }
 
         @Override
@@ -202,7 +204,7 @@ public class ComparatorController implements ActionController {
                     deselect(boardView);
                     break;
                 case MouseEvent.BUTTON3:
-                    command(boardView, configuration.getPathfinder(), me.getX(), me.getY());
+                    command(boardView, (Pathfinder) pathfinderComboBoxModel.getSelectedItem(), me.getX(), me.getY());
                     break;
             }
         }
@@ -210,12 +212,16 @@ public class ComparatorController implements ActionController {
 
     private class BoardMouseMotionListener extends MouseMotionAdapter {
 
-        private final BoardViewer boardView;
-        private final AlgorithmConfiguration configuration;
+        private final BoardViewer myBoardView;
+        private final BoardViewer theOtherBoardView;
+        private final ComboBoxModel<Pathfinder> myPathfinderComboBoxModel;
+        private final ComboBoxModel<Pathfinder> theOtherPathfinderComboBoxModel;
 
-        public BoardMouseMotionListener(BoardViewer boardView, AlgorithmConfiguration configuration) {
-            this.boardView = boardView;
-            this.configuration = configuration;
+        public BoardMouseMotionListener(BoardViewer myBoardView, BoardViewer theOtherBoardView, ComboBoxModel<Pathfinder> myPathfinderComboBoxModel, ComboBoxModel<Pathfinder> theOtherPathfinderComboBoxModel) {
+            this.myBoardView = myBoardView;
+            this.theOtherBoardView = theOtherBoardView;
+            this.myPathfinderComboBoxModel = myPathfinderComboBoxModel;
+            this.theOtherPathfinderComboBoxModel = theOtherPathfinderComboBoxModel;
         }
 
         @Override
@@ -229,16 +235,16 @@ public class ComparatorController implements ActionController {
                         return;
                     }
                     Tile tile = scenario.getBoard().getTile(tilePoint.x, tilePoint.y);
-                    ExtendedPath path = ComparatorController.this.configuration[LEFT].getPathfinder().getExtendedPath(selectedTile, tile, testUnit);
+                    ExtendedPath path = ((Pathfinder) myPathfinderComboBoxModel.getSelectedItem()).getExtendedPath(selectedTile, tile, testUnit);
                     if (path == null) {
                         return;
                     }
-                    ((ArrowLayerViewer) ComparatorController.this.boardView[LEFT].getLayerView(ArrowLayerViewer.NAME)).updateCurrentOrders(path);
-                    path = ComparatorController.this.configuration[RIGHT].getPathfinder().getExtendedPath(selectedTile, tile, testUnit);
+                    ((ArrowLayerViewer) myBoardView.getLayerView(ArrowLayerViewer.NAME)).updateCurrentOrders(path);
+                    path = ((Pathfinder) theOtherPathfinderComboBoxModel.getSelectedItem()).getExtendedPath(selectedTile, tile, testUnit);
                     if (path == null) {
                         return;
                     }
-                    ((ArrowLayerViewer) ComparatorController.this.boardView[RIGHT].getLayerView(ArrowLayerViewer.NAME)).updateCurrentOrders(path);
+                    ((ArrowLayerViewer) theOtherBoardView.getLayerView(ArrowLayerViewer.NAME)).updateCurrentOrders(path);
                 }
             }
         }
@@ -289,62 +295,6 @@ public class ComparatorController implements ActionController {
         }
     }
 
-    private class ChangePathfinderActionListener implements ActionListener {
-
-        private final ComboBoxModel<Heuristic> heuristicComboModel;
-        private final ComboBoxModel<CostFunction> costFunctionComboModel;
-
-        public ChangePathfinderActionListener(ComboBoxModel<Heuristic> heuristicComboModel, ComboBoxModel<CostFunction> costFunctionComboModel) {
-            this.heuristicComboModel = heuristicComboModel;
-            this.costFunctionComboModel = costFunctionComboModel;
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, e.toString());
-            JComboBox source = (JComboBox) e.getSource();
-            Pathfinder pathfinder = (Pathfinder) source.getSelectedItem();
-            pathfinder.setHeuristic((Heuristic) heuristicComboModel.getSelectedItem());
-            pathfinder.setCostFunction((CostFunction) costFunctionComboModel.getSelectedItem());
-        }
-    }
-
-    private class ChangeHeuristicActionListener implements ActionListener {
-
-        private final ComboBoxModel<Pathfinder> pathfinderComboModel;
-
-        public ChangeHeuristicActionListener(ComboBoxModel<Pathfinder> pathfinderComboModel) {
-            this.pathfinderComboModel = pathfinderComboModel;
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, e.toString());
-            JComboBox source = (JComboBox) e.getSource();
-            Heuristic heuristic = (Heuristic) source.getSelectedItem();
-            Pathfinder pathfinder = (Pathfinder) pathfinderComboModel.getSelectedItem();
-            pathfinder.setHeuristic(heuristic);
-        }
-    }
-
-    private class ChangeCostFunctionActionListener implements ActionListener {
-
-        private final ComboBoxModel<Pathfinder> pathfinderComboModel;
-
-        public ChangeCostFunctionActionListener(ComboBoxModel<Pathfinder> pathfinderComboModel) {
-            this.pathfinderComboModel = pathfinderComboModel;
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, e.toString());
-            JComboBox source = (JComboBox) e.getSource();
-            CostFunction costFunction = (CostFunction) source.getSelectedItem();
-            Pathfinder pathfinder = (Pathfinder) pathfinderComboModel.getSelectedItem();
-            pathfinder.setCostFunction(costFunction);
-        }
-    }
-    
     private class ChangeMovementTypeActionListener implements ActionListener {
 
         public ChangeMovementTypeActionListener() {
@@ -357,7 +307,7 @@ public class ComparatorController implements ActionController {
             testUnit = UnitFactory.createTestUnit((MovementType) source.getSelectedItem());
         }
     }
-    
+
     private class ChangeShowCostTypeActionListener implements ActionListener {
 
         public ChangeShowCostTypeActionListener() {
@@ -367,67 +317,12 @@ public class ComparatorController implements ActionController {
         public void actionPerformed(ActionEvent e) {
             LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, e.toString());
             JComboBox source = (JComboBox) e.getSource();
-            showCostType = (PathfindingLayerViewer.ShowCostType)source.getSelectedItem();
+            showCostType = (PathfindingLayerViewer.ShowCostType) source.getSelectedItem();
         }
     }
 
-    private class AlgorithmConfiguration {
+//
 
-        private final ComboBoxModel<Pathfinder> pathfinderComboModel;
-        private final ComboBoxModel<Heuristic> heuristicComboModel;
-        private final ComboBoxModel<CostFunction> costFunctionComboModel;
-        private final AlgorithmConfigurationViewer configurationView;
-
-        AlgorithmConfiguration(AlgorithmConfigurationViewer configurationView, Pathfinder[] pathfinders, Heuristic[] heuristics, CostFunction[] costFunctions) {
-            this.configurationView = configurationView;
-            pathfinderComboModel = new DefaultComboBoxModel<>(pathfinders);
-            heuristicComboModel = new DefaultComboBoxModel<>(heuristics);
-            costFunctionComboModel = new DefaultComboBoxModel<>(costFunctions);
-        }
-
-        AlgorithmConfiguration initialize(Pathfinder defaultPathfinder) {
-            setPathfinder(defaultPathfinder);
-            setHeuristic(defaultPathfinder.getHeuristic());
-            setCostFunction(defaultPathfinder.getCostFunction());
-            configurationView.setPathfinderComboModel(pathfinderComboModel,
-                    new ChangePathfinderActionListener(heuristicComboModel, costFunctionComboModel));
-            configurationView.setHeuristicComboModel(heuristicComboModel, new ChangeHeuristicActionListener(pathfinderComboModel));
-            configurationView.setCostFunctionComboModel(costFunctionComboModel, new ChangeCostFunctionActionListener(pathfinderComboModel));
-            return this;
-        }
-
-        void updateConfigurationView() {
-        }
-
-        void setPathfinder(Pathfinder pathfinder) {
-            pathfinderComboModel.setSelectedItem(pathfinder);
-        }
-
-        void setHeuristic(Heuristic heuristic) {
-            heuristicComboModel.setSelectedItem(heuristic);
-        }
-
-        void setCostFunction(CostFunction costFunction) {
-            costFunctionComboModel.setSelectedItem(costFunction);
-        }
-
-        Pathfinder getPathfinder() {
-            return (Pathfinder) pathfinderComboModel.getSelectedItem();
-        }
-
-        ComboBoxModel<Pathfinder> getPathfinderComboModel() {
-            return pathfinderComboModel;
-        }
-
-        ComboBoxModel<Heuristic> getHeuristicComboModel() {
-            return heuristicComboModel;
-        }
-
-        ComboBoxModel<CostFunction> getCostFunctionComboModel() {
-            return costFunctionComboModel;
-        }
-    }
-    
     private class CommonConfiguration {
 
         private final ComboBoxModel<MovementType> movementTypeComboModel;
@@ -448,9 +343,6 @@ public class ComparatorController implements ActionController {
             return this;
         }
 
-        void updateConfigurationView() {
-        }
-
         void setMovementType(MovementType movementType) {
             movementTypeComboModel.setSelectedItem(movementType);
         }
@@ -458,7 +350,7 @@ public class ComparatorController implements ActionController {
         ComboBoxModel<MovementType> getMovementTypeComboModel() {
             return movementTypeComboModel;
         }
-        
+
         void setShownCostType(PathfindingLayerViewer.ShowCostType showCostType) {
             showCostTypeComboBoxModel.setSelectedItem(showCostType);
         }

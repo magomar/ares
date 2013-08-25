@@ -18,4 +18,10 @@ public interface AlgorithmConfigurationViewer extends View<JPanel> {
     void setHeuristicComboModel(ComboBoxModel<Heuristic> comboModel, ActionListener listener);
 
     void setCostFunctionComboModel(ComboBoxModel<CostFunction> comboModel, ActionListener listener);
+
+    ComboBoxModel<Pathfinder> getPathfinderComboModel();
+
+    ComboBoxModel<Heuristic> getHeuristicComboModel();
+
+    ComboBoxModel<CostFunction> getCostFunctionComboModel();
 }

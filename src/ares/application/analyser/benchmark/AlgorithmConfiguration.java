@@ -23,4 +23,16 @@ public class AlgorithmConfiguration {
     public CostFunction getCostFunction() {
         return costFunction;
     }
+
+    public void setPathfinder(Pathfinder pathfinder) {
+        this.pathfinder = pathfinder;
+    }
+
+    public void setHeuristic(Heuristic heuristic) {
+        this.heuristic = heuristic;
+    }
+
+    public void setCostFunction(CostFunction costFunction) {
+        this.costFunction = costFunction;
+    }
 }
