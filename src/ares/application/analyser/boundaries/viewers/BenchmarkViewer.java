@@ -12,4 +12,8 @@ import java.util.List;
  */
 public interface BenchmarkViewer extends View<JPanel> {
     void setMovementTypes(List<MovementType> movementTypes);
+
+    AlgorithmSelectionViewer getAlgorithmSelectionView();
+
+    ProblemGeneratorViewer getProblemGeneratorView();
 }

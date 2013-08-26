@@ -1,10 +1,10 @@
 package ares.application.analyser.boundaries.interactors;
 
-import ares.platform.engine.algorithms.pathfinding.Pathfinder;
+import ares.application.analyser.boundaries.viewers.AlgorithmConfigurationViewer;
 
 /**
  * Author: Mario Gómez Martínez <magomar@gmail.com>
  */
 public interface AlgorithmConfigurationInteractor {
-    void setPathfinder(Pathfinder pathfinder);
+    AlgorithmConfigurationViewer getAlgorithmConfigurationView();
 }

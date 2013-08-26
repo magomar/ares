@@ -63,4 +63,9 @@ public abstract class AbstractView<C extends Component> implements View<C> {
     public void setPreferredSize(Dimension size) {
         contentPane.setPreferredSize(size);
     }
+
+    @Override
+    public final Dimension getPreferredSize() {
+        return contentPane.getPreferredSize();
+    }
 }

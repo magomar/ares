@@ -3,7 +3,7 @@ package ares.platform.util;
 /**
  * @author Mario Gomez
  */
-public class Stopwatch {
+public class SingleThreadStopwatch {
     private long start;
     private long stop;
 
@@ -11,12 +11,12 @@ public class Stopwatch {
      *
      */
     public void start() {
-        start = System.nanoTime(); // start timing
+        start = Timing.getCpuTime(); // start timing
         stop = start;
     }
 
     public void stop() {
-        stop = System.nanoTime();
+        stop = Timing.getCpuTime();
     }
 
 
