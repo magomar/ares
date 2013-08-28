@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Author: Mario Gómez Martínez <magomar@gmail.com>
  */
-public class PathfinderProblemGenerator {
+public class PathfindingProblemGenerator {
     private List<File> scenarioFiles;
     /**
      * Number of locations to use per scenario
@@ -19,7 +19,7 @@ public class PathfinderProblemGenerator {
     private int minimumProblemSize;
     private ProblemGeneratorMode problemGeneratorMode;
 
-    public PathfinderProblemGenerator(List<File> scenarioFiles, int locationsPerScenario, int minimumProblemSize, ProblemGeneratorMode problemGeneratorMode) {
+    public PathfindingProblemGenerator(List<File> scenarioFiles, int locationsPerScenario, int minimumProblemSize, ProblemGeneratorMode problemGeneratorMode) {
         this.scenarioFiles = scenarioFiles;
         this.locationsPerScenario = locationsPerScenario;
         this.minimumProblemSize = minimumProblemSize;

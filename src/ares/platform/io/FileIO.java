@@ -18,6 +18,8 @@ import javax.xml.transform.sax.SAXSource;
 import java.awt.image.BufferedImage;
 import java.awt.image.RenderedImage;
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.zip.GZIPOutputStream;
@@ -31,11 +33,31 @@ public class FileIO {
 
     private static final Logger LOG = Logger.getLogger(FileIO.class.getName());
 
+    public static Scenario loadScenario(File file, EquipmentDB equipmentDB) {
+        ares.data.wrappers.scenario.Scenario scenario = FileIO.unmarshallJson(file, ares.data.wrappers.scenario.Scenario.class);
+        return new Scenario(scenario, equipmentDB);
+    }
+
     public static Scenario loadScenario(File file) {
-        ares.data.wrappers.scenario.Scenario scen = FileIO.unmarshallJson(file, ares.data.wrappers.scenario.Scenario.class);
         File equipmentFile = ResourcePath.EQUIPMENT.getFile("ToawEquipment" + AresFileType.EQUIPMENT.getFileExtension());
         EquipmentDB eqp = FileIO.unmarshallJson(equipmentFile, EquipmentDB.class);
-        return new Scenario(scen, eqp);
+        ares.data.wrappers.scenario.Scenario scenario = FileIO.unmarshallJson(file, ares.data.wrappers.scenario.Scenario.class);
+        return new Scenario(scenario, eqp);
+    }
+
+    public static List<File> listFiles(File directory, FilenameFilter filter, boolean recurse) {
+        List<File> files = new ArrayList<>();
+        File[] entries = directory.listFiles();
+        for (File entry : entries) {
+            if (filter == null || filter.accept(directory, entry.getName())) {
+                files.add(entry);
+            }
+            if (recurse && entry.isDirectory()) {
+                files.addAll(listFiles(entry, filter, recurse));
+            }
+        }
+
+        return files;
     }
 
     /**
@@ -168,7 +190,7 @@ public class FileIO {
      * @param object     object to be marshalled
      * @param file       file to save the marshalled object
      * @param marshaller a marshaller
-     * @return       the XML file
+     * @return the XML file
      */
     public static File marshallXML(Object object, File file, Marshaller marshaller) {
         try {
@@ -188,10 +210,10 @@ public class FileIO {
     /**
      * Marshalls Java object in a zipped XMl file
      *
-     * @param object object to be marshalled
-     * @param file   non zip file to save the marshalled object
+     * @param object     object to be marshalled
+     * @param file       non zip file to save the marshalled object
      * @param marshaller a marshaller
-     * @return         the ZIP file
+     * @return the ZIP file
      */
     public static File marshallZipped(Object object, File file, Marshaller marshaller) {
         File zipFile = new File(file.getAbsolutePath() + ".zip");
@@ -220,10 +242,10 @@ public class FileIO {
     /**
      * Marshalls Java object in a gzipped XMl file
      *
-     * @param object object to be marshalled
-     * @param file   file to save the marshalled object
+     * @param object     object to be marshalled
+     * @param file       file to save the marshalled object
      * @param marshaller a marshaller
-     * @return         the Gzip file
+     * @return the Gzip file
      */
     public static File marshallGzipped(Object object, File file, Marshaller marshaller) {
         File gzFile = new File(file.getAbsolutePath() + ".gz");

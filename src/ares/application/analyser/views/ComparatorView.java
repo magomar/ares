@@ -102,21 +102,33 @@ public class ComparatorView extends AbstractView<JPanel> implements ComparatorVi
     public AlgorithmConfigurationViewer getRightConfigurationView() {
         return rightConfigurationView;
     }
-    
+
+    @Override
+    public ComboBoxModel<PathfindingLayerViewer.ShowCostType> getCostTypeComboModel() {
+        return showCostTypeComboBox.getModel();
+    }
+
+    @Override
+    public ComboBoxModel<MovementType> getMovementTypeComboModel() {
+        return movementTypeComboBox.getModel();
+    }
     @Override
     public JPanel getStatsPanel() {
         return statsPanel;
     }
 
     @Override
-    public void setMovementTypeComboModel(ComboBoxModel<MovementType> comboModel, ActionListener listener) {
+    public void setMovementTypeComboModel(ComboBoxModel<MovementType> comboModel) {
         movementTypeComboBox.setModel(comboModel);
-        movementTypeComboBox.addActionListener(listener);
     }
 
     @Override
-    public void setShowCostTypeComboModel(ComboBoxModel<PathfindingLayerViewer.ShowCostType> comboModel, ActionListener listener) {
+    public void setShowCostTypeComboModel(ComboBoxModel<PathfindingLayerViewer.ShowCostType> comboModel) {
         showCostTypeComboBox.setModel(comboModel);
-        showCostTypeComboBox.addActionListener(listener);
+    }
+
+    @Override
+    public void addMovementTypeActionListener(ActionListener actionListener) {
+        movementTypeComboBox.addActionListener(actionListener);
     }
 }

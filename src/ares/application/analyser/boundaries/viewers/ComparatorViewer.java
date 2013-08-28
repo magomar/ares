@@ -21,9 +21,15 @@ public interface ComparatorViewer extends View<JPanel> {
 
     AlgorithmConfigurationViewer getRightConfigurationView();
 
+    ComboBoxModel<PathfindingLayerViewer.ShowCostType>  getCostTypeComboModel();
+
     JPanel getStatsPanel();
 
-    void setMovementTypeComboModel(ComboBoxModel<MovementType> comboModel, ActionListener listener);
+    void setMovementTypeComboModel(ComboBoxModel<MovementType> comboModel);
 
-    void setShowCostTypeComboModel(ComboBoxModel<PathfindingLayerViewer.ShowCostType> comboModel, ActionListener listener);
+    void setShowCostTypeComboModel(ComboBoxModel<PathfindingLayerViewer.ShowCostType> comboModel);
+
+    ComboBoxModel<MovementType> getMovementTypeComboModel();
+
+    void addMovementTypeActionListener(ActionListener actionListener);
 }

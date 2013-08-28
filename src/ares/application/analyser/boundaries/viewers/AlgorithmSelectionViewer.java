@@ -18,9 +18,9 @@ public interface AlgorithmSelectionViewer extends View<JPanel> {
 
     void setSelectedAlgorithmsListModel(ListModel<Pathfinder> listModel);
 
+    void setAlgorithmListSelectionMode(ListSelectionModel listSelectionModel);
+
     void addAddAlgorithmActionListener(ActionListener actionListener);
 
     void addRemoveAlgorithmActionListener(ActionListener actionListener);
-
-    void setAlgorithmListSelectionMode(ListSelectionModel listSelectionModel);
 }

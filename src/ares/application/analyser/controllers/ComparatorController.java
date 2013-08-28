@@ -13,7 +13,6 @@ import ares.application.shared.boundaries.viewers.layerviewers.UnitsLayerViewer;
 import ares.application.shared.commands.*;
 import ares.application.shared.controllers.ActionController;
 import ares.application.shared.gui.profiles.GraphicsModel;
-import ares.application.shared.gui.views.MessagesHandler;
 import ares.application.shared.models.ScenarioModel;
 import ares.platform.engine.algorithms.pathfinding.*;
 import ares.platform.engine.algorithms.pathfinding.costfunctions.CostFunction;
@@ -50,13 +49,9 @@ public class ComparatorController implements ActionController {
     private final Action zoomOut = new CommandAction(ViewCommands.VIEW_ZOOM_OUT, new ZoomOutActionListener());
     private final ActionGroup actions;
     private final AlgorithmConfigurationController[] algorithmConfigurationControllers;
-    private final ComboBoxModel<MovementType> movementTypeComboModel;
-    private final ComboBoxModel<PathfindingLayerViewer.ShowCostType> showCostTypeComboBoxModel;
-    private final JPanel statsPanel;
     private Tile selectedTile;
-    private Scenario scenario;
     private Unit testUnit;
-    private PathfindingLayerViewer.ShowCostType showCostType;
+    private Scenario scenario;
     private final BoardViewer[] boardViews;
     private final AlgorithmConfigurationViewer[] algorithmConfigurationViews;
     private InteractionMode interactionMode = InteractionMode.FREE;
@@ -97,14 +92,16 @@ public class ComparatorController implements ActionController {
                 }
                 , rightPathfinders, allHeuristics, allCostFunctions, rightPathfinders[1]);
 
-        movementTypeComboModel = new DefaultComboBoxModel<>(MovementType.values());
-        showCostTypeComboBoxModel = new DefaultComboBoxModel<>(PathfindingLayerViewer.ShowCostType.values());
+        ComboBoxModel<MovementType> movementTypeComboModel = new DefaultComboBoxModel<>(MovementType.values());
+        comparatorView.setMovementTypeComboModel(movementTypeComboModel);
+        comparatorView.addMovementTypeActionListener(new ChangeMovementTypeActionListener());
         movementTypeComboModel.setSelectedItem(MovementType.MOTORIZED);
-        comparatorView.setMovementTypeComboModel(movementTypeComboModel, new ChangeMovementTypeActionListener());
-        showCostTypeComboBoxModel.setSelectedItem(PathfindingLayerViewer.ShowCostType.SHOW_G_COST);
-        comparatorView.setShowCostTypeComboModel(showCostTypeComboBoxModel, new ChangeShowCostTypeActionListener());
 
-        statsPanel = comparatorView.getStatsPanel();
+        ComboBoxModel<PathfindingLayerViewer.ShowCostType> showCostTypeComboBoxModel = new DefaultComboBoxModel<>(PathfindingLayerViewer.ShowCostType.values());
+        comparatorView.setShowCostTypeComboModel(showCostTypeComboBoxModel);
+        showCostTypeComboBoxModel.setSelectedItem(PathfindingLayerViewer.ShowCostType.SHOW_G_COST);
+
+        JPanel statsPanel = comparatorView.getStatsPanel();
         ((JLabel) statsPanel.getComponent(LEFT)).setText("Nodes analysed: 0");
         ((JLabel) statsPanel.getComponent(RIGHT)).setText("Nodes analysed: 0");
 
@@ -118,8 +115,6 @@ public class ComparatorController implements ActionController {
 
     public void setScenario(Scenario scenario) {
         this.scenario = scenario;
-        testUnit = UnitFactory.createTestUnit(MovementType.MOTORIZED);
-        showCostType = PathfindingLayerViewer.ShowCostType.SHOW_G_COST;
         ScenarioModel scenarioModel = scenario.getModel(UserRole.GOD);
         initializeBoardView(boardViews[LEFT], scenarioModel, GraphicsModel.INSTANCE.getActiveProfile());
         initializeBoardView(boardViews[RIGHT], scenarioModel, GraphicsModel.INSTANCE.getActiveProfile());
@@ -142,14 +137,16 @@ public class ComparatorController implements ActionController {
             if (!tile.equals(selectedTile)) {
                 selectedTile = tile;
                 interactionMode = InteractionMode.UNIT_ORDERS;
-                ((PathfindingLayerViewer) this.boardViews[LEFT].getLayerView(PathfindingLayerViewer.NAME)).updatePathSearch(null, null, 0);
-                ((PathfindingLayerViewer) this.boardViews[RIGHT].getLayerView(PathfindingLayerViewer.NAME)).updatePathSearch(null, null, 0);
-                ((ArrowLayerViewer) this.boardViews[LEFT].getLayerView(ArrowLayerViewer.NAME)).updateLastOrders(null);
-                ((ArrowLayerViewer) this.boardViews[RIGHT].getLayerView(ArrowLayerViewer.NAME)).updateLastOrders(null);
-                ((ArrowLayerViewer) this.boardViews[LEFT].getLayerView(ArrowLayerViewer.NAME)).updateCurrentOrders(null);
-                ((ArrowLayerViewer) this.boardViews[RIGHT].getLayerView(ArrowLayerViewer.NAME)).updateCurrentOrders(null);
-                ((JLabel) statsPanel.getComponent(LEFT)).setText("Nodes analysed: 0");
-                ((JLabel) statsPanel.getComponent(RIGHT)).setText("Nodes analysed: 0");
+                BoardViewer leftBoardView = this.boardViews[LEFT];
+                BoardViewer rightBoardView = this.boardViews[RIGHT];
+                ((PathfindingLayerViewer) leftBoardView.getLayerView(PathfindingLayerViewer.NAME)).updatePathSearch(null, null, 0);
+                ((PathfindingLayerViewer) rightBoardView.getLayerView(PathfindingLayerViewer.NAME)).updatePathSearch(null, null, 0);
+                ((ArrowLayerViewer) leftBoardView.getLayerView(ArrowLayerViewer.NAME)).updateLastOrders(null);
+                ((ArrowLayerViewer) rightBoardView.getLayerView(ArrowLayerViewer.NAME)).updateLastOrders(null);
+                ((ArrowLayerViewer) leftBoardView.getLayerView(ArrowLayerViewer.NAME)).updateCurrentOrders(null);
+                ((ArrowLayerViewer) rightBoardView.getLayerView(ArrowLayerViewer.NAME)).updateCurrentOrders(null);
+                ((JLabel) comparatorView.getStatsPanel().getComponent(LEFT)).setText("Nodes analysed: 0");
+                ((JLabel) comparatorView.getStatsPanel().getComponent(RIGHT)).setText("Nodes analysed: 0");
                 LOG.log(Level.INFO, "New tile selected");
             }
         }
@@ -157,7 +154,6 @@ public class ComparatorController implements ActionController {
 
     private void deselect() {
         if (selectedTile != null) {
-            LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, "Deselecting");
             selectedTile = null;
             interactionMode = InteractionMode.FREE;
             ((ArrowLayerViewer) boardViews[LEFT].getLayerView(ArrowLayerViewer.NAME)).updateCurrentOrders(null);
@@ -173,9 +169,8 @@ public class ComparatorController implements ActionController {
             if (!GraphicsModel.INSTANCE.validCoordinates(coordinates.x, coordinates.y)) {
                 return;
             }
-            LOG.log(Level.INFO, "Destination selected, computing path...");
             Tile destination = scenario.getBoard().getTile(coordinates.x, coordinates.y);
-
+            PathfindingLayerViewer.ShowCostType showCostType = (PathfindingLayerViewer.ShowCostType) comparatorView.getCostTypeComboModel().getSelectedItem();
             Pathfinder thisPathfinder = (Pathfinder) algorithmConfigurationViews[side].getPathfinderComboModel().getSelectedItem();
             ExtendedPath thisPath = thisPathfinder.getExtendedPath(selectedTile, destination, testUnit);
             if (thisPath == null) {
@@ -187,7 +182,7 @@ public class ComparatorController implements ActionController {
             ((ArrowLayerViewer) thisBoardView.getLayerView(ArrowLayerViewer.NAME)).updateLastOrders(thisPath);
             ((PathfindingLayerViewer) thisBoardView.getLayerView(PathfindingLayerViewer.NAME)).updatePathSearch(thisPath.getOpenSetNodes(), thisPath.getClosedSetNodes(), showCostType.getValue());
             ((ArrowLayerViewer) thisBoardView.getLayerView(ArrowLayerViewer.NAME)).updateCurrentOrders(null);
-            ((JLabel) statsPanel.getComponent(LEFT)).setText("Nodes analysed: " + thisPath.getClosedSetNodes().size() +
+            ((JLabel) comparatorView.getStatsPanel().getComponent(LEFT)).setText("Nodes visited: " + thisPath.getNumNodesVisited() +
                     " Path nodes: " + thisPath.size() + " Path cost: " + (int) thisPath.getLast().getG());
 
             int theOtherSide = 1 - side;
@@ -202,7 +197,7 @@ public class ComparatorController implements ActionController {
             ((ArrowLayerViewer) theOtherBoardView.getLayerView(ArrowLayerViewer.NAME)).updateLastOrders(theOtherPath);
             ((PathfindingLayerViewer) theOtherBoardView.getLayerView(PathfindingLayerViewer.NAME)).updatePathSearch(theOtherPath.getOpenSetNodes(), theOtherPath.getClosedSetNodes(), showCostType.getValue());
             ((ArrowLayerViewer) theOtherBoardView.getLayerView(ArrowLayerViewer.NAME)).updateCurrentOrders(null);
-            ((JLabel) statsPanel.getComponent(RIGHT)).setText("Nodes analysed: " + theOtherPath.getClosedSetNodes().size() +
+            ((JLabel) comparatorView.getStatsPanel().getComponent(RIGHT)).setText("Nodes visited: " + theOtherPath.getNumNodesVisited() +
                     " Path nodes: " + theOtherPath.size() + " Path cost: " + (int) theOtherPath.getLast().getG());
         }
     }
@@ -218,7 +213,6 @@ public class ComparatorController implements ActionController {
 
         @Override
         public void mouseClicked(MouseEvent me) {
-            LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, "Mouse clicked {0} from {1}", new Object[]{me.getButton(), me.getSource()});
             switch (me.getButton()) {
                 case MouseEvent.BUTTON1:
                     select(me.getX(), me.getY());
@@ -321,27 +315,10 @@ public class ComparatorController implements ActionController {
 
     private class ChangeMovementTypeActionListener implements ActionListener {
 
-        public ChangeMovementTypeActionListener() {
-        }
-
         @Override
         public void actionPerformed(ActionEvent e) {
-            LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, e.toString());
             JComboBox source = (JComboBox) e.getSource();
             testUnit = UnitFactory.createTestUnit((MovementType) source.getSelectedItem());
-        }
-    }
-
-    private class ChangeShowCostTypeActionListener implements ActionListener {
-
-        public ChangeShowCostTypeActionListener() {
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, e.toString());
-            JComboBox source = (JComboBox) e.getSource();
-            showCostType = (PathfindingLayerViewer.ShowCostType) source.getSelectedItem();
         }
     }
 

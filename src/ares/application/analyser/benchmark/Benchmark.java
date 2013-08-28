@@ -11,8 +11,8 @@ import java.util.List;
 public class Benchmark {
     private List<MovementType> movementTypes;
     private List<Pathfinder> algorithms;
-    private List<PathfinderProblem> problems;
-    private PathfinderProblemGenerator pathfinderProblemGenerator;
+    private List<PathfindingProblem> problems;
+    private PathfindingProblemGenerator pathfinderProblemGenerator;
 
     public void runBenchmark(){
 

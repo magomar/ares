@@ -3,7 +3,7 @@ package ares.application.analyser.benchmark;
 /**
  * Author: Mario Gómez Martínez <magomar@gmail.com>
  */
-public class PathfinderSolution {
+public class PathfindingSolution {
     /**
      * Number of nodes in the solution path
      */
@@ -11,11 +11,11 @@ public class PathfinderSolution {
     /**
      * Cost of the solution (G-cost or F-cost value of the last node in the solution path)
      */
-    private int solutionCost;
+    private double solutionCost;
     /**
      * Deviation of the solution cost from the optimal solution cost (@link #solutionCost} - optimal cost)
      */
-    private int solutionError;
+    private double solutionError;
     /**
      * Computing time employed to obtain this solution
      */
@@ -25,20 +25,28 @@ public class PathfinderSolution {
      */
     private int nodesVisited;
     /**
-     * Penetration is defined as the reason between the lenght of the solution and the number of nodes visited
+     * Penetration is defined as the reason between the length of the solution and the number of nodes visited
      * That is: {@link #solutionLenght} / {@link #nodesVisited}
      */
     private double penetration;
+
+    public PathfindingSolution(int solutionLength, double solutionCost, int nodesVisited, long computingTime) {
+        this.solutionLenght = solutionLength;
+        this.solutionCost = solutionCost;
+        this.nodesVisited = nodesVisited;
+        this.computingTime = computingTime;
+        penetration = (double) solutionLength / nodesVisited;
+    }
 
     public int getSolutionLenght() {
         return solutionLenght;
     }
 
-    public int getSolutionCost() {
+    public double getSolutionCost() {
         return solutionCost;
     }
 
-    public int getSolutionError() {
+    public double getSolutionError() {
         return solutionError;
     }
 
@@ -52,5 +60,17 @@ public class PathfinderSolution {
 
     public double getPenetration() {
         return penetration;
+    }
+
+    @Override
+    public String toString() {
+        return "PathfindingSolution{" +
+                "solutionLenght=" + solutionLenght +
+                ", solutionCost=" + solutionCost +
+                ", solutionError=" + solutionError +
+                ", computingTime=" + computingTime +
+                ", nodesVisited=" + nodesVisited +
+                ", penetration=" + penetration +
+                '}';
     }
 }

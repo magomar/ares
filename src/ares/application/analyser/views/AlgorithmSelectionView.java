@@ -14,7 +14,6 @@ import java.awt.event.ActionListener;
  */
 public class AlgorithmSelectionView extends AbstractView<JPanel> implements AlgorithmSelectionViewer {
     private AlgorithmConfigurationView algorithmConfigurationView;
-    private ProblemGeneratorView problemGeneratorView;
     private JList<Pathfinder> selectedAlgorithms;
     private JButton addButton;
     private JButton removeButton;
@@ -22,9 +21,7 @@ public class AlgorithmSelectionView extends AbstractView<JPanel> implements Algo
     @Override
     protected JPanel layout() {
         algorithmConfigurationView = new AlgorithmConfigurationView();
-        problemGeneratorView = new ProblemGeneratorView();
         selectedAlgorithms = new JList<>();
-        selectedAlgorithms.setPreferredSize(algorithmConfigurationView.getPreferredSize());
         addButton = ComponentFactory.button("Add");
         removeButton = ComponentFactory.button("Remove");
 

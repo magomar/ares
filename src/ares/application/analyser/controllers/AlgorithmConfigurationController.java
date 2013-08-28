@@ -9,14 +9,11 @@ import ares.platform.engine.algorithms.pathfinding.heuristics.Heuristic;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Author: Mario Gómez Martínez <magomar@gmail.com>
  */
 public class AlgorithmConfigurationController {
-    private static final Logger LOG = Logger.getLogger(AlgorithmConfigurationController.class.getName());
     private final AlgorithmConfigurationInteractor interactor;
 
 
@@ -38,7 +35,6 @@ public class AlgorithmConfigurationController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            LOG.log(Level.INFO, e.toString());
             JComboBox source = (JComboBox) e.getSource();
             Pathfinder pathfinder = (Pathfinder) source.getSelectedItem();
             pathfinder.setHeuristic((Heuristic)  interactor.getAlgorithmConfigurationView().getHeuristicComboModel().getSelectedItem());
@@ -50,7 +46,6 @@ public class AlgorithmConfigurationController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            LOG.log(Level.INFO, e.toString());
             JComboBox source = (JComboBox) e.getSource();
             Heuristic heuristic = (Heuristic) source.getSelectedItem();
             Pathfinder pathfinder = (Pathfinder) interactor.getAlgorithmConfigurationView().getPathfinderComboModel().getSelectedItem();
@@ -62,7 +57,6 @@ public class AlgorithmConfigurationController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            LOG.log(Level.INFO, e.toString());
             JComboBox source = (JComboBox) e.getSource();
             CostFunction costFunction = (CostFunction) source.getSelectedItem();
             Pathfinder pathfinder = (Pathfinder) interactor.getAlgorithmConfigurationView().getPathfinderComboModel().getSelectedItem();

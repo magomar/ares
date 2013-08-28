@@ -65,21 +65,5 @@ public class GraphicProperties {
         String[] values = GRAPHICS.getProperty(property.getName()).split(",");
         return Double.parseDouble(values[profile]);
     }
-//    private static boolean isInteger(String s) {
-//        try {
-//            Integer.parseInt(s);
-//        } catch (NumberFormatException e) {
-//            return false;
-//        }
-//        return true;
-//    }
-//
-//    private static boolean isDouble(String s) {
-//        try {
-//            Double.parseDouble(s);
-//        } catch (NumberFormatException e) {
-//            return false;
-//        }
-//        return true;
-//    }
+
 }

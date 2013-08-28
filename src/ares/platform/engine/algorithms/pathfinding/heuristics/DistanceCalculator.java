@@ -13,26 +13,26 @@ public enum DistanceCalculator {
 
     DELTA {
         @Override
-        public int getCost(Tile origin, Tile destination) {
-            return deltaDistance(origin.getCoordinates(), destination.getCoordinates());
+        public int getCost(Point origin, Point destination) {
+            return deltaDistance(origin, destination);
         }
     },
     DELTABITWISE {
         @Override
-        public int getCost(Tile origin, Tile destination) {
-            return deltaBitwiseDistance(origin.getCoordinates(), destination.getCoordinates());
+        public int getCost(Point origin, Point destination) {
+            return deltaBitwiseDistance(origin, destination);
         }
     },
     EUCLIDEAN {
         @Override
-        public int getCost(Tile origin, Tile destination) {
-            return euclideanDistance(origin.getCoordinates(), destination.getCoordinates());
+        public int getCost(Point origin, Point destination) {
+            return euclideanDistance(origin, destination);
         }
     },
     HEINIAN {
         @Override
-        public int getCost(Tile origin, Tile destination) {
-            return heinianDistance(origin.getCoordinates(), destination.getCoordinates());
+        public int getCost(Point origin, Point destination) {
+            return heinianDistance(origin, destination);
         }
     };
 
@@ -152,5 +152,9 @@ public enum DistanceCalculator {
         }
     }
 
-    abstract int getCost(Tile origin, Tile destination);
+    public final int getCost(Tile origin, Tile destination) {
+        return getCost(origin.getCoordinates(), destination.getCoordinates());
+    }
+
+    public abstract int getCost(Point origin, Point destination);
 }

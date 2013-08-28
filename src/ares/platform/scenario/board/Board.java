@@ -163,6 +163,10 @@ public final class Board implements ModelProvider<BoardModel> {
         return map[x][y];
     }
 
+    public Tile getTile(Point coordinates) {
+        return getTile(coordinates.x, coordinates.y);
+    }
+
     /**
      * Gets all the places in the map
      * @return
