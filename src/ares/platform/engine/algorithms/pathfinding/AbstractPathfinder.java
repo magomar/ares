@@ -41,6 +41,8 @@ public abstract class AbstractPathfinder implements Pathfinder {
 
     @Override
     public String toString() {
-        return getClass().getSimpleName();
+        StringBuilder sb = new StringBuilder(getClass().getSimpleName());
+//        sb.append('(').append(heuristic.toString()).append(',').append(costFunction.toString()).append(')');
+        return sb.toString();
     }
 }

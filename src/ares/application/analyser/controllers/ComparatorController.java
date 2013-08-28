@@ -74,7 +74,8 @@ public class ComparatorController implements ActionController {
         CommandGroup group = AresCommandGroup.VIEW;
         actions = new ActionGroup(group.getName(), group.getText(), group.getMnemonic(), viewActions);
 
-        Pathfinder[] allPathfinders = {new AStar(), new BeamSearch(), new BidirectionalSearch()};
+        Pathfinder[] leftPathfinders = {new AStar(), new BeamSearch(), new BidirectionalSearch()};
+        Pathfinder[] rightPathfinders = {new AStar(), new BeamSearch(), new BidirectionalSearch()};
         Heuristic[] allHeuristics = {MinimunDistance.create(DistanceCalculator.DELTA), EnhancedMinimunDistance.create(DistanceCalculator.DELTA)};
         CostFunction[] allCostFunctions = EstimatedCostFunctions.values();
 
@@ -86,7 +87,7 @@ public class ComparatorController implements ActionController {
                         return comparatorView.getLefConfigurationView();
                     }
                 }
-                , allPathfinders, allHeuristics, allCostFunctions, allPathfinders[0]);
+                , leftPathfinders, allHeuristics, allCostFunctions, leftPathfinders[0]);
         algorithmConfigurationControllers[RIGHT] = new AlgorithmConfigurationController(
                 new AlgorithmConfigurationInteractor() {
                     @Override
@@ -94,7 +95,7 @@ public class ComparatorController implements ActionController {
                         return comparatorView.getRightConfigurationView();
                     }
                 }
-                , allPathfinders, allHeuristics, allCostFunctions, allPathfinders[1]);
+                , rightPathfinders, allHeuristics, allCostFunctions, rightPathfinders[1]);
 
         movementTypeComboModel = new DefaultComboBoxModel<>(MovementType.values());
         showCostTypeComboBoxModel = new DefaultComboBoxModel<>(PathfindingLayerViewer.ShowCostType.values());
@@ -149,7 +150,7 @@ public class ComparatorController implements ActionController {
                 ((ArrowLayerViewer) this.boardViews[RIGHT].getLayerView(ArrowLayerViewer.NAME)).updateCurrentOrders(null);
                 ((JLabel) statsPanel.getComponent(LEFT)).setText("Nodes analysed: 0");
                 ((JLabel) statsPanel.getComponent(RIGHT)).setText("Nodes analysed: 0");
-                LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, "New tile selected");
+                LOG.log(Level.INFO, "New tile selected");
             }
         }
     }
@@ -168,12 +169,12 @@ public class ComparatorController implements ActionController {
         int profile = GraphicsModel.INSTANCE.getActiveProfile();
 
         if (interactionMode == InteractionMode.UNIT_ORDERS && GraphicsModel.INSTANCE.isWithinImageRange(x, y, profile)) {
-            Point tilePoint = GraphicsModel.INSTANCE.pixelToTileAccurate(x, y, profile);
-            if (!GraphicsModel.INSTANCE.validCoordinates(tilePoint.x, tilePoint.y)) {
+            Point coordinates = GraphicsModel.INSTANCE.pixelToTileAccurate(x, y, profile);
+            if (!GraphicsModel.INSTANCE.validCoordinates(coordinates.x, coordinates.y)) {
                 return;
             }
-            LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, "Destination selected, computing path...");
-            Tile destination = scenario.getBoard().getTile(tilePoint.x, tilePoint.y);
+            LOG.log(Level.INFO, "Destination selected, computing path...");
+            Tile destination = scenario.getBoard().getTile(coordinates.x, coordinates.y);
 
             Pathfinder thisPathfinder = (Pathfinder) algorithmConfigurationViews[side].getPathfinderComboModel().getSelectedItem();
             ExtendedPath thisPath = thisPathfinder.getExtendedPath(selectedTile, destination, testUnit);
@@ -201,8 +202,8 @@ public class ComparatorController implements ActionController {
             ((ArrowLayerViewer) theOtherBoardView.getLayerView(ArrowLayerViewer.NAME)).updateLastOrders(theOtherPath);
             ((PathfindingLayerViewer) theOtherBoardView.getLayerView(PathfindingLayerViewer.NAME)).updatePathSearch(theOtherPath.getOpenSetNodes(), theOtherPath.getClosedSetNodes(), showCostType.getValue());
             ((ArrowLayerViewer) theOtherBoardView.getLayerView(ArrowLayerViewer.NAME)).updateCurrentOrders(null);
-            ((JLabel) statsPanel.getComponent(RIGHT)).setText("Nodes analysed: " + thisPath.getClosedSetNodes().size() +
-                    " Path nodes: " + thisPath.size() + " Path cost: " + (int) thisPath.getLast().getG());
+            ((JLabel) statsPanel.getComponent(RIGHT)).setText("Nodes analysed: " + theOtherPath.getClosedSetNodes().size() +
+                    " Path nodes: " + theOtherPath.size() + " Path cost: " + (int) theOtherPath.getLast().getG());
         }
     }
 
