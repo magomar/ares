@@ -22,4 +22,6 @@ public interface Pathfinder {
     Heuristic getHeuristic();
 
     CostFunction getCostFunction();
+
+    String toStringVerbose();
 }

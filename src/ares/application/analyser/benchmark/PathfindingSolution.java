@@ -7,13 +7,13 @@ public class PathfindingSolution {
     /**
      * Number of nodes in the solution path
      */
-    private int solutionLenght;
+    private int pathLength;
     /**
      * Cost of the solution (G-cost or F-cost value of the last node in the solution path)
      */
-    private double solutionCost;
+    private double pathCost;
     /**
-     * Deviation of the solution cost from the optimal solution cost (@link #solutionCost} - optimal cost)
+     * Deviation of the solution cost from the optimal solution cost (@link #pathCost} - optimal cost)
      */
     private double solutionError;
     /**
@@ -26,24 +26,24 @@ public class PathfindingSolution {
     private int nodesVisited;
     /**
      * Penetration is defined as the reason between the length of the solution and the number of nodes visited
-     * That is: {@link #solutionLenght} / {@link #nodesVisited}
+     * That is: {@link #pathLength} / {@link #nodesVisited}
      */
     private double penetration;
 
-    public PathfindingSolution(int solutionLength, double solutionCost, int nodesVisited, long computingTime) {
-        this.solutionLenght = solutionLength;
-        this.solutionCost = solutionCost;
+    public PathfindingSolution(int pathLength, double pathCost, int nodesVisited, long computingTime) {
+        this.pathLength = pathLength;
+        this.pathCost = pathCost;
         this.nodesVisited = nodesVisited;
         this.computingTime = computingTime;
-        penetration = (double) solutionLength / nodesVisited;
+        penetration = (double) pathLength / nodesVisited;
     }
 
-    public int getSolutionLenght() {
-        return solutionLenght;
+    public int getPathLength() {
+        return pathLength;
     }
 
-    public double getSolutionCost() {
-        return solutionCost;
+    public double getPathCost() {
+        return pathCost;
     }
 
     public double getSolutionError() {
@@ -65,8 +65,8 @@ public class PathfindingSolution {
     @Override
     public String toString() {
         return "PathfindingSolution{" +
-                "solutionLenght=" + solutionLenght +
-                ", solutionCost=" + solutionCost +
+                "pathLength=" + pathLength +
+                ", pathCost=" + pathCost +
                 ", solutionError=" + solutionError +
                 ", computingTime=" + computingTime +
                 ", nodesVisited=" + nodesVisited +
