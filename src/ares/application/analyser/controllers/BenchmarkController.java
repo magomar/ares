@@ -26,6 +26,7 @@ import ares.platform.scenario.Scenario;
 import ares.platform.scenario.board.Board;
 import ares.platform.scenario.forces.Unit;
 import ares.platform.scenario.forces.UnitFactory;
+import ares.platform.util.SingleThreadStopwatch;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -128,9 +129,12 @@ public class BenchmarkController implements AlgorithmSelectionInteractor, Proble
         List<PathfindingSolution> solutions = new ArrayList<>();
         Board board = scenario.getBoard();
         for (PathfindingProblem problem : problems) {
+            SingleThreadStopwatch stopwatch= new SingleThreadStopwatch();
+            stopwatch.start();
             ExtendedPath extendedPath = pathfinder.getExtendedPath(board.getTile(problem.getOrigin()), board.getTile(problem.getDestination()), testUnit);
+            stopwatch.stop();
             if (extendedPath == null) continue;
-            PathfindingSolution solution = new PathfindingSolution(extendedPath.size(), extendedPath.getLast().getG(), extendedPath.getNumNodesVisited(), 0);
+            PathfindingSolution solution = new PathfindingSolution(extendedPath.size(), extendedPath.getLast().getG(), extendedPath.getNumNodesVisited(), stopwatch.getTotalTime());
             solutions.add(solution);
 //            System.out.println(solution.toString());
         }
