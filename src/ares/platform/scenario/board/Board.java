@@ -39,7 +39,6 @@ public final class Board implements ModelProvider<BoardModel> {
         ares.data.wrappers.scenario.Map sourceMap = scenario.getMap();
         width = sourceMap.getMaxX() + 1;
         height = sourceMap.getMaxY() + 1;
-
         map = new Tile[width][height];
         for (Cell cell : sourceMap.getCell()) {
             map[cell.getX()][cell.getY()] = new Tile(cell);

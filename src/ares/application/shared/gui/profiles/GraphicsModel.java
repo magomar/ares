@@ -324,6 +324,25 @@ public class GraphicsModel {
         return tileIsWithinBoard(coordinates.x, coordinates.y);
     }
 
+    /**
+     * Check valid coordinates
+     *
+     * @param i a row
+     * @param j a column
+     * @return true if tile with coordinates (i,j) is within the board range
+     */
+    public boolean tileIsWithinBoard(int i, int j) {
+        return columnIsWithinBoard(i) && rowIsWithinBoard(j);
+    }
+
+    public boolean columnIsWithinBoard(int i) {
+        return i >= 0 && i < boardColumns;
+    }
+
+    public boolean rowIsWithinBoard(int j) {
+        return j >= 0 && j < boardRows;
+    }
+
     public Rectangle getVisibleTiles(JViewport viewport, int profile) {
         Rectangle viewRect = viewport.getViewRect();
         Point upperLeft = pixelToTile(viewRect.x, viewRect.y, profile);
