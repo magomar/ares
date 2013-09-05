@@ -17,7 +17,7 @@ import ares.platform.scenario.board.Tile;
 import ares.platform.scenario.forces.Force;
 import ares.platform.scenario.forces.Formation;
 import ares.platform.scenario.forces.Unit;
-import ares.test.Stopwatch;
+import ares.platform.util.Stopwatch;
 
 import java.util.ArrayList;
 import java.util.List;

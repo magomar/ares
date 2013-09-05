@@ -1,9 +1,9 @@
-package ares.test;
+package ares.platform.util;
 
 /**
  * @author Mario Gomez
  */
-public class Stopwatch {
+public class SingleThreadStopwatch {
     private long start;
     private long stop;
 
@@ -11,21 +11,17 @@ public class Stopwatch {
      *
      */
     public void start() {
-        start = System.currentTimeMillis(); // start timing
+        start = Timing.getCpuTime(); // start timing
         stop = start;
     }
 
     public void stop() {
-        stop = System.currentTimeMillis();
+        stop = Timing.getCpuTime();
     }
 
 
     public long getTotalTime() {
         return stop - start;
-    }
-
-    public long getTimeFromLastStop() {
-        return System.currentTimeMillis() - stop;
     }
 
     @Override

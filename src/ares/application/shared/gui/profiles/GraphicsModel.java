@@ -5,6 +5,8 @@ import ares.application.shared.gui.providers.ImageProvider;
 import ares.application.shared.gui.providers.NonProfiledImageProviderFactory;
 import ares.application.shared.gui.providers.ProfiledImageProviderFactory;
 import ares.platform.scenario.board.Board;
+import ares.platform.scenario.board.Direction;
+import ares.platform.util.MathUtils;
 
 import javax.swing.*;
 import java.awt.*;
@@ -196,34 +198,6 @@ public class GraphicsModel {
         return pixel;
     }
 
-    /**
-     * Converts a pixel position to its corresponding tile index, for a given {@code profile}
-     *
-     * @param pixel   pixel to be converted
-     * @param profile graphic profile
-     * @return the location where the tile is located at the tile map
-     */
-    public Point pixelToTile(Point pixel, int profile) {
-        return pixelToTile(pixel.x, pixel.y, profile);
-    }
-
-    /**
-     * Converts a pixel position to its corresponding tile index, for a given {@code profile}
-     *
-     * @param x       horizontal coordinate (column)of the pixel to be converted
-     * @param y       vertical coordinate (row) of the pixel to be converted
-     * @param profile graphic profile
-     * @return the location where the tile is located at the tile map
-     */
-    public Point pixelToTile(int x, int y, int profile) {
-        Point tile = new Point();
-        tile.x = (int) (x / GraphicProperties.getRealProperty(ProfiledGraphicProperty.TILE_OFFSET, profile));
-        //If tile is on even row, first we substract half the hexagon height to the Y component, then we divide it by the height
-        //if it's on odd row, divide Y component by hexagon height
-        int hexHeight = GraphicProperties.getProperty(ProfiledGraphicProperty.TILE_HEIGHT, profile);
-        tile.y = (tile.x % 2 == 0 ? (y - (hexHeight / 2)) / hexHeight : (y / hexHeight));
-        return tile;
-    }
 
     /**
      * Converts pixel coordinates into tile coordinates using an accurate method
@@ -233,7 +207,7 @@ public class GraphicsModel {
      * @return the map coordinates corresponding to the pixel coordinates passed as a parameter
      */
     public Point pixelToTileAccurate(Point pixel, int profile) {
-        return pixelToTileAccurate(pixel.x, pixel.y, profile);
+        return pixelToTile(pixel.x, pixel.y, profile);
     }
 
     /**
@@ -299,56 +273,39 @@ public class GraphicsModel {
      * @param x       horizontal coordinate of the pixel to be converted
      * @param y       vertical coordinate of the pixel to be converted
      * @param profile the graphic profile
-     * @return     the upper left pixel of the rectangle encompassing the tile with the coordinates passed as parameter
+     * @return      the coordinates of the hexagon where the pixel is located on
      */
-    public Point pixelToTileAccurate(int x, int y, int profile) {
+    public Point pixelToTile(int x, int y, int profile) {
 
         int hexHeight = GraphicProperties.getProperty(ProfiledGraphicProperty.TILE_HEIGHT, profile);
-        int dy = hexHeight / 2;
-        // gradient = dy/dx
+        int hexRadius = hexHeight / 2;
         double hexOffset = GraphicProperties.getRealProperty(ProfiledGraphicProperty.TILE_OFFSET, profile);
-        Point section = new Point((int) (x / hexOffset), y / hexHeight);
-        // Pixel within the section
-        Point pixelInSection = new Point((int) (x % hexOffset), y % hexHeight);
+        // coordinates of the section
+        Point p = new Point((int) (x / hexOffset), y / hexHeight);
+        // Pixel coordinates within the section
+        Point r = new Point((int) (x % hexOffset), y % hexHeight);
 
-        if ((section.x % 2) == 1) {
-            //odd column
-            if ((-hexRise) * pixelInSection.x + dy > pixelInSection.y) {
-                //Pixel is in the NW neighbor tile
-                section.x--;
-                section.y--;
-            } else if (pixelInSection.x * hexRise + dy < pixelInSection.y) {
-                //Pixel is in the SE neighbor tile
-                section.x--;
+        Direction direction;
+        if (MathUtils.isOdd(p.x)) { //odd column
+            if (r.y < -hexRise * r.x + hexRadius) {
+                direction = Direction.NW;
+            } else if (r.y > hexRise * r.x + hexRadius) {
+                direction = Direction.SW;
             } else {
-                //pixel is in our tile
+                direction = Direction.C;
             }
-        } else {
-            //even column
-            if (pixelInSection.y < dy) {
-                //upper side
-                if ((hexRise * pixelInSection.x) > pixelInSection.y) {
-                    // Pixel is in the N neighbor tile
-                    section.y--;
-                } else {
-                    // Pixel is in the upper area of NW neighbor
-                    section.x--;
-                }
-            } else {
-                //lower side
-                if (((-hexRise) * pixelInSection.x + hexHeight) > pixelInSection.y) {
-                    // Pixel is in the lower area of the NW neighbor
-                    section.x--;
-                } else {
-                    // Pixel is in our tile
-                }
-            }
+        } else { //even column
+            if (r.y > hexRise * r.x && r.y < -hexRise * r.x + hexHeight) {
+                direction = Direction.NW;
+            } else if (r.y < hexRadius) {
+                direction = Direction.N;
+            } else direction = Direction.C;
         }
-        return section;
+        return new Point(direction.getNeighborCoordinates(p));
     }
 
     public boolean isWithinImageRange(Point pixel, int profile) {
-        return ((pixel.x < boardWidth[profile] && pixel.x > 0) && (pixel.y > 0 && pixel.y < boardHeight[profile]));
+        return isWithinImageRange(pixel.x, pixel.y, profile);
     }
 
     public boolean isWithinImageRange(int x, int y, int profile) {
@@ -363,14 +320,18 @@ public class GraphicsModel {
         return imageDecorators[profile];
     }
 
+    public boolean tileIsWithinBoard(Point coordinates) {
+        return tileIsWithinBoard(coordinates.x, coordinates.y);
+    }
+
     public Rectangle getVisibleTiles(JViewport viewport, int profile) {
         Rectangle viewRect = viewport.getViewRect();
         Point upperLeft = pixelToTile(viewRect.x, viewRect.y, profile);
         Point bottomRight = pixelToTile(viewRect.x + viewRect.width, viewRect.y + viewRect.height, profile);
-        upperLeft.x = (isValidColumn(upperLeft.x) ? upperLeft.x : 0);
-        upperLeft.y = (isValidRow(upperLeft.y) ? upperLeft.y : 0);
-        bottomRight.x = (isValidColumn(bottomRight.x) ? bottomRight.x : boardColumns - 1);
-        bottomRight.y = (isValidRow(bottomRight.y) ? bottomRight.y : boardRows - 1);
+        upperLeft.x = (columnIsWithinBoard(upperLeft.x) ? upperLeft.x : 0);
+        upperLeft.y = (rowIsWithinBoard(upperLeft.y) ? upperLeft.y : 0);
+        bottomRight.x = (columnIsWithinBoard(bottomRight.x) ? bottomRight.x : boardColumns - 1);
+        bottomRight.y = (rowIsWithinBoard(bottomRight.y) ? bottomRight.y : boardRows - 1);
         return new Rectangle(upperLeft.x, upperLeft.y, bottomRight.x - upperLeft.x, bottomRight.y - upperLeft.y);
     }
 }

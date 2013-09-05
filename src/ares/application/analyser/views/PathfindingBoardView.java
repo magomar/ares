@@ -10,7 +10,7 @@ import javax.swing.*;
 /**
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
-public class PathSearchBoardView extends AbstractBoardView {
+public class PathfindingBoardView extends AbstractBoardView {
 
     @Override
     protected JScrollPane layout() {
@@ -18,8 +18,9 @@ public class PathSearchBoardView extends AbstractBoardView {
         JViewport v = scrollPane.getViewport();
         TerrainLayerView terrainLayer = (TerrainLayerView) new TerrainLayerView().setViewport(v);
         GridLayerView gridLayer = (GridLayerView) new GridLayerView().setViewport(v);
-        PathSearchLayerView pathSearchLayer = (PathSearchLayerView) new PathSearchLayerView().setViewport(v);
-        ArrowLayerView arrowLayer = (ArrowLayerView) new ArrowLayerView().setViewport(v).setParenLayer(pathSearchLayer);
+        PathfindingLayerView pathSearchLayer = (PathfindingLayerView) new PathfindingLayerView().setViewport(v);
+        ArrowLayerView arrowLayer = (ArrowLayerView) new ArrowLayerView().setViewport(v);
+//        SearchCostsLayerView costsLayerView = (SearchCostsLayerView) new SearchCostsLayerView().setViewport(v);
 
         // Add independent layers pane
         addLayerView(terrainLayer).addLayerView(gridLayer).addLayerView(pathSearchLayer).addLayerView(arrowLayer);

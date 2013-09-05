@@ -43,4 +43,12 @@ public class MathUtils {
         }
         return true;
     }
+
+    public static boolean isEven(int number) {
+        return (number & 1) == 0;
+    }
+
+    public static boolean isOdd(int number) {
+        return (number & 1) == 1;
+    }
 }

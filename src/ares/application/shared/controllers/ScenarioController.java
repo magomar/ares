@@ -4,7 +4,6 @@ import ares.application.shared.boundaries.interactors.ScenarioInteractor;
 import ares.application.shared.commands.*;
 import ares.application.shared.gui.components.StartScenarioPane;
 import ares.application.shared.gui.views.MessagesHandler;
-import ares.data.wrappers.equipment.EquipmentDB;
 import ares.platform.io.AresFileType;
 import ares.platform.io.FileIO;
 import ares.platform.io.ResourcePath;
@@ -85,10 +84,7 @@ public final class ScenarioController implements ActionController {
                 container.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 File file = fc.getSelectedFile();
                 // Load scenario and equipment files
-                ares.data.wrappers.scenario.Scenario scen = FileIO.unmarshallJson(file, ares.data.wrappers.scenario.Scenario.class);
-                File equipmentFile = ResourcePath.EQUIPMENT.getFile("ToawEquipment" + AresFileType.EQUIPMENT.getFileExtension());
-                EquipmentDB eqp = FileIO.unmarshallJson(equipmentFile, EquipmentDB.class);
-                Scenario scenario = new Scenario(scen, eqp);
+                Scenario scenario = FileIO.loadScenario(file);
                 container.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
                 UserRole userRole;
                 if (roleBasedModels) {

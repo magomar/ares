@@ -43,4 +43,12 @@ public abstract class AbstractPathfinder implements Pathfinder {
     public String toString() {
         return getClass().getSimpleName();
     }
+
+    @Override
+    public String toStringVerbose() {
+        return getClass().getSimpleName() + "{" +
+                "heuristic=" + heuristic +
+                ", costFunction=" + costFunction +
+                '}';
+    }
 }
