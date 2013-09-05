@@ -1,5 +1,6 @@
 package ares.platform.scenario.board;
 
+import ares.application.shared.gui.profiles.GraphicsModel;
 import ares.application.shared.models.board.BoardModel;
 import ares.data.wrappers.scenario.Cell;
 import ares.data.wrappers.scenario.Place;
@@ -88,12 +89,10 @@ public final class Board implements ModelProvider<BoardModel> {
      */
     public Map<Direction, Tile> getNeighbors(Tile tile) {
         Map<Direction, Tile> neighbors = new EnumMap<>(Direction.class);
-        Point coord = tile.getCoordinates();
-        for (Direction dir : Direction.DIRECTIONS) {
-            int x = coord.x + dir.getIncColumn();
-            int y = coord.y + (coord.x % 2 == 0 ? dir.getIncRowEven() : dir.getIncRowOdd());
-            if (x >= 0 && x < width && y >= 0 && y < height) {
-                neighbors.put(dir, map[x][y]);
+        for (Direction direction : Direction.DIRECTIONS) {
+            Point neighborCoordinates = direction.getNeighborCoordinates(tile.getCoordinates());
+            if (GraphicsModel.INSTANCE.tileIsWithinBoard(neighborCoordinates)) {
+                neighbors.put(direction, map[neighborCoordinates.x][neighborCoordinates.y]);
             }
         }
         return neighbors;

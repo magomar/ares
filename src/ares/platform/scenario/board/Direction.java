@@ -1,5 +1,6 @@
 package ares.platform.scenario.board;
 
+import java.awt.*;
 import java.util.EnumSet;
 import java.util.Set;
 
@@ -95,5 +96,11 @@ public enum Direction {
 
     public Direction getOpposite() {
         return opposite;
+    }
+
+    public Point getNeighborCoordinates(Point coordinates) {
+        int column = coordinates.x + getIncColumn();
+        int row = coordinates.y + (coordinates.x % 2 == 0 ? getIncRowEven() : getIncRowOdd());
+        return new Point(column,row);
     }
 }

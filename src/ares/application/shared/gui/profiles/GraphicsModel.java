@@ -297,47 +297,47 @@ public class GraphicsModel {
     public Point pixelToTileAccurate(int x, int y, int profile) {
 
         int hexHeight = GraphicProperties.getProperty(ProfiledGraphicProperty.TILE_HEIGHT, profile);
-        int dy = hexHeight / 2;
+        int hexRadius = hexHeight / 2;
         // gradient = dy/dx
         double hexOffset = GraphicProperties.getRealProperty(ProfiledGraphicProperty.TILE_OFFSET, profile);
-        Point section = new Point((int) (x / hexOffset), y / hexHeight);
+        Point rectangleCoordinates = new Point((int) (x / hexOffset), y / hexHeight);
         // Pixel within the section
-        Point pixelInSection = new Point((int) (x % hexOffset), y % hexHeight);
+        Point relativeCoordinates = new Point((int) (x % hexOffset), y % hexHeight);
 
-        if ((section.x % 2) == 1) {
+        if ((rectangleCoordinates.x % 2) == 1) {
             //odd column
-            if ((-hexRise) * pixelInSection.x + dy > pixelInSection.y) {
+            if ((-hexRise) * relativeCoordinates.x + hexRadius > relativeCoordinates.y) {
                 //Pixel is in the NW neighbor tile
-                section.x--;
-                section.y--;
-            } else if (pixelInSection.x * hexRise + dy < pixelInSection.y) {
-                //Pixel is in the SE neighbout tile
-                section.x--;
+                rectangleCoordinates.x--;
+                rectangleCoordinates.y--;
+            } else if (relativeCoordinates.x * hexRise + hexRadius < relativeCoordinates.y) {
+                //Pixel is in the SE neighbour tile
+                rectangleCoordinates.x--;
             } else {
                 //pixel is in our tile
             }
         } else {
             //even column
-            if (pixelInSection.y < dy) {
+            if (relativeCoordinates.y < hexRadius) {
                 //upper side
-                if ((hexRise * pixelInSection.x) > pixelInSection.y) {
+                if ((hexRise * relativeCoordinates.x) > relativeCoordinates.y) {
                     // Pixel is in the N neighbor tile
-                    section.y--;
+                    rectangleCoordinates.y--;
                 } else {
                     // Pixel is in the upper area of NW neighbor
-                    section.x--;
+                    rectangleCoordinates.x--;
                 }
             } else {
                 //lower side
-                if (((-hexRise) * pixelInSection.x + hexHeight) > pixelInSection.y) {
+                if (((-hexRise) * relativeCoordinates.x + hexHeight) > relativeCoordinates.y) {
                     // Pixel is in the lower area of the NW neighbor
-                    section.x--;
+                    rectangleCoordinates.x--;
                 } else {
                     // Pixel is in our tile
                 }
             }
         }
-        return section;
+        return rectangleCoordinates;
     }
 
     public boolean isWithinImageRange(Point pixel, int profile) {
@@ -354,6 +354,10 @@ public class GraphicsModel {
 
     public ImageDecorators getImageDecorators(int profile) {
         return imageDecorators[profile];
+    }
+
+    public boolean tileIsWithinBoard(Point coordinates) {
+        return tileIsWithinBoard(coordinates.x, coordinates.y);
     }
 
     /**
