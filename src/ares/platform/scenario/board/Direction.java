@@ -1,5 +1,7 @@
 package ares.platform.scenario.board;
 
+import ares.platform.util.MathUtils;
+
 import java.awt.*;
 import java.util.EnumSet;
 import java.util.Set;
@@ -100,7 +102,32 @@ public enum Direction {
 
     public Point getNeighborCoordinates(Point coordinates) {
         int column = coordinates.x + getIncColumn();
-        int row = coordinates.y + (coordinates.x % 2 == 0 ? getIncRowEven() : getIncRowOdd());
+        int row = coordinates.y + (MathUtils.isEven(coordinates.x) ? getIncRowEven() : getIncRowOdd());
         return new Point(column,row);
+    }
+    /**
+     * Get the direction between two neighbor tiles
+     *
+     * @param from    coordinates of a tile in the map
+     * @param to    coordinates of another tile which is neighbor of the first one
+     * @return the direction between the {@code from} and {@code to} tiles, relative to the {@code from}  tile
+     */
+    public static Direction getDirectionBetween(Point from, Point to) {
+        int incX = to.x - from.x;
+        int incY = to.y - from.y;
+        if (MathUtils.isEven(from.x)) {
+            for (Direction dir : Direction.values()) {
+                if (dir.getIncColumn() == incX && dir.getIncRowEven() == incY) {
+                    return dir;
+                }
+            }
+        } else {
+            for (Direction dir : Direction.values()) {
+                if (dir.getIncColumn() == incX && dir.getIncRowOdd() == incY) {
+                    return dir;
+                }
+            }
+        }
+        return null;
     }
 }

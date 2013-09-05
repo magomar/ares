@@ -197,7 +197,7 @@ public final class PlayerBoardController extends BoardController implements Boar
     private void select(int x, int y) {
         int profile = GraphicsModel.INSTANCE.getActiveProfile();
         if (GraphicsModel.INSTANCE.isWithinImageRange(x, y, profile)) {
-            Point tilePoint = GraphicsModel.INSTANCE.pixelToTileAccurate(x, y, profile);
+            Point tilePoint = GraphicsModel.INSTANCE.pixelToTile(x, y, profile);
             if (!GraphicsModel.INSTANCE.validCoordinates(tilePoint.x, tilePoint.y)) {
                 return;
             }
@@ -242,7 +242,7 @@ public final class PlayerBoardController extends BoardController implements Boar
     private void command(int x, int y) {
         int profile = GraphicsModel.INSTANCE.getActiveProfile();
         if (interactionMode == InteractionMode.UNIT_ORDERS && GraphicsModel.INSTANCE.isWithinImageRange(x, y, profile)) {
-            Point tilePoint = GraphicsModel.INSTANCE.pixelToTileAccurate(x, y, profile);
+            Point tilePoint = GraphicsModel.INSTANCE.pixelToTile(x, y, profile);
             if (!GraphicsModel.INSTANCE.validCoordinates(tilePoint.x, tilePoint.y)) {
                 return;
             }

@@ -129,7 +129,7 @@ public class ComparatorController implements ActionController {
     private void select(int x, int y) {
         int profile = GraphicsModel.INSTANCE.getActiveProfile();
         if (GraphicsModel.INSTANCE.isWithinImageRange(x, y, profile)) {
-            Point tilePoint = GraphicsModel.INSTANCE.pixelToTileAccurate(x, y, profile);
+            Point tilePoint = GraphicsModel.INSTANCE.pixelToTile(x, y, profile);
             if (!GraphicsModel.INSTANCE.validCoordinates(tilePoint.x, tilePoint.y)) {
                 return;
             }
@@ -165,7 +165,7 @@ public class ComparatorController implements ActionController {
         int profile = GraphicsModel.INSTANCE.getActiveProfile();
 
         if (interactionMode == InteractionMode.UNIT_ORDERS && GraphicsModel.INSTANCE.isWithinImageRange(x, y, profile)) {
-            Point coordinates = GraphicsModel.INSTANCE.pixelToTileAccurate(x, y, profile);
+            Point coordinates = GraphicsModel.INSTANCE.pixelToTile(x, y, profile);
             if (!GraphicsModel.INSTANCE.validCoordinates(coordinates.x, coordinates.y)) {
                 return;
             }

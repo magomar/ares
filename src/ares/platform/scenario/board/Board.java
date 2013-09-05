@@ -64,28 +64,10 @@ public final class Board implements ModelProvider<BoardModel> {
     }
 
     /**
-     * Gets the tile that is adjacent to (neighbor of) the given {@code tile}, in the given {@code direction}
+     * Gets all the tiles that are adjacent to (neighbor of) a given tile
      *
-     * @param tile
-     * @param direction
-     * @return
-     */
-    public Tile getNeighbor(Tile tile, Direction direction) {
-        Point coord = tile.getCoordinates();
-        int x = coord.x + direction.getIncColumn();
-        int y = coord.y + (coord.x % 2 == 0 ? direction.getIncRowEven() : direction.getIncRowOdd());
-        if (x >= 0 && x < width && y >= 0 && y < height) {
-            return map[x][y];
-        } else {
-            return null;
-        }
-    }
-
-    /**
-     * Gets all the tiles that are adjacent to (neighbor of) the given {@code tile}
-     *
-     * @param tile
-     * @return all neighbors of the {@code tile} tile
+     * @param tile  a tile in the board
+     * @return all neighbors (adjacent tiles) of the given {@code tile}
      */
     public Map<Direction, Tile> getNeighbors(Tile tile) {
         Map<Direction, Tile> neighbors = new EnumMap<>(Direction.class);
@@ -96,32 +78,6 @@ public final class Board implements ModelProvider<BoardModel> {
             }
         }
         return neighbors;
-    }
-
-    /**
-     * Get the direction between two neighbor tiles
-     *
-     * @param from
-     * @param to
-     * @return the direction
-     */
-    public static Direction getDirBetween(Tile from, Tile to) {
-        int incX = to.getCoordinates().x - from.getCoordinates().x;
-        int incY = to.getCoordinates().y - from.getCoordinates().y;
-        if (from.getCoordinates().x % 2 == 0) {
-            for (Direction dir : Direction.values()) {
-                if (dir.getIncColumn() == incX && dir.getIncRowEven() == incY) {
-                    return dir;
-                }
-            }
-        } else {
-            for (Direction dir : Direction.values()) {
-                if (dir.getIncColumn() == incX && dir.getIncRowOdd() == incY) {
-                    return dir;
-                }
-            }
-        }
-        return null;
     }
 
     /**
