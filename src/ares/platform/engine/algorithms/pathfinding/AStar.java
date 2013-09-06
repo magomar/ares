@@ -25,14 +25,16 @@ public class AStar extends AbstractPathfinder {
     }
 
     @Override
-    public Path getPath(Tile origin, Tile destination, Unit unit) {
+    public Path findPath(Tile origin, Tile destination, Unit unit) {
         if (origin.equals(destination)) {
             return null;
         }
-        // Create data structures
+        // Create and initialize data structures
+        // The set of nodes already evaluated.
         Map<Integer, Node> closedSet = new HashMap<>();
+        // The set of tentative nodes to be evaluated, initially containing the initial node
         OpenSet openSet = new OpenSet();
-        Node firstNode = new Node(origin, Direction.C, null, 0, heuristic.getCost(origin, destination, unit));
+        Node firstNode = Node.createInitialNode(origin, heuristic.getCost(origin, destination, unit));
         openSet.add(firstNode);
 
         while (!openSet.isEmpty()) {
@@ -46,7 +48,8 @@ public class AStar extends AbstractPathfinder {
                 return path;
             }
             // Expand best node (Generate successors)
-            for (Map.Entry<Direction, Tile> entry : bestNode.getTile().getNeighbors().entrySet()) {
+            Map<Direction, Tile> neighbors = bestNode.getTile().getNeighbors();
+            for (Map.Entry<Direction, Tile> entry : neighbors.entrySet()) {
                 Direction fromDir = entry.getKey();
                 Direction toDir = fromDir.getOpposite();
                 Tile neighbor = entry.getValue();
@@ -70,7 +73,7 @@ public class AStar extends AbstractPathfinder {
                         neighborNode.setPrev(toDir, bestNode, tentative_g);
                     }
                 } else {
-                    neighborNode = new Node(neighbor, toDir, bestNode, tentative_g, heuristic.getCost(neighbor, destination, unit));
+                    neighborNode = Node.createNode(neighbor, toDir, bestNode, tentative_g, heuristic.getCost(neighbor, destination, unit));
                     openSet.add(neighborNode);
                 }
             }
@@ -96,7 +99,7 @@ public class AStar extends AbstractPathfinder {
         // Create data structures
         Map<Integer, Node> closedSet = new HashMap<>();
         OpenSet openSet = new OpenSet();
-        Node firstNode = new Node(origin, Direction.C, null, 0, heuristic.getCost(origin, destination, unit));
+        Node firstNode = Node.createInitialNode(origin, heuristic.getCost(origin, destination, unit));
         openSet.add(firstNode);
 
         while (!openSet.isEmpty()) {
@@ -134,7 +137,7 @@ public class AStar extends AbstractPathfinder {
                         neighborNode.setPrev(toDir, bestNode, tentative_g);
                     }
                 } else {
-                    neighborNode = new Node(neighbor, toDir, bestNode, tentative_g, heuristic.getCost(neighbor, destination, unit));
+                    neighborNode = Node.createNode(neighbor, toDir, bestNode, tentative_g, heuristic.getCost(neighbor, destination, unit));
                     openSet.add(neighborNode);
                 }
             }

@@ -12,9 +12,7 @@ import java.util.Objects;
 public class Node implements Comparable<Node> {
 
     private final Tile tile;
-    private Node prev;
     protected Node next;
-
     /**
      * Direction used to reach this node from previous node (ie. relative to this node)
      */
@@ -31,22 +29,23 @@ public class Node implements Comparable<Node> {
      * Estimated cost from start to the goal (g + h)
      */
     protected double f;
+    private Node prev;
 
-    public Node(Tile tile) {
+    protected Node(Tile tile, Direction direction, Node prev, double g, double h) {
         this.tile = tile;
-    }
-
-    public Node(Tile tile, Direction direction, Node prev) {
-        this(tile);
         this.direction = direction;
         this.prev = prev;
-    }
-
-    public Node(Tile tile, Direction direction, Node prev, double g, double h) {
-        this(tile, direction, prev);
         this.g = g;
         this.h = h;
         this.f = g + h;
+    }
+
+    public static Node createNode(Tile tile, Direction direction, Node prev, double g, double h) {
+        return new Node(tile, direction, prev, g, h);
+    }
+
+    public static Node createInitialNode(Tile tile, double h) {
+        return new Node(tile, Direction.C, null, 0, h);
     }
 
     public Tile getTile() {
@@ -64,10 +63,6 @@ public class Node implements Comparable<Node> {
         f = g + h;
     }
 
-    public void setNext(Node next) {
-        this.next = next;
-    }
-
     public int getIndex() {
         return tile.getIndex();
     }
@@ -78,6 +73,10 @@ public class Node implements Comparable<Node> {
 
     public Node getNext() {
         return next;
+    }
+
+    public void setNext(Node next) {
+        this.next = next;
     }
 
     public double getG() {
@@ -122,7 +121,6 @@ public class Node implements Comparable<Node> {
         hash = 59 * hash + Objects.hashCode(this.tile);
         return hash;
     }
-
 
     @Override
     public int compareTo(Node o) {

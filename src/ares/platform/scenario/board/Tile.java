@@ -347,7 +347,6 @@ public final class Tile implements ModelProvider<TileModel> {
         return index;
     }
 
-
     public KnowledgeLevel getKnowledgeLevel(UserRole userRole) {
         return knowledgeLevels.get(userRole);
     }

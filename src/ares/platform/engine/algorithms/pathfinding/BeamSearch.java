@@ -26,14 +26,14 @@ public class BeamSearch extends AbstractPathfinder {
     }
 
     @Override
-    public Path getPath(Tile origin, Tile destination, Unit unit) {
+    public Path findPath(Tile origin, Tile destination, Unit unit) {
         if (origin.equals(destination)) {
             return null;
         }
         // Create data structures
         Map<Integer, Node> closedSet = new HashMap<>();
         BeamSearch.OpenSet openSet = new BeamSearch.OpenSet(20);
-        Node firstNode = new Node(origin, Direction.C, null, 0, heuristic.getCost(origin, destination, unit));
+        Node firstNode = Node.createInitialNode(origin, heuristic.getCost(origin, destination, unit));
 
         openSet.add(firstNode);
 
@@ -72,7 +72,7 @@ public class BeamSearch extends AbstractPathfinder {
                         neighborNode.setPrev(toDir, bestNode, tentative_g);
                     }
                 } else {
-                    neighborNode = new Node(neighbor, toDir, bestNode, tentative_g, heuristic.getCost(neighbor, destination, unit));
+                    neighborNode = Node.createNode(neighbor, toDir, bestNode, tentative_g, heuristic.getCost(neighbor, destination, unit));
                     openSet.add(neighborNode);
                 }
             }
@@ -88,7 +88,7 @@ public class BeamSearch extends AbstractPathfinder {
         // Create data structures
         Map<Integer, Node> closedSet = new HashMap<>();
         BeamSearch.OpenSet openSet = new BeamSearch.OpenSet(20);
-        Node firstNode = new Node(origin, Direction.C, null, 0, heuristic.getCost(origin, destination, unit));
+        Node firstNode = Node.createInitialNode(origin, heuristic.getCost(origin, destination, unit));
 
         openSet.add(firstNode);
 
@@ -127,7 +127,7 @@ public class BeamSearch extends AbstractPathfinder {
                         neighborNode.setPrev(toDir, bestNode, tentative_g);
                     }
                 } else {
-                    neighborNode = new Node(neighbor, toDir, bestNode, tentative_g, heuristic.getCost(neighbor, destination, unit));
+                    neighborNode =Node.createNode(neighbor, toDir, bestNode, tentative_g, heuristic.getCost(neighbor, destination, unit));
                     openSet.add(neighborNode);
                 }
             }

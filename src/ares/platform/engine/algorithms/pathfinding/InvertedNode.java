@@ -9,22 +9,10 @@ import ares.platform.scenario.board.Tile;
  */
 public class InvertedNode extends Node {
     private InvertedNode invertedNext;
-    
-    public InvertedNode(Tile tile) {
-        super(tile);
-    }
-
-    public InvertedNode(Tile tile, Direction direction, InvertedNode next) {
-        this(tile);
-        this.direction = direction;
-        this.invertedNext = next;
-    }
 
     public InvertedNode(Tile tile, Direction direction, InvertedNode next, double g, double h) {
-        this(tile, direction, next);
-        this.g = g;
-        this.h = h;
-        this.f = g + h;
+        super(tile, direction, null, g, h);
+        this.invertedNext = next;
     }
     
     public void setNext(Direction direction, InvertedNode next, double g) {

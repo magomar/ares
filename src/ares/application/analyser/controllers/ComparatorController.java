@@ -147,7 +147,7 @@ public class ComparatorController implements ActionController {
                 ((ArrowLayerViewer) rightBoardView.getLayerView(ArrowLayerViewer.NAME)).updateCurrentOrders(null);
                 ((JLabel) comparatorView.getStatsPanel().getComponent(LEFT)).setText("Nodes analysed: 0");
                 ((JLabel) comparatorView.getStatsPanel().getComponent(RIGHT)).setText("Nodes analysed: 0");
-                LOG.log(Level.INFO, "New tile selected");
+                LOG.log(Level.INFO, "New tile selected: " + selectedTile.toString());
             }
         }
     }

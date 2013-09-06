@@ -11,7 +11,7 @@ import ares.platform.scenario.forces.Unit;
  */
 public interface Pathfinder {
 
-    Path getPath(Tile origin, Tile destination, Unit unit);
+    Path findPath(Tile origin, Tile destination, Unit unit);
 
     ExtendedPath getExtendedPath(Tile origin, Tile destination, Unit unit);
 

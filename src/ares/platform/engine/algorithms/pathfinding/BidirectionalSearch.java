@@ -24,7 +24,7 @@ public class BidirectionalSearch extends AbstractPathfinder {
     }
 
     @Override
-    public Path getPath(Tile origin, Tile destination, Unit unit) {
+    public Path findPath(Tile origin, Tile destination, Unit unit) {
         if (origin.equals(destination)) {
             return null;
         }
@@ -33,7 +33,7 @@ public class BidirectionalSearch extends AbstractPathfinder {
         Map<Integer, InvertedNode> closedSetBackwards = new HashMap<>();
         OpenSet openSetForward = new OpenSet();
         InvertedOpenSet openSetBackwards = new InvertedOpenSet();
-        Node firstNodeForward = new Node(origin, Direction.C, null, 0, heuristic.getCost(origin, destination, unit));
+        Node firstNodeForward = Node.createInitialNode(origin, heuristic.getCost(origin, destination, unit));
         InvertedNode firstNodeBackwards = new InvertedNode(destination, Direction.C, null, 0, heuristic.getCost(destination, origin, unit));
         openSetForward.add(firstNodeForward);
         openSetBackwards.add(firstNodeBackwards);

@@ -119,7 +119,7 @@ public class MatrixImageProvider implements ImageProvider {
         File file = FileSystems.getDefault().getPath(ResourcePath.GRAPHICS.getFolderPath().toString(), path, filename).toFile();
 //        if (!file.exists()) {
 //            String alternateFilename = filename.substring(0, filename.lastIndexOf('.')) + ".bmp";
-//            file = FileSystems.getDefault().getPath(path, alternateFilename).toFile();
+//            file = FileSystems.getDefault().findPath(path, alternateFilename).toFile();
 //        }
         if (!file.exists()) {
             LOG.log(Level.SEVERE, " Image file not found {0}", file.getPath());

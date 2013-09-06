@@ -28,9 +28,7 @@ public class PathfindingLayerView extends AbstractImageLayerView implements Path
      * Collection of closed nodes
      */
     private Collection<Node> closedSet;
-
     private int costToShow;
-
     private int maxCost;
 
     @Override
@@ -55,14 +53,15 @@ public class PathfindingLayerView extends AbstractImageLayerView implements Path
      * Paints the space searched to compute a path, as described by the {@code openSet} and {@code closedSet} collection
      * of nodes passed as argument
      *
-     * @param openSet
-     * @param closedSet
+     * @param openSet   the set of open nodes
+     * @param closedSet the the set of closed nodes
      */
     @Override
     public void updatePathSearch(Collection<Node> openSet, Collection<Node> closedSet, int costToShow) {
         this.openSet = openSet;
         this.closedSet = closedSet;
         this.costToShow = costToShow;
+        if (openSet == null || closedSet == null) return;
         maxCost = 0;
         for (Node node : openSet) {
             maxCost = Math.max(maxCost, getNodeCost(node));
@@ -99,9 +98,9 @@ public class PathfindingLayerView extends AbstractImageLayerView implements Path
         int tileHeight = GraphicProperties.getProperty(ProfiledGraphicProperty.TILE_HEIGHT, GraphicsModel.INSTANCE.getActiveProfile());
         int cost = getNodeCost(node) * 100 / maxCost;
         Color baseColor = ImageDecorators.colorLevel(cost, ICC_ProfileRGB.GREENCOMPONENT, ICC_ProfileRGB.REDCOMPONENT);
-        Color color = new Color(baseColor.getRed(),baseColor.getGreen(), baseColor.getBlue(), 128);
+        Color color = new Color(baseColor.getRed(), baseColor.getGreen(), baseColor.getBlue(), 128);
         g2.setPaint(color);
-        g2.fill(new Rectangle2D.Double(pos.x + tileWidth/4, pos.y + tileHeight/4, tileWidth/2, tileHeight/2));
+        g2.fill(new Rectangle2D.Double(pos.x + tileWidth / 4, pos.y + tileHeight / 4, tileWidth / 2, tileHeight / 2));
         contentPane.repaint(pos.x, pos.y, tileWidth, tileHeight);
     }
 

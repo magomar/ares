@@ -31,7 +31,7 @@ public class Occupy extends TacticalMission {
             addFirstAction(new WaitAction(unit));
             return;
         }
-        Path path = pathFinder.getPath(unit.getLocation(), targetTile, unit);
+        Path path = pathFinder.findPath(unit.getLocation(), targetTile, unit);
         if (path == null) {
 //            LOG.log(Level.WARNING, "No path found for {0}", unit.toString());
             return;

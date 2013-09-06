@@ -279,7 +279,7 @@ public final class PlayerBoardController extends BoardController implements Boar
                 }
                 Tile tile = scenario.getBoard().getTile(coordinates.x, coordinates.y);
                 if (interactionMode == InteractionMode.UNIT_ORDERS) {
-                    Path path = pathFinder.getPath(selectedUnit.getLocation(), tile, selectedUnit);
+                    Path path = pathFinder.findPath(selectedUnit.getLocation(), tile, selectedUnit);
                     if (path == null) {
                         return;
                     }
