@@ -56,7 +56,7 @@ public abstract class MoveAction extends AbstractAction {
         Tile destination = currentNode.getTile();
         Direction direction = currentNode.getDirection();
         MovementCost moveCost = destination.getEnterCost(direction);
-        int cost = moveCost.getActualCost(unit);
+        int cost = moveCost.getVariableCost(unit);
         speed = unit.getSpeed() / cost;
         // TODO avoid creating move actions for static units (speed=0) !
         timeToNextMovement = (speed > 0 ? Scale.INSTANCE.getTileSize() / speed : Integer.MAX_VALUE);
@@ -80,7 +80,7 @@ public abstract class MoveAction extends AbstractAction {
         if (currentNode != null) {
             Tile destination = currentNode.getTile();
             MovementCost moveCost = destination.getEnterCost(currentNode.getDirection());
-            int cost = moveCost.getActualCost(unit);
+            int cost = moveCost.getVariableCost(unit);
             speed = unit.getSpeed() / cost;
             // If remaining timeToNextMovement <= 0 we add it to the new timeToNextMovement (actually it is subtracted)
             // as a way to not propagate the precision error for each partial movement

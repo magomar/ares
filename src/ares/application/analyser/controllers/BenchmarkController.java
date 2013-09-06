@@ -13,7 +13,7 @@ import ares.application.analyser.boundaries.viewers.ProblemGeneratorViewer;
 import ares.data.wrappers.equipment.EquipmentDB;
 import ares.platform.engine.algorithms.pathfinding.*;
 import ares.platform.engine.algorithms.pathfinding.costfunctions.CostFunction;
-import ares.platform.engine.algorithms.pathfinding.costfunctions.EstimatedCostFunctions;
+import ares.platform.engine.algorithms.pathfinding.costfunctions.TerrainCostFunctions;
 import ares.platform.engine.algorithms.pathfinding.heuristics.DistanceCalculator;
 import ares.platform.engine.algorithms.pathfinding.heuristics.EnhancedMinimunDistance;
 import ares.platform.engine.algorithms.pathfinding.heuristics.Heuristic;
@@ -51,9 +51,13 @@ public class BenchmarkController implements AlgorithmSelectionInteractor, Proble
     public BenchmarkController(PathfinderBenchmarkInteractor interactor, PathfinderToolsViewer mainView) {
         benchmarkView = interactor.getPathfinderBenchmarkView();
 
-        Pathfinder[] allPathfinders = {new AStar(), new BeamSearch(), new BidirectionalSearch()};
+
         Heuristic[] allHeuristics = {MinimunDistance.create(DistanceCalculator.DELTA), EnhancedMinimunDistance.create(DistanceCalculator.DELTA)};
-        CostFunction[] allCostFunctions = EstimatedCostFunctions.values();
+        CostFunction[] allCostFunctions = TerrainCostFunctions.values();
+        Heuristic defaultHeuristic = allHeuristics[0];
+        CostFunction defaultCostFunction = allCostFunctions[0];
+
+        Pathfinder[] allPathfinders = {new AStar(defaultHeuristic, defaultCostFunction), new BeamSearch(defaultHeuristic, defaultCostFunction), new BidirectionalSearch(defaultHeuristic, defaultCostFunction)};
 
         algorithmSelectionController = new AlgorithmSelectionController(this, allPathfinders, allHeuristics, allCostFunctions, allPathfinders[0]);
         problemGeneratorController = new ProblemGeneratorController(this, ResourcePath.SCENARIOS.getSubPath("Classic TOAW"));
@@ -65,7 +69,6 @@ public class BenchmarkController implements AlgorithmSelectionInteractor, Proble
 
         benchmarkView.addExecuteBenchmarkActionListener(new ExecuteBenchmarkActionListener());
     }
-
 
     @Override
     public AlgorithmSelectionViewer getAlgorithmSelectionView() {
@@ -82,6 +85,21 @@ public class BenchmarkController implements AlgorithmSelectionInteractor, Proble
         this.problems = problems;
     }
 
+    private List<PathfindingSolution> solvePathfindingProblem(Scenario scenario, List<PathfindingProblem> problems, Pathfinder pathfinder) {
+        List<PathfindingSolution> solutions = new ArrayList<>();
+        Board board = scenario.getBoard();
+        for (PathfindingProblem problem : problems) {
+            SingleThreadStopwatch stopwatch = new SingleThreadStopwatch();
+            stopwatch.start();
+            ExtendedPath extendedPath = pathfinder.getExtendedPath(board.getTile(problem.getOrigin()), board.getTile(problem.getDestination()), testUnit);
+            stopwatch.stop();
+            if (extendedPath == null) continue;
+            PathfindingSolution solution = new PathfindingSolution(extendedPath.size(), extendedPath.getLast().getG(), extendedPath.getNumNodesVisited(), stopwatch.getTotalTime());
+            solutions.add(solution);
+//            System.out.println(solution.toString());
+        }
+        return solutions;
+    }
 
     private class ChangeMovementTypeActionListener implements ActionListener {
 
@@ -91,7 +109,6 @@ public class BenchmarkController implements AlgorithmSelectionInteractor, Proble
             testUnit = UnitFactory.createTestUnit((MovementType) source.getSelectedItem());
         }
     }
-
 
     private class ExecuteBenchmarkActionListener implements ActionListener {
         @Override
@@ -123,21 +140,5 @@ public class BenchmarkController implements AlgorithmSelectionInteractor, Proble
                 System.out.println(algorithmResults[i]);
             }
         }
-    }
-
-    private List<PathfindingSolution> solvePathfindingProblem(Scenario scenario, List<PathfindingProblem> problems, Pathfinder pathfinder) {
-        List<PathfindingSolution> solutions = new ArrayList<>();
-        Board board = scenario.getBoard();
-        for (PathfindingProblem problem : problems) {
-            SingleThreadStopwatch stopwatch= new SingleThreadStopwatch();
-            stopwatch.start();
-            ExtendedPath extendedPath = pathfinder.getExtendedPath(board.getTile(problem.getOrigin()), board.getTile(problem.getDestination()), testUnit);
-            stopwatch.stop();
-            if (extendedPath == null) continue;
-            PathfindingSolution solution = new PathfindingSolution(extendedPath.size(), extendedPath.getLast().getG(), extendedPath.getNumNodesVisited(), stopwatch.getTotalTime());
-            solutions.add(solution);
-//            System.out.println(solution.toString());
-        }
-        return solutions;
     }
 }

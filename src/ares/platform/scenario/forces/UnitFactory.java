@@ -22,9 +22,9 @@ public class UnitFactory {
         return new LandUnit(unit, formation, force, scenario);
     }
 
-    public static Unit createTestUnit(MovementType type) {
+    public static Unit createTestUnit(MovementType movementType) {
         Unit unit;
-        switch (type) {
+        switch (movementType) {
             case AIRCRAFT:
                 unit = new AirUnit();
                 break;
@@ -34,7 +34,7 @@ public class UnitFactory {
             default:
                 unit = new LandUnit();
         }
-        unit.setMovement(type);
+        unit.setMovementType(movementType);
         return unit;
     }
 

@@ -6,25 +6,24 @@ import ares.platform.scenario.board.Tile;
 import ares.platform.scenario.forces.Unit;
 
 /**
- * @author Mario Gomez <margomez at dsic.upv.es>
+ * @author Mario Gómez Martínez <magomar@gmail.com>
  */
-public enum CostFunctions implements CostFunction {
-
+public enum TerrainCostFunctions implements CostFunction {
+    FASTEST {
+        @Override
+        public double getCost(Direction dir, Tile destination, Unit unit) {
+            return destination.getEnterCost(dir).getTerrainCost(unit.getMovementType());
+        }
+    },
     SHORTEST {
         @Override
         public double getCost(Direction dir, Tile destination, Unit unit) {
-            int cost = destination.getEnterCost(dir).getActualCost(unit);
+            int cost = destination.getEnterCost(dir).getTerrainCost(unit.getMovementType());
             if (cost == MovementCost.IMPASSABLE) {
                 return cost;
             } else {
                 return 1;
             }
-        }
-    },
-    FASTEST {
-        @Override
-        public double getCost(Direction dir, Tile destination, Unit unit) {
-            return destination.getEnterCost(dir).getActualCost(unit);
         }
     };
 }

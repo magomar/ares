@@ -98,57 +98,57 @@ public final class LandUnit extends SurfaceUnit {
                             }
                             break;
                         case FIXED:
-                            movement = MovementType.FIXED;
+                            movementType = MovementType.FIXED;
                             nonTransportSpeed = 0;
                             break;
                         case RAIL_ONLY:
                             numVehicles += amount;
-                            movement = MovementType.RAIL;
+                            movementType = MovementType.RAIL;
                             nonTransportSpeed = Math.min(nonTransportSpeed, assetType.getSpeed());
                             break;
                         case RIVERINE:
                             numVehicles += amount;
-                            movement = MovementType.RIVERINE;
+                            movementType = MovementType.RIVERINE;
                             if (!assetTraits.contains(AssetTrait.TRANSPORT)) {
                                 nonTransportSpeed = Math.min(nonTransportSpeed, assetType.getSpeed());
                             }
                             break;
-                        // TODO airmobile movement
+                        // TODO airmobile movementType
                     }
                 }
             }
         }
         transportNeeds = numSlow + numStatic;
         if (unitType.getCapabilities().contains(Capability.COASTAL_DEFENSE)) {
-            movement = MovementType.FIXED;
+            movementType = MovementType.FIXED;
             speed = 0;
-        } else if (movement == null) {
+        } else if (movementType == null) {
             if (unitType.getCapabilities().contains(Capability.AMPHIBIOUS)) {
-                movement = MovementType.AMPHIBIOUS;
+                movementType = MovementType.AMPHIBIOUS;
                 speed = Math.min(transportSpeed, nonTransportSpeed);
             } else if (transportNeeds == 0) {
                 speed = Math.min(transportSpeed, nonTransportSpeed);
                 if (numVehicles > 2 * numHorses) {
-                    movement = MovementType.MOTORIZED;
+                    movementType = MovementType.MOTORIZED;
                 } else if (numVehicles < numHorses) {
-                    movement = MovementType.FOOT;
+                    movementType = MovementType.FOOT;
                 } else {
-                    movement = MovementType.MIXED;
+                    movementType = MovementType.MIXED;
                 }
             } else if (transportCapacity > 0) {
                 double tr = 2.0 * transportCapacity / transportNeeds;
                 if (tr >= 1 && numVehicles > numHorses) {
-                    movement = MovementType.MOTORIZED;
+                    movementType = MovementType.MOTORIZED;
                     speed = transportSpeed;
                 } else if (tr >= 0.5 && numVehicles > numHorses) {
-                    movement = MovementType.MIXED;
+                    movementType = MovementType.MIXED;
                     if (2 * transportCapacity >= numStatic) {
                         speed = (int) Math.max(nonTransportSpeed, tr * transportSpeed);
                     } else {
                         speed = (int) (tr * transportSpeed);
                     }
                 } else {
-                    movement = MovementType.FOOT;
+                    movementType = MovementType.FOOT;
                     if (2 * transportCapacity >= numStatic) {
                         speed = (int) Math.max(nonTransportSpeed, tr * transportSpeed);
                     } else {
@@ -156,7 +156,7 @@ public final class LandUnit extends SurfaceUnit {
                     }
                 }
             } else {
-                movement = MovementType.FOOT;
+                movementType = MovementType.FOOT;
                 if (nonTransportSpeed == Double.MAX_VALUE) {
                     speed = 0;
                 } else {

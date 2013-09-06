@@ -171,7 +171,7 @@ public abstract class Unit implements ModelProvider<UnitModel> {
     /**
      * Movement unitType depends on the unitType of assets in the unit (air, naval, foot, motorized, etc.)
      */
-    protected MovementType movement;
+    protected MovementType movementType;
     /**
      * Standard average moving speed in ideal conditions, specified in meters per minute. Depends on the unitType of assets
      * in the unit
@@ -553,8 +553,8 @@ public abstract class Unit implements ModelProvider<UnitModel> {
         return weight;
     }
 
-    public MovementType getMovement() {
-        return movement;
+    public MovementType getMovementType() {
+        return movementType;
     }
 
     public Echelon getEchelon() {
@@ -637,7 +637,7 @@ public abstract class Unit implements ModelProvider<UnitModel> {
     }
 
     public String toStringVerbose() {
-        return name + "(" + unitType.name() + ")." + movement + "." + opState + " @ " + location;
+        return name + "(" + unitType.name() + ")." + movementType + "." + opState + " @ " + location;
     }
 
     public String toStringMultiline() {
@@ -646,7 +646,7 @@ public abstract class Unit implements ModelProvider<UnitModel> {
         sb.append("Belongs to ").append(formation).append(" (").append(force).append(")\n");
         sb.append("Unit unitType: ").append(unitType).append('\n');
         sb.append("Location: ").append(location).append('\n');
-        sb.append("Movement: ").append(movement).append(" (").append(speed * 60.0 / 1000).append(" Km/h)\n");
+        sb.append("Movement: ").append(movementType).append(" (").append(speed * 60.0 / 1000).append(" Km/h)\n");
         sb.append("OpState: ").append(opState).append('\n');
         sb.append("Stamina: ").append(getStamina()).append('\n');
 //        sb.append("Endurance: ").append(endurance).append(" / ").append(MAX_ENDURANCE).append('\n');
@@ -734,10 +734,10 @@ public abstract class Unit implements ModelProvider<UnitModel> {
     }
 
     public boolean isAircraft() {
-        return movement == MovementType.AIRCRAFT;
+        return movementType == MovementType.AIRCRAFT;
     }
 
-    public void setMovement(MovementType movement) {
-        this.movement = movement;
+    public void setMovementType(MovementType movementType) {
+        this.movementType = movementType;
     }
 }

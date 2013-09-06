@@ -50,7 +50,7 @@ public class CombatAction extends SurfaceMoveAction {
         if (currentNode != null) {
             Tile destination = currentNode.getTile();
             MovementCost moveCost = destination.getEnterCost(currentNode.getDirection());
-            int cost = moveCost.getActualCost(unit);
+            int cost = moveCost.getVariableCost(unit);
             speed = unit.getSpeed() / cost;
             // timeToNextMovement <= 0. If it is negative we can add it to the new timeToNextMovement as a way to not propagate the precision error each movement segment
             timeToNextMovement = (speed > 0 ? Scale.INSTANCE.getTileSize() / speed + timeToNextMovement : Integer.MAX_VALUE);

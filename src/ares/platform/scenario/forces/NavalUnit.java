@@ -15,7 +15,7 @@ public class NavalUnit extends SurfaceUnit {
 
     public NavalUnit(ares.data.wrappers.scenario.Unit unit, Formation formation, Force force, Scenario scenario) {
         super(unit, formation, force, scenario);
-        movement = MovementType.NAVAL;
+        movementType = MovementType.NAVAL;
         speed = Integer.MAX_VALUE;
         for (Asset asset : assets.values()) {
             AssetType assetType = asset.getType();

@@ -17,9 +17,6 @@ import java.util.Queue;
  */
 public class AStar extends AbstractPathfinder {
 
-    public AStar() {
-    }
-
     public AStar(Heuristic heuristic, CostFunction costFunction) {
         super(heuristic, costFunction);
     }
@@ -38,10 +35,10 @@ public class AStar extends AbstractPathfinder {
         openSet.add(firstNode);
 
         while (!openSet.isEmpty()) {
-            // Obtain next best node from openSet and add it to the closed in the 
+            // Obtain best node and remove from open set
             Node bestNode = openSet.poll();
-            int bestNodeIndex = bestNode.getIndex();
-            closedSet.put(bestNodeIndex, bestNode);
+            // Add best node to closed set
+            closedSet.put(bestNode.getIndex(), bestNode);
             // Check for termination
             if (bestNode.getTile().equals(destination)) {
                 Path path = new Path(firstNode, bestNode);
@@ -96,24 +93,26 @@ public class AStar extends AbstractPathfinder {
         if (origin.equals(destination)) {
             return null;
         }
-        // Create data structures
+        // Create and initialize data structures
+        // The set of nodes already evaluated.
         Map<Integer, Node> closedSet = new HashMap<>();
+        // The set of tentative nodes to be evaluated, initially containing the initial node
         OpenSet openSet = new OpenSet();
         Node firstNode = Node.createInitialNode(origin, heuristic.getCost(origin, destination, unit));
         openSet.add(firstNode);
-
         while (!openSet.isEmpty()) {
-            // Obtain next best node from openSet and add it to the closed in the 
+            // Obtain best node and remove from open set
             Node bestNode = openSet.poll();
-            int bestNodeIndex = bestNode.getIndex();
-            closedSet.put(bestNodeIndex, bestNode);
+            // Add best node to closed set
+            closedSet.put(bestNode.getIndex(), bestNode);
             // Check for termination
             if (bestNode.getTile().equals(destination)) {
                 ExtendedPath path = new ExtendedPath(firstNode, bestNode, openSet.list, closedSet.values());
                 return path;
             }
             // Expand best node (Generate successors)
-            for (Map.Entry<Direction, Tile> entry : bestNode.getTile().getNeighbors().entrySet()) {
+            Map<Direction, Tile> neighbors = bestNode.getTile().getNeighbors();
+            for (Map.Entry<Direction, Tile> entry : neighbors.entrySet()) {
                 Direction fromDir = entry.getKey();
                 Direction toDir = fromDir.getOpposite();
                 Tile neighbor = entry.getValue();
