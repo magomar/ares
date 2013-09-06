@@ -112,19 +112,20 @@ public class Clock {
         return engine;
     }
 
-    public String toStringVerbose() {
+    public String toStringNowAndEnds() {
         return FULL_DATE_FORMAT.format(now.getTime()) + " (Turn " + turn + ")\nEnds: "
                 + FULL_DATE_FORMAT.format(ends.getTime()) + "(Turn " + finalTurn + ")";
+    }
+
+    public String toStringBeginsAndEnds() {
+        return "from " +FULL_DATE_FORMAT.format(begins.getTime()) + " to "
+                + FULL_DATE_FORMAT.format(ends.getTime())
+                + " (Turn " + finalTurn + ")";
     }
 
     @Override
     public String toString() {
         return FULL_DATE_FORMAT.format(now.getTime());
-    }
-
-
-    public static int[] getTemporalData(int startTime, int duration) {
-        return new int[3];
     }
 
     private class Tick implements Runnable {

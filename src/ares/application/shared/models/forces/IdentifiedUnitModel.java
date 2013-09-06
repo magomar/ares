@@ -1,5 +1,6 @@
 package ares.application.shared.models.forces;
 
+import ares.platform.engine.command.tactical.TacticalMission;
 import ares.platform.engine.knowledge.KnowledgeCategory;
 import ares.platform.scenario.forces.Echelon;
 import ares.platform.scenario.forces.Unit;
@@ -48,4 +49,8 @@ public class IdentifiedUnitModel extends DetectedUnitModel {
         return unit.toStringMultiline();
     }
 
+    @Override
+    public TacticalMission getTacticalMission() {
+        return null;
+    }
 }

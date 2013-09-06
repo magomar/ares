@@ -72,15 +72,11 @@ public abstract class TacticalMission {
 
     public abstract void plan(Pathfinder pathFinder);
 
-    public void commit(ActionSpace actionSpace) {
-        currentAction.commit();
-    }
-
     /**
      * Executes {@link #currentAction} for a time tick
      */
-    public void executeAction() {
-        currentAction.execute();
+    public void executeAction(ActionSpace actionSpace) {
+        currentAction.execute(actionSpace);
     }
 
     /**
@@ -100,7 +96,7 @@ public abstract class TacticalMission {
                     break;
                 default:
                     if (!currentAction.canBeExecuted()) {
-                        if (currentAction.getType() != ActionType.WAIT) {
+                        if (currentAction.getActionType() != ActionType.WAIT) {
                             // if current action is not wait and cannot be executed, then delay it
                             currentAction.delay();
                             pendingActions.addFirst(currentAction);
@@ -108,7 +104,7 @@ public abstract class TacticalMission {
                         currentAction = null;
                         break;
                     }
-                    if (currentAction.getType() == ActionType.WAIT && hasExecutablePendingAction()) {
+                    if (currentAction.getActionType() == ActionType.WAIT && hasExecutablePendingAction()) {
                         // Wait actions are abandoned and replaced by pending actions if possible
                         currentAction = scheduleNextAction();
                         break;

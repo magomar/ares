@@ -2,6 +2,7 @@ package ares.platform.engine.command.operational.plans;
 
 import ares.data.wrappers.scenario.Emphasis;
 import ares.data.wrappers.scenario.SupportScope;
+import ares.platform.engine.action.ActionSpace;
 import ares.platform.engine.algorithms.pathfinding.Pathfinder;
 import ares.platform.engine.command.Objective;
 import ares.platform.engine.command.tactical.TacticalMission;
@@ -23,7 +24,7 @@ class FixedOperationalPlan extends OperationalPlan {
     @Override
     public void plan(Pathfinder pathFinder) {
         for (Unit unit : formation.getAvailableUnits()) {
-            TacticalMission mission = TacticalMissionType.OCCUPY.getNewTacticalMission(unit, unit.getLocation(), pathFinder);
+            TacticalMission mission = TacticalMissionType.OCCUPY.buildTacticalMission(unit, unit.getLocation(), pathFinder);
             unit.setMission(mission);
         }
     }

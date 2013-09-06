@@ -17,7 +17,7 @@ import ares.platform.scenario.board.Tile;
 import ares.platform.scenario.forces.Force;
 import ares.platform.scenario.forces.Formation;
 import ares.platform.scenario.forces.Unit;
-import ares.test.Stopwatch;
+import ares.platform.util.Stopwatch;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -190,7 +190,7 @@ public class RealTimeEngine extends AbstractBean {
 //        LOG.log(Level.INFO, "Act");
         actionSpace.resolveInteractions();
         for (Unit unit : units) {
-            unit.act();
+            unit.act(actionSpace);
         }
     }
 
@@ -198,7 +198,6 @@ public class RealTimeEngine extends AbstractBean {
 //        LOG.log(Level.INFO, "Schedule");
         for (Unit unit : units) {
             unit.schedule();
-            unit.commit(actionSpace);
         }
     }
 
@@ -224,5 +223,9 @@ public class RealTimeEngine extends AbstractBean {
 
     public boolean isRunning() {
         return running;
+    }
+
+    public ActionSpace getActionSpace() {
+        return actionSpace;
     }
 }

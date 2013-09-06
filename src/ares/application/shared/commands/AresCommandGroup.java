@@ -22,6 +22,12 @@ public enum AresCommandGroup implements CommandGroup {
         public Command[] getCommands() {
             return EngineCommands.values();
         }
+    },
+    PATHFINDER_TOOLS("Tools", 'T') {
+        @Override
+        public Command[] getCommands() {
+            return PathfinderToolsCommands.values();
+        }
     };
     private final Integer mnemonic;
     private final String text;

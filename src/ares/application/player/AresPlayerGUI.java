@@ -88,7 +88,7 @@ public final class AresPlayerGUI extends AbstractView<JFrame> implements PlayerV
         cards.add(mainMenuView.getContentPane(), PlayerViewer.MAIN_MENU_PERSPECTIVE);
         cards.add(splitHoriz2, PlayerViewer.PLAYER_PERSPECTIVE);
         mainFrame.add(cards);
-        switchPerspective(PlayerViewer.MAIN_MENU_PERSPECTIVE);
+//        switchPerspective(PlayerViewer.MAIN_MENU_PERSPECTIVE);  // Perspective set from the controller
         return mainFrame;
     }
 
@@ -102,10 +102,12 @@ public final class AresPlayerGUI extends AbstractView<JFrame> implements PlayerV
         cl.show(cards, perspective);
         switch (perspective) {
             case PlayerViewer.MAIN_MENU_PERSPECTIVE:
+                contentPane.getRootPane().setWindowDecorationStyle(JRootPane.NONE);
                 menuView.setVisible(false);
                 toolBarView.setVisible(false);
                 break;
             case PlayerViewer.PLAYER_PERSPECTIVE:
+                contentPane.getRootPane().setWindowDecorationStyle(JRootPane.FRAME);
                 menuView.setVisible(true);
                 toolBarView.setVisible(true);
                 break;
@@ -134,10 +136,10 @@ public final class AresPlayerGUI extends AbstractView<JFrame> implements PlayerV
     }
 
     public static void main(String[] args) {
+//        JFrame.setDefaultLookAndFeelDecorated(false);
+//        JDialog.setDefaultLookAndFeelDecorated(true);
         Toolkit.getDefaultToolkit().setDynamicLayout(true);
         System.setProperty("sun.awt.noerasebackground", "true");
-//        JFrame.setDefaultLookAndFeelDecorated(true);
-        JDialog.setDefaultLookAndFeelDecorated(true);
         try {
 //            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
 //                if ("Nimbus".equals(info.getName())) {
@@ -148,8 +150,10 @@ public final class AresPlayerGUI extends AbstractView<JFrame> implements PlayerV
 //                }
 //            }
             UIManager.setLookAndFeel("de.muntjak.tinylookandfeel.TinyLookAndFeel");
-            ThemeDescription td = Theme.getAvailableThemes()[3];
-            Theme.loadTheme(td);
+            ThemeDescription[] themes = Theme.getAvailableThemes();
+            for (ThemeDescription theme: themes) {
+                if ("DarkOlive".equals(theme.getName())) Theme.loadTheme(theme);
+            }
             UIManager.setLookAndFeel(new TinyLookAndFeel());
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(AresPlayerGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
@@ -160,6 +164,7 @@ public final class AresPlayerGUI extends AbstractView<JFrame> implements PlayerV
                 AresPlayerGUI mainView = new AresPlayerGUI();
                 WeGoPlayerController mainController = new WeGoPlayerController(mainView);
                 mainView.show();
+
             }
         });
     }

@@ -18,6 +18,7 @@ import ares.application.shared.models.forces.ForceModel;
 import ares.application.shared.models.forces.FormationModel;
 import ares.application.shared.models.forces.UnitModel;
 import ares.platform.engine.RealTimeEngine;
+import ares.platform.engine.action.ActionSpace;
 import ares.platform.engine.algorithms.pathfinding.AStar;
 import ares.platform.engine.algorithms.pathfinding.Path;
 import ares.platform.engine.algorithms.pathfinding.Pathfinder;
@@ -27,6 +28,8 @@ import ares.platform.engine.algorithms.pathfinding.heuristics.MinimunDistance;
 import ares.platform.engine.command.tactical.TacticalMission;
 import ares.platform.engine.command.tactical.TacticalMissionType;
 import ares.platform.engine.time.Clock;
+import ares.platform.io.FileIO;
+import ares.platform.io.ResourcePath;
 import ares.platform.model.UserRole;
 import ares.platform.scenario.Scenario;
 import ares.platform.scenario.board.Tile;
@@ -57,6 +60,7 @@ import java.util.logging.Logger;
 public final class PlayerBoardController extends BoardController implements BoardInteractor, MiniMapInteractor, ActionController, PropertyChangeListener {
 
     private static final Logger LOG = Logger.getLogger(PlayerBoardController.class.getName());
+    private final ActionSpace actionSpace;
     private final Pathfinder pathFinder;
     private final OOBViewer oobView;
     private final BoardViewer miniMapView;
@@ -70,11 +74,13 @@ public final class PlayerBoardController extends BoardController implements Boar
     private final PlayerBoardInteractor interactor;
     private final ChangeListener changeViewportListener;
     private boolean dragging = false;
+    private Cursor onTargetCursor;
 
     public PlayerBoardController(final PlayerBoardInteractor interactor, RealTimeEngine engine) {
         super(interactor);
         this.interactor = interactor;
         pathFinder = new AStar(MinimunDistance.create(DistanceCalculator.DELTA), CostFunctions.FASTEST);
+        actionSpace = engine.getActionSpace();
         oobView = interactor.getOOBView();
         miniMapView = interactor.getMiniMapView();
         infoView = interactor.getInfoView();
@@ -92,6 +98,11 @@ public final class PlayerBoardController extends BoardController implements Boar
 
         //Add change listeners to entities
         engine.addPropertyChangeListener(this);
+
+        //Create Custom cursor
+        Toolkit toolkit = Toolkit.getDefaultToolkit();
+        Image onTargetImage = FileIO.loadImage(ResourcePath.OTHER.getFile("on-target.png"));
+        onTargetCursor = toolkit.createCustomCursor(onTargetImage, new Point(0,0), "OnTarget");
     }
 
     public void setScenario(Scenario scenario, UserRole userRole) {
@@ -197,7 +208,7 @@ public final class PlayerBoardController extends BoardController implements Boar
     private void select(int x, int y) {
         int profile = GraphicsModel.INSTANCE.getActiveProfile();
         if (GraphicsModel.INSTANCE.isWithinImageRange(x, y, profile)) {
-            Point tilePoint = GraphicsModel.INSTANCE.pixelToTileAccurate(x, y, profile);
+            Point tilePoint = GraphicsModel.INSTANCE.pixelToTile(x, y, profile);
             if (!GraphicsModel.INSTANCE.validCoordinates(tilePoint.x, tilePoint.y)) {
                 return;
             }
@@ -242,12 +253,12 @@ public final class PlayerBoardController extends BoardController implements Boar
     private void command(int x, int y) {
         int profile = GraphicsModel.INSTANCE.getActiveProfile();
         if (interactionMode == InteractionMode.UNIT_ORDERS && GraphicsModel.INSTANCE.isWithinImageRange(x, y, profile)) {
-            Point tilePoint = GraphicsModel.INSTANCE.pixelToTileAccurate(x, y, profile);
+            Point tilePoint = GraphicsModel.INSTANCE.pixelToTile(x, y, profile);
             if (!GraphicsModel.INSTANCE.validCoordinates(tilePoint.x, tilePoint.y)) {
                 return;
             }
             Tile tile = scenario.getBoard().getTile(tilePoint.x, tilePoint.y);
-            TacticalMission mission = TacticalMissionType.OCCUPY.getNewTacticalMission(selectedUnit, tile, pathFinder);
+            TacticalMission mission = TacticalMissionType.OCCUPY.buildTacticalMission(selectedUnit, tile, pathFinder);
             selectedUnit.setMission(mission);
             selectedUnit.schedule();
             arrowLayerView.updateLastOrders(mission.getPath());
@@ -259,34 +270,29 @@ public final class PlayerBoardController extends BoardController implements Boar
 
         @Override
         public void mouseMoved(MouseEvent me) {
-//            if (interactionMode == InteractionMode.UNIT_ORDERS && !wegoController.getEngine().isRunning()) {
-            if (interactionMode == InteractionMode.UNIT_ORDERS) {
-                int profile = GraphicsModel.INSTANCE.getActiveProfile();
-                Point pixel = new Point(me.getX(), me.getY());
-                if (GraphicsModel.INSTANCE.isWithinImageRange(pixel, profile)) {
-                    Point coords = GraphicsModel.INSTANCE.pixelToTileAccurate(pixel, profile);
-                    if (!GraphicsModel.INSTANCE.validCoordinates(coords.x, coords.y)) {
-                        return;
-                    }
-                    Tile tile = scenario.getBoard().getTile(coords.x, coords.y);
-                    Path path = pathFinder.getPath(selectedUnit.getLocation(), tile, selectedUnit);
+            int profile = GraphicsModel.INSTANCE.getActiveProfile();
+            Point pixel = new Point(me.getX(), me.getY());
+            if (GraphicsModel.INSTANCE.isWithinImageRange(pixel, profile)) {
+                Point coordinates = GraphicsModel.INSTANCE.pixelToTile(pixel, profile);
+                if (!GraphicsModel.INSTANCE.validCoordinates(coordinates.x, coordinates.y)) {
+                    return;
+                }
+                Tile tile = scenario.getBoard().getTile(coordinates.x, coordinates.y);
+                if (interactionMode == InteractionMode.UNIT_ORDERS) {
+                    Path path = pathFinder.findPath(selectedUnit.getLocation(), tile, selectedUnit);
                     if (path == null) {
                         return;
                     }
                     arrowLayerView.updateCurrentOrders(path);
                 }
-            }
-            if (!dragging) {
-                int profile = GraphicsModel.INSTANCE.getActiveProfile();
-                Point pixel = new Point(me.getX(), me.getY());
-                if (GraphicsModel.INSTANCE.isWithinImageRange(pixel, profile)) {
-                    Point coords = GraphicsModel.INSTANCE.pixelToTileAccurate(pixel, profile);
-                    if (!GraphicsModel.INSTANCE.validCoordinates(coords.x, coords.y)) {
-                        return;
-                    }
-                    Tile tile = scenario.getBoard().getTile(coords.x, coords.y);
-                    if (!tile.getUnitsStack().isEmpty())  {
-                        interactor.getGUIContainer().setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                if (!dragging) {
+                    if (!tile.getUnitsStack().isEmpty()) {
+                        if (selectedUnit!=null && tile.hasEnemies(selectedUnit.getForce())) {
+
+                            interactor.getGUIContainer().setCursor(onTargetCursor);
+                        }   else {
+                            interactor.getGUIContainer().setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                        }
                     } else {
                         interactor.getGUIContainer().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
                     }
@@ -302,11 +308,11 @@ public final class PlayerBoardController extends BoardController implements Boar
             dragging = true;
             int profile = GraphicsModel.INSTANCE.getActiveProfile();
             Point pixel = new Point(me.getX(), me.getY());
-            Point coords = GraphicsModel.INSTANCE.pixelToTileAccurate(pixel, profile);
-            if (!GraphicsModel.INSTANCE.validCoordinates(coords.x, coords.y)) {
+            Point coordinates = GraphicsModel.INSTANCE.pixelToTile(pixel, profile);
+            if (!GraphicsModel.INSTANCE.validCoordinates(coordinates.x, coordinates.y)) {
                 return;
             }
-            boardView.centerViewOn(coords);
+            boardView.centerViewOn(coordinates);
         }
     }
 
@@ -335,13 +341,13 @@ public final class PlayerBoardController extends BoardController implements Boar
             return;
         }
         List<Path> forcePaths = new ArrayList<>();
-        for (FormationModel fModel : selectedForce.getFormationModels()) {
-            if (!fModel.equals(selectedFormation)) {
-                for (UnitModel uModel : fModel.getUnitModels()) {
-                    TacticalMission mission = uModel.getTacticalMission();
+        for (FormationModel force : selectedForce.getFormationModels()) {
+            if (!force.equals(selectedFormation)) {
+                for (UnitModel unit : force.getUnitModels()) {
+                    TacticalMission mission = unit.getTacticalMission();
                     Path path = mission.getPath();
                     if (path != null) {
-                        forcePaths.add(path.subPath(uModel.getLocation()));
+                        forcePaths.add(path.subPath(unit.getLocation()));
                     }
                 }
             }

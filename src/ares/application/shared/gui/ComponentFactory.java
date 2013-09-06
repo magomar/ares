@@ -195,6 +195,11 @@ public abstract class ComponentFactory {
         return button;
     }
 
+    public static JButton button(String text) {
+        JButton button = new JButton(text);
+        return button;
+    }
+
     public static JButton button(Action action) {
         JButton button = new JButton(action);
         button.setName((String) action.getValue(Action.ACTION_COMMAND_KEY));

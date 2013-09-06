@@ -2,7 +2,8 @@ package ares.application.analyser;
 
 import ares.application.analyser.boundaries.viewers.PathfinderToolsViewer;
 import ares.application.analyser.controllers.PathfinderToolsController;
-import ares.application.analyser.views.PathfinderComparatorView;
+import ares.application.analyser.views.BenchmarkView;
+import ares.application.analyser.views.ComparatorView;
 import ares.application.player.AresPlayerGUI;
 import ares.application.shared.boundaries.viewers.MenuBarViewer;
 import ares.application.shared.boundaries.viewers.PanelMenuViewer;
@@ -32,7 +33,8 @@ public class PathfinderToolsGUI extends AbstractView<JFrame> implements Pathfind
     private MainMenuView mainMenuV;
     private MenuBarView menuV;
     private ToolBarView toolBarV;
-    private PathfinderComparatorView comparatorV;
+    private ComparatorView comparatorV;
+    private BenchmarkView benchmarkV;
 
     @Override
     protected JFrame layout() {
@@ -42,9 +44,10 @@ public class PathfinderToolsGUI extends AbstractView<JFrame> implements Pathfind
         mainMenuV = new MainMenuView();
         menuV = new MenuBarView();
         toolBarV = new ToolBarView();
-        comparatorV = new PathfinderComparatorView();
+        comparatorV = new ComparatorView();
+        benchmarkV = new BenchmarkView();
 
-        JFrame mainFrame = ComponentFactory.frame("Ares Player", menuV.getContentPane(), toolBarV.getContentPane());
+        JFrame mainFrame = ComponentFactory.frame("Ares Pathfinder Analyser", menuV.getContentPane(), toolBarV.getContentPane());
         // These dimensions are necessary when the frame is not fullscreen
         Dimension maxSize = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().getSize();
         Dimension defaultSize = new Dimension(1440, 900);
@@ -67,6 +70,7 @@ public class PathfinderToolsGUI extends AbstractView<JFrame> implements Pathfind
         cards = new JPanel(new CardLayout());
         cards.add(mainMenuV.getContentPane(), PathfinderToolsViewer.MAIN_MENU_PERSPECTIVE);
         cards.add(comparatorV.getContentPane(), PathfinderToolsViewer.COMPARATOR_PERSPECTIVE);
+        cards.add(benchmarkV.getContentPane(), PathfinderToolsViewer.BENCHMARK_PERSPECTIVE);
         mainFrame.add(cards);
 //        switchPerspective(PathfinderToolsViewer.MAIN_MENU_PERSPECTIVE);
         switchPerspective(PathfinderToolsViewer.COMPARATOR_PERSPECTIVE);
@@ -90,7 +94,7 @@ public class PathfinderToolsGUI extends AbstractView<JFrame> implements Pathfind
                 menuV.setVisible(true);
                 toolBarV.setVisible(true);
                 break;
-            case PathfinderToolsViewer.ANALYSER_PERSPECTIVE:
+            case PathfinderToolsViewer.BENCHMARK_PERSPECTIVE:
                 menuV.setVisible(true);
                 toolBarV.setVisible(true);
                 break;
@@ -113,8 +117,10 @@ public class PathfinderToolsGUI extends AbstractView<JFrame> implements Pathfind
 //                }
 //            }
             UIManager.setLookAndFeel("de.muntjak.tinylookandfeel.TinyLookAndFeel");
-            ThemeDescription td = Theme.getAvailableThemes()[3];
-            Theme.loadTheme(td);
+            ThemeDescription[] themes = Theme.getAvailableThemes();
+            for (ThemeDescription theme: themes) {
+                if ("DarkOlive".equals(theme.getName())) Theme.loadTheme(theme);
+            }
             UIManager.setLookAndFeel(new TinyLookAndFeel());
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(AresPlayerGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
@@ -146,7 +152,12 @@ public class PathfinderToolsGUI extends AbstractView<JFrame> implements Pathfind
     }
 
     @Override
-    public PathfinderComparatorView getComparatorView() {
+    public ComparatorView getComparatorView() {
         return comparatorV;
+    }
+    
+    @Override
+    public BenchmarkView getBenchmarkView() {
+        return benchmarkV;
     }
 }

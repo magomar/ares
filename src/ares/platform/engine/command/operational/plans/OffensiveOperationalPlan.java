@@ -25,12 +25,12 @@ class OffensiveOperationalPlan extends OperationalPlan {
         if (!goals.isEmpty()) {
             Objective objective = goals.first();
             for (Unit unit : formation.getAvailableUnits()) {
-                TacticalMission mission = TacticalMissionType.OCCUPY.getNewTacticalMission(unit, objective.getLocation(), pathFinder);
+                TacticalMission mission = TacticalMissionType.OCCUPY.buildTacticalMission(unit, objective.getLocation(), pathFinder);
                 unit.setMission(mission);
             }
         } else {
             for (Unit unit : formation.getAvailableUnits()) {
-                TacticalMission mission = TacticalMissionType.OCCUPY.getNewTacticalMission(unit, unit.getLocation(), pathFinder);
+                TacticalMission mission = TacticalMissionType.OCCUPY.buildTacticalMission(unit, unit.getLocation(), pathFinder);
                 unit.setMission(mission);
             }
         }

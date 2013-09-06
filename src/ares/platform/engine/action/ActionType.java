@@ -39,8 +39,17 @@ public enum ActionType {
      * Speed modifier expressed as a factor to multiply the current unit speed by
      */
     private final double speedModifier;
+    /**
+     * Operational state required to execute this type of action
+     */
     private final OpState precondition;
+    /**
+     * Operational state kept while executing the action
+     */
     private final OpState effectWhile;
+    /**
+     * Operational state reached after completing an action of this type
+     */
     private final OpState effectAfter;
 
     private ActionType(final double wearRate, final double speedModifier, final OpState precondition,
@@ -74,7 +83,7 @@ public enum ActionType {
 
     /**
      * @param duration in minutes
-     * @return the endurance required to execute this action unitType for the given {@code duration}
+     * @return the endurance required to execute an action of this type for the given {@code duration}
      */
     public int getRequiredEndurace(int duration) {
         return wearRate * duration;

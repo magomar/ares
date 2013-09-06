@@ -18,7 +18,7 @@ import java.util.TreeSet;
 public abstract class OperationalPlan {
 
     protected final OperationalStance stance;
-    //    protected OperationType unitType;
+    //    protected OperationType operationType;
 //    protected OperationForm form;
     protected final Formation formation;
     protected final List<Objective> objectives;

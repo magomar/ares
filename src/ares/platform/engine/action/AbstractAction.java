@@ -10,23 +10,21 @@ import ares.platform.scenario.forces.Unit;
 public abstract class AbstractAction implements Action {
 
     /**
-     * Start time value indicating that an action shall be started as soon as possible
+     * Unique identifier for this action. Since actions are created dynamically, the identifier can be obtained by
+     * automatic generation. For that purpose, the class {@link ActionCounter} includes a static method
+     * ({@link ares.platform.engine.action.ActionCounter#count()}) that return successive integer values when invoked.
      */
-    public static final int AS_SOON_AS_POSSIBLE = 0;
-    /**
-     * Value indicating that the duration or time to complete an action is unknown
-     */
-    public static final int TIME_UNKNOWN = Integer.MAX_VALUE;
+    protected final int id;
     /**
      * The unit to perform this action
      */
     protected final Unit unit;
     /**
-     * The unitType of the action
+     * The type of action
      *
      * @see ActionType
      */
-    protected final ActionType type;
+    protected final ActionType actionType;
     /**
      * Before starting the action, this attribute holds the estimated time to start performing the action, specified in
      * time ticks passed since the beginning of the scenario. Thereafter it holds the actual starting time. If (start ==
@@ -39,7 +37,7 @@ public abstract class AbstractAction implements Action {
      */
     protected int finish;
     /**
-     * Estimated remaining time to complete the action in time ticks. If (timeToComplete == TIME_UNKNOWN) then the
+     * Estimated remaining time to finish the action in time ticks. If (timeToComplete == TIME_UNKNOWN) then the
      * action will be executed indefinitely, until it is aborted or terminated because of some event
      */
     protected int timeToComplete;
@@ -49,36 +47,35 @@ public abstract class AbstractAction implements Action {
      * @see ActionState
      */
     protected ActionState state;
-    protected final int id;
+//    /**
+//     * Global action space; it is used to handle action interactions among multiple actors (eg. combat)
+//     */
+//    protected final ActionSpace actionSpace;
 
-    public AbstractAction(Unit unit, ActionType type) {
-        this(unit, AS_SOON_AS_POSSIBLE, type, TIME_UNKNOWN);
-    }
+//    public AbstractAction(ActionType actionType, Unit unit, ActionSpace actionSpace) {
+//        this(actionType, unit, AS_SOON_AS_POSSIBLE, TIME_UNKNOWN, actionSpace);
+//    }
+//
+//    public AbstractAction(ActionType actionType, Unit unit, int start, ActionSpace actionSpace) {
+//        this(actionType, unit, start, TIME_UNKNOWN, actionSpace);
+//    }
 
-    public AbstractAction(Unit unit, int start, ActionType type) {
-        this(unit, start, type, TIME_UNKNOWN);
-    }
-
-    public AbstractAction(Unit unit, ActionType type, int timeToComplete) {
-        this(unit, AS_SOON_AS_POSSIBLE, type, timeToComplete);
-    }
-
-    public AbstractAction(Unit unit, int start, ActionType type, int timeToComplete) {
+    public AbstractAction(ActionType actionType, Unit unit, int start, int duration) {
+        id = ActionCounter.count();
+        this.actionType = actionType;
         this.unit = unit;
-        this.type = type;
         this.start = start;
-        this.timeToComplete = timeToComplete;
+        this.timeToComplete = duration;
         if (timeToComplete != TIME_UNKNOWN) {
             finish = start + timeToComplete;
         } else {
             finish = TIME_UNKNOWN;
         }
         state = ActionState.CREATED;
-        id = ActionCounter.count();
     }
 
     /**
-     * Determines if the action can be executed by checking all the necessary conditions: if the action was already
+     * Resolves if the action can be executed by checking all the necessary conditions: if the action was already
      * started then it performs two checks: {@link #checkEndurance()} and {@link #isFeasible()}, otherwise it performs
      * the two former checks plus {@link #checkStartTime()} and {@link #checkPreconditions()}.
      *
@@ -113,7 +110,7 @@ public abstract class AbstractAction implements Action {
     public final void start() {
         state = ActionState.ONGOING;
         start = Clock.INSTANCE.getTick();
-        unit.setOpState(type.getEffectWhile());
+        unit.setOpState(actionType.getEffectWhile());
     }
 
     /**
@@ -122,30 +119,22 @@ public abstract class AbstractAction implements Action {
      * operational state of the {@link #unit}
      */
     @Override
-    public final void complete() {
+    public final void finish() {
         state = ActionState.COMPLETED;
         finish = Clock.INSTANCE.getTick();
-        unit.setOpState(type.getEffectAfter());
+        unit.setOpState(actionType.getEffectAfter());
     }
 
     /**
-     * Commits the action for execution
+     * Executes the action for the current time tick. If the the action is completed then finish it.
      */
     @Override
-    public void commit() {
-        // TODO commit
-    }
-
-    /**
-     * Executes the action for the current time tick. If the the action is completed then complete it.
-     */
-    @Override
-    public final void execute() {
-        timeToComplete -= 1;
+    public final void execute(ActionSpace actionSpace) {
+        if (timeToComplete < TIME_UNKNOWN)  timeToComplete -= Clock.INSTANCE.getMINUTES_PER_TICK();
+        applyOngoingEffects(actionSpace);
         wear();
-        applyOngoingEffects();
         if (isComplete()) {
-            complete();
+            finish();
         }
     }
 
@@ -167,11 +156,12 @@ public abstract class AbstractAction implements Action {
      */
     @Override
     public void delay() {
-        unit.setOpState(type.getPrecondition());
+        unit.setOpState(actionType.getPrecondition());
     }
 
     /**
      * Checks whether the planned start time of the action has been reached
+     *
      * @return true if start time has been reached, false otherwise
      */
     private boolean checkStartTime() {
@@ -180,40 +170,42 @@ public abstract class AbstractAction implements Action {
 
     /**
      * Checks whether the acting unit is in the right operational state
+     *
      * @return true if the operational state is right, false otherwise
      * @see OpState
      */
+    @Override
     public boolean checkPreconditions() {
         // TODO try to make this method protected...
-        OpState precondition = type.getPrecondition();
+        OpState precondition = actionType.getPrecondition();
         OpState unitState = unit.getOpState();
-        return precondition == null || unitState.equals(precondition) || unitState.equals(type.getEffectWhile());
+        return precondition == null || unitState.equals(precondition) || unitState.equals(actionType.getEffectWhile());
     }
 
     /**
      * @return whether the unit's remaining endurance is enough to execute the action during the next time tick
      */
     private boolean checkEndurance() {
-        return unit.canEndure(type);
+        return unit.canEndure(actionType);
     }
 
     /**
      * Apply wear resulting of executing the action for one time tick, which reduces the endurance of the unit
      */
     private void wear() {
-        unit.changeEndurance(-type.getRequiredEndurace(Clock.INSTANCE.getMINUTES_PER_TICK()));
+        unit.changeEndurance(-actionType.getRequiredEndurace(Clock.INSTANCE.getMINUTES_PER_TICK()));
     }
 
     /**
      * Apply the effects of an action while it is being executed. Derived classes can overwrite this method to add
      * specific effects
      */
-    protected abstract void applyOngoingEffects();
+    protected abstract void applyOngoingEffects(ActionSpace actionSpace);
 
     /**
-     * Checks if the actions satisfies the specific requirements of this action's unitType.
+     * Checks if this action satisfies its specific requirements, which may depend on the action's type ({@link #actionType})
      *
-     * @return  true if the requirements are satisfied
+     * @return true if the requirements are satisfied
      */
     protected abstract boolean isFeasible();
 
@@ -243,8 +235,8 @@ public abstract class AbstractAction implements Action {
     }
 
     @Override
-    public ActionType getType() {
-        return type;
+    public ActionType getActionType() {
+        return actionType;
     }
 
     @Override
@@ -254,10 +246,10 @@ public abstract class AbstractAction implements Action {
 
     @Override
     public String toString() {
-        return type.name() + '_' + id + '(' + state + ", " + start + ", " + timeToComplete + ')';
+        return actionType.name() + '_' + id + '(' + state + ", " + start + ", " + timeToComplete + ')';
     }
 
     public String toStringVerbose() {
-        return "[" + Clock.INSTANCE + "] #" + id + " > " + state + '{' + type + ": " + unit + '}';
+        return "[" + Clock.INSTANCE + "] #" + id + " > " + state + '{' + actionType + ": " + unit + '}';
     }
 }

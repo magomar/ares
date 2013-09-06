@@ -1,28 +1,10 @@
-# This file (.gitginore) tells git which files
-# don't need to be tracked
-
-# Syntax #
-##########################################################
-# Ignore folder:
-# folder/
-# folder/subfolder/
-
-# Ignore files by extension or name:
-# *.css
-# *.txt
-# mytextfile.txt
-
-# If slash "/" is at the beginning of the regexp, it will
-# match only folder or files at the root directory
-##########################################################
-
-
-# Java compiled sources #
-#######################
+#########################
+## Java compiled sources 
+########################
 
 *.class
 
-
+###################
 # Netbeans folders #
 ####################
 
@@ -30,30 +12,40 @@
 /dist/
 /nbproject/private/
 
-#Intellij IDEA folders and files #
+##################################
+## Intellij IDEA folders and files 
 ##################################
 
 /out/
 /.idea/workspace.xml
 /.idea/tasks.xml
 
-# OS files #
-############
+###################
+## O.S. detritus
+###################
 
-.DS_Store
-._*
-*.swp
+# Windows image file caches
 Thumbs.db
+ehthumbs.db
 
+# Folder config file
+Desktop.ini
 
-# Editor backup files #
-######################
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
 
+# Mac crap
+.DS_Store
+
+# Linux/Unix backup files 
 *~
 
+###################
 # Project Folders #
-##############################
+###################
 
-Graphics/Background/
-Temp/
+
+/Graphics/Background/
+/Temp/
+/doc/
 

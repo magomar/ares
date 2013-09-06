@@ -19,8 +19,12 @@ public class Path {
      * @param last  the last node in the path
      */
     public Path(Node first, Node last) {
+        this.first = first;
         this.last = last;
         size = 1;
+        if (first.equals(last)) {
+            return;
+        }
         Node current = last;
         Node prev = current.getPrev();
         while (prev != null) {
@@ -29,11 +33,11 @@ public class Path {
             prev = current.getPrev();
             size++;
             if (current.equals(first)) {
-                this.first = current;
+//                this.first = current;
                 return;
             }
         }
-        throw new IllegalArgumentException("First node not reachable from last node");
+        throw new IllegalArgumentException("First node not reachable last node");
 
     }
 
@@ -72,13 +76,22 @@ public class Path {
     }
 
     /**
-     * Gets a subpath of the this path from the given {@code node}
+     * Gets a subpath of this path from the given {@code node}
      *
      * @param node
      * @return
      */
-    public Path subPath(Node node) {
+    public Path subPathFrom(Node node) {
         return new Path(node, last);
+    }
+    /**
+     * Gets a subpath of this path from the {@link #first} {@link Node} to the given {@code node}
+     *
+     * @param node
+     * @return
+     */
+    public Path subPathTo(Node node) {
+        return new Path(first, node);
     }
 
     /**
@@ -89,10 +102,10 @@ public class Path {
      */
     public Path subPath(TileModel tile) {
         int tileIndex = tile.getIndex();
-        Node n;
-        for (n = first; n != null; n = n.getNext()) {
-            if (n.getTile().getIndex() == tileIndex) {
-                return new Path(n, last);
+        Node node;
+        for (node = first; node != null; node = node.getNext()) {
+            if (node.getTile().getIndex() == tileIndex) {
+                return subPathFrom(node);
             }
         }
         return null;

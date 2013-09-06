@@ -715,16 +715,12 @@ public abstract class Unit implements ModelProvider<UnitModel> {
         return mission;
     }
 
-    public void act() {
-        mission.executeAction();
+    public void act(ActionSpace actionSpace) {
+        mission.executeAction(actionSpace);
     }
 
     public Action schedule() {
         return mission.scheduleAction();
-    }
-
-    public void commit(ActionSpace actionSpace) {
-        mission.commit(actionSpace);
     }
 
     /**

@@ -20,7 +20,7 @@ import java.util.List;
  */
 class SecurityOperationalPlan extends OperationalPlan {
 
-    public SecurityOperationalPlan(Formation formation, List<Objective> objectives, Emphasis emphasis, SupportScope supportScope) {
+    public SecurityOperationalPlan(Formation formation, List<Objective> objectives, Emphasis emphasis, SupportScope supportScope)  {
         super(OperationalStance.SECURITY, formation, objectives, emphasis, supportScope);
     }
 
@@ -29,12 +29,12 @@ class SecurityOperationalPlan extends OperationalPlan {
         if (!goals.isEmpty()) {
             Objective objective = goals.first();
             for (Unit unit : formation.getAvailableUnits()) {
-                TacticalMission mission = TacticalMissionType.OCCUPY.getNewTacticalMission(unit, objective.getLocation(), pathFinder);
+                TacticalMission mission = TacticalMissionType.OCCUPY.buildTacticalMission(unit, objective.getLocation(), pathFinder);
                 unit.setMission(mission);
             }
         } else {
             for (Unit unit : formation.getAvailableUnits()) {
-                TacticalMission mission = TacticalMissionType.OCCUPY.getNewTacticalMission(unit, unit.getLocation(), pathFinder);
+                TacticalMission mission = TacticalMissionType.OCCUPY.buildTacticalMission(unit, unit.getLocation(), pathFinder);
                 unit.setMission(mission);
             }
         }

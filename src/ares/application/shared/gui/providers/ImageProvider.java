@@ -57,7 +57,7 @@ public interface ImageProvider {
     BufferedImage getImage(int index);
 
     /**
-     * Gets the complete image containing all the graphics for this provider
+     * Gets the finish image containing all the graphics for this provider
      *
      * @return
      */

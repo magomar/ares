@@ -1,6 +1,7 @@
 package ares.platform.engine.action.actions;
 
 import ares.platform.engine.action.AbstractAction;
+import ares.platform.engine.action.ActionSpace;
 import ares.platform.engine.action.ActionType;
 import ares.platform.scenario.forces.Unit;
 
@@ -10,15 +11,15 @@ import ares.platform.scenario.forces.Unit;
 public class WaitAction extends AbstractAction {
 
     public WaitAction(Unit unit) {
-        super(unit, ActionType.WAIT, AbstractAction.TIME_UNKNOWN);
+        this(unit, AS_SOON_AS_POSSIBLE, TIME_UNKNOWN);
     }
 
-    public WaitAction(Unit unit, int duration) {
-        super(unit, ActionType.WAIT, duration);
+    public WaitAction(Unit unit, int start, int duration) {
+        super(ActionType.WAIT, unit, start, duration);
     }
 
     @Override
-    protected void applyOngoingEffects() {
+    protected void applyOngoingEffects(ActionSpace actionSpace) {
     }
 
     @Override

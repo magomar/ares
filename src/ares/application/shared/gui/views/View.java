@@ -19,4 +19,5 @@ public interface View<C extends Component> {
 
     void setPreferredSize(Dimension size);
 
+    Dimension getPreferredSize();
 }

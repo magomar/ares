@@ -1,6 +1,7 @@
 package ares.platform.engine.action.actions;
 
 import ares.platform.engine.action.AbstractAction;
+import ares.platform.engine.action.ActionSpace;
 import ares.platform.engine.action.ActionType;
 import ares.platform.engine.algorithms.pathfinding.Node;
 import ares.platform.engine.algorithms.pathfinding.Path;
@@ -12,26 +13,44 @@ import ares.platform.scenario.board.Tile;
 import ares.platform.scenario.forces.Unit;
 
 /**
+ * Generic movement action.
+ * A single movement action may comprise movement along a sequence of adjacent tiles. The sequence of movements is
+ * represented by a {@link Path} object.
+ *
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
+
 public abstract class MoveAction extends AbstractAction {
 
+    /**
+     * Path to follow while performing this action. A path contains a sequence of tiles in the map
+     */
     protected final Path path;
+    /**
+     * Current node in the {@link #path} of this action. A node references a tile in the map.
+     */
     protected Node currentNode;
     /**
-     * Time to complete next partial move
+     * Time to finish next partial move, in minutes
      */
     protected int timeToNextMovement;
     /**
-     * Actual speed for this particular action, having into account not just the base speed and movement costs
-     * occasioned by the terrain, which are all precomputed for every unit and tile respectively, but also the dinamic
-     * aspects of the scenario, such as the traffic density (a function of the number of horses and vehicles) and the
-     * presence of enemy units in the vicinity
+     * Actual speed for this movement, having into account not just the base speed and movement costs
+     * occasioned by the terrain, which are all precomputed for every unit and tile respectively, but also dynamic
+     * aspects such as the traffic density (a function of the number of horses and vehicles) and the
+     * presence of enemy units in the vicinity.
      */
     protected int speed;
 
-    public MoveAction(Unit unit, ActionType type, Path path) {
-        super(unit, type);
+    public MoveAction(ActionType actionType, Unit unit, Path path) {
+        this(actionType, unit, AS_SOON_AS_POSSIBLE, path);
+    }
+
+    public MoveAction(ActionType actionType, Unit unit, int start, Path path) {
+        this(actionType, unit, start, TIME_UNKNOWN, path);
+    }
+    public MoveAction(ActionType actionType, Unit unit, int start, int duration, Path path) {
+        super(actionType, unit, start, duration);
         this.path = path;
         currentNode = path.getFirst().getNext();
         Tile destination = currentNode.getTile();
@@ -47,10 +66,12 @@ public abstract class MoveAction extends AbstractAction {
      * Change the location of the acting unit to the location of the currentNode in the movement path and moves the
      * reference to currentNode to the next node (if there is a next node). If there are no more nodes the movement has
      * ended, so {@link #timeToNextMovement} is set to 0. Otherwise {@link #timeToNextMovement} has to be computed
-     * again. Once computed, it is adjusted to reflect the part of the time tick not really necessary to complete a
-     * partial move, that is, the amount of time left is substracted from the new {@link #timeToNextMovement}. This
-     * adjustment avoids the precission error (due to the conversion between minutes and ticks) being accumulated per
-     * each partial movement (the precission error only happens once for the entire movement)
+     * again. Once computed, it is adjusted to reflect the part of the time tick not really necessary to finish a
+     * partial move, that is, the amount of time left is subtracted from the new {@link #timeToNextMovement}. This
+     * adjustment avoids the precision error (due to the conversion between minutes and ticks) being accumulated per
+     * each partial movement (the maximum precision error will be bounded by a single time tick for the entire movement action)
+     *
+     * @see #applyOngoingEffects()
      */
     protected void completePartialMove() {
         unit.move(currentNode.getDirection().getOpposite());
@@ -61,22 +82,22 @@ public abstract class MoveAction extends AbstractAction {
             MovementCost moveCost = destination.getEnterCost(currentNode.getDirection());
             int cost = moveCost.getActualCost(unit);
             speed = unit.getSpeed() / cost;
-            // timeToNextMovement <= 0. If it is negative we can add it to the new timeToNextMovement as a way to not propagate the precision error each movement segment
+            // If remaining timeToNextMovement <= 0 we add it to the new timeToNextMovement (actually it is subtracted)
+            // as a way to not propagate the precision error for each partial movement
             timeToNextMovement = (speed > 0 ? Scale.INSTANCE.getTileSize() / speed + timeToNextMovement : Integer.MAX_VALUE);
         }
     }
 
     @Override
     public boolean isComplete() {
-        return (currentNode.getNext() == null && timeToNextMovement <= Clock.INSTANCE.getMINUTES_PER_TICK());
+        return (currentNode == null && timeToNextMovement <= 0);
     }
 
     @Override
-    protected void applyOngoingEffects() {
+    protected void applyOngoingEffects(ActionSpace actionSpace) {
+        timeToNextMovement -= Clock.INSTANCE.getMINUTES_PER_TICK();
         if (timeToNextMovement <= 0) {
             completePartialMove();
-        } else {
-            timeToNextMovement -= Clock.INSTANCE.getMINUTES_PER_TICK();
         }
     }
 

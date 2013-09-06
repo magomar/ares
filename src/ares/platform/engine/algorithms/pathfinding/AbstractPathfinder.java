@@ -27,7 +27,7 @@ public abstract class AbstractPathfinder implements Pathfinder {
     }
 
     @Override
-    abstract public Path getPath(Tile origin, Tile destination, Unit unit);
+    abstract public Path findPath(Tile origin, Tile destination, Unit unit);
 
     @Override
     public void setHeuristic(Heuristic heuristic) {
@@ -42,5 +42,13 @@ public abstract class AbstractPathfinder implements Pathfinder {
     @Override
     public String toString() {
         return getClass().getSimpleName();
+    }
+
+    @Override
+    public String toStringVerbose() {
+        return getClass().getSimpleName() + "{" +
+                "heuristic=" + heuristic +
+                ", costFunction=" + costFunction +
+                '}';
     }
 }

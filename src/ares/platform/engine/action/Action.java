@@ -6,16 +6,19 @@ import ares.platform.scenario.forces.Unit;
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public interface Action {
-
     /**
-     * Commits the action for execution
+     * Start time value indicating that an action shall be started as soon as possible
      */
-    void commit();
+    static final int AS_SOON_AS_POSSIBLE = 0;
+    /**
+     * Value indicating that the duration or time to finish an action is unknown
+     */
+    static final int TIME_UNKNOWN = Integer.MAX_VALUE;
 
     /**
      * Executes the action for the current time tick.
      */
-    void execute();
+    void execute(ActionSpace actionSpace);
 
     /**
      * Starts executing the action. Actions to be executed have to invoke this method before executing for the first
@@ -31,7 +34,7 @@ public interface Action {
     /**
      * Completes the action. Actions have to execute this method after completion.
      */
-    void complete();
+    void finish();
 
     /**
      * Delays the actions. Actions already started that can not be executed have to execute this method.
@@ -59,19 +62,25 @@ public interface Action {
      */
     boolean canBeExecuted();
 
+    /**
+     * Get the time remaining to finish the action
+     * @return  the remaining time
+     */
+    int getTimeToComplete();
+    /**
+     * Checks whether the acting unit is in the right operational state
+     * @return true if the operational state is right, false otherwise
+     * @see ares.platform.scenario.forces.OpState
+     */
+    boolean checkPreconditions();
+
     Unit getUnit();
 
-    ActionType getType();
+    ActionType getActionType();
 
     int getStart();
 
     int getFinish();
 
     ActionState getState();
-
-    /**
-     * Get the time remaining to complete the action
-     * @return  the remaining time
-     */
-    int getTimeToComplete();
 }

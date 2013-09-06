@@ -23,7 +23,7 @@ class ReserveOperationalPlan extends OperationalPlan {
     @Override
     public void plan(Pathfinder pathFinder) {
         for (Unit unit : formation.getAvailableUnits()) {
-            TacticalMission mission = TacticalMissionType.OCCUPY.getNewTacticalMission(unit, unit.getLocation(), pathFinder);
+            TacticalMission mission = TacticalMissionType.OCCUPY.buildTacticalMission(unit, unit.getLocation(), pathFinder);
             unit.setMission(mission);
         }
     }

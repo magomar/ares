@@ -6,6 +6,7 @@ import ares.application.shared.gui.profiles.ProfiledGraphicProperty;
 import ares.application.shared.gui.providers.ImageProvider;
 import ares.application.shared.gui.providers.MatrixImageProvider;
 import ares.application.shared.gui.providers.ProfiledImageProviderFactory;
+import ares.platform.engine.movement.MovementCost;
 
 import java.util.EnumSet;
 import java.util.Set;
@@ -18,15 +19,15 @@ public enum Terrain implements ProfiledImageProviderFactory {
     OPEN(0, 0, 0, 0, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, false, true),
     ARID(0, 0, 0, 0, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, false, true),
     SAND(1, 1, 1, 1, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, false, true),
-    DUNES(9999, 9999, 9999, 3, 1.0, 1.0, 1.0, 3.0, 2.0, Vision.NORMAL, false, true),
-    BADLANDS(9999, 9999, 9999, 2, 1.0, 1.0, 1.0, 4.0, 3.0, Vision.NORMAL, false, false),
+    DUNES(MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, 3, 1.0, 1.0, 1.0, 3.0, 2.0, Vision.NORMAL, false, true),
+    BADLANDS(MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, 2, 1.0, 1.0, 1.0, 4.0, 3.0, Vision.NORMAL, false, false),
     HILLS(2, 2, 2, 1, 1.0, 1.0, 1.0, 2.0, 1.5, Vision.NORMAL, false, true),
     MOUNTAINS(3, 3, 3, 3, 3.5, 1.5, 1.0, 3.0, 2.0, Vision.NORMAL, false, true),
-    ALPINE(9999, 9999, 9999, 9999, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.NORMAL, false, true),
+    ALPINE(MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.NORMAL, false, true),
     MARSH(3, 3, 3, 2, 2.0, 1.0, 1.0, 1.0, 1.0, Vision.NORMAL, false, true),
-    FLOODED_MARSH(9999, 9999, 9999, 9999, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.NORMAL, false, true),
-    SHALLOW_WATER(9999, 9999, 9999, 9999, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, false, true),
-    DEEP_WATER(9999, 9999, 9999, 9999, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, false, true),
+    FLOODED_MARSH(MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.NORMAL, false, true),
+    SHALLOW_WATER(MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, false, true),
+    DEEP_WATER(MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, false, true),
     CROPLANDS(1, 1, 1, 1, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.NORMAL, false, false),
     BOCAGE_HEDGEROW(2, 2, 2, 2, 2.0, 3.0, 1.0, 3.0, 1.5, Vision.RESTRICTED, false, false),
     URBAN(0, 0, 0, 0, 2.0, 1.0, 1.0, 3.0, 1.5, Vision.RESTRICTED, false, true),
@@ -35,12 +36,12 @@ public enum Terrain implements ProfiledImageProviderFactory {
     DENSE_URBAN_RUIN(1, 1, 1, 1, 3.5, 1.0, 1.5, 4.0, 2.0, Vision.RESTRICTED, false, true),
     ROCKY(2, 2, 2, 1, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, false, false),
     ESCARPMENT(3, 3, 3, 2, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, true, false),
-    MAJOR_ESCARPMENT(9999, 9999, 9999, 9999, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, true, false),
+    MAJOR_ESCARPMENT(MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, true, false),
     WADY(2, 2, 2, 1, 1.0, 1.0, 1.0, 2.0, 1.5, Vision.NORMAL, false, false),
     RIVER(2, 0, 2, 2, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, false, true),
-    SUPER_RIVER(9999, 2, 9999, 9999, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, false, true),
+    SUPER_RIVER(MovementCost.IMPASSABLE, 2, MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, false, true),
     CANAL(2, 0, 2, 2, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, false, true),
-    SUPER_CANAL(9999, 2, 9999, 9999, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, false, true),
+    SUPER_CANAL(MovementCost.IMPASSABLE, 2, MovementCost.IMPASSABLE, MovementCost.IMPASSABLE, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, false, true),
     EVERGREEN_FOREST(2, 2, 2, 2, 1.0, 1.0, 1.0, 2.0, 1.5, Vision.RESTRICTED, false, false),
     FOREST(2, 2, 2, 2, 1.0, 1.0, 1.0, 2.0, 1.5, Vision.RESTRICTED, false, false),
     LIGHT_WOODS(1, 1, 1, 1, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.NORMAL, false, false),
