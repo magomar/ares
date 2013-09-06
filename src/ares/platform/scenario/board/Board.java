@@ -1,6 +1,5 @@
 package ares.platform.scenario.board;
 
-import ares.application.shared.gui.profiles.GraphicsModel;
 import ares.application.shared.models.board.BoardModel;
 import ares.data.wrappers.scenario.Cell;
 import ares.data.wrappers.scenario.Place;
@@ -47,14 +46,12 @@ public final class Board implements ModelProvider<BoardModel> {
     }
 
     public void initialize(ares.data.wrappers.scenario.Scenario scenarioXML, Scenario scenario, Force[] forces) {
-
         ares.data.wrappers.scenario.Map sourceMap = scenarioXML.getMap();
         for (Cell cell : sourceMap.getCell()) {
             int x = cell.getX();
             int y = cell.getY();
-            map[x][y].initialize(getNeighbors(map[x][y]), forces[cell.getOwner()], scenario);
+            map[x][y].initialize(obtainNeighbors(map[x][y]), forces[cell.getOwner()], scenario);
         }
-
         models = new HashMap<>();
         models.put(UserRole.GOD, new BoardModel(this, UserRole.GOD));
         for (Force f : scenario.getForces()) {
@@ -68,12 +65,13 @@ public final class Board implements ModelProvider<BoardModel> {
      * @param tile  a tile in the board
      * @return all neighbors (adjacent tiles) of the given {@code tile}
      */
-    public Map<Direction, Tile> getNeighbors(Tile tile) {
+    private Map<Direction, Tile> obtainNeighbors(Tile tile) {
         Map<Direction, Tile> neighbors = new EnumMap<>(Direction.class);
         for (Direction direction : Direction.DIRECTIONS) {
-            Point neighborCoordinates = direction.getNeighborCoordinates(tile.getCoordinates());
-            if (GraphicsModel.INSTANCE.tileIsWithinBoard(neighborCoordinates)) {
-                neighbors.put(direction, map[neighborCoordinates.x][neighborCoordinates.y]);
+            Point p = direction.getNeighborCoordinates(tile.getCoordinates());
+            // Note: Do not use GraphicModel.validCoordinates because it has not been initialized yet
+            if (p.x >= 0 && p.x < width && p.y >= 0 && p.y < height)  {
+                neighbors.put(direction, map[p.x][p.y]);
             }
         }
         return neighbors;

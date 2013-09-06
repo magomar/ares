@@ -88,10 +88,11 @@ public final class Tile implements ModelProvider<TileModel> {
      */
     private Map<Direction, Tile> neighbors;
     /**
-     * Knowledge leves for every possible {@link UserRole}
+     * Knowledge levels for every possible {@link UserRole}
      */
     private final Map<UserRole, KnowledgeLevel> knowledgeLevels;
     /**
+     * Collection of TileModel, stored as a map that holds the
      * {@link TileModel} for every possible {@link KnowledgeCategory}
      */
     private final Map<KnowledgeCategory, TileModel> models;
@@ -104,8 +105,8 @@ public final class Tile implements ModelProvider<TileModel> {
         entrechment = (ent != null ? ent : 0);
         Integer dist = c.getDistance();
         distance = (dist != null ? dist : 0);
-        Integer victPoints = c.getVP();
-        victoryPoints = (victPoints != null ? victPoints : 0);
+        Integer vp = c.getVP();
+        victoryPoints = (vp != null ? vp : 0);
         units = new UnitsStack(this);
 
         // Initialize terrain information

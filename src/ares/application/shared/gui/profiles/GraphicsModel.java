@@ -160,14 +160,14 @@ public class GraphicsModel {
      * @return true if location (column,row) is within the board range
      */
     public boolean validCoordinates(int column, int row) {
-        return isValidColumn(column) && isValidRow(row);
+        return validColumn(column) && validRow(row);
     }
 
-    private boolean isValidColumn(int column) {
+    private boolean validColumn(int column) {
         return column >= 0 && column < boardColumns;
     }
 
-    private boolean isValidRow(int row) {
+    private boolean validRow(int row) {
         return row >= 0 && row < boardRows;
     }
     /**
@@ -320,37 +320,15 @@ public class GraphicsModel {
         return imageDecorators[profile];
     }
 
-    public boolean tileIsWithinBoard(Point coordinates) {
-        return tileIsWithinBoard(coordinates.x, coordinates.y);
-    }
-
-    /**
-     * Check valid coordinates
-     *
-     * @param i a row
-     * @param j a column
-     * @return true if tile with coordinates (i,j) is within the board range
-     */
-    public boolean tileIsWithinBoard(int i, int j) {
-        return columnIsWithinBoard(i) && rowIsWithinBoard(j);
-    }
-
-    public boolean columnIsWithinBoard(int i) {
-        return i >= 0 && i < boardColumns;
-    }
-
-    public boolean rowIsWithinBoard(int j) {
-        return j >= 0 && j < boardRows;
-    }
 
     public Rectangle getVisibleTiles(JViewport viewport, int profile) {
         Rectangle viewRect = viewport.getViewRect();
         Point upperLeft = pixelToTile(viewRect.x, viewRect.y, profile);
         Point bottomRight = pixelToTile(viewRect.x + viewRect.width, viewRect.y + viewRect.height, profile);
-        upperLeft.x = (columnIsWithinBoard(upperLeft.x) ? upperLeft.x : 0);
-        upperLeft.y = (rowIsWithinBoard(upperLeft.y) ? upperLeft.y : 0);
-        bottomRight.x = (columnIsWithinBoard(bottomRight.x) ? bottomRight.x : boardColumns - 1);
-        bottomRight.y = (rowIsWithinBoard(bottomRight.y) ? bottomRight.y : boardRows - 1);
+        upperLeft.x = (validColumn(upperLeft.x) ? upperLeft.x : 0);
+        upperLeft.y = (validRow(upperLeft.y) ? upperLeft.y : 0);
+        bottomRight.x = (validColumn(bottomRight.x) ? bottomRight.x : boardColumns - 1);
+        bottomRight.y = (validRow(bottomRight.y) ? bottomRight.y : boardRows - 1);
         return new Rectangle(upperLeft.x, upperLeft.y, bottomRight.x - upperLeft.x, bottomRight.y - upperLeft.y);
     }
 }
