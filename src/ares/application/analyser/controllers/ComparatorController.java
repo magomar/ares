@@ -241,7 +241,7 @@ public class ComparatorController implements ActionController {
                 Point pixel = new Point(me.getX(), me.getY());
                 int profile = GraphicsModel.INSTANCE.getActiveProfile();
                 if (GraphicsModel.INSTANCE.isWithinImageRange(pixel, profile)) {
-                    Point tilePoint = GraphicsModel.INSTANCE.pixelToTileAccurate(pixel, profile);
+                    Point tilePoint = GraphicsModel.INSTANCE.pixelToTile(pixel, profile);
                     if (!GraphicsModel.INSTANCE.validCoordinates(tilePoint.x, tilePoint.y)) {
                         return;
                     }

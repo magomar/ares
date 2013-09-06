@@ -206,7 +206,7 @@ public class GraphicsModel {
      * @param profile the graphic profile
      * @return the map coordinates corresponding to the pixel coordinates passed as a parameter
      */
-    public Point pixelToTileAccurate(Point pixel, int profile) {
+    public Point pixelToTile(Point pixel, int profile) {
         return pixelToTile(pixel.x, pixel.y, profile);
     }
 
