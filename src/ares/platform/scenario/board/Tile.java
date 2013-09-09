@@ -37,7 +37,7 @@ public final class Tile implements ModelProvider<TileModel> {
     /**
      * Entrenchment (fortification) level, expressed as a percentage
      */
-    private int entrechment;
+    private int entrenchment;
     /**
      * Distance in "tiles" from the map limits, this value is greater than zero for tiles separated from the main
      * playing area by some Non-playable tiles, which is typically used to represent remote units and facilities which
@@ -49,7 +49,7 @@ public final class Tile implements ModelProvider<TileModel> {
      */
     private final int victoryPoints;
     /**
-     * Force in possesion of this tile
+     * Force in possession of this tile
      */
     private Force owner;
     /**
@@ -63,7 +63,7 @@ public final class Tile implements ModelProvider<TileModel> {
      */
     private int index;
     /**
-     * Level of visibility in this tile depending on the terrain (withouth considering the weather)
+     * Level of visibility in this tile depending on the terrain (without considering the weather)
      */
     private Vision visibility;
     /*
@@ -75,7 +75,7 @@ public final class Tile implements ModelProvider<TileModel> {
      */
     private final Map<Direction, MovementCost> enterCost;
     /**
-     * Minimun movement cost per each movement unitType
+     * Minimum movement cost to leave the tile for every possible movement type
      */
     private Map<MovementType, Integer> minExitCost;
     /**
@@ -102,7 +102,7 @@ public final class Tile implements ModelProvider<TileModel> {
 //        y = c.getY();
         coordinates = new Point(c.getX(), c.getY());
         Integer ent = c.getEntrenchment();
-        entrechment = (ent != null ? ent : 0);
+        entrenchment = (ent != null ? ent : 0);
         Integer dist = c.getDistance();
         distance = (dist != null ? dist : 0);
         Integer vp = c.getVP();
@@ -210,8 +210,8 @@ public final class Tile implements ModelProvider<TileModel> {
         knowledgeLevels.get(UserRole.getForceRole(force)).modify(minutes * recon / (24 * 60));
     }
 
-    public void setEntrechment(int entrechment) {
-        this.entrechment = entrechment;
+    public void setEntrenchment(int entrenchment) {
+        this.entrenchment = entrenchment;
     }
 
     public void updateKnowledge() {
@@ -264,8 +264,8 @@ public final class Tile implements ModelProvider<TileModel> {
         return distance;
     }
 
-    public int getEntrechment() {
-        return entrechment;
+    public int getEntrenchment() {
+        return entrenchment;
     }
 
     public Force getOwner() {
@@ -397,24 +397,24 @@ public final class Tile implements ModelProvider<TileModel> {
     }
 
     private Map<MovementType, Integer> computeMinExitCosts() {
-        Map<MovementType, Integer> minimunCosts = new HashMap<>();
+        Map<MovementType, Integer> minimumCosts = new HashMap<>();
         for (MovementType mt : MovementType.values()) {
-            minimunCosts.put(mt, MovementCost.IMPASSABLE);
+            minimumCosts.put(mt, MovementCost.IMPASSABLE);
         }
-        for (Map.Entry<MovementType, Integer> entry : minimunCosts.entrySet()) {
+        for (Map.Entry<MovementType, Integer> entry : minimumCosts.entrySet()) {
             MovementType mt = entry.getKey();
             int cost = MovementCost.IMPASSABLE;
             for (Map.Entry<Direction, Tile> neighborEntry : neighbors.entrySet()) {
                 Direction dir = neighborEntry.getKey();
                 Tile neighbor = neighborEntry.getValue();
-                int neighborCost = neighbor.getEnterCost(dir.getOpposite()).getMovementCost(mt);
+                int neighborCost = neighbor.getEnterCost(dir.getOpposite()).getTerrainCost(mt);
                 if (neighborCost < cost) {
                     cost = neighborCost;
                 }
             }
-            minimunCosts.put(mt, cost);
+            minimumCosts.put(mt, cost);
         }
-        return minimunCosts;
+        return minimumCosts;
     }
 
     public boolean isPlayable() {

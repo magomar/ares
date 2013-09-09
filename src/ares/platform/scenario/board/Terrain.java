@@ -15,7 +15,7 @@ import java.util.Set;
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public enum Terrain implements ProfiledImageProviderFactory {
-    //motor, amph, mixed, foot, AT, AP, vehicles, infantry, stationary, vision, directional, microProfile
+    //motor, amphibious, mixed, foot, AT, AP, vehicles, infantry, stationary, vision, directional, microProfile
     OPEN(0, 0, 0, 0, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, false, true),
     ARID(0, 0, 0, 0, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, false, true),
     SAND(1, 1, 1, 1, 1.0, 1.0, 1.0, 1.0, 1.0, Vision.OPEN, false, true),

@@ -16,8 +16,6 @@ import java.util.Queue;
  * @author Saúl Esteban <saesmar1@ei.upv.es>
  */
 public class BidirectionalSearch extends AbstractPathfinder {
-    public BidirectionalSearch() {
-    }
 
     public BidirectionalSearch(Heuristic heuristic, CostFunction costFunction) {
         super(heuristic, costFunction);

@@ -26,6 +26,15 @@ public class MathUtils {
         }
     }
 
+    public static int subtractBounded(int value, int addend, int lowerBound) {
+        long result = ((long) value) - addend;
+        if (result < lowerBound) {
+            return lowerBound;
+        } else {
+            return (int) result;
+        }
+    }
+    
     public static boolean isInteger(String s) {
         try {
             Integer.parseInt(s);

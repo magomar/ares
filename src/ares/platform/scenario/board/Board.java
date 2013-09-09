@@ -69,7 +69,7 @@ public final class Board implements ModelProvider<BoardModel> {
         Map<Direction, Tile> neighbors = new EnumMap<>(Direction.class);
         for (Direction direction : Direction.DIRECTIONS) {
             Point p = direction.getNeighborCoordinates(tile.getCoordinates());
-            // Note: Do not use GraphicModel.validCoordinates because it has not been initialized yet
+            // Note: Do not use method GraphicModel.INSTANCE.validCoordinates(...) here because it has not been initialized yet
             if (p.x >= 0 && p.x < width && p.y >= 0 && p.y < height)  {
                 neighbors.put(direction, map[p.x][p.y]);
             }

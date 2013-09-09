@@ -22,7 +22,7 @@ import ares.platform.engine.action.ActionSpace;
 import ares.platform.engine.algorithms.pathfinding.AStar;
 import ares.platform.engine.algorithms.pathfinding.Path;
 import ares.platform.engine.algorithms.pathfinding.Pathfinder;
-import ares.platform.engine.algorithms.pathfinding.costfunctions.CostFunctions;
+import ares.platform.engine.algorithms.pathfinding.costfunctions.UnitCostFunctions;
 import ares.platform.engine.algorithms.pathfinding.heuristics.DistanceCalculator;
 import ares.platform.engine.algorithms.pathfinding.heuristics.MinimunDistance;
 import ares.platform.engine.command.tactical.TacticalMission;
@@ -79,7 +79,7 @@ public final class PlayerBoardController extends BoardController implements Boar
     public PlayerBoardController(final PlayerBoardInteractor interactor, RealTimeEngine engine) {
         super(interactor);
         this.interactor = interactor;
-        pathFinder = new AStar(MinimunDistance.create(DistanceCalculator.DELTA), CostFunctions.FASTEST);
+        pathFinder = new AStar(MinimunDistance.create(DistanceCalculator.DELTA), UnitCostFunctions.FASTEST);
         actionSpace = engine.getActionSpace();
         oobView = interactor.getOOBView();
         miniMapView = interactor.getMiniMapView();

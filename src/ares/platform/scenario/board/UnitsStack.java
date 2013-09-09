@@ -43,7 +43,7 @@ public class UnitsStack {
         int criticalDensity = scale.getCriticalDensity();
         int numHorsesAndVehicles = 0;
         for (SurfaceUnit surfaceUnit : surfaceUnits) {
-            if (surfaceUnit.getMovement().isMobileLandUnit()) {
+            if (surfaceUnit.getMovementType().isMobileLandUnit()) {
                 numHorsesAndVehicles += ((LandUnit) surfaceUnit).getNumVehiclesAndHorses();
             }
         }

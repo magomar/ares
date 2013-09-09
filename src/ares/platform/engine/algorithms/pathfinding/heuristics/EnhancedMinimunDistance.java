@@ -31,7 +31,7 @@ public class EnhancedMinimunDistance implements Heuristic {
 
     @Override
     public double getCost(Tile origin, Tile destination, Unit unit) {
-        return distanceCalculator.getCost(origin, destination) - 1 + origin.getMinExitCosts().get(unit.getMovement());
+        return distanceCalculator.getCost(origin, destination) - 1 + origin.getMinExitCosts().get(unit.getMovementType());
     }
 
     @Override

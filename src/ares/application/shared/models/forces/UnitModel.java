@@ -38,7 +38,7 @@ public abstract class UnitModel extends KnowledgeMediatedModel {
     public abstract TacticalMission getTacticalMission();
 
     public MovementType getMovement() {
-        return unit.getMovement();
+        return unit.getMovementType();
     }
 
     public FormationModel getFormationModel(UserRole role) {

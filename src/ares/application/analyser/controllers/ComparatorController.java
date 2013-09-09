@@ -16,7 +16,7 @@ import ares.application.shared.gui.profiles.GraphicsModel;
 import ares.application.shared.models.ScenarioModel;
 import ares.platform.engine.algorithms.pathfinding.*;
 import ares.platform.engine.algorithms.pathfinding.costfunctions.CostFunction;
-import ares.platform.engine.algorithms.pathfinding.costfunctions.EstimatedCostFunctions;
+import ares.platform.engine.algorithms.pathfinding.costfunctions.TerrainCostFunctions;
 import ares.platform.engine.algorithms.pathfinding.heuristics.DistanceCalculator;
 import ares.platform.engine.algorithms.pathfinding.heuristics.EnhancedMinimunDistance;
 import ares.platform.engine.algorithms.pathfinding.heuristics.Heuristic;
@@ -49,11 +49,11 @@ public class ComparatorController implements ActionController {
     private final Action zoomOut = new CommandAction(ViewCommands.VIEW_ZOOM_OUT, new ZoomOutActionListener());
     private final ActionGroup actions;
     private final AlgorithmConfigurationController[] algorithmConfigurationControllers;
+    private final BoardViewer[] boardViews;
+    private final AlgorithmConfigurationViewer[] algorithmConfigurationViews;
     private Tile selectedTile;
     private Unit testUnit;
     private Scenario scenario;
-    private final BoardViewer[] boardViews;
-    private final AlgorithmConfigurationViewer[] algorithmConfigurationViews;
     private InteractionMode interactionMode = InteractionMode.FREE;
 
     public ComparatorController(ComparatorInteractor interactor) {
@@ -69,10 +69,13 @@ public class ComparatorController implements ActionController {
         CommandGroup group = AresCommandGroup.VIEW;
         actions = new ActionGroup(group.getName(), group.getText(), group.getMnemonic(), viewActions);
 
-        Pathfinder[] leftPathfinders = {new AStar(), new BeamSearch(), new BidirectionalSearch()};
-        Pathfinder[] rightPathfinders = {new AStar(), new BeamSearch(), new BidirectionalSearch()};
         Heuristic[] allHeuristics = {MinimunDistance.create(DistanceCalculator.DELTA), EnhancedMinimunDistance.create(DistanceCalculator.DELTA)};
-        CostFunction[] allCostFunctions = EstimatedCostFunctions.values();
+        CostFunction[] allCostFunctions = TerrainCostFunctions.values();
+        Heuristic defaultHeuristic = allHeuristics[0];
+        CostFunction defaultCostFunction = allCostFunctions[0];
+
+        Pathfinder[] leftPathfinders = {new AStar(defaultHeuristic, defaultCostFunction), new BeamSearch(defaultHeuristic, defaultCostFunction), new BidirectionalSearch(defaultHeuristic, defaultCostFunction)};
+        Pathfinder[] rightPathfinders = {new AStar(defaultHeuristic, defaultCostFunction), new BeamSearch(defaultHeuristic, defaultCostFunction), new BidirectionalSearch(defaultHeuristic, defaultCostFunction)};
 
         algorithmConfigurationControllers = new AlgorithmConfigurationController[2];
         algorithmConfigurationControllers[LEFT] = new AlgorithmConfigurationController(
@@ -112,18 +115,17 @@ public class ComparatorController implements ActionController {
         boardViews[RIGHT].addMouseMotionListener(new BoardMouseMotionListener(RIGHT));
     }
 
+    private static void initializeBoardView(BoardViewer boardView, ScenarioModel scenarioModel, int profile) {
+        boardView.setProfile(profile);
+        ((TerrainLayerViewer) boardView.getLayerView(TerrainLayerViewer.NAME)).updateScenario(scenarioModel);
+        ((GridLayerViewer) boardView.getLayerView(GridLayerViewer.NAME)).updateScenario(scenarioModel);
+    }
 
     public void setScenario(Scenario scenario) {
         this.scenario = scenario;
         ScenarioModel scenarioModel = scenario.getModel(UserRole.GOD);
         initializeBoardView(boardViews[LEFT], scenarioModel, GraphicsModel.INSTANCE.getActiveProfile());
         initializeBoardView(boardViews[RIGHT], scenarioModel, GraphicsModel.INSTANCE.getActiveProfile());
-    }
-
-    private static void initializeBoardView(BoardViewer boardView, ScenarioModel scenarioModel, int profile) {
-        boardView.setProfile(profile);
-        ((TerrainLayerViewer) boardView.getLayerView(TerrainLayerViewer.NAME)).updateScenario(scenarioModel);
-        ((GridLayerViewer) boardView.getLayerView(GridLayerViewer.NAME)).updateScenario(scenarioModel);
     }
 
     private void select(int x, int y) {
@@ -202,6 +204,16 @@ public class ComparatorController implements ActionController {
         }
     }
 
+    @Override
+    public ActionGroup getActionGroup() {
+        return actions;
+    }
+
+    public enum InteractionMode {
+
+        FREE,
+        UNIT_ORDERS;
+    }
 
     private class BoardMouseListener extends MouseAdapter {
 
@@ -268,11 +280,6 @@ public class ComparatorController implements ActionController {
         }
     }
 
-    @Override
-    public ActionGroup getActionGroup() {
-        return actions;
-    }
-
     private class ZoomInActionListener implements ActionListener {
 
         @Override
@@ -320,11 +327,5 @@ public class ComparatorController implements ActionController {
             JComboBox source = (JComboBox) e.getSource();
             testUnit = UnitFactory.createTestUnit((MovementType) source.getSelectedItem());
         }
-    }
-
-    public enum InteractionMode {
-
-        FREE,
-        UNIT_ORDERS;
     }
 }

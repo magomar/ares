@@ -18,9 +18,6 @@ import java.util.Queue;
  */
 public class BeamSearch extends AbstractPathfinder {
 
-    public BeamSearch() {
-    }
-
     public BeamSearch(Heuristic heuristic, CostFunction costFunction) {
         super(heuristic, costFunction);
     }

@@ -17,26 +17,39 @@ public enum MovementType {
     MOTORIZED(2, 6),
     MIXED(1, 3),
     FOOT(1, 3);
-    // Minimum cost to expend when moving offroad
+    /**
+     * Minimum cost to expend when moving off-road
+     */
     private final int minOffRoadCost;
-    // Maximuum cost to expend when moving offroad
+    /**
+     * Maximum cost to expend when moving off-road
+     */
     private final int maxOffRoadCost;
+    /**
+     * Minimum cost to expend when moving on-road
+     */
     private final int minOnRoadCost;
+    /**
+     * Maximum cost to expend when moving on-road
+     */
     private final int maxOnRoadCost;
-    public static final Set<MovementType> ANY_NON_AIRCRAFT_MOVEMENT = EnumSet.range(FIXED, FOOT);
-    public static final Set<MovementType> ANY_LAND_OR_AMPH_MOVEMENT = EnumSet.of(AMPHIBIOUS, MOTORIZED, MIXED, FOOT);
-    public static final Set<MovementType> ANY_LAND_OR_RIVERINE_RAIL_AMPHIBIOUS_MOVEMENT = EnumSet.range(RIVERINE, FOOT);
-    public static final Set<MovementType> ANY_LAND_MOVEMENT = EnumSet.range(MovementType.MOTORIZED, MovementType.FOOT);
+    public static final Set<MovementType> NON_AIRCRAFT = EnumSet.range(FIXED, FOOT);
+    public static final Set<MovementType> LAND_OR_AMPHIBIOUS = EnumSet.of(AMPHIBIOUS, MOTORIZED, MIXED, FOOT);
+//    public static final Set<MovementType> LAND = EnumSet.of(MOTORIZED, MIXED, FOOT);
 
-    private MovementType(final int minCost, final int maxCost) {
-        this.minOffRoadCost = minCost;
-        this.maxOffRoadCost = maxCost;
-        if (minCost > 1) {
-            minOnRoadCost = minCost / 2;
-            maxOnRoadCost = maxCost / 2;
+    /**
+     * @param minOffRoadCost the minimum movement cost when moving off-road
+     * @param maxOffRoadCost the maximum movement cost when moving off-road
+     */
+    private MovementType(final int minOffRoadCost, final int maxOffRoadCost) {
+        this.minOffRoadCost = minOffRoadCost;
+        this.maxOffRoadCost = maxOffRoadCost;
+        if (minOffRoadCost > 1) {
+            minOnRoadCost = minOffRoadCost / 2;
+            maxOnRoadCost = maxOffRoadCost / 2;
         } else {
-            minOnRoadCost = minCost;
-            maxOnRoadCost = maxCost;
+            minOnRoadCost = minOffRoadCost;
+            maxOnRoadCost = maxOffRoadCost;
         }
     }
 
@@ -61,6 +74,6 @@ public enum MovementType {
     }
 
     public boolean isMobileLandUnit() {
-        return MovementType.ANY_LAND_OR_AMPH_MOVEMENT.contains(this);
+        return MovementType.LAND_OR_AMPHIBIOUS.contains(this);
     }
 }

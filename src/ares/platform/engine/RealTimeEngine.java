@@ -4,7 +4,7 @@ import ares.application.shared.gui.components.ProgressMonitor;
 import ares.platform.engine.action.ActionSpace;
 import ares.platform.engine.algorithms.pathfinding.AStar;
 import ares.platform.engine.algorithms.pathfinding.Pathfinder;
-import ares.platform.engine.algorithms.pathfinding.costfunctions.CostFunctions;
+import ares.platform.engine.algorithms.pathfinding.costfunctions.UnitCostFunctions;
 import ares.platform.engine.algorithms.pathfinding.heuristics.DistanceCalculator;
 import ares.platform.engine.algorithms.pathfinding.heuristics.MinimunDistance;
 import ares.platform.engine.time.Clock;
@@ -85,7 +85,7 @@ public class RealTimeEngine extends AbstractBean {
         Clock.INSTANCE.setEngine(this);
         this.scenario = scenario;
         if (scenario != null) {
-            pathFinder = new AStar(MinimunDistance.create(DistanceCalculator.DELTA), CostFunctions.FASTEST);
+            pathFinder = new AStar(MinimunDistance.create(DistanceCalculator.DELTA), UnitCostFunctions.FASTEST);
             for (Force force : scenario.getForces()) {
                 for (Formation formation : force.getFormations()) {
                     formations.add(formation);
