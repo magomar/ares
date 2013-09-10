@@ -10,4 +10,6 @@ import java.awt.*;
 public interface BoardViewer extends LayeredImageViewer {
 
     public void centerViewOn(Point location);
+
+    public void setViewPosition(Point position);
 }

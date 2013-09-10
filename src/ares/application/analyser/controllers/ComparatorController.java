@@ -29,6 +29,8 @@ import ares.platform.scenario.forces.Unit;
 import ares.platform.scenario.forces.UnitFactory;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.logging.Level;
@@ -40,8 +42,6 @@ import java.util.logging.Logger;
 public class ComparatorController implements ActionController {
 
     private static final Logger LOG = Logger.getLogger(ComparatorController.class.getName());
-    private static final int LEFT = 0;
-    private static final int RIGHT = 1;
     private final ComparatorViewer comparatorView;
     private final Action viewGrid = new CommandAction(ViewCommands.VIEW_GRID, new ViewGridActionListener());
     private final Action viewUnits = new CommandAction(ViewCommands.VIEW_UNITS, new ViewUnitsActionListener());
@@ -56,44 +56,17 @@ public class ComparatorController implements ActionController {
     private Scenario scenario;
     private InteractionMode interactionMode = InteractionMode.FREE;
 
+    private enum InteractionMode {
+        FREE,
+        UNIT_ORDERS;
+    }
+
     public ComparatorController(ComparatorInteractor interactor) {
         comparatorView = interactor.getPathfinderComparatorView();
-        boardViews = new BoardViewer[2];
-        boardViews[LEFT] = comparatorView.getLeftBoardView();
-        boardViews[RIGHT] = comparatorView.getRightBoardView();
-        algorithmConfigurationViews = new AlgorithmConfigurationViewer[2];
-        algorithmConfigurationViews[LEFT] = comparatorView.getLefConfigurationView();
-        algorithmConfigurationViews[RIGHT] = comparatorView.getRightConfigurationView();
 
         Action[] viewActions = {viewGrid, viewUnits, zoomIn, zoomOut};
         CommandGroup group = AresCommandGroup.VIEW;
         actions = new ActionGroup(group.getName(), group.getText(), group.getMnemonic(), viewActions);
-
-        Heuristic[] allHeuristics = {MinimunDistance.create(DistanceCalculator.DELTA), EnhancedMinimunDistance.create(DistanceCalculator.DELTA)};
-        CostFunction[] allCostFunctions = TerrainCostFunctions.values();
-        Heuristic defaultHeuristic = allHeuristics[0];
-        CostFunction defaultCostFunction = allCostFunctions[0];
-
-        Pathfinder[] leftPathfinders = {new AStar(defaultHeuristic, defaultCostFunction), new BeamSearch(defaultHeuristic, defaultCostFunction), new BidirectionalSearch(defaultHeuristic, defaultCostFunction)};
-        Pathfinder[] rightPathfinders = {new AStar(defaultHeuristic, defaultCostFunction), new BeamSearch(defaultHeuristic, defaultCostFunction), new BidirectionalSearch(defaultHeuristic, defaultCostFunction)};
-
-        algorithmConfigurationControllers = new AlgorithmConfigurationController[2];
-        algorithmConfigurationControllers[LEFT] = new AlgorithmConfigurationController(
-                new AlgorithmConfigurationInteractor() {
-                    @Override
-                    public AlgorithmConfigurationViewer getAlgorithmConfigurationView() {
-                        return comparatorView.getLefConfigurationView();
-                    }
-                }
-                , leftPathfinders, allHeuristics, allCostFunctions, leftPathfinders[0]);
-        algorithmConfigurationControllers[RIGHT] = new AlgorithmConfigurationController(
-                new AlgorithmConfigurationInteractor() {
-                    @Override
-                    public AlgorithmConfigurationViewer getAlgorithmConfigurationView() {
-                        return comparatorView.getRightConfigurationView();
-                    }
-                }
-                , rightPathfinders, allHeuristics, allCostFunctions, rightPathfinders[1]);
 
         ComboBoxModel<MovementType> movementTypeComboModel = new DefaultComboBoxModel<>(MovementType.values());
         comparatorView.setMovementTypeComboModel(movementTypeComboModel);
@@ -104,15 +77,27 @@ public class ComparatorController implements ActionController {
         comparatorView.setShowCostTypeComboModel(showCostTypeComboBoxModel);
         showCostTypeComboBoxModel.setSelectedItem(PathfindingLayerViewer.ShowCostType.SHOW_G_COST);
 
-        JPanel statsPanel = comparatorView.getStatsPanel();
-        ((JLabel) statsPanel.getComponent(LEFT)).setText("Nodes analysed: 0");
-        ((JLabel) statsPanel.getComponent(RIGHT)).setText("Nodes analysed: 0");
+        Heuristic[] allHeuristics = {MinimunDistance.create(DistanceCalculator.DELTA), EnhancedMinimunDistance.create(DistanceCalculator.DELTA)};
+        CostFunction[] allCostFunctions = TerrainCostFunctions.values();
+        Heuristic defaultHeuristic = allHeuristics[0];
+        CostFunction defaultCostFunction = allCostFunctions[0];
+        Pathfinder[][] pathfinders = new Pathfinder[2][];
 
-        // Adds various component listeners
-        boardViews[LEFT].addMouseListener(new BoardMouseListener(LEFT));
-        boardViews[RIGHT].addMouseListener(new BoardMouseListener(RIGHT));
-        boardViews[LEFT].addMouseMotionListener(new BoardMouseMotionListener(LEFT));
-        boardViews[RIGHT].addMouseMotionListener(new BoardMouseMotionListener(RIGHT));
+        boardViews = new BoardViewer[2];
+        algorithmConfigurationViews = new AlgorithmConfigurationViewer[2];
+        algorithmConfigurationControllers = new AlgorithmConfigurationController[2];
+        for (int side = 0; side < 2; side++) {
+            boardViews[side] = comparatorView.getBoardView(side);
+            algorithmConfigurationViews[side] = comparatorView.getConfigurationView(side);
+            pathfinders[side] = new Pathfinder[]{new AStar(defaultHeuristic, defaultCostFunction), new BeamSearch(defaultHeuristic, defaultCostFunction), new BidirectionalSearch(defaultHeuristic, defaultCostFunction)};
+            algorithmConfigurationControllers[side] = new AlgorithmConfigurationController(
+                    new ComparatorAlgorithmConfigurationInteractor(side), pathfinders[side], allHeuristics, allCostFunctions, pathfinders[side][side]);
+            ((JLabel) comparatorView.getStatsPanel().getComponent(side)).setText("Nodes analysed: 0");
+            // Adds various component listeners
+            boardViews[side].addMouseListener(new BoardMouseListener(side));
+            boardViews[side].addMouseMotionListener(new BoardMouseMotionListener(side));
+            boardViews[side].getContentPane().getViewport().addChangeListener(new ChangeViewportListener(side));
+        }
     }
 
     private static void initializeBoardView(BoardViewer boardView, ScenarioModel scenarioModel, int profile) {
@@ -124,8 +109,9 @@ public class ComparatorController implements ActionController {
     public void setScenario(Scenario scenario) {
         this.scenario = scenario;
         ScenarioModel scenarioModel = scenario.getModel(UserRole.GOD);
-        initializeBoardView(boardViews[LEFT], scenarioModel, GraphicsModel.INSTANCE.getActiveProfile());
-        initializeBoardView(boardViews[RIGHT], scenarioModel, GraphicsModel.INSTANCE.getActiveProfile());
+        for (int side = 0; side < 2; side++) {
+            initializeBoardView(boardViews[side], scenarioModel, GraphicsModel.INSTANCE.getActiveProfile());
+        }
     }
 
     private void select(int x, int y) {
@@ -139,16 +125,12 @@ public class ComparatorController implements ActionController {
             if (!tile.equals(selectedTile)) {
                 selectedTile = tile;
                 interactionMode = InteractionMode.UNIT_ORDERS;
-                BoardViewer leftBoardView = this.boardViews[LEFT];
-                BoardViewer rightBoardView = this.boardViews[RIGHT];
-                ((PathfindingLayerViewer) leftBoardView.getLayerView(PathfindingLayerViewer.NAME)).updatePathSearch(null, null, 0);
-                ((PathfindingLayerViewer) rightBoardView.getLayerView(PathfindingLayerViewer.NAME)).updatePathSearch(null, null, 0);
-                ((ArrowLayerViewer) leftBoardView.getLayerView(ArrowLayerViewer.NAME)).updateLastOrders(null);
-                ((ArrowLayerViewer) rightBoardView.getLayerView(ArrowLayerViewer.NAME)).updateLastOrders(null);
-                ((ArrowLayerViewer) leftBoardView.getLayerView(ArrowLayerViewer.NAME)).updateCurrentOrders(null);
-                ((ArrowLayerViewer) rightBoardView.getLayerView(ArrowLayerViewer.NAME)).updateCurrentOrders(null);
-                ((JLabel) comparatorView.getStatsPanel().getComponent(LEFT)).setText("Nodes analysed: 0");
-                ((JLabel) comparatorView.getStatsPanel().getComponent(RIGHT)).setText("Nodes analysed: 0");
+                for (int side = 0; side < 2; side++) {
+                    ((PathfindingLayerViewer) boardViews[side].getLayerView(PathfindingLayerViewer.NAME)).updatePathSearch(null, null, 0);
+                    ((ArrowLayerViewer) boardViews[side].getLayerView(ArrowLayerViewer.NAME)).updateLastOrders(null);
+                    ((ArrowLayerViewer) boardViews[side].getLayerView(ArrowLayerViewer.NAME)).updateCurrentOrders(null);
+                    ((JLabel) comparatorView.getStatsPanel().getComponent(side)).setText("Nodes analysed: 0");
+                }
                 LOG.log(Level.INFO, "New tile selected: " + selectedTile.toString());
             }
         }
@@ -158,8 +140,9 @@ public class ComparatorController implements ActionController {
         if (selectedTile != null) {
             selectedTile = null;
             interactionMode = InteractionMode.FREE;
-            ((ArrowLayerViewer) boardViews[LEFT].getLayerView(ArrowLayerViewer.NAME)).updateCurrentOrders(null);
-            ((ArrowLayerViewer) boardViews[RIGHT].getLayerView(ArrowLayerViewer.NAME)).updateCurrentOrders(null);
+            for (int side = 0; side < 2; side++) {
+                ((ArrowLayerViewer) boardViews[side].getLayerView(ArrowLayerViewer.NAME)).updateCurrentOrders(null);
+            }
         }
     }
 
@@ -184,7 +167,7 @@ public class ComparatorController implements ActionController {
             ((ArrowLayerViewer) thisBoardView.getLayerView(ArrowLayerViewer.NAME)).updateLastOrders(thisPath);
             ((PathfindingLayerViewer) thisBoardView.getLayerView(PathfindingLayerViewer.NAME)).updatePathSearch(thisPath.getOpenSetNodes(), thisPath.getClosedSetNodes(), showCostType.getValue());
             ((ArrowLayerViewer) thisBoardView.getLayerView(ArrowLayerViewer.NAME)).updateCurrentOrders(null);
-            ((JLabel) comparatorView.getStatsPanel().getComponent(LEFT)).setText("Nodes visited: " + thisPath.getNumNodesVisited() +
+            ((JLabel) comparatorView.getStatsPanel().getComponent(side)).setText("Nodes visited: " + thisPath.getNumNodesVisited() +
                     " Path nodes: " + thisPath.size() + " Path cost: " + (int) thisPath.getLast().getG());
 
             int theOtherSide = 1 - side;
@@ -199,7 +182,7 @@ public class ComparatorController implements ActionController {
             ((ArrowLayerViewer) theOtherBoardView.getLayerView(ArrowLayerViewer.NAME)).updateLastOrders(theOtherPath);
             ((PathfindingLayerViewer) theOtherBoardView.getLayerView(PathfindingLayerViewer.NAME)).updatePathSearch(theOtherPath.getOpenSetNodes(), theOtherPath.getClosedSetNodes(), showCostType.getValue());
             ((ArrowLayerViewer) theOtherBoardView.getLayerView(ArrowLayerViewer.NAME)).updateCurrentOrders(null);
-            ((JLabel) comparatorView.getStatsPanel().getComponent(RIGHT)).setText("Nodes visited: " + theOtherPath.getNumNodesVisited() +
+            ((JLabel) comparatorView.getStatsPanel().getComponent(theOtherSide)).setText("Nodes visited: " + theOtherPath.getNumNodesVisited() +
                     " Path nodes: " + theOtherPath.size() + " Path cost: " + (int) theOtherPath.getLast().getG());
         }
     }
@@ -207,12 +190,6 @@ public class ComparatorController implements ActionController {
     @Override
     public ActionGroup getActionGroup() {
         return actions;
-    }
-
-    public enum InteractionMode {
-
-        FREE,
-        UNIT_ORDERS;
     }
 
     private class BoardMouseListener extends MouseAdapter {
@@ -286,8 +263,9 @@ public class ComparatorController implements ActionController {
         public void actionPerformed(ActionEvent e) {
             int nextProfile = GraphicsModel.INSTANCE.nextActiveProfile();
             ScenarioModel scenarioModel = scenario.getModel(UserRole.GOD);
-            initializeBoardView(boardViews[LEFT], scenarioModel, nextProfile);
-            initializeBoardView(boardViews[RIGHT], scenarioModel, nextProfile);
+            for (int side = 0; side < 2; side++) {
+                initializeBoardView(boardViews[side], scenarioModel, nextProfile);
+            }
         }
     }
 
@@ -297,8 +275,9 @@ public class ComparatorController implements ActionController {
         public void actionPerformed(ActionEvent e) {
             int previousProfile = GraphicsModel.INSTANCE.previousActiveProfile();
             ScenarioModel scenarioModel = scenario.getModel(UserRole.GOD);
-            initializeBoardView(boardViews[LEFT], scenarioModel, previousProfile);
-            initializeBoardView(boardViews[RIGHT], scenarioModel, previousProfile);
+            for (int side = 0; side < 2; side++) {
+                initializeBoardView(boardViews[side], scenarioModel, previousProfile);
+            }
         }
     }
 
@@ -306,8 +285,9 @@ public class ComparatorController implements ActionController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            boardViews[LEFT].switchLayerVisible(GridLayerViewer.NAME);
-            boardViews[RIGHT].switchLayerVisible(GridLayerViewer.NAME);
+            for (int side = 0; side < 2; side++) {
+                boardViews[side].switchLayerVisible(GridLayerViewer.NAME);
+            }
         }
     }
 
@@ -315,8 +295,9 @@ public class ComparatorController implements ActionController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            boardViews[LEFT].switchLayerVisible(UnitsLayerViewer.NAME);
-            boardViews[RIGHT].switchLayerVisible(UnitsLayerViewer.NAME);
+            for (int side = 0; side < 2; side++) {
+                boardViews[side].switchLayerVisible(UnitsLayerViewer.NAME);
+            }
         }
     }
 
@@ -328,4 +309,32 @@ public class ComparatorController implements ActionController {
             testUnit = UnitFactory.createTestUnit((MovementType) source.getSelectedItem());
         }
     }
+
+    private class ChangeViewportListener implements ChangeListener {
+        private int side;
+
+        private ChangeViewportListener(int side) {
+            this.side = side;
+        }
+
+        @Override
+        public void stateChanged(ChangeEvent e) {
+            JViewport viewport = (JViewport) e.getSource();
+            boardViews[1 - side].setViewPosition(viewport.getViewPosition());
+        }
+    }
+
+    private class ComparatorAlgorithmConfigurationInteractor implements AlgorithmConfigurationInteractor {
+        private int side;
+
+        private ComparatorAlgorithmConfigurationInteractor(int side) {
+            this.side = side;
+        }
+
+        @Override
+        public AlgorithmConfigurationViewer getAlgorithmConfigurationView() {
+            return algorithmConfigurationViews[side];
+        }
+    }
+
 }

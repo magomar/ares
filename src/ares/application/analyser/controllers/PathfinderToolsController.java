@@ -27,12 +27,8 @@ import java.awt.event.ActionListener;
 public class PathfinderToolsController implements ActionController, ScenarioInteractor, ComparatorInteractor, PathfinderBenchmarkInteractor {
 
     private final PathfinderToolsViewer mainView;
-    private final MenuBarViewer menuView;
-    private final PanelMenuViewer mainMenuView;
-    private final ToolBarViewer toolBarView;
     private final ComparatorViewer comparatorView;
     private final BenchmarkViewer benchmarkView;
-    private final ScenarioController scenarioController;
     private final ComparatorController comparatorController;
     private final BenchmarkController benchmarkController;
     private final Action showComparator = new CommandAction(PathfinderToolsCommands.COMPARATOR_PERSPECTIVE, new ComparatorPerspectiveActionListener());
@@ -41,9 +37,9 @@ public class PathfinderToolsController implements ActionController, ScenarioInte
 
     public PathfinderToolsController(PathfinderToolsViewer mainView) {
         this.mainView = mainView;
-        menuView = mainView.getMenuView();
-        mainMenuView = mainView.getMainMenuView();
-        toolBarView = mainView.getToolBarView();
+        MenuBarViewer menuView = mainView.getMenuView();
+        PanelMenuViewer mainMenuView = mainView.getMainMenuView();
+        ToolBarViewer toolBarView = mainView.getToolBarView();
         comparatorView = mainView.getComparatorView();
         benchmarkView = mainView.getBenchmarkView();
 
@@ -52,7 +48,7 @@ public class PathfinderToolsController implements ActionController, ScenarioInte
         actions = new ActionGroup(group.getName(), group.getText(), group.getMnemonic(), viewActions);
 
         // instantiate controllers
-        this.scenarioController = new ScenarioController(this, false);
+        ScenarioController scenarioController = new ScenarioController(this, false);
         this.comparatorController = new ComparatorController(this);
         this.benchmarkController = new BenchmarkController(this, mainView);
 
@@ -73,7 +69,9 @@ public class PathfinderToolsController implements ActionController, ScenarioInte
 
     @Override
     public void forgetScenario() {
-        comparatorView.getLeftBoardView().flush();
+        for (int side = 0; side < 2; side++) {
+            comparatorView.getBoardView(side).flush();
+        }
 //        mainView.switchPerspective(PlayerViewer.MAIN_MENU_PERSPECTIVE);
         System.gc();
     }
@@ -98,7 +96,7 @@ public class PathfinderToolsController implements ActionController, ScenarioInte
     public ComparatorViewer getPathfinderComparatorView() {
         return comparatorView;
     }
-    
+
     @Override
     public BenchmarkViewer getPathfinderBenchmarkView() {
         return benchmarkView;

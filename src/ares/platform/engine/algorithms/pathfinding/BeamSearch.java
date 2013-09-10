@@ -202,4 +202,9 @@ public class BeamSearch extends AbstractPathfinder {
             return list.isEmpty();
         }
     }
+
+    @Override
+    public BeamSearch copy() {
+        return new BeamSearch(heuristic, costFunction);
+    }
 }

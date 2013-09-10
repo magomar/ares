@@ -18,7 +18,7 @@ public class AlgorithmConfigurationController {
 
 
     public AlgorithmConfigurationController(AlgorithmConfigurationInteractor interactor, Pathfinder[] pathfinders, Heuristic[] heuristics, CostFunction[] costFunctions, Pathfinder defaultPathfinder) {
-        this.interactor =interactor;
+        this.interactor = interactor;
         AlgorithmConfigurationViewer configurationView = interactor.getAlgorithmConfigurationView();
         ComboBoxModel<Pathfinder> pathfinderComboModel = new DefaultComboBoxModel<>(pathfinders);
         ComboBoxModel<Heuristic> heuristicComboModel = new DefaultComboBoxModel<>(heuristics);
@@ -37,7 +37,7 @@ public class AlgorithmConfigurationController {
         public void actionPerformed(ActionEvent e) {
             JComboBox source = (JComboBox) e.getSource();
             Pathfinder pathfinder = (Pathfinder) source.getSelectedItem();
-            pathfinder.setHeuristic((Heuristic)  interactor.getAlgorithmConfigurationView().getHeuristicComboModel().getSelectedItem());
+            pathfinder.setHeuristic((Heuristic) interactor.getAlgorithmConfigurationView().getHeuristicComboModel().getSelectedItem());
             pathfinder.setCostFunction((CostFunction) interactor.getAlgorithmConfigurationView().getCostFunctionComboModel().getSelectedItem());
         }
     }

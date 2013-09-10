@@ -2,7 +2,6 @@ package ares.application.shared.gui.views.layerviews;
 
 import ares.application.shared.boundaries.viewers.BoardViewer;
 import ares.application.shared.gui.profiles.GraphicsModel;
-import ares.application.shared.gui.views.layerviews.AbstractLayeredImageView;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,5 +22,10 @@ public abstract class AbstractBoardView extends AbstractLayeredImageView impleme
         int y = pos.y - Math.min(viewportSize.height / 2, boardSize.height - pos.y);
         horizontalScrollBar.setValue(x);
         verticalScrollBar.setValue(y);
+    }
+
+    @Override
+    public void setViewPosition(Point position) {
+        contentPane.getViewport().setViewPosition(position);
     }
 }

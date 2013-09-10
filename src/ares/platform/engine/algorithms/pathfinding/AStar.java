@@ -175,4 +175,10 @@ public class AStar extends AbstractPathfinder {
             return list.isEmpty();
         }
     }
+
+
+    @Override
+    public AStar copy() {
+        return new AStar(heuristic, costFunction);
+    }
 }

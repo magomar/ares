@@ -425,4 +425,9 @@ public class BidirectionalSearch extends AbstractPathfinder {
             return list.isEmpty();
         }
     }
+
+    @Override
+    public BidirectionalSearch copy() {
+        return new BidirectionalSearch(heuristic, costFunction);
+    }
 }

@@ -39,7 +39,7 @@ public class AlgorithmSelectionController implements AlgorithmConfigurationInter
         public void actionPerformed(ActionEvent e) {
             ListModel<Pathfinder> selectedAlgorithmsListModel = algorithmSelectionView.getSelectedAlgorithmsListModel();
             Pathfinder pathfinder = (Pathfinder) getAlgorithmConfigurationView().getPathfinderComboModel().getSelectedItem();
-            ((DefaultListModel) selectedAlgorithmsListModel).addElement(pathfinder);
+            ((DefaultListModel) selectedAlgorithmsListModel).addElement(pathfinder.copy());
         }
     }
 
@@ -49,9 +49,11 @@ public class AlgorithmSelectionController implements AlgorithmConfigurationInter
         public void actionPerformed(ActionEvent e) {
             DefaultListModel<Pathfinder> selectedAlgorithmsListModel = (DefaultListModel<Pathfinder>) algorithmSelectionView.getSelectedAlgorithmsListModel();
             DefaultListSelectionModel selectedAlgorithmsListSelectionModel = (DefaultListSelectionModel) algorithmSelectionView.getSelectedAlgorithmsListSelectionModel();
-            for(int i = selectedAlgorithmsListSelectionModel.getMinSelectionIndex(); i< selectedAlgorithmsListSelectionModel.getMaxSelectionIndex()+1;i++) {
-                   if (selectedAlgorithmsListSelectionModel.isSelectedIndex(i)) selectedAlgorithmsListModel.remove(i);
+            for (int i = selectedAlgorithmsListSelectionModel.getMinSelectionIndex(); i < selectedAlgorithmsListSelectionModel.getMaxSelectionIndex() + 1; i++) {
+                if (selectedAlgorithmsListSelectionModel.isSelectedIndex(i)) selectedAlgorithmsListModel.remove(i);
             }
         }
     }
+
+
 }

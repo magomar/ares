@@ -44,4 +44,5 @@ public abstract class AbstractPathfinder implements Pathfinder {
                 ", costFunction=" + costFunction +
                 '}';
     }
+
 }
