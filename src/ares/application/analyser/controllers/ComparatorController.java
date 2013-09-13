@@ -126,7 +126,7 @@ public class ComparatorController implements ActionController {
                 selectedTile = tile;
                 interactionMode = InteractionMode.UNIT_ORDERS;
                 for (int side = 0; side < 2; side++) {
-                    ((PathfindingLayerViewer) boardViews[side].getLayerView(PathfindingLayerViewer.NAME)).updatePathSearch(null, null, 0);
+                    ((PathfindingLayerViewer) boardViews[side].getLayerView(PathfindingLayerViewer.NAME)).updatePathSearch(null, null, null);
                     ((ArrowLayerViewer) boardViews[side].getLayerView(ArrowLayerViewer.NAME)).updateLastOrders(null);
                     ((ArrowLayerViewer) boardViews[side].getLayerView(ArrowLayerViewer.NAME)).updateCurrentOrders(null);
                     ((JLabel) comparatorView.getStatsPanel().getComponent(side)).setText("Nodes analysed: 0");
@@ -165,7 +165,7 @@ public class ComparatorController implements ActionController {
             LOG.log(Level.INFO, "Path obtained {0}", thisPath);
             BoardViewer thisBoardView = boardViews[side];
             ((ArrowLayerViewer) thisBoardView.getLayerView(ArrowLayerViewer.NAME)).updateLastOrders(thisPath);
-            ((PathfindingLayerViewer) thisBoardView.getLayerView(PathfindingLayerViewer.NAME)).updatePathSearch(thisPath.getOpenSetNodes(), thisPath.getClosedSetNodes(), showCostType.getValue());
+            ((PathfindingLayerViewer) thisBoardView.getLayerView(PathfindingLayerViewer.NAME)).updatePathSearch(thisPath.getOpenSetNodes(), thisPath.getClosedSetNodes(), showCostType);
             ((ArrowLayerViewer) thisBoardView.getLayerView(ArrowLayerViewer.NAME)).updateCurrentOrders(null);
             ((JLabel) comparatorView.getStatsPanel().getComponent(side)).setText("Nodes visited: " + thisPath.getNumNodesVisited() +
                     " Path nodes: " + thisPath.size() + " Path cost: " + (int) thisPath.getLast().getG());
@@ -180,7 +180,7 @@ public class ComparatorController implements ActionController {
             LOG.log(Level.INFO, "Path obtained {0}", thisPath);
             BoardViewer theOtherBoardView = boardViews[theOtherSide];
             ((ArrowLayerViewer) theOtherBoardView.getLayerView(ArrowLayerViewer.NAME)).updateLastOrders(theOtherPath);
-            ((PathfindingLayerViewer) theOtherBoardView.getLayerView(PathfindingLayerViewer.NAME)).updatePathSearch(theOtherPath.getOpenSetNodes(), theOtherPath.getClosedSetNodes(), showCostType.getValue());
+            ((PathfindingLayerViewer) theOtherBoardView.getLayerView(PathfindingLayerViewer.NAME)).updatePathSearch(theOtherPath.getOpenSetNodes(), theOtherPath.getClosedSetNodes(), showCostType);
             ((ArrowLayerViewer) theOtherBoardView.getLayerView(ArrowLayerViewer.NAME)).updateCurrentOrders(null);
             ((JLabel) comparatorView.getStatsPanel().getComponent(theOtherSide)).setText("Nodes visited: " + theOtherPath.getNumNodesVisited() +
                     " Path nodes: " + theOtherPath.size() + " Path cost: " + (int) theOtherPath.getLast().getG());
