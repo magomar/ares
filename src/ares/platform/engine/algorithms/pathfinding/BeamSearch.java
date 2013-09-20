@@ -41,8 +41,7 @@ public class BeamSearch extends AbstractPathfinder {
             closedSet.put(bestNodeIndex, bestNode);
             // Check for termination
             if (bestNode.getTile().equals(destination)) {
-                Path path = new Path(firstNode, bestNode);
-                return path;
+                return new Path(firstNode, bestNode);
             }
             // Expand best node (Generate successors)
             for (Map.Entry<Direction, Tile> entry : bestNode.getTile().getNeighbors().entrySet()) {
@@ -96,8 +95,7 @@ public class BeamSearch extends AbstractPathfinder {
             closedSet.put(bestNodeIndex, bestNode);
             // Check for termination
             if (bestNode.getTile().equals(destination)) {
-                ExtendedPath path = new ExtendedPath(firstNode, bestNode, openSet.list, closedSet.values());
-                return path;
+                return new ExtendedPath(firstNode, bestNode, openSet.list, closedSet.values());
             }
             // Expand best node (Generate successors)
             for (Map.Entry<Direction, Tile> entry : bestNode.getTile().getNeighbors().entrySet()) {
@@ -143,7 +141,7 @@ public class BeamSearch extends AbstractPathfinder {
     }
 
 
-    private class OpenSet {
+    static class OpenSet {
 
         final int nodeLimit;
         Queue<Node> list;

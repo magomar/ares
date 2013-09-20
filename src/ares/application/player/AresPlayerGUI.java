@@ -162,7 +162,7 @@ public final class AresPlayerGUI extends AbstractView<JFrame> implements PlayerV
             @Override
             public void run() {
                 AresPlayerGUI mainView = new AresPlayerGUI();
-                WeGoPlayerController mainController = new WeGoPlayerController(mainView);
+                new WeGoPlayerController(mainView);
                 mainView.show();
 
             }

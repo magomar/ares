@@ -42,8 +42,7 @@ public class StartScenarioPane extends JOptionPane {
         dialog.setVisible(true);
         dialog.dispose();
         selectInitialValue();
-        UserRole role = (UserRole) getValue();
-        return role;
+        return  (UserRole) getValue();
     }
 
 }

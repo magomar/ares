@@ -80,8 +80,7 @@ public enum Direction {
 
     private static boolean testBitFlag(int bitmask, int bit) {
         int flag = 1 << bit;
-        boolean bitIsSet = (bitmask & flag) != 0;
-        return bitIsSet;
+        return (bitmask & flag) != 0;
     }
 
     public int getIncColumn() {

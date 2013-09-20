@@ -130,7 +130,7 @@ public class PathfinderToolsGUI extends AbstractView<JFrame> implements Pathfind
             public void run() {
                 PathfinderToolsGUI mainView = new PathfinderToolsGUI();
                 SwingUtilities.updateComponentTreeUI(mainView.contentPane);
-                PathfinderToolsController mainController = new PathfinderToolsController(mainView);
+                new PathfinderToolsController(mainView);
                 mainView.show();
             }
         });

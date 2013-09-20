@@ -33,6 +33,9 @@ public class FileIO {
 
     private static final Logger LOG = Logger.getLogger(FileIO.class.getName());
 
+    private FileIO() {
+    }
+
     public static Scenario loadScenario(File file, EquipmentDB equipmentDB) {
         ares.data.wrappers.scenario.Scenario scenario = FileIO.unmarshallJson(file, ares.data.wrappers.scenario.Scenario.class);
         return new Scenario(scenario, equipmentDB);

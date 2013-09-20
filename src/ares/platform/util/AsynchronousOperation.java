@@ -17,9 +17,8 @@ import javax.swing.*;
 
 /**
  * A base class for implementing operations that need to run on their own thread and report back to the event thread.
- * Unlike Sun's
- * <code>SwingWorker
- * </code> class, this object does not spawn its own thread. Instead, it must be passed to a program-created thread, or
+ * Unlike Sun's{@code SwingWorker} class, this object does not spawn its own thread.
+ * Instead, it must be passed to a program-created thread, or
  * better, a threadpool. <p> To use, subclass and pass an instance to your operation thread. <p> You must implement at
  * least the {@link #performOperation} method, which is executed on the operation thread. This method may return a
  * single object, or throw any exception unitType. Depending on how it completes (return/throw), one of
@@ -67,17 +66,16 @@ public abstract class AsynchronousOperation<T>
     }
 
     /**
-     * This method is invoked on the event thread after a successful call to
-     * <code>performOperation()</code>. Application code typically overrides to do something with that result.
+     * This method is invoked on the event thread after a successful call to{@code performOperation()}.
+     * Application code typically overrides to do something with that result.
      */
     protected void onSuccess(T result) {
         // default implementation does nothing
     }
 
     /**
-     * This method is invoked on the event thread if
-     * <code>performOperation()
-     * </code> threw an exception. Application code typically overrides to do something with that exception.
+     * This method is invoked on the event thread if {@code performOperation()} threw an exception.
+     * Application code typically overrides to do something with that exception.
      */
     protected void onFailure(Throwable e) {
         throw new RuntimeException(e);

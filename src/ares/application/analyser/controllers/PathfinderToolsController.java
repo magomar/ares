@@ -73,7 +73,6 @@ public class PathfinderToolsController implements ActionController, ScenarioInte
             comparatorView.getBoardView(side).flush();
         }
 //        mainView.switchPerspective(PlayerViewer.MAIN_MENU_PERSPECTIVE);
-        System.gc();
     }
 
     @Override
@@ -84,7 +83,6 @@ public class PathfinderToolsController implements ActionController, ScenarioInte
         comparatorController.setScenario(scenario);
         // change the GUI to show the pathfinding comparison perspective
         mainView.switchPerspective(PathfinderToolsViewer.COMPARATOR_PERSPECTIVE);
-        System.gc();
     }
 
     @Override

@@ -113,8 +113,7 @@ public class BidirectionalSearch extends AbstractPathfinder {
                     bestNodeForward = neighborNode;
                 }
                 
-                Path path = new Path(firstNodeForward, bestNodeForward);
-                return path;
+                return new Path(firstNodeForward, bestNodeForward);
             }
             
             // Expand best node (Generate successors)
@@ -362,7 +361,7 @@ public class BidirectionalSearch extends AbstractPathfinder {
         return null;
     }
 
-    class OpenSet {
+    static class OpenSet {
 
         final Queue<Node> list;
         final Map<Integer, Node> map;
@@ -394,7 +393,7 @@ public class BidirectionalSearch extends AbstractPathfinder {
         }
     }
     
-    class InvertedOpenSet {
+    static class InvertedOpenSet {
 
         final Queue<InvertedNode> list;
         final Map<Integer, InvertedNode> map;

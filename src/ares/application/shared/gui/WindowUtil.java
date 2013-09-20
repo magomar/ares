@@ -6,7 +6,8 @@ import java.awt.*;
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class WindowUtil {
-
+    private WindowUtil() {
+    }
 //    public static JFrame showFrame(JFrame frame) {
 //        frame.pack();
 //        centerFrame(frame);

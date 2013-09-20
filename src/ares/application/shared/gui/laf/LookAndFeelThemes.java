@@ -5,6 +5,8 @@ import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 
 public class LookAndFeelThemes {
+    private LookAndFeelThemes() {
+    }
 
     public static void loadDarkTheme() {
         // Primary

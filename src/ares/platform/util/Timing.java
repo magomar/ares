@@ -7,6 +7,8 @@ import java.lang.management.ThreadMXBean;
  * Author: Mario Gómez Martínez <magomar@gmail.com>
  */
 public class Timing {
+    private Timing() {
+    }
 
     /**
      * Get CPU time in nanoseconds.

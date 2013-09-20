@@ -13,8 +13,7 @@ public class MainMenuView extends AbstractView<JPanel> implements PanelMenuViewe
 
     @Override
     protected JPanel layout() {
-        JPanel buttonsPanel = new MainMenuPanel();
-        return buttonsPanel;
+        return new MainMenuPanel();
     }
 
     @Override

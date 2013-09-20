@@ -196,8 +196,7 @@ public abstract class ComponentFactory {
     }
 
     public static JButton button(String text) {
-        JButton button = new JButton(text);
-        return button;
+        return new JButton(text);
     }
 
     public static JButton button(Action action) {

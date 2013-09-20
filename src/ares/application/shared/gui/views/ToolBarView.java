@@ -12,8 +12,7 @@ public class ToolBarView extends AbstractView<JToolBar> implements ToolBarViewer
 
     @Override
     protected JToolBar layout() {
-        JToolBar toolBar = ComponentFactory.toolBar("Tools");
-        return toolBar;
+        return ComponentFactory.toolBar("Tools");
     }
 
     @Override

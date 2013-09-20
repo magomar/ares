@@ -7,6 +7,8 @@ import java.util.Set;
  * @author Mario Gómez Martínez <margomez at dsic.upv.es>
  */
 public final class EnumSetOperations {
+    private EnumSetOperations() {
+    }
 
     public static <T extends Enum<T>> Set<T> union(Set<T> set1, Set<T> set2) {
         Set<T> result = EnumSet.copyOf(set1);

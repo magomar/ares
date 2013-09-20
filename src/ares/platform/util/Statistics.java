@@ -6,6 +6,8 @@ import java.util.List;
  * Author: Mario Gómez Martínez <magomar@gmail.com>
  */
 public class Statistics {
+    private Statistics() {
+    }
 
     public static SummaryStatistics computeSummaryStatistics(List<Double> data) {
         long n = 0;
@@ -23,7 +25,7 @@ public class Statistics {
         }
         double variance = sum / n;
         double stDev = Math.sqrt(variance);
-        return new SummaryStatistics(n,sum,mean,stDev,max,min);
+        return new SummaryStatistics(n, sum, mean, stDev, max, min);
     }
 
     public static SummaryStatistics computeSummaryStatistics(double[] data) {
@@ -42,36 +44,35 @@ public class Statistics {
         }
         double variance = sum / n;
         double stDev = Math.sqrt(variance);
-        return new SummaryStatistics(n,sum,mean,stDev,max,min);
+        return new SummaryStatistics(n, sum, mean, stDev, max, min);
     }
-
 
     /**
      * @param x array of data for variable x
      * @param y array of data for variable y
      * @return the Pearson's correlation of x and y
      */
-    public static double correlation(double[] x, double[] y){
+    public static double correlation(double[] x, double[] y) {
         double result = 0;
         double sum_sq_x = 0;
         double sum_sq_y = 0;
         double sum_coproduct = 0;
         double mean_x = x[0];
         double mean_y = y[0];
-        for(int i = 2;i < x.length + 1; i++){
-            double sweep =Double.valueOf(i-1) / i;
-            double delta_x = x[i-1] - mean_x;
-            double delta_y = y[i-1] - mean_y;
+        for (int i = 2; i < x.length + 1; i++) {
+            double sweep = Double.valueOf(i - 1) / i;
+            double delta_x = x[i - 1] - mean_x;
+            double delta_y = y[i - 1] - mean_y;
             sum_sq_x += delta_x * delta_x * sweep;
             sum_sq_y += delta_y * delta_y * sweep;
             sum_coproduct += delta_x * delta_y * sweep;
             mean_x += delta_x / i;
             mean_y += delta_y / i;
         }
-        double pop_sd_x = (double) Math.sqrt(sum_sq_x/x.length);
-        double pop_sd_y = (double) Math.sqrt(sum_sq_y/x.length);
+        double pop_sd_x = (double) Math.sqrt(sum_sq_x / x.length);
+        double pop_sd_y = (double) Math.sqrt(sum_sq_y / x.length);
         double cov_x_y = sum_coproduct / x.length;
-        result = cov_x_y / (pop_sd_x*pop_sd_y);
+        result = cov_x_y / (pop_sd_x * pop_sd_y);
         return result;
     }
 
@@ -101,8 +102,6 @@ public class Statistics {
     public static double standardDeviation(double[] population) {
         return Math.sqrt(variance(population));
     }
-
-
 
 
 }

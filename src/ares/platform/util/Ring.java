@@ -994,14 +994,14 @@ public class Ring<E> extends AbstractSequentialList<E>
         }
     }
 
-    @SuppressWarnings("unchecked")
-    private Ring<E> superClone() {
-        try {
-            return (Ring<E>) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new InternalError();
-        }
-    }
+//    @SuppressWarnings("unchecked")
+//    private Ring<E> superClone() {
+//        try {
+//            return (Ring<E>) super.clone();
+//        } catch (CloneNotSupportedException e) {
+//            throw new InternalError();
+//        }
+//    }
 
     /**
      * Returns a shallow copy of this {@code Ring}. (The elements themselves are not cloned.)
@@ -1010,7 +1010,13 @@ public class Ring<E> extends AbstractSequentialList<E>
      */
     @Override
     public Object clone() {
-        Ring<E> clone = superClone();
+        Ring<E> clone;
+        try {
+            clone = (Ring<E>) super.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+            throw new InternalError();
+        }
 
         // Put clone into "virgin" state
         clone.first = clone.last = null;

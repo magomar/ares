@@ -10,27 +10,27 @@ import java.awt.event.KeyEvent;
  */
 public enum UnitCommands implements Command {
 
-    REST("Rest", "Rest", new Integer(KeyEvent.VK_R)),
-    WAIT("Wait", "Wait", new Integer(KeyEvent.VK_W)),
-    DEPLOY("Deploy", "Deploy", new Integer(KeyEvent.VK_D)),
-    DIG_IN("Dig In", "Dig In", new Integer(KeyEvent.VK_F)),
-    EMBARK("Embark", "Embark", new Integer(KeyEvent.VK_E)),
-    DISEMBARK("Disembark", "Disembark", new Integer(KeyEvent.VK_I)),
-    TRAVEL("Travel", "Travel", new Integer(KeyEvent.VK_T)),
-    TACTICAL_MARCH("Move", "Move", new Integer(KeyEvent.VK_M)),
-    APPROACH_MARCH("Move to contact", "Move to contact", new Integer(KeyEvent.VK_C)),
-    STEALTH_MARCH("Move stealth", "Move stealth", new Integer(KeyEvent.VK_H)),
-    DISENGAGE("Disengage", "Disengage", new Integer(KeyEvent.VK_G)),
-    FORCED_MARCH("Move quickly", "Move quickly", new Integer(KeyEvent.VK_Q)),
-    RECON("Recon", "Recon", new Integer(KeyEvent.VK_R)),
-    ASSAULT("Assault", "Assault", new Integer(KeyEvent.VK_A)),
-    ATTACK_BY_FIRE("Attack", "Attack", new Integer(KeyEvent.VK_F)),
-    SUPPORT_BY_FIRE("Support", "Support", new Integer(KeyEvent.VK_Y)),
-    BOMBARD("Bombard", "Bombard", new Integer(KeyEvent.VK_B)),
-    BUILD("Build", "Build", new Integer(KeyEvent.VK_V)),
-    DESTROY("Destroy", "Destroy", new Integer(KeyEvent.VK_Z)),
-    REPAIR("Repair", "Repair", new Integer(KeyEvent.VK_P)),
-    ASSEMBLE("Assemble", "Assemble", new Integer(KeyEvent.VK_L)),;
+    REST("Rest", "Rest", Integer.valueOf(KeyEvent.VK_R)),
+    WAIT("Wait", "Wait", Integer.valueOf(KeyEvent.VK_W)),
+    DEPLOY("Deploy", "Deploy", Integer.valueOf(KeyEvent.VK_D)),
+    DIG_IN("Dig In", "Dig In", Integer.valueOf(KeyEvent.VK_F)),
+    EMBARK("Embark", "Embark", Integer.valueOf(KeyEvent.VK_E)),
+    DISEMBARK("Disembark", "Disembark", Integer.valueOf(KeyEvent.VK_I)),
+    TRAVEL("Travel", "Travel", Integer.valueOf(KeyEvent.VK_T)),
+    TACTICAL_MARCH("Move", "Move", Integer.valueOf(KeyEvent.VK_M)),
+    APPROACH_MARCH("Move to contact", "Move to contact", Integer.valueOf(KeyEvent.VK_C)),
+    STEALTH_MARCH("Move stealth", "Move stealth", Integer.valueOf(KeyEvent.VK_H)),
+    DISENGAGE("Disengage", "Disengage", Integer.valueOf(KeyEvent.VK_G)),
+    FORCED_MARCH("Move quickly", "Move quickly", Integer.valueOf(KeyEvent.VK_Q)),
+    RECON("Recon", "Recon", Integer.valueOf(KeyEvent.VK_R)),
+    ASSAULT("Assault", "Assault", Integer.valueOf(KeyEvent.VK_A)),
+    ATTACK_BY_FIRE("Attack", "Attack", Integer.valueOf(KeyEvent.VK_F)),
+    SUPPORT_BY_FIRE("Support", "Support", Integer.valueOf(KeyEvent.VK_Y)),
+    BOMBARD("Bombard", "Bombard", Integer.valueOf(KeyEvent.VK_B)),
+    BUILD("Build", "Build", Integer.valueOf(KeyEvent.VK_V)),
+    DESTROY("Destroy", "Destroy", Integer.valueOf(KeyEvent.VK_Z)),
+    REPAIR("Repair", "Repair", Integer.valueOf(KeyEvent.VK_P)),
+    ASSEMBLE("Assemble", "Assemble", Integer.valueOf(KeyEvent.VK_L)),;
     private final String text;
     private final String iconFilename;
     private Icon icon;

@@ -19,7 +19,7 @@ public class ConicalGradientPaint implements Paint {
     private final double[] BLUE_STEP_LOOKUP;
     private final double[] ALPHA_STEP_LOOKUP;
     private final Color[] COLORS;
-    final double COLOR_FACTOR = 1.0 / 255.0;
+    private static final double COLOR_FACTOR = 1.0 / 255.0;
 
     public ConicalGradientPaint(Point2D center, float[] fractions, Color[] colors) throws IllegalArgumentException {
         super();

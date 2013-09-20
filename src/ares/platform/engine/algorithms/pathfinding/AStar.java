@@ -41,8 +41,7 @@ public class AStar extends AbstractPathfinder {
             closedSet.put(bestNode.getIndex(), bestNode);
             // Check for termination
             if (bestNode.getTile().equals(destination)) {
-                Path path = new Path(firstNode, bestNode);
-                return path;
+                return new Path(firstNode, bestNode);
             }
             // Expand best node (Generate successors)
             Map<Direction, Tile> neighbors = bestNode.getTile().getNeighbors();
@@ -107,8 +106,7 @@ public class AStar extends AbstractPathfinder {
             closedSet.put(bestNode.getIndex(), bestNode);
             // Check for termination
             if (bestNode.getTile().equals(destination)) {
-                ExtendedPath path = new ExtendedPath(firstNode, bestNode, openSet.list, closedSet.values());
-                return path;
+                return new ExtendedPath(firstNode, bestNode, openSet.list, closedSet.values());
             }
             // Expand best node (Generate successors)
             Map<Direction, Tile> neighbors = bestNode.getTile().getNeighbors();
@@ -144,7 +142,7 @@ public class AStar extends AbstractPathfinder {
         return null;
     }
 
-    class OpenSet {
+    static class OpenSet {
 
         final Queue<Node> list;
         final Map<Integer, Node> map;

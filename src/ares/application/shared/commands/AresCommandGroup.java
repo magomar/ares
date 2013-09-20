@@ -34,7 +34,7 @@ public enum AresCommandGroup implements CommandGroup {
 
     private AresCommandGroup(final String text, final char mnemonic) {
         this.text = text;
-        this.mnemonic = new Integer(mnemonic);
+        this.mnemonic = Integer.valueOf(mnemonic);
     }
 
     @Override
