@@ -114,10 +114,6 @@ public final class PlayerBoardController extends BoardController implements Boar
         boardView.getContentPane().getViewport().addChangeListener(changeViewportListener);
     }
 
-    public void changeBoardViewport() {
-        miniMapController.changeBoardViewport();
-    }
-
     private class OOBTreeSelectionListener implements TreeSelectionListener {
 
         @Override
@@ -396,7 +392,7 @@ public final class PlayerBoardController extends BoardController implements Boar
 
         @Override
         public void stateChanged(ChangeEvent e) {
-            changeBoardViewport();
+            miniMapController.changeBoardViewport();
         }
     }
 }

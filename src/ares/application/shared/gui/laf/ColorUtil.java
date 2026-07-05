@@ -25,8 +25,8 @@ public final class ColorUtil {
                 c.getAlpha());
     }
 
-    public static Color setAlpha(Color c, int alpha) {
-        return c == null ? null : new Color(c.getRed(), c.getGreen(), c.getBlue(), alpha);
+    public static Color getTranslucentColor(Color c, float alpha) {
+        return c == null ? null : new Color(c.getRed()/255f, c.getGreen()/255f, c.getBlue()/255f, alpha);
     }
 
     public static final Color add(Color c1, Color c2) {

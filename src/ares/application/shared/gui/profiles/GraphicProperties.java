@@ -26,6 +26,9 @@ public class GraphicProperties {
         }
     }
 
+    private GraphicProperties() {
+    }
+
     public static int getNumProfiles() {
         return Integer.parseInt(GRAPHICS.getProperty(NonProfiledGraphicProperty.NUM_PROFILES.getName()));
     }

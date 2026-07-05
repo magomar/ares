@@ -22,19 +22,19 @@ public class ComparatorView extends AbstractView<JPanel> implements ComparatorVi
     private JSplitPane splitHoriz;
     private JPanel configurationPanel;
     private JPanel statsPanel;
-    private PathfindingBoardView leftBoardView;
-    private PathfindingBoardView rightBoardView;
-    private AlgorithmConfigurationView leftConfigurationView;
-    private AlgorithmConfigurationView rightConfigurationView;
+    private PathfindingBoardView[] pathfindingBoardView;
+    private AlgorithmConfigurationView[] algorithmConfigurationView;
     private JComboBox<MovementType> movementTypeComboBox;
     private JComboBox<PathfindingLayerViewer.ShowCostType> showCostTypeComboBox;
 
     @Override
     protected JPanel layout() {
-        leftBoardView = new PathfindingBoardView();
-        rightBoardView = new PathfindingBoardView();
-        leftConfigurationView = new AlgorithmConfigurationView();
-        rightConfigurationView = new AlgorithmConfigurationView();
+        pathfindingBoardView = new PathfindingBoardView[2];
+        algorithmConfigurationView = new AlgorithmConfigurationView[2];
+        for (int side = 0; side < 2; side++) {
+            pathfindingBoardView[side] = new PathfindingBoardView();
+            algorithmConfigurationView[side] = new AlgorithmConfigurationView();
+        }
 
         movementTypeComboBox = new JComboBox<>();
         showCostTypeComboBox = new JComboBox<>();
@@ -64,10 +64,10 @@ public class ComparatorView extends AbstractView<JPanel> implements ComparatorVi
         configurationPanelConstraints.fill = GridBagConstraints.HORIZONTAL;
         configurationPanelConstraints.gridx = 0;
         configurationPanelConstraints.gridy = 0;
-        configurationPanel.add(leftConfigurationView.getContentPane(), configurationPanelConstraints);
+        configurationPanel.add(algorithmConfigurationView[LEFT].getContentPane(), configurationPanelConstraints);
         configurationPanelConstraints.gridx = 1;
         configurationPanelConstraints.gridy = 0;
-        configurationPanel.add(rightConfigurationView.getContentPane(), configurationPanelConstraints);
+        configurationPanel.add(algorithmConfigurationView[RIGHT].getContentPane(), configurationPanelConstraints);
         configurationPanelConstraints.gridwidth = 2;
         configurationPanelConstraints.gridx = 0;
         configurationPanelConstraints.gridy = 1;
@@ -75,32 +75,21 @@ public class ComparatorView extends AbstractView<JPanel> implements ComparatorVi
         statsPanel = new JPanel();
         statsPanel.add(new JLabel("Left stats"));
         statsPanel.add(new JLabel("Right stats"));
-        splitHoriz = ComponentFactory.horizontalSplitPane(true, leftBoardView.getContentPane(), rightBoardView.getContentPane(), 0.5);
+        splitHoriz = ComponentFactory.horizontalSplitPane(true, pathfindingBoardView[LEFT].getContentPane(), pathfindingBoardView[RIGHT].getContentPane(), 0.5);
         container.add(configurationPanel, BorderLayout.NORTH);
         container.add(splitHoriz, BorderLayout.CENTER);
         container.add(statsPanel, BorderLayout.SOUTH);
         return container;
     }
 
-
     @Override
-    public BoardViewer getLeftBoardView() {
-        return leftBoardView;
+    public BoardViewer getBoardView(int side) {
+        return pathfindingBoardView[side];
     }
 
     @Override
-    public BoardViewer getRightBoardView() {
-        return rightBoardView;
-    }
-
-    @Override
-    public AlgorithmConfigurationViewer getLefConfigurationView() {
-        return leftConfigurationView;
-    }
-
-    @Override
-    public AlgorithmConfigurationViewer getRightConfigurationView() {
-        return rightConfigurationView;
+    public AlgorithmConfigurationViewer getConfigurationView(int side) {
+        return algorithmConfigurationView[side];
     }
 
     @Override
@@ -112,14 +101,15 @@ public class ComparatorView extends AbstractView<JPanel> implements ComparatorVi
     public ComboBoxModel<MovementType> getMovementTypeComboModel() {
         return movementTypeComboBox.getModel();
     }
-    @Override
-    public JPanel getStatsPanel() {
-        return statsPanel;
-    }
 
     @Override
     public void setMovementTypeComboModel(ComboBoxModel<MovementType> comboModel) {
         movementTypeComboBox.setModel(comboModel);
+    }
+
+    @Override
+    public JPanel getStatsPanel() {
+        return statsPanel;
     }
 
     @Override

@@ -11,15 +11,12 @@ import java.awt.event.ActionListener;
  * @author Mario Gómez Martínez <magomar@gmail.com>
  */
 public interface ComparatorViewer extends View<JPanel> {
+    static final int LEFT = 0;
+    static final int RIGHT = 1;
 
+    BoardViewer getBoardView(int side);
 
-    BoardViewer getLeftBoardView();
-
-    BoardViewer getRightBoardView();
-
-    AlgorithmConfigurationViewer getLefConfigurationView();
-
-    AlgorithmConfigurationViewer getRightConfigurationView();
+    AlgorithmConfigurationViewer getConfigurationView(int side);
 
     ComboBoxModel<PathfindingLayerViewer.ShowCostType>  getCostTypeComboModel();
 

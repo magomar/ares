@@ -40,8 +40,7 @@ public class ProgrammedOpponent {
         List<Objective> objectives;
         if (tracks.isEmpty()) objectives = new ArrayList<>();
         else objectives = tracks.get(0).getObjectives();
-        OperationalPlan opPlan = operationalStance.buildOperationalPlan(formation, objectives, emphasis, supportscope);
-        return opPlan;
+        return operationalStance.buildOperationalPlan(formation, objectives, emphasis, supportscope);
     }
 
     public void activate() {

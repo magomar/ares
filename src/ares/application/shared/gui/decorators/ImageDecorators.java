@@ -97,7 +97,7 @@ public class ImageDecorators {
         paintTileDensity(g2);
         paintStamina(g2, unitModel.getStamina());
         paintAttack(g2, color, unitModel.getAttackStrength());
-        paintDeffense(g2, color, unitModel.getDefenseStrength());
+        paintDefense(g2, color, unitModel.getDefenseStrength());
     }
 
     private void paintUnitAttributes(Graphics2D g2, IdentifiedUnitModel unitModel) {
@@ -108,7 +108,7 @@ public class ImageDecorators {
         paintHealth(g2, unitModel.getHealth());
         paintTileDensity(g2);
         paintAttack(g2, color, unitModel.getAttackStrength());
-        paintDeffense(g2, color, unitModel.getDefenseStrength());
+        paintDefense(g2, color, unitModel.getDefenseStrength());
     }
 
     private void paintUnitAttributes(Graphics2D g2, DetectedUnitModel unitModel) {
@@ -157,22 +157,10 @@ public class ImageDecorators {
         g2.drawString(Integer.toString(value), leftInfoPos.x, leftInfoPos.y);
     }
 
-    private void paintDeffense(Graphics2D g2, Color color, int value) {
+    private void paintDefense(Graphics2D g2, Color color, int value) {
         g2.setColor(color);
         g2.drawString(Integer.toString(value), rightInfoPos.x, rightInfoPos.y);
     }
-
-//    /**
-//     * Converts percentage to color in a scale from red to green
-//     *
-//     * @param percentage number between 0 and 100
-//     * @return
-//     */
-//    private Color colorLevel(int percentage) {
-//        int g = (255 * percentage) / 100;
-//        int r = (255 * (100 - percentage)) / 100;
-//        return new Color(r, g, 0);
-//    }
 
     /**
      * Converts a percentage into a color using a scale between two pure RGB colors, identified as follows:

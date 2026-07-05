@@ -971,6 +971,19 @@ public class Ring<E> extends AbstractSequentialList<E>
     }
 
     /**
+     * Resolves the conflict between {@link List#reversed()} and {@link Deque#reversed()}
+     * introduced by {@code SequencedCollection} in Java 21+.
+     */
+    @Override
+    public Ring<E> reversed() {
+        Ring<E> reversed = new Ring<>();
+        for (LinkedNode<E> x = last; x != null; x = x.prev) {
+            reversed.add(x.item);
+        }
+        return reversed;
+    }
+
+    /**
      * Adapter to provide descending iterators via ListItr.previous
      */
     private class DescendingIterator implements Iterator<E> {
@@ -994,14 +1007,14 @@ public class Ring<E> extends AbstractSequentialList<E>
         }
     }
 
-    @SuppressWarnings("unchecked")
-    private Ring<E> superClone() {
-        try {
-            return (Ring<E>) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new InternalError();
-        }
-    }
+//    @SuppressWarnings("unchecked")
+//    private Ring<E> superClone() {
+//        try {
+//            return (Ring<E>) super.clone();
+//        } catch (CloneNotSupportedException e) {
+//            throw new InternalError();
+//        }
+//    }
 
     /**
      * Returns a shallow copy of this {@code Ring}. (The elements themselves are not cloned.)
@@ -1010,7 +1023,13 @@ public class Ring<E> extends AbstractSequentialList<E>
      */
     @Override
     public Object clone() {
-        Ring<E> clone = superClone();
+        Ring<E> clone;
+        try {
+            clone = (Ring<E>) super.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+            throw new InternalError();
+        }
 
         // Put clone into "virgin" state
         clone.first = clone.last = null;

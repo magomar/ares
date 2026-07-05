@@ -39,11 +39,6 @@ public abstract class AbstractImageLayerView extends AbstractView<JComponent> im
     @Override
     protected JComponent layout() {
         JComponent component = new JComponent() {
-            /**
-             * Paints the globalImage if it's not null
-             *
-             * @param g      graphics of this component
-             */
             @Override
             public void paintComponent(Graphics g) {
                 super.paintComponent(g);

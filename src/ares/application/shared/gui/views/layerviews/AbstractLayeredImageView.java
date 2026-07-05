@@ -27,7 +27,7 @@ public abstract class AbstractLayeredImageView extends AbstractView<JScrollPane>
     @Override
     public LayeredImageViewer addLayerView(ImageLayerViewer imageLayerView) {
         if (!imageLayerView.isSharingGlobalImage()) {
-            layeredPane.add(imageLayerView.getContentPane(), new Integer(layeredPane.getComponentCount()));
+            layeredPane.add(imageLayerView.getContentPane(), Integer.valueOf(layeredPane.getComponentCount()));
         }
         layerViews.put(imageLayerView.name(), imageLayerView);
         sortedLayerViews.add(imageLayerView);

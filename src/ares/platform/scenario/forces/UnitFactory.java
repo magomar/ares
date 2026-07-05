@@ -9,6 +9,8 @@ import java.util.Set;
  * @author Mario Gomez <margomez at dsic.upv.es>
  */
 public class UnitFactory {
+    private UnitFactory() {
+    }
 
     public static Unit createUnit(ares.data.wrappers.scenario.Unit unit, Formation formation, Force force, Scenario scenario) {
         UnitType type = UnitType.valueOf(unit.getType().name());

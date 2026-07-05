@@ -24,7 +24,7 @@ public enum ViewCommands implements Command {
     private ViewCommands(final String text, final String desc, final char keyChar) {
         this.text = text;
         this.desc = desc;
-        this.mnemonic = new Integer(keyChar);
+        this.mnemonic = Integer.valueOf(keyChar);
         this.accelerator = KeyStroke.getKeyStroke(keyChar);
         this.iconFilename = name().toLowerCase() + ".png";
     }

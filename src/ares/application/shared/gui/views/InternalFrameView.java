@@ -1,7 +1,6 @@
 package ares.application.shared.gui.views;
 
 import ares.application.shared.gui.ComponentFactory;
-import ares.application.shared.gui.views.AbstractView;
 
 import javax.swing.*;
 
@@ -20,11 +19,6 @@ public class InternalFrameView<V extends AbstractView<? extends JComponent>> ext
         this.internalFrame = ComponentFactory.internalFrame(view.getContentPane(), view.getClass().getSimpleName());
         this.internalFrame.setClosable(false);
         this.desktopPane.add(internalFrame);
-    }
-
-    @Override
-    protected JInternalFrame layout() {
-        return internalFrame;
     }
 
     public JInternalFrame getInternalFrame() {
@@ -55,5 +49,10 @@ public class InternalFrameView<V extends AbstractView<? extends JComponent>> ext
     public void close() {
         internalFrame.dispose();
         desktopPane.remove(internalFrame);
+    }
+
+    @Override
+    protected JInternalFrame layout() {
+        return null;
     }
 }

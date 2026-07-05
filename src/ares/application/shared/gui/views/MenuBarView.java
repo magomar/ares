@@ -12,8 +12,7 @@ public class MenuBarView extends AbstractView<JMenuBar> implements MenuBarViewer
 
     @Override
     protected JMenuBar layout() {
-        JMenuBar jmenuBar = ComponentFactory.menuBar();
-        return jmenuBar;
+        return ComponentFactory.menuBar();
     }
 
     @Override

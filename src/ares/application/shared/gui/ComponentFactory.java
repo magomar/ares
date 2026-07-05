@@ -1,7 +1,7 @@
 package ares.application.shared.gui;
 
-import ares.application.shared.gui.components.TranslucidButton;
 import ares.application.shared.gui.components.TransparentButton;
+import ares.application.shared.gui.components.TranslucentButton;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -181,8 +181,8 @@ public abstract class ComponentFactory {
     //------------------------------------------------
     // Factories for buttons and tool bars
     //--------------------------------------------------
-    public static JButton translucidButton(Action action, float alpha) {
-        JButton button = new TranslucidButton(action, alpha);
+    public static JButton translucentButton(Action action) {
+        JButton button = new TranslucentButton(action);
         button.setName((String) action.getValue(Action.ACTION_COMMAND_KEY));
         button.setIcon((Icon) action.getValue(Action.LARGE_ICON_KEY));
         return button;
@@ -196,8 +196,7 @@ public abstract class ComponentFactory {
     }
 
     public static JButton button(String text) {
-        JButton button = new JButton(text);
-        return button;
+        return new JButton(text);
     }
 
     public static JButton button(Action action) {
@@ -357,4 +356,5 @@ public abstract class ComponentFactory {
         }
         return newModalDialog(owner, title, content, buttons);
     }
+
 }

@@ -15,50 +15,43 @@ public enum OperationalStance {
     OFFENSIVE {
         @Override
         public OperationalPlan buildOperationalPlan(Formation formation, List<Objective> objectives, Emphasis emphasis, SupportScope supportScope) {
-            OperationalPlan opPlan = new OffensiveOperationalPlan(formation, objectives, emphasis, supportScope);
-            return opPlan;
+            return new OffensiveOperationalPlan(formation, objectives, emphasis, supportScope);
         }
     },
     DEFENSIVE {
         @Override
         public OperationalPlan buildOperationalPlan(Formation formation, List<Objective> objectives, Emphasis emphasis, SupportScope supportScope) {
-            OperationalPlan opPlan = new DefensiveOperationalPlan(formation, objectives, emphasis, supportScope);
-            return opPlan;
+            return new DefensiveOperationalPlan(formation, objectives, emphasis, supportScope);
         }
     },
     RECONNAISSANCE {
         @Override
         public OperationalPlan buildOperationalPlan(Formation formation, List<Objective> objectives, Emphasis emphasis, SupportScope supportScope) {
-            OperationalPlan opPlan = new DefensiveOperationalPlan(formation, objectives, emphasis, supportScope);
-            return opPlan;
+            return new DefensiveOperationalPlan(formation, objectives, emphasis, supportScope);
         }
     },
     SECURITY {
         @Override
         public OperationalPlan buildOperationalPlan(Formation formation, List<Objective> objectives, Emphasis emphasis, SupportScope supportScope) {
-            OperationalPlan opPlan = new SecurityOperationalPlan(formation, objectives, emphasis, supportScope);
-            return opPlan;
+            return new SecurityOperationalPlan(formation, objectives, emphasis, supportScope);
         }
     },
     GARRISON {
         @Override
         public OperationalPlan buildOperationalPlan(Formation formation, List<Objective> objectives, Emphasis emphasis, SupportScope supportScope) {
-            OperationalPlan opPlan = new GarrisonOperationalPlan(formation, objectives, emphasis, supportScope);
-            return opPlan;
+            return new GarrisonOperationalPlan(formation, objectives, emphasis, supportScope);
         }
     },
     FIXED {
         @Override
         public OperationalPlan buildOperationalPlan(Formation formation, List<Objective> objectives, Emphasis emphasis, SupportScope supportScope) {
-            OperationalPlan opPlan = new FixedOperationalPlan(formation, objectives, emphasis, supportScope);
-            return opPlan;
+            return new FixedOperationalPlan(formation, objectives, emphasis, supportScope);
         }
     },
     RESERVE {
         @Override
         public OperationalPlan buildOperationalPlan(Formation formation, List<Objective> objectives, Emphasis emphasis, SupportScope supportScope) {
-            OperationalPlan opPlan = new ReserveOperationalPlan(formation, objectives, emphasis, supportScope);
-            return opPlan;
+            return new ReserveOperationalPlan(formation, objectives, emphasis, supportScope);
         }
     };
 

@@ -92,10 +92,6 @@ public final class AresPlayerGUI extends AbstractView<JFrame> implements PlayerV
         return mainFrame;
     }
 
-    public void show() {
-        WindowUtil.centerAndShow(contentPane);
-    }
-
     @Override
     public void switchPerspective(String perspective) {
         CardLayout cl = (CardLayout) cards.getLayout();
@@ -162,8 +158,8 @@ public final class AresPlayerGUI extends AbstractView<JFrame> implements PlayerV
             @Override
             public void run() {
                 AresPlayerGUI mainView = new AresPlayerGUI();
-                WeGoPlayerController mainController = new WeGoPlayerController(mainView);
-                mainView.show();
+                new WeGoPlayerController(mainView);
+                WindowUtil.centerAndShow(mainView.contentPane);
 
             }
         });

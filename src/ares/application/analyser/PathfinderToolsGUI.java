@@ -77,10 +77,6 @@ public class PathfinderToolsGUI extends AbstractView<JFrame> implements Pathfind
         return mainFrame;
     }
 
-    public void show() {
-        WindowUtil.centerAndShow(contentPane);
-    }
-
     @Override
     public void switchPerspective(String perspective) {
         CardLayout cl = (CardLayout) cards.getLayout();
@@ -130,8 +126,8 @@ public class PathfinderToolsGUI extends AbstractView<JFrame> implements Pathfind
             public void run() {
                 PathfinderToolsGUI mainView = new PathfinderToolsGUI();
                 SwingUtilities.updateComponentTreeUI(mainView.contentPane);
-                PathfinderToolsController mainController = new PathfinderToolsController(mainView);
-                mainView.show();
+                new PathfinderToolsController(mainView);
+                WindowUtil.centerAndShow(mainView.contentPane);
             }
         });
     }

@@ -1,7 +1,6 @@
 package ares.application.shared.commands;
 
 import ares.application.shared.gui.ComponentFactory;
-import ares.application.shared.gui.components.NebraskaButton;
 
 import javax.swing.*;
 import java.awt.*;
@@ -58,8 +57,8 @@ public class ActionGroup {
         for (int i = 0; i < actions.length; i++) {
             Action action = actions[i];
             if (action.isEnabled()) {
-//                JButton newButton = ComponentFactory.transparentButton(action, 0.75f);
-                JButton newButton = new NebraskaButton(action, 0.6f);
+//                JButton newButton = ComponentFactory.transparentButton(action, 1f);
+                JButton newButton = ComponentFactory.translucentButton(action);
                 newButton.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
                 newButton.setSize(MAIN_MENU_BUTTON_SIZE);
                 newButton.setMinimumSize(MAIN_MENU_BUTTON_SIZE);
@@ -70,7 +69,7 @@ public class ActionGroup {
                 buttons.add(newButton);
             }
         }
-        return buttons.toArray(new NebraskaButton[buttons.size()]);
+        return buttons.toArray(new JButton[buttons.size()]);
     }
 
 }

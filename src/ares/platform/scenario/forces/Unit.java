@@ -26,6 +26,7 @@ import ares.platform.scenario.board.Direction;
 import ares.platform.scenario.board.Tile;
 import ares.platform.util.MathUtils;
 
+import java.io.Serializable;
 import java.util.*;
 import java.util.Map.Entry;
 
@@ -576,7 +577,7 @@ public abstract class Unit implements ModelProvider<UnitModel> {
     /**
      * Compares two units in terms of the turn of entry
      */
-    protected static class UnitEntryComparator implements Comparator<Unit> {
+    protected static class UnitEntryComparator implements Comparator<Unit>, Serializable {
 
         @Override
         public int compare(Unit u1, Unit u2) {

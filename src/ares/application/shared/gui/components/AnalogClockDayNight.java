@@ -11,8 +11,8 @@ import java.util.Calendar;
  */
 public final class AnalogClockDayNight extends JComponent {
 
-    private final double ANGLE_STEP = 6;
-    private final double NIGHT_DAY_ANGLE_STEP = 0.25;
+    private static final double ANGLE_STEP = 6;
+    private static final double NIGHT_DAY_ANGLE_STEP = 0.25;
     private double minutePointerAngle = Calendar.getInstance().get(Calendar.MINUTE) * ANGLE_STEP;
     private double hourPointerAngle = Calendar.getInstance().get(Calendar.HOUR) * ANGLE_STEP * 5 + 0.5 * Calendar.getInstance().get(Calendar.MINUTE);
     private double nightDayAngle = (Calendar.getInstance().get(Calendar.HOUR_OF_DAY) * 60 + Calendar.getInstance().get(Calendar.MINUTE)) * NIGHT_DAY_ANGLE_STEP;

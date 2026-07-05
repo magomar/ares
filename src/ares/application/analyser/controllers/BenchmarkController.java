@@ -130,7 +130,7 @@ public class BenchmarkController implements AlgorithmSelectionInteractor, Proble
                 for (int i = 0; i < pathfinders.length; i++) {
                     Pathfinder pathfinder = pathfinders[i];
                     List<PathfindingSolution> solutions = solvePathfindingProblem(scenario, scenarioProblems, pathfinder);
-                    System.out.println(String.format("Solutions found for %s (%d/%d) by %s", scenario.getName(), solutions.size(), scenarioProblems.size(), pathfinder));
+                    System.out.println(String.format("Solutions found for %s (%d/%d) by %s", scenario.getName(), solutions.size(), scenarioProblems.size(), pathfinder.toStringVerbose()));
                     algorithmResults[i].addSolutions(solutions, scenarioProblems.size());
                 }
             }

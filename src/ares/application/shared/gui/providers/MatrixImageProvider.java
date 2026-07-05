@@ -125,8 +125,7 @@ public class MatrixImageProvider implements ImageProvider {
             LOG.log(Level.SEVERE, " Image file not found {0}", file.getPath());
             return new BufferedImage(fullImageDimension.width, fullImageDimension.height, BufferedImage.TYPE_INT_ARGB);
         }
-        BufferedImage bi = FileIO.loadImage(file);
-        return bi;
+        return FileIO.loadImage(file);
     }
 //    public void saveGraphics(RenderedImage image, String path, FileIO fileSystem) {
 //        File file = fileSystem.getFile(path, filename);

@@ -5,6 +5,9 @@ package ares.platform.util;
  */
 public class MathUtils {
 
+    private MathUtils() {
+    }
+
     public static int setBounds(int value, int lowerBound, int upperBound) {
         return Math.max(Math.min(value, upperBound), lowerBound);
     }
@@ -34,7 +37,7 @@ public class MathUtils {
             return (int) result;
         }
     }
-    
+
     public static boolean isInteger(String s) {
         try {
             Integer.parseInt(s);

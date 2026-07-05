@@ -23,8 +23,8 @@ public final class MainMenuPanel extends JPanel {
     private SoftReference<BufferedImage> backgroundImage = new SoftReference<>(null);
 
     public MainMenuPanel() {
-        BoxLayout bl = new BoxLayout(this, BoxLayout.Y_AXIS);
-        setLayout(bl);
+        BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS);
+        setLayout(layout);
         add(Box.createRigidArea(new Dimension(0, 300)));
         updateBackgroundImage();
     }

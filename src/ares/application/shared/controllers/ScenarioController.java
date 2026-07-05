@@ -112,7 +112,6 @@ public final class ScenarioController implements ActionController {
             LOG.log(MessagesHandler.MessageLevel.GAME_SYSTEM, e.toString());
             interactor.forgetScenario();
             close.setEnabled(false);
-            System.gc();
         }
     }
 

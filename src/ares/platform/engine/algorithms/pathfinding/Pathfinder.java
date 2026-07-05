@@ -24,4 +24,6 @@ public interface Pathfinder {
     CostFunction getCostFunction();
 
     String toStringVerbose();
+
+    Pathfinder copy();
 }

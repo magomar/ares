@@ -109,7 +109,6 @@ public class WeGoPlayerController implements EngineInteractor, ScenarioInteracto
         // change the GUI to show the playing perspective
         mainView.switchPerspective(PlayerViewer.PLAYER_PERSPECTIVE);
         mainView.getContentPane().setTitle("DE LUDO BELLICO      " + scenario + "   Role: " + userRole);
-        System.gc();
     }
 
     @Override
@@ -118,7 +117,6 @@ public class WeGoPlayerController implements EngineInteractor, ScenarioInteracto
         miniMapView.flush();
         oobView.flush();
         mainView.switchPerspective(PlayerViewer.MAIN_MENU_PERSPECTIVE);
-        System.gc();
     }
 
     @Override
