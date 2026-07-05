@@ -103,7 +103,7 @@ public final class AresPlayerGUI extends AbstractView<JFrame> implements PlayerV
                 toolBarView.setVisible(false);
                 break;
             case PlayerViewer.PLAYER_PERSPECTIVE:
-                contentPane.getRootPane().setWindowDecorationStyle(JRootPane.FRAME);
+                contentPane.getRootPane().setWindowDecorationStyle(JRootPane.NONE);
                 menuView.setVisible(true);
                 toolBarView.setVisible(true);
                 break;
@@ -132,6 +132,12 @@ public final class AresPlayerGUI extends AbstractView<JFrame> implements PlayerV
     }
 
     public static void main(String[] args) {
+        // Catch unexpected EDT exceptions (e.g. TinyLAF screen capture failures in remote desktop)
+        Thread.setDefaultUncaughtExceptionHandler((thread, throwable) -> {
+            java.util.logging.Logger.getLogger(AresPlayerGUI.class.getName())
+                    .log(java.util.logging.Level.SEVERE, "Uncaught exception on " + thread.getName(), throwable);
+            System.exit(1);
+        });
         JFrame.setDefaultLookAndFeelDecorated(false);
         JDialog.setDefaultLookAndFeelDecorated(false);
         Toolkit.getDefaultToolkit().setDynamicLayout(true);
