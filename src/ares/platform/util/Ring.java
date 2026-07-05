@@ -971,6 +971,19 @@ public class Ring<E> extends AbstractSequentialList<E>
     }
 
     /**
+     * Resolves the conflict between {@link List#reversed()} and {@link Deque#reversed()}
+     * introduced by {@code SequencedCollection} in Java 21+.
+     */
+    @Override
+    public Ring<E> reversed() {
+        Ring<E> reversed = new Ring<>();
+        for (LinkedNode<E> x = last; x != null; x = x.prev) {
+            reversed.add(x.item);
+        }
+        return reversed;
+    }
+
+    /**
      * Adapter to provide descending iterators via ListItr.previous
      */
     private class DescendingIterator implements Iterator<E> {
