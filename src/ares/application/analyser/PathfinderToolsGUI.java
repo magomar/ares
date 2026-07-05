@@ -101,8 +101,8 @@ public class PathfinderToolsGUI extends AbstractView<JFrame> implements Pathfind
 
         Toolkit.getDefaultToolkit().setDynamicLayout(true);
         System.setProperty("sun.awt.noerasebackground", "true");
-        JFrame.setDefaultLookAndFeelDecorated(true);
-        JDialog.setDefaultLookAndFeelDecorated(true);
+        JFrame.setDefaultLookAndFeelDecorated(false);
+        JDialog.setDefaultLookAndFeelDecorated(false);
         try {
 //            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
 //                if ("Nimbus".equals(info.getName())) {
@@ -151,7 +151,7 @@ public class PathfinderToolsGUI extends AbstractView<JFrame> implements Pathfind
     public ComparatorView getComparatorView() {
         return comparatorV;
     }
-    
+
     @Override
     public BenchmarkView getBenchmarkView() {
         return benchmarkV;
