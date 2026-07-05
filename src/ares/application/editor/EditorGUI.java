@@ -21,6 +21,8 @@ public class EditorGUI extends AbstractView<JFrame> {
     }
 
     public static void main(String[] args) {
+        JFrame.setDefaultLookAndFeelDecorated(false);
+        JDialog.setDefaultLookAndFeelDecorated(false);
         Toolkit.getDefaultToolkit().setDynamicLayout(true);
         System.setProperty("sun.awt.noerasebackground", "true");
         try {

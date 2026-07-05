@@ -132,8 +132,8 @@ public final class AresPlayerGUI extends AbstractView<JFrame> implements PlayerV
     }
 
     public static void main(String[] args) {
-//        JFrame.setDefaultLookAndFeelDecorated(false);
-//        JDialog.setDefaultLookAndFeelDecorated(true);
+        JFrame.setDefaultLookAndFeelDecorated(false);
+        JDialog.setDefaultLookAndFeelDecorated(false);
         Toolkit.getDefaultToolkit().setDynamicLayout(true);
         System.setProperty("sun.awt.noerasebackground", "true");
         try {
